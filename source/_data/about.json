@@ -1,0 +1,30 @@
+{
+    "avatar": "/favicon.png",
+    "name": "Zhao Liang",
+    "tag": "math && programming",
+    "projects": [{
+	"name": "Uniform Polytopes",
+	"image": "/images/polytopes/rectified-grand-stellated-120-cell.png",
+	"tags": ["Uniform Polytopes", "Todd-Coxeter"],
+	"description": "Render uniform polytopes using Todd-Coxeter algorithm",
+	"link_text": "Github 地址",
+	"link": "https://github.com/neozhaoliang/pywonderland/tree/master/src/polytopes"
+    }, {
+	"name": "Uniform Tilings",
+	"image": "/images/coxeter/crop-3-5-3.png",
+	"description": "Render uniform tilings using Coxeter automata",
+	"tags": ["Coxeter Groups", "Regular Language"],
+	"link_text": "Github 地址",
+	"link": "https://github.com/neozhaoliang/pywonderland/tree/master/src/uniform-tilings"
+    }, {
+	"name": "GIFMaze",
+	"image": "/images/gifmaze/wilson-bfs.gif",
+	"description": "Make gif animations of various maze algorithms",
+	"tags": ["Maze Algorithms", "GIF"],
+	"link_text": "Github 地址",
+	"link": "https://github.com/neozhaoliang/pywonderland/tree/master/src/gifmaze"
+    }],
+    "reward": [
+	"/sponsor.png"
+    ]
+}

@@ -504,6 +504,49 @@
     
     
     <entry>
+      <title>Coxeter 群基础知识提要</title>
+      <link href="introduction-to-coxeter-groups/"/>
+      <url>introduction-to-coxeter-groups/</url>
+      
+        <content type="html"><![CDATA[<p>本文整理自我读研时的笔记，目的是介绍 Coxeter 群的一些基本知识。</p><span id="more"></span><h1 id="抽象-coxeter-群">抽象 Coxeter 群</h1><p>设 <span class="math inline">\(S\)</span> 是一个集合，一个基于 <span class="math inline">\(S\)</span> 的 Coxeter 矩阵 <span class="math inline">\(M=(m_{s,t})_{s,t\in S}\)</span> 是一个对称矩阵，其对角线上都是 1，非对角线元素取值范围为 <span class="math inline">\(\{2,3,\ldots,\infty\}\)</span>。</p><p><span class="math inline">\(S\)</span> 的基数 <span class="math inline">\(|S|\)</span> 叫做 <span class="math inline">\(M\)</span> 的秩 (rank)，在本文中我们只考虑 <span class="math inline">\(M\)</span> 的秩为有限的情形，即 <span class="math inline">\(|S|&lt;\infty\)</span> 的情形。</p><p>Coxeter 矩阵也可以用直观的方式展示出来，即其 Coxeter 图：Coxeter 图是一个带标记的无向图，其顶点集为 <span class="math inline">\(S\)</span>，两个顶点 <span class="math inline">\(s\ne t\)</span> 之间有边相连当且仅当 <span class="math inline">\(m_{s,t}\geq3\)</span>，且这条边被标记为 <span class="math inline">\(m_{s,t}\)</span>，只不过在 <span class="math inline">\(m_{s,t}=3\)</span> 时我们通常省略其标记。</p><p>例如 Coxeter 矩阵 <span class="math display">\[\begin{bmatrix}1&amp;3&amp;3\\3&amp;1&amp;4\\3&amp;4&amp;1\end{bmatrix}\]</span> 对应的 Coxeter 图为</p><p><img style="margin:0px auto;display:block" width=150 src="/images/coxeter/diagram334.svg"/></p><p>对给定的 Coxeter 矩阵 <span class="math inline">\(M\)</span>，<span class="math inline">\(M\)</span> 确定了一个有限表现群 <span class="math inline">\(W\)</span>，<span class="math inline">\(W\)</span> 叫做抽象 Coxeter 群，其生成元是集合 <span class="math inline">\(S\)</span>，生成关系由所有的 <span class="math inline">\((st)^{m_{s,t}}=1\)</span> 组成： <span class="math display">\[W = \langle s\in S\ |\ (st)^{m_{s,t}}=1\ {\rm if}\ m_{s,t}&lt;\infty\rangle.\]</span></p><p>注意 <span class="math inline">\((st)^\infty=1\)</span> 可以理解为 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(t\)</span> 之间没有约束关系，所以它们不出现在群表现中。</p><p>总之 <span class="math inline">\(S\)</span> 作为 <span class="math inline">\(W\)</span> 的生成元满足如下的生成关系：</p><ol type="1"><li>对任何 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(s^2=1\)</span>。</li><li>对任何 <span class="math inline">\(s\ne t, m_{s,t}&lt;\infty\)</span> 有辫关系 <span class="math inline">\(\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}\)</span> 成立。</li></ol><p>我们把 <span class="math inline">\((W, S)\)</span> 叫做一个 Coxeter 系。</p><p>对 <span class="math inline">\(W\)</span> 中的任一元素 <span class="math inline">\(w\)</span>，它可能有许多种不同的方式表示为 <span class="math inline">\(S\)</span> 中生成元的乘积。在 <span class="math inline">\(w\)</span> 的所有表示中，长度最短的表示叫做 <span class="math inline">\(w\)</span> 的既约表示：即若 <span class="math inline">\(w=s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> 是一个将 <span class="math inline">\(w\)</span> 表示为 <span class="math inline">\(k\)</span> 个生成元的乘积，且 <span class="math inline">\(w\)</span> 不存在任何长度小于 <span class="math inline">\(k\)</span> 的这样的表示，就称 <span class="math inline">\(s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> 是 <span class="math inline">\(w\)</span> 的一个既约表示。<span class="math inline">\(w\)</span> 的既约表示可能不唯一，但它们必然都具有相同的长度。<span class="math inline">\(w\)</span> 的长度 <span class="math inline">\(l(w)\)</span> 就定义为 <span class="math inline">\(w\)</span> 的任意一个既约表示的长度。</p><p><span class="math inline">\(l(w)\)</span> 具有如下的性质：</p><ol type="1"><li><span class="math inline">\(l(xy)\leq l(x) + l(y)\)</span>。</li><li><span class="math inline">\(l(w) = l(w^{-1})\)</span>。</li><li><span class="math inline">\(l(w)=0\)</span> 当且仅当 <span class="math inline">\(w\)</span> 是恒等元。</li><li><span class="math inline">\(l(ws)\)</span> = <span class="math inline">\(l(w)\pm 1\)</span>，其中 <span class="math inline">\(w\in W, s\in S\)</span>。</li></ol><p>前三点都是显然的，只有 4 需要论证。显然 <span class="math inline">\(|l(ws)-l(w)|\leq 1\)</span>，所以只要说明 <span class="math inline">\(l(ws)\)</span> 和 <span class="math inline">\(l(s)\)</span> 不相等即可。</p><p>设 <span class="math inline">\(F\)</span> 是由集合 <span class="math inline">\(S\)</span> 生成的自由群，定义群同态 <span class="math inline">\({\rm sgn}: F\to\{\pm1\}\)</span> 如下：对自由群 <span class="math inline">\(F\)</span> 的每个生成元 <span class="math inline">\(s\in S\)</span> 定义映射 <span class="math inline">\({\rm sgn}(s)=-1\)</span>，然后将此映射扩充为 <span class="math inline">\(F\)</span> 到 <span class="math inline">\(\{\pm1\}\)</span> 的群同态。容易验证 <span class="math inline">\((W,S)\)</span> 的所有生成关系都属于这个同态的核 (注意它们的长度都是偶数！)，因此 <span class="math inline">\({\rm sgn}\)</span> 诱导了一个从 <span class="math inline">\((W,S)\)</span> 到 <span class="math inline">\(\{\pm1\}\)</span> 的群同态。在此同态下，若 <span class="math inline">\(w=s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> 是 <span class="math inline">\(w\)</span> 的任一既约表示，则 <span class="math display">\[{\rm sgn}(w)={\rm sgn}(s_{i_1}){\rm sgn}(s_{i_2})\cdots{\rm sgn}(s_{i_k})=(-1)^k=(-1)^{l(w)}.\]</span> 从而 <span class="math inline">\({\rm sgn}(ws)={\rm sgn}(w){\rm sgn}(s)=-{\rm sgn}(w)\)</span> 说明 <span class="math inline">\(l(ws)\ne l(w)\)</span>。</p><p>长度函数 <span class="math inline">\(l(\cdot)\)</span> 是研究 Coxeter 群结构的基本工具。注意 <span class="math inline">\(l(\cdot)\)</span> 的定义依赖于生成元集 <span class="math inline">\(S\)</span> 的选择：对一个 Coxeter 群 <span class="math inline">\((W,S)\)</span>，完全可能选择其另一组不同的生成元 <span class="math inline">\(S&#39;\ne S\)</span> 使得 <span class="math inline">\((W,S)=(W,S&#39;)\)</span>，这时其上的长度函数，根系，Bruhat 序等都可能随之改变。这就是为什么在描述一个 Coxeter 群 <span class="math inline">\((W,S)\)</span> 时要指明 <span class="math inline">\(S\)</span> 的原因。</p><h1 id="作为反射群的-coxeter-群几何实现">作为反射群的 Coxeter 群：几何实现</h1><h2 id="单个反射变换">单个反射变换</h2><h2 id="两个反射变换生成的二面体群">两个反射变换生成的二面体群</h2><h2 id="coxeter-群的标准几何实现">Coxeter 群的标准几何实现</h2><h1 id="根系">根系</h1><h1 id="tits-锥">Tits 锥</h1><h1 id="有限-coxeter-群的分类">有限 Coxeter 群的分类</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 代数 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Coxeter groups </tag>
+            
+            <tag> Tits cone </tag>
+            
+            <tag> Standard geometric realization </tag>
+            
+            <tag> Cartan matrix </tag>
+            
+            <tag> Coxeter matrix </tag>
+            
+            <tag> Gallery </tag>
+            
+            <tag> Reduced word </tag>
+            
+            <tag> Reflection </tag>
+            
+            <tag> Simple root </tag>
+            
+            <tag> Root system </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>称硬币问题、小白鼠找毒药问题与编码理论</title>
       <link href="coin-and-coding-theory/"/>
       <url>coin-and-coding-theory/</url>
