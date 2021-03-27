@@ -1,0 +1,725 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Coxeter 群基础知识提要 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="本文整理自我读研时的笔记，目的是介绍 Coxeter 群的一些基本知识。根据我个人的体会，理解 Coxeter 群一定要联系几何直观，弄清楚每一个结论它对应的几何解释是什么。我从 Casselman 的讲义中受益很多，许多插图也是受到了他的启发所作，特别致谢。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Coxeter 群基础知识提要"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机完美取样/">
+                    随机完美取样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/组合数学/">
+                    组合数学 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/代数/">代数</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Coxeter 群基础知识提要</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2013-04-01T16:00:00.000Z"><a href="/introduction-to-coxeter-groups/">2013-04-02</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Coxeter-groups/" class="chip pink lighten-1">Coxeter groups</a>
+        
+            <a href="/tags/Tits-cone/" class="chip pink lighten-1">Tits cone</a>
+        
+            <a href="/tags/Standard-geometric-realization/" class="chip pink lighten-1">Standard geometric realization</a>
+        
+            <a href="/tags/Cartan-matrix/" class="chip pink lighten-1">Cartan matrix</a>
+        
+            <a href="/tags/Coxeter-matrix/" class="chip pink lighten-1">Coxeter matrix</a>
+        
+            <a href="/tags/Gallery/" class="chip pink lighten-1">Gallery</a>
+        
+            <a href="/tags/Reduced-word/" class="chip pink lighten-1">Reduced word</a>
+        
+            <a href="/tags/Reflection/" class="chip pink lighten-1">Reflection</a>
+        
+            <a href="/tags/Simple-root/" class="chip pink lighten-1">Simple root</a>
+        
+            <a href="/tags/Root-system/" class="chip pink lighten-1">Root system</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%8A%BD%E8%B1%A1-coxeter-%E7%BE%A4"><span class="section table-of-contents-text">抽象 Coxeter 群</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BD%9C%E4%B8%BA%E5%8F%8D%E5%B0%84%E7%BE%A4%E7%9A%84-coxeter-%E7%BE%A4"><span class="section table-of-contents-text">作为反射群的 Coxeter 群</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%8D%95%E4%B8%AA%E5%8F%8D%E5%B0%84%E5%8F%98%E6%8D%A2"><span class="section table-of-contents-text">单个反射变换</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E4%B8%A4%E4%B8%AA%E5%8F%8D%E5%B0%84%E5%8F%98%E6%8D%A2"><span class="section table-of-contents-text">两个反射变换</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#n_st4"><span class="section table-of-contents-text">\(0&lt;n_{s,t}&lt;4\)</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#coxeter-%E7%BE%A4%E7%9A%84%E6%A0%87%E5%87%86%E5%87%A0%E4%BD%95%E5%AE%9E%E7%8E%B0"><span class="section table-of-contents-text">Coxeter 群的标准几何实现</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%A0%B9%E7%B3%BB"><span class="section table-of-contents-text">根系</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#tits-%E9%94%A5"><span class="section table-of-contents-text">Tits 锥</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%89%E9%99%90-coxeter-%E7%BE%A4%E7%9A%84%E5%88%86%E7%B1%BB"><span class="section table-of-contents-text">有限 Coxeter 群的分类</span></a></li></ol>
+</div>
+
+            
+            <div class="entry pink-link-context">
+                <p>本文整理自我读研时的笔记，目的是介绍 Coxeter 群的一些基本知识。根据我个人的体会，理解 Coxeter 群一定要联系几何直观，弄清楚每一个结论它对应的几何解释是什么。我从 <a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass">Casselman</a> 的讲义中受益很多，许多插图也是受到了他的启发所作，特别致谢。</p>
+<span id="more"></span>
+<h1 id="抽象-coxeter-群">抽象 Coxeter 群</h1>
+<p>设 <span class="math inline">\(S\)</span> 是一个集合，一个基于 <span class="math inline">\(S\)</span> 的 Coxeter 矩阵 <span class="math inline">\(M=(m_{s,t})_{s,t\in S}\)</span> 是一个对称矩阵，其对角线上都是 1，非对角线元素取值范围为 <span class="math inline">\(\{2,3,\ldots,\infty\}\)</span>。</p>
+<p><span class="math inline">\(S\)</span> 的基数 <span class="math inline">\(|S|\)</span> 叫做 <span class="math inline">\(M\)</span> 的秩 (rank)，在本文中我们只考虑 <span class="math inline">\(M\)</span> 的秩为有限的情形，即 <span class="math inline">\(|S|&lt;\infty\)</span> 的情形。</p>
+<p>Coxeter 矩阵也可以用直观的方式展示出来，即其 Coxeter 图：Coxeter 图是一个带标记的无向图，其顶点集为 <span class="math inline">\(S\)</span>，两个顶点 <span class="math inline">\(s\ne t\)</span> 之间有边相连当且仅当 <span class="math inline">\(m_{s,t}\geq3\)</span>，且这条边被标记为 <span class="math inline">\(m_{s,t}\)</span>，只不过在 <span class="math inline">\(m_{s,t}=3\)</span> 时我们通常省略其标记。</p>
+<p>例如 Coxeter 矩阵 <span class="math display">\[\begin{bmatrix}1&amp;3&amp;3\\3&amp;1&amp;4\\3&amp;4&amp;1\end{bmatrix}\]</span> 对应的 Coxeter 图为</p>
+<p><img style="margin:0px auto;display:block" width=150 src="/images/coxeter/diagram334.svg"/></p>
+<p>对给定的 Coxeter 矩阵 <span class="math inline">\(M\)</span>，<span class="math inline">\(M\)</span> 确定了一个有限表现群 <span class="math inline">\(W\)</span>，<span class="math inline">\(W\)</span> 叫做抽象 Coxeter 群，其生成元是集合 <span class="math inline">\(S\)</span>，生成关系由所有的 <span class="math inline">\((st)^{m_{s,t}}=1\)</span> 组成： <span class="math display">\[W = \langle s\in S\ |\ (st)^{m_{s,t}}=1\ {\rm if}\ m_{s,t}&lt;\infty\rangle.\]</span></p>
+<p>注意 <span class="math inline">\((st)^\infty=1\)</span> 可以理解为 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(t\)</span> 之间没有约束关系，所以它们不出现在群表现中。</p>
+<p>总之 <span class="math inline">\(S\)</span> 作为 <span class="math inline">\(W\)</span> 的生成元满足如下的生成关系：</p>
+<ol type="1">
+<li>对任何 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(s^2=1\)</span>。</li>
+<li>对任何 <span class="math inline">\(s\ne t, m_{s,t}&lt;\infty\)</span> 有辫关系 <span class="math inline">\(\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}\)</span> 成立。</li>
+</ol>
+<p>我们把 <span class="math inline">\((W, S)\)</span> 叫做一个 Coxeter 系。</p>
+<p>对 <span class="math inline">\(W\)</span> 中的任一元素 <span class="math inline">\(w\)</span>，它可能有许多种不同的方式表示为 <span class="math inline">\(S\)</span> 中生成元的乘积。在 <span class="math inline">\(w\)</span> 的所有表示中，长度最短的表示叫做 <span class="math inline">\(w\)</span> 的既约表示：即若 <span class="math inline">\(w=s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> 是一个将 <span class="math inline">\(w\)</span> 表示为 <span class="math inline">\(k\)</span> 个生成元的乘积，且 <span class="math inline">\(w\)</span> 不存在任何长度小于 <span class="math inline">\(k\)</span> 的这样的表示，就称 <span class="math inline">\(s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> 是 <span class="math inline">\(w\)</span> 的一个既约表示。<span class="math inline">\(w\)</span> 的既约表示可能不唯一，但它们必然都具有相同的长度。<span class="math inline">\(w\)</span> 的长度 <span class="math inline">\(l(w)\)</span> 就定义为 <span class="math inline">\(w\)</span> 的任意一个既约表示的长度。</p>
+<p><span class="math inline">\(l(w)\)</span> 具有如下的性质：</p>
+<ol type="1">
+<li><span class="math inline">\(l(xy)\leq l(x) + l(y)\)</span>。</li>
+<li><span class="math inline">\(l(w) = l(w^{-1})\)</span>。</li>
+<li><span class="math inline">\(l(w)=0\)</span> 当且仅当 <span class="math inline">\(w\)</span> 是恒等元。</li>
+<li><span class="math inline">\(l(ws)\)</span> = <span class="math inline">\(l(w)\pm 1\)</span>，其中 <span class="math inline">\(w\in W, s\in S\)</span>。</li>
+</ol>
+<p>前三点都是显然的，只有 4 需要论证。显然 <span class="math inline">\(|l(ws)-l(w)|\leq 1\)</span>，所以只要说明 <span class="math inline">\(l(ws)\)</span> 和 <span class="math inline">\(l(s)\)</span> 不相等即可。</p>
+<p>设 <span class="math inline">\(F\)</span> 是由集合 <span class="math inline">\(S\)</span> 生成的自由群，定义群同态 <span class="math inline">\({\rm sgn}: F\to\{\pm1\}\)</span> 如下：对自由群 <span class="math inline">\(F\)</span> 的每个生成元 <span class="math inline">\(s\in S\)</span> 定义映射 <span class="math inline">\({\rm sgn}(s)=-1\)</span>，然后将此映射扩充为 <span class="math inline">\(F\)</span> 到 <span class="math inline">\(\{\pm1\}\)</span> 的群同态。容易验证 <span class="math inline">\((W,S)\)</span> 的所有生成关系都属于这个同态的核 (注意它们的长度都是偶数！)，因此 <span class="math inline">\({\rm sgn}\)</span> 诱导了一个从 <span class="math inline">\((W,S)\)</span> 到 <span class="math inline">\(\{\pm1\}\)</span> 的群同态。在此同态下，若 <span class="math inline">\(w=s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> 是 <span class="math inline">\(w\)</span> 的任一既约表示，则 <span class="math display">\[{\rm sgn}(w)={\rm sgn}(s_{i_1}){\rm sgn}(s_{i_2})\cdots{\rm sgn}(s_{i_k})=(-1)^k=(-1)^{l(w)}.\]</span> 从而 <span class="math inline">\({\rm sgn}(ws)={\rm sgn}(w){\rm sgn}(s)=-{\rm sgn}(w)\)</span> 说明 <span class="math inline">\(l(ws)\ne l(w)\)</span>。</p>
+<p>长度函数 <span class="math inline">\(l(\cdot)\)</span> 是研究 Coxeter 群结构的基本工具。注意 <span class="math inline">\(l(\cdot)\)</span> 的定义依赖于生成元集 <span class="math inline">\(S\)</span> 的选择：对一个 Coxeter 群 <span class="math inline">\((W,S)\)</span>，完全可能选择其另一组不同的生成元 <span class="math inline">\(S&#39;\ne S\)</span> 使得它们生成的群都是 <span class="math inline">\(W\)</span>，但这时 <span class="math inline">\(W\)</span> 上的长度函数，根系，Bruhat 序等都可能随之改变。这就是为什么在描述一个 Coxeter 群 <span class="math inline">\((W,S)\)</span> 时要指明 <span class="math inline">\(S\)</span> 的原因。</p>
+<h1 id="作为反射群的-coxeter-群">作为反射群的 Coxeter 群</h1>
+<p>反射群，顾名思义就是由空间中的反射变换生成的群。Coxeter 群都是反射群，即对任何抽象 Coxeter 群 <span class="math inline">\((W,S)\)</span>，我们都可以通过在 <span class="math inline">\(\mathbb{R}^n\,(n=|S|)\)</span> 中“精心摆放” <span class="math inline">\(n\)</span> 个反射镜面，使得关于这些镜面的反射生成的反射群同构于 <span class="math inline">\(W\)</span>，这样就可以通过研究 <span class="math inline">\(W\)</span> 在空间中的作用来分析其结构，即用几何的方式来研究代数结构。将抽象 Coxeter 群实现为反射群的方式不唯一，其中最常用的是所谓的<strong>标准几何实现</strong>。这里最关键之处在于要弄清楚镜子的摆放方式对生成的反射群的结构有何影响。本文后面会看到，理解标准几何实现可以“庖丁解牛”地归结为理解一对反射变换 <span class="math inline">\(s,t\)</span> 生成的反射群的结构。</p>
+<h2 id="单个反射变换">单个反射变换</h2>
+<blockquote><p><strong>定义</strong>：设 <span class="math inline">\(V\)</span> 是一个 <span class="math inline">\(n\)</span> 维实向量空间，<span class="math inline">\(\alpha\in V^\ast\)</span> 是对偶空间中的线性泛函，<span class="math inline">\(\alpha^\vee\in V\)</span> 满足 <span class="math inline">\((\alpha,\alpha^\vee)=2\)</span>，则线性变换 <span class="math display">\[s:V\to V,\quad s(v) =v-(\alpha, v)\alpha^\vee\]</span> 满足</p>
+<ol type="1">
+<li><span class="math inline">\(s(\alpha^\vee)=-\alpha^\vee\)</span>。</li>
+<li><span class="math inline">\(s\)</span> 保持超平面 <span class="math inline">\(\alpha=0\)</span> 上的点不动。</li>
+<li><span class="math inline">\(s^2=1\)</span>。</li>
+</ol>
+<p>我们称 <span class="math inline">\(s\)</span> 是一个关于超平面 <span class="math inline">\(\alpha=0\)</span> 的反射变换。</p>
+</blockquote>
+<p>即反射变换保持某个 <span class="math inline">\(n-1\)</span> 维超平面 <span class="math inline">\(H\)</span> 不动，同时把某个 <span class="math inline">\(x\notin H\)</span> 变为 <span class="math inline">\(-x\)</span>。</p>
+<p><img style="margin:0px auto;display:block" width=300 src="/images/coxeter/reflection.svg"/></p>
+<p>注意你可以给 <span class="math inline">\(\alpha\)</span> 乘以任何非零实数 <span class="math inline">\(c\)</span>，同时给 <span class="math inline">\(\alpha^\vee\)</span> 乘以 <span class="math inline">\(1/c\)</span>，得到的反射变换仍然是 <span class="math inline">\(s\)</span>。</p>
+<p>在反射变换的定义中并不涉及内积的概念，当 <span class="math inline">\(V\)</span> 上有一个内积 <span class="math inline">\((\bullet)\)</span> 时，对任何非迷向向量 <span class="math inline">\(\alpha^\vee\in V\)</span>，反射变换 <span class="math display">\[s(v) = v - 2\frac{(v\bullet\alpha^\vee)}{(\alpha^\vee\bullet\alpha^\vee)}\alpha^\vee\]</span> 保持内积 <span class="math inline">\((\bullet)\)</span> 不变，所以是一个正交变换，这时线性泛函 <span class="math inline">\(\alpha\)</span> 由 <span class="math inline">\(u=\dfrac{2\alpha^\vee}{(\alpha^\vee,\alpha^\vee)}\)</span> 给出：<span class="math inline">\(v\to(v\bullet u)\)</span>。</p>
+<h2 id="两个反射变换">两个反射变换</h2>
+<p>理解两个反射变换生成的反射群的结构非常重要，由此才能真正理解后面许多处理为什么要这样做。</p>
+<p>设 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(t\)</span> 分别是由 <span class="math inline">\((\alpha,\alpha^\vee)\)</span> 和 <span class="math inline">\((\beta,\beta^\vee)\)</span> 给出的两个反射变换，<strong>在本节中我们只考虑两个线性泛函 <span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(\beta\)</span> 线性无关的情形</strong>。我们想弄清楚 <span class="math inline">\(s,t\)</span> 生成的反射群 <span class="math inline">\(G_{s,t}\)</span> 的结构，以及它是怎样作用在空间 <span class="math inline">\(V\)</span> 上的。特别地我们想知道何时 <span class="math inline">\(G_{s,t}\)</span> “离散地”作用在 <span class="math inline">\(V\)</span> 上 (act discretely on <span class="math inline">\(V\)</span>)，这里一个群 <span class="math inline">\(G\subset GL(V)\)</span> “离散地”作用在 <span class="math inline">\(V\)</span> 上的含义是，存在一个开区域 <span class="math inline">\(\mathcal{D}\subset V\)</span>，使得对任何 <span class="math inline">\(g\in G,g\ne1\)</span> 都有 <span class="math inline">\(g\mathcal{D}\cap\mathcal{D}=\emptyset\)</span>。</p>
+<p>为什么要关心离散作用呢？不离散的作用会有什么问题吗？<strong>答案是，只有在反射群离散地作用在 <span class="math inline">\(V\)</span> 上时，我们才可以打包票说整个反射群的结构可以由基本反射 <span class="math inline">\(s\in S\)</span> 之间两两的关系决定，而这归结为对每一对 <span class="math inline">\(s,t\in S\)</span>，其生成的反射群 <span class="math inline">\(G_{s,t}\)</span> 离散地作用在 <span class="math inline">\(V\)</span> 上</strong>。</p>
+<p>不离散作用的典型例子是星状多面体，详情可以参考我的<a href="/Todd-Coxeter-and-uniform-polytopes">这篇博客文章</a>。</p>
+<p>记 <span class="math inline">\(c_{s,t}=(\alpha,\beta^\vee), c_{t,s}=(\beta,\alpha^\vee)\)</span>，<span class="math inline">\(G_{s,t}\)</span> 的 Cartan 矩阵为 <span class="math display">\[
+\begin{bmatrix}(\alpha, \alpha^\vee) &amp; (\alpha, \beta^\vee)\\
+(\beta,\alpha^\vee) &amp; (\beta,\beta^\vee)
+\end{bmatrix} = \begin{bmatrix}2 &amp; c_{s,t}\\
+c_{t,s} &amp; 2
+\end{bmatrix}.
+\]</span> 给 <span class="math inline">\(\alpha\)</span> 乘以一个非零常数 <span class="math inline">\(c\)</span> 同时给 <span class="math inline">\(\alpha^\vee\)</span> 乘以 <span class="math inline">\(1/c\)</span> 不改变反射 <span class="math inline">\(s\)</span>，这相当于给 <span class="math inline">\(c_{s,t}\)</span> 乘以 <span class="math inline">\(c\)</span> 同时给 <span class="math inline">\(c_{t,s}\)</span> 乘以 <span class="math inline">\(1/c\)</span>，但是乘积 <span class="math inline">\(n_{s,t}=c_{s,t}c_{t,s}\)</span> 不变。我们会看到 <span class="math inline">\(n_{s,t}\)</span> 很大程度上决定了 <span class="math inline">\(G_{s,t}\)</span> 作用在 <span class="math inline">\(V\)</span> 上的方式。</p>
+<p>由于我们假定了 <span class="math inline">\(\alpha,\beta\)</span> 是线性无关的，所以 <span class="math inline">\(M=\{\alpha=0\}\cap\{\beta=0\}\)</span> 是一个 <span class="math inline">\(n-2\)</span> 维的超平面。</p>
+<p>一个简单的观察：</p>
+<blockquote><p><strong>引理</strong>：</p>
+<ol type="1">
+<li>若 <span class="math inline">\(\alpha^\vee\)</span> 和 <span class="math inline">\(\beta^\vee\)</span> 线性相关则 <span class="math inline">\(n_{s,t}=4\)</span>。</li>
+<li>若 <span class="math inline">\(n_{s,t}\ne 4\)</span> 则 <span class="math inline">\(\alpha^\vee,\beta^\vee\)</span> 线性无关且构成二维商空间 <span class="math inline">\(V/M\)</span> 的一组基。</li>
+</ol>
+</blockquote>
+<p><strong>证明</strong>：若 <span class="math inline">\(\alpha^\vee\)</span> 和 <span class="math inline">\(\beta^\vee\)</span> 线性相关，不妨设 <span class="math inline">\(\alpha^\vee = c\beta^\vee\)</span>，则 <span class="math display">\[\begin{align*}
+c_{s,t}&amp;=(\alpha,\beta^\vee)=(\alpha,\alpha^\vee/c)=2/c,\\
+c_{t,s}&amp;=(\beta,\alpha^\vee)=(\beta,c\beta^\vee) = 2c.
+\end{align*}\]</span> 从而 <span class="math inline">\(n_{s,t}=4\)</span>。</p>
+<p>反之若 <span class="math inline">\(n_{s,t}\ne4\)</span>，则 Cartan 矩阵 <span class="math display">\[\begin{bmatrix}2 &amp; c_{s,t}\\c_{t,s} &amp; 2\end{bmatrix}.\]</span> 是非奇异的。若 <span class="math inline">\(\alpha^\vee,\beta^\vee\)</span> 不构成 <span class="math inline">\(V/M\)</span> 的一组基，则存在不全为 0 的 <span class="math inline">\(c_1,c_2\)</span> 使得 <span class="math display">\[c_1\alpha^\vee + c_2\beta^\vee \in M.\]</span> 从而 <span class="math display">\[\begin{align*}
+c_1(\alpha,\alpha^\vee) + c_2(\alpha, \beta^\vee)&amp;=0,\\
+c_1(\beta, \alpha^\vee) + c_2(\beta,  \beta^\vee)&amp;=0.\\
+\end{align*}
+\]</span> 这与 Cartan 矩阵非奇异矛盾。</p>
+<p>所以在 <span class="math inline">\(n_{s,t}\ne4\)</span> 时，我们可以简化为讨论 <span class="math inline">\(\alpha^\vee,\beta^\vee\)</span> 生成的二维空间 <span class="math inline">\(U\)</span>。</p>
+<blockquote><p><strong>定理 1</strong>：当 <span class="math inline">\(n_{s,t}\ne 0,4\)</span> 时 <span class="math inline">\(U\)</span> 上存在一个 <span class="math inline">\(G_{s,t}-\)</span> 不变的内积 <span class="math inline">\((\bullet)\)</span>，这个内积是正定的当且仅当 <span class="math inline">\(0&lt;n_{s,t}&lt;4\)</span>。</p>
+</blockquote>
+<p>分析一下：如果 <span class="math inline">\((\bullet)\)</span> 是 <span class="math inline">\(U\)</span> 上的 <span class="math inline">\(G_{s,t}-\)</span> 不变的内积，则 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(t\)</span> 都是此内积下的正交变换，这当且仅当 <span class="math inline">\(\alpha^\vee\)</span> 在此内积下正交于 <span class="math inline">\(\{\alpha=0\}\)</span>，以及 <span class="math inline">\(\beta^\vee\)</span> 在此内积下正交于 <span class="math inline">\(\{\beta=0\}\)</span>。注意到 <span class="math inline">\(c_{s,t}\alpha^\vee - 2\beta^\vee\in\{\alpha=0\}\)</span> 以及 <span class="math inline">\(c_{t,s}\beta^\vee - 2\alpha^\vee\in\{\beta=0\}\)</span>，所以 <span class="math display">\[\begin{align*}
+(c_{s,t}\alpha^\vee - 2\beta^\vee) \bullet \alpha^\vee &amp;= 0,\\
+(c_{t,s}\beta^\vee - 2\alpha^\vee) \bullet \beta^\vee &amp;= 0.
+\end{align*}\]</span> 即 <span class="math display">\[\begin{align*}
+c_{s,t}(\alpha^\vee\bullet\alpha^\vee) &amp;= 2(\beta^\vee\bullet\alpha^\vee),\\
+c_{t,s}(\beta^\vee\bullet\beta^\vee) &amp;= 2(\alpha^\vee \bullet \beta^\vee).
+\end{align*}\]</span> 由于 <span class="math inline">\(n_{s,t}\ne0\)</span> 所以 <span class="math inline">\(c_{s,t},c_{t,s}\)</span> 都不是 0，从而内积在 <span class="math inline">\(U\)</span> 上的值由 <span class="math inline">\((\alpha^\vee\bullet\beta^\vee)\)</span> 完全决定。即只要指定了 <span class="math inline">\((\alpha^\vee\bullet\beta^\vee)\)</span> 的值，我们就得到了 <span class="math inline">\(U\)</span> 上的一个 <span class="math inline">\(G_{s,t}-\)</span> 不变内积。</p>
+<p>内积 <span class="math inline">\((\bullet)\)</span> 在 <span class="math inline">\(U\)</span> 上的 Gram 矩阵为 <span class="math display">\[
+\begin{bmatrix}
+(\alpha^\vee\bullet\alpha^\vee) &amp; (\alpha^\vee \bullet \beta^\vee)\\
+(\alpha^\vee\bullet\beta^\vee)  &amp; (\beta^\vee\bullet\beta^\vee)
+\end{bmatrix} = (\alpha^\vee \bullet \beta^\vee)^2
+\begin{bmatrix}2/c_{s,t} &amp; 1\\1&amp; 2/c_{t,s}\end{bmatrix}.
+\]</span> Gram 矩阵是正定的当且仅当 <span class="math inline">\(c_{t,s},c_{s,t}\)</span> 同号且其行列式大于 0，即 <span class="math inline">\(0&lt;n_{s,t}&lt;4\)</span>，得证。</p>
+<h3 id="n_st4"><span class="math inline">\(0&lt;n_{s,t}&lt;4\)</span></h3>
+<p>我们已经看到这时 <span class="math inline">\(U\)</span> 上的 <span class="math inline">\(G_{s,t}-\)</span> 不变内积是正定的，<span class="math inline">\(s,t\)</span> 是两个二维的欧式反射，所以 <span class="math inline">\(st\)</span> 是一个欧式旋转，设其旋转角为 <span class="math inline">\(\theta\)</span>，则要使得 <span class="math inline">\(G_{s,t}\)</span> 离散地作用在 <span class="math inline">\(U\)</span> 上 <span class="math inline">\(G_{s,t}\)</span> 必须是有限群，即 <span class="math inline">\(st\)</span> 的阶有限，也即 <span class="math inline">\(\theta\)</span> 为有理数。</p>
+<p><img style="margin:0px auto;display:block" width=500 src="/images/coxeter/affine2d.svg"/></p>
+<p><img style="margin:0px auto;display:block" width=400 src="/images/coxeter/finite2d.svg"/></p>
+<p><img style="margin:0px auto;display:block" width=400 src="/images/coxeter/hyperbolic2d.svg"/></p>
+<h2 id="coxeter-群的标准几何实现">Coxeter 群的标准几何实现</h2>
+<h1 id="根系">根系</h1>
+<h1 id="tits-锥">Tits 锥</h1>
+<h1 id="有限-coxeter-群的分类">有限 Coxeter 群的分类</h1>
+
+                
+<p class="pink-link-context">
+    <a href="/Birkhoff-ergodic-theorem/" rel="next" title="Birkhoff 遍历定理">
+    上一篇：Birkhoff 遍历定理
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/coin-and-coding-theory/" rel="next" title="称硬币问题、小白鼠找毒药问题与编码理论">
+    下一篇：称硬币问题、小白鼠找毒药问题与编码理论
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function() {
+                this.page.url = 'https://neozhaoliang.github.io/introduction-to-coxeter-groups/';
+                this.page.identifier = 'introduction-to-coxeter-groups/';
+            };
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+                s.src = '//pywonderland.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener">comments powered by Disqus.</a>
+        </noscript>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+</script>
+
+
+
+</body>
+</html>
