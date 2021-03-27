@@ -496,7 +496,7 @@ G = \langle\rho_0,\rho_1,\rho_2\ |\ \rho_0^2&=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^5
 \end{align*}$$
 这是怎么回事呢？先看视频：
 
-<video src="/images/polytopes/great-dodecahedron.mp4" controls></video>
+<video width="600" src="/images/polytopes/great-dodecahedron.mp4" controls></video>
 
 由视频可见，great dodecahedron 与正二十面体 (icosahedron) 有完全相同的顶点集，但是看起来 great dodecahedron 可以通过在 icosahedron 表面挖一些三角形的洞得到。一般地，如果星状多面体的洞是一个边长为 $h$ 的多边形，则对应的额外生成关系就是 $(\rho_0\rho_1\rho_2\rho_1)^h=1$。
 
