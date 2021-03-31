@@ -38,7 +38,9 @@ Proofs and Confirmations: The Story of the Alternating Sign Matrix Conjecture
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -366,7 +368,7 @@ a_{11}&gt;\lambda_1\geq a_{22}&gt;\lambda_2\geq\cdots\geq a_{mm}&gt;\lambda_m,
 \pi\ =\ \begin{matrix}
 7&amp;7&amp;6&amp;6&amp;3&amp;1\\&amp;6&amp;5&amp;4&amp;2\\&amp;&amp;3&amp;3\\&amp;&amp;&amp;2\end{matrix}
 \]</span> 对应的鸟瞰图如下图所示：</p>
-<p><img style="margin:0px auto;display:block" width="500" src="/images/dpp/dpp_example.png" /></p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/dpp/dpp_example.png"></p>
 <p>你可以看到数组的每一行与方块的每一层一一对应。由于 <span class="math inline">\(\pi\)</span> 是严格错位平面分拆，所以每一层相对于下面一层在两个方向上分别缩进一个单位以后仍然可以被下面一层托住，从而不会出现“悬空”的方块。</p>
 <p>我们记 <span class="math inline">\(|\pi|=\sum_{i,j}a_{ij}\)</span> 为 <span class="math inline">\(\pi\)</span> 的所有元素之和。</p>
 <p>设 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 为所有数字均不超过 <span class="math inline">\(n\)</span> 的 DPP 组成的集合，这样的 DPP 最多有 <span class="math inline">\(n-1\)</span> 行，每一行长度最多是 <span class="math inline">\(n-1\)</span>，每个元素不大于 <span class="math inline">\(n\)</span>，所以必然能装进一个大小为 <span class="math inline">\(n\times n\times n\)</span> 的空间 (当然不可能填满)。我们的目标是求出生成函数 <span class="math display">\[
@@ -464,7 +466,7 @@ a_{11}&gt;\lambda_1\geq a_{22}&gt;\lambda_2\geq\cdots\geq a_{mm}&gt;\lambda_m,
 </div>
 <p>Gauss 二项式系数有不少等价的描述方式，我们这里要用到的是它还等于 Gauss 路径的 <span class="math inline">\(q-\)</span> 计数。</p>
 <p>考虑格点图 <span class="math inline">\(\mathbb{Z}^2\)</span>，并设 <span class="math inline">\(A=(0, m)\)</span>，<span class="math inline">\(B=(n,0)\)</span>。一条从 <span class="math inline">\(A\)</span> 到 <span class="math inline">\(B\)</span> 的 Gauss 路径 <span class="math inline">\(P\)</span> 是一个从 <span class="math inline">\(A\)</span> 出发，每一步向右或者向下一个单位距离，经过 <span class="math inline">\(m+n\)</span> 步后到达 <span class="math inline">\(B\)</span> 的格点路径，如下图所示：</p>
-<p><img style="margin:0px auto;display:block" width="350" src="/images/dpp/gausspath.svg" /></p>
+<p><img style="margin:0px auto;display:block" width="350" src="/images/dpp/gausspath.svg"></p>
 <p>熟知这样的 Gauss 路径一共有 <span class="math inline">\(\binom{m+n}{n}\)</span> 条，它们组成的集合记作 <span class="math inline">\(\mathcal{G}(m,n)\)</span>。</p>
 <p>我们规定路径 <span class="math inline">\(P\)</span> 的权重为 <span class="math inline">\(q^{|P|}\)</span>，其中 <span class="math inline">\(|P|\)</span> 等于 <span class="math inline">\(P\)</span> 与坐标轴所围成的区域中包含的方格的个数，上图中用圆圈标出了这些方格，一共有 21 个，所以其权重为 <span class="math inline">\(q^{21}\)</span>。</p>
 <p>关于 Gauss 路径的一个基本结论是，所有 <span class="math inline">\(\mathcal{G}(m,n)\)</span> 中路径的权重之和等于 Gauss 二项式系数 <span class="math inline">\(\binom{m+n}{n}_q\)</span>： <span class="math display">\[
@@ -476,13 +478,13 @@ a_{11}&gt;\lambda_1\geq a_{22}&gt;\lambda_2\geq\cdots\geq a_{mm}&gt;\lambda_m,
 <p>注意我们这里对 <span class="math inline">\(a_1,\ldots,a_m\)</span> 的标记顺序与前面 DPP 定义中的行的顺序是反着来的，<span class="math inline">\(a_1\)</span> 是第 <span class="math inline">\(m\)</span> 行的行首，<span class="math inline">\(a_2\)</span> 是第 <span class="math inline">\(m-1\)</span> 行的行首，以此类推，<span class="math inline">\(a_m\)</span> 是第一行的行首。这样做看起来有些奇怪，其实是为了后面记号方便，下面很快就会看到原因。</p>
 </blockquote>
 <p>既然这些行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 已经固定，我们就可以把这 <span class="math inline">\(\sum_{i=1}^m a_i\)</span> 个箱子移走 (后面补上 <span class="math inline">\(q^{\sum_{i=1}^ma_i}\)</span> 的因子即可)。由于递降平面分拆中每一行的行首严格大于该行的长度，所以删去 <span class="math inline">\(a_i\)</span> 以后其所在行剩下的部分是一个长度 <span class="math inline">\(\leq a_i-2\)</span>，最大元素 <span class="math inline">\(\leq a_i\)</span> 的序列，这样的序列与从 <span class="math inline">\((0, a_i)\)</span> 出发，每一步向右或者向下，到达 <span class="math inline">\((a_i-2,0)\)</span> 的 Gauss 路径 <span class="math inline">\(P_i\in\mathcal{G}(a_i,a_i-2)\)</span> 一一对应，所有 <span class="math inline">\(P_i\)</span> 构成一个<strong>不相交的格点路径组</strong> <span class="math inline">\(\mathcal{P}=\{P_1,\ldots,P_m\}\)</span>，其起点集合为 <span class="math inline">\(\{A_i=(0, a_i)\}\)</span>，终点集合为 <span class="math inline">\(\{B_j=(a_j-2, 0)\}\)</span>，如下面的动画所示：</p>
-<video src="/images/dpp/dpp-path.mp4" width="500" controls>
+<video src="/images/dpp/dpp-path.mp4" width="500" controls="">
 </video>
 <p>将这些路径投影到地面上就得到如下的示意图：</p>
-<p><img style="margin:0px auto;display:block" width="400" src="/images/dpp/dpp-path.svg" /></p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/dpp/dpp-path.svg"></p>
 <p>我们费点笔墨解释下为什么这些路径之间是没有交点的。</p>
 <p>注意 <span class="math inline">\(P_i\)</span> 在 <span class="math inline">\(x\)</span> 轴上的终点是 <span class="math inline">\((a_i-2,0)\)</span>，而它上方的路径 <span class="math inline">\(P_{i+1}\)</span> 必然经过 <span class="math inline">\(x\)</span> 轴上的 <span class="math inline">\((\lambda_{i-1}-1,0)\)</span> 这个点 (注意我们对路径的标号和原本 <span class="math inline">\(\pi\)</span> 的行号是反着来的，下标越大对应的行越往上)，要使得 <span class="math inline">\(P_i,P_{i+1}\)</span> 不相交就必须有 <span class="math inline">\(\lambda_{i-1} - 1 &gt; a_i - 2\)</span>，即 <span class="math inline">\(\lambda_{i-1}\geq a_i\)</span>，这就是为什么在 DPP 的定义中要求每一行的长度大于等于下一行的行首元素。</p>
-<p>那为什么 <span class="math inline">\(P_i,P_{i+1}\)</span> 也不会在 <span class="math inline">\(x\)</span> 轴上方相交呢？这是因为假设它们有交点 <span class="math inline">\(v\)</span>，设 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(y\)</span> 坐标为 <span class="math inline">\(h\)</span>，则 <span class="math inline">\(P_i\)</span> 在到达 <span class="math inline">\(v\)</span> 之前的最后一条水平边的高度 <span class="math inline">\(h&#39;\geq h\)</span>，<span class="math inline">\(P_{i+1}\)</span> 在从 <span class="math inline">\(v\)</span> 继续出发接下来的第一条水平边的高度 <span class="math inline">\(h&#39;&#39;\leq h\)</span>，从而 <span class="math inline">\(h&#39;\geq h&#39;&#39;\)</span>，这与 <span class="math inline">\(\pi\)</span> 的列是严格递降的矛盾。</p>
+<p>那为什么 <span class="math inline">\(P_i,P_{i+1}\)</span> 也不会在 <span class="math inline">\(x\)</span> 轴上方相交呢？这是因为假设它们有交点 <span class="math inline">\(v\)</span>，设 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(y\)</span> 坐标为 <span class="math inline">\(h\)</span>，则 <span class="math inline">\(P_i\)</span> 在到达 <span class="math inline">\(v\)</span> 之前的最后一条水平边的高度 <span class="math inline">\(h'\geq h\)</span>，<span class="math inline">\(P_{i+1}\)</span> 在从 <span class="math inline">\(v\)</span> 继续出发接下来的第一条水平边的高度 <span class="math inline">\(h''\leq h\)</span>，从而 <span class="math inline">\(h'\geq h''\)</span>，这与 <span class="math inline">\(\pi\)</span> 的列是严格递降的矛盾。</p>
 <p>反之给定这样的一个不相交路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们也可以还原出对应的 DPP 来，于是根据 Gessel-Viennot 引理，以 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 为行首的 DPP 的个数为 <span class="math display">\[
 \det\left(\binom{a_i+a_j-2}{a_j-2}\right)_{1\leq i,j\leq m}.
 \]</span> 其中矩阵的 <span class="math inline">\((i,j)\)</span> 位置的元素为从 <span class="math inline">\(A_i=(0,a_i)\)</span> 到 <span class="math inline">\(B_j=(a_j-2,0)\)</span> 的 Gauss 路径的个数，这当然是 <span class="math inline">\(\binom{a_i+a_j-2}{a_j-2}\)</span>。</p>
@@ -502,15 +504,15 @@ a_{11}&gt;\lambda_1\geq a_{22}&gt;\lambda_2\geq\cdots\geq a_{mm}&gt;\lambda_m,
 <p>注意到一个长度为 <span class="math inline">\(l\)</span> 的 Gauss 路径可以用一个长度为 <span class="math inline">\(l\)</span> 的 0-1 序列 <span class="math inline">\(\sigma\)</span> 来表示，0 表示垂直向下的一步，1 表示水平向右的一步，路径下方所含的方格个数与序列 <span class="math inline">\(\sigma\)</span> 的“逆序数” <span class="math inline">\(\mathrm{inv}(\sigma)\)</span> 相同，这里 <span class="math display">\[
 \mathrm{inv}(\sigma) = \#\{(i,j)\, |\, i &lt; j, 1=\sigma(i) &gt;\sigma(j)=0\}.
 \]</span> 这个方格个数与逆序对的对应很容易从下图看出来：</p>
-<p><img style="margin:0px auto;display:block" width="350" src="/images/dpp/path-weight.svg" /></p>
+<p><img style="margin:0px auto;display:block" width="350" src="/images/dpp/path-weight.svg"></p>
 <p>上图中 <span class="math inline">\(\sigma=1110011000\)</span>。</p>
-<p>设 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 是两个 Gauss 路径，其对应的 0,1 序列分别为 <span class="math inline">\(\sigma_1\)</span> 和 <span class="math inline">\(\sigma_2\)</span>，<span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 有一个公共的交点 <span class="math inline">\(v\)</span>。交换 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 在 <span class="math inline">\(v\)</span> 之后的部分得到的路径记作 <span class="math inline">\(P&#39;\)</span> 和 <span class="math inline">\(Q&#39;\)</span>，对应的 0,1 序列分别为 <span class="math inline">\(\sigma_1&#39;\)</span> 和 <span class="math inline">\(\sigma_2&#39;\)</span>，则不难验证有 <span class="math display">\[
+<p>设 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 是两个 Gauss 路径，其对应的 0,1 序列分别为 <span class="math inline">\(\sigma_1\)</span> 和 <span class="math inline">\(\sigma_2\)</span>，<span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 有一个公共的交点 <span class="math inline">\(v\)</span>。交换 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 在 <span class="math inline">\(v\)</span> 之后的部分得到的路径记作 <span class="math inline">\(P'\)</span> 和 <span class="math inline">\(Q'\)</span>，对应的 0,1 序列分别为 <span class="math inline">\(\sigma_1'\)</span> 和 <span class="math inline">\(\sigma_2'\)</span>，则不难验证有 <span class="math display">\[
 \begin{align*}
-|P&#39;|+|Q&#39;|-|P|-|Q|&amp;=\mathrm{inv}(\sigma_1&#39;)+\mathrm{inv}(\sigma_2&#39;)-\mathrm{inv}(\sigma_1)-\mathrm{inv}(\sigma_2)\\
+|P'|+|Q'|-|P|-|Q|&amp;=\mathrm{inv}(\sigma_1')+\mathrm{inv}(\sigma_2')-\mathrm{inv}(\sigma_1)-\mathrm{inv}(\sigma_2)\\
 &amp;=(p_0-q_0)(p_1-q_1).
 \end{align*}
 \]</span> 这里 <span class="math inline">\(p_0,q_0\)</span> 分别表示 <span class="math inline">\(P,Q\)</span> 在交点 <span class="math inline">\(v\)</span> <strong>之后</strong>的部分所含的 0 的个数，<span class="math inline">\(p_1,q_1\)</span> 分别表示 <span class="math inline">\(P,Q\)</span> 在交点 <span class="math inline">\(v\)</span> <strong>之前</strong>的部分所含的 1 的个数。</p>
-<p>在 DPP 的情形，由于每条路径的出发点都在 <span class="math inline">\(y\)</span> 轴上，终点都在 <span class="math inline">\(x\)</span> 轴上，因此 <span class="math inline">\(P,Q\)</span> 在到达它们的交点处 (如果有的话) 各自横向移动的步数相同，从交点到终点各自纵向移动的步数也相同，所以 <span class="math inline">\(p_0=q_0\)</span>，<span class="math inline">\(p_1=q_1\)</span>，从而 <span class="math inline">\(|P&#39;|+|Q&#39;|=|P|-|Q|\)</span>，因此路径权重的乘积 <span class="math inline">\(q^{|P|}\cdot q^{|Q|}=q^{|P&#39;|}\cdot q^{|Q&#39;|}\)</span> 保持不变，从而 Gessel-Viennot 引理仍然可用。</p>
+<p>在 DPP 的情形，由于每条路径的出发点都在 <span class="math inline">\(y\)</span> 轴上，终点都在 <span class="math inline">\(x\)</span> 轴上，因此 <span class="math inline">\(P,Q\)</span> 在到达它们的交点处 (如果有的话) 各自横向移动的步数相同，从交点到终点各自纵向移动的步数也相同，所以 <span class="math inline">\(p_0=q_0\)</span>，<span class="math inline">\(p_1=q_1\)</span>，从而 <span class="math inline">\(|P'|+|Q'|=|P|-|Q|\)</span>，因此路径权重的乘积 <span class="math inline">\(q^{|P|}\cdot q^{|Q|}=q^{|P'|}\cdot q^{|Q'|}\)</span> 保持不变，从而 Gessel-Viennot 引理仍然可用。</p>
 <p>现在顶点集合 <span class="math inline">\(\{A_i=(0,a_i)\}\)</span>，<span class="math inline">\(\{B_j=(a_j-2,0)\}\)</span>，而从 <span class="math inline">\(A_i\)</span> 到 <span class="math inline">\(B_j\)</span> 的 Gauss 路径的 <span class="math inline">\(q-\)</span> 计数为 <span class="math inline">\(\binom{a_i+a_j-2}{a_j-2}_q\)</span>，于是行首分别为 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 的 DPP 的 <span class="math inline">\(q-\)</span> 计数为 <span class="math display">\[
 q^{\sum_{i=1}^m a_i}\cdot\det\left(\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}=
 \det\left(q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}.
@@ -535,7 +537,7 @@ q^{kn}
 <p>我们还是先<strong>从下到上</strong>固定每一行的行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span>，求出行首固定时的生成函数，再对所有可能的行首相加。</p>
 <p>办法和以前一样：现在除了行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 是已知的，我们知道第一行还有 <span class="math inline">\(k-1\)</span> 个 <span class="math inline">\(n\)</span> 出现，并且它们的位置必然是紧跟在行首的 <span class="math inline">\(n\)</span> 后面。我们把这些已知的 <span class="math inline">\(\sum_{i=1}^{m-1}a_i+kn\)</span> 个箱子移走，将剩下的部分对应到一个不相交的路径组，用 Gessel-Viennot 引理得出其生成函数，最后再补上因子 <span class="math inline">\(q^{\sum_{i=1}^{m-1}a_i+kn}\)</span> 即可。</p>
 <p>这个到路径组的对应方法和以前类似，只不过我们截掉 <span class="math inline">\(\pi\)</span> 的第一行路径中已知的部分，以之前的插图为例子并取 <span class="math inline">\(n=7\)</span>：</p>
-<p><img style="margin:0px auto;display:block" width="400" src="/images/dpp/dpp-path2.svg" /></p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/dpp/dpp-path2.svg"></p>
 <p>这里 <span class="math inline">\(\pi\)</span> 的第一行必然首先从 <span class="math inline">\((0,n)\)</span> 出发，向右走 <span class="math inline">\(k-1\)</span> 步到达 <span class="math inline">\((k-1,n)\)</span>，然后向下走到 <span class="math inline">\((k-1,n-1)\)</span>。我们把这部分截去，只保留剩下的部分，这相当于把起点 <span class="math inline">\(A_m=(0, n)\)</span> 换成了 <span class="math inline">\((k-1,n-1)\)</span>，其余的起点和终点保持不变，则新顶点集 <span class="math inline">\(\{A_i\}\)</span> 和 <span class="math inline">\(\{B_j\}\)</span> 之间的不相交的路径组的 <span class="math inline">\(q-\)</span> 计数为 (注意由于终点都在 <span class="math inline">\(x\)</span> 轴上因此 Gesssel-Viennot 引理仍可用, important!) <span class="math inline">\(\det X\)</span>，其中 <span class="math display">\[x_{ij}=\begin{cases}
 \binom{a_i+a_j-2}{a_j-2}_q, &amp; i &lt; m\\
 \binom{n+a_j-k-2}{a_j-k-1}_q, &amp; i=m.
@@ -757,7 +759,7 @@ V_n=\left(q^{k(n+1)}\binom{2n-k}{n-k}_q\right)^T_{1\leq k\leq n}.
 \left(\prod_{l=0}^n\frac{1}{1-xq^l}\right)\left(\prod_{l=n+1}^{2n+1}\frac{1}{1-xq^l}\right)=\left(\prod_{l=0}^{2n+1}\frac{1}{1-xq^l}\right)
 \]</span> 两边 <span class="math inline">\(x^n\)</span> 项的系数，取左边第一个因子的 <span class="math inline">\(x^k\)</span> 项系数，第二个因子的 <span class="math inline">\(x^{n-k}\)</span> 系数并对 <span class="math inline">\(k\)</span> 求和即得。</p>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>W. H. Mills, D. H. Robbins and H. Rumsey, Alternating sign matrices and descending plane partitions, J. Combin. Theory Ser. A34(1983), 340–359.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Aigner, Martin; Ziegler, Günter (2009). Proofs from THE BOOK (4th ed.). Berlin, New York: Springer-Verlag.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

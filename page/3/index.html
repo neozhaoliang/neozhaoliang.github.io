@@ -30,7 +30,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -410,7 +412,7 @@
 <p>我们先从两个有趣的问题开始：</p>
 <blockquote><p><strong>问题 1</strong>：<span class="math inline">\(n\)</span> 位选民要在一次选举中依次走到投票箱前给 <span class="math inline">\(m\)</span> 个候选人投票，每个选民只能投一票。已知第 <span class="math inline">\(i\)</span> 位候选人最终的得票数为 <span class="math inline">\(\lambda_i\)</span>，这里 <span class="math inline">\(\sum_{i=1}^m\lambda_i=n\)</span> 且 <span class="math inline">\(\lambda_1\geq\cdots\geq\lambda_m\)</span>。问题是：这 <span class="math inline">\(n\)</span> 个选民有多少种不同的投票顺序，使得在投票过程中的任一时刻，对任何的 <span class="math inline">\(i&lt;j\)</span>，第 <span class="math inline">\(i\)</span> 位候选人的得票数总不少于第 <span class="math inline">\(j\)</span> 位候选人的得票数？</p>
 </blockquote>
-<blockquote><p><strong>问题 2</strong>：在一个体积为 <span class="math inline">\(a\times b\times c\)</span> 的房间中堆箱子，堆放的方式要满足递降的条件：从墙角的那一摞开始，每一行从左到右，每一列从上到下，箱子的高度是弱递减的。问： 有多少种满足要求的方法？ <img style="margin:0px auto;display:block" width=400 src="/images/schur/planepartition.png"/></p>
+<blockquote><p><strong>问题 2</strong>：在一个体积为 <span class="math inline">\(a\times b\times c\)</span> 的房间中堆箱子，堆放的方式要满足递降的条件：从墙角的那一摞开始，每一行从左到右，每一列从上到下，箱子的高度是弱递减的。问： 有多少种满足要求的方法？ <img style="margin:0px auto;display:block" width="400" src="/images/schur/planepartition.png"></p>
 </blockquote>
 <p>这两个问题的表述很简单，但其实答案相当复杂，绝非一般的初等方法所能解决。对付它的最好方法是 Schur 多项式的理论，我接下来就来介绍它。</p>
                 </div>
@@ -454,7 +456,7 @@
             
                 <div class="entry pink-link-context">
                     <p>我在研究生期间给学弟学妹们当高等代数课助教时，除了改改作业，讲讲习题，还经常需要出一些有点巧妙但又不太复杂的题目，帮助他们理解所学的内容。某一次我出了这样一道题：</p>
-<blockquote><p><strong>问题</strong>：我们知道如果 <span class="math inline">\(A\)</span> 是一个对称矩阵，<span class="math inline">\(T\)</span> 是一个可逆矩阵，则 <span class="math inline">\(B=T&#39;AT\)</span> 也是对称矩阵且 <span class="math inline">\(A,B\)</span> 合同 (congruent)，所以它们有相同的正负惯性指数。如果 <span class="math inline">\(T\)</span> 是不可逆矩阵呢？这时 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的正负惯性指数有怎样的关系？</p>
+<blockquote><p><strong>问题</strong>：我们知道如果 <span class="math inline">\(A\)</span> 是一个对称矩阵，<span class="math inline">\(T\)</span> 是一个可逆矩阵，则 <span class="math inline">\(B=T'AT\)</span> 也是对称矩阵且 <span class="math inline">\(A,B\)</span> 合同 (congruent)，所以它们有相同的正负惯性指数。如果 <span class="math inline">\(T\)</span> 是不可逆矩阵呢？这时 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的正负惯性指数有怎样的关系？</p>
 </blockquote>
 <p>当时班上无人能立刻给出答案。</p>
 <p>其实这个题目不过是我把他们作业中的一道题改了改说法而已：</p>
@@ -543,9 +545,9 @@
             
                 <div class="entry pink-link-context">
                     <p>依次将 <span class="math inline">\(1,2,\ldots,n\)</span> 个全等的正六边形摞在一起，得到的图案记作 <span class="math inline">\(T_n\)</span>，下图是 <span class="math inline">\(n=7\)</span> 的例子：</p>
-<p><img style="margin:0px auto;display:block" src="/images/tilinggroup/region.svg" width="350"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/tilinggroup/region.svg" width="350"></p>
 <p>我们把连在一起的、对称中心在一条直线上的三个正六边形组成的图案叫做一块“骨头”，根据摆放的角度有三种不同的骨头：</p>
-<p><img style="margin:0px auto;display:block" src="/images/tilinggroup/bones.svg" width="600" /></p>
+<p><img style="margin:0px auto;display:block" src="/images/tilinggroup/bones.svg" width="600"></p>
 <p>我们的问题是：</p>
 <blockquote><p><strong>问题</strong>：求证对任何 <span class="math inline">\(n\)</span>，<span class="math inline">\(T_n\)</span> 都不可能用若干块骨头不重叠不遗漏地恰好铺砌。</p>
 </blockquote>
@@ -774,7 +776,7 @@
 <blockquote><p><strong>问题</strong>：一张 <span class="math inline">\(8\times8\)</span> 的国际象棋棋盘，用 <span class="math inline">\(1\times2\)</span> 的多米诺骨牌密铺，有多少种不同的方法？</p>
 </blockquote>
 <p>下图是其中一种 (图片来自 wiki 百科)：</p>
-<p><img style="margin:0px auto;display:block" src="/images/pfaff/chessboard.png"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/pfaff/chessboard.png"></p>
 <p>答案是 12988816，非常大的一个数字，绝对不是一个一个数出来的。1961 年德国物理学家 Kasteleyn 借助于线性代数中的一个结论首先解决了这个问题，接下来就介绍他的方法。</p>
                 </div>
             

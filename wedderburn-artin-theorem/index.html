@@ -33,7 +33,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -369,35 +371,35 @@
 <p>现在的问题已经归结为分析半单环的结构。我们希望证明半单环总是可以分解为一些“单环”的直和，而且这种分解还是唯一的。如果用“任何整数可以唯一分解为若干素数的乘积”来类比的话，单环就相当于某个素因子的幂，而素数就相当于 <span class="math inline">\(R\)</span> 的极小左理想。所以我们首先来证明</p>
 <blockquote><p><strong>定理 1</strong>：若 <span class="math inline">\(R\)</span> 是半单的，则 <span class="math inline">\(R\)</span> 必然可以分解为有限多个极小左理想的直和 <span class="math inline">\(R=L_1\oplus\cdots\oplus L_n\)</span>。</p>
 </blockquote>
-<p>这个证明是很简单的，设 <span class="math inline">\(L\)</span> 是 <span class="math inline">\(R\)</span> 的任一极小左理想，我们证明来必然存在左理想 <span class="math inline">\(I\)</span> 使得 <span class="math inline">\(R=L\oplus I\)</span>。一旦如此，那么再取 <span class="math inline">\(I\)</span> 中的任一极小左理想 <span class="math inline">\(L&#39;\)</span>，将 <span class="math inline">\(I\)</span> 继续分解为 <span class="math inline">\(I=L&#39;\oplus I&#39;\)</span> (严格讲我们要证明极小左理想存在直和补这个事情在 <span class="math inline">\(I\)</span> 内部也成立)，如此下去。由于 <span class="math inline">\(R\)</span> 满足 DCC，所以这个过程必然在有限次后停止，这就把 <span class="math inline">\(R\)</span> 分解成了不可约左理想的直和。</p>
-<p>设 <span class="math inline">\(L\)</span> 是任一极小左理想，由于 <span class="math inline">\(R\)</span> 是半单的所以 <span class="math inline">\(L\)</span> 不是幂零的，根据引理 1 <span class="math inline">\(L\)</span> 包含一个幂等元 <span class="math inline">\(e\)</span>，则 <span class="math inline">\(Re\subset L\)</span> 是包含在 <span class="math inline">\(L\)</span> 内的左理想从而 <span class="math inline">\(L=Re\)</span>。不难验证 <span class="math display">\[R = Re\oplus R(1-e) = L\oplus L&#39;.\]</span> 此外对任何左理想 <span class="math inline">\(I\supset L\)</span> 不难验证有 <span class="math display">\[ I = (I\cap L)\oplus (I\cap L&#39;) = L\oplus (I\cap L&#39;),\]</span> 即直和补在包含 <span class="math inline">\(L\)</span> 的理想内也存在，这就证明了定理 1。</p>
+<p>这个证明是很简单的，设 <span class="math inline">\(L\)</span> 是 <span class="math inline">\(R\)</span> 的任一极小左理想，我们证明来必然存在左理想 <span class="math inline">\(I\)</span> 使得 <span class="math inline">\(R=L\oplus I\)</span>。一旦如此，那么再取 <span class="math inline">\(I\)</span> 中的任一极小左理想 <span class="math inline">\(L'\)</span>，将 <span class="math inline">\(I\)</span> 继续分解为 <span class="math inline">\(I=L'\oplus I'\)</span> (严格讲我们要证明极小左理想存在直和补这个事情在 <span class="math inline">\(I\)</span> 内部也成立)，如此下去。由于 <span class="math inline">\(R\)</span> 满足 DCC，所以这个过程必然在有限次后停止，这就把 <span class="math inline">\(R\)</span> 分解成了不可约左理想的直和。</p>
+<p>设 <span class="math inline">\(L\)</span> 是任一极小左理想，由于 <span class="math inline">\(R\)</span> 是半单的所以 <span class="math inline">\(L\)</span> 不是幂零的，根据引理 1 <span class="math inline">\(L\)</span> 包含一个幂等元 <span class="math inline">\(e\)</span>，则 <span class="math inline">\(Re\subset L\)</span> 是包含在 <span class="math inline">\(L\)</span> 内的左理想从而 <span class="math inline">\(L=Re\)</span>。不难验证 <span class="math display">\[R = Re\oplus R(1-e) = L\oplus L'.\]</span> 此外对任何左理想 <span class="math inline">\(I\supset L\)</span> 不难验证有 <span class="math display">\[ I = (I\cap L)\oplus (I\cap L') = L\oplus (I\cap L'),\]</span> 即直和补在包含 <span class="math inline">\(L\)</span> 的理想内也存在，这就证明了定理 1。</p>
 <blockquote><p><strong>注</strong>：在定理 1 证明中我们顺带证明了半单环 <span class="math inline">\(R\)</span> 的任何极小左理想 <span class="math inline">\(L\)</span> 都形如 <span class="math inline">\(L=Re\)</span>，这里 <span class="math inline">\(e\)</span> 是一个幂等元。你可以把右乘 <span class="math inline">\(e\)</span> 看做是从 <span class="math inline">\(R\)</span> 到 <span class="math inline">\(L\)</span> 的投影： <span class="math inline">\(x\to xe,x\in R\)</span>。而 <span class="math inline">\(L\)</span> 中的元素恰好由那些满足 <span class="math inline">\(xe=x\)</span> 的元素组成。</p>
 </blockquote>
 <p>接下来我们要把 <span class="math inline">\(R\)</span> 分解为极小左理想直和中相同的极小左理想合起来，形成一个单环。这类似于在整数的素因子分解中把相同的素数的乘积提取出来，得到只含有单一素因子的成分。</p>
 <p>首先极小左理想“相同”的含义就是它们是同构的：</p>
-<blockquote><p><strong>定义</strong>：两个极小左理想 <span class="math inline">\(L,L&#39;\)</span> 称作是同构的，当且仅当它们作为左 <span class="math inline">\(R-\)</span> 模是同构的，记作 <span class="math inline">\(L\cong L&#39;\)</span>。</p>
+<blockquote><p><strong>定义</strong>：两个极小左理想 <span class="math inline">\(L,L'\)</span> 称作是同构的，当且仅当它们作为左 <span class="math inline">\(R-\)</span> 模是同构的，记作 <span class="math inline">\(L\cong L'\)</span>。</p>
 </blockquote>
 <p>其次不同构的极小左理想必然是“正交”的：</p>
-<blockquote><p><strong>引理 2</strong>：两个极小左理想 <span class="math inline">\(L\cong L&#39;\)</span> 当且仅当 <span class="math inline">\(L&#39;L\ne0\)</span>。特别地这个同构可以由右乘一个元素 <span class="math inline">\(a\in L\)</span> 给出：<span class="math inline">\(L=L&#39;a\)</span>。</p>
+<blockquote><p><strong>引理 2</strong>：两个极小左理想 <span class="math inline">\(L\cong L'\)</span> 当且仅当 <span class="math inline">\(L'L\ne0\)</span>。特别地这个同构可以由右乘一个元素 <span class="math inline">\(a\in L\)</span> 给出：<span class="math inline">\(L=L'a\)</span>。</p>
 </blockquote>
-<p><strong>引理 2 的证明</strong>： 注意到 <span class="math inline">\(L&#39;L\)</span> 是 <span class="math inline">\(L\)</span> 内的一个左理想，所以它只能是 <span class="math inline">\((0)\)</span> 或者 <span class="math inline">\(L\)</span>。</p>
+<p><strong>引理 2 的证明</strong>： 注意到 <span class="math inline">\(L'L\)</span> 是 <span class="math inline">\(L\)</span> 内的一个左理想，所以它只能是 <span class="math inline">\((0)\)</span> 或者 <span class="math inline">\(L\)</span>。</p>
 <p>我们来证明以下三点是等价的：</p>
 <ol type="1">
-<li><span class="math inline">\(L\cong L&#39;\)</span>。</li>
-<li>存在 <span class="math inline">\(a\in L\)</span> 使得 <span class="math inline">\(L=L&#39;a\)</span>。</li>
-<li><span class="math inline">\(L&#39;L = L\)</span>。</li>
+<li><span class="math inline">\(L\cong L'\)</span>。</li>
+<li>存在 <span class="math inline">\(a\in L\)</span> 使得 <span class="math inline">\(L=L'a\)</span>。</li>
+<li><span class="math inline">\(L'L = L\)</span>。</li>
 </ol>
-<p><span class="math inline">\(1\Rightarrow 2\)</span>： 设 <span class="math inline">\(\varphi: L&#39;\to L\)</span> 是一个左 <span class="math inline">\(R-\)</span> 模同构，设 <span class="math inline">\(L&#39;=Re&#39;\)</span>，<span class="math inline">\(e&#39;\)</span> 是 <span class="math inline">\(L&#39;\)</span> 的幂等元，根据前面注解部分，对任何 <span class="math inline">\(x&#39;\in L&#39;\)</span> 都有 <span class="math inline">\(x&#39;=x&#39;e&#39;\)</span>，于是 <span class="math display">\[\varphi(x&#39;)=\varphi(x&#39;e&#39;)=x&#39;\varphi(e&#39;),\quad x&#39;\in L&#39;.\]</span>即同构 <span class="math inline">\(\varphi\)</span> 由右乘 <span class="math inline">\(\varphi(e&#39;)\)</span> 给出。</p>
-<p><span class="math inline">\(2\Rightarrow 3\)</span>： 注意到 <span class="math inline">\(L&#39;L\supset L&#39;a=L\)</span> 即可。</p>
-<p><span class="math inline">\(3\Rightarrow 1\)</span>： 显然 <span class="math inline">\(L&#39;L=L\)</span> 蕴含存在 <span class="math inline">\(a\in L\)</span> 使得 <span class="math inline">\(L=L&#39;a\)</span>，<span class="math inline">\(x&#39;\to x&#39;a\)</span> 给出了从 <span class="math inline">\(L&#39;\)</span> 到 <span class="math inline">\(L\)</span> 的一个左 <span class="math inline">\(R-\)</span> 模同构。</p>
+<p><span class="math inline">\(1\Rightarrow 2\)</span>： 设 <span class="math inline">\(\varphi: L'\to L\)</span> 是一个左 <span class="math inline">\(R-\)</span> 模同构，设 <span class="math inline">\(L'=Re'\)</span>，<span class="math inline">\(e'\)</span> 是 <span class="math inline">\(L'\)</span> 的幂等元，根据前面注解部分，对任何 <span class="math inline">\(x'\in L'\)</span> 都有 <span class="math inline">\(x'=x'e'\)</span>，于是 <span class="math display">\[\varphi(x')=\varphi(x'e')=x'\varphi(e'),\quad x'\in L'.\]</span>即同构 <span class="math inline">\(\varphi\)</span> 由右乘 <span class="math inline">\(\varphi(e')\)</span> 给出。</p>
+<p><span class="math inline">\(2\Rightarrow 3\)</span>： 注意到 <span class="math inline">\(L'L\supset L'a=L\)</span> 即可。</p>
+<p><span class="math inline">\(3\Rightarrow 1\)</span>： 显然 <span class="math inline">\(L'L=L\)</span> 蕴含存在 <span class="math inline">\(a\in L\)</span> 使得 <span class="math inline">\(L=L'a\)</span>，<span class="math inline">\(x'\to x'a\)</span> 给出了从 <span class="math inline">\(L'\)</span> 到 <span class="math inline">\(L\)</span> 的一个左 <span class="math inline">\(R-\)</span> 模同构。</p>
 <blockquote><p><strong>推论</strong>：<span class="math inline">\(R\)</span> 只有有限多个互不同构的极小左理想，任何极小左理想必然同构于 <span class="math inline">\(\{L_1,\ldots,L_n\}\)</span> 之一。</p>
 </blockquote>
 <p>这是因为对任何极小左理想 <span class="math inline">\(L\)</span> 有 <span class="math inline">\(L = \oplus_{i=1}^nLL_i\)</span>，所以必然存在某个 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(LL_i\ne0\)</span>，即 <span class="math inline">\(L\cong L_i\)</span>。</p>
-<hr />
+<hr>
 <p>对 <span class="math inline">\(R\)</span> 的任一极小左理想 <span class="math inline">\(L\)</span>，我们记 <span class="math inline">\(B_L\)</span> 为 <span class="math inline">\(R\)</span> 的所有同构于 <span class="math inline">\(L\)</span> 的极小左理想的和，关于 <span class="math inline">\(B_L\)</span> 的性质有一个比较长的列表如下，每一条都是很容易就可以得出的：</p>
 <blockquote><p><strong>推论</strong>：</p>
 <ol type="1">
-<li><p><span class="math inline">\(B_LB_{L&#39;}\ne 0\)</span> 当且仅当 <span class="math inline">\(L\cong L&#39;\)</span>。(显然)</p></li>
+<li><p><span class="math inline">\(B_LB_{L'}\ne 0\)</span> 当且仅当 <span class="math inline">\(L\cong L'\)</span>。(显然)</p></li>
 <li><p><span class="math inline">\(B_L\)</span> 是一个双边理想，从而是一个环。</p>
 <p>这是由于 <span class="math inline">\(R\)</span> 是有限多个极小左理想的直和：<span class="math inline">\(R = \oplus_{i=1}^nL_i\)</span>，于是 <span class="math inline">\(B_LR\subset\oplus_{i=1}^nB_LL_i\)</span>。每个 <span class="math inline">\(B_LL_i\)</span> 要么是 0 (<span class="math inline">\(L_i\ncong L\)</span>)，要么等于 <span class="math inline">\(L_i\)</span> (<span class="math inline">\(L_i\cong L\)</span>) 从而属于 <span class="math inline">\(B_L\)</span>，所以 <span class="math inline">\(B_LR\subset B_L\)</span>，即 <span class="math inline">\(B_L\)</span> 是双边理想。</p></li>
 <li><p><span class="math inline">\(B_L\)</span> 也有乘法单位元 (与 <span class="math inline">\(R\)</span> 的单位元未必相同)。</p>
@@ -411,16 +413,16 @@
 <li><p><span class="math inline">\(R\)</span> 是 <span class="math inline">\(\{B_{L_i}\}\)</span> 的直和：<span class="math display">\[R = B_{L_1}\oplus\cdots\oplus B_{L_m}.\]</span></p>
 <p>设 <span class="math display">\[0=x_1+\cdots+x_m,\quad x_i\in B_{Li}.\]</span> 两边同时乘以 <span class="math inline">\(B_{L_i}\)</span> 的单位元 <span class="math inline">\(e_i\)</span> 可得 <span class="math inline">\(x_i=0\)</span>。</p></li>
 <li><p><span class="math inline">\(R\)</span> 的任何双边理想 <span class="math inline">\(I\)</span> 都可以表示为若干 <span class="math inline">\(B_{L_i}\)</span> 的直和。</p>
-<p>这是因为如果 <span class="math inline">\(I\)</span> 包含某个极小左理想 <span class="math inline">\(L\)</span>，则必包含所有的 <span class="math inline">\(La\)</span>，从而包含 <span class="math inline">\(B_L=B_{L_i}\)</span>。设 <span class="math inline">\(C\)</span> 是所有包含在 <span class="math inline">\(I\)</span> 内的 <span class="math inline">\(B_{L_i}\)</span> 的直和，则由于 <span class="math inline">\(R\)</span> 半单，任何左 <span class="math inline">\(R-\)</span> 模都是完全可约的 (完全可约的含义见下节)，所以存在左 <span class="math inline">\(R-\)</span> 模 <span class="math inline">\(C&#39;\)</span> 满足 <span class="math inline">\(I=C\oplus C&#39;\)</span>。如果 <span class="math inline">\(C&#39;\)</span> 不是零的话，则它包含某个极小左理想 <span class="math inline">\(L&#39;\)</span>，但是这样一来它就必然包含 <span class="math inline">\(B_{L&#39;}\subset C\)</span>，与 <span class="math inline">\(C,C&#39;\)</span> 是直和矛盾。</p></li>
+<p>这是因为如果 <span class="math inline">\(I\)</span> 包含某个极小左理想 <span class="math inline">\(L\)</span>，则必包含所有的 <span class="math inline">\(La\)</span>，从而包含 <span class="math inline">\(B_L=B_{L_i}\)</span>。设 <span class="math inline">\(C\)</span> 是所有包含在 <span class="math inline">\(I\)</span> 内的 <span class="math inline">\(B_{L_i}\)</span> 的直和，则由于 <span class="math inline">\(R\)</span> 半单，任何左 <span class="math inline">\(R-\)</span> 模都是完全可约的 (完全可约的含义见下节)，所以存在左 <span class="math inline">\(R-\)</span> 模 <span class="math inline">\(C'\)</span> 满足 <span class="math inline">\(I=C\oplus C'\)</span>。如果 <span class="math inline">\(C'\)</span> 不是零的话，则它包含某个极小左理想 <span class="math inline">\(L'\)</span>，但是这样一来它就必然包含 <span class="math inline">\(B_{L'}\subset C\)</span>，与 <span class="math inline">\(C,C'\)</span> 是直和矛盾。</p></li>
 </ol>
 </blockquote>
 <p>我们把满足 3, 4, 5 的环叫做<strong>单环</strong>，单环必然都是半单的，因为其根是双边理想，而乘法单位元不在根中，所以根只能是 <span class="math inline">\((0)\)</span>。</p>
-<p>我们已经把半单环 <span class="math inline">\(R\)</span> 分解为了单环的直和： <span class="math display">\[R = B_{L_1}\oplus\cdots\oplus B_{L_m}.\]</span> 实际上这个分解还是唯一的，即若 <span class="math display">\[R = B_{L&#39;_1}\oplus\cdots\oplus B_{L&#39;_l}.\]</span> 其中每个 <span class="math inline">\(B_{L&#39;_j}\)</span> 都是单环，<em>并且是 <span class="math inline">\(R\)</span> 的双边理想</em>，则必有 <span class="math inline">\(m=l\)</span> 且适当重排以后有 <span class="math inline">\(B_{L_i}=B_{L&#39;_j}\)</span>。(证明简单，略)</p>
+<p>我们已经把半单环 <span class="math inline">\(R\)</span> 分解为了单环的直和： <span class="math display">\[R = B_{L_1}\oplus\cdots\oplus B_{L_m}.\]</span> 实际上这个分解还是唯一的，即若 <span class="math display">\[R = B_{L'_1}\oplus\cdots\oplus B_{L'_l}.\]</span> 其中每个 <span class="math inline">\(B_{L'_j}\)</span> 都是单环，<em>并且是 <span class="math inline">\(R\)</span> 的双边理想</em>，则必有 <span class="math inline">\(m=l\)</span> 且适当重排以后有 <span class="math inline">\(B_{L_i}=B_{L'_j}\)</span>。(证明简单，略)</p>
 <p>接下来的任务就是分析单环的结构，在这之前我们先介绍半单性和完全可约性之间的关系。</p>
 <h1 id="半单与完全可约">半单与完全可约</h1>
 <blockquote><p><strong>定义</strong>：左 <span class="math inline">\(R-\)</span> 模 <span class="math inline">\(M\)</span> 称作是完全可约的，如果 <span class="math inline">\(M\)</span> 可以表示为若干不可约左 <span class="math inline">\(R-\)</span> 模的和。</p>
 </blockquote>
-<p><span class="math inline">\(M\)</span> 完全可约的另一种等价定义是对其任何子模 <span class="math inline">\(N\)</span>，都存在子模 <span class="math inline">\(N&#39;\)</span> 使得 <span class="math inline">\(M=N\oplus N&#39;\)</span>。</p>
+<p><span class="math inline">\(M\)</span> 完全可约的另一种等价定义是对其任何子模 <span class="math inline">\(N\)</span>，都存在子模 <span class="math inline">\(N'\)</span> 使得 <span class="math inline">\(M=N\oplus N'\)</span>。</p>
 <p>在上一节中我们已经证明了对半单环，其左正则模 <span class="math inline">\(_RR\)</span> 是完全可约的：<span class="math inline">\(_RR=\oplus_{i=1}^nL_i\)</span>，<span class="math inline">\(L_i\)</span> 都是极小左理想，即不可约左 <span class="math inline">\(R-\)</span> 模。这个结论反过来也是对的：</p>
 <blockquote><p><strong>定理 2</strong>：</p>
 <ol type="1">
@@ -466,9 +468,9 @@
 \]</span></p>
 <p>即 <span class="math inline">\(f^\ast \in {\rm Hom}_{D^\ast}(V, V)\)</span>，引理 3 得证。</p>
 <p>我们还需要证明 <span class="math inline">\(\dim M_D&lt;\infty\)</span>。若不然，则存在一列 <span class="math inline">\(\{m_k\}_{k=1}^\infty\in M\)</span> 使得其中任何有限多个都是 <span class="math inline">\(D\)</span>- 线性无关的。记 <span class="math inline">\(V_k\)</span> 为 <span class="math inline">\(\{m_1,\ldots, m_k\}\)</span> 张成的子空间，定义 <span class="math display">\[I_k = \{a\in A \ |\ aV_k=0\}.\]</span> 则 <span class="math inline">\(I_k\)</span> 是 <span class="math inline">\(A\)</span> 的左理想且 <span class="math inline">\(I_1\supsetneq I_2\supsetneq\cdots\)</span> 是一个无穷严格降链，这与 <span class="math inline">\(A\)</span> 满足 DCC 矛盾。实际上我们总是可以定义 <span class="math inline">\(D\)</span>- 线性变换 <span class="math inline">\(f_k\)</span> 使得 <span class="math inline">\(f_k(V_k)=0\)</span> 但 <span class="math inline">\(f_k(m_{k+1})\ne0\)</span>。而 <span class="math inline">\(f_k\)</span> 是某个 <span class="math inline">\(a\in A\)</span> 的左乘，从而 <span class="math inline">\(a\in I_k\)</span>，<span class="math inline">\(a\notin I_{k+1}\)</span>。</p>
-<p>最后来说明 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(D\)</span> 是由 <span class="math inline">\(A\)</span> 唯一确定的，即若 <span class="math inline">\(n&#39;\)</span> 和 <span class="math inline">\(D&#39;\)</span> 使得 <span class="math inline">\(A\cong {\rm Mat}_n(D)\cong {\rm Mat}_{n&#39;}(D&#39;)\)</span>，则 <span class="math inline">\(n=n&#39;\)</span> 且 <span class="math inline">\(D\cong D&#39;\)</span>。实际上从上面的证明中我们已经看到 <span class="math inline">\(n\)</span> 是 <span class="math inline">\(A\)</span> 分解为极小左理想 <span class="math inline">\(M\)</span> 直和的重数，从而是唯一确定的。而除环 <span class="math inline">\(D={\rm Hom}_A(M,M)\)</span> 是其唯一不可约模的 <span class="math inline">\(A-\)</span> 模自同态环，所以也是唯一确定的。</p>
+<p>最后来说明 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(D\)</span> 是由 <span class="math inline">\(A\)</span> 唯一确定的，即若 <span class="math inline">\(n'\)</span> 和 <span class="math inline">\(D'\)</span> 使得 <span class="math inline">\(A\cong {\rm Mat}_n(D)\cong {\rm Mat}_{n'}(D')\)</span>，则 <span class="math inline">\(n=n'\)</span> 且 <span class="math inline">\(D\cong D'\)</span>。实际上从上面的证明中我们已经看到 <span class="math inline">\(n\)</span> 是 <span class="math inline">\(A\)</span> 分解为极小左理想 <span class="math inline">\(M\)</span> 直和的重数，从而是唯一确定的。而除环 <span class="math inline">\(D={\rm Hom}_A(M,M)\)</span> 是其唯一不可约模的 <span class="math inline">\(A-\)</span> 模自同态环，所以也是唯一确定的。</p>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Representation Theory of Finite Groups and Associative Algebras. Charles W. Curtis, Irving Reiner.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Noncommutative Rings. I. N. Herstein.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

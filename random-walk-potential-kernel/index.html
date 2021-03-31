@@ -37,7 +37,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -412,7 +414,7 @@ N_x^n=\frac{1}{4}\sum_{y\sim x}N_y^{n-1},
 \end{align*}
 \]</span> 两边令 <span class="math inline">\(n\to\infty\)</span> 即得 <span class="math inline">\(a(e_1)=1\)</span>。</p>
 <p>采用下一节的方法，我们可以通过计算积分得出 <span class="math inline">\(a(e_1+e_2)=\frac{4}{\pi}\)</span>，<span class="math inline">\(a(2e_1)=4-\frac{8}{\pi}\)</span>，等等，其示意图如下：</p>
-<p><img style="margin:0px auto;display:block" src="/images/electric-network/greenfunction.svg" width="400"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/electric-network/greenfunction.svg" width="400"></p>
 <h1 id="势核的渐进估计">势核的渐进估计</h1>
 <p>我们关心的是势核 <span class="math inline">\(a(x)\)</span> 当 <span class="math inline">\(|x|\to\infty\)</span> 时的渐进大小，为此我们有如下定理：</p>
 <blockquote><p><strong>定理 2</strong>： <span class="math display">\[\lim_{|x|\to\infty} a(x) - \frac{2}{\pi}\ln |x| = \frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\approx 1.0293737.\]</span> 其中 <span class="math inline">\(\gamma\approx 0.5772156649\)</span> 是 Euler 常数。</p>
@@ -447,7 +449,7 @@ I(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot x}}{|\t
 \]</span> 所以 <span class="math inline">\(I_2(x)\)</span> 有一个不依赖于 <span class="math inline">\(x\)</span> 方向的极限值。</p>
 <p>而对 <span class="math inline">\(I_1(x)\)</span> 从表达式明显可见它是与 <span class="math inline">\(x\)</span> 方向无关的： <span class="math display">\[
 I_1(x)=\frac{1}{\pi^2}\int_{|\theta|\leq\pi}\frac{1-\cos(\theta\cdot x)}{|\theta|^2}\,\mathrm{d}\theta.
-\]</span> 事实上用一个旋转矩阵 <span class="math inline">\(A\)</span> 乘以 <span class="math inline">\(x\)</span> 等同于对 <span class="math inline">\(\theta\)</span> 作变元代换 <span class="math inline">\(\theta&#39;=A^{-1}\theta\)</span>，这显然保持积分不变。所以取 <span class="math inline">\(x\)</span> 为实轴正方向，并作极坐标代换 <span class="math inline">\(\theta=(r,\alpha)\)</span> 即得 <span class="math display">\[
+\]</span> 事实上用一个旋转矩阵 <span class="math inline">\(A\)</span> 乘以 <span class="math inline">\(x\)</span> 等同于对 <span class="math inline">\(\theta\)</span> 作变元代换 <span class="math inline">\(\theta'=A^{-1}\theta\)</span>，这显然保持积分不变。所以取 <span class="math inline">\(x\)</span> 为实轴正方向，并作极坐标代换 <span class="math inline">\(\theta=(r,\alpha)\)</span> 即得 <span class="math display">\[
 \begin{align*}
 I_1(x)&amp;=
 \frac{1}{\pi^2}\int_{|\theta|\leq\pi}\frac{1-\cos(\theta\cdot x)}{|\theta|^2}\,\mathrm{d}\theta\\&amp;=
@@ -476,7 +478,7 @@ a(n,n)=\frac{1}{\pi^2}\int_{0\leq u,v\leq\pi}\frac{1-\cos 2nu}{1-\cos u\cos v}\,
 \]</span> 接下来我们要用到的是 <span class="math inline">\(\frac{1}{1-\cos u\cos v}\)</span> 作为 <span class="math inline">\(v\)</span> 的函数其不定积分的原函数为 <span class="math display">\[
 \frac{-2}{\sin u}\tan^{-1}\left(\sin\frac{u-v}{2}\csc\frac{u+v}{2}\right).
 \]</span> 这一步在所有的文献里都是直接跳过的，我是在 Wolfram Alpha 的<a target="_blank" rel="noopener" href="https://www.wolframalpha.com/calculators/integral-calculator/">在线积分计算器</a>里面输入</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">integrate</span> <span class="hljs-number">1</span><span class="hljs-operator">/</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-operator">-</span><span class="hljs-variable">cos</span><span class="hljs-punctuation">(</span><span class="hljs-variable">u</span><span class="hljs-punctuation">)</span><span class="hljs-variable">cos</span><span class="hljs-punctuation">(</span><span class="hljs-variable">v</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-variable">dv</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-variable">integrate</span> <span class="hljs-number">1</span><span class="hljs-operator">/</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-operator">-</span><span class="hljs-variable">cos</span><span class="hljs-punctuation">(</span><span class="hljs-variable">u</span><span class="hljs-punctuation">)</span><span class="hljs-variable">cos</span><span class="hljs-punctuation">(</span><span class="hljs-variable">v</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-variable">dv</span><br></code></pre></td></tr></tbody></table></figure>
 <p>得到的。于是 <span class="math display">\[
 \begin{align*}
 a(n,n)&amp;=
@@ -526,7 +528,7 @@ G(x)=\frac{\gamma_d}{|x|^{d-2}} + O(|x|^{-d}).
 \]</span> 其中 <span class="math inline">\(\gamma_d\)</span> 是一个只与 <span class="math inline">\(d\)</span> 相关的常数。详情可见 Lawler 的书 4.3 节。</p>
 <p>本文选择 <span class="math inline">\(d=2\)</span> 情形讨论是因为它更有趣，而且这里的结论在后面的文章中会用到。下篇文章见！</p>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Durrett, R. 2019. Probability: theory and examples. Fifth edn. Cambridge Series in Statistical and Probabilistic Mathematics.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Spitzer, F. 1976. Principles of random walk. Second edn. New York: Springer-Verlag. Graduate Texts in Mathematics, Vol. 34.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

@@ -32,7 +32,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -312,19 +314,19 @@
 <h1 id="examples">Examples</h1>
 <ol type="1">
 <li><p>Unstable</p>
-<p><video src="/images/grayscott/unstable.mp4" controls></p></li>
+<p><video src="/images/grayscott/unstable.mp4" controls=""></video></p></li>
 <li><p>Coral</p>
-<p><video src="/images/grayscott/coral.mp4" controls></p></li>
+<p><video src="/images/grayscott/coral.mp4" controls=""></video></p></li>
 <li><p>Baceria</p>
-<p><video src="/images/grayscott/bacteria.mp4" controls></p></li>
+<p><video src="/images/grayscott/bacteria.mp4" controls=""></video></p></li>
 </ol>
 <h1 id="usage">Usage</h1>
 <p>You may simply run <code>python main.py</code> and then use keyboard and mouse to play with the simulation (for keyboard and mouse control please see the printed doc).</p>
 <p>You may also initialize the window by passing more options:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">python main.py -size 800x600 -fps 400 -conf 1 -scale 2<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">python main.py -size 800x600 -fps 400 -conf 1 -scale 2<br></code></pre></td></tr></tbody></table></figure>
 <p>Here <code>-size</code> is the size of the window, <code>-fps</code> is the frames per second of the animation, if not specified then max possible value will be used, <code>-conf</code> is the line number of the pattern that the program will load from the file <code>config.txt</code> (which contains a few precomputed patterns), <code>-scale</code> is the "resolution" factor of the texture.</p>
 <p>You may also use an image file to control the growth of the pattern by adding the <code>-mask</code> option:</p>
-<video src="/images/grayscott/mask.mp4" controls>
+<video src="/images/grayscott/mask.mp4" controls="">
 <h1 id="how-to-save-the-animation-to-a-video-file">How to save the animation to a video file</h1>
 <p>Make sure <code>ffmpeg</code> is installed on your computer and can be found on system path, windows users need to manually add the path to your ffmpeg.exe to environment variables, then press <code>ctrl+v</code> to start saving the video and press <code>ctrl+v</code> again to stop the saving.</p>
 <p>You can use the option <code>-videorate</code> to control the fps of the video (not the animation!) and the option <code>-samplerate</code> to control how often a frame is sampled from the animation. If the frames are sampled too frequently the size of the video file will grow very large.</p>
@@ -332,7 +334,7 @@
 <p><code>pyglet</code> is only a thin wrapper of OpenGL so one has to write his own classes to manage things like <code>vao</code>, <code>vbo</code>, <code>framebuffer</code>, etc. There are some modules like <code>vispy</code> and <code>gletools</code> that does similar job, but that lays the burden of learning one more package.</p>
 <p>I wrote two scripts <code>shader.py</code> and <code>framebuffer.py</code> for compiling the shader programs and rendering to texture. They are not meant to be serious tools, just kept simple and suffice for our work.</p>
 <p>The GLSL code borrows heavily from pmneila's work, the most genius part in his code is the use of a <code>brush</code> variable (<code>u_mouse</code> in our program) as the interface between the shader and the UI.</p>
-
+</video>
                 
 
 

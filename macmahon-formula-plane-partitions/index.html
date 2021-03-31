@@ -34,7 +34,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -323,10 +325,10 @@
 
             
             <div class="entry pink-link-context">
-                <blockquote><p><strong>问题</strong>：一个边长为 <span class="math inline">\(a\times b\times c\)</span> 的平行六边形 (<span class="math inline">\(a,b,c\)</span> 都是正整数)，每个内角都是 120 度。用边长为 1 的菱形密铺，有多少种不同的方法？ <img style="margin:0px auto;display:block" width=350 src="/images/macmahon/hexagon.png"/></p>
+                <blockquote><p><strong>问题</strong>：一个边长为 <span class="math inline">\(a\times b\times c\)</span> 的平行六边形 (<span class="math inline">\(a,b,c\)</span> 都是正整数)，每个内角都是 120 度。用边长为 1 的菱形密铺，有多少种不同的方法？ <img style="margin:0px auto;display:block" width="350" src="/images/macmahon/hexagon.png"></p>
 </blockquote>
 <p>下图是一种密铺的示例：</p>
-<p><img style="margin:0px auto;display:block" width=350 src="/images/macmahon/planepartition.png"/></p>
+<p><img style="margin:0px auto;display:block" width="350" src="/images/macmahon/planepartition.png"></p>
 <span id="more"></span>
 <p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足一个规律：从墙角到外侧，箱子的高度是递减的。用准确的语言描述：设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(a\times b\)</span> 矩阵，其元素 <span class="math inline">\(a_{ij}\)</span> 表示地面上第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列处箱子的高度，则 <span class="math inline">\(A\)</span> 满足条件：</p>
 <ul>
@@ -350,12 +352,12 @@
 <p>我们知道在平面上从点 <span class="math inline">\((0,c)\)</span> 出发，每次向右或者向下移动一个单位的距离，到达点 <span class="math inline">\((b,0)\)</span> 的路径总数为 <span class="math inline">\(\begin{pmatrix}b+c\\b\end{pmatrix}\)</span>，这样的一条路径叫做 Gauss 路径。</p>
 <p>设 <span class="math inline">\(A\)</span> 是一个受限制的平面分拆，其参数 <span class="math inline">\((a,b,c)\)</span> 的含义如前文所述，把 <span class="math inline">\(A\)</span> 的每一行的<strong>高度直方图</strong>投影到右侧的墙壁上，就得到了一条从 <span class="math inline">\((0,c)\)</span> 到 <span class="math inline">\((b,0)\)</span> 的 Gauss 路径，一共有 <span class="math inline">\(a\)</span> 条这样的路径：</p>
 <p>平面分拆中每一行的高度直方图 (虚线所示)：</p>
-<p><img style="margin:0px auto;display:block" width=350 src="/images/macmahon/path_on_cubes.png"/></p>
+<p><img style="margin:0px auto;display:block" width="350" src="/images/macmahon/path_on_cubes.png"></p>
 <p>投影到墙壁上以后的结果 (这里只显示了第一行和第三行对应的路径)：</p>
-<p><img style="margin:0px auto;display:block" width=350 src="/images/macmahon/path_on_wall.png"/></p>
+<p><img style="margin:0px auto;display:block" width="350" src="/images/macmahon/path_on_wall.png"></p>
 <p>但是平面分拆的列要满足递降关系，这个递降关系反映在路径上就是第二行对应的路径应该位于第一行对应的路径的下方 (可以有交点)，而第三行对应的路径又位于第二行对应的路径的下方，依此类推。</p>
 <p>接下来是关键的一步： 如果把第一行对应的路径整体向右上方平移 <span class="math inline">\(a\)</span> 个单位，第二行对应的路径整体向右上方平移 <span class="math inline">\(a-1\)</span> 个单位，... ，第 <span class="math inline">\(a\)</span> 行对应的路径整体向右上方平移 1 个单位，则得到的 <span class="math inline">\(a\)</span> 条平移后的路径两两之间将没有任何公共点。我们称之为一个不相交的路径组。过程如下面的动画所示：</p>
-<p><img style="margin:0px auto;display:block" width=500 src="/images/macmahon/nonintersect_path_system.gif"/></p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/macmahon/nonintersect_path_system.gif"></p>
 <p>这里 <span class="math inline">\(A_i=(i,c+i)\)</span>，<span class="math inline">\(B_j=(b+j,j)\)</span>，<span class="math inline">\(\{p_i:A_i\rightarrow B_i,1\leq i\leq a\}\)</span> 是一个不相交的路径组。反过来对每一个这样的不相交的路径组，你也可以很容易地写出对应的平面分拆来。</p>
 <p>于是我们的问题又进一步转化为</p>
 <blockquote>
@@ -374,10 +376,10 @@
 <p><span class="math display">\[\det M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
 <p>这个求和是每个置换 <span class="math inline">\(\sigma\)</span> 都跑遍其所有可能的路径组 <span class="math inline">\(P_\sigma\)</span>。</p>
 <p>我们要证明在上面的求和中所有相交的路径组对应的和项是可以两两配对抵消的，剩下的只有不相交的路径组，而不相交的路径组只有在 <span class="math inline">\(\sigma\)</span> 为恒等置换时才可能发生 (从图上可以很容易看出这一点)。这样就得到 <span class="math inline">\(\det M=\sum\limits_{\mathcal{P}}1\)</span>，而且 <span class="math inline">\(\mathcal{P}\)</span> 只跑遍满足每个路径都是从 <span class="math inline">\(A_i\)</span> 到 <span class="math inline">\(B_i\)</span> 的不相交路径组，这就是所求的答案。</p>
-<p>对每一个相交的路径组 <span class="math inline">\(\mathcal{P}_\sigma\)</span>， 我们要找另一个与之配对的 <span class="math inline">\(\mathcal{P}_{\sigma&#39;}\)</span>，使得 <span class="math inline">\(\text{sgn}(\sigma)=-\text{sgn}(\sigma&#39;)\)</span>，则这二者对应的和项就抵消掉了。这一步很容易：在 <span class="math inline">\(\mathcal{P}_\sigma\)</span> 的所有交点中， 我们找出所有位于 "最右方"的交点中，位置在最上方的那一个， 这个点是唯一确定的，记作 <span class="math inline">\(C\)</span>。当然可能有好几条路径 (多于 2 条) 都经过 <span class="math inline">\(C\)</span> 点，为此我们选择最大的 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(p_i:A_i\rightarrow B_{\sigma(i)}\)</span> 经过 <span class="math inline">\(C\)</span>，再选择最大的 <span class="math inline">\(j,j&lt;i\)</span> 使得 <span class="math inline">\(p_j:A_j\rightarrow B_{\sigma(j)}\)</span> 经过 <span class="math inline">\(C\)</span>。</p>
-<p><img style="margin:0px auto;display:block" width=500 src="/images/macmahon/gessel_viennot.png"/></p>
-<p>现在我们构造 <span class="math inline">\(\mathcal{P}_{\sigma&#39;}\)</span> 如下：交换 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 在 <span class="math inline">\(C\)</span> 点之后的部分，保持其它 <span class="math inline">\(p_k\)</span> 不动 (想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们在点 <span class="math inline">\(C\)</span> 相遇时，强迫他们改变路线，沿着对方剩下的路径前往对方的目的地)。</p>
-<p>于是在 <span class="math inline">\(\mathcal{P}_{\sigma&#39;}\)</span> 中有 <span class="math inline">\(p_i&#39;:A_i\rightarrow B_{\sigma(j)}\)</span>，<span class="math inline">\(p_j&#39;:A_j\rightarrow B_{\sigma(i)}\)</span>。显然置换 <span class="math inline">\(\sigma&#39;\)</span> 与 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此符号相反。更重要的是如果对 <span class="math inline">\(\mathcal{P}_{\sigma&#39;}\)</span> 也进行这个变换的话，又回到了 <span class="math inline">\(\mathcal{P}_\sigma\)</span> (这一点很重要，这才能保证是名符其实的 "两两配对")，因此它们对应的和项抵消，这就证明了结论。</p>
+<p>对每一个相交的路径组 <span class="math inline">\(\mathcal{P}_\sigma\)</span>， 我们要找另一个与之配对的 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span>，使得 <span class="math inline">\(\text{sgn}(\sigma)=-\text{sgn}(\sigma')\)</span>，则这二者对应的和项就抵消掉了。这一步很容易：在 <span class="math inline">\(\mathcal{P}_\sigma\)</span> 的所有交点中， 我们找出所有位于 "最右方"的交点中，位置在最上方的那一个， 这个点是唯一确定的，记作 <span class="math inline">\(C\)</span>。当然可能有好几条路径 (多于 2 条) 都经过 <span class="math inline">\(C\)</span> 点，为此我们选择最大的 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(p_i:A_i\rightarrow B_{\sigma(i)}\)</span> 经过 <span class="math inline">\(C\)</span>，再选择最大的 <span class="math inline">\(j,j&lt;i\)</span> 使得 <span class="math inline">\(p_j:A_j\rightarrow B_{\sigma(j)}\)</span> 经过 <span class="math inline">\(C\)</span>。</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/macmahon/gessel_viennot.png"></p>
+<p>现在我们构造 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span> 如下：交换 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 在 <span class="math inline">\(C\)</span> 点之后的部分，保持其它 <span class="math inline">\(p_k\)</span> 不动 (想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们在点 <span class="math inline">\(C\)</span> 相遇时，强迫他们改变路线，沿着对方剩下的路径前往对方的目的地)。</p>
+<p>于是在 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span> 中有 <span class="math inline">\(p_i':A_i\rightarrow B_{\sigma(j)}\)</span>，<span class="math inline">\(p_j':A_j\rightarrow B_{\sigma(i)}\)</span>。显然置换 <span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此符号相反。更重要的是如果对 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span> 也进行这个变换的话，又回到了 <span class="math inline">\(\mathcal{P}_\sigma\)</span> (这一点很重要，这才能保证是名符其实的 "两两配对")，因此它们对应的和项抵消，这就证明了结论。</p>
 <h1 id="dodgsons-condensation-method">Dodgson's condensation method</h1>
 <p>为了求出行列式的值，我们介绍一个古老的方法：Dodgson's condensation。这是一个递归求解行列式的方法：设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(n\times n\)</span> 矩阵，用 <span class="math inline">\(A_i^j\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(i\)</span> 行和第 <span class="math inline">\(j\)</span> 列后剩下的 <span class="math inline">\(n-1\)</span> 阶矩阵，用 <span class="math inline">\(A_{1,n}^{1,n}\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 1 行第 1 列和第 <span class="math inline">\(n\)</span> 行第 <span class="math inline">\(n\)</span> 列后剩下的 <span class="math inline">\(n-2\)</span> 阶矩阵，则我们有恒等式</p>
 <p><span class="math display">\[\det A\cdot \det A_{1,n}^{1,n}=\det A_1^1\det A_n^n-\det A_1^n\det A_n^1.\]</span></p>

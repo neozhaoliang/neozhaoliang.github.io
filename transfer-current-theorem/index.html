@@ -37,7 +37,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -356,9 +358,9 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-1884-6400.png" width=200></td>
-<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-4234-14400.png" width=200></td>
-<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-11776-40000.png" width=200></td>
+<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-1884-6400.png" width="200"></td>
+<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-4234-14400.png" width="200"></td>
+<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-11776-40000.png" width="200"></td>
 </tr>
 </tbody>
 </table>
@@ -399,7 +401,7 @@
 </tbody>
 </table>
 <p>所以在一个随机的完美迷宫中，最多的其实是“拐角” (45%)，其次是“死角” (30%)，再次是“丁字岔路” (22%)，而“十字路口”是非常少的 (3.6%)。</p>
-<p>这些概率是怎样计算出来的呢？它和我们这个系列的主题二维随机游动又有何关系呢？这里面的故事相当精彩。粗略地说，图的随机生成树中的概率量可以翻译为该图上随机游动中某些事件发生的概率，利用随机游动与电网络的联系，我们又可以把这些事件发生的概率翻译为电网络的物理量，而这些物理量是可以用各种方法来计算的。在我们这个问题中，一个房间是死角/拐角/岔路/十字路口的概率都可以从一个矩阵出发通过求其子矩阵的行列式得到 (或者稍微加点变化)，这个矩阵叫做<strong>转移电流矩阵</strong> (transfer current matrix)，是本文内容的核心。转移电流矩阵的物理意义很简单：将 <span class="math inline">\(G_n\)</span> 看作一个电网络，每条边的电阻都是单位 1。在其中一条边 <span class="math inline">\(e\)</span> 的两端加上电极，使得流入整个网络的电流总量为 1 个单位，记此时流过边 <span class="math inline">\(e&#39;\)</span> 的电流总量为 <span class="math inline">\(Y(e,e&#39;)\)</span>，则矩阵 <span class="math inline">\(Y=Y(e,e&#39;)_{e,e&#39;\in E}\)</span> 叫做网络 <span class="math inline">\(G_n\)</span> 的转移电流矩阵。</p>
+<p>这些概率是怎样计算出来的呢？它和我们这个系列的主题二维随机游动又有何关系呢？这里面的故事相当精彩。粗略地说，图的随机生成树中的概率量可以翻译为该图上随机游动中某些事件发生的概率，利用随机游动与电网络的联系，我们又可以把这些事件发生的概率翻译为电网络的物理量，而这些物理量是可以用各种方法来计算的。在我们这个问题中，一个房间是死角/拐角/岔路/十字路口的概率都可以从一个矩阵出发通过求其子矩阵的行列式得到 (或者稍微加点变化)，这个矩阵叫做<strong>转移电流矩阵</strong> (transfer current matrix)，是本文内容的核心。转移电流矩阵的物理意义很简单：将 <span class="math inline">\(G_n\)</span> 看作一个电网络，每条边的电阻都是单位 1。在其中一条边 <span class="math inline">\(e\)</span> 的两端加上电极，使得流入整个网络的电流总量为 1 个单位，记此时流过边 <span class="math inline">\(e'\)</span> 的电流总量为 <span class="math inline">\(Y(e,e')\)</span>，则矩阵 <span class="math inline">\(Y=Y(e,e')_{e,e'\in E}\)</span> 叫做网络 <span class="math inline">\(G_n\)</span> 的转移电流矩阵。</p>
 <p>转移电流矩阵有许多有趣的性质，比如：</p>
 <ul>
 <li><p>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(G_n\)</span> 的一个随机生成树 (服从均匀分布)，则任一边 <span class="math inline">\(e\)</span> 属于 <span class="math inline">\(T\)</span> 的概率 <span class="math inline">\(\mathbb{P}(e\in T)=Y(e, e)\)</span>。特别当 <span class="math inline">\(n\to\infty\)</span> 时 <span class="math inline">\(G_n\to\mathbb{Z}^2\)</span>，<span class="math inline">\(Y(e,e)\to\frac{1}{2}\)</span>。所以如果把 <span class="math inline">\(\mathbb{Z}^2\)</span> 看作一个电网络并在一条边 <span class="math inline">\(e\)</span> 的一端输入单位电流，将 <span class="math inline">\(e\)</span> 的另一端接地的话，那么恰好会有一半的电流直接从边 <span class="math inline">\(e\)</span> 流出，另外一半经过网络的其它部分后从 <span class="math inline">\(e\)</span> 的另一端流出。</p></li>
@@ -415,7 +417,7 @@
 \frac{1}{\pi}-\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2} &amp; -\frac{2}{\pi}+\frac{1}{2}\\
 -\frac{2}{\pi}+\frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2}\\
 \frac{1}{2}-\frac{1}{\pi} &amp; \frac{2}{\pi}-\frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2}\end{pmatrix}.\]</span> 则 <span class="math display">\[\mathbb{P}(e_1,e_2,e_3\notin T, e_4\in T)=\det Y^{(4)}_{\overline{123}4}=\frac{2}{\pi^2}-\frac{4}{\pi^3}.\]</span> 于是原点是叶节点的概率是 <span class="math inline">\(4\times\det Y^{(4)}_{\overline{123}4}\approx 0.2945\)</span>，这正是之前看到的。</p>
-<p>计算其它容斥概率的步骤也都是类似的，只要在转移概率矩阵中将需要排除的边对应的行取负，然后在该行的对角元上加 1 即可。由 <span class="math inline">\(\mathbb{Z}^2\)</span> 对称性，其所有顶点的度数分布均相同。总之只要知道了转移电流矩阵 <span class="math inline">\(Y\)</span>，我们就可以很容易得到任一顶点在 <span class="math inline">\(T\)</span> 中度数的分布，多方便！:smile:</p>
+<p>计算其它容斥概率的步骤也都是类似的，只要在转移概率矩阵中将需要排除的边对应的行取负，然后在该行的对角元上加 1 即可。由 <span class="math inline">\(\mathbb{Z}^2\)</span> 对称性，其所有顶点的度数分布均相同。总之只要知道了转移电流矩阵 <span class="math inline">\(Y\)</span>，我们就可以很容易得到任一顶点在 <span class="math inline">\(T\)</span> 中度数的分布，多方便！<span class="emoji" data-alias="smile" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
 <p>注意虽然求解矩阵 <span class="math inline">\(Y\)</span> 需要 <span class="math inline">\(\mathbb{Z}^2\)</span> 的全局信息，但是计算顶点度数的分布却只需要 <span class="math inline">\(Y\)</span> 的局部信息。</p></li>
 </ul>
 <p>所以解决问题的关键就是求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的转移电流矩阵，本文接下来就来介绍具体的理论。这个故事并无特别的难点，但确实比较长，把它勉强压缩在一篇博客文章中很难不影响可读性，所以我尽量只写与上面问题相关的部分，至于 Rayleigh 定律、等效电阻、常返与暂态的流判定等其它电网络中的重要内容就只好略去了。在写作过程中主要参考了 Lyons 等人关于图随机游动的专著 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，Stanley 的代数组合学教材 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 以及网上一些公开的讲义。</p>
@@ -424,7 +426,7 @@
 <p>设 <span class="math inline">\(x,y\in V\)</span> 是两个顶点，我们用 <span class="math inline">\(x\sim y\)</span> 表示 <span class="math inline">\(x,y\)</span> 是相邻的。由于本文主要考察边上的流函数，而流函数是有方向的，<strong>所以我们约定边集 <span class="math inline">\(E\)</span> 同时包含有序对 <span class="math inline">\((x,y)\)</span> 和 <span class="math inline">\((y,x)\)</span>，即一条边作为有序对在 <span class="math inline">\(E\)</span> 中出现两次</strong>。当 <span class="math inline">\(e=(x,y)\)</span> 时，我们记 <span class="math inline">\(-e=(y,x)\)</span> 为 <span class="math inline">\(e\)</span> 的<strong>反向边</strong>。并用记号 <span class="math inline">\(E_{1/2}\)</span> 表示对每个 <span class="math inline">\(e\)</span>，在 <span class="math inline">\(e\)</span> 和 <span class="math inline">\(-e\)</span> 中任选一个组成的集合。此外我们称 <span class="math inline">\(e^-=x\)</span> 为 <span class="math inline">\(e\)</span> 的<strong>尾部</strong>，<span class="math inline">\(e^+=y\)</span> 为 <span class="math inline">\(e\)</span> 的<strong>头部</strong>。注意在反向边 <span class="math inline">\(-e\)</span> 中 <span class="math inline">\(x\)</span> 变为头部，<span class="math inline">\(y\)</span> 变为尾部。</p>
 <p>对每个 <span class="math inline">\(e\in E\)</span>，当 <span class="math inline">\(e=(x,y)\)</span> 时我们也记 <span class="math inline">\(c(x,y)=c(e)\)</span>。<strong>注意我们要求电导函数 <span class="math inline">\(c(x,y)\)</span> 关于 <span class="math inline">\(x,y\)</span> 是对称的：<span class="math inline">\(c(x,y)=c(y,x)\)</span></strong>。对每个顶点 <span class="math inline">\(x\in V\)</span>，记 <span class="math inline">\(c(x)=\sum_{y\sim x}c(x,y)\)</span>。</p>
 <p>所有 <span class="math inline">\(V\)</span> 上的实值函数 <span class="math inline">\(f:V\to\mathbb{R}\)</span> 构成一个内积空间 <span class="math inline">\(\ell^2(V)\)</span>： <span class="math display">\[(f,\, g)_V = \sum_{x\in V}c(x)f(x)g(x).\]</span></p>
-<p>所有 <span class="math inline">\(E\)</span> 上的<strong>反对称</strong>实值函数 <span class="math inline">\(\theta: E\to\mathbb{R}\)</span> 也构成一个内积空间 <span class="math inline">\(\ell^2_{-}(E)\)</span>： <span class="math display">\[(\theta,\,\theta&#39;)_E = \frac{1}{2}\sum_{e\in E}r(e)\theta(e)\theta&#39;(e)=\sum_{e\in E_{1/2}}r(e)\theta(e)\theta&#39;(e).\]</span> 这里反对称的意思是对任何 <span class="math inline">\(e=\{x,y\}\)</span> 有 <span class="math inline">\(\theta(x, y)=-\theta(y,x)\)</span>。</p>
+<p>所有 <span class="math inline">\(E\)</span> 上的<strong>反对称</strong>实值函数 <span class="math inline">\(\theta: E\to\mathbb{R}\)</span> 也构成一个内积空间 <span class="math inline">\(\ell^2_{-}(E)\)</span>： <span class="math display">\[(\theta,\,\theta')_E = \frac{1}{2}\sum_{e\in E}r(e)\theta(e)\theta'(e)=\sum_{e\in E_{1/2}}r(e)\theta(e)\theta'(e).\]</span> 这里反对称的意思是对任何 <span class="math inline">\(e=\{x,y\}\)</span> 有 <span class="math inline">\(\theta(x, y)=-\theta(y,x)\)</span>。</p>
 <p>以上定义基本上与 Lyons 等人的书保持一致，但是接下来的叙述会有比较大的差别。</p>
 <blockquote><p><strong>定义 1.1</strong>：</p>
 <ol type="1">
@@ -451,7 +453,7 @@
 <blockquote><p><strong>定理 1.2</strong>：<span class="math inline">\(\ell_{-}^2(E)\)</span> 是环空间和星空间的正交直和：<span class="math inline">\(\ell_{-}^2(E)=\lozenge\oplus\bigstar\)</span>。</p>
 </blockquote>
 <p><strong>证明</strong>：由于 <span class="math inline">\(\{1_{x},x\in V\}\)</span> 构成 <span class="math inline">\(\ell^2(V)\)</span> 的一组基，所以它们在 <span class="math inline">\(\nabla\)</span> 下的像构成 <span class="math inline">\(\bigstar\)</span> 的一组基。对任何 <span class="math inline">\(\theta\in\ell^2_{-}(E)\)</span> 有 <span class="math display">\[(\nabla 1_{x},\,\theta)_E=(1_x,\,\mathrm{div}\,\theta)_V=c(x)(\mathrm{div}\,\theta)(x).\]</span> 于是 <span class="math inline">\(\theta\)</span> 与任何 <span class="math inline">\(\nabla 1_x\)</span> 正交当且仅当 <span class="math inline">\((\mathrm{div}\,\theta)(x)=0\)</span> 对任何 <span class="math inline">\(x\in V\)</span> 成立，即当且仅当 <span class="math inline">\(\theta\in\lozenge\)</span>，从而 <span class="math inline">\(\lozenge\)</span> 和 <span class="math inline">\(\bigstar\)</span> 互为正交补空间，证毕。</p>
-<hr />
+<hr>
 <p>我们解释一下环空间这个名字的来历。对任一 <span class="math inline">\(e\in E\)</span>，记 <span class="math display">\[\chi^e=1_{e} - 1_{-e}\in\ell^2_{-}(E)\]</span> 为边 <span class="math inline">\(e\)</span> 的示性函数。设 <span class="math inline">\(e_1=(v_1,v_2), e_2=(v_2,v_3),\ldots,e_k=(v_k,v_1)\)</span> 首尾相接构成一条回路 <span class="math inline">\(C\)</span>，即 <span class="math display">\[v_1\xrightarrow{e_1}v_2\xrightarrow{e_2}\cdots\xrightarrow{e_{k-1}}v_k\xrightarrow{e_k}v_1.
 \]</span> 定义 <span class="math inline">\(C\)</span> 对应的环函数 <span class="math inline">\(f^C = \sum_{i=1}^k\chi^{e_i}\)</span>，则不难验证 <span class="math inline">\(f^C\in\lozenge\)</span>。我们断言 <span class="math inline">\(\lozenge\)</span> 可以由所有的 <span class="math inline">\(f^C\)</span> 张成，这就是为什么 <span class="math inline">\(\lozenge\)</span> 叫做环空间。</p>
 <p>设 <span class="math inline">\(\theta\in\lozenge\)</span>，定义 <span class="math inline">\(\theta\)</span> 的支集为 <span class="math display">\[\mathrm{supp}(\theta)=\{e\in E\,|\,\theta(e)\ne0\}.\]</span> 注意如果 <span class="math inline">\(\mathrm{supp}(\theta)\)</span> 非空的话，则它必然包含一个回路，否则 <span class="math inline">\(\mathrm{supp}(\theta)\)</span> 构成的子图中必然有一个叶顶点 (度数恰好为 1)，从而这一点处的散度不可能为 0，矛盾！于是 <span class="math inline">\(\mathrm{supp}(\theta)\)</span> 包含一个回路 <span class="math inline">\(C\)</span>，我们可以选择合适的常数 <span class="math inline">\(\alpha\)</span> 使得 <span class="math inline">\(\widetilde{\theta}=\theta-\alpha f^C\)</span> 在某个 <span class="math inline">\(e\in C\)</span> 上为 0，则 <span class="math inline">\(\widetilde{\theta}\)</span> 的支集严格小于 <span class="math inline">\(\theta\)</span>。对 <span class="math inline">\(\widetilde{\theta}\)</span> 重复此操作一直下去必然可以在有限次后将支集变为空集，这就证明了 <span class="math inline">\(\theta\)</span> 可以表示为形如 <span class="math inline">\(f^C\)</span> 的线性组合。</p>
@@ -476,19 +478,19 @@
 <li>电流函数要求 <span class="math inline">\(\theta=\nabla g\in\bigstar\)</span> 等价于物理中的欧姆定律，即电流 <span class="math inline">\(\theta\)</span> 等于电势差 <span class="math inline">\(\nabla g\)</span> 除以电阻 <span class="math inline">\(r(e)\)</span>。</li>
 </ol>
 </blockquote>
-<p>在本文中，我们最关心的电流函数是当将一条给定边 <span class="math inline">\(e\)</span> 的一个端点 <span class="math inline">\(x\)</span> 通入单位电流，另一端点 <span class="math inline">\(y\)</span> 接地时网络中对应的电流函数，此函数记作 <span class="math inline">\(i^e\)</span>。于是对任一边 <span class="math inline">\(e&#39;\)</span>，<span class="math inline">\(i^e(e&#39;)\)</span> 就是此时流过 <span class="math inline">\(e&#39;\)</span> 的电流量。</p>
+<p>在本文中，我们最关心的电流函数是当将一条给定边 <span class="math inline">\(e\)</span> 的一个端点 <span class="math inline">\(x\)</span> 通入单位电流，另一端点 <span class="math inline">\(y\)</span> 接地时网络中对应的电流函数，此函数记作 <span class="math inline">\(i^e\)</span>。于是对任一边 <span class="math inline">\(e'\)</span>，<span class="math inline">\(i^e(e')\)</span> 就是此时流过 <span class="math inline">\(e'\)</span> 的电流量。</p>
 <div id="prop1">
 <blockquote><p><strong>推论 2.1</strong>：<span class="math inline">\(\chi^e\)</span> 在 <span class="math inline">\(\bigstar\)</span> 上的正交投影即为 <span class="math inline">\(i^e\)</span>。</p>
 </blockquote>
 </div>
 <p>证明：显然 <span class="math inline">\(\sum_{y\sim e^-}\chi^e(e^-, y)=1\)</span>，以及 <span class="math inline">\(\mathrm{div}\,\chi^e(x)=0\)</span> 对任何 <span class="math inline">\(x\notin e\)</span> 成立。而到 <span class="math inline">\(\bigstar\)</span> 的投影不改变任何顶点处的散度值，所以此投影分量满足基尔霍夫定律和欧姆定律，且是从 <span class="math inline">\(e^-\)</span> 到 <span class="math inline">\(e^+\)</span> 的单位流，从而必然是电流 <span class="math inline">\(i^e\)</span>。</p>
 <div id="prop2">
-<blockquote><p><strong>推论 2.2</strong>：设 <span class="math inline">\(e,e&#39;\)</span> 是两条边，则 <span class="math display">\[i^e(e&#39;)=c(e&#39;)(i^e, i^{e&#39;})_E.\]</span></p>
+<blockquote><p><strong>推论 2.2</strong>：设 <span class="math inline">\(e,e'\)</span> 是两条边，则 <span class="math display">\[i^e(e')=c(e')(i^e, i^{e'})_E.\]</span></p>
 </blockquote>
 </div>
-<p>证明：记 <span class="math inline">\(P_\bigstar\)</span> 为从 <span class="math inline">\(\ell^2_{-}(E)\)</span> 到 <span class="math inline">\(\bigstar\)</span> 的投影算子，则 <span class="math inline">\(P_\bigstar\)</span> 是自共轭算子以及 <span class="math inline">\(P_\bigstar^2=P_\bigstar\)</span>，从而 <span class="math display">\[(i^e, i^{e&#39;})_E=(P_\bigstar\chi^e,P_\bigstar\chi^{e&#39;})_E=(P_\bigstar\chi^e,\chi^{e&#39;})_E=(i^e,\chi^{e&#39;})=r(e&#39;)i^e(e&#39;).\]</span> 即得结论。</p>
+<p>证明：记 <span class="math inline">\(P_\bigstar\)</span> 为从 <span class="math inline">\(\ell^2_{-}(E)\)</span> 到 <span class="math inline">\(\bigstar\)</span> 的投影算子，则 <span class="math inline">\(P_\bigstar\)</span> 是自共轭算子以及 <span class="math inline">\(P_\bigstar^2=P_\bigstar\)</span>，从而 <span class="math display">\[(i^e, i^{e'})_E=(P_\bigstar\chi^e,P_\bigstar\chi^{e'})_E=(P_\bigstar\chi^e,\chi^{e'})_E=(i^e,\chi^{e'})=r(e')i^e(e').\]</span> 即得结论。</p>
 <div id="def-transfer-current">
-<blockquote><p><strong>定义 2.3</strong>：记 <span class="math inline">\(Y(e,e&#39;)=i^e(e&#39;)\)</span>，则矩阵 <span class="math inline">\(\big(Y(e,e&#39;)\big)_{e,e&#39;\in E}\)</span> 叫做转移电流矩阵。<span class="math inline">\(Y(e,e&#39;)\)</span> 满足互反律 <span class="math display">\[Y(e,e&#39;)r(e&#39;)=Y(e&#39;,e)r(e)=(i^e,i^{e&#39;})_E.\]</span></p>
+<blockquote><p><strong>定义 2.3</strong>：记 <span class="math inline">\(Y(e,e')=i^e(e')\)</span>，则矩阵 <span class="math inline">\(\big(Y(e,e')\big)_{e,e'\in E}\)</span> 叫做转移电流矩阵。<span class="math inline">\(Y(e,e')\)</span> 满足互反律 <span class="math display">\[Y(e,e')r(e')=Y(e',e)r(e)=(i^e,i^{e'})_E.\]</span></p>
 </blockquote>
 </div>
 <h1 id="电网络物理量的概率解释">3 电网络物理量的概率解释</h1>
@@ -588,7 +590,7 @@ i^e(x,y)=\mathbb{E}_x\left[N^{\{y\}}_{x\to y} - N^{\{y\}}_{y\to x}\right].
 \]</span> 这就完成了证明。</p>
 <h1 id="图的收缩">5 图的收缩</h1>
 <p>设 <span class="math inline">\(\mathcal{N}=(G,c)\)</span> 是一个网络，<span class="math inline">\(F\subset E\)</span> 是边的子集且 <span class="math inline">\(F\)</span> 不含回路 (不考虑边的方向)，<span class="math inline">\(G\)</span> 关于 <span class="math inline">\(F\)</span> 的图收缩是一个图变换，它把每个 <span class="math inline">\(F\)</span> 中的每条边 <span class="math inline">\(f\)</span> 的两个端点合并为一个新顶点，并将 <span class="math inline">\(f\)</span> 变成新顶点的一条自边 (loop)。这样得到的新图记作 <span class="math inline">\(G/F\)</span>。注意当一条边 <span class="math inline">\(e\notin F\)</span> 如果和 <span class="math inline">\(F\)</span> 中的边构成回路的话，它在 <span class="math inline">\(G/F\)</span> 中也会变成自边。</p>
-<p><img style="margin:0px auto;display:block" src="/images/electric-network/graph_reduction.svg" width="350"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/electric-network/graph_reduction.svg" width="350"></p>
 <p>在收缩变换下，<span class="math inline">\(G\)</span> 的边集 <span class="math inline">\(E\)</span> 与 <span class="math inline">\(G/F\)</span> 的边集 <span class="math inline">\(\widehat{E}\)</span> 一一对应。不难验证如下结论：</p>
 <div id="lemma5">
 <blockquote><p><strong>引理 5.1</strong>：当 <span class="math inline">\(F\)</span> 不含回路时，<span class="math inline">\(G\)</span> 的所有包含 <span class="math inline">\(F\)</span> 的生成树 <span class="math inline">\(\{T_G, F\subset T_G\}\)</span> 与 <span class="math inline">\(G/F\)</span> 的所有生成树 <span class="math inline">\(\{T_{G/F}\}\)</span> 一一对应，且 <span class="math display">\[w(T_G)=\prod_{f\in F}c(f)\cdot w(T_{G/F}).\]</span> 于是对任何 <span class="math inline">\(e\in E\)</span> 有 <span class="math display">\[\mathbb{P}(e\in T_G \,\big| \, F\subset T_G) = \mathbb{P}(e\in T_{G/F})=\widehat{i^e}(e).\]</span> 其中 <span class="math inline">\(\widehat{i^e}\)</span> 是 <span class="math inline">\(G/F\)</span> 上的单位流 <span class="math inline">\(\chi^e\)</span> 对应的电流函数。</p>
@@ -652,7 +654,7 @@ P(i, j) = \begin{cases}
 \]</span> 从而 <span class="math inline">\(\det Y^{(k)}\)</span> 和 <span class="math inline">\(\mathbb{P}(e_1,\ldots,e_k\in T)\)</span> 有相同的初始条件和递推关系，从而它们相等，转移电流定理得证。</p></li>
 </ol>
 <h1 id="回答本文开头的问题">7 回答本文开头的问题</h1>
-<p>如本文开头所述，解决 <span class="math inline">\(\mathbb{Z}^2\)</span> 中顶点在随机迷宫中度数分布的问题归结为求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的转移电流矩阵，即令所有边的电导值均为 1，在一条边 <span class="math inline">\(e=(x,y)\)</span> 两端通入单位电流时，流过另一条边 <span class="math inline">\(e&#39;\)</span> 的电流流量，这等价于求解对应的电势函数 <span class="math inline">\(v\)</span>，也等价于求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上拉普拉斯算子的解 <span class="math display">\[
+<p>如本文开头所述，解决 <span class="math inline">\(\mathbb{Z}^2\)</span> 中顶点在随机迷宫中度数分布的问题归结为求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的转移电流矩阵，即令所有边的电导值均为 1，在一条边 <span class="math inline">\(e=(x,y)\)</span> 两端通入单位电流时，流过另一条边 <span class="math inline">\(e'\)</span> 的电流流量，这等价于求解对应的电势函数 <span class="math inline">\(v\)</span>，也等价于求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上拉普拉斯算子的解 <span class="math display">\[
 \Delta v (x) = 1_{x=e^-} - 1_{x=e^+}.
 \]</span> 这一步可以通过 Fourier 分析的方法来做，比如 Lyons 等人的教材就是采用的这种方法。但是假定你看过本系列的<a href="/random-walk-potential-kernel">第一篇文章</a>的话，我们可以省很多事情，直接用二维随机游动的势核函数 <span class="math inline">\(a(x)\)</span> 来构造电势函数 <span class="math inline">\(v\)</span>。注意到 <span class="math inline">\(a(x)\)</span> 在除去原点之外的任何点是调和的，并且在原点处的值为 0。记 <span class="math display">\[
 g(u) = \frac{a(u-y)-a(u-x)}{4}.
@@ -663,13 +665,13 @@ g(u) = \frac{a(u-y)-a(u-x)}{4}.
 &amp;=1.
 \end{align*}
 \]</span> 其中最后一个等号是因为势核在除去原点之外是调和的，且在原点的四个邻居处值为 1。</p>
-<p>于是 <span class="math inline">\(v(u)=g(u)-g(y)\)</span> 即为当 <span class="math inline">\(x\)</span> 通入单位电流，<span class="math inline">\(y\)</span> 接地时 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的电势函数，从而其在任何一边 <span class="math inline">\(e&#39;=(z,w)\)</span> 上的电流为 <span class="math display">\[
+<p>于是 <span class="math inline">\(v(u)=g(u)-g(y)\)</span> 即为当 <span class="math inline">\(x\)</span> 通入单位电流，<span class="math inline">\(y\)</span> 接地时 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的电势函数，从而其在任何一边 <span class="math inline">\(e'=(z,w)\)</span> 上的电流为 <span class="math display">\[
 i(z,w) = g(z) - g(w)=\frac{1}{4}\big[a(z-y)-a(z-x)-a(w-y)+a(w-x)\big].
-\]</span> 当 <span class="math inline">\(e=(x,y)\)</span> 和 <span class="math inline">\(e&#39;=(z,w)\)</span> 都取自原点相邻的四条边时，根据下图中的势核值代入上式即得本文开头的转移电流矩阵。</p>
-<p><img style="margin:0px auto;display:block" src="/images/electric-network/greenfunction.svg" width="350"/></p>
+\]</span> 当 <span class="math inline">\(e=(x,y)\)</span> 和 <span class="math inline">\(e'=(z,w)\)</span> 都取自原点相邻的四条边时，根据下图中的势核值代入上式即得本文开头的转移电流矩阵。</p>
+<p><img style="margin:0px auto;display:block" src="/images/electric-network/greenfunction.svg" width="350"></p>
 <p>举个例子验证一下：取 <span class="math inline">\(e_1=(0, 0)\to(1,0)\)</span>，<span class="math inline">\(e_2=(0,0)\to (0,1)\)</span>，则 <span class="math inline">\(x=z=(0,0)\)</span>，<span class="math inline">\(y=(1,0)\)</span>，<span class="math inline">\(w=(0,1)\)</span>，于是 <span class="math display">\[i^{e_1}(e_2)=\frac{a(-1,0)-a(0, 0)-a(-1,1)+a(0,1)}{4}=\frac{1}{2}-\frac{1}{\pi}.\]</span> Bingo!</p>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Lyons, Russell, and Peres, Yuval. 2016. Probability on Trees and Networks. Cambridge Series in Statistical and Probabilistic Mathematics, vol. 42.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Richard Stanley. 2013. Algebraic Combinatorics: Walks, Trees, Tableaux, and More. Undergraduate Texts in Mathematics. Springer-Verlag New York.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

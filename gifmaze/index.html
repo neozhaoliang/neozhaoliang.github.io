@@ -34,7 +34,9 @@ Requirements: tqdm for showing process bar and pil">
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -314,17 +316,17 @@ Requirements: tqdm for showing process bar and pil">
 <h1 id="examples">Examples</h1>
 <ul>
 <li><p>Wilson's uniform spanning tree algorithm (my favourite, 2349 frames, 333KB, generated in 3 seconds):</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/wilson-bfs.gif" /></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/wilson-bfs.gif"></p></li>
 <li><p>Prim's algorithm:</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/prim.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/prim.gif"></p></li>
 <li><p>Kruskal's algorithm:</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/kruskal.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/kruskal.gif"></p></li>
 <li><p>Langton's ant:</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/langton-ant.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/langton-ant.gif"></p></li>
 <li><p>Hilbert curve：</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/hilbert.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/hilbert.gif"></p></li>
 <li><p>Conway's game of life (gosper glider gun):</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/gosperglidergun.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/gosperglidergun.gif"></p></li>
 </ul>
 <h1 id="whats-special-about-this-program">What's special about this program</h1>
 <p>The code is implemented in pure Python, no third-party modules nor softwares are required, just built-in modules like <code>struct</code>, <code>random</code>, <code>colorsys</code> and some built-in functions, and without any "color" or "draw" function calls. In later versions I added some features like showing process bars (requires <code>tqdm</code>) and enabling the user to embed the animtion into a background image (requires <code>pillow</code>). The program runs much faster than expected, it can generate highly optimized gif output in only a few seconds. One drawback is that it's not quite user-friendly: the user must have some basic knowledge of the GIF89a specification to know how to set parameters correctly in the animation.</p>
@@ -335,7 +337,7 @@ Requirements: tqdm for showing process bar and pil">
 <blockquote><p><strong>Problem</strong>: Let <span class="math inline">\(G\)</span> be a finite, connected and undirected graph. How can one choose a random spanning tree among all spanning trees of <span class="math inline">\(G\)</span> from uniform probability? (we shall call such a tree an uniform spanning tree, or simply an <strong>UST</strong>.)</p>
 </blockquote>
 <p>The following image shows an UST of a 48x36 grid, the circled dot is the root vertex:</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/ust.png"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/ust.png"></p>
 <p>You might say "that's easy, just write a program that lists all spanning trees and then use a random integer to choose one". But let's consider the complete graph <span class="math inline">\(K_n\)</span> for example: <span class="math inline">\(K_n\)</span> has <span class="math inline">\(n^{n/2}\)</span> many different spanning trees by <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cayley%27s_formula">Cayley's formula</a>, for <span class="math inline">\(n=100\)</span> this number is <span class="math inline">\(100^{98}\)</span>, far more larger than the number of particles in the universe! (which is estimated about <span class="math inline">\(10^{90}\)</span>)</p>
 <p>Currently the most efficient algorithm known is the one proposed in Wilson's paper</p>
 <blockquote>
@@ -397,11 +399,11 @@ Requirements: tqdm for showing process bar and pil">
 <p>Now we explain each part in more details.</p>
 <h2 id="the-header-gif89a">The header GIF89a</h2>
 <p>In python you can write it as</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">&#x27;6s&#x27;</span>, <span class="hljs-string">b&#x27;GIF89a&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">'6s'</span>, <span class="hljs-string">b'GIF89a'</span>)<br></code></pre></td></tr></tbody></table></figure>
 <p>Why <code>b'GIF89a'</code> not simply <code>'GIF89a'</code>? This is for compatibility with Python2 and 3 since the default encoding in Python3 is unicode whereas in python2 it's ascii.</p>
 <h2 id="the-logical-screen-descriptor">The logical screen descriptor</h2>
 <p>Example:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">&#x27;&lt;2H3B&#x27;</span>, width, height, <span class="hljs-number">0b10010001</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">'&lt;2H3B'</span>, width, height, <span class="hljs-number">0b10010001</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br></code></pre></td></tr></tbody></table></figure>
 <p>Here you shoud note the format string <code>&lt;</code> (little endian).</p>
 <p>The byte <code>0b10010001</code> is called a packed field. Let's read it from left to right:</p>
 <ol type="1">
@@ -413,11 +415,11 @@ Requirements: tqdm for showing process bar and pil">
 <p>The last two bytes are of little importance and we don't discuss them here.</p>
 <h2 id="global-color-table">Global color table</h2>
 <p><strong>Example</strong>: if we want to use 4 colors red, green, blue, yellow, then the global color table can be written as</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">bytearray</span>([<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">bytearray</span>([<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>])<br></code></pre></td></tr></tbody></table></figure>
 <p>It's important that the number of colors in this array must be a power of 2 and match the size of the global color table specified in the packed byte in the logical screen descriptor, otherwise the decoder will not be able to parse the image correctly.</p>
 <h2 id="graphics-control-block">Graphics control block</h2>
 <p><strong>Example</strong>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">&quot;&lt;4BH2B&quot;</span>, <span class="hljs-number">0x21</span>, <span class="hljs-number">0xF9</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0b00000101</span>, delay, trans_index, <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">"&lt;4BH2B"</span>, <span class="hljs-number">0x21</span>, <span class="hljs-number">0xF9</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0b00000101</span>, delay, trans_index, <span class="hljs-number">0</span>)<br></code></pre></td></tr></tbody></table></figure>
 <p>The 3 beginning bytes <code>0x21, 0xF9, 4</code> are fixed and are used to inform the decoder "Hey, I'm a graphics control block, see the next 4 bytes!"</p>
 <p>The next byte <code>0b00000101</code> is also a packed field, let's read it from left to right:</p>
 <ol type="1">
@@ -426,11 +428,11 @@ Requirements: tqdm for showing process bar and pil">
 <ol type="1">
 <li><p><span class="math inline">\(x=0\)</span> means it's undefined, decoders will use default 1 instead in this case.</p></li>
 <li><p><span class="math inline">\(x=1\)</span> is the default, it means leave this frame here. So if the next frame is not overlapped with this frame then both these two frames will be displayed. Otherwise the overlapped area in this frame will be covered by the next one. See the example below:</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/disposal1.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/disposal1.gif"></p></li>
 <li><p><span class="math inline">\(x=2\)</span> means remove this frame and restore the image to background image/color, see the following example:</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/disposal2.gif"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/disposal2.gif"></p>
 <p>You can see each frame is remove immediately after it's displayed, and its region is filled with transparent background (so you are really seeing the browser's background color through the image).</p></li>
-<li><p><span class="math inline">\(x=3\)</span> also means remove this frame, but restore the image to the previous frame. <img style="margin:0px auto;display:block" src="/images/gifmaze/disposal3.gif"/></p></li>
+<li><p><span class="math inline">\(x=3\)</span> also means remove this frame, but restore the image to the previous frame. <img style="margin:0px auto;display:block" src="/images/gifmaze/disposal3.gif"></p></li>
 <li><p>4-7 are unused.</p></li>
 </ol></li>
 </ol>
@@ -438,7 +440,7 @@ Requirements: tqdm for showing process bar and pil">
 <p>The last byte <code>trans_index</code> specifies the transparent color in this frame, the pixels in this frame using this color are transparent: you can see the previous frame through them (of course only when the previous frame is still there (reserved), otherwise you are seeing the previous previous frame, ..., etc).</p>
 <h2 id="image-descriptor-block">Image descriptor block</h2>
 <p>Example:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">&#x27;&lt;B4HB&#x27;</span>, <span class="hljs-number">0x2C</span>, left, top, width, height, <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">struct.pack(<span class="hljs-string">'&lt;B4HB'</span>, <span class="hljs-number">0x2C</span>, left, top, width, height, <span class="hljs-number">0</span>)<br></code></pre></td></tr></tbody></table></figure>
 <p>Quite straight-forward to understand. Note the last byte is 0 since we do not need local color tables here.</p>
 <h2 id="the-lzw-compression-algorithm">The LZW compression algorithm</h2>
 <p>Finally we are left with the most difficult part: the LZW algorithm. It's too long to include an introduction to the algorithm here, so please refer to <a target="_blank" rel="noopener" href="http://www.matthewflickinger.com/lab/whatsinagif/lzw_image_data.asp">the second article in What's in a gif</a> for a complete treatment. But it's quite simple to implement it in Python, see the file <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/gifmaze/gifmaze/encoder.py">encoder.py</a> for an example.</p>

@@ -32,7 +32,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -327,7 +329,7 @@
             <div class="entry pink-link-context">
                 <p>周末刚完成了一个有点烧脑的 Shadertoy 项目，Escher 风格的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Aperiodic_tiling">拟周期密铺</a>，请欣赏：</p>
 <span id="more"></span>
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/wsKBW1?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/wsKBW1?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
 </iframe>
 <blockquote>
 <p>小屏的时候有锯齿现象，全屏效果更好，你可以点击窗口左上角的 "Impossible aperiodic tiling" 标题前往 Shadertoy 网站查看源代码。</p>
@@ -338,7 +340,7 @@
 <p>生成动画中菱形排列的算法非常奇妙，它来自 de Bruijn 1981 年的发现，是所谓构造拟周期密铺的网格法 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (aperiodic tiling)，而添加窗户的点缀则是受到了 Greg Egan 的 <a target="_blank" rel="noopener" href="http://gregegan.net/APPLETS/02/02.html">Javascript 动画</a>启发。我很久之前就知道 de Bruijn 的方法，并且也写过<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/aperiodic-tilings">一些代码</a>绘制这样的图案 (比如这个博客的背景图片)，但是看到 Greg Egan 的动画以后还是萌发了在 shader 里面做出一个更漂亮的 3D 效果来的想法。这个念头憋了好久，终于前几天利用晚上业余时间动手折腾了一番，捣鼓出了上面的效果，当然只是一个伪 3D 的效果。我的动画与 Greg Egan 不同的地方在于 Greg Egan 是精心选择了每一个菱形的窗户的开口方向，使得所有的房间的窗户看起来都是矛盾的；而我这里为了让窗户也能动起来只是随机选择了其开口的方向，所以只有部分房间的窗户是矛盾的。</p>
 <p>代码中窗户的绘制方法参考了 Greg Egan 的代码和注释，特别致谢。</p>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>N.G. de Bruijn. Algebraic theory of Penrose's non-periodic tilings of the plane.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>

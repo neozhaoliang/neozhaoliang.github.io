@@ -35,7 +35,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -328,16 +330,16 @@
 <p>言归正传，下面是正文。</p>
 <h1 id="具有超理想顶点的双曲蜂巢">具有超理想顶点的双曲蜂巢</h1>
 <p>下图来自 Roice Nelson <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，我先不说话，大家欣赏下，看看能不能看懂它画的是什么？</p>
-<p><img style="margin:0px auto;display:block" src="/images/limitroots/373.png" width="500"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/limitroots/373.png" width="500"></p>
 <span id="more"></span>
 <p>你可以看到图中出现了无数大小不一的 Poincaré 双曲圆盘，它们密密麻麻地铺在一个圆形区域内，但是还留下了一些空洞的部分没有被填充。这还是 Poincaré 双曲密铺吗？好像不太对哎？</p>
 <p>其实这个图仍然描述的是一个双曲密铺，只不过这个密铺位于三维双曲空间中，空间的模型是 Poincaré 单位球 <span class="math display">\[B_p = \{ (x,y,z)\in\mathbb{R}^3\, |\, x^2+y^2+z^2&lt;1\},\]</span> 密铺的类型是 Schläfli 记号 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 下的双曲蜂巢 (3, 7, 3)，图中绘制的是在球面边界上发生的景象，此景象被球极投影到了 <span class="math inline">\(z=0\)</span> 平面上。</p>
 <p>你可能要问了：球面在球极投影的结果不是应该铺满整个平面吗？怎么上图只有一个圆形区域呢？答案是，圆形区域的外部也是密铺的一部分，它对应的是基本胞腔与边界球面的无穷大交集 (Roice 的文章中叫做 <em>head</em>)，基本胞腔的所有面都染成了白色，所以虽然看起来好像投影后的区域只有一个圆形，实际不是的。</p>
 <p>下图展示的是投影之前的景象：</p>
-<p><img style="margin:0px auto;display:block" src="/images/limitroots/373-ball.png" width=500 /></p>
+<p><img style="margin:0px auto;display:block" src="/images/limitroots/373-ball.png" width="500"></p>
 <p>注意 (3, 7, 3) 这个密铺是非紧的 (non-compact)，其每个胞腔有一部分与无穷远边界相交。图中的每个空洞都来自一个对应的胞腔，特别地图中上半部分的最大的空洞属于基本胞腔。</p>
 <p>下图从另一个角度展示了这一点：</p>
-<p><img style="margin:0px auto;display:block" src="/images/limitroots/373-catacomb.png"/></p>
+<p><img style="margin:0px auto;display:block" src="/images/limitroots/373-catacomb.png"></p>
 <p>这三张图展示的是同一个密铺，仅仅角度和场景不同。在第三张图中，每一个红色的小积木对应于双曲蜂巢中的一个胞腔，你可以把胞腔理解为双曲空间中的正多面体，但是这个多面体有无穷多个顶点和无穷多个面，图中只绘制了一个近似的形状。这些胞腔看起来有大有小，但是实际上它们在双曲空间中都是完全一样的，并且每个胞腔的体积是无穷大。特别地，观察者视角所在的空间也是一个胞腔的内部！场景中一共放置了五个胞腔，每个胞腔与理想平面的交是一个体积无限大的空洞，以及一组无限多个全等的正七边形。</p>
 <p>图中每个双曲圆盘对应于密铺的一个顶点。这个顶点并不在上半空间中，甚至也不在理想平面上，实际上它位于双曲空间之外，是“虚拟的”，这样的顶点叫做<strong>超理想顶点</strong> (ultra-ideal)。由于 (3, 7, 3) 密铺的顶点配置 (vertex configure) 是 (7, 3)，所以任一顶点处有无穷多个胞腔与其相邻，这些胞腔构成一个 (7, 3) 类型的双曲密铺。圆盘中的每个正七边形是某个胞腔的“柱子”与理想平面的交，这个柱子在理想平面的另一侧汇聚到该顶点处。</p>
 <p>以上内容在 Roice 的文章中都可以找到，我强烈建议读者去看看原文，里面有非常多精彩的图片。</p>
@@ -363,14 +365,14 @@
 <p>Roice 的代码<a target="_blank" rel="noopener" href="https://github.com/roice3/Honeycombs">在这里</a>，我正在考虑未来有时间用 C++ 把这个项目的精彩部分用 Coxeter 群的有限状态机的方法实现一遍。</p>
 <h1 id="彩蛋">彩蛋</h1>
 <p>好了，本文最精彩的部分来了：我写了一个 Shadertoy 小 demo 来演示极限集的形状，请欣赏：</p>
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
 </iframe>
 <p>图中展示的是 (3, 3, 7) 的极限集。你可以使用鼠标旋转图案，或者点击窗口左上角的标题访问 Shadertoy 网站查看源码，并修改 PQR 的值来获得不同群对应的图案。(5, 4, 4) 看起来也是不错的：</p>
-<p><img style="margin:0px auto;display:block" width=600 src="/images/limitroots/544.png"/></p>
+<p><img style="margin:0px auto;display:block" width="600" src="/images/limitroots/544.png"></p>
 <p>通过调整颜色和染色函数，可以获得更多不同的图案：</p>
-<p><img style="margin:0px auto;display:block" width=600 src="/images/limitroots/4-inf-4.png"/></p>
+<p><img style="margin:0px auto;display:block" width="600" src="/images/limitroots/4-inf-4.png"></p>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1511.02851">Visualizing Hyperbolic Honeycombs</a>, Roice Nelson, Henry Segerman.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Schl%C3%A4fli_symbol">Schläfli symbol on wikipedia</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

@@ -39,7 +39,9 @@ A Martingale Approach to the Study of Occurrence of Sequence Patterns in Repeate
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -301,7 +303,7 @@ A Martingale Approach to the Study of Occurrence of Sequence Patterns in Repeate
 
 
             </div>
-            <time class="pink-link-context" datetime="2011-06-02T16:00:00.000Z"><a href="/pattern-ocurrence/">2011-06-03</a></time>
+            <time class="pink-link-context" datetime="2011-06-02T16:00:00.000Z"><a href="/pattern-occurrence/">2011-06-03</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -382,7 +384,7 @@ A Martingale Approach to the Study of Occurrence of Sequence Patterns in Repeate
 <blockquote>
 <p>假设 Bob 先选择他的序列，则不论 Bob 怎样选，Alice 总可以“针锋相对”地选一个合适的序列，使得自己的获胜概率更高。总而言之，Penney 游戏是所谓的“后发制人，先发者制于人”。</p>
 </blockquote>
-<p>这个有点类似于我们都熟悉的“剪子，石头，布”游戏。在 Penney 游戏中，各种策略循环相克，<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Penney&#39;s_game">维基百科</a>中给出了各种情形下二人的获胜概率之比。在这个例子中，Alice 的获胜概率为 7/8。</p>
+<p>这个有点类似于我们都熟悉的“剪子，石头，布”游戏。在 Penney 游戏中，各种策略循环相克，<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Penney's_game">维基百科</a>中给出了各种情形下二人的获胜概率之比。在这个例子中，Alice 的获胜概率为 7/8。</p>
 <p>Penney 游戏是非传递博弈的典型例子：策略 <span class="math inline">\(A\)</span> 优于 <span class="math inline">\(B\)</span>，<span class="math inline">\(B\)</span> 优于 <span class="math inline">\(C\)</span> 并不能推出 <span class="math inline">\(A\)</span> 优于 <span class="math inline">\(C\)</span>。</p>
 <p>在只有两个模式 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的情形，二者各自获胜的概率有一个很简单的表达式：</p>
 <blockquote><p><strong>推论</strong>：设 <span class="math inline">\(A,B\)</span> 是两个给定的序列，它们互不为对方的连续子序列，则序列 <span class="math inline">\(B\)</span> 和序列 <span class="math inline">\(A\)</span> 的获胜概率之比为 <span class="math inline">\(p_B:p_A = (A\ast A-A\ast B):(B\ast B-B\ast A)\)</span>。</p>
@@ -395,7 +397,7 @@ A Martingale Approach to the Study of Occurrence of Sequence Patterns in Repeate
 <p>看起来慢一些的模式 <code>THTH</code>，其与 <code>HTHH</code> 的胜算之比为 9 比 5，即平均每 14 场赛跑，<code>THTH</code> 会赢 9场，而貌似快一些的 <code>HTHH</code> 倒只赢 5 场。</p>
 </blockquote>
 <p>为什么会出现这种反直觉的现象呢? 其实“跑得慢”和“赢得多”并不矛盾，我们随便看一个由 <code>H</code> 和 <code>T</code> 组成的比较长一点的随机序列：</p>
-<p>HHTHT<font color=red>H</font><font color=green>H</font>THT<font color=red>H</font><font color=green>H</font>TTTHHTH<font color=green>H</font>HHTTHHTTHTTHT<font color=red>H</font><font color=green>H</font>TH<font color=green>H</font>TH<font color=green>H</font>TH<font color=green>H</font>HHTTHTTTTTTHTTHT<font color=red>H</font>TTHHTH<font color=green>H</font>HHHHTTHT<font color=red>H</font><font color=green>H</font>THT<font color=red>H</font><font color=green>H</font>TTTTTHTTHHHHHHTH<font color=green>H</font>HTTTHTTTHTTTHHHTH<font color=green>H</font>THT<font color=red>H</font>TTTHTTHTTHT<font color=red>H</font><font color=green>H</font>TH<font color=green>H</font>TTHT<font color=red>H</font><font color=green>H</font>HTTHH ...</p>
+<p>HHTHT<font color="red">H</font><font color="green">H</font>THT<font color="red">H</font><font color="green">H</font>TTTHHTH<font color="green">H</font>HHTTHHTTHTTHT<font color="red">H</font><font color="green">H</font>TH<font color="green">H</font>TH<font color="green">H</font>TH<font color="green">H</font>HHTTHTTTTTTHTTHT<font color="red">H</font>TTHHTH<font color="green">H</font>HHHHTTHT<font color="red">H</font><font color="green">H</font>THT<font color="red">H</font><font color="green">H</font>TTTTTHTTHHHHHHTH<font color="green">H</font>HTTTHTTTHTTTHHHTH<font color="green">H</font>THT<font color="red">H</font>TTTHTTHTTHT<font color="red">H</font><font color="green">H</font>TH<font color="green">H</font>TTHT<font color="red">H</font><font color="green">H</font>HTTHH ...</p>
 <p>其中分别用红色和绿色标记了模式 <code>THTH</code> 和 <code>HTHH</code> 的出现的位置。理论上由于是随机序列，所以红色的 <code>H</code> 和绿色的 <code>H</code> 的个数应该大致相等，各占序列总长度的十六分之一。但是二者出现的规律不同：任何绿色 <code>H</code> 后面连续的三个字符中绝对不会出现红色 <code>H</code>，而大约一半的红色的 <code>H</code> 后面紧跟一个绿色的 <code>H</code>。所以从一个随机序列中任选一点作为起点开始比赛，那么在红色 <code>H</code> 先撞线的比赛中，第二个撞线的绿色 <code>H</code> 往往会只落后一个身位，但是在绿色 <code>H</code> 先撞线的比赛中，红色的 <code>H</code> 至少要落后四个身位以上。总而言之，<code>THTH</code> 击败 <code>HTHH</code> 的方法就是“积小胜为大胜”，在 <code>THTH</code> 先撞线的比赛中，<code>THTH</code> 只领先 <code>HTHH</code> 很少，而 <code>HTHH</code> 先撞线的比赛中，<code>HTHH</code> 可以领先 <code>THTH</code> 很多，于是平均下来虽然 <code>THTH</code> 赢的多一些，但是平均耗时反倒长一些。</p>
 
                 
@@ -427,8 +429,8 @@ A Martingale Approach to the Study of Occurrence of Sequence Patterns in Repeate
         <div id="disqus_thread"></div>
         <script>
             var disqus_config = function() {
-                this.page.url = 'https://neozhaoliang.github.io/pattern-ocurrence/';
-                this.page.identifier = 'pattern-ocurrence/';
+                this.page.url = 'https://neozhaoliang.github.io/pattern-occurrence/';
+                this.page.identifier = 'pattern-occurrence/';
             };
             (function() {
                 var d = document,

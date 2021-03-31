@@ -37,7 +37,9 @@
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -328,7 +330,7 @@
             <div class="entry pink-link-context">
                 <p>今天的问题是群表示论在物理中的一个小应用：</p>
 <blockquote><p><strong>问题</strong>：平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于一个正三角形的三个顶点处。质点之间两两由一根弹簧相连，三个弹簧都是一样的，但是弹簧质量忽略不计。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/abc.png"/></p>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/abc.png"></p>
 <p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力。那么这个系统的简正模式 (normal mode) 是什么？</p>
 </blockquote>
 <p>这里简正模式的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
@@ -336,16 +338,16 @@
 <p>比较容易发现的简正模式有：</p>
 <ol type="1">
 <li><p>平移。初始时给所有质点以同样的速度，则它们会继续以相同的速度移动。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"></p></li>
 <li><p>旋转。初始时给所有质点以相同的切向速度，则它们会继续绕中心旋转。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"></p></li>
 <li><p>呼吸。初始时给每个质点相同的径向速度，则整个三角形会重复膨胀—收缩的过程。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"></p></li>
 </ol>
 <p>但是要找出其它的简正模式，并保证没有遗漏，就不能只靠想象了。</p>
 <p>我们首先把这个物理问题转换为一个线性代数问题，然后用一些简单的群表示论知识解决它。</p>
 <p>这个三质点—弹簧组成的系统在任一时刻的状态可以由 6 个物理量 <span class="math inline">\(q_1\sim q_6\)</span> 来刻画：<span class="math inline">\((q_1,q_2)\)</span> 分别表示质点 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(x,y\)</span> 方向上相对于其平衡位置的位移，<span class="math inline">\((q_3,q_4)\)</span>，<span class="math inline">\((q_5,q_6)\)</span> 的含义类似。</p>
-<p><img style="margin:0px auto;display:block" width="300" src="/images/mass-spring/coords.svg"/></p>
+<p><img style="margin:0px auto;display:block" width="300" src="/images/mass-spring/coords.svg"></p>
 <p>设弹簧的弹性系数为 <span class="math inline">\(k\)</span>，原点在三角形中心，<span class="math inline">\(x\)</span> 轴水平向右，于是三个弹簧所含的弹性势能为 (投影到弹簧所在的方向) <span class="math display">\[
 \begin{align*}
 V=&amp;\frac{1}{2}k(q_3-q_1)^2+\frac{1}{2}k\left[\frac{-1}{2}(q_5-q_3) + \frac{\sqrt{3}}{2}(q_6-q_4)\right]^2+\\&amp;\frac{1}{2}k\left[\frac{1}{2}(q_1-q_5) + \frac{\sqrt{3}}{2}(q_2-q_6)\right]^2.
@@ -411,14 +413,14 @@ V=&amp;\frac{1}{2}k(q_3-q_1)^2+\frac{1}{2}k\left[\frac{-1}{2}(q_5-q_3) + \frac{\
 <p><span class="math inline">\(S_3\)</span> 在系统状态空间 <span class="math inline">\(\mathbb{R}^6=\mathbb{R}^3\otimes\mathbb{R}^2\)</span> 上的表示 <span class="math inline">\(\rho\)</span> 可以分解为平凡表示、符号表示和二维不可约表示的二重和，其中</p>
 <ol type="1">
 <li><p><span class="math inline">\(S_3\)</span> 的平凡表示对应的简正模式是呼吸，其频率为 <span class="math inline">\(\omega=\sqrt{\dfrac{3k}{m}}\)</span>：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"></p></li>
 <li><p><span class="math inline">\(S_3\)</span> 的符号表示对应的简正模式是旋转，这是一个刚体运动，其频率 <span class="math inline">\(\omega=0\)</span>：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"/></p></li>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"></p></li>
 <li><p>第一个二维不可约表示包含了两种简正模式，它们是沿着 <span class="math inline">\(x\)</span> 方向和 <span class="math inline">\(y\)</span> 方向的平移：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"/></p>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"></p>
 <p>这两种都是刚体运动，其频率 <span class="math inline">\(\omega=0\)</span>。</p></li>
 <li><p>第二个二维不可约表示也包含了两种简正模式，它们分别是两个不同方向上的“鼓掌”：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/clap.gif"/></p>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/clap.gif"></p>
 <p>另一种可以由上面的旋转 <span class="math inline">\(2\pi/3\)</span> 后得到。这两个简正模式的频率都是 <span class="math inline">\(\omega=\sqrt{\dfrac{3k}{2m}}\)</span>。</p></li>
 </ol>
 <p>至此我们就求出了系统的全部简正模式。</p>
@@ -433,7 +435,7 @@ V=&amp;\frac{1}{2}k(q_3-q_1)^2+\frac{1}{2}k\left[\frac{-1}{2}(q_5-q_3) + \frac{\
 
 
 <p class="pink-link-context">
-    <a href="/pattern-ocurrence/" rel="next" title="模式的等待时间与反直觉概率">
+    <a href="/pattern-occurrence/" rel="next" title="模式的等待时间与反直觉概率">
     下一篇：模式的等待时间与反直觉概率
   </a>
 </p>

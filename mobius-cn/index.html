@@ -47,7 +47,9 @@ Visual complex analysis, Tristan Needham.
         <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -434,7 +436,7 @@ Visual complex analysis, Tristan Needham.
 <p>斜航这个词听起来好像和船的航行有关，怎么就用来给 Möbius 变换分类了呢？这里面肯定有故事，值得扒一扒。</p>
 <p>斜航线 (loxodrome) 指的是地球上的一条航行路径，其在每个点处的切线与过该点的经线的夹角为定值。比如说，如果船始终朝着东北方向 30 度行驶，走过的轨迹就是一条斜航线。Loxodrome 最初是一个希腊词，loxos 的意思是 oblique，即倾斜的，dromos 意为 bearing，方位的意思，后来拉丁化以后成为现在的样子。葡萄牙数学家 Pedro Nunes (1492-1577) 第一个认识到斜航线并非两点之间最短路径，而且它无限接近但永不可能到达极点。</p>
 <p>在大航海的时代，没有卫星导航，只能靠罗盘或者星座来标识船的航向，而星座的方法在遇到恶劣天气的时候又不能使用，只有罗盘是最可靠的方法。理论上地球表面两点之间的最短路径是过球心的大圆，但罗盘只能定出经线的方向 (原理是地球的磁极和南北极近似重合)，这二者的夹角不是固定的，要保持沿着大圆的弧走就必须不停调整船的航向，但现实中的船不可能一直有人守在船舵处调整方向，一般是事先定好航向以后接下来的若干天都沿着这个方向走，所以在一定路程内船实际上走的是斜航线。</p>
-<p>荷兰地图学家墨卡托 (Mercator) 据此于 1569 年提出了墨卡托地图，将地球投影至墨卡托地图是一个保角变换，即曲线的夹角保持不变。所以要从地球上的 <span class="math inline">\(A\)</span> 点航向到 <span class="math inline">\(B\)</span> 点，只要找到它们在墨卡托地图上的对应点 <span class="math inline">\(A&#39;,B&#39;\)</span>，算出地图上的直线 <span class="math inline">\(A&#39;B&#39;\)</span> 与经线的夹角 <span class="math inline">\(\theta\)</span>，则航行时只要让罗盘与经线一直保持角度为 <span class="math inline">\(\theta\)</span> 就可以从 <span class="math inline">\(A\)</span> 航行到 <span class="math inline">\(B\)</span> 了。这个路径虽不是最短，但是好在不容易迷失航向。</p>
+<p>荷兰地图学家墨卡托 (Mercator) 据此于 1569 年提出了墨卡托地图，将地球投影至墨卡托地图是一个保角变换，即曲线的夹角保持不变。所以要从地球上的 <span class="math inline">\(A\)</span> 点航向到 <span class="math inline">\(B\)</span> 点，只要找到它们在墨卡托地图上的对应点 <span class="math inline">\(A',B'\)</span>，算出地图上的直线 <span class="math inline">\(A'B'\)</span> 与经线的夹角 <span class="math inline">\(\theta\)</span>，则航行时只要让罗盘与经线一直保持角度为 <span class="math inline">\(\theta\)</span> 就可以从 <span class="math inline">\(A\)</span> 航行到 <span class="math inline">\(B\)</span> 了。这个路径虽不是最短，但是好在不容易迷失航向。</p>
 <p>那这和 Möbius 变换有什么关系呢？</p>
 <h1 id="möbius-变换在-riemann-球面上的作用">Möbius 变换在 Riemann 球面上的作用</h1>
 <p>由于 Möbius 变换都是扩充复平面 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 到 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 的自同构，而 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 在球极投影下等同于 Riemann 球面 <span class="math inline">\(S^2\)</span>，所以 Möbius 变换也都是 Riemann 球面的自同构。我们来看看 Möbius 变换作用在 Riemann 球面上是什么样子的。</p>
