@@ -1,6 +1,6 @@
 settings.tex = "xelatex";
 settings.outformat = "eps";
-//usepackage("mathpazo");
+usepackage("courier");
 string outname = "diagram-4-3";
 
 real u = 2cm;
@@ -16,8 +16,8 @@ filldraw(circle(A, radius), yellow);
 filldraw(circle(B, radius), yellow);
 filldraw(circle(C, radius), yellow);
 
-label("$5$", (A + C) / 2 + 0.12u*N, p=fontsize(9pt));
-label("$5/2$", (B + C) / 2 + 0.12u*N, p=fontsize(9pt));
+label("${\bf 5}$", (A + C) / 2 + 0.14u*N, p=fontsize(11pt));
+label("${\bf 5/2}$", (B + C) / 2 + 0.12u*N, p=fontsize(9pt));
 
 shipout(
     outname,
