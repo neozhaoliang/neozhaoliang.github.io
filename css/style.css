@@ -505,12 +505,17 @@ article .card-content .entry h3,
 article .card-content .entry h4,
 article .card-content .entry h5,
 article .card-content .entry h6 {
-  margin-top: 0;
-  margin-bottom: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 article .card-content .entry h1 {
   font-size: 1.6em;
-  color: #333;
+  color: #a52a2a;
+  border-color: #333;
+  border-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  padding: 15px 0;
 }
 article .card-content .entry h2 {
   font-size: 1.4em;
