@@ -339,10 +339,10 @@
 <p>我们之前说过，Wedderburn 的想法第一步是仿照 Lie 代数的情形找出环 <span class="math inline">\(R\)</span> 的根 <span class="math inline">\(\mathrm{Rad}(R)\)</span> 来，它必须是一个双边理想，使得商环 <span class="math inline">\(R/\mathrm{Rad}(R)\)</span> 是半单的。现代一些的教材通常用完全可约或者 Jacobson 根来定义半单性，后两种对一般的环都可以定义，这里采用的仍然是 Wedderburn 的定义，这三者在 Artinian 环的情形是一致的。</p>
 <blockquote><p><strong>定义</strong>：我们称 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(I\)</span> 是幂零的，如果存在正整数 <span class="math inline">\(n\)</span> 使得 <span class="math inline">\(I^n=0\)</span>。</p>
 </blockquote>
-<p>显然理想幂零自动蕴含其元素是幂零的：对任何 <span class="math inline">\(x\in I\)</span> 有 <span class="math inline">\(x^n=0\)</span>。</p>
-<p>Wedderburn 的想法是将 <span class="math inline">\(\mathrm{Rad}(R)\)</span> 定义为其“极大幂零理想”，即它本身是幂零的，而且它包含 <span class="math inline">\(R\)</span> 的所有幂零左理想。最自然的想法就是把 <span class="math inline">\(\mathrm{Rad}(R)\)</span> 定义为 <span class="math inline">\(R\)</span> 的所有幂零左理想的和，不过这样做有两个问题需要解决：</p>
+<p>显然左理想幂零自动蕴含其元素是幂零的：对任何 <span class="math inline">\(x\in I\)</span> 有 <span class="math inline">\(x^n=0\)</span>。</p>
+<p>Wedderburn 的想法是将 <span class="math inline">\(\mathrm{Rad}(R)\)</span> 定义为其“极大幂零理想”，即它本身是一个<strong>双边理想</strong>，并且是幂零的，而且包含 <span class="math inline">\(R\)</span> 的所有幂零<strong>左理想</strong>。最自然的想法就是把 <span class="math inline">\(\mathrm{Rad}(R)\)</span> 定义为 <span class="math inline">\(R\)</span> 的所有幂零左理想的和，不过这样做有两个问题需要解决：</p>
 <ol type="1">
-<li><p>不难证明两个幂零左理想 <span class="math inline">\(I,J\)</span> 的和 <span class="math inline">\(I+J\)</span> 仍然是幂零的，从而有限多个幂零左理想的和仍然是幂零的，但是如果 <span class="math inline">\(R\)</span> 包含无穷多个幂零左理想呢？它们的和还是幂零的吗？</p></li>
+<li><p>不难证明两个幂零左理想 <span class="math inline">\(I,J\)</span> 的和 <span class="math inline">\(I+J\)</span> 仍然是幂零的，从而有限多个幂零左理想的和仍然是幂零的，但是如果 <span class="math inline">\(R\)</span> 包含无穷多个幂零左理想呢？它们的和还是幂零左理想吗？</p></li>
 <li><p>所有幂零左理想的和一定是双边理想吗？</p></li>
 </ol>
 <p>这两个问题都可以用一个引理来解决，这个引理的证明颇有一点技巧性：</p>
