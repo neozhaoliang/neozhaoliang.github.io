@@ -14,7 +14,34 @@
 
 
 
-2021/01/01 更新：2021 年的第一天，有人在 Shadertoy 上放了一个精彩的动画，演示多米诺洗牌算法的步骤">
+2021/01/01 更新：2021 年的第一天，有人在 Shadertoy 上放了一个精彩的动画，演示多米诺洗牌算法的步骤：
+
+
+
+Aigner 和 Ziegler 所著的《Proofs from the book》一书 (中文译版《数学天书中的证明》) 是一本非常精彩的数学读物，其中包含了 40 余个著名的数学问题和它们的巧妙解答。这些问题并不深奥，但也绝非没有受过严格数学训练的人所能欣赏，其中往往包含了相当的洞察力和聪明才智，读起来让人神清气爽，大叹数学之妙。
+然而读完这本书的人恐怕都会有意犹未尽的感觉：这就没啦？我还没看够呢！
+有一个问题我想是非常适合放在这本书里的，我也非常期待能在未来的版本中看到它，这就是 Aztec 钻石图的多米诺铺砌的计数问题。这个问题完美符合该书选题的标准：
+
+表述初等，不需要太多的背景知识就能能理解。
+内涵丰富。Aztec 钻石图是当前代数组合学中一个热点问题，它与交错符号矩阵、表示论、概率论、统计力学都有着深刻而奇妙的联系，有许多悬而未决的问题有待解决。
+有多种令人拍案叫绝的解答，每个解答都不平凡，要么需要深刻的数学知识，要么需要开很大的脑洞。
+
+我来介绍一下这个问题：
+依次把 \(2,4,\ldots,2n\) 个单位正方形对称地摞在一起，放在 \(x\) 轴上方，然后关于 \(x\) 轴对称地反射过去，得到的图形叫做 \(n\) 阶的 Aztec 钻石图，记作 \(\mathrm{AZ}_n\)。下图显示的是 \(\mathrm{AZ}_{10}\) 的例子：
+
+用 1x2 的多米诺骨牌不重叠不遗漏地盖住这些方格，我们就得到了 Aztec 钻石图的一个多米诺骨牌铺砌。下图显示的是 \(\mathrm{AZ}_{10}\) 的一种可能的铺砌：
+
+你可以看到图中出现了四种不同颜色的骨牌，为什么这样染色后面会解释。
+我们的问题是:
+问题 1：\({\rm AZ}_n\) 总共有多少种不同的多米诺骨牌铺砌？
+
+这里不考虑铺砌的对称性，比如全部用水平的骨牌铺砌和全部用竖直的骨牌铺砌是两种不同的铺砌。
+问题 2：如何在 \({\rm AZ}_n\) 的所有铺砌中等概率地随机任选一种？
+
+第一个问题的答案是 \(2^{n(n+1)/2}\)，这个表达式很简洁，这暗示这个问题也应该有一个简洁的解答。(确实如此)
+第二个问题的答案叫做多米诺洗牌算法，正是本文要介绍的。
+Aztec 钻石图多米诺铺砌的计数问题最早由 Elkies、Kuperberg、Propp 和 Larson 在 1992 年的论文 Alternating sign matrices and domino tilings 中进行了深入的研究，在这篇文章中他们一共给出了 4 种不同的解答。时至今日人们发现的解法已经超过一打，不幸的是没有一种可以算是“简单的”，但其中最精彩的仍然要数 Elkies 等人论文中的第四个解法：多米诺洗牌算法。后来 Propp 在另一篇文章 Generalized domino-shuffling 中用图变换的方式重新表述了这个算法，并同时解决了在给定边的权重情况下对铺砌随机取样的问题。本文就来介绍 Propp 的结果。
+本文的程序代码放在 github 上。部分插图绘制使用了 Casselman 的 piscript 包。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -202,7 +229,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">1 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -359,6 +386,7 @@
 <p>第二个问题的答案叫做多米诺洗牌算法，正是本文要介绍的。</p>
 <p>Aztec 钻石图多米诺铺砌的计数问题最早由 Elkies、Kuperberg、Propp 和 Larson 在 1992 年的论文 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/math/9201305">Alternating sign matrices and domino tilings</a> 中进行了深入的研究，在这篇文章中他们一共给出了 4 种不同的解答。时至今日人们发现的解法已经超过一打，不幸的是没有一种可以算是“简单的”，但其中最精彩的仍然要数 Elkies 等人论文中的第四个解法：多米诺洗牌算法。后来 Propp 在另一篇文章 <a target="_blank" rel="noopener" href="http://arxiv.org/abs/math/0111034">Generalized domino-shuffling</a> 中用图变换的方式重新表述了这个算法，并同时解决了在给定边的权重情况下对铺砌随机取样的问题。本文就来介绍 Propp 的结果。</p>
 <p>本文的程序代码放在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland">github</a> 上。部分插图绘制使用了 <a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/piscript/">Casselman 的 piscript 包</a>。</p>
+<span id="more"></span>
 <h1 id="什么是多米诺洗牌算法">什么是多米诺洗牌算法</h1>
 <p>理解多米诺洗牌算法的关键是理解多米诺骨牌的定向。</p>
 <p>把 <span class="math inline">\(\mathbb{Z}^2\)</span> 看做一张无穷大的国际象棋棋盘，每个方格染成黑白两色之一，相邻方格的颜色是不同的，于是任何 1x2 的骨牌都恰好覆盖一个黑方格和一个白方格。</p>
