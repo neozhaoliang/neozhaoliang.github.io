@@ -1,0 +1,1101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Coxeter groups, automata and uniform tilings | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="This program can draw 2d and 3d uniform tilings in Euclidean, spherical and hyperbolic spaces by treating them in an uniform approach: word processing">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Coxeter groups, automata and uniform tilings"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/组合数学/">
+                    组合数学 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机完美取样/">
+                    随机完美取样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Coxeter groups, automata and uniform tilings</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2019-12-18T16:00:00.000Z"><a href="/uniform-tilings/index.html">2019-12-19</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#examples"><span class="section table-of-contents-text">Examples</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#wythoff-construction"><span class="section table-of-contents-text">Wythoff construction</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#example-omnitruncated-7-2-3-tiling"><span class="section table-of-contents-text">Example: omnitruncated (7, 2, 3) tiling</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#about-the-code"><span class="section table-of-contents-text">About the code</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#more-explainations-on-the-math-stuff"><span class="section table-of-contents-text">More explainations on the math stuff</span></a></li></ol>
+</div>
+
+            
+            <div class="entry pink-link-context">
+                <p>This program can draw 2d and 3d uniform tilings in Euclidean, spherical and hyperbolic spaces by treating them in an uniform approach: word processing in Coxeter groups. The code is on <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/uniform-tilings">github</a>.</p>
+<p>I learned most of the math stuff from <a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/">Casselman</a>'s essays, he's Java implementation (unpublished) of the minimal roots algorithm was also very helpful.</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li><p>Below is the 2d Euclidean tiling omnitruncated (4, 2, 4):</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-4-2-4.png" width="600"></p></li>
+<li><p>Below is the 2d hyperbolic tiling regular (2, 3, 13) in Poincaré's disk model:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/2-3-13.png" width="500"></p></li>
+<li><p>Below is the 2d hyperbolic tiling omnitruncated (4, 3, 3) in upper half plane model:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/uhp-4-3-3.png" width="600"></p></li>
+<li><p>Below is the 3d hyperbolic tiling regular (3, 5, 3) in Poincaré's ball model:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/3-5-3.png" width="600"></p></li>
+<li><p>Below is the 3d hyperbolic tiling regular (5, 3, 5) in Poincaré's ball model:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/5-3-5.png" width="600"></p></li>
+<li><p>Below is the 3d hyperbolic tiling regular (5, 3, 4) in Poincaré's ball model:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/5-3-4.png" width="600"></p></li>
+<li><p>Below is the 3d hyperbolic tiling regular (4, 3, 5) in Poincaré's ball model:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/4-3-5.png" width="600"></p></li>
+<li><p>The above four regular tilings are the only regular ones with compact cells. If we drop the restriction on compactness and requires the cells must have finite volume, then we have ten more regular tilings, with each has a Euclidean vertex configure. For example (6, 3, 3)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/6-3-3.png" width="600"></p>
+<p>You can see the cells have ideal vertices, i.e. vertices at the infinity. These tilings are called "paracompact".</p></li>
+<li><p>If we drop the restriction on being "regular" then we have lots more examples, like rectified (3, 5, 3) and rectified (5, 3, 4)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/rectified-3-5-3.png" width="600"></p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/rectified-5-3-4.png" width="600"></p>
+<p>and the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_honeycombs_in_hyperbolic_space#%5B5,31,1%5D_family">cantic order-5 cubic</a> tiling from the [5, 3<sup>1,1</sup>] family:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/cantic-order-5-cubic.png" width="600"></p></li>
+<li><p>Below is a 2d spherical tiling rendered in 3d:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-5-2-3.png" width="500"></p></li>
+<li><p>Finally a shader program exported from Matt Zucker's excellent work on <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tsSzM">shadertoy</a>:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/wythoff_shader.png" width="800"></p></li>
+</ul>
+<p>For 2d tilings the program computes the coordinates of each vertex, the indices of each edge/face and then export the data to svg/POV-Ray for rendering. For 3d hyperbolic tilings the program only computes the coordinates of the cells and exports the data of the edges to POV-Ray (because it's too slow to compute all exact information in this case). It usually takes ten minutes to generate 1.5M edges in Python and two hours to render a scene as above on a machine with 16G memory. I usually run the Python part on a machine in my office after work, start the rendering process before I go home and check the result the next morning.</p>
+<h1 id="wythoff-construction">Wythoff construction</h1>
+<p>All these tilings can be generated via Wythoff construction. The principal of this construction is the same as how a kaleidoscope works, as illustrated in the video below. We align some reflection mirrors in the space where the dihedral angles between them are carefully chosen, then choose an initial point in the space and iteratively compute the virtual images of this point in the mirrors, the virtual images of virtual images, ..., and so on. The resulting kaleidoscopic pattern is exactly the tiling we want.</p>
+<video src="/images/coxeter/wythoff.mp4" width="600" controls="">
+</video>
+<p>The key step in building the tiling is to efficiently compute the set of virtual images and extract edge/face information between them. This is where this program differs with most of other open-source tiling-generation programs: most of the computations are done in a symbolic computational manner using only integer arithmetics: it knows all exact information required to construct the tiling like how many vertices are there, how these vertices are transformed from the initial point, which pairs of them form the edges, ..., etc, without knowing the coordinates of any vertex!</p>
+<p>Sounds interesting? I'll give an example to illustrate the procedure.</p>
+<h1 id="example-omnitruncated-7-2-3-tiling">Example: omnitruncated (7, 2, 3) tiling</h1>
+<p>The Coxeter-Dynkin diagram for the omnitruncated (7, 2, 3) tiling is:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/coxeter723.svg" width="250"></p>
+<p>This is a hyperbolic tiling, its symmetry group <span class="math inline">\(G\)</span> is the Coxeter group determined by Coxeter matrix</p>
+<p><span class="math display">\[M=\begin{pmatrix} 1 &amp; 7 &amp; 2 \\ 7 &amp;1 &amp;3\\ 2 &amp; 3 &amp;1\end{pmatrix}\]</span></p>
+<p>and has presentation</p>
+<p><span class="math display">\[G = \langle s_0,s_1, s_2\ |\ s_0^2=s_1^2=s_2^2=(s_0s_1)^7=(s_1s_2)^3=(s_0s_2)^2=1\rangle.\]</span></p>
+<p>The initial vertex <span class="math inline">\(v_0\)</span> is not on any of the three mirrors, so its stabilizing subgroup is <span class="math inline">\(\langle 1\rangle\)</span>, by <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Group_action_(mathematics)#Orbit-stabilizer_theorem">orbit-stabilizer theorem</a> each element <span class="math inline">\(g\)</span> of <span class="math inline">\(G\)</span> maps <span class="math inline">\(v_0\)</span> to a distinct vertex in the tiling.</p>
+<p>We know that <span class="math inline">\(g\)</span> can be represented as a word in the generators <span class="math inline">\(\{s_0,s_1,s_2\}\)</span> and such a representation is not unique. For example from the relations given above we can easily verify that <span class="math inline">\(s_0s_2=s_2s_0\)</span>, <span class="math inline">\(s_1s_2s_1=s_2s_1s_2\)</span>, etc. We can choose a well-defined "normal form" for <span class="math inline">\(g\)</span> by firstly defining the alphabetical order of <span class="math inline">\(s_0,s_1,s_2\)</span> as <span class="math inline">\(s_0&lt;s_1&lt;s_2\)</span> and then extend this ordering to the set of all words:</p>
+<blockquote><p><strong>Shortlex ordering</strong>: Let <span class="math inline">\(w_1=s_{i_1}s_{i_2}\cdots s_{i_n}\)</span> and <span class="math inline">\(w_2=s_{j_1}s_{j_2}\cdots s_{j_m}\)</span> be two different words, their ordering is determined as follows:</p>
+<ol type="1">
+<li>Compare their lengths first. If <span class="math inline">\(n&lt;m\)</span> then <span class="math inline">\(w_1&lt;w_2\)</span>, if <span class="math inline">\(n&gt;m\)</span> then <span class="math inline">\(w_1&gt;w_2\)</span>.</li>
+<li>Else <span class="math inline">\(n=m\)</span> and we compare them element-wise from left to right: let <span class="math inline">\(k\)</span> be the smallest index such that for all <span class="math inline">\(l&lt;k\)</span> it holds <span class="math inline">\(s_{i_l}=s_{j_l}\)</span> and <span class="math inline">\(s_{i_k}\ne s_{j_k}\)</span>, the ordering of <span class="math inline">\(w_1,w_2\)</span> is the same with the ordering of <span class="math inline">\(s_{i_k},s_{j_k}\)</span>.</li>
+</ol>
+</blockquote>
+<p>Since shortlex ordering is a total ordering on the set of all words, each <span class="math inline">\(g\in G\)</span> has an unique normal form in this ordering. We define the length of any <span class="math inline">\(g\in G\)</span> to be the length of its normal form and define the ordering of any two group elements <span class="math inline">\(g,g'\)</span> to be the samw with the shortlex ordering of their normal forms.</p>
+<p>Let <span class="math inline">\(\mathcal{SL}(G)\)</span> be the set of normal forms for all <span class="math inline">\(g\in G\)</span>, all the 37 elements in <span class="math inline">\(\mathcal{SL}(G)\)</span> with length &lt;= 5 are listed below (row first):</p>
+<p><span class="math display">\[
+\begin{array}{lllll}e&amp;s_{0}&amp;s_{1}&amp;s_{2}&amp;s_{0}s_{1}\\s_{0}s_{2}&amp;s_{1}s_{0}&amp;s_{1}s_{2}&amp;s_{2}s_{1}&amp;s_{0}s_{1}s_{0}\\s_{0}s_{1}s_{2}&amp;s_{0}s_{2}s_{1}&amp;s_{1}s_{0}s_{1}&amp;s_{1}s_{0}s_{2}&amp;s_{1}s_{2}s_{1}\\s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{1}&amp;s_{0}s_{1}s_{0}s_{2}&amp;s_{0}s_{1}s_{2}s_{1}&amp;s_{0}s_{2}s_{1}s_{0}\\s_{1}s_{0}s_{1}s_{0}&amp;s_{1}s_{0}s_{1}s_{2}&amp;s_{1}s_{0}s_{2}s_{1}&amp;s_{1}s_{2}s_{1}s_{0}&amp;s_{2}s_{1}s_{0}s_{1}\\s_{0}s_{1}s_{0}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{1}s_{2}&amp;s_{0}s_{1}s_{0}s_{2}s_{1}&amp;s_{0}s_{1}s_{2}s_{1}s_{0}&amp;s_{0}s_{2}s_{1}s_{0}s_{1}\\s_{1}s_{0}s_{1}s_{0}s_{1}&amp;s_{1}s_{0}s_{1}s_{0}s_{2}&amp;s_{1}s_{0}s_{1}s_{2}s_{1}&amp;s_{1}s_{0}s_{2}s_{1}s_{0}&amp;s_{1}s_{2}s_{1}s_{0}s_{1}\\s_{2}s_{1}s_{0}s_{1}s_{0}&amp;s_{2}s_{1}s_{0}s_{1}s_{2}&amp;\end{array}
+\]</span></p>
+<p>Note the number of all words in <span class="math inline">\(s_0,s_1,s_2\)</span> with length less or equal than five is <span class="math inline">\(1+3+\cdots+3^5=364\)</span>, the list above tells us that they indeed contain only 37 different ones, the remaining 364 - 37 = 327 ones are duplicates. A further computation shows that the number of all words with length no more than six is 1093 but they contain only 53 different ones. So we can gain a great improvement in efficiency if we only use words in <span class="math inline">\(\mathcal{SL}(G)\)</span> instead of traversing all possible combinations of the generators.</p>
+<p>How can we generate those words that are precisely in <span class="math inline">\(\mathcal{SL}(G)\)</span>? This leads us to a very important theorem on Coxeter groups:</p>
+<blockquote><p><strong>Theorem [Brigitte Brink &amp; Robert B. Howlett, 1993]</strong>: If <span class="math inline">\(G\)</span> is a finitely generated Coxeter group then <span class="math inline">\(\mathcal{SL}(G)\)</span> is a regular language.</p>
+</blockquote>
+<p>The term "regular language" comes from computer science, a basic fact about a regular language over a finite alphabetical set is that this language can always be recognized by a definite finite automaton (DFA), such DFA may not be unique but there is a "minimal one" with the least number of states and this minimal one is unique if we don't distinct relabellings of the states.</p>
+<p>Below is the automaton recognizes <span class="math inline">\(\mathcal{SL}(G)\)</span> for the (7, 2, 3) group:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/dfa_723.svg" width="600"></p>
+<p>You can see there are 19 nodes (i.e. states) in the automaton. The labels of the states are irrevalent because renumbering the states of an automaton does not change the language it recognizes.</p>
+<p>The red node is the initial state.</p>
+<p>The directed edges in the graph tell us the transition rule between the states. The edges are labelled by the generators of the group, i.e. <span class="math inline">\(i\)</span> for <span class="math inline">\(s_i\)</span>. If we start from the initial state and keep on moving to a next state along an edge up to a finite number of steps, then the path we travelled gives a word in <span class="math inline">\(\mathcal{SL}(G)\)</span>. All words in <span class="math inline">\(\mathcal{SL}(G)\)</span> can be generated in this way.</p>
+<blockquote><p><strong>Example</strong>:</p>
+<ol type="1">
+<li>The only path of length 0 correspondes to the identidy 1.</li>
+<li>The three paths of length 1 <span class="math inline">\(0\xrightarrow{\ s_0\ }1\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\)</span>, <span class="math inline">\(0\xrightarrow{\ s_2\ }8\)</span> corresponde to the three generators <span class="math inline">\(s_0,s_1,s_2\)</span> in <span class="math inline">\(\mathcal{SL}(G)\)</span>.</li>
+<li>The five paths <span class="math inline">\(0\xrightarrow{\ s_0\ }1\xrightarrow{\ s_1\ }2\)</span>, <span class="math inline">\(0\xrightarrow{\ s_0\ }1\xrightarrow{\ s_2\ }8\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_0\ }3\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_2\ }8\)</span>, <span class="math inline">\(0\xrightarrow{\ s_2\ }8\xrightarrow{\ s_1\ }9\)</span> corresponde to the five elements of length 2 in <span class="math inline">\(\mathcal{SL}(G)\)</span>: <span class="math inline">\(s_0s_1,s_0s_2,s_1s_0,s_1s_2,s_2s_1\)</span>.</li>
+</ol>
+</blockquote>
+<p>Using breadth-first search we can easily generate all words in <span class="math inline">\(\mathcal{SL}(G)\)</span> up to any given depth.</p>
+<p>Note for an infinite Coxeter group the automaton must have cycles, but for a finite Coxeter group the automaton must be a directed tree, for example the symmetry group <span class="math inline">\(S_4\)</span> of tetrahedron:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/tetrahedron.svg" width="600"></p>
+<p>The 24 different paths corresponde to the 24 group elements of <span class="math inline">\(S_4\)</span>:</p>
+<p><span class="math display">\[
+\begin{array}{llll}e&amp;s_{0}&amp;s_{1}&amp;s_{2}\\s_{0}s_{1}&amp;s_{0}s_{2}&amp;s_{1}s_{0}&amp;s_{1}s_{2}\\s_{2}s_{1}&amp;s_{0}s_{1}s_{0}&amp;s_{0}s_{1}s_{2}&amp;s_{0}s_{2}s_{1}\\s_{1}s_{0}s_{2}&amp;s_{1}s_{2}s_{1}&amp;s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{2}\\s_{0}s_{1}s_{2}s_{1}&amp;s_{0}s_{2}s_{1}s_{0}&amp;s_{1}s_{0}s_{2}s_{1}&amp;s_{1}s_{2}s_{1}s_{0}\\s_{0}s_{1}s_{0}s_{2}s_{1}&amp;s_{0}s_{1}s_{2}s_{1}s_{0}&amp;s_{1}s_{0}s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{2}s_{1}s_{0}\end{array}
+\]</span></p>
+<p>Now the big question:</p>
+<blockquote><p><strong>Question 1</strong>: How to compute <span class="math inline">\(\mathcal{SL}(G)\)</span>?</p>
+</blockquote>
+<p>The answer to this question is too complicated to be covered in this article, a simple sketch of the main thread is appended at the end. When I was developing this program I mainly referred to Casselman's notes <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and the textbook by Humphreys <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. These should be enough for a reader with a solid background in undergradute abstract algebra.</p>
+<p>Once we have the normal forms of the group elements, we can easily use them to map the initial vertex <span class="math inline">\(v_0\)</span> to other vertices in the tiling:</p>
+<p>Let <span class="math inline">\(w=s_{i_0}s_{i_1}\cdots s_{i_n}\)</span>, we adopt the convention that the action of <span class="math inline">\(w\)</span> on <span class="math inline">\(v_0\)</span> is to successively apply each generator in <span class="math inline">\(w\)</span> from right to left: <span class="math display">\[w\cdot v_0 = s_{i_0}(s_{i_1}(\cdots s_{i_n}(v_0)).\]</span> Since <span class="math inline">\(G\)</span> is infinite we can only generate words up to a given depth. Suppose we have the 37 words listed above stored in a list <span class="math inline">\(L\)</span>, they map <span class="math inline">\(v_0\)</span> to 37 different vertices in the tiling. To draw the edges between them we need to compute which of them are adjacent. How can we do this?</p>
+<p>Firstly we need a multiplicaiton table <span class="math inline">\(T\)</span> for the words in <span class="math inline">\(L\)</span>. <span class="math inline">\(T\)</span> is a 2d array with its <span class="math inline">\(i\)</span>-th row correspondes to the <span class="math inline">\(i\)</span>-th word <span class="math inline">\(w_i\)</span> in <span class="math inline">\(L\)</span> and its <span class="math inline">\(j\)</span>-th column correspondes to the <span class="math inline">\(j\)</span>-th generator <span class="math inline">\(s_j\)</span>. The entry <span class="math inline">\(T[i][j]\)</span> records the index of <span class="math inline">\(s_jw_j\)</span> in <span class="math inline">\(L\)</span> (note this multiplication may not be a normal form). If <span class="math inline">\(s_jw_i\)</span> does not exist in <span class="math inline">\(L\)</span> we simply return <code>None</code>. The usage of <span class="math inline">\(T\)</span> is, for any given word <span class="math inline">\(w\)</span>, we can quickly find the index of <span class="math inline">\(w\)</span> in <span class="math inline">\(L\)</span> by using <span class="math inline">\(T\)</span> as a lookup table.</p>
+<p>In our example <span class="math inline">\(T\)</span> is listed below, the words in <span class="math inline">\(L\)</span> are put into the second column:</p>
+<details>
+<summary>
+<font color="#D00"><strong>Click to expand <span class="math inline">\(T\)</span></strong></font>
+</summary>
+<div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">V</th>
+<th style="text-align: center;">word</th>
+<th style="text-align: center;"><span class="math inline">\(s_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(e\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">29</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">17</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">22</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">23</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">24</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">26</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">27</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">28</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">29</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">30</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">31</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">32</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">33</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">34</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">36</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<p>Hence for any word <span class="math inline">\(w=s_{i_0}s_{i_1}\cdots s_{i_n}\)</span>, we can start from the first row of <span class="math inline">\(T\)</span>, find the index of <span class="math inline">\(s_{i_n}\)</span> in <span class="math inline">\(L\)</span>, say <span class="math inline">\(k\)</span>, then jump to the <span class="math inline">\(k\)</span>-th row and find the index of <span class="math inline">\(s_{i_{n-1}}s_{i_n}\)</span> in <span class="math inline">\(L\)</span>, ..., and finally get the index of <span class="math inline">\(w\)</span> (or <code>None</code>).</p>
+<p>Suppose the reflection of the initial vertex <span class="math inline">\(v_0\)</span> about the <span class="math inline">\(i\)</span>-th mirror gives a virtual image <span class="math inline">\(v_1=s_i(v_0)\)</span>, then <span class="math inline">\(e=(v_0,v_1)\)</span> is an edge of type <span class="math inline">\(i\)</span>. By the orbit-stabilizer theorem all edges of type <span class="math inline">\(i\)</span> can be obtained by applying the coset representatives in <span class="math inline">\(G/H\)</span> to <span class="math inline">\(e\)</span>, where <span class="math inline">\(H=\langle i\rangle\)</span> is the stabilizing subgroup of <span class="math inline">\(e\)</span> (<span class="math inline">\(H\)</span> is called a standard parabolic subgroup). It's easy to see the words of the two ends of <span class="math inline">\(e\)</span> are <span class="math inline">\(1\)</span> and <span class="math inline">\(s_i\)</span> respectively. We then compute the coset representatives of the words in <span class="math inline">\(L\)</span> for the subgroup <span class="math inline">\(H\)</span>, use a set to remove duplicates, apply each resulting coset representative <span class="math inline">\(w\)</span> to the two ends of <span class="math inline">\(e\)</span>. The words of the two ends of <span class="math inline">\(w\cdot e\)</span> are <span class="math inline">\(w\)</span> and <span class="math inline">\(ws_i\)</span> respectively. We can find the indices of <span class="math inline">\(w\)</span> and <span class="math inline">\(ws_i\)</span> as shown above to get <span class="math inline">\(w\cdot e\)</span>.</p>
+<p>The edges between the 37 vertices in <span class="math inline">\(L\)</span> are drawn below:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/723_edges.png" width="500"></p>
+<p>0 is the initial vertex, the number of white strips in an edge indices the type of it (no white strips for <span class="math inline">\(s_0\)</span>, one for <span class="math inline">\(s_1\)</span> and two for <span class="math inline">\(s_2\)</span>).</p>
+<p>It's worth noting that one can easily read the shortlex word representation of any vertex <span class="math inline">\(v\)</span> from the above image, just start from vertex 0, trace a shortest path from 0 to <span class="math inline">\(v\)</span> (if there are more than one shortest path then always choose the smaller vertex at bifurcaton points) and record the edges along the way. For example there are two paths with shortest length from vetex 0 to vertex 33: <span class="math display">\[
+\begin{align*}&amp;0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_0\ }6\xrightarrow{\ s_2\ }13\xrightarrow{\ s_1\ }22\xrightarrow{\ s_0\ }33.\\
+&amp;0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_2\ }7\xrightarrow{\ s_0\ }13\xrightarrow{\ s_1\ }22\xrightarrow{\ s_0\ }33.
+\end{align*}\]</span> By concatenating edge labels from left to right we have two words that both map vertex 0 to vertex 33: <span class="math inline">\(s_1s_0s_2s_1s_0\)</span> and <span class="math inline">\(s_1s_2s_0s_1s_0\)</span>. The first is the shortlex one.</p>
+<blockquote><p><strong>Question 2</strong>: How to compute the normal form of the multiplicaiton of two words? How to compute the coset representative of a word for a standard parabolic subgroup?</p>
+</blockquote>
+<p>Again the answer is too long to be included here. A short sketch of the procedure is attached below.</p>
+<p>The procedure for computing faces is very similar with the case of edges. The reflections about the <span class="math inline">\(i\)</span>-th and <span class="math inline">\(j\)</span>-th mirrors generate a polygon <span class="math inline">\(f_0\)</span> centered at a vertex of the fundamental triangle. The stabilizing subgroup of <span class="math inline">\(f_0\)</span> is the standard parabolic subgroup <span class="math inline">\(\langle i,j\rangle\)</span>. Again we find a word representation for each vertex in <span class="math inline">\(f_0\)</span>, apply the words in <span class="math inline">\(L\)</span> to <span class="math inline">\(f_0\)</span>, and use <span class="math inline">\(T\)</span> to get the indices of the transformed face.</p>
+<p>The final image is shown below, it contains 30517 vertices, 42057 edges and 11541 polygons.</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-7-2-3.png" width="500"></p>
+<h1 id="about-the-code">About the code</h1>
+<p>The core part of the code is the <code>CoxeterGroup</code> class which is initialized by a Coxeter matrix and is responsible for computing the reflection table of minimal roots, doing multiplications in this group, computing coset representatives and drawing the automaton. I have delegated most of the drawing stuff to a 3rd party lib <a target="_blank" rel="noopener" href="https://github.com/cduck/hyperbolic/">hyperbolic</a> and POV-Ray.</p>
+<h1 id="more-explainations-on-the-math-stuff">More explainations on the math stuff</h1>
+<p>In this section I'll give a short sketch of the core part of the math stuff. This requires you know some basic concepts like geometric realizations of Coxeter groups, Tit's cone, root systems. These are fairly standard materials and can be found in Humphreys's book.</p>
+<p>Almost everything relies upon a 2d table called <strong>reflection table of minimal roots</strong>. Again we use group (7, 2, 3) as example:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/roots.png" width="800"></p>
+<p>This image is the same with the last one except that it has 12 labelled mirrors, these mirror have particular importance among all roots in the root system: they are the set of minimal roots in the root system.</p>
+<p>You can think the root system of <span class="math inline">\(G\)</span> as the mirrors in the image which are colored in white. Each mirror is a geodesic line and intersects the boundary at two points. It also cuts the space into two disjoint halfspaces, one for a positive root and the other for its negative counterpart. The halfspace contains the fundamental triangle <span class="math inline">\(\Delta ABC\)</span> correspondes to the positive root.</p>
+<p>Intuitively speaking, a minimal root <span class="math inline">\(r\)</span> is a mirror such that if one stands inside the fundamental domain <span class="math inline">\(\Delta ABC\)</span> and looks outwards, there is no other mirror <span class="math inline">\(r'\ne r\)</span> can completely screen off <span class="math inline">\(r\)</span> from being seen. Simple roots are always minimal since they are the "walls" of the fundamental domain. The most important fact about minimal root is:</p>
+<blockquote><p><strong>Theorem</strong>: The set of minimal roots is finite.</p>
+</blockquote>
+<p>This theorem is the key step in Brink and Howlett's proof that Coxeter groups are automatic groups.</p>
+<p>The reflection table of minimal roots <code>reftable</code> is defined as follows: it's a 2d array with its <span class="math inline">\(i\)</span>-th row correspondes to the <span class="math inline">\(i\)</span>-th minimal root <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(j\)</span>-th column correspondes to the <span class="math inline">\(j\)</span>-th generator <span class="math inline">\(s_j\)</span>. The <span class="math inline">\((i,j)\)</span>-entry records the action of <span class="math inline">\(s_j\)</span> on <span class="math inline">\(\alpha_i\)</span>. Let <span class="math inline">\(\beta=s_j(\alpha_i)\)</span>:</p>
+<ol type="1">
+<li>If <span class="math inline">\(\beta=\alpha_k\)</span> is the <span class="math inline">\(k\)</span>-th minimal root then set this entry to <span class="math inline">\(k\)</span>.</li>
+<li>If <span class="math inline">\(\beta\)</span> is a negative root then set this entry to <span class="math inline">\(-1\)</span>.</li>
+<li>Else <span class="math inline">\(\beta\)</span> is a positive root but not minimal, set this entry to <code>None</code>.</li>
+</ol>
+<p>The <code>reftable</code> of the (7, 2, 3) group is listed below:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">root</th>
+<th style="text-align: center;"><span class="math inline">\(s_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>Let <span class="math inline">\(\Sigma\)</span> be the set of minimal roots of <span class="math inline">\(G\)</span>, all states in the automaton are subsets of <span class="math inline">\(\Sigma\)</span>, the transition rule between the subsets is:</p>
+<p><span class="math display">\[S\xrightarrow{\ s_i\ } \{s_i\} \cup (s_i(S)\cup\{ s_i(\alpha_j),j&lt;i\})\cap\Sigma.\]</span></p>
+<p>One can use breadth-first search to build this automaton and use <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/DFA_minimization#Hopcroft's_algorithm">Hopcroft's algorithm</a> to get a minimized version of it.</p>
+<p>The image below shows the subsets of minimal roots for each state in the automaton:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/723_dfa_subsets.png" width="800"></p>
+<p>The code for computing the multiplication of a generator and a word is given below:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">left_mul_invshortlex</span>(<span class="hljs-params">reftable, s, w</span>):</span><br>    w = <span class="hljs-built_in">tuple</span>(w)<br>    t = s<br>    k = -<span class="hljs-number">1</span><br>    mu = s<br>    <span class="hljs-keyword">for</span> i, s_i <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(w):<br>        <span class="hljs-keyword">if</span> mu <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-keyword">return</span> w[:k+<span class="hljs-number">1</span>] + (t,) + w[k+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> w[:i] + w[i+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; s_i:<br>            t = mu<br>            k = i<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">return</span> w[:k+<span class="hljs-number">1</span>] + (t,) + w[k+<span class="hljs-number">1</span>:]<br></code></pre></td></tr></tbody></table></figure>
+<p>Here <span class="math inline">\(s\)</span> is a generator and <span class="math inline">\(w\)</span> is a word in the normal form of the <em>inverse shortlex ordering</em> (invshortlex). The function returns the normal form of <span class="math inline">\(s\cdot w\)</span> also in the invshortlex ordering. The computations in shortlex can be obtained by doing computations in invshortlex first and then reverse the result back.</p>
+<blockquote><p>The intermedian step of doing computations in invshortlex ordering is mainly for keeping consistent with Casselman's paper.</p>
+</blockquote>
+<p>Finding the coset representative of a given word for a standard parabolic subgroup is quite straight-forward: let <span class="math inline">\(T\)</span> be the set of generators of this standard parabolic subgroup, the pseudocode for the procedure is given below:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">x := w<br>u := 1<br>while l(xt) &lt; l(x) for some t in T<br>    x := xt<br>    u := t<br>end<br><br>return x<br></code></pre></td></tr></tbody></table></figure>
+<p>Where <span class="math inline">\(l(\cdot)\)</span> is the length function.</p>
+<p>For finite Coxeter groups all positive roots are minimal. For affine Coxeter groups the root system consists of families of parallel affine hyperplanes. In each family there is a pair of minimal roots such that the fundamental domain lies between them and all other mirrors in this family are completely screened off by them hence are not minimal. See the image for (6, 2, 3) (affine <span class="math inline">\(\widetilde{G}_2\)</span>) for an example:</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/roots_623.png" width="800"></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/research/pdf/banff.pdf">Automata to perform basic calculations in Coxeter groups, by Bill Casselman</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/research/pdf/cm.pdf">Computation in Coxeter groups I. Multiplication, by Bill Casselman</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/research/pdf/roots.pdf">Computation in Coxeter groups II. Constructing minimal roots, by Bill Casselman</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Reflection Groups and Coxeter Groups, by James E. Humphreys.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+                
+
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function() {
+                this.page.url = 'https://neozhaoliang.github.io/uniform-tilings/index.html';
+                this.page.identifier = 'uniform-tilings/index.html';
+            };
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+                s.src = '//pywonderland.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener">comments powered by Disqus.</a>
+        </noscript>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+</script>
+
+
+
+</body>
+</html>

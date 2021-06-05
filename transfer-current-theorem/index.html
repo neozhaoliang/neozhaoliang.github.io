@@ -1,0 +1,972 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>二维随机游动 (二)：一个随机的完美迷宫分别有多少个死角、拐角、岔路和十字路口？ | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="此为二维随机游动系列的第二篇文章，但本文介绍的理论也适用于一般的图。
+
+问题：在 \(n\times n\) 的正方形网格图 \(G_n\) 的所有生成树中等概率地随机任选一个，记这个随机生成树为 \(T\)，\(T\) 叫做 \(G_n\) 的一个均匀生成树。对 \(G_n\) 中任一顶点 \(v\)，\(v\) 是 \(T\) 的叶节点的概率是多少？
+
+这个问题也可以表述为，“对一个完全随机的 \(n\times n\) 的完美迷宫，求它包含的死角的比例”。这里一个迷宫称作是完美的，如果迷宫中的任何两个房间之间都有且仅有唯一的道路相连 (这正是生成树的等价描述！)。迷宫中的一个房间称作是“死角”，当且仅当它只有一条道路与其它房间相通。换句话说，一旦进去了就必须原路返回，没有其它出路 (这正是叶节点的等价描述！)。
+下图显示了三个不同的均匀生成树，它们分别来自大小为 \(80\times 80\)，\(120\times120\) 和 \(200\times200\) 的三个网格图，这三个生成树的叶节点 (用蓝色标出) 占全体顶点的比例分别为 \(1884/6400=0.294375\)，\(4234/14400\approx0.294028\)，\(11776/40000=0.2944\)。咦？看起来好像是在围着一个固定的值波动喔？">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="二维随机游动 (二)：一个随机的完美迷宫分别有多少个死角、拐角、岔路和十字路口？"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/组合数学/">
+                    组合数学 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机完美取样/">
+                    随机完美取样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/随机游动/">随机游动</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>二维随机游动 (二)：一个随机的完美迷宫分别有多少个死角、拐角、岔路和十字路口？</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2020-10-05T16:00:00.000Z"><a href="/transfer-current-theorem/">2020-10-06</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Electric-network/" class="chip pink lighten-1">Electric network</a>
+        
+            <a href="/tags/Uniform-spanning-tree/" class="chip pink lighten-1">Uniform spanning tree</a>
+        
+            <a href="/tags/Markov-chain/" class="chip pink lighten-1">Markov chain</a>
+        
+            <a href="/tags/Transfer-current-matrix/" class="chip pink lighten-1">Transfer current matrix</a>
+        
+            <a href="/tags/Kirchhoff-law/" class="chip pink lighten-1">Kirchhoff law</a>
+        
+            <a href="/tags/Ohm-law/" class="chip pink lighten-1">Ohm law</a>
+        
+            <a href="/tags/Harmonic-function/" class="chip pink lighten-1">Harmonic function</a>
+        
+            <a href="/tags/Graph-reduction/" class="chip pink lighten-1">Graph reduction</a>
+        
+            <a href="/tags/Cycle-space/" class="chip pink lighten-1">Cycle space</a>
+        
+            <a href="/tags/Star-space/" class="chip pink lighten-1">Star space</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%9B%BE%E4%B8%8A%E7%9A%84%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="section table-of-contents-text">1 图上的线性代数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%B5%81"><span class="section table-of-contents-text">2 网络中的流</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%94%B5%E7%BD%91%E7%BB%9C%E7%89%A9%E7%90%86%E9%87%8F%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A"><span class="section table-of-contents-text">3 电网络物理量的概率解释</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E7%94%B5%E5%8E%8B%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A-%E7%AC%AC%E4%B8%80%E7%A7%8D"><span class="section table-of-contents-text">电压的概率解释 (第一种)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E7%94%B5%E6%B5%81%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A"><span class="section table-of-contents-text">电流的概率解释</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#wilson-%E5%9D%87%E5%8C%80%E7%94%9F%E6%88%90%E6%A0%91%E7%AE%97%E6%B3%95"><span class="section table-of-contents-text">4 Wilson 均匀生成树算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%9B%BE%E7%9A%84%E6%94%B6%E7%BC%A9"><span class="section table-of-contents-text">5 图的收缩</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BD%AC%E7%A7%BB%E7%94%B5%E6%B5%81%E5%AE%9A%E7%90%86"><span class="section table-of-contents-text">6 转移电流定理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%9B%9E%E7%AD%94%E6%9C%AC%E6%96%87%E5%BC%80%E5%A4%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="section table-of-contents-text">7 回答本文开头的问题</span></a></li></ol>
+</div>
+
+            
+            <div class="entry pink-link-context">
+                <blockquote>
+<p>此为二维随机游动系列的第二篇文章，但本文介绍的理论也适用于一般的图。</p>
+</blockquote>
+<blockquote><p><strong>问题</strong>：在 <span class="math inline">\(n\times n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span> 的所有生成树中等概率地随机任选一个，记这个随机生成树为 <span class="math inline">\(T\)</span>，<span class="math inline">\(T\)</span> 叫做 <span class="math inline">\(G_n\)</span> 的一个均匀生成树。对 <span class="math inline">\(G_n\)</span> 中任一顶点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span> 是 <span class="math inline">\(T\)</span> 的叶节点的概率是多少？</p>
+</blockquote>
+<p>这个问题也可以表述为，“对一个完全随机的 <span class="math inline">\(n\times n\)</span> 的完美迷宫，求它包含的死角的比例”。这里一个迷宫称作是完美的，如果迷宫中的任何两个房间之间都有且仅有唯一的道路相连 (这正是生成树的等价描述！)。迷宫中的一个房间称作是“死角”，当且仅当它只有一条道路与其它房间相通。换句话说，一旦进去了就必须原路返回，没有其它出路 (这正是叶节点的等价描述！)。</p>
+<p>下图显示了三个不同的均匀生成树，它们分别来自大小为 <span class="math inline">\(80\times 80\)</span>，<span class="math inline">\(120\times120\)</span> 和 <span class="math inline">\(200\times200\)</span> 的三个网格图，这三个生成树的叶节点 (用蓝色标出) 占全体顶点的比例分别为 <span class="math inline">\(1884/6400=0.294375\)</span>，<span class="math inline">\(4234/14400\approx0.294028\)</span>，<span class="math inline">\(11776/40000=0.2944\)</span>。咦？看起来好像是在围着一个固定的值波动喔？</p>
+<span id="more"></span>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">80x80, 0.294375</th>
+<th style="text-align: center;">120x120, 0.294028</th>
+<th style="text-align: center;">200x200, 0.2944</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-1884-6400.png" width="200"></td>
+<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-4234-14400.png" width="200"></td>
+<td style="text-align: center;"><img src="/images/electric-network/ust-leaves-11776-40000.png" width="200"></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>绘制上述插图的 Python 代码在<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/gifmaze/example_ust.py">这里</a>，你可以自己试一试。</p>
+</blockquote>
+<p>后面我们会证明对 <span class="math inline">\(G_n\)</span> 的一个均匀生成树 <span class="math inline">\(T\)</span>，<span class="math inline">\(T\)</span> 包含的叶节点的比例随着 <span class="math inline">\(n\)</span> 趋于无穷收敛到常数 <span class="math inline">\(8(\pi-2)/\pi^3\approx 0.2945449\)</span> (想不到 <span class="math inline">\(\pi\)</span> 会出现在这里吧？)，可见上面的三个例子与真实的极限值已经非常接近。</p>
+<p>实际上对于度数是 <span class="math inline">\(2,3,4\)</span> 的顶点，它们的比例也随着 <span class="math inline">\(n\to\infty\)</span> 趋于固定的值，详细结果见下表：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">度数</th>
+<th style="text-align: center;">极限概率</th>
+<th style="text-align: center;">近似值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1：死角</td>
+<td style="text-align: center;"><span class="math display">\[\dfrac{8}{\pi^2}(1-\dfrac{2}{\pi})\]</span></td>
+<td style="text-align: center;">0.294</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2：拐角</td>
+<td style="text-align: center;"><span class="math display">\[\dfrac{4}{\pi}(2-\dfrac{9}{\pi}+\dfrac{12}{\pi^2})\]</span></td>
+<td style="text-align: center;">0.447</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3：岔路</td>
+<td style="text-align: center;"><span class="math display">\[2(1-\dfrac{2}{\pi})(1-\dfrac{6}{\pi}+\dfrac{12}{\pi^2})\]</span></td>
+<td style="text-align: center;">0.222</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4：十字路口</td>
+<td style="text-align: center;"><span class="math display">\[(\dfrac{4}{\pi}-1)(1-\dfrac{2}{\pi})^2\]</span></td>
+<td style="text-align: center;">0.036</td>
+</tr>
+</tbody>
+</table>
+<p>所以在一个随机的完美迷宫中，最多的其实是“拐角” (45%)，其次是“死角” (30%)，再次是“丁字岔路” (22%)，而“十字路口”是非常少的 (3.6%)。</p>
+<p>这些概率是怎样计算出来的呢？它和我们这个系列的主题二维随机游动又有何关系呢？这里面的故事相当精彩。粗略地说，图的随机生成树中的概率量可以翻译为该图上随机游动中某些事件发生的概率，利用随机游动与电网络的联系，我们又可以把这些事件发生的概率翻译为电网络的物理量，而这些物理量是可以用各种方法来计算的。在我们这个问题中，一个房间是死角/拐角/岔路/十字路口的概率都可以从一个矩阵出发通过求其子矩阵的行列式得到 (或者稍微加点变化)，这个矩阵叫做<strong>转移电流矩阵</strong> (transfer current matrix)，是本文内容的核心。转移电流矩阵的物理意义很简单：将 <span class="math inline">\(G_n\)</span> 看作一个电网络，每条边的电阻都是单位 1。在其中一条边 <span class="math inline">\(e\)</span> 的两端加上电极，使得流入整个网络的电流总量为 1 个单位，记此时流过边 <span class="math inline">\(e'\)</span> 的电流总量为 <span class="math inline">\(Y(e,e')\)</span>，则矩阵 <span class="math inline">\(Y=Y(e,e')_{e,e'\in E}\)</span> 叫做网络 <span class="math inline">\(G_n\)</span> 的转移电流矩阵。</p>
+<p>转移电流矩阵有许多有趣的性质，比如：</p>
+<ul>
+<li><p>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(G_n\)</span> 的一个随机生成树 (服从均匀分布)，则任一边 <span class="math inline">\(e\)</span> 属于 <span class="math inline">\(T\)</span> 的概率 <span class="math inline">\(\mathbb{P}(e\in T)=Y(e, e)\)</span>。特别当 <span class="math inline">\(n\to\infty\)</span> 时 <span class="math inline">\(G_n\to\mathbb{Z}^2\)</span>，<span class="math inline">\(Y(e,e)\to\frac{1}{2}\)</span>。所以如果把 <span class="math inline">\(\mathbb{Z}^2\)</span> 看作一个电网络并在一条边 <span class="math inline">\(e\)</span> 的一端输入单位电流，将 <span class="math inline">\(e\)</span> 的另一端接地的话，那么恰好会有一半的电流直接从边 <span class="math inline">\(e\)</span> 流出，另外一半经过网络的其它部分后从 <span class="math inline">\(e\)</span> 的另一端流出。</p></li>
+<li><p>仍然设 <span class="math inline">\(T\)</span> 是一个随机生成树，对任何 <span class="math inline">\(k\)</span> 条边 <span class="math inline">\(e_1,\ldots,e_k\)</span>，定义 <span class="math inline">\(k\times k\)</span> 矩阵 <span class="math inline">\(Y^{(k)}\)</span> 为 <span class="math inline">\(Y^{(k)}(i,j)=Y(e_i,e_j)\)</span>，则我们有如下结论 (转移电流矩阵定理)： <span class="math display">\[\mathbb{P}(e_1,\ldots,e_k \in T)=\det Y^{(k)}.\]</span> 举个例子，在无穷大网格图 <span class="math inline">\(\mathbb{Z}^2\)</span> 中，考虑原点 <span class="math inline">\((0, 0)\)</span> 相邻的四条边 <span class="math inline">\(e_1=(1,0)\)</span>，<span class="math inline">\(e_2=(0, 1)\)</span>，<span class="math inline">\(e_3=(-1,0)\)</span>，<span class="math inline">\(e_4=(0, -1)\)</span>，则这四条边对应的转移电流矩阵为 <span class="math display">\[Y^{(4)}=
+\begin{pmatrix}
+\frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi} &amp; \frac{2}{\pi}-\frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi}\\
+\frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi} &amp; \frac{2}{\pi}-\frac{1}{2}\\
+\frac{2}{\pi}-\frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi}\\
+\frac{1}{2}-\frac{1}{\pi} &amp; \frac{2}{\pi}-\frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2}
+\end{pmatrix}.\]</span> 于是原点的度数等于 4 的概率是 <span class="math display">\[\mathbb{P}(e_1,e_2,e_3,e_4\in\mathbb{T})=\det Y^{(4)}=(\frac{4}{\pi}-1)(1-\frac{2}{\pi})^2\approx 0.361.\]</span> 如果是计算概率 <span class="math inline">\(\mathbb{P}(e_1,e_2,e_3\notin T, e_4\in T)\)</span> 呢？这有一个简单的办法，把 <span class="math inline">\(e_1,e_2,e_3\)</span> 对应的 <span class="math inline">\(Y^{(4)}\)</span> 的前三行全部取负值，给前三个对角元加上 1，保持第 4 行不变，得到 <span class="math display">\[Y^{(4)}_{\overline{123}4}=
+\begin{pmatrix}
+\frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2} &amp; -\frac{2}{\pi}+\frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2}\\
+\frac{1}{\pi}-\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2} &amp; -\frac{2}{\pi}+\frac{1}{2}\\
+-\frac{2}{\pi}+\frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2}\\
+\frac{1}{2}-\frac{1}{\pi} &amp; \frac{2}{\pi}-\frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2}\end{pmatrix}.\]</span> 则 <span class="math display">\[\mathbb{P}(e_1,e_2,e_3\notin T, e_4\in T)=\det Y^{(4)}_{\overline{123}4}=\frac{2}{\pi^2}-\frac{4}{\pi^3}.\]</span> 于是原点是叶节点的概率是 <span class="math inline">\(4\times\det Y^{(4)}_{\overline{123}4}\approx 0.2945\)</span>，这正是之前看到的。</p>
+<p>计算其它容斥概率的步骤也都是类似的，只要在转移概率矩阵中将需要排除的边对应的行取负，然后在该行的对角元上加 1 即可。由 <span class="math inline">\(\mathbb{Z}^2\)</span> 对称性，其所有顶点的度数分布均相同。总之只要知道了转移电流矩阵 <span class="math inline">\(Y\)</span>，我们就可以很容易得到任一顶点在 <span class="math inline">\(T\)</span> 中度数的分布，多方便！<span class="emoji" data-alias="smile" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<p>注意虽然求解矩阵 <span class="math inline">\(Y\)</span> 需要 <span class="math inline">\(\mathbb{Z}^2\)</span> 的全局信息，但是计算顶点度数的分布却只需要 <span class="math inline">\(Y\)</span> 的局部信息。</p></li>
+</ul>
+<p>所以解决问题的关键就是求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的转移电流矩阵，本文接下来就来介绍具体的理论。这个故事并无特别的难点，但确实比较长，把它勉强压缩在一篇博客文章中很难不影响可读性，所以我尽量只写与上面问题相关的部分，至于 Rayleigh 定律、等效电阻、常返与暂态的流判定等其它电网络中的重要内容就只好略去了。在写作过程中主要参考了 Lyons 等人关于图随机游动的专著 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，Stanley 的代数组合学教材 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 以及网上一些公开的讲义。</p>
+<h1 id="图上的线性代数">1 图上的线性代数</h1>
+<p>一个<strong>网络</strong> <span class="math inline">\(\mathcal{N}=(G, c)\)</span> 由一个有限图 <span class="math inline">\(G=(V,E)\)</span> 和一个权值函数 <span class="math inline">\(c:E\to\mathbb{R}_{\geq0}\)</span> 组成。这里 <span class="math inline">\(G\)</span> 是连通的无向图，其每条边 <span class="math inline">\(e\in E\)</span> 有一个权值 <span class="math inline">\(c(e)\in[0, +\infty)\)</span>，叫做 <span class="math inline">\(e\)</span> 的<strong>电导</strong>，其倒数 <span class="math inline">\(r(e)=1/c(e)\)</span> 叫做 <span class="math inline">\(e\)</span> 的<strong>电阻</strong>。</p>
+<p>设 <span class="math inline">\(x,y\in V\)</span> 是两个顶点，我们用 <span class="math inline">\(x\sim y\)</span> 表示 <span class="math inline">\(x,y\)</span> 是相邻的。由于本文主要考察边上的流函数，而流函数是有方向的，<strong>所以我们约定边集 <span class="math inline">\(E\)</span> 同时包含有序对 <span class="math inline">\((x,y)\)</span> 和 <span class="math inline">\((y,x)\)</span>，即一条边作为有序对在 <span class="math inline">\(E\)</span> 中出现两次</strong>。当 <span class="math inline">\(e=(x,y)\)</span> 时，我们记 <span class="math inline">\(-e=(y,x)\)</span> 为 <span class="math inline">\(e\)</span> 的<strong>反向边</strong>。并用记号 <span class="math inline">\(E_{1/2}\)</span> 表示对每个 <span class="math inline">\(e\)</span>，在 <span class="math inline">\(e\)</span> 和 <span class="math inline">\(-e\)</span> 中任选一个组成的集合。此外我们称 <span class="math inline">\(e^-=x\)</span> 为 <span class="math inline">\(e\)</span> 的<strong>尾部</strong>，<span class="math inline">\(e^+=y\)</span> 为 <span class="math inline">\(e\)</span> 的<strong>头部</strong>。注意在反向边 <span class="math inline">\(-e\)</span> 中 <span class="math inline">\(x\)</span> 变为头部，<span class="math inline">\(y\)</span> 变为尾部。</p>
+<p>对每个 <span class="math inline">\(e\in E\)</span>，当 <span class="math inline">\(e=(x,y)\)</span> 时我们也记 <span class="math inline">\(c(x,y)=c(e)\)</span>。<strong>注意我们要求电导函数 <span class="math inline">\(c(x,y)\)</span> 关于 <span class="math inline">\(x,y\)</span> 是对称的：<span class="math inline">\(c(x,y)=c(y,x)\)</span></strong>。对每个顶点 <span class="math inline">\(x\in V\)</span>，记 <span class="math inline">\(c(x)=\sum_{y\sim x}c(x,y)\)</span>。</p>
+<p>所有 <span class="math inline">\(V\)</span> 上的实值函数 <span class="math inline">\(f:V\to\mathbb{R}\)</span> 构成一个内积空间 <span class="math inline">\(\ell^2(V)\)</span>： <span class="math display">\[(f,\, g)_V = \sum_{x\in V}c(x)f(x)g(x).\]</span></p>
+<p>所有 <span class="math inline">\(E\)</span> 上的<strong>反对称</strong>实值函数 <span class="math inline">\(\theta: E\to\mathbb{R}\)</span> 也构成一个内积空间 <span class="math inline">\(\ell^2_{-}(E)\)</span>： <span class="math display">\[(\theta,\,\theta')_E = \frac{1}{2}\sum_{e\in E}r(e)\theta(e)\theta'(e)=\sum_{e\in E_{1/2}}r(e)\theta(e)\theta'(e).\]</span> 这里反对称的意思是对任何 <span class="math inline">\(e=\{x,y\}\)</span> 有 <span class="math inline">\(\theta(x, y)=-\theta(y,x)\)</span>。</p>
+<p>以上定义基本上与 Lyons 等人的书保持一致，但是接下来的叙述会有比较大的差别。</p>
+<blockquote><p><strong>定义 1.1</strong>：</p>
+<ol type="1">
+<li><p>定义<strong>梯度</strong>算子 <span class="math inline">\(\nabla: \ell^2(V)\to\ell^{2}_{-}(E)\)</span> 为 <span class="math display">\[(\nabla f)(x,y) = c(x, y)\big[f(x)-f(y)\big]=c(e)\big[f(e^-)-f(e^+)\big].\]</span></p></li>
+<li><p>定义<strong>散度</strong>算子 <span class="math inline">\(\mathrm{div}:\ell^{2}_{-}(E)\to\ell^2(V)\)</span> 为 <span class="math display">\[(\mathrm{div}\,\theta)(x) = \frac{1}{c(x)}\sum_{y\sim x}\theta(x, y)=\frac{1}{c(x)}\sum_{e^-=x}\theta(e).\]</span></p></li>
+<li><p>定义<strong>拉普拉斯</strong>算子 <span class="math inline">\(\Delta:\ell^2(V)\to\ell^{2}(V)\)</span> 为 <span class="math display">\[(\Delta f)(x) = (\mathrm{div}\,\nabla f)(x) = f(x)-\sum_{y\sim x}\frac{c(x,y)}{c(x)}f(y). 
+\]</span> 如果 <span class="math inline">\((\Delta f)(x)=0\)</span> 对 <span class="math inline">\(x\in V\)</span> 成立，我们就称 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(x\)</span> 处是<strong>调和</strong>的。</p></li>
+</ol>
+</blockquote>
+<blockquote><p><strong>定理 1.1</strong>：梯度算子和散度算子是一对共轭算子：对任何 <span class="math inline">\(f\in\ell^2(V)\)</span> 和 <span class="math inline">\(\theta\in\ell_{-}^2(E)\)</span> 有 <span class="math display">\[(f,\,\mathrm{div}\,\theta)_V = (\nabla f,\,\theta)_E.\]</span></p>
+</blockquote>
+<p><strong>证明</strong>：直接验证即可，注意中间交换一次求和顺序： <span class="math display">\[\begin{align*}
+(\nabla f,\,\theta)_E&amp;=\frac{1}{2}\sum_{e\in E}\theta(e)r(e)\nabla f(e)\\
+&amp;=\frac{1}{2}\sum_{e\in E}\theta(e)\bigg[f(e^-)-f(e^+)\bigg]\\
+&amp;\overset{*}{=}\sum_{e\in E}\theta(e)f(e^-)\\
+&amp;=\sum_{e\in E}\theta(e)\sum_{x\in V}1_{\{e^-=x\}}f(x)\\
+&amp;=\sum_{x\in V}f(x)\sum_{e\in E}\theta(e)1_{\{e^-=x\}}\\
+&amp;=\sum_{x\in V}f(x)\sum_{e^-=x}\theta(e)\\
+&amp;=\sum_{x\in V}f(x)c(x)(\mathrm{div}\,\theta)(x)\\
+&amp;=(f,\,\mathrm{div}\,\theta)_V.
+\end{align*}\]</span> 其中 <span class="math inline">\((\ast)\)</span> 式是因为当 <span class="math inline">\(e\)</span> 跑遍 <span class="math inline">\(E\)</span> 时，<span class="math inline">\(-e\)</span> 也跑遍 <span class="math inline">\(E\)</span>，而 <span class="math inline">\(\theta(e)f(e^-)\)</span> 和 <span class="math inline">\(\theta(e)f(e^+)\)</span> 对 <span class="math inline">\(e\)</span> 和 <span class="math inline">\(-e\)</span> 的取值是相反的。</p>
+<blockquote><p><strong>定义 1.2</strong>：我们称映射 <span class="math inline">\(\mathrm{div}\)</span> 的核 <span class="math inline">\(\mathrm{Ker\,div}\)</span> 为环空间 (cycle space)，记作 <span class="math inline">\(\lozenge\)</span>。称映射 <span class="math inline">\(\nabla\)</span> 的像 <span class="math inline">\(\mathrm{Im}\nabla\)</span> 为星空间 (star space)，记作 <span class="math inline">\(\bigstar\)</span>。环空间和星空间都是 <span class="math inline">\(\ell_{-}^2(E)\)</span> 的子空间。</p>
+</blockquote>
+<blockquote><p><strong>定理 1.2</strong>：<span class="math inline">\(\ell_{-}^2(E)\)</span> 是环空间和星空间的正交直和：<span class="math inline">\(\ell_{-}^2(E)=\lozenge\oplus\bigstar\)</span>。</p>
+</blockquote>
+<p><strong>证明</strong>：由于 <span class="math inline">\(\{1_{x},x\in V\}\)</span> 构成 <span class="math inline">\(\ell^2(V)\)</span> 的一组基，所以它们在 <span class="math inline">\(\nabla\)</span> 下的像构成 <span class="math inline">\(\bigstar\)</span> 的一组基。对任何 <span class="math inline">\(\theta\in\ell^2_{-}(E)\)</span> 有 <span class="math display">\[(\nabla 1_{x},\,\theta)_E=(1_x,\,\mathrm{div}\,\theta)_V=c(x)(\mathrm{div}\,\theta)(x).\]</span> 于是 <span class="math inline">\(\theta\)</span> 与任何 <span class="math inline">\(\nabla 1_x\)</span> 正交当且仅当 <span class="math inline">\((\mathrm{div}\,\theta)(x)=0\)</span> 对任何 <span class="math inline">\(x\in V\)</span> 成立，即当且仅当 <span class="math inline">\(\theta\in\lozenge\)</span>，从而 <span class="math inline">\(\lozenge\)</span> 和 <span class="math inline">\(\bigstar\)</span> 互为正交补空间，证毕。</p>
+<hr>
+<p>我们解释一下环空间这个名字的来历。对任一 <span class="math inline">\(e\in E\)</span>，记 <span class="math display">\[\chi^e=1_{e} - 1_{-e}\in\ell^2_{-}(E)\]</span> 为边 <span class="math inline">\(e\)</span> 的示性函数。设 <span class="math inline">\(e_1=(v_1,v_2), e_2=(v_2,v_3),\ldots,e_k=(v_k,v_1)\)</span> 首尾相接构成一条回路 <span class="math inline">\(C\)</span>，即 <span class="math display">\[v_1\xrightarrow{e_1}v_2\xrightarrow{e_2}\cdots\xrightarrow{e_{k-1}}v_k\xrightarrow{e_k}v_1.
+\]</span> 定义 <span class="math inline">\(C\)</span> 对应的环函数 <span class="math inline">\(f^C = \sum_{i=1}^k\chi^{e_i}\)</span>，则不难验证 <span class="math inline">\(f^C\in\lozenge\)</span>。我们断言 <span class="math inline">\(\lozenge\)</span> 可以由所有的 <span class="math inline">\(f^C\)</span> 张成，这就是为什么 <span class="math inline">\(\lozenge\)</span> 叫做环空间。</p>
+<p>设 <span class="math inline">\(\theta\in\lozenge\)</span>，定义 <span class="math inline">\(\theta\)</span> 的支集为 <span class="math display">\[\mathrm{supp}(\theta)=\{e\in E\,|\,\theta(e)\ne0\}.\]</span> 注意如果 <span class="math inline">\(\mathrm{supp}(\theta)\)</span> 非空的话，则它必然包含一个回路，否则 <span class="math inline">\(\mathrm{supp}(\theta)\)</span> 构成的子图中必然有一个叶顶点 (度数恰好为 1)，从而这一点处的散度不可能为 0，矛盾！于是 <span class="math inline">\(\mathrm{supp}(\theta)\)</span> 包含一个回路 <span class="math inline">\(C\)</span>，我们可以选择合适的常数 <span class="math inline">\(\alpha\)</span> 使得 <span class="math inline">\(\widetilde{\theta}=\theta-\alpha f^C\)</span> 在某个 <span class="math inline">\(e\in C\)</span> 上为 0，则 <span class="math inline">\(\widetilde{\theta}\)</span> 的支集严格小于 <span class="math inline">\(\theta\)</span>。对 <span class="math inline">\(\widetilde{\theta}\)</span> 重复此操作一直下去必然可以在有限次后将支集变为空集，这就证明了 <span class="math inline">\(\theta\)</span> 可以表示为形如 <span class="math inline">\(f^C\)</span> 的线性组合。</p>
+<h1 id="网络中的流">2 网络中的流</h1>
+<p>仍然设 <span class="math inline">\(\mathcal{N}=(G,c)\)</span> 是一个网络，<span class="math inline">\(Z\)</span> 是 <span class="math inline">\(V\)</span> 的一个子集，<span class="math inline">\(a\notin Z\)</span> 是一个顶点。</p>
+<blockquote><p><strong>定义 2.1</strong>：我们称 <span class="math inline">\(\theta\in\ell_{-}^2(E)\)</span> 是一个从 <span class="math inline">\(a\)</span> 到 <span class="math inline">\(Z\)</span> 的流，如果以下两个条件成立：</p>
+<ol type="1">
+<li><span class="math inline">\((\mathrm{div}\,\theta)(a)\geq 0\)</span>。</li>
+<li>对任何 <span class="math inline">\(x\notin \{a\}\cup Z\)</span> 有 <span class="math inline">\((\mathrm{div}\,\theta)(x)=0\)</span>。</li>
+</ol>
+<p><span class="math inline">\(a\)</span> 叫做 <span class="math inline">\(\theta\)</span> 的源点，<span class="math inline">\(Z\)</span> 叫做 <span class="math inline">\(\theta\)</span> 的汇点。</p>
+<p>定义流 <span class="math inline">\(\theta\)</span> 的强度为从源点 <span class="math inline">\(a\)</span> 流入网络的量： <span class="math display">\[\mathrm{strength}(\theta)=\sum_{x\sim a}\theta(a, x).\]</span> 我们也把 <span class="math inline">\(\mathrm{strength}(\theta)\)</span> 记作 <span class="math inline">\(\|\theta\|\)</span>，如果有 <span class="math inline">\(\|\theta\|=1\)</span> 成立，就称 <span class="math inline">\(\theta\)</span> 是一个<strong>单位流</strong>。</p>
+<p>此外定义 <span class="math inline">\(\theta\)</span> 的能量为 <span class="math display">\[\mathcal{E}(\theta)=(\theta,\,\theta)_E.\]</span></p>
+</blockquote>
+<p>此定义自动蕴含了 <span class="math inline">\(\sum_{z\in Z}(\mathrm{div}\,\theta)(z)=-(\mathrm{div}\,\theta)(a)\leq=0\)</span>：考虑 <span class="math inline">\(V\)</span> 上的常函数 <span class="math inline">\(1\)</span>，则 <span class="math inline">\(\nabla 1=0\)</span>，于是 <span class="math display">\[0=(\nabla 1,\,\theta)_E=(1,\,\mathrm{div}\,\theta)_V=(\mathrm{div}\,\theta)(a)+\sum_{z\in Z}(\mathrm{div}\,\theta)(z).\]</span> 即对整个网络来说，从 <span class="math inline">\(a\)</span> 流出的量等于流入 <span class="math inline">\(Z\)</span> 的量，中间没有任何“淤积”。</p>
+<blockquote><p><strong>定义 2.2</strong>：设 <span class="math inline">\(\theta\)</span> 是一个从 <span class="math inline">\(a\)</span> 到 <span class="math inline">\(Z\)</span> 的流，如果还有 <span class="math inline">\(\theta=\nabla g\in\bigstar\)</span> 成立，就称 <span class="math inline">\(\theta\)</span> 是一个<strong>电流</strong>，<span class="math inline">\(g\)</span> 叫做 <span class="math inline">\(\theta\)</span> 的电势。</p>
+</blockquote>
+<p>我们总结一下流和电流的特点：</p>
+<blockquote><ol type="1">
+<li>你可以把 <span class="math inline">\(a\)</span> 理解为电源正极，<span class="math inline">\(Z\)</span> 理解为网络接地的部分。</li>
+<li>流函数要求对任何 <span class="math inline">\(x\notin \{a\}\cup Z\)</span> 有 <span class="math inline">\((\mathrm{div}\,\theta)(x)=0\)</span> 等价于物理中的基尔霍夫定律：任何中间节点的流量守恒。</li>
+<li>电流函数要求 <span class="math inline">\(\theta=\nabla g\in\bigstar\)</span> 等价于物理中的欧姆定律，即电流 <span class="math inline">\(\theta\)</span> 等于电势差 <span class="math inline">\(\nabla g\)</span> 除以电阻 <span class="math inline">\(r(e)\)</span>。</li>
+</ol>
+</blockquote>
+<p>在本文中，我们最关心的电流函数是当将一条给定边 <span class="math inline">\(e\)</span> 的一个端点 <span class="math inline">\(x\)</span> 通入单位电流，另一端点 <span class="math inline">\(y\)</span> 接地时网络中对应的电流函数，此函数记作 <span class="math inline">\(i^e\)</span>。于是对任一边 <span class="math inline">\(e'\)</span>，<span class="math inline">\(i^e(e')\)</span> 就是此时流过 <span class="math inline">\(e'\)</span> 的电流量。</p>
+<div id="prop1">
+<blockquote><p><strong>推论 2.1</strong>：<span class="math inline">\(\chi^e\)</span> 在 <span class="math inline">\(\bigstar\)</span> 上的正交投影即为 <span class="math inline">\(i^e\)</span>。</p>
+</blockquote>
+</div>
+<p>证明：显然 <span class="math inline">\(\sum_{y\sim e^-}\chi^e(e^-, y)=1\)</span>，以及 <span class="math inline">\(\mathrm{div}\,\chi^e(x)=0\)</span> 对任何 <span class="math inline">\(x\notin e\)</span> 成立。而到 <span class="math inline">\(\bigstar\)</span> 的投影不改变任何顶点处的散度值，所以此投影分量满足基尔霍夫定律和欧姆定律，且是从 <span class="math inline">\(e^-\)</span> 到 <span class="math inline">\(e^+\)</span> 的单位流，从而必然是电流 <span class="math inline">\(i^e\)</span>。</p>
+<div id="prop2">
+<blockquote><p><strong>推论 2.2</strong>：设 <span class="math inline">\(e,e'\)</span> 是两条边，则 <span class="math display">\[i^e(e')=c(e')(i^e, i^{e'})_E.\]</span></p>
+</blockquote>
+</div>
+<p>证明：记 <span class="math inline">\(P_\bigstar\)</span> 为从 <span class="math inline">\(\ell^2_{-}(E)\)</span> 到 <span class="math inline">\(\bigstar\)</span> 的投影算子，则 <span class="math inline">\(P_\bigstar\)</span> 是自共轭算子以及 <span class="math inline">\(P_\bigstar^2=P_\bigstar\)</span>，从而 <span class="math display">\[(i^e, i^{e'})_E=(P_\bigstar\chi^e,P_\bigstar\chi^{e'})_E=(P_\bigstar\chi^e,\chi^{e'})_E=(i^e,\chi^{e'})=r(e')i^e(e').\]</span> 即得结论。</p>
+<div id="def-transfer-current">
+<blockquote><p><strong>定义 2.3</strong>：记 <span class="math inline">\(Y(e,e')=i^e(e')\)</span>，则矩阵 <span class="math inline">\(\big(Y(e,e')\big)_{e,e'\in E}\)</span> 叫做转移电流矩阵。<span class="math inline">\(Y(e,e')\)</span> 满足互反律 <span class="math display">\[Y(e,e')r(e')=Y(e',e)r(e)=(i^e,i^{e'})_E.\]</span></p>
+</blockquote>
+</div>
+<h1 id="电网络物理量的概率解释">3 电网络物理量的概率解释</h1>
+<p>在这一节中，我们会给出电势、电流对应的概率解释。假设 <span class="math inline">\(a\)</span> 是一个顶点，<span class="math inline">\(Z\)</span> 是一个顶点集合且 <span class="math inline">\(a\notin Z\)</span>。</p>
+<ul>
+<li><p>我们考虑从一点 <span class="math inline">\(x\)</span> 出发，转移概率为 <span class="math inline">\(P(x,y)=c(x,y)/c(x)\)</span> 的随机游动 <span class="math inline">\(\{X_t,t\geq0\}\)</span>，其中 <span class="math inline">\(X_0=x\)</span>。这个随机游动是可逆的 Markov 链，以 <span class="math inline">\(\{c(x),x\in V\}\)</span> 为平稳测度：<span class="math inline">\(c(x)P(x,y)=c(y)P(y,x)\)</span>。</p></li>
+<li><p>我们同时考虑在 <span class="math inline">\(a\)</span> 点接上电源正极，<strong>并将 <span class="math inline">\(Z\)</span> 接地</strong>，则电流从 <span class="math inline">\(a\)</span> 流入并从 <span class="math inline">\(Z\)</span> 流出。我们将建立随机游动和这一电网络之间的联系。</p></li>
+</ul>
+<h2 id="电压的概率解释-第一种">电压的概率解释 (第一种)</h2>
+<p>电压有一个很简单的解释，它是直线上随机游动中赌徒获胜/破产概率的类比。</p>
+<p>考虑从 <span class="math inline">\(x\)</span> 出发的随机游动，设 <span class="math inline">\(\tau_a\)</span> 是这一随机游动首次到达 <span class="math inline">\(a\)</span> 点的时间 (类比赌徒获胜)，<span class="math inline">\(\tau_Z\)</span> 是这一随机游动首次到达集合 <span class="math inline">\(Z\)</span> 的时间 (类比赌徒输光)，并考虑概率 <span class="math display">\[h(x) = \mathbb{P}_x(\tau_a&lt;\tau_Z).\]</span> 其中我们规定 <span class="math inline">\(h(a)=1, h(Z)=0\)</span>，则 <span class="math inline">\(h(x)\)</span> 在任何 <span class="math inline">\(x\notin \{a\}\cup Z\)</span> 上是<strong>调和</strong>的： <span class="math display">\[h(x) = \sum_{y\sim x}P(x, y)h(y).\]</span> 此即为全概率公式，下一步到某个 <span class="math inline">\(y\sim x\)</span> 的概率是 <span class="math inline">\(P(x,y)\)</span>，从 <span class="math inline">\(y\)</span> 继续出发获胜的概率是 <span class="math inline">\(h(y)\)</span>，求和即可。</p>
+<p>现在假设 <span class="math inline">\(a\)</span> 点加上的电压大小是 1，则其电势 <span class="math inline">\(v(a)=1\)</span>，由于 <span class="math inline">\(Z\)</span> 接地所以 <span class="math inline">\(v(Z)=0\)</span>。我们断言电势函数 <span class="math inline">\(v(x)\)</span> 在任何一点 <span class="math inline">\(x\notin\{a\}\cup Z\)</span> 处也是调和的： <span class="math display">\[v(x) = \sum_{y\sim x}P(x, y)v(y).\]</span> 这是因为设 <span class="math inline">\(v\)</span> 对应的电流是 <span class="math inline">\(i\)</span>，则 <span class="math display">\[\begin{align*}
+v(x) - \sum_{y\sim x}P(x, y)v(y)&amp;=
+\sum_{y\sim x}P(x, y)(v(x)-v(y))\\&amp;=
+\sum_{y\sim x}\frac{c(x,y)}{c(x)}i(x,y)r(x,y)\\&amp;=
+\frac{1}{c(x)}\sum_{y\sim x}i(x,y)\\&amp;=
+0.
+\end{align*}\]</span> 其中最后一个等号是根据基尔霍夫定律对任何中间节点 <span class="math inline">\(x\)</span> 有 <span class="math inline">\((\mathrm{div}\,i)(x)=0\)</span>。</p>
+<p>现在获胜概率 <span class="math inline">\(\mathbb{P}_x(\tau_a&lt;\tau_Z)\)</span> 和电势函数 <span class="math inline">\(v(x)\)</span> 在 <span class="math inline">\(\{a\}\cup Z\)</span> 上有相同的边界条件，在 <span class="math inline">\((\{a\}\cup Z)^c\)</span> 上都是调和的，则它俩必然是同一个函数！(提示：考虑两个函数之差并利用调和函数必然在边界上取得最大最小值，注意这是在有限图上) 于是我们得到</p>
+<blockquote><p><strong>电压的概率解释</strong>：在 <span class="math inline">\(a\)</span> 加上单位 1 的电压，将 <span class="math inline">\(Z\)</span> 接地，则任一顶点 <span class="math inline">\(x\)</span> 处的电势等于从 <span class="math inline">\(x\)</span> 出发的随机游动在到达 <span class="math inline">\(Z\)</span> 之前先到达 <span class="math inline">\(a\)</span> 的概率：<span class="math inline">\(v(x)=\mathbb{P}_x(\tau_a&lt;\tau_Z)\)</span>。</p>
+</blockquote>
+<p>如果 <span class="math inline">\(a\)</span> 处不是单位电压的话，则结论中的 <span class="math inline">\(v(x)\)</span> 应替换为 <span class="math inline">\(v(x)/v(a)\)</span>。</p>
+<h2 id="电流的概率解释">电流的概率解释</h2>
+<p>记 <span class="math inline">\(\mathbb{P}(a\to Z)=\mathbb{P}_a(\tau_Z &lt; \tau_a^+)\)</span> 为从 <span class="math inline">\(a\)</span> 出发的随机游动在返回 <span class="math inline">\(a\)</span> 之前先到达 <span class="math inline">\(Z\)</span> 的概率。此概率称作从 <span class="math inline">\(a\)</span> 到 <span class="math inline">\(Z\)</span> 的<strong>逃逸概率</strong>。</p>
+<p>仍然在 <span class="math inline">\(a\)</span> 处加上电压，<span class="math inline">\(Z\)</span> 接地，考虑此网络的电势 <span class="math inline">\(v\)</span> 和电流 <span class="math inline">\(i\)</span>。</p>
+<blockquote><p><strong>引理 3.1</strong>： <span class="math display">\[\frac{v(a)}{\| i\|} = \frac{1}{c(a)\mathbb{P}(a\to Z)}.\]</span></p>
+</blockquote>
+<p>证明是常用的单步转移概率： <span class="math display">\[
+\begin{align*}
+\mathbb{P}(a\to Z) &amp;= \sum_{x\sim a}P(a, x)\mathbb{P}_x(\tau_Z &lt; \tau_a)\\&amp;=
+\sum_{x\sim a}\frac{c(a,x)}{c(a)}\left(1-\frac{v(x)}{v(a)}\right)\\&amp;=
+\sum_{x\sim a}\frac{c(a,x)}{c(a)}\frac{v(a)-v(x)}{v(a)}\\&amp;=
+\sum_{x\sim a}\frac{i(a,x)}{c(a)v(a)}\\&amp;=
+\frac{\|i\|}{c(a)v(a)}.
+\end{align*}
+\]</span> 对任何边 <span class="math inline">\(x\sim y\)</span>，定义随机变量 <span class="math inline">\(N_{x\to y}^Z\)</span> 为从 <span class="math inline">\(a\)</span> 出发的随机游动在访问 <span class="math inline">\(Z\)</span> 之前从 <span class="math inline">\(x\)</span> 走到 <span class="math inline">\(y\)</span> 的次数，则我们有如下定理：</p>
+<div id="theorem3">
+<blockquote><p><strong>定理 3.1</strong>：设电流是单位电流：<span class="math inline">\(\|i\|=1\)</span>，此时的电势函数为 <span class="math inline">\(v\)</span>，则</p>
+<ol type="1">
+<li><span class="math inline">\(v(x) = \mathcal{G}_Z(a, x)/ c(x)\)</span>。</li>
+<li><span class="math inline">\(i(x,y)=\mathbb{E}_a\left[N_{x\to y}^Z - N_{y\to x}^Z\right]\)</span>。</li>
+</ol>
+<p>其中 <span class="math inline">\(\mathcal{G}_Z(a, x)\)</span> 是随机游动的 Green 函数，其定义为从 <span class="math inline">\(a\)</span> 出发的随机游动在到达 <span class="math inline">\(Z\)</span> 之前访问 <span class="math inline">\(x\)</span> 的期望次数： <span class="math display">\[\mathcal{G}_Z(a, x) = \sum_{k=0}^{\tau_Z}1_{\{X_k=x\}}.\]</span></p>
+</blockquote>
+</div>
+<p><strong>证明</strong>：</p>
+<ol type="1">
+<li><p>首先边界条件给出了 <span class="math inline">\(\mathcal{G}_Z(a, Z)=0\)</span>。此外 <span class="math inline">\(\mathcal{G}_Z(a, a)\)</span> 是一个每次试验成功概率为 <span class="math inline">\(\mathbb{P}(a\to Z)\)</span> 的几何分布的随机变量的期望，故 <span class="math display">\[\mathcal{G}_Z(a, a)=\frac{1}{\mathbb{P}(a\to Z)},\]</span> 再由上面的引理，有 <span class="math display">\[\frac{\mathcal{G}_Z(a, a)}{c(a)}=\frac{1}{c(a)\mathbb{P}(a\to Z)}=v(a).\]</span> 所以 <span class="math inline">\(\mathcal{G}_Z(a, x)/c(x)\)</span> 在边界上与电势函数是一致的，只要再证明在任意中间节点 <span class="math inline">\(x\)</span> 的调和性质。注意随机游动必然是从与 <span class="math inline">\(x\)</span> 相邻的顶点走过去访问 <span class="math inline">\(x\)</span>，所以 <span class="math display">\[\frac{\mathcal{G}_Z(a, x)}{c(x)}=\frac{1}{c(x)}\sum_{y\sim x}\mathbb{E}_a[N_{y\to x}^Z].\]</span> 另一方面 <span class="math display">\[
+\begin{align*}
+\mathbb{E}_a[N_{y\to x}^Z]&amp;=
+\mathbb{E}_a\left[\sum_{t=0}^{\tau_Z}1_{\{X_t=y,X_{t+1}=x\}}\right]\\&amp;=
+\sum_{t=0}^{\tau_Z}\mathbb{P}\left[X_t=y,X_{t+1}=x\right]\\&amp;=
+\sum_{t=0}^{\tau_Z}\mathbb{P}(X_t=y)P(y,x)\\&amp;=
+P(y,x)\mathbb{E}_a\left[\sum_{t=0}^{\tau_Z}1_{\{X_t=y\}}\right]\\&amp;=
+P(y,x)\mathcal{G}_Z(a,y).
+\end{align*}
+\label{eq:cross}
+\]</span> 所以代入求和后有 <span class="math display">\[
+\frac{1}{c(x)}\sum_{y\sim x}\mathbb{E}_a[N_{y\to x}^Z]=\frac{1}{c(x)}\sum_{y\sim x}P(y,x)\mathcal{G}_Z(a,y)=\sum_{y\sim x}P(x,y)\frac{\mathcal{G}_Z(a,y)}{c(y)}.
+\]</span> 其中我们使用了 Markov 链的可逆性：<span class="math inline">\(c(x)P(x,y)=c(y)P(y,x)\)</span>。这就证明了 <span class="math inline">\(\mathcal{G}_Z(a, x)/c(x)\)</span> 在中间节点的调和性，从而它就是电势函数，这证明了 1。</p></li>
+<li><p>直接验证即可： <span class="math display">\[\begin{align*}\mathbb{E}_a\left[N_{x\to y}^Z - N_{y\to x}^Z\right]&amp;=P(x,y)\mathcal{G}_Z(a,x)-P(y,x)\mathcal{G}_Z(a,y)\\&amp;=P(x,y)c(x)v(x) - P(y,x)c(y)v(y)\\&amp;=c(x,y)(v(x)-v(y))\\&amp;=i(x,y).\end{align*}\]</span></p></li>
+</ol>
+<h1 id="wilson-均匀生成树算法">4 Wilson 均匀生成树算法</h1>
+<p>这一节的目的是介绍怎样将一条给定边 <span class="math inline">\(e\)</span> 属于一个随机生成树 <span class="math inline">\(T\)</span> 的概率 <span class="math inline">\(\mathbb{P}(e\in T)\)</span> 表示为随机游动中的概率。这里的关键是 Wilson 均匀生成树算法，它通过<strong>擦圈的随机游动</strong>按照一定的权重分布在全体生成树中随机地取样，这里一个生成树 <span class="math inline">\(T\)</span> 的权重 <span class="math inline">\(w(T)=\prod_{e\in T}c(e)\)</span>，任一生成树 <span class="math inline">\(T_0\)</span> 被选中的概率为 <span class="math inline">\(w(T_0)/\sum_{T}w(T)\)</span>。</p>
+<p>在下文中“随机生成树”一词均指服从上述权重分布的随机生成树。</p>
+<p>Wilson 算法的步骤如下：</p>
+<ol type="1">
+<li>任取一个根节点 <span class="math inline">\(r\)</span>，维护一个树 <span class="math inline">\(T\)</span>，初始时 <span class="math inline">\(T=\{r\}\)</span>。</li>
+<li>任取一个顶点 <span class="math inline">\(v\notin T\)</span>，从 <span class="math inline">\(v\)</span> 出发作 <span class="math inline">\(G\)</span> 上的擦圈随机游动，直到随机游动撞到 <span class="math inline">\(T\)</span> 为止，然后将随机游动的路径 <span class="math inline">\(p\)</span> 加入 <span class="math inline">\(T\)</span> 中：<span class="math inline">\(T=T\cup p\)</span>。</li>
+<li>重复步骤 2 直到 <span class="math inline">\(T\)</span> 是一个生成树为止。</li>
+</ol>
+<blockquote>
+<p>下面这个动画演示了 Wilson 算法的过程，你可以随时单击画布来重启动画。</p>
+</blockquote>
+<script type="text/javascript" src="/code/wilson_small.js"></script>
+<div data-align="center">
+<canvas id="wilson" width="572" height="292">
+</canvas>
+</div>
+<p>Wilson 算法正确性的证明比较繁琐，这里不再赘述，你可以参考我<a href="/wilson-uniform-spanning-tree-algorithm">之前的一篇文章</a>。初次遇到这个算法的话可以先跳过证明，只记住结论。这个算法的重点就是初始时的根节点是可以任意选取的，每次进行擦圈的随机游动时选择的出发顶点也可以是任意的，这都不影响得到的生成树 <span class="math inline">\(T\)</span> 的分布。</p>
+<div id="theorem4">
+<blockquote><p><strong>定理 4.1</strong>：设 <span class="math inline">\(\mathcal{N}=(G,c)\)</span> 是一个网络，给定边 <span class="math inline">\(e=(x,y)\in E\)</span>，在 <span class="math inline">\(x\)</span> 处加上电源并将 <span class="math inline">\(y\)</span> 接地，使得流入网络的电流是单位流 <span class="math inline">\(i^e\)</span>。则对 <span class="math inline">\(G\)</span> 的随机生成树 <span class="math inline">\(T\)</span>，<span class="math inline">\(e\)</span> 属于 <span class="math inline">\(T\)</span> 的概率即为此时 <span class="math inline">\(e\)</span> 中的电流量 <span class="math inline">\(i^e(e)\)</span>，它也等于从 <span class="math inline">\(x\)</span> 出发的随机游动首次访问 <span class="math inline">\(y\)</span> 是从边 <span class="math inline">\(e\)</span> 走过去的这一事件的概率： <span class="math display">\[\mathbb{P}(e \in T) = i^e(e) = \mathbb{P}_x\left[\text{the first visit to $y$ is across $(x,y)$}\right].\]</span></p>
+</blockquote>
+</div>
+<blockquote>
+<p>一个非常出人意料的结论，它把生成树、随机游动和电网络统一在一起。</p>
+</blockquote>
+<p><strong>证明</strong>：在 Wilson 算法中将初始根节点选为 <span class="math inline">\(y\)</span>，并将第一次出发作擦圈随机游动的顶点选为 <span class="math inline">\(x\)</span>，则此随机游动首次到达 <span class="math inline">\(y\)</span> 有两种可能：</p>
+<ol type="1">
+<li>是从边 <span class="math inline">\((x,y)\)</span> 走到 <span class="math inline">\(y\)</span> 的，此随机游动的路径属于 <span class="math inline">\(T\)</span>，自然也有 <span class="math inline">\(e\in T\)</span>。</li>
+<li>是从其它边走到 <span class="math inline">\(y\)</span> 的，则此随机游动的路径属于 <span class="math inline">\(T\)</span> 但不可能有 <span class="math inline">\(e\in T\)</span>，否则 <span class="math inline">\(T\)</span> 中会出现回路。</li>
+</ol>
+<p>于是我们证明了 <span class="math inline">\(e\in T\)</span> 当且仅当从 <span class="math inline">\(x\)</span> 出发的随机游动首次到达 <span class="math inline">\(y\)</span> 是从边 <span class="math inline">\(e\)</span> 走过去的。</p>
+<p>另一方面在<a href="#theorem3">定理 3.1</a> 中取 <span class="math inline">\(Z=\{y\}\)</span> 有 <span class="math display">\[
+i^e(x,y)=\mathbb{E}_x\left[N^{\{y\}}_{x\to y} - N^{\{y\}}_{y\to x}\right].
+\]</span> 注意到从 <span class="math inline">\(x\)</span> 出发的随机游动不可能在到达 <span class="math inline">\(y\)</span> 之前从 <span class="math inline">\(y\)</span> 走到 <span class="math inline">\(x\)</span>，所以 <span class="math inline">\(N^{\{y\}}_{y\to x}=0\)</span>。同时它在到达 <span class="math inline">\(y\)</span> 之前从 <span class="math inline">\(x\)</span> 走到 <span class="math inline">\(y\)</span> 的次数只能是 0 或者 1，所以 <span class="math inline">\(N^{\{y\}}_{x\to y}\in\{0,1\}\)</span>，从而 <span class="math display">\[\mathbb{E}_xN^{\{y\}}_{x\to y}=\mathbb{P}_x(N^{\{y\}}_{x\to y}=1)=\mathbb{P}_x\left[\text{the first visit to $y$ is across $(x,y)$}\right].
+\]</span> 这就完成了证明。</p>
+<h1 id="图的收缩">5 图的收缩</h1>
+<p>设 <span class="math inline">\(\mathcal{N}=(G,c)\)</span> 是一个网络，<span class="math inline">\(F\subset E\)</span> 是边的子集且 <span class="math inline">\(F\)</span> 不含回路 (不考虑边的方向)，<span class="math inline">\(G\)</span> 关于 <span class="math inline">\(F\)</span> 的图收缩是一个图变换，它把每个 <span class="math inline">\(F\)</span> 中的每条边 <span class="math inline">\(f\)</span> 的两个端点合并为一个新顶点，并将 <span class="math inline">\(f\)</span> 变成新顶点的一条自边 (loop)。这样得到的新图记作 <span class="math inline">\(G/F\)</span>。注意当一条边 <span class="math inline">\(e\notin F\)</span> 如果和 <span class="math inline">\(F\)</span> 中的边构成回路的话，它在 <span class="math inline">\(G/F\)</span> 中也会变成自边。</p>
+<p><img style="margin:0px auto;display:block" src="/images/electric-network/graph_reduction.svg" width="350"></p>
+<p>在收缩变换下，<span class="math inline">\(G\)</span> 的边集 <span class="math inline">\(E\)</span> 与 <span class="math inline">\(G/F\)</span> 的边集 <span class="math inline">\(\widehat{E}\)</span> 一一对应。不难验证如下结论：</p>
+<div id="lemma5">
+<blockquote><p><strong>引理 5.1</strong>：当 <span class="math inline">\(F\)</span> 不含回路时，<span class="math inline">\(G\)</span> 的所有包含 <span class="math inline">\(F\)</span> 的生成树 <span class="math inline">\(\{T_G, F\subset T_G\}\)</span> 与 <span class="math inline">\(G/F\)</span> 的所有生成树 <span class="math inline">\(\{T_{G/F}\}\)</span> 一一对应，且 <span class="math display">\[w(T_G)=\prod_{f\in F}c(f)\cdot w(T_{G/F}).\]</span> 于是对任何 <span class="math inline">\(e\in E\)</span> 有 <span class="math display">\[\mathbb{P}(e\in T_G \,\big| \, F\subset T_G) = \mathbb{P}(e\in T_{G/F})=\widehat{i^e}(e).\]</span> 其中 <span class="math inline">\(\widehat{i^e}\)</span> 是 <span class="math inline">\(G/F\)</span> 上的单位流 <span class="math inline">\(\chi^e\)</span> 对应的电流函数。</p>
+</blockquote>
+</div>
+<p>我们想知道图 <span class="math inline">\(G\)</span> 中的电流函数 <span class="math inline">\(i^e\)</span> 和图 <span class="math inline">\(G/F\)</span> 中的电流函数 <span class="math inline">\(\widehat{i^e}\)</span> 之间的关系。这个关系乍看起来不知道怎么下手才好，但其实它有非常直观的解释：<span class="math inline">\(F\)</span> 中的边在 <span class="math inline">\(G/F\)</span> 中都变成了自边，这些自边中的电流都是 0，这时 <span class="math inline">\(G/F\)</span> 中的电流函数 <span class="math inline">\(\widehat{i^e}\)</span> 相当于在 <span class="math inline">\(G\)</span> 中我们强制令 <span class="math inline">\(F\)</span> 中的边的端点为等势点，并求解这时 <span class="math inline">\(G\)</span> 上的电流函数 <span class="math inline">\(I^e\)</span>。从物理上讲，这相当于我们在 <span class="math inline">\(e\)</span> 的一端通入单位电流并将 <span class="math inline">\(e\)</span> 的另一端接地的同时，还在每个 <span class="math inline">\(f\in F\)</span> 的两端加上电源，使得 <span class="math inline">\(f\)</span> 的两端电势相等，从而 <span class="math inline">\(f\)</span> 中电流为 0。你可能要担心了：这不会在网络中引入新的电流吗？流过网络的还是单位流吗？答案是不会的，我们还要求这时的电流在任何 <span class="math inline">\(z\notin e\)</span> 处满足基尔霍夫定律，这就不会有额外的电流进入网络了。</p>
+<p>于是 <span class="math inline">\(I^e\)</span> 必须满足以下三个条件：</p>
+<ol type="1">
+<li><span class="math inline">\(I^e\in \bigstar\)</span>。(Ohm 定律)</li>
+<li><span class="math inline">\(I^e\downharpoonright F=0\)</span>。(任何 <span class="math inline">\(F\)</span> 中的边两端等势)</li>
+<li>流量限制：
+<ul>
+<li>对 <span class="math inline">\(F\)</span> 的任何连通成分 <span class="math inline">\(F_C\)</span>，若 <span class="math inline">\(F_C\)</span> 不包含 <span class="math inline">\(e\)</span> 的任何端点，则从 <span class="math inline">\(F_C\)</span> 净流出的电流量为 0。</li>
+<li>对 <span class="math inline">\(F\)</span> 的任何连通成分 <span class="math inline">\(F_C\)</span>，若 <span class="math inline">\(e^-\in F_C (e^+\in F_C)\)</span> 则从 <span class="math inline">\(F_C\)</span> 净流出的电流为 1 (-1)。</li>
+<li><span class="math inline">\(I^e\)</span> 在 <span class="math inline">\(G\)</span> 的其它顶点 <span class="math inline">\(x\notin e\cup F\)</span> 处流量守恒。</li>
+</ul></li>
+</ol>
+<p>注意因为 <span class="math inline">\(F\)</span> 的任何连通成分 <span class="math inline">\(F_C\)</span> 会在 <span class="math inline">\(G/F\)</span> 中“坍缩”为同一个顶点 <span class="math inline">\(x_C\)</span>，所以 <span class="math inline">\(x_C\)</span> 处净的流出量对应于在 <span class="math inline">\(G\)</span> 中将 <span class="math inline">\(F_C\)</span> 作为一个整体净的流出量。由于 <span class="math inline">\(I^e\)</span> 在每个 <span class="math inline">\(f\in F\)</span> 上都是 0，所以 <span class="math inline">\(F_C\)</span> 内部没有“淤积”的电流。</p>
+<p>这个函数 <span class="math inline">\(I^e\)</span> 不难找到：我们注意一个简单的线性代数事实：</p>
+<blockquote><p><strong>Fact</strong>：若 <span class="math inline">\(U,V\)</span> 是内积空间的子空间且 <span class="math inline">\(U\supseteq V^\bot\)</span>，则 <span class="math display">\[U = V^\bot\oplus (U\cap V) = V^\bot\oplus P_VU.\]</span> 其中 <span class="math inline">\(P_V\)</span> 是从全空间到 <span class="math inline">\(V\)</span> 的正交投影算子。</p>
+</blockquote>
+<p>记 <span class="math inline">\(\chi^F=\{\chi^f,f\in F\}\)</span> 为所有 <span class="math inline">\(f\in F\)</span> 对应的单位流 <span class="math inline">\(\chi^F\)</span> 张成的子空间，<span class="math inline">\(Z=\{i^f,f\in F\}=P_\bigstar\chi^F\)</span>，则 <span class="math inline">\(Z\subset\bigstar\)</span>。对 <span class="math inline">\(U=\bigstar\)</span> 和 <span class="math inline">\(V=Z^\bot\)</span> 使用上述事实得到 <span class="math display">\[
+\bigstar = Z \oplus P_{Z}^\bot\bigstar.
+\]</span> 由<a href="#prop2">推论 2.2</a> 可知 <span class="math inline">\(I^e\downharpoonright F=0\)</span> 等价于 <span class="math inline">\((I^e,i^f)_E=0\)</span> 对任何 <span class="math inline">\(f\in F\)</span> 成立，即 <span class="math inline">\(I^e\in Z^\bot\)</span>，而 <span class="math inline">\(I^e\in\bigstar\)</span>，从而 <span class="math inline">\(I^e\in \bigstar\cap Z^{\bot}=P_Z^\bot\bigstar\)</span>，因此这个 <span class="math inline">\(I^e\)</span> 是什么就很清楚了，它正是电流函数 <span class="math inline">\(i^e\)</span> 在 <span class="math inline">\(Z^\bot\)</span> 上的正交投影分量： <span class="math display">\[I^e = P_Z^\bot i^e.\]</span> 稍微麻烦一点的是验证 <span class="math inline">\(I^e\)</span> 满足条件 3。记 <span class="math display">\[I^e = i^e - \sum_{f\in F}\alpha_f f.\]</span> 则在情形 1 中，每个 <span class="math inline">\(i^f\)</span> 在 <span class="math inline">\(f\)</span> 两端的净流出量抵消，<span class="math inline">\(F_C\)</span> 总的净流出量为 0；在情形 2 中边 <span class="math inline">\(e\)</span> 只有一端在 <span class="math inline">\(F\)</span> 中，其贡献的净流出量为 <span class="math inline">\(+1\)</span> 或者 <span class="math inline">\(-1\)</span>，其它边 <span class="math inline">\(i^f\)</span> 在 <span class="math inline">\(f\)</span> 两端的净流出量抵消，<span class="math inline">\(F_C\)</span> 总的净流出量为 <span class="math inline">\(\pm1\)</span>；在情形 3 中 <span class="math inline">\(i^e\)</span> 和所有 <span class="math inline">\(i^f\)</span> 在顶点处的净流出量都是 0，<span class="math inline">\(F_C\)</span> 总的净流出量为 0。</p>
+<p>于是结合<a href="#prop2">推论 2.2</a> 我们有如下定理：</p>
+<div id="theorem5">
+<blockquote><p><strong>定理 5.1</strong>：设 <span class="math inline">\(F\subset E\)</span> 不含回路，<span class="math inline">\(e\notin F\)</span> 且与 <span class="math inline">\(F\)</span> 中的边不构成回路，<span class="math inline">\(T_G\)</span> 是 <span class="math inline">\(G\)</span> 的随机生成树，则 <span class="math inline">\(G/F\)</span> 中的单位电流 <span class="math inline">\(\widehat{i^e}\)</span> 是 <span class="math inline">\(G\)</span> 中单位电流 <span class="math inline">\(i^e\)</span> 在子空间 <span class="math inline">\(Z^\bot\)</span> 上的正交投影： <span class="math inline">\(\widehat{i^e}=P_{Z}^\bot i^e\)</span>。于是 <span class="math display">\[\mathbb{P}(e\in T_G \,\big| \, F\subset T_G) = \widehat{i^e}(e)=c(e)(\widehat{i^e},\widehat{i^e})_{\widehat{E}}=c(e)\big\|P_Z^\bot i^e\big\|^2.\]</span> 其中 <span class="math inline">\(Z\)</span> 是由 <span class="math inline">\(\{i^f,f\in F\}\)</span> 张成的子空间，<span class="math inline">\(P_Z^\bot\)</span> 是到 <span class="math inline">\(Z^\bot\)</span> 的正交投影。</p>
+</blockquote>
+</div>
+<h1 id="转移电流定理">6 转移电流定理</h1>
+<blockquote><p><strong>定理 6.1 [转移电流定理]</strong>：设 <span class="math inline">\(\{e_1,\ldots,e_k\}\)</span> 一组边的集合，<span class="math inline">\(T\)</span> 是一个随机生成树，<span class="math inline">\(Y\)</span> 是<a href="#def-transfer-current">如前定义的转移电流矩阵</a>，定义 <span class="math inline">\(k\times k\)</span> 矩阵 <span class="math inline">\(Y^{(k)}(i,j)=Y(e_i,e_j)\)</span>，则 <span class="math display">\[\mathbb{P}(e_1,\ldots,e_k\in T) = \det Y^{(k)}.\]</span></p>
+</blockquote>
+<blockquote><p><strong>推论</strong>：考虑其中 <span class="math inline">\(r\)</span> 条边 <span class="math inline">\(\{e_1,\ldots,e_r\}\)</span> 不属于 <span class="math inline">\(T\)</span>，另外 <span class="math inline">\(k-r\)</span> 条边 <span class="math inline">\(\{e_{r+1},\ldots,e_k\}\)</span> 属于 <span class="math inline">\(T\)</span> 的概率 <span class="math inline">\(\mathbb{P}(e_1,\ldots,e_r\notin T, e_{r+1},\ldots,e_k\in T)\)</span>，令矩阵 <span class="math inline">\(M^{(r)}\)</span> 为 <span class="math display">\[M^{(r)}(i, j) =\begin{cases}\delta_{ij} - Y^{(k)}(i, j), &amp; i\leq r\\Y^{(k)}(i,j), &amp;  r+1\leq i\leq k.\end{cases}\]</span> 则 <span class="math display">\[\mathbb{P}(e_1,\ldots,e_r\notin T, e_{r+1},\ldots,e_k\in T)=\det M^{(r)}.\]</span></p>
+</blockquote>
+<p>我们首先说明怎样用转移电流定理得出推论的结论。对排除的边的个数 <span class="math inline">\(r\)</span> 归纳，<span class="math inline">\(r=0\)</span> 的情形对应的就是转移电流定理因而成立。设推论对任何小于 <span class="math inline">\(r\)</span> 的情形成立，在 <span class="math inline">\(r\)</span> 的情形考虑矩阵 <span class="math display">\[
+P(i, j) = \begin{cases}
+  \delta_{ij} - Y^{(k)}(i,j),  &amp; i &lt; r \\
+  \delta_{ij}, &amp; i = r  \\
+  Y^{(k)}(i,j), &amp; r+1\leq i\leq k.
+  \end{cases}
+\]</span></p>
+<p>则 <span class="math inline">\(M^{(r)},M^{(r-1)},P\)</span> 在所有 <span class="math inline">\(i\ne r\)</span> 的行都相等，但是 <span class="math inline">\(M^{(r)}\)</span> 和 <span class="math inline">\(M^{(r-1)}\)</span> 的第 <span class="math inline">\(r\)</span> 行之和等于 <span class="math inline">\(P\)</span> 第 <span class="math inline">\(r\)</span> 行，于是根据行列式的多重线性性质， <span class="math display">\[\det M^{(r)}+\det M^{(r-1)}=\det P.\]</span> 将 <span class="math inline">\(\det P\)</span> 按照 <span class="math inline">\(P\)</span> 的第 <span class="math inline">\(r\)</span> 行展开并对 <span class="math inline">\(\{e_1,\ldots,e_{r-1},e_{r+1},\ldots,e_k\}\)</span> 利用归纳假设，得到 <span class="math display">\[
+\det P=\mathbb{P}(e_1,\ldots,e_{r-1}\notin T, e_{r+1},\ldots,e_k\in T).
+\]</span> 又对 <span class="math inline">\(\{e_1,\ldots,e_{r-1},e_r,\ldots,e_k\}\)</span> 利用归纳假设得到 <span class="math display">\[\det M^{(r-1)} = \mathbb{P}(e_1,\ldots,e_{r-1}\notin T, e_{r},\ldots,e_k\in T)
+\]</span> 相减即得结论。</p>
+<p>回到转移电流定理的证明。分两种情形：</p>
+<ol type="1">
+<li><p>如果 <span class="math inline">\(\{e_1,\ldots,e_k\}\)</span> 中包含某个回路 <span class="math inline">\(C\)</span> 的话，我们可以适当重排它们并选取 <span class="math inline">\(a_i\in\{+1,-1,0\}\)</span> 使得 <span class="math inline">\(\sum_i a_i\chi^{e_i}=f_C\in\lozenge\)</span>，这里对不属于 <span class="math inline">\(C\)</span> 的 <span class="math inline">\(e_i\)</span> 取 <span class="math inline">\(a_i=0\)</span>，对属于 <span class="math inline">\(C\)</span> 的 <span class="math inline">\(e_i\)</span> 通过选择 <span class="math inline">\(a_i=\pm1\)</span> 使得它们的方向为依次首尾相接。则根据<a href="#prop2">推论 2.2</a> <span class="math inline">\(Y^{(k)}\)</span> 的行是线性相关的，从而 <span class="math inline">\(\mathbb{P}(e_1,\ldots,e_k\in T)=\det Y^{(k)}=0\)</span>，结论成立。</p></li>
+<li><p>如果 <span class="math inline">\(\{e_1,\ldots,e_k\}\)</span> 中不包含回路的话，对 <span class="math inline">\(k\)</span> 归纳，<a href="#theorem4">定理 4.1</a> 已经给出了 <span class="math inline">\(k=1\)</span> 的情形，所以可以假设 <span class="math inline">\(k&gt;1\)</span> 且结论对所有小于 <span class="math inline">\(k\)</span> 的情形成立。我们注意到 <span class="math inline">\(Y^{(k)}\)</span> “差不多”是一个 <a href="en.wikipedia.org/wiki/Gramian_matrix">Gram 矩阵</a> (见<a href="#prop2">之前的推论</a>)： <span class="math display">\[Y^{(k)}(i,j)=Y(e_i,e_j)=c(e_j)(i^{e_i},i^{e_j})_E.\]</span> 即 <span class="math inline">\(Y^{(k)}\)</span> 不过是对每个 <span class="math inline">\(j\)</span>，在 Gram 矩阵 <span class="math inline">\(I^{(k)}=\big((i^{e_i},i^{e_j})\big)_{1\leq i,j\leq k}\)</span> 的第 <span class="math inline">\(j\)</span> 列上乘以 <span class="math inline">\(c(e_j)\)</span> 得到的，所以 <span class="math display">\[
+\det Y^{(k)} = \left(\prod_{i=1}^k c(e_i)\right)\det I^{(k)}.
+\]</span> 回忆内积空间中 Gram 矩阵的行列式的几何意义是其张成的平行多面体的体积的平方，它等于 <span class="math inline">\(\{i^{e_1},\ldots,i^{e_{k-1}}\}\)</span> 张成的底面 <span class="math inline">\(Z\)</span> 面积平方乘以 <span class="math inline">\(i^{e_k}\)</span> 到这个底面距离的平方： <span class="math display">\[
+\det I^{(k)} = \big\|P_Z^\bot i^{e_k}\big\|^2\det I^{(k-1)}.
+\]</span> 其中 <span class="math inline">\(Z=\mathrm{span}\{i^{e_1},\ldots,i^{e_{k-1}}\}\)</span>，<span class="math inline">\(P_Z^\bot\)</span> 是到 <span class="math inline">\(Z\)</span> 的正交补空间 <span class="math inline">\(Z^\bot\)</span> 的投影算子。把 <span class="math inline">\(\prod_{i=1}^kc(e_i)\)</span> 乘回去就得到 <span class="math display">\[
+\det Y^{(k)} = c(e_k) \big\|P_Z^\bot i^{e_k}\big\|^2 \det Y^{(k-1)}.
+\]</span> 另一方面根据条件概率公式有 <span class="math display">\[
+\mathbb{P}(e_1,\ldots,e_k\in T)=
+\mathbb{P}(e_k\in T\,\big|\, e_1,\ldots,e_{k-1}\in T)\cdot
+\mathbb{P}(e_1,\ldots,e_{k-1}\in T).
+\]</span> 而根据<a href="#theorem5">定理 5.1</a> 的结论 <span class="math display">\[
+\mathbb{P}(e_k\in T\,\big|\, e_1,\ldots,e_{k-1}\in T) = c(e_k) \big\|P_Z^\bot i^{e_k}\big\|^2,
+\]</span> 从而 <span class="math inline">\(\det Y^{(k)}\)</span> 和 <span class="math inline">\(\mathbb{P}(e_1,\ldots,e_k\in T)\)</span> 有相同的初始条件和递推关系，从而它们相等，转移电流定理得证。</p></li>
+</ol>
+<h1 id="回答本文开头的问题">7 回答本文开头的问题</h1>
+<p>如本文开头所述，解决 <span class="math inline">\(\mathbb{Z}^2\)</span> 中顶点在随机迷宫中度数分布的问题归结为求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的转移电流矩阵，即令所有边的电导值均为 1，在一条边 <span class="math inline">\(e=(x,y)\)</span> 两端通入单位电流时，流过另一条边 <span class="math inline">\(e'\)</span> 的电流流量，这等价于求解对应的电势函数 <span class="math inline">\(v\)</span>，也等价于求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上拉普拉斯算子的解 <span class="math display">\[
+\Delta v (x) = 1_{x=e^-} - 1_{x=e^+}.
+\]</span> 这一步可以通过 Fourier 分析的方法来做，比如 Lyons 等人的教材就是采用的这种方法。但是假定你看过本系列的<a href="/random-walk-potential-kernel">第一篇文章</a>的话，我们可以省很多事情，直接用二维随机游动的势核函数 <span class="math inline">\(a(x)\)</span> 来构造电势函数 <span class="math inline">\(v\)</span>。注意到 <span class="math inline">\(a(x)\)</span> 在除去原点之外的任何点是调和的，并且在原点处的值为 0。记 <span class="math display">\[
+g(u) = \frac{a(u-y)-a(u-x)}{4}.
+\]</span> 则 <span class="math inline">\(g\)</span> 在除去 <span class="math inline">\(x,y\)</span> 外任何点处是调和的，从而 <span class="math inline">\(i=\nabla g\)</span> 满足欧姆定律、在除 <span class="math inline">\(x,y\)</span> 之外满足基尔霍夫定律，且 <span class="math inline">\(g(x)=a(x-y)/4 = -g(y)\)</span>。又 <span class="math display">\[\begin{align*}
+\|i\| &amp;= \sum_{z\sim x}i(x, z)=\sum_{z\sim x}[g(x)-g(z)]\\
+&amp;=a(x-y)-\sum_{z\sim x}\frac{a(z-y)-a(z-x)}{4}\\
+&amp;=\left(a(x-y)-\sum_{z\sim x}\frac{a(z-y)}{4}\right) + \sum_{z\in\{\pm(1,0),\pm(0,1)\}}\frac{a(z)}{4}\\
+&amp;=1.
+\end{align*}
+\]</span> 其中最后一个等号是因为势核在除去原点之外是调和的，且在原点的四个邻居处值为 1。</p>
+<p>于是 <span class="math inline">\(v(u)=g(u)-g(y)\)</span> 即为当 <span class="math inline">\(x\)</span> 通入单位电流，<span class="math inline">\(y\)</span> 接地时 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的电势函数，从而其在任何一边 <span class="math inline">\(e'=(z,w)\)</span> 上的电流为 <span class="math display">\[
+i(z,w) = g(z) - g(w)=\frac{1}{4}\big[a(z-y)-a(z-x)-a(w-y)+a(w-x)\big].
+\]</span> 当 <span class="math inline">\(e=(x,y)\)</span> 和 <span class="math inline">\(e'=(z,w)\)</span> 都取自原点相邻的四条边时，根据下图中的势核值代入上式即得本文开头的转移电流矩阵。</p>
+<p><img style="margin:0px auto;display:block" src="/images/electric-network/greenfunction.svg" width="350"></p>
+<p>举个例子验证一下：取 <span class="math inline">\(e_1=(0, 0)\to(1,0)\)</span>，<span class="math inline">\(e_2=(0,0)\to (0,1)\)</span>，则 <span class="math inline">\(x=z=(0,0)\)</span>，<span class="math inline">\(y=(1,0)\)</span>，<span class="math inline">\(w=(0,1)\)</span>，于是 <span class="math display">\[i^{e_1}(e_2)=\frac{a(-1,0)-a(0, 0)-a(-1,1)+a(0,1)}{4}=\frac{1}{2}-\frac{1}{\pi}.\]</span> Bingo!</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>Lyons, Russell, and Peres, Yuval. 2016. Probability on Trees and Networks. Cambridge Series in Statistical and Probabilistic Mathematics, vol. 42.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Richard Stanley. 2013. Algebraic Combinatorics: Walks, Trees, Tableaux, and More. Undergraduate Texts in Mathematics. Springer-Verlag New York.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+                
+<p class="pink-link-context">
+    <a href="/debruijn-rhombus-tiling/" rel="next" title="Shadertoy 作品：Escher 风格的拟周期密铺">
+    上一篇：Shadertoy 作品：Escher 风格的拟周期密铺
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/random-walk-potential-kernel/" rel="next" title="二维随机游动 (一)：逃出太阳系可没有你想象的那么难！">
+    下一篇：二维随机游动 (一)：逃出太阳系可没有你想象的那么难！
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function() {
+                this.page.url = 'https://neozhaoliang.github.io/transfer-current-theorem/';
+                this.page.identifier = 'transfer-current-theorem/';
+            };
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+                s.src = '//pywonderland.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener">comments powered by Disqus.</a>
+        </noscript>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+</script>
+
+
+
+</body>
+</html>
