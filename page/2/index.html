@@ -228,7 +228,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
+                    计数组合学 <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -406,7 +406,7 @@
 <p>这三个算法的目的都是从某些很大很大的集合当中以给定的概率分布随机取样，区别在于它们针对的集合不同。多米诺洗牌算法是在 Aztec 钻石图的所有密铺中取样；Wilson 算法是在一个图的所有生成树中取样；而 CFTP 算法则是在一个 Markov 链的状态空间中按照其平稳分布取样。</p>
 <p>我们先考虑一个看起来很初等的问题：</p>
 <blockquote><p><strong>问题 1</strong>：下图是一个边长分别为 <span class="math inline">\(a,b,c\)</span> 的平行六边形，其中 <span class="math inline">\(a,b,c\)</span> 都是正整数，内角均为 120 度：</p>
-<p><img style="margin:0px auto;display:block" width="300" src="/images/macmahon/hexagon.png"></p>
+<p><img style="margin:0px auto;display:block" width="300" src="/images/macmahon/hexagon.svg"></p>
 <p>请问：用边长为 1 的菱形密铺它，有多少种不同的方法？</p>
 </blockquote>
                 </div>
@@ -416,6 +416,103 @@
         
         <div class="card-action pink-link-context">
             <a href="/coupling-from-the-past/">阅读全文</a>
+        </ div>
+        
+    </div>
+</article>
+
+    
+        <article class="simple-article">
+    <div class="card">
+        <div class="card-content">
+            <div class="article-title">
+                
+    
+        <h1 class="indigo-link-context"><a href="/symmetric-plane-partitions/">对称平面分拆的 Macdonald 公式</a></h1>
+    
+
+
+            </div>
+
+            <time class="pink-link-context" datetime="2016-02-12T16:00:00.000Z"><a href="/symmetric-plane-partitions/">2016-02-13</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Plane-partitions/" class="chip pink lighten-1">Plane partitions</a>
+        
+            <a href="/tags/Weyl-character-formula/" class="chip pink lighten-1">Weyl character formula</a>
+        
+            <a href="/tags/Schur-polynomials/" class="chip pink lighten-1">Schur polynomials</a>
+        
+            <a href="/tags/Macdonald-s-formula/" class="chip pink lighten-1">Macdonald&#39;s formula</a>
+        
+            <a href="/tags/Simple-Lie-algebra/" class="chip pink lighten-1">Simple Lie algebra</a>
+        
+            <a href="/tags/Symmetric-plane-partitions/" class="chip pink lighten-1">Symmetric plane partitions</a>
+        
+    </div>
+
+
+
+            
+                <div class="entry pink-link-context">
+                    <p>今天要介绍的问题是 Weyl 特征公式在组合数学中的一个精彩应用。</p>
+<p>设 <span class="math inline">\(\lambda\)</span> 是一个整数分拆，在一个形状为 <span class="math inline">\(\lambda\)</span> 的 Young 图 <span class="math inline">\(T\)</span> 中填入正整数，使得每一行从左到右，每一列从上到下都是递减的，这样得到的二维数组 <span class="math inline">\(\pi\)</span> 叫做平面分拆 (plane partition)。如果 <span class="math inline">\(\pi\)</span> 关于其对角线还是反射对称的，就称其是一个对称平面分拆。例如下图是一个形状为 <span class="math inline">\(\lambda=(5, 4, 3, 2, 1)\)</span> 的对称平面分拆：</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>平面分拆更直观的描述方式是画出其 3D “鸟瞰图”，对于一个有 <span class="math inline">\(r\)</span> 行 <span class="math inline">\(r\)</span> 列，最大元素不超过 <span class="math inline">\(t\)</span> 的平面分拆 <span class="math inline">\(\pi\)</span>，其对应的鸟瞰图是在一个底面为 <span class="math inline">\(r\times r\)</span>，高度不超过 <span class="math inline">\(t\)</span> 的房间中堆箱子，且每一摞箱子的高度从墙根的方向向外是依次递减的，从而你可以完整看到每一摞箱子的顶部，不存在遮挡的现象。<span class="math inline">\(\pi\)</span> 对应的鸟瞰图如下：</p>
+<p><img style="margin:0px auto;display:block" width="350" src="/images/macdonald/symmetric-pp-example.svg"></p>
+<p>房间的示意图如下，上面的鸟瞰图是这个平行六边形的一个菱形密铺，且关于中轴线是对称的：</p>
+<p><img style="margin:0px auto;display:block" width="350" src="/images/macdonald/hexagon.svg"></p>
+<p>用 <span class="math inline">\(|\pi|\)</span> 表示 <span class="math inline">\(\pi\)</span> 的所有元素之和，记 <span class="math inline">\(\mathcal{B}(r,r, t)\)</span> 为所有体积不超过 <span class="math inline">\(r\times r\times t\)</span> 的<em>对称平面分拆</em> <span class="math inline">\(\pi\)</span> 组成的集合，问题来了：</p>
+<blockquote><p><strong>问题</strong>：求 <span class="math inline">\(q-\)</span> 计数 <span class="math display">\[\sum_{\pi\in\mathcal{B}(r,r, t)}q^{|\pi|}.\]</span></p>
+</blockquote>
+<p>这个问题最初是 MacMahon 在其 1898 的文章 "Partitions of numbers whose graphs possess symmetry" 中作为猜想提出，但是 Macmahon 本人没能解决这个问题。George E. Andrews 在 1978 年和 Ian G. Macdonald 在 1979 年分别独立解决了这个问题，本文要介绍的是 Macdonald 的解法 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，这个解法的关键在于使用了 <span class="math inline">\(B_n\)</span> 型李代数的特征公式。</p>
+                </div>
+            
+        </div>
+
+        
+        <div class="card-action pink-link-context">
+            <a href="/symmetric-plane-partitions/">阅读全文</a>
         </ div>
         
     </div>
@@ -768,56 +865,6 @@
         
         <div class="card-action pink-link-context">
             <a href="/optimal-stopping-and-backward-induction/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/three-mass-spring-system/">三质点弹簧系统的简正模式</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2011-08-21T16:00:00.000Z"><a href="/three-mass-spring-system/">2011-08-22</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/表示论/" class="chip pink lighten-1">表示论</a>
-        
-            <a href="/tags/线性代数/" class="chip pink lighten-1">线性代数</a>
-        
-            <a href="/tags/简正模式/" class="chip pink lighten-1">简正模式</a>
-        
-            <a href="/tags/表示的张量积/" class="chip pink lighten-1">表示的张量积</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry pink-link-context">
-                    <p>今天的问题是群表示论在物理中的一个小应用：</p>
-<blockquote><p><strong>问题</strong>：平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于一个正三角形的三个顶点处。质点之间两两由一根弹簧相连，三个弹簧都是一样的，但是弹簧质量忽略不计。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/abc.png"></p>
-<p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力。那么这个系统的简正模式 (normal mode) 是什么？</p>
-</blockquote>
-<p>这里简正模式的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/three-mass-spring-system/">阅读全文</a>
         </ div>
         
     </div>
