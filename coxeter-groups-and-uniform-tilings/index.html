@@ -1,0 +1,1167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Coxeter 群，有限状态机与均匀密铺 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="终于完成了一个新的 Python 小程序，虽然还有一些功能有待实现，但是大致的效果已经出来了。这个程序是我最近半年多来利用几乎所有业余时间呕心沥血、披星戴月、艰苦攻关完成的新作品，是一个纯粹的、优雅的、有益于广大人民欣赏数学之美的程序。代码在 github 上，目前还有许多不尽人意的地方，后面还会继续维护和改进。
+这个程序是我目前为止写过的所有程序中最难的一个，它涉及的数学知识相当复杂，使用了 Coxeter 群的一些深刻性质，所以理解起来可能不太容易。但是这个程序可以做的事情相当惊人，它可以用来绘制二维和三维欧式空间、双曲空间和球面上的各种均匀密铺 (uniform tilings)，生成的图片效果非常优美。我最好还是先有图有真相：
+例子
+
+下图是二维的欧式密铺 omnitruncated (4, 2, 4)：">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Coxeter 群，有限状态机与均匀密铺"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/组合数学/">
+                    组合数学 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机完美取样/">
+                    随机完美取样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/pywonderland-项目/">pywonderland 项目</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Coxeter 群，有限状态机与均匀密铺</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2019-12-14T16:00:00.000Z"><a href="/coxeter-groups-and-uniform-tilings/">2019-12-15</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Coxeter-group/" class="chip pink lighten-1">Coxeter group</a>
+        
+            <a href="/tags/Uniform-tilings/" class="chip pink lighten-1">Uniform tilings</a>
+        
+            <a href="/tags/POV-Ray/" class="chip pink lighten-1">POV-Ray</a>
+        
+            <a href="/tags/Automata/" class="chip pink lighten-1">Automata</a>
+        
+            <a href="/tags/Minimal-roots/" class="chip pink lighten-1">Minimal roots</a>
+        
+            <a href="/tags/Regular-language/" class="chip pink lighten-1">Regular language</a>
+        
+            <a href="/tags/DFA-minimization/" class="chip pink lighten-1">DFA minimization</a>
+        
+            <a href="/tags/Hyperbolic-tilings/" class="chip pink lighten-1">Hyperbolic tilings</a>
+        
+            <a href="/tags/Spherical-tilings/" class="chip pink lighten-1">Spherical tilings</a>
+        
+            <a href="/tags/Euclidean-tilings/" class="chip pink lighten-1">Euclidean tilings</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BE%8B%E5%AD%90"><span class="section table-of-contents-text">例子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%9B%BE%E5%83%8F%E7%9A%84%E7%BB%98%E5%88%B6%E5%8E%9F%E7%90%86"><span class="section table-of-contents-text">图像的绘制原理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BE%8B%E5%AD%90omnitruncated-7-2-3-%E5%AF%86%E9%93%BA"><span class="section table-of-contents-text">例子：omnitruncated (7, 2, 3) 密铺</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%85%B3%E4%BA%8E%E4%BB%A3%E7%A0%81"><span class="section table-of-contents-text">关于代码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%AE%97%E6%B3%95%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87"><span class="section table-of-contents-text">算法运行效率</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%84%E5%BD%95%E5%AF%B9%E8%8B%A5%E5%B9%B2%E5%85%B3%E9%94%AE%E7%82%B9%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="section table-of-contents-text">附录：对若干关键点的解释</span></a></li></ol>
+</div>
+
+            
+            <div class="entry pink-link-context">
+                <p>终于完成了一个新的 Python 小程序，虽然还有一些功能有待实现，但是大致的效果已经出来了。这个程序是我最近半年多来利用几乎所有业余时间呕心沥血、披星戴月、艰苦攻关完成的新作品，是一个纯粹的、优雅的、有益于广大人民欣赏数学之美的程序。代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/uniform-tilings">github</a> 上，目前还有许多不尽人意的地方，后面还会继续维护和改进。</p>
+<p>这个程序是我目前为止写过的所有程序中最难的一个，它涉及的数学知识相当复杂，使用了 Coxeter 群的一些深刻性质，所以理解起来可能不太容易。但是这个程序可以做的事情相当惊人，它可以用来绘制二维和三维欧式空间、双曲空间和球面上的各种均匀密铺 (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_tiling">uniform tilings</a>)，生成的图片效果非常优美。我最好还是先有图有真相：</p>
+<h1 id="例子">例子</h1>
+<ul>
+<li><p>下图是二维的欧式密铺 omnitruncated (4, 2, 4)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-4-2-4.png" width="600"></p></li>
+</ul>
+<span id="more"></span>
+<ul>
+<li><p>下图是二维的 Poincaré 圆盘上的正双曲密铺 (2, 3, 13)，绘制了 3447 个顶点，6971 条边，3549 个多边形：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/2-3-13.png" width="500"></p></li>
+<li><p>下图是二维的上半平面模型中的双曲密铺 omnitruncated (4, 3, 3):</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/uhp-4-3-3.png" width="600"></p></li>
+<li><p>下图是三维的 Poincaré 单位球中的正双曲密铺 (3, 5, 3)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/3-5-3.png" width="600"></p></li>
+<li><p>下图是三维的 Poincaré 单位球中的正双曲密铺 (5, 3, 5)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/5-3-5.png" width="600"></p></li>
+<li><p>下图是三维的 Poincaré 单位球中的正双曲密铺 (5, 3, 4)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/5-3-4.png" width="600"></p></li>
+<li><p>下图是三维的 Poincaré 单位球中的正双曲密铺 (4, 3, 5)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/4-3-5.png" width="600"></p></li>
+<li><p>以上四个密铺是三维双曲空间中仅有的正且每个胞腔为紧集的双曲密铺。如果去掉每个胞腔为紧集的限制的话，但是要求每个胞腔的体积有限的话，则还有 10 个正双曲密铺，如下图的 (6, 3, 3)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/6-3-3.png" width="600"></p>
+<p>你可以看到每个胞腔都有一个理想顶点，它位于空间的无穷远处 (即单位球面上)。这 10 个密铺也叫做仿紧的 (paracompact)，因为每个胞腔的体积仍然是有限的。如果再去掉每个胞腔的体积有限的条件的话，得到的密铺叫做非紧的，这样的正密铺有无限多个。</p></li>
+<li><p>如果去掉正密铺这个限制，只考虑均匀密铺的话，那例子就非常多了。比如我们可以从正密铺出发通过截断操作得到许多均匀密铺，如 rectified (3, 5, 3) 和 rectified (5, 3, 4)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/rectified-3-5-3.png" width="600"></p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/rectified-5-3-4.png" width="600"></p>
+<p>还有来自 [5, 3<sup>1,1</sup>] 的密铺 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_honeycombs_in_hyperbolic_space#%5B5,31,1%5D_family">cantic order-5 cubic</a>：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/cantic-order-5-cubic.png" width="600"></p></li>
+<li><p>下图是一个二维的球面密铺 omnitruncated (5, 2, 3)，绘制在了三维的球面上：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-5-2-3.png" width="500"></p></li>
+<li><p>最后是一个 shader 程序，仍然来自 Matt Zucker 的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tsSzM">shadertoy 项目</a>：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/wythoff_shader.png" width="600"></p></li>
+</ul>
+<p>双曲密铺可玩的花样是无穷无尽的，以上只是这个小程序的部分输出。</p>
+<h1 id="图像的绘制原理">图像的绘制原理</h1>
+<p>目前我所知的所有绘制均匀密铺的程序其原理大都基于 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythoff 构造法</a>，这个程序也不例外。Wythoff 构造法与万花筒的原理是一样的，即在空间中摆放若干反射平面 (镜子)，然后从一个初始点出发，依次关于这些镜子作反射变换，得到一些镜像点，再对新的镜像点重复此步骤，一直下去，子子孙孙无穷匮也，就得到了密铺的全部顶点。</p>
+<p>下面的视频演示了 Wythoff 构造法的效果。我们在二维的 Poincaré 双曲圆盘中的一个房间四周放置若干镜子，则房间中的场景就会在镜子中反复成像，仿佛填满了整个空间。但实际上这个场景里面只有一个初始房间是真实的 (即相机所在的这个)，其它的房间都是它在镜子中的虚像。</p>
+<video src="/images/coxeter/wythoff.mp4" width="600" controls="">
+</video>
+<blockquote>
+<p>特别鸣谢 Jos Leys 教给我怎样在 POV-Ray 中制作这一视频。</p>
+</blockquote>
+<p>Wythoff 构造法中最关键的部分在于如何快速地、不重复地计算所有顶点坐标，以及它们之间的边、面、胞腔的关系。这正是这个程序的优雅之处，它采用的是群论的方法，首先在密铺的对称群中进行符号计算，得出每个顶点在最短字典序下对应的单词表示，边的下标，面的下标等信息，然后将每个顶点对应的单词作用在初始顶点上得到该顶点的坐标。换句话说，在计算每个顶点的最终坐标之前，它已经提前计算好了有多少个顶点，每个顶点是由初始顶点经过哪些反射得到的，哪些顶点构成边，哪些顶点构成面，哪些顶点构成胞腔，等等。这些计算仅涉及整数运算，完全避免了浮点数精度损失的问题。是不是很神奇呢？</p>
+<p>下面我用一个例子来演示这个具体的步骤。</p>
+<h1 id="例子omnitruncated-7-2-3-密铺">例子：omnitruncated (7, 2, 3) 密铺</h1>
+<p>Omnitruncated (7, 2, 3) 密铺对应的 Coxeter-Dynkin 图如下：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/coxeter723.svg" width="250"></p>
+<p>这是一个二维的双曲密铺 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，其对称群是由 Coxeter 矩阵</p>
+<p><span class="math display">\[M=\begin{pmatrix} 1 &amp; 7 &amp; 2 \\ 7 &amp;1 &amp;3\\ 2 &amp; 3 &amp;1\end{pmatrix}\]</span></p>
+<p>确定的 Coxeter 群</p>
+<p><span class="math display">\[W=\langle s_0,s_1, s_2\ |\ s_0^2=s_1^2=s_2^2=(s_0s_1)^7=(s_1s_2)^3=(s_0s_2)^2=1\rangle.\]</span></p>
+<p>初始顶点不包含于任何镜面上，所以其稳定化子群只包含单位元 1，从而根据<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wroup_action_(mathematics)#Orbit-stabilizer_theorem">轨道—稳定化子定理</a> <span class="math inline">\(W\)</span> 的每一个元素都对应密铺中的一个顶点。</p>
+<p><span class="math inline">\(W\)</span> 中每个元素 <span class="math inline">\(g\)</span> 都可以表示为生成元 <span class="math inline">\(s_0,s_1,s_2\)</span> 的乘积，我们称任何这样的表示方式为 <span class="math inline">\(g\)</span> 的一个单词表示。<span class="math inline">\(g\)</span> 的单词表示不是唯一的，比如从定义 <span class="math inline">\(W\)</span> 的生成关系中可以看出 <span class="math inline">\(s_0s_2=s_2s_0\)</span>, <span class="math inline">\(s_1s_2s_1=s_2s_1s_2\)</span> 等等。但是在 <span class="math inline">\(g\)</span> 的所有单词表示中，我们总是可以选择“最小的”那个来作为 <span class="math inline">\(g\)</span> 的<strong>规范表示</strong>，这个排序的依据就是最短字典序 (shortlex order)：首先规定生成元 <span class="math inline">\(s_0,s_1,s_2\)</span> 之间的字母顺序关系为 <span class="math inline">\(s_0&lt;s_1&lt;s_2\)</span>，然后将这个顺序扩展到任何两个单词 <span class="math inline">\(w_1\)</span> 和 <span class="math inline">\(w_2\)</span> 上去：</p>
+<blockquote><p><strong>定义</strong>：设 <span class="math inline">\(w_1=s_{i_1}s_{i_2}\cdots s_{i_n}\)</span> 和 <span class="math inline">\(w_2=s_{j_1}s_{j_2}\cdots s_{j_m}\)</span> 是两个不同的单词，它们二者之间的顺序关系由如下方式确定：</p>
+<ol type="1">
+<li>先比较长度，长度长的为较大者，即若 <span class="math inline">\(n&lt;m\)</span> 则 <span class="math inline">\(w_1&lt;w_2\)</span>，<span class="math inline">\(n&gt;m\)</span> 则 <span class="math inline">\(w_1&gt;w_2\)</span>。</li>
+<li>若长度相等则按字母顺序从左到右逐项比较，设 <span class="math inline">\(k\)</span> 使得对任何 <span class="math inline">\(l&lt;k\)</span> 有 <span class="math inline">\(s_{i_l}=s_{j_l}\)</span> 但 <span class="math inline">\(s_{i_k}\ne s_{j_k}\)</span>，则规定 <span class="math inline">\(w_1,w_2\)</span> 之间的大小关系与 <span class="math inline">\(s_{i_k},s_{j_k}\)</span> 之间的大小关系相同。</li>
+</ol>
+</blockquote>
+<p>由于最短字典序是所有由 <span class="math inline">\(s_0,s_1,s_2\)</span> 组成的单词集合上的全序，在这个全序下任何 <span class="math inline">\(g\in W\)</span> 都有唯一的规范表示，任何两个 <span class="math inline">\(g,g'\in W\)</span> 之间的大小顺序就规定为它们的规范表示之间的大小关系。一个元素 <span class="math inline">\(g\in W\)</span> 的长度定义为其规范表示的长度。</p>
+<p>定义 <span class="math inline">\(\mathcal{SL}(W)\)</span> 为 <span class="math inline">\(W\)</span> 中所有元素的规范表示组成的集合，下面列出了 <span class="math inline">\(\mathcal{SL}(W)\)</span> 中所有长度不超过 5 的元素，一共有 37 个：(从小到大按行排列)</p>
+<p><span class="math display">\[
+\begin{array}{lllll}e&amp;s_{0}&amp;s_{1}&amp;s_{2}&amp;s_{0}s_{1}\\s_{0}s_{2}&amp;s_{1}s_{0}&amp;s_{1}s_{2}&amp;s_{2}s_{1}&amp;s_{0}s_{1}s_{0}\\s_{0}s_{1}s_{2}&amp;s_{0}s_{2}s_{1}&amp;s_{1}s_{0}s_{1}&amp;s_{1}s_{0}s_{2}&amp;s_{1}s_{2}s_{1}\\s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{1}&amp;s_{0}s_{1}s_{0}s_{2}&amp;s_{0}s_{1}s_{2}s_{1}&amp;s_{0}s_{2}s_{1}s_{0}\\s_{1}s_{0}s_{1}s_{0}&amp;s_{1}s_{0}s_{1}s_{2}&amp;s_{1}s_{0}s_{2}s_{1}&amp;s_{1}s_{2}s_{1}s_{0}&amp;s_{2}s_{1}s_{0}s_{1}\\s_{0}s_{1}s_{0}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{1}s_{2}&amp;s_{0}s_{1}s_{0}s_{2}s_{1}&amp;s_{0}s_{1}s_{2}s_{1}s_{0}&amp;s_{0}s_{2}s_{1}s_{0}s_{1}\\s_{1}s_{0}s_{1}s_{0}s_{1}&amp;s_{1}s_{0}s_{1}s_{0}s_{2}&amp;s_{1}s_{0}s_{1}s_{2}s_{1}&amp;s_{1}s_{0}s_{2}s_{1}s_{0}&amp;s_{1}s_{2}s_{1}s_{0}s_{1}\\s_{2}s_{1}s_{0}s_{1}s_{0}&amp;s_{2}s_{1}s_{0}s_{1}s_{2}&amp;\end{array}
+\]</span></p>
+<p>注意由 <span class="math inline">\(s_0,s_1,s_2\)</span> 组成的且长度不超过 5 的单词 (单位元 <span class="math inline">\(e\)</span> 也算在内) 总共有 <span class="math inline">\(1+3+\cdots+3^5=364\)</span> 个，上表告诉我们实际上它们只包含了 <span class="math inline">\(W\)</span> 中 37 个不同的元素，即将它们作用在密铺中的初始顶点上只会得到 37 个顶点，其余 364 - 37 = 327 个都是重复的。进一步计算可得长度不超过 6 的单词有 1093 个而实际上只包含了 53 个不同的元素。所以如果我们能够快速地生成 <span class="math inline">\(\mathcal{SL}(W)\)</span> 中的元素而不是去遍历所有可能单词的话，就可以大大提高计算效率。</p>
+<p>那么怎么才能既快速，又精准，不遗漏地生成 <span class="math inline">\(\mathcal{SL}(W)\)</span> 中的元素呢？这就引出了一个关于 Coxeter 群的重要结论：</p>
+<blockquote><p><strong>定理 [Brigitte Brink &amp; Robert B. Howlett, 1993]</strong>：若 <span class="math inline">\(W\)</span> 是有限生成 Coxeter 群，则 <span class="math inline">\(\mathcal{SL}(W)\)</span> 是一个<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Regular_language">正则语言</a>。</p>
+</blockquote>
+<p>正则语言这个术语来自计算机科学，关于正则语言的一个基本事实是，一个有限字符集上的正则语言总是可以被一个确定的有限状态自动机 (definite finite automaton) 识别，这样的有限状态机不是唯一的，但是在等价意义下总是存在一个最小的 (含有的状态数目最少)，下图显示的是识别 (7, 2, 3) 这个群的 <span class="math inline">\(\mathcal{SL}(W)\)</span> 的最小状态机：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/dfa_723.svg" width="600"></p>
+<p>你可以看到在上图中一共有 19 个节点 (即状态)，每个状态都有一个编号，这个编号并没有实际意义，可以不用理会，实际上给状态重新编号不影响有限状态机识别的语言。真正有意义的是顶点之间的关系以及边的编号。圈红的节点 0 是初始状态。</p>
+<p>图中的每条有向边规定了状态之间的转移规则，边的标号 <span class="math inline">\(i\)</span> 代表生成元 <span class="math inline">\(s_i\)</span>。从初始状态出发，每次沿着一条有向边移动到下一个状态，经过的路径给出了一个由 <span class="math inline">\(s_0,s_1,s_2\)</span> 组成的单词，所有的路径给出的单词组成的集合就是这个有限状态机识别的语言，即 <span class="math inline">\(\mathcal{SL}(W)\)</span>。</p>
+<p>举个例子：</p>
+<ol type="1">
+<li>长度为 0 的路径对应的是 <span class="math inline">\(W\)</span> 的单位元。</li>
+<li>长度为 1 的三条路径 <span class="math inline">\(0\xrightarrow{\ s_0\ }1\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\)</span>, <span class="math inline">\(0\xrightarrow{\ s_2\ }8\)</span> 对应的是 <span class="math inline">\(W\)</span> 的三个长度为 1 的元素 <span class="math inline">\(s_0,s_1,s_2\)</span>。</li>
+<li>长度为 2 的 5 条路径 <span class="math inline">\(0\xrightarrow{\ s_0\ }1\xrightarrow{\ s_1\ }2\)</span>, <span class="math inline">\(0\xrightarrow{\ s_0\ }1\xrightarrow{\ s_2\ }8\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_0\ }3\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_2\ }8\)</span>, <span class="math inline">\(0\xrightarrow{\ s_2\ }8\xrightarrow{\ s_1\ }9\)</span> 对应的是 <span class="math inline">\(W\)</span> 的 5 个长度为 2 的元素 <span class="math inline">\(s_0s_1,s_0s_2,s_1s_0,s_1s_2,s_2s_1\)</span>。</li>
+</ol>
+<p>以此类推，我们可以很容易用宽度优先搜索来不重复不遗漏地遍历任意长度范围内的群元素。特别地如果你按图索骥地验证一下的话可以发现所有长度不超过 5 的路径一共有 37 条，它们正对应前面列出的 <span class="math inline">\(\mathcal{SL}(W)\)</span> 中长度不超过 5 的 37 个单词。</p>
+<p>注意无限 Coxeter 群的有限状态机必然含有回路，而有限 Coxeter 群的有限状态机则必然是一个以初始状态为根节点的有向树，例如下图显示的是正四面体的对称群 <span class="math inline">\(S_4\)</span> 的有限状态机：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/tetrahedron.svg" width="600"></p>
+<p>不难遍历得出其 24 个不同的路径，它们分别对应 <span class="math inline">\(S_4\)</span> 的 24 个元素的最短字典序表示：</p>
+<p><span class="math display">\[
+\begin{array}{llll}e&amp;s_{0}&amp;s_{1}&amp;s_{2}\\s_{0}s_{1}&amp;s_{0}s_{2}&amp;s_{1}s_{0}&amp;s_{1}s_{2}\\s_{2}s_{1}&amp;s_{0}s_{1}s_{0}&amp;s_{0}s_{1}s_{2}&amp;s_{0}s_{2}s_{1}\\s_{1}s_{0}s_{2}&amp;s_{1}s_{2}s_{1}&amp;s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{2}\\s_{0}s_{1}s_{2}s_{1}&amp;s_{0}s_{2}s_{1}s_{0}&amp;s_{1}s_{0}s_{2}s_{1}&amp;s_{1}s_{2}s_{1}s_{0}\\s_{0}s_{1}s_{0}s_{2}s_{1}&amp;s_{0}s_{1}s_{2}s_{1}s_{0}&amp;s_{1}s_{0}s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{2}s_{1}s_{0}\end{array}
+\]</span></p>
+<p>既然通过 <span class="math inline">\(\mathcal{SL}(W)\)</span> 来生成群元素如此方便，那问题来了：</p>
+<blockquote><p><strong>问题 1</strong>：怎样计算 <span class="math inline">\(\mathcal{SL}(W)\)</span> 对应的有限状态机？</p>
+</blockquote>
+<p>此问题技术太过复杂，完整介绍全部内容的话本文难以承受，我在后面附有一个简单的解释。我在创作这个程序时主要参考了 Casselman 的讲义 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，他的一份未公开的 Java 代码，以及 Humphreys 的教材 <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。</p>
+<p>有了每个群元素的唯一的规范表示，我们就可以很容易地计算密铺中每个顶点的坐标了：</p>
+<p>设 <span class="math inline">\(w=s_{i_0}s_{i_1}\cdots s_{i_n}\)</span>，初始顶点为 <span class="math inline">\(v_0\)</span>，则 <span class="math inline">\(w\)</span> 在 <span class="math inline">\(v_0\)</span> 上的作用为 <span class="math display">\[w\cdot v_0 = s_{i_0}(s_{i_1}(\cdots s_{i_n}(v_0)).\]</span> 即从右到左依次计算每个生成元作用的结果。当然由于 <span class="math inline">\(W\)</span> 是无限群，我们只能计算那些长度不超过一定范围的群元素对应的顶点。假设我们已经有了前面这 37 个顶点，把它们按照最短字典序排序存储在一个列表 <span class="math inline">\(L\)</span> 里。为了绘制密铺中的边，我们还需要计算 <span class="math inline">\(L\)</span> 中哪些顶点是相邻的，这个怎么解决呢？</p>
+<p>首先我们需要计算一个 <span class="math inline">\(L\)</span> 中元素之间的乘法表 <span class="math inline">\(T\)</span>，<span class="math inline">\(T\)</span> 的作用是帮助我们查找任何一个单词，其规范表示在 <span class="math inline">\(L\)</span> 中的下标 (不在 <span class="math inline">\(L\)</span> 中的话则返回 <code>None</code>)。<span class="math inline">\(T\)</span> 是一个大小为 <span class="math inline">\(|L|\times 3\)</span> 的二维数组，其第 <span class="math inline">\(i\)</span> 行对应 <span class="math inline">\(L\)</span> 中的第 <span class="math inline">\(i\)</span> 个群元素 <span class="math inline">\(w_i\)</span>，第 <span class="math inline">\(j\)</span> 列对应群的生成元 <span class="math inline">\(s_j\)</span>，<span class="math inline">\(T[i][j]\)</span> 的值等于 <span class="math inline">\(s_jw_i\)</span> 这个元素 (<strong>注意这个乘积未必是个规范表示</strong>) 的规范表示在 <span class="math inline">\(L\)</span> 中的下标。如果这个元素不在 <span class="math inline">\(L\)</span> 中则以 <code>None</code> 代替。</p>
+<p>在我们的例子中 <span class="math inline">\(T\)</span> 的值如下，<span class="math inline">\(L\)</span> 中的元素放在了第二列：</p>
+<details>
+<summary>
+<font color="#D00"><strong>点击展开列表 <span class="math inline">\(T\)</span></strong></font>
+</summary>
+<div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">V</th>
+<th style="text-align: center;">word</th>
+<th style="text-align: center;"><span class="math inline">\(s_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(e\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">29</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">17</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">22</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">23</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">24</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">26</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">27</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{0}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">28</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{1}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">29</td>
+<td style="text-align: center;"><span class="math inline">\(s_{0}s_{2}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">30</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">31</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{0}s_{2}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">32</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{1}s_{2}s_{1}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">33</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{0}s_{2}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">34</td>
+<td style="text-align: center;"><span class="math inline">\(s_{1}s_{2}s_{1}s_{0}s_{1}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}s_{1}s_{0}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">36</td>
+<td style="text-align: center;"><span class="math inline">\(s_{2}s_{1}s_{0}s_{1}s_{2}\)</span></td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<p>于是对任意的单词 <span class="math inline">\(w=s_{i_0}s_{i_1}\cdots s_{i_n}\)</span>，我们可以从 <span class="math inline">\(T\)</span> 的第 0 行出发，先找到 <span class="math inline">\(s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，假设是第 <span class="math inline">\(k\)</span> 个，那么就跳到第 <span class="math inline">\(k\)</span> 行，由 <span class="math inline">\(s_{i_{n-1}}\)</span> 对应的列找到 <span class="math inline">\(s_{i_{n-1}}s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，再顺藤摸瓜找到 <span class="math inline">\(s_{i_{n-2}}s_{i_{n-1}}s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，...，如此下去即可确定 <span class="math inline">\(w\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素 (或者 <code>None</code>)。</p>
+<p>假设初始顶点 <span class="math inline">\(v_0\)</span> 关于第 <span class="math inline">\(i\)</span> 面镜子反射后得到的虚像是 <span class="math inline">\(v_1=s_i(v_0)\)</span>，则 <span class="math inline">\(e=(v_0,v_1)\)</span> 构成一条类型为 <span class="math inline">\(i\)</span> 的边。边 <span class="math inline">\(e\)</span> 的稳定化子群就是标准椭圆子群 <span class="math inline">\(H=\langle s_i\rangle\)</span>。根据轨道稳定化子定理，密铺中所有类型为 <span class="math inline">\(i\)</span> 的边都可以通过将 <span class="math inline">\(W/H\)</span> 中某个代表元作用在 <span class="math inline">\(e\)</span> 上得到。显然 <span class="math inline">\(e\)</span> 的两个端点对应的规范表示分别是单位元 1 和 <span class="math inline">\(s_i\)</span>，则对任一 <span class="math inline">\(w\in W\)</span>，我们首先计算 <span class="math inline">\(w\)</span> 关于 <span class="math inline">\(H\)</span> 的陪集代表元 <span class="math inline">\(w_H\)</span> (这一步需要配合去重，去掉重复的陪集代表元)，<span class="math inline">\(w_H\cdot e\)</span> 的两个端点对应的单词分别是 <span class="math inline">\(w_H\)</span> 和 <span class="math inline">\(w_Hs_i\)</span>，然后按照上面的步骤找到它俩在 <span class="math inline">\(L\)</span> 中对应的元素下标 (如果有一个是 <code>None</code> 说明这条边连接了不在 <span class="math inline">\(L\)</span> 中的顶点)，这就得到了边的下标。</p>
+<p><span class="math inline">\(L\)</span> 中 37 个顶点构成的边如下：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/723_edges.png" width="500"></p>
+<p>图中标号 0 的顶点是初始顶点，其对应的单词是单位元 1。边中白色的线条个数表示这条边对应的生成元：0 条表示 <span class="math inline">\(s_0\)</span>，1 条表示 <span class="math inline">\(s_1\)</span>，2 条表示 <span class="math inline">\(s_2\)</span>。</p>
+<p>从这个图里可以看出很多有用的信息，非常有助于理解 Coxeter 群的最短字典序表示与密铺顶点的对应关系：</p>
+<ol type="1">
+<li>首先可以看出将顶点 0 关于三个镜面进行一次反射得到的新虚像是 1, 2, 3，它们对应的单词是 <span class="math inline">\(L\)</span> 中长度为 1 的 <span class="math inline">\(s_0,s_1,s_2\)</span>。</li>
+<li>将顶点 0 关于各个镜面进行两次反射得到的新虚像是 4, 5, 6, 7, 8，它们对应的单词是 <span class="math inline">\(L\)</span> 中长度为 2 的 <span class="math inline">\(s_0s_1,s_0s_2,s_1s_0,s_1s_2,s_2s_1\)</span>。</li>
+<li>所有顶点与初始顶点之间的最短路径的长度都不超过 5。</li>
+<li>从图中我们可以看出每个顶点对应的单词的规范表示。例如从 0 号顶点到 33 号顶点有两条最短路径：<span class="math display">\[
+\begin{align*}&amp;0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_0\ }6\xrightarrow{\ s_2\ }13\xrightarrow{\ s_1\ }22\xrightarrow{\ s_0\ }33.\\
+&amp;0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_2\ }7\xrightarrow{\ s_0\ }13\xrightarrow{\ s_1\ }22\xrightarrow{\ s_0\ }33.
+\end{align*}\]</span> 只要按顺序连起来 (从左到右) 就可以得到 33 号顶点对应的两个单词：<span class="math inline">\(s_1s_0s_2s_1s_0\)</span> 和 <span class="math inline">\(s_1s_2s_0s_1s_0\)</span>，它们都把 0 号顶点变为 33 号顶点，但是前者才是最短字典序表示。这一点也可以从顶点标号中看出来：从二号顶点开始两条路径分别去了 6 号和 7 号顶点，由于 6 号顶点在 <span class="math inline">\(\mathcal{SL}(W)\)</span> 中更小，因此这条路径必然才是 33 号顶点规范表示对应的路径。</li>
+<li>一个单词 <span class="math inline">\(w=s_{i_0}s_{i_1}\cdots s_{i_n}\)</span> 作用在 0 号顶点上 (<span class="math inline">\(s_{i_n}\)</span> 先作用，<span class="math inline">\(s_{i_0}\)</span> 在最后) 的结果是一条从 0 号顶点出发，标号依次为 <span class="math inline">\(s_{i_0}, s_{i_1},\ldots,s_{i_n}\)</span> 的路径 (<span class="math inline">\(s_{i_0}\)</span> 在先，<span class="math inline">\(s_{i_n}\)</span> 在最后)，与作用的顺序相反。</li>
+</ol>
+<p>你可能要问，直接计算 <span class="math inline">\(w_H\)</span> 和 <span class="math inline">\(w_Hs_i\)</span> 的规范表示，然后去 <span class="math inline">\(L\)</span> 中查找下标不就可以了吗？为什么计算这个表 <span class="math inline">\(T\)</span> 呢？这里我的考虑有两个：</p>
+<ol type="1">
+<li><p>表 <span class="math inline">\(T\)</span> 的计算是一次性的，而且查表速度很快。不借助 <span class="math inline">\(T\)</span> 的话就要每条边都计算两次规范表示然后进行两次 <span class="math inline">\(L\)</span> 中的逐项比较查找。</p></li>
+<li><p>表 <span class="math inline">\(T\)</span> 也同样用于计算面和胞腔。不借助 <span class="math inline">\(T\)</span> 的话就要对每个胞腔的每个顶点 (一个胞腔是一个多面体，可能有几十个顶点) 计算一次规范表示并逐项比较查找。</p></li>
+</ol>
+<blockquote><p><strong>问题 2</strong>：给定任一单词 <span class="math inline">\(w\)</span> 和标准椭圆子群 <span class="math inline">\(H\)</span>，怎样计算 <span class="math inline">\(w\)</span> 的规范表示？怎样计算 <span class="math inline">\(w\)</span> 关于 <span class="math inline">\(H\)</span> 的陪集代表元？</p>
+</blockquote>
+<p>简单的介绍见后，详细证明见 Casselman 的文章，本文暂且按下不表。</p>
+<p>计算面的步骤也是完全类似的，初始顶点关于 <span class="math inline">\(i, j\)</span> 两面镜子的反射的复合是一个旋转，这个旋转连续作用 <span class="math inline">\(m\)</span> 次可以生成一个正多边形的面，其中 <span class="math inline">\(m\)</span> 是 Coxeter 矩阵中的 <span class="math inline">\((i,j)\)</span> 分量。这个多边形的稳定化子群是标准椭圆子群 <span class="math inline">\(H=\langle i, j\rangle\)</span>，我们仍然可以得出每个顶点对应的一个单词表示，用 <span class="math inline">\(W/H\)</span> 里的代表元作用在上面，然后去 <span class="math inline">\(L\)</span> 里面查找对应的规范表示的下标。</p>
+<p>最终得到的图像如下图，计算了 30517 个顶点，42057 条边，11541 个多边形：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-7-2-3.png" width="500"></p>
+<h1 id="关于代码">关于代码</h1>
+<p>代码中最核心的部分是一个叫 <code>coxeter</code> 的模块，它主要实现的是 <code>CoxeterGroup</code> 类，这个类由一个 Coxeter 矩阵初始化，负责计算该 Coxeter 群的极小根反射表、实现群元素的乘法、陪集的计算，计算并绘制有限状态机。在另一个 <code>tiling.py</code> 文件中调用此类，计算密铺的顶点、边、面并绘制。</p>
+<p>绘制 <span class="math inline">\(\mathcal{SL}(W)\)</span> 的有限状态机需要使用 <a target="_blank" rel="noopener" href="https://pygraphviz.github.io/">pygraphviz</a> 模块，这个模块依赖于 <a target="_blank" rel="noopener" href="http://graphviz.org/">graphviz</a> 软件和 <code>libgraphviz-dev</code>。</p>
+<p>我把密铺的绘图大部分外包出去了，二维双曲空间的绘图用的是一个叫 <a target="_blank" rel="noopener" href="https://github.com/cduck/hyperbolic/">hyperbolic</a> 的三方库，这个库的代码写的挺糟糕的，然而我一时也没有精力分出来再写一个，所以暂且先凑合着。二维情形的绘图主要麻烦的地方在为了绘制具有常双曲宽度的边需要计算对应的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hypercycle_(hyperbolic_geometry)">hypercycle</a>。球面和三维双曲情形的绘图用的是 POV-Ray，主要使用了 <code>sphere_sweep</code> 这个对象。</p>
+<h1 id="算法运行效率">算法运行效率</h1>
+<p>这个算法比较耗时的地方有两个：</p>
+<ol type="1">
+<li><p>计算群 <span class="math inline">\(W\)</span> 的<strong>极小根</strong>部分。计算 Coxeter 群的极小根是计算 <span class="math inline">\(\mathcal{SL}(W)\)</span> 的有限状态机、计算群的规范表示所必须的重要步骤，而极小根的计算量依赖于 Coxeter 群的复杂度：对 <span class="math inline">\((p, q, r)\)</span> 这样的 triangle 群，当 <span class="math inline">\(p,q,r\)</span> 都不大于 10 时计算还比较快 (双曲的话稍慢些，要花个几秒钟)，然而对 (19, 20, 21) 这样的群计算速度就很慢了。这一点与逆像素反射方法是不同的，逆像素反射法的计算量几乎不随群的变化而变化。</p></li>
+<li><p>计算乘法表 <span class="math inline">\(T\)</span>。对于三维双曲密铺要生成一个效果较好的场景至少需要几十万个顶点，对这么多顶点计算乘法表非常耗时，内存和查找开销都很大。这种情形我采用的是有限状态机生成群元素结合传统的浮点数去重，一边计算一边输出以节省空间开销。</p></li>
+</ol>
+<p>总结起来就是对不太复杂的群，或者需要生成的数据量不太大的时候这种方法的速度还不错。</p>
+<h1 id="附录对若干关键点的解释">附录：对若干关键点的解释</h1>
+<p>在这里我简单介绍计算 <span class="math inline">\(\mathcal{SL}(W)\)</span> 的有限状态机、计算任一单词的规范形式、计算陪集代表元的步骤。需要你了解 Coxeter 群的几何实现、Tits 锥、Coxeter 群的根系等预备知识，这部分内容可以参考 Humphreys 的教材。</p>
+<p>以上所有的计算都基于一个叫做<strong>极小根反射表</strong>的东西。仍然以 (7, 2, 3) 这个群为例子，先看下图：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/roots.png" width="600"></p>
+<p>这个图和上图一样，只不过多了 12 个标记出的镜面，这 12 个镜面有特殊的含义：它们是群 <span class="math inline">\(W\)</span> 的根系中的 12 个极小根。</p>
+<p>你可以把 <span class="math inline">\(W\)</span> 的根系理解为图中所有的圆弧，每个圆弧都是一个反射镜面，它交单位圆的边界于两点。这些镜面都是 <span class="math inline">\(\Delta ABC\)</span> 三条边所在的初始镜面 (编号为 0, 1, 2) 在群 <span class="math inline">\(W\)</span> 作用下的结果。每个镜面把单位圆 (即整个双曲空间) 分割成两部分，这两部分分别对应根系中的一个正根和一个负根，其中基本区域三角形 <span class="math inline">\(\Delta ABC\)</span> 所在的半空间是正根对应的部分。</p>
+<p>从直观上说，极小根 <span class="math inline">\(r\)</span> 是那些满足如下条件的镜面：不存在任何镜面 <span class="math inline">\(r'\ne r\)</span>，使得一个人站在 <span class="math inline">\(\Delta ABC\)</span> 的内部往外看，视线会被 <span class="math inline">\(r'\)</span> 完全挡住而看不到 <span class="math inline">\(r\)</span> 的任何部分。单根必然都是极小根 (它们是基本区域的边界)。关于极小根的一个重要事实是，<strong>任何有限生成 Coxeter 群的极小根的个数都是有限的</strong>。这个结论在 Brink 和 Howlett 的证明中起到最关键的作用。</p>
+<p>极小根的反射表 <code>reftable</code> 定义如下：这也是一个二维数组，其第 <span class="math inline">\(i\)</span> 行对应第 <span class="math inline">\(i\)</span> 个极小根 <span class="math inline">\(\alpha_i\)</span>，其第 <span class="math inline">\(j\)</span> 列对应第 <span class="math inline">\(j\)</span> 个生成元 <span class="math inline">\(s_j\)</span>，其 <span class="math inline">\((i, j)\)</span> 位置填入的是 <span class="math inline">\(\beta=s_j(\alpha_i)\)</span> 的结果：</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(\beta=\alpha_k\)</span> 是第 <span class="math inline">\(k\)</span> 个极小根，则填入 <span class="math inline">\(k\)</span>。</li>
+<li>如果 <span class="math inline">\(\beta\)</span> 是一个负根 (此情形发生当且仅当 <span class="math inline">\(\alpha_i\)</span> 是第 <span class="math inline">\(j\)</span> 个单根)，则填入 <code>-1</code>。</li>
+<li>如果 <span class="math inline">\(\beta\)</span> 是一个正根，但不是极小根，则填入 <code>None</code>。</li>
+</ol>
+<p>(7, 2, 3) 群的极小根反射表如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">root</th>
+<th style="text-align: center;"><span class="math inline">\(s_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">None</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>设 <span class="math inline">\(W\)</span> 的所有极小根之集为 <span class="math inline">\(\Sigma\)</span>，<span class="math inline">\(\mathcal{W}\)</span> 的有限状态机的状态都是 <span class="math inline">\(\Sigma\)</span> 的子集，状态之间的转移关系规定如下：</p>
+<p><span class="math display">\[S\xrightarrow{\ s_i\ } \{s_i\} \cup (s_i(S)\cup\{ s_i(\alpha_j),j&lt;i\})\cap\Sigma.\]</span></p>
+<p>由此不难利用宽度优先搜索获得所有的状态以及它们之间的转移关系，然后用 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/DFA_minimization#Hopcroft's_algorithm">Hopcroft 算法</a>将得到的有限状态机最小化。</p>
+<p>下图显示的是 (7, 2, 3) 这个群的状态机中，每个状态对应的 <span class="math inline">\(\Sigma\)</span> 的子集：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/723_dfa_subsets.png" width="600"></p>
+<p>计算两个群元素乘法的规范表示的代码如下，其中 <code>s</code> 是一个生成元，<code>word</code> 是一个逆最短字典序下的单词 (逆最短字典序就是把最短字典序中的单词反过来)，函数返回的也是对应结果在逆最短字典序下的规范形式：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">left_mul_invshortlex</span>(<span class="hljs-params">reftable, s, word</span>):</span><br>    word = <span class="hljs-built_in">tuple</span>(word)<br>    t = s<br>    k = -<span class="hljs-number">1</span><br>    mu = s<br>    <span class="hljs-keyword">for</span> i, s_i <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(word):<br>        <span class="hljs-keyword">if</span> mu <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-keyword">return</span> word[:k+<span class="hljs-number">1</span>] + (t,) + word[k+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> word[:i] + word[i+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; s_i:<br>            t = mu<br>            k = i<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">return</span> word[:k+<span class="hljs-number">1</span>] + (t,) + word[k+<span class="hljs-number">1</span>:]<br></code></pre></td></tr></tbody></table></figure>
+<p>由此函数不难计算任何两个单词相乘的逆最短字典序下的规范形式，倒过来自然也就解决了最短字典序下的乘法问题。</p>
+<p>这里先在逆字典序下计算然后再倒过来获得字典序是为了和 Casselman 的文章中的论述保持一致。</p>
+<p>计算一个规范表示 <code>word</code> 关于某个标准椭圆子群的陪集是最简单的：设 <span class="math inline">\(W_T\)</span> 是一个标准椭圆子群，其生成元是 <span class="math inline">\(W\)</span> 的生成元 <span class="math inline">\(S\)</span> 的一个子集 <span class="math inline">\(T\)</span>，则计算 <code>word</code> 关于 <span class="math inline">\(W_T\)</span> 的左陪集代表元的伪代码如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">x := word<br>u := 1<br>while l(xt) &lt; l(x) for some t in T<br>    x = xt<br>    u = tu<br>end<br><br>return x<br></code></pre></td></tr></tbody></table></figure>
+<p>其中 <span class="math inline">\(l(\cdot)\)</span> 是 Coxeter 群上的长度函数。这个算法会把 <code>word</code> 分解为形如 <span class="math inline">\(x^T\cdot w_T\)</span> 的形式，其中 <span class="math inline">\(w_T\in W_T\)</span>，且对任何 <span class="math inline">\(t\in T\)</span> 有 <span class="math inline">\(l(x^Tt)&gt;l(x^T)\)</span>。最终得到的陪集代表元 <span class="math inline">\(x^T\)</span> 是规范表示。</p>
+<p>对有限 Coxeter 群，其所有正根都是极小根；对仿射 Coxeter 群，其根系由一些平行的镜面族构成，每族镜面中的反射镜面互相平行。每个族中存在一对极小根，它们把基本区域 <span class="math inline">\(\Delta ABC\)</span> 夹在中间并完全挡住本族中外面的镜面，所以只有它俩才是极小根。下图显示的是 (6, 2, 3) 密铺 (对称群为仿射 <span class="math inline">\(\widetilde{G}_2\)</span>) 的 12 个极小根：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/roots_623.png" width="600"></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>一个密铺的类型可以由其 Cartan 矩阵 <span class="math inline">\(C=-\cos(\pi/M)\)</span> 确定，是球面密铺当且仅当 <span class="math inline">\(C\)</span> 是正定的，是欧式密铺当且仅当 <span class="math inline">\(C\)</span> 是半正定的，是双曲密铺当且仅当 <span class="math inline">\(C\)</span> 是不定的，且 Coxeter-Dynkin 图的任何连通子图给出的密铺都是球面的或者欧式的。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/research/pdf/banff.pdf">Automata to perform basic calculations in Coxeter groups, by Bill Casselman</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/research/pdf/cm.pdf">Computation in Coxeter groups I. Multiplication, by Bill Casselman</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/research/pdf/roots.pdf">Computation in Coxeter groups II. Constructing minimal roots, by Bill Casselman</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Reflection Wroups and Coxeter Wroups, by James E. Humphreys.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+                
+<p class="pink-link-context">
+    <a href="/honeycombs-limit-set-and-limit-roots/" rel="next" title="Shadertoy 作品：Kleinian 群的极限集与无限 Coxeter 群的极限根">
+    上一篇：Shadertoy 作品：Kleinian 群的极限集与无限 Coxeter 群的极限根
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/Todd-Coxeter-and-uniform-polytopes/" rel="next" title="Todd-Coxeter 算法和 3D/4D 均匀多胞体">
+    下一篇：Todd-Coxeter 算法和 3D/4D 均匀多胞体
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function() {
+                this.page.url = 'https://neozhaoliang.github.io/coxeter-groups-and-uniform-tilings/';
+                this.page.identifier = 'coxeter-groups-and-uniform-tilings/';
+            };
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+                s.src = '//pywonderland.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener">comments powered by Disqus.</a>
+        </noscript>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+</script>
+
+
+
+</body>
+</html>
