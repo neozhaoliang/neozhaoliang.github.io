@@ -7,10 +7,11 @@
 
     
 
-    <title>Coxeter element | 朝花夕拾</title>
+    <title>Coxeter element: a computational approach | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="相信很多人都见过下面的图案：(参考维基百科的 Lie algebra 词条)
+    <meta name="description" content="虽然本文起了个英文标题，但内容完全是中文的，原因是我没有想到合适的能概括内容的中文标题。
+相信很多人都见过下面的图案：(参考维基百科的 Lie algebra 词条)
 
 它展示的是李代数 \(E_8\) 的根系图，李代数 \(E_8\) 的根系由八维欧式空间 \(\mathbb{R}^8\) 中的 240 个向量组成，每个向量恰好有 56 个与其距离最近的邻居。将这 240 个向量投影到一个特殊的二维平面 (叫做 Coxeter 平面) 就会呈现一个旋转对称的图案，你可以看到上图中的图案中，240 个投影点分布在 8 个圆周上，每个圆周包含 30 个均匀分布的顶点，所以它在角度为 \(\frac{2\pi}{30}\) 的旋转下是不变的。\(h=30\) 叫做 \(E_8\) 的 Coxeter 数。
 这个现象并不是 \(E_8\) 独有的，对任何有限 Coxeter 群都有类似的结论成立，比如下图显示的是将 5 维超立方体的 32 个顶点投影到其 Coxeter 平面后得到的图案：
@@ -21,7 +22,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Coxeter element"/>
+    <meta property="og:title" content="Coxeter element: a computational approach"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -297,7 +298,7 @@
             <div class="article-title">
                 
     
-        <h1>Coxeter element</h1>
+        <h1>Coxeter element: a computational approach</h1>
     
 
 
@@ -331,7 +332,8 @@
 
             
             <div class="entry pink-link-context">
-                <p>相信很多人都见过下面的图案：(参考维基百科的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lie_algebra">Lie algebra 词条</a>)</p>
+                <p>虽然本文起了个英文标题，但内容完全是中文的，原因是我没有想到合适的能概括内容的中文标题。</p>
+<p>相信很多人都见过下面的图案：(参考维基百科的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lie_algebra">Lie algebra 词条</a>)</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter-element/e8.svg" width="400"></p>
 <p>它展示的是李代数 <span class="math inline">\(E_8\)</span> 的根系图，李代数 <span class="math inline">\(E_8\)</span> 的根系由八维欧式空间 <span class="math inline">\(\mathbb{R}^8\)</span> 中的 240 个向量组成，每个向量恰好有 56 个与其距离最近的邻居。将这 240 个向量投影到一个特殊的二维平面 (叫做 Coxeter 平面) 就会呈现一个旋转对称的图案，你可以看到上图中的图案中，240 个投影点分布在 8 个圆周上，每个圆周包含 30 个均匀分布的顶点，所以它在角度为 <span class="math inline">\(\frac{2\pi}{30}\)</span> 的旋转下是不变的。<span class="math inline">\(h=30\)</span> 叫做 <span class="math inline">\(E_8\)</span> 的 Coxeter 数。</p>
 <p>这个现象并不是 <span class="math inline">\(E_8\)</span> 独有的，对任何有限 Coxeter 群都有类似的结论成立，比如下图显示的是将 5 维超立方体的 32 个顶点投影到其 Coxeter 平面后得到的图案：</p>
@@ -340,7 +342,7 @@
 <p>所以这个特殊的投影平面是怎么来的？本文下面以 <span class="math inline">\(E_8\)</span> 为例子，通过具体的计算来解释背后的数学。</p>
 <span id="more"></span>
 <h1 id="e_8-的结构"><span class="math inline">\(E_8\)</span> 的结构</h1>
-<p>我们知道 <span class="math inline">\(E_8\)</span> 的 Dynkin 图为 <span class="math display">\[\begin{array}{c}1 --- 2 --- &amp;3 --- 4 ---  5 --- 6 --- 7\\  &amp;| \\ &amp;8 \end{array}\]</span> 其一组单根系为 <span class="math display">\[\Delta=\begin{bmatrix}1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\end{bmatrix}.\]</span> 其中 Dynkin 图中编号为 <span class="math inline">\(i\)</span> 的顶点对应的单根是矩阵的第 <span class="math inline">\(i\)</span> 行，记作 <span class="math inline">\(\alpha_i\)</span>。注意每个向量的长度是 <span class="math inline">\(\sqrt{2}\)</span>， 并不是单位向量，这样主要是为了书写方便。</p>
+<p>我们知道 <span class="math inline">\(E_8\)</span> 的 Dynkin 图为 <span class="math display">\[\begin{array}{c}1 --- 2 --- &amp;3 --- 4 ---  5 --- 6 --- 7\\  &amp;| \\ &amp;8 \end{array}\]</span> 其一组单根系为 <span class="math display">\[\Delta=\begin{bmatrix}1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\end{bmatrix}.\]</span> 其中 Dynkin 图中编号为 <span class="math inline">\(i\)</span> 的顶点对应的单根 <span class="math inline">\(\alpha_i\)</span> 是矩阵的第 <span class="math inline">\(i\)</span> 行。注意每个单根的长度是 <span class="math inline">\(\sqrt{2}\)</span>， 并不是单位向量，这样主要是为了书写方便。</p>
 <p>其 Cartan 矩阵为 <span class="math display">\[C=\left((\alpha_i,\alpha_j)\right)_{1\leq i,j\leq 8}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span></p>
 <p>每个单根 <span class="math inline">\(\alpha_i\)</span> 对应一个单反射 <span class="math inline">\(s_i\)</span>： <span class="math display">\[s_i(v) = v - \frac{2(v,\alpha_i)}{(\alpha_i, \alpha_i)}\alpha_i.\]</span> 这里 <span class="math inline">\((\,,\,)\)</span> 是标准欧式内积。</p>
 <p>所有单反射生成的群 <span class="math inline">\(W\)</span> 叫做 Weyl 群，这个群包含 696729600 个元素。单根系在 Weyl 群的作用下生成的集合 <span class="math inline">\(\Phi = \{w\cdot\alpha\,|\, w\in W, \alpha\in\Delta\}\)</span> 叫做 <span class="math inline">\(E_8\)</span> 的根系，<span class="math inline">\(\Phi\)</span> 中包含 240 个不同的向量，<span class="math inline">\(W\)</span> 在 <span class="math inline">\(\Phi\)</span> 上的作用置换 <span class="math inline">\(\Phi\)</span> 中的向量。</p>
