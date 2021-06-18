@@ -11,7 +11,7 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文目的是介绍 Wedderburn-Artin 的关于半单代数的结构定理。
-讲述 Wedderburn-Artin 定理的教材已经是汗牛充栋，证明途径也大同小异，所以本文并不包含新鲜的内容。Wedderburn-Artin 定理在介绍群表示论或者非交换环的书里面基本都可以找到，但是我发现讲群表示论的书往往只针对有限维半单代数的情形介绍最基本的结论，显得不太够用；而讲非交换环的书则往往从 Jacobson 根，密度定理等讲起，包含了过多环论的内容，对初学者又不太友好。这篇文章希望能补上这个空白，用尽可能简洁的篇幅，尽量采用容易理解和记忆的表述，介绍清楚 Wedderburn-Artin 定理证明的来龙去脉。这里采用的是当年 Wedderburn 的思路，即通过极大幂零理想来定义半单性。与通过完全可约性或者 Jacobson 根来定义半单性相比这个思路显得不够现代，但是我想它应该更容易被接受。">
+讲述 Wedderburn-Artin 定理的教材已经是汗牛充栋，证明途径也大同小异，所以本文并不包含新鲜的内容。Wedderburn-Artin 定理在介绍群表示论或者非交换环的书里面基本都可以找到，但是我发现讲群表示论的书往往只针对有限维半单代数的情形介绍最基本的结论，显得不太够用；而讲非交换环的书则往往从 Jacobson 根，密度定理等讲起，包含了过多环论的内容，对初学者又不太友好。这篇文章希望能补上这个空白，用尽可能简洁的篇幅，尽量采用容易理解和记忆的表述，介绍清楚 Wedderburn-Artin 定理证明的来龙去脉。这里采用的是当年 Wedderburn 的思路，即通过极大幂零理想来定义半单性。与通过完全可约性或者 Jacobson 根来定义半单性相比它显得不够现代，但是我想这种沿着前人思路走的叙述方式应该更容易被接受。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -323,7 +323,7 @@
             
             <div class="entry pink-link-context">
                 <p>本文目的是介绍 Wedderburn-Artin 的关于半单代数的结构定理。</p>
-<p>讲述 Wedderburn-Artin 定理的教材已经是汗牛充栋，证明途径也大同小异，所以本文并不包含新鲜的内容。Wedderburn-Artin 定理在介绍群表示论或者非交换环的书里面基本都可以找到，但是我发现讲群表示论的书往往只针对有限维半单代数的情形介绍最基本的结论，显得不太够用；而讲非交换环的书则往往从 Jacobson 根，密度定理等讲起，包含了过多环论的内容，对初学者又不太友好。这篇文章希望能补上这个空白，用尽可能简洁的篇幅，尽量采用容易理解和记忆的表述，介绍清楚 Wedderburn-Artin 定理证明的来龙去脉。这里采用的是当年 Wedderburn 的思路，即通过极大幂零理想来定义半单性。与通过完全可约性或者 Jacobson 根来定义半单性相比这个思路显得不够现代，但是我想它应该更容易被接受。</p>
+<p>讲述 Wedderburn-Artin 定理的教材已经是汗牛充栋，证明途径也大同小异，所以本文并不包含新鲜的内容。Wedderburn-Artin 定理在介绍群表示论或者非交换环的书里面基本都可以找到，但是我发现讲群表示论的书往往只针对有限维半单代数的情形介绍最基本的结论，显得不太够用；而讲非交换环的书则往往从 Jacobson 根，密度定理等讲起，包含了过多环论的内容，对初学者又不太友好。这篇文章希望能补上这个空白，用尽可能简洁的篇幅，尽量采用容易理解和记忆的表述，介绍清楚 Wedderburn-Artin 定理证明的来龙去脉。这里采用的是当年 Wedderburn 的思路，即通过极大幂零理想来定义半单性。与通过完全可约性或者 Jacobson 根来定义半单性相比它显得不够现代，但是我想这种沿着前人思路走的叙述方式应该更容易被接受。</p>
 <span id="more"></span>
 <h1 id="引子">引子</h1>
 <p>Wedderburn-Artin 定理最早源于 1907 年 Wedderburn 研究有限维代数的分类定理。即设 <span class="math inline">\(A\)</span> 是域 <span class="math inline">\(F\)</span> 上的有乘法恒等元的有限维代数，那么 <span class="math inline">\(A\)</span> 的结构是怎样的？在 Wedderburn 考虑这个问题的时候，Killing 和 Cartan 等人已经完成了有限维复半单 Lie 代数的分类工作，如果读者学过有限维 Lie 代数的知识的话，应该知道任何有限维复 Lie 代数 <span class="math inline">\(L\)</span> 有一个极大可解理想 <span class="math inline">\(\mathrm{Rad}(L)\)</span>，叫做 <span class="math inline">\(L\)</span> 的根 (radical)，去掉这个根后得到的商代数 <span class="math inline">\(L/\mathrm{Rad}(L)\)</span> 是半单代数，其上的双线性型 Killing 型是非退化的，从而可以通过反复取正交补的方式将 <span class="math inline">\(L/\mathrm{Rad}(L)\)</span> 分解为一些单代数的直和，然后对单 Lie 代数的结构进行讨论得出其共有九种不同的类型。Wedderburn 的思路自然受到了 Killing 等人工作的启发，他采取的也是定义根理想 <span class="math inline">\(\mathrm{Rad}(A)\)</span> --&gt; 转移到半单代数 <span class="math inline">\(A/\mathrm{Rad}(A)\)</span> 中 --&gt; 分解为单代数的直和 --&gt; 讨论单代数的结构这样的套路。他考虑的根 <span class="math inline">\(\mathrm{Rad}(A)\)</span> 是 <span class="math inline">\(A\)</span> 的极大幂零理想，去掉这个根后得到的商代数 <span class="math inline">\(A/\mathrm{Rad}(A)\)</span> 是半单的 (可以分解为一些单环的直和)，然后进一步分析单环的结构得到其必然同构于某个除环 <span class="math inline">\(D\)</span> 上的矩阵环 <span class="math inline">\({\rm Mat}_n(D)\)</span>。20 年后的 1927 年 Artin 将这个结论推广到了满足降链条件的左/右 Artinian 环上，这就是 Wedderburn-Artin 定理的来历。值得一提的是，又过了 12 年后 Hopkins 证明了另一个惊人的结论：左/右 Artinian 环也是左/右 Noetherian 的。</p>
