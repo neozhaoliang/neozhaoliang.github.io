@@ -329,10 +329,10 @@
             <div class="entry pink-link-context">
                 <p>周末刚完成了一个有点烧脑的 Shadertoy 项目，Escher 风格的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Aperiodic_tiling">拟周期密铺</a>，请欣赏：</p>
 <span id="more"></span>
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/wsKBW1?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
-</iframe>
+<object data="/code/debruijn.svg">
+</object>
 <blockquote>
-<p>小屏的时候有锯齿现象，全屏效果更好，你可以点击窗口左上角的 "Impossible Aperiodic Tiling" 标题前往 Shadertoy 网站查看源代码，也可以修改变量 <code>N</code> 的值，以及数组 <code>shifts</code> 来获得不同的图案。其中当 <code>N=4</code> 时得到的是 Ammann-Beenker 密铺，<code>N=5</code> 以及 <code>shifts</code> 的值均为 0.2 时给出的是经典的 Penrose 密铺。</p>
+<p>上面这个动画是一张 SVG 图片，里面嵌入了 shader 代码。要查看和编辑源代码的话建议前往 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/wsKBW1">Shadertoy 网站</a>，你可以修改变量 <code>N</code> 的值，以及数组 <code>shifts</code> 来获得不同的图案。其中当 <code>N=4</code> 时得到的是 Ammann-Beenker 密铺，<code>N=5</code> 以及 <code>shifts</code> 的值均为 0.2 时给出的是经典的 Penrose 密铺。</p>
 </blockquote>
 <p>你能看出这个动画的奥妙之处在哪里吗？</p>
 <p>直观上看，这个动画由一些错落有致，但又无缝拼接在一起的房间组成，每个房间有三个面可见，这三个面上各自绘制了一些“窗户”，房间的颜色、窗户的开闭、朝向都是不断变化的，但是仔细一看，诶，好像一些房间的窗口的朝向是“矛盾”的哎？这种整体布局和谐但是局部细节与真实世界矛盾的艺术风格由<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/M._C._Escher">埃舍尔</a> (1898-1972) 所创立，所以这个作品也可以叫做 Escher 风格的不可能密铺。</p>
