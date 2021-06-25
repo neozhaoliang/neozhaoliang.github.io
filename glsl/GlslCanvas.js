@@ -687,11 +687,12 @@ function setupWebGL(canvas, optAttribs, onError) {
  * @return {!WebGLContext} The created context.
  */
 function create3DContext(canvas, optAttribs) {
-    var names = ['webgl', 'experimental-webgl'];
+    var names = ['webgl2', 'webgl', 'experimental-webgl'];
     var context = null;
     for (var ii = 0; ii < names.length; ++ii) {
         try {
             context = canvas.getContext(names[ii], optAttribs);
+            if (context) break;
         } catch (e) {
             if (context) {
                 break;

@@ -61,13 +61,13 @@
             
             <tag> Shadertoy </tag>
             
-            <tag> Poincaré unit ball </tag>
-            
             <tag> Hyperbolic geometry </tag>
             
-            <tag> Euclidean geometry </tag>
-            
             <tag> Coxeter group </tag>
+            
+            <tag> Poincaré unit ball </tag>
+            
+            <tag> Euclidean geometry </tag>
             
             <tag> Uniform honeycombs </tag>
             
@@ -178,6 +178,8 @@
       
         <tags>
             
+            <tag> Random walks </tag>
+            
             <tag> Potential kernel </tag>
             
             <tag> Green function </tag>
@@ -185,8 +187,6 @@
             <tag> Recurrence </tag>
             
             <tag> Stopping time </tag>
-            
-            <tag> Random walks </tag>
             
         </tags>
       
@@ -213,11 +213,11 @@
             
             <tag> Shadertoy </tag>
             
-            <tag> Hyperbolic geometry </tag>
-            
             <tag> Coxeter groups </tag>
             
             <tag> Limit roots </tag>
+            
+            <tag> Hyperbolic geometry </tag>
             
         </tags>
       
@@ -501,13 +501,13 @@
       
         <tags>
             
+            <tag> Root system </tag>
+            
             <tag> Complex semisimple Lie algebra </tag>
             
             <tag> Weyl character formula </tag>
             
             <tag> Cartan subalgebra </tag>
-            
-            <tag> Root system </tag>
             
             <tag> Weyl group </tag>
             
@@ -579,11 +579,11 @@
             
             <tag> Coxeter group </tag>
             
-            <tag> Root system </tag>
-            
             <tag> Coxeter element </tag>
             
             <tag> Coxeter plane </tag>
+            
+            <tag> Root system </tag>
             
             <tag> Cartan matrix </tag>
             
@@ -726,9 +726,9 @@
       
         <tags>
             
-            <tag> 表示论 </tag>
-            
             <tag> 线性代数 </tag>
+            
+            <tag> 表示论 </tag>
             
             <tag> 简正模式 </tag>
             
@@ -991,9 +991,9 @@
       
         <tags>
             
-            <tag> 表示论 </tag>
-            
             <tag> 线性代数 </tag>
+            
+            <tag> 表示论 </tag>
             
         </tags>
       
@@ -1150,11 +1150,11 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="about/index.html"/>
-      <url>about/index.html</url>
+      <title>Reaction-Diffusion simulation with pyglet and glsl</title>
+      <link href="grayscott/index.html"/>
+      <url>grayscott/index.html</url>
       
-        <content type="html"><![CDATA[<p>欢迎来到 <strong>赵亮</strong> 的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：</p><ol type="1"><li>通过引入通俗易懂而又有趣的问题，介绍它们背后的奇妙数学。</li><li>介绍我写过的有趣的或者有用的开源项目。</li><li>一些念书时的笔记。</li></ol><p>我感兴趣的方向主要是表示论、概率论、组合数学，所以这些方面着墨较多。</p><p>博客使用 <a href="https://hexo.io/">hexo</a> 搭建，主题为 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a>，特此鸣谢作者。</p><p>这个博客中包含的所有数学有关的代码、图片都是开源的，甚至博客的主题和所有文章也都是开源的！</p><p>个人方面，以下信息也许对你了解我有帮助：</p><ul><li>80 后，已婚，有娃一只。</li><li>工作之余带娃、念数学、写代码。不追网剧，不玩游戏。</li><li>喜欢听罗大佑和黄霑的歌，喜欢的电影有《肖申克的救赎》，《真实的谎言》，《谍影重重》。</li><li>喜欢郑渊洁和刘慈欣。</li></ul><h2 id="pywonderland-英文文档">Pywonderland 英文文档</h2><ul><li><a href="https://pywonderland.com/gifmaze">Make awesome gif animation in a few seconds with pure Python</a>.</li><li><a href="https://pywonderland.com/grayscott">Reaction-Diffusion simulation with pyglet and glsl</a>.</li><li><a href="https://pywonderland.com/polytopes">Todd-Coxeter algorithm and uniform polytopes</a>.</li><li><a href="https://pywonderland.com/uniform-tilings">Coxeter groups, automata and uniform tilings</a>.</li></ul>]]></content>
+        <content type="html"><![CDATA[<p><a href="https://github.com/neozhaoliang/pywonderland/tree/master/src/grayscott">This project</a> is motivated by <a href="http://pmneila.github.io/jsexp/grayscott/">pmneila's javascript project</a>. The core part of the code are the two GLSL shaders <code>reaction.frag</code> and <code>render.frag</code>. The python scripts are merely for setting the UI and compiling the GLSL code.</p><blockquote><p>Requirements: <code>pyglet</code> for the UI and OpenGL environment and <code>ffmpeg</code> for saving the animation to video files.</p></blockquote><h1 id="examples">Examples</h1><ol type="1"><li><p>Unstable</p><p><video src="/images/grayscott/unstable.mp4" controls=""></video></p></li><li><p>Coral</p><p><video src="/images/grayscott/coral.mp4" controls=""></video></p></li><li><p>Baceria</p><p><video src="/images/grayscott/bacteria.mp4" controls=""></video></p></li></ol><h1 id="usage">Usage</h1><p>You may simply run <code>python main.py</code> and then use keyboard and mouse to play with the simulation (for keyboard and mouse control please see the printed doc).</p><p>You may also initialize the window by passing more options:</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">python main.py -size 800x600 -fps 400 -conf 1 -scale 2<br></code></pre></td></tr></tbody></table></figure><p>Here <code>-size</code> is the size of the window, <code>-fps</code> is the frames per second of the animation, if not specified then max possible value will be used, <code>-conf</code> is the line number of the pattern that the program will load from the file <code>config.txt</code> (which contains a few precomputed patterns), <code>-scale</code> is the "resolution" factor of the texture.</p><p>You may also use an image file to control the growth of the pattern by adding the <code>-mask</code> option:</p><video src="/images/grayscott/mask.mp4" controls=""><h1 id="how-to-save-the-animation-to-a-video-file">How to save the animation to a video file</h1><p>Make sure <code>ffmpeg</code> is installed on your computer and can be found on system path, windows users need to manually add the path to your ffmpeg.exe to environment variables, then press <code>ctrl+v</code> to start saving the video and press <code>ctrl+v</code> again to stop the saving.</p><p>You can use the option <code>-videorate</code> to control the fps of the video (not the animation!) and the option <code>-samplerate</code> to control how often a frame is sampled from the animation. If the frames are sampled too frequently the size of the video file will grow very large.</p><h1 id="about-the-code">About the code</h1><p><code>pyglet</code> is only a thin wrapper of OpenGL so one has to write his own classes to manage things like <code>vao</code>, <code>vbo</code>, <code>framebuffer</code>, etc. There are some modules like <code>vispy</code> and <code>gletools</code> that does similar job, but that lays the burden of learning one more package.</p><p>I wrote two scripts <code>shader.py</code> and <code>framebuffer.py</code> for compiling the shader programs and rendering to texture. They are not meant to be serious tools, just kept simple and suffice for our work.</p><p>The GLSL code borrows heavily from pmneila's work, the most genius part in his code is the use of a <code>brush</code> variable (<code>u_mouse</code> in our program) as the interface between the shader and the UI.</p></video>]]></content>
       
     </entry>
     
@@ -1172,11 +1172,11 @@
     
     
     <entry>
-      <title>Reaction-Diffusion simulation with pyglet and glsl</title>
-      <link href="grayscott/index.html"/>
-      <url>grayscott/index.html</url>
+      <title>关于</title>
+      <link href="about/index.html"/>
+      <url>about/index.html</url>
       
-        <content type="html"><![CDATA[<p><a href="https://github.com/neozhaoliang/pywonderland/tree/master/src/grayscott">This project</a> is motivated by <a href="http://pmneila.github.io/jsexp/grayscott/">pmneila's javascript project</a>. The core part of the code are the two GLSL shaders <code>reaction.frag</code> and <code>render.frag</code>. The python scripts are merely for setting the UI and compiling the GLSL code.</p><blockquote><p>Requirements: <code>pyglet</code> for the UI and OpenGL environment and <code>ffmpeg</code> for saving the animation to video files.</p></blockquote><h1 id="examples">Examples</h1><ol type="1"><li><p>Unstable</p><p><video src="/images/grayscott/unstable.mp4" controls=""></video></p></li><li><p>Coral</p><p><video src="/images/grayscott/coral.mp4" controls=""></video></p></li><li><p>Baceria</p><p><video src="/images/grayscott/bacteria.mp4" controls=""></video></p></li></ol><h1 id="usage">Usage</h1><p>You may simply run <code>python main.py</code> and then use keyboard and mouse to play with the simulation (for keyboard and mouse control please see the printed doc).</p><p>You may also initialize the window by passing more options:</p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">python main.py -size 800x600 -fps 400 -conf 1 -scale 2<br></code></pre></td></tr></tbody></table></figure><p>Here <code>-size</code> is the size of the window, <code>-fps</code> is the frames per second of the animation, if not specified then max possible value will be used, <code>-conf</code> is the line number of the pattern that the program will load from the file <code>config.txt</code> (which contains a few precomputed patterns), <code>-scale</code> is the "resolution" factor of the texture.</p><p>You may also use an image file to control the growth of the pattern by adding the <code>-mask</code> option:</p><video src="/images/grayscott/mask.mp4" controls=""><h1 id="how-to-save-the-animation-to-a-video-file">How to save the animation to a video file</h1><p>Make sure <code>ffmpeg</code> is installed on your computer and can be found on system path, windows users need to manually add the path to your ffmpeg.exe to environment variables, then press <code>ctrl+v</code> to start saving the video and press <code>ctrl+v</code> again to stop the saving.</p><p>You can use the option <code>-videorate</code> to control the fps of the video (not the animation!) and the option <code>-samplerate</code> to control how often a frame is sampled from the animation. If the frames are sampled too frequently the size of the video file will grow very large.</p><h1 id="about-the-code">About the code</h1><p><code>pyglet</code> is only a thin wrapper of OpenGL so one has to write his own classes to manage things like <code>vao</code>, <code>vbo</code>, <code>framebuffer</code>, etc. There are some modules like <code>vispy</code> and <code>gletools</code> that does similar job, but that lays the burden of learning one more package.</p><p>I wrote two scripts <code>shader.py</code> and <code>framebuffer.py</code> for compiling the shader programs and rendering to texture. They are not meant to be serious tools, just kept simple and suffice for our work.</p><p>The GLSL code borrows heavily from pmneila's work, the most genius part in his code is the use of a <code>brush</code> variable (<code>u_mouse</code> in our program) as the interface between the shader and the UI.</p></video>]]></content>
+        <content type="html"><![CDATA[<p>欢迎来到 <strong>赵亮</strong> 的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：</p><ol type="1"><li>通过引入通俗易懂而又有趣的问题，介绍它们背后的奇妙数学。</li><li>介绍我写过的有趣的或者有用的开源项目。</li><li>一些念书时的笔记。</li></ol><p>我感兴趣的方向主要是表示论、概率论、组合数学，所以这些方面着墨较多。</p><p>博客使用 <a href="https://hexo.io/">hexo</a> 搭建，主题为 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a>，特此鸣谢作者。</p><p>这个博客中包含的所有数学有关的代码、图片都是开源的，甚至博客的主题和所有文章也都是开源的！</p><p>个人方面，以下信息也许对你了解我有帮助：</p><ul><li>80 后，已婚，有娃一只。</li><li>工作之余带娃、念数学、写代码。不追网剧，不玩游戏。</li><li>喜欢听罗大佑和黄霑的歌，喜欢的电影有《肖申克的救赎》，《真实的谎言》，《谍影重重》。</li><li>喜欢郑渊洁和刘慈欣。</li></ul><h2 id="pywonderland-英文文档">Pywonderland 英文文档</h2><ul><li><a href="https://pywonderland.com/gifmaze">Make awesome gif animation in a few seconds with pure Python</a>.</li><li><a href="https://pywonderland.com/grayscott">Reaction-Diffusion simulation with pyglet and glsl</a>.</li><li><a href="https://pywonderland.com/polytopes">Todd-Coxeter algorithm and uniform polytopes</a>.</li><li><a href="https://pywonderland.com/uniform-tilings">Coxeter groups, automata and uniform tilings</a>.</li></ul>]]></content>
       
     </entry>
     
