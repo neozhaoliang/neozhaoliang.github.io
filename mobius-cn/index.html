@@ -10,7 +10,16 @@
     <title>Möbius 变换的分类与上半双曲空间的等距 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="本文的想法源自 Roice Nelson 的 shadertoy 项目，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见这里。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。
+    <meta name="description" content="2021/06/27 更新：我更新了一下 shader 代码，把每个动画放在一个 SVG 图片中。最后几个动画代码是可以使用键盘选择场景的，具体操作如下：
+
+按下 1 开启/关闭 Möbius 变换。
+按下 2 开启/关闭椭圆旋转。
+按下 3 开启/关闭双曲缩放。
+按下 4 开启/关闭展示 Riemann 球面。
+
+这几个按键可以组合出许多不同的效果来！
+
+本文的想法源自 Roice Nelson 的 shadertoy 项目，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见这里。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。
 这篇文章将用动画的形式从三个角度演示 Möbius 变换，这三个角度是密切相关的：
 
 Möbius 变换作为扩充复平面 \(\hat{\mathbb{C}}\) 到自身的全纯函数。
@@ -196,16 +205,16 @@ Visual complex analysis, Tristan Needham.
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy-作品/">
-                    Shadertoy-作品 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -220,14 +229,6 @@ Visual complex analysis, Tristan Needham.
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机完美取样/">
                     随机完美取样 <span class="right">2 篇</span></a>
                 </a>
@@ -236,16 +237,24 @@ Visual complex analysis, Tristan Needham.
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -339,20 +348,21 @@ Visual complex analysis, Tristan Needham.
 
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E4%B9%8B%E6%AD%A3%E4%BA%A4%E5%9C%86%E6%97%8F"><span class="section table-of-contents-text">预备知识之正交圆族</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E7%9A%84%E5%85%B1%E8%BD%AD%E5%88%86%E7%B1%BB"><span class="section table-of-contents-text">Möbius 变换的共轭分类</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%8A%9B%E7%89%A9%E5%9E%8B"><span class="section table-of-contents-text">1. 抛物型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%A4%AD%E5%9C%86%E5%9E%8B"><span class="section table-of-contents-text">2. 椭圆型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%8F%8C%E6%9B%B2%E5%9E%8B"><span class="section table-of-contents-text">3. 双曲型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%96%9C%E8%88%AA%E5%9E%8B"><span class="section table-of-contents-text">4. 斜航型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%96%9C%E8%88%AA-loxodromic-%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="section table-of-contents-text">斜航 (loxodromic) 是什么意思？</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E5%9C%A8-riemann-%E7%90%83%E9%9D%A2%E4%B8%8A%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="section table-of-contents-text">Möbius 变换在 Riemann 球面上的作用</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E4%BD%9C%E4%B8%BA%E4%B8%8A%E5%8D%8A%E5%8F%8C%E6%9B%B2%E7%A9%BA%E9%97%B4%E7%9A%84%E7%AD%89%E8%B7%9D"><span class="section table-of-contents-text">Möbius 变换作为上半双曲空间的等距</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%99%E4%BA%9B%E5%8A%A8%E7%94%BB%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%9F%E6%88%90%E7%9A%84"><span class="section table-of-contents-text">这些动画是怎么生成的？</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%95%85%E4%BA%8B"><span class="section table-of-contents-text">更多的故事</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%BC%94%E7%A4%BA%E6%96%9C%E8%88%AA%E7%BA%BF%E4%B8%8E%E5%8F%8C%E8%9E%BA%E7%BA%BF%E7%9A%84%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%8A%A8%E7%94%BB"><span class="section table-of-contents-text">演示斜航线与双螺线的另一个动画</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E4%B9%8B%E6%AD%A3%E4%BA%A4%E5%9C%86%E6%97%8F"><span class="section table-of-contents-text">预备知识之正交圆族</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E7%9A%84%E5%85%B1%E8%BD%AD%E5%88%86%E7%B1%BB"><span class="section table-of-contents-text">Möbius 变换的共轭分类</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%8A%9B%E7%89%A9%E5%9E%8B"><span class="section table-of-contents-text">1. 抛物型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%A4%AD%E5%9C%86%E5%9E%8B"><span class="section table-of-contents-text">2. 椭圆型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%8F%8C%E6%9B%B2%E5%9E%8B"><span class="section table-of-contents-text">3. 双曲型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%96%9C%E8%88%AA%E5%9E%8B"><span class="section table-of-contents-text">4. 斜航型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%96%9C%E8%88%AA-loxodromic-%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="section table-of-contents-text">斜航 (loxodromic) 是什么意思？</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E5%9C%A8-riemann-%E7%90%83%E9%9D%A2%E4%B8%8A%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="section table-of-contents-text">Möbius 变换在 Riemann 球面上的作用</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E4%BD%9C%E4%B8%BA%E4%B8%8A%E5%8D%8A%E5%8F%8C%E6%9B%B2%E7%A9%BA%E9%97%B4%E7%9A%84%E7%AD%89%E8%B7%9D"><span class="section table-of-contents-text">Möbius 变换作为上半双曲空间的等距</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%99%E4%BA%9B%E5%8A%A8%E7%94%BB%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%9F%E6%88%90%E7%9A%84"><span class="section table-of-contents-text">这些动画是怎么生成的？</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%95%85%E4%BA%8B"><span class="section table-of-contents-text">更多的故事</span></a></li></ol>
 </div>
 
             
-    <script type="text/javascript" src="/glsl/glslEditor.js"></script>
-    
-    <script type="text/javascript" src="/glsl/GlslCanvas.js"></script>
-    
-    <script type="text/javascript" src="/glsl/GlslPost.js"></script>
-    
-    <link type="text/css" rel="stylesheet" href="/glsl/glslEditor.css">
-    
             <div class="entry pink-link-context">
-                <p>本文的想法源自 Roice Nelson 的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/MstcWr">shadertoy 项目</a>，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见<a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4scfR2">这里</a>。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。</p>
+                <p><strong>2021/06/27 更新</strong>：我更新了一下 shader 代码，把每个动画放在一个 SVG 图片中。最后几个动画代码是可以使用键盘选择场景的，具体操作如下：</p>
+<ul>
+<li>按下 <code>1</code> 开启/关闭 Möbius 变换。</li>
+<li>按下 <code>2</code> 开启/关闭椭圆旋转。</li>
+<li>按下 <code>3</code> 开启/关闭双曲缩放。</li>
+<li>按下 <code>4</code> 开启/关闭展示 Riemann 球面。</li>
+</ul>
+<p>这几个按键可以组合出许多不同的效果来！</p>
+<hr>
+<p>本文的想法源自 Roice Nelson 的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/MstcWr">shadertoy 项目</a>，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见<a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4scfR2">这里</a>。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。</p>
 <p>这篇文章将用动画的形式从三个角度演示 Möbius 变换，这三个角度是密切相关的：</p>
 <ol type="1">
 <li>Möbius 变换作为扩充复平面 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 到自身的全纯函数。</li>
@@ -391,39 +401,39 @@ Visual complex analysis, Tristan Needham.
 <h2 id="抛物型">1. 抛物型</h2>
 <p>我们先考察最简单的抛物型变换 <span class="math inline">\(z\to z+a\)</span>。</p>
 <p>这时唯一的不动点是无穷远点，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有平行于 <span class="math inline">\(x\)</span> 轴的直线组成 (直线是半径无穷大的圆)，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有垂直于 <span class="math inline">\(x\)</span> 轴的直线组成，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 是正交的，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每条直线变成同族中的另一条直线：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/parabolic-plane-inf.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/parabolic-plane.svg">
+</object>
 <p>你可以看到所有点都向着不动点无穷远点的方向“前进”。</p>
 <p>对一般的抛物型变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的唯一不动点 <span class="math inline">\(z_0\)</span> 是有限点的情形，结论仍然类似：它保持圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每个圆不变，这里 <span class="math inline">\(\mathcal{C}_1\)</span> 是一组在 <span class="math inline">\(z_0\)</span> 处相切的圆族，所有圆共用同一条切线。<span class="math inline">\(M\)</span> 同时把圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆变为同族的另一个圆，这里 <span class="math inline">\(\mathcal{C}_2\)</span> 也是一组在 <span class="math inline">\(z_0\)</span> 处相切的圆族，所有圆也共用同一条切线，但是这条切线的方向与 <span class="math inline">\(\mathcal{C}_1\)</span> 的切线方向垂直：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/parabolic-plane.frag" width="480" height="320">
-</canvas>
-<p>由动画可见所有点都向着不动点 <span class="math inline">\(z_0\)</span> 的位置前进。事实上可以证明对任何 <span class="math inline">\(z\in\mathbb{C}\)</span> 都有 <span class="math inline">\(\lim\limits_{n\to\infty}M^n(z)=z_0\)</span>，即任何点在 <span class="math inline">\(M\)</span> 反复作用下的轨迹都朝着 <span class="math inline">\(z_0\)</span> 的位置移动。</p>
+<object data="/images/mobius/parabolic-plane2.svg">
+</object>
+<p>由动画可见左右两侧的圆在旋转，但是圆本身保持不变，它们是圆族 <span class="math inline">\(\mathcal{C}_1\)</span>；上下两侧的圆在“扩散”，它们是圆族 <span class="math inline">\(\mathcal{C}_2\)</span>。所有点都向着不动点 <span class="math inline">\(z_0\)</span> 的位置前进。事实上可以证明对任何 <span class="math inline">\(z\in\mathbb{C}\)</span> 都有 <span class="math inline">\(\lim\limits_{n\to\infty}M^n(z)=z_0\)</span>，即任何点在 <span class="math inline">\(M\)</span> 反复作用下的轨迹都朝着 <span class="math inline">\(z_0\)</span> 的位置移动。</p>
 <h2 id="椭圆型">2. 椭圆型</h2>
 <p>我们先考察最简单的椭圆型变换 <span class="math inline">\(z\to e^{i\theta}z\)</span>。</p>
 <p>这时两个不动点是原点和无穷远点。注意它保持以原点为中心的同心圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 不变，把原点和无穷远点连线组成的径向直线族 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每一条直线变成同族中另一条直线，<span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 是正交的：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/elliptic-plane-inf.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/elliptic-plane.svg">
+</object>
 <p>对一般的椭圆变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，仍然存在两个互相正交的圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span>，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆变为同族中的另一个圆：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/elliptic-plane.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/elliptic-plane2.svg">
+</object>
 <p>这里 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有使得 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 关于 <span class="math inline">\(K\)</span> 互为反演点的圆 <span class="math inline">\(K\)</span> 组成，因此 <span class="math inline">\(\mathcal{C}_1\)</span> 中的圆的圆心都落在 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 两点间的连线上，但是位于线段 <span class="math inline">\([z_1,z_2]\)</span> 的外部；圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有过 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 的圆组成，因此 <span class="math inline">\(\mathcal{C}_2\)</span> 中的圆的圆心都落在线段 <span class="math inline">\([z_1,z_2]\)</span> 的垂直平分线上。</p>
 <h2 id="双曲型">3. 双曲型</h2>
 <p>与椭圆变换 <span class="math inline">\(z\to e^{i\theta}z\)</span> 的情形类似，<span class="math inline">\(z\to\lambda z\)</span> 也以原点和无穷远点为不动点，但是圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的角色发生了互换：它保持由原点与无穷远点连线组成的直线族 <span class="math inline">\(\mathcal{C}_2\)</span> 不变，把由以原点为中心的同心圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每个圆变为同族中的另一个圆：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/hyperbolic-plane-inf.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/hyperbolic-plane.svg">
+</object>
 <p>对一般的双曲变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，仍然与椭圆变换的情形类似，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的角色发生了互换：所有过 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 的圆组成的圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 保持不变；所有反演圆组成的圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 被变为同族中的另一个圆：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/hyperbolic-plane.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/hyperbolic-plane2.svg">
+</object>
 <p>这时在 <span class="math inline">\(M\)</span> 的作用下 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 一个是“源点”，另一个是“汇点”，轨迹从源点源源不竭地发出，汇聚到汇点中。</p>
 <h2 id="斜航型">4. 斜航型</h2>
 <p>仍然先看 <span class="math inline">\(z\to cz\)</span> 的情形。</p>
 <p>这时不动点是原点和无穷远点，显然 <span class="math inline">\(M\)</span> 把圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每个圆变为同族中的另一个圆，同样地也把圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆变为同族中的另一个圆：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/loxodromic-plane-inf.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/loxodromic-plane.svg">
+</object>
 <p>这时点 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span> 的反复作用下的轨迹是一条曲线，其形如 <span class="math inline">\(\gamma(t)=c^tz\)</span>，这是一条对数螺线，其与 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的夹角都是常数。</p>
 <p>这个结论对一般的斜航型变换也成立：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/loxodromic-plane.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/loxodromic-plane2.svg">
+</object>
 <p>由于斜航型变换包含双曲变换作为组成成分，因此看起来它也有一个源点和一个汇点。这时任意点 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span> 的反复作用下的轨迹是一条双螺线 (double spiral)，其与 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的夹角仍然都是常数 (Möbius 变换是保角的)。</p>
 <p>判断 Möbius 变换 <span class="math inline">\(M\)</span> 具体属于哪一类可以根据其迹的平方 <span class="math inline">\(\mu=(a+d)^2\)</span> 来判断 (这是一个共轭不变量)：</p>
 <ol type="1">
@@ -441,12 +451,12 @@ Visual complex analysis, Tristan Needham.
 <h1 id="möbius-变换在-riemann-球面上的作用">Möbius 变换在 Riemann 球面上的作用</h1>
 <p>由于 Möbius 变换都是扩充复平面 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 到 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 的自同构，而 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 在球极投影下等同于 Riemann 球面 <span class="math inline">\(S^2\)</span>，所以 Möbius 变换也都是 Riemann 球面的自同构。我们来看看 Möbius 变换作用在 Riemann 球面上是什么样子的。</p>
 <p>这是一个作用在 Riemann 球上的斜航型变换：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/loxodromic-sphere.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/loxodromic-sphere.svg">
+</object>
 <p>我来解释一下这个动画的含义：从动画可见 Riemann 球面上有一对源点和汇点，它们在球极投影下对应于 <span class="math inline">\(M\)</span> 在扩充复平面上的两个不动点。这对源点和汇点可以理解为球面的“北极”和“南极” (当扩充复平面上的两个不动点分别是原点和无穷远时，这两个极点就是通常意义下的北极和南极)，这时球面上的“经线”是所有过两个极点的大圆，在球极投影下它们对应于同时过两个不动点的圆族 <span class="math inline">\(\mathcal{C}_1\)</span>；球面上的纬线是所有与经线正交的圆，在球极投影下它们对应于反演圆族 <span class="math inline">\(\mathcal{C}_2\)</span>，球面上每个点的轨迹是对数螺线轨迹在逆球极投影下在球面上的对应曲线，这条曲线与经线纬线的夹角都是常数 (因为球极投影是保角的)，从而是一条斜航线！</p>
 <blockquote><p><strong>练习</strong>：解释下面这个动画的含义：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/parabolic-sphere.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/parabolic-sphere.svg">
+</object>
 <p>提示：这是一个抛物型变换。</p>
 </blockquote>
 <h1 id="möbius-变换作为上半双曲空间的等距">Möbius 变换作为上半双曲空间的等距</h1>
@@ -455,27 +465,22 @@ Visual complex analysis, Tristan Needham.
 <p>注意 <span class="math inline">\(xy\)</span> 平面不属于 <span class="math inline">\(H_3\)</span>，它是 <span class="math inline">\(H_3\)</span> 的“无穷远边界”：<span class="math inline">\(H_3\)</span> 中任何一点到 <span class="math inline">\(xy\)</span> 平面的距离是无穷大！</p>
 <p>一个教材中不太常讲到的事实是：<strong>任何 Möbius 变换都可以唯一地扩展为 <span class="math inline">\(H_3\)</span> 的一个等距变换 <span class="math inline">\(\overline{M}\)</span></strong>。这个扩展用四元数来描述的话很简单：设 <span class="math display">\[M: z\to\frac{az+b}{cz+d}\]</span> 是任一 Möbius 变换，<span class="math inline">\(p=(x,y,z)\in\mathbb{H}^3\)</span>，则令 <span class="math inline">\(q=xi+yj+zk\)</span> 为纯虚四元数，定义 <span class="math display">\[\overline{M}(p) = \frac{aq+b}{cq+d}.\]</span> 这里的运算都是在四元数体中进行。</p>
 <p>我们还能像上面那样用动画演示 Möbius 变换 <span class="math inline">\(\overline{M}\)</span> 在 <span class="math inline">\(H_3\)</span> 上的作用吗？可以！比如下图是一个形如 <span class="math inline">\(z\to cz\)</span> 的斜航型变换扩展到 <span class="math inline">\(H_3\)</span> 后作用在一个<strong>圆柱</strong>体上的效果：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/loxodromic-cone.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/loxodromic-cone.svg">
+</object>
 <p>你可能要问了：这明明是个圆锥体，你怎么说它是圆柱体呢？是不是笔误了啊？</p>
 <p>其实是因为我们现在是在双曲空间里看待它，在双曲度量下，锥面上所有点到旋转轴的距离都是一样的，所以虽然在欧式空间 <span class="math inline">\(\mathbb{R}^3\)</span> 中看它是一个锥体，但是在 <span class="math inline">\(H_3\)</span> 中它其实是圆柱体。</p>
 <p>你可以看到这时 <span class="math inline">\(\overline{M}\)</span> 有两个不动点，都位于无穷远处，这样的点叫做“理想点”。两个不动点之间的连线构成圆柱的轴。两个不动点一个是源点，一个是汇点，空间中的点在变换的作用下“远离”源点，“趋向”汇点。</p>
 <p>对于一般的斜航型变换 <span class="math inline">\(M\)</span>，且其两个不动点都是扩充复平面上的有限点时，<span class="math inline">\(M\)</span> 在 <span class="math inline">\(H_3\)</span> 上的扩展 <span class="math inline">\(\overline{M}\)</span> 仍然保持一个 <span class="math inline">\(H_3\)</span> 中的圆柱体不变：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/loxodromic-cyclide.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/loxodromic-dupin.svg">
+</object>
 <p>这个曲面在欧式空间中叫做 <a target="_blank" rel="noopener" href="https://www.maths.ox.ac.uk/about-us/departmental-art/dupin-cyclides">Dupin cyclide</a>，它的两个端点恰好是 <span class="math inline">\(M\)</span> 的两个不动点。但在双曲空间中它其实是一个圆柱体，由于其两端落在无穷远平面上，因此也是无限长的。圆柱体的轴是连接两个端点的测地线。如果是 <span class="math inline">\(M\)</span> 是椭圆型的话，那么 <span class="math inline">\(\overline{M}\)</span> 将该圆柱绕着轴旋转：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/elliptic-cyclide.frag" width="480" height="320">
-</canvas>
+<object data="/images/mobius/elliptic-dupin.svg">
+</object>
 <h1 id="这些动画是怎么生成的">这些动画是怎么生成的？</h1>
 <p>动画使用的是 glsl 语言和 raymarching 的技术。我在 Roice 的代码基础上作了许多优化，但肯定还可以更精炼。限于我写 shader 的能力不足，做出更美轮美奂的效果就不指望了 ...</p>
 <p>严格讲，这些动画其实还是尝试在欧式空间中去观察双曲空间中的对象，因为 raymarching 技术假定的是光走直线，但在双曲空间中光一般不走直线，所以我们这里看到的效果与真实的生活在双曲空间中的“外星人”所看到的还是有差别的。</p>
 <h1 id="更多的故事">更多的故事</h1>
 <p>说到动画演示 Möbius 变换，很难不提到 <a target="_blank" rel="noopener" href="http://www-users.math.umn.edu/~arnold//moebius/">Möbius Transformations Revealed</a> 这部视频，这个视频揭示的是 Möbius 变换的另一种刻画方式：它们可以由 Riemann 球面 <span class="math inline">\(S^2\)</span> 在 <span class="math inline">\(\mathbb{R}^3\)</span> 中的刚体运动得到！即你可以把扩充复平面通过逆球极投影映射到 <span class="math inline">\(S^2\)</span> 上，然后将 <span class="math inline">\(S^2\)</span> 在 <span class="math inline">\(\mathbb{R}^3\)</span> 中作刚体运动 (旋转加平移)，但要保持北极点位于上半空间内，然后再球极投影回扩充复平面，这个复合变换就是一个 Möbius 变换，并且所有的 Möbius 变换都可以用此方式得到。</p>
-<h1 id="演示斜航线与双螺线的另一个动画">演示斜航线与双螺线的另一个动画</h1>
-<p>下面是项目里面的另一个 shader 动画，可以更清楚地看到 Riemann 球面上的斜航线在球极投影下与 Möbius 变换的不动点之间的双螺线之间的对应关系：</p>
-<canvas class="glslCanvas" data-fragment-url="/images/mobius/loxodromic-shadow.frag" data-textures="/images/mobius/wood.jpg" width="480" height="320">
-</canvas>
-<p>我很喜欢这个动画的阴影效果。</p>
 
                 
 <p class="pink-link-context">

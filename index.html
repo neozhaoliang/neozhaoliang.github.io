@@ -179,16 +179,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy-作品/">
-                    Shadertoy-作品 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -203,14 +203,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机完美取样/">
                     随机完美取样 <span class="right">2 篇</span></a>
                 </a>
@@ -219,16 +211,24 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -417,13 +417,13 @@
         
             <a href="/tags/Shadertoy/" class="chip pink lighten-1">Shadertoy</a>
         
-            <a href="/tags/Hyperbolic-geometry/" class="chip pink lighten-1">Hyperbolic geometry</a>
-        
-            <a href="/tags/Coxeter-group/" class="chip pink lighten-1">Coxeter group</a>
-        
             <a href="/tags/Poincare-unit-ball/" class="chip pink lighten-1">Poincaré unit ball</a>
         
+            <a href="/tags/Hyperbolic-geometry/" class="chip pink lighten-1">Hyperbolic geometry</a>
+        
             <a href="/tags/Euclidean-geometry/" class="chip pink lighten-1">Euclidean geometry</a>
+        
+            <a href="/tags/Coxeter-group/" class="chip pink lighten-1">Coxeter group</a>
         
             <a href="/tags/Uniform-honeycombs/" class="chip pink lighten-1">Uniform honeycombs</a>
         
@@ -638,11 +638,11 @@
         
             <a href="/tags/Shadertoy/" class="chip pink lighten-1">Shadertoy</a>
         
+            <a href="/tags/Hyperbolic-geometry/" class="chip pink lighten-1">Hyperbolic geometry</a>
+        
             <a href="/tags/Coxeter-groups/" class="chip pink lighten-1">Coxeter groups</a>
         
             <a href="/tags/Limit-roots/" class="chip pink lighten-1">Limit roots</a>
-        
-            <a href="/tags/Hyperbolic-geometry/" class="chip pink lighten-1">Hyperbolic geometry</a>
         
     </div>
 
@@ -827,7 +827,16 @@
 
             
                 <div class="entry pink-link-context">
-                    <p>本文的想法源自 Roice Nelson 的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/MstcWr">shadertoy 项目</a>，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见<a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4scfR2">这里</a>。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。</p>
+                    <p><strong>2021/06/27 更新</strong>：我更新了一下 shader 代码，把每个动画放在一个 SVG 图片中。最后几个动画代码是可以使用键盘选择场景的，具体操作如下：</p>
+<ul>
+<li>按下 <code>1</code> 开启/关闭 Möbius 变换。</li>
+<li>按下 <code>2</code> 开启/关闭椭圆旋转。</li>
+<li>按下 <code>3</code> 开启/关闭双曲缩放。</li>
+<li>按下 <code>4</code> 开启/关闭展示 Riemann 球面。</li>
+</ul>
+<p>这几个按键可以组合出许多不同的效果来！</p>
+<hr>
+<p>本文的想法源自 Roice Nelson 的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/MstcWr">shadertoy 项目</a>，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见<a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4scfR2">这里</a>。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。</p>
 <p>这篇文章将用动画的形式从三个角度演示 Möbius 变换，这三个角度是密切相关的：</p>
 <ol type="1">
 <li>Möbius 变换作为扩充复平面 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 到自身的全纯函数。</li>

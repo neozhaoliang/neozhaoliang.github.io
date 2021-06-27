@@ -285,6 +285,7 @@ object {
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
+  display: block;
 }
 .red-link-context a {
   color: #f44336 !important;
