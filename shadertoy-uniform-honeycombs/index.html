@@ -364,25 +364,26 @@
 <p>第二个项目展示的是欧式空间 <span class="math inline">\(E^3\)</span> 中的均匀蜂巢：</p>
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/3tccWf?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
 </iframe>
-<p><span class="math inline">\(E^3\)</span> 中的均匀蜂巢只有三种不同的对称性，它们分别对应仿射 Coxeter 群 <span class="math inline">\(\widetilde{A}_3,\widetilde{B}_3,\widetilde{C}_3\)</span>。同样你可以点击窗口左上角的标题进入 Shadertoy 网页，修改 <code>diagram</code> 和 <code>active_mirrors</code> 的值来查看不同的蜂巢结构。</p>
+<p><span class="math inline">\(E^3\)</span> 中的均匀蜂巢只有三种不同的对称性，它们分别对应仿射 Coxeter 群 <span class="math inline">\(\widetilde{A}_3,\widetilde{B}_3,\widetilde{C}_3\)</span>。同样你可以点击窗口左上角的标题进入 Shadertoy 网页，修改变量 <code>latticeType</code> 来选择蜂巢的对称类型，修改变量 <code>T</code> 来获得不同的截断，修改 <code>dual=true</code> 来查看其对偶蜂巢。对偶蜂巢不是均匀蜂巢，因为它不是顶点传递的 (vertex-transitive)，而是胞腔传递的 (cell-transitive)。</p>
+<p>注意在这个程序中我明确写出了顶点和镜面法向量，这样可以使用平移对称性，大大简化计算。如果像双曲蜂巢那样进行大量反射计算的话效率很低，无法制作穿越场景的动态效果。</p>
 <p>以下是一些效果图：</p>
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">regular <span class="math inline">\(\widetilde{A}_3\)</span></td>
-<td style="text-align: center;">regular <span class="math inline">\(\widetilde{B}_3\)</span></td>
+<td style="text-align: center;">bitruncated <span class="math inline">\(\widetilde{C}_3\)</span></td>
+<td style="text-align: center;">truncated <span class="math inline">\(\widetilde{A}_3\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><img src="/images/honeycomb/333.png" width="300"></td>
-<td style="text-align: center;"><img src="/images/honeycomb/343.png" width="300"></td>
+<td style="text-align: center;"><img src="/images/honeycomb/C3~0110.png" width="300"></td>
+<td style="text-align: center;"><img src="/images/honeycomb/A3~1100.png" width="300"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">regular <span class="math inline">\(\widetilde{C}_3\)</span></td>
-<td style="text-align: center;">truncated <span class="math inline">\(\widetilde{C}_3\)</span></td>
+<td style="text-align: center;">cantitruncated <span class="math inline">\(\widetilde{B}_3\)</span></td>
+<td style="text-align: center;">dual of truncated <span class="math inline">\(\widetilde{A}_3\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><img src="/images/honeycomb/434.png" width="300"></td>
-<td style="text-align: center;"><img src="/images/honeycomb/434-1100.png" width="300"></td>
+<td style="text-align: center;"><img src="/images/honeycomb/B3~1110.png" width="300"></td>
+<td style="text-align: center;"><img src="/images/honeycomb/dual-A3~1100.png" width="300"></td>
 </tr>
 </tbody>
 </table>
