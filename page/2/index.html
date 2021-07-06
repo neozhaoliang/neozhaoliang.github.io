@@ -156,15 +156,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Durrett-概率论/">
-                    Durrett-概率论 <span class="right">1 篇</span></a>
+                    pywonderland-项目 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -179,8 +171,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Shadertoy-作品/">
-                    Shadertoy-作品 <span class="right">5 篇</span></a>
+                    Shadertoy-作品 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -219,16 +219,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -295,102 +295,6 @@
 
 
 <div id="article-list" class="container main-container">
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/reducible-mod-p/">模任何素数都可约的整系数不可约多项式</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2017-03-02T00:00:00.000Z"><a href="/reducible-mod-p/">2017-03-02</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Cyclotomic-polynomial/" class="chip pink lighten-1">Cyclotomic polynomial</a>
-        
-            <a href="/tags/Swinnerton-Dyer-polynomial/" class="chip pink lighten-1">Swinnerton-Dyer polynomial</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry pink-link-context">
-                    <p>几年前在知乎上有这么<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/38156113/answer/139354565">一个问题</a>：</p>
-<blockquote><p><strong>问题</strong>：有哪些 <span class="math inline">\(\mathbb{Z}[x]\)</span> 中的多项式，它们在有理数域 <span class="math inline">\(\mathbb{Q}\)</span> 上是不可约的，而对任意素数 <span class="math inline">\(p\)</span>，模 <span class="math inline">\(p\)</span> 以后在 <span class="math inline">\(\mathbb{Z}_p[x]\)</span> 上都是可约的？</p>
-</blockquote>
-<p>当时我给了回答，后来账号注销了，答案也就一并删除了。现在把我的原答案贴在这里：</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/reducible-mod-p/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/coupling-from-the-past/">Coupling from the past 算法与 Markov 链的随机取样</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2016-07-01T16:00:00.000Z"><a href="/coupling-from-the-past/">2016-07-02</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/算法/" class="chip pink lighten-1">算法</a>
-        
-            <a href="/tags/Perfectly-random-sampling/" class="chip pink lighten-1">Perfectly random sampling</a>
-        
-            <a href="/tags/Lozenge-tilings/" class="chip pink lighten-1">Lozenge tilings</a>
-        
-            <a href="/tags/Coupling-from-the-past/" class="chip pink lighten-1">Coupling from the past</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry pink-link-context">
-                    <p>本文是完美取样系列三部曲的最后一部，目的是介绍 Markov 链上的 coupling from the past 算法 (以下简称 <em>CFTP </em>)。之前的两部曲分别是多米诺洗牌算法和 Wilson 均匀生成树算法。</p>
-<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/CFTP">github</a> 上。</p>
-<p>这三个算法的目的都是从某些很大很大的集合当中以给定的概率分布随机取样，区别在于它们针对的集合不同。多米诺洗牌算法是在 Aztec 钻石图的所有密铺中取样；Wilson 算法是在一个图的所有生成树中取样；而 CFTP 算法则是在一个 Markov 链的状态空间中按照其平稳分布取样。</p>
-<p>我们先考虑一个看起来很初等的问题：</p>
-<blockquote><p><strong>问题 1</strong>：下图是一个边长分别为 <span class="math inline">\(a,b,c\)</span> 的平行六边形，其中 <span class="math inline">\(a,b,c\)</span> 都是正整数，内角均为 120 度：</p>
-<p><img style="margin:0px auto;display:block" width="300" src="/images/macmahon/hexagon.svg"></p>
-<p>请问：用边长为 1 的菱形密铺它，有多少种不同的方法？</p>
-</blockquote>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/coupling-from-the-past/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
     
         <article class="simple-article">
     <div class="card">
@@ -773,9 +677,9 @@
         
             <a href="/tags/离散鞅/" class="chip pink lighten-1">离散鞅</a>
         
-            <a href="/tags/Williams-概率和鞅/" class="chip pink lighten-1">Williams 概率和鞅</a>
-        
             <a href="/tags/Backward-induction/" class="chip pink lighten-1">Backward induction</a>
+        
+            <a href="/tags/Williams-概率和鞅/" class="chip pink lighten-1">Williams 概率和鞅</a>
         
     </div>
 
@@ -792,6 +696,104 @@
         
         <div class="card-action pink-link-context">
             <a href="/optimal-stopping-and-backward-induction/">阅读全文</a>
+        </ div>
+        
+    </div>
+</article>
+
+    
+        <article class="simple-article">
+    <div class="card">
+        <div class="card-content">
+            <div class="article-title">
+                
+    
+        <h1 class="indigo-link-context"><a href="/three-mass-spring-system/">三质点弹簧系统的简正模式</a></h1>
+    
+
+
+            </div>
+
+            <time class="pink-link-context" datetime="2011-08-21T16:00:00.000Z"><a href="/three-mass-spring-system/">2011-08-22</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/表示论/" class="chip pink lighten-1">表示论</a>
+        
+            <a href="/tags/线性代数/" class="chip pink lighten-1">线性代数</a>
+        
+            <a href="/tags/简正模式/" class="chip pink lighten-1">简正模式</a>
+        
+            <a href="/tags/表示的张量积/" class="chip pink lighten-1">表示的张量积</a>
+        
+    </div>
+
+
+
+            
+                <div class="entry pink-link-context">
+                    <p>今天的问题是群表示论在物理中的一个小应用：</p>
+<blockquote><p><strong>问题</strong>：平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于一个正三角形的三个顶点处。质点之间两两由一根弹簧相连，三个弹簧都是一样的，但是弹簧质量忽略不计。</p>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/abc.png"></p>
+<p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力。那么这个系统的简正模式 (normal mode) 是什么？</p>
+</blockquote>
+<p>这里简正模式的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
+                </div>
+            
+        </div>
+
+        
+        <div class="card-action pink-link-context">
+            <a href="/three-mass-spring-system/">阅读全文</a>
+        </ div>
+        
+    </div>
+</article>
+
+    
+        <article class="simple-article">
+    <div class="card">
+        <div class="card-content">
+            <div class="article-title">
+                
+    
+        <h1 class="indigo-link-context"><a href="/pattern-occurrence/">模式的等待时间与反直觉概率</a></h1>
+    
+
+
+            </div>
+
+            <time class="pink-link-context" datetime="2011-06-02T16:00:00.000Z"><a href="/pattern-occurrence/">2011-06-03</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/离散鞅/" class="chip pink lighten-1">离散鞅</a>
+        
+            <a href="/tags/Williams-概率和鞅/" class="chip pink lighten-1">Williams 概率和鞅</a>
+        
+    </div>
+
+
+
+            
+                <div class="entry pink-link-context">
+                    <p>著名概率学家 Feller 在他的名著《An introduction to probability and its applications》中提到了这样一个实验：</p>
+<blockquote><p>重复抛掷一枚均匀的硬币，用 <code>H</code> 代表正面向上，<code>T</code> 代表背面向上，一直到连续出现 6 次 <code>H</code> 为止。这里连续 6 个 <code>Ｈ</code> 组成的模式记作 <code>HHHHHH</code>，所需要抛掷硬币的次数叫做等待时间。等待时间是一个随机变量，最小值是 6，最大值可以是无限。Feller 问：等待时间的均值是多少？</p>
+</blockquote>
+<p>这个问题可以用 Markov 链来解，但是非常繁琐。香港中文大学李硕彦教授在他的论文</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://projecteuclid.org/euclid.aop/1176994578">A Martingale Approach to the Study of Occurrence of Sequence Patterns in Repeated Experiments.</a></p>
+</blockquote>
+<p>中用离散鞅的知识给出了一个简洁而巧妙的解法，本文就来介绍他的方法。</p>
+                </div>
+            
+        </div>
+
+        
+        <div class="card-action pink-link-context">
+            <a href="/pattern-occurrence/">阅读全文</a>
         </ div>
         
     </div>

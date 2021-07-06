@@ -158,15 +158,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Durrett-概率论/">
-                    Durrett-概率论 <span class="right">1 篇</span></a>
+                    pywonderland-项目 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -181,8 +173,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Shadertoy-作品/">
-                    Shadertoy-作品 <span class="right">5 篇</span></a>
+                    Shadertoy-作品 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -221,16 +221,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -335,7 +335,6 @@
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9D%83%E6%A8%A1"><span class="section table-of-contents-text">权模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E9%AB%98%E6%9D%83%E5%BE%AA%E7%8E%AF%E6%A8%A1"><span class="section table-of-contents-text">最高权循环模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#verma-%E6%A8%A1"><span class="section table-of-contents-text">Verma 模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#casimir-%E7%AE%97%E5%AD%90%E5%9C%A8%E6%9C%80%E9%AB%98%E6%9D%83%E5%BE%AA%E7%8E%AF%E6%A8%A1%E4%B8%8A%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="section table-of-contents-text">Casimir 算子在最高权循环模上的作用</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#verma-%E6%A8%A1%E7%9A%84%E5%90%88%E6%88%90%E5%88%97"><span class="section table-of-contents-text">Verma 模的合成列</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BD%95%E6%97%B6%E4%B8%8D%E5%8F%AF%E7%BA%A6%E6%A8%A1-l_lambda-%E6%98%AF%E6%9C%89%E9%99%90%E7%BB%B4"><span class="section table-of-contents-text">何时不可约模 \(L_\lambda\) 是有限维？</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9D%83%E6%A8%A1%E7%9A%84%E7%89%B9%E5%BE%81"><span class="section table-of-contents-text">权模的特征</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#weyl-%E7%89%B9%E5%BE%81%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">Weyl 特征公式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BE%8B%E5%AD%90mathfraksl_nmathbbc-%E7%9A%84%E7%89%B9%E5%BE%81%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">例子：\(\mathfrak{sl}_n(\mathbb{C})\) 的特征公式</span></a></li></ol>
 </div>
 
-            
             <div class="entry pink-link-context">
                 <p>本文源自我学习 Humphreys 的教材 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 第六章 "Representation theory" 时的读书笔记，目的是介绍有限维复半单李代数的 Weyl 特征公式。Humphreys 的书是李代数课程默认的必读经典，它看着很薄，不免给人一种“我可以一个月”搞定的错觉，但我初学的时候觉得这本书并不容易读，现在回头来看才深感作者叙述之精炼。由于本文的内容直接从 Humphreys 教材的第六章开始，所以需要读者对之前章节的内容有一些基本的了解，但本文采用的叙述并不完全与 Humphreys 一致。</p>
 <span id="more"></span>

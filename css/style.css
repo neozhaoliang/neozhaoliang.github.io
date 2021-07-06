@@ -279,6 +279,7 @@ iframe {
   margin-right: auto;
 }
 object {
+  max-width: 640px;
   margin-top: 1em;
   margin-bottom: 1em;
   padding-left: 0;
