@@ -1,0 +1,1515 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Schur 多项式，Littlewood-Richardson rule 与 Hook 长度公式 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="在数学中有那么一些问题，它们的表述简单而初等，但是解决起来却非常困难，往往需要相当的奇思妙想和深刻的工具，而且围绕这个问题许多不同领域的数学交织在一起，演绎出许多奇妙的故事来。
+Young
+表就是其中一个精彩的例子，组合数学，表示论，概率论在这里发生了奇妙的交汇。
+我们先从一个有趣的问题开始：
+问题：\(n\)
+位选民要在一次选举中给 \(m\)
+个候选人投票，每个选民只能投一票。已知第 \(i\) 位候选人最终的得票数为 \(\lambda_i\)，这里 \(\sum_{i=1}^m\lambda_i=n\) 且 \(\lambda_1\geq\cdots\geq\lambda_m\)。问题是：有多少种不同的得票序列，使得在投票过程中的任一时刻，对任何的
+\(i&amp;lt;j\)，第 \(i\) 位候选人所得的票数总不少于第 \(j\) 位候选人所得的票数？
+举个例子，假设有 \(n=10\) 位选民和
+\(m=4\) 个候选人，则得票序列 \[1, 2, 1, 3, 2, 1, 2, 4, 3, 1\]
+表示第一个选民投票给 1 号，第二个选民投票给 2 号，第三个选民投票给 1
+号，第四个选民投票给 3 号，依次类推。问题的要求等价于对任何 \(1\leq k\leq n\) 和 \(1\leq i&amp;lt;j\leq m\)，序列的前 \(k\) 项中数字 \(i\) 出现的次数都大于等于数字 \(j\) 出现的次数。
+
+虽然问题的表述很简单，但其实答案相当复杂，绝非一般的初等方法所能解决。对付它的最好方法是
+Schur 多项式的理论，我接下来就来介绍它。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Schur 多项式，Littlewood-Richardson rule 与 Hook 长度公式"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/atelier-forest-light.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/组合数学/">
+                    组合数学 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机完美取样/">
+                    随机完美取样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/几何/">
+                    几何 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/计数组合学/">计数组合学</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Schur 多项式，Littlewood-Richardson rule 与 Hook 长度公式</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2011-04-03T16:00:00.000Z"><a href="/schur-polynomials-and-hook-length-formula/">2011-04-04</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Schur-polynomial/" class="chip pink lighten-1">Schur polynomial</a>
+        
+            <a href="/tags/Young-tableaux/" class="chip pink lighten-1">Young tableaux</a>
+        
+            <a href="/tags/Symmetric-polynomial/" class="chip pink lighten-1">Symmetric polynomial</a>
+        
+            <a href="/tags/Hook-length-formula/" class="chip pink lighten-1">Hook length formula</a>
+        
+            <a href="/tags/Littlewood-Richardson-rule/" class="chip pink lighten-1">Littlewood-Richardson rule</a>
+        
+            <a href="/tags/Jacobi-Trudi-identity/" class="chip pink lighten-1">Jacobi-Trudi identity</a>
+        
+            <a href="/tags/Bender-Knuth-involution/" class="chip pink lighten-1">Bender-Knuth involution</a>
+        
+            <a href="/tags/Lattice-path/" class="chip pink lighten-1">Lattice path</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#schur-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BB%84%E5%90%88%E5%AE%9A%E4%B9%89"><span class="section table-of-contents-text">Schur 多项式：组合定义</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bender-knuth-%E5%AF%B9%E5%90%88"><span class="section table-of-contents-text">Bender-Knuth 对合</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#jacobi-trudi-%E6%81%92%E7%AD%89%E5%BC%8F"><span class="section table-of-contents-text">Jacobi-Trudi 恒等式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bi-alternant-%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">Bi-alternant 公式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#hook-%E9%95%BF%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">Hook 长度公式</span></a></li></ol>
+</div>
+
+            <div class="entry pink-link-context">
+                <p>在数学中有那么一些问题，它们的表述简单而初等，但是解决起来却非常困难，往往需要相当的奇思妙想和深刻的工具，而且围绕这个问题许多不同领域的数学交织在一起，演绎出许多奇妙的故事来。</p>
+<p>Young
+表就是其中一个精彩的例子，组合数学，表示论，概率论在这里发生了奇妙的交汇。</p>
+<p>我们先从一个有趣的问题开始：</p>
+<blockquote><p><strong>问题</strong>：<span class="math inline">\(n\)</span>
+位选民要在一次选举中给 <span class="math inline">\(m\)</span>
+个候选人投票，每个选民只能投一票。已知第 <span class="math inline">\(i\)</span> 位候选人最终的得票数为 <span class="math inline">\(\lambda_i\)</span>，这里 <span class="math inline">\(\sum_{i=1}^m\lambda_i=n\)</span> 且 <span class="math inline">\(\lambda_1\geq\cdots\geq\lambda_m\)</span>。问题是：有多少种不同的得票序列，使得在投票过程中的任一时刻，对任何的
+<span class="math inline">\(i&lt;j\)</span>，第 <span class="math inline">\(i\)</span> 位候选人所得的票数总不少于第 <span class="math inline">\(j\)</span> 位候选人所得的票数？</p>
+<p>举个例子，假设有 <span class="math inline">\(n=10\)</span> 位选民和
+<span class="math inline">\(m=4\)</span> 个候选人，则得票序列 <span class="math display">\[1, 2, 1, 3, 2, 1, 2, 4, 3, 1\]</span>
+表示第一个选民投票给 1 号，第二个选民投票给 2 号，第三个选民投票给 1
+号，第四个选民投票给 3 号，依次类推。问题的要求等价于对任何 <span class="math inline">\(1\leq k\leq n\)</span> 和 <span class="math inline">\(1\leq i&lt;j\leq m\)</span>，序列的前 <span class="math inline">\(k\)</span> 项中数字 <span class="math inline">\(i\)</span> 出现的次数都大于等于数字 <span class="math inline">\(j\)</span> 出现的次数。</p>
+</blockquote>
+<p>虽然问题的表述很简单，但其实答案相当复杂，绝非一般的初等方法所能解决。对付它的最好方法是
+Schur 多项式的理论，我接下来就来介绍它。</p>
+<span id="more"></span>
+<h1 id="schur-多项式组合定义">Schur 多项式：组合定义</h1>
+<p>设 <span class="math inline">\(\lambda=(\lambda_1,\lambda_2,\ldots)\)</span>
+是一个元素都是非负整数且只有有限多项非 0 的序列，如果有 <span class="math inline">\(\lambda_1\geq \lambda_2\geq\cdots\)</span>
+成立，就称 <span class="math inline">\(\lambda\)</span>
+是一个整数分拆，简称分拆，并记 <span class="math inline">\(|\lambda|=\sum\limits_{i=1}^\infty
+\lambda_i\)</span>。<span class="math inline">\(|\lambda|\)</span>
+总是一个有限的数，如果 <span class="math inline">\(|\lambda|=k\)</span>
+就称 <span class="math inline">\(\lambda\)</span> 是整数 <span class="math inline">\(k\)</span> 的分拆，记作 <span class="math inline">\(\lambda\vdash k\)</span>。此外用 <span class="math inline">\(l(\lambda)\)</span> 表示 <span class="math inline">\(\lambda\)</span> 中非零项的个数。</p>
+<p>对每个分拆 <span class="math inline">\(\lambda\vdash
+k\)</span>，我们可以用一个图 <span class="math inline">\(F_\lambda\)</span> 来表示它：<span class="math inline">\(F_\lambda\)</span> 由 <span class="math inline">\(k\)</span> 个方格组成，第一行有 <span class="math inline">\(\lambda_1\)</span> 个方格，第二行有 <span class="math inline">\(\lambda_2\)</span> 个方格，. . .
+以此类推，每一行都是左对齐的，总共有 <span class="math inline">\(l(\lambda)\)</span> 行。<span class="math inline">\(F_\lambda\)</span> 叫做 <span class="math inline">\(\lambda\)</span> 的 Ferrers 图。例如下图是分拆
+<span class="math inline">\(\lambda=(4, 2, 2, 1)\)</span> 的 Ferrers
+图。</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>注意 <span class="math inline">\(\lambda\)</span> 中的零分量不出现在
+Ferrers 图中。</p>
+<p>将 <span class="math inline">\(F_\lambda\)</span> 转置
+(第一行变第一列，第二行变第二列，等等) 后得到的也是一个 Ferrers
+图，其对应的分拆 <span class="math inline">\(\lambda'\)</span> 叫做
+<span class="math inline">\(\lambda\)</span>
+的共轭分拆，例如上图转置后得到的共轭分拆为 <span class="math inline">\(\lambda'=(4, 3, 1, 1)\)</span>：</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>在 <span class="math inline">\(F_\lambda\)</span>
+的每个方格中填入正整数，使得<strong>每一行从左到右是弱递增的</strong>，<strong>每一列从上到下是严格递增的</strong>，这样得到的表格叫做半标准
+Young 表 (semistandard Young tableaux)，简称为 SSYT；如果一个形状为
+<span class="math inline">\(\lambda\vdash n\)</span> 的半标准的 Young
+表包含的数字恰好为集合 <span class="math inline">\(\{1,2,\ldots,n\}\)</span>，则称其为一个标准 Young
+表 (standard Young tableaux)，简称为 SYT。标准 Young
+表由于数字互不相同所以也是行严格递增的。例如下图分别显示的是形状为 <span class="math inline">\(\lambda=(4, 3, 2,1)\)</span>
+的一个半标准和一个标准 Young 表。</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>我们用记号 <span class="math inline">\({\rm SSYT}(n,\lambda)\)</span>
+表示所有形状为 <span class="math inline">\(\lambda\)</span>
+且填入的数字不超过 <span class="math inline">\(n\)</span> 的半标准 Young
+表组成的集合，显然此集合非空则必有 <span class="math inline">\(n\geq
+l(\lambda)\)</span>。当 <span class="math inline">\(|\lambda|=n\)</span>
+时我们也将其简写为 <span class="math inline">\({\rm
+SSYT}(\lambda)\)</span>。用记号 <span class="math inline">\({\rm
+SYT}(\lambda)\)</span> 表示所有形状为 <span class="math inline">\(\lambda\)</span> 的标准 Young 表组成的集合。</p>
+<p>文章开头的投票序列问题本质上是计算集合 <span class="math inline">\({\rm SYT}(\lambda)\)</span>
+的元素个数，实际上所有符合要求的投票序列与 <span class="math inline">\({\rm SYT}(\lambda)\)</span>
+是一一对应的：依次处理数字 <span class="math inline">\(j=1,2,\ldots,n\)</span>，如果选民 <span class="math inline">\(j\)</span> 将票投给了候选人 <span class="math inline">\(i\)</span>，则将数字 <span class="math inline">\(j\)</span> 填入 <span class="math inline">\(\lambda\)</span> 的 Ferrers 图的第 <span class="math inline">\(i\)</span> 行从左边数起第一个空着的方格中。所有
+<span class="math inline">\(n\)</span> 个数字填写完后得到的就是一个标准
+Young 表 <span class="math inline">\(T\)</span>。反之对任何标准 Young 表
+<span class="math inline">\(T\)</span>
+还原出对应的投票序列也是显然的。</p>
+<p>例如上面的标准 Young 表</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>对应的得票序列为 (序列的第 <span class="math inline">\(j\)</span>
+项为数字 <span class="math inline">\(j\)</span> 所在的行的编号，即选民
+<span class="math inline">\(j\)</span> 选择的候选人编号) <span class="math display">\[1, 2, 1, 3, 2, 1, 2, 4, 3, 1\]</span></p>
+<p><span class="math inline">\({\rm SYT}(\lambda)\)</span>
+的计数可以由一个非常优美的结论给出，叫做 hook length
+formula，本文后面会介绍。我们首先需要介绍 Schur 多项式的概念，Schur
+多项式可以看作是半标准 Young 表的“生成函数”。</p>
+<p>取定一个正整数 <span class="math inline">\(n\)</span>，<span class="math inline">\(\lambda=(\lambda_1,\ldots,\lambda_n)\)</span>
+是一个非零项个数不超过 <span class="math inline">\(n\)</span> 的分拆
+(允许某些 <span class="math inline">\(\lambda_i\)</span> 为零)，<span class="math inline">\(T\in {\rm SSYT}(n,\lambda)\)</span>
+是一个<strong>半标准 Young 表</strong>，记 <span class="math inline">\(c(T)=(c_1,c_2,\ldots,c_n)\)</span> 为 <span class="math inline">\(T\)</span> 的容度 (content) 向量，其中 <span class="math inline">\(c_i\)</span> 是 <span class="math inline">\(T\)</span> 中数字 <span class="math inline">\(i\)</span> 出现的次数。记 <span class="math display">\[X^{c(T)} = x_1^{c_1}x_2^{c_2}\cdots
+x_n^{c_n}.\]</span> <span class="math inline">\(X^{c(T)}\)</span>
+是一个单项式。</p>
+<p>例如对 <span class="math inline">\(n=10\)</span> 和 <span class="math inline">\(\lambda=(4,3,2,1)\)</span>，上面的半标准 Young
+表</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>的容度为 <span class="math inline">\((2, 2, 2, 1, 1, 1, 0, 1, 0,
+0)\)</span>，其对应的单项式为 <span class="math display">\[X^{c(T)} =
+x_1^2x_2^2x_3^2x_4x_5x_6x_8.\]</span></p>
+<blockquote><p><strong>Schur 多项式的组合定义</strong>：设 <span class="math inline">\(n\)</span> 是一个正整数，<span class="math inline">\(\lambda=(\lambda_1,\ldots,\lambda_n)\)</span>
+是一个长度不超过 <span class="math inline">\(n\)</span> 的分拆 (允许某些
+<span class="math inline">\(\lambda_i\)</span> 为零)，定义 <span class="math inline">\(n\)</span> 变元多项式 <span class="math display">\[s_\lambda(x_1,\ldots,x_n)=\sum_{T\in {\rm
+SSYT}(n,\lambda)}X^{c(T)}.\]</span> <span class="math inline">\(s_\lambda\)</span> 叫做 <span class="math inline">\(n\)</span> 变元的 Schur 多项式。</p>
+</blockquote>
+<p>这里需要注意的是 <span class="math inline">\(n\)</span> 变元的 Schur
+多项式有且只有对长度不超过 <span class="math inline">\(n\)</span> 的分拆
+<span class="math inline">\(\lambda\)</span> 才有定义。</p>
+<p>例子：对 <span class="math inline">\(\lambda=(3,2)\)</span>， <span class="math display">\[\begin{align*}s_{(3,2)}(x_1,x_2,x_3) \,= \,
+&amp; x_1^3x_2^2  + x_1^3x_3^2 +  x_1^3x_2x_3 + x_1^2x_2^3 + x_1^2x_3^3
++ 2x_1^2x_2x_3^2 + \\
+&amp;2x_1^2x_2^2x_3 +x_1x_2x_3^3 + 2x_1x_2^2x_3^2 + x_1x_2^3x_3
++  x_2^2x_3^3 + x_2^3x_3^2.
+\end{align*}\]</span></p>
+<p>其中前几项对应的半标准 Young 表如下：</p>
+<table>
+<tbody><tr>
+<th>
+<span class="math inline">\(x_1^3x_2^2\)</span>
+</th>
+<th>
+<span class="math inline">\(x_1^3x_3^2\)</span>
+</th>
+<th>
+<span class="math inline">\(x_1^3x_2x_3\)</span>
+</th>
+<th>
+<span class="math inline">\(x_1^2x_2^3\)</span>
+</th>
+<th>
+<span class="math inline">\(x_1^2x_3^3\)</span>
+</th>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody></table>
+<p>可以看到虽然 Schur
+多项式的组合定义很直观，但要写出它的具体表达式来却并不容易，为此我们需要找到
+Schur 多项式的其它表现形式。首先我们将证明 Schur
+多项式总是对称多项式。</p>
+<h1 id="bender-knuth-对合">Bender-Knuth 对合</h1>
+<p>这一节我们来证明 Schur 多项式是对称多项式，为此只要证明对任意的 <span class="math inline">\(i\)</span>，<span class="math inline">\(s_\lambda\)</span> 在交换 <span class="math inline">\(x_i\)</span> 和 <span class="math inline">\(x_{i+1}\)</span>
+后保持不变即可，而这又只要说明容度为 <span class="math inline">\((\ldots,c_i,c_{i+1},\ldots)\)</span> 的半标准
+Young 表与容度为 <span class="math inline">\((\ldots,c_{i+1},c_i,\ldots)\)</span> 的半标准
+Young 表一一对应即可。看起来只要对每个形状为 <span class="math inline">\(\lambda\)</span> 的半标准 Young 表，把其中的数字
+<span class="math inline">\(i\)</span> 全换成 <span class="math inline">\(i+1\)</span>，同时把 <span class="math inline">\(i+1\)</span> 全换成 <span class="math inline">\(i\)</span> 就可以了，是吗？</p>
+<p>问题出在这样简单粗暴地得到的未必还是一个半标准的 Young
+表。我们需要仔细点选择那些翻转的方格。如果某个 <span class="math inline">\(i\)</span> 的下方恰好是 <span class="math inline">\(i+1\)</span>，就称这样的 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(i+1\)</span> 是匹配了的。而那些下方没有 <span class="math inline">\(i+1\)</span> 的 <span class="math inline">\(i\)</span> 或者上方没有 <span class="math inline">\(i\)</span> 的 <span class="math inline">\(i+1\)</span>
+统称为未匹配的。下面的事实不难验证：</p>
+<blockquote>
+<p>在 <span class="math inline">\(T\)</span> 的任意一行中，设 <span class="math inline">\(i=x\leq y\leq i+1\)</span>
+是两个未匹配的元素，则它们中间不可能有匹配的元素。即在一行中，未匹配的元素总是构成一段连续的序列。</p>
+</blockquote>
+<p>下图中演示了 <span class="math inline">\(i=2\)</span>
+的例子，绿色显示了匹配的元素，红色显示了未匹配的元素。</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><font color="green">2</font></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><font color="green">2</font></td>
+<td style="text-align: center;"><font color="red">2</font></td>
+<td style="text-align: center;"><font color="red">2</font></td>
+<td style="text-align: center;"><font color="red">2</font></td>
+<td style="text-align: center;"><font color="red">3</font></td>
+<td style="text-align: center;"><font color="red">3</font></td>
+<td style="text-align: center;"><font color="green">3</font></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><font color="green">3</font></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>设在一行中，未匹配的元素是 <span class="math inline">\(r\)</span> 个
+<span class="math inline">\(i\)</span> 后面接着 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i+1\)</span>，我们把这段序列替换为 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i\)</span> 后面接上 <span class="math inline">\(r\)</span> 个 <span class="math inline">\(i+1\)</span>，对 <span class="math inline">\(T\)</span> 的每一行都进行这个操作而保持 <span class="math inline">\(T\)</span> 的其它数字不动。在这个变换下 <span class="math inline">\(T\)</span> 变成 <span class="math inline">\(T^\ast\)</span>，<span class="math inline">\(T^\ast\)</span> 仍然是半标准的：上图 <span class="math inline">\(T\)</span> 是 3 个 2 后面跟了 2 个 3，变换后在
+<span class="math inline">\(T^\ast\)</span> 中变成了 2 个 2 后面跟了 3
+个 3：</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><font color="green">2</font></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><font color="green">2</font></td>
+<td style="text-align: center;"><font color="red">2</font></td>
+<td style="text-align: center;"><font color="red">2</font></td>
+<td style="text-align: center;"><font color="red">3</font></td>
+<td style="text-align: center;"><font color="red">3</font></td>
+<td style="text-align: center;"><font color="red">3</font></td>
+<td style="text-align: center;"><font color="green">3</font></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><font color="green">3</font></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>容易验证若 <span class="math inline">\(T\)</span> 的容度为 <span class="math inline">\((\ldots,c_i,c_{i+1},\ldots)\)</span>，则 <span class="math inline">\(T^\ast\)</span> 的容度为 <span class="math inline">\((\ldots,c_{i+1},c_i,\ldots)\)</span>。这个变换显然是个对合：<span class="math inline">\((T^\ast)^\ast=T\)</span>，这就证明了 Schur
+多项式是对称的。</p>
+<h1 id="jacobi-trudi-恒等式">Jacobi-Trudi 恒等式</h1>
+<p>定义 <span class="math inline">\(h_k(x_1,\ldots,x_n)\)</span> 为所有
+<span class="math inline">\(k\)</span> 次单项式的和： <span class="math display">\[h_k(x_1,\ldots,x_n)=\sum_{\begin{subarray}{c}\alpha_1+\alpha_2+\cdots+\alpha_n=k\\\alpha_i\in\mathbb{Z}_{\geq0}\end{subarray}}
+x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_n^{\alpha_n}.\]</span></p>
+<p>这里约定 <span class="math inline">\(h_0=1\)</span>，<span class="math inline">\(k&lt;0\)</span> 时 <span class="math inline">\(h_{k}=0\)</span>。显然每个 <span class="math inline">\(h_k\)</span> 是齐次的对称多项式。</p>
+<blockquote><p><strong>定理</strong>：设 <span class="math inline">\(\lambda=(\lambda_1,\ldots,\lambda_n)\in\mathbb{Z}^n_{\geq0}\)</span>
+为一个分拆，则 <span class="math display">\[s_\lambda(x_1,x_2,\ldots,x_n)=\det\left(
+h_{\lambda_i-i+j}\right)_{1\leq i,j\leq n}.\]</span></p>
+</blockquote>
+<blockquote><p>注：有的写法是 <span class="math display">\[s_\lambda(x_1,x_2,\ldots,x_n)=\det\left(
+h_{\lambda_i-i+j}\right)_{1\leq i,j\leq l(\lambda)}.\]</span>
+这没有区别。实际上设 <span class="math inline">\(r=l(\lambda)\)</span>，则 <span class="math display">\[\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq
+n}=
+\det\left(\begin{array}{cc}
+\begin{array}{l}
+h_{\lambda_1}&amp;h_{\lambda_1+1} &amp;\cdots &amp; h_{\lambda_1+r-1}\\
+h_{\lambda_2-1}&amp;h_{\lambda_2} &amp;\cdots &amp; h_{\lambda_2+r-2}\\
+&amp;  &amp; \cdots &amp; \\
+h_{\lambda_r-(r-1)}&amp;h_{\lambda_r-(r-2)}&amp;\cdots &amp;
+h_{\lambda_r}
+\end{array} &amp; \Large\ast \\ \Large 0 &amp;
+\begin{matrix}1&amp;&amp;\\&amp;\ddots&amp;\\&amp;&amp;1\end{matrix}\end{array}\right).
+\]</span> 显然它等于左上角的主子式。</p>
+</blockquote>
+<p>这里的证明采用 Gessel-Viennot
+的不相交格点路径组方法，思路一目了然，论证简单直接。关于这个方法你可以参考我之前的<a href="/macmahon-formula-plane-partitions">一篇博文</a>。当然</p>
+<blockquote>
+<p>Proofs from The Book. Aigner, Martin; Ziegler, Günter (2009).</p>
+</blockquote>
+<p>一书中的格点路径组一章也是极好的介绍。</p>
+<p>关键是要<strong>把每个半标准 Young
+表对应到一个不相交的路径组</strong>，如果你熟悉格点路径组方法的话，这个构造过程是很自然的。</p>
+<p>下面的动图显示了 <span class="math inline">\(n=6, \lambda=(5,4,3,2,0,
+0)\)</span> 时的一个形状为 <span class="math inline">\(\lambda\)</span>
+的 Young 表</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>与其不相交路径组的对应关系：</p>
+<p><img style="margin:0px auto;display:block" width="600" src="/images/schur/jacobi-trudi.gif"></p>
+<p>我省略了 <span class="math inline">\(\lambda_i=0\)</span>
+的部分，如果非要加上的话它们对应的是权重为 1
+的垂直路径，实际上不起作用：</p>
+<p><img style="margin:0px auto;display:block" width="600" src="/images/schur/jacobi-trudi2.gif"></p>
+<p>设 <span class="math inline">\(T\in{\rm SSYT}(n,\lambda)\)</span>，则
+<span class="math inline">\(T\)</span> 的第 <span class="math inline">\(i\)</span> 行是一个长度为 <span class="math inline">\(\lambda_i\)</span>
+的弱递增的数列，这样一个数列很自然地对应于一条从点 <span class="math inline">\((0,1)\)</span> 到点 <span class="math inline">\((\lambda_i,n)\)</span> 的 Gauss
+路径，这个路径即为这一行的“高度图”。</p>
+<p>但是半标准 Young 表的列是严格递增的，这个递减关系反映在 Gauss
+路径上，就是 <span class="math inline">\(T\)</span>
+的第二行对应的路径应该整体位于第一行对应路径的上方，第三行对应的路径整体位于第二行对应的路径的上方，...，两条路径之间可以有垂直的公共边，但是不能有水平的公共边。</p>
+<p>现在把第 <span class="math inline">\(i\)</span> 条路径水平地向左平移
+<span class="math inline">\(i\)</span> 个单位，变成一条从 <span class="math inline">\((-i,1)\)</span> 到 <span class="math inline">\((-i+\lambda_i,n)\)</span> 的路径，则这样得到的
+<span class="math inline">\(n\)</span>
+条路径两两之间没有公共点，即构成一个不相交的路径组。</p>
+<p>反过来对每一个这样的不相交的路径组，也很容易得出其对应的半标准 Young
+表来。</p>
+<p>令水平线 <span class="math inline">\(y=k\)</span> 的权值为 <span class="math inline">\(x_k\)</span>，垂直边的权值一律为 1，注意到从 <span class="math inline">\((-j,1)\)</span> 到 <span class="math inline">\((-i+\lambda_i,n)\)</span>
+之间的任一路径由于其横向长度是固定值 <span class="math inline">\(\lambda_i-i+j\)</span>，所以其权重
+(等于路径中各边权重的乘积) 是次数为 <span class="math inline">\(\lambda_i-i+j\)</span>
+的单项式，所有这样的单项式都可以作为某条从 <span class="math inline">\((-j,1)\)</span> 到 <span class="math inline">\((-i+\lambda_i,n)\)</span>
+的路径的权重，从而这两点之间所有路径的权重之和为齐次对称多项式 <span class="math inline">\(h_{\lambda_i-i+j}\)</span>，于是由 Gessel-Viennot
+引理有 <span class="math display">\[s_\lambda=\det\left(h_{\lambda_i-i+j}\right)_{1\leq
+i,j\leq n}.\]</span> 这就证明了 Jacobi-Trudi 恒等式。</p>
+<h1 id="bi-alternant-公式">Bi-alternant 公式</h1>
+<p>设 <span class="math inline">\(\lambda=(\lambda_1,\ldots,\lambda_n)\)</span>,<span class="math inline">\(\mu=(\mu_1,\ldots,\mu_n)\in\mathbb{Z}^n_{\geq0}\)</span>
+是两个分拆。定义Weyl 向量 <span class="math inline">\(\rho=(n-1,n-2,\ldots,1,0)\)</span>。</p>
+<p>设 <span class="math inline">\(T\)</span> 是一个形状为 <span class="math inline">\(\mu\)</span> 的半标准 Young 表，用记号 <span class="math inline">\(T_{\geq j}\)</span> 表示由 <span class="math inline">\(T\)</span> 的第 <span class="math inline">\(j,j+1,\ldots\)</span> 列组成的半标准 Young
+表，同理记号 <span class="math inline">\(T_{&gt;j}\)</span> 和 <span class="math inline">\(T_{&lt;j}\)</span>
+的含义都是不言自明的。如果对任何 <span class="math inline">\(j\)</span>，向量 <span class="math inline">\(\lambda+c(T_{\geq j})\)</span> 都是一个分拆，就称
+<span class="math inline">\(T\)</span> 是一个“好” Young 表，否则就称
+<span class="math inline">\(T\)</span> 是一个“坏” Young 表。</p>
+<p>定义如下的 <span class="math inline">\(n\)</span> 阶行列式：</p>
+<p><span class="math display">\[a_\lambda=\det(x_i^{\lambda_j})_{1\leq
+i,j\leq n}=\sum_{\sigma\in
+S_n}\text{sgn}(\sigma)X^{\sigma(\lambda)}.\]</span></p>
+<blockquote><p><strong>定理</strong>： <span class="math display">\[a_{\lambda+\rho}s_{\mu}=\sum_{T}a_{\lambda+c(T)+\rho}.\]</span>
+这里求和跑遍那些形状为 <span class="math inline">\(\mu\)</span> 的好
+Young 表。</p>
+</blockquote>
+<p>注意两边都是关于 <span class="math inline">\(n\)</span> 个变元 <span class="math inline">\(x_1,\ldots,x_n\)</span> 的多项式。</p>
+<p>这个定理乍看起来从叙述到证明都很不直观，不过它的结论却非常重要，这就是
+Littlewood-Richardson 定律。下面这个证明有很深刻的来源
+(李代数的晶体图)。见</p>
+<blockquote>
+<p>A Concise Proof of the Littlewood-Richardson Rule, by John R.
+Stembridge.</p>
+</blockquote>
+<p>证明：由于 <span class="math inline">\(s_\mu\)</span> 是 <span class="math inline">\(n\)</span> 变元的对称多项式，因此对任何置换 <span class="math inline">\(\sigma\in S_n\)</span>，当 <span class="math inline">\(T\)</span> 跑遍 <span class="math inline">\({\rm
+SSYT}(n,\mu)\)</span> 时，集合 <span class="math inline">\(\{c(T)\}\)</span> 与集合 <span class="math inline">\(\{\sigma(c(T))\}\)</span> 是相同的，所以 <span class="math display">\[
+\sum_{T\in{\rm SSYT}(n,\mu)} X^{c(T)} = \sum_{T\in{\rm SSYT}(n,\mu)}
+X^{\sigma(c(T))}.
+\]</span></p>
+<p>于是利用定义有</p>
+<p><span class="math display">\[a_{\lambda+\rho}s_\mu=\sum_{\sigma\in
+S_n}\text{sgn}(\sigma)\sum_{T\in{\rm
+SSYT}(n,\,\mu)}X^{\sigma(\lambda+\rho+c(T))} =\sum_{T\in{\rm
+SSYT}(n,\mu)}a_{\lambda+c(T)+\rho}.\]</span></p>
+<p>这里的关键之处在于，借助 Bender-Knuth 对合，我们可以把求和项中坏的
+Young 表两两配对抵消掉，从而剩下的和项都是好 Young 表。</p>
+<p>设 <span class="math inline">\(T\)</span> 是一个坏 Young 表，则存在
+<span class="math inline">\(j\)</span> 使得 <span class="math inline">\(\lambda+c(T_{\geq j})\)</span>
+不是一个分拆，在所有这样的 <span class="math inline">\(j\)</span>
+中，选取最大的那个。选好 <span class="math inline">\(j\)</span>
+以后，由于 <span class="math inline">\(\lambda+c(T_{\geq j})\)</span>
+不是分拆，因此存在 <span class="math inline">\(k\)</span> 使得 <span class="math display">\[\lambda_k+c_k(T_{\geq j}) &lt;
+\lambda_{k+1}+c_{k+1}(T_{\geq j}).\]</span> 在所有这样的 <span class="math inline">\(k\)</span> 中，选取最小的那个。</p>
+<blockquote><p><strong>断言</strong>：我们有 <span class="math display">\[\lambda_k+c_k(T_{&gt;j})=\lambda_{k+1}+c_{k+1}(T_{&gt;j}),\]</span>
+并且 <span class="math inline">\(T\)</span> 的第 <span class="math inline">\(j\)</span> 列有一个 <span class="math inline">\(k+1\)</span> 但是没有 <span class="math inline">\(k\)</span>，于是 <span class="math display">\[\lambda_k+c_k(T_{\geq
+j})+1=\lambda_{k+1}+c_{k+1}(T_{\geq j}).\]</span></p>
+</blockquote>
+<p><strong>断言的证明</strong>：考虑这样的场景：<span class="math inline">\(A,B\)</span> 两人玩游戏，每局获胜的一方可得 1
+元，输的一方得 0 元，打平则各得 1 元。初始时刻 <span class="math inline">\(A\)</span> 有 <span class="math inline">\(\lambda_k\)</span> 元，<span class="math inline">\(B\)</span> 有 <span class="math inline">\(\lambda_{k+1}\)</span> 元，这里 <span class="math inline">\(\lambda_k\geq\lambda_{k+1}\)</span>。已知第 <span class="math inline">\(m\)</span> 局结束后 <span class="math inline">\(B\)</span> 的资金首次大于 <span class="math inline">\(A\)</span> 的资金，你能推断出什么？</p>
+<p>很显然，第 <span class="math inline">\(m\)</span> 局的结果必然是
+<span class="math inline">\(B\)</span> 获胜了；不仅如此，前 <span class="math inline">\(m-1\)</span> 局结束的时候 <span class="math inline">\(B\)</span> 的资金也应该恰好追平了 <span class="math inline">\(A\)</span>。很简单的推理，对不对？这些就足够了。</p>
+<p>现在回到我们的“坏伙计” <span class="math inline">\(T\)</span>：我们知道一个 Young
+表的每一列至多有一个 <span class="math inline">\(k\)</span>
+(也至多有一个 <span class="math inline">\(k+1\)</span>)，我们把每一列包含的关于 <span class="math inline">\(k\)</span> 和 <span class="math inline">\(k+1\)</span> 的个数看做一局游戏的结果：<span class="math inline">\(T\)</span> 最右端的一列描述了 <span class="math inline">\(A,B\)</span> 第一局的结果：如果有 <span class="math inline">\(k\)</span> 无 <span class="math inline">\(k+1\)</span>，则 <span class="math inline">\(A\)</span> 得 1 元；既有 <span class="math inline">\(k\)</span> 又有 <span class="math inline">\(k+1\)</span> 则 <span class="math inline">\(A,B\)</span> 各得 1 元；无 <span class="math inline">\(k\)</span> 有 <span class="math inline">\(k+1\)</span> 则 <span class="math inline">\(B\)</span> 得 1
+元。右边第二列对应第二局游戏的结果并以此类推。这样从右向左到第 <span class="math inline">\(j+1\)</span> 列时，根据 <span class="math inline">\(j\)</span> 的选取规则，<span class="math inline">\(A\)</span> 的资金仍然不少于 <span class="math inline">\(B\)</span>，但是到第 <span class="math inline">\(j\)</span> 列时 <span class="math inline">\(A\)</span> 的资金被 <span class="math inline">\(B\)</span> 超过。根据我们前面的分析，这说明 <span class="math inline">\(T\)</span> 的第 <span class="math inline">\(j\)</span> 列有一个 <span class="math inline">\(k+1\)</span> 但是没有 <span class="math inline">\(k\)</span>，而且 <span class="math display">\[\lambda_k+c_k(T_{&gt;j})=\lambda_{k+1}+c_{k+1}(T_{&gt;j}).\]</span>
+这就印证了之前的断言。</p>
+<p>现在考虑对 <span class="math inline">\(T\)</span>
+进行如下的变换：保持 <span class="math inline">\(T_{\geq j}\)</span>
+的部分不动，把 <span class="math inline">\(T_{&lt;j}\)</span>
+的部分对数字 <span class="math inline">\(k\)</span> 和 <span class="math inline">\(k+1\)</span> 进行 Bender-Knuth 变换，得到一个
+Young 表 <span class="math inline">\(T^\ast\)</span> (不排除 <span class="math inline">\(T=T^\ast\)</span> 的可能)。不难验证 <span class="math inline">\(T^\ast\)</span> 也是半标准的 (因为 Bender-Knuth
+对换不影响列递增性质，利用 <span class="math inline">\(T\)</span> 的第
+<span class="math inline">\(j\)</span> 列不含 <span class="math inline">\(k\)</span> 这一点，将 <span class="math inline">\(T_{&lt;j}\)</span> 的部分中某些 <span class="math inline">\(k\)</span> 换成 <span class="math inline">\(k+1\)</span> 也不会影响行递增性质)，<span class="math inline">\(T^\ast\)</span> 也是一个坏 Young 表且 <span class="math inline">\((T^\ast)^\ast =T\)</span> (因为 <span class="math inline">\(T^\ast_{\geq j}\)</span> 和 <span class="math inline">\(T_{\geq j}\)</span> 完全一样)。容易验证对换 <span class="math inline">\(s_k=(k,k+1)\)</span> 交换 <span class="math inline">\(c(T_{&lt; j})\)</span> 和 <span class="math inline">\(c(T^\ast_{&lt; j})\)</span> 的 <span class="math inline">\(k\)</span> 和 <span class="math inline">\(k+1\)</span> 位置： <span class="math display">\[s_kc(T_{&lt; j}) = c(T^\ast_{&lt; j}).\]</span>
+而前面的断言 <span class="math display">\[\lambda_k+c_k(T_{\geq
+j})+1=\lambda_{k+1}+c_{k+1}(T_{\geq j}).\]</span> 说明 <span class="math inline">\(s_k\)</span> 保持 <span class="math inline">\(\lambda+c(T_{\geq j}) + \rho\)</span> 不变，因此
+<span class="math display">\[s_k(\lambda+c(T)+\rho)=s_k(\lambda+c(T_{\geq
+j})+\rho)+s_kc(T_{&lt;j})=\lambda+c(T^\ast)+\rho.\]</span></p>
+<p>于是若 <span class="math inline">\(T\ne T^\ast\)</span>，则两个行列式
+<span class="math inline">\(a_{\lambda+c(T)+\rho}\)</span> 和 <span class="math inline">\(a_{\lambda+c(T^\ast)+\rho}\)</span> 相差一个 <span class="math inline">\(k,k+1\)</span> 列的交换，从而它们的值抵消。在
+<span class="math inline">\(T=T^\ast\)</span> 的情形，矩阵的 <span class="math inline">\(k,k+1\)</span> 列是相同的，行列式自然是 0。</p>
+<blockquote><p><strong>推论 [bi-alternant formula]</strong>： <span class="math display">\[s_{\mu}=\frac{a_{\mu+\rho}}{a_\rho}.\]</span></p>
+</blockquote>
+<p>证明：在定理中令 <span class="math inline">\(\lambda=0\)</span>，则只有唯一的一个形状为 <span class="math inline">\(\mu\)</span> 的好 Young 表 <span class="math inline">\(T\)</span>，使得 <span class="math inline">\(c(T_{\geq j})\)</span> 对任何 <span class="math inline">\(j\)</span> 都是一个分拆，这个表必须是第一行都填
+1，第二行都填 2，...， 以此类推，从而 <span class="math inline">\(c(T)=\mu\)</span>，因此得证。</p>
+<h1 id="hook-长度公式">Hook 长度公式</h1>
+<p>这一节来介绍并证明著名的 hook 长度公式。hook
+公式的表述简单优美，结论出人意料，让人第一眼看到它就会被它所吸引。</p>
+<p>首先来定义什么是 hook 长度：设 <span class="math inline">\(\lambda\vdash n\)</span>, <span class="math inline">\(F_\lambda\)</span> 是对应的 Ferrers 图，用 <span class="math inline">\(v=(i,j)\)</span> 来表示 <span class="math inline">\(F_\lambda\)</span> 中第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列位置的方格
+(只考虑那些有方格的位置)。数数与 <span class="math inline">\(v\)</span>
+同行但是位置在 <span class="math inline">\(v\)</span> 的右边，以及与
+<span class="math inline">\(v\)</span> 同列但是位置在 <span class="math inline">\(v\)</span> 的下方的方格的总数，<span class="math inline">\(v\)</span> 自己也算一个但是只算一次。这个数字称作
+<span class="math inline">\(v\)</span> 的 hook 长度，记作 <span class="math inline">\(h_v\)</span>。</p>
+<p>例如下图显示的是 <span class="math inline">\(\lambda=(5, 4, 3, 2,
+1)\)</span> 对应的 Ferrers 图中，<span class="math inline">\(v=(1,
+1)\)</span> 的 hook 长度 <span class="math inline">\(h_v=5\)</span>。</p>
+<table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{\bullet}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\phantom{\bullet}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{\bullet}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\phantom{\bullet}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bullet\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{\bullet}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>一般地，<span class="math inline">\((i,j)\)</span> 位置的方格的 hook
+长度为 <span class="math inline">\(\lambda_i + \lambda'_j - i - j +
+1\)</span>。</p>
+<blockquote><p><strong>定理 [hook 公式]</strong>： <span class="math display">\[|{\rm
+SYT}(\lambda)|=f_\lambda=\frac{n!}{\prod\limits_{v\in
+F_\lambda}h_v}.\]</span></p>
+</blockquote>
+<p>Hook
+公式的表达式虽然很形象，但是这个表达式真要用起来并不顺手。我们需要一个看起来不那么直观，但是用起来趁手的表达式，这就是下面的关键引理：</p>
+<blockquote><p><strong>引理 A</strong>：设 <span class="math inline">\(\mu_i=\lambda_i+r-i\)</span>，这里 <span class="math inline">\(r=l(\lambda),1\leq i\leq r\)</span>，则 <span class="math display">\[\prod_{v\in F_\lambda} h_v
+=\frac{\prod\limits_{i=1}^r
+\mu_i!}{\prod\limits_{i&lt;j}(\mu_i-\mu_j)}.\]</span></p>
+</blockquote>
+<p>引理 A 的结论可以很容易由下面的引理 B 得出：</p>
+<blockquote><p><strong>引理 B</strong>：对任何 <span class="math inline">\(1\leq
+k\leq r\)</span>，<span class="math inline">\(F_\lambda\)</span> 的第
+<span class="math inline">\(k\)</span> 行方格的 hook 长度之集 <span class="math display">\[\{h_{kj},1\leq j\leq\lambda_k\} =
+\{\lambda_k+\lambda'_j-k-j+1,1\leq j \leq\lambda_k\}\]</span> 和集合
+<span class="math display">\[\{\mu_k-\mu_j, k\leq j\leq r\}\]</span>
+的并集恰好就是集合 <span class="math display">\[\{0,1,\ldots,\mu_k\}.\]</span> 于是第 <span class="math inline">\(k\)</span> 行所有方格的 hook 长度的乘积等于 <span class="math display">\[\frac{\mu_k!}{\prod\limits_{k&lt;j}(\mu_k-\mu_j)}.\]</span></p>
+</blockquote>
+<p>引理的证明：这里的证明改编自 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
+<p>设 <span class="math inline">\(\lambda^{(k)}\)</span> 是将 <span class="math inline">\(\lambda\)</span> 的前 <span class="math inline">\(k-1\)</span> 行删除，只保留第 <span class="math inline">\(k\)</span> 行之后的部分得到的子分拆，则 <span class="math inline">\(\lambda^{(k)}\)</span> 的行数相比 <span class="math inline">\(\lambda\)</span> 缩水了 <span class="math inline">\(k-1\)</span>，即 <span class="math inline">\(l(\lambda^{(k)})=r-k+1\)</span>。此外 <span class="math inline">\(\lambda^{(k)}\)</span> 的第一行长度为 <span class="math inline">\(\lambda_k\)</span>，所以 <span class="math inline">\(\lambda^{(k)}\)</span> 对应于一条从 <span class="math inline">\((0,0)\)</span> 出发，每一步向右或者向上，到达
+<span class="math inline">\((r-k+1,\lambda_k)\)</span>
+的格点路径，如下图所示，其中 <span class="math inline">\(\lambda^{(k)} =
+(4, 3, 3, 2, 2, 2)\)</span>：</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/schur/bijection.svg"></p>
+<p>从左下角开始，依次给路径上的每条边依次标号为 <span class="math inline">\(0,1,\ldots,\lambda_k+r-k\)</span>，我们来分别分析水平的边和竖直的边的标号：</p>
+<p>竖直的边从上到下一共有 <span class="math inline">\(\lambda_k\)</span>
+条，其中第 <span class="math inline">\(i\)</span> 条边是从上往下数第
+<span class="math inline">\(i\)</span> 行的 <span class="math inline">\(\lambda_i'-(k-1)\)</span>
+个方格的“右边界”。所以这些边的<strong>下方</strong>端点 (图中标注的顶点)
+坐标依次为 <span class="math display">\[(\lambda_1'-k+1,
+\lambda_k-1),(\lambda_2'-k+1,\lambda_k-2),\ldots,(\lambda_k'-k+1,
+0).\]</span>
+这些边的标号是其<strong>下方</strong>端点的坐标之和，等于集合 <span class="math display">\[\{\lambda_i'+\lambda_k-i-k+1, 1\leq i\leq
+n\},\]</span> 这正是第 <span class="math inline">\(k\)</span>
+行所有方格的 hook 长度！</p>
+<p>水平的边从左到右一共有 <span class="math inline">\(r-k+1\)</span>
+条，其中第 <span class="math inline">\(j\)</span> 条边是从左往右数第
+<span class="math inline">\(j\)</span> 列的 <span class="math inline">\(\lambda_k-\lambda_j\)</span>
+个方格的“下边界”，所以这些边的<strong>右方</strong>端点 (下图中标注的点)
+坐标依次为 <span class="math display">\[(1,\lambda_k-\lambda_k),(2,\lambda_k-\lambda_{k+1}),\ldots,(r-k+1,
+\lambda_k-\lambda_r).\]</span></p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/schur/bijection2.svg"></p>
+<p>这些边的标号是这些<strong>右方</strong>端点的坐标之和减去 1，等于集合
+<span class="math display">\[\{\lambda_k-\lambda_{k+j-1}+j-1, 1\leq
+j\leq r+k-1\}=\{\lambda_k-\lambda_j+j-k, k\leq j\leq r\}.\]</span>
+这正是集合 <span class="math inline">\(\{\mu_k-\mu_j,k\leq j\leq
+r\}\)</span>。</p>
+<p>综上我们证明了水平边的标号是 <span class="math inline">\(F_\lambda\)</span> 中第 <span class="math inline">\(k\)</span> 行方格的 hook 长度，竖直边的标号是
+<span class="math inline">\(\{\mu_k-\mu_j,k\leq j\leq
+r\}\)</span>，并且它们合起来构成集合 <span class="math inline">\(\{0,1,\ldots,\mu_k\}\)</span>，引理 B 得证。 <span class="math display">\[\tag*{$\blacksquare$}\]</span></p>
+<p>最后我们来完成 hook
+长度公式的证明：这里使用了一个小技巧：考虑无穷多个变元的对称多项式环
+<span class="math inline">\(\Lambda[x_1,\ldots,x_n,\ldots]\)</span>，任何
+<span class="math inline">\(k\)</span> 变元的 Schur 多项式都是 <span class="math inline">\(\Lambda\)</span> 中的元素。<span class="math inline">\(\Lambda\)</span> 到有理数域上的单变元形式幂级数环
+<span class="math inline">\(\mathbb{Q}[[t]]\)</span> 有一个同态 <span class="math inline">\(\theta\)</span>： <span class="math display">\[\theta(f) = \sum_{k=0}^\infty f_k
+\frac{t^k}{k!}.\]</span> 其中 <span class="math inline">\(f_k\)</span>
+是 <span class="math inline">\(f\)</span> 中单项式 <span class="math inline">\(x_1x_2\cdots x_k\)</span> 的系数。<span class="math inline">\(\theta\)</span>
+显然是线性的，要验证它是代数同态，对任何 <span class="math inline">\(f,g\in\Lambda\)</span> 我们计算 <span class="math display">\[\begin{align*}
+\theta(f)\theta(g) &amp;= \left(\sum_{k=0}^\infty
+f_k\frac{t^k}{k!}\right)\left(\sum_{l=0}^\infty
+g_l\frac{t^l}{l!}\right)\\
+&amp;=\sum_{n=0}^\infty \left(\sum_{k+l=n}\frac{f_kg_l}{k!l!}\right)
+t^n\\
+&amp;=\sum_{n=0}^\infty \left(\sum_{k=0}^n f_kg_{n-k} C_n^k\right)
+\frac{t^n}{n!}
+\end{align*}\]</span> 另一方面 <span class="math inline">\(fg\)</span>
+中单项式 <span class="math inline">\(x_1x_2\cdots x_n\)</span>
+的系数等于 <span class="math display">\[\sum_{k=0}^n\sum_{\{i_1,\ldots,i_k\}\subseteq\{1,2,\ldots,n\}}
+f_{i_1\cdots i_k}g_{j_1\cdots j_{n-k}}.\]</span> 其中 <span class="math inline">\(f_{i_1\cdots i_k}\)</span> 为单项式 <span class="math inline">\(x_{i_1}\cdots x_{i_k}\)</span> 在 <span class="math inline">\(f\)</span> 中的系数，<span class="math inline">\(g_{j_1\cdots j_{n-k}}\)</span> 为单项式 <span class="math inline">\(x_{j_1}\cdots x_{j_{n-k}}\)</span> 在 <span class="math inline">\(g\)</span> 中的系数，并且 <span class="math inline">\(\{j_1,\ldots,j_{n-k}\}\)</span> 是 <span class="math inline">\(\{i_1,\ldots, i_k\}\)</span> 在 <span class="math inline">\(\{1,2,\ldots, n\}\)</span> 中的补集。</p>
+<p>由于 <span class="math inline">\(f,g\)</span> 都是对称多项式，所以
+<span class="math inline">\(f_{i_1\cdots i_k}\)</span> 对任何 <span class="math inline">\(\{i_1,\ldots,i_k\}\)</span> 都相同，都等于 <span class="math inline">\(f_k\)</span>，同理 <span class="math inline">\(g_{j_1\cdots j_{n-k}}\)</span> 都等于 <span class="math inline">\(g_{n-k}\)</span>，所以 <span class="math display">\[(fg)_k=\sum_{k=0}^n\sum_{\{i_1,\ldots,i_k\}\subseteq\{1,2,\ldots,n\}}
+f_{i_1\cdots i_k}g_{j_1\cdots j_{n-k}}=\sum_{k=0}^nC_n^k
+f_kg_{n-k}.\]</span> 这就证明了 <span class="math inline">\(\theta\)</span> 确实是代数同态。</p>
+<p>显然 <span class="math inline">\(\theta(h_k)=\frac{t^k}{k!}\)</span>。我们来分析
+<span class="math inline">\(\theta(s_\lambda(x_1,\ldots,x_n))\)</span>。单项式
+<span class="math inline">\(x_1x_2\cdots x_k\)</span> 在 <span class="math inline">\(s_\lambda(x_1,\ldots,x_n)\)</span>
+中的系数等于将数字 <span class="math inline">\(1,2,\ldots,k\)</span>
+填入形状为 <span class="math inline">\(\lambda\)</span> 的 Ferrers
+图，使得结果为半标准 Young
+表的不同填法的个数，且每个数字恰好使用一次，这只能是 <span class="math inline">\(k=n\)</span> 且得到的是标准 Young 表，这样的填法有
+<span class="math inline">\(f_\lambda\)</span> 种，所以 <span class="math display">\[\theta(s_\lambda(x_1,\ldots,x_n))=f_\lambda
+\frac{t^n}{n!}.\]</span></p>
+<p>在 Jacobi-Trudi 恒等式两边同时用 <span class="math inline">\(\theta\)</span> 作用，得到 <span class="math display">\[f_\lambda \frac{t^n}{n!}=\det\left(
+\frac{t^{\lambda_i-i+j}}{(\lambda_i-i+j)!} \right).\]</span> 取 <span class="math inline">\(t=1\)</span> 代入得 <span class="math display">\[f_\lambda = n!\cdot
+\det\left(\frac{1}{(\lambda_i-i+j)!}\right).\]</span>
+我们把这个行列式写出来： <span class="math display">\[f_\lambda =
+n!\cdot \det\begin{pmatrix}
+\frac{1}{\lambda_1!} &amp; \frac{1}{(\lambda_1+1)!} &amp; \cdots &amp;
+\frac{1}{(\lambda_1+r-1)!}\\
+\frac{1}{(\lambda_2-1)!} &amp; \frac{1}{\lambda_2!} &amp; \cdots &amp;
+\frac{1}{(\lambda_2+r-2)!}\\
+\cdots &amp; \cdots &amp;\cdots&amp;\cdots\\
+\frac{1}{(\lambda_r-r+1)!} &amp; \frac{1}{(\lambda_r-r+2)!} &amp; \cdots
+&amp; \frac{1}{\lambda_r!}
+\end{pmatrix}.\]</span> 它的最后一列恰好是 <span class="math inline">\(\{\mu_i!,1\leq i\leq r\}\)</span>，提出来以后得到
+<span class="math display">\[f_\lambda =
+\frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot \det\begin{pmatrix}
+\mu_1^{\underline{r-1}}&amp; \mu_1^{\underline{r-2}} &amp; \cdots &amp;
+\mu_1^{\underline{0}}\\
+\mu_2^{\underline{r-1}} &amp; \mu_2^{\underline{r-2}} &amp; \cdots &amp;
+\mu_2^{\underline{0}}\\
+\cdots &amp; \cdots &amp;\cdots&amp;\cdots\\
+\mu_r^{\underline{r-1}}&amp; \mu_r^{\underline{r-2}} &amp; \cdots &amp;
+\mu_r^{\underline{0}}
+\end{pmatrix}=
+\frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot\det(\mu_i^{\underline{r-j}}).\]</span>
+其中采用了记号 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math display">\[x^{\underline{k}}=x(x-1)\cdots(x-k+1).\]</span></p>
+<p>不难证明 <span class="math inline">\(\det(\mu_i^{\underline{r-j}})\)</span>
+这个行列式与 Vandermonde 行列式 <span class="math inline">\(\det(\mu_i^{r-j})\)</span> 的值是一样的
+(你注意到这两个行列式的区别了吗？)，都等于 <span class="math inline">\(\prod\limits_{i&lt;j}(\mu_i-\mu_j)\)</span>，所以</p>
+<p><span class="math display">\[f_\lambda =
+\frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot\prod\limits_{i&lt;j}(\mu_i-\mu_j)
+= \frac{n!}{\prod\limits_{v\in F_\lambda}h_v}.\]</span> 这就完成了 hook
+长度公式的证明。</p>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>Symmetric Functions and Hall
+Polynomials. I. G. Macdonald.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>A Course in Enumeration. Martin
+Aigner. Graduate Texts in Mathematics 238. Springer-Verlag, 2007. 见
+Chapter 8 的 highlights 部分。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+                
+<p class="pink-link-context">
+    <a href="/martingale-and-spaceship/" rel="next" title="飞船空间跳跃问题">
+    上一篇：飞船空间跳跃问题
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/linear-algebra-problems/" rel="next" title="线性代数杂题若干">
+    下一篇：线性代数杂题若干
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function() {
+                this.page.url = 'https://neozhaoliang.github.io/schur-polynomials-and-hook-length-formula/';
+                this.page.identifier = 'schur-polynomials-and-hook-length-formula/';
+            };
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+                s.src = '//pywonderland.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" href="https://disqus.com/?ref_noscript" rel="nofollow noopener">comments powered by Disqus.</a>
+        </noscript>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+</script>
+
+
+
+</body>
+</html>
