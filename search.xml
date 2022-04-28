@@ -178,9 +178,9 @@
       
         <tags>
             
-            <tag> Hyperbolic space </tag>
-            
             <tag> Shadertoy </tag>
+            
+            <tag> Hyperbolic space </tag>
             
             <tag> Poincaré unit ball </tag>
             
@@ -525,6 +525,8 @@
       
         <tags>
             
+            <tag> Shadertoy </tag>
+            
             <tag> Complex analysis </tag>
             
             <tag> Visual Complex Analysis </tag>
@@ -532,8 +534,6 @@
             <tag> Hyperbolic space </tag>
             
             <tag> Möbius transformation </tag>
-            
-            <tag> Shadertoy </tag>
             
             <tag> Riemann sphere </tag>
             
@@ -1351,17 +1351,6 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="about/index.html"/>
-      <url>about/index.html</url>
-      
-        <content type="html"><![CDATA[<p>欢迎来到 <strong>赵亮</strong>的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：</p><ol type="1"><li>通过引入通俗易懂而又有趣的问题，介绍它们背后的奇妙数学。</li><li>介绍我写过的有趣的或者有用的开源项目。</li><li>一些念书时的笔记。</li></ol><p>由于个人水平不足，文中难免出现错误，还请读者不吝指正。</p><p>博客使用 <a href="https://hexo.io/">hexo</a> 搭建，主题为 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a>，我在其基础上做了一些修改，特此鸣谢作者。</p><p>转载文章和图片注明出处即可。所有代码均采用 <a href="https://opensource.org/licenses/MIT">MIT LICENSE</a>。</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Make awesome gif animation in a few seconds with pure Python!</title>
       <link href="gifmaze/index.html"/>
       <url>gifmaze/index.html</url>
@@ -1389,6 +1378,17 @@
       <url>reading/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="about/index.html"/>
+      <url>about/index.html</url>
+      
+        <content type="html"><![CDATA[<p>欢迎来到 <strong>赵亮</strong>的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：</p><ol type="1"><li>通过引入通俗易懂而又有趣的问题，介绍它们背后的奇妙数学。</li><li>介绍我写过的有趣的或者有用的开源项目。</li><li>一些念书时的笔记。</li></ol><p>由于个人水平不足，文中难免出现错误，还请读者不吝指正。</p><p>博客使用 <a href="https://hexo.io/">hexo</a> 搭建，主题为 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a>，我在其基础上做了一些修改，特此鸣谢作者。</p><p>转载文章和图片注明出处即可。所有代码均采用 <a href="https://opensource.org/licenses/MIT">MIT LICENSE</a>。</p>]]></content>
       
     </entry>
     
