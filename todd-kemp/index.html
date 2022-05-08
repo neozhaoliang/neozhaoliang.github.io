@@ -341,7 +341,8 @@ Multiplicative Systems Theorem</span></a></li><li class="section table-of-conten
 Numbers, Part 1</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-convergence-criterion"><span class="section table-of-contents-text">18.2 Kolmogorov&#39;s Convergence
 Criterion</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#strong-law-of-large-numbers-part-2"><span class="section table-of-contents-text">19.1 Strong Law of Large
 Numbers, Part 2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#renewal-theory"><span class="section table-of-contents-text">19.2 Renewal Theory</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#complex-integration-and-dynkins-theorem"><span class="section table-of-contents-text">24.1 Complex
-Integration and Dynkin&#39;s Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#characteristic-function"><span class="section table-of-contents-text">24.2 Characteristic Function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#orthogonal-projections"><span class="section table-of-contents-text">31.1 Orthogonal Projections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#walds-identity"><span class="section table-of-contents-text">46.3 Wald&#39;s Identity</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniform-integrability"><span class="section table-of-contents-text">48.1 Uniform Integrability</span></a></li></ol>
+Integration and Dynkin&#39;s Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#characteristic-function"><span class="section table-of-contents-text">24.2 Characteristic Function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#orthogonal-projections"><span class="section table-of-contents-text">31.1 Orthogonal Projections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-1"><span class="section table-of-contents-text">33.1 Probability Kernels, Part
+1</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#walds-identity"><span class="section table-of-contents-text">46.3 Wald&#39;s Identity</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniform-integrability"><span class="section table-of-contents-text">48.1 Uniform Integrability</span></a></li></ol>
 </div>
 
             
@@ -1016,6 +1017,42 @@ Integration and Dynkin's Theorem</h1>
 <p>本讲介绍了随机变量的特征函数及其基本性质。整体内容比较基础。</p>
 <h1 id="orthogonal-projections">31.1 Orthogonal Projections</h1>
 <p>无要点</p>
+<h1 id="probability-kernels-part-1">33.1 Probability Kernels, Part
+1</h1>
+<p>本讲引入了概率核的概念。</p>
+<p>设 <span class="math inline">\((S_i,\mathcal{B}_i), i=1,2\)</span>
+是两个可测空间，一个概率核 <span class="math inline">\(Q(x,
+B):(S_1,\mathcal{B}_2)\to[0,1]\)</span> 是一个二元函数，满足：</p>
+<ol type="1">
+<li>对任何 <span class="math inline">\(x\in S_1\)</span>，<span class="math inline">\(Q(x,\cdot):\mathcal{B}_2\to[0,1]\)</span> 是 <span class="math inline">\((S_2,\mathcal{B}_2)\)</span> 上的概率测度。</li>
+<li>对任何 <span class="math inline">\(B\in
+\mathcal{B}_2\)</span>，<span class="math inline">\(Q(\cdot,
+B):S_1\to[0,1]\)</span> 是 <span class="math inline">\((S_1,\mathcal{B}_1)\)</span> 上的可测函数。</li>
+</ol>
+<blockquote>
+<p><strong>引理</strong>：假设 <span class="math inline">\(f(x,y)\in
+(S_1\times S_2, \mathcal{B}_1\otimes\mathcal{B}_2)\)</span>
+是乘积空间上的可测函数，并且是有界的或者非负的，则积分 <span class="math display">\[x\to\int_{S_2}f(x,y)Q(x,\mathrm{d}y)\]</span>
+是关于 <span class="math inline">\(x\)</span> 的可测函数。</p>
+</blockquote>
+<p>此引理不难从简单函数 <span class="math inline">\(\mathbb{1}_{B_1\times
+B_2}(x,y)=\mathbb{1}_{B_1}(x)\mathbb{1}_{B_2}(y)\)</span>
+出发，使用函数形式的 Dynkin 引理得到。</p>
+<p>由此对任何 <span class="math inline">\((S_1,\mathcal{B}_1)\)</span>
+上的测度 <span class="math inline">\(\mu\)</span>，我们可以定义乘积空间
+<span class="math inline">\((S_1\times S_2,
+\mathcal{B}_1\otimes\mathcal{B}_2)\)</span> 上的乘积测度 <span class="math inline">\(\mu\otimes Q\)</span>，这个乘积测度是随 <span class="math inline">\(x\)</span> 变化而变化的： <span class="math display">\[\mu\otimes
+Q(E)=\int_{S_1}\mu(\mathrm{d}x)\int_{S_2}\mathbb{1}_{C}(x,y)Q(x,\mathrm{d}y).\]</span>
+不过这真的是一个概率测度吗？你可以用积分的线性性质立刻看出它是有限可加的，并且利用积分项有界和控制收敛定理立刻看出它是可数可加的，所以确实是个概率测度。</p>
+<p>有了概率核的乘积测度，我们自然要研究对这种测度的积分。由于这个测度本身就是通过对示性函数积分来定义的，所以其上的积分也具有类似的性质：</p>
+<blockquote>
+<p><strong>引理</strong>：假设 <span class="math inline">\(f(x,y)\)</span>
+是乘积空间的可测函数，并且是有界或者非负的，则 <span class="math display">\[\int_{S_1\times S_2}f\mathrm{d}(\mu\otimes Q) =
+\int_{S_1}\mu(\mathrm{d}x)\int_{S_2}f(x,y)Q(x,\mathrm{d}y).\]</span></p>
+</blockquote>
+<p>后面花了很大力气证明当 <span class="math inline">\(Q(x,
+\cdot)=\widetilde{Q}(x,\cdot)\)</span> 对几乎处处的 <span class="math inline">\(x\)</span> 成立时有 <span class="math inline">\(\mu\otimes
+Q=\mu\otimes\widetilde{Q}\)</span>。没仔细看。</p>
 <h1 id="walds-identity">46.3 Wald's Identity</h1>
 <p>本讲介绍了 Wald 引理。</p>
 <blockquote>
