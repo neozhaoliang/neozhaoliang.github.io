@@ -1,7 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var glslify = require('glslify');
 
-var preFunction = glslify(["\nprecision mediump float;\n#define GLSLIFY 1\n#define PI 3.14159265359\n#define PI2 6.28318530718\n\nuniform vec2 u_resolution;\nuniform vec2 u_mouse;\nuniform float u_time;\n\nuniform sampler2D u_tex0;\nuniform sampler2D u_tex1;\nuniform sampler2D u_tex2;\nuniform sampler2D u_tex3;\n#define iResolution u_resolution\n#define iTime u_time\n#define iChannel0 u_tex0\n#define iChannel1 u_tex1\n#define iMouse u_mouse\n\n\n"]);
+var preFunction = glslify(["\nprecision mediump float;\n#define GLSLIFY 1\n#define PI 3.14159265359\n#define PI2 6.28318530718\n\nuniform vec2 u_resolution;\nuniform vec2 u_mouse;\nuniform float u_time;\n\nuniform sampler2D u_tex0;\nuniform sampler2D u_tex1;\nuniform sampler2D u_tex2;\nuniform sampler2D u_tex3;\n#define iResolution u_resolution\n#define iTime u_time\n#define iChannel0 u_tex0\n#define iChannel1 u_tex1\n#define iMouse u_mouse\n\nvec3 draw_grid(vec2 uv)\n{\n  vec2 dd = 0.5 - abs(uv);\n  float d = min(dd.x, dd.y);\n  d = smoothstep(0.05, 0.0, d);\n  return vec3(d, 0, 0);}\n\nvec3 noise(vec2 id)\n{\n  vec3 p3 = fract(vec3(id.xyx) * vec3(0.1031, 0.11369, 0.13787));\n  p3 += dot(p3, p3.yzx + 33.33);\n  return fract((p3.xxy + p3.yzz) * p3.zyx);\n}\nfloat saw(float b, float t)\n{\n  t = fract(t);\n  return smoothstep(0.0, b, t) * smoothstep(1.0, b, t);\n}\n#define hash11(x) fract(x * 17.0 * fract(x * 0.3183099))\n\n"]);
 
 var glslCanvases = [];
 var glslEditors = [];
@@ -164,7 +164,7 @@ void main(){\n\
             postF = "";
         }
 
-        var editor = new GlslEditor(ccList[i], { canvas_width: width, canvas_height: height, theme:theme, canvas_follow: false, tooltips: true, exportIcon: true, frag_header: preF,frag_footer: postF, textures:textures});
+        var editor = new GlslEditor(ccList[i], { canvas_width: width, canvas_height: height, theme:theme, canvas_follow: false, tooltips: false, exportIcon: false, frag_header: preF,frag_footer: postF, textures:textures});
         /*window.setTimeout(function(e,s){
           return function(){
             e.open(s);
