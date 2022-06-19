@@ -337,19 +337,19 @@
 
             
                 <div class="entry pink-link-context">
-                    <blockquote>
-<p>此为二维随机游动系列的第二篇文章，但本文介绍的理论也适用于一般的图。</p>
-</blockquote>
+                    <p>和之前一样，我们还是通过一个有趣的问题来引入主题。</p>
 <blockquote><p><strong>问题</strong>：在 <span class="math inline">\(n\times
 n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 的所有生成树中等概率地随机任选一个，记这个随机生成树为 <span class="math inline">\(T\)</span>，<span class="math inline">\(T\)</span>
 叫做 <span class="math inline">\(G_n\)</span> 的一个均匀生成树。对 <span class="math inline">\(G_n\)</span> 中任一顶点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
 是 <span class="math inline">\(T\)</span> 的叶节点的概率是多少？</p>
 </blockquote>
-<p>这个问题也可以表述为，“对一个完全随机的 <span class="math inline">\(n\times n\)</span>
-的完美迷宫，求它包含的死角的比例”。这里一个迷宫称作是完美的，如果迷宫中的任何两个房间之间都有且仅有唯一的道路相连
-(这正是生成树的等价描述！)。迷宫中的一个房间称作是“死角”，当且仅当它只有一条道路与其它房间相通。换句话说，一旦进去了就必须原路返回，没有其它出路
-(这正是叶节点的等价描述！)。</p>
+<p>这个问题可以换一种更通俗的描述：</p>
+<blockquote><p><strong>问题</strong>：对一个完全随机的 <span class="math inline">\(n\times n\)</span>
+的完美迷宫，它包含的“死角”的比例是多少？</p>
+</blockquote>
+<p>啊，还需要解释下什么是“完美迷宫”，以及什么是迷宫的“死角”。</p>
+<p>一个迷宫称作是完美的，如果迷宫中的任何两个房间之间都有且仅有唯一的道路相连，这正是生成树的等价描述！迷宫中的一个房间称作是“死角”，当且仅当它只有一条道路与其它房间相通，没有其它出路，这正是叶节点的等价描述！</p>
 <p>下图显示了三个不同的均匀生成树，它们分别来自大小为 <span class="math inline">\(80\times 80\)</span>，<span class="math inline">\(120\times120\)</span> 和 <span class="math inline">\(200\times200\)</span>
 的三个网格图，这三个生成树的叶节点 (用蓝色标出) 占全体顶点的比例分别为
 <span class="math inline">\(1884/6400=0.294375\)</span>，<span class="math inline">\(4234/14400\approx0.294028\)</span>，<span class="math inline">\(11776/40000=0.2944\)</span>。咦？看起来好像是在围着一个固定的值波动喔？</p>

@@ -25,10 +25,7 @@ def draw_star():
         stroke()
 
         newpath()
-        if i % 2:
-            arrow([0.15*x, 0.15*y], [x*0.85, y*0.85])
-        else:
-            arrow([0.85*x, 0.85*y], [x*0.15, y*0.15])
+        arrow([0.15*x, 0.15*y], [x*0.85, y*0.85])
         fill(0)
         stroke()
     finish()

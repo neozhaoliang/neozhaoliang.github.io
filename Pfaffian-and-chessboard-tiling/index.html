@@ -424,12 +424,12 @@ a_{1\sigma(1)}a_{2\sigma(2)}\cdots .\]</span> 这里 <span class="math inline">\
 的正则图：每个顶点恰好有一条红边和一条蓝边与之相连，从而这个图可以表示为若干条不相交的回路的并
 (想一想，为什么？提示：从任一顶点 <span class="math inline">\(x\)</span>
 出发沿着红边到达顶点 <span class="math inline">\(y\)</span>，再从 <span class="math inline">\(y\)</span> 出发沿着蓝边到达顶点 <span class="math inline">\(z\)</span>，再从 <span class="math inline">\(z\)</span> 出发沿着红边到达顶点 <span class="math inline">\(w\)</span>，这样一直继续下去肯定会回到起点 <span class="math inline">\(x\)</span>)，在一个回路中，红边和蓝边是交错出现的，因此每个回路的长度都是偶数。</p>
-<p>设 <span class="math inline">\(C\)</span> 是这样的一条回路，<span class="math inline">\(i_1\)</span> 是 <span class="math inline">\(C\)</span> 中最小的元素，从 <span class="math inline">\(i_1\)</span> 出发，沿着红色的边 (匹配 <span class="math inline">\(\pi\)</span> 的方向) 绕 <span class="math inline">\(C\)</span> 一圈： <span class="math display">\[i_1\color{red}{\xrightarrow{\pi}}i_2\color{blue}{\xrightarrow{\pi'}}i_3\color{red}{\xrightarrow{\pi}}\cdots\color{blue}{\xrightarrow{\pi'}}i_1.\]</span>
+<p>设 <span class="math inline">\(C\)</span> 是这样的一条回路，<span class="math inline">\(i_1\)</span> 是 <span class="math inline">\(C\)</span> 中最小的元素，从 <span class="math inline">\(i_1\)</span> 出发，沿着红色的边 (匹配 <span class="math inline">\(\pi\)</span> 的方向) 绕 <span class="math inline">\(C\)</span> 一圈： <span class="math display">\[i_1\,\color{red}{\xrightarrow{\quad\pi\quad}}\,i_2\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_3\,\color{red}{\xrightarrow{\quad\pi\quad}}\,\cdots\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_1.\]</span>
 这自然就得到了一个轮换 <span class="math inline">\((i_1i_2\cdots
 i_k)\)</span>，与 <span class="math inline">\((\pi,\pi')\)</span>
 对应的置换 <span class="math inline">\(\sigma\)</span>
 就定义为所有回路对应的轮换的乘积。</p>
-<p>逆映射也很显然，对任何 <span class="math inline">\(\sigma\in\mathcal{E}_{2n}\)</span>，在 <span class="math inline">\(\sigma\)</span> 的每个轮换 <span class="math inline">\(C\)</span> 中，找到最小的 <span class="math inline">\(i_1\in C\)</span>，设 <span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span>，那么依次规定 <span class="math display">\[i_1\color{red}{\xrightarrow{\pi}}i_2\color{blue}{\xrightarrow{\pi'}}i_3\color{red}{\xrightarrow{\pi}}\cdots\color{blue}{\xrightarrow{\pi'}}i_1\]</span>
+<p>逆映射也很显然，对任何 <span class="math inline">\(\sigma\in\mathcal{E}_{2n}\)</span>，在 <span class="math inline">\(\sigma\)</span> 的每个轮换 <span class="math inline">\(C\)</span> 中，找到最小的 <span class="math inline">\(i_1\in C\)</span>，设 <span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span>，那么依次规定 <span class="math display">\[i_1\,\color{red}{\xrightarrow{\quad\pi\quad}}\,i_2\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_3\,\color{red}{\xrightarrow{\quad\pi\quad}}\,\cdots\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_1\]</span>
 即可。</p>
 <p>还需要说明这个对应保持权的相等，这很容易：设 <span class="math inline">\(\sigma\)</span> 的轮换分解式为 <span class="math display">\[\sigma=(i_1i_2\cdots i_{2k-1}i_{2k})(j_1j_2\cdots
 j_{2l-1}j_{2l})\cdots,\]</span> 其中 <span class="math inline">\(i_1,j_1,\ldots\)</span>
@@ -644,21 +644,21 @@ f_{m-2},\]</span></p>
 
 
     <section id="comment">
-        <script src="https://giscus.app/client.js"
+       <script src="https://giscus.app/client.js"
         data-repo="neozhaoliang/neozhaoliang.github.io"
         data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
-        data-category="General"
-        data-category-id="DIC_kwDOCKG3684CPDuz"
-        data-mapping="specific"
-        data-term="comments"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
         data-reactions-enabled="1"
         data-emit-metadata="0"
-        data-input-position="bottom"
+        data-input-position="top"
         data-theme="light"
         data-lang="en"
+        data-loading="lazy"
         crossorigin="anonymous"
         async>
-</script>
+       </script>
     </section>
 
 
