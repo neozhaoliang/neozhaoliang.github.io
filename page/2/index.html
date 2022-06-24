@@ -919,7 +919,25 @@ DPP 的 Andrews 猜想，并仅使用初等的 <span class="math inline">\(q-\)<
 
             
                 <div class="entry pink-link-context">
-                    <p>本文源自我学习 Humphreys 的教材 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 第六章 "Representation
+                    <p><strong>2022/06/24
+更新</strong>：在本文写作十余年之后，我回顾了下这个博客里的旧文，有一点感想写在这里。</p>
+<p>我的博客文章大体是这样的：自己以为洋洋洒洒讲清楚了，其实并没有。因为离开数学圈以后我的知识已经不再更新了
+(或者更新的很慢了)，也没有得到过读者的反馈，所以文章几乎没有优化和改进。</p>
+<p>其次从技术写作的角度看这也是一篇很糟糕的文章 (英文有个词形容叫
+horrible)，理由是：</p>
+<ol type="1">
+<li>前面 90% 的内容都极其抽象晦涩，介绍了一个又一个定理，但最后只用了
+10% 的篇幅算了 <span class="math inline">\(\mathfrak{sl}_3(\mathbb{C})\)</span> 和 <span class="math inline">\(\mathfrak{sl}_n(\mathbb{C})\)</span>
+的例子。这其实和真正理解数学的逻辑是反过来的：一个学习者应该熟悉 10
+个例子，从中归纳出 1-3
+个定理，然后在验证定理的证明以后放心地忘记它们。而不是学了一大堆名词以后一个例子也磕磕巴巴举不出来。</li>
+<li>本文可能只适合正在念 Humphreys
+的教材，并且正好卡在第六章表示论这一章上的同学。这里一开头就罗列了一大堆书中前五章的结论，然后直接从最高权表示开始，所以采用其它学习途径的同学恐怕会不太习惯。我当然也很想有更多启发性的叙述，但我的水平仅限于字面意义的理解证明。我尽量在每一段证明之前给出它的动机，如果你正在啃
+Weyl
+特征公式的证明，并且不太习惯其它地方的表述的话，这里可能帮到你。</li>
+</ol>
+<hr>
+<p>本文源自我学习 Humphreys 的教材 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 第六章 "Representation
 theory" 时的读书笔记，目的是介绍有限维复半单李代数的 Weyl
 特征公式。Humphreys
 的书是李代数课程默认的必读经典，它看着很薄，不免给人一种“我可以一个月”搞定的错觉，但我初学的时候觉得这本书并不容易读，现在回头来看才深感作者叙述之精炼。由于本文的内容直接从
