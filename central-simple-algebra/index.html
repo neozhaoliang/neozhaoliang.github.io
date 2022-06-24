@@ -11,7 +11,11 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个最基本的结论：中心单代数对张量积运算是封闭的，Noether-Skolem
-定理，双重中心化子定理。写这篇文章时参考了不少代数学的教材，经过提炼整理得到了本文，希望我的表述做到了清楚易懂。">
+定理，双重中心化子定理。这部分内容比较古老，在很多教材上都有，但是采用的途径却很不一样，找一个完全符合自己口味的讲述不是件容易的事情。Jacobson
+的书我念的就很抓狂。后来查阅了不少教材后经过提炼整理得到了本文，希望我的表述做到了清楚易懂。
+
+⚠
+本文的水平当然不如专业的教材，但据我所知这里的证明是最直接了当的。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -351,7 +355,12 @@
 
             <div class="entry pink-link-context">
                 <p>本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个最基本的结论：中心单代数对张量积运算是封闭的，Noether-Skolem
-定理，双重中心化子定理。写这篇文章时参考了不少代数学的教材，经过提炼整理得到了本文，希望我的表述做到了清楚易懂。</p>
+定理，双重中心化子定理。这部分内容比较古老，在很多教材上都有，但是采用的途径却很不一样，找一个完全符合自己口味的讲述不是件容易的事情。Jacobson
+的书我念的就很抓狂。后来查阅了不少教材后经过提炼整理得到了本文，希望我的表述做到了清楚易懂。</p>
+<blockquote>
+<p><span class="emoji" data-alias="warning" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span>
+本文的水平当然不如专业的教材，但据我所知这里的证明是最直接了当的。</p>
+</blockquote>
 <span id="more"></span>
 <h1 id="中心单代数对张量积运算是封闭的">中心单代数对张量积运算是封闭的</h1>
 <blockquote><p><strong>定义</strong>：设 <span class="math inline">\(A\)</span> 是域
@@ -365,7 +374,7 @@
 <blockquote><p><strong>定理 1</strong>：设 <span class="math inline">\(A,B\)</span>
 是域 <span class="math inline">\(F\)</span> 上的两个中心单代数，则 <span class="math inline">\(A\otimes B\)</span> 也是中心单代数。</p>
 </blockquote>
-<p>证明：取定 <span class="math inline">\(B\)</span> 的一组基 <span class="math inline">\(\{b_1,\ldots,b_m\}\)</span>，我们知道 <span class="math inline">\(A\otimes B\)</span> 中的任何元素 <span class="math inline">\(x\)</span> 可以唯一地写成 <span class="math display">\[x= a_1\otimes b_1+a_2\otimes
+<p>证明：取定 <span class="math inline">\(B\)</span> 的一组基 <span class="math inline">\(\{b_1,\ldots,b_m\}\)</span>，则 <span class="math inline">\(A\otimes B\)</span> 中的任何元素 <span class="math inline">\(x\)</span> 可以唯一地写成 <span class="math display">\[x= a_1\otimes b_1+a_2\otimes
 b_2+\cdots+a_m\otimes b_m,\quad a_i\in A.\]</span> 当然这里的 <span class="math inline">\(a_i\)</span> 某些可以是 <span class="math inline">\(0\)</span>。我们称上面这个表达式中非零项的个数为
 <span class="math inline">\(x\)</span> 的长度。</p>
 <p>设 <span class="math inline">\(I\)</span> 是 <span class="math inline">\(A\otimes B\)</span> 的任一非零理想，取 <span class="math inline">\(x\ne 0\)</span> 使得 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(I\)</span> 中所有非零元素中长度最小的，不妨假设
