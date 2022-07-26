@@ -400,11 +400,12 @@ T\,\mathrm{d}\mu.\]</span>
 成立。这时我们称 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(T-\)</span> 不变的随机变量。</p>
 </blockquote>
 <p>这是 Durrett
-书中的一道习题，我之前一直觉得它很平凡，其实处理的有问题。这个结论还是需要论证一番的。</p>
-<p>证明：<span class="math inline">\(\Rightarrow\)</span>: 如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B) = X^{-1}B\)</span>。特别地取 <span class="math inline">\(B\)</span> 形如 <span class="math inline">\((-\infty, t)\)</span> 我们得到 <span class="math inline">\(\{X\circ T&lt;t\}\)</span> 与 <span class="math inline">\(\{X&lt;t\}\)</span>
-是两个在几乎处处意义下相同的集合。所以只要证明如果 <span class="math inline">\(\xi,\,\eta\)</span> 是两个可测函数且对任何实数
-<span class="math inline">\(t\)</span>，<span class="math inline">\(\{\xi&lt;t\}\)</span> 和 <span class="math inline">\(\{\eta&lt;t\}\)</span>
-是两个几乎处处相同的集合，则 <span class="math inline">\(\xi=\eta,\,\mathrm{a.e.}\)</span>。若不然，不妨设
+书中的一道习题，我一直觉得它很平凡，其实之前的处理有问题。这个结论还是需要论证一番的。</p>
+<p>首先我偷个懒：下面这段论证中所说的两个集合相同是指它们只差一个零测集。</p>
+<p>证明：<span class="math inline">\(\Rightarrow\)</span>: 如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B) = X^{-1}B\)</span>，这说明集合
+<span class="math inline">\(\{X\circ T\in B\}\)</span> 和 <span class="math inline">\(\{X\in B\}\)</span> 相同。特别地取 <span class="math inline">\(B\)</span> 形如 <span class="math inline">\((-\infty, t)\)</span> 我们得到 <span class="math inline">\(\{X\circ T&lt;t\}\)</span> 与 <span class="math inline">\(\{X&lt;t\}\)</span>
+是两个相同的集合。所以只要证明如果 <span class="math inline">\(\xi,\,\eta\)</span> 是两个可测函数且对任何实数
+<span class="math inline">\(t\)</span>，<span class="math inline">\(\{\xi&lt;t\}\)</span> 和 <span class="math inline">\(\{\eta&lt;t\}\)</span> 相同，则 <span class="math inline">\(\xi=\eta,\,\mathrm{a.e.}\)</span>。若不然，不妨设
 <span class="math inline">\(\{\xi&gt;\eta\}\)</span>
 具有正测度，则存在有理数 <span class="math inline">\(c\)</span> 使得集合
 <span class="math inline">\(\{\xi&gt;c&gt;\eta\}\)</span>
@@ -419,15 +420,20 @@ f(T^k(\omega)).\]</span> 我们有如下的定理：</p>
 L^1(\Omega)\)</span> 有 <span class="math display">\[\lim_{n\to\infty}\frac{S_n}{n}\rightarrow
 \mathbb{E}[f\,|\,\mathcal{I}]\quad\text{a.e.}\]</span></p>
 </blockquote>
-<p>证明 Birkhoff 遍历定理定理的关键是证明如下的极大遍历定理：</p>
+<p>证明 Birkhoff
+遍历定理定理的关键是证明如下的极大遍历定理：(极大遍历定理这个名字来源于分析中的
+Hardy - Littlewood 极大函数，这一类的不等式统称为极大不等式。)</p>
 <blockquote><p><strong>极大遍历定理</strong>：定义极大算子 <span class="math display">\[M_f(\omega)=\sup_{n\geq
 1}\frac{1}{n}S_n(\omega),\]</span> 则对 <span class="math inline">\(f\in
 L^1(\Omega)\)</span> 和任一 <span class="math inline">\(a\in\mathbb{R}\)</span>，有 <span class="math display">\[\int_{\{M_f&gt;a\}} f\,\mathrm{d}\mu\geq
 a\mu(\{M_f&gt;a\}).\]</span></p>
 </blockquote>
-<p>极大遍历定理这个名字来源于分析中的 Hardy - Littlewood
-极大函数，这一类的不等式统称为极大不等式。我们把极大遍历定理的证明放在最后，先用它来证明
-Birkhoff 遍历定理。</p>
+<p>极大遍历定理是整个 Birkhoff
+遍历定理的证明中最不直观的部分，而且我也确实不知道怎么解释引入它的动机。我第一次看到这个式子的时候是很懵的。比较容易看出来的是
+<span class="math display">\[\int_{\{M_f&gt;a\}} M_f\,\mathrm{d}\mu\geq
+a\mu(\{M_f&gt;a\}).\]</span>
+这是个显然成立的不等式，极大遍历定理是说把其中的被积项换成 <span class="math inline">\(f\)</span> 的话不等式仍然是成立的。</p>
+<p>我把极大遍历定理的证明放在最后，先用它来证明 Birkhoff 遍历定理。</p>
 <h1 id="birkhoff-遍历定理的证明">Birkhoff 遍历定理的证明</h1>
 <p>首先可以假定 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，若不然，我们可以以
 <span class="math inline">\(f-\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
