@@ -373,8 +373,8 @@ Martingales》，虽然不算很难但是综合使用了许多知识，展示了
 <p>通常的条件期望是用 Radon-Nikodym
 导数定义的，这个定义有时候用起来并不方便。譬如设 <span class="math inline">\(X,Y\)</span> 是两个随机变量，如果事件 <span class="math inline">\(\{X=x\}\)</span> 是零概率事件，但是在已知 <span class="math inline">\(X=x\)</span> 的前提下，期望值 <span class="math inline">\(f(x)=\mathbb{E}[Y|X=x]\)</span>
 又是有明显的概率意义的，即给定 <span class="math inline">\(X\)</span>
-的值 <span class="math inline">\(x\)</span>，<span class="math inline">\(Y\)</span> 的期望值是 <span class="math inline">\(f(x)\)</span>，于是直观上应该有 <span class="math inline">\(\mathbb{E}[Y|X]=f(X)\)</span>。但是怎么说明这个直观上的条件期望与抽象的条件期望一致呢？这就是下面的“freezing
-lemma”：</p>
+的值 <span class="math inline">\(x\)</span>，<span class="math inline">\(Y\)</span> 的期望值是 <span class="math inline">\(f(x)\)</span>，于是直观上应该有 <span class="math inline">\(\mathbb{E}[Y|X]=f(X)\)</span>。但是怎么说明这个直观上的条件期望与抽象的条件期望一致呢？这就是下面的
+"freezing lemma": (Williams 教材 9.10 小节)</p>
 <blockquote><p><strong>引理 1</strong>：设 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>
 是一个概率空间，<span class="math inline">\(X, Y\)</span>
 是两个取值在某可测空间 <span class="math inline">\((S,\mathcal{S})\)</span> 中的随机变量，子 <span class="math inline">\(\sigma\)</span> 域 <span class="math inline">\(\mathcal{G}\subseteq\mathcal{F}\)</span> 满足
@@ -382,8 +382,23 @@ lemma”：</p>
 <span class="math inline">\(\varphi\)</span> 非负或者 <span class="math inline">\(\mathbb{E}|\varphi(X, Y)|&lt;\infty\)</span>。令
 <span class="math inline">\(g(x)=\mathbb{E}\varphi(x, Y)\)</span>，则
 <span class="math display">\[\mathbb{E}[\varphi(X,
-Y)|\mathcal{G}]=g(x).\]</span></p>
+Y)|\mathcal{G}]=g(X).\]</span></p>
 </blockquote>
+<p>这个结论的表示乍看起来很迷，其实它是非常直观的，举个例子就容易明白了：假设
+<span class="math inline">\(X, Y\)</span> 是两个独立的随机变量，<span class="math inline">\(Y\)</span> 服从的是 <span class="math inline">\([0, 1]\)</span> 上的均匀分布，<span class="math inline">\(X\)</span> 服从的分布我们可以不用关心。问条件期望
+<span class="math inline">\(\mathbb{E}[\sin(XY)|X]\)</span>
+是什么？这相当于在引理中取 <span class="math inline">\(\varphi(X,Y)=\sin(XY)\)</span>。引理的结论告诉我们可以把
+<span class="math inline">\(\sin(XY)\)</span> 中的 <span class="math inline">\(X\)</span> “冻结”为常数 <span class="math inline">\(X=x\)</span>，把 <span class="math inline">\(\mathbb{E}[\sin(XY)|X]\)</span> 视作关于常数 <span class="math inline">\(x\)</span> 的积分 <span class="math display">\[\mathbb{E}[\sin(xY)]=\int_0^1
+\sin(xy)\,\mathrm{d}y = \frac{1}{x}\int_0^x
+\sin(z)\,\mathrm{d}z=\frac{1-\cos x}{x}.\]</span> 然后把 <span class="math inline">\(x\)</span> “解冻”为 <span class="math inline">\(X\)</span> 即得 <span class="math display">\[\mathbb{E}[\sin(XY)|X] = \frac{1-\cos
+X}{X}.\]</span></p>
+<p>引理中的可测空间 <span class="math inline">\((S,\mathcal{S})\)</span>
+可以是多维空间 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>，所以我们其实不必拘泥于
+<span class="math inline">\(X,Y\)</span>
+是单个的随机变量，它们也可以是独立的随机向量。即如果 <span class="math inline">\(\varphi(X_1,\ldots,X_n,Y_1,\ldots,Y_m)\)</span>
+是一些随机变量的复合函数，其中 <span class="math inline">\(\sigma(X_1,\ldots,X_n)\)</span> 和 <span class="math inline">\(\sigma(Y_1,\ldots,Y_m)\)</span> 独立，那么条件期望
+<span class="math inline">\(\mathbb{E}[\varphi|\sigma(X_1,\ldots,X_n)]\)</span>
+其实就是一个含参变元 <span class="math inline">\((X_1=x_1,\ldots,X_n=x_n)\)</span> 的多重积分 <span class="math inline">\(\mathbb{E}\varphi(x_1,\ldots,x_n,Y_1,\ldots,Y_m)=g(x_1,\ldots,x_n)\)</span>。</p>
 <p><strong>证明</strong>：我们要证明对任何可测集 <span class="math inline">\(C\in\mathcal{G}\)</span> 有</p>
 <p><span class="math display">\[\int_C \varphi(X, Y)\mathrm{d}\mu =
 \int_C g(X)\mathrm{d}\mu.\]</span> 当 <span class="math inline">\(\varphi(x, y)=1_A(x)1_B(y)\)</span> 时，<span class="math inline">\(g(x)=1_A(x)\mathbb{P}(\{Y\in B\})\)</span>，从而
@@ -438,12 +453,15 @@ n:|\ \overrightarrow{X_n}\in B(0,r)\ \},\]</span>则 <span class="math inline">\
 <p>现在我们着手研究一下飞船的运动规律。</p>
 <p>设 <span class="math inline">\(R_n\)</span> 为第 <span class="math inline">\(n\)</span> 次跳跃以后飞船与太阳系的距离，<span class="math inline">\(R_0=R\)</span>，我们想知道 <span class="math inline">\(R_n\)</span> 和 <span class="math inline">\(R_{n+1}\)</span> 之间的关系。</p>
 <p>对 <span class="math inline">\(\mathcal{F}=\mathcal{F}_n,
-\mathcal{G}=\mathcal{F}_{n-1},X=R_{n-1}, Y=U_n,\varphi(X,
-Y)=1/R_n\)</span> 应用前面的<strong>关于条件期望的引理 1 和关于 Newton
-势的引理 2</strong> 得到</p>
+\mathcal{G}=\mathcal{F}_{n-1},X=(\overrightarrow{X_{n-1}},l_n),
+Y=\overrightarrow{U_n},\varphi(X, Y)=1/R_n\)</span>
+应用前面的<strong>关于条件期望的引理 1 和关于 Newton 势的引理 2</strong>
+得到</p>
 <p><span class="math display">\[\mathbb{E}\left[\left.\frac{1}{R_n}\right|\mathcal{F}_{n-1}\right]
 =\mathbb{E}\left.\frac{1}{\left|\overrightarrow{X_{n-1}}+
 l_n\overrightarrow{U_n}\right|}\right|_{X_{n-1}=A}\leq\frac{1}{|A|}=\frac{1}{R_{n-1}}.\]</span></p>
+<p>这里由于 <span class="math inline">\(\overrightarrow{X_{n-1}}\)</span> 和 <span class="math inline">\(l_n\)</span> 都是关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测的，而 <span class="math inline">\(\overrightarrow{U_n}\)</span> 和 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 是独立的，所以应用引理
+1 的条件是满足的。</p>
 <p>一言以概之，</p>
 <blockquote><p><strong>定理 1</strong>：<span class="math inline">\(\{1/R_n\}\)</span> 关于 <span class="math inline">\(\{\mathcal{F}_n\}\)</span> 构成一个上鞅
 (与策略无关)。特别地如果跳跃距离总是不超过当前飞船与太阳系的距离，即对任何
