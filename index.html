@@ -334,8 +334,8 @@
             
                 <div class="entry pink-link-context">
                     <p>周末在家看了一天 YouTube 上 <a target="_blank" rel="noopener" href="https://www.youtube.com/c/numberphile">Numberphile 频道</a>里面
-Tadashi Tokieda
-教授的视频，非常过瘾。他的讲述非常生动、幽默，让你从一开始就被深深吸引。</p>
+Tadashi Tokieda 教授的视频，非常过瘾。Tokeida
+教授的讲述非常生动、幽默，让你从一开始就被深深吸引。</p>
 <p>其中有两个视频使用了杯子作为道具，第一个是
 “听声辨形”，即通过倾听敲击杯子的音调变化来判断把手的位置：</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MfzNJE4CK_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
@@ -346,11 +346,11 @@ Tadashi Tokieda
 <p>其实与杯子有关的有趣的数学问题还有不少，还有一个可能是大家都已经非常熟悉的，即光线在杯子内壁反射形成的曲线：</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/caustics/cup.jpg"></p>
 <p>从上图中可见光线在杯子内壁反射后形成了一个光斑
-(术语叫<strong>焦散</strong>)，光斑的形状是一条优美的曲线，叫做<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cardioid">心脏线</a>
+(术语叫<strong>焦散</strong>)，焦散的形状是一条优美的曲线，叫做<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cardioid">心脏线</a>
 (cardioid)。焦散与所有的反射光线是相切的。</p>
 <p>形成焦散的原因是，从光源出发的光线在杯子内壁反射以后路径出现了交叉，其中某些位置经过的光线特别密集，所以亮度就更高。</p>
-<p>这里需要补充说明下：焦散的具体形状其实和光源的位置有关：当光源是一个点光源，且位置恰好在杯子边缘上某一点时得到的才是严格意义下的心脏线；当光源是平行光源时
-(可以视作无穷远处的点光源)，得到的焦散是肾形线。心脏线和肾形线的形状非常像。一般情况下当光源距离杯子有一段距离时，焦散的形状介于心脏线和肾形线之间。</p>
+<p>焦散的具体形状其实和光源的位置有关：当光源是一个点光源，且位置恰好在杯子边缘上某一点时得到的才是严格意义下的心脏线；当光源是平行光源时
+(可以视作无穷远处的点光源)，得到的焦散是肾形线。心脏线和肾形线的形状非常像。当光源距离杯子有一段距离时，焦散的形状介于心脏线和肾形线之间。</p>
 <p>于是趁着周末我动手推导了一番焦散的参数方程。这个推导其实网上的资料已经很多了，然而我很懒，看到那些微积分推导就头疼，也记不住它们，所以采用了一个另类点的方法，以下是具体步骤。</p>
                 </div>
             
@@ -461,7 +461,7 @@ Möbius 变换 <span class="math inline">\(M\)</span> 作为 Poincaré
 上的等距的两种构造方法：</p>
 <ol type="1">
 <li>指定 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\mathbb{H}\)</span>
-中不动点的位置，根据变换是椭圆/抛物/双曲的，来确定对应的旋转/平移/缩放值。</li>
+中不动点的位置，根据不动点的位置变换可以分成椭圆/抛物/双曲三种不同类型，所以还需要再额外指定一个旋转角度/平移距离/缩放因子。</li>
 <li>指定一对 <span class="math inline">\(\mathbb{H}\)</span>
 中的测地线作为镜面，则关于这两个镜面的反演变换的复合变换是一个 Möbius
 变换，此变换是椭圆/抛物/双曲型的，当且仅当这对镜面在 <span class="math inline">\(\mathbb{H}\)</span> 中是相交/平行/超平行的。</li>

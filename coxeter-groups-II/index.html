@@ -400,7 +400,7 @@ C\)</span> 和实数 <span class="math inline">\(\alpha\geq0\)</span> 有
 Coxeter 群。我们会看到这个群可以由镜面两两之间的二面角决定。</p>
 </blockquote>
 <p>设 <span class="math inline">\(S\)</span> 是一个集合，一个基于 <span class="math inline">\(S\)</span> 的 Coxeter 矩阵 <span class="math inline">\(M=(m_{s,t})_{s,t\in S}\)</span>
-是一个对称矩阵，其对角线上都是 1，非对角线元素取值范围为 <span class="math inline">\(\{2,3,\ldots,\infty\}\)</span>。<span class="math inline">\(S\)</span> 的基数 <span class="math inline">\(|S|\)</span> 叫做 <span class="math inline">\(M\)</span> 的秩 (rank)，在本文中我们只考虑 <span class="math inline">\(M\)</span> 的秩为有限的情形。</p>
+是一个对称矩阵，其对角线上都是 1，非对角线元素取值范围为 <span class="math inline">\(\{2,3,\ldots,\infty\}\)</span>。<span class="math inline">\(S\)</span> 的基数 <span class="math inline">\(|S|\)</span> 叫做 <span class="math inline">\(M\)</span> 的秩 (rank)，在本文中我们只考虑 <span class="math inline">\(|S|&lt;\infty\)</span> 的情形。</p>
 <p>对任一给定的 Coxeter 矩阵 <span class="math inline">\(M\)</span>，<span class="math inline">\(M\)</span>
 确定了一个 Coxeter 群 <span class="math inline">\(W\)</span>，它具有如下的表现： <span class="math display">\[W = \langle s\in S\ |\ (st)^{m_{s,t}}=1\ {\rm
 if}\ m_{s,t}&lt;\infty\rangle.\]</span></p>
@@ -444,15 +444,15 @@ l(w)\)</span>。</p>
 系，<span class="math inline">\(M=(m_{s,t})_{s,t\in S}\)</span> 是
 Coxeter 矩阵。定义其 Cartan 矩阵为 <span class="math inline">\(C=(c_{s,t})_{s,t\in S}\)</span>，其中 <span class="math display">\[c_{s,t}=c_{t,s} =
 \begin{cases}-2\cos\dfrac{\pi}{m_{s,t}} &amp; m_{s,t}&lt;\infty,\\
-a_{s,t} &amp; m_{s,t}=\infty.\end{cases}\]</span> 这里的 <span class="math inline">\(a_{s,t}\leq -2\)</span> 是一个负数。<span class="math inline">\(a_{s,t}\)</span> 的选择有一定的任意性，任何 <span class="math inline">\(\leq-2\)</span> 的实数都是可以的，并且不同的 <span class="math inline">\((s,t)\)</span> 对可以使用不同的 <span class="math inline">\(a_{s,t}\)</span>。我们可以假定对每个 <span class="math inline">\(m_{s,t}=\infty\)</span> 都选好了一个对应的 <span class="math inline">\(a_{s,t}\leq-2\)</span>。</p>
+a_{s,t} &amp; m_{s,t}=\infty.\end{cases}\]</span> 这里 <span class="math inline">\(a_{s,t}\leq -2\)</span> 是一个负数。<span class="math inline">\(a_{s,t}\)</span> 的选择有一定的任意性，任何 <span class="math inline">\(\leq-2\)</span> 的实数都是可以的，并且不同的 <span class="math inline">\((s,t)\)</span> 对可以使用不同的 <span class="math inline">\(a_{s,t}\)</span>。我们规定对每个 <span class="math inline">\(m_{s,t}=\infty\)</span> 都选好了一个这样的 <span class="math inline">\(a_{s,t}\)</span>。</p>
 <p>注意到 Cartan 矩阵的对角元总是等于 2，而非对角元则总是非正的。</p>
 <blockquote>
-<p><strong>注</strong>：在万花筒中，<span class="math inline">\(a_{s,t}=-2\)</span>
+<p><strong>注</strong>：用万花筒的语言，<span class="math inline">\(a_{s,t}=-2\)</span>
 对应的是两个仿射的平行镜面，<span class="math inline">\(a_{s,t}&lt;-2\)</span>
 对应的是双曲空间中两个超平行的镜面。</p>
 </blockquote>
 <p>设 <span class="math inline">\(V\)</span> 是一个维数为 <span class="math inline">\(|S|\)</span> 的实向量空间，其对偶空间为 <span class="math inline">\(V^\ast\)</span>，取 <span class="math inline">\(V^\ast\)</span> 中的一组基为 <span class="math inline">\(\{\alpha_s \mid s\in
-S\}\)</span>。这是一组线性无关的线性泛函，所以根据线性方程组基本定理，我们可以取
+S\}\)</span>。这是一组线性无关的线性泛函，所以根据线性方程组是否有解的判定定理，我们一定可以取
 <span class="math inline">\(V\)</span> 中的一组向量 <span class="math inline">\(\{\alpha_s^\vee\mid s\in S\}\)</span> 使得对任何
 <span class="math inline">\(s,t\in S\)</span> 有 <span class="math inline">\(\langle
 \alpha_s,\,\alpha_t^\vee\rangle=c_{s,t}\)</span> 成立。</p>
@@ -473,7 +473,7 @@ V^\ast.\]</span></p>
 <ol type="1">
 <li>我们把 Cartan 矩阵的非对角线元素都定义为负值，并且同时为 0
 或者同时不为 0。根据<a href="/coxeter-groups-I/">上一篇文章</a>中的讨论，这样任何一对反射 <span class="math inline">\(\rho_s,\rho_t\)</span>
-可以生成一个二维万花筒，其基本区域 <span class="math inline">\(K\)</span> 在 <span class="math inline">\(\rho_s,\rho_t\)</span> 生成的群 <span class="math inline">\(W_{s,t}\)</span>
+可以生成一个二维万花筒，其基本区域 <span class="math inline">\(K_{s,t}\)</span> 在 <span class="math inline">\(\rho_s,\rho_t\)</span> 生成的群 <span class="math inline">\(W_{s,t}\)</span>
 的作用下互不重合。下面会看到，反射之间这样两两构成万花筒，就可以保证整个
 <span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span>
 上的作用也构成一个万花筒，即存在一个基本区域 <span class="math inline">\(\mathcal{D}\)</span> 使得 <span class="math inline">\(w\mathcal{D}\cap\mathcal{D}=\emptyset\)</span>
@@ -499,10 +499,10 @@ Coxeter 群 <span class="math inline">\(W\)</span> 与 <span class="math inline"
 <p>定义所有线性泛函 <span class="math inline">\(\{\alpha_s\}\)</span>
 的正半空间的交为 <span class="math inline">\(\mathcal{D}= \cap_{s\in
 S}\{\alpha_s &gt; 0\}\subset V\)</span>，你可以把 <span class="math inline">\(\mathcal{D}\)</span>
-理解为万花筒中原像所在的房间。<span class="math inline">\(\mathcal{D}\)</span> 必然是个非空开集，其闭包记作
+理解为万花筒中原像所在的房间，<span class="math inline">\(\alpha_s=0\)</span> 是房间的墙壁，<span class="math inline">\(\alpha_s&lt;0\)</span> 是墙壁的背面。<span class="math inline">\(\mathcal{D}\)</span> 必然是个非空开集，其闭包记作
 <span class="math inline">\(\overline{\mathcal{D}}\)</span>，<span class="math inline">\(\overline{\mathcal{D}}\)</span> 就是 <span class="math inline">\(\mathcal{D}\)</span> 加上了房间四周的墙壁。</p>
 <p>我们称集合 <span class="math display">\[\Phi=\{w\alpha_s\mid w\in W,
-s\in S\}\]</span> 为 <span class="math inline">\((W, S)\)</span>
+\, s\in S\}\]</span> 为 <span class="math inline">\((W, S)\)</span>
 的<strong>根系</strong>，任何 <span class="math inline">\(\lambda\in\Phi\)</span>
 叫做一个根向量，简称为<strong>根</strong>。<strong>根都是对偶空间 <span class="math inline">\(V^\ast\)</span>
 中的非零线性泛函</strong>。我们之前选择的 <span class="math inline">\(V^\ast\)</span> 的一组基 <span class="math inline">\(\Delta=\{\alpha_s\mid s\in S\}\)</span>
@@ -511,8 +511,8 @@ s\in S\}\]</span> 为 <span class="math inline">\((W, S)\)</span>
 c_s\in\mathbb{R}.\]</span> 如果上面的所有系数 <span class="math inline">\(c_s\)</span> 都非负，就称 <span class="math inline">\(\lambda\)</span>
 是一个<strong>正根</strong>；反之若所有系数 <span class="math inline">\(c_s\)</span> 都非正，就称 <span class="math inline">\(\lambda\)</span>
 是一个<strong>负根</strong>。正根和负根组成的集合分别记作 <span class="math inline">\(\Phi^+\)</span> 和 <span class="math inline">\(\Phi^-\)</span>，显然 <span class="math inline">\(\Phi^+\cap\Phi^-=\emptyset\)</span>。</p>
-<p>这里有一个问题：系数 <span class="math inline">\(c_s\)</span>
-一定同时非负或者同时非正吗？换句话说，是不是每个根必须是正根就是负根？</p>
+<p>这里有个问题：系数 <span class="math inline">\(c_s\)</span>
+一定同时非负或者同时非正吗？或者说，是不是每个根必然是正根或者负根？</p>
 <p>答案是肯定的，为此我们需要一个关键的定理。</p>
 <h2 id="关键定理">关键定理</h2>
 <p>现在我们来证明一个非常关键的结论，它是本文的核心。不夸张的说，Coxeter
@@ -664,23 +664,20 @@ s_{i_k}\mathcal{D}.\]</span> 你可以从 <span class="math inline">\(\mathcal{D
 <span class="math inline">\(\mathcal{D}\)</span> 的墙壁 <span class="math inline">\(s_{i_1}\)</span>，再穿过 <span class="math inline">\(s_{i_1}\mathcal{D}\)</span> 的墙壁 <span class="math inline">\(s_{i_2}\)</span>，再穿过 <span class="math inline">\(s_{i_1}s_{i_2}\mathcal{D}\)</span> 的墙壁 <span class="math inline">\(s_{i_2}\)</span>，一直下去到达 <span class="math inline">\(w\mathcal{D}\)</span>。这个过程总共穿过了 <span class="math inline">\(l(w)=k\)</span> 面墙壁，而且这是最短的路线，长度为
 <span class="math inline">\(k\)</span> (等于穿过的墙壁个数)。</p>
 <p>这里有点反直觉的一点是，虽然 <span class="math inline">\(w\mathcal{D}=s_{i_1}s_{i_2}\cdots
-s_{i_k}\mathcal{D}\)</span> 是首先将反射 <span class="math inline">\(s_{i_k}\)</span> 作用在 <span class="math inline">\(\mathcal{D}\)</span> 上，再将反射 <span class="math inline">\(s_{i_{k-1}}\)</span> 作用在 <span class="math inline">\(s_{i_k}\mathcal{D}\)</span> 上，...，最后将 <span class="math inline">\(s_{i_1}\)</span>
-作用这样得到的，但是在几何上墙壁从近到远的排列顺序和反射作用从先到后的顺序是反过来的：墙壁
+s_{i_k}\mathcal{D}\)</span> 是首先将反射 <span class="math inline">\(s_{i_k}\)</span> 作用在 <span class="math inline">\(\mathcal{D}\)</span> 上，再将反射 <span class="math inline">\(s_{i_{k-1}}\)</span> 作用在 <span class="math inline">\(s_{i_k}\mathcal{D}\)</span>
+上，...，这样得到的，但是在几何上墙壁从近到远的排列顺序和反射作用从先到后的顺序是反过来的：墙壁
 <span class="math inline">\(s_{i_k}\)</span> 在路线的最末端，次远的是
 <span class="math inline">\(s_{i_{k-1}}\)</span>，...，最近的反而是
 <span class="math inline">\(s_{i_1}\)</span>。为了验证这一点，只要记住
 <span class="math inline">\(\mathcal{D}\)</span> 和 <span class="math inline">\(s\mathcal{D}\)</span> 是两个被墙壁 <span class="math inline">\(s\)</span> 隔开的相邻房间，在任何 <span class="math inline">\(w\in W\)</span> 作用下 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(ws\mathcal{D}\)</span>
 仍然是相邻的，并且它们之间的墙壁编号仍然是 <span class="math inline">\(s\)</span>。</p>
 <p>现在对一个房间 <span class="math inline">\(w\mathcal{D}\)</span>，如果我们穿过它的标号为
-<span class="math inline">\(s\)</span> 的墙壁到达相邻的房间 <span class="math inline">\(ws\mathcal{D}\)</span>，那么 <span class="math inline">\(w\mathcal{D}\)</span> 与 <span class="math inline">\(ws\mathcal{D}\)</span> 谁距离 <span class="math inline">\(\mathcal{D}\)</span> 更远？这取决于 <span class="math inline">\(l(w)\)</span> 和 <span class="math inline">\(l(ws)\)</span> 的大小。如果 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 则我们可以断定存在另一条从
-<span class="math inline">\(\mathcal{D}\)</span> 出发到达 <span class="math inline">\(ws\mathcal{D}\)</span>
-的路径，比当前这条长度更短，而且恰好减少 1。反之如果 <span class="math inline">\(l(ws)&gt;l(w)\)</span>
-则我们当前这条路径就是最短的 (虽然未必是唯一最短的)。</p>
-<p>怎么判断哪一种情形发生呢？可以直观上理解：如果“穿过 <span class="math inline">\(\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s\)</span> 的墙壁”这一步是背着 <span class="math inline">\(\mathcal{D}\)</span> 的方向走出去的，那么应该距离
+<span class="math inline">\(s\)</span> 的墙壁到达相邻的房间 <span class="math inline">\(ws\mathcal{D}\)</span>，那么 <span class="math inline">\(w\mathcal{D}\)</span> 与 <span class="math inline">\(ws\mathcal{D}\)</span> 谁距离 <span class="math inline">\(\mathcal{D}\)</span> 更远？显然这取决于 <span class="math inline">\(l(w)\)</span> 和 <span class="math inline">\(l(ws)\)</span> 的大小。如果 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 则 <span class="math inline">\(w\mathcal{D}\)</span> 更远，反之则 <span class="math inline">\(ws\mathcal{D}\)</span> 更远。</p>
+<p>怎么判断哪一种情形发生呢？可以直观上理解：如果“穿过 <span class="math inline">\(w\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s\)</span> 的墙壁”这一步是背着 <span class="math inline">\(\mathcal{D}\)</span> 的方向走出去的，那么应该距离
 <span class="math inline">\(\mathcal{D}\)</span> 更远，所以应该有 <span class="math inline">\(l(ws)&gt;l(w)\)</span>。反之如果是朝着 <span class="math inline">\(\mathcal{D}\)</span> 的方向走出去的，那么应该距离
-<span class="math inline">\(\mathcal{D}\)</span> 更近，所以应该有 <span class="math inline">\(l(ws)&lt;l(w)\)</span>。这里“朝着/背着”的区别在于，如果
+<span class="math inline">\(\mathcal{D}\)</span> 更近，所以应该有 <span class="math inline">\(l(ws)&lt;l(w)\)</span>。这里“朝着/背着”的含义是
 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span>
-位于墙壁的同一侧，那么穿过墙壁以后新的位置 <span class="math inline">\(ws\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span>
+是否位于墙壁的同一侧。如果位于同侧，那么穿过墙壁后 <span class="math inline">\(ws\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span>
 位于墙壁两侧，这就更远了。反之如果 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span> 位于墙壁的异侧，穿过墙壁以后
 <span class="math inline">\(ws\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span>
 位于墙壁同一侧，这就更近了。而 <span class="math inline">\(w\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s\)</span> 的墙壁位于超平面 <span class="math inline">\(\{w\alpha_s=0\}\)</span> 上，<span class="math inline">\(w\mathcal{D}\)</span> 位于 <span class="math inline">\(w\alpha_s\)</span> 的正半空间：<span class="math inline">\(\langle w\alpha_s,\,w\mathcal{D}\rangle=\langle
@@ -736,7 +733,7 @@ N(w)\)</span> 的话，就必须先保证 <span class="math inline">\(\lambda\)<
 2；当 <span class="math inline">\(l(ws) &gt; l(w)\)</span> 时，<span class="math inline">\(\alpha_s\in N(ws)\)</span>，这对应递推关系中的
 1，推论得证。</p>
 <blockquote><p><strong>推论 5</strong>：若 <span class="math inline">\(w\in
-W\)</span> 把正根仍然映射为正根，即 <span class="math inline">\(w(\Phi^+)=\Phi^+\)</span>，则 <span class="math inline">\(w=1\)</span>。</p>
+W\)</span> 把正根仍然映射为正根，即 <span class="math inline">\(w(\Phi^+)\subseteq\Phi^+\)</span>，则 <span class="math inline">\(w=1\)</span>。</p>
 </blockquote>
 <p>这个比较显然。</p>
 <blockquote><p><strong>推论 6</strong>：<span class="math inline">\(|W|&lt;\infty\)</span> 当且仅当 <span class="math inline">\(|\Phi|&lt;\infty\)</span>。</p>
@@ -809,7 +806,7 @@ W\mid wv=v\} = W_J = \{w\in W\mid
 wv\in\overline{\mathcal{D}}\}.\]</span></p>
 </blockquote>
 <blockquote>
-<p><strong>注</strong>：这个定理有非常明确的几何直观：对闭房间 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中的一点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
+<p><strong>定理 2 的几何直观</strong>：对闭房间 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中的一点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
 在 <span class="math inline">\(W\)</span> 中的稳定化子群 <span class="math inline">\(\mathrm{Stab}(v)\)</span>
 是个标准椭圆子群，其生成元由那些包含 <span class="math inline">\(v\)</span> 的墙面 <span class="math inline">\(\{\alpha_s\mid \langle
 \alpha_s,\,v\rangle=0\}\)</span> 对应的反射组成。如果 <span class="math inline">\(v\)</span> 落在 <span class="math inline">\(\mathcal{D}\)</span> 中，那么 <span class="math inline">\(\mathrm{Stab}(v)\)</span> 是平凡的；如果 <span class="math inline">\(v\)</span> 恰好落在某个墙壁 <span class="math inline">\(s\)</span> 上，则 <span class="math inline">\(\mathrm{Stab}(v)=\{1,s\}\)</span>；如果 <span class="math inline">\(v\)</span> 恰好落在两个墙壁的交线上，<span class="math inline">\(\mathrm{Stab}(v)\)</span>
@@ -826,7 +823,7 @@ wv\in\overline{\mathcal{D}}\}\subseteq W_J\)</span> 即可。</p>
 <p>从直观上看，设 <span class="math inline">\(v,v'\in\overline{\mathcal{D}}\)</span> 且
 <span class="math inline">\(wv=v'\)</span>，则 <span class="math inline">\(w\overline{\mathcal{D}}\cap
 \overline{\mathcal{D}}=v'\)</span>。我们知道对任何 <span class="math inline">\(w\ne1\)</span> 有 <span class="math inline">\(w\mathcal{D}\cap
-\mathcal{D}=\emptyset\)</span>，所以 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(v'\)</span> 肯定都属于 <span class="math inline">\(\overline{\mathcal{D}}-\mathcal{D}\)</span>，即房间的墙壁或者墙壁的交线上。而且
+\mathcal{D}=\emptyset\)</span>，所以 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(v'\)</span> 肯定都属于 <span class="math inline">\(\overline{\mathcal{D}}\backslash\mathcal{D}\)</span>，即房间的墙壁或者墙壁的交线上。而且
 <span class="math inline">\(w\)</span> 应该由那些包含 <span class="math inline">\(v\)</span> 的墙壁给出的反射组成，即 <span class="math inline">\(J\)</span> 中的墙壁。我们只要从 <span class="math inline">\(w\)</span> 最末一个元素开始逐个验证它们属于 <span class="math inline">\(J\)</span> 即可。</p>
 <p>设 <span class="math inline">\(w\)</span> 的某个既约表示的结尾是
 <span class="math inline">\(s\)</span>，<span class="math inline">\(w=w's\)</span>，则 <span class="math inline">\(l(ws)&lt;l(w)\)</span>，于是 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，从而 <span class="math inline">\(\langle
@@ -878,9 +875,7 @@ s\cdot\mathrm{Neg}(x)-\{\alpha_s\}\)</span>，即 <span class="math inline">\(\m
 <blockquote><p><strong>推论 9</strong>：Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 是凸锥。</p>
 </blockquote>
 <p><strong>证明</strong>：<span class="math inline">\(\mathcal{C}\)</span> 是锥这一点由 推论 8
-直接可得，是凸集这一点也可以从推论 8 得出，但是需要稍微论证下：对任何
-<span class="math inline">\(x, y\in\mathcal{C}\)</span>，我们要证明当
-<span class="math inline">\(\alpha,\beta\geq0\)</span> 时有 <span class="math inline">\(z=\alpha x+\beta y\in\mathcal{C}\)</span>。但是
+直接可得，是凸集这一点也可以从推论 8 得出，但是需要稍微论证下：对 <span class="math inline">\(x, y\in\mathcal{C}\)</span>，我们要证明当 <span class="math inline">\(\alpha,\beta\geq0\)</span> 时有 <span class="math inline">\(z=\alpha x+\beta y\in\mathcal{C}\)</span>。但是
 <span class="math inline">\(\mathrm{Neg}(z)\subseteq\mathrm{Neg}(x)\cup\mathrm{Neg}(y)\)</span>，根据推论
 8 <span class="math inline">\(\mathrm{Neg}(x),\,\mathrm{Neg}(y)\)</span>
 都是有限集，所以 <span class="math inline">\(\mathrm{Neg}(z)\)</span>
