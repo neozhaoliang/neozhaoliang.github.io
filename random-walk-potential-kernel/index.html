@@ -499,15 +499,16 @@ x}}{1-\phi(\theta)}\,\mathrm{d}\theta.
 <p>另一方面初等不等式 <span class="math inline">\(|1-\mathrm{e}^{i\theta\cdot x}|\leq
 |x||\theta|\)</span> 总是成立的，并且存在正数 <span class="math inline">\(\lambda&gt;0\)</span> 使得 <span class="math display">\[
 1-\phi(\theta)=1-\frac{1}{2}(\cos\theta_1+\cos\theta_2)\geq\lambda(\theta_1^2+\theta_2^2)=\lambda|\theta|^2
-\]</span> 对任何 <span class="math inline">\(\theta\in\mathbb{T}\)</span> 成立 (函数 <span class="math inline">\(\dfrac{1-\cos t}{t^2}\)</span> 在 <span class="math inline">\([-\pi, \pi]\)</span> 上具有正的最小值 <span class="math inline">\(c\)</span>，取 <span class="math inline">\(\lambda=c/2\)</span> 即可)，所以 <span class="math display">\[
+\]</span> 对任何 <span class="math inline">\(\theta\in\mathbb{T}\)</span> 成立 (函数 <span class="math inline">\((1-\cos t)/t^2\)</span> 在 <span class="math inline">\([-\pi, \pi]\)</span> 上具有正的最小值 <span class="math inline">\(c\)</span>，取 <span class="math inline">\(\lambda=c/2\)</span> 即可)，所以 <span class="math display">\[
 \frac{1-\mathrm{e}^{i\theta\cdot
 x}}{1-\phi(\theta)}\leq\frac{|x|}{\lambda|\theta|}.
 \]</span> 而 <span class="math inline">\(1/|\theta|\)</span>
 在二维的情形是 <span class="math inline">\(\mathbb{T}\)</span> 上
-Lebesgue 可积的 (极坐标换元即可)，从而 <span class="math inline">\(\dfrac{1-\mathrm{e}^{i\theta\cdot
+Lebesgue 可积的: <span class="math display">\[\int_T\frac{1}{|\theta|}\,\mathrm{d}\theta \leq
+\int_0^{\sqrt{2}\pi}\int_0^{2\pi}\frac{1}{|\theta|}\cdot|\theta|\,\mathrm{d}\theta\,\mathrm{d}\alpha
+= 2\sqrt{2}\pi^2&lt;\infty.\]</span></p>
+<p>所以 <span class="math inline">\(\dfrac{1-\mathrm{e}^{i\theta\cdot
 x}}{1-\phi(\theta)}\)</span> 是 Lebesgue 可积的，这就证明了极限 <span class="math inline">\(a(x)\)</span> 对任何 <span class="math inline">\(x\)</span> 几乎处处存在。</p>
-<p>注意在这个证明中我们用到了 <span class="math inline">\(1/|\theta|\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span>
-上的可积性，这一点是二维简单随机游动独有的。总结一下：</p>
 <blockquote><p><strong>定理 1</strong>： 势核 <span class="math inline">\(a(x)=\sum\limits_{k=0}^\infty\left[\mathbb{P}_k(0,
 0) - \mathbb{P}_k(x, 0)\right]\)</span> 几乎处处有限且等于 <span class="math display">\[a(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
 x}}{1-\phi(\theta)}\,\mathrm{d}\theta.\]</span></p>
@@ -708,52 +709,72 @@ O(|x|^{-2}).\]</span></p>
 </blockquote>
 <p>证明见 Lawler 一书的 4.4 节。</p>
 <h1 id="最后一击">最后一击</h1>
-<p>最后我们使用一点点离散鞅的知识 (可料停时定理足矣！) 来得出 A, B
-获胜概率的渐进表达式。</p>
-<p>设 <span class="math inline">\(\tau_{x,0}^+=\min\{n\geq1:
-S_n=0\}\)</span> 是从 <span class="math inline">\(x\)</span>
-出发的随机游动首次访问原点的时刻，注意这是一个正的随机变量。记 <span class="math inline">\(B(r)\)</span> 是以原点为中心，半径为 <span class="math inline">\(r\)</span> 的圆盘区域，<span class="math inline">\(\partial B(r)\)</span> 是其边界。记 <span class="math inline">\(\tau_{\partial B(r)}\)</span> 是从 <span class="math inline">\(x\)</span> 出发的随机游动首次到达 <span class="math inline">\(\partial B(r)\)</span>
-的时刻。最后滥用一点记号，记 <span class="math display">\[a(r)=\frac{2}{\pi}\ln r +
-\frac{2\gamma+\ln8}{\pi},\]</span> 则根据定理 3，当 <span class="math inline">\(|x|=r\)</span> 时有 <span class="math inline">\(a(x)=a(r)+O(r^{-2})\)</span>。</p>
-<p>OK，以上就是一点记号上的准备工作，可以表述本节的主要结论了：</p>
+<p>到目前为止我们已经完成了所有的准备工作，只要再用一点点离散鞅的知识
+(可料停时定理足矣) 就可以得出 A, B
+获胜概率的渐进表达式。虽然剩下的部分已经没有什么难点，但这个时候要更加耐心点。</p>
+<p>先做一些记号的约定。</p>
+<ol type="1">
+<li>记 <span class="math inline">\(B(r)\)</span> 是平面上半径为 <span class="math inline">\(r\)</span> 的圆盘，<span class="math inline">\(\partial B(r)\)</span> 是圆周 <span class="math inline">\(|x|=r\)</span>。</li>
+<li>设 <span class="math inline">\(x\)</span> 满足 <span class="math inline">\(0&lt;|x|&lt;r\)</span> 是<span class="math inline">\(B(r)\)</span> 内一点，<span class="math inline">\(S_n\)</span> 是从 <span class="math inline">\(x\)</span> 出发的随机游动在 <span class="math inline">\(n\)</span> 时刻的位置，<span class="math inline">\(S_0=x\)</span>。</li>
+<li>记 <span class="math inline">\(\tau_{0}=\min\{n\geq1:\,
+S_n=0\}\)</span>，<span class="math inline">\(\tau_{\partial
+B(r)}=\min\{n\geq1:\, |S_n|\geq r\}\)</span>。于是 <span class="math inline">\(\tau_{0}\)</span> 和 <span class="math inline">\(\tau_{\partial B(r)}\)</span> 分别是 <span class="math inline">\(S_n\)</span> 首次到达原点的时刻和首次走出 <span class="math inline">\(B(r)\)</span> 的时刻。记 <span class="math inline">\(\tau=\min\{\tau_{0},\tau_{\partial
+B(r)}\}\)</span>，则 <span class="math inline">\(\tau_{0},\,\tau_{\partial B(r)},\,\tau\)</span>
+都是停时。</li>
+</ol>
+<p>为了能够使用可料停时定理，我们首先需要说明 <span class="math inline">\(\{a(S_{n\wedge\tau})\}\)</span> 是一个鞅，且停时
+<span class="math inline">\(\tau\)</span> 满足可料停时定理的条件。由于
+<span class="math inline">\(a(x)\)</span> 在任何 <span class="math inline">\(x\ne 0\)</span> 处调和，所以 <span class="math inline">\(\{a(S_{n\wedge\tau}),n\geq0\}\)</span>
+是一个鞅是没有问题的。</p>
+<p>注意到 <span class="math inline">\(\{S_{n\wedge\tau}\}\)</span>
+是一个限制在 <span class="math inline">\(B(r)\)</span>
+内的随机游动，它访问其中任何一点的期望步数都是有限的，所以 <span class="math inline">\(\mathbb{E}\tau&lt;\infty\)</span>。其次根据上一节给出的
+<span class="math inline">\(a(x)\)</span> 的渐进估计，不难证明对任何
+<span class="math inline">\(x\in\mathbb{Z}^2\)</span> 以及单位向量 <span class="math inline">\(e\in\mathbb{Z^2}\)</span>，<span class="math inline">\(|a(x+e)-a(x)|\)</span> 是一致有界的，即存在 <span class="math inline">\(M&gt;0\)</span> 使得总有 <span class="math inline">\(|a(x+e)-a(x)|\leq M\)</span> 成立。所以停时 <span class="math inline">\(\tau\)</span> 满足可料停时定理的条件，从而</p>
+<p><span class="math display">\[\begin{align*}
+a(x)&amp;=a(S_0)=\mathbb{E}_xa(S_{\tau})\\&amp;=
+p\cdot\mathbb{E}_x\left[a(S_{\tau_{\partial B(r)}})|\tau_{\partial
+B(r)}&lt;\tau_{0}\right]+(1-p)\cdot\mathbb{E}_x\left[a(S_{\tau_{0}})|\tau_{0}&lt;\tau_{\partial
+B(r)}\right].
+\end{align*}\]</span></p>
+<p>其中 <span class="math inline">\(p=\mathbb{P}(\tau_{\partial
+B(r)}&lt;\tau_{0})\)</span> 正是随机游动在回到原点之前逃出区域 <span class="math inline">\(B(r)\)</span> 的概率。但是又注意到 <span class="math inline">\(a(S_{\tau_{0}})=a(0)=0\)</span>，所以上面式子中第二项恒为
+0，即 <span class="math display">\[p=\frac{a(x)}{\mathbb{E}_x\left[a(S_{\tau_{\partial
+B(r)}})|\tau_{\partial B(r)}&lt;\tau_{0}\right]}.
+\]</span></p>
+<p>记上面的分母为 <span class="math inline">\(g=\mathbb{E}_x\left[a(S_{\tau_{\partial
+B(r)}})|\tau_{\partial B(r)}&lt;\tau_{0}\right]\)</span>，则 <span class="math inline">\(g\)</span> 是势核 <span class="math inline">\(a(\cdot)\)</span> 在圆周 <span class="math inline">\(\partial B(r)\)</span>
+上关于一个条件概率测度的积分，而我们已经看到势核 <span class="math inline">\(a(y)\)</span> 是近似球对称的，它只依赖于 <span class="math inline">\(|y|\)</span>。当随机游动刚好走到 <span class="math inline">\(B(r)\)</span> 范围之外时，其位置 <span class="math inline">\(y\)</span> 未必正好落在圆周上，但是必然有 <span class="math inline">\(r\leq |y|&lt;r+1\)</span>，这个时候 <span class="math inline">\(a(y)\)</span> 和 <span class="math inline">\(a(r)\)</span> 只会相差 <span class="math inline">\(O(r^{-1})\)</span>，这一点可以很容易通过定理 3
+得出： <span class="math display">\[\begin{align*}a(x+e)-a(x)&amp;=\frac{1}{\pi}\ln\frac{\langle
+x+e, x+e\rangle}{|x|^2}+O(|x|^{-2})\\
+&amp;=\frac{1}{\pi}\ln(1+\frac{2\langle
+x,e\rangle+1}{|x|^2})+O(|x|^{-2})\\
+&amp;=\frac{1}{\pi}\left(\frac{2\langle
+x,e\rangle}{|x|^2}+\frac{1}{|x|^2}-\frac{2\langle
+x,e\rangle^2}{|x|^4}\right)+O(|x|^{-2})\\&amp;=O(|x|^{-1}).\end{align*}\]</span>
+最后一步中 <span class="math inline">\(|\langle x,e\rangle|\leq
+|x|\)</span> 是 <span class="math inline">\(O(|x|)\)</span> 的。</p>
+<p>所以 <span class="math inline">\(g\)</span> 作为 <span class="math inline">\(a(y)\)</span> 在 <span class="math inline">\(\partial B(r)\)</span>
+附近的一些值在一个条件概率下的加权组合，其值近似等于 <span class="math display">\[\frac{2}{\pi}\ln r + \frac{2\gamma+\ln8}{\pi} +
+O(r^{-1}).\]</span></p>
+<p>至此我们就证明了如下结论：</p>
 <blockquote><p><strong>定理 4</strong>： 设 <span class="math inline">\(x\in
 B(r)\)</span> 且 <span class="math inline">\(x\ne 0\)</span>，考虑从
-<span class="math inline">\(x\)</span> 出发的简单随机游动，则 <span class="math display">\[\mathbb{P}_x(\tau_{\partial B(r)} &lt;
-\tau_{x,0}^+) = \frac{a(x)}{a(r)+O(r^{-1})}.\]</span></p>
+<span class="math inline">\(x\)</span> 出发的简单随机游动，则 <span class="math display">\[\mathbb{P}_x(\tau_{\partial B(r)} &lt; \tau_0) =
+\frac{a(x)}{\dfrac{2}{\pi}\ln r + \dfrac{2\gamma+\ln8}{\pi} +
+O(r^{-1})}.\]</span></p>
 </blockquote>
-<p>本文开头的赌局的答案就蕴含在这个定理的结论中。实际上从原点出发的随机游动必然第一步走到其某个邻居
-<span class="math inline">\(x\in\{\pm e_1,\pm e_2\}\)</span> 上，而这时
-<span class="math inline">\(a(x)=1\)</span>，所以从 <span class="math inline">\(x\)</span> 出发继续走的话先走到 <span class="math inline">\(\partial B(r)\)</span> 的概率是 <span class="math inline">\(1/(a(r)+O(r^{-1}))\)</span>，这正是 B
-获胜的概率！</p>
-<p><strong>证明</strong>：记定理中左边的概率为 <span class="math inline">\(p\)</span>。考虑过程 <span class="math inline">\(\{a(S_{n\wedge
-\tau_{x,0}^+}),n\geq0\}\)</span>，由于 <span class="math inline">\(a(x)\)</span>
-在原点之外处处调和，此过程是一个鞅。对 <span class="math inline">\(\tau_{\partial B(r)}\)</span> 使用可料停时定理得到
-<span class="math display">\[\begin{align*}
-a(x)&amp;=
-a(S_0)=\mathbb{E}_xa(S_{\tau_{\partial B(r)}\wedge \tau_{x,0}^+})\\
-&amp;=
-p\cdot\mathbb{E}_x\left[a(S_{\tau_{\partial B(r)}})|\tau_{\partial
-B(r)}&lt;\tau_{x,0}^+\right]+(1-p)\cdot\mathbb{E}_x\left[a(S_{\tau_{x,0}^+})|\tau_{\partial
-B(r)}&gt;\tau_{x,0}^+\right].
-\end{align*}
-\]</span> 记 <span class="math display">\[
-\begin{align*}
-g_1&amp;=
-\mathbb{E}_x\left[a(S_{\tau_{\partial B(r)}})|\tau_{\partial
-B(r)}&lt;\tau_{x,0}^+\right],\\
-g_2&amp;=\mathbb{E}_x\left[a(S_{\tau_{x,0}^+})|\tau_{\partial
-B(r)}&gt;\tau_{x,0}^+\right].
-\end{align*}
-\]</span> 注意当随机游动走到 <span class="math inline">\(\partial
-B(r)\)</span> 时它与圆周 <span class="math inline">\(|x|=r\)</span>
-的距离至多差一个单位向量 <span class="math inline">\(e\)</span>，而
-<span class="math display">\[
-a(x+e)-a(x)=O\left(\ln\frac{|x+e|}{|x|}\right)=O\left(\ln
-(1+\frac{1}{|x|})\right)= O(|x|^{-1}),
-\]</span> 所以 <span class="math inline">\(g_1=a(r)+O(r^{-1})\)</span>。另一方面显然 <span class="math inline">\(g_2=0\)</span> (因为 <span class="math inline">\(a(0)=0\)</span>)，所以 <span class="math display">\[
-p=\frac{a(x) - g_2}{g_1 -
-g_2}=\frac{a(x)}{g_1}=\frac{a(x)}{a(r)+O(r^{-1})}.
-\]</span> 证毕。</p>
+<p>本文开头的赌局的答案就蕴含在这个定理的结论中：由于从原点出发的随机游动第一步必然走到某个邻居
+<span class="math inline">\(x\in\{\pm e_1,\pm e_2\}\)</span>
+上，所以从原点出发的随机游动能够逃逸到 <span class="math inline">\(B(r)\)</span> 之外的概率是 <span class="math display">\[\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
+e_2\}}\mathbb{P}_x(\tau_{\partial
+B(r)}&lt;\tau_{0})=\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
+e_2\}}\frac{a(x)}{\dfrac{2}{\pi}\ln r +
+\dfrac{2\gamma+\ln8}{\pi}+O(r^{-1})}.\]</span> 而 <span class="math inline">\(a(x)\)</span> 在这四个点上的值都是
+1，所以这个概率值等于 <span class="math display">\[\dfrac{1}{\dfrac{2}{\pi}\ln r +
+\dfrac{2\gamma+\ln8}{\pi} + O(r^{-1})}\approx\left(\dfrac{2}{\pi}\ln r +
+1.0293737\right)^{-1},\quad r\to\infty,\]</span> 这也正是我们之前介绍的
+B 的获胜概率！</p>
 <h1 id="结语">结语</h1>
 <p>洋洋洒洒一大篇，总算回答了开头提出的一个小问题。你可能要问了：诶？这只是二维的情形呀，如果是三维太阳系中的真·随机游动，A
 和 B 获胜的概率又该怎么算？这种情形方法其实是类似的，需要估计势核 Green
