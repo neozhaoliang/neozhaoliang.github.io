@@ -13,8 +13,8 @@
     <meta name="description" content="在本系列的第一篇文章中讨论了两个反射生成的万花筒的结构，这篇文章是本系列的第二篇，将讨论推广到一般的有限生成
 Coxeter 群。
 我们还是会同时关注 \(V^\ast\) 中根系
-(反射镜面) 的结构和 \(V\) 中 Tits 锥
-(万花筒) 的结构。
+(反射镜面) 的结构和 \(V\) 中 Tits
+锥（万花筒）的结构。
 “锥”是本文中出现的一个高频词，有必要在这里明确澄清。本文采用如下定义：
 设 \(V\) 是一个实向量空间，称集合
 \(C\subset V\)
@@ -265,7 +265,7 @@ C\) 和实数 \(\alpha\geq0\) 有
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">2 篇</span></a>
+                    Coxeter-Groups <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -384,8 +384,8 @@ C\) 和实数 \(\alpha\geq0\) 有
                 <p>在本系列的<a href="/coxeter-groups-I/">第一篇文章中</a>讨论了两个反射生成的万花筒的结构，这篇文章是本系列的第二篇，将讨论推广到一般的有限生成
 Coxeter 群。</p>
 <p>我们还是会同时关注 <span class="math inline">\(V^\ast\)</span> 中根系
-(反射镜面) 的结构和 <span class="math inline">\(V\)</span> 中 Tits 锥
-(万花筒) 的结构。</p>
+(反射镜面) 的结构和 <span class="math inline">\(V\)</span> 中 Tits
+锥（万花筒）的结构。</p>
 <p>“锥”是本文中出现的一个高频词，有必要在这里明确澄清。本文采用如下定义：</p>
 <blockquote><p>设 <span class="math inline">\(V\)</span> 是一个实向量空间，称集合
 <span class="math inline">\(C\subset V\)</span>
@@ -843,9 +843,9 @@ w'sv=v'\in\overline{\mathcal{D}}\)</span>，从而我们可以对 <span class="m
 \infty\}\)</span>。</p>
 </blockquote>
 <blockquote>
-<p><strong>注</strong>：这个推论的几何意义也比较显然：<span class="math inline">\(v\)</span> 位于 <span class="math inline">\(\mathrm{Neg}(v)\)</span> 中所有镜子的背面
-(一个镜子的正面是指 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
-所在的那一面)，所以 <span class="math inline">\(|\mathrm{Neg}(v)|&lt;\infty\)</span> 意味着 <span class="math inline">\(v\)</span> 落在有限多个镜子的背面。推论告诉我们
+<p><strong>注</strong>：这个推论的几何意义也比较显然：<span class="math inline">\(v\)</span> 位于 <span class="math inline">\(\mathrm{Neg}(v)\)</span>
+中所有镜子的背面（一个镜子的正面就是 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
+所在的那一面），所以 <span class="math inline">\(|\mathrm{Neg}(v)|&lt;\infty\)</span> 意味着 <span class="math inline">\(v\)</span> 落在有限多个镜子的背面。推论告诉我们
 Tits 锥就是那些可以经过有限次反射后变换到 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
 中的点组成的集合。</p>
 </blockquote>
@@ -900,7 +900,7 @@ s\cdot\mathrm{Neg}(x)-\{\alpha_s\}\)</span>，即 <span class="math inline">\(\m
 内，得到对应的原像点 <span class="math inline">\(q\in\overline{\mathcal{D}}\)</span>。然后根据
 <span class="math inline">\(q\)</span> 在 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中的位置来绘制
 <span class="math inline">\(p\)</span>
-点对应的像素。这个反射的步骤用伪代码来写非常简单：(用 Python 演示)</p>
+点对应的像素。这个反射的步骤用伪代码来写非常简单：（用 Python 演示）</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">30</span>):<br>    <span class="hljs-keyword">for</span> alpha_s <span class="hljs-keyword">in</span> Delta:<br>        <span class="hljs-keyword">if</span> on_negative_side(p, alpha_s):<br>            p = reflect(p, alpha_s)<br></code></pre></td></tr></tbody></table></figure>
 <p>我们重复了 30 次这样的操作 (30
 次在绝大多数渲染场景中足够用了)：每次都依次检查 <span class="math inline">\(p\)</span> 是否落在某个 <span class="math inline">\(\alpha_s\)</span>
@@ -1126,8 +1126,8 @@ to Coxeter groups</a>. Robert B. Howlett.</li>
 
                 
 <p class="pink-link-context">
-    <a href="/polyhedron-mirrors/" rel="next" title="DIY 多面体镜面万花筒">
-    上一篇：DIY 多面体镜面万花筒
+    <a href="/coxeter-groups-III/" rel="next" title="Coxeter 群基础知识 (三)：双曲 Coxeter 群与 Boyd-Maxwell 球堆">
+    上一篇：Coxeter 群基础知识 (三)：双曲 Coxeter 群与 Boyd-Maxwell 球堆
   </a>
 </p>
 
