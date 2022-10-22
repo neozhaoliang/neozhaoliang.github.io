@@ -11,10 +11,9 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="This project renders 3d/4d uniform polytopes using Python and
-POV-Ray, the code is on github.
+POV-Ray, the code is hosted on github.
 Requirements: numpy and the free
-raytracer POV-Ray.
-Exam">
+raytracer POV-Ra">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -272,14 +271,6 @@ Exam">
 
         
 
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/微积分/">
-                    微积分 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
     </ul>
 </div>
 
@@ -339,8 +330,8 @@ Exam">
 
             <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#examples"><span class="section table-of-contents-text">Examples</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#what-are-these-examples-about"><span class="section table-of-contents-text">What are these examples
-about?</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#how-to-compute-the-data-of-an-uniform-polytope"><span class="section table-of-contents-text">How to compute
-the data of an uniform polytope</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#finitely-presented-groups-and-todd-coxeter-algorithm"><span class="section table-of-contents-text">Finitely
+about?</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#how-to-compute-the-data-of-a-uniform-polytope"><span class="section table-of-contents-text">How to compute
+the data of a uniform polytope</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#finitely-presented-groups-and-todd-coxeter-algorithm"><span class="section table-of-contents-text">Finitely
 presented groups and Todd-Coxeter algorithm</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#snub-polytopes"><span class="section table-of-contents-text">Snub polytopes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-polytopes"><span class="section table-of-contents-text">Star polytopes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#appendix-i"><span class="section table-of-contents-text">Appendix I</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#appendix-ii"><span class="section table-of-contents-text">Appendix II</span></a></li></ol>
 </div>
 
@@ -349,19 +340,17 @@ presented groups and Todd-Coxeter algorithm</span></a></li><li class="section ta
 
             <div class="entry pink-link-context">
                 <p>This project renders 3d/4d uniform polytopes using Python and
-POV-Ray, the code is on <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/polytopes">github</a>.</p>
+POV-Ray, the code is hosted on <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/polytopes">github</a>.</p>
 <p><strong>Requirements</strong>: <code>numpy</code> and the free
 raytracer <code>POV-Ray</code>.</p>
 <h1 id="examples">Examples</h1>
 <p>All images and videos below are created with this program. The data
 of the polytopes are computed in Python and then exported to POV-Ray for
-rendering. There are also some tricky CSG computations in the POV-Ray
-part, but that's not the main focus of this document. The POV-Ray code
-is only for illustrating the procedure, the default settings (i.e.
-camera, lights, textures) may not work well for all polytopes. You can
-modify them to render your own scenes.</p>
+rendering. The default settings (i.e. camera, material) in the POV-Ray
+code in the source may not work well for all polytopes. You may need to
+modify them to suit for your own scenes.</p>
 <ul>
-<li><p><strong>Update</strong>: Added a <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/polytopes/example_polyhedra_mirrors_shader.py">new
+<li><p><strong>Update</strong>: Add a <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/polytopes/example_polyhedra_mirrors_shader.py">new
 shader animation</a> with polyhedra faces as mirrors:</p>
 <p><object data="/code/rhombic-dodecahedron.svg"></object></p></li>
 <li><p>All Platonic solids and Archimedean solids, prims and antiprisms,
@@ -439,13 +428,13 @@ u=v\)</span>.</p>
 <p>In the above examples the polytopes are colored so that all
 vertices/edges/faces that are in the same orbit under the action of the
 symmetry group have the same color.</p>
-<h1 id="how-to-compute-the-data-of-an-uniform-polytope">How to compute
-the data of an uniform polytope</h1>
+<h1 id="how-to-compute-the-data-of-a-uniform-polytope">How to compute
+the data of a uniform polytope</h1>
 <p>Though these polytopes look quite different in appearance, all of
-them can be constructed in an uniform apprach called the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythonff
-construction</a> (also named the kaleidoscope construction). In
-principal it's the same with the way how a kaleidoscope works: we place
-some reflection planes (called mirrors) in the space, where all these
+them can be constructed in a uniform apprach called the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythonff
+construction</a> (also named as the kaleidoscope construction). In
+principal it works in the same way with how a kaleidoscope works: we
+place some reflection planes (called mirrors) in the space, where all
 mirrors pass through the origin and the angles between them are
 carefully chosen (these angles must be of the form <span class="math inline">\(\pi-\pi/p\)</span> for some rational <span class="math inline">\(p\)</span>). These mirrors partitioned the space
 into "rooms". Choose any room (called the fundamental domain) and an
@@ -456,82 +445,81 @@ with <span class="math inline">\(v_0\)</span> form the vertices of our
 polytope. If <span class="math inline">\(v_1\)</span> is the virtual
 image of the initial point <span class="math inline">\(v_0\)</span>
 about the <span class="math inline">\(i\)</span>-th mirror then <span class="math inline">\((v_0,v_1)\)</span> form an edge of type <span class="math inline">\(i\)</span>, we can use the symmetry group to
-populate it to other edges in this orbit and color them with the <span class="math inline">\(i\)</span>-th color in our palette. Also if <span class="math inline">\(v_0\)</span> is firstly reflected about mirror
+transform it to other edges in the same orbit. Also if <span class="math inline">\(v_0\)</span> is firstly reflected about mirror
 <span class="math inline">\(i\)</span> and then reflected about mirrot
 <span class="math inline">\(j\)</span>, then since the composition of
 two reflections is a rotation, <span class="math inline">\(v_0\)</span>
 is rotated about the center of some face <span class="math inline">\(f\)</span> by an angle of <span class="math inline">\(2\pi/m\)</span> (assume the angle between mirror
 <span class="math inline">\(i\)</span> and mirror <span class="math inline">\(j\)</span> is <span class="math inline">\(\pi-\pi/m\)</span>). We can recover <span class="math inline">\(f\)</span> by applying this rotation <span class="math inline">\(m\)</span> times and again use the symmetry group
-to populate it to other faces.</p>
-<p>To implement the above strategy into a pratical program we have two
-main problems to solve:</p>
-<ol type="1">
-<li>For a given convex unifom polytope, how should we place the mirrors
-and choose the initial vertex <span class="math inline">\(v_0\)</span>?</li>
+to get other faces.</p>
+<p>To implement the above strategy into a practical program we need to
+handle two problems:</p>
+<ul>
+<li>For a given convex unifom polytope, how to place the mirrors and
+choose the initial vertex <span class="math inline">\(v_0\)</span>?</li>
 <li>When the mirrors and <span class="math inline">\(v_0\)</span> are
-ready for use, how can we compute all virtual images of <span class="math inline">\(v_0\)</span>?</li>
-</ol>
+determined, how to compute all virtual images of <span class="math inline">\(v_0\)</span>?</li>
+</ul>
 <p>The answer to the first question is called <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coxeter%E2%80%93Dynkin_diagram">Coxeter-Dynkin
 diagram</a>, which is a labelled undirected graph that encodes all
 information we will need. Each uniform polytope has a corresponding
-Coxeter-Dynkin diagram represents it, but different Coxeter-Dynkin
+Coxeter-Dynkin diagram represents it, though different Coxeter-Dynkin
 diagrams may represent the same polytope.</p>
 <p>For example the Coxeter-Dynkin diagram of the cube is</p>
 <p><img style="margin:0px auto;display:block" src="/images/polytopes/cube43.svg" width="250"></p>
-<p>We now explain this diagram in details:</p>
+<p>We now explain this diagram in more details:</p>
 <p>In a Coxeter-Dynkin diagram each node represents a mirror in the
 kaleidoscope. The above diagram has three nodes, hence there are three
-mirrors in the case of cube. We label the corresponding mirrors from
-left to right as <span class="math inline">\(m_0,m_1,m_2\)</span>. For a
-pair of nodes the labelled edge between them encodes the angle between
-their mirrors:</p>
+mirrors. We label the corresponding mirrors from left to right with
+<span class="math inline">\(m_0,m_1,m_2\)</span>. For a pair of nodes
+the labelled edge between them encodes the angle between their
+mirrors:</p>
 <ol type="1">
-<li>Two nodes are not connected iff the angle between their mirrors is
-exactly <span class="math inline">\(\pi/2\)</span>.</li>
+<li>Two nodes are connected iff the angle between their mirrors is not
+equal to <span class="math inline">\(\pi/2\)</span>.</li>
 <li>Two nodes are connected by an unlabelled edge iff the angle between
-their mirrors is exactly <span class="math inline">\(\pi-\pi/3\)</span>.</li>
+their mirrors equals to <span class="math inline">\(\pi-\pi/3\)</span>.</li>
 <li>Two nodes are connected by an edge labelled with a rational number
 <span class="math inline">\(m&gt;2\)</span> and <span class="math inline">\(m\ne3\)</span> iff the angle between their mirrors
-is <span class="math inline">\(\pi-\pi/m\)</span>.</li>
+equals to <span class="math inline">\(\pi-\pi/m\)</span>.</li>
 </ol>
 <p>Also we use "circled" nodes to indicate which mirrors are "active": a
-mirror is called active if and only if it does not contain the initial
-vertex <span class="math inline">\(v_0\)</span> in it, or in other
-words, if and only if reflecting <span class="math inline">\(v_0\)</span> about this mirror gives a virtual
+mirror is `active if and only if it does not contain the initial vertex
+<span class="math inline">\(v_0\)</span>. In this case reflecting <span class="math inline">\(v_0\)</span> about this mirror will give a virtual
 image.</p>
 <p>So in the above example we have <span class="math inline">\(\langle
 m_0,m_1\rangle=\pi-\pi/4\)</span>, <span class="math inline">\(\langle
 m_1,m_2\rangle=\pi-\pi/3\)</span>, <span class="math inline">\(\langle
 m_0,m_2\rangle=\pi/2\)</span>. <span class="math inline">\(m_0\)</span>
 is active but <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> are not.</p>
-<p>Hence we can place these three mirrors in the 3d space as follows:
-(we use <span class="math inline">\(n_i\)</span> to denote the unit
-normal vector of <span class="math inline">\(m_i\)</span>)</p>
+<p>Hence we can place the three mirrors as follows: (<span class="math inline">\(n_i\)</span> is the normalized normal vector of
+mirror <span class="math inline">\(m_i\)</span>)</p>
 <ol type="1">
-<li>The normal of <span class="math inline">\(m_0\)</span> can be
-arbitrary, for example <span class="math inline">\(n_0=(1,0,0)\)</span>.</li>
-<li>The angle between <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_0\)</span> is <span class="math inline">\(3\pi/4\)</span>, we can simply choose <span class="math inline">\(n_1\)</span> to be <span class="math inline">\(n_1=(\cos\dfrac{3\pi}{4}, \sin\dfrac{3\pi}{4},
+<li>The normal of <span class="math inline">\(m_0\)</span> can be chose
+arbitrarily, for example <span class="math inline">\(n_0=(1,0,0)\)</span>.</li>
+<li>The angle between <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_0\)</span> is <span class="math inline">\(3\pi/4\)</span>, we can choose <span class="math inline">\(n_1\)</span> to be <span class="math inline">\(n_1=(\cos\dfrac{3\pi}{4}, \sin\dfrac{3\pi}{4},
 0)\)</span>.</li>
 <li>The normal of <span class="math inline">\(m_2\)</span> is
-perpendicular to <span class="math inline">\(n_0\)</span>, so <span class="math inline">\(n_2\)</span> has form <span class="math inline">\((0,y_3,z_3)\)</span>. By <span class="math inline">\(\langle n_1,n_2\rangle=2\pi/3\)</span> we have
+perpendicular to <span class="math inline">\(n_0\)</span>, so <span class="math inline">\(n_2\)</span> has the form <span class="math inline">\((0,y_3,z_3)\)</span>. By <span class="math inline">\(\langle n_1,n_2\rangle=2\pi/3\)</span> we have
 <span class="math inline">\(y_3\sin\dfrac{3\pi}{4}=\cos\dfrac{2\pi}{3}\)</span>
 and <span class="math inline">\(z_3=\sqrt{1−y_3^2}\)</span>. Solve these
 two equations to get <span class="math inline">\(y_3,z_3\)</span>.</li>
 </ol>
 <p>To choose an initial vertex <span class="math inline">\(v_0\)</span>
-which lies on <span class="math inline">\(m_1,m_2\)</span> but not on
-<span class="math inline">\(m_0\)</span>, we can let <span class="math inline">\(v_0\)</span> has distance 1 to <span class="math inline">\(m_0\)</span> and distance 0 to <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span>:</p>
+which lies on both <span class="math inline">\(m_1,m_2\)</span> but not
+on <span class="math inline">\(m_0\)</span>, we can choose <span class="math inline">\(v_0\)</span> so that its distance to <span class="math inline">\(m_0\)</span> is 1 and its distance to <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> are all 0:</p>
 <p><span class="math display">\[\begin{align*}\langle v_0,
 n_0\rangle=1,\\\langle v_0, n_1\rangle=0,\\\langle v_0,
 n_2\rangle=0.\\\end{align*}\]</span></p>
-<p>Simply solve this linear system to get <span class="math inline">\(v_0\)</span>.</p>
-<p>I mentioned before that the angles between the mirrors must be
-carefully chosen to ensure that <span class="math inline">\(v_0\)</span>
-and its virtual images form the vertices of an uniform polytope, this
-restricts us to only finitely many choices, you can refer to this <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_polytope">wiki page</a> for
-the complete list.</p>
-<p>The answer to the second question is called Todd-Coxeter algorithm,
-I'll discuss it in the next section.</p>
+<p>Then solve this linear system to get <span class="math inline">\(v_0\)</span>.</p>
+<p>As mentioned before the angles between the mirrors must be chosen
+carefully to ensure <span class="math inline">\(v_0\)</span> and its
+virtual images form the vertices of an uniform polytope, this restricts
+us to only finitely many choices of Coxeter diagrams, you can refer to
+this <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_polytope">wiki
+page</a> for the complete list.</p>
+<p>The answer to the second question is called the Todd-Coxeter
+algorithm, I'll discuss it in the next section.</p>
 <h1 id="finitely-presented-groups-and-todd-coxeter-algorithm">Finitely
 presented groups and Todd-Coxeter algorithm</h1>
 <p>How can one get all virtual images of the initial vertex <span class="math inline">\(v_0\)</span> about all the mirrors? An obvious
