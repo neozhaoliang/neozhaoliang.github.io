@@ -438,11 +438,11 @@ l(w)\)</span>。</p>
 系，<span class="math inline">\(M=(m_{s,t})_{s,t\in S}\)</span> 是
 Coxeter 矩阵。定义其 Cartan 矩阵为 <span class="math inline">\(C=(c_{s,t})_{s,t\in S}\)</span>，其中 <span class="math display">\[c_{s,t}=c_{t,s} =
 \begin{cases}-2\cos\dfrac{\pi}{m_{s,t}} &amp; m_{s,t}&lt;\infty,\\
-a_{s,t} &amp; m_{s,t}=\infty.\end{cases}\]</span> 这里 <span class="math inline">\(a_{s,t}\leq -2\)</span> 是一个负数。<span class="math inline">\(a_{s,t}\)</span> 的选择有一定的任意性，任何 <span class="math inline">\(\leq-2\)</span> 的实数都是可以的，并且不同的 <span class="math inline">\((s,t)\)</span> 对可以使用不同的 <span class="math inline">\(a_{s,t}\)</span>。我们规定对每个 <span class="math inline">\(m_{s,t}=\infty\)</span> 都选好了一个这样的 <span class="math inline">\(a_{s,t}\)</span>。</p>
+-2a_{s,t} &amp; m_{s,t}=\infty.\end{cases}\]</span> 这里 <span class="math inline">\(a_{s,t}\geq 1\)</span>。<span class="math inline">\(a_{s,t}\)</span> 的选择有一定的任意性，任何 <span class="math inline">\(\geq1\)</span> 的实数都是可以的，并且不同的 <span class="math inline">\((s,t)\)</span> 对可以使用不同的 <span class="math inline">\(a_{s,t}\)</span>。我们规定对每个 <span class="math inline">\(m_{s,t}=\infty\)</span> 都选好了一个这样的 <span class="math inline">\(a_{s,t}\)</span>。</p>
 <p>注意到 Cartan 矩阵的对角元总是等于 2，而非对角元则总是非正的。</p>
 <blockquote>
-<p><strong>注</strong>：用万花筒的语言，<span class="math inline">\(a_{s,t}=-2\)</span>
-对应的是两个仿射的平行镜面，<span class="math inline">\(a_{s,t}&lt;-2\)</span>
+<p><strong>注</strong>：在后面我们会看到，<span class="math inline">\(a_{s,t}=1\)</span>
+对应的是两个仿射的平行镜面，<span class="math inline">\(a_{s,t}&gt;1\)</span>
 对应的是双曲空间中两个超平行的镜面。</p>
 </blockquote>
 <p>设 <span class="math inline">\(V\)</span> 是一个维数为 <span class="math inline">\(|S|\)</span> 的实向量空间，其对偶空间为 <span class="math inline">\(V^\ast\)</span>，取 <span class="math inline">\(V^\ast\)</span> 中的一组基为 <span class="math inline">\(\{\alpha_s \mid s\in
@@ -619,12 +619,12 @@ t\)</span> 作用在 <span class="math inline">\(\alpha_s\)</span>
 上的结果，而这在前文中已经计算过了：</p>
 <p><span style="color:blue"><strong><span class="math inline">\(m_{s,t}=\infty\)</span> 的情形</strong></span></p>
 <ol type="1">
-<li><span class="math inline">\(a_{s,t} = -2\)</span> 时： <span class="math display">\[\alpha_s\xrightarrow{\ t\
+<li><span class="math inline">\(a_{s,t} = 1\)</span> 时： <span class="math display">\[\alpha_s\xrightarrow{\ t\
 }\alpha_s+2\alpha_t\xrightarrow{\ s\ }3\alpha_s+2\alpha_t\xrightarrow{\
 t\ }3\alpha_s + 4\alpha_t\xrightarrow{\ s\ }\cdots\]</span> 每一项都是
 <span class="math inline">\(\alpha_s,\alpha_t\)</span>
 的非负线性组合。</li>
-<li><span class="math inline">\(a_{s,t} &lt; -2\)</span> 时： <span class="math display">\[\alpha_s\xrightarrow{\ t\ }\dfrac{\sinh
+<li><span class="math inline">\(a_{s,t} &gt; 1\)</span> 时： <span class="math display">\[\alpha_s\xrightarrow{\ t\ }\dfrac{\sinh
 \theta}{\sinh\theta}\alpha_s+\dfrac{\sinh
 2\theta}{\sinh\theta}\alpha_t\xrightarrow{\ s\ }\dfrac{\sinh
 3\theta}{\sinh\theta}\alpha_s+\dfrac{\sinh
@@ -1072,8 +1072,8 @@ for all } w \in W\}.
 <p>虽然我们得到了上述 Tits 锥的对偶锥 <span class="math inline">\(\mathcal{C}^\ast\)</span>
 的刻画，但是这个描述并不好用。我们下面用内积的形式给出 <span class="math inline">\(\mathcal{C}^\ast\)</span> 的一个更好的刻画。</p>
 <p>之前提到过，我们可以定义 <span class="math inline">\(V^\ast\)</span>
-上的内积 <span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[\alpha_s\bullet\alpha_t=c_{s,t}/2=\begin{cases}-\cos\dfrac{\pi}{m_{s,t}}&amp;m_{s,t}&lt;\infty,\\a_{s,t}&amp;m_{s,t}=\infty.\end{cases}\]</span>
-其中 <span class="math inline">\(a_{s,t}\)</span> 是 <span class="math inline">\(\leq-1\)</span> 的实数，<span class="math inline">\(C\)</span> 是 Cartan 矩阵。由于 Cartan
+上的内积 <span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[\alpha_s\bullet\alpha_t=c_{s,t}/2=\begin{cases}-\cos\dfrac{\pi}{m_{s,t}}&amp;m_{s,t}&lt;\infty,\\-a_{s,t}&amp;m_{s,t}=\infty.\end{cases}\]</span>
+其中 <span class="math inline">\(a_{s,t}\)</span> 是 <span class="math inline">\(\geq1\)</span> 的实数，<span class="math inline">\(C\)</span> 是 Cartan 矩阵。由于 Cartan
 矩阵可能是退化的，所以用 <span class="math inline">\(\bullet\)</span>
 来定义基本区域 <span class="math inline">\(\cap_{\alpha_s\in\Delta}\{v\mid\alpha_s\bullet
 v&gt; 0\}\)</span> 是有问题的，但这不影响我们用 <span class="math inline">\(\bullet\)</span> 来给出对偶锥的刻画。</p>

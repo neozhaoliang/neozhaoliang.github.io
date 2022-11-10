@@ -389,13 +389,14 @@ cz\)</span>，其中 <span class="math inline">\(c\)</span> 是一个小于
 定理说的是两条曲线关于一个点的环绕数相等的结论。它可以稍微改动一下变成一条曲线关于两个点的环绕数：</p>
 <blockquote>
 <p>设 <span class="math inline">\(\gamma\)</span>
-是一条简单闭曲线，内部围的区域为 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(f(z)\)</span>
-是一个非常数的解析函数。假设有两棵树分别位于 <span class="math inline">\(w_0,\,w_1\)</span> 两点，且人行走的路线 <span class="math inline">\(f(\gamma)\)</span> 到 <span class="math inline">\(w_0\)</span>
-的距离始终大于两棵树之间的距离：即对任何 <span class="math inline">\(z\in\gamma\)</span> 有 <span class="math inline">\(|f(z)-w_0| &gt; |w_0-w_1|\)</span> 成立，则 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_0,w_1\)</span> 的环绕数相等，从而 <span class="math inline">\(w_0,w_1\)</span> 在 <span class="math inline">\(\gamma\)</span> 内部的原像个数相同：<span class="math inline">\(\sharp\{z\in \Omega: f(z)=w_0\} = \sharp\{z\in
-\Omega: f(z)=w_1\}\)</span>。</p>
+是一条简单闭曲线，内部围的区域为 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(f(z)\)</span> 是一个非常数的解析函数，<span class="math inline">\(f\)</span> 在包含 <span class="math inline">\(\gamma\)</span>
+的某个区域内解析。假设有两棵树分别位于 <span class="math inline">\(w_0,\,w_1\)</span> 两点，且人行走的路线 <span class="math inline">\(f(\gamma)\)</span> 到 <span class="math inline">\(w_0\)</span> 的距离始终大于两棵树之间的距离：即
+<span class="math inline">\(|f(z)-w_0| &gt; |w_0-w_1|\)</span> 对 <span class="math inline">\(z\in\gamma\)</span> 恒成立，则 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_0,w_1\)</span> 的环绕数相等，从而 <span class="math inline">\(w_0,w_1\)</span> 在 <span class="math inline">\(\gamma\)</span> 内部的原像个数相同： <span class="math display">\[\sharp\{z\in \Omega: f(z)=w_0\} = \sharp\{z\in
+\Omega: f(z)=w_1\}.\]</span></p>
 </blockquote>
-<p>这是因为将 <span class="math inline">\(f(\gamma)\)</span> 和 <span class="math inline">\(w_1\)</span> 同时平移 <span class="math inline">\(w_0-w_1\)</span> 不改变环绕数，所以 <span class="math inline">\(g(\gamma)=f(\gamma)+(w_0-w_1)\)</span> 关于 <span class="math inline">\(w_0\)</span> 的环绕数等于 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_1\)</span> 的环绕数。而已知绳子的长度 <span class="math inline">\(|w_0-w_1|\)</span> 小于 <span class="math inline">\(f(z)\)</span> 到 <span class="math inline">\(w_0\)</span> 的距离，所以 <span class="math inline">\(g(\gamma)\)</span> 和 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_0\)</span> 有相同的环绕数，从而它们在 <span class="math inline">\(\Omega\)</span> 内关于 <span class="math inline">\(w_0\)</span> 的原像个数相同，此即为所证。</p>
-<p>由此我们不难得出复分析中的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis)">开映射定理</a>：</p>
+<p>这是因为将曲线 <span class="math inline">\(f(\gamma)\)</span> 和点
+<span class="math inline">\(w_1\)</span> 同时作平移 <span class="math inline">\(w_0-w_1\)</span> 不改变环绕数，所以 <span class="math inline">\(g(\gamma)=f(\gamma)+(w_0-w_1)\)</span> 关于 <span class="math inline">\(w_0=w_1+(w_0-w_1)\)</span> 的环绕数仍然等于 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_1\)</span> 的环绕数。而已知绳子的长度 <span class="math inline">\(|w_0-w_1|\)</span> 小于 <span class="math inline">\(f(z)\)</span> 到 <span class="math inline">\(w_0\)</span> 的距离，所以 <span class="math inline">\(g(\gamma)\)</span> 和 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_0\)</span> 有相同的环绕数，从而它们在 <span class="math inline">\(\Omega\)</span> 内关于 <span class="math inline">\(w_0\)</span> 的原像个数相同，此即为所证。</p>
+<p>利用这个结论我们不难得出复分析中的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis)">开映射定理</a>：</p>
 <blockquote>
 <p><strong>定理</strong>：如果 <span class="math inline">\(U\subseteq\mathbb{C}\)</span> 是开集，<span class="math inline">\(f:U\to\mathbb{C}\)</span>
 是<strong>非常数</strong>的解析函数，则 <span class="math inline">\(f(U)\)</span> 也是开集。</p>
