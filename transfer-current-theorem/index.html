@@ -445,7 +445,7 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 <td style="text-align: center;">0.294</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2：拐角</td>
+<td style="text-align: center;">2：拐角 + 直路</td>
 <td style="text-align: center;"><span class="math display">\[\dfrac{4}{\pi}\left(2-\dfrac{9}{\pi}+\dfrac{12}{\pi^2}\right)\]</span></td>
 <td style="text-align: center;">0.447</td>
 </tr>
@@ -461,8 +461,12 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 </tr>
 </tbody>
 </table>
-<p>所以在一个随机的完美迷宫中，最多的其实是“拐角” (45%)，其次是“死角”
-(30%)，再次是“丁字岔路” (22%)，而“十字路口”是非常少的 (3.6%)。</p>
+<p>所以在一个随机的完美迷宫中，最多的其实是“拐角” 和“直路” (加起来占
+45%)，其次是“死角” (30%)，再次是“丁字岔路” (22%)，而“十字路口”是非常少的
+(3.6%)。其实进一步的分析也不难得出拐角和直路的极限概率的精确表达式分别为
+<span class="math inline">\((32-20\pi+4\pi^2)/\pi^3\approx
+0.279\)</span> 和 <span class="math inline">\((16-16\pi+4\pi^2)/\pi^3\approx
+0.168\)</span>。</p>
 <p>这些概率是怎样计算出来的呢？它和我们这个系列的主题二维随机游动又有何关系呢？这里面的故事相当精彩。粗略地说，上面这些关于随机生成树的概率量，都可以翻译为图上随机游动的概率量，把整个图看做一个电网络，它们又可以翻译为这个电网络的物理量，而这些物理量是可以用各种方法来计算的。在我们这个问题中，一个房间是死角/拐角/岔路/十字路口的概率都可以从一个矩阵出发通过求其子矩阵的行列式得到
 (或者稍微加点变化)，这个矩阵叫做<strong>转移电流矩阵</strong> (transfer
 current matrix)，是本文内容的核心。转移电流矩阵的物理意义很简单：将
