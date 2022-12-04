@@ -1259,7 +1259,7 @@ G = \langle\rho_0,\rho_1,\rho_2\ |\
 \rho_0^2&amp;=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^5=(\rho_1\rho_2)^5\\
 &amp;=(\rho_0\rho_2)^2=(\rho_0\rho_1\rho_2\rho_1)^3=1\rangle.
 \end{align*}\]</span> 这是怎么回事呢？先看视频：</p>
-<video src="/images/polytopes/great-dodecahedron.mp4" controls="">
+<video src="/images/polytopes/great-dodecahedron.mp4" width="480" controls="">
 </video>
 <p>由视频可见，great dodecahedron 与正二十面体 (icosahedron)
 有完全相同的顶点集，但是看起来 great dodecahedron 可以通过在 icosahedron
@@ -1267,37 +1267,70 @@ G = \langle\rho_0,\rho_1,\rho_2\ |\
 <span class="math inline">\((\rho_0\rho_1\rho_2\rho_1)^h=1\)</span>。</p>
 <p>我们来仔细考察 great dodecahedron 的基本区域：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polytopes/star.png" width="600"></p>
-<p>你可以看到 great dodecahedron 的基本区域 <span class="math inline">\(\Delta ABC\)</span> 满足 <span class="math inline">\(\angle ACB=2\pi/5\)</span>，<span class="math inline">\(\angle CBA=\pi/2\)</span>，<span class="math inline">\(\angle
-BAC=\pi/5\)</span>。这个基本区域包含了三个小三角形，每个小三角形都是
-icosahedron 的一个基本区域，而二者对称群相同，这说明 great dodecahedron
-在对称群的作用下会把球面覆盖三次，术语叫做“great dodecahedron 的密度
-(density) 为 3”。</p>
-<p>这时如果我们仍然记 <span class="math inline">\(\rho_0,\rho_1,\rho_2\)</span> 分别为关于镜面 <span class="math inline">\(BC,AC,AB\)</span>
-的反射的话，则这三个反射就还满足一个隐藏的生成关系：设 <span class="math inline">\(B\)</span> 关于 <span class="math inline">\(AC\)</span> 的镜像点为 <span class="math inline">\(D\)</span>，则 <span class="math inline">\(\rho_1\rho_2\rho_1\)</span> 就是关于镜面 <span class="math inline">\(AD\)</span> 的反射 <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>，<span class="math inline">\(\rho_0\rho_1\rho_2\rho_1\)</span> 是关于 <span class="math inline">\(BC\)</span> 的反射和关于 <span class="math inline">\(AD\)</span>
-的反射的复合，所以是一个旋转，其旋转中心是 <span class="math inline">\(BC\)</span> 所在大圆与 <span class="math inline">\(AD\)</span> 所在大圆的交，即 <span class="math inline">\(O\)</span> 点。这两个大圆在 <span class="math inline">\(O\)</span> 点的夹角为 <span class="math inline">\(\pi/3\)</span>，所以这个旋转是绕 <span class="math inline">\(O\)</span> 点的角度为 <span class="math inline">\(2\pi/3\)</span> 的旋转，其阶为 3，即 <span class="math inline">\((\rho_0\rho_1\rho_2\rho_1)^3=1\)</span>。</p>
-<p>这个规律最早是 Coxeter 在</p>
-<blockquote>
-<p>Regular skew polyhedra in three and four dimensions, and their
-topological analogues</p>
-</blockquote>
-<p>中注意到的。更详细的解释，以及四维多胞体所对应的额外生成关系，见
-McMullen 和 Schulte 的专著</p>
-<blockquote>
-<p>Abstract Regular Polytopes (Encyclopedia of Mathematics and its
-Applications 92).</p>
-</blockquote>
-<p>第七章。你可能比较疑惑的是为什么加上这个额外的生成关系就可以得到正确的群表现，这里有一个非常一般的结论：如果一个字
-<span class="math inline">\(w\ne1\)</span> 使得基本区域 <span class="math inline">\(\mathcal{D}\)</span> 和 <span class="math inline">\(w\mathcal{D}\)</span> 有非空交，则把 <span class="math inline">\(w\)</span>
-作为额外的生成关系加入就可以得到正确的群表现。这一点由 Macbeath 于</p>
-<blockquote>
-<p>Groups of Homeomorphisms of a Simply Connected Space.</p>
-</blockquote>
-<p>中证明。</p>
-<p>剩下的计算与上面凸的情形完全一样。</p>
+<p>在上图中，<span class="math inline">\(\Delta ABC\)</span>
+是正二十面体的基本区域，三个内角分别是 <span class="math inline">\(\angle CAB=\pi/5\)</span>，<span class="math inline">\(\angle CBA=\pi/2\)</span>，<span class="math inline">\(\angle ACB=\pi/3\)</span>，<span class="math inline">\(\rho_0,\rho_1,\rho_2\)</span> 分别是关于弧 <span class="math inline">\(BC, AC, AB\)</span> 的反射。</p>
+<p>Great dodecahedron 可以这样得到：沿着正二十面体的边从顶点 <span class="math inline">\(Q\)</span> 走到 <span class="math inline">\(A\)</span>，右手边的第一个面是 <span class="math inline">\(\Delta OAQ\)</span>，接下来的第一条边应该是 <span class="math inline">\(AO\)</span>，我们跳过这条边，选择第二条边 <span class="math inline">\(AK\)</span>，到达 <span class="math inline">\(K\)</span> 后继续选择右手边的第二条边，这样绕着
+<span class="math inline">\(O\)</span> 一圈下来共经过 5
+条边，它们正好围成 great dodecahedron
+的一个面。对正二十面体的其它边也进行如此操作会得到 great dodecahedron
+的其它的面。</p>
+<p>对一个多面体，保持它的顶点和边的集合不变，但是每次选择右手边的第
+<span class="math inline">\(k\)</span>
+个边走下去绕一圈获得一个面，这样构造新多面体的方法就是所谓的 "Facetting"
+手术。在我们这个项目中 <span class="math inline">\(k\)</span> 总是等于
+2。</p>
+<p>下面来解释如何将 Wythoff 构造法用在 Facetting 操作上。</p>
+<p>来看三角形 <span class="math inline">\(\Delta
+OAB\)</span>，它的三个内角分别是 <span class="math inline">\(\angle
+OAB=2\pi/5\)</span>，<span class="math inline">\(\angle
+OBA=\pi/2\)</span>，<span class="math inline">\(\angle
+AOB=\pi/5\)</span>，它包含三个与 <span class="math inline">\(\Delta
+ABC\)</span> 全等的三角形，且关于其三条边 <span class="math inline">\(OA,OB,AB\)</span> 的反射分别是 <span class="math inline">\(\tau_1=\rho_1\rho_2\rho_1,\tau_0=\rho_0,\tau_2=\rho_2\)</span>
+<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。<span class="math inline">\(\{\tau_0,\tau_1,\tau_2\}\)</span> 同样满足所谓的
+"intersection property"，即 <span class="math inline">\(i\ne j\)</span>
+时有 <span class="math inline">\(\langle\tau_i\rangle\cap\langle\tau_j\rangle=1\)</span>
+以及 <span class="math inline">\(\langle\tau_i,\tau_j\rangle\cap\langle\tau_j,\tau_k\rangle=\langle\tau_j\rangle\)</span>。</p>
+<p>Facetting 操作 <span class="math inline">\(\varphi_k\)</span>
+用群的语言来描述就是（记住 <span class="math inline">\(k=2\)</span>）
+<span class="math display">\[G=\langle
+\rho_0,\rho_1,\rho_2\rangle\xrightarrow{\ \varphi_k\
+}\langle\rho_0,\rho_1(\rho_2\rho_1)^{k-1},\rho_2\rangle=\langle\tau_0,\tau_1,\tau_2\rangle=K.\]</span>
+一般来说 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(G\)</span> 的子群，但在大多数情况下（包括现在的
+great dodecahedron），<span class="math inline">\(G\)</span> 和 <span class="math inline">\(K\)</span> 是同一个群，其中表现 <span class="math inline">\(K\)</span> 给出的就是 great dodecahedron。</p>
+<p>首先不难看出 <span class="math inline">\(\langle
+\tau_1,\tau_2\rangle\)</span> 也是 5 阶二面体群，它是 great dodecahedron
+的顶点 <span class="math inline">\(A\)</span> 的稳定化子群，<span class="math inline">\(\tau_1\tau_2\)</span> 是一个角度为 144
+度的旋转，所以 great dodecahedron 的 vertex configure
+是一个五角星。<span class="math inline">\(\langle\tau_0,\tau_2\rangle\)</span> 为边 <span class="math inline">\(AQ\)</span> 的稳定化子群，所以 great dodecahedron
+的边集和正二十面体也是一样的。区别在于边组成面的方式不一样，<span class="math inline">\(\tau_1\)</span> 会把 <span class="math inline">\(AQ\)</span> 映射为 <span class="math inline">\(AK\)</span>，这正对应选择第 <span class="math inline">\(k\)</span> 条边的操作。<span class="math inline">\(\rho_0\tau_1\)</span> 是一个绕着顶点 <span class="math inline">\(O\)</span> 的角度为 <span class="math inline">\(2\pi/5\)</span> 的旋转，所以 <span class="math inline">\(AQ\)</span> 在子群 <span class="math inline">\(\langle \rho_0,\tau_1\rangle\)</span> 作用下会绕
+<span class="math inline">\(O\)</span>
+转一圈，这一圈包含正二十面体的五条边，这五条边正对应 Facetting
+操作得到的一个面。</p>
+<p>于是我们可以这样来绘制 great dodecahedron:</p>
+<p>Great dodecahedron 的 Coxeter-Dynkin 图是 <span class="math inline">\((5/2, 5)\)</span>，所以取 <span class="math inline">\(OAB\)</span> 为基本区域，其三条边 <span class="math inline">\(OA, OB, AB\)</span>
+为反射镜面，这三个反射构成的群是 <span class="math display">\[\begin{align*}
+K = \langle\tau_0=\rho_0,\tau_1=\rho_1\rho_2\rho_1,\tau_2=\rho_2 \
+|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=\\&amp;(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=(\tau_0\tau_2)^2=1\rangle.
+\end{align*}\]</span> 注意到 <span class="math inline">\(\tau_1\tau_2\tau_1=\tau_1\rho_2\tau_1\)</span>
+是关于 <span class="math inline">\(AP\)</span> 的反射，它和 <span class="math inline">\(\tau_0=\rho_0\)</span> 的复合是绕着 <span class="math inline">\(P\)</span> 点角度为 <span class="math inline">\(2\pi/3\)</span> 的旋转，所以 <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^3=1\)</span>。把这个额外的生成关系加入到
+<span class="math inline">\(G\)</span> 的表现中，这样得到的就是 <span class="math inline">\(K\)</span> 的正确的表现： <span class="math display">\[\begin{align*}
+K = \langle\tau_0,\tau_1,\tau_2 \
+|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=\\&amp;(\tau_0\tau_2)^2=(\tau_0\tau_1\tau_2\tau_1)^3=1\rangle.
+\end{align*}\]</span></p>
+<p>剩下的绘制方式和之前的步骤就完全一样了。</p>
+<p>注意到对 <span class="math inline">\(K\)</span> 这个群进行 Facetting
+操作 <span class="math inline">\(\varphi_2\)</span> 以后又会回到 <span class="math inline">\(G\)</span>： <span class="math display">\[K=\langle
+\tau_0,\tau_1,\tau_2\rangle\xrightarrow{\ \varphi_2\
+}\langle\tau_0,\tau_1\tau_2\tau_1,\tau_2\rangle=\langle\rho_0,\rho_2\rho_1\rho_2,\rho_2\rangle=G.\]</span>
+其中对 great dodecahedron
+每次沿着它的边，选择当前离开的边的右手第二个边走下去，形成的就是一个边长是
+3 的洞，这对应的就是添加的那个额外的生产关系中的指数 3。</p>
+<p>以上这些内容我是从 <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/009731659090017Q">Constructions
+for regular polytopes. P. McMullen and E. Schulte. Journal of
+Combinatorial Theory, Series A, Volume 53, Issue 1, 1990.</a>
+这篇文章中学到的。</p>
 <blockquote><p><strong>注</strong>：项目中的交互 shader
-程序只考虑了凸多面体的情形，虽然也能渲染少数星状多面体，但是效果大多不理想。使用
-POV-Ray 渲染的话效果更好：</p>
-<p><img style="margin:0px auto;display:block" src="/images/polytopes/ditrigonal-dodecadodecahedron.png" width="350"></p>
+程序只考虑了凸多面体的情形，虽然可以修改代码来渲染少数星状多面体，但是效果大多不理想。</p>
 </blockquote>
 <h1 id="snub-cube-的计算">Snub cube 的计算</h1>
 <p>如果你理解了上面的内容，snub

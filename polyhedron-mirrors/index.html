@@ -382,7 +382,10 @@ dodecahedron</a>)，它有个独特之处是自身在镜子反射下成的像可
 <p>截顶的正方体看起来也是可以的：</p>
 <object data="/code/trunc-cube.svg">
 </object>
-<p>但是这个例子是有点特殊的：观察者从外面看它确实密铺了整个空间，但是如果观察者身处多面体内部的话，看到的就不再是一个完整的的密铺结构。想象一下站在多面体内部的一个三角面前面往里看，除去这个三角形之外八面体的其它边都是看不到的，否则它们关于这个三角面的原像都在多面体内部，这不可能。站在外部的观察者能看到整个密铺是因为他可以同时看到所有镜子后面的情况。</p>
+<p>但这个例子是有点特殊的：观察者从外面看它确实密铺了整个空间，但是如果观察者身处多面体内部的话，看到的就不再是一个完整的的密铺结构。想象一下站在多面体内部的一个三角面前面往里看，这时除去这个三角形之外八面体的其它边都是看不到的，否则它们关于这个三角面的原像都在多面体内部，这不可能。站在外部的观察者能看到整个密铺是因为他可以同时看到所有镜子后面的情况。</p>
+<p>下图显示的是截顶的八面体，你觉得它有什么问题不？</p>
+<object data="/code/trunc-octahedron.svg">
+</object>
 <p>这个代码可以渲染绝大部分的 uniform polyhedron
 及其对偶，入口函数为</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">generate_polytope_data(<br>    coxeter_diagram,<br>    trunc_type,<br>    extra_relations=(),<br>    snub=<span class="hljs-literal">False</span>,<br>    dual=<span class="hljs-literal">False</span><br>):<br></code></pre></td></tr></tbody></table></figure>
