@@ -437,11 +437,12 @@ V\)</span>，我们用双线性对 <span class="math inline">\(\langle
 \alpha,\,v\rangle\alpha^\vee,\quad v\in V.\]</span> 满足如下性质：</p>
 <ol type="1">
 <li><span class="math inline">\(s\)</span> 保持 <span class="math inline">\(n-1\)</span> 维的超平面 <span class="math inline">\(\alpha=0\)</span> 不变；</li>
-<li><span class="math inline">\(s\)</span> 将一个非零向量 <span class="math inline">\(\alpha^\vee\)</span> 映射为 <span class="math inline">\(-\alpha^\vee\)</span>；</li>
+<li><span class="math inline">\(s\)</span> 将非零向量 <span class="math inline">\(\alpha^\vee\)</span> 映射为 <span class="math inline">\(-\alpha^\vee\)</span>；</li>
 <li><span class="math inline">\(s^2=1\)</span>。(这一点可以由 1, 2
 推出)</li>
 </ol>
-<p>我们称这样的线性变换是<strong>反射变换</strong>。</p>
+<p>我们称 <span class="math inline">\(s\)</span>
+是一个<strong>反射变换</strong>。</p>
 <p><img style="margin:0px auto;display:block" width="300" src="/images/coxeter-groups/reflection.svg"></p>
 <p>为了方便，本文也用记号 <span class="math inline">\(s_{\alpha,\alpha^\vee}\)</span> 来表示反射 <span class="math inline">\(s\)</span>。</p>
 <p>对任何 <span class="math inline">\(g\in\mathrm{GL}(V)\)</span>，定义
@@ -479,17 +480,12 @@ f,\,\alpha^\vee\rangle=\langle f-\langle
 <blockquote>
 <p>将“离散地作用”翻译成万花筒的语言，就是我们要求原像 <span class="math inline">\(K\)</span> 与其所有虚像都不重叠。</p>
 </blockquote>
-<p>记矩阵 <span class="math display">\[A=\begin{pmatrix}\langle
-\alpha,\,\alpha^\vee\rangle&amp;\langle \alpha,\,\beta^\vee\rangle\\
-\langle \beta,\,\alpha^\vee\rangle&amp; \langle
-\beta,\,\beta^\vee\rangle\end{pmatrix} =
-\begin{pmatrix}2&amp;c_{s,t}\\c_{t,s}&amp;2\end{pmatrix}.\]</span> 其中
-<span class="math inline">\(c_{s,t}=\langle
-\alpha,\,\beta^\vee\rangle\)</span>，<span class="math inline">\(c_{t,s}=\langle
-\beta,\,\alpha^\vee\rangle\)</span>，并记 <span class="math inline">\(n_{s,t}=c_{s,t}c_{t,s}\)</span>。注意到给 <span class="math inline">\(\alpha,\alpha^\vee\)</span> 分别乘以非零实数 <span class="math inline">\(\lambda,\lambda^{-1}\)</span> 保持 <span class="math inline">\(s\)</span> 不变，给 <span class="math inline">\(\beta,\beta^\vee\)</span> 分别乘以非零实数 <span class="math inline">\(\mu,\mu^{-1}\)</span> 保持 <span class="math inline">\(t\)</span> 不变，但是 <span class="math inline">\(c_{s,t}\)</span> 变为 <span class="math inline">\(\lambda/\mu c_{s,t}\)</span>，<span class="math inline">\(c_{t,s}\)</span> 变为 <span class="math inline">\(\mu/\lambda c_{t,s}\)</span>，乘积 <span class="math inline">\(n_{s,t}\)</span> 保持不变。</p>
-<p>记 <span class="math inline">\(H_\alpha=\{\alpha=0\},H_\beta=\{\beta=0\}\)</span>，<span class="math inline">\(H_\alpha,H_\beta\)</span> 都是 <span class="math inline">\(n-1\)</span> 维超平面，<span class="math inline">\(H=H_\alpha\cap H_\beta\)</span> 是 <span class="math inline">\(n-2\)</span> 维超平面，<span class="math inline">\(s,t\)</span> 均保持 <span class="math inline">\(H\)</span> 不动。在商空间 <span class="math inline">\(V/H\)</span> 中，<span class="math inline">\(\alpha,\beta\)</span>
-仍然是两个线性无关的泛函，<span class="math inline">\(H_\alpha,H_\beta\)</span> 是两条不同的直线，<span class="math inline">\(K/H\)</span>
-变成这两条直线所夹的一个锥形区域。</p>
+<p>我们想分析如果 <span class="math inline">\(W_{s,t}\)</span>
+离散地作用在 <span class="math inline">\(V\)</span> 上，<span class="math inline">\(W_{s,t}\)</span>
+和万花筒的结构分别是怎样的。我们先来说明只要对 <span class="math inline">\(\dim V=2\)</span> 的情形分析即可。即本质上 <span class="math inline">\(W_{s,t}\)</span>
+对应的万花筒可以在二维中实现。为此只要对 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(t\)</span> 共同的“不动子空间”取商即可。</p>
+<p>记 <span class="math inline">\(H_\alpha=\{\alpha=0\},\,H_\beta=\{\beta=0\}\)</span>，<span class="math inline">\(H_\alpha,\,H_\beta\)</span> 都是 <span class="math inline">\(n-1\)</span> 维超平面，<span class="math inline">\(H=H_\alpha\cap H_\beta\)</span> 是 <span class="math inline">\(n-2\)</span> 维超平面，<span class="math inline">\(s,t\)</span> 均保持 <span class="math inline">\(H\)</span> 不动。在商空间 <span class="math inline">\(V/H\)</span> 中，<span class="math inline">\(\alpha,\beta\)</span>
+仍然是两个线性无关的泛函，<span class="math inline">\(H_\alpha,H_\beta\)</span> 是两条不同的直线，<span class="math inline">\(K/H\)</span> 是这两条直线所夹的一个锥形区域。</p>
 <p>我们有如下引理：</p>
 <blockquote>
 <p><strong>引理</strong>：<span class="math inline">\(K\)</span> 是
@@ -500,10 +496,19 @@ f,\,\alpha^\vee\rangle=\langle f-\langle
 <p><span class="math inline">\(\Leftarrow\)</span>：若不然，<span class="math inline">\(K\)</span> 不是基本区域，则存在 <span class="math inline">\(w\ne1,x\in K\)</span> 使得 <span class="math inline">\(wx\in K\)</span>，从而 <span class="math inline">\(wx + H \in K/H\)</span>，这与 <span class="math inline">\(K/H\)</span> 是 <span class="math inline">\(V/H\)</span> 中的基本区域矛盾。</p>
 <p>于是根据引理我们只要对 <span class="math inline">\(\dim V=2\)</span>
 的情况进行讨论。</p>
+<p>记矩阵 <span class="math display">\[A=\begin{pmatrix}\langle
+\alpha,\,\alpha^\vee\rangle&amp;\langle \alpha,\,\beta^\vee\rangle\\
+\langle \beta,\,\alpha^\vee\rangle&amp; \langle
+\beta,\,\beta^\vee\rangle\end{pmatrix} =
+\begin{pmatrix}2&amp;c_{s,t}\\c_{t,s}&amp;2\end{pmatrix}.\]</span> 其中
+<span class="math inline">\(c_{s,t}=\langle
+\alpha,\,\beta^\vee\rangle\)</span>，<span class="math inline">\(c_{t,s}=\langle
+\beta,\,\alpha^\vee\rangle\)</span>，并记 <span class="math inline">\(n_{s,t}=c_{s,t}c_{t,s}\)</span>。注意到给 <span class="math inline">\(\alpha,\alpha^\vee\)</span> 分别乘以非零实数 <span class="math inline">\(\lambda,\lambda^{-1}\)</span> 保持 <span class="math inline">\(s\)</span> 不变，给 <span class="math inline">\(\beta,\beta^\vee\)</span> 分别乘以非零实数 <span class="math inline">\(\mu,\mu^{-1}\)</span> 保持 <span class="math inline">\(t\)</span> 不变，<span class="math inline">\(c_{s,t}\)</span> 变为 <span class="math inline">\(\lambda/\mu c_{s,t}\)</span>，<span class="math inline">\(c_{t,s}\)</span> 变为 <span class="math inline">\(\mu/\lambda c_{t,s}\)</span>，但是乘积 <span class="math inline">\(n_{s,t}\)</span> 保持不变。后面会看到，<span class="math inline">\(n_{s,t}\)</span> 有点类似空间的曲率，它决定了
+<span class="math inline">\(W_{s,t}\)</span>
+这个万花筒具体实现的空间是球面、欧式、或是双曲的。</p>
 <blockquote><p><strong>定理</strong>：要使得 <span class="math inline">\(W_{s,t}\)</span> 离散地作用在 <span class="math inline">\(V\)</span> 上，则必须有:</p>
 <ol type="1">
-<li><span class="math inline">\(c_{s,t}=c_{t,s}\)</span> 同时为 0
-或者同时小于 0。</li>
+<li><span class="math inline">\(c_{s,t}\)</span> 和 <span class="math inline">\(c_{t,s}\)</span> 同时为 0 或者同时小于 0。</li>
 <li><span class="math inline">\(W_{s,t}\)</span> 是有限群且 <span class="math inline">\(n_{s,t}=4\cos^2(\pi/m)\)</span>，其中 <span class="math inline">\(m\)</span> 为 <span class="math inline">\(\geq2\)</span> 的正整数。</li>
 <li><span class="math inline">\(W_{s,t}\)</span> 是无限群且 <span class="math inline">\(n_{s,t}\geq 4\)</span>。</li>
 </ol>
@@ -518,39 +523,33 @@ f,\,\alpha^\vee\rangle=\langle f-\langle
 </blockquote>
 <p><strong>证明</strong>：我们先说明必须有 <span class="math inline">\(c_{s,t}\leq0\)</span> 且 <span class="math inline">\(c_{t,s}\leq0\)</span>。否则不妨设 <span class="math inline">\(c_{s,t}=\langle
 \alpha,\,\beta^\vee\rangle&gt;0\)</span>，我们可以给 <span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(\alpha^\vee\)</span> 分别乘以正实数 <span class="math inline">\(\lambda\)</span> 和 <span class="math inline">\(1/\lambda\)</span> 使得 <span class="math inline">\(\langle
-\alpha,\,\beta^\vee\rangle=2\)</span>，于是 <span class="math inline">\(s\)</span> 也把 <span class="math inline">\(\beta^\vee\)</span> 映射为 <span class="math inline">\(-\beta^\vee\)</span>。并记 <span class="math inline">\(k=\langle
+\alpha,\,\beta^\vee\rangle=2\)</span>，于是 <span class="math inline">\(s\)</span> 把 <span class="math inline">\(\pm\beta^\vee\)</span> 映射为 <span class="math inline">\(\mp\beta^\vee\)</span>。记 <span class="math inline">\(k=\langle
 \beta,\,\alpha^\vee\rangle\)</span>。</p>
-<p>接下来的论证思路是这样的：我们要找一个 <span class="math inline">\(W_{s,t}\)</span> 中的反射 <span class="math inline">\(w\ne1\)</span> 使得其超平面 <span class="math inline">\(w=0\)</span> 经过基本区域 <span class="math inline">\(K\)</span> 的内部，这样自然有 <span class="math inline">\(wK\cap K\)</span> 包含此超平面在 <span class="math inline">\(K\)</span> 内的部分，从而得出矛盾。这样的反射
-<span class="math inline">\(w\)</span> 必然可以写成“回文”字符串的形式
-(正读反读一样)，即形如 <span class="math inline">\(xsx^{-1}\)</span>
-或者 <span class="math inline">\(xtx^{-1}\)</span> 的形式。这是因为如果
-<span class="math inline">\(w\)</span> 以 <span class="math inline">\(s\)</span> 结尾，即 <span class="math inline">\(w\)</span> 可以写成 <span class="math inline">\(w=w's\)</span>，则关于超平面 <span class="math inline">\(w'H_\alpha\)</span> 的反射是 <span class="math inline">\(w'sw'^{-1}\)</span>。<span class="math inline">\(w\)</span> 以 <span class="math inline">\(t\)</span> 结尾的情形类似。</p>
+<p>接下来的论证思路是这样的：我们要找一个 <span class="math inline">\(W_{s,t}\)</span> 中的反射 <span class="math inline">\(w\ne1\)</span> 使得其超平面 <span class="math inline">\(w=0\)</span> 经过基本区域 <span class="math inline">\(K\)</span> 的内部，这样 <span class="math inline">\(wK\cap K\)</span> 包含此超平面在 <span class="math inline">\(K\)</span> 内的部分，从而得出矛盾。</p>
 <ol type="1">
 <li><p><span class="math inline">\(k=2\)</span>。这时 <span class="math inline">\(\langle \alpha,\,\beta^\vee\rangle=\langle
 \beta,\,\beta^\vee\rangle=2\)</span>，于是 <span class="math inline">\(\beta^\vee\in K\)</span>，<span class="math inline">\(st(\beta^\vee)=\beta^\vee\in
-K\)</span>，这与离散作用矛盾。(这种情况不需要回文形式)</p></li>
+K\)</span>，这与离散作用矛盾。</p></li>
 <li><p><span class="math inline">\(k\ne2\)</span>。注意到 <span class="math inline">\(\alpha^\vee - \beta^\vee\in
-H_\alpha\)</span>，考虑向量</p></li>
+H_\alpha\)</span>，考虑向量 <span class="math display">\[v =
+t(\alpha^\vee-\beta^\vee) =\alpha^\vee - \beta^\vee - (\beta,
+\alpha^\vee-\beta^\vee)\beta^\vee = \alpha^\vee-(k-1)\beta^\vee\in
+tH_\alpha.\]</span> 不难验证 <span class="math inline">\(\alpha(v)=4-2k\)</span>，<span class="math inline">\(\beta(v)=2-k\)</span>，由于 <span class="math inline">\(k\ne2\)</span> 所以 <span class="math inline">\(v\in K\)</span> 或者 <span class="math inline">\(-v\in K\)</span> 必有一个成立，于是 <span class="math inline">\(tH_\alpha\cap K\ne\emptyset\)</span>。</p>
+<p>考虑反射 <span class="math inline">\(tst\)</span>，其保持超平面 <span class="math inline">\(tH_\alpha\)</span> 不动。由于 <span class="math inline">\(tH_\alpha\cap K\ne\emptyset\)</span> 从而 <span class="math inline">\(tstK\cap K\ne\emptyset\)</span>，与 <span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span> 上的作用是离散的矛盾。</p></li>
 </ol>
-<p><span class="math display">\[v = t(\alpha^\vee-\beta^\vee)
-=\alpha^\vee - \beta^\vee - (\beta, \alpha^\vee-\beta^\vee)\beta^\vee =
-\alpha^\vee-(k-1)\beta^\vee\in tH_\alpha.\]</span> 不难验证 <span class="math inline">\(\alpha(v)=4-2k\)</span>，<span class="math inline">\(\beta(v)=2-k\)</span>，由于 <span class="math inline">\(k\ne2\)</span> 所以 <span class="math inline">\(v\in K\)</span> 或者 <span class="math inline">\(-v\in K\)</span> 必有一个成立，于是 <span class="math inline">\(tH_\alpha\cap K\ne\emptyset\)</span>。</p>
-<p>考虑反射 <span class="math inline">\(tst\)</span>，其对应的超平面为
-<span class="math inline">\(tH_\alpha\)</span>，将 <span class="math inline">\(t\alpha^\vee\)</span> 变为 <span class="math inline">\(-t\alpha^\vee\)</span>。由于 <span class="math inline">\(tH_\alpha\cap K\ne\emptyset\)</span> 从而 <span class="math inline">\(tstK\cap K\ne\emptyset\)</span>，与 <span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span> 上的作用是离散的矛盾。</p>
-<p>于是我们证明了必须有 <span class="math inline">\(c_{s,t}\leq0\)</span> 且 <span class="math inline">\(c_{t,s}\leq0\)</span>。接下来说明 <span class="math inline">\(c_{s,t}=0\)</span> 和 <span class="math inline">\(c_{t,s}=0\)</span> 必须同时成立。否则不妨设 <span class="math inline">\(c_{s,t}=0,c_{t,s}&lt;0\)</span>，同样我们可以给
+<p>于是我们证明了必须有 <span class="math inline">\(c_{s,t}\leq0\)</span> 且 <span class="math inline">\(c_{t,s}\leq0\)</span>。接下来说明 <span class="math inline">\(c_{s,t}=0\)</span> 和 <span class="math inline">\(c_{t,s}=0\)</span> 必须同时成立。否则不妨设 <span class="math inline">\(c_{s,t}=0,\,c_{t,s}&lt;0\)</span>，同样我们可以给
 <span class="math inline">\(\alpha,\alpha^\vee\)</span> 分别乘以正数
 <span class="math inline">\(\lambda,\lambda^{-1}\)</span> 使得 <span class="math inline">\(c_{t,s}=-2\)</span>，从而 <span class="math inline">\(\langle
 \beta,\,\alpha^\vee+\beta^\vee\rangle=0\)</span>，即 <span class="math inline">\(\alpha^\vee+\beta^\vee\in H_\beta\)</span>。</p>
 <p>考虑 <span class="math display">\[v=-ts(\alpha^\vee + \beta^\vee) =
 -t(-\alpha^\vee + \beta^\vee)= \alpha^\vee+3\beta^\vee\in
 tsH_\beta.\]</span> 不难验证 <span class="math inline">\(\langle
-\alpha,\,v\rangle = 2,\langle \beta,\,v\rangle = 4\)</span>，于是 <span class="math inline">\(v\in tsH_\beta\cap
-K\)</span>。同理关于此超平面的反射为 <span class="math inline">\(tstst\)</span>，它保持 <span class="math inline">\(v\)</span> 不动所以 <span class="math inline">\(v\in tststK\cap K\)</span>，矛盾。</p>
+\alpha,\,v\rangle = 2,\langle \beta,\,v\rangle = 4\)</span>，于是 <span class="math inline">\(v\in K\)</span>。反射 <span class="math inline">\(tstst\)</span> 保持超平面 <span class="math inline">\(tsH_\beta\)</span> 不动，从而保持 <span class="math inline">\(v\)</span> 不动，所以 <span class="math inline">\(v\in tststK\cap K\)</span>，矛盾。</p>
 <p>至此我们知道 <span class="math inline">\(n_{s,t}\)</span>
 必须大于等于 0。下面针对 <span class="math inline">\(n_{s,t}\)</span>
 的值分情况讨论，我们将会看到它们可以分成三种不同的情形：仿射、有限和双曲。</p>
 <h2 id="仿射n_st4">仿射：<span class="math inline">\(n_{s,t}=4\)</span></h2>
-<p>我们可以通过给 <span class="math inline">\(\alpha,\alpha^\vee\)</span> 分别乘以正数 <span class="math inline">\(\lambda,\lambda^{-1}\)</span> 使得 <span class="math inline">\(c_{s,t}=c_{t,s}=-2\)</span>，从而 <span class="math display">\[A =
+<p><span class="math inline">\(n_{s,t}=4\)</span> 时我们可以通过给 <span class="math inline">\(\alpha,\alpha^\vee\)</span> 分别乘以正数 <span class="math inline">\(\lambda,\lambda^{-1}\)</span> 使得 <span class="math inline">\(c_{s,t}=-2\)</span>，那自然 <span class="math inline">\(c_{t,s}\)</span> 也等于 <span class="math inline">\(-2\)</span>，从而 <span class="math display">\[A =
 \begin{pmatrix}2&amp;-2\\-2&amp;2\end{pmatrix}.\]</span></p>
 <p>不难计算发现 <span class="math inline">\(t(\alpha)=\alpha-\langle
 \beta^\vee,\,\alpha\rangle\beta=\alpha+2\beta\)</span>，以此类推有 <span class="math display">\[\alpha\xrightarrow{\ t\
@@ -562,7 +561,8 @@ K\)</span>。同理关于此超平面的反射为 <span class="math inline">\(ts
 }-3\alpha - 4\beta\xrightarrow{\ s\ }\cdots\]</span> <span class="math display">\[\beta\xrightarrow{\ t\ }-\beta\xrightarrow{\ s\
 }-2\alpha-\beta\xrightarrow{\ t\ }-2\alpha-3\beta\xrightarrow{\ s\
 }-4\alpha-3\beta\xrightarrow{\ t\ }\cdots\]</span>
-是将前面两个链分别取负值，即 <span class="math inline">\(\{\alpha,\beta\}\)</span> 在 <span class="math inline">\(W_{s,t}\)</span> 的作用下构成的集合为 <span class="math inline">\(\Phi=\{m\alpha+n\beta\}\)</span>，其中 <span class="math inline">\(m,n\)</span> 至多相差 1，并且 <span class="math inline">\(m,n\)</span> 同时非正或者同时非负。<strong><span class="math inline">\(\Phi\)</span> 叫做 <span class="math inline">\(W_{s,t}\)</span>
+是将前面两个链分别取负值，即 <span class="math inline">\(\{\alpha,\beta\}\)</span> 在 <span class="math inline">\(W_{s,t}\)</span> 的作用下构成的集合为 <span class="math inline">\(\Phi=\{m\alpha+n\beta\}\)</span>，其中系数 <span class="math inline">\(m,n\)</span> 都是整数，<span class="math inline">\(m,n\)</span> 至多相差
+1，并且同时非正或者同时非负。<strong><span class="math inline">\(\Phi\)</span> 叫做 <span class="math inline">\(W_{s,t}\)</span>
 的根系</strong>，它由两个不相交的子集组成：<span class="math inline">\(\Phi=\Phi^+\cup\Phi^-\)</span>，其中 <span class="math inline">\(\Phi^+\)</span> 包含所有非负的线性组合，<span class="math inline">\(\Phi^-\)</span> 包含所有非正的线性组合，且 <span class="math inline">\(\Phi^+=-\Phi^-\)</span>。<strong><span class="math inline">\(\Phi^+\)</span> 中的根叫做正根，<span class="math inline">\(\Phi^-\)</span> 中的根叫做负根</strong>。</p>
 <p>设 <span class="math inline">\(\{e_\alpha,e_\beta\}\)</span> 是 <span class="math inline">\(V\)</span> 的一组关于 <span class="math inline">\(\alpha,\beta\)</span> 的对偶基： <span class="math display">\[\langle \alpha,\,e_\alpha\rangle=\langle
 \beta,\,e_\beta\rangle=1,\quad \langle \alpha,\,e_\beta\rangle=\langle
@@ -571,20 +571,20 @@ x&gt;0,y&gt;0\}\]</span> 为第一象限，<span class="math inline">\(\alpha^\v
 <span class="math inline">\(\alpha^\vee=-\beta^\vee\)</span>
 且二者均位于直线 <span class="math inline">\(\ell:x+y=0\)</span>
 上。</p>
-<p>对任何 <span class="math inline">\(w\in W_{s,t}\)</span>, 我们有
-<span class="math inline">\(v\in wK\Leftrightarrow w^{-1}v\in
-K\)</span>，所以 <span class="math display">\[\begin{align*}wK&amp;=\left\{v\in V\colon\
-\langle \alpha,\,w^{-1}v\rangle&gt;0 \text{\ and\ } \langle
-\beta,\,w^{-1}v\rangle&gt;0\right\}\\&amp;=\left\{v\in V\colon\ \langle
+<p>对任何 <span class="math inline">\(w\in W_{s,t}\)</span>, 不难验证
+<span class="math display">\[wK=\left\{v\in V\colon\ \langle
 w\alpha,\,v\rangle&gt;0 \text{\ and\ } \langle
-w\beta,\,v\rangle&gt;0\right\}\end{align*}\]</span> 当 <span class="math inline">\(w\ne1\)</span> 时，注意到 <span class="math inline">\(w\alpha\)</span> 和 <span class="math inline">\(w\beta\)</span> 必然一个属于 <span class="math inline">\(\Phi^+\)</span>，另一个属于 <span class="math inline">\(\Phi^-\)</span>，不妨设 <span class="math inline">\(w\alpha=m\alpha+n\beta\in\Phi^-\)</span>，于是
+w\beta,\,v\rangle&gt;0\right\}.\]</span>
+（等式的证明很简单，我与其啰嗦地写一个证明，还不如请读者自行目视并在脑海中验证一下~）</p>
+<p>当 <span class="math inline">\(w\ne1\)</span> 时，注意到 <span class="math inline">\(w\alpha\)</span> 和 <span class="math inline">\(w\beta\)</span> 必然一个属于 <span class="math inline">\(\Phi^+\)</span>，另一个属于 <span class="math inline">\(\Phi^-\)</span>（取决于 <span class="math inline">\(w\)</span> 是以 <span class="math inline">\(s\)</span> 结尾还是以 <span class="math inline">\(t\)</span> 结尾），不妨设 <span class="math inline">\(w\alpha=m\alpha+n\beta\in\Phi^-\)</span>，于是
 <span class="math inline">\(m\leq0,n\leq0\)</span> 且 <span class="math inline">\(m,n\)</span> 不全为 0，设 <span class="math inline">\(v=xe_\alpha+ye_\beta\)</span>，则 <span class="math display">\[wK\subset \{v\in V\colon\ \langle
 w\alpha,\,v\rangle&gt; 0 \} =\{(x,y)\in\mathbb{R}^2\colon\ mx+ny &gt;
-0\}.\]</span> 显然上式右边与第一象限 <span class="math inline">\(K\)</span> 的交为空，所以 <span class="math inline">\(W_{s,t}\)</span> 离散地作用在 <span class="math inline">\(V\)</span> 上。</p>
-<p>为了画图好看我们可以取 <span class="math inline">\(\{e_\alpha-e_\beta,e_\beta\}\)</span> 为 <span class="math inline">\(V\)</span> 的一组基，这时 <span class="math inline">\(\alpha^\vee=(2,0),\beta^\vee=-\alpha^\vee\)</span>，二者均位于
-<span class="math inline">\(x\)</span> 轴上且方向相反。超平面 <span class="math inline">\(H_\alpha\)</span> 为 <span class="math inline">\(y\)</span> 轴，<span class="math inline">\(H_\beta\)</span> 为直线 <span class="math inline">\(y=x\)</span>，基本区域 <span class="math inline">\(K\)</span> 是直线 <span class="math inline">\(x=0\)</span> 和 <span class="math inline">\(y=x\)</span> 所夹的锥形区域，如下图所示：</p>
+0\}.\]</span> 显然上式右边与基本区域 <span class="math inline">\(K\)</span>，也就是第一象限的交为空，所以 <span class="math inline">\(W_{s,t}\)</span> 确实是离散地作用在 <span class="math inline">\(V\)</span> 上。</p>
+<p>为了画图好看我们可以取 <span class="math inline">\(\{e_\alpha-e_\beta,e_\beta\}\)</span> 为 <span class="math inline">\(V\)</span> 的一组基，这时 <span class="math inline">\(\alpha^\vee=(2,0),\beta^\vee=-\alpha^\vee\)</span>。超平面
+<span class="math inline">\(H_\alpha\)</span> 为 <span class="math inline">\(y\)</span> 轴，<span class="math inline">\(H_\beta\)</span> 为直线 <span class="math inline">\(y=x\)</span>，基本区域 <span class="math inline">\(K\)</span> 是直线 <span class="math inline">\(x=0\)</span> 和 <span class="math inline">\(y=x\)</span> 所夹的锥形区域，如下图所示：</p>
 <p><img style="margin:0px auto;display:block" width="600" src="/images/coxeter-groups/affine2d.svg"></p>
-<p>可见 <span class="math inline">\(K\)</span> 在 <span class="math inline">\(W_{s,t}\)</span> 的作用下填满了整个上半平面 <span class="math inline">\(\{y&gt;0\}\)</span>，记 <span class="math inline">\(\overline{K}\)</span> 为 <span class="math inline">\(K\)</span> 的闭包， <span class="math display">\[\mathcal{C}=\bigcup_{w\in
+<p>可见 <span class="math inline">\(K\)</span> 在 <span class="math inline">\(W_{s,t}\)</span> 的作用下填满了整个上半平面 <span class="math inline">\(\{y&gt;0\}\)</span>。</p>
+<p>记 <span class="math inline">\(\overline{K}\)</span> 为 <span class="math inline">\(K\)</span> 的闭包， <span class="math display">\[\mathcal{C}=\bigcup_{w\in
 W_{s,t}}w\overline{K},\]</span> <span class="math inline">\(\mathcal{C}\)</span> 叫做 <strong>Tits
 锥</strong>，它由 <span class="math inline">\(\{y &gt;
 0\}\cup\{(0,0)\}\)</span> 组成。</p>
@@ -632,7 +632,7 @@ W_{s,t}}w\overline{K}\)</span> 是全空间。</p>
 \theta}{\sin\theta}\beta\xrightarrow{\ t\ }\dfrac{\sin
 2\theta}{\sin\theta}\alpha+\dfrac{\sin
 3\theta}{\sin\theta}\beta\xrightarrow{\ s\ }\cdots\]</span> 同理以 <span class="math inline">\(\alpha\xrightarrow{\ s\ }\)</span> 和 <span class="math inline">\(\beta\xrightarrow{\ t\ }\)</span>
-开始的链不过是分别将上面的两个链取负值，所以 <span class="math inline">\(\{\alpha,\beta\}\)</span> 在 <span class="math inline">\(W_{s,t}\)</span> 的作用下的集合为 <span class="math display">\[\Phi =\left\{\dfrac{\sin
+开始的链是分别将上面的两个链取负值，所以 <span class="math inline">\(\{\alpha,\beta\}\)</span> 在 <span class="math inline">\(W_{s,t}\)</span> 的作用下的集合为 <span class="math display">\[\Phi =\left\{\dfrac{\sin
 k\theta}{\sin\theta}\alpha + \dfrac{\sin (k\pm
 1)\theta}{\sin\theta}\beta,\ k\in\mathbb{Z}\right\}.\]</span> 但是这次
 <span class="math inline">\(\Phi\)</span> 其实是包含 <span class="math inline">\(2m\)</span> 个元素的有限集，因为 <span class="math inline">\(k+2m\)</span> 和 <span class="math inline">\(k\)</span> 对应的是同样的元素，而 <span class="math inline">\(k+m\)</span> 则是将 <span class="math inline">\(k\)</span> 对应的元素取负，所以 <span class="math inline">\(\Phi\)</span> 仍然是两个不交集合的并：<span class="math inline">\(\Phi=\Phi^+\cup\Phi^-\)</span>，其中 <span class="math display">\[\Phi^+=\left\{ \dfrac{\sin
@@ -669,7 +669,7 @@ k\theta}{\sinh\theta}\alpha + \dfrac{\sinh (k\pm
 所以 <span class="math inline">\(st\)</span> 是一个角度为 <span class="math inline">\(2\theta\)</span> 的双曲旋转。</p>
 <p>仿照仿射的情形不难证明 <span class="math inline">\(W_{s,t}\)</span>
 在 <span class="math inline">\(V\)</span>
-上的作用是离散的。实际上完全可以把仿射情形的证明照抄在这里，它们是一模一样的。唯一的一点细节区别只是把
+上的作用是离散的。实际上完全可以把仿射情形的证明照抄在这里，它们是一模一样的，唯一的区别只是把
 <span class="math inline">\(m,n\)</span> 换成 <span class="math inline">\(\dfrac{\sinh m\theta}{\sinh\theta}\)</span> 和
 <span class="math inline">\(\dfrac{\sinh
 n\theta}{\sinh\theta}\)</span>。</p>

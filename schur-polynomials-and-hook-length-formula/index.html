@@ -21,7 +21,8 @@ Young
 举个例子，假设有 \(n=10\) 位选民和
 \(m=4\) 个候选人，则得票序列 \[1, 2, 1, 3, 2, 1, 2, 4, 3, 1\]
 表示第一个选民投票给 1 号，第二个选民投票给 2 号，第三个选民投票给 1
-号，第四个选民投票给 3 号，依次类推。问题的要求等价于对任何 \(1\leq k\leq n\) 和 \(1\leq i&amp;lt;j\leq m\)，序列的前 \(k\) 项中数字 \(i\) 出现的次数都大于等于数字 \(j\) 出现的次数。
+号，第四个选民投票给 3 号，依次类推。符合问题要求的序列必须满足对任何
+\(1\leq k\leq n\) 和 \(1\leq i&amp;lt;j\leq m\)，序列的前 \(k\) 项中数字 \(i\) 出现的次数都大于等于数字 \(j\) 出现的次数。
 
 虽然问题的表述很简单，但其实答案相当复杂，绝非一般的初等方法所能解决。对付它的最好方法是
 Schur 多项式的理论，我接下来就来介绍它。">
@@ -382,7 +383,8 @@ Schur 多项式的理论，我接下来就来介绍它。">
 <p>举个例子，假设有 <span class="math inline">\(n=10\)</span> 位选民和
 <span class="math inline">\(m=4\)</span> 个候选人，则得票序列 <span class="math display">\[1, 2, 1, 3, 2, 1, 2, 4, 3, 1\]</span>
 表示第一个选民投票给 1 号，第二个选民投票给 2 号，第三个选民投票给 1
-号，第四个选民投票给 3 号，依次类推。问题的要求等价于对任何 <span class="math inline">\(1\leq k\leq n\)</span> 和 <span class="math inline">\(1\leq i&lt;j\leq m\)</span>，序列的前 <span class="math inline">\(k\)</span> 项中数字 <span class="math inline">\(i\)</span> 出现的次数都大于等于数字 <span class="math inline">\(j\)</span> 出现的次数。</p>
+号，第四个选民投票给 3 号，依次类推。符合问题要求的序列必须满足对任何
+<span class="math inline">\(1\leq k\leq n\)</span> 和 <span class="math inline">\(1\leq i&lt;j\leq m\)</span>，序列的前 <span class="math inline">\(k\)</span> 项中数字 <span class="math inline">\(i\)</span> 出现的次数都大于等于数字 <span class="math inline">\(j\)</span> 出现的次数。</p>
 </blockquote>
 <p>虽然问题的表述很简单，但其实答案相当复杂，绝非一般的初等方法所能解决。对付它的最好方法是
 Schur 多项式的理论，我接下来就来介绍它。</p>
@@ -752,6 +754,9 @@ Young 表一一对应即可。看起来只要对每个形状为 <span class="mat
 </blockquote>
 <p>下图中演示了 <span class="math inline">\(i=2\)</span>
 的例子，绿色显示了匹配的元素，红色显示了未匹配的元素。</p>
+<style>
+table {max-width: 45%}
+</style>
 <table style="width:100%;">
 <colgroup>
 <col style="width: 14%">
@@ -770,19 +775,19 @@ Young 表一一对应即可。看起来只要对每个形状为 <span class="mat
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;"><font color="green">2</font></td>
+<td style="text-align: center;"><span style="color:green">2</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><font color="green">2</font></td>
-<td style="text-align: center;"><font color="red">2</font></td>
-<td style="text-align: center;"><font color="red">2</font></td>
-<td style="text-align: center;"><font color="red">2</font></td>
-<td style="text-align: center;"><font color="red">3</font></td>
-<td style="text-align: center;"><font color="red">3</font></td>
-<td style="text-align: center;"><font color="green">3</font></td>
+<td style="text-align: center;"><span style="green">2</span></td>
+<td style="text-align: center;"><span style="color:red">2</span></td>
+<td style="text-align: center;"><span style="color:red">2</span></td>
+<td style="text-align: center;"><span style="color:red">2</span></td>
+<td style="text-align: center;"><span style="color:red">3</span></td>
+<td style="text-align: center;"><span style="color:red">3</span></td>
+<td style="text-align: center;"><span style="color:green">3</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><font color="green">3</font></td>
+<td style="text-align: center;"><span style="color:green">3</span></td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">4</td>
 <td style="text-align: center;"></td>
