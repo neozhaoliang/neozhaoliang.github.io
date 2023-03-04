@@ -1044,8 +1044,11 @@ P.\]</span> 将 <span class="math inline">\(\det P\)</span> 按照 <span class="
 中包含某个回路 <span class="math inline">\(C\)</span>
 的话，我们可以适当重排它们并选取 <span class="math inline">\(a_i\in\{+1,-1,0\}\)</span> 使得 <span class="math inline">\(\sum_{i=1}^k
 a_i\chi^{e_i}=f_C\in\lozenge\)</span>，这里对不属于 <span class="math inline">\(C\)</span> 的 <span class="math inline">\(e_i\)</span> 取 <span class="math inline">\(a_i=0\)</span>，对属于 <span class="math inline">\(C\)</span> 的 <span class="math inline">\(e_i\)</span> 通过选择 <span class="math inline">\(a_i=\pm1\)</span>
-使得它们的方向为依次首尾相接。则对任何固定的 <span class="math inline">\(1\leq m\leq k\)</span>，有 <span class="math display">\[\sum_{i=1}^ka_ir(e_i)Y^{(k)}(e_m,e_i)=\sum_{i=1}^ka_ir(e_i)i^{e_m}(e_i).\]</span>
-根据基尔霍夫电压定律，绕回路一圈电势的改变为 0，所以 <span class="math inline">\(Y^{(k)}\)</span> 的列是线性相关的，从而 <span class="math inline">\(\mathbb{P}(e_1,\ldots,e_k\in T)=\det
+使得它们的方向为依次首尾相接。根据基尔霍夫电压定律，对任何电流 <span class="math inline">\(i^{e_m}\,(1\leq m\leq
+k)\)</span>，其绕回路一圈电势的改变为 0，所以 <span class="math display">\[ 0 =
+\sum_{i=1}^kr(e_i)i^{e_m}(a_ie_i)=\sum_{i=1}^ka_ir(e_i)i^{e_m}(e_i)=\sum_{i=1}^ka_ir(e_i)Y^{(k)}(e_m,e_i).\]</span>
+所以 <span class="math inline">\(Y^{(k)}\)</span> 的列是线性相关的，从而
+<span class="math inline">\(\mathbb{P}(e_1,\ldots,e_k\in T)=\det
 Y^{(k)}=0\)</span>，结论成立。</p></li>
 <li><p>如果 <span class="math inline">\(\{e_1,\ldots,e_k\}\)</span>
 中不包含回路的话，对边的个数 <span class="math inline">\(k\)</span>
