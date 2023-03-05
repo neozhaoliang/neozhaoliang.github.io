@@ -389,20 +389,17 @@ Möbius 变换 <span class="math inline">\(M\)</span> 作为 Poincaré
 双曲空圆盘 <span class="math inline">\(\mathbb{H}\)</span>
 上的等距的两种构造方法：</p>
 <ol type="1">
-<li>指定 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\mathbb{H}\)</span>
-中不动点的位置，根据不动点的位置变换可以分成椭圆/抛物/双曲三种不同类型，此外还需要再额外指定一个旋转角度（椭圆）/平移距离（抛物）/缩放因子（双曲）。</li>
-<li>指定两条 <span class="math inline">\(\mathbb{H}\)</span>
-中的测地线作为镜面，则关于这两个镜面的反演变换的复合变换是一个 Möbius
-变换，此变换是椭圆/抛物/双曲型的，当且仅当这对镜面在 <span class="math inline">\(\mathbb{H}\)</span> 中是相交/平行/超平行的。</li>
+<li>指定 <span class="math inline">\(M\)</span>
+的不动点的位置，不动点的位置就可以决定变换的类型。</li>
+<li>指定两个反射镜面的位置：取 <span class="math inline">\(\mathbb{H}\)</span>
+中的两条测地线作为镜面，则关于这两个镜面的反演变换的复合变换就是一个
+Möbius 变换。镜面之间的关系也可以决定变换的类型。</li>
 </ol>
 <p>这两种方法分别对应在 <span class="math inline">\(M\)</span>
 作用下保持不变的两个圆族。</p>
 <p>本文的插图使用 <a target="_blank" rel="noopener" href="https://matplotlib.org/">matplotlib</a>
-绘制，代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/mobius">github</a>
-上。没有使用 shader 画的一个原因是因为计划用这部分代码继续画 circle
-packing，另一个原因是采用 Python
-实现可以比较严格的遵循数学逻辑。当然如果后面有时间也不排除加上 shader
-动画的可能。</p>
+绘制，代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/mobius">Github</a>
+上。</p>
                 </div>
             
         </div>

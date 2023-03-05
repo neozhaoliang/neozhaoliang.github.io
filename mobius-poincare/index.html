@@ -16,20 +16,17 @@ Möbius 变换 \(M\) 作为 Poincaré
 双曲空圆盘 \(\mathbb{H}\)
 上的等距的两种构造方法：
 
-指定 \(M\) 在 \(\mathbb{H}\)
-中不动点的位置，根据不动点的位置变换可以分成椭圆/抛物/双曲三种不同类型，此外还需要再额外指定一个旋转角度（椭圆）/平移距离（抛物）/缩放因子（双曲）。
-指定两条 \(\mathbb{H}\)
-中的测地线作为镜面，则关于这两个镜面的反演变换的复合变换是一个 Möbius
-变换，此变换是椭圆/抛物/双曲型的，当且仅当这对镜面在 \(\mathbb{H}\) 中是相交/平行/超平行的。
+指定 \(M\)
+的不动点的位置，不动点的位置就可以决定变换的类型。
+指定两个反射镜面的位置：取 \(\mathbb{H}\)
+中的两条测地线作为镜面，则关于这两个镜面的反演变换的复合变换就是一个
+Möbius 变换。镜面之间的关系也可以决定变换的类型。
 
 这两种方法分别对应在 \(M\)
 作用下保持不变的两个圆族。
 本文的插图使用 matplotlib
-绘制，代码在 github
-上。没有使用 shader 画的一个原因是因为计划用这部分代码继续画 circle
-packing，另一个原因是采用 Python
-实现可以比较严格的遵循数学逻辑。当然如果后面有时间也不排除加上 shader
-动画的可能。">
+绘制，代码在 Github
+上。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -380,20 +377,17 @@ Möbius 变换 <span class="math inline">\(M\)</span> 作为 Poincaré
 双曲空圆盘 <span class="math inline">\(\mathbb{H}\)</span>
 上的等距的两种构造方法：</p>
 <ol type="1">
-<li>指定 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\mathbb{H}\)</span>
-中不动点的位置，根据不动点的位置变换可以分成椭圆/抛物/双曲三种不同类型，此外还需要再额外指定一个旋转角度（椭圆）/平移距离（抛物）/缩放因子（双曲）。</li>
-<li>指定两条 <span class="math inline">\(\mathbb{H}\)</span>
-中的测地线作为镜面，则关于这两个镜面的反演变换的复合变换是一个 Möbius
-变换，此变换是椭圆/抛物/双曲型的，当且仅当这对镜面在 <span class="math inline">\(\mathbb{H}\)</span> 中是相交/平行/超平行的。</li>
+<li>指定 <span class="math inline">\(M\)</span>
+的不动点的位置，不动点的位置就可以决定变换的类型。</li>
+<li>指定两个反射镜面的位置：取 <span class="math inline">\(\mathbb{H}\)</span>
+中的两条测地线作为镜面，则关于这两个镜面的反演变换的复合变换就是一个
+Möbius 变换。镜面之间的关系也可以决定变换的类型。</li>
 </ol>
 <p>这两种方法分别对应在 <span class="math inline">\(M\)</span>
 作用下保持不变的两个圆族。</p>
 <p>本文的插图使用 <a target="_blank" rel="noopener" href="https://matplotlib.org/">matplotlib</a>
-绘制，代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/mobius">github</a>
-上。没有使用 shader 画的一个原因是因为计划用这部分代码继续画 circle
-packing，另一个原因是采用 Python
-实现可以比较严格的遵循数学逻辑。当然如果后面有时间也不排除加上 shader
-动画的可能。</p>
+绘制，代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/mobius">Github</a>
+上。</p>
 <span id="more"></span>
 <blockquote><p>记号约定：</p>
 <ul>
@@ -427,9 +421,8 @@ a}{1-\overline{a}z},\quad \theta\in\mathbb{R},\, |a|&lt;1.\]</span> 可见
 <li>第二族圆用虚线标注，这些圆都和第一族圆正交、同时经过 <span class="math inline">\(p_1\)</span> 和 <span class="math inline">\(p_2\)</span>，并且都与单位圆正交。<span class="math inline">\(M\)</span>
 作用在这些圆上会把一个圆变成同族中的另一个。</li>
 </ol>
-<p>注意双曲空间中的圆也是欧式空间中的圆，但是它们的圆心未必重合。双曲度量下越靠近边界，它和欧式距离相比的“比例尺”就越大，所以如果一个
-<span class="math inline">\(\mathbb{H}\)</span>
-中的圆靠近单位圆，它在双曲度量下的中心也会被“吸引”到靠近边界的位置。</p>
+<p>双曲空间中的圆也是欧式空间中的圆，但是它们的圆心未必重合。一个 <span class="math inline">\(\mathbb{H}\)</span>
+中的圆越靠近边界，它的双曲度量下的圆心也会被“吸引”到靠近边界的位置。</p>
 <h2 id="抛物型">抛物型</h2>
 <p>抛物型变换共轭于复平面上的平移 <span class="math inline">\(z\to
 z+1\)</span>，它们总是只有一个不动点。如果 <span class="math inline">\(M\)</span> 是 <span class="math inline">\(\mathbb{H}\)</span>
@@ -499,14 +492,19 @@ cz,\,c\in\mathbb{R}^+\)</span>，它们总是有两个不动点。如果 <span c
 <li>椭圆型变换共轭于绕原点的角度为 <span class="math inline">\(\theta\)</span> 的旋转，此旋转是两个夹角为 <span class="math inline">\(\theta/2\)</span>
 的直线反射的复合。<strong>这两个直线可以选取为 Poincaré
 空间中过原点的两直线</strong>。</li>
-<li>抛物型变换共轭于平移 <span class="math inline">\(z\to z +
-1\)</span>，此平移是关于两平行直线 <span class="math inline">\(x=0\)</span> 和 <span class="math inline">\(x=1/2\)</span>
-的反射的复合。<strong>这两条直线位于上半双曲空间模型中</strong>，我们可以用一个从上半空间到
-<span class="math inline">\(\mathbb{H}\)</span> 的等距变换把 <span class="math inline">\(\infty\)</span> 点变到边界上任意一点 <span class="math inline">\(p\)</span>，所有的形如 <span class="math inline">\(x=k\)</span> 的直线都变成过 <span class="math inline">\(p\)</span> 点、与单位圆正交，且两两相切于 <span class="math inline">\(p\)</span> 的圆。</li>
-<li>双曲型变换共轭于缩放 <span class="math inline">\(z\to
-cz,\,c&gt;0\)</span>，此变换是关于两个同心圆 <span class="math inline">\(|z|=1\)</span> 和 <span class="math inline">\(|z|=\sqrt{c}\)</span>
-反演变换的复合。<strong>这两个圆需要位于上半双曲空间</strong>，然后变换回
-<span class="math inline">\(\mathbb{H}\)</span>。</li>
+<li>抛物型变换共轭于平移 <span class="math inline">\(T:z\to z +
+1\)</span>，<span class="math inline">\(T\)</span>
+是上半双曲空间模型中的等距，它可以表示为关于两平行直线 <span class="math inline">\(x=0\)</span> 和 <span class="math inline">\(x=1/2\)</span>
+的反射的复合。我们可以用一个从上半空间到 <span class="math inline">\(\mathbb{H}\)</span>
+的等距变换把实轴变成单位圆周，并把 <span class="math inline">\(\infty\)</span> 点变到边界上的指定点 <span class="math inline">\(p\)</span>。这时所有形如 <span class="math inline">\(x=k\)</span>
+的直线，由于它们过原点、互相平行、与实轴正交，所以都会变成过 <span class="math inline">\(p\)</span> 点、两两相切于 <span class="math inline">\(p\)</span>、且与单位圆正交的圆。</li>
+<li>双曲型变换共轭于缩放 <span class="math inline">\(S:z\to
+cz,\,c&gt;0\)</span>，<span class="math inline">\(S\)</span>
+是<strong>上半空间模型</strong>中两个同心圆 <span class="math inline">\(|z|=1\)</span> 和 <span class="math inline">\(|z|=\sqrt{c}\)</span> 的反演变换的复合。<span class="math inline">\(S\)</span>
+的两个不动点是原点和无穷远点，它们关于这两个同心圆互为反演点。同理我们可以用一个从上半空间到
+<span class="math inline">\(\mathbb{H}\)</span>
+的等距变换把实轴变成单位圆，并把原点和无穷远点分别映射到单位圆周上指定的两个不动点。这两个同心圆会被映射为
+<span class="math inline">\(\mathbb{H}\)</span> 中的两条测地线。</li>
 </ul>
 <blockquote><p><strong>注</strong>：为什么两个圆的反演变换的复合是一个 Möbius
 变换？对一个圆 <span class="math inline">\(C\)</span>，你可以用一个
