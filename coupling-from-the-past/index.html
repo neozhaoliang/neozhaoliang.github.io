@@ -11,7 +11,7 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文是完美取样系列三部曲的最后一部，目的是介绍 Markov 链上的 coupling
-from the past 算法 (以下简称 CFTP
+from the past 算法 （以下简称 CFTP
 )。之前的两部曲分别是多米诺洗牌算法和 Wilson 均匀生成树算法。
 本文的代码在 github
 上。
@@ -364,7 +364,7 @@ past</span></a></li><li class="section table-of-contents-item section table-of-c
 
             <div class="entry pink-link-context">
                 <p>本文是完美取样系列三部曲的最后一部，目的是介绍 Markov 链上的 coupling
-from the past 算法 (以下简称 <em>CFTP
+from the past 算法 （以下简称 <em>CFTP
 </em>)。之前的两部曲分别是多米诺洗牌算法和 Wilson 均匀生成树算法。</p>
 <p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/cftp">github</a>
 上。</p>
@@ -385,13 +385,13 @@ Aztec 钻石图的所有密铺中取样；Wilson
 <blockquote><p><strong>Macmahon 公式</strong>：记 <span class="math inline">\(H(a,b,c)\)</span>
 为所求的六边形的不同菱形密铺的个数，则 <span class="math display">\[H(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
 </blockquote>
-<p>(多说一句，从这个表达式里你能看出它的结果是个整数吗？)</p>
-<p>关于 Macmahon 公式的更多故事可以参见我的<a href="/macmahon-formula-plane-partitions/">另一篇文章</a>，这里不再多介绍。但是不难看到
+<p>（多说一句，从这个表达式里你能看出它的结果是个整数吗？)</p>
+<p>关于 Macmahon 公式的更多故事可以参见我的 <a href="/macmahon-formula-plane-partitions/">另一篇文章</a>，这里不再多介绍。但是不难看到
 <span class="math inline">\(H(a,b,c)\)</span> 的值是指数级增长的，比如对
 <span class="math inline">\(a=b=c=10\)</span> 这种比较小的情形 <span class="math inline">\(H(a,b,c)\approx
 9.265\times10^{33}\)</span>，已经是一个天文数字了。那好问题来了：</p>
 <blockquote><p><strong>问题 2</strong>：怎样在所有 <span class="math inline">\(H(a,b,c)\)</span>
-种不同的密铺中完全随机地任选一种？(即按照均匀分布取样)</p>
+种不同的密铺中完全随机地任选一种？（即按照均匀分布取样）</p>
 </blockquote>
 <p>由于 <span class="math inline">\(H(a,b,c)\)</span>
 很大所以我们不可能先把所有密铺列出来然后再挑选，所以得设计一个聪明点的方式，这就是
@@ -406,11 +406,11 @@ CFTP 算法大显身手的地方。</p>
 这个方法非常简单易行，但是它有两个缺陷：首先它只是一个近似算法，不管
 <span class="math inline">\(n\)</span> 取得多么大，返回的 <span class="math inline">\(s_n\)</span> 的分布只是近似而非严格等于平稳分布
 <span class="math inline">\(\pi\)</span>；其次为了获得足够的精度采样所需的时间
-<span class="math inline">\(n\)</span> (叫做 mixing time)
+<span class="math inline">\(n\)</span> （叫做 mixing time)
 也不总是那么容易估计的。那么有没有什么办法可以给出 "精确地" 服从分布
 <span class="math inline">\(\pi\)</span> 的采样呢？</p>
-<p>Propp 和 Wilson 提出了如下的想法：既然从初始状态出发向未来 (<span class="math inline">\(+\infty\)</span> 方向) 跑 Markov
-链只能无限接近平稳分布，我们何不从无穷远的过去 (<span class="math inline">\(-\infty\)</span> 方向) 向现在 (时刻 0)
+<p>Propp 和 Wilson 提出了如下的想法：既然从初始状态出发向未来 (<span class="math inline">\(+\infty\)</span> 方向） 跑 Markov
+链只能无限接近平稳分布，我们何不从无穷远的过去 (<span class="math inline">\(-\infty\)</span> 方向） 向现在 （时刻 0)
 跑呢？可以想象当这个链经过了无穷次迭代后，其 0 时刻的状态 <span class="math inline">\(s_0\)</span> 服从的分布就是平稳分布 <span class="math inline">\(\pi\)</span>。当然我们没法做到真的从无穷远的过去出发，只可能是选择一个足够大的
 <span class="math inline">\(n\)</span> 然后从时刻 <span class="math inline">\(-n\)</span> 时刻出发向时刻 0
 跑，但是这样的话就和从 0 时刻向时刻 <span class="math inline">\(n\)</span> 跑没有什么区别了。Propp 和 Wilson
@@ -421,7 +421,7 @@ coupling from the past 的由来。</p>
 <p>为了准确的描述 CFTP 算法，我们需要借助 Markov 链的随机映射表示
 (random mapping representation)。</p>
 <h1 id="markov-链的随机映射表示">Markov 链的随机映射表示</h1>
-<p>随机映射表示的目的是为了能够让我们用计算机程序模拟 Markov
+<p>随机映射表示能够让我们用计算机程序来模拟 Markov
 链，它是一个由随机数流驱动的更新函数 <span class="math inline">\(f:
 S\times [0, 1]\to S\)</span>。<span class="math inline">\(f\)</span>
 本身是确定的，对任何状态 <span class="math inline">\(s\in S\)</span> 和
@@ -440,9 +440,7 @@ u\in\left[\sum_{k=1}^{n-1}P_{i,k},
 1\right).\end{array}\end{cases}\]</span></p>
 <p>假设有一个随机数发生器可以产生独立且服从 <span class="math inline">\([0,1]\)</span> 上均匀分布的随机变量序列 <span class="math inline">\(U_0,U_{-1},U_{-2},\ldots\)</span>，则我们可以由此来驱动
 Markov 链 <span class="math inline">\(M\)</span>
-从过去的某个时刻向现在运行： <span class="math display">\[s_{-n}\xrightarrow{f(s_{-n+1},
-U_{-n+1})}s_{-n+1}\xrightarrow{f(s_{-n+2},
-U_{-n+2})}\cdots\xrightarrow{f(s_0, U_0)}s_0.\]</span></p>
+从过去的某个时刻向现在运行： <span class="math display">\[s_{-n}\xrightarrow{f(s_{-n+1},\,U_{-n+1})}s_{-n+1}\xrightarrow{f(s_{-n+2},\,U_{-n+2})}\cdots\xrightarrow{f(s_0,\,U_0)}s_0.\]</span></p>
 <h1 id="coupling-from-the-past-算法">Coupling from the past 算法</h1>
 <p>现在我们可以来表述 coupling from the past 算法了。</p>
 <p>设 <span class="math inline">\(M\)</span> 是一个有限遍历的 Markov
@@ -484,8 +482,8 @@ S\)</span>，我们只要证明对任何 <span class="math inline">\(\epsilon &g
 <span class="math inline">\(Y\)</span>，则 <span class="math inline">\(Y\)</span> 服从平稳分布。</p>
 <p>关键的来了：在事件 <span class="math inline">\(A_K\)</span>
 上，算法的输出 <span class="math inline">\(s^\ast\)</span> 必然等于
-<span class="math inline">\(Y\)</span> (因为所有 <span class="math inline">\(|S|+1\)</span>
-条链使用的是同样的随机数序列，且所有的链都在时刻 0 耦合)，所以 <span class="math display">\[\mathbb{P}(s^\ast=Y) \geq 1 - \epsilon.\]</span>
+<span class="math inline">\(Y\)</span> （因为所有 <span class="math inline">\(|S|+1\)</span>
+条链使用的是同样的随机数序列，且所有的链都在时刻 0 耦合），所以 <span class="math display">\[\mathbb{P}(s^\ast=Y) \geq 1 - \epsilon.\]</span>
 从而对任何 <span class="math inline">\(s_i\in S\)</span>， <span class="math display">\[\begin{align*}\mathbb{P}(s^\ast =
 s_i)-\pi(s_i)&amp;= \mathbb{P}(s^\ast = s_i)-\mathbb{P}(Y =
 s_i)\\&amp;\leq\mathbb{P}(s^\ast=s_i, Y\ne s_i)\\
@@ -529,7 +527,7 @@ s_2\}\)</span> 的 Markov 链，其转移矩阵为 <span class="math inline">\(P
 <span class="math inline">\(+\infty\)</span> 方向跑两个不同的链，<span class="math inline">\(\tau\)</span> 是它们首次耦合的时间，则 <span class="math inline">\(\tau-1\)</span> 时刻它俩必然一个位于 <span class="math inline">\(s_1\)</span>，一个位于 <span class="math inline">\(s_2\)</span>。但是位于 <span class="math inline">\(s_2\)</span> 的状态只能转移到 <span class="math inline">\(s_1\)</span>，所以 <span class="math inline">\(\tau\)</span> 时刻的输出永远是 <span class="math inline">\(s_1\)</span>，从而不满足平稳分布。</p>
 <p>注意到这里失败的原因在于不管我们的随机数流是怎样的，当所有链首次在时刻
 <span class="math inline">\(\tau\)</span> 耦合时，实际上从时刻 <span class="math inline">\(\tau-1\)</span>
-出发就足以使得所有链耦合了，所以上面这个链其实只跑了一次。而从过去出发的耦合则可能回溯到任意远的过去。</p>
+出发就足以使得所有链耦合了，所以上面这个链其实只跑了一次。所以我们不能用“首次出现耦合”来作为算法结束的条件。</p>
 <h2 id="每次重新生成新的随机数为什么不行">每次重新生成新的随机数为什么不行</h2>
 <p>在算法的证明当中，如果每次重启步骤 2 都使用新的随机数序列的话，则在第
 <span class="math inline">\(m\)</span>
@@ -575,7 +573,7 @@ f(s', u),\]</span> 则我们每次只要对 <span class="math inline">\(s_\max, 
 <p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/non-intersecting_paths_lozenge.svg"></p>
 <p>图中一共出现了 <span class="math inline">\(c+2\)</span>
 条不相交的路径，其中最上方和最下方两条路径对任何密铺都是固定的
-(它俩是用来约束中间的 <span class="math inline">\(c\)</span>
+（它俩是用来约束中间的 <span class="math inline">\(c\)</span>
 条路径，让它们不要“乱跑”)，中间的 <span class="math inline">\(c\)</span>
 条路径，每条路径的起点和终点也是固定的，它们从菱形最左边的边的每个单位线段中点出发，每一步分别向右上或者右下走一步，经过
 <span class="math inline">\(a+b\)</span>
@@ -595,7 +593,7 @@ c+2\)</span>，<span class="math inline">\(\mathcal{P}\)</span> 中的第
 <p>而最小元则是所有路径尽可能地“向下走”：</p>
 <p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/min_state.svg"></p>
 <p>有了偏序，我们还要定义一个与之相容的更新函数 <span class="math inline">\(f\)</span>。<span class="math inline">\(f\)</span>
-的定义是这样的：对一个不相交路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们每次在 <span class="math inline">\(\mathcal{P}\)</span> 的中间 <span class="math inline">\(c\)</span> 条路径中，在路径内部 (两头端点除外)
+的定义是这样的：对一个不相交路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们每次在 <span class="math inline">\(\mathcal{P}\)</span> 的中间 <span class="math inline">\(c\)</span> 条路径中，在路径内部 （两头端点除外）
 任选一个顶点 <span class="math inline">\(v\)</span>：</p>
 <ol type="1">
 <li>如果 <span class="math inline">\(v\)</span> 是一个“山峰”，即形如
