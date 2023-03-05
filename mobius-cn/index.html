@@ -22,7 +22,7 @@
 这几个按键可以组合出许多不同的效果来！
 
 本文的想法源自 Roice Nelson 的 shadertoy
-项目，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见这里。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。
+项目，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。
 这篇文章将用动画的形式从三个角度演示 Möbius
 变换，这三个角度是密切相关的：
 
@@ -400,7 +400,7 @@ pearls, chapter 3.
 <p>这几个按键可以组合出许多不同的效果来！</p>
 <hr>
 <p>本文的想法源自 Roice Nelson 的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/MstcWr">shadertoy
-项目</a>，我觉得他的创意很棒，就是效果有点糙，于是动手改进了一番，结果见<a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4scfR2">这里</a>。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。</p>
+项目</a>，我觉得他的创意很棒，就是效果有点糙，于是<a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4scfR2">动手改进了一番</a>。不懂的人看这个动画可能只是觉得好玩，其实它背后的数学并不简单。</p>
 <p>这篇文章将用动画的形式从三个角度演示 Möbius
 变换，这三个角度是密切相关的：</p>
 <ol type="1">
@@ -421,14 +421,14 @@ pearls</a>, chapter 3.</li>
 <span id="more"></span>
 <h1 id="预备知识之正交圆族">预备知识之正交圆族</h1>
 <p>设 <span class="math inline">\(z_1,z_2\)</span>
-是复平面上的两个不同点，我们考虑两个不同的圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span>：</p>
+是复平面上的两点，我们考虑两个不同的圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span>：</p>
 <ol type="1">
 <li><span class="math inline">\(\mathcal{C}_1\)</span> 由所有同时过
-<span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 的圆组成 (包含过 <span class="math inline">\(z_1,z_2\)</span> 的直线)。</li>
-<li><span class="math inline">\(\mathcal{C}_2\)</span> 由所有使得 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 关于 <span class="math inline">\(C\)</span> 互为反演点的圆 <span class="math inline">\(C\)</span> 组成 (包含线段 <span class="math inline">\([z_1,z_2]\)</span> 的垂直平分线)。</li>
+<span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 的圆组成（包含过 <span class="math inline">\(z_1,z_2\)</span> 的直线）。</li>
+<li><span class="math inline">\(\mathcal{C}_2\)</span> 由所有使得 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 关于 <span class="math inline">\(C\)</span> 互为反演点的圆 <span class="math inline">\(C\)</span> 组成（包含线段 <span class="math inline">\([z_1,z_2]\)</span> 的垂直平分线）。</li>
 </ol>
 <p>则圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的任何圆
-<span class="math inline">\(C_1\)</span> 与 <span class="math inline">\(\mathcal{C}_2\)</span> 中的任何圆 <span class="math inline">\(C_2\)</span> 正交 (交点处的切线互相垂直)。</p>
+<span class="math inline">\(C_1\)</span> 与 <span class="math inline">\(\mathcal{C}_2\)</span> 中的任何圆 <span class="math inline">\(C_2\)</span> 正交（交点处的切线互相垂直）。</p>
 <p>我们将考察当 <span class="math inline">\(z_1,z_2\)</span> 是一个
 Möbius 变换 <span class="math inline">\(M\)</span> 的两个不动点时 <span class="math inline">\(M\)</span> 作用在 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 上的效果。</p>
 <h1 id="möbius-变换的共轭分类">Möbius 变换的共轭分类</h1>
@@ -438,19 +438,21 @@ Möbius 变换 <span class="math inline">\(M\)</span> 的两个不动点时 <spa
 a,b,c,d\in\mathbb{C},ad-bc\ne0, z\in \hat{\mathbb{C}}.\]</span> 所有的
 Möbius 变换构成一个群 <span class="math inline">\({\rm
 PSL}_2(\mathbb{C})\)</span>。</p>
-<p>可以证明在共轭的意义下，任何非恒等元的 Möbius 变换都属于下面 4
-种基本类型之一：</p>
+<p>可以证明在共轭的意义下，任何非恒等元的 Möbius
+变换都属于下面四种类型之一：</p>
 <ol type="1">
 <li><span class="math inline">\(M\)</span> 称作是抛物型的
-(parabolic)，如果它共轭于一个纯平移：<span class="math inline">\(z\to
-z+a\)</span>，其中 <span class="math inline">\(a\ne0\in\mathbb{C}\)</span>，这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上仅有一个不动点。</li>
+(parabolic)，如果它共轭于平移：<span class="math inline">\(z\to
+z+a\)</span>，其中 <span class="math inline">\(a\ne0\in\mathbb{R}\)</span>，这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上仅有一个不动点。</li>
 <li><span class="math inline">\(M\)</span> 称作是椭圆型的
-(elliptic)，如果它共轭于一个纯旋转：<span class="math inline">\(z\to
+(elliptic)，如果它共轭于旋转：<span class="math inline">\(z\to
 e^{i\theta}z\)</span>，其中 <span class="math inline">\(\theta\in\mathbb{R}\)</span>，这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
 <li><span class="math inline">\(M\)</span> 称作是双曲型的
-(hyperbolic)，如果它共轭于一个纯缩放：<span class="math inline">\(z\to\lambda z\)</span>，其中 <span class="math inline">\(\lambda&gt;0\)</span> 是实数，这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
+(hyperbolic)，如果它共轭于缩放：<span class="math inline">\(z\to\lambda
+z\)</span>，其中 <span class="math inline">\(\lambda&gt;0\)</span>
+是实数，这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
 <li><span class="math inline">\(M\)</span> 称作是斜航型的
-(loxodromic)，如果它共轭于一个双曲缩放和一个椭圆旋转的复合：<span class="math inline">\(z\to cz\)</span>，其中 <span class="math inline">\(c\ne0\in\mathbb{C}\)</span> 且 <span class="math inline">\(c\notin\mathbb{R}\)</span>，这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
+(loxodromic)，如果它共轭于一个缩放和一个旋转的复合：<span class="math inline">\(z\to cz\)</span>，其中 <span class="math inline">\(c\ne0\in\mathbb{C}\)</span> 且 <span class="math inline">\(c\notin\mathbb{R}\)</span>，这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
 </ol>
 <blockquote><p>在研究每种类型的变换时，我们都先研究其共轭类中最简单的类型 <span class="math inline">\(z\to z+a\)</span>, <span class="math inline">\(z\to e^{i\theta}z\)</span>, <span class="math inline">\(z\to\lambda z\)</span>, <span class="math inline">\(z\to cz\)</span>
 (它们都以无穷远点为一个不动点，除去抛物型之外的另一个不动点是原点)，这时的
@@ -459,18 +461,14 @@ Möbius
 </blockquote>
 <h2 id="抛物型">1. 抛物型</h2>
 <p>我们先考察最简单的抛物型变换 <span class="math inline">\(z\to
-z+a\)</span>。</p>
-<p>这时唯一的不动点是无穷远点，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有平行于 <span class="math inline">\(x\)</span> 轴的直线组成
-(直线是半径无穷大的圆)，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有垂直于 <span class="math inline">\(x\)</span> 轴的直线组成，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 是正交的，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
+z+a,\,a\in\mathbb{R}\)</span>。</p>
+<p>这时唯一的不动点是无穷远点，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有和 <span class="math inline">\(x\)</span>
+轴平行的直线组成（直线是半径无穷大的圆），圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有和 <span class="math inline">\(y\)</span> 轴平行的直线组成，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 是正交的，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
 中的每条直线变成同族中的另一条直线：</p>
 <object data="/images/mobius/parabolic-plane.svg">
 </object>
-<p>你可以看到所有点都向着不动点无穷远点的方向“前进”。</p>
-<p>对一般的抛物型变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的唯一不动点 <span class="math inline">\(z_0\)</span>
-是有限点的情形，结论仍然类似：它保持圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每个圆不变，这里 <span class="math inline">\(\mathcal{C}_1\)</span> 是一组在 <span class="math inline">\(z_0\)</span>
-处相切的圆族，所有圆共用同一条切线。<span class="math inline">\(M\)</span> 同时把圆族 <span class="math inline">\(\mathcal{C}_2\)</span>
-中的每个圆变为同族的另一个圆，这里 <span class="math inline">\(\mathcal{C}_2\)</span> 也是一组在 <span class="math inline">\(z_0\)</span>
-处相切的圆族，所有圆也共用同一条切线，但是这条切线的方向与 <span class="math inline">\(\mathcal{C}_1\)</span> 的切线方向垂直：</p>
+<p>所有点都向着不动点（无穷远点）的方向“前进”。</p>
+<p>对一般的抛物型变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的唯一不动点 <span class="math inline">\(z_0\)</span> 有限的情形，结论仍然类似：圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的圆都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_1\)</span>，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 也都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_2\)</span>，<span class="math inline">\(\ell_1\)</span> 和 <span class="math inline">\(\ell_2\)</span> 互相垂直：</p>
 <object data="/images/mobius/parabolic-plane2.svg">
 </object>
 <p>由动画可见左右两侧的圆在旋转，但是圆本身保持不变，它们是圆族 <span class="math inline">\(\mathcal{C}_1\)</span>；上下两侧的圆在“扩散”，它们是圆族
@@ -486,34 +484,30 @@ pearls</a> 一书中，把 <span class="math inline">\(\mathcal{C}_1\)</span>
 <h2 id="椭圆型">2. 椭圆型</h2>
 <p>我们先考察最简单的椭圆型变换 <span class="math inline">\(z\to
 e^{i\theta}z\)</span>。</p>
-<p>这时两个不动点是原点和无穷远点。注意它保持以原点为中心的同心圆族
-<span class="math inline">\(\mathcal{C}_1\)</span>
-不变，把原点和无穷远点连线组成的径向直线族 <span class="math inline">\(\mathcal{C}_2\)</span>
-中的每一条直线变成同族中另一条直线，<span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 是正交的：</p>
+<p>这时两个不动点是原点和无穷远点。圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
+由所有过原点的直线组成，<span class="math inline">\(\mathcal{C}_2\)</span>
+由所有以原点为中心的同心圆组成。<span class="math inline">\(M\)</span>
+是个旋转，所以会把 <span class="math inline">\(\mathcal{C}_1\)</span>
+中的直线变成同族的另一条直线，同时保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变：</p>
 <object data="/images/mobius/elliptic-plane.svg">
 </object>
-<p>对一般的椭圆变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span>
-都有限的情形，仍然存在两个互相正交的圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span>，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
+<p>对一般的椭圆变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，结论同样成立，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_1\)</span>
 中的每个圆变为同族中的另一个圆：</p>
 <object data="/images/mobius/elliptic-plane2.svg">
 </object>
-<p>这里 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有使得
-<span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 关于 <span class="math inline">\(K\)</span> 互为反演点的圆 <span class="math inline">\(K\)</span> 组成，因此 <span class="math inline">\(\mathcal{C}_1\)</span> 中的圆的圆心都落在 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 两点间的连线上，但是位于线段 <span class="math inline">\([z_1,z_2]\)</span> 的外部；圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有过 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 的圆组成，因此 <span class="math inline">\(\mathcal{C}_2\)</span> 中的圆的圆心都落在线段
-<span class="math inline">\([z_1,z_2]\)</span> 的垂直平分线上。</p>
 <h2 id="双曲型">3. 双曲型</h2>
 <p>与椭圆变换 <span class="math inline">\(z\to e^{i\theta}z\)</span>
 的情形类似，<span class="math inline">\(z\to\lambda z\)</span>
-也以原点和无穷远点为不动点，但是圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span>
-的角色发生了互换：它保持由原点与无穷远点连线组成的直线族 <span class="math inline">\(\mathcal{C}_2\)</span>
-不变，把由以原点为中心的同心圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
-中的每个圆变为同族中的另一个圆：</p>
+也以原点和无穷远点为不动点，但是圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的角色发生了互换：这次
+<span class="math inline">\(\mathcal{C}_1\)</span>
+中的每条直线在放缩下保持不变，<span class="math inline">\(\mathcal{C}_2\)</span>
+中的每个圆在放缩下变成同族的另一个圆：</p>
 <object data="/images/mobius/hyperbolic-plane.svg">
 </object>
-<p>对一般的双曲变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span>
-都有限的情形，仍然与椭圆变换的情形类似，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的角色发生了互换：所有过
-<span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 的圆组成的圆族 <span class="math inline">\(\mathcal{C}_2\)</span>
-保持不变；所有反演圆组成的圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
-被变为同族中的另一个圆：</p>
+<p>对两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的双曲变换，结论仍然成立，圆族
+<span class="math inline">\(\mathcal{C}_1\)</span>
+中的每个圆保持不变，<span class="math inline">\(\mathcal{C}_2\)</span>
+中的每个圆被变成同族的另一个：</p>
 <object data="/images/mobius/hyperbolic-plane2.svg">
 </object>
 <p>这时在 <span class="math inline">\(M\)</span> 的作用下 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span>
@@ -576,12 +570,11 @@ Riemann 球面 <span class="math inline">\(S^2\)</span>，所以 Möbius
 <object data="/images/mobius/loxodromic-sphere.svg">
 </object>
 <p>我来解释一下这个动画的含义：从动画可见 Riemann
-球面上有一对源点和汇点，它们在球极投影下对应于 <span class="math inline">\(M\)</span>
-在扩充复平面上的两个不动点。这对源点和汇点可以理解为球面的“北极”和“南极”
-(当扩充复平面上的两个不动点分别是原点和无穷远时，这两个极点就是通常意义下的北极和南极)，这时球面上的“经线”是所有过两个极点的大圆，在球极投影下它们对应于同时过两个不动点的圆族
+球面上有一对源点和汇点，这对源点和汇点可以理解为球面的“北极”和“南极”，它们在球极投影下对应于
+<span class="math inline">\(M\)</span>
+在扩充复平面上的两个不动点。当这两个不动点分别是原点和无穷远时，这两个极点就是通常意义下的北极和南极。这时球面上的“经线”是所有过两个极点的大圆，在球极投影下它们对应于同时过两个不动点的圆族
 <span class="math inline">\(\mathcal{C}_1\)</span>；球面上的纬线是所有与经线正交的圆，在球极投影下它们对应于反演圆族
-<span class="math inline">\(\mathcal{C}_2\)</span>，球面上每个点的轨迹是对数螺线轨迹在逆球极投影下在球面上的对应曲线，这条曲线与经线纬线的夹角都是常数
-(因为球极投影是保角的)，从而是一条斜航线！</p>
+<span class="math inline">\(\mathcal{C}_2\)</span>，球面上每个点的轨迹是对数螺线轨迹在逆球极投影下在球面上的对应曲线，这条曲线与经线纬线的夹角都是常数（因为球极投影是保角的），从而是一条斜航线！</p>
 <blockquote><p><strong>练习</strong>：解释下面这个动画的含义：</p>
 <object data="/images/mobius/parabolic-sphere.svg">
 </object>
