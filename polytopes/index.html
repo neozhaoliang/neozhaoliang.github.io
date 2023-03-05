@@ -1374,38 +1374,39 @@ Coxeter-Dynkin diagram is shown below:</p>
 <p>Therefore, the angles between the mirrors are <span class="math inline">\(\pi-2\pi/5, \pi/2, \pi-\pi/5\)</span>. If we
 continue with the previous analysis, we obtain the presentation of the
 symmetry group as:</p>
-<p><span class="math display">\[\begin{align*}
-G = \langle\rho_0,\rho_1,\rho_2\ |\
-\rho_0^2&amp;=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^5=(\rho_1\rho_2)^5\\
-&amp;=(\rho_0\rho_2)^2=1\rangle.
-\end{align*}\]</span></p>
+<p><span class="math display">\[K = \langle\tau_0,\tau_1,\tau_2 \
+|\  \tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=(\tau_0\tau_2)^2=1\rangle.
+\]</span></p>
 <p>This group is infinite, and since the quotient group of the
 stabilizer subgroup of <span class="math inline">\(v_0\)</span> is also
 infinite, the Todd-Coxeter algorithm will not work here.</p>
 <p>In fact, we just need to add another generating relation to the
-presentation, namely <span class="math inline">\((\rho_0\rho_1\rho_2\rho_1)^3=1\)</span>. With this
+presentation, namely <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^3=1\)</span>. With this
 addition, the presentation of the symmetry group becomes:</p>
 <p><span class="math display">\[\begin{align*}
-G = \langle\rho_0,\rho_1,\rho_2\ |\
-\rho_0^2&amp;=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^5=(\rho_1\rho_2)^5\\
-&amp;=(\rho_0\rho_2)^2=(\rho_0\rho_1\rho_2\rho_1)^3=1\rangle.
+K = \langle\tau_0,\tau_1,\tau_2 \
+|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=\\&amp;(\tau_0\tau_2)^2=(\tau_0\tau_1\tau_2\tau_1)^3=1\rangle.
 \end{align*}\]</span></p>
-<p>What's going on? Watch the video:</p>
+<p>Note that I intentionally used <span class="math inline">\(\tau\)</span> to represent reflections and <span class="math inline">\(K\)</span> to denote the symmetry group of the
+great dodecahedron. What's happening here? Let's take a look at the
+video:</p>
 <video src="/images/polytopes/great-dodecahedron.mp4" controls="">
 </video>
 <p>From the video, we can observe that the great dodecahedron and the
 icosahedron share the exact same set of vertices. However, it seems that
 the great dodecahedron can be obtained by digging some triangular holes
 on the surface of the icosahedron. In general, if the hole of a
-star-shaped polyhedron is a polygon with a side length of <span class="math inline">\(h\)</span>, the corresponding additional
-generating relation is given by <span class="math inline">\((\rho_0\rho_1\rho_2\rho_1)^h=1\)</span>.</p>
+star-shaped polyhedron is a polygon with <span class="math inline">\(h\)</span> sides, the corresponding extra relation
+is given by <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^h=1\)</span>.</p>
 <p>Let's take a closer look at the fundamental region of the great
 dodecahedron:</p>
 <p><img style="margin:0px auto;display:block" src="/images/polytopes/star.png" width="600"></p>
-<p>In the figure above, <span class="math inline">\(\Delta ABC\)</span>
-is the fundamental domain of the icosahedron, with internal angles <span class="math inline">\(\angle CAB=\pi/5\)</span>，<span class="math inline">\(\angle CBA=\pi/2\)</span>，<span class="math inline">\(\angle ACB=\pi/3\)</span>，and <span class="math inline">\(\rho_0,\rho_1,\rho_2\)</span> are reflections
-about the arcs <span class="math inline">\(BC, AC, AB\)</span>,
-respectively.</p>
+<p>The figure above shows <span class="math inline">\(\Delta
+ABC\)</span> as the fundamental domain of the icosahedron. Its internal
+angles are <span class="math inline">\(\angle CAB=\pi/5\)</span>，<span class="math inline">\(\angle CBA=\pi/2\)</span>，<span class="math inline">\(\angle ACB=\pi/3\)</span>. Reflections about the
+arcs <span class="math inline">\(BC\)</span>, <span class="math inline">\(AC\)</span>, and <span class="math inline">\(AB\)</span> are denoted by <span class="math inline">\(\rho_0\)</span>, <span class="math inline">\(\rho_1\)</span>, and <span class="math inline">\(\rho_2\)</span>, respectively. The presentation of
+the symmetry group of icosahedron, <span class="math inline">\(G\)</span>, can be expressed as follows: <span class="math display">\[G = \langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^3=(\rho_1\rho_2)^5=(\rho_0\rho_2)^2=1\rangle.\]</span></p>
 <p>The great dodecahedron can be constructed as follows: we keep the
 vertices and edges of the icosahedron untouched, but change its faces.
 To do this we start a walk from vertex <span class="math inline">\(Q\)</span> and move along edge <span class="math inline">\(QA\)</span> to reach the next vertex <span class="math inline">\(A\)</span>. At <span class="math inline">\(A\)</span>, we skip the first edge on the right
@@ -1424,43 +1425,45 @@ and choosing the <span class="math inline">\(k\)</span>-th edge to the
 right of the current path, where <span class="math inline">\(k\geq
 2\)</span> is a fixed integer. By repeating this process until a closed
 loop is formed, a new face is created. In our project, we use <span class="math inline">\(k=2\)</span>.</p>
-<p>The important thing is that if we perform the faceting operation on
-the great dodecahedron again, we will obtain the original
-icosahedron!</p>
+<p>Let's derive the relations between the symmetry groups <span class="math inline">\(G\)</span> and <span class="math inline">\(K\)</span>:</p>
 <p>Consider the triangle <span class="math inline">\(\Delta
 OAB\)</span>, which has internal angles <span class="math inline">\(\angle OAB=2\pi/5\)</span>, <span class="math inline">\(\angle OBA=\pi/2\)</span>, and <span class="math inline">\(\angle AOB=\pi/5\)</span>, and contains three
 congruent triangles with the triangle <span class="math inline">\(\Delta
 ABC\)</span>. The reflections about its three edges <span class="math inline">\(OA\)</span>, <span class="math inline">\(OB\)</span>, and <span class="math inline">\(AB\)</span> are denoted by <span class="math inline">\(\tau_1=\rho_1\rho_2\rho_1\)</span>, <span class="math inline">\(\tau_0=\rho_0\)</span>, and <span class="math inline">\(\tau_2=\rho_2\)</span>.</p>
 <p>In the language of group theory, the faceting operation <span class="math inline">\(\varphi_k\)</span> can be described as
 transforming the group <span class="math inline">\(G\)</span> into
-another group <span class="math inline">\(K\)</span> (remember that
-<span class="math inline">\(k=2\)</span>):</p>
+another group <span class="math inline">\(K\)</span>:</p>
 <p><span class="math display">\[G=\langle
 \rho_0,\rho_1,\rho_2\rangle\xrightarrow{\ \varphi_k\
 }\langle\rho_0,\rho_1(\rho_2\rho_1)^{k-1},\rho_2\rangle=\langle\tau_0,\tau_1,\tau_2\rangle=K.\]</span></p>
 <p>Usually, <span class="math inline">\(K\)</span> is a subgroup of
 <span class="math inline">\(G\)</span>, but in many cases, including the
-great dodecahedron, <span class="math inline">\(G\)</span> and <span class="math inline">\(K\)</span> are the same group, and <span class="math inline">\(K\)</span> corresponds to the great
-dodecahedron.</p>
-<p>We can easily observe that the subgroup <span class="math inline">\(\langle \tau_1,\tau_2\rangle\)</span> is the
-dihedral group <span class="math inline">\(D_5\)</span>, which
-stabilizes the vertex <span class="math inline">\(A\)</span> of the
-great dodecahedron. The product <span class="math inline">\(\tau_1\tau_2\)</span> is a rotation of 144
-degrees, resulting in the pentagram vertex configuration of the great
-dodecahedron. The subgroup <span class="math inline">\(\langle\tau_0,\tau_2\rangle=\langle\rho_0,\rho_2\rangle\)</span>
-stabilizes the edge <span class="math inline">\(AQ\)</span>, which is
-the same as the set of edges in the icosahedron. However, the faceting
-operation changes the way edges form faces. The reflection <span class="math inline">\(\tau_1\)</span> maps <span class="math inline">\(AQ\)</span> to <span class="math inline">\(AK\)</span>, which corresponds to selecting the
-second edge, and the rotation <span class="math inline">\(\rho_0\tau_1\)</span> around the vertex <span class="math inline">\(O\)</span> generates five edges of the
-icosahedron, resulting in one face of the great dodecahedron after the
-faceting operation.</p>
-<p>Thus, we can draw the great dodecahedron as follows:</p>
-<p>We take <span class="math inline">\(\Delta OAB\)</span> as the
-fundamental domain, with its three edges <span class="math inline">\(OA,OB,AB\)</span> as reflecting mirrors. The group
-generated by these three reflections is denoted by <span class="math display">\[\begin{align*}
-K = \langle\tau_0=\rho_0,\tau_1=\rho_1\rho_2\rho_1,\tau_2=\rho_2 \
-|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=\\&amp;(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=(\tau_0\tau_2)^2=1\rangle.
-\end{align*}\]</span> Note that <span class="math inline">\(\tau_1\tau_2\tau_1=\tau_1\rho_2\tau_1\)</span> is
+great dodecahedron here, <span class="math inline">\(G\)</span> and
+<span class="math inline">\(K\)</span> are the same group.</p>
+<p>To see that <span class="math inline">\(K\)</span> is indeed the
+symmetry group of the great dodecaheron, we can argue as follows:</p>
+<p>Firstly, <span class="math inline">\(\langle
+\tau_1,\tau_2\rangle=\langle \rho_1,\rho_2\rangle\)</span> is the
+stabilizer subgroup of the vertex <span class="math inline">\(A\)</span>, so the great dodecahedron has the same
+set of vertices as that of the icosahedron. However, <span class="math inline">\(\tau_1\tau_2\)</span> gives a rotation of <span class="math inline">\(4\pi/5\)</span>, which differs from <span class="math inline">\(\rho_1\rho_2\)</span> that gives a rotation of
+<span class="math inline">\(2\pi/5\)</span>. Consequently, the vertex
+configuration of the great dodecahedron forms a pentagram, whereas that
+of the icosahedron forms a pentagon.</p>
+<p>Secondly, the subgroup <span class="math inline">\(\langle
+\tau_0,\tau_2\rangle=\langle \rho_0,\rho_2\rangle\)</span> is the
+stabilizer of the edge <span class="math inline">\(AQ\)</span>. Thus,
+the great dodecahedron shares its edges with those of the
+icosahedron.</p>
+<p><span class="math inline">\(\langle\tau_0,\tau_1\rangle\)</span> is
+the stabilizer subgroup of one of the faces of the great dodecahedron.
+Note that <span class="math inline">\(\tau_0\tau_1\)</span> is a
+rotation of <span class="math inline">\(2\pi/5\)</span> arounds <span class="math inline">\(O\)</span>. It maps the edge <span class="math inline">\(QA\)</span> to the edge <span class="math inline">\(AK\)</span>, corresponding to the operation of
+selecting the <span class="math inline">\(k\)</span>-th edge to walk on.
+Repeatedly applying <span class="math inline">\(\tau_0\tau_1\)</span> to
+<span class="math inline">\(QA\)</span> will give the five edges of one
+face of the great dodecahedron.</p>
+<p>Let's find out a hidden relation among <span class="math inline">\(\tau_0,\tau_1\)</span> and <span class="math inline">\(\tau_2\)</span>:</p>
+<p>Note that <span class="math inline">\(\tau_1\tau_2\tau_1=\tau_1\rho_2\tau_1\)</span> is
 a reflection about <span class="math inline">\(AP\)</span>, and its
 composition with <span class="math inline">\(\tau_0=\rho_0\)</span> is a
 rotation around the vertex <span class="math inline">\(P\)</span> by an
@@ -1473,13 +1476,20 @@ K = \langle\tau_0,\tau_1,\tau_2 \
 \end{align*}\]</span></p>
 <p>The remaining steps of the construction are identical to the previous
 ones.</p>
-<p>It should be noted that by applying the faceting operation <span class="math inline">\(\varphi_2\)</span> to <span class="math inline">\(K\)</span>, we can obtain <span class="math inline">\(G\)</span> again:</p>
-<p><span class="math display">\[K=\langle
+<p>This extra relation has a geometric explanation: By applying the
+faceting operation to the great dodecahedron again, we can restore our
+icosahedron. We simply walk from <span class="math inline">\(Q\)</span>
+to <span class="math inline">\(A\)</span>, and when we reach <span class="math inline">\(A\)</span>, instead of selecting the edge <span class="math inline">\(AK\)</span> to continue moveing, we choose its
+previous one clockwise, which is <span class="math inline">\(AO\)</span>. Continuing to walk gives us back the
+triangle face <span class="math inline">\(\Delta OAB\)</span> of the
+icosahedron. This correspondes to the exponent 3 in the extra
+relation.</p>
+<p>In terms of group theory, this can be expressed as <span class="math display">\[K=\langle
 \tau_0,\tau_1,\tau_2\rangle\xrightarrow{\ \varphi_2\
 }\langle\tau_0,\tau_1\tau_2\tau_1,\tau_2\rangle=\langle\rho_0,\rho_2\rho_1\rho_2,\rho_2\rangle=G.\]</span></p>
-<p>During the faceting process, where we always choose the second edge
-on the right to move, we will end up with a hole of three sides, which
-corresponds to the exponent 3 in the extra generating relation.</p>
+<p>One might wonder if there are more such relationships we have
+overlooked. However, since we know that <span class="math inline">\(K\)</span> is isomorphic to <span class="math inline">\(G\)</span> (though not proved in this article),
+there's no cause for concern.</p>
 <h1 id="appendix">Appendix</h1>
 <p>I also added a script <code>run_coset_enumeration.py</code> for
 showing how to compute the coset table of <span class="math inline">\(G/H\)</span> for a given finitely presented group
