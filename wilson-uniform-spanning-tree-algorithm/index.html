@@ -426,15 +426,14 @@ r\)</span>，定义一个栈结构 <span class="math inline">\(S_v=\{S_{v,1},S_{
 <p>由于顶点 <span class="math inline">\(r\)</span> 对应的栈 <span class="math inline">\(S_r\)</span> 是空栈，所以随机游动一旦到达 <span class="math inline">\(r\)</span> 就终止。</p></li>
 <li><p>在任何时刻，这些栈 <span class="math inline">\(\{S_v,v\ne
 r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline">\(G_S\)</span>：<span class="math inline">\(v\rightarrow u\)</span> 当且仅当 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(S_v\)</span> 的栈顶元素。每个 <span class="math inline">\(v\ne r\)</span> 的出度都恰好是 1，顶点 <span class="math inline">\(r\)</span> 的出度是 0，于是若 <span class="math inline">\(G_S\)</span> 不含回路的话它就是一个以 <span class="math inline">\(r\)</span> 为根的生成树。</p></li>
-<li><p>下面我们来玩一个“回路弹出”(cycle popping)
+<li><p>下面我们来玩一个“回路弹出” (cycle popping)
 的游戏。给定栈的一个状态 <span class="math inline">\(\omega\in\Omega\)</span>，设 <span class="math inline">\(G_S\)</span> 是 <span class="math inline">\(\omega\)</span> 的栈顶图，若 <span class="math inline">\(G_S\)</span>
 不含回路的话则它已经是一个生成树，游戏结束；否则设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(G_S\)</span>
-中的一个回路，我们可以将其“弹出”：对每个 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素 （于是若当前 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span>)，这样得到一个更新的 <span class="math inline">\(G_S\)</span>。游戏允许玩家每次任选 <span class="math inline">\(G_S\)</span>
+中的一个回路，我们可以将其“弹出”：对每个 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素（于是若当前 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span>），这样得到一个更新的 <span class="math inline">\(G_S\)</span>。游戏允许玩家每次任选 <span class="math inline">\(G_S\)</span>
 中的一个回路并将其弹出，如果玩家能够经过有限多次弹出操作后使得 <span class="math inline">\(G_S\)</span>
 中不含任何回路，则玩家获胜，这时得到的 <span class="math inline">\(G_S\)</span> 是一个生成树。</p></li>
 <li><p>你可以每次无脑选一个回路将其弹出，也可以将 <span class="math inline">\(G_S\)</span>
-的所有回路在某种顺序下排好，每次弹出最小的那个，这都是不同的游戏策略。擦圈的随机游动对应的是这样的策略：每次从一个不属于
-（当前维护的树） <span class="math inline">\(T\)</span>
+的所有回路在某种顺序下排好，每次弹出最小的那个，这都是不同的游戏策略。擦圈的随机游动对应的是这样的策略：每次从一个不属于（当前维护的树）<span class="math inline">\(T\)</span>
 的顶点出发，跟着栈顶图的路牌指示走，遇到哪个回路弹哪个。撞到 <span class="math inline">\(T\)</span> 的话就把当前路径加入 <span class="math inline">\(T\)</span>，再从任意一个不属于 <span class="math inline">\(T\)</span> 的顶点出发重复这个过程。</p></li>
 <li><p>映射 <span class="math inline">\(\phi\)</span> 定义如下：对任何
 <span class="math inline">\(\omega\in\Omega\)</span>，若 <span class="math inline">\(\omega\)</span> 的栈顶图 <span class="math inline">\(G_S\)</span> 不含任何回路
