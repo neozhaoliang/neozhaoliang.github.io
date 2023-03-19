@@ -11,9 +11,9 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="讲述 Wedderburn-Artin
-定理的教材已经非常多了，在介绍群表示论或者非交换环的书里通常都可以找到，证明途径也大同小异。据我个人的体会，讲群表示论的书大多只针对有限维群代数的情形进行证明，显得不太够用；而讲非交换环的书则往往从
-Jacobson 根，密度定理等讲起，念起来很让人劝退。我觉得介绍 Artinian
-环情形的 Wedderburn-Artin 定理还是非常有用的。我打算采用当年 Wedderburn
+定理的教材已经非常多了，在介绍群表示论或者非交换环的书里通常都可以找到，证明途径也大同小异。据我个人的体会，讲群表示论的书往往只介绍有限维群代数的情形，显得不太够用；而讲非交换环的书则喜欢从
+Jacobson 根，密度定理讲起，念起来很让人劝退。我觉得 Artinian 环情形的
+Wedderburn-Artin 定理还是非常有用的。我打算采用当年 Wedderburn
 的思路展开叙述，即通过极大幂零理想来定义半单性。这种方式的好处是每一步的动机都比较自然，至少比上来就丢出一个
 Jacobson 根的定义让人舒服一些。">
     
@@ -357,9 +357,9 @@ Jacobson 根的定义让人舒服一些。">
 
             <div class="entry pink-link-context">
                 <p>讲述 Wedderburn-Artin
-定理的教材已经非常多了，在介绍群表示论或者非交换环的书里通常都可以找到，证明途径也大同小异。据我个人的体会，讲群表示论的书大多只针对有限维群代数的情形进行证明，显得不太够用；而讲非交换环的书则往往从
-Jacobson 根，密度定理等讲起，念起来很让人劝退。我觉得介绍 Artinian
-环情形的 Wedderburn-Artin 定理还是非常有用的。我打算采用当年 Wedderburn
+定理的教材已经非常多了，在介绍群表示论或者非交换环的书里通常都可以找到，证明途径也大同小异。据我个人的体会，讲群表示论的书往往只介绍有限维群代数的情形，显得不太够用；而讲非交换环的书则喜欢从
+Jacobson 根，密度定理讲起，念起来很让人劝退。我觉得 Artinian 环情形的
+Wedderburn-Artin 定理还是非常有用的。我打算采用当年 Wedderburn
 的思路展开叙述，即通过极大幂零理想来定义半单性。这种方式的好处是每一步的动机都比较自然，至少比上来就丢出一个
 Jacobson 根的定义让人舒服一些。</p>
 <span id="more"></span>
@@ -374,8 +374,8 @@ Jacobson 根的定义让人舒服一些。</p>
 型是非退化的，从而可以通过反复取正交补的方式将 <span class="math inline">\(L/\mathrm{Rad}(L)\)</span>
 分解为一些单代数的直和，然后对单 Lie
 代数的结构进行讨论得出其共有九种不同的类型。Wedderburn 的思路自然受到了
-Killing 等人工作的启发，对域 <span class="math inline">\(F\)</span>
-上的有限维结合代数 <span class="math inline">\(A\)</span>，他采取了类似的套路：</p>
+Killing 等人工作的启发，他采取了类似的套路：</p>
+<p>对域 <span class="math inline">\(F\)</span> 上的有限维结合代数 <span class="math inline">\(A\)</span>：</p>
 <ol type="1">
 <li>定义根理想 <span class="math inline">\(\mathrm{Rad}(A)\)</span>。</li>
 <li>转移到半单代数 <span class="math inline">\(A/\mathrm{Rad}(A)\)</span>。</li>
@@ -391,8 +391,8 @@ Killing 等人工作的启发，对域 <span class="math inline">\(F\)</span>
 Wedderburn-Artin 定理的来历。值得一提的是，又过了 12 年后 Hopkins
 证明了另一个惊人的结论：左/右 Artinian 环也是左/右 Noetherian 的。</p>
 <p>所以你看，虽然有限维复李代数和结合代数结构相差很大，但是它们的分类遵循了类似的套路：拿走可解/幂零的部分，剩下的部分是半单的，而半单又可以分解为单代数的直和，于是最终归结为对单代数的结构进行讨论。</p>
-<p>Wedderburn-Artin
-定理的过程比较长，但只要在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。</p>
+<p>Wedderburn-Artin 定理的过程比较长（和复半单 Lie
+代数的分类定理相比还是要短很多），但只要在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。</p>
 <p>本文主要参考了 Curtis 和 Reiner 的经典 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，Herstein 的精彩小书 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>，以及林节玄的 GTM131 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。C&amp;R
 的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
 的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
@@ -531,11 +531,13 @@ L'\)</span>。</p>
 </div>
 <p><strong>引理 2 的证明</strong>： 注意到 <span class="math inline">\(L'L\)</span> 是 <span class="math inline">\(L\)</span> 内的一个左理想，所以它只能是 <span class="math inline">\((0)\)</span> 或者 <span class="math inline">\(L\)</span>。</p>
 <p>我们来证明以下三点是等价的：</p>
+<blockquote>
 <ol type="1">
 <li><span class="math inline">\(L\cong L'\)</span>。</li>
 <li>存在 <span class="math inline">\(a\in L\)</span> 使得 <span class="math inline">\(L=L'a\)</span>。</li>
 <li><span class="math inline">\(L'L = L\)</span>。</li>
 </ol>
+</blockquote>
 <p><span class="math inline">\(1\Rightarrow 2\)</span>： 设 <span class="math inline">\(\varphi: L'\to L\)</span> 是一个左 <span class="math inline">\(R-\)</span> 模同构，设 <span class="math inline">\(L'=Re'\)</span>，<span class="math inline">\(e'\)</span> 是 <span class="math inline">\(L'\)</span> 的幂等元，根据前面注解部分，对任何
 <span class="math inline">\(x'\in L'\)</span> 都有 <span class="math inline">\(x'=x'e'\)</span>，于是 <span class="math display">\[\varphi(x')=\varphi(x'e')=x'\varphi(e'),\quad
 x'\in L'.\]</span>即同构 <span class="math inline">\(\varphi\)</span> 由右乘 <span class="math inline">\(\varphi(e')\)</span> 给出。</p>
@@ -635,17 +637,17 @@ Mat}_n(D)e_{nn}.\]</span> 其中 <span class="math inline">\(\{e_{ii},\,1\leq i\
 1，其余所有元素都为 0
 的矩阵，它们构成一组互相正交的幂等元，其和为单位矩阵。左理想 <span class="math inline">\(L_i={\rm Mat}_n(D)e_{ii}\)</span> 中的矩阵除了第
 <span class="math inline">\(i\)</span> 列以外，其余的列都是 0。<span class="math inline">\(L_i\)</span>
-是极小左理想是因为，对任何的两个非零元素 <span class="math inline">\(x,y\in L_i\)</span>，我们总可以用初等行变换将
+是极小左理想是因为，对任何两个非零元素 <span class="math inline">\(x,y\in L_i\)</span>，我们总可以用初等行变换将
 <span class="math inline">\(x\)</span> 变成 <span class="math inline">\(y\)</span>，而初等行变换就是左乘一个 <span class="math inline">\({\rm Mat}_n(D)\)</span> 中的矩阵，所以任何非零元
-<span class="math inline">\(x\)</span> 都可以在 <span class="math inline">\({\rm Mat}_n(D)\)</span> 的左乘作用下得到整个 <span class="math inline">\(L_i\)</span>，所以 <span class="math inline">\(L_i\)</span> 是极小左理想。</li>
+<span class="math inline">\(x\)</span> 都可以在 <span class="math inline">\({\rm Mat}_n(D)\)</span> 的左乘作用下生成整个 <span class="math inline">\(L_i\)</span>，所以 <span class="math inline">\(L_i\)</span> 确实是极小左理想。</li>
 <li>这些极小左理想 <span class="math inline">\(L_i\,(1\leq i\leq
 n)\)</span> 是互相同构的。为此只要说明 <span class="math display">\[L_iL_j={\rm Mat}_n(D)e_{ii}\cdot {\rm
 Mat}_n(D)e_{jj}\]</span> 不为 0 即可，而这个乘积包含 <span class="math inline">\(e_{ii}e_{ij}e_{jj}=e_{ij}\)</span>，当然不是
 0。</li>
 </ol>
 <p>下面回到 <a href="#theorem3">定理 3</a> 的证明。</p>
-<p>大多数文献上对 Wedderburn-Artin 定理的处理方式都是证明单环 <span class="math inline">\(A\)</span>
-的不可约模满足某种“双重中心化子”性质。我们先简要介绍大致的思路：</p>
+<p>大多数文献上对这一步的处理方式都是证明单环 <span class="math inline">\(A\)</span>
+和它的不可约模满足某种双重中心化子性质。我们先简要介绍大致的思路：</p>
 <ul>
 <li>设 <span class="math inline">\(M\)</span> 是一个左 <span class="math inline">\(A-\)</span> 模，则 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(M\)</span> 上的左乘给出了 <span class="math inline">\(A\to {\rm End}(M)\)</span> 的一个环同态，记 <span class="math inline">\(A\)</span> 在 <span class="math inline">\({\rm
 End}(M)\)</span> 中的同态像为 <span class="math inline">\(A_L\)</span>。由于 <span class="math inline">\(A\)</span> 是单环，<span class="math inline">\(A\cong A_L\)</span>。</li>
