@@ -7,21 +7,13 @@
 
     
 
-    <title>三质点弹簧系统的简正模式 | 朝花夕拾</title>
+    <title>representation theory | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
-    
-    <meta name="description" content="今天的问题是群表示论在物理中的一个小应用：
-问题：平面上有三个质量均为 \(m\) 的质点 \(A,B,C\)，它们位于一个正三角形的三个顶点处。质点之间两两由一根弹簧相连，三个弹簧都是一样的，但是弹簧质量忽略不计。
-
-初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力。那么这个系统的简正模式
-(normal mode) 是什么？
-
-这里简正模式的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="三质点弹簧系统的简正模式"/>
+    
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -297,269 +289,54 @@
 
     <main>
         <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
+    
+
+<nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（分类目录）</span>
-        
-            
-    
-    
-    <a class="breadcrumb" href="/categories/有限群表示与结合代数/">有限群表示与结合代数</a>
-
-
+        <span class="breadcrumb">当前位置（标签）</span>
         
 
+        
+            <a class="breadcrumb" href="/tags/representation-theory/">representation theory</a>
         
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
-                
-    
-        <h1>三质点弹簧系统的简正模式</h1>
-    
 
 
-            </div>
-            <time class="pink-link-context" datetime="2011-08-21T16:00:00.000Z"><a href="/three-mass-spring-system/">2011-08-22</a></time>
-
-            <span id="busuanzi_container_page_pv" class="read-times-container">
-    <i class="fa fa-eye"></i>
-    <span id="busuanzi_value_page_pv"></span>
-</span>
-
-            
-    <div class="tags-row">
+    <div class="collection mt-0">
         
-            <a href="/tags/representation-theory/" class="chip pink lighten-1">representation theory</a>
+            <a href="/real-and-complex-representations/" class="collection-item grey-text text-darken-1">
+                <time datetime="2012-10-20T16:00:00.000Z">2012-10-21</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                有限群的不可约实表示和复表示
+            </a>
         
-            <a href="/tags/linear-algebra/" class="chip pink lighten-1">linear algebra</a>
+            <a href="/three-mass-spring-system/" class="collection-item grey-text text-darken-1">
+                <time datetime="2011-08-21T16:00:00.000Z">2011-08-22</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                三质点弹簧系统的简正模式
+            </a>
         
-            <a href="/tags/normal-mode/" class="chip pink lighten-1">normal mode</a>
+            <a href="/wedderburn-artin-theorem/" class="collection-item grey-text text-darken-1">
+                <time datetime="2010-10-22T00:00:00.000Z">2010-10-22</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                Artinian 环与 Wedderburn-Artin 定理
+            </a>
         
-            <a href="/tags/tensor-product/" class="chip pink lighten-1">tensor product</a>
+            <a href="/central-simple-algebra/" class="collection-item grey-text text-darken-1">
+                <time datetime="2010-03-13T00:00:00.000Z">2010-03-13</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                关于中心单代数的三个基本结论
+            </a>
+        
+            <a href="/hurwitz-square-sum-theorem/" class="collection-item grey-text text-darken-1">
+                <time datetime="2009-12-05T00:00:00.000Z">2009-12-05</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                Hurwitz 平方和定理
+            </a>
         
     </div>
-
-
-            <div class="toc pink-link-context hide-on-med-and-down">
-    
-</div>
-
-            
-
-
-            <div class="entry pink-link-context">
-                <p>今天的问题是群表示论在物理中的一个小应用：</p>
-<blockquote><p><strong>问题</strong>：平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于一个正三角形的三个顶点处。质点之间两两由一根弹簧相连，三个弹簧都是一样的，但是弹簧质量忽略不计。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/abc.png"></p>
-<p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力。那么这个系统的简正模式
-(normal mode) 是什么？</p>
-</blockquote>
-<p>这里简正模式的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
-<span id="more"></span>
-<p>比较容易发现的简正模式有：</p>
-<ol type="1">
-<li><p>平移。初始时给所有质点以同样的速度，则它们会继续以相同的速度移动。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"></p></li>
-<li><p>旋转。初始时给所有质点以相同的切向速度，则它们会继续绕中心旋转。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"></p></li>
-<li><p>呼吸。初始时给每个质点相同的径向速度，则整个三角形会重复膨胀—收缩的过程。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"></p></li>
-</ol>
-<p>但是要找出其它的简正模式，并保证没有遗漏，就不能只靠想象了。</p>
-<p>我们首先把这个物理问题转换为一个线性代数问题，然后用一些简单的群表示论知识解决它。</p>
-<p>这个三质点—弹簧组成的系统在任一时刻的状态可以由 6 个物理量 <span class="math inline">\(q_1\sim q_6\)</span> 来刻画：<span class="math inline">\((q_1,q_2)\)</span> 分别表示质点 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(x,y\)</span> 方向上相对于其平衡位置的位移，<span class="math inline">\((q_3,q_4)\)</span>，<span class="math inline">\((q_5,q_6)\)</span> 的含义类似。</p>
-<p><img style="margin:0px auto;display:block" width="300" src="/images/mass-spring/coords.svg"></p>
-<p>设弹簧的弹性系数为 <span class="math inline">\(k\)</span>，原点在三角形中心，<span class="math inline">\(x\)</span>
-轴水平向右，于是三个弹簧所含的弹性势能为 (投影到弹簧所在的方向) <span class="math display">\[
-\begin{align*}
-V=&amp;\frac{1}{2}k(q_3-q_1)^2+\frac{1}{2}k\left[\frac{-1}{2}(q_5-q_3) +
-\frac{\sqrt{3}}{2}(q_6-q_4)\right]^2+\\&amp;\frac{1}{2}k\left[\frac{1}{2}(q_1-q_5)
-+ \frac{\sqrt{3}}{2}(q_2-q_6)\right]^2.
-\end{align*}
-\]</span> 这实际上是一个关于 <span class="math inline">\(\mathbf{q}=(q_1,q_2,\ldots,q_6)^T\in\mathbb{R}^6\)</span>
-的二次型： <span class="math display">\[V
-=\frac{1}{2}k\,\mathbf{q}^TU\mathbf{q}.\]</span> 其中 <span class="math display">\[U=\frac{1}{4}\begin{pmatrix}5&amp;\sqrt{3}&amp;-4&amp;0&amp;-1&amp;-\sqrt{3}\\
-\sqrt{3}&amp;3&amp;0&amp;0&amp;-\sqrt{3}&amp;3\\
--4&amp;0&amp;5&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}\\
-0&amp;0&amp;-\sqrt{3}&amp;3&amp;\sqrt{3}&amp;-3\\
--1&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}&amp;2&amp;0\\
--\sqrt{3}&amp;-3&amp;\sqrt{3}&amp;-3&amp;0&amp;6
-\end{pmatrix}.\]</span></p>
-<p>由牛顿第二定律我们有 <span class="math display">\[m\frac{\mathrm{d}^2q_i}{\mathrm{d}t^2}=-\frac{\partial
-V}{\partial q_i}=-k\sum_{j=1}^6U_{ij}q_j.\]</span>
-系统的简正模式就是所有坐标按照同一个频率作简谐振动变化，故而可以设 <span class="math inline">\(q_i=\overline{q}_i\mathrm{e}^{i\omega
-t}\)</span>，其中 <span class="math inline">\(\overline{q}_i\)</span>
-是与时间 <span class="math inline">\(t\)</span> 无关的常数。代入上式得到
-<span class="math display">\[\frac{m\omega^2}{k}\overline{q}_i =
-\sum_{j=1}^6U_{ij}\overline{q}_j,\]</span> 即 <span class="math inline">\(U\overline{\mathbf{q}}=\lambda\overline{\mathbf{q}}\)</span>，<span class="math inline">\(\lambda=m\omega^2/k\)</span>，于是简正模式对应的向量
-<span class="math inline">\(\overline{\mathbf{q}}=(\overline{q}_1,\overline{q}_2,\ldots,\overline{q}_6)\)</span>
-必然是 <span class="math inline">\(U\)</span>
-的特征向量，从而问题转化为求矩阵 <span class="math inline">\(U\)</span>
-的特征值和特征向量。由于 <span class="math inline">\(U\)</span>
-是一个对称矩阵所以是可对角化的，从而其存在 <span class="math inline">\(6\)</span> 个线性无关的特征向量。</p>
-<p>你当然可以直接硬算，但是手动求一个 6
-阶矩阵的特征值还是一件挺麻烦的事情，鉴于搞数学的人一般比较懒，我们可以换个思路想一想。</p>
-<p>注意到这个系统具有对称性，其对称群是 <span class="math inline">\(S_3\)</span>。<span class="math inline">\(S_3\)</span> 这个群很特殊，一方面它是三元集合
-<span class="math inline">\(\{1,2,3\}\)</span>
-上的置换群，另一方面它是平面上正三角形的对称群 <span class="math inline">\(D_3\)</span>。<span class="math inline">\(S_3\)</span>
-在这个系统上有一个自然的作用，它在置换顶点的同时也变换顶点的 <span class="math inline">\((x,y)\)</span> 坐标，这两种表示合起来给出了 <span class="math inline">\(S_3\)</span> 在状态空间 <span class="math inline">\(\mathbb{R}^6\)</span> 上的作用。</p>
-<p>回忆 <span class="math inline">\(S_3\)</span> 的一个表现为 <span class="math display">\[D_3=\{a,b\, |\, a^2=b^3=(ab)^2=1\}.\]</span>
-当作为置换群时，<span class="math inline">\(a=(12)\)</span>
-是对换，<span class="math inline">\(b=(123)\)</span>
-是轮换。当作为三角形的对称群时，<span class="math inline">\(a=\left(\begin{smallmatrix}-1&amp;0\\0&amp;1\end{smallmatrix}\right)\)</span>
-是关于 <span class="math inline">\(y\)</span> 轴的对称，<span class="math inline">\(b=\left(\begin{smallmatrix}\cos2\pi/3&amp;-\sin2\pi/3\\\sin2\pi/3&amp;\cos2\pi/3\end{smallmatrix}\right)\)</span>
-是关于三角形中心的角度为 <span class="math inline">\(2\pi/3\)</span>
-的逆时针旋转。</p>
-<p><span class="math inline">\(S_3\)</span>
-在系统状态上的作用由如下方式定义：我们把系统状态 <span class="math inline">\(\mathbf{q}\)</span> 所在的空间 <span class="math inline">\(\mathbb{R}^6\)</span> 看做是 <span class="math inline">\(\mathbb{R}^3\)</span> 和 <span class="math inline">\(\mathbb{R}^2\)</span> 的张量积 <span class="math inline">\(\mathbb{R}^3\otimes\mathbb{R}^2\)</span>，<span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\mathbb{R}^3\otimes\mathbb{R}^2\)</span>
-上的表示就是其在 <span class="math inline">\(\mathbb{R}^3\)</span>
-上的表示 (三元坐标的置换) 和在 <span class="math inline">\(\mathbb{R}^2\)</span> 上的表示 (正三角形的对称群)
-的张量积。</p>
-<p>我们把这个张量积表示记作 <span class="math inline">\(\rho\)</span>，其特征记作 <span class="math inline">\(\chi\)</span>，记 <span class="math display">\[R=\begin{pmatrix}\frac{\cos2\pi}{3}&amp;-\frac{\sin2\pi}{3}\\\frac{\sin2\pi}{3}&amp;\frac{\cos2\pi}{3}\end{pmatrix},\quad
-S=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}.\]</span></p>
-<p>下面列出了 <span class="math inline">\(S_3\)</span> 的各个元素在
-<span class="math inline">\(\rho\)</span> 下对应的矩阵： <span class="math display">\[
-\begin{align*}
-\rho(e)&amp;=I_3\otimes
-I_2=\begin{pmatrix}I_2&amp;0&amp;0\\0&amp;I_2&amp;0\\0&amp;0&amp;I_2\end{pmatrix},\\
-\rho(a)&amp;=\begin{pmatrix}0&amp;1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}\otimes
-S=\begin{pmatrix}0&amp;S&amp;0\\S&amp;0&amp;0\\0&amp;0&amp;S\end{pmatrix},\\
-\rho(b)&amp;=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;0&amp;0\end{pmatrix}\otimes
-R=\begin{pmatrix}0&amp;R&amp;0\\0&amp;0&amp;R\\R&amp;0&amp;0\end{pmatrix},\\
-\rho(b^2)&amp;=\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}\otimes
-R^2=\begin{pmatrix}0&amp;0&amp;R^2\\R^2&amp;0&amp;0\\0&amp;R^2&amp;0\end{pmatrix},\\
-\rho(ab)&amp;=\begin{pmatrix}0&amp;0&amp;1\\0&amp;1&amp;0\\1&amp;0&amp;0\end{pmatrix}\otimes
-SR=\begin{pmatrix}0&amp;0&amp;SR\\0&amp;SR&amp;0\\SR&amp;0&amp;0\end{pmatrix},\\
-\rho(ab^2)&amp;=\begin{pmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\\0&amp;1&amp;0\end{pmatrix}\otimes
-SR^2=\begin{pmatrix}SR^2&amp;0&amp;0\\0&amp;0&amp;SR^2\\0&amp;SR^2&amp;0\end{pmatrix}.
-\end{align*}
-\]</span> 一个比较直观的事实是 <span class="math inline">\(\rho\)</span>
-保持系统的势能不变，即对任何状态 <span class="math inline">\(\mathbf{q}\)</span> 有 <span class="math inline">\(V(\rho(g)\mathbf{q})=V(\mathbf{q})\)</span>，即
-<span class="math inline">\(\rho(g)U=U\rho(g)\)</span> (不放心的话可以对
-<span class="math inline">\(a,b\)</span> 验证即可)，所以 <span class="math inline">\(U\)</span> 是表示 <span class="math inline">\(\rho\)</span> 的一个自同态。</p>
-<p>容易验证 <span class="math inline">\(\chi(e)=6\)</span>，<span class="math inline">\(\chi(g)=0, \forall g\ne e\)</span>，于是 <span class="math inline">\(\rho\)</span> 同构于 <span class="math inline">\(S_3\)</span>
-的正则表示，从而可以分解为两个一次表示和两个二次不可约表示的和： <span class="math display">\[\chi = \chi_1 + \chi_2 + 2\chi_3.\]</span> 其中
-<span class="math inline">\(\chi_1\)</span> 是平凡表示的特征，<span class="math inline">\(\chi_2\)</span>
-是符号表示的特征，这两个特征都是一次的。<span class="math inline">\(\chi_3\)</span> 是 <span class="math inline">\(S_3\)</span>
-作为二面体群的二维不可约表示的特征。</p>
-<p>那么表示 <span class="math inline">\(\rho\)</span> 与 <span class="math inline">\(U\)</span> 的特征值有何关系呢？</p>
-<p>注意由于 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(\rho\)</span> 的自同态所以 <span class="math inline">\(\rho\)</span> 保持 <span class="math inline">\(U\)</span> 的任何特征子空间不变，从而 <span class="math inline">\(\rho\)</span> 的任何不可约子模都是 <span class="math inline">\(U\)</span> 的特征子空间，于是 <span class="math inline">\(U\)</span> 的特征子空间分解形如 <span class="math display">\[\mathbb{R}^6=V_{\lambda_1}\oplus
-V_{\lambda_2}\oplus V_{\lambda_3}\oplus V_{\lambda_4}.\]</span> 其中每个
-<span class="math inline">\(V_{\lambda_i}\)</span> 是 <span class="math inline">\(U\)</span> 的特征值为 <span class="math inline">\(\lambda_i\)</span> 的特征子空间，同时也是表示
-<span class="math inline">\(\rho\)</span> 的不可约子模，并且 <span class="math inline">\(\dim V_{\lambda_1}=\dim
-V_{\lambda_2}=1\)</span>，<span class="math inline">\(\dim
-V_{\lambda_3}=\dim V_{\lambda_4}=2\)</span>。这里可能有些 <span class="math inline">\(\lambda_i\)</span> 是相同的。</p>
-<p>选择 <span class="math inline">\(U\)</span>
-的特征向量为一组基，在这组基下 <span class="math inline">\(U\)</span>
-是对角矩阵，形如 <span class="math display">\[U=\begin{pmatrix}\lambda_1&amp;0&amp;0&amp;0\\0&amp;\lambda_2&amp;0&amp;0\\0&amp;0&amp;\lambda_3I_2&amp;0\\0&amp;0&amp;0&amp;\lambda_4I_2\end{pmatrix}.\]</span>
-每个 <span class="math inline">\(\rho(g)\)</span> 在这组基下形如 <span class="math display">\[\rho(g)=\begin{pmatrix}D_1&amp;0&amp;0&amp;0\\0&amp;D_2&amp;0&amp;0\\0&amp;0&amp;D_3&amp;0\\0&amp;0&amp;0&amp;D_4\end{pmatrix}.\]</span></p>
-<p>我们来计算 <span class="math inline">\(\rho(g)U\)</span> 对不同 <span class="math inline">\(g\in S_3\)</span> 的迹。首先 <span class="math display">\[\mathrm{tr}\rho(g)U=\mathrm{tr}\begin{pmatrix}\lambda_1D_1&amp;0&amp;0&amp;0\\0&amp;\lambda_2D_2&amp;0&amp;0\\0&amp;0&amp;\lambda_3D_3&amp;0\\0&amp;0&amp;0&amp;\lambda_4D_4\end{pmatrix}=\sum_{i=1}^4\lambda_i\chi_i(g).
-\]</span></p>
-<p>将不同的 <span class="math inline">\(g\in S_3\)</span> 代入得到 <span class="math display">\[
-\begin{align*}
-\mathrm{tr}\rho(e)U&amp;=\mathrm{tr}U=\frac{1}{4}(5+3+5+3+2+6)=6,\\
-\mathrm{tr}\rho(a)U&amp;=\mathrm{tr}\begin{pmatrix}0&amp;S&amp;0\\S&amp;0&amp;0\\0&amp;0&amp;S\end{pmatrix}\frac{1}{4}\begin{pmatrix}5&amp;\sqrt{3}&amp;-4&amp;0&amp;-1&amp;-\sqrt{3}\\
-\sqrt{3}&amp;3&amp;0&amp;0&amp;-\sqrt{3}&amp;3\\
--4&amp;0&amp;5&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}\\
-0&amp;0&amp;-\sqrt{3}&amp;3&amp;\sqrt{3}&amp;-3\\
--1&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}&amp;2&amp;0\\
--\sqrt{3}&amp;-3&amp;\sqrt{3}&amp;-3&amp;0&amp;6
-\end{pmatrix}\\
-&amp;=\frac{1}{4}(4+0+4+0-2+6)=3,\\
-\mathrm{tr}\rho(b)U&amp;=\mathrm{tr}\begin{pmatrix}0&amp;R&amp;0\\0&amp;0&amp;R\\R&amp;0&amp;0\end{pmatrix}\frac{1}{4}\begin{pmatrix}5&amp;\sqrt{3}&amp;-4&amp;0&amp;-1&amp;-\sqrt{3}\\
-\sqrt{3}&amp;3&amp;0&amp;0&amp;-\sqrt{3}&amp;3\\
--4&amp;0&amp;5&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}\\
-0&amp;0&amp;-\sqrt{3}&amp;3&amp;\sqrt{3}&amp;-3\\
--1&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}&amp;2&amp;0\\
--\sqrt{3}&amp;-3&amp;\sqrt{3}&amp;-3&amp;0&amp;6
-\end{pmatrix}\\
-&amp;=\frac{1}{4}(2+0-1+3+2+0)=\frac{3}{2}.
-\end{align*}
-\]</span> 于是我们得到一组方程 <span class="math display">\[
-\begin{align*}
-6&amp;=\lambda_1+\lambda_2+2(\lambda_3+\lambda_4),\\
-3&amp;=\lambda_1-\lambda_2,\\
-3/2&amp;=\lambda_1+\lambda_2-(\lambda_3+\lambda_4).
-\end{align*}
-\]</span> 于是 <span class="math inline">\(\lambda_1=3\)</span>，<span class="math inline">\(\lambda_2=0\)</span>，<span class="math inline">\(\lambda_3+\lambda_4=3/2\)</span>。</p>
-<p>现在还缺一个方程！你可以用 <span class="math inline">\(\mathrm{tr}U^2=\lambda_1^2+\lambda_2^2+2(\lambda_3^2+\lambda_4^2)\)</span>
-来做，但这需要计算 <span class="math inline">\(U\)</span>
-中所有元素的平方和。可以用物理直观：我们已经看到平移和旋转是两种简正模式，这两种模式下质点的振动频率是
-0，而平移包含了 <span class="math inline">\(x\)</span> 轴和 <span class="math inline">\(y\)</span> 轴两个线性无关的方向上的平移，所以
-<strong>0 作为 <span class="math inline">\(U\)</span>
-的特征值至少是三重的</strong>。我们已经解得 <span class="math inline">\(\lambda_2=0\)</span> 是一个，所以 <span class="math inline">\(\lambda_3\)</span> 和 <span class="math inline">\(\lambda_4\)</span> 中必然还有一个是 0，不妨设
-<span class="math inline">\(\lambda_3=0\)</span>，则 <span class="math inline">\(\lambda_4=3/2\)</span>。(严格的话可以论证 <span class="math inline">\(U\)</span> 的秩是 2，从而齐次线性方程组 <span class="math inline">\(UX=0\)</span> 有三个线性无关解)</p>
-<p>总结起来就是：</p>
-<p><span class="math inline">\(S_3\)</span> 在系统状态空间 <span class="math inline">\(\mathbb{R}^6=\mathbb{R}^3\otimes\mathbb{R}^2\)</span>
-上的表示 <span class="math inline">\(\rho\)</span>
-可以分解为平凡表示、符号表示和二维不可约表示的二重和，其中</p>
-<ol type="1">
-<li><p><span class="math inline">\(S_3\)</span>
-的平凡表示对应的简正模式是呼吸，其频率为 <span class="math inline">\(\omega=\sqrt{\dfrac{3k}{m}}\)</span>：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"></p></li>
-<li><p><span class="math inline">\(S_3\)</span>
-的符号表示对应的简正模式是旋转，这是一个刚体运动，其频率 <span class="math inline">\(\omega=0\)</span>：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"></p></li>
-<li><p>第一个二维不可约表示包含了两种简正模式，它们是沿着 <span class="math inline">\(x\)</span> 方向和 <span class="math inline">\(y\)</span> 方向的平移：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"></p>
-<p>这两种都是刚体运动，其频率 <span class="math inline">\(\omega=0\)</span>。</p></li>
-<li><p>第二个二维不可约表示也包含了两种简正模式，它们分别是两个不同方向上的“鼓掌”：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/clap.gif"></p>
-<p>另一种可以由上面的旋转 <span class="math inline">\(2\pi/3\)</span>
-后得到。这两个简正模式的频率都是 <span class="math inline">\(\omega=\sqrt{\dfrac{3k}{2m}}\)</span>。</p></li>
-</ol>
-<p>至此我们就求出了系统的全部简正模式。</p>
-
-                
-<p class="pink-link-context">
-    <a href="/optimal-stopping-and-backward-induction/" rel="next" title="相亲问题与倒向归纳法">
-    上一篇：相亲问题与倒向归纳法
-  </a>
-</p>
-
-
-
-<p class="pink-link-context">
-    <a href="/pattern-occurrence/" rel="next" title="模式的等待时间与反直觉概率">
-    下一篇：模式的等待时间与反直觉概率
-  </a>
-</p>
-
-
-            </div>
-			
-        </div>
-    </div>
-</article>
-
-
-
-
-    <section id="comment">
-       <script src="https://giscus.app/client.js"
-        data-repo="neozhaoliang/neozhaoliang.github.io"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
-        data-category="Announcements"
-        data-category-id="DIC_kwDOCKG3684CPDuy"
-        data-mapping="pathname"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-       </script>
-    </section>
-
 
 
 </div>
