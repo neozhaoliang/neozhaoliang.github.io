@@ -23,7 +23,12 @@ octahedron)、\(A_5\times\mathbb{Z}_2\)
 (dodecahedron, icosahedron)。
 实数域上的有限维结合可除代数只有三种：实数域 \(\mathbb{R}\)、复数域 \(\mathbb{C}\)、四元数 \(\mathbb{H}\)。
 
-本文要介绍的是另外两个“三分天下”的例子，它们来自群表示论，即有限群不可约复表示在实数域上的实现与不可约实表示在复数域上的分解，这两个例子是紧密相关的。">
+本文要介绍的是另外两个“三分天下”的例子，它们来自群表示论，即：
+
+有限群不可约复表示在实数域上的实现。
+有限群不可约实表示在复数域上的分解。
+
+这两个例子是紧密相关的。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -343,7 +348,7 @@ octahedron)、\(A_5\times\mathbb{Z}_2\)
             
     <div class="tags-row">
         
-            <a href="/tags/表示论，有限群，实表示/" class="chip pink lighten-1">表示论，有限群，实表示</a>
+            <a href="/tags/representation-theory，finite-groups/" class="chip pink lighten-1">representation theory，finite groups</a>
         
     </div>
 
@@ -369,31 +374,34 @@ octahedron)、<span class="math inline">\(A_5\times\mathbb{Z}_2\)</span>
 (dodecahedron, icosahedron)。</li>
 <li>实数域上的有限维结合可除代数只有三种：实数域 <span class="math inline">\(\mathbb{R}\)</span>、复数域 <span class="math inline">\(\mathbb{C}\)</span>、四元数 <span class="math inline">\(\mathbb{H}\)</span>。</li>
 </ol>
-<p>本文要介绍的是另外两个“三分天下”的例子，它们来自群表示论，即有限群不可约复表示在实数域上的实现与不可约实表示在复数域上的分解，这两个例子是紧密相关的。</p>
-<span id="more"></span>
-<p>本文需要一些关于张量积和表示论的预备知识，读者可以参考</p>
-<blockquote>
-<p>Representation theory: a first course. William Fulton and Joe Harris.
-GTM 129.</p>
-</blockquote>
-<p>一书的第一章。</p>
-<h1 id="不可约复表示在实数域上的实现">不可约复表示在实数域上的实现</h1>
-<p>设 <span class="math inline">\(G\)</span> 是一个有限群，<span class="math inline">\(V\)</span> 是一个不可约的 <span class="math inline">\(\mathbb{C}G-\)</span> 模，其特征为 <span class="math inline">\(\chi\)</span>，<span class="math inline">\(V^\ast\)</span> 是 <span class="math inline">\(V\)</span>
-的对偶模。我们想知道这个表示是否能在实数域上实现？这里“表示 <span class="math inline">\(V\)</span>
-可以在实数域上实现”有三种等价的说法：</p>
+<p>本文要介绍的是另外两个“三分天下”的例子，它们来自群表示论，即：</p>
 <ol type="1">
+<li>有限群不可约复表示在实数域上的实现。</li>
+<li>有限群不可约实表示在复数域上的分解。</li>
+</ol>
+<p>这两个例子是紧密相关的。</p>
+<span id="more"></span>
+<h1 id="不可约复表示在实数域上的实现">不可约复表示在实数域上的实现</h1>
+<blockquote>
+<p><strong>问题</strong>：设 <span class="math inline">\(G\)</span>
+是一个有限群，<span class="math inline">\(V\)</span> 是一个不可约的
+<span class="math inline">\(\mathbb{C}G-\)</span> 模，其特征为 <span class="math inline">\(\chi\)</span>。我们想知道这个表示是否能在实数域上实现？</p>
+</blockquote>
+<p>这里，表示 <span class="math inline">\(V\)</span>
+可以在实数域上实现有三种等价的说法：</p>
+<ol type="1">
+<li>存在 <span class="math inline">\(V\)</span> 的一组基使得 <span class="math inline">\(G\)</span> 在这组基下的矩阵都是实矩阵。</li>
 <li>存在一个 <span class="math inline">\(\mathbb{R}G-\)</span> 模 <span class="math inline">\(W\)</span> 使得 <span class="math inline">\(V\cong
 \mathbb{C}\otimes_{\mathbb{R}}W\)</span>。</li>
-<li>存在 <span class="math inline">\(V\)</span> 的一组基使得 <span class="math inline">\(G\)</span> 在这组基下的矩阵都是实矩阵。</li>
 <li>存在一个 <span class="math inline">\(\mathbb{R}G-\)</span> 模 <span class="math inline">\(W\)</span>，<span class="math inline">\(W\)</span>
 的特征也是 <span class="math inline">\(\chi\)</span>。</li>
 </ol>
 <p>显然 <span class="math inline">\(V\)</span>
 可以在实数域上可以实现的一个必要条件是 <span class="math inline">\(\chi\)</span> 是实特征
 （即取值均为实数），但是这个条件是否也是充分的呢？</p>
-<p>答案是否定的。最著名的反例就是四元数群 <span class="math inline">\(Q=\{\bf \pm1, \pm i,\pm j, \pm k\}\)</span>，<span class="math inline">\(Q\)</span>
-有四个不可约一维复表示，这四个一维复表示同时也是实表示，其中除平凡表示外，任何一个一维表示把
-<span class="math inline">\(\{\bf i,j,k\}\)</span> 之一映射为
+<p>答案是否定的。最著名的反例就是四元数群 <span class="math inline">\(Q=\{\bf \pm1, \pm i,\pm j, \pm k\}\)</span>，<span class="math inline">\(Q\)</span> 是一个 8
+阶群，它有四个不可约一维复表示，这四个一维复表示同时也是实表示，其中除平凡表示外，任何一个一维表示把
+<span class="math inline">\(\{\bf i,\,j,\,k\}\)</span> 之一映射为
 -1，其余两个映射为 +1。此外 <span class="math inline">\(Q\)</span>
 在四元数体 <span class="math inline">\(\mathbb{H}\)</span>
 上的左乘给出其一个不可约 4 维实表示
