@@ -381,23 +381,25 @@
 <p>显然 <span class="math inline">\(V\)</span>
 可以在实数域上可以实现的一个必要条件是 <span class="math inline">\(\chi\)</span> 是实特征，即对任何 <span class="math inline">\(g\in G\)</span>，<span class="math inline">\(\chi(g)\)</span>
 都是实数，但这个条件是否也是充分的呢？</p>
-<p>答案是否定的。最著名的反例就是四元数群 <span class="math inline">\(Q=\{\bf \pm1, \pm i,\pm j, \pm k\}\)</span>，<span class="math inline">\(Q\)</span> 是一个 8
-阶群，它有四个不可约一维复表示，这四个一维复表示同时也是实表示，其中除平凡表示外，任何一个一维表示把
-<span class="math inline">\(\{\bf i,\,j,\,k\}\)</span> 之一映射为
--1，其余两个映射为 +1。此外 <span class="math inline">\(Q\)</span>
-在四元数体 <span class="math inline">\(\mathbb{H}\)</span>
-上的左乘给出其一个不可约 4 维实表示
-（除环作为自己的左正则模必然是不可约的），因此我们有群代数分解 <span class="math display">\[\mathbb{R}Q \cong 4\mathbb{R} \oplus
+<p>答案是否定的。最著名的反例就是四元数群 <span class="math inline">\(Q_8=\{\bf \pm1, \pm i,\pm j, \pm
+k\}\)</span>，<span class="math inline">\(Q\)</span> 是一个 8
+阶群，它有四个不可约一维复表示，这四个一维复表示同时也是实表示。然而
+<span class="math inline">\(Q_8\)</span> 只有一个次数大于 1
+的不可约复表示，其次数为 2，但是它没有次数为 2
+的不可约实表示，所以这个复表示肯定不能在实数域上实现。</p>
+<p>具体讲，<span class="math inline">\(Q_8\)</span> 在四元数体 <span class="math inline">\(\mathbb{H}\)</span> 上的左乘给出其一个不可约 4
+维实表示（除环作为自己的左正则模必然是不可约的），因此我们有群代数分解
+<span class="math display">\[\mathbb{R}Q_8 \cong 4\mathbb{R} \oplus
 \mathbb{H}.\]</span> 另一方面 <span class="math inline">\(Q\)</span>
 有一个不可约的二维复表示，这个表示由 Pauli 矩阵给出： <span class="math display">\[{\bf
 i}\to\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix},\quad {\bf
 j}\to\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\quad {\bf
 k}\to\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix}.\]</span>
 这三个矩阵和恒等矩阵一起构成 <span class="math inline">\({\rm
-Mat}_2(\mathbb{C})\)</span> 的一组基，因此有群代数分解 <span class="math display">\[\mathbb{C}Q\cong4\mathbb{C}\oplus {\rm
-Mat}_2(\mathbb{C}).\]</span> 我们看到 <span class="math inline">\(Q\)</span>
+Mat}_2(\mathbb{C})\)</span> 的一组基，因此有群代数分解 <span class="math display">\[\mathbb{C}Q_8\cong4\mathbb{C}\oplus {\rm
+Mat}_2(\mathbb{C}).\]</span> 由于 <span class="math inline">\(Q\)</span>
 没有二维不可约实表示，因此这个二维不可约复表示不能在实数域上实现。后面会看到
-<span class="math inline">\(Q\)</span> 的这个 4
+<span class="math inline">\(Q_8\)</span> 的这个 4
 维不可约实表示在复数域上会分解为其二维不可约复表示的二重和。</p>
 <p>那要使得一个不可约复表示可以在实数域上实现，它应该满足怎样的条件？下面就来讨论这个问题。</p>
 <p>首先我们将论证 <span class="math inline">\(V\)</span>

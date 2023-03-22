@@ -11,7 +11,7 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="我写了一个 Shadertoy
-小动画，演示 Needham 的《Visual complex analysis》一书中第七章
+小动画，演示 Needham 的 &#34;Visual complex analysis&#34; 一书中第七章
 &#34;Winding numbers and topology&#34; 中的结论：">
     
     
@@ -358,48 +358,57 @@
 
             <div class="entry pink-link-context">
                 <p>我写了一个 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/fdK3RD">Shadertoy
-小动画</a>，演示 Needham 的《Visual complex analysis》一书中第七章
+小动画</a>，演示 Needham 的 "Visual complex analysis" 一书中第七章
 "Winding numbers and topology" 中的结论：</p>
 <span id="more"></span>
-<blockquote><p>一个人和他的狗在公园里绕着一棵树散步，人和狗各自走的路径都是闭曲线，即经过一段时间后都会回到起点。如果人把狗绳抓的紧一些，使得整个过程中狗<strong>无法接触</strong>到树，则结束后人和狗绕着树走的圈数是一样的，这就是下面这个动画演示的：（树的位置是原点，用一个表盘标记)</p>
+<blockquote><p>一个人和他的狗在公园里绕着一棵树散步，人和狗各自走的路径都是闭曲线，即经过一段时间后都会回到起点。如果人把狗绳抓的紧一些，使得整个过程中狗<strong>无法接触</strong>到树，则结束后人和狗绕着树走的圈数是一样的，这就是下面这个动画演示的：（树的位置是原点，用一个表盘标记）</p>
 <object data="/code/rouche.svg">
 </object>
 </blockquote>
 <p>对应的数学结论是：两条闭曲线 <span class="math inline">\(\gamma_1,\gamma_2\)</span> 如果都不经过原点，且
 <span class="math inline">\(\gamma_1\)</span>
-可以在不碰触到原点的前提下通过连续的形变变为 <span class="math inline">\(\gamma_2\)</span> (同伦)，则 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
+可以在不碰触到原点的前提下通过连续的形变变为 <span class="math inline">\(\gamma_2\)</span>（同伦），则 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
 关于原点的环绕数相等。</p>
-<p>其实动画中还包含了幅角原理：动画中左下角的圆周是单位圆 <span class="math inline">\(S^1:\{z\in\mathbb{C}:|z|=1\}\)</span>，动画右边的两条路径分别是
-<span class="math inline">\(S^1\)</span> 在两个解析函数 <span class="math inline">\(f,g\)</span> 下的像，这里的 <span class="math inline">\(f\)</span> 我取的形如 <span class="math display">\[f(z)
+<p>注意这个结论只要求 <span class="math inline">\(\gamma_1,\gamma_2:\,
+[0,1]\to\mathbb{R}^2\)</span> 是两条连续曲线，并不涉及解析性。</p>
+<p>当 <span class="math inline">\(\gamma_1=f(S^1),\gamma_2=g(S^1)\)</span>
+分别是单位圆 <span class="math inline">\(S^1:\{z\in\mathbb{C}:|z|=1\}\)</span>
+在两个解析函数 <span class="math inline">\(f,g\)</span> 下的像时，<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Argument_principle">幅角原理</a>
+告诉我们 <span class="math inline">\(f,g\)</span>
+关于原点的环绕数分别等于它们各自在 <span class="math inline">\(S^1\)</span> 的内部的零点个数。只要绳子 <span class="math inline">\(l(z)=f(z)-g(z)\)</span> 始终够不到原点，即对任何
+<span class="math inline">\(z\in S^1\)</span> 都有 <span class="math inline">\(|f(z)|&gt;|l(z)|\)</span> 成立，就可以保证 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
+关于原点有相同的环绕数，从而 <span class="math inline">\(f,g\)</span> 在
+<span class="math inline">\(S^1\)</span>
+内部的零点个数也是相同的，这就是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem">Rouché
+定理</a> 的结论。</p>
+<p>动画中左下角的圆周是 <span class="math inline">\(S^1\)</span>，动画右边红、绿两条路径分别是 <span class="math inline">\(S^1\)</span> 在两个解析函数 <span class="math inline">\(f,g\)</span> 下的像，这里的 <span class="math inline">\(f\)</span> 我取的形如 <span class="math display">\[f(z)
 =\frac{z-a}{1-\overline{a}z}\frac{z-b}{1-\overline{b}z}\frac{z-c}{1-\overline{c}z}
-(z-2-2i),\quad a,b,c\in\mathbb{D}.\]</span> 于是 <span class="math inline">\(f(z)\)</span> 在单位圆 <span class="math inline">\(\mathbb{D}:\{z\in\mathbb{C}:|z|&lt;1\}\)</span>
-的内部有 3 个根 (我用红点标出来了)，在边界 <span class="math inline">\(S^1\)</span> 上不为 0，在单位圆外部有一个根
-(图中没有画)。<span class="math inline">\(f(z)\)</span>
-的前三个因子构成一个 Blaschke 乘积，这是一个多对一的映射，它把圆盘 <span class="math inline">\(\mathbb{D}\)</span> 的内部仍然映射为内部，把边界
-<span class="math inline">\(S^1\)</span> 仍然映射为 <span class="math inline">\(S^1\)</span>，于是对任何 <span class="math inline">\(z\in S^1\)</span> 有 <span class="math display">\[|f(z)| = |z - 2 - 2i| \geq 2\sqrt{2} - 1,\quad
-z\in S^1.\]</span> 所以如果绳子 <span class="math inline">\(l(z)\)</span> 满足 <span class="math inline">\(|l(S^1)| &lt; 2\sqrt{2}-1\)</span>，则狗走的路径
+(z-2-2i),\quad |a|,|b|,|c|&lt;1.\]</span> 于是 <span class="math inline">\(f(z)\)</span> 在 <span class="math inline">\(S^1\)</span> 的内部有 3 个根
+（我用红点标出来了），在 <span class="math inline">\(S^1\)</span> 上不为
+0，在 <span class="math inline">\(S^1\)</span>
+外部有一个根（图中没有画）。<span class="math inline">\(f(z)\)</span>
+的前三个因子构成一个 Blaschke 乘积，它把 <span class="math inline">\(S^1\)</span> 的内部仍然映射为内部，把 <span class="math inline">\(S^1\)</span> 仍然映射为 <span class="math inline">\(S^1\)</span>，于是对任何 <span class="math inline">\(z\in S^1\)</span> 有 <span class="math display">\[|f(z)| = |z - 2 - 2i| \geq 2\sqrt{2} - 1,\quad
+z\in S^1.\]</span> 所以只要绳子 <span class="math inline">\(l(z)\)</span> 满足 <span class="math inline">\(|l(S^1)| &lt; 2\sqrt{2}-1\)</span>，则狗走的路径
 <span class="math inline">\(g(S^1)=f(S^1)+l(S^1)\)</span>
 就不可能接触到原点。我这里取了 <span class="math inline">\(l(z) =
 cz\)</span>，其中 <span class="math inline">\(c\)</span> 是一个小于
 <span class="math inline">\(2\sqrt{2}-1\)</span> 的正实数。</p>
-<p>根据<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Argument_principle">幅角原理</a>，<span class="math inline">\(f(S^1)\)</span> 和 <span class="math inline">\(g(S^1)\)</span> 关于原点的环绕数等于它们在 <span class="math inline">\(\mathbb{D}\)</span> 内的零点个数，于是我们知道
-<span class="math inline">\(g(z)\)</span> 也必然在 <span class="math inline">\(\mathbb{D}\)</span> 内有三个零点。这就是 Rouché
-定理的结论。</p>
-<p>Rouché
-定理说的是两条曲线关于一个点的环绕数相等的结论。它可以稍微改动一下变成一条曲线关于两个点的环绕数：</p>
+<p>曲线的环绕数在平面的每个连通分支上都是常数。对一条闭曲线 <span class="math inline">\(\gamma\)</span> 和不在 <span class="math inline">\(\gamma\)</span> 上的一点 <span class="math inline">\(z\)</span>，你可以稍稍移动 <span class="math inline">\(z\)</span> 到另一个点 <span class="math inline">\(z'\)</span>，只要保持 <span class="math inline">\(z'\)</span> 仍然位于 <span class="math inline">\(z\)</span> 所在的连通分支内，则 <span class="math inline">\(\gamma\)</span> 关于 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(z'\)</span>
+有相同的环绕数。利用这个事实，再结合幅角原理，我们不难得出下面的结论：</p>
 <blockquote>
-<p>设 <span class="math inline">\(\gamma\)</span>
+<p><strong>推论</strong>：设 <span class="math inline">\(\gamma\)</span>
 是一条简单闭曲线，内部围的区域为 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(f(z)\)</span> 是一个非常数的解析函数，<span class="math inline">\(f\)</span> 在包含 <span class="math inline">\(\gamma\)</span>
 的某个区域内解析。假设有两棵树分别位于 <span class="math inline">\(w_0,\,w_1\)</span> 两点，且人行走的路线 <span class="math inline">\(f(\gamma)\)</span> 到 <span class="math inline">\(w_0\)</span> 的距离始终大于两棵树之间的距离：即
 <span class="math inline">\(|f(z)-w_0| &gt; |w_0-w_1|\)</span> 对 <span class="math inline">\(z\in\gamma\)</span> 恒成立，则 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_0,w_1\)</span> 的环绕数相等，从而 <span class="math inline">\(w_0,w_1\)</span> 在 <span class="math inline">\(\gamma\)</span> 内部的原像个数相同： <span class="math display">\[\sharp\{z\in \Omega: f(z)=w_0\} = \sharp\{z\in
 \Omega: f(z)=w_1\}.\]</span></p>
 </blockquote>
-<p>这是因为将曲线 <span class="math inline">\(f(\gamma)\)</span> 和点
-<span class="math inline">\(w_1\)</span> 同时作平移 <span class="math inline">\(w_0-w_1\)</span> 不改变环绕数，所以 <span class="math inline">\(g(\gamma)=f(\gamma)+(w_0-w_1)\)</span> 关于 <span class="math inline">\(w_0=w_1+(w_0-w_1)\)</span> 的环绕数仍然等于 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_1\)</span> 的环绕数。而已知绳子的长度 <span class="math inline">\(|w_0-w_1|\)</span> 小于 <span class="math inline">\(f(z)\)</span> 到 <span class="math inline">\(w_0\)</span> 的距离，所以 <span class="math inline">\(g(\gamma)\)</span> 和 <span class="math inline">\(f(\gamma)\)</span> 关于 <span class="math inline">\(w_0\)</span> 有相同的环绕数，从而它们在 <span class="math inline">\(\Omega\)</span> 内关于 <span class="math inline">\(w_0\)</span> 的原像个数相同，此即为所证。</p>
-<p>利用这个结论我们不难得出复分析中的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis)">开映射定理</a>：</p>
+<p>这是因为根据条件，从 <span class="math inline">\(w_0\)</span>
+沿着线段 <span class="math inline">\([w_0,w_1]\)</span> 移动到 <span class="math inline">\(w_1\)</span> 的过程中始终不会碰触到曲线 <span class="math inline">\(f(\gamma)\)</span>，所以 <span class="math inline">\(w_0,w_1\)</span> 必然位于同一连通分支内。</p>
+<p><img style="margin:0px auto;display:block" src="/images/rouche/winding_number.svg" width="250"></p>
+<p>利用推论我们不难得出复分析中的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis)">开映射定理</a>：</p>
 <blockquote>
-<p><strong>定理</strong>：如果 <span class="math inline">\(U\subseteq\mathbb{C}\)</span> 是开集，<span class="math inline">\(f:U\to\mathbb{C}\)</span>
-是<strong>非常数</strong>的解析函数，则 <span class="math inline">\(f(U)\)</span> 也是开集。</p>
+<p><strong>定理</strong>：如果 <span class="math inline">\(U\subseteq\mathbb{C}\)</span> 是开集，<span class="math inline">\(f:U\to\mathbb{C}\)</span> 是非常数的解析函数，则
+<span class="math inline">\(f(U)\)</span> 也是开集。</p>
 </blockquote>
 <p>我把这个证明留给你（欢迎在评论区写出你的答案）。</p>
 

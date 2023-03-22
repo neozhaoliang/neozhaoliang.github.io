@@ -10,16 +10,16 @@
     <title>Coxeter element: a computational approach | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="虽然本文起了个英文标题，但内容完全是中文的，原因是我没有想到合适的能概括内容的中文标题。
-如果你对李代数有所了解的话，相信很大概率你会见过下面的图案：(参考维基百科的
+    <meta name="description" content="虽然本文起了个英文标题，但内容完全是中文的，原因是我没有想到合适的中文标题。
+如果你对李代数有所了解的话，相信很大概率你会见过下面的图案：（参考维基百科的
 Lie algebra
-词条)
+词条）
 
 它展示的是李代数 \(E_8\)
 的根系图，李代数 \(E_8\)
 的根系由八维欧式空间 \(\mathbb{R}^8\)
 中的 240 个向量组成，每个向量恰好有 56 个与其距离最近的邻居。将这 240
-个向量投影到一个特殊的二维平面 (叫做 Coxeter 平面)
+个向量投影到一个特殊的二维平面 （叫做 Coxeter 平面）
 就会呈现一个旋转对称的图案，你可以看到上图中的图案中，240 个投影点分布在
 8 个圆周上，每个圆周包含 30 个均匀分布的顶点，所以它在角度为 \(\frac{2\pi}{30}\) 的旋转下是不变的。\(h=30\) 叫做 \(E_8\) 的 Coxeter 数。
 这个现象并不是 \(E_8\)
@@ -28,7 +28,7 @@ Lie algebra
 
 可以看到有两个顶点被同时投影到了原点，其余 30 个顶点分布在 3
 个圆周上，每个圆周包含 10 个均匀分布的顶点，所以其 Coxeter 数 \(h=10\)。
-所以这个特殊的投影平面是怎么来的？本文下面以 \(E_8\)
+本文下面以 \(E_8\)
 为例子，通过具体的计算来解释背后的数学。">
     
     
@@ -370,25 +370,25 @@ Lie algebra
 
 
             <div class="entry pink-link-context">
-                <p>虽然本文起了个英文标题，但内容完全是中文的，原因是我没有想到合适的能概括内容的中文标题。</p>
-<p>如果你对李代数有所了解的话，相信很大概率你会见过下面的图案：(参考维基百科的
+                <p>虽然本文起了个英文标题，但内容完全是中文的，原因是我没有想到合适的中文标题。</p>
+<p>如果你对李代数有所了解的话，相信很大概率你会见过下面的图案：（参考维基百科的
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lie_algebra">Lie algebra
-词条</a>)</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/e8.svg" width="400"></p>
+词条</a>）</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/e8.svg" width="350"></p>
 <p>它展示的是李代数 <span class="math inline">\(E_8\)</span>
 的根系图，李代数 <span class="math inline">\(E_8\)</span>
 的根系由八维欧式空间 <span class="math inline">\(\mathbb{R}^8\)</span>
 中的 240 个向量组成，每个向量恰好有 56 个与其距离最近的邻居。将这 240
-个向量投影到一个特殊的二维平面 (叫做 Coxeter 平面)
+个向量投影到一个特殊的二维平面 （叫做 Coxeter 平面）
 就会呈现一个旋转对称的图案，你可以看到上图中的图案中，240 个投影点分布在
 8 个圆周上，每个圆周包含 30 个均匀分布的顶点，所以它在角度为 <span class="math inline">\(\frac{2\pi}{30}\)</span> 的旋转下是不变的。<span class="math inline">\(h=30\)</span> 叫做 <span class="math inline">\(E_8\)</span> 的 Coxeter 数。</p>
 <p>这个现象并不是 <span class="math inline">\(E_8\)</span>
 独有的，对任何有限 Coxeter 群都有类似的结论成立，比如下图显示的是将 5
 维超立方体的 32 个顶点投影到其 Coxeter 平面后得到的图案：</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/5-cube.svg" width="480"></p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/5-cube.svg" width="350"></p>
 <p>可以看到有两个顶点被同时投影到了原点，其余 30 个顶点分布在 3
 个圆周上，每个圆周包含 10 个均匀分布的顶点，所以其 Coxeter 数 <span class="math inline">\(h=10\)</span>。</p>
-<p>所以这个特殊的投影平面是怎么来的？本文下面以 <span class="math inline">\(E_8\)</span>
+<p>本文下面以 <span class="math inline">\(E_8\)</span>
 为例子，通过具体的计算来解释背后的数学。</p>
 <span id="more"></span>
 <h1 id="e_8-的结构"><span class="math inline">\(E_8\)</span> 的结构</h1>
@@ -422,7 +422,7 @@ Lie algebra
 的向量，其中 <span class="math inline">\(-1\)</span>
 的个数是偶数。这样的向量有 128 个。</li>
 </ol>
-<p>我们来写出几个单反射对应的矩阵。显然 <span class="math inline">\(s_1(\alpha_1)=-\alpha_1\)</span>，<span class="math inline">\(s_1(\alpha_2)=\alpha_1+\alpha_2\)</span>，<span class="math inline">\(s_1(\alpha_i)=\alpha_i,\,i&gt;2\)</span>，所以
+<p>我们来手写几个单反射对应的矩阵。不难看出 <span class="math inline">\(s_1(\alpha_1)=-\alpha_1\)</span>，<span class="math inline">\(s_1(\alpha_2)=\alpha_1+\alpha_2\)</span>，<span class="math inline">\(s_1(\alpha_i)=\alpha_i,\,i&gt;2\)</span>，所以
 <span class="math inline">\(s_1\)</span> 在 <span class="math inline">\(\alpha_1,\ldots,\alpha_8\)</span> 这组基下的矩阵为
 <span class="math display">\[
 \begin{pmatrix}-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1\end{pmatrix}.\]</span>
@@ -430,15 +430,15 @@ Lie algebra
 可得 <span class="math inline">\(s_2\)</span> 对应的矩阵为 <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1\end{pmatrix}.\]</span>
 <span class="math inline">\(s_5\)</span> 对应的矩阵为 <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;0&amp;1\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0&amp;1\end{pmatrix}.\]</span>
 其它单反射对应的矩阵我就不再一一写出来了，相信你已经 get
-到了，我要强调的是这些矩阵都是在基 <span class="math inline">\(\alpha_1,\ldots,\alpha_8\)</span> 下的。</p>
+到基本的步骤了，我要强调的是这些矩阵都是在基 <span class="math inline">\(\alpha_1,\ldots,\alpha_8\)</span> 下的。</p>
 <h1 id="coxeter-元和-coxeter-平面">Coxeter 元和 Coxeter 平面</h1>
 <blockquote><p><strong>定义</strong>：将单反射 <span class="math inline">\(s_1,\ldots,s_8\)</span>
 按照任意顺序排列然后相乘得到的元素 <span class="math inline">\(\gamma\in
 W\)</span> 叫做 Coxeter 元。</p>
 </blockquote>
 <p>Coxeter 元不是唯一的，但它们都属于同一个共轭类 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
-<p>一种经典的选择 Coxeter 元的方式是这样的：注意到 <span class="math inline">\(E_8\)</span> 的 Dynkin 图可以分为 1, 3, 5, 7 和 2,
-4, 6, 8 两组，同组中的顶点互不相邻，所以对应的单反射两两交换。记 <span class="math inline">\(x=s_1s_3s_5s_7,y=s_2s_4s_6s_8\)</span>，则取
+<p>一种经典的选择 Coxeter 元的方式是这样的：注意到 <span class="math inline">\(E_8\)</span> 的 Dynkin 图的八个顶点可以分为 <span class="math inline">\(\{1, 3, 5, 7\}\)</span> 和 <span class="math inline">\(\{2, 4, 6, 8\}\)</span>
+两组，同组中的顶点互不相邻，所以对应的单反射两两交换。记 <span class="math inline">\(x=s_1s_3s_5s_7,\,y=s_2s_4s_6s_8\)</span>，取
 Coxeter 元 <span class="math inline">\(\gamma\)</span> 为 <span class="math display">\[\gamma=xy=\begin{pmatrix}0&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;2&amp;-1&amp;1&amp;-1\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;-1\end{pmatrix}.\]</span>
 于是 <span class="math display">\[\gamma^{-1} =
 yx=\begin{pmatrix}-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;1&amp;-1&amp;1&amp;0&amp;1\\0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;0&amp;1\\0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;-1&amp;1\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;0&amp;0\end{pmatrix}.\]</span></p>
@@ -481,7 +481,7 @@ yx=\begin{pmatrix}-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;1&amp;-1&
 <span class="math inline">\(C\)</span> 的特征值从小到大依次为</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-number">0.01095621</span> <span class="hljs-number">0.51371035</span> <span class="hljs-number">1.18652671</span> <span class="hljs-number">1.58417662</span> <span class="hljs-number">2.41582338</span> <span class="hljs-number">2.81347329</span> <span class="hljs-number">3.48628965</span> <span class="hljs-number">3.98904379</span>]<br></code></pre></td></tr></tbody></table></figure>
 <p>第一个和最后一个之和是 4，第二个和倒数第二个之和也是
-4，第三个和倒数第三个之和也是 4，第四个和第五个之和也是 4，没错！</p>
+4，第三个和倒数第三个之和也是 4，第四个和第五个之和也是 4，所以 <span class="math inline">\(C\)</span> 的特征值两两之和为 4，与理论相符！</p>
 <p>我们知道 <span class="math inline">\(C\)</span> 是一个对角线上都是
 2，其它元素均非正的矩阵，所以 <span class="math inline">\(2I-C\)</span>
 是一个非负矩阵，根据 Frobenius-Perron 定理其极大特征值非负并且重数是

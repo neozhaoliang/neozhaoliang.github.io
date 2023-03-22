@@ -11,7 +11,7 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="问题：假设你是一位大龄男士，准备参加 100 场相亲
-(别介意具体数字)。你打算依次与每个女士 \(i\) 约会，然后根据印象给她打一个分数 \(X_i\)，\(X_i\) 的值介于 \([0,1]\) 之间。如果你对女士 \(i\)
+（别介意具体数字）。你打算依次与每个女士 \(i\) 约会，然后根据印象给她打一个分数 \(X_i\)，\(X_i\) 的值介于 \([0,1]\) 之间。如果你对女士 \(i\)
 很满意，那么就和她结婚，否则就放弃她，参加下一场相亲，当然拒绝了人家可就没有回头的机会了。如果你拒绝了前
 99 位女士，那么不论第 100
 次相亲结果如何你都只能和最后这位女士结婚。在相亲之前，你对这些女士的情况一无所知，所以姑且假定她们的分数
@@ -336,11 +336,9 @@
             
     <div class="tags-row">
         
-            <a href="/tags/离散鞅/" class="chip pink lighten-1">离散鞅</a>
-        
-            <a href="/tags/Backward-induction/" class="chip pink lighten-1">Backward induction</a>
-        
             <a href="/tags/Williams-概率和鞅/" class="chip pink lighten-1">Williams 概率和鞅</a>
+        
+            <a href="/tags/离散鞅，Backward-induction/" class="chip pink lighten-1">离散鞅，Backward induction</a>
         
     </div>
 
@@ -354,13 +352,14 @@
 
             <div class="entry pink-link-context">
                 <blockquote><p><strong>问题</strong>：假设你是一位大龄男士，准备参加 100 场相亲
-(别介意具体数字)。你打算依次与每个女士 <span class="math inline">\(i\)</span> 约会，然后根据印象给她打一个分数 <span class="math inline">\(X_i\)</span>，<span class="math inline">\(X_i\)</span> 的值介于 <span class="math inline">\([0,1]\)</span> 之间。如果你对女士 <span class="math inline">\(i\)</span>
+（别介意具体数字）。你打算依次与每个女士 <span class="math inline">\(i\)</span> 约会，然后根据印象给她打一个分数 <span class="math inline">\(X_i\)</span>，<span class="math inline">\(X_i\)</span> 的值介于 <span class="math inline">\([0,1]\)</span> 之间。如果你对女士 <span class="math inline">\(i\)</span>
 很满意，那么就和她结婚，否则就放弃她，参加下一场相亲，当然拒绝了人家可就没有回头的机会了。如果你拒绝了前
 99 位女士，那么不论第 100
 次相亲结果如何你都只能和最后这位女士结婚。在相亲之前，你对这些女士的情况一无所知，所以姑且假定她们的分数
 <span class="math inline">\(X_i\)</span> 都是 <span class="math inline">\([0,1]\)</span>
 上均匀分布的独立的随机变量。问题是：应该采取怎样的相亲策略，才能娶到你最中意的女士？</p>
 </blockquote>
+<p><img style="margin:0px auto;display:block" src="/images/midjourney/dating.jpg" width="250"></p>
 <span id="more"></span>
 <p>再费点笔墨解释下。每次相亲结束以后，你可以选择和当前的女士结婚，或者继续见下一位女士，这依赖于你已经相亲的结果：如果你挑挑拣拣到了
 90
@@ -383,9 +382,9 @@ NO！首先门槛值应该是一个随着相亲的进行而逐渐降低的数列
 <p>我们从最后的情形开始分析，假设只剩下一位女士可选，那么你只能去和她结婚，而她的期望值是
 1/2，我们记作 <span class="math inline">\(a_1=1/2\)</span>。</p>
 <p>假设还剩下两位女士可选呢？这种情况下应该先和其中一个相亲，如果她的分数大于等于
-1/2，那就应该和她结婚 (后者的期望只有 1/2，很可能不如她)，而小于 1/2
-的话则去和第二位女士相亲 (后者的期望是
-1/2，所以我没道理现在娶一个分数小于 1/2 的)。而第一位女士分数大于等于
+1/2，那就应该和她结婚 （后者的期望只有 1/2，很可能不如她），而小于 1/2
+的话则去和第二位女士相亲 （后者的期望是
+1/2，所以我没道理现在娶一个分数小于 1/2 的）。而第一位女士分数大于等于
 1/2 的概率是 1/2，在大于等于 1/2 的条件下她的分数服从 <span class="math inline">\([1/2,1]\)</span> 上的均匀分布，期望值是
 3/4。所以你以 1/2 的概率娶到一个期望值为 3/4 的女士，以 1/2
 的概率娶到一个期望值为 1/2
@@ -394,11 +393,11 @@ NO！首先门槛值应该是一个随着相亲的进行而逐渐降低的数列
 位女士的时候你的心理期望值是 <span class="math inline">\(a_i\)</span>，
 我们来导出 <span class="math inline">\(a_i\)</span> 和 <span class="math inline">\(a_{i+1}\)</span>
 之间的递推关系：首先和其中一位女士相亲，如果她的分数大于等于 <span class="math inline">\(a_i\)</span> 那么就和她结婚，否则就拒绝她
-(因为后面 <span class="math inline">\(i\)</span> 个人的心理期望是 <span class="math inline">\(a_i\)</span>，我没道理现在娶一个分数小于 <span class="math inline">\(a_i\)</span> 的)。前一种情形的期望是 <span class="math inline">\(\frac{1+a_i}{2}\)</span> 但是发生的概率是 <span class="math inline">\(1-a_i\)</span>，后一种情形的期望是 <span class="math inline">\(a_i\)</span> 发生的概率也是 <span class="math inline">\(a_i\)</span>，因此 <span class="math display">\[a_{i+1}=(1-a_i)(\frac{1+a_i}{2})+a_i\cdot
+（因为后面 <span class="math inline">\(i\)</span> 个人的心理期望是 <span class="math inline">\(a_i\)</span>，我没道理现在娶一个分数小于 <span class="math inline">\(a_i\)</span> 的）。前一种情形的期望是 <span class="math inline">\(\frac{1+a_i}{2}\)</span> 但是发生的概率是 <span class="math inline">\(1-a_i\)</span>，后一种情形的期望是 <span class="math inline">\(a_i\)</span> 发生的概率也是 <span class="math inline">\(a_i\)</span>，因此 <span class="math display">\[a_{i+1}=(1-a_i)(\frac{1+a_i}{2})+a_i\cdot
 a_i=\frac{1+a_i^2}{2}.\]</span> 结合初值 <span class="math inline">\(a_1=\frac{1}{2}\)</span>
 就可以算出整个序列来，因此我们的相亲策略应该是：</p>
 <blockquote>
-<p>如果当前女士 (假设编号为 <span class="math inline">\(i\)</span>)
+<p>如果当前女士 （假设编号为 <span class="math inline">\(i\)</span>)
 的得分大于等于 <span class="math inline">\(a_{101-i}\)</span>，那么就和她结婚；否则就继续去见下一位女士。这里序列
 <span class="math inline">\(\{a_i\}\)</span> 由 <span class="math inline">\(a_1=1/2\)</span>，<span class="math inline">\(a_{i+1}=\frac{1+a_i^2}{2}\)</span> 给出。</p>
 </blockquote>
@@ -454,9 +453,9 @@ S_n=X_n\}\)</span>，则 <span class="math inline">\(\tau\)</span>
 确实是最优的停止策略呢？想法是这样的：设 <span class="math inline">\(T\)</span> 是任意停时，我们要证明 <span class="math inline">\(\mathbb{E}X_\tau\geq
 \mathbb{E}X_T\)</span>，为此我们利用 <span class="math inline">\(\{S_n\}\)</span> 和 <span class="math inline">\(\{X_n\}\)</span>
 的关系，给式子中间塞进去两项，搭一座桥： <span class="math display">\[
-\mathbb{E}X_\tau = \mathbb{E}S_\tau \geq \mathbb{E}S_T\geq
+\mathbb{E}X*\tau = \mathbb{E}S*\tau \geq \mathbb{E}S*T\geq
 \mathbb{E}X_T.\]</span> 注意第一个等号是根据 <span class="math inline">\(\tau\)</span> 的定义，最后一个不等号是根据定理
-1。所以我们只要证明中间的不等号 <span class="math inline">\(\mathbb{E}S_\tau\geq \mathbb{E}S_T\)</span>
+1。所以我们只要证明中间的不等号 <span class="math inline">\(\mathbb{E}S*\tau\geq \mathbb{E}S_T\)</span>
 即可。</p>
 <p>我们已经知道 <span class="math inline">\(\{S_n\}\)</span>
 是一个上鞅，那么自然不管什么停时 <span class="math inline">\(T\)</span>，统统都有 <span class="math inline">\(\mathbb{E}S_T\leq \mathbb{E}S_0\)</span>。但是关于
@@ -483,8 +482,8 @@ S_n=X_n\}\)</span>，则 <span class="math inline">\(\tau\)</span>
 </ol>
 </blockquote>
 <p>定理的必要性告诉我们前面采用的见好就收策略是所有最优停时中最小的：设
-<span class="math inline">\(\nu\)</span> 是任一最优停时，则 <span class="math inline">\(\tau\leq\nu\)</span> (回顾一下 <span class="math inline">\(\tau\)</span>
-的定义)。换句话说，我们之前设计的相亲策略是所有最优策略中时间成本最低的！</p>
+<span class="math inline">\(\nu\)</span> 是任一最优停时，则 <span class="math inline">\(\tau\leq\nu\)</span> （回顾一下 <span class="math inline">\(\tau\)</span>
+的定义）。换句话说，我们之前设计的相亲策略是所有最优策略中时间成本最低的！</p>
 <p>我们还可以给出最优停止策略中最大的一个来：</p>
 <blockquote><p><strong>定理 5</strong>：设 <span class="math inline">\(S_n=M_n+A_n\)</span> 是 <span class="math inline">\(\{S_n\}\)</span> 的 Doob - Meyer 分解，其中 <span class="math inline">\(\{M_n\}\)</span> 是鞅，<span class="math inline">\(A_n\)</span> 是可料递增过程，定义 <span class="math display">\[\tau_\max = \begin{cases}N &amp; A_N=0,\\
 \inf\{n\ |\ A_{n+1}&gt;0\} &amp; A_N&gt;0.\end{cases}\]</span> 则 <span class="math inline">\(\tau_\max\)</span> 是所有最优停时中最大的。</p>
