@@ -7,13 +7,14 @@
 
     
 
-    <title>Coxeter 群基础知识 (二)：几何实现 | 朝花夕拾</title>
+    <title>Coxeter 群基础知识 （二）：几何实现 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="在本系列的第一篇文章中讨论了两个反射生成的万花筒的结构，这篇文章是本系列的第二篇，将讨论推广到一般的有限生成
+    <meta name="description" content="本系列的 第一篇文章
+讨论了两个反射生成的万花筒的结构，本文是系列的第二篇，将讨论推广到一般的有限生成
 Coxeter 群。
 我们还是会同时关注 \(V^\ast\) 中根系
-(反射镜面) 的结构和 \(V\) 中 Tits
+（反射镜面） 的结构和 \(V\) 中 Tits
 锥（万花筒）的结构。
 “锥”是本文中出现的一个高频词，有必要在这里明确澄清。本文采用如下定义：
 设 \(V\) 是一个实向量空间，称集合
@@ -26,7 +27,7 @@ C\) 和实数 \(\alpha\geq0\) 有
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Coxeter 群基础知识 (二)：几何实现"/>
+    <meta property="og:title" content="Coxeter 群基础知识 （二）：几何实现"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -326,7 +327,7 @@ C\) 和实数 \(\alpha\geq0\) 有
             <div class="article-title">
                 
     
-        <h1>Coxeter 群基础知识 (二)：几何实现</h1>
+        <h1>Coxeter 群基础知识 （二）：几何实现</h1>
     
 
 
@@ -374,10 +375,11 @@ C\) 和实数 \(\alpha\geq0\) 有
 
 
             <div class="entry pink-link-context">
-                <p>在本系列的<a href="/coxeter-groups-I/">第一篇文章中</a>讨论了两个反射生成的万花筒的结构，这篇文章是本系列的第二篇，将讨论推广到一般的有限生成
+                <p>本系列的 <a href="/coxeter-groups-I/">第一篇文章</a>
+讨论了两个反射生成的万花筒的结构，本文是系列的第二篇，将讨论推广到一般的有限生成
 Coxeter 群。</p>
 <p>我们还是会同时关注 <span class="math inline">\(V^\ast\)</span> 中根系
-(反射镜面) 的结构和 <span class="math inline">\(V\)</span> 中 Tits
+（反射镜面） 的结构和 <span class="math inline">\(V\)</span> 中 Tits
 锥（万花筒）的结构。</p>
 <p>“锥”是本文中出现的一个高频词，有必要在这里明确澄清。本文采用如下定义：</p>
 <blockquote><p>设 <span class="math inline">\(V\)</span> 是一个实向量空间，称集合
@@ -445,17 +447,11 @@ Coxeter 矩阵。定义其 Cartan 矩阵为 <span class="math inline">\(C=(c_{s,
 对应的是两个仿射的平行镜面，<span class="math inline">\(a_{s,t}&gt;1\)</span>
 对应的是双曲空间中两个超平行的镜面。</p>
 </blockquote>
-<p>设 <span class="math inline">\(V\)</span> 是一个维数为 <span class="math inline">\(|S|\)</span> 的实向量空间，其对偶空间为 <span class="math inline">\(V^\ast\)</span>，取 <span class="math inline">\(V^\ast\)</span> 中的一组基为 <span class="math inline">\(\{\alpha_s \mid s\in
+<p>设 <span class="math inline">\(V\)</span> 是一个维数为 <span class="math inline">\(|S|\)</span> 的实向量空间，其对偶空间为 <span class="math inline">\(V^\ast\)</span>，取 <span class="math inline">\(V^\ast\)</span> 的一组基 <span class="math inline">\(\{\alpha_s \mid s\in
 S\}\)</span>。这是一组线性无关的线性泛函，根据线性方程组解的判定定理，我们一定可以取
 <span class="math inline">\(V\)</span> 中的一组向量 <span class="math inline">\(\{\alpha_s^\vee\mid s\in S\}\)</span> 使得对任何
 <span class="math inline">\(s,t\in S\)</span> 有 <span class="math inline">\(\langle
 \alpha_s,\,\alpha_t^\vee\rangle=c_{s,t}\)</span> 成立。</p>
-<blockquote>
-<p><strong>注</strong>：设 <span class="math inline">\(\alpha_s\)</span>
-形如 <span class="math inline">\(\langle \alpha_s,\,x\rangle=
-a_{s,1}x_1+\cdots a_{s,n}x_n\)</span>，把 <span class="math inline">\((a_{s,1},\ldots,a_{s,n})\)</span>
-作为行向量构成矩阵 <span class="math inline">\(A=(a_{i,j})\)</span>。由于 <span class="math inline">\(\{\alpha_s\}\)</span> 是 <span class="math inline">\(V^\ast\)</span> 的一组基，所以 <span class="math inline">\(A\)</span> 是可逆矩阵，矩阵方程 <span class="math inline">\(AX = C\)</span> 有唯一解。<span class="math inline">\(X\)</span> 的列向量即为 <span class="math inline">\(\{\alpha_s^\vee\}\)</span>。</p>
-</blockquote>
 <p>对任一 <span class="math inline">\(s\in S\)</span>，定义 <span class="math inline">\(V\)</span> 上的反射 <span class="math inline">\(\rho_s\)</span> 为 <span class="math display">\[\rho_s(v) = v - \langle
 \alpha_s,\,v\rangle\alpha_s^\vee,\quad v\in V.\]</span> 显然 <span class="math inline">\(\rho_s(\alpha_s^\vee) =
 -\alpha_s^\vee\)</span>。</p>
@@ -470,7 +466,8 @@ V^\ast.\]</span></p>
 <p>上面这些操作其实都有明确的目的：</p>
 <ol type="1">
 <li>我们把 Cartan 矩阵的非对角线元素都定义为负值，并且同时为 0
-或者同时不为 0。根据<a href="/coxeter-groups-I/">上一篇文章</a>中的讨论，这样任何一对反射 <span class="math inline">\(\rho_s,\rho_t\)</span>
+或者同时不为 0。根据 <a href="/coxeter-groups-I/">上一篇文章</a>
+中的讨论，这样任何一对反射 <span class="math inline">\(\rho_s,\rho_t\)</span>
 可以生成一个二维万花筒，其基本区域 <span class="math inline">\(K_{s,t}\)</span> 在 <span class="math inline">\(\rho_s,\rho_t\)</span> 生成的群 <span class="math inline">\(W_{s,t}\)</span>
 的作用下互不重合。下面会看到，反射之间这样两两构成万花筒，就可以保证整个
 <span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span>
@@ -490,8 +487,9 @@ v&gt;0\}\]</span> 作为万花筒的基本区域 <span class="math inline">\(\ma
 <span class="math inline">\(a&gt;b\)</span> 且 <span class="math inline">\(b&gt;a\)</span>，不存在这样的 <span class="math inline">\(v\)</span>！但是通过区分 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 上的作用就可以避免这个问题。因为
 <span class="math inline">\(\{\alpha_s\}\)</span>
 是一组线性无关的泛函，它们的正半空间的交一定是个非空的开集。</li>
-<li>根据<a href="/coxeter-groups-I/">上一篇文章</a>中的分析，对任何一对反射 <span class="math inline">\(\rho_s,\rho_t\)</span>，由于 <span class="math inline">\(n_{s,t}\)</span> 要么形如 <span class="math inline">\(4\cos^2\pi/m\)</span>，这时 <span class="math inline">\(\rho_s,\rho_t\)</span> 生成的群 <span class="math inline">\(W_{s,t}\)</span> 是二面体群 <span class="math inline">\(D_m\)</span>；要么 <span class="math inline">\(n_{s,t}\geq4\)</span>，这时 <span class="math inline">\(W_{s,t}\)</span> 是无限群。于是映射 <span class="math inline">\(s\to\rho_s\)</span> 给出了 <span class="math inline">\((W,S)\)</span> 的一个线性表示 <span class="math inline">\(\rho: W\to\rho(W)\leqslant{\rm
-GL}(V)\)</span>。后面我们将证明表示 <span class="math inline">\(\rho\)</span> 实际是一个同构，从而我们可以把抽象的
+<li>根据 <a href="/coxeter-groups-I/">上一篇文章</a>
+中的分析，对任何一对反射 <span class="math inline">\(\rho_s,\rho_t\)</span>，<span class="math inline">\(n_{s,t}\)</span> 要么形如 <span class="math inline">\(4\cos^2\pi/m\)</span>，这时 <span class="math inline">\(\rho_s,\rho_t\)</span> 生成的群 <span class="math inline">\(W_{s,t}\)</span> 是二面体群 <span class="math inline">\(D_m\)</span>；要么 <span class="math inline">\(n_{s,t}\geq4\)</span>，这时 <span class="math inline">\(W_{s,t}\)</span> 是无限群。于是映射 <span class="math inline">\(s\to\rho_s\)</span> 给出了 <span class="math inline">\((W,S)\)</span> 的一个线性表示 <span class="math inline">\(\rho: W\to\rho(W)\leqslant{\rm
+GL}(V)\)</span>。后面将证明表示 <span class="math inline">\(\rho\)</span> 实际是一个同构，从而我们可以把抽象的
 Coxeter 群 <span class="math inline">\(W\)</span> 与 <span class="math inline">\({\rm GL}(V)\)</span> 的子群 <span class="math inline">\(\rho(W)\)</span> 等同起来，不再区分二者，并把
 <span class="math inline">\(w\in W\)</span> 在 <span class="math inline">\(V\)</span> 上的作用记作 <span class="math inline">\(wv = \rho(w)(v)\)</span>。</li>
 </ol>
@@ -504,8 +502,8 @@ S}\{\alpha_s &gt; 0\}\subset V\)</span>，你可以把 <span class="math inline"
 <blockquote>
 <p><span class="math inline">\(\overline{\mathcal{D}}\)</span>
 的另一种等价的描述方式是，取 <span class="math inline">\(\{\alpha_s\}\)</span> 的一组对偶基 <span class="math inline">\(\{e_t\}\)</span> 满足 <span class="math inline">\(\langle
-\alpha_s,\,e_t\rangle=\delta_{st}\)</span>。<span class="math inline">\(\overline{\mathcal{D}}\)</span> 就是 <span class="math inline">\(\{e_t\}\)</span> 生成的凸集。<span class="math inline">\(\overline{\mathcal{D}}\)</span>
-包含对偶基这件事我们后面会用到。</p>
+\alpha_s,\,e_t\rangle=\delta_{st}\)</span>。<span class="math inline">\(\overline{\mathcal{D}}\)</span> 就是 <span class="math inline">\(\{e_t\}\)</span>
+的凸包。这件事我们后面会用到。</p>
 </blockquote>
 <p>我们称集合 <span class="math display">\[\Phi=\{w\alpha_s\mid w\in W,
 \, s\in S\}\]</span> 为 <span class="math inline">\((W, S)\)</span>
@@ -518,7 +516,7 @@ c_s\in\mathbb{R}.\]</span> 如果上面的所有系数 <span class="math inline"
 是一个<strong>正根</strong>；反之若所有系数 <span class="math inline">\(c_s\)</span> 都非正，就称 <span class="math inline">\(\lambda\)</span>
 是一个<strong>负根</strong>。正根和负根组成的集合分别记作 <span class="math inline">\(\Phi^+\)</span> 和 <span class="math inline">\(\Phi^-\)</span>，显然 <span class="math inline">\(\Phi^+\cap\Phi^-=\emptyset\)</span>。</p>
 <p>这里有个问题：系数 <span class="math inline">\(c_s\)</span>
-一定同时非负或者同时非正吗？或者说，是不是每个根必然是正根或者负根？</p>
+一定同时非负或者同时非正吗？换句话说，是不是每个根必然是正根或者负根？</p>
 <p>答案是肯定的，为此我们需要一个关键的定理。</p>
 <h2 id="关键定理">关键定理</h2>
 <p>现在我们来证明一个非常关键的结论，它是本文的核心。不夸张的说，Coxeter
@@ -532,7 +530,8 @@ W\)</span>，则</p>
 </ol>
 </blockquote>
 </div>
-<p>注意第二个结论和第一个是等价的：如果第一个结论成立，则 <span class="math display">\[\begin{align*}
+<p>这里第二个结论和第一个是等价的：如果第一个结论成立，则</p>
+<p><span class="math display">\[\begin{align*}
 l(ws)&lt;l(w)&amp;\Leftrightarrow l((ws)s) &gt; l(ws)\\
 &amp;\Leftrightarrow ws(\alpha_s)\in\Phi^+\\
 &amp;\Leftrightarrow w(-\alpha_s)\in\Phi^+\\
@@ -547,10 +546,13 @@ S\)</span> 是 <span class="math inline">\(S\)</span> 的子集，<span class="m
 <li><span class="math inline">\(w=xu\)</span> 且 <span class="math inline">\(l(w)=l(x)+l_T(u)\)</span>。</li>
 <li>对任何 <span class="math inline">\(t\in T\)</span> 有 <span class="math inline">\(l(xt) &gt; l(x)\)</span>。</li>
 </ol>
-<p>其中 <span class="math inline">\(l_T(\cdot)\)</span> 是 <span class="math inline">\(W_T\)</span> 上的长度函数。</p>
+<p>其中 <span class="math inline">\(l_T(\cdot)\)</span> 是 <span class="math inline">\(W_T\)</span> 上的长度函数。即 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(w\)</span> 在 <span class="math inline">\(W/W_T\)</span> 中长度最短的陪集代表元。</p>
 </blockquote>
 </div>
-<p><strong>引理 1 的证明</strong>：满足要求的一对 <span class="math inline">\((x, u)\)</span> 可以这样求出来：</p>
+<p><strong>引理 1 的证明</strong>：我从 <a target="_blank" rel="noopener" href="https://personal.math.ubc.ca/~cass/coxeter/crm.html">Casselman
+那里</a> 学到了一个直观的论证方法：</p>
+<p>满足要求的一对 <span class="math inline">\((x, u)\)</span>
+可以通过如下算法求出来：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">x := w<br>u := 1<br>while l(xt) &lt; l(x) for some t in T<br>    x := xt<br>    u := tu<br>end<br></code></pre></td></tr></tbody></table></figure>
 <p>我们来证明这个 <code>while</code> 循环结束后得到的 <span class="math inline">\((x, u)\)</span> 符合要求。由于循环每执行一次 <span class="math inline">\(x\)</span>
 的长度都严格减少，因此这个循环必然在有限次后结束。显然每次执行循环时等式
@@ -572,14 +574,10 @@ l(xt)+1\)</span>，结合 <span class="math inline">\(l(x)&gt;l(xt)\)</span> 得
 </ol>
 <blockquote><p><strong>注</strong>：</p>
 <ol type="1">
-<li><p>从引理结论不难得出对任何 <span class="math inline">\(u\in
+<li><p>当结论不难得出对任何 <span class="math inline">\(u\in
 W_T\)</span> 有 <span class="math inline">\(l_T(u)=l(u)\)</span>
-成立：取 <span class="math inline">\(w=u\)</span>，则 <span class="math inline">\(x\)</span> 必然是 1（可以通过乘以 <span class="math inline">\(T\)</span> 中的元素将 <span class="math inline">\(u\)</span> 变成 1），从而 <span class="math inline">\(l(u)=l_T(u)\)</span>，即子群 <span class="math inline">\(W_T\)</span> 中的元素表示为 <span class="math inline">\(t\in T\)</span> 中元素乘积的最短长度，与其作为
-<span class="math inline">\(W\)</span> 中的元素表示为 <span class="math inline">\(s\in S\)</span>
-中元素的最短长度是相同的。这不是个显然的事情，因为 <span class="math inline">\(T\)</span> 中的生成元与 <span class="math inline">\(S\backslash T\)</span> 中的生成元之间存在 Coxeter
-矩阵给出的辫关系，这有可能导致当 <span class="math inline">\(u=t_{i_1}t_{i_2}\cdots t_{i_k}\)</span>
-时，虽然作为 <span class="math inline">\(T\)</span>
-上的乘积它不能进一步被缩短，但作为 <span class="math inline">\(S\)</span> 上的乘积却可以进一步缩短。</p></li>
+成立：取 <span class="math inline">\(w=u\)</span>，则 <span class="math inline">\(x\)</span> 必然是 1，从而 <span class="math inline">\(l(u)=l_T(u)\)</span>，即 <span class="math inline">\((W,S)\)</span> 上的长度函数 <span class="math inline">\(l\)</span> 限制在 <span class="math inline">\((W_T,T)\)</span> 上就是 <span class="math inline">\(l_T\)</span>。这不是个显然的事情，因为 <span class="math inline">\(T\)</span> 中的生成元与 <span class="math inline">\(S\backslash T\)</span> 中的生成元之间存在 Coxeter
+矩阵给出的辫关系，有可能 <span class="math inline">\(u=t_{i_1}t_{i_2}\cdots t_{i_k}\)</span> 作为 <span class="math inline">\(T\)</span> 上的乘积不能进一步被缩短，但作为 <span class="math inline">\(S\)</span> 上的乘积却可以进一步缩短。</p></li>
 <li><p>这个引理的含义是，对于任何 <span class="math inline">\(w\in
 W\)</span>，我们一定可以在其所在的左陪集 <span class="math inline">\(wW_T\)</span> 中取一个长度最短的陪集代表元 <span class="math inline">\(x\)</span>，使得当 <span class="math inline">\(w\)</span> 分解为 <span class="math inline">\(w=xu,u\in W_T\)</span>
 时，这个分解还保持长度的加法：<span class="math inline">\(l(w)=l(x)+l(u)\)</span>。</p></li>
@@ -588,7 +586,7 @@ W\)</span>，我们一定可以在其所在的左陪集 <span class="math inline
 <p><strong><a href="#theorem1">定理 1</a> 的证明</strong>：</p>
 <p>我们先证明充分性：若 <span class="math inline">\(l(ws)&gt;l(w)\)</span> 则 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>。</p>
 <p>对 <span class="math inline">\(w\)</span> 的长度 <span class="math inline">\(l(w)\)</span> 归纳：<span class="math inline">\(l(w)=0\)</span> 时 <span class="math inline">\(w=1\)</span>，结论显然成立，下面设结论对 <span class="math inline">\(W\)</span> 中所有长度小于 <span class="math inline">\(l(w)\)</span> 的元素成立。</p>
-<p>我们总是可以取 <span class="math inline">\(t\ne s\)</span> 使得 <span class="math inline">\(l(wt)&lt;l(w)\)</span>，比如 <span class="math inline">\(t\)</span> 取为 <span class="math inline">\(w\)</span> 的某个既约表达式的最后一项。令 <span class="math inline">\(T=\{s,t\}\)</span>，<span class="math inline">\(w=xu\)</span> 是如<a href="#lemma1">引理 1</a>
+<p>我们总是可以取 <span class="math inline">\(t\ne s\)</span> 使得 <span class="math inline">\(l(wt)&lt;l(w)\)</span>，比如 <span class="math inline">\(t\)</span> 取为 <span class="math inline">\(w\)</span> 的某个既约表达式的最后一项。令 <span class="math inline">\(T=\{s,t\}\)</span>，<span class="math inline">\(w=xu\)</span> 是如 <a href="#lemma1">引理 1</a>
 中的分解，则 <span class="math inline">\(x\)</span> 满足 <span class="math inline">\(l(xt) &gt; l(x)\)</span> 和 <span class="math inline">\(l(xs)&gt;l(x)\)</span>。我们来分别考察 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(u\)</span> 是怎样作用在 <span class="math inline">\(\{\alpha_s,\alpha_t\}\)</span> 上的。</p>
 <p><span class="math inline">\(x\)</span> 的分析比较容易：显然 <span class="math inline">\(l(x)&lt;l(w)\)</span>，由归纳假设 <span class="math inline">\(x\alpha_s\in\Phi^+\)</span>，<span class="math inline">\(x\alpha_t\in\Phi^+\)</span>。</p>
 <p>如果我们能够证明 <span class="math inline">\(u\alpha_s\)</span>
@@ -613,13 +611,12 @@ s,\ t,\ st,\ ts,\ sts,\ tst,\ \cdots,\
 <span class="math inline">\(W_T\)</span> 中的元素其任何既约表示不能以
 <span class="math inline">\(s\)</span> 结尾，否则 <span class="math inline">\(l_T(us)=l_T(u)-1\)</span>，从而 <span class="math display">\[\begin{align*}l(ws)&amp;=l(xus)\\
 &amp;\leq l(x) + l(us)\\
-&amp;\leq l(x)+l_T(us)\\
+&amp;= l(x)+l_T(us)\\
 &amp;=l(x)+l_T(u)-1\\
 &amp;= l(w)-1.
 \end{align*}\]</span> 这与 <span class="math inline">\(l(ws) &gt;
 l(w)\)</span> 矛盾！</p>
-<p>于是 <span class="math inline">\(u\)</span> 形如 <span class="math inline">\(u=\ast\cdots\ast t\)</span>，这种类型的元素作用在
-<span class="math inline">\(\alpha_s\)</span>
+<p>于是 <span class="math inline">\(u\)</span> 形如 <span class="math inline">\(u=\cdots t\)</span>，这种类型的元素作用在 <span class="math inline">\(\alpha_s\)</span>
 上的结果在前文中已经计算过了：</p>
 <p><span style="color:blue"><strong><span class="math inline">\(m_{s,t}=\infty\)</span> 的情形</strong></span></p>
 <ol type="1">
@@ -658,7 +655,8 @@ t}^{\leq m-1},\]</span> 正好是序列的前 <span class="math inline">\(m\)</s
 <span class="math inline">\(ws\alpha_s\in\Phi^+\)</span>，即 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，矛盾！</p>
 <p>至此定理 1 得证。<span class="math inline">\(\blacksquare\)</span></p>
 <h2 id="关键定理的几何解释">关键定理的几何解释</h2>
-<p>上面的<a href="#theorem1">关键定理</a>也是有明确的几何意义的，也不难理解。</p>
+<p>上面的 <a href="#theorem1">关键定理</a>
+也是有明确的几何意义的，也不难理解。</p>
 <p>我们知道基本区域 <span class="math inline">\(\mathcal{D}\)</span>
 这个房间是所有 <span class="math inline">\(\{\alpha_s &gt; 0\mid s\in
 S\}\)</span> 的交，这个房间有 <span class="math inline">\(|S|\)</span>
@@ -669,27 +667,52 @@ S\}\)</span> 的交，这个房间有 <span class="math inline">\(|S|\)</span>
 s_{i_1}s_{i_2}\mathcal{D},\ \ldots,\ s_{i_1}s_{i_2}\cdots
 s_{i_k}\mathcal{D}.\]</span> 你可以从 <span class="math inline">\(\mathcal{D}\)</span> 出发，依次从左到右，先穿过
 <span class="math inline">\(\mathcal{D}\)</span> 的墙壁 <span class="math inline">\(s_{i_1}\)</span>，再穿过 <span class="math inline">\(s_{i_1}\mathcal{D}\)</span> 的墙壁 <span class="math inline">\(s_{i_2}\)</span>，再穿过 <span class="math inline">\(s_{i_1}s_{i_2}\mathcal{D}\)</span> 的墙壁 <span class="math inline">\(s_{i_2}\)</span>，一直下去到达 <span class="math inline">\(w\mathcal{D}\)</span>。这个过程总共穿过了 <span class="math inline">\(l(w)=k\)</span> 面墙壁，而且这是最短的路线，长度为
-<span class="math inline">\(k\)</span> (等于穿过的墙壁个数)。</p>
-<p>这里有点反直觉的一点是，虽然 <span class="math inline">\(w\mathcal{D}=s_{i_1}s_{i_2}\cdots
+<span class="math inline">\(k\)</span> （等于穿过的墙壁个数）。</p>
+<p>这里有点反直觉的是，虽然 <span class="math inline">\(w\mathcal{D}=s_{i_1}s_{i_2}\cdots
 s_{i_k}\mathcal{D}\)</span> 是首先将反射 <span class="math inline">\(s_{i_k}\)</span> 作用在 <span class="math inline">\(\mathcal{D}\)</span> 上，再将反射 <span class="math inline">\(s_{i_{k-1}}\)</span> 作用在 <span class="math inline">\(s_{i_k}\mathcal{D}\)</span>
-上，...，这样得到的，但是在几何上从 <span class="math inline">\(\mathcal{D}\)</span> 到达 <span class="math inline">\(w\mathcal{D}\)</span>
-沿途穿过的墙壁标号的顺序是反过来的：墙壁 <span class="math inline">\(s_{i_k}\)</span> 在路线的最末端，次远的是 <span class="math inline">\(s_{i_{k-1}}\)</span>，...，最近的反而是 <span class="math inline">\(s_{i_1}\)</span>。为了验证这一点，只要记住 <span class="math inline">\(\mathcal{D}\)</span> 和 <span class="math inline">\(s\mathcal{D}\)</span> 是两个被墙壁 <span class="math inline">\(s\)</span> 隔开的相邻房间，在任何 <span class="math inline">\(w\in W\)</span> 作用下 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(ws\mathcal{D}\)</span>
-仍然是相邻的，并且它们之间的墙壁编号仍然是 <span class="math inline">\(s\)</span>。</p>
-<p>现在对一个房间 <span class="math inline">\(w\mathcal{D}\)</span>，如果我们穿过它的标号为
-<span class="math inline">\(s\)</span> 的墙壁到达相邻的房间 <span class="math inline">\(ws\mathcal{D}\)</span>，那么 <span class="math inline">\(w\mathcal{D}\)</span> 与 <span class="math inline">\(ws\mathcal{D}\)</span> 谁距离 <span class="math inline">\(\mathcal{D}\)</span> 更远？显然这取决于 <span class="math inline">\(l(w)\)</span> 和 <span class="math inline">\(l(ws)\)</span> 的大小。如果 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 则 <span class="math inline">\(w\mathcal{D}\)</span> 更远，反之则 <span class="math inline">\(ws\mathcal{D}\)</span> 更远。</p>
-<p>怎么判断哪一种情形发生呢？可以直观上理解：如果“穿过 <span class="math inline">\(w\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s\)</span> 的墙壁”这一步是背着 <span class="math inline">\(\mathcal{D}\)</span> 的方向走出去的，那么应该距离
-<span class="math inline">\(\mathcal{D}\)</span> 更远，所以应该有 <span class="math inline">\(l(ws)&gt;l(w)\)</span>。反之如果是朝着 <span class="math inline">\(\mathcal{D}\)</span> 的方向走出去的，那么应该距离
-<span class="math inline">\(\mathcal{D}\)</span> 更近，所以应该有 <span class="math inline">\(l(ws)&lt;l(w)\)</span>。这里“朝着/背着”的含义是
-<span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span>
-是否位于墙壁的同一侧。如果位于同侧，那么穿过墙壁后 <span class="math inline">\(ws\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span>
-位于墙壁两侧，这就更远了。反之如果 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span> 位于墙壁的异侧，穿过墙壁以后
+上，...，依次得到的，但是几何上从 <span class="math inline">\(\mathcal{D}\)</span> 到 <span class="math inline">\(w\mathcal{D}\)</span>
+沿途穿过的墙壁标号是反过来的：首先穿过的墙壁是 <span class="math inline">\(s_{i_1}\)</span>，其次是 <span class="math inline">\(s_{i_2}\)</span>，...，最远端的是 <span class="math inline">\(s_{i_k}\)</span>。为了验证这一点，只要记住 <span class="math inline">\(\mathcal{D}\)</span> 和 <span class="math inline">\(s_{i_j}\mathcal{D}\)</span> 是两个被墙壁 <span class="math inline">\(s_{i_j}\)</span> 隔开的相邻房间，在 <span class="math inline">\(w=s_{i_1}\cdots s_{i_{j-1}}\)</span> 作用下 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(ws_{i_j}\mathcal{D}\)</span>
+仍然是相邻的，且它们之间的墙壁编号是 <span class="math inline">\(s_{i_j}\)</span>。所以 <span class="math display">\[\mathcal{D}\xrightarrow{\text{cross }
+s_{i_1}}s_{i_1}\mathcal{D}\xrightarrow{\text{cross }
+s_{i_2}}s_{i_1}s_{i_2}\mathcal{D}\xrightarrow{\text{cross }
+s_{i_3}}\cdots\xrightarrow{\text{cross } s_{i_k}}s_{i_1}s_{i_2}\cdots
+s_{i_k}\mathcal{D}.\]</span></p>
+<p>下图 (from Casselman) 显示了从 <span class="math inline">\(\mathcal{D}\)</span> （蓝色三角形区域）出发到达
+<span class="math inline">\(w\mathcal{D}=s_3s_1s_2s_3s_2s_1\mathcal{D}\)</span>
+的路径。其中红、绿、蓝箭头分别表示穿过标号 <span class="math inline">\(s_1,s_2,s_3\)</span> 的墙壁：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter-groups/gallery.svg" width="350"></p>
+<p>对一个房间 <span class="math inline">\(w\mathcal{D}\)</span>，如果我们穿过它的标号为
+<span class="math inline">\(s\)</span> 的墙壁到达相邻的房间 <span class="math inline">\(ws\mathcal{D}\)</span>，那么 <span class="math inline">\(w\mathcal{D}\)</span> 与 <span class="math inline">\(ws\mathcal{D}\)</span> 谁距离 <span class="math inline">\(\mathcal{D}\)</span> 更远？显然这取决于 <span class="math inline">\(l(w)\)</span> 和 <span class="math inline">\(l(ws)\)</span> 的大小，如果 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 则 <span class="math inline">\(w\mathcal{D}\)</span> 更远，反之则 <span class="math inline">\(ws\mathcal{D}\)</span> 更远。</p>
+<p>怎么判断哪一种情形发生呢？可以直观上理解：如果“穿过 <span class="math inline">\(w\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s\)</span> 的墙壁”这一步是背着 <span class="math inline">\(\mathcal{D}\)</span> 走的，那么应该距离 <span class="math inline">\(\mathcal{D}\)</span> 更远，从而 <span class="math inline">\(l(ws)&gt;l(w)\)</span>；反之如果是朝着 <span class="math inline">\(\mathcal{D}\)</span> 走的，那么应该距离 <span class="math inline">\(\mathcal{D}\)</span> 更近，从而 <span class="math inline">\(l(ws)&lt;l(w)\)</span>。</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(l(ws) &gt;
+l(w)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(l(ws) &lt;
+l(w)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img style="margin:0px auto;display:block" src="/images/coxeter-groups/lws.svg" width="250"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" src="/images/coxeter-groups/lw.svg" width="250"></td>
+</tr>
+</tbody>
+</table>
+<p>这里朝着/背着的判断依据是看 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span> 是否位于超平面 <span class="math inline">\(w\alpha_s=0\)</span> 的同一侧：注意 <span class="math inline">\(\mathcal{D}\)</span> 和 <span class="math inline">\(s\mathcal{D}\)</span> 被超平面 <span class="math inline">\(\alpha_s=0\)</span> 分开，所以 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(ws\mathcal{D}\)</span> 被超平面 <span class="math inline">\(w\alpha_s=0\)</span> 分开。如果 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span> 位于同侧，那么穿过墙壁后
 <span class="math inline">\(ws\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span>
-位于墙壁同一侧，这就更近了。而 <span class="math inline">\(w\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s\)</span> 的墙壁位于超平面 <span class="math inline">\(\{w\alpha_s=0\}\)</span> 上，<span class="math inline">\(w\mathcal{D}\)</span> 位于 <span class="math inline">\(w\alpha_s\)</span> 的正半空间：<span class="math inline">\(\langle w\alpha_s,\,w\mathcal{D}\rangle=\langle
-\alpha_s,\,\mathcal{D}\rangle&gt;0\)</span>。所以同侧要求 <span class="math inline">\(\mathcal{D}\)</span> 也位于 <span class="math inline">\(w\alpha_s\)</span> 的正半空间，即 <span class="math inline">\(\langle
-w\alpha_s,\,\mathcal{D}\rangle&gt;0\)</span>，这只有在 <span class="math inline">\(w\alpha_s\)</span>
-是正根时才可以。同理异侧的情形对应 <span class="math inline">\(w\alpha_s\)</span>
+位于异侧，这就更远了。反之如果 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span> 位异侧，穿过墙壁以后 <span class="math inline">\(ws\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span> 变成同侧，这就更近了。</p>
+<p>由于 <span class="math inline">\(\langle
+w\alpha_s,\,w\mathcal{D}\rangle=\langle
+\alpha_s,\,\mathcal{D}\rangle&gt;0\)</span>，<span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(\mathcal{D}\)</span> 位于 <span class="math inline">\(w\alpha_s=0\)</span> 同侧要求 <span class="math inline">\(\langle w\alpha_s,\,\mathcal{D}\rangle\)</span>
+也大于 0，这只有在 <span class="math inline">\(w\alpha_s\)</span>
+是正根时才可以。异侧的情形对应 <span class="math inline">\(w\alpha_s\)</span>
 是负根。这就是关键定理的几何解释。</p>
 <h2 id="一大波推论">一大波推论</h2>
+<p>从关键定理出发可以得到许多有用的结论。</p>
 <div id="prop1">
 <blockquote><p><strong>推论 1</strong>：如果 <span class="math inline">\(w\in
 W\)</span> 满足对任何 <span class="math inline">\(v\in V\)</span> 有
@@ -697,11 +720,18 @@ W\)</span> 满足对任何 <span class="math inline">\(v\in V\)</span> 有
 是忠实的。从而我们可以把 <span class="math inline">\(W\)</span> 和 <span class="math inline">\(\rho(W)\)</span> 等同起来。</p>
 </blockquote>
 </div>
-<p>这是因为如果 <span class="math inline">\(w\ne 1\)</span>
-的话，就可以取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(l(ws) &lt; l(w)\)</span>，于是 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，从而 <span class="math inline">\(\langle
-w\alpha_s,\,\mathcal{D}\rangle&lt;0\)</span>。但 <span class="math display">\[\langle w\alpha_s,\,\mathcal{D}\rangle=\langle
-\alpha_s,\,w^{-1}\mathcal{D}\rangle=\langle
-\alpha_s,\,\mathcal{D}\rangle&gt;0,\]</span> 矛盾！</p>
+<p>这个可以从下面引理直接得出：</p>
+<div id="lemma2">
+<blockquote><p><strong>引理 2</strong>：对任何 <span class="math inline">\(w\ne1\in
+W\)</span> 都有 <span class="math inline">\(w\mathcal{D}\cap\mathcal{D}=\emptyset\)</span>。</p>
+</blockquote>
+</div>
+<p>用反证法，如果 <span class="math inline">\(x\in
+w\mathcal{D}\cap\mathcal{D}\)</span>，则 <span class="math inline">\(y=w^{-1}x\in \mathcal{D}\cap
+w^{-1}\mathcal{D}\)</span>。</p>
+<p>取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(l(ws)&lt;l(w)\)</span>，从而 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，<span class="math inline">\(\langle w\alpha_s,\,\mathcal{D}\rangle=\langle
+\alpha_s,\,w^{-1}\mathcal{D}\rangle&lt;0\)</span>。于是 <span class="math inline">\(\langle \alpha_s,\,y\rangle&lt;0\)</span>，这与
+<span class="math inline">\(y\in\mathcal{D}\)</span> 矛盾！</p>
 <div id="prop2">
 <blockquote><p><strong>推论 2</strong>：每个根不是正根就是负根，即 <span class="math inline">\(\Phi=\Phi^+\cup\Phi^-\)</span>。</p>
 </blockquote>
@@ -756,7 +786,9 @@ W\)</span> 把正根仍然映射为正根，即 <span class="math inline">\(w(\P
 </div>
 <p>如果 <span class="math inline">\(W\)</span> 是有限群，由于 <span class="math inline">\(\Phi=W\cdot \Delta\)</span>，<span class="math inline">\(|\Phi|\leq |W|\cdot |\Delta|\)</span>
 也是有限的。</p>
-<p>反之若 <span class="math inline">\(|\Phi|&lt;\infty\)</span>，则由推论 5 知道 <span class="math inline">\(W\)</span> 可以嵌入到置换群 <span class="math inline">\(S_{|\Phi|}\)</span> 中，从而也是有限的。</p>
+<p>反之若 <span class="math inline">\(|\Phi|&lt;\infty\)</span>，则由 <a href="#prop5">推论 5</a> 知道 <span class="math inline">\(W\)</span>
+可以嵌入到置换群 <span class="math inline">\(S_{|\Phi|}\)</span>
+中，从而也是有限的。</p>
 <div id="prop7">
 <blockquote><p><strong>推论 7</strong>：若 <span class="math inline">\(W\)</span>
 是一个有限群，则存在唯一的元素 <span class="math inline">\(w\)</span>，<span class="math inline">\(w\)</span>
@@ -764,54 +796,37 @@ W\)</span> 把正根仍然映射为正根，即 <span class="math inline">\(w(\P
 </blockquote>
 </div>
 <p>证明：由于 <span class="math inline">\(W\)</span>
-有限，所以可以取一个长度最大的元素 <span class="math inline">\(w\)</span>，显然对任何 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(l(ws)&lt;l(w)\)</span>，从而 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，从而 <span class="math inline">\(w\)</span> 把单根系 <span class="math inline">\(\Delta\)</span> 都变为负根，自然也就把 <span class="math inline">\(\Phi^+\)</span> 变为 <span class="math inline">\(\Phi^-\)</span>。</p>
-<p>由于 <span class="math inline">\(w^2\)</span> 保持 <span class="math inline">\(\Phi^+\)</span> 不变，所以由推论 5 必须 <span class="math inline">\(w^2=1\)</span>，因此 <span class="math inline">\(w\)</span> 是一个对合。</p>
+有限，所以可以取其一个长度最大的元素 <span class="math inline">\(w\)</span>。于是对任何 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(l(ws)&lt;l(w)\)</span>，从而 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，从而 <span class="math inline">\(w\)</span> 把单根系 <span class="math inline">\(\Delta\)</span> 都变为负根，自然也就把 <span class="math inline">\(\Phi^+\)</span> 变为 <span class="math inline">\(\Phi^-\)</span>。</p>
+<p>由于 <span class="math inline">\(w^2\)</span> 保持 <span class="math inline">\(\Phi^+\)</span> 不变，所以由 <a href="#prop5">推论
+5</a> 必须 <span class="math inline">\(w^2=1\)</span>，因此 <span class="math inline">\(w\)</span> 是一个对合。</p>
 <p>如果还存在别的最长元素 <span class="math inline">\(w'\ne
 w\)</span> 呢？那么 <span class="math inline">\(w'\)</span> 也满足
 <span class="math inline">\(w'(\Phi^+)=\Phi^-\)</span>，从而 <span class="math inline">\(w^{-1}w'\)</span> 保持 <span class="math inline">\(\Phi^+\)</span> 不变，即 <span class="math inline">\(w^{-1}w'=1, w=w'\)</span>。</p>
 <h1 id="tits-锥">Tits 锥</h1>
 <p>在获得了 <span class="math inline">\(V^\ast\)</span>
-中关于根系的一些知识后，我们回到空间 <span class="math inline">\(V\)</span>
-中讨论万花筒的结构。前面已经定义了基本区域 <span class="math inline">\(\mathcal{D}\)</span> 为所有正半空间 <span class="math inline">\(\{\alpha_s&gt;0\mid \alpha_s\in\Delta\}\)</span>
-的交，我们还没有回答的一个问题是：<span class="math inline">\(\mathcal{D}\)</span>
-和它的所有虚像真的互不重合吗？</p>
-<p>答案是肯定的：</p>
-<div id="lemma2">
-<blockquote><p><strong>引理 2</strong>：对任何 <span class="math inline">\(w\ne1\in
-W\)</span> 都有 <span class="math inline">\(w\mathcal{D}\cap\mathcal{D}=\emptyset\)</span>。</p>
-</blockquote>
-</div>
-<p>用反证法，如果 <span class="math inline">\(x\in
-w\mathcal{D}\cap\mathcal{D}\)</span>，则 <span class="math inline">\(y=w^{-1}x\in \mathcal{D}\cap
-w^{-1}\mathcal{D}\)</span>。</p>
-<p>取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(l(ws)&lt;l(w)\)</span>，从而 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，<span class="math inline">\(\langle w\alpha_s,\,\mathcal{D}\rangle=\langle
-\alpha_s,\,w^{-1}\mathcal{D}\rangle&lt;0\)</span>。于是 <span class="math inline">\(\langle \alpha_s,\,y\rangle&lt;0\)</span>，这与
-<span class="math inline">\(y\in\mathcal{D}\)</span> 矛盾！</p>
-<p>于是原像 <span class="math inline">\(\mathcal{D}\)</span>
-确实与它的任何虚像 <span class="math inline">\(w\mathcal{D},w\ne1\)</span> 互不重合。我们给房间
-<span class="math inline">\(\mathcal{D}\)</span> 加上四周的墙壁得到
-<span class="math inline">\(\overline{\mathcal{D}}\)</span>，于是 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 是一个锥，并定义
+中关于根系的一些知识后，我们回到空间 <span class="math inline">\(V\)</span> 中讨论万花筒的结构。</p>
+<p>前面已经定义了基本区域 <span class="math inline">\(\mathcal{D}\)</span> 为所有正半空间 <span class="math inline">\(\{\alpha_s&gt;0\mid \alpha_s\in\Delta\}\)</span>
+的交，给房间 <span class="math inline">\(\mathcal{D}\)</span>
+加上四周的墙壁得到 <span class="math inline">\(\overline{\mathcal{D}}\)</span>，于是 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 是一个锥，定义
 <strong>Tits 锥</strong>为 <span class="math display">\[\mathcal{C}=
-\bigcup_{w\in W} w\overline{\mathcal{D}}.\]</span> Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 即为我们的万花筒结构。</p>
+\bigcup_{w\in W} w\overline{\mathcal{D}}.\]</span> Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 即为万花筒结构。</p>
 <p>有两件值得注意的事情：</p>
 <ol type="1">
-<li>一般来说 Tits 锥并不等于全空间 <span class="math inline">\(V\)</span>，这一点在前一篇文章中已经看到了，只有在
+<li>我们使用了 Tits “锥” 这个称呼，但 <span class="math inline">\(\mathcal{C}\)</span>
+真的是一个锥吗？这可不显然。</li>
+<li>一般来说 <span class="math inline">\(\mathcal{C}\)</span>
+并不等于全空间 <span class="math inline">\(V\)</span>，这一点在前一篇文章中已经看到了，只有在
 <span class="math inline">\(W\)</span> 是有限群的情形才有 <span class="math inline">\(\mathcal{C}=V\)</span> 成立，在仿射的情形 <span class="math inline">\(\mathcal{C}\)</span>
 是个半空间加上原点，而在双曲的情形 <span class="math inline">\(\mathcal{C}\)</span> 是个严格的尖锥。</li>
-<li>我们使用了 Tits “锥” 这个称呼，但 <span class="math inline">\(\mathcal{C}\)</span>
-真的构成一个锥吗？这可不显然。虽然 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 是锥，但所有 <span class="math inline">\(w\overline{\mathcal{D}}\)</span>
-的并是不是仍然是一个锥还是个需要证明的事情。</li>
 </ol>
 <p>定义 <span class="math inline">\(\mathrm{PLC}(\Delta)\)</span>
 为单根系 <span class="math inline">\(\Delta\)</span>
 的所有非负系数线性组合： <span class="math display">\[\mathrm{PLC}(\Delta) = \left\{\sum_{s\in
-S}c_s\alpha_s,c_s\geq0\right\}.\]</span> 显然 <span class="math inline">\(\mathrm{PLC}(\Delta)\)</span> 是 <span class="math inline">\(V^\ast\)</span> 中的一个锥。我们知道基本区域的闭包
-<span class="math inline">\(\overline{\mathcal{D}}\)</span>
-是一个锥，实际上它是 <span class="math inline">\(\mathrm{PLC}(\Delta)\)</span> 在 <span class="math inline">\(V\)</span> 中的对偶锥： <span class="math display">\[\overline{\mathcal{D}}= \{v\in V\mid \langle
+S}c_s\alpha_s,c_s\geq0\right\}.\]</span> 显然 <span class="math inline">\(\mathrm{PLC}(\Delta)\)</span> 是 <span class="math inline">\(V^\ast\)</span> 中的一个锥。它在 <span class="math inline">\(V\)</span> 中的对偶锥正是基本区域的闭包 <span class="math inline">\(\overline{\mathcal{D}}\)</span>： <span class="math display">\[\overline{\mathcal{D}}= \{v\in V\mid \langle
 \lambda,\,v\rangle\geq0,\ \forall
 \lambda\in\mathrm{PLC}(\Delta)\}.\]</span> 对任何 <span class="math inline">\(v\in V\)</span>，定义 <span class="math display">\[\mathrm{Neg}(v)= \{\lambda\in \Phi^+\mid \langle
 \lambda,\,v\rangle&lt;0\}.\]</span> 注意 <span class="math inline">\(\mathrm{Neg}(v)\)</span> 是正根 <span class="math inline">\(\Phi^+\)</span>
-的一个子集，并且可能是有限的或者无限的。</p>
+的一个子集，可以是有限的或者无限的。</p>
 <div id="lemma3">
 <blockquote><p><strong>引理</strong>：<span class="math inline">\(\overline{\mathcal{D}}=\{v\in V\mid
 \mathrm{Neg}(v)=\emptyset\}\)</span>。</p>
@@ -829,44 +844,48 @@ W\mid wv=v\} = W_J = \{w\in W\mid
 wv\in\overline{\mathcal{D}}\}.\]</span></p>
 </blockquote>
 </div>
-<blockquote>
-<p><strong>定理 2 的几何直观</strong>：对闭房间 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中的一点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
+<p><strong>定理 2 的几何直观</strong>：对 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中的一点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
 在 <span class="math inline">\(W\)</span> 中的稳定化子群 <span class="math inline">\(\mathrm{Stab}(v)\)</span>
-是个标准椭圆子群，其生成元由那些包含 <span class="math inline">\(v\)</span> 的墙面 <span class="math inline">\(\{\alpha_s\mid \langle
-\alpha_s,\,v\rangle=0\}\)</span> 对应的反射组成。如果 <span class="math inline">\(v\)</span> 落在 <span class="math inline">\(\mathcal{D}\)</span> 中，那么 <span class="math inline">\(\mathrm{Stab}(v)\)</span> 是平凡的；如果 <span class="math inline">\(v\)</span> 恰好落在某个墙壁 <span class="math inline">\(s\)</span> 上，则 <span class="math inline">\(\mathrm{Stab}(v)=\{1,s\}\)</span>；如果 <span class="math inline">\(v\)</span> 恰好落在两个墙壁的交线上，<span class="math inline">\(\mathrm{Stab}(v)\)</span>
-就是这两个墙壁给出的二面体群；如果 <span class="math inline">\(v\)</span> 恰好落在三个墙壁的墙角处，<span class="math inline">\(\mathrm{Stab}(v)\)</span> 就是这三个墙壁给出的
-rank 3 的 Coxeter 群，更高维以此类推。</p>
-</blockquote>
+是个标准椭圆子群，由那些包含 <span class="math inline">\(v\)</span>
+的墙面 <span class="math inline">\(\{\alpha_s\mid \langle
+\alpha_s,\,v\rangle=0\}\)</span> 对应的反射组成。</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(v\)</span> 落在房间内部，即 <span class="math inline">\(v\in\mathcal{D}\)</span>，那么 <span class="math inline">\(\mathrm{Stab}(v)\)</span> 是平凡的；</li>
+<li>如果 <span class="math inline">\(v\)</span> 落在单个墙壁 <span class="math inline">\(s\)</span> 上，则 <span class="math inline">\(\mathrm{Stab}(v)=\langle s\rangle\)</span>
+是二阶循环群；</li>
+<li>如果 <span class="math inline">\(v\)</span> 落在两个墙壁 <span class="math inline">\(s,t\)</span> 的交线上，则 <span class="math inline">\(\mathrm{Stab}(v)=\langle s,t\rangle\)</span>
+是个二面体群；</li>
+<li>如果 <span class="math inline">\(v\)</span>
+恰好落在三个墙壁的墙角处，<span class="math inline">\(\mathrm{Stab}(v)\)</span> 就是这三个墙壁给出的
+rank 3 的 Coxeter 群，等等。</li>
+</ol>
 <p><strong><a href="#theorem2">定理 2</a> 的证明</strong>：</p>
-<p>对任何 <span class="math inline">\(s\in J\)</span> 我们有 <span class="math inline">\(s\cdot v= v-\langle
-\alpha_s,\,v\rangle\alpha_s^\vee = v\)</span>，即 <span class="math inline">\(sv = v\)</span> 对任何 <span class="math inline">\(s\in J\)</span> 成立，自然也就对全体 <span class="math inline">\(W_J\)</span> 成立，从而 <span class="math inline">\(W_J\subseteq\{w\in W \mid wv=v\}\)</span>。</p>
+<p>直观地，<span class="math inline">\(J\)</span> 由那些包含 <span class="math inline">\(v\)</span> 的墙壁组成，关于这些墙壁的反射是保持
+<span class="math inline">\(v\)</span> 不动的，即对任何 <span class="math inline">\(s\in J\)</span> 有 <span class="math display">\[s\cdot v= v-\langle
+\alpha_s,\,v\rangle\alpha_s^\vee = v.\]</span> 即 <span class="math inline">\(sv = v\)</span> 对任何 <span class="math inline">\(s\in J\)</span> 成立，从而 <span class="math inline">\(W_J\subseteq\{w\in W \mid wv=v\}\)</span>。</p>
 <p>另一方面显然有 <span class="math inline">\(\{w\in W\mid
 wv=v\}\subseteq \{w\in W\mid wv\in\overline{\mathcal{D}}\}\)</span>
 成立，所以只要再证明 <span class="math inline">\(\{w\in W\mid
 wv\in\overline{\mathcal{D}}\}\subseteq W_J\)</span> 即可。</p>
-<p>从直观上看，设 <span class="math inline">\(v,v'\in\overline{\mathcal{D}}\)</span> 且
-<span class="math inline">\(wv=v'\)</span>，则 <span class="math inline">\(v\in w^{-1}\overline{\mathcal{D}}\cap
+<p>设 <span class="math inline">\(v\ne
+v'\in\overline{\mathcal{D}}\)</span> 且 <span class="math inline">\(wv=v'\)</span>，则 <span class="math inline">\(w\ne 1,\,v\in w^{-1}\overline{\mathcal{D}}\cap
 \overline{\mathcal{D}}\)</span>。我们知道对任何 <span class="math inline">\(w\ne1\)</span> 有 <span class="math inline">\(w^{-1}\mathcal{D}\cap
-\mathcal{D}=\emptyset\)</span>，所以 <span class="math inline">\(v\)</span> 肯定落在 <span class="math inline">\(\overline{\mathcal{D}}\backslash\mathcal{D}\)</span>，即房间的墙壁或者墙壁的交线上。<span class="math inline">\(w\)</span> 把 <span class="math inline">\(v\)</span> 仍然映入 <span class="math inline">\(\mathcal{D}\)</span>，所以 <span class="math inline">\(w\)</span> 应该由那些包含 <span class="math inline">\(v\)</span> 的，即 <span class="math inline">\(J\)</span> 中的墙壁构成。我们只要从 <span class="math inline">\(w\)</span> 最末一个元素开始逐个验证它们属于 <span class="math inline">\(J\)</span> 即可。</p>
+\mathcal{D}=\emptyset\)</span>，所以 <span class="math inline">\(v\)</span> 肯定落在 <span class="math inline">\(\overline{\mathcal{D}}\backslash\mathcal{D}\)</span>，即房间的墙壁或者墙壁的交线上。<span class="math inline">\(w\)</span> 把 <span class="math inline">\(v\)</span> 仍然映入 <span class="math inline">\(\overline{\mathcal{D}}\)</span>，所以 <span class="math inline">\(w\)</span> 应该由那些包含 <span class="math inline">\(v\)</span> 的，即 <span class="math inline">\(J\)</span> 中的墙壁构成。我们只要从 <span class="math inline">\(w\)</span> 最末一个元素开始逐个验证它们属于 <span class="math inline">\(J\)</span> 即可。</p>
 <p>设 <span class="math inline">\(w\)</span> 的某个既约表示的结尾是
 <span class="math inline">\(s\)</span>，<span class="math inline">\(w=w's\)</span>，则 <span class="math inline">\(l(ws)&lt;l(w)\)</span>，于是 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，从而 <span class="math inline">\(\langle
 w\alpha_s,\,v'\rangle\leq0\)</span>。然而 <span class="math inline">\(\langle w\alpha_s,\,v'\rangle\)</span> 还等于
 <span class="math inline">\(\langle
 \alpha_s,\,w^{-1}v'\rangle=\langle
 \alpha_s,\,v\rangle\geq0\)</span>，所以只能是 <span class="math inline">\(\langle \alpha_s,\,v\rangle=0\)</span>，即 <span class="math inline">\(s\in J\)</span>，从而 <span class="math inline">\(sv=v\)</span>。于是 <span class="math inline">\(w'v =
-w'sv=v'\in\overline{\mathcal{D}}\)</span>，从而我们可以对 <span class="math inline">\(w'\)</span> 继续重复此论证，得到 <span class="math inline">\(w\)</span> 的乘积中所有因子都属于 <span class="math inline">\(J\)</span>，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
+w'sv=v'\in\overline{\mathcal{D}}\)</span>，从而我们可以对 <span class="math inline">\(l(w')&lt;l(w)\)</span> 重复此论证，得到 <span class="math inline">\(w\)</span> 的乘积中所有因子都属于 <span class="math inline">\(J\)</span>，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="prop8">
 <blockquote><p><strong>推论 8</strong>：Tits 锥 <span class="math inline">\(\mathcal{C} = \{v\in V \mid |\mathrm{Neg}(v)| &lt;
 \infty\}\)</span>。</p>
 </blockquote>
 </div>
-<blockquote>
-<p><strong>注</strong>：这个推论的几何意义也比较显然：<span class="math inline">\(v\)</span> 位于 <span class="math inline">\(\mathrm{Neg}(v)\)</span>
-中所有镜子的背面（一个镜子的正面就是 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
-所在的那一面），所以 <span class="math inline">\(|\mathrm{Neg}(v)|&lt;\infty\)</span> 意味着 <span class="math inline">\(v\)</span> 落在有限多个镜子的背面。推论告诉我们
-Tits 锥就是那些可以经过有限次反射后变换到 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
-中的点组成的集合。</p>
-</blockquote>
+<p>这个推论的几何意义是：每个镜子的正面是包含 <span class="math inline">\(\mathcal{D}\)</span> 的一侧，另一侧是背面，Tits
+锥就是那些只落在有限多个镜子背面的点，它们可以经过有限次反射后变换到所有镜子的正面，即
+<span class="math inline">\(\overline{\mathcal{D}}\)</span> 中。</p>
 <p><strong><a href="#prop8">推论 8</a> 的证明</strong>：</p>
 <p><span class="math inline">\(\Rightarrow\)</span>: 设 <span class="math inline">\(x\in\mathcal{C}\)</span>，则 <span class="math inline">\(x\)</span> 可以表示为 <span class="math inline">\(x=wv\)</span>，其中 <span class="math inline">\(w\in W,v\in\overline{\mathcal{D}}\)</span>。设
 <span class="math inline">\(\lambda\in\Phi^+\)</span>，则 <span class="math display">\[\langle x,\,\lambda\rangle &lt; 0\Rightarrow
@@ -878,19 +897,14 @@ w^{-1}\lambda\in\Phi^-.\]</span> 所以 <span class="math inline">\(\mathrm{Neg}
 <p><span class="math inline">\(\Leftarrow\)</span>: 反之若 <span class="math inline">\(|\mathrm{Neg}(x)|&lt;\infty\)</span>，我们来论证可以选择
 <span class="math inline">\(w\in W,v\in\overline{\mathcal{D}}\)</span>
 来使得 <span class="math inline">\(x=wv\)</span>。</p>
-<p>这里的想法是，我们每次可以任意选择一个单反射 <span class="math inline">\(s\in S\)</span> 对应的镜面 <span class="math inline">\(\alpha_s=0\)</span>，使得 <span class="math inline">\(x\)</span> 落在这个镜子的背面，然后将 <span class="math inline">\(x\)</span> 关于 <span class="math inline">\(\alpha_s\)</span> 反射过去，将它变到 <span class="math inline">\(\alpha_s\)</span> 的正面。对任何不等于 <span class="math inline">\(\alpha_s\)</span> 的正根，<span class="math inline">\(\langle \lambda,\,x\rangle&lt;0\)</span> 等价于
-<span class="math inline">\(\langle
-s\lambda,\,x\rangle&lt;0\)</span>，所以 <span class="math inline">\(\mathrm{Neg}(x)\)</span> 中除 <span class="math inline">\(\alpha_s\)</span>
-之外的镜子在反射后个数不变（发生了置换），但是 <span class="math inline">\(\alpha_s=0\)</span>
-被去掉了。所以这个操作会将遮挡在 <span class="math inline">\(x\)</span>
-和 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
-之间的镜子个数严格减少 1，如此这般直到 <span class="math inline">\(x\)</span> 落入 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 为止。</p>
+<p>这里的想法是，我们每次一定可以找到一个单反射 <span class="math inline">\(s\in S\)</span> 对应的镜面 <span class="math inline">\(\alpha_s=0\)</span>，使得 <span class="math inline">\(x\)</span> 落在这个镜子的背面。将 <span class="math inline">\(x\)</span> 关于 <span class="math inline">\(\alpha_s\)</span> 反射过去，将它变到 <span class="math inline">\(\alpha_s\)</span> 的正面，这个操作会将遮挡在 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
+之间的镜子个数严格减少 1。如此这般直到 <span class="math inline">\(x\)</span> 落入 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 为止。</p>
 <p>严格的论证如下：</p>
 <p>若 <span class="math inline">\(\mathrm{Neg}(x)=\emptyset\)</span>
 这显然成立，因为这时 <span class="math inline">\(x\)</span> 本身就落在
 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中。当 <span class="math inline">\(\mathrm{Neg}(x)\)</span>
 不为空集时，其中一定包含一个单根 <span class="math inline">\(\alpha_s\in\Delta\)</span>，于是 <span class="math inline">\(\langle \alpha_s,\,x\rangle&lt;
-0\)</span>。我们来分析集合 <span class="math inline">\(\mathrm{Neg}(sx)\)</span>。对 <span class="math inline">\(\lambda\in\Phi^+\)</span>， <span class="math display">\[\lambda\in\mathrm{Neg}(sx)\Leftrightarrow\langle
+0\)</span>。我们来分析集合 <span class="math inline">\(\mathrm{Neg}(sx)\)</span>，即那些遮挡 <span class="math inline">\(sx\)</span> 的镜子。对 <span class="math inline">\(\lambda\in\Phi^+\)</span>， <span class="math display">\[\lambda\in\mathrm{Neg}(sx)\Leftrightarrow\langle
 sx,\,\lambda\rangle&lt;0\Leftrightarrow\langle
 x,\,s\lambda\rangle&lt;0.\]</span> 如果 <span class="math inline">\(\lambda\ne\alpha_s\)</span>，则 <span class="math inline">\(s\lambda\)</span> 仍然是正根，从而 <span class="math display">\[\lambda\in\mathrm{Neg}(sx)\Leftrightarrow
 s\lambda\in\mathrm{Neg}(x).\]</span> 如果 <span class="math inline">\(\lambda=\alpha_s\)</span>，则已知 <span class="math inline">\(\alpha_s\in\mathrm{Neg}(x)\)</span>，所以 <span class="math display">\[\langle x,\,s\lambda\rangle=\langle
@@ -903,10 +917,10 @@ s\cdot\mathrm{Neg}(x)-\{\alpha_s\}\)</span>，即 <span class="math inline">\(\m
 <blockquote><p><strong>推论 9</strong>：Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 是凸锥。</p>
 </blockquote>
 </div>
-<p><strong>证明</strong>：<span class="math inline">\(\mathcal{C}\)</span> 是锥这一点由 推论 8
-直接可得，是凸集这一点也可以从推论 8 得出，但是需要稍微论证下：对 <span class="math inline">\(x, y\in\mathcal{C}\)</span>，我们要证明当 <span class="math inline">\(\alpha,\beta\geq0\)</span> 时有 <span class="math inline">\(z=\alpha x+\beta y\in\mathcal{C}\)</span>。但是
-<span class="math inline">\(\mathrm{Neg}(z)\subseteq\mathrm{Neg}(x)\cup\mathrm{Neg}(y)\)</span>，根据推论
-8 <span class="math inline">\(\mathrm{Neg}(x),\,\mathrm{Neg}(y)\)</span>
+<p><strong>证明</strong>：我们要论证当 <span class="math inline">\(x,
+y\in\mathcal{C}\)</span> 以及 <span class="math inline">\(\alpha,\beta\geq0\)</span> 时有 <span class="math inline">\(z=\alpha x+\beta y\in\mathcal{C}\)</span>。但是
+<span class="math inline">\(\mathrm{Neg}(z)\subseteq\mathrm{Neg}(x)\cup\mathrm{Neg}(y)\)</span>，根据
+<a href="#prop8">推论 8</a> <span class="math inline">\(\mathrm{Neg}(x),\,\mathrm{Neg}(y)\)</span>
 都是有限集，所以 <span class="math inline">\(\mathrm{Neg}(z)\)</span>
 有限，从而 <span class="math inline">\(z\in\mathcal{C}\)</span>，即
 <span class="math inline">\(\mathcal{C}\)</span> 是凸锥。</p>
@@ -914,23 +928,19 @@ s\cdot\mathrm{Neg}(x)-\{\alpha_s\}\)</span>，即 <span class="math inline">\(\m
 在编程中的应用</h3>
 <p>推论 8 给出了 Tits
 锥的等价刻画，它不仅结论重要，证明过程也是非常有用的，是所谓 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythoff
-构造法</a>绘制万花筒结构的理论基础，被广泛应用在 shader
-渲染中。为了证明此言非虚，你可以前往 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/">shadertoy</a> 上尝试用关键词 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/results?query=wythoff">Wythoff</a>, <a target="_blank" rel="noopener" href="https://www.shadertoy.com/results?query=hyperbolic&amp;sort=love&amp;filter=">hyperbolic</a>,
-<a target="_blank" rel="noopener" href="https://www.shadertoy.com/results?query=polyhedra">polyhedra</a>
-搜索看看。</p>
-<p>在 shader 中绘制万花筒的步骤如下：对空间中的每个点 <span class="math inline">\(p\)</span>，我们尝试使用 <span class="math inline">\(\Delta\)</span> 中的镜面将其反复反射落入基本区域
+构造法</a> 绘制万花筒结构的理论基础，被广泛应用在 shader 渲染中。</p>
+<p>在 shader 中绘制万花筒的步骤如下：对空间中的每个点 <span class="math inline">\(p\)</span>，我们反复用 <span class="math inline">\(\Delta\)</span> 中的镜面将其反射，直到落入基本区域
 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
 内，得到对应的原像点 <span class="math inline">\(q\in\overline{\mathcal{D}}\)</span>。然后根据
 <span class="math inline">\(q\)</span> 在 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中的位置来绘制
 <span class="math inline">\(p\)</span>
 点对应的像素。这个反射的步骤用伪代码来写非常简单：（用 Python 演示）</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> step <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">30</span>):<br>    <span class="hljs-keyword">for</span> alpha_s <span class="hljs-keyword">in</span> Delta:<br>        <span class="hljs-keyword">if</span> on_negative_side(p, alpha_s):<br>            p = reflect(p, alpha_s)<br></code></pre></td></tr></tbody></table></figure>
-<p>我们重复了 30 次这样的操作 (30
-次在绝大多数渲染场景中足够用了)：每次都依次检查 <span class="math inline">\(p\)</span> 是否落在某个 <span class="math inline">\(\alpha_s\)</span>
-的背面，如果答案为“是”，就将其反射至 <span class="math inline">\(\alpha_s\)</span>
-的正面。<strong>这个方法可以保证将任何满足 <span class="math inline">\(l(w)\leq30\)</span> 对应的 <span class="math inline">\(w\overline{\mathcal{D}}\)</span> 中的点映射入
-<span class="math inline">\(\overline{\mathcal{D}}\)</span>
-中</strong>。</p>
+<p>我们重复了 30 次这样的操作 （30
+次在绝大多数渲染场景中足够用了）：每次都依次检查 <span class="math inline">\(p\)</span> 是否落在某个 <span class="math inline">\(\alpha_s\)</span>
+的背面，如果答案为是，就将其反射至 <span class="math inline">\(\alpha_s\)</span>
+的正面。这个方法可以保证将任何满足 <span class="math inline">\(l(w)\leq30\)</span> 的 <span class="math inline">\(w\overline{\mathcal{D}}\)</span> 中的点映射入
+<span class="math inline">\(\overline{\mathcal{D}}\)</span> 中。</p>
 <h2 id="tits-锥的内部">Tits 锥的内部</h2>
 <p>记 <span class="math inline">\(\mathcal{C}^{\circ}\)</span> 为 Tits
 锥的内部，我们有如下定理：</p>
@@ -938,16 +948,15 @@ s\cdot\mathrm{Neg}(x)-\{\alpha_s\}\)</span>，即 <span class="math inline">\(\m
 <blockquote><p><strong>定理 3</strong>：<span class="math inline">\(x\in\mathcal{C}^\circ\)</span> 当且仅当 <span class="math inline">\(x\)</span> 在 <span class="math inline">\(W\)</span> 中的稳定化子群是有限群。</p>
 </blockquote>
 </div>
-<blockquote><p><strong>注</strong>：这个定理的几何意义最好对照上一篇文章中的插图，仔细体会有限、仿射、双曲三种情形
+<p>这个定理的几何意义最好对照上一篇文章中的插图，仔细体会有限、仿射、双曲三种情形
 Tits 锥的边界分别是什么？基本区域的各个顶点的稳定化子群分别是什么？</p>
 <p>这里给一个 rank 3 的例子：</p>
 <p><img style="margin:0px auto;display:block" width="480" src="/images/hyperbolic-honeycombs/paracompact.png"></p>
 <p>这是一个双曲 Coxeter 群，Tits 锥的内部是整个双曲空间
-(单位圆的内部)，Tits 锥的边界是单位圆周，所以 Tits
+（单位圆的内部），Tits 锥的边界是单位圆周，所以 Tits
 锥整体由闭的单位圆盘组成。图中基本区域可以是任何一个三角形，每个三角形都有一个位于边界上的顶点，这个顶点是两个平行镜面在无穷远边界上的交点，其稳定化子群是一个
 <span class="math inline">\(\infty\)</span> 标记的 rank 2 的仿射 Coxeter
 群，所以它不属于 Tits 锥的内部。</p>
-</blockquote>
 <p>这个定理不太好证明，我们首先处理 <span class="math inline">\(x\in\overline{\mathcal{D}}\)</span> 的情形。</p>
 <div id="lemma4">
 <blockquote>
@@ -955,33 +964,43 @@ Tits 锥的边界分别是什么？基本区域的各个顶点的稳定化子群
 \alpha_s,\,x\rangle=0\}\)</span>。则 <span class="math inline">\(x\in\mathcal{C}^\circ\)</span> 当且仅当 <span class="math inline">\(W_J\)</span> 是有限群。</p>
 </blockquote>
 </div>
-<blockquote>
-<p><strong>注</strong>：引理的几何意义是：如果 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(\mathcal{C}\)</span> 的内点，并且经过 <span class="math inline">\(x\)</span> 的镜面有无穷多个，那么可以在 <span class="math inline">\(x\)</span> 的附近取一点 <span class="math inline">\(z\)</span>，使得这无穷多个镜子都挡在基本区域和
-<span class="math inline">\(z\)</span> 之间，从而 <span class="math inline">\(\mathrm{Neg}(z)\)</span> 是无限集，从而 <span class="math inline">\(z\notin\mathcal{C}\)</span>，导致矛盾。</p>
-</blockquote>
 <p><a href="#lemma4">引理 4</a> 的证明：</p>
-<p><span class="math inline">\(\Rightarrow\)</span>：取 <span class="math inline">\(y\in\mathcal{D}\)</span>。由于 <span class="math inline">\(x\in\mathcal{C}^\circ\)</span>，所以在线段 <span class="math inline">\(\overline{[y, x]}\)</span> 上我们可以朝着 <span class="math inline">\(x\)</span> 的方向延伸一点点得到 <span class="math inline">\(z\)</span>，使得 <span class="math inline">\(z\)</span> 仍然位于 <span class="math inline">\(\mathcal{C}^\circ\)</span> 中。<span class="math inline">\(z\)</span> 可以表示为 <span class="math inline">\(z=(1-t)x+ty,\,t&lt;0\)</span>，于是 <span class="math inline">\(\langle \alpha_s,\,z\rangle=t\langle
+<p><span class="math inline">\(\Rightarrow\)</span>：</p>
+<blockquote>
+<p>思路：如果 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(\mathcal{C}\)</span> 的内点，并且经过 <span class="math inline">\(x\)</span> 的镜面有无穷多个，那么可以在 <span class="math inline">\(x\)</span> 的附近取一点 <span class="math inline">\(z\)</span>，<span class="math inline">\(z\)</span>
+仍然是 <span class="math inline">\(\mathcal{C}\)</span>
+的内点，使得这无穷多个镜子都挡在基本区域和 <span class="math inline">\(z\)</span> 之间，从而 <span class="math inline">\(\mathrm{Neg}(z)\)</span> 是无限集，从而 <span class="math inline">\(z\notin\mathcal{C}\)</span>，导致矛盾。</p>
+</blockquote>
+<p>任取 <span class="math inline">\(y\in\mathcal{D}\)</span>。由于 <span class="math inline">\(x\in\mathcal{C}^\circ\)</span>，所以在线段 <span class="math inline">\(\overline{[y, x]}\)</span> 上我们可以朝着 <span class="math inline">\(x\)</span> 的方向延伸一点点得到 <span class="math inline">\(z\)</span> 使得 <span class="math inline">\(z\)</span> 仍然位于 <span class="math inline">\(\mathcal{C}^\circ\)</span> 中。<span class="math inline">\(z\)</span> 可以表示为 <span class="math inline">\(z=(1-t)x+ty,\,t&lt;0\)</span>，于是 <span class="math inline">\(\langle \alpha_s,\,z\rangle=t\langle
 \alpha_s,\,y\rangle &lt; 0\)</span> 对所有 <span class="math inline">\(s\in J\)</span> 成立。如果 <span class="math inline">\(W_J\)</span> 是无限群那么 <span class="math inline">\(J\)</span> 对应的根系 <span class="math inline">\(\Phi_J=W_J\cdot\{\alpha_s\mid s\in J\}\)</span>
 也是无限的，从而 <span class="math inline">\(\mathrm{Neg}(z)\supseteq
 \Phi^+_J\)</span> 是无限集，从而 <span class="math inline">\(z\notin\mathcal{C}^\circ\)</span>，矛盾！</p>
-<p>反之若 <span class="math inline">\(W_J\)</span> 是有限群，记 <span class="math display">\[\delta = \min\left\{\frac{\langle
-\alpha_s,\,x\rangle}{\langle \alpha_s,\,wy\rangle}\,\middle|\,
-\alpha_s\in S\backslash J, w\in W_J\right\}.\]</span> 可以看出 <span class="math inline">\(\delta\)</span> 是一个正数：分子都大于 <span class="math inline">\(0\)</span> 是因为 <span class="math inline">\(\alpha_s\)</span> 都来自 <span class="math inline">\(S\backslash J\)</span>，对这些 <span class="math inline">\(\alpha_s\)</span> 有 <span class="math inline">\(\langle
-\alpha_s,\,x\rangle\ne0\)</span>。分母都大于 0 是因为 <span class="math inline">\(\langle \alpha_s,\,wy\rangle=\langle
-w^{-1}\alpha_s,\,y\rangle\)</span>，而 <span class="math inline">\(w^{-1}\in W_J\)</span>, <span class="math inline">\(s\in S\backslash J\)</span> 意味着 <span class="math inline">\(l(w^{-1}s)&gt;l(w^{-1})\)</span>，从而 <span class="math inline">\(w^{-1}\alpha_s\)</span> 仍然是正根，从而 <span class="math inline">\(\langle
+<p><span class="math inline">\(\Leftarrow\)</span>：</p>
+<p>反之若 <span class="math inline">\(W_J\)</span> 是有限群，仍然任取
+<span class="math inline">\(y\in\mathcal{D}\)</span>。</p>
+<p>对任何镜面 <span class="math inline">\(s\in S\backslash
+J\)</span>，由于 <span class="math inline">\(x\)</span>
+不属于此镜面，所以 <span class="math inline">\(\langle
+\alpha_s,\,x\rangle&gt;0\)</span>。</p>
+<p>进一步我们断言对这些 <span class="math inline">\(s\in S\backslash
+J\)</span> 的镜面和任何 <span class="math inline">\(w\in
+W_J\)</span>，同样有 <span class="math inline">\(\langle
+\alpha_s,\,wy\rangle&gt;0\)</span> 成立。这是因为 <span class="math inline">\(\langle \alpha_s,\,wy\rangle=\langle
+w^{-1}\alpha_s,\,y\rangle\)</span>，由于对 <span class="math inline">\(w^{-1}\in W_J\)</span> 和 <span class="math inline">\(s\in S\backslash J\)</span> 有 <span class="math inline">\(l(w^{-1}s)&gt;l(w^{-1})\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，根据 <a href="#theorem1">关键定理</a> <span class="math inline">\(w^{-1}\alpha_s\)</span> 仍然是正根，从而 <span class="math inline">\(\langle
 w^{-1}\alpha_s,\,y\rangle&gt;0\)</span>。</p>
-<p>将上面的分母乘到左边然后对 <span class="math inline">\(w\in
+<p>于是 <span class="math display">\[\delta = \min\left\{\frac{\langle
+\alpha_s,\,x\rangle}{\langle \alpha_s,\,wy\rangle}\,\middle|\,
+\alpha_s\in S\backslash J,\, w\in W_J\right\}.\]</span>
+是一个正数，将上面的分母乘到左边然后对 <span class="math inline">\(w\in
 W_J\)</span> 求和，我们有 <span class="math display">\[\delta\cdot\langle \alpha_s,\,\sum_{w\in
 W_J}wy\rangle\leq \langle \alpha_s,\,x\rangle\cdot |W_J| &lt; 2\langle
 \alpha_s,\,x\rangle\cdot |W_J|.\]</span></p>
-<p>进一步由于 <span class="math inline">\(\sum_{w\in W_J}wy\)</span>
-在所有 <span class="math inline">\(W_J\)</span> 下保持不变，所以对任何
-<span class="math inline">\(s'\in J\)</span> 必然有 <span class="math inline">\(\langle \alpha_{s'},\,\sum_{w\in
-W_J}wy\rangle=0\)</span>，所以上面的不等式将 <span class="math inline">\(\alpha_s\)</span> 换成任何 <span class="math inline">\(\lambda\in\Phi^+\backslash\Phi_J^+\)</span>
-依然成立，因为这时 <span class="math inline">\(\lambda\)</span> 作为
-<span class="math inline">\(\Delta\)</span> 的非负线性组合必然至少有来自
-<span class="math inline">\(S\backslash J\)</span> 的一项系数大于
-0。</p>
+<p>注意到上面这个不等式两边关于 <span class="math inline">\(\alpha_s\)</span> 都是线性的。</p>
+<p>由于 <span class="math inline">\(\sum_{w\in W_J}wy\)</span> 在 <span class="math inline">\(W_J\)</span> 下保持不变，所以根据 <a href="#theorem2">定理 2</a>，<span class="math inline">\(\langle
+\alpha_{t},\,\sum_{w\in W_J}wy\rangle=0\)</span> 对任何 <span class="math inline">\(t\in J\)</span> 成立，所以将 <span class="math inline">\(\alpha_s\)</span> 换成任何 <span class="math inline">\(\lambda\in\Phi^+\backslash\Phi_J^+\)</span>
+不等式依然成立，因为这样的 <span class="math inline">\(\lambda\)</span>
+作为 <span class="math inline">\(\Delta\)</span> 的非负线性组合 <span class="math inline">\(\lambda=\sum_{s\in\Delta}c_s\alpha_s\)</span>，其中必然有某个
+<span class="math inline">\(s\in S\backslash J\)</span> 对应的系数 <span class="math inline">\(c_s&gt;0\)</span>。</p>
 <p>于是对任何 <span class="math inline">\(\lambda\in\Phi^+\backslash\Phi_J^+\)</span> 有
 <span class="math display">\[\delta\cdot\langle \lambda,\,\sum_{w\in
 W_J}wy\rangle&lt; 2\langle \lambda,\,x\rangle\cdot |W_J|.\]</span>
@@ -989,26 +1008,29 @@ W_J}wy\rangle&lt; 2\langle \lambda,\,x\rangle\cdot |W_J|.\]</span>
 <span class="math display">\[\delta\cdot\langle \lambda,\,y\rangle&lt;
 2\langle \lambda,\,x\rangle\cdot |W_J|.\]</span> 记 <span class="math inline">\(z = 2|W_J|x - \delta y\)</span>，我们得到 <span class="math inline">\(\langle \lambda,\,z\rangle&gt;0\)</span> 对任何
 <span class="math inline">\(\lambda\in\Phi^+\backslash\Phi_J^+\)</span>
-成立。另一方面 <span class="math inline">\(\langle
-\mu,\,z\rangle=-\delta\langle \mu,\,y\rangle&lt;0\)</span> 对任何 <span class="math inline">\(\mu\in\Phi_J^+\)</span> 成立，而 <span class="math inline">\(|\Phi_J|\)</span> 有限，所以 <span class="math inline">\(\mathrm{Neg}(z)\)</span> 是有限集，于是 <span class="math inline">\(z\in\mathcal{C}\)</span>，从而存在 <span class="math inline">\(w\in W, v\in\overline{\mathcal{D}}\)</span> 使得
-<span class="math inline">\(z=wv\)</span>。这里的一个关键观察是 <span class="math inline">\(v\)</span> 实际上属于 <span class="math inline">\(\overline{\mathcal{D}}^\circ=\mathcal{D}\)</span>。这是因为对任何单根
-<span class="math inline">\(s\)</span>，<span class="math inline">\(\langle \alpha_s,\,v\rangle=\langle
-\alpha_s,\,w^{-1}z\rangle=\langle w\alpha_s,\,z\rangle\)</span>，不管
-<span class="math inline">\(w\alpha_s\)</span>
-是正根或者负根，它必然属于 <span class="math inline">\(\pm\Phi^+_J,
-\pm(\Phi^+\backslash\Phi^+_J)\)</span> 之一，<span class="math inline">\(\langle w\alpha_s,\,z\rangle\)</span> 都不会是
-0，即 <span class="math inline">\(\langle \alpha_s,\,v\rangle\)</span>
-对任何单根 <span class="math inline">\(s\)</span> 都不等于 0，所以 <span class="math inline">\(v\)</span> 实际上落在房间 <span class="math inline">\(\mathcal{D}\)</span>
-的内部，而不可能落在周围的墙壁上。于是 <span class="math inline">\(v\in\mathcal{C}^\circ\)</span>，从而 <span class="math inline">\(z=wv\in\mathcal{C}^\circ\)</span>，于是 <span class="math inline">\(x\)</span> 作为 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(y\)</span> 的非负线性组合 <span class="math inline">\(x = \frac{1}{2|W_J|}(z + \delta y)\)</span> 也属于
-<span class="math inline">\(\mathcal{C}^\circ\)</span>，引理得证。</p>
-<p>回到定理证明，一般的情形就好办了：对任何 <span class="math inline">\(x\in\mathcal{C}\)</span>，存在 <span class="math inline">\(w\in W,v\in\overline{\mathcal{D}}\)</span> 使得
+成立。</p>
+<p>另一方面对任何 <span class="math inline">\(\mu\in\Phi_J^+\)</span>，由于 <span class="math inline">\(\langle \mu,\,x\rangle=0\)</span>，所以 <span class="math inline">\(\langle \mu,\,z\rangle=-\delta\langle
+\mu,\,y\rangle&lt;0\)</span>，于是对任何 <span class="math inline">\(\lambda\in\Phi\)</span>，由于 <span class="math inline">\(\lambda\)</span> 必然属于 <span class="math inline">\(\pm\Phi^+_J,
+\pm(\Phi^+\backslash\Phi^+_J)\)</span> 之一，<span class="math inline">\(\langle \lambda,\,z\rangle\)</span> 总不是 0；并且
+<span class="math inline">\(\mathrm{Neg}(z)=\Phi_J^+\)</span>
+是有限集，从而 <span class="math inline">\(z\in\mathcal{C}\)</span>，从而存在 <span class="math inline">\(w\in W, v\in\overline{\mathcal{D}}\)</span> 使得
+<span class="math inline">\(z=wv\)</span>。注意到 <span class="math inline">\(v\)</span> 实际上属于 <span class="math inline">\(\mathcal{D}\)</span>，因为对任何单根 <span class="math inline">\(s\)</span>，<span class="math inline">\(\langle
+\alpha_s,\,v\rangle=\langle \alpha_s,\,w^{-1}z\rangle=\langle
+w\alpha_s,\,z\rangle\)</span>，而我们已经知道不论 <span class="math inline">\(w\alpha_s\)</span> 是正根或者负根 <span class="math inline">\(\langle w\alpha_s,\,z\rangle\)</span> 都不是
+0，从而 <span class="math inline">\(\langle \alpha_s,\,v\rangle\)</span>
+对任何单根 <span class="math inline">\(s\)</span> 都不是 0，所以 <span class="math inline">\(v\in\mathcal{D}\subset\mathcal{C}^\circ\)</span>，从而
+<span class="math inline">\(z=wv\in\mathcal{C}^\circ\)</span>，于是
+<span class="math inline">\(x\)</span> 作为 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(y\)</span> 的非负线性组合 <span class="math inline">\(x = \tfrac{1}{2|W_J|}(z + \delta y)\)</span>
+也属于 <span class="math inline">\(\mathcal{C}^\circ\)</span> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>，引理得证。</p>
+<p>解决了 <span class="math inline">\(x\in\overline{\mathcal{D}}\)</span>
+的情形，一般的情形就好办了：对任何 <span class="math inline">\(x\in\mathcal{C}\)</span>，存在 <span class="math inline">\(w\in W,v\in\overline{\mathcal{D}}\)</span> 使得
 <span class="math inline">\(x=wv\)</span>。稳定化子群 <span class="math inline">\(\mathrm{Stab}(x)\)</span> 与 <span class="math inline">\(\mathrm{Stab}(v)\)</span> 是共轭的关系：<span class="math inline">\(\mathrm{Stab}(x)=w\mathrm{Stab}(v)w^{-1}\)</span>，二者同为有限或者无限群，这对应二者是否同为
 <span class="math inline">\(\mathcal{C}^\circ\)</span> 的内点。</p>
 <h2 id="tits-锥的对偶锥">Tits 锥的对偶锥</h2>
 <p>这一节来讨论 Tits
-锥的对偶锥。这部分内容会在后面介绍“双曲密铺和球堆”的时候用到。</p>
+锥的对偶锥。这部分内容会在后面介绍双曲密铺和球堆时用到。</p>
 <p>之前已经提到了，<span class="math inline">\(\overline{\mathcal{D}}\)</span> 是 <span class="math inline">\(\mathrm{PLC}(\Delta)\)</span> 在 <span class="math inline">\(V\)</span>
-中的对偶锥。但是我们还没有严格介绍什么是对偶锥，所以要补上这一课，先介绍一些关于锥的预备知识。</p>
+中的对偶锥。但是我们还没有严格介绍什么是对偶锥，所以要补上这一课，介绍一些关于锥的预备知识。</p>
 <hr>
 <h3 id="一些关于锥的预备知识">一些关于锥的预备知识</h3>
 <blockquote>
@@ -1077,9 +1099,11 @@ for all } w \in W\}.
 矩阵可能是退化的，所以用 <span class="math inline">\(\bullet\)</span>
 来定义基本区域 <span class="math inline">\(\cap_{\alpha_s\in\Delta}\{v\mid\alpha_s\bullet
 v&gt; 0\}\)</span> 是有问题的，但这不影响我们用 <span class="math inline">\(\bullet\)</span> 来给出对偶锥的刻画。</p>
-<p>首先由 <span class="math inline">\(\bullet\)</span> 的定义可见对任何
+<p>由 <span class="math inline">\(\bullet\)</span> 的定义可见对任何
 <span class="math inline">\(\alpha_s\in\Delta\)</span> 有 <span class="math inline">\(\alpha_s\bullet\alpha_s=1\)</span>
-都是单位向量。</p>
+都是单位向量。同时不难验证每个反射 <span class="math inline">\(s\)</span> 是 <span class="math inline">\(\bullet\)</span> 下的正交变换：<span class="math inline">\((s\cdot v)\bullet(s\cdot v)=v\bullet v,\,\forall
+v\in V\)</span>。于是整个 <span class="math inline">\(W\)</span> 也是
+<span class="math inline">\(\bullet\)</span> 下的正交变换群。</p>
 <div id="prop10">
 <blockquote>
 <p><strong>推论 10</strong>：如果 <span class="math inline">\(\lambda\in\mathrm{PLC}(\Delta)\)</span> 满足对任何
@@ -1099,23 +1123,28 @@ v&gt; 0\}\)</span> 是有问题的，但这不影响我们用 <span class="math 
 <p><strong>推论 11</strong>：对任何 <span class="math inline">\(\lambda\in\mathcal{C}^\ast\)</span> 有 <span class="math inline">\(\lambda\bullet\lambda\leq 0\)</span>。</p>
 </blockquote>
 </div>
+<blockquote>
+<p>思路：由于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 是
+<span class="math inline">\(W-\)</span> 不变的，以及 <span class="math inline">\(W\)</span> 保持内积 <span class="math inline">\(\bullet\)</span>，所以如果某个 <span class="math inline">\(\lambda\in\mathcal{C}^\ast\)</span> 满足 <span class="math inline">\(\lambda\bullet\lambda&gt;0\)</span>，我们就可以将其无限反射下去，并始终保持其内积为正。我们要说明这不可能。</p>
+</blockquote>
 <p>证明：对任何 <span class="math inline">\(v\in V^\ast\)</span>，由于
 <span class="math inline">\(\Delta=\{\alpha_s\}\)</span> 构成 <span class="math inline">\(V^\ast\)</span> 的一组基，所以 <span class="math inline">\(v\)</span> 可以表示为 <span class="math inline">\(\Delta\)</span> 的线性组合：<span class="math inline">\(v = \sum_{s\in\Delta}c_s\alpha_s\)</span>。定义
 <span class="math inline">\(S(v)=\sum_{s\in\Delta}c_s\)</span>
 为此线性组合中所有系数的和。</p>
 <p>下面用反证法，设 <span class="math inline">\(\lambda\in\mathcal{C}^\ast\)</span> 满足 <span class="math inline">\(\lambda\bullet\lambda&gt;0\)</span>，不妨设 <span class="math inline">\(\lambda\bullet\lambda=1\)</span>。设 <span class="math inline">\(\lambda=\sum_{s\in\Delta}c_s\alpha_s\)</span>，由于
 <span class="math inline">\(\lambda\in\mathcal{C}^\ast\subset\mathrm{PLC}(\Delta)\)</span>，所以每个
-<span class="math inline">\(c_s\geq 0\)</span>。取 <span class="math inline">\(M\)</span> 为任一大于等于 <span class="math inline">\(\max\limits_{s\in\Delta}c_s\)</span> 的正数。</p>
+<span class="math inline">\(c_s\geq 0\)</span>。取 <span class="math inline">\(M\)</span> 为任一大于等于 <span class="math inline">\(\max\limits_{s\in\Delta}c_s\)</span> 的正数，并记
+<span class="math inline">\(|\Delta|=n\)</span>。</p>
 <p>由于 <span class="math inline">\(1=\lambda\bullet\lambda=\sum_{s\in\Delta}c_s(\lambda\bullet\alpha_s)\)</span>，所以至少有一个
-<span class="math inline">\(\alpha_s\)</span> 满足 <span class="math inline">\(\lambda\bullet\alpha_s\geq1/nM\)</span>。用此
-<span class="math inline">\(\alpha_s\)</span> 对应的单反射 <span class="math inline">\(s\)</span> 作用在 <span class="math inline">\(\lambda\)</span> 上： <span class="math display">\[s\lambda = \lambda -
+<span class="math inline">\(s\)</span> 满足 <span class="math inline">\(\lambda\bullet\alpha_s\geq1/nM\)</span>。将 <span class="math inline">\(s\)</span> 作用在 <span class="math inline">\(\lambda\)</span> 上： <span class="math display">\[s\lambda = \lambda -
 2(\lambda\bullet\alpha_s)\alpha_s=(c_s-2(\lambda\bullet\alpha_s))\alpha_s
 + \sum_{t\ne s}c_{t}\alpha_{t}.
-\]</span> 由于 <span class="math inline">\(s\lambda\in\mathcal{C}^\ast\)</span>
-所以上面的各项系数非负，所以 <span class="math inline">\(0\leq
-c_s-2(\lambda\bullet\alpha_s)\leq M-2/nM&lt; M\)</span>。</p>
-<p>于是 <span class="math inline">\(S(s\lambda)\leq
-S(\lambda)-2/nM\)</span>，并且 <span class="math inline">\(s\lambda\)</span> 仍然满足</p>
+\]</span> 由于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 是
+<span class="math inline">\(W-\)</span> 不变的，所以 <span class="math inline">\(s\lambda\in\mathcal{C}^\ast\)</span>，上面的各项系数仍然非负，其中第一项系数
+<span class="math inline">\(0\leq c_s-2(\lambda\bullet\alpha_s)\leq
+M-2/nM\)</span>，其它系数不变。</p>
+<p>于是 <span class="math inline">\(s\lambda\)</span> 的各项系数和 <span class="math inline">\(S(s\lambda)\leq S(\lambda)-2/nM\)</span>，并且
+<span class="math inline">\(s\lambda\)</span> 仍然满足</p>
 <ol type="1">
 <li><span class="math inline">\(s\lambda\in\mathcal{C}^\ast\)</span>。</li>
 <li><span class="math inline">\((s\lambda)\bullet(s\lambda)=1\)</span>。</li>
@@ -1130,25 +1159,25 @@ S(\lambda)-2/nM\)</span>，并且 <span class="math inline">\(s\lambda\)</span> 
 锥结构。</p>
 <p>首先我们注意对一个非零向量 <span class="math inline">\(x\)</span>，<span class="math inline">\(x\)</span>
 和 <span class="math inline">\(-x\)</span> 不能同时属于 Tits 锥的对偶锥
-<span class="math inline">\(\mathcal{C}^\ast\)</span>，这是因为 <span class="math inline">\(\mathcal{C}\)</span> 显然包含 <span class="math inline">\(\Delta\)</span> 的一组对偶基 <span class="math inline">\(\{e_s\}\)</span>，其中 <span class="math inline">\(\langle
-\alpha_s,\,e_t\rangle=\delta_{st}\)</span>。<span class="math inline">\(x\)</span> 和 <span class="math inline">\(-x\)</span> 都属于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 说明 <span class="math inline">\(\langle
-x,\,\mathcal{C}\rangle=0\)</span>，从而对任何 <span class="math inline">\(s\)</span> 都有 <span class="math inline">\(\langle x,\,e_s\rangle=0\)</span>，这只能是 <span class="math inline">\(x=0\)</span>，即 <span class="math inline">\(\mathcal{C}^\ast\cap(-\mathcal{C}^\ast)=\{0\}\)</span>，于是
+<span class="math inline">\(\mathcal{C}^\ast\)</span>，这是因为 <span class="math inline">\(\mathcal{C}\)</span> 显然包含 <span class="math inline">\(\Delta\)</span> 的一组对偶基 <span class="math inline">\(\{e_s\}\)</span>（即基本区域的顶点集），其中 <span class="math inline">\(\langle
+\alpha_s,\,e_t\rangle=\delta_{st}\)</span>。<span class="math inline">\(x\)</span> 和 <span class="math inline">\(-x\)</span> 都属于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 将导致对任何 <span class="math inline">\(s\)</span> 都有 <span class="math inline">\(\langle x,\,e_s\rangle=0\)</span>，这只能是 <span class="math inline">\(x=0\)</span>，即 <span class="math inline">\(\mathcal{C}^\ast\cap(-\mathcal{C}^\ast)=\{0\}\)</span>，于是
 <span class="math inline">\(\mathcal{C}^\ast\)</span>
 是一个严格的点锥（pointed cone，即不包含任何一维直线）。</p>
 <ol type="1">
 <li><p>在有限的情形，Cartan 矩阵给出的内积 <span class="math inline">\(\bullet\)</span> 是正定的，满足 <span class="math inline">\(v\bullet v\leq 0\)</span> 的只能是零向量，所以
 <span class="math inline">\(\mathcal{C}^\ast=\{0\}\)</span>，这时 Tits
 锥是全空间。</p></li>
-<li><p>在欧氏的情形，Cartan 矩阵给出的内积具有符号 <span class="math inline">\((n-1,0)\)</span>，我们可以取 <span class="math inline">\(V^\ast\)</span> 的一组合适的基 <span class="math inline">\(\Delta=\{\alpha_i\}_{i=1}^n\)</span> 使得其在
-<span class="math inline">\(\bullet\)</span> 下的度量矩阵是 <span class="math inline">\(\mathrm{diag}(1,\ldots,1, 0)\)</span>。设 <span class="math inline">\(\alpha_n\)</span> 是对应 0 的单根，显然 <span class="math inline">\(\alpha_n\)</span> 满足对任何 <span class="math inline">\(\alpha\in\Delta\)</span> 有 <span class="math inline">\(\alpha_n\bullet
-\alpha=0\)</span>，所以根据前面的推论 <span class="math inline">\(\alpha_n\in\mathcal{C}^\ast\)</span>。其它任何
-<span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量 <span class="math inline">\(\lambda\)</span> 由于必须满足 <span class="math inline">\(\lambda\bullet\lambda=0\)</span> 所以必然与 <span class="math inline">\(\alpha_n\)</span> 共线，所以 <span class="math inline">\(\mathcal{C}\)</span> 是一个以 <span class="math inline">\(\alpha_n\)</span> 为法向量的半空间。</p></li>
+<li><p>在欧氏的情形，Cartan 矩阵给出的内积具有符号 <span class="math inline">\((n-1,0)\)</span>，我们可以取 <span class="math inline">\(V^\ast\)</span> 的一组正交基 <span class="math inline">\(\Delta=\{\alpha_i\}_{i=1}^n\)</span> 使得其在
+<span class="math inline">\(\bullet\)</span> 下的度量矩阵是 <span class="math inline">\(\mathrm{diag}(1,\ldots,1, 0)\)</span>。设 <span class="math inline">\(\alpha_n\)</span> 是对应 0 的单根，<span class="math inline">\(\alpha_n\bullet\alpha_n=0\)</span>。显然 <span class="math inline">\(\alpha_n\)</span> 满足对任何 <span class="math inline">\(\alpha\in\Delta\)</span> 有 <span class="math inline">\(\alpha_n\bullet \alpha=0\)</span>，所以根据 <a href="#prop10">推论 10</a> <span class="math inline">\(\alpha_n\in\mathcal{C}^\ast\)</span>。其它任何
+<span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量 <span class="math inline">\(\lambda\)</span> 根据 <a href="#prop11">推论
+11</a> 和 <span class="math inline">\(\bullet\)</span>
+的半正定性必须满足 <span class="math inline">\(\lambda\bullet\lambda=0\)</span> 所以必然与 <span class="math inline">\(\alpha_n\)</span> 共线 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>，所以 <span class="math inline">\(\mathcal{C}\)</span> 是一个以 <span class="math inline">\(\alpha_n\)</span> 为法向量的半空间。</p></li>
 <li><p>在双曲的情形，Cartan 矩阵给出的内积具有符号 <span class="math inline">\((n-1,1)\)</span>，这时满足 <span class="math inline">\(v\bullet v\leq0\)</span>
 的点构成所谓的光锥，光锥有上下两个分支 <span class="math inline">\(L^+,\,L^-\)</span> 且 <span class="math inline">\(L^+=-L^-\)</span>，这两个分支互为对偶锥。<span class="math inline">\(\mathcal{C}^\ast\)</span>
 必然属于其中一个，不妨设为 <span class="math inline">\(\mathcal{C}^\ast\subseteq
-L^+\)</span>，取对偶以后我们得到 <span class="math inline">\(\mathcal{C}=\overline{\mathcal{C}}=\mathcal{C}^{\ast\ast}\supseteq
-L^-\)</span>，于是我们证明了在双曲的情形 Tits 锥 <span class="math inline">\(\mathcal{C}\)</span>
-必然包含光锥的一个分支。</p></li>
+L^+\)</span>，取对偶以后我们得到 <span class="math inline">\(\overline{\mathcal{C}}=\mathcal{C}^{\ast\ast}\supseteq
+L^-\)</span>，即 Tits 锥的闭包 <span class="math inline">\(\overline{\mathcal{C}}\)</span> 包含 <span class="math inline">\(L^-\)</span>。而 <span class="math inline">\(\mathcal{C}\)</span> 是凸集，所以它包含 <span class="math inline">\(\overline{\mathcal{C}}\)</span> 的内点 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，从而包含 <span class="math inline">\(L^-\)</span> 的内点 <span class="math inline">\((L^-)^\circ\)</span>，即包含 <span class="math inline">\(\{v\in L^- \mid v\bullet
+v&lt;0\}\)</span>。</p></li>
 </ol>
 <h1 id="参考文献">参考文献</h1>
 <ol type="1">
@@ -1156,7 +1185,26 @@ L^-\)</span>，于是我们证明了在双曲的情形 Tits 锥 <span class="mat
 的一些文章。</li>
 <li><a target="_blank" rel="noopener" href="https://www.maths.usyd.edu.au/u/ResearchReports/Algebra/How/1997-6.html">Introduction
 to Coxeter groups</a>. Robert B. Howlett.</li>
+<li>Howlett, R.B., Rowley, P.J. &amp; Taylor, D.E. On outer automorphism
+groups of coxeter groups.</li>
 </ol>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>我们来说明对 <span class="math inline">\(S\)</span> 的子集 <span class="math inline">\(J\subset S\)</span> 和 <span class="math inline">\(w\in W_J\)</span>，以及 <span class="math inline">\(s\in S\backslash J\)</span>，一定有 <span class="math inline">\(l(ws)&gt;l(w)\)</span>。若不然，根据 <a href="#theorem1">关键定理</a> 有 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，但是 <span class="math inline">\(w\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和一些 <span class="math inline">\(\{\alpha_t,\,t\in J\}\)</span> 的线性组合，其
+<span class="math inline">\(\alpha_s\)</span> 项的系数是
++1，不可能是负根，矛盾。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>对任何 <span class="math inline">\(0&lt;t&lt;1\)</span>，<span class="math inline">\(t\mathcal{C}^\circ\)</span> 和 <span class="math inline">\((1-t)\mathcal{C}^\circ\)</span>
+都是开集，而两个开集的和还是开集（<span class="math inline">\(A+B =
+\cup_{a\in A}(a+B)\)</span>），所以 <span class="math inline">\(\mathcal{C}^\circ\)</span> 也是凸集。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>这是不可约仿射 Coxeter
+群的一个性质，半正定内积 <span class="math inline">\(\bullet\)</span>
+的零空间必然是 1 维的，证明见 Humphreys 的 Reflection groups and Coxeter
+groups 一书的 2.6 小节。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>一个凸集的内点集和它的闭包的内点集是一样的，网上有很多证明，例如参考
+<a href="/papers/sCONVs.pdf">这里</a>。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
                 
 <p class="pink-link-context">

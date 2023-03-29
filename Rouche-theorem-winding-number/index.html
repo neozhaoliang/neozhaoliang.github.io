@@ -322,7 +322,7 @@
 
 
             </div>
-            <time class="pink-link-context" datetime="2021-09-10T16:00:00.000Z"><a href="/Rouch%C3%A9-theorem-winding-number/">2021-09-11</a></time>
+            <time class="pink-link-context" datetime="2021-09-10T16:00:00.000Z"><a href="/Rouche-theorem-winding-number/">2021-09-11</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -370,17 +370,17 @@
 可以在不碰触到原点的前提下通过连续的形变变为 <span class="math inline">\(\gamma_2\)</span>（同伦），则 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
 关于原点的环绕数相等。</p>
 <p>注意这个结论只要求 <span class="math inline">\(\gamma_1,\gamma_2:\,
-[0,1]\to\mathbb{R}^2\)</span> 是两条连续曲线，并不涉及解析性。</p>
+[0,1]\to\mathbb{R}^2\)</span>
+是两条连续曲线，并不涉及解析性。因为环绕数、同伦的概念都只要求连续性。</p>
 <p>当 <span class="math inline">\(\gamma_1=f(S^1),\gamma_2=g(S^1)\)</span>
 分别是单位圆 <span class="math inline">\(S^1:\{z\in\mathbb{C}:|z|=1\}\)</span>
 在两个解析函数 <span class="math inline">\(f,g\)</span> 下的像时，<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Argument_principle">幅角原理</a>
 告诉我们 <span class="math inline">\(f,g\)</span>
-关于原点的环绕数分别等于它们各自在 <span class="math inline">\(S^1\)</span> 的内部的零点个数。只要绳子 <span class="math inline">\(l(z)=f(z)-g(z)\)</span> 始终够不到原点，即对任何
+关于原点的环绕数分别等于它们各自在 <span class="math inline">\(S^1\)</span> 内部的零点个数。进一步 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem">Rouché
+定理</a> 告诉我们，只要绳子 <span class="math inline">\(l(z)=f(z)-g(z)\)</span> 始终够不到原点，即对任何
 <span class="math inline">\(z\in S^1\)</span> 都有 <span class="math inline">\(|f(z)|&gt;|l(z)|\)</span> 成立，就可以保证 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
 关于原点有相同的环绕数，从而 <span class="math inline">\(f,g\)</span> 在
-<span class="math inline">\(S^1\)</span>
-内部的零点个数也是相同的，这就是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem">Rouché
-定理</a> 的结论。</p>
+<span class="math inline">\(S^1\)</span> 内部的零点个数也是相同的。</p>
 <p>动画中左下角的圆周是 <span class="math inline">\(S^1\)</span>，动画右边红、绿两条路径分别是 <span class="math inline">\(S^1\)</span> 在两个解析函数 <span class="math inline">\(f,g\)</span> 下的像，这里的 <span class="math inline">\(f\)</span> 我取的形如 <span class="math display">\[f(z)
 =\frac{z-a}{1-\overline{a}z}\frac{z-b}{1-\overline{b}z}\frac{z-c}{1-\overline{c}z}
 (z-2-2i),\quad |a|,|b|,|c|&lt;1.\]</span> 于是 <span class="math inline">\(f(z)\)</span> 在 <span class="math inline">\(S^1\)</span> 的内部有 3 个根
@@ -393,8 +393,8 @@ z\in S^1.\]</span> 所以只要绳子 <span class="math inline">\(l(z)\)</span> 
 就不可能接触到原点。我这里取了 <span class="math inline">\(l(z) =
 cz\)</span>，其中 <span class="math inline">\(c\)</span> 是一个小于
 <span class="math inline">\(2\sqrt{2}-1\)</span> 的正实数。</p>
-<p>曲线的环绕数在平面的每个连通分支上都是常数。对一条闭曲线 <span class="math inline">\(\gamma\)</span> 和不在 <span class="math inline">\(\gamma\)</span> 上的一点 <span class="math inline">\(z\)</span>，你可以稍稍移动 <span class="math inline">\(z\)</span> 到另一个点 <span class="math inline">\(z'\)</span>，只要保持 <span class="math inline">\(z'\)</span> 仍然位于 <span class="math inline">\(z\)</span> 所在的连通分支内，则 <span class="math inline">\(\gamma\)</span> 关于 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(z'\)</span>
-有相同的环绕数。利用这个事实，再结合幅角原理，我们不难得出下面的结论：</p>
+<p>曲线的环绕数在平面的每个连通分支上都是常数。对一条闭曲线 <span class="math inline">\(\gamma\)</span> 和不在 <span class="math inline">\(\gamma\)</span> 上的一点 <span class="math inline">\(z\)</span>，我们可以稍稍移动 <span class="math inline">\(z\)</span> 到另一个点 <span class="math inline">\(z'\)</span>，只要保持 <span class="math inline">\(z'\)</span> 仍然位于 <span class="math inline">\(z\)</span> 所在的连通分支内，则 <span class="math inline">\(\gamma\)</span> 关于 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(z'\)</span>
+有相同的环绕数。利用这个事实，再结合幅角原理，不难得出下面的结论：</p>
 <blockquote>
 <p><strong>推论</strong>：设 <span class="math inline">\(\gamma\)</span>
 是一条简单闭曲线，内部围的区域为 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(f(z)\)</span> 是一个非常数的解析函数，<span class="math inline">\(f\)</span> 在包含 <span class="math inline">\(\gamma\)</span>
@@ -405,7 +405,7 @@ cz\)</span>，其中 <span class="math inline">\(c\)</span> 是一个小于
 <p>这是因为根据条件，从 <span class="math inline">\(w_0\)</span>
 沿着线段 <span class="math inline">\([w_0,w_1]\)</span> 移动到 <span class="math inline">\(w_1\)</span> 的过程中始终不会碰触到曲线 <span class="math inline">\(f(\gamma)\)</span>，所以 <span class="math inline">\(w_0,w_1\)</span> 必然位于同一连通分支内。</p>
 <p><img style="margin:0px auto;display:block" src="/images/rouche/winding_number.svg" width="250"></p>
-<p>利用推论我们不难得出复分析中的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis)">开映射定理</a>：</p>
+<p>利用此推论我们不难得出复分析中的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open_mapping_theorem_(complex_analysis)">开映射定理</a>：</p>
 <blockquote>
 <p><strong>定理</strong>：如果 <span class="math inline">\(U\subseteq\mathbb{C}\)</span> 是开集，<span class="math inline">\(f:U\to\mathbb{C}\)</span> 是非常数的解析函数，则
 <span class="math inline">\(f(U)\)</span> 也是开集。</p>

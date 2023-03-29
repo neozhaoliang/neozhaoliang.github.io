@@ -439,11 +439,11 @@ mathemetica 的 logo
 <p>在上面的例子中，你可以看到有些多面体/多胞体的边和面被染成了不同的颜色，相同的颜色表示它们在对称群的作用下位于同一轨道内。</p>
 <h1 id="这些图是怎么画出来的">这些图是怎么画出来的？</h1>
 <p>前面说过，这些多面体/多胞体的数据是在 Python 中计算好以后，导出到
-POV-Ray 中渲染得到的。这其中的重点在 Python 的部分，POV-Ray
-的部分虽然也需要做一些计算，但是用到的知识不超出高中几何的范围，没有很大的难度。</p>
+POV-Ray 中渲染的。其中重点在 Python 的部分，POV-Ray
+的部分虽然也需要一些计算，但用到的知识不超出高中几何的范围，没有很大的难度。</p>
 <p>这些多面体/多胞体看起来样子大不相同，但实际上它们都可以用同一种方法计算出来，叫做
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythoff
-构造法</a>，也称“万花筒构造法”。这个构造法的原理跟我们小时候玩的万花筒的原理是一样的：即在空间中放置若干过原点的反射平面
+构造法</a>，也称“万花筒构造法”。这个构造法的原理跟我们小时候玩的万花筒的原理是一样的：在空间中放置若干过原点的反射平面
 （镜子），这些镜面之间的夹角是精心设计好的，都形如 <span class="math inline">\(\pi-\pi/p\)</span>，其中 <span class="math inline">\(p\)</span> 为有理数。在空间中选定一个初始顶点
 <span class="math inline">\(v_0\)</span>，将 <span class="math inline">\(v_0\)</span>
 关于这些镜子反复作反射变换，得到的全部镜像就是多面体/多胞体的顶点。如果
@@ -453,7 +453,7 @@ POV-Ray 中渲染得到的。这其中的重点在 Python 的部分，POV-Ray
 实际上是绕着某个面的中心和原点的连线作了一次旋转，旋转的角度为 <span class="math inline">\(2\pi/m\)</span> （假设镜面 <span class="math inline">\(i\)</span> 和镜面 <span class="math inline">\(j\)</span> 的法向量夹角是 <span class="math inline">\(\pi-\pi/m\)</span>)，重复此旋转 <span class="math inline">\(m\)</span> 次即可得到多面体/多胞体的一个类型为
 <span class="math inline">\((i,j)\)</span>
 的面，我们把它和它在对称群作用下同轨道的所有面都染成同一颜色。</p>
-<p>这里的关键之处有两个：</p>
+<p>这里的关键问题有两个：</p>
 <ol type="1">
 <li>对于不同的均匀多面体/多胞体，应该如何放置这些镜面和选择初始顶点？</li>
 <li>摆好镜面和初始顶点以后，怎样不重复不遗漏地计算初始顶点的所有镜像？</li>
@@ -499,7 +499,7 @@ m_0,m_2\rangle=\pi/2\)</span>。初始顶点落在 <span class="math inline">\(m
 v_0, n_1\rangle=0,\quad\langle v_0, n_2\rangle=0.\]</span></p>
 <p>求解这个线性方程组即可。</p>
 <p>我们前面提到过，要使得初始顶点的所有镜像恰好构成一个均匀多面体/多胞体，镜子之间的夹角必须精心设置，这实际上只有有限种可能。换句话说只有有限几种
-Coxeter-Dynkin 图可以给出均匀多面体/多胞体。在 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_polytope">维基百科</a>
+Coxeter-Dynkin 图可以给出 3D/4D 的均匀多面体/多胞体。在 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_polytope">维基百科</a>
 上完整的列出了每种均匀多面体/多胞体对应的 Coxeter-Dynkin
 图，这里就不再专门列举了，但是特别指出两点：</p>
 <ol type="1">
@@ -1199,10 +1199,9 @@ H_7=H_6\cdot\rho_0=H_0\cdot
 \rho_0\rho_1\rho_0\rho_2\rho_1\rho_0.\end{array}\]</span></p>
 <p>从而其一组陪集代表元可以选为 <span class="math display">\[\begin{array}{llll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\end{array}\]</span></p>
 <p>这正是我们前面看到过的。</p>
-<blockquote><p><strong>注意</strong>：这个例子看似有点长，但还是一个比较简单的例子，其中并没有出现已知陪集重复的情形
-(Holt 的书中称之为
-coincidence)。这种情形的处理麻烦一些，因为一旦出现重复的陪集，就有可能
-"顺藤摸瓜" 找到更多重复的陪集，再进一步发现更多的重复陪集
+<blockquote><p><strong>注意</strong>：这个例子看似有点长，但还是一个比较简单的例子，其中并没有出现已知陪集重复的情形（Holt
+的书中称之为
+coincidence）。这种情形的处理麻烦一些，因为一旦出现重复的陪集，就有可能顺藤摸瓜找到更多重复的陪集，再进一步发现更多的重复陪集
 ...，这时就要立刻暂停扫描转到处理这个
 coincidence：开辟一个栈来存放已知的
 coincidence，每次弹出一对，将它们合并，然后把新发现的 coincidence
@@ -1237,8 +1236,8 @@ Coxeter-Dynkin 图，并由此确定：
 （估计效率会很低），或者用 Brink 和 Howlett 的有限生成 Coxeter
 群的极小根理论，但是这算法太太太复杂了。</p>
 <h1 id="星状多面体多胞体的计算">星状多面体/多胞体的计算</h1>
-<p>星状多面体/多胞体是也可以使用 Wythoff
-构造法来生成，但是一般来说，直接套用上面的方法是不行的，我们需要在生成元中加入额外的生成关系。</p>
+<p>星状多面体/多胞体也可以使用 Wythoff
+构造法来生成，但是直接套用上面的方法一般是行不通的，我们需要在生成元中加入额外的生成关系。</p>
 <p>这里以 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Great_dodecahedron">great
 dodecahedron</a> 为例来说明：其 Coxeter-Dynkin 图为</p>
 <p><img style="margin:0px auto;display:block" src="/images/polytopes/coxeter552.svg" width="300"></p>
@@ -1262,9 +1261,10 @@ dodecahedron
 <video src="/images/polytopes/great-dodecahedron.mp4" width="480" controls="">
 </video>
 <p>由视频可见，great dodecahedron 与正二十面体 (icosahedron)
-有完全相同的顶点集，但是看起来 great dodecahedron 可以通过在 icosahedron
-表面挖一些三角形的洞得到。一般地，如果星状多面体的洞是一个有 <span class="math inline">\(h\)</span> 条边的多边形，则对应的额外生成关系就是
-<span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^h=1\)</span>。</p>
+共用相同的顶点，并且看起来 great dodecahedron 可以通过在 icosahedron
+表面挖一些三角形的洞得到。这个结论也可以推广：一般地如果星状多面体的洞是一个有
+<span class="math inline">\(h\)</span>
+条边的多边形，则对应的额外生成关系就是 <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^h=1\)</span>。</p>
 <p>我们来仔细考察 great dodecahedron 的基本区域：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polytopes/star.png" width="600"></p>
 <p>在上图中，<span class="math inline">\(\Delta ABC\)</span>
@@ -1275,8 +1275,8 @@ dodecahedron
 <p>Great dodecahedron 可以这样得到：沿着正二十面体的边从顶点 <span class="math inline">\(Q\)</span> 走到 <span class="math inline">\(A\)</span>，右手边的第一个面是 <span class="math inline">\(\Delta OAQ\)</span>，接下来的第一条边应该是 <span class="math inline">\(AO\)</span>，我们跳过这条边，选择第二条边 <span class="math inline">\(AK\)</span>，到达 <span class="math inline">\(K\)</span> 后继续选择右手边的第二条边，这样绕着
 <span class="math inline">\(O\)</span> 一圈下来共经过 5
 条边，它们正好围成 great dodecahedron
-的一个面。对正二十面体的其它边也进行如此操作会得到 great dodecahedron
-的其它的面。</p>
+的一个面。对正二十面体的其它边也如此操作会得到 great dodecahedron
+其它的面。</p>
 <p>像这样对一个多面体，保持它的顶点和边的集合不变，但是每次选择右手边的第
 <span class="math inline">\(k\)</span>
 个边走下去绕一圈获得一个面，这样构造新多面体的方法叫做 <strong>Facetting
@@ -1290,17 +1290,16 @@ OAB\)</span>，它的三个内角分别是 <span class="math inline">\(\angle
 OAB=2\pi/5\)</span>，<span class="math inline">\(\angle
 OBA=\pi/2\)</span>，<span class="math inline">\(\angle
 AOB=\pi/5\)</span>，它包含三个与 <span class="math inline">\(\Delta
-ABC\)</span> 全等的三角形，且关于其三条边 <span class="math inline">\(OA,OB,AB\)</span> 的反射分别是 <span class="math inline">\(\tau_1=\rho_1\rho_2\rho_1,\tau_0=\rho_0,\tau_2=\rho_2\)</span>
+ABC\)</span> 全等的三角形，关于其三条边 <span class="math inline">\(OA,OB,AB\)</span> 的反射分别是 <span class="math inline">\(\tau_1=\rho_1\rho_2\rho_1,\tau_0=\rho_0,\tau_2=\rho_2\)</span>
 <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。</p>
 <p>Facetting 操作 <span class="math inline">\(\varphi_k\)</span>
 用群的语言来描述就是（记住 <span class="math inline">\(k=2\)</span>）
 <span class="math display">\[G=\langle
 \rho_0,\rho_1,\rho_2\rangle\xrightarrow{\ \varphi_k\
 }\langle\rho_0,\rho_1(\rho_2\rho_1)^{k-1},\rho_2\rangle=\langle\tau_0,\tau_1,\tau_2\rangle=K.\]</span>
-一般来说 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(G\)</span> 的子群，但在大多数情况下（包括现在的
-great dodecahedron），<span class="math inline">\(G\)</span> 和 <span class="math inline">\(K\)</span> 就是同一个群。</p>
-<p>为什么 <span class="math inline">\(K\)</span> 就是 great dodecahedron
-的对称群呢？</p>
+一般来说 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(G\)</span> 的子群，但在这里 <span class="math inline">\(G\)</span> 和 <span class="math inline">\(K\)</span> 就是同一个群。我们不解释为什么 <span class="math inline">\(G=K\)</span>，我们这里承认这一点，然后借助这个事实来说明
+<span class="math inline">\(K\)</span> 就是 great dodecahedron
+的对称群。</p>
 <p>首先 <span class="math inline">\(\langle \tau_1,\tau_2\rangle=\langle
 \rho_1,\rho_2\rangle\)</span> 是顶点 <span class="math inline">\(A\)</span> 的稳定化子群，所以 great dodecedron
 和正二十面体的顶点集是一样的。但 <span class="math inline">\(\tau_1\tau_2\)</span> 是一个角度为 144
@@ -1309,10 +1308,9 @@ great dodecahedron），<span class="math inline">\(G\)</span> 和 <span class="
 是一个五角星，而不像正二十面体那样是一个五边形。</p>
 <p>其次 <span class="math inline">\(\langle\tau_0,\tau_2\rangle=\langle\rho_0,\rho_2\rangle\)</span>
 为边 <span class="math inline">\(AQ\)</span> 的稳定化子群，所以 great
-dodecahedron
-的边集和正二十面体也是一样的。所以它俩的区别确实仅在于边组成面的方式不一样。</p>
-<p><span class="math inline">\(\langle\tau_0,\tau_1\rangle\)</span> 是
-great dodecahedron 面的稳定化子群，注意到 <span class="math inline">\(\tau_1\)</span> 会把 <span class="math inline">\(AQ\)</span> 映射为 <span class="math inline">\(AK\)</span>，这正对应选择第 <span class="math inline">\(k\)</span> 条边的操作。<span class="math inline">\(\tau_0\tau_1\)</span> 是一个绕着顶点 <span class="math inline">\(O\)</span> 的角度为 <span class="math inline">\(2\pi/5\)</span> 的旋转，所以 <span class="math inline">\(AQ\)</span> 在子群 <span class="math inline">\(\langle \tau_0,\tau_1\rangle\)</span> 作用下会绕
+dodecahedron 的边集和正二十面体也是一样的。</p>
+<p>它俩的区别确实仅在于边组成面的方式不一样。<span class="math inline">\(\langle\tau_0,\tau_1\rangle\)</span> 是 great
+dodecahedron 面的稳定化子群，注意到 <span class="math inline">\(\tau_1\)</span> 会把 <span class="math inline">\(AQ\)</span> 映射为 <span class="math inline">\(AK\)</span>，这正对应选择第 <span class="math inline">\(k\)</span> 条边的操作。<span class="math inline">\(\tau_0\tau_1\)</span> 是一个绕着顶点 <span class="math inline">\(O\)</span> 的角度为 <span class="math inline">\(2\pi/5\)</span> 的旋转，所以 <span class="math inline">\(AQ\)</span> 在子群 <span class="math inline">\(\langle \tau_0,\tau_1\rangle\)</span> 作用下会绕
 <span class="math inline">\(O\)</span> 转一圈，正对应 Facetting
 操作得到的一个面。</p>
 <p>我们来找出 <span class="math inline">\(\tau_0,\tau_1,\tau_2\)</span>
@@ -1334,19 +1332,16 @@ great dodecahedron
 <p><span class="math display">\[K=\langle
 \tau_0,\tau_1,\tau_2\rangle\xrightarrow{\ \varphi_2\
 }\langle\tau_0,\tau_1\tau_2\tau_1,\tau_2\rangle=\langle\rho_0,\rho_2\rho_1\rho_2,\rho_2\rangle=G.\]</span></p>
-<p>你可能会担心是不是还有别的隐藏的生成关系，但是我们说过可以证明 <span class="math inline">\(K\)</span> 是同构于 <span class="math inline">\(G\)</span> 的，所以没有别的了。</p>
 <blockquote><p>关于 Faceting 手术可以在 McMullen 和 Schulte 所著的 <a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511546686">Abstract Regular
 Polytopes</a> 一书中找到。</p>
 </blockquote>
 <h1 id="snub-cube-的计算">Snub cube 的计算</h1>
-<p>如果你理解了上面的内容，snub
-多面体的情形也是不难理解的，但是确实要花一番功夫。我最好还是用 snub cube
-的例子来说明：</p>
+<p>如果你理解了上面的内容，snub 多面体的情形也是不难理解的。我用 snub
+cube 的例子来说明：</p>
 <p>Snub cube 和 cube 的区别在于它的对称群只包含旋转，我们已经看到 cube
 的对称群 <span class="math inline">\(G\)</span> 的表现为 <span class="math display">\[G = \langle\rho_0,\rho_1,\rho_2\ |\
 \rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^4=(\rho_1\rho_2)^3=(\rho_0\rho_2)^2=1\rangle.\]</span>
-它有 48 个元素，其中恰好一半，即 24 个是旋转。这些旋转可以由三个基本旋转
-<span class="math inline">\(r_0=\rho_0\rho_1,
+它有 48 个元素，其中 24 个是旋转。这些旋转可以由 <span class="math inline">\(r_0=\rho_0\rho_1,
 r_1=\rho_1\rho_2,r_2=\rho_0\rho_2\)</span> 生成 （由于 <span class="math inline">\(r_0r_1=r_2\)</span> 因此实际上可以由 <span class="math inline">\(r_0\)</span> 和 <span class="math inline">\(r_1\)</span> 生成）。这 24 个旋转就构成了 Snub
 cube 的对称群 <span class="math inline">\(\widetilde{G}\)</span>。</p>
 <p>不难写出 <span class="math inline">\(\widetilde{G}\)</span> 的表现为
@@ -1383,10 +1378,8 @@ r_0^4=r_1^3=(r_0r_1)^2=1\rangle.\]</span></p>
 24/4=6，<span class="math inline">\(r_1\)</span> 生成的面的个数为
 24/3=8，<span class="math inline">\(r_2\)</span>
 生成的面都退化因而个数是 0，总计 14 个面。</p>
-<p>以上这些就是 snub cube 全部的面了吗？答案是
-NO！我们还漏掉了一种三角形的面，它源自 <span class="math inline">\(r_0r_1=r_2\)</span> 这个关系。我们考虑 <span class="math inline">\(\{v_0, v_0r_1, v_0r_2\}\)</span>
-这三个顶点，注意到 <span class="math inline">\((v_0,v_0r_1)\)</span>
-构成一条类型为 <span class="math inline">\(r_1\)</span> 的边， <span class="math inline">\((v_0,v_0r_2)\)</span> 构成一条类型为 <span class="math inline">\(r_2\)</span> 的边，而 <span class="math inline">\(r_0r_1=r_2\)</span> 这个关系告诉我们 <span class="math display">\[(v_0, v_0r_0)\xrightarrow{\ r_1\ }(v_0r_1,
+<p>小心！我们还漏掉了一种三角面，它源自 <span class="math inline">\(r_0r_1=r_2\)</span> 这个关系。考虑 <span class="math inline">\(\{v_0, v_0r_1, v_0r_2\}\)</span>
+这三个顶点，这三个顶点中 <span class="math inline">\((v_0,v_0r_1)\)</span> 构成一条类型为 <span class="math inline">\(r_1\)</span> 的边， <span class="math inline">\((v_0,v_0r_2)\)</span> 构成一条类型为 <span class="math inline">\(r_2\)</span> 的边，而 <span class="math inline">\(r_0r_1=r_2\)</span> 这个关系告诉我们 <span class="math display">\[(v_0, v_0r_0)\xrightarrow{\ r_1\ }(v_0r_1,
 v_0r_0r_1) = (v_0r_1, v_0r_2).\]</span> 即 <span class="math inline">\((v_0r_1, v_0r_2)\)</span> 是一条类型为 <span class="math inline">\(r_0\)</span> 的边，它是由将 <span class="math inline">\(r_1\)</span> 作用在类型为 <span class="math inline">\(r_0\)</span> 的初始边 <span class="math inline">\((v_0, v_0r_0)\)</span> 上得到的，于是 <span class="math inline">\(\{v_0, v_0r_1, v_0r_2\}\)</span>
 构成一个三角形的三个顶点，其三条边在对称群作用下属于不同的轨道，所以这个三角形的稳定化子必然保持每条边不变，从而只能是恒等元，从而这样的面有
 24/1=24 个。</p>
