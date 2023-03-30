@@ -452,8 +452,8 @@ def rank4_level3():
 
     circ(-a, a, rad)
     circ(a, a, rad)
-    circ(a, -a, rad)
-    circ(-a, -a, rad)
+    circ(a, -a, rad, fc=(1, 0, 0))
+    circ(-a, -a, rad, fc=(1, 0, 0))
 
     t = texinsert(r"${\bf -1.1}$")
     t.scale(1.2)
@@ -486,7 +486,7 @@ def rank4_level3():
 #noncompact()
 #comb534()
 #comb363()
-#rank4_level3()
+rank4_level3()
 
 
 def shadertoy():

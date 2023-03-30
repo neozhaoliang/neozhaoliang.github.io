@@ -222,9 +222,58 @@ footer.page-footer {
   font-family: Lucida Grande;
   src: url("/css/font/LucidaGrande.ttf");
 }
+@font-face {
+  font-family: Roboto;
+  src: url("/css/font/Roboto/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto;
+  src: url("/css/font/Roboto/Roboto-blod.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: Roboto;
+  src: url("/css/font/Roboto/Roboto-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url("/css/font/Roboto/Roboto-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto;
+  src: url("/css/font/Roboto/Roboto-Black.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: Roboto-Condensed;
+  src: url("/css/font/Roboto_Condensed/RobotoCondensed-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto-Condensed;
+  src: url("/css/font/Roboto_Condensed/RobotoCondensed-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto-Condensed;
+  src: url("/css/font/Roboto_Condensed/RobotoCondensed-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Roboto-Condensed;
+  src: url("/css/font/Roboto_Condensed/RobotoCondensed-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: Roboto-Condensed;
+  src: url("/css/font/Roboto_Condensed/RobotoCondensed-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
 html,
 body {
-  font-family: "Lucida Grande", "sans-serif", "微软雅黑", "Helvetica Neue";
+  font-family: "Roboto", "Lucida Grande", "sans-serif", "微软雅黑", "Helvetica Neue";
 }
 body {
   background-color: #f5f5f5;
@@ -894,11 +943,7 @@ article p code,
 article li code {
   font-family: Borg;
   margin: 0 2px;
-  padding: 0 2px;
-  border-radius: 3px;
-  border: 1px solid #e0e0e0;
-  color: #333;
-  background-color: #eee;
+  color: #2e3fce;
 }
 pre .keyword {
   color: #859900;
@@ -1022,7 +1067,7 @@ figure.highlight .gutter {
 }
 .book-item .card-content .card-title {
   line-height: initial;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 .book-item .card.small .card-image {
   min-height: 70%;

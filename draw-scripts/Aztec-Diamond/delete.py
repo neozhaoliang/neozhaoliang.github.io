@@ -15,7 +15,12 @@ def line(p, q, color=None):
     moveto(p)
     lineto(q)
     if color:
-        stroke(*color)
+        if color == blue:
+            scalelinewidth(4)
+            stroke(*color)
+            scalelinewidth(0.25)
+        else:
+            stroke(*color)
     else:
         stroke()
 

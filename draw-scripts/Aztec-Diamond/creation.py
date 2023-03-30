@@ -10,13 +10,17 @@ Dirs = [E, N, W, S]
 blue = (0, 0, 1)
 
 
-
 def line(p, q, color=None):
     newpath()
     moveto(p)
     lineto(q)
     if color:
-        stroke(*color)
+        if color == blue:
+            scalelinewidth(4)
+            stroke(*color)
+            scalelinewidth(0.25)
+        else:
+            stroke(*color)
     else:
         stroke()
 
