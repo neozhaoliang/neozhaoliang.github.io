@@ -11,9 +11,10 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文是完美取样系列三部曲的最后一部，目的是介绍 Markov 链上的 coupling
-from the past 算法 （以下简称 CFTP
-)。之前的两部曲分别是多米诺洗牌算法和 Wilson 均匀生成树算法。
-本文的代码在 github
+from the past 算法 （以下简称
+CFTP）。之前的两部曲分别是多米诺洗牌算法和 Wilson
+均匀生成树算法。
+本文的代码在 Github
 上。
 这三个算法的目的都是从某些很大很大的集合当中以给定的概率分布随机取样，区别在于它们针对的集合不同。多米诺洗牌算法是在
 Aztec 钻石图的所有密铺中取样；Wilson
@@ -364,9 +365,10 @@ past</span></a></li><li class="section table-of-contents-item section table-of-c
 
             <div class="entry pink-link-context">
                 <p>本文是完美取样系列三部曲的最后一部，目的是介绍 Markov 链上的 coupling
-from the past 算法 （以下简称 <em>CFTP
-</em>)。之前的两部曲分别是多米诺洗牌算法和 Wilson 均匀生成树算法。</p>
-<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/cftp">github</a>
+from the past 算法 （以下简称
+<em>CFTP</em>）。之前的两部曲分别是多米诺洗牌算法和 Wilson
+均匀生成树算法。</p>
+<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/cftp">Github</a>
 上。</p>
 <p>这三个算法的目的都是从某些很大很大的集合当中以给定的概率分布随机取样，区别在于它们针对的集合不同。多米诺洗牌算法是在
 Aztec 钻石图的所有密铺中取样；Wilson
@@ -385,17 +387,18 @@ Aztec 钻石图的所有密铺中取样；Wilson
 <blockquote><p><strong>Macmahon 公式</strong>：记 <span class="math inline">\(H(a,b,c)\)</span>
 为所求的六边形的不同菱形密铺的个数，则 <span class="math display">\[H(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
 </blockquote>
-<p>（多说一句，从这个表达式里你能看出它的结果是个整数吗？)</p>
+<p>（多说一句，从这个表达式里你能看出它的结果是个整数吗？）</p>
 <p>关于 Macmahon 公式的更多故事可以参见我的 <a href="/macmahon-formula-plane-partitions/">另一篇文章</a>，这里不再多介绍。但是不难看到
 <span class="math inline">\(H(a,b,c)\)</span> 的值是指数级增长的，比如对
 <span class="math inline">\(a=b=c=10\)</span> 这种比较小的情形 <span class="math inline">\(H(a,b,c)\approx
-9.265\times10^{33}\)</span>，已经是一个天文数字了。那好问题来了：</p>
+9.265\times10^{33}\)</span>，已经是一个天文数字了。</p>
+<p>问题来了：</p>
 <blockquote><p><strong>问题 2</strong>：怎样在所有 <span class="math inline">\(H(a,b,c)\)</span>
-种不同的密铺中完全随机地任选一种？（即按照均匀分布取样）</p>
+种不同的密铺中完全随机地任选一种？（即按照均匀分布采样）</p>
 </blockquote>
 <p>由于 <span class="math inline">\(H(a,b,c)\)</span>
-很大所以我们不可能先把所有密铺列出来然后再挑选，所以得设计一个聪明点的方式，这就是
-CFTP 算法大显身手的地方。</p>
+很大，我们不能把所有密铺列出来然后再挑选，所以得设计一个聪明点的方法，这就是
+CFTP 算法要做的。</p>
 <h1 id="markov-链的随机取样">Markov 链的随机取样</h1>
 <p>假设给定一个有限遍历的 Markov 链 <span class="math inline">\(M\)</span>，其状态空间为 <span class="math inline">\(S\)</span>，平稳分布为 <span class="math inline">\(\pi\)</span>，我们希望以分布 <span class="math inline">\(\pi\)</span> 从 <span class="math inline">\(S\)</span> 中随机地取样，即对任何 <span class="math inline">\(s\in S\)</span>，取样抽到 <span class="math inline">\(s\)</span> 的概率为 <span class="math inline">\(\pi(s)\)</span>。通常的方法是任选一个初始状态
 <span class="math inline">\(s_0\)</span> 然后从 <span class="math inline">\(s_0\)</span> 出发跑这个 Markov
@@ -406,11 +409,11 @@ CFTP 算法大显身手的地方。</p>
 这个方法非常简单易行，但是它有两个缺陷：首先它只是一个近似算法，不管
 <span class="math inline">\(n\)</span> 取得多么大，返回的 <span class="math inline">\(s_n\)</span> 的分布只是近似而非严格等于平稳分布
 <span class="math inline">\(\pi\)</span>；其次为了获得足够的精度采样所需的时间
-<span class="math inline">\(n\)</span> （叫做 mixing time)
-也不总是那么容易估计的。那么有没有什么办法可以给出 "精确地" 服从分布
+<span class="math inline">\(n\)</span> （叫做 mixing
+time）也不总是那么容易估计的。那么有没有什么办法可以给出“精确地”服从分布
 <span class="math inline">\(\pi\)</span> 的采样呢？</p>
-<p>Propp 和 Wilson 提出了如下的想法：既然从初始状态出发向未来 (<span class="math inline">\(+\infty\)</span> 方向） 跑 Markov
-链只能无限接近平稳分布，我们何不从无穷远的过去 (<span class="math inline">\(-\infty\)</span> 方向） 向现在 （时刻 0)
+<p>Propp 和 Wilson 提出了如下的想法：既然从初始状态出发向未来 （<span class="math inline">\(+\infty\)</span> 方向） 跑 Markov
+链只能无限接近平稳分布，我们何不从无穷远的过去 （<span class="math inline">\(-\infty\)</span> 方向） 向现在 （时刻 0）
 跑呢？可以想象当这个链经过了无穷次迭代后，其 0 时刻的状态 <span class="math inline">\(s_0\)</span> 服从的分布就是平稳分布 <span class="math inline">\(\pi\)</span>。当然我们没法做到真的从无穷远的过去出发，只可能是选择一个足够大的
 <span class="math inline">\(n\)</span> 然后从时刻 <span class="math inline">\(-n\)</span> 时刻出发向时刻 0
 跑，但是这样的话就和从 0 时刻向时刻 <span class="math inline">\(n\)</span> 跑没有什么区别了。Propp 和 Wilson
@@ -466,33 +469,35 @@ s\in S.\]</span></p>
 <span class="math inline">\(f\)</span>
 的选择就不能是任意的，特别地在后面的 monotone CFTP 中更新函数还要与
 <span class="math inline">\(S\)</span>
-上的偏序相容，更不能是任意的。第二是当第 <span class="math inline">\(m\)</span> 次执行步骤 2 时，使用的随机数为 <span class="math inline">\(U_{-N_m+1},U_{-N_m+2},\ldots,U_{-1},U_0\)</span>，其中的后半部分
-<span class="math inline">\(U_{-N_{m-1}+1},U_{-N_{m-1}+2},\ldots,U_{-1},U_0\)</span>
+上的偏序相容，更不能是任意的。第二是当第 <span class="math inline">\(m\)</span> 次执行步骤 2 时，使用的随机数为 <span class="math inline">\((U_{-N_m+1},U_{-N_m+2},\ldots,U_{-1},U_0)\)</span>，其中的后半部分
+<span class="math inline">\((U_{-N_{m-1}+1},U_{-N_{m-1}+2},\ldots,U_{-1},U_0)\)</span>
 需要与上一次使用的相同，<strong>即每一次都重复使用上一次的随机数作为后半段的随机源</strong>，否则每次都重新生成一列新的随机数的话得到的最终状态未必服从平稳分布。</p>
 <p><strong>证明</strong>：任取 <span class="math inline">\(s_i\in
 S\)</span>，我们只要证明对任何 <span class="math inline">\(\epsilon &gt;
 0\)</span> 都有 <span class="math display">\[|\mathbb{P}(s^\ast=s_i) -
-\pi(s_i)|&lt;\epsilon.\]</span> 记 <span class="math inline">\(A\)</span> 为事件“算法在有限时间内结束”，则 <span class="math inline">\(\mathbb{P}(A)=1\)</span>。又记 <span class="math inline">\(A_i\)</span> 为事件“算法不需要从早于 <span class="math inline">\(-N_i\)</span> 的时刻出发就可以结束”，则 <span class="math inline">\(A_i\uparrow A\)</span>，<span class="math inline">\(\mathbb{P}(A_i)\to\mathbb{P}(A)=1\)</span>。因此必然存在正整数
+\pi(s_i)|&lt;\epsilon.\]</span> 记 <span class="math inline">\(A\)</span> 为算法可以在有限时间内结束这一事件，则
+<span class="math inline">\(\mathbb{P}(A)=1\)</span>。又记事件 <span class="math inline">\(A_i\)</span> 为“算法从 <span class="math inline">\([-N_i,-1]\)</span> 之间的某个时刻出发可以结束”，则
+<span class="math inline">\(A_i\uparrow A\)</span>，<span class="math inline">\(\mathbb{P}(A_i)\to\mathbb{P}(A)=1\)</span>。因此必然存在正整数
 <span class="math inline">\(K\)</span> 使得对任何 <span class="math inline">\(m\geq K\)</span> 都有 <span class="math inline">\(\mathbb{P}(A_m) \geq
-1-\epsilon\)</span>。取定这样的 <span class="math inline">\(K\)</span>，则在事件 <span class="math inline">\(A_K\)</span> 上，所有的链在时刻 0 具有相同的状态
-<span class="math inline">\(s^\ast\)</span>，算法返回的状态为 <span class="math inline">\(s^\ast\)</span>。</p>
+1-\epsilon\)</span>。取定这样的 <span class="math inline">\(K\)</span>，则在事件 <span class="math inline">\(A_{K}\)</span> 上，所有的链在时刻 0
+耦合到相同的状态 <span class="math inline">\(s^\ast\)</span>。</p>
 <p>此外我们以平稳分布 <span class="math inline">\(\pi\)</span>
 选择一个初始状态，也从时刻 <span class="math inline">\(-N_K\)</span>
-出发，也使用相同的随机数 <span class="math inline">\(U_{-N_K+1},\ldots,U_0\)</span> 运行链 <span class="math inline">\(M\)</span> 至时刻 0，并设这个链在时刻 0 的状态为
+出发，也使用相同的随机数 <span class="math inline">\((U_{-N_K+1},\ldots,U_0)\)</span> 运行链 <span class="math inline">\(M\)</span> 至时刻 0，并设这个链在时刻 0 的状态为
 <span class="math inline">\(Y\)</span>，则 <span class="math inline">\(Y\)</span> 服从平稳分布。</p>
 <p>关键的来了：在事件 <span class="math inline">\(A_K\)</span>
-上，算法的输出 <span class="math inline">\(s^\ast\)</span> 必然等于
-<span class="math inline">\(Y\)</span> （因为所有 <span class="math inline">\(|S|+1\)</span>
-条链使用的是同样的随机数序列，且所有的链都在时刻 0 耦合），所以 <span class="math display">\[\mathbb{P}(s^\ast=Y) \geq 1 - \epsilon.\]</span>
-从而对任何 <span class="math inline">\(s_i\in S\)</span>， <span class="math display">\[\begin{align*}\mathbb{P}(s^\ast =
+上，不管从平稳分布出发的那条链初始状态是什么，由于它使用了同样的随机数序列，所以它最后一定会和其余
+<span class="math inline">\(|S|\)</span> 条链一起耦合，所以 <span class="math display">\[\mathbb{P}(s^\ast=Y) \geq \mathbb{P}(A_K)\geq 1 -
+\epsilon.\]</span> 从而对任何 <span class="math inline">\(s_i\in
+S\)</span>， <span class="math display">\[\begin{align*}\mathbb{P}(s^\ast =
 s_i)-\pi(s_i)&amp;= \mathbb{P}(s^\ast = s_i)-\mathbb{P}(Y =
 s_i)\\&amp;\leq\mathbb{P}(s^\ast=s_i, Y\ne s_i)\\
-&amp;\leq\mathbb{P}(s^\ast\ne
-Y)\\&amp;\leq\epsilon.\end{align*}\]</span> 类似地 <span class="math display">\[\begin{align*}\pi(s_i)-\mathbb{P}(s^\ast =
+&amp;\leq\mathbb{P}(Y\ne
+s^\ast)\\&amp;\leq\epsilon.\end{align*}\]</span> 类似地 <span class="math display">\[\begin{align*}\pi(s_i)-\mathbb{P}(s^\ast =
 s_i)&amp;=\mathbb{P}(Y = s_i)-\mathbb{P}(s^\ast =
 s_i)\\&amp;\leq\mathbb{P}(Y=s_i, s^\ast\ne s_i)\\
-&amp;\leq\mathbb{P}(s^\ast\ne
-Y)\\&amp;\leq\epsilon.\end{align*}\]</span> 由 <span class="math inline">\(\epsilon\)</span> 的任意性即得 <span class="math inline">\(\mathbb{P}(s^\ast=s_i)=\pi(s_i)\)</span>，即 <span class="math inline">\(s^\ast\)</span> 服从平稳分布。</p>
+&amp;\leq\mathbb{P}(Y\ne
+s^\ast)\\&amp;\leq\epsilon.\end{align*}\]</span> 由 <span class="math inline">\(\epsilon\)</span> 的任意性即得 <span class="math inline">\(\mathbb{P}(s^\ast=s_i)=\pi(s_i)\)</span>，即 <span class="math inline">\(s^\ast\)</span> 服从平稳分布。</p>
 <h1 id="算法中的若干陷阱">算法中的若干陷阱</h1>
 <p>CFTP
 算法的证明看似不难，但其实微妙之处不少，值得细细品味。最主要的地方有三个：</p>
@@ -517,8 +522,8 @@ u) =\begin{cases}\begin{array}{ll}s_2 &amp; \text{for } u \in [0,
 分别出发跑两个不同的链，但是每次使用相同的随机数，则它们要么保持不动，要么交换状态，永不耦合。</p>
 <h2 id="coupling-to-the-future-为什么不行">Coupling to the future
 为什么不行</h2>
-<p>仍然考虑含有两个状态 <span class="math inline">\(S=\{s_1,
-s_2\}\)</span> 的 Markov 链，其转移矩阵为 <span class="math inline">\(P=\begin{bmatrix}0.5 &amp; 0.5\\1 &amp;
+<p>仍然考虑两个状态 <span class="math inline">\(S=\{s_1, s_2\}\)</span>
+的 Markov 链，其转移矩阵为 <span class="math inline">\(P=\begin{bmatrix}0.5 &amp; 0.5\\1 &amp;
 0\end{bmatrix}\)</span>，即从 <span class="math inline">\(s_1\)</span>
 出发的话以 0.5 的概率待在原地，以 0.5 的概率跳到 <span class="math inline">\(s_2\)</span>，从 <span class="math inline">\(s_2\)</span> 出发的话则总是跳到 <span class="math inline">\(s_1\)</span>。</p>
 <p><img style="margin:0px auto;display:block" width="250" src="/images/cftp/counter_example.svg"></p>
@@ -531,8 +536,8 @@ s_2\}\)</span> 的 Markov 链，其转移矩阵为 <span class="math inline">\(P
 <h2 id="每次重新生成新的随机数为什么不行">每次重新生成新的随机数为什么不行</h2>
 <p>在算法的证明当中，如果每次重启步骤 2 都使用新的随机数序列的话，则在第
 <span class="math inline">\(m\)</span>
-次重启时，由于生成的序列是全新的，有可能它实际上对很小的 <span class="math inline">\(i\)</span>，从 <span class="math inline">\(-N_i\)</span> 出发就可以耦合，这个样本点不属于事件
-<span class="math inline">\(A_m\)</span>。</p>
+次重启时，由于生成的序列是全新的，有可能它实际上对很小的 <span class="math inline">\(i\)</span>，从 <span class="math inline">\(-N_i\)</span>
+出发就可以耦合，这会导致算法过度采样那些很快就可以耦合的短链，从而使得最终的分布不服从平稳分布。</p>
 <p>我们仍然用论证 coupling to the future 失败中使用的 Markov
 链作为例子来说明。我们指定其更新函数 <span class="math inline">\(f\)</span>
 为随机映射表示一节中给出的阶梯函数形式。假设算法每次都使用一列新的随机数，其最终输出为
@@ -543,6 +548,7 @@ s_2\to s_1.\\
 (2)\quad &amp; s_1\to s_2,\quad s_2\to s_1.\end{align*}\]</span>
 其中只有前者能成功耦合，所以 <span class="math inline">\(\mathbb{P}(\tau=1)=\frac{1}{2}\)</span>，这时输出的状态只能是
 <span class="math inline">\(s_1\)</span>，所以<span class="math inline">\(\mathbb{P}(s^\ast=s_1|\tau=1)=1\)</span>。</p>
+<p>可以看到这个长度是 1 的短链的耦合只发生在状态 <span class="math inline">\(s_1\)</span> 上，它非常偏爱 <span class="math inline">\(s_1\)</span>。</p>
 <p>事件 <span class="math inline">\(\{\tau=2\}\)</span>
 包含四种不同的演化路径： <span class="math display">\[\begin{align*}(1)\quad &amp; s_1\to s_1\to
 s_1,\quad s_2\to s_1 \to s_1.\\
@@ -554,14 +560,18 @@ s_2.\end{align*}\]</span>
 <span class="math inline">\(s_1\to s_2\)</span>，另一个 <span class="math inline">\(s_1\to s_1\)</span> 的情况： <span class="math display">\[\begin{array}{ll}
 (*)\quad &amp; s_1\to s_1\to s_2,\quad &amp;s_2\to s_1 \to s_1.\\
 (**)\quad &amp; s_1\to s_1\to s_１,\quad &amp;s_2\to s_1 \to s_２.\\
-\end{array}\]</span>
-注意在我们现在这个错误的版本中，由于使用了全新的随机数流，四种路径都是合法的。这四个路径中前三种都成功耦合，两个耦合于
+\end{array}\]</span></p>
+<p>在我们现在这个错误的版本中，由于使用了全新的随机数流，四种路径都是合法的。这四个路径中前三种都成功耦合，两个耦合于
 <span class="math inline">\(s_1\)</span> 一个耦合于 <span class="math inline">\(s_2\)</span>，所以 <span class="math inline">\(\mathbb{P}(s^\ast=s_1|\tau=2)=\frac{2}{3}\)</span>。</p>
-<p>另一方面 <span class="math display">\[\mathbb{P}(\tau=2)=\mathbb{P}(\tau\ne1)\cdot\mathbb{P}(\tau=2\
+<p>注意到其中第二条路径 <span class="math display">\[(2)\quad  s_1\to
+s_2\to s_1,\quad s_2\to s_1 \to s_1.\]</span> 从时刻 <span class="math inline">\(-1\)</span> 出发就可以耦合，它不应该属于事件 <span class="math inline">\(\{\tau=2\}\)</span>。每次使用全新的随机数流会导致偏爱
+<span class="math inline">\(s_1\)</span> 的短链被过度采样。</p>
+<p>我们来具体验证一下： <span class="math display">\[\mathbb{P}(\tau=2)=\mathbb{P}(\tau\ne1)\cdot\mathbb{P}(\tau=2\
 \text{时耦合})=\frac{1}{2}\cdot\frac{3}{4}=\frac{3}{8}.\]</span></p>
 <p>所以 <span class="math display">\[\begin{align*}\mathbb{P}(s^\ast=s_1)&amp;\geq\mathbb{P}(\tau=1)\mathbb{P}(s^\ast=s_1|\tau=1)+\mathbb{P}(\tau=2)\mathbb{P}(s^\ast=s_1|\tau=2)\\&amp;=\frac{1}{2}\cdot1
-+ \frac{3}{8}\cdot\frac{2}{3}\\&amp;=\frac{3}{4}\ne
++ \frac{3}{8}\cdot\frac{2}{3}\\&amp;=\frac{3}{4}&gt;
 \pi(s_1).\end{align*}\]</span></p>
+<p>确实如我们的预言。</p>
 <h1 id="monotone-coupling-from-the-past">Monotone coupling from the
 past</h1>
 <p>在 CFTP 算法中，我们需要同时跑 <span class="math inline">\(|S|\)</span> 个不同的链并要求它们在时刻 0
@@ -612,7 +622,7 @@ c+2\)</span>，<span class="math inline">\(\mathcal{P}\)</span> 中的第
 <li>如果 <span class="math inline">\(v\)</span>
 既不是山峰也不是山谷，则保持 <span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
 </ol>
-<p>注意到一个菱形密铺给出一个在三维空间中“堆箱子”的视觉效果，这个翻转路径的操作就相当于从中添加/移除一个箱子，<strong>并且必须保证这个箱子有三个面可见</strong>：</p>
+<p>菱形密铺在三维空间中看起来像是“堆箱子”，这个翻转路径的操作就相当于从中添加/移除一个箱子，并且必须保证这个箱子有三个面可见：</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/cftp/flip_lozenge.svg"></p>
 <p>我们来验证 <span class="math inline">\(f\)</span>
 是和路径组之间的偏序 <span class="math inline">\(\preceq\)</span>

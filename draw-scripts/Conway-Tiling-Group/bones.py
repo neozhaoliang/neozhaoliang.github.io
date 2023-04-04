@@ -4,7 +4,12 @@ from math import *
 
 SQRT3 = 3**0.5
 
-def hexagon(r,g,b):
+R = (1.0, 0.3, 0)
+G = (0.4, 1.0, 0.1)
+B = (0.0, 0.5, 1.0)
+
+
+def hexagon(color):
     newpath()
     v = Vector(0, 1)
     moveto(v)
@@ -12,45 +17,37 @@ def hexagon(r,g,b):
         v.rotate(pi/3)
         lineto(v)
     closepath()
-    fill(r, g, b)
+    fill(*color)
     stroke()
 
-def bone1():
-    init("bone1.eps", 150, 100)
-    center()
-    scale(25)
-    for v in [(0, 0), (-SQRT3, 0), (SQRT3, 0)]:
-        gsave()
-        translate(v)
-        hexagon(0, 1, 0)
-        grestore()
 
-    finish()
+init("bone.eps", 500, 200)
+center()
+scale(30)
+for v in [(0, 0), (-SQRT3, 0), (SQRT3, 0)]:
+    gsave()
+    translate(v)
+    hexagon(G)
+    grestore()
 
-def bone2():
-    init("bone2.eps", 150, 150)
-    center()
-    scale(25)
-    for v in [(0, 0), (SQRT3/2, 1.5), (-SQRT3/2, -1.5)]:
-        gsave()
-        translate(v)
-        hexagon(1, 0, 0)
-        grestore()
 
-    finish()
+a = 5.5
+gsave()
+translate(-a, 0)
+for v in [(0, 0), (SQRT3/2, 1.5), (-SQRT3/2, -1.5)]:
+    gsave()
+    translate(v)
+    hexagon(R)
+    grestore()
+grestore()
 
-def bone3():
-    init("bone3.eps", 150, 150)
-    center()
-    scale(25)
-    for v in [(0, 0), (SQRT3/2, -1.5), (-SQRT3/2, 1.5)]:
-        gsave()
-        translate(v)
-        hexagon(0, 0, 1)
-        grestore()
+gsave()
+translate(a, 0)
+for v in [(0, 0), (SQRT3/2, -1.5), (-SQRT3/2, 1.5)]:
+    gsave()
+    translate(v)
+    hexagon(B)
+    grestore()
+grestore()
 
-    finish()
-    
-bone1()
-bone2()
-bone3()
+finish()

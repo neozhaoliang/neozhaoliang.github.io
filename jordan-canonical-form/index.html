@@ -336,9 +336,7 @@ Jordan
             
     <div class="tags-row">
         
-            <a href="/tags/线性代数/" class="chip pink lighten-1">线性代数</a>
-        
-            <a href="/tags/Jordan-canonical-form/" class="chip pink lighten-1">Jordan canonical form</a>
+            <a href="/tags/线性代数，Jordan-canonical-form/" class="chip pink lighten-1">线性代数，Jordan canonical form</a>
         
     </div>
 
@@ -364,7 +362,7 @@ Jordan
 <h1 id="什么是-jordan-标准形">什么是 Jordan 标准形</h1>
 <p>我们从中学就知道整数环和多项式环有唯一因子分解定理：每个整数可以唯一地分解为素数的乘积，每个域上的多项式可以唯一地分解为不可约多项式的乘积。数学里面有很多这样的唯一分解定理，现在我们想知道：有没有所谓的“线性变换的唯一分解定理”
 呢？可以猜测如果有这样的定理存在，那么大概可以表述为如下的样子：</p>
-<blockquote><p><strong>线性变换的唯一分解定理</strong> (粗糙的版本)：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(T\)</span>
+<blockquote><p><strong>线性变换的唯一分解定理</strong> （粗糙的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(T\)</span>
 可以唯一地分解为若干个“简单的”线性变换，而这些“简单的”线性变换本身不能再分解。</p>
 </blockquote>
 <p>这个表述很不清楚，整数和多项式的分解就是表示为素因子的乘积，那什么是线性变换的分解呢？什么又是不可分解的线性变换呢？正确的概念是直和：</p>
@@ -374,7 +372,7 @@ V_k\)</span>，使得每一个 <span class="math inline">\(V_i\)</span> 都是
 <span class="math inline">\(T-\)</span> 不变的子空间，则称 <span class="math inline">\(T\)</span> 是可以分解的； 如果 <span class="math inline">\(V\)</span> 不存在这样的分解，则称 <span class="math inline">\(T\)</span> 是不可分解的线性变换。</p>
 </blockquote>
 <p>这样我们就可以比较准确的表述线性变换的唯一分解定理了：</p>
-<blockquote><p><strong>线性变换的唯一分解定理</strong> (修正的版本)：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 可以分解为若干个 <span class="math inline">\(T-\)</span> 不变子空间的直和 <span class="math inline">\(V=V_1\oplus\cdots\oplus V_k\)</span>，<span class="math inline">\(T\)</span> 限制在每个 <span class="math inline">\(V_i\)</span>
+<blockquote><p><strong>线性变换的唯一分解定理</strong> （修正的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 可以分解为若干个 <span class="math inline">\(T-\)</span> 不变子空间的直和 <span class="math inline">\(V=V_1\oplus\cdots\oplus V_k\)</span>，<span class="math inline">\(T\)</span> 限制在每个 <span class="math inline">\(V_i\)</span>
 上是不可分解的线性变换。这个分解还是唯一的，即如果 <span class="math inline">\(V=W_1\oplus\cdots\oplus W_l\)</span>
 是另一种分解，则 <span class="math inline">\(k=l\)</span>
 且适当重排以后对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(V_i\)</span> 上的限制与 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(W_i\)</span> 上的限制是相似的。</p>
@@ -447,7 +445,7 @@ g_i\equiv1\pmod{(x-\lambda_i)^{n_i}}, &amp;
 \\g_i\equiv0\pmod{(x-\lambda_j)^{n_j}}, &amp; \forall j\ne i.
 \end{cases}
 \]</span></p>
-<p>不难看出 <span class="math inline">\(\sum_{i=1}^kg_i\equiv1\pmod{f}\)</span> 以及对任何
+<p>不难看出 <span class="math inline">\(\sum_{i=1}^kg_i\equiv1\pmod{f}\)</span> 以及对
 <span class="math inline">\(i\ne j\)</span> 有 <span class="math inline">\(g_ig_j\equiv0\pmod{f}\)</span> 成立，所以根据
 Hamilton - Cayley 定理有 <span class="math inline">\(g_1(T)+\cdots+g_k(T)=I\)</span> 以及 <span class="math inline">\(g_ig_j(T)=0\)</span>。记 <span class="math inline">\(E_i=g_i(T)\)</span>，则由引理的结论有 <span class="math inline">\(E_i^2=E_i\)</span> 以及 <span class="math display">\[ V=E_1(V)\oplus\cdots\oplus\cdots
 E_k(V).\]</span> 我们只需要再证明对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(E_i(V)=\ker(T-\lambda_i)^{n_i}\)</span> 即可。</p>
@@ -476,8 +474,7 @@ v_{2,n_2}\rightarrow 0.\\&amp;\cdots\cdots\cdots\\&amp;
 v_{q,1}\rightarrow v_{q,2}\rightarrow\cdots\rightarrow
 v_{q,n_q}\rightarrow 0.\end{array}\]</span></p>
 <p>由于 <span class="math inline">\(v_{i,1}\in N(V)\)</span> 因此可以设
-<span class="math inline">\(v_{i,1}=Nw_i\)</span>，从而我们得到一组更长的轨道
-(就是在前面加上一项)</p>
+<span class="math inline">\(v_{i,1}=Nw_i\)</span>，从而我们得到一组更长的轨道（就是在前面加上一项）</p>
 <p><span class="math display">\[\begin{array}{l}&amp;w_1\rightarrow
 v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow
 v_{1,n_1}\rightarrow 0.\\&amp;w_2\rightarrow v_{2,1}\rightarrow
@@ -537,7 +534,7 @@ I)^{m+1}.\]</span></p>
 标准形为</p>
 <p><span class="math display">\[T= \left(\bigoplus_{k\geq1}n_k
 J_{0,k}\right) \bigoplus_{\mu\ne0}J_\mu,\]</span></p>
-<p>那么 <span class="math inline">\(T^m\)</span> 就是</p>
+<p><span class="math inline">\(T^m\)</span> 是分块对角矩阵，其 <span class="math inline">\(m\)</span> 次幂就是对每个直和项计算其 <span class="math inline">\(m\)</span> 次幂，所以</p>
 <p><span class="math display">\[T^{m}= \left(\bigoplus_{k\geq1}n_k
 J_{0,k}^{m}\right) \bigoplus_{\mu\ne0}J_{\mu}^{m}.\]</span></p>
 <p>注意后半部分 <span class="math inline">\(\oplus_{\mu\ne0}J^m_\mu\)</span> 对任何 <span class="math inline">\(m\)</span>
@@ -605,7 +602,7 @@ Jordan 块和 1 个 2 阶的 Jordan 块。</p>
 <p><span class="math display">\[f=f_1f_2\cdots f_r,\quad \deg
 f_1=\cdots=\deg f_r.\]</span></p>
 <p>类似的还有代数数论中素理想的分解，群表示论中不可约表示
-(在诱导和限制下) 的分解，代数几何中不可约代数簇的分解等等。</p>
+（在诱导和限制下） 的分解，代数几何中不可约代数簇的分解等等。</p>
 
                 
 <p class="pink-link-context">

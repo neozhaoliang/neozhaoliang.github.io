@@ -366,7 +366,7 @@ x_n)=l_1^2+\cdots+l_p^2-l_{p+1}^2-\cdots-l_{p+q}^2\)</span>，其中每个
 </blockquote>
 <p>这个题目可以在</p>
 <blockquote>
-<p>高等代数 (第三版)，王萼芳、石生明著。高等教育出版社 2010。</p>
+<p>高等代数 （第三版），王萼芳、石生明著。高等教育出版社 2010。</p>
 </blockquote>
 <p>这本书的二次型一章的习题中找到。</p>
 <p>题目已经给出了结论，即 <span class="math inline">\(B\)</span>
@@ -393,8 +393,7 @@ q\)</span>。类似的考虑极大半负定子空间可得 <span class="math inl
 <p>应用在这个例子上，记 <span class="math inline">\(J\)</span>
 是所有元素均为 1 的 <span class="math inline">\(n\)</span> 阶矩阵，则
 <span class="math inline">\(J\)</span> 显然秩为 1。令 <span class="math inline">\(f(t)=\det(A+tJ)\)</span>，则 <span class="math inline">\(f(t)\)</span> 是 <span class="math inline">\(t\)</span> 的一次多项式且 <span class="math inline">\(f(-y)=(x-y)^n\)</span>，<span class="math inline">\(f(-z)=(x-z)^n\)</span>，联立方程组解出常数项 <span class="math inline">\(f(0)=\det A\)</span> 来即可。</p>
-<p>在求解行列式的时候，通过引入变量，把待求的行列式看做一个或者多个变元的函数，然后找出这个函数可能满足的关系
-(微分方程、递推关系、根等等) 是一种重要的思路。</p>
+<p>在求解行列式的时候，通过引入变量，把待求的行列式看做一个或者多个变元的函数，然后找出这个函数可能满足的关系（微分方程、递推关系、根等等）是一种重要的思路。</p>
 <h1 id="矩阵空间的线性同态与反同态">矩阵空间的线性同态与反同态</h1>
 <blockquote><p><strong>问题 A</strong>：设 <span class="math inline">\(M_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f\)</span> 是 <span class="math inline">\(M_n(F)\)</span>
 上的一个线性变换，而且保持矩阵的乘法： <span class="math display">\[f(AB)=f(A)f(B),\quad\forall A,B\in
@@ -417,7 +416,7 @@ M_n(F).\]</span> 问：<span class="math inline">\(f\)</span>
 应该是什么样子的？</p>
 </blockquote>
 <p>这下问题好像有点难办了，不过你可以大概猜到答案应该与转置有关，因此我们可以照葫芦画瓢写出下面的证明：</p>
-<p>考虑 <span class="math inline">\(M_n(F)\)</span> 在 <span class="math inline">\(F^n\)</span> 上的两种不同的作用方式使得 <span class="math inline">\(F^n\)</span> 成为左 <span class="math inline">\(M_n(F)-\)</span> 模：(这次 <span class="math inline">\(v\)</span> 是行向量) <span class="math display">\[\begin{align*}
+<p>考虑 <span class="math inline">\(M_n(F)\)</span> 在 <span class="math inline">\(F^n\)</span> 上的两种不同的作用方式使得 <span class="math inline">\(F^n\)</span> 成为左 <span class="math inline">\(M_n(F)-\)</span> 模：（这次 <span class="math inline">\(v\)</span> 是行向量） <span class="math display">\[\begin{align*}
 A\cdot v &amp; = vA',\\
 A\ast  v &amp; = vf(A).
 \end{align*}\]</span> 这两种左 <span class="math inline">\(M_n(F)-\)</span> 模是同构的，因此存在可逆矩阵<span class="math inline">\(T\)</span> 使得 <span class="math display">\[(A\cdot v)T=A\ast(vT),\]</span> 即 <span class="math inline">\(f(A)=T^{-1}A'T\)</span>。</p>
@@ -428,7 +427,7 @@ A\ast  v &amp; = vf(A).
 </blockquote>
 <p>这回问题一下子变得更麻烦了，对于一个矩阵 <span class="math inline">\(A\)</span> 来说，有可能它与某个 <span class="math inline">\(B\)</span> 满足 <span class="math inline">\(f(AB)=f(A)f(B)\)</span>，但是又与某个矩阵 <span class="math inline">\(C\)</span> 满足 <span class="math inline">\(f(AC)=f(C)f(A)\)</span>。我们要做的就是首先排除这种可能：</p>
 <p>对任意矩阵 <span class="math inline">\(A\)</span>， 设 <span class="math inline">\(L_A\)</span> 是所有满足 <span class="math inline">\(f(AB)=f(A)f(B)\)</span> 的矩阵 <span class="math inline">\(B\)</span> 组成的集合，<span class="math inline">\(R_A\)</span> 是所有满足 <span class="math inline">\(f(AC)=f(C)f(A)\)</span> 的矩阵 <span class="math inline">\(C\)</span> 组成的集合，于是 <span class="math inline">\(L_A,R_A\)</span> 都是 <span class="math inline">\(M_n(F)\)</span> 的子空间而且它俩的并等于 <span class="math inline">\(M_n(F)\)</span>。我们要用到一个线性代数里面的著名结论：一个无限域
-(数域当然是无限域)
+（数域当然是无限域）
 上的向量空间不可能是它的两个真子空间的并集。所以必然有 <span class="math inline">\(R_A=M_n(F)\)</span> 或者 <span class="math inline">\(L_A=M_n(F)\)</span> 之一成立。</p>
 <p>不过问题还没完，因为可能对某个矩阵 <span class="math inline">\(A\)</span> 有 <span class="math inline">\(L_A=M_n(F)\)</span> 成立，但是对另一个矩阵 <span class="math inline">\(B\)</span> 有 <span class="math inline">\(R_B=M_n(F)\)</span> 成立。这次我们故技重施：设
 <span class="math inline">\(U\)</span> 是所有满足 <span class="math inline">\(L_A=M_n(F)\)</span> 的矩阵 <span class="math inline">\(A\)</span> 组成的集合，<span class="math inline">\(W\)</span> 是所有满足 <span class="math inline">\(R_B=M_n(F)\)</span> 的矩阵 <span class="math inline">\(B\)</span> 组成的集合，则我们刚刚证明了 <span class="math inline">\(U,W\)</span> 的并集是 <span class="math inline">\(M_n(F)\)</span>，而且它俩显然都是子空间，因此必然有一个等于

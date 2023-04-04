@@ -11,7 +11,7 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 50
-页。随后在 1939 年 K.Yosida (吉田耕作) 和 S.Kakutani (角谷)
+页。随后在 1939 年 K.Yosida （吉田耕作） 和 S.Kakutani （角谷）
 利用极大遍历定理给出了一个 10
 页的简洁证明，不过他们关于极大遍历定理的证明还是啰嗦了点，后来 Garsia
 给出了极大遍历定理的一个仅有寥寥数行的惊人证明，这也是当前大多数教材采用的途径，本文就来介绍这一证明。">
@@ -352,19 +352,23 @@
 
             <div class="entry pink-link-context">
                 <p>Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 50
-页。随后在 1939 年 K.Yosida (吉田耕作) 和 S.Kakutani (角谷)
+页。随后在 1939 年 K.Yosida （吉田耕作） 和 S.Kakutani （角谷）
 利用极大遍历定理给出了一个 10
 页的简洁证明，不过他们关于极大遍历定理的证明还是啰嗦了点，后来 Garsia
 给出了极大遍历定理的一个仅有寥寥数行的惊人证明，这也是当前大多数教材采用的途径，本文就来介绍这一证明。</p>
 <span id="more"></span>
 <h1 id="记号与约定">记号与约定</h1>
-<p>给定一个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>，<span class="math inline">\(T:\Omega\rightarrow \Omega\)</span>
+<p>给定一个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>，我们称两个可测集
+<span class="math inline">\(A,B\in F\)</span>
+几乎处处相等，是指它们的示性函数 <span class="math inline">\(\mathbb{1}_A,\mathbb{1}_B\)</span>
+几乎处处相等，记作 <span class="math inline">\(A\stackrel{\mathrm{a.e.}}{=}B\)</span>。等价的说法是
+<span class="math inline">\(A,B\)</span> 只差一个零测集。</p>
+<p>设 <span class="math inline">\(T:\Omega\rightarrow \Omega\)</span>
 是一个可测变换，即对任何 <span class="math inline">\(E\in\mathcal{F}\)</span> 有 <span class="math inline">\(T^{-1}E\in\mathcal{F}\)</span>。</p>
-<blockquote><p><strong>定义 1</strong>： 如果一个可测集 <span class="math inline">\(E\)</span> 满足 <span class="math inline">\(T^{-1}E=E\)</span>，就称 <span class="math inline">\(E\)</span> 是一个 <span class="math inline">\(T-\)</span>
-不变集合。这里集合的相等指的是不计一个零测集的意义下的相等。不难验证所有的
-<span class="math inline">\(T-\)</span> 不变集合 <span class="math display">\[\mathcal{I}=\{E\in\mathcal{F}\ |\ T^{-1}E=E\
-\}\]</span> 构成 <span class="math inline">\(\mathcal{F}\)</span>
-的一个子 <span class="math inline">\(\sigma-\)</span> 代数。</p>
+<blockquote>
+<p><strong>定义 1</strong>： 如果可测集 <span class="math inline">\(E\)</span> 满足 <span class="math inline">\(T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\)</span>，就称
+<span class="math inline">\(E\)</span> 是一个 <span class="math inline">\(T-\)</span> 不变集合。不难验证所有的 <span class="math inline">\(T-\)</span> 不变集合 <span class="math display">\[\mathcal{I}=\{E\in\mathcal{F}\ |\
+T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\}\]</span> 构成 <span class="math inline">\(\mathcal{F}\)</span> 的一个子 <span class="math inline">\(\sigma-\)</span> 代数。</p>
 </blockquote>
 <blockquote><p><strong>定义 2</strong>： 如果对任何可测集 <span class="math inline">\(E\in\mathcal{F}\)</span> 有 <span class="math inline">\(\mu(T^{-1}E)=\mu(E)\)</span>，就称 <span class="math inline">\(T\)</span> 是一个保测变换。</p>
 </blockquote>
@@ -372,11 +376,13 @@
 始终代表一个保测变换。</p>
 <p>保测变换有如下性质：</p>
 <blockquote><p><strong>引理 1</strong>：如果 <span class="math inline">\(f\in
-L^1(\Omega)\)</span> 是一个可积的随机变量，则 <span class="math display">\[\int_\Omega f\,\mathrm{d}\mu=\int_\Omega f\circ
+L^1(\Omega)\)</span> 是一个可积的随机变量，<span class="math inline">\(T\)</span> 是保测变换，则 <span class="math display">\[\int_\Omega f\,\mathrm{d}\mu=\int_\Omega f\circ
 T\,\mathrm{d}\mu.\]</span></p>
 </blockquote>
-<p>证明就是从集合的示性函数出发：若 <span class="math inline">\(E\in\mathcal{F}\)</span>，由于 <span class="math inline">\(\omega\in T^{-1}E\Leftrightarrow T(\omega)\in
-E\Leftrightarrow(\mathbb{1}_E\circ T) (\omega)=1\)</span>，所以 <span class="math inline">\(\mathbb{1}_{E}\circ
+<p>证明：若 <span class="math inline">\(E\in\mathcal{F}\)</span>
+是可测集，由于 <span class="math inline">\(\omega\in
+T^{-1}E\Leftrightarrow T(\omega)\in E\Leftrightarrow(\mathbb{1}_E\circ
+T) (\omega)=1\)</span>，所以 <span class="math inline">\(\mathbb{1}_{E}\circ
 T=\mathbb{1}_{\{T^{-1}E\}}\)</span>，因此 <span class="math display">\[\int_\Omega
 \mathbb{1}_E\,\mathrm{d}\mu=\mu(E)=\mu(T^{-1}E)=\int_\Omega
 \mathbb{1}_{\{T^{-1}E\}}\,\mathrm{d}\mu=\int_\Omega \mathbb{1}_E\circ
@@ -386,18 +392,21 @@ T\,\mathrm{d}\mu.\]</span>
 成立。这时我们称 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(T-\)</span> 不变的随机变量。</p>
 </blockquote>
 <p>这是 Durrett
-书中的一道习题，我一直觉得它很平凡，其实之前的处理有问题。这个结论还是需要论证一番的。</p>
-<p>首先我偷个懒：下面这段论证中所说的两个集合相同是指它们只差一个零测集。</p>
-<p>证明：<span class="math inline">\(\Rightarrow\)</span>: 如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B) = X^{-1}B\)</span>，这说明集合
-<span class="math inline">\(\{X\circ T\in B\}\)</span> 和 <span class="math inline">\(\{X\in B\}\)</span> 相同。特别地取 <span class="math inline">\(B\)</span> 形如 <span class="math inline">\((-\infty, t)\)</span> 我们得到 <span class="math inline">\(\{X\circ T&lt;t\}\)</span> 与 <span class="math inline">\(\{X&lt;t\}\)</span>
-是两个相同的集合。所以只要证明如果 <span class="math inline">\(\xi,\,\eta\)</span> 是两个可测函数且对任何实数
-<span class="math inline">\(t\)</span>，<span class="math inline">\(\{\xi&lt;t\}\)</span> 和 <span class="math inline">\(\{\eta&lt;t\}\)</span> 相同，则 <span class="math inline">\(\xi=\eta,\,\mathrm{a.e.}\)</span>。若不然，不妨设
-<span class="math inline">\(\{\xi&gt;\eta\}\)</span>
-具有正测度，则存在有理数 <span class="math inline">\(c\)</span> 使得集合
-<span class="math inline">\(\{\xi&gt;c&gt;\eta\}\)</span>
+书中的一道习题，我一直觉得它很平凡，其实之前的处理有问题，这个结论还是需要论证一番的。</p>
+<p>证明：</p>
+<p><span class="math inline">\(\Rightarrow\)</span>：如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 Borel 集 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B)\stackrel{\mathrm{a.e.}}{=}X^{-1}B\)</span>，这说明
+<span class="math inline">\(\{X\circ T\in
+B\}\stackrel{\mathrm{a.e.}}{=}\{X\in B\}\)</span>。特别地取 <span class="math inline">\(B=(-\infty, t)\)</span> 我们得到 <span class="math inline">\(\{X\circ
+T&lt;t\}\stackrel{\mathrm{a.e.}}{=}\{X&lt;t\}\)</span>。所以只要证明如果
+<span class="math inline">\(\xi,\,\eta\)</span>
+是两个可测函数且对任何实数 <span class="math inline">\(t\)</span> 有
+<span class="math inline">\(\{\xi&lt;t\}\stackrel{\mathrm{a.e.}}{=}\{\eta&lt;t\}\)</span>，则
+<span class="math inline">\(\xi=\eta,\,\mathrm{a.e.}\)</span>
+即可。若不然，不妨设 <span class="math inline">\(\{\xi&gt;\eta\}\)</span> 具有正测度，则存在有理数
+<span class="math inline">\(c\)</span> 使得集合 <span class="math inline">\(\{\xi&gt;c&gt;\eta\}\)</span>
 具有正测度，这个集合在 <span class="math inline">\(\{\eta&lt;c\}\)</span> 中，但是不在 <span class="math inline">\(\{\xi&lt;c\}\)</span> 中，这与 <span class="math inline">\(\{\eta&lt;c\}\)</span> 和 <span class="math inline">\(\{\xi&lt;c\}\)</span> 只差一个零测集矛盾。</p>
-<p><span class="math inline">\(\Leftarrow\)</span>：如果 <span class="math inline">\(X\circ T=X\)</span> 几乎处处成立，则对任何 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B=T^{-1}X^{-1}B\)</span>
-几乎处处成立，这说明 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：如果 <span class="math inline">\(X\circ T=X\)</span> 几乎处处成立，则对任何 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\stackrel{\mathrm{a.e.}}{=}T^{-1}X^{-1}B\)</span>，这说明
+<span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测。</p>
 <h1 id="birkhoff-遍历定理">Birkhoff 遍历定理</h1>
 <p>设 <span class="math inline">\(f\)</span> 是 <span class="math inline">\(\Omega\)</span> 上的随机变量，对每个整数 <span class="math inline">\(n\geq 1\)</span>，令 <span class="math display">\[S_n(\omega)= \sum_{k=0}^{n-1}
 f(T^k(\omega)).\]</span> 我们有如下的定理：</p>
@@ -407,7 +416,7 @@ L^1(\Omega)\)</span> 有 <span class="math display">\[\lim_{n\to\infty}\frac{S_n
 \mathbb{E}[f\,|\,\mathcal{I}]\quad\text{a.e.}\]</span></p>
 </blockquote>
 <p>证明 Birkhoff
-遍历定理定理的关键是证明如下的极大遍历定理：(极大遍历定理这个名字来源于分析中的
+遍历定理定理的关键是证明如下的极大遍历定理：（极大遍历定理这个名字来源于分析中的
 Hardy - Littlewood 极大函数，这一类的不等式统称为极大不等式。)</p>
 <blockquote><p><strong>极大遍历定理</strong>：定义极大算子 <span class="math display">\[M_f(\omega)=\sup_{n\geq
 1}\frac{1}{n}S_n(\omega),\]</span> 则对 <span class="math inline">\(f\in
@@ -415,10 +424,9 @@ L^1(\Omega)\)</span> 和任一 <span class="math inline">\(a\in\mathbb{R}\)</spa
 a\mu(\{M_f&gt;a\}).\]</span></p>
 </blockquote>
 <p>极大遍历定理是整个 Birkhoff
-遍历定理的证明中最不直观的部分，而且我也确实不知道怎么解释引入它的动机。我第一次看到这个式子的时候是很懵的。比较容易看出来的是
+遍历定理的证明中最不直观的部分，而且我也确实不知道怎么解释引入它的动机。我第一次看到这个式子的时候是很懵的。一个直观的理解是，观察下面这个显然成立的不等式：
 <span class="math display">\[\int_{\{M_f&gt;a\}} M_f\,\mathrm{d}\mu\geq
-a\mu(\{M_f&gt;a\}).\]</span>
-这是个显然成立的不等式，极大遍历定理是说把其中的被积项换成 <span class="math inline">\(f\)</span> 的话不等式仍然是成立的。</p>
+a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换成 <span class="math inline">\(f\)</span>，积分范围保持不变的话，不等式仍然成立。</p>
 <p>我把极大遍历定理的证明放在最后，先用它来证明 Birkhoff 遍历定理。</p>
 <h1 id="birkhoff-遍历定理的证明">Birkhoff 遍历定理的证明</h1>
 <p>首先可以假定 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，若不然，我们可以以

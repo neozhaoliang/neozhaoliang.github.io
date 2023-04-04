@@ -14,7 +14,7 @@
 不过本文并不假定读者事先学过编码论，但是需要懂一点有限域的知识。
 称硬币问题
 问题：有 12
-枚外表一模一样的硬币，其中一枚是假币，其余都是真币。假币的重量与真币不同，但是更重还是更轻不知道。给你一个没有砝码和刻度的天平，最少称几次才能确保找出假币?">
+枚外表一模一样的硬币，其中一枚是假币，其余都是真币。假币的重量与真币不同，但是更重还是更轻不知道。给你一个没有砝码和刻度的天平，最少称几次才能确保找出假币？">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -334,11 +334,9 @@
             
     <div class="tags-row">
         
-            <a href="/tags/纠错码/" class="chip pink lighten-1">纠错码</a>
-        
-            <a href="/tags/Coding-theory/" class="chip pink lighten-1">Coding theory</a>
-        
             <a href="/tags/组合数学/" class="chip pink lighten-1">组合数学</a>
+        
+            <a href="/tags/纠错码，Coding-theory/" class="chip pink lighten-1">纠错码，Coding theory</a>
         
     </div>
 
@@ -355,34 +353,32 @@
 <p>不过本文并不假定读者事先学过编码论，但是需要懂一点有限域的知识。</p>
 <h1 id="称硬币问题">称硬币问题</h1>
 <blockquote><p><strong>问题</strong>：有 12
-枚外表一模一样的硬币，其中一枚是假币，其余都是真币。假币的重量与真币不同，但是更重还是更轻不知道。给你一个没有砝码和刻度的天平，最少称几次才能确保找出假币?</p>
+枚外表一模一样的硬币，其中一枚是假币，其余都是真币。假币的重量与真币不同，但是更重还是更轻不知道。给你一个没有砝码和刻度的天平，最少称几次才能确保找出假币？</p>
 </blockquote>
 <span id="more"></span>
 <p>我们在有限域 <span class="math inline">\(\mathbb{F}_3=\{0, 1,
 2\}\)</span> 上考虑问题。记 <span class="math inline">\({\bf
 x}=(x_1,x_2,\ldots, x_{12})\)</span>，其中 <span class="math inline">\(x_i\in\mathbb{F}_3\)</span>，<span class="math inline">\(x_i=0\)</span>，<span class="math inline">\(x_i=1\)</span>，<span class="math inline">\(x_i=2\)</span> 分别表示第 <span class="math inline">\(i\)</span>
-枚硬币是真币、是假币且重量为轻、是假币且重量为重。根据已知条件，<span class="math inline">\({\bf x}\)</span> 中恰好有一个分量非零
-(即发生了错误)，我们的任务是设计一个称重策略找出错误的位置并确定错误的值。</p>
+枚硬币是真币、是假币且重量为轻、是假币且重量为重。根据已知条件，<span class="math inline">\({\bf x}\)</span>
+中恰好有一个分量非零（即发生了错误），我们的任务是设计一个称重策略找出错误的位置并确定错误的值。</p>
 <p>任何称重策略都可以用一个 <span class="math inline">\(\mathbb{F}_3\)</span> 上的 <span class="math inline">\(r\times 12\)</span> 的矩阵 <span class="math inline">\(H\)</span> 来完全刻画：<span class="math inline">\(r\)</span> 是称重的次数，<span class="math inline">\(H\)</span> 的每一行 <span class="math inline">\({\bf y}=(y_1,y_2,\ldots,y_{12})\)</span>
 对应一次称重，<span class="math inline">\({\bf y}\)</span> 的第 <span class="math inline">\(i\)</span> 个分量等于 1 表示第 <span class="math inline">\(i\)</span> 个硬币在这次称重中放在了天平左边，等于
 2 表示第 <span class="math inline">\(i\)</span>
 个硬币在这次称重中放在了天平右边，等于 0 表示第 <span class="math inline">\(i\)</span> 个硬币在这次称重中没有被使用。</p>
-<p>注意每次称重天平两边的硬币数目应当相同，这样才能得出有用的信息
-(比如两边硬币数目相同且天平平衡，那它们一定都是真币)。如果你一定要在两边放上不同数目的硬币，那除非极特殊的情况
-(比如假币特别重)，否则你得不到任何有用的信息，白白浪费了一次机会。换句话说，在
-<span class="math inline">\(H\)</span> 的每一行中，1 和 2
+<p>注意每次称重天平两边的硬币数目应当相同，这样才能得出有用的信息。换句话说，在
+<span class="math inline">\(H\)</span> 的每一行中 1 和 2
 出现的次数应该是相等的。</p>
 <p>记 <span class="math inline">\({\bf s} = H{\bf x}^T\)</span>，则
 <span class="math inline">\({\bf s}\)</span> 是一个 <span class="math inline">\(r\times 1\)</span> 的向量，<span class="math inline">\({\bf s}\)</span> 叫做 <span class="math inline">\({\bf x}\)</span> 的校验子
 (syndrome)。这里的神奇之处在于我们可以从天平的状态推出 <span class="math inline">\({\bf s}\)</span> 的值，然后反解出 <span class="math inline">\({\bf x}\)</span>！</p>
 <p>我们以第一次称重为例来说明这一点：设 <span class="math inline">\({\bf
-y}=(y_1,y_2,\ldots,y_{12})\)</span> 是 <span class="math inline">\(H\)</span> 的第一行，则 <span class="math inline">\({\bf s}\)</span> 的第一个分量 (记作 <span class="math inline">\(s_1\)</span>) 为 <span class="math display">\[s_1=\langle{\bf x},{\bf y}\rangle=x_1y_1 + x_2y_2
+y}=(y_1,y_2,\ldots,y_{12})\)</span> 是 <span class="math inline">\(H\)</span> 的第一行，则 <span class="math inline">\({\bf s}\)</span> 的第一个分量 （记作 <span class="math inline">\(s_1\)</span>) 为 <span class="math display">\[s_1=\langle{\bf x},{\bf y}\rangle=x_1y_1 + x_2y_2
 +\cdots+x_{12}y_{12}=x_iy_i.\]</span>其中 <span class="math inline">\(i\)</span> 是假币的下标。</p>
 <ol type="1">
 <li>如果天平是平衡的，由于两边硬币数目相同，那么两边一定都是真币，假币不出现，即
 <span class="math inline">\(y_i=0\)</span>，从而 <span class="math inline">\(s_1=0\)</span>。</li>
 <li>如果天平左边向上翘起，由于两边硬币数目相同，这有两种可能：假币要轻一些，且放在了左边；或者假币重一些，放在了右边。即
-<span class="math inline">\(x_i=y_i=1\)</span> 或者 <span class="math inline">\(x_i=y_i=2\)</span>，总之 <span class="math inline">\(s_1=x_iy_i=1\)</span> (注意在 <span class="math inline">\(\mathbb{F}_3\)</span> 里 <span class="math inline">\(2\times2=1\)</span>)。</li>
+<span class="math inline">\(x_i=y_i=1\)</span> 或者 <span class="math inline">\(x_i=y_i=2\)</span>，总之 <span class="math inline">\(s_1=x_iy_i=1\)</span> （注意在 <span class="math inline">\(\mathbb{F}_3\)</span> 里 <span class="math inline">\(2\times2=1\)</span>）。</li>
 <li>如果天平右边向上翘起，由于两边硬币数目相同，这有两种可能：假币要轻一些，且放在了右边；或者假币重一些，放在了左边。即
 <span class="math inline">\(x_i=1\)</span>，<span class="math inline">\(y_i=2\)</span> 或者 <span class="math inline">\(x_i=2\)</span>，<span class="math inline">\(y_i=1\)</span>，总之 <span class="math inline">\(s_1=x_iy_i=2\)</span>。</li>
 </ol>
@@ -395,8 +391,8 @@ c_{12}})\)</span>，仍然假设编号 <span class="math inline">\(i\)</span>
 c_1}+x_2{\bf c_2}+\cdots+x_{12}{\bf c_{12}}=x_i{\bf c}_i.\]</span></p>
 <p>即 <span class="math inline">\({\bf s}\)</span>
 与错误位置对应向量是共线的，所以只要找到 <span class="math inline">\(H\)</span> 的列向量中与 <span class="math inline">\({\bf s}\)</span> 共线的那一个 <span class="math inline">\({\bf c}_i\)</span>，则 <span class="math inline">\(i\)</span> 就是出错的硬币，根据 <span class="math inline">\({\bf s}={\bf c}_i\)</span> 还是 <span class="math inline">\({\bf s}=2{\bf c}_i\)</span>
-可以得出这枚硬币是轻了还是重了。但是这样做有一个前提，就是 <span class="math inline">\(H\)</span> 的列向量必须两两不共线 (这蕴含了 <span class="math inline">\(H\)</span>
-的列向量都是非零向量)，这样才能唯一地确定 <span class="math inline">\(i\)</span>，<strong>于是我们的问题转化为设计一个
+可以得出这枚硬币是轻了还是重了。但是这样做有一个前提，就是 <span class="math inline">\(H\)</span>
+的列向量必须两两不共线，这才能唯一地确定 <span class="math inline">\(i\)</span>，<strong>于是我们的问题转化为设计一个
 <span class="math inline">\(r\times 12\)</span> 的矩阵 <span class="math inline">\(H\)</span>，<span class="math inline">\(H\)</span>
 的每一行中 1 和 2 的个数相同，且 <span class="math inline">\(H\)</span>
 的任何两列互不共线，这个 <span class="math inline">\(H\)</span>
@@ -408,12 +404,11 @@ c_1}+x_2{\bf c_2}+\cdots+x_{12}{\bf c_{12}}=x_i{\bf c}_i.\]</span></p>
 <span class="math inline">\(H\)</span> 的每一行中 1 和 2
 的个数相等，这样得到的 <span class="math inline">\(H\)</span>
 就符合要求。</p>
-<p>比如我们取 <span class="math inline">\(H\)</span>
-如下：(这个取的规则是将它们三进制下对应的整数从小到大依次选取，比如第 1
-列就是 001，下一个整数 002 与 001 共线不要，所以第 2 列是再下一个整数
-010，第 3 列是下一个整数 011，第 4 列是下一个整数 012，下一个整数 020 与
-010 共线不要，再下一个整数 021 与 012 共线不要，所以第 5
-列是下下一个整数 100，以此类推)</p>
+<p>比如我们取 <span class="math inline">\(H\)</span> 如下：依次考察 1 到
+12 在三进制下对应的向量，比如第 1 列就是 001，下一个整数 002 与 001
+共线不要，所以第 2 列是再下一个整数 010，第 3 列是下一个整数 011，第 4
+列是下一个整数 012，下一个整数 020 与 010 共线不要，再下一个整数 021 与
+012 共线不要，所以第 5 列是下下一个整数 100，以此类推。</p>
 <table>
 <colgroup>
 <col style="width: 8%">
@@ -492,7 +487,7 @@ c_1}+x_2{\bf c_2}+\cdots+x_{12}{\bf c_{12}}=x_i{\bf c}_i.\]</span></p>
 </table>
 <p>这个矩阵的第一行已经符合要求，但是第二行有 6 个 1 和 2 个
 2，不符合要求。我们在那些第一个分量是 0 但第二个分量不是 0
-的列中调整使得第二行符合要求：这样的列是 2, 3, 4列，给靠右的两列第 3
+的列中调整使得第二行符合要求：这样的列是 2, 3, 4 列，给靠右的两列第 3
 和第 4 列乘以 2 得到</p>
 <table>
 <colgroup>
@@ -596,8 +591,8 @@ c_1}+x_2{\bf c_2}+\cdots+x_{12}{\bf c_{12}}=x_i{\bf c}_i.\]</span></p>
 枚硬币是假币且其重量比真币更重。</p>
 <p>那么 3 次称重能不能称 13 枚硬币呢？答案是不行的，因为虽然我们可以从
 <span class="math inline">\(\mathbb{F}_3^3\)</span> 中选出 13
-个互不共线的向量来，但是不可能适当给它们乘以 1 或 2 使得 <span class="math inline">\(H\)</span> 的每一行中 1 和 2 的个数相等
-(这个证明留给你，提示一下，每一行必然恰好有 4 个 0)。所以 13
+个互不共线的向量来，但是不可能适当给它们乘以 1 或 2 使得 <span class="math inline">\(H\)</span> 的每一行中 1 和 2
+的个数相等（这个证明留给你，提示一下，每一行必然恰好有 4 个 0）。所以 13
 枚硬币的话就需要至少 4 次称重了。</p>
 <p>用同样的方法可以说明 <span class="math inline">\(n\)</span>
 次称重可以在 <span class="math inline">\(\frac{3^n-1}{2}-1\)</span>
@@ -630,8 +625,8 @@ x_{100})\)</span>，其中 <span class="math inline">\(x_i\in\mathbb{F}_2\)</spa
 对应这只小白鼠喝下的药水编号：<span class="math inline">\(y_i=1\)</span>
 当且仅当这只小白鼠喝下了第 <span class="math inline">\(i\)</span>
 瓶药水。校验子 <span class="math inline">\({\bf s}=H{\bf x}^T\)</span>
-可以从小白鼠的状态得出 (<span class="math inline">\({\bf s}\)</span>
-的第 <span class="math inline">\(i\)</span> 个分量是 1 当且仅当第 <span class="math inline">\(i\)</span> 只小白鼠毒发身亡)，而且 <span class="math inline">\({\bf s}\)</span> 等于出错位置 <span class="math inline">\(i\)</span> 对应的列向量 <span class="math inline">\({\bf c}_i\)</span>，所以只要 <span class="math inline">\(H\)</span>
+可以从小白鼠的状态得出：<span class="math inline">\({\bf s}\)</span>
+的第 <span class="math inline">\(i\)</span> 个分量是 1 当且仅当第 <span class="math inline">\(i\)</span> 只小白鼠毒发身亡。而且 <span class="math inline">\({\bf s}\)</span> 等于出错位置 <span class="math inline">\(i\)</span> 对应的列向量 <span class="math inline">\({\bf c}_i\)</span>，所以只要 <span class="math inline">\(H\)</span>
 的<strong>任何两列互不相同</strong>即可根据 <span class="math inline">\({\bf s}\)</span> 定出 <span class="math inline">\({\bf x}\)</span> 的错误位置。</p>
 <p>在 <span class="math inline">\(\mathbb{F}_2\)</span> 上总共有 <span class="math inline">\(2^r\)</span> 个不同的向量，于是 <span class="math inline">\(2^r\geq 100\)</span>，<span class="math inline">\(r\geq 7\)</span>，从而 7 只小白鼠就足够了。只要从
 <span class="math inline">\(\mathbb{F}_2^7\)</span> 中任选 100

@@ -12,10 +12,7 @@
     
     <meta name="description" content="本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个最基本的结论：中心单代数对张量积运算是封闭的，Noether-Skolem
 定理，双重中心化子定理。这部分内容比较古老，在很多教材上都有，但是采用的途径却很不一样，找一个完全符合自己口味的讲述不是件容易的事情。Jacobson
-的书我念的就很抓狂。后来查阅了不少教材后经过提炼整理得到了本文，希望我的表述做到了清楚易懂。
-
-⚠
-本文的水平当然不如专业的教材，但据我所知这里的证明是最直接了当的。">
+的书我念的就很抓狂。后来查阅了不少教材后经过提炼整理得到了本文，希望我的表述做到了清楚易懂。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -359,10 +356,6 @@
                 <p>本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个最基本的结论：中心单代数对张量积运算是封闭的，Noether-Skolem
 定理，双重中心化子定理。这部分内容比较古老，在很多教材上都有，但是采用的途径却很不一样，找一个完全符合自己口味的讲述不是件容易的事情。Jacobson
 的书我念的就很抓狂。后来查阅了不少教材后经过提炼整理得到了本文，希望我的表述做到了清楚易懂。</p>
-<blockquote>
-<p><span class="emoji" data-alias="warning" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span>
-本文的水平当然不如专业的教材，但据我所知这里的证明是最直接了当的。</p>
-</blockquote>
 <span id="more"></span>
 <h1 id="中心单代数对张量积运算是封闭的">中心单代数对张量积运算是封闭的</h1>
 <blockquote><p><strong>定义</strong>：设 <span class="math inline">\(A\)</span> 是域
@@ -371,7 +364,8 @@
 1\)</span>，如果 <span class="math inline">\(A\)</span> 除了 <span class="math inline">\((0)\)</span> 和自身以外不含有其它的双边理想，就称
 <span class="math inline">\(A\)</span> 是域 <span class="math inline">\(F\)</span> 上的单代数；进一步如果 <span class="math inline">\(A\)</span> 的中心 <span class="math inline">\(Z(A)=F\cdot{\rm 1}\cong F\)</span>，就称 <span class="math inline">\(A\)</span> 是域 <span class="math inline">\(F\)</span> 上的中心单代数。</p>
 </blockquote>
-<p>最基本也是最重要的中心单代数的例子就是矩阵代数 <span class="math inline">\(M_n(F)\)</span>。有多重要？后面就会看到，当我们研究一个中心单代数的时候，最有效的手段就是建立一个从它到矩阵代数的同态。</p>
+<p>最基本也是最重要的中心单代数的例子就是矩阵代数 <span class="math inline">\({\rm
+Mat}_n(F)\)</span>。在研究一个中心单代数的时候，最有效的手段就是建立一个从它到矩阵代数的同态。</p>
 <p>中心单代数有个很好的性质，就是它们对张量积的运算是封闭的：</p>
 <blockquote><p><strong>定理 1</strong>：设 <span class="math inline">\(A,B\)</span>
 是域 <span class="math inline">\(F\)</span> 上的两个中心单代数，则 <span class="math inline">\(A\otimes B\)</span> 也是中心单代数。</p>
@@ -381,7 +375,7 @@ b_2+\cdots+a_m\otimes b_m,\quad a_i\in A.\]</span> 当然这里的 <span class="
 <span class="math inline">\(x\)</span> 的长度。</p>
 <p>设 <span class="math inline">\(I\)</span> 是 <span class="math inline">\(A\otimes B\)</span> 的任一非零理想，取 <span class="math inline">\(x\ne 0\)</span> 使得 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(I\)</span> 中所有非零元素中长度最小的，不妨假设
 <span class="math display">\[x= a_1\otimes b_1+a_2\otimes
-b_2+\cdots+a_r\otimes b_r,\quad 0&lt;r\leq m.\]</span> 这里每个 <span class="math inline">\(a_i\)</span> 都不是 <span class="math inline">\(0\)</span>，特别 <span class="math inline">\(a_1\ne0\)</span>。由于 <span class="math inline">\(A\)</span> 是单代数因此 <span class="math inline">\(A=Aa_1A\)</span> (即 <span class="math inline">\(a_1\)</span> 生成的双边理想)，所以存在一组 <span class="math inline">\(\{a_j^{'},
+b_2+\cdots+a_r\otimes b_r,\quad 0&lt;r\leq m.\]</span> 这里每个 <span class="math inline">\(a_i\)</span> 都不是 <span class="math inline">\(0\)</span>，特别 <span class="math inline">\(a_1\ne0\)</span>。由于 <span class="math inline">\(A\)</span> 是单代数因此 <span class="math inline">\(A=Aa_1A\)</span> （即 <span class="math inline">\(a_1\)</span> 生成的双边理想），所以存在一组 <span class="math inline">\(\{a_j^{'},
 a_j^{'\phantom{}'}\}\)</span> 满足 <span class="math display">\[1=\sum_{j=1}^p
 a_j^{'}a_1a_j^{'\phantom{}'}.\]</span> 由于 <span class="math inline">\(I\)</span> 是双边理想因此每个 <span class="math display">\[(a_j^{'}\otimes
 1)x(a_j^{'\phantom{}'}\otimes
@@ -390,17 +384,17 @@ b_1+\cdots+(a_j^{'}a_ra_j^{'\phantom{}'})\otimes
 b_r\]</span> 都在 <span class="math inline">\(I\)</span>
 中，当然它们的和也在 <span class="math inline">\(I\)</span>
 中，设这个和为 <span class="math inline">\(x'\)</span>，则 <span class="math inline">\(x'\)</span> 与 <span class="math inline">\(x\)</span> 有同样的长度但是形如 <span class="math inline">\(x'=1\otimes
-b_1+\cdots\)</span>，<strong>所以我们不妨一开始就假设在 <span class="math inline">\(x\)</span> 的表达式中有 <span class="math inline">\(b_1=1\)</span></strong> (第一个结论)。</p>
+b_1+\cdots\)</span>，<strong>所以我们不妨一开始就假设在 <span class="math inline">\(x\)</span> 的表达式中有 <span class="math inline">\(b_1=1\)</span></strong>。</p>
 <p>任取 <span class="math inline">\(a\in A\)</span>，则 <span class="math display">\[(a\otimes 1)x -x(a\otimes1) =(aa_2-a_2a)\otimes
 b_2+\cdots+(aa_r-a_ra)\otimes b_r\in I.\]</span> 然而它的长度小于 <span class="math inline">\(r\)</span> 因此必须是 <span class="math inline">\(0\)</span>，即对每个 <span class="math inline">\(i=2,\ldots,r\)</span> 有 <span class="math inline">\(aa_i=a_ia\)</span>，由 <span class="math inline">\(a\)</span> 的任意性可知每个 <span class="math inline">\(a_i\)</span> 都属于 <span class="math inline">\(A\)</span> 的中心 <span class="math inline">\(Z(A)=F\)</span>，因此 <span class="math display">\[x=1\otimes b_1+\cdots+1\otimes
 a_rb_r=1\otimes(b_1+a_2b_2+\cdots+a_rb_r)\in I.\]</span> 注意由于 <span class="math inline">\(b_i\)</span> 是线性无关的所以 <span class="math inline">\(b=b_1+a_2b_2+\cdots+a_rb_r\ne0\)</span>。</p>
 <p><strong>总之我们证明了在 <span class="math inline">\(I\)</span>
 中存在一个形如 <span class="math inline">\(1\otimes b\)</span>
-的元素</strong> (第二个结论)。</p>
+的元素</strong>。</p>
 <p>剩下的事情就很容易了： <span class="math display">\[I\supset
 (1\otimes B)1\otimes b(1\otimes B)=1\otimes BbB=1\otimes B,\]</span>
 从而 <span class="math display">\[I\supset (A\otimes1)(1\otimes
-B)=A\otimes B,\]</span> 这就证明了 <span class="math inline">\(I=A\otimes B\)</span>，即 <span class="math inline">\(A\otimes B\)</span> 是单代数 (最终结论)。</p>
+B)=A\otimes B,\]</span> 这就证明了 <span class="math inline">\(I=A\otimes B\)</span>，即 <span class="math inline">\(A\otimes B\)</span> 是单代数。</p>
 <blockquote><p><strong>注意</strong>：在证明 <span class="math inline">\(A\otimes
 B\)</span> 是单代数的时候，我们只用到了 <span class="math inline">\(B\)</span> 是单代数这个条件，即只要 <span class="math inline">\(A,B\)</span>
 中一个是单代数，另一个是中心单代数，则 <span class="math inline">\(A\otimes B\)</span> 就是单代数。但是这个结论对
@@ -413,25 +407,27 @@ B\)</span> 是单代数的时候，我们只用到了 <span class="math inline">
 b_2+\cdots+a_m\otimes b_m\]</span> 是 <span class="math inline">\(Z(A\otimes B)\)</span> 中的一个非零元素，则对任何
 <span class="math inline">\(a\in A\)</span> 有 <span class="math display">\[(a\otimes1)z-z(a\otimes1)=\sum_{i=1}^m(aa_i-a_ia)\otimes
 b_i=0.\]</span></p>
-<p>由于 $b_i $ 是线性无关的，因此每个 <span class="math inline">\(aa_i=a_ia\)</span>，即 <span class="math inline">\(a_i\in Z(A)=F\)</span>，从而 <span class="math display">\[z=1\otimes(a_1b_1+\cdots+a_mb_m)=1\otimes
+<p>由于 <span class="math inline">\(b_i\)</span> 是线性无关的，因此每个
+<span class="math inline">\(aa_i=a_ia\)</span>，即 <span class="math inline">\(a_i\in Z(A)=F\)</span>，从而 <span class="math display">\[z=1\otimes(a_1b_1+\cdots+a_mb_m)=1\otimes
 b.\]</span> 同样的推理可得 <span class="math inline">\(b\in
 Z(B)=F\)</span>，设 <span class="math inline">\(b=\beta\cdot\mathrm{1}\)</span> 则 <span class="math inline">\(z=\beta(1\otimes1)\)</span>。于是我们证明了 <span class="math inline">\(A\otimes B\)</span> 的中心就是 <span class="math inline">\(F(1\otimes1)\)</span>，即 <span class="math inline">\(A\otimes B\)</span> 是中心单的。</p>
 <blockquote><p><strong>定理 2</strong>：设 <span class="math inline">\(A\)</span>
-是域 <span class="math inline">\(F\)</span> 上的中心单代数，则 <span class="math inline">\(A\otimes A^{op}\cong M_n(F)\)</span>，这里 <span class="math inline">\(n=\dim_F A\)</span>。</p>
+是域 <span class="math inline">\(F\)</span> 上的中心单代数，则 <span class="math inline">\(A\otimes A^{\rm op}\cong {\rm
+Mat}_n(F)\)</span>，这里 <span class="math inline">\(n=\dim_F
+A\)</span>。</p>
 </blockquote>
 <p>背后的道理很简单：<span class="math inline">\(A\)</span> 显然是一个左
-<span class="math inline">\(A\otimes A^{op}-\)</span> 模
-(回忆一下，<span class="math inline">\((S,T)-\)</span> 双模与左 <span class="math inline">\(S\otimes T^{op}-\)</span>
-模是一回事)，即存在代数同态 <span class="math display">\[A\otimes
-A^{op}\to \mathrm{End}_F(A).\]</span> 由定理 1 知道 <span class="math inline">\(A\otimes A^{op}\)</span>
+<span class="math inline">\(A\otimes A^{\rm op}-\)</span>
+模（回忆一下，<span class="math inline">\((S,T)-\)</span> 双模与左 <span class="math inline">\(S\otimes T^{\rm op}-\)</span>
+模是一回事），即存在代数同态 <span class="math display">\[A\otimes
+A^{\rm op}\to \mathrm{End}_F(A).\]</span> 由定理 1 知道 <span class="math inline">\(A\otimes A^{\rm op}\)</span>
 是单代数从而这是一个单射，比较维数即得这是一个同构。</p>
 <h1 id="noether-skolem-定理">Noether-Skolem 定理</h1>
 <p>首先我们需要一个简单的引理：</p>
 <blockquote><p><strong>引理</strong>：设 <span class="math inline">\(A,C\)</span>
 是域 <span class="math inline">\(F\)</span> 上的中心单代数，<span class="math inline">\(B\)</span> 是 <span class="math inline">\(A\)</span> 的子代数。那么 <span class="math inline">\(B\otimes 1\)</span> 在 <span class="math inline">\(A\otimes C\)</span> 中的中心化子就是 <span class="math inline">\(C_A(B)\otimes C\)</span>，<span class="math inline">\(B\otimes C\)</span> 在 <span class="math inline">\(A\otimes C\)</span> 中的中心化子就是 <span class="math inline">\(C_A(B)\otimes1\)</span>。</p>
 </blockquote>
-<p>证明：我们只证前半部分，后半部分的道理是一样的
-(但是你要想好选谁的一组基)。</p>
+<p>证明：我们只证前半部分，后半部分的道理是一样的。</p>
 <p>设 <span class="math inline">\(\{c_i\}\)</span> 是 <span class="math inline">\(C\)</span> 的一组基，则 <span class="math inline">\(A\otimes C\)</span> 的任何元素 <span class="math inline">\(x\)</span> 可以唯一地表示为 <span class="math inline">\(x=\sum_i a_i\otimes c_i\)</span> 的形式。假设
 <span class="math inline">\(x\in C_{A\otimes C}(B\otimes
 1)\)</span>，则对任何 <span class="math inline">\(b\in B\)</span> 有
@@ -447,13 +443,20 @@ C_{A\otimes C}(B\otimes 1)\)</span>，所以 <span class="math inline">\(C_A(B)\
 半单代数理论的知识：对于一个单代数 <span class="math inline">\(B\)</span>，在同构意义下 <span class="math inline">\(B\)</span> 只有唯一的一个不可约模 <span class="math inline">\(V\)</span>。任何左 <span class="math inline">\(B-\)</span> 模都是完全可约的，因此可以分解为一些
 <span class="math inline">\(V\)</span> 的直和，从而两个左 <span class="math inline">\(B-\)</span> 模 <span class="math inline">\(W,W'\)</span> 是同构的当且仅当它们作为 <span class="math inline">\(F-\)</span> 向量空间的维数相同：<span class="math inline">\(\dim_F W=\dim_F
 W'\)</span>，所以对于一个单代数而言，判定它的两个模是否同构是很简单的，只看维数就行。</p>
-<p>回到定理的证明，我们先处理 <span class="math inline">\(A=M_n(F)\)</span> 的情形：这时我们可以在 <span class="math inline">\(F^n\)</span> 上定义两种不同的 <span class="math inline">\(B-\)</span> 模结构：<span class="math inline">\(b\cdot x =f(b)x\)</span> 和 <span class="math inline">\(b\circ x=g(b)x\)</span>。我们说了由于 <span class="math inline">\(B\)</span> 是单代数所以两个 <span class="math inline">\(B-\)</span>
+<p>回到定理的证明，我们先处理 <span class="math inline">\(A={\rm
+Mat}_n(F)\)</span> 的情形：这时我们可以在 <span class="math inline">\(F^n\)</span> 上定义两种不同的 <span class="math inline">\(B-\)</span> 模结构：<span class="math inline">\(b\cdot x =f(b)x\)</span> 和 <span class="math inline">\(b\circ x=g(b)x\)</span>。我们说了由于 <span class="math inline">\(B\)</span> 是单代数所以两个 <span class="math inline">\(B-\)</span>
 模是否同构只看它们作为向量空间的维数即可，显然这里的 <span class="math inline">\((B,\cdot)\)</span> 和 <span class="math inline">\((B,\circ)\)</span> 是同构的，因此存在可逆线性变换
 <span class="math inline">\(T:F^n\to F^n\)</span> 使得 <span class="math display">\[b\cdot (Tx)=T(b\circ x),\]</span> 即 <span class="math inline">\(f(b)=T^{-1}g(b)T\)</span>，因此在 <span class="math inline">\(A=M_n(F)\)</span> 的情形定理成立。</p>
-<p>对于一般的情形，我们当然要向矩阵代数靠拢。考虑 <span class="math inline">\(A\otimes A^{op}\)</span> 的两个单子代数 <span class="math inline">\(f(B)\otimes A^{op}\)</span> 和 <span class="math inline">\(g(B)\otimes A^{op}\)</span>。由于 <span class="math inline">\(A\otimes A^{op}\)</span> 同构于 <span class="math inline">\(M_n(F)\)</span> 因此上面的情形可用，即存在 <span class="math inline">\(T \in (A\otimes A^{op})^\times\)</span> 满足对任何
-<span class="math inline">\(b\otimes a^{op}\)</span> 有 <span class="math display">\[f(b)\otimes a^{op}=T^{-1}(g(b)\otimes
-a^{op})T.\qquad (\ast)\]</span> 取 <span class="math inline">\(b=1\)</span> 我们有 <span class="math display">\[1\otimes a^{op}=T^{-1}(1\otimes
-a^{op})T.\]</span> 即 <span class="math inline">\(T\)</span> 与 <span class="math inline">\(1\otimes A^{op}\)</span> 交换。于是根据引理，<span class="math inline">\(T\in A\otimes1\)</span>，从而存在 <span class="math inline">\(u\in A\)</span> 使得 <span class="math inline">\(T=u\otimes1\)</span>，<span class="math inline">\(T\in (A\otimes A^{op})^\times\)</span> 说明 <span class="math inline">\(u\in A^{\times}\)</span>，代入到 <span class="math inline">\((\ast)\)</span> 中去即得 <span class="math inline">\(f(b)=u^{-1}g(b)u\)</span>。</p>
+<p>对于一般的情形，我们当然要向矩阵代数靠拢。考虑 <span class="math inline">\(A\otimes A^{\rm op}\)</span> 的两个单子代数 <span class="math inline">\(f(B)\otimes A^{\rm op}\)</span> 和 <span class="math inline">\(g(B)\otimes A^{\rm op}\)</span>。由于 <span class="math inline">\(A\otimes A^{\rm op}\)</span> 同构于 <span class="math inline">\({\rm Mat}_n(F)\)</span> 因此上面的情形可用，即存在
+<span class="math inline">\(T \in (A\otimes A^{\rm op})^\times\)</span>
+满足对任何 <span class="math inline">\(b\otimes a^{\rm op}\)</span> 有
+<span class="math display">\[f(b)\otimes a^{\rm op}=T^{-1}(g(b)\otimes
+a^{\rm op})T.\qquad (\ast)\]</span> 取 <span class="math inline">\(b=1\)</span> 我们有 <span class="math display">\[1\otimes a^{\rm op}=T^{-1}(1\otimes a^{\rm
+op})T.\]</span> 即 <span class="math inline">\(T\)</span> 与 <span class="math inline">\(1\otimes A^{\rm op}\)</span>
+交换。于是根据引理，<span class="math inline">\(T\in
+A\otimes1\)</span>，从而存在 <span class="math inline">\(u\in A\)</span>
+使得 <span class="math inline">\(T=u\otimes1\)</span>，<span class="math inline">\(T\in (A\otimes A^{\rm op})^\times\)</span> 说明
+<span class="math inline">\(u\in A^{\times}\)</span>，代入到 <span class="math inline">\((\ast)\)</span> 中去即得 <span class="math inline">\(f(b)=u^{-1}g(b)u\)</span>。</p>
 <h1 id="双重中心化子定理">双重中心化子定理</h1>
 <blockquote><p><strong>双重中心化子定理</strong>：设 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(F\)</span> 上的中心单代数，<span class="math inline">\(B\)</span> 是 <span class="math inline">\(A\)</span> 的单子代数，<span class="math inline">\(C\)</span> 是 <span class="math inline">\(B\)</span> 在 <span class="math inline">\(A\)</span> 中的中心化子： <span class="math display">\[C=\{ c\in A:\ cb=bc,\ \forall b\in B\}.\]</span>
 则我们有</p>
@@ -464,8 +467,8 @@ C)\)</span>。</li>
 <li><span class="math inline">\(C\)</span> 的中心化子是 <span class="math inline">\(B\)</span>。</li>
 </ol>
 </blockquote>
-<p>证明：参考下图 (<span class="math inline">\(i\)</span>
-是嵌入映射)：</p>
+<p>证明：参考下图 （<span class="math inline">\(i\)</span>
+是嵌入映射）：</p>
 <p><span class="math display">\[\require{amsCd}
 \begin{CD}
 B\otimes1 @&gt;{i}&gt;&gt; A\otimes\mathrm{End}_F(B) @&lt;{i}&lt;&lt;
@@ -475,7 +478,7 @@ C\otimes\mathrm{End}_F(B) @&gt;{i}&gt;&gt; A\otimes\mathrm{End}_F(B)
 @&lt;{i}&lt;&lt; A\otimes r(B)
 \end{CD}\]</span></p>
 <p>考虑中心单代数 <span class="math inline">\(A\otimes\mathrm{End}_F(B)\)</span>，它有两个子代数
-<span class="math inline">\(B\otimes 1\)</span> 和 <span class="math inline">\(1\otimes l(B)\)</span> (这里 <span class="math inline">\(l(B)\)</span> 是 <span class="math inline">\(B\)</span> 在自身上的左乘)，它们都同构于单子代数
+<span class="math inline">\(B\otimes 1\)</span> 和 <span class="math inline">\(1\otimes l(B)\)</span> （这里 <span class="math inline">\(l(B)\)</span> 是 <span class="math inline">\(B\)</span> 在自身上的左乘），它们都同构于单子代数
 <span class="math inline">\(B\)</span>，因此 Noether-Skolem
 定理断言它俩是共轭的，于是它俩在 <span class="math inline">\(A\otimes\mathrm{End}_F(B)\)</span>
 中的中心化子也是共轭的。利用引理的结论，对它俩在 <span class="math inline">\(A\otimes\mathrm{End}_F(B)\)</span>
@@ -483,7 +486,7 @@ C\otimes\mathrm{End}_F(B) @&gt;{i}&gt;&gt; A\otimes\mathrm{End}_F(B)
 <p>由定理 1 <span class="math inline">\(A\otimes r(B)\)</span>
 是单代数，于是 <span class="math inline">\(C\otimes\mathrm{End}_F(B)\)</span>
 也是单代数，从而 <span class="math inline">\(C\)</span> 必须是单代数
-(否则若 <span class="math inline">\(C\)</span> 有非平凡理想 <span class="math inline">\(I\)</span> 则 <span class="math inline">\(C\otimes\mathrm{End}_F(B)\)</span> 有理想 <span class="math inline">\(I\otimes\mathrm{End}_F(B)\)</span>)，这证明了
+（否则若 <span class="math inline">\(C\)</span> 有非平凡理想 <span class="math inline">\(I\)</span> 则 <span class="math inline">\(C\otimes\mathrm{End}_F(B)\)</span> 有理想 <span class="math inline">\(I\otimes\mathrm{End}_F(B)\)</span>)，这证明了
 1；而且比较维数有 <span class="math display">\[(\dim_F C) (\dim_F
 B)^2=(\dim_F A)(\dim_F B),\]</span> 即 <span class="math display">\[(\dim_F C)(\dim_F B)=\dim_F A,\]</span> 这证明了
 2。</p>

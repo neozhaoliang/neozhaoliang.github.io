@@ -10,8 +10,8 @@
     <title>模式的等待时间与反直觉概率 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="著名概率学家 Feller 在他的名著《An introduction to probability and
-its applications》中提到了这样一个实验：
+    <meta name="description" content="著名概率学家 Feller 在他的名著 &#34;An introduction to probability and
+its applications&#34; 中提到了这样一个实验：
 重复抛掷一枚均匀的硬币，用 H
 代表正面向上，T 代表背面向上，一直到连续出现 6 次
 H 为止。这里连续 6 个 Ｈ 组成的模式记作
@@ -360,8 +360,8 @@ Experiments.
 
 
             <div class="entry pink-link-context">
-                <p>著名概率学家 Feller 在他的名著《An introduction to probability and
-its applications》中提到了这样一个实验：</p>
+                <p>著名概率学家 Feller 在他的名著 "An introduction to probability and
+its applications" 中提到了这样一个实验：</p>
 <blockquote><p>重复抛掷一枚均匀的硬币，用 <code>H</code>
 代表正面向上，<code>T</code> 代表背面向上，一直到连续出现 6 次
 <code>H</code> 为止。这里连续 6 个 <code>Ｈ</code> 组成的模式记作
@@ -455,13 +455,14 @@ Experiments.</a></p>
 <span class="math inline">\(l_1,\cdots,l_r\)</span>，定义 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的匹配指数为 <span class="math display">\[A\ast B = 2^{l_1}+\cdots+2^{l_r}.\]</span> 如果
 <span class="math inline">\(A\)</span> 的任何后缀都不是 <span class="math inline">\(B\)</span> 的前缀则 <span class="math inline">\(A\ast B\)</span> 定义为 0。特别当 <span class="math inline">\(A=B\)</span> 时，<span class="math inline">\(A\ast
 A\)</span> 就是前面计算的 <span class="math inline">\(A\)</span>
-的平均等待时间，这个值又叫做 A 的自匹配指数。</p>
+的平均等待时间，这个值又叫做 <span class="math inline">\(A\)</span>
+的自匹配指数。</p>
 </blockquote>
 <p>我们要证明这样一个引理 ：</p>
 <blockquote><p><strong>引理</strong>：如果已知掷硬币的结果是以模式 <span class="math inline">\(A\)</span> 开头的，那么距离模式 <span class="math inline">\(B\)</span> 出现还需要等待的时间的期望为 <span class="math display">\[\mathbb{E}\tau_{AB} = B\ast B -A\ast
 B.\]</span></p>
 </blockquote>
-<p>引理的证明：仍然是采用赌博序列的方法，每天来的赌徒赌的是模式 <span class="math inline">\(B\)</span>，只不过这个时候我们已经知道了前 <span class="math inline">\(k\)</span> 次赌博的结果是模式 <span class="math inline">\(A\)</span> (假设序列 A 的长度为 <span class="math inline">\(k\)</span>)，所以不难算出前 <span class="math inline">\(k\)</span> 天赌博团伙的总资金为 <span class="math inline">\(A\ast B\)</span> 元。由于赌局始终是公平的，所以从
+<p>引理的证明：仍然是采用赌博序列的方法，每天来的赌徒赌的是模式 <span class="math inline">\(B\)</span>，只不过这个时候我们已经知道了前 <span class="math inline">\(k\)</span> 次赌博的结果是模式 <span class="math inline">\(A\)</span>（假设序列 <span class="math inline">\(A\)</span> 的长度为 <span class="math inline">\(k\)</span>），所以不难算出前 <span class="math inline">\(k\)</span> 天赌博团伙的总资金为 <span class="math inline">\(A\ast B\)</span> 元。由于赌局始终是公平的，所以从
 <span class="math inline">\(k+1\)</span> 天起，直到模式 <span class="math inline">\(B\)</span> 出现的这 <span class="math inline">\(\tau_{AB}\)</span> 天里，赌徒们的净收益期望应该是
 0。到模式 <span class="math inline">\(B\)</span>
 出现时，赌徒们的资金将变成 <span class="math inline">\(B\ast B\)</span>
@@ -534,25 +535,22 @@ A)\)</span>。</p>
 9场，而貌似快一些的 <code>HTHH</code> 倒只赢 5 场。</p>
 </blockquote>
 <p>为什么会出现这种反直觉的现象呢?
-其实“跑得慢”和“赢得多”并不矛盾，我们随便看一个由 <code>H</code> 和
+其实“跑得慢”和“赢得多”并不矛盾。我们随便看一个由 <code>H</code> 和
 <code>T</code> 组成的比较长一点的随机序列：</p>
 <p>HHTHT<font color="red">H</font><font color="green">H</font>THT<font color="red">H</font><font color="green">H</font>TTTHHTH<font color="green">H</font>HHTTHHTTHTTHT<font color="red">H</font><font color="green">H</font>TH<font color="green">H</font>TH<font color="green">H</font>TH<font color="green">H</font>HHTTHTTTTTTHTTHT<font color="red">H</font>TTHHTH<font color="green">H</font>HHHHTTHT<font color="red">H</font><font color="green">H</font>THT<font color="red">H</font><font color="green">H</font>TTTTTHTTHHHHHHTH<font color="green">H</font>HTTTHTTTHTTTHHHTH<font color="green">H</font>THT<font color="red">H</font>TTTHTTHTTHT<font color="red">H</font><font color="green">H</font>TH<font color="green">H</font>TTHT<font color="red">H</font><font color="green">H</font>HTTHH
 ...</p>
 <p>其中分别用红色和绿色标记了模式 <code>THTH</code> 和 <code>HTHH</code>
-的出现的位置。理论上由于是随机序列，所以红色的 <code>H</code> 和绿色的
-<code>H</code>
-的个数应该大致相等，各占序列总长度的十六分之一。但是二者出现的规律不同：任何绿色
-<code>H</code> 后面连续的三个字符中绝对不会出现红色
-<code>H</code>，而大约一半的红色的 <code>H</code> 后面紧跟一个绿色的
+的出现的位置。注意到任何绿色 <code>H</code>
+后面连续的三个字符中绝对不会出现红色 <code>H</code>，而大约一半的红色的
+<code>H</code> 后面紧跟一个绿色的
 <code>H</code>。所以从一个随机序列中任选一点作为起点开始比赛，那么在红色
 <code>H</code> 先撞线的比赛中，第二个撞线的绿色 <code>H</code>
 往往会只落后一个身位，但是在绿色 <code>H</code> 先撞线的比赛中，红色的
-<code>H</code> 至少要落后四个身位以上。总而言之，<code>THTH</code> 击败
-<code>HTHH</code> 的方法就是“积小胜为大胜”，在 <code>THTH</code>
-先撞线的比赛中，<code>THTH</code> 只领先 <code>HTHH</code> 很少，而
-<code>HTHH</code> 先撞线的比赛中，<code>HTHH</code> 可以领先
-<code>THTH</code> 很多，于是平均下来虽然 <code>THTH</code>
-赢的多一些，但是平均耗时反倒长一些。</p>
+<code>H</code> 至少要落后四个身位以上。</p>
+<p>用足球来类比，领先一个身位就好比取得一个净胜球。净胜球少和积分领先并不矛盾。<code>THTH</code>
+击败 <code>HTHH</code> 的方法类似“一比零主义”：虽然平均下来
+<code>THTH</code>
+耗时长一些（每场净胜球少），但积分是领先的（赢的场数多）。</p>
 
                 
 <p class="pink-link-context">

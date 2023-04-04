@@ -11,8 +11,8 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="更新：在距离本文初稿完成数年后，我终于实现了一个
-Python 程序，可以制作演示 Wilson 算法的 gif 动图，见我的 这个
-github 项目。此外还用 Javascript + canvas
+Python 程序，可以制作演示 Wilson 算法的 gif 动图，见 这个
+Github 项目。此外还用 Javascript + canvas
 为本文写了一个动画演示，这也是我的第一个正式的 Javascript 程序
 （其实就是把对应的 Python
 程序修改下翻译了过来），你可以随时单击鼠标来重启动画。">
@@ -355,8 +355,8 @@ github 项目。此外还用 Javascript + canvas
 
             <div class="entry pink-link-context">
                 <p><strong>更新</strong>：在距离本文初稿完成数年后，我终于实现了一个
-Python 程序，可以制作演示 Wilson 算法的 gif 动图，见我的 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/gifmaze">这个
-github 项目</a>。此外还用 Javascript + canvas
+Python 程序，可以制作演示 Wilson 算法的 gif 动图，见 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/gifmaze">这个
+Github 项目</a>。此外还用 Javascript + canvas
 为本文写了一个动画演示，这也是我的第一个正式的 Javascript 程序
 （其实就是把对应的 Python
 程序修改下翻译了过来），你可以随时单击鼠标来重启动画。</p>
@@ -365,10 +365,9 @@ github 项目</a>。此外还用 Javascript + canvas
 <canvas id="wilson" width="600" height="600">
 </canvas>
 <p>Wilson 均匀生成树算法是一个很有意思的算法，我最初接触它是在念 Russel
-Lyons 等人的《Probability on trees and
-networks》一书时，在网上查阅资料发现了 <a target="_blank" rel="noopener" href="https://bl.ocks.org/mbostock/11357811">这个动画</a>。当时就大叹奇妙，一顿看起来没头没脑的随机操作怎么就得出了一个迷宫呢？而且这个迷宫还服从所有迷宫
-（准确的说是所有<strong>完美迷宫</strong>组成的样本空间）
-上的均匀分布！</p>
+Lyons 等人的 <a target="_blank" rel="noopener" href="https://rdlyons.pages.iu.edu/prbtree/">Probability
+on trees and networks</a> 一书时，在网上查阅资料发现了 <a target="_blank" rel="noopener" href="https://bl.ocks.org/mbostock/11357811">这个动画</a>。当时就大叹奇妙，一顿看起来没头没脑的随机操作怎么就得出了一个迷宫呢？而且这个迷宫还服从所有迷宫
+（准确的说是所有完美迷宫组成的样本空间） 上的均匀分布！</p>
 <p>Wilson
 本人给出的证明相当有技巧性，而且有一些晦涩的部分，我是花了很久才真正理解，回过头来看其实也不复杂，但是把细节说清楚需要花一番功夫。本文就来介绍这个证明。</p>
 <h1 id="算法的表述">算法的表述</h1>
@@ -382,7 +381,7 @@ Prim 算法、Kruskal
 <span class="math inline">\(T\)</span>，初始时 <span class="math inline">\(T=\{r\}\)</span>。</li>
 <li>任取一个不属于 <span class="math inline">\(T\)</span> 的顶点 <span class="math inline">\(v\)</span>，从 <span class="math inline">\(v\)</span>
 出发作图上的随机游动，一边走一边随时擦掉路径中出现的圈 （此为 loop
-erased random walk)，即每当走到一个以前访问过的顶点 <span class="math inline">\(x\)</span>，则两次访问 <span class="math inline">\(x\)</span> 之间的路径都被擦掉，直到与 <span class="math inline">\(T\)</span> 相遇为止，这样得到一条从 <span class="math inline">\(v\)</span> 到 <span class="math inline">\(T\)</span> 的不含圈的路径 <span class="math inline">\(p\)</span>，把 <span class="math inline">\(p\)</span> 加入到 <span class="math inline">\(T\)</span> 中，<span class="math inline">\(T=T\cup
+erased random walk），即每当走到一个以前访问过的顶点 <span class="math inline">\(x\)</span>，则两次访问 <span class="math inline">\(x\)</span> 之间的路径都被擦掉，直到与 <span class="math inline">\(T\)</span> 相遇为止，这样得到一条从 <span class="math inline">\(v\)</span> 到 <span class="math inline">\(T\)</span> 的不含圈的路径 <span class="math inline">\(p\)</span>，把 <span class="math inline">\(p\)</span> 加入到 <span class="math inline">\(T\)</span> 中，<span class="math inline">\(T=T\cup
 p\)</span>。</li>
 <li>重复此步骤直到 <span class="math inline">\(T\)</span> 包含 <span class="math inline">\(G\)</span> 的所有顶点，这时得到的 <span class="math inline">\(T\)</span> 是一个服从均匀分布的生成树。</li>
 </ol>
@@ -401,7 +400,7 @@ p\)</span>。</li>
 上的所有可能的随机游动的实现都装在一个概率空间 <span class="math inline">\((\Omega,\mathbb{P})\)</span> 中，并寻找一个从
 <span class="math inline">\(\Omega\)</span> 到 <span class="math inline">\(\mathcal{T}\)</span> 的映射 <span class="math inline">\(\phi\)</span>，<span class="math inline">\(\phi\)</span> 满足如下条件：</p>
 <p>(1). <span class="math inline">\(\phi\)</span> 对几乎处处的 <span class="math inline">\(\omega\in\Omega\)</span> 有定义
-（不是所有的随机游动都能得到一个生成树，但这种例外发生的概率是 0)。</p>
+（不是所有的随机游动都能得到一个生成树，但这种例外发生的概率是 0）。</p>
 <p>(2). <span class="math inline">\(\phi\)</span> 必须是满射。</p>
 <p>(3). 对任何 <span class="math inline">\(T\in\mathcal{T}\)</span>，其在 <span class="math inline">\(\Omega\)</span> 中的原像 <span class="math inline">\(\phi^{-1}(T)\)</span> 的测度是一个与 <span class="math inline">\(T\)</span> 无关的常数。</p>
 <p>一旦找到这样的概率空间 <span class="math inline">\(\Omega\)</span>
@@ -427,29 +426,32 @@ r\)</span>，定义一个栈结构 <span class="math inline">\(S_v=\{S_{v,1},S_{
 <li><p>在任何时刻，这些栈 <span class="math inline">\(\{S_v,v\ne
 r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline">\(G_S\)</span>：<span class="math inline">\(v\rightarrow u\)</span> 当且仅当 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(S_v\)</span> 的栈顶元素。每个 <span class="math inline">\(v\ne r\)</span> 的出度都恰好是 1，顶点 <span class="math inline">\(r\)</span> 的出度是 0，于是若 <span class="math inline">\(G_S\)</span> 不含回路的话它就是一个以 <span class="math inline">\(r\)</span> 为根的生成树。</p></li>
 <li><p>下面我们来玩一个“回路弹出” (cycle popping)
-的游戏。给定栈的一个状态 <span class="math inline">\(\omega\in\Omega\)</span>，设 <span class="math inline">\(G_S\)</span> 是 <span class="math inline">\(\omega\)</span> 的栈顶图，若 <span class="math inline">\(G_S\)</span>
+的游戏。这个游戏有点类似俄罗斯方块，目的是消除栈顶图中的所有回路：给定栈的一个状态
+<span class="math inline">\(\omega\in\Omega\)</span>，设 <span class="math inline">\(G_S\)</span> 是 <span class="math inline">\(\omega\)</span> 的栈顶图，若 <span class="math inline">\(G_S\)</span>
 不含回路的话则它已经是一个生成树，游戏结束；否则设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(G_S\)</span>
-中的一个回路，我们可以将其“弹出”：对每个 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素（于是若当前 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span>），这样得到一个更新的 <span class="math inline">\(G_S\)</span>。游戏允许玩家每次任选 <span class="math inline">\(G_S\)</span>
-中的一个回路并将其弹出，如果玩家能够经过有限多次弹出操作后使得 <span class="math inline">\(G_S\)</span>
+中的一个回路，我们可以将其“弹出”：对每个 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素，于是若 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span>。这样得到一个更新后的 <span class="math inline">\(G_S\)</span>。玩家可以每次任选 <span class="math inline">\(G_S\)</span>
+中的一个回路并将其弹出，如果经过有限多次弹出操作后使得 <span class="math inline">\(G_S\)</span>
 中不含任何回路，则玩家获胜，这时得到的 <span class="math inline">\(G_S\)</span> 是一个生成树。</p></li>
 <li><p>你可以每次无脑选一个回路将其弹出，也可以将 <span class="math inline">\(G_S\)</span>
-的所有回路在某种顺序下排好，每次弹出最小的那个，这都是不同的游戏策略。擦圈的随机游动对应的是这样的策略：每次从一个不属于（当前维护的树）<span class="math inline">\(T\)</span>
-的顶点出发，跟着栈顶图的路牌指示走，遇到哪个回路弹哪个。撞到 <span class="math inline">\(T\)</span> 的话就把当前路径加入 <span class="math inline">\(T\)</span>，再从任意一个不属于 <span class="math inline">\(T\)</span> 的顶点出发重复这个过程。</p></li>
+的所有回路在某种顺序下排好，每次弹出最小的那个，这都是不同的游戏策略。Wilson
+算法使用的是“跟着导航走”的策略：每次从一个不属于 <span class="math inline">\(T\)</span>
+的顶点出发，跟着栈顶图的路牌指示走，遇到哪个回路弹哪个。撞到 <span class="math inline">\(T\)</span> 的话就把当前路径加入 <span class="math inline">\(T\)</span>，再从任意一个不属于 <span class="math inline">\(T\)</span>
+的顶点出发重复这个过程。这个方法可以保证以概率 1
+得到一个生成树。想象一下，如果你自己设计一个策略，如何保证它能以概率 1
+获胜，而不会出现“按下葫芦浮起瓢”，永远有回路出现？</p></li>
 <li><p>映射 <span class="math inline">\(\phi\)</span> 定义如下：对任何
 <span class="math inline">\(\omega\in\Omega\)</span>，若 <span class="math inline">\(\omega\)</span> 的栈顶图 <span class="math inline">\(G_S\)</span> 不含任何回路
 （即已经是一个生成树，这里应理解为无向树），则令 <span class="math inline">\(\phi(\omega)=G_S\)</span>。否则用擦圈的随机游动对其进行回路弹出操作，若经过有限次操作后得到的
 <span class="math inline">\(G_S\)</span> 不含任何回路，就令 <span class="math inline">\(\phi(\omega)=G_S\)</span>，否则 <span class="math inline">\(\phi(\omega)\)</span> 无定义。</p>
-<p>由于 Wilson 算法以概率 1 在有限时间内结束，所以 <span class="math inline">\(\phi(\omega)\)</span> 以概率 1 是有定义的，即映射
-<span class="math inline">\(\phi\)</span> 满足条件 (1)。</p>
-<p><strong>然而这里有一个重要的问题：<span class="math inline">\(\phi\)</span>
+<p><strong>这里有一个重要的问题：<span class="math inline">\(\phi\)</span>
 的定义是合理无歧义的吗</strong>？注意 Wilson
 算法允许每次从任意一个不属于 <span class="math inline">\(T\)</span>
 的顶点出发作擦圈的随机游动，不同的选择会不会导致不同的 <span class="math inline">\(G_S\)</span>？下面就来解决这个疑问。</p></li>
-<li><p>现在让若干玩家来玩这个游戏，而且每个人采取的游戏策略是不同的。问题来了：对给定的栈状态
-<span class="math inline">\(\omega\in\Omega\)</span>，这些玩家得到的结果一样吗？会不会有的人能获胜，而有的人不能？或者会不会有两个获胜的玩家，他们最终得到的栈顶图
+<li><p>我们假设有若干玩家分别玩这个游戏，每个人采取的游戏策略是不同的。我们想知道，对给定的初始栈状态
+<span class="math inline">\(\omega\in\Omega\)</span>，这些玩家都能获胜吗？他们最终得到的栈顶图
 <span class="math inline">\(G_S\)</span> （也就是最终的生成树）
-是不同的？甚至会不会有两个获胜的玩家，虽然他俩最终得到的栈顶图是相同的，但是操作次数是不同的？</p>
-<p>答案都是否定的：不管这些玩家采取怎样的策略，只有两种可能的结果出现：</p>
+一样吗？需要的操作次数相同吗？</p>
+<p>答案是：不管这些玩家采取怎样的策略，只有两种可能的结果出现：</p>
 <ol type="1">
 <li><p>所有人都不能获胜。</p></li>
 <li><p>所有人都能获胜，而且每个人使用的操作次数也相同，最终得到的栈顶图

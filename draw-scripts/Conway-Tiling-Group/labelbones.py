@@ -3,12 +3,16 @@ from math import *
 
 
 SQRT3 = 3**0.5
-FC = 1.5
+FC = 1.2
 va = Vector(cos(pi/12*5), sin(pi/12*5)) * 0.55
 vb = Vector(1, 0) * 0.4
 vc = Vector(cos(pi/12*8), sin(pi/12*8)) * 0.65
+R = (1.0, 0.3, 0)
+G = (0.4, 1.0, 0.1)
+B = (0.0, 0.5, 1.0)
 
-def hexagon(r,g,b):
+
+def hexagon(color, indices):
     newpath()
     v = Vector(0, 1)
     moveto(v)
@@ -16,77 +20,73 @@ def hexagon(r,g,b):
         v.rotate(pi/3)
         lineto(v)
     closepath()
-    fill(r, g, b)
+    fill(*color)
     stroke()
 
-    t = texinsert("$a$")
-    t.scale(FC)
-    t.translate(t.width/2, 0)
-    place(t, va)
+    if 0 in indices:
+        t = texinsert("$a$")
+        t.scale(FC)
+        t.translate(0, 0)
+        place(t, va)
 
-    t = texinsert("$a$")
-    t.scale(FC)
-    t.translate(-t.width*2, 0)
-    place(t, -va*1.3)
+    if 1 in indices:
+        t = texinsert("$a$")
+        t.scale(FC)
+        t.translate(-t.width, 0)
+        place(t, -va*1.3)
 
-    t = texinsert("$b$")
-    t.scale(FC)
-    t.translate(t.width*2, -t.height/2)
-    place(t, vb)
+    if 2 in indices:
+        t = texinsert("$b$")
+        t.scale(FC)
+        t.translate(t.width, -t.height/2)
+        place(t, vb)
 
-    t = texinsert("$b$")
-    t.scale(FC)
-    t.translate(t.width/2, -t.height/2)
-    place(t, -vb*2)
+    if 3 in indices:
+        t = texinsert("$b$")
+        t.scale(FC)
+        t.translate(0, -t.height/2)
+        place(t, -vb*2)
 
-    t = texinsert("$c$")
-    t.scale(FC)
-    t.translate(-t.width, -t.height/2)
-    place(t, vc)
+    if 4 in indices:
+        t = texinsert("$c$")
+        t.scale(FC)
+        t.translate(-t.width, -t.height/2)
+        place(t, vc)
 
-    t = texinsert("$c$")
-    t.scale(FC)
-    t.translate(-t.width*1.3, -t.height/2)
-    place(t, -vc*1.1)
+    if 5 in indices:
+        t = texinsert("$c$")
+        t.scale(FC)
+        t.translate(-t.width*1.3, -t.height/2)
+        place(t, -vc*1.1)
 
 
+init("bone.eps", 500, 200)
+center()
+scale(30)
+for v in [(0, 0), (-SQRT3, 0), (SQRT3, 0)]:
+    gsave()
+    translate(v)
+    hexagon(G, [0, 1, 2, 3, 4, 5])
+    grestore()
 
-def bone1():
-    init("bone1.eps", 300, 200)
-    center()
-    scale(50)
-    for v in [(0, 0), (-SQRT3, 0), (SQRT3, 0)]:
-        gsave()
-        translate(v)
-        hexagon(0, 1, 0)
-        grestore()
 
-    finish()
+a = 5.5
+gsave()
+translate(-a, 0)
+for v in [(0, 0), (SQRT3/2, 1.5), (-SQRT3/2, -1.5)]:
+    gsave()
+    translate(v)
+    hexagon(R, [0, 1, 2, 3, 4, 5])
+    grestore()
+grestore()
 
-def bone2():
-    init("bone2.eps", 300, 300)
-    center()
-    scale(50)
-    for v in [(0, 0), (SQRT3/2, 1.5), (-SQRT3/2, -1.5)]:
-        gsave()
-        translate(v)
-        hexagon(1, 0, 0)
-        grestore()
+gsave()
+translate(a, 0)
+for v in [(0, 0), (SQRT3/2, -1.5), (-SQRT3/2, 1.5)]:
+    gsave()
+    translate(v)
+    hexagon(B, [0, 1, 2, 3, 4, 5])
+    grestore()
+grestore()
 
-    finish()
-
-def bone3():
-    init("bone3.eps", 300, 300)
-    center()
-    scale(50)
-    for v in [(0, 0), (SQRT3/2, -1.5), (-SQRT3/2, 1.5)]:
-        gsave()
-        translate(v)
-        hexagon(0, 0, 1)
-        grestore()
-
-    finish()
-    
-bone1()
-bone2()
-bone3()
+finish()

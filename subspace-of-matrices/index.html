@@ -344,9 +344,7 @@ M\)，存在一个正整数 \(m\) 使得
             
     <div class="tags-row">
         
-            <a href="/tags/线性代数/" class="chip pink lighten-1">线性代数</a>
-        
-            <a href="/tags/矩阵空间/" class="chip pink lighten-1">矩阵空间</a>
+            <a href="/tags/线性代数，矩阵空间/" class="chip pink lighten-1">线性代数，矩阵空间</a>
         
     </div>
 
@@ -384,13 +382,13 @@ M\)</span>，存在一个正整数 <span class="math inline">\(m\)</span> 使得
 <p><strong>注</strong>：问题的提法中对域 <span class="math inline">\(\mathbb{F}\)</span>
 没有什么限制，实际上前三个问题的答案确实与域无关，只有第四个问题是例外。但是如果要让证明对任何域
 <span class="math inline">\(\mathbb{F}\)</span>
-都适用那就要花不少心思，旁生不少枝节。为了让文章读起来不那么晦涩学究，我适当放宽了域的条件，这样证明简明很多。</p>
+都适用那就要花不少心思，旁生不少枝节。为了让文章读起来不那么晦涩，我适当放宽了域的条件，这样证明简明很多。</p>
 <h1 id="交换子空间的最大维数">交换子空间的最大维数</h1>
 <p>如果 <span class="math inline">\(M\)</span>
 中的矩阵两两可以交换，我们来猜猜 <span class="math inline">\(M\)</span>
 的维数最大可能多少。首先很容易想到所有的对角矩阵是两两交换的，而所有对角矩阵构成的子空间维数是
 <span class="math inline">\(n\)</span>，所以答案不会小于 <span class="math inline">\(n\)</span>。</p>
-<p>但是实际上还可以更大，下面的构造是最优的：(<span class="math inline">\(N\)</span> 任意取)</p>
+<p>但是实际上还可以更大，下面的构造是最优的：（<span class="math inline">\(N\)</span> 任意取）</p>
 <p><span class="math display">\[\begin{pmatrix}\lambda
 I_m&amp;N\\0&amp;\lambda I_m\end{pmatrix}\ (n=2m),\quad
 \begin{pmatrix}\lambda I_m&amp;N\\0&amp;\lambda I_{m+1}\end{pmatrix}\
@@ -449,7 +447,7 @@ rank.</p>
 </blockquote>
 <p>首先可以不妨假设 <span class="math inline">\(M\)</span>
 中存在一个形如 <span class="math display">\[A=\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}\]</span>
-的矩阵 (想一想，为什么？)，于是我们有下面的结论：</p>
+的矩阵 （想一想，为什么？），于是我们有下面的结论：</p>
 <blockquote><p><strong>引理</strong>：<span class="math inline">\(M\)</span>
 中的矩阵都形如 <span class="math display">\[\begin{pmatrix}B_{11}&amp;B_{12}\\B_{21}&amp;0\end{pmatrix}.\]</span>
 这里 <span class="math inline">\(B_{11}\)</span> 是 <span class="math inline">\(r\times r\)</span> 矩阵，且 <span class="math inline">\(B_{21}B_{12}=0\)</span>.</p>
@@ -470,22 +468,23 @@ rank.</p>
 成立此等式成立，因此必然是恒等式。注意在伴随矩阵 <span class="math inline">\((tI_r+B_{11})^\ast\)</span> 的各个元素中，<span class="math inline">\(t^{r-1}\)</span> 项只出现在对角线上，且系数都是
 <span class="math inline">\(1\)</span>，因此 <span class="math inline">\(\Delta(t)\)</span> 的 <span class="math inline">\(r-1\)</span> 次项系数为 <span class="math inline">\(-\alpha_i\beta_j=0\)</span>，因此 <span class="math inline">\(B_{21}B_{12}=0\)</span>，引理成立。</p>
 <p>现在考虑 <span class="math inline">\(M_n(\mathbb{R})\)</span>
-的子空间 <span class="math display">\[J=\left\{\begin{pmatrix}0&amp;P\\P'&amp;Q\end{pmatrix}|P\in
-M_{r\times(n-r)}(\mathbb{R}),Q\in
+的子空间 <span class="math display">\[J=\left\{\begin{pmatrix}0&amp;P\\P'&amp;Q\end{pmatrix}\mid
+P\in M_{r\times(n-r)}(\mathbb{R}),Q\in
 M_{n-r}(\mathbb{R})\right\}.\]</span></p>
 <p>于是 <span class="math inline">\(M\cap J=(0)\)</span>，因此 <span class="math inline">\(M+J\)</span> 是直和，从而 <span class="math inline">\(\dim M+\dim J\leq n^2\)</span>，再由 <span class="math inline">\(\dim J=n(n-r)\)</span> 即得 <span class="math inline">\(\dim M\leq rn\)</span>。</p>
-<p>注意这里利用了实数域内积的正定性： 实矩阵 <span class="math inline">\(P'P=0\)</span> 当且仅当 <span class="math inline">\(P=0\)</span>，对于复数域情形类似。对一般的域 <span class="math inline">\(\mathbb{F}\)</span> 是没有内积的概念的，
+<p>注意这里利用了实数域内积的正定性： 实矩阵 <span class="math inline">\(P'P=0\)</span> 当且仅当 <span class="math inline">\(P=0\)</span>，对复数域的情形可以用厄米特内积代替。对一般的域
+<span class="math inline">\(\mathbb{F}\)</span> 是没有内积的概念的，
 但是我们有迹函数 <span class="math display">\[M_n(\mathbb{F})\times
 M_n(\mathbb{F})\rightarrow \mathbb{F}:\quad
 (A,B)\rightarrow\mathrm{tr}(AB).\]</span>
 这个非退化的双线性型可以代替内积，只是论证略麻烦。</p>
 <h1 id="m-中矩阵都是幂零矩阵"><span class="math inline">\(M\)</span>
 中矩阵都是幂零矩阵</h1>
-<p>这种情形答案也是很好猜的：考虑所有严格上三角矩阵组成的子空间，其维数是
+<p>这种情形答案也是很好猜的：所有严格上三角矩阵组成的子空间，其维数是
 <span class="math inline">\(\dfrac{n(n-1)}{2}\)</span>。</p>
 <p>我们在 <span class="math inline">\(\text{char
-$\mathbb{F}\ne2$}\)</span> 的条件下讨论。(当然特征是 2
-结论是一样的，不过证明要绕点弯路)</p>
+$\mathbb{F}\ne2$}\)</span> 的条件下讨论。（当然特征是 2
+结论是一样的，不过证明要绕点弯路）</p>
 <p>首先是一个小小的引理：</p>
 <blockquote><p><strong>引理</strong>：如果 <span class="math inline">\(A,B,A+B\)</span> 都是幂零矩阵，则 <span class="math inline">\(\mathrm{tr}(AB)=0\)</span>。</p>
 </blockquote>
@@ -504,7 +503,7 @@ V\right.\}.\]</span></p>
 <p>虽然未必有 <span class="math inline">\(V\cap
 V^{\bot}=(0)\)</span>，但是总是有 <span class="math display">\[\dim
 V+\dim V^{\bot}=\dim\mathbb{M}_n(\mathbb{F})=n^2.\]</span>
-(这是非退化双线性型的基本结论)</p>
+（这是非退化双线性型的基本结论）</p>
 <p>设 <span class="math inline">\(M_1\)</span> 是 <span class="math inline">\(M\)</span>
 中所有严格上三角矩阵组成的集合，很容易验证 <span class="math inline">\(M_1\)</span> 是一个子空间；任取子空间 <span class="math inline">\(N\subset M\)</span> 使得 <span class="math inline">\(M=M_1\oplus N\)</span>，则 <span class="math inline">\(N\)</span> 中的非零矩阵都不是上三角矩阵，否则若
 <span class="math inline">\(A\in N\)</span> 是上三角矩阵，而 <span class="math inline">\(A\)</span>
@@ -514,7 +513,7 @@ V+\dim V^{\bot}=\dim\mathbb{M}_n(\mathbb{F})=n^2.\]</span>
 是所有上三角矩阵组成的集合，由于上三角矩阵和严格上三角矩阵的乘积是严格上三角矩阵，因此
 <span class="math inline">\(U\subset M_1^{\bot}\)</span>。</p>
 <p>把引理用在 <span class="math inline">\(A\in M_1\)</span> 和 <span class="math inline">\(B\in N\)</span> 上我们得到 <span class="math inline">\(N\subset M_1^{\bot}\)</span>。然而我们已经说明了
-<span class="math inline">\(U+N\)</span> 是直和，因此 <span class="math inline">\(U\oplus N\subset M_1^{\bot}\)</span>，从而 <span class="math display">\[\dim U+\dim N\leq n^2-\dim M_1,\]</span> 注意
+<span class="math inline">\(U+N\)</span> 是直和，因此 <span class="math inline">\(U\oplus N\subset M_1^{\bot}\)</span>，从而 <span class="math display">\[\dim U+\dim N\leq n^2-\dim M_1.\]</span> 注意
 <span class="math inline">\(\dim U=\dfrac{n(n+1)}{2}\)</span>，这就推出
 <span class="math display">\[\dim M=\dim N+\dim M_1\leq
 \frac{n(n-1)}{2}.\]</span> 实际上可以证明如果 <span class="math inline">\(\dim M=\dfrac{n(n-1)}{2}\)</span>，则存在可逆矩阵
@@ -527,16 +526,16 @@ fields on spheres</a> 中证明的经典结论，这篇论文也是代数 K-
 理论的开山之作。</p>
 <p>首先这个问题的答案依赖于域 <span class="math inline">\(\mathbb{F}\)</span>。在复数域上，如果 <span class="math inline">\(M\)</span> 的维数大于
 1，从中任取两个线性无关的矩阵 <span class="math inline">\(A,B\)</span>，则对任何复数 <span class="math inline">\(t\)</span>，<span class="math inline">\(A+tB\)</span>
-是非零矩阵因而可逆，这显然不可能，因此 <span class="math inline">\(M\)</span> 的维数只能是 1 (比如所有形如 <span class="math inline">\(\lambda I_n\)</span> 的矩阵构成的集合)。</p>
+是非零矩阵因而可逆，这显然不可能，因此 <span class="math inline">\(M\)</span> 的维数只能是 1 （比如取所有形如 <span class="math inline">\(\lambda I_n\)</span> 的矩阵）。</p>
 <p>在实数域上，答案是非常难以猜到的，叫做 Radon-Hurwitz 数：设 <span class="math inline">\(n=2^a\cdot b\)</span>，<span class="math inline">\(b\)</span> 是奇数，<span class="math inline">\(a=c+4d\)</span>，<span class="math inline">\(0\leq
 c&lt;4\)</span>，定义 <span class="math inline">\(\rho(n)=2^c+8d\)</span>，则 <span class="math inline">\(M\)</span> 的维数最大是 <span class="math inline">\(\rho(n)\)</span>。</p>
 <p>证明这个结论分两步，首先用代数 K- 理论的知识证明 <span class="math inline">\(M\)</span> 的维数不会超过 <span class="math inline">\(\rho(n)\)</span>，然后用 Clifford
 代数的表示构造一个维数为 <span class="math inline">\(\rho(n)\)</span>
 的子空间。整个过程要用到非常多的数学知识以至于要完整写下来需要一本书的篇幅，这是本文力所不及的。</p>
 <h1 id="结语">结语</h1>
-<p>其实类似的问题还可以提出更多，比如 <span class="math inline">\(M\)</span> 中的非零矩阵的秩都不小于 <span class="math inline">\(r\)</span>，这里 <span class="math inline">\(0&lt;r&lt;n\)</span> 是个给定的正整数，那么 <span class="math inline">\(M\)</span> 的维数最大是多少？(答案仍然和 Radon -
-Hurwitz 数有关)
-你可以试着自己提出一些这样的问题，然后尝试给出它们的解答，遇到困难再去查阅资料，相信一定会有收获的。</p>
+<p>其实类似的问题还可以提出更多，比如 <span class="math inline">\(M\)</span> 中的非零矩阵的秩都不小于 <span class="math inline">\(r\)</span>，这里 <span class="math inline">\(0&lt;r&lt;n\)</span> 是个给定的正整数，那么 <span class="math inline">\(M\)</span> 的维数最大是多少？（答案仍然和 Radon -
+Hurwitz
+数有关）你可以试着自己提出一些这样的问题，然后尝试给出它们的解答，遇到困难再去查阅资料，相信一定会有收获的。</p>
 
                 
 <p class="pink-link-context">
