@@ -14,7 +14,7 @@
 问题：一张 \(8\times8\) 的国际象棋棋盘，用 \(1\times2\)
 的多米诺骨牌密铺，有多少种不同的方法？
 
-下图是其中一种 (图片来自 wiki 百科)：
+下图是其中一种（图片来自 wiki 百科）：
 
 答案是 12988816，非常大的一个数字，绝对不是一个一个数出来的。1961
 年德国物理学家 Kasteleyn
@@ -359,14 +359,14 @@
 <blockquote><p><strong>问题</strong>：一张 <span class="math inline">\(8\times8\)</span> 的国际象棋棋盘，用 <span class="math inline">\(1\times2\)</span>
 的多米诺骨牌密铺，有多少种不同的方法？</p>
 </blockquote>
-<p>下图是其中一种 (图片来自 wiki 百科)：</p>
+<p>下图是其中一种（图片来自 wiki 百科）：</p>
 <p><img style="margin:0px auto;display:block" src="/images/pfaff/chessboard.png"></p>
 <p>答案是 12988816，非常大的一个数字，绝对不是一个一个数出来的。1961
 年德国物理学家 Kasteleyn
 借助于线性代数中的一个结论首先解决了这个问题，接下来就介绍他的方法。</p>
 <span id="more"></span>
 <h1 id="反对称矩阵的-pfaffian">反对称矩阵的 Pfaffian</h1>
-<p>我们从一个线性代数的结论说起，先看一个 4 阶反对称矩阵的例子：</p>
+<p>我们从一个线性代数的结论说起，先来看一个 4 阶反对称矩阵的行列式：</p>
 <p><span class="math display">\[\det\begin{pmatrix}0&amp;a_{12}&amp;a_{13}&amp;a_{14}\\-a_{12}&amp;0&amp;a_{23}&amp;a_{24}\\-a_{13}&amp;-a_{23}&amp;0&amp;a_{34}\\-a_{14}&amp;-a_{24}&amp;-a_{34}&amp;0\end{pmatrix}=(a_{12}a_{34}-a_{13}a_{24}+a_{14}a_{23})^2.\]</span>
 你发现了什么？这个反对称矩阵的行列式是一个多项式的平方，而且观察右边每个单项式的下标你发现，它们分别是
 <span class="math inline">\(\{(12),(34)\}\)</span>，<span class="math inline">\(\{(14),(23)\}\)</span>，<span class="math inline">\(\{(13),(24)\}\)</span>，恰好跑遍集合 <span class="math inline">\(\{1,2,3,4\}\)</span> 的所有匹配！</p>
@@ -374,13 +374,14 @@
 Pfaffian 多项式。</p>
 <p>那么奇数阶反对称矩阵呢？它们的行列式都是 0，所以不考虑它们。</p>
 <p>设 <span class="math inline">\(A\)</span> 是一个给定的 <span class="math inline">\(2n\)</span> 阶的反对称矩阵，下面来定义 <span class="math inline">\(A\)</span> 的 Pfaffian 多项式 <span class="math inline">\(\text{pf}(A)\)</span>，你会看到 <span class="math inline">\(\text{pf}(A)\)</span> 总是一个 <span class="math inline">\(n\)</span> 次的齐次多项式。</p>
-<p>记 <span class="math inline">\([2n]=\{1,2,\ldots,2n\}\)</span>，考虑一种把 <span class="math inline">\([2n]\)</span> 两两配对 (从而分成 <span class="math inline">\(n\)</span> 对) 的方式： <span class="math display">\[\pi = (i_1,j_1)(i_2,j_2)\cdots(i_n,j_n).\]</span>
-<span class="math inline">\(\pi\)</span> 叫做集合 <span class="math inline">\([2n]\)</span> 的一个匹配，它可以用一个置换来表示
-(仍然记作 <span class="math inline">\(\pi\)</span>)： <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;\cdots&amp;2n-1&amp;2n\\i_1&amp;j_1&amp;i_2&amp;j_2&amp;\cdots&amp;i_n&amp;j_n\end{pmatrix}.\]</span>
+<p>记 <span class="math inline">\([2n]=\{1,2,\ldots,2n\}\)</span>，考虑一种把 <span class="math inline">\([2n]\)</span> 两两配对（从而分成 <span class="math inline">\(n\)</span> 对）的方式： <span class="math display">\[\pi = (i_1,j_1)(i_2,j_2)\cdots(i_n,j_n).\]</span>
+<span class="math inline">\(\pi\)</span> 叫做集合 <span class="math inline">\([2n]\)</span>
+的一个匹配，它可以用一个置换来表示，仍然记作 <span class="math inline">\(\pi\)</span>： <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;\cdots&amp;2n-1&amp;2n\\i_1&amp;j_1&amp;i_2&amp;j_2&amp;\cdots&amp;i_n&amp;j_n\end{pmatrix}.\]</span>
 定义 <span class="math inline">\(\pi\)</span> 的权为 <span class="math display">\[\mathrm{wt}(\pi)=\text{sgn}(\pi)\cdot
-a_\pi.\]</span> 其中 <span class="math inline">\(\text{sgn}(\pi)\)</span> 就是置换 <span class="math inline">\(\pi\)</span> 的符号 (偶置换时为 <span class="math inline">\(+1\)</span>，奇置换时为 <span class="math inline">\(-1\)</span>)， <span class="math display">\[a_\pi=a_{i_1j_1}a_{i_2j_2}\cdots
+a_\pi.\]</span> 其中 <span class="math inline">\(\text{sgn}(\pi)\)</span> 就是置换 <span class="math inline">\(\pi\)</span> 的符号，偶置换时为 <span class="math inline">\(+1\)</span>，奇置换时为 <span class="math inline">\(-1\)</span>， <span class="math display">\[a_\pi=a_{i_1j_1}a_{i_2j_2}\cdots
 a_{i_nj_n}.\]</span> 于是 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 是一个次数为 <span class="math inline">\(n\)</span> 的单项式。</p>
-<p>注意一个匹配 <span class="math inline">\(\pi\)</span>
+<p><span class="math inline">\(\mathrm{wt}(\pi)\)</span>
+的定义是合理无歧义的吗？注意一个匹配 <span class="math inline">\(\pi\)</span>
 可以有多种不同的置换表示：你可以按任意的顺序排列这些 <span class="math inline">\((i_k,j_k)\)</span> 对，或是交换某一对中 <span class="math inline">\(i_k\)</span> 和 <span class="math inline">\(j_k\)</span> 的位置。不同的置换表示给出的 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 的值可能不同，但是二者的乘积 <span class="math inline">\(\mathrm{wt}(\pi)\)</span>
 的值都是一样的。比如你把某个 <span class="math inline">\((i_k,j_k)\)</span> 改写成 <span class="math inline">\((j_k,i_k)\)</span>，那么 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 都同时变号，乘积保持不变。总之
 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 的定义只与匹配
@@ -397,8 +398,8 @@ A=\sum_{\sigma}\text{sgn}(\sigma)a_{\sigma}=\sum_{\sigma}\text{sgn}(\sigma)
 a_{1\sigma(1)}a_{2\sigma(2)}\cdots .\]</span> 这里 <span class="math inline">\(\sigma\)</span> 跑遍置换群 <span class="math inline">\(S_{2n}\)</span>。</p>
 <p>回忆任何置换 <span class="math inline">\(\sigma\)</span>
 都可以表示为若干不相交的轮换的乘积： <span class="math display">\[\sigma
-= (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.\]</span> 其中 <span class="math inline">\(k,l,\ldots\)</span> 为对应的轮换的长度。设 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
-为轮换长度都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，<span class="math inline">\(\sigma\)</span> 只跑遍 <span class="math inline">\(\mathcal{E}_{2n}\)</span>，即不属于 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
+= (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.\]</span> 其中 <span class="math inline">\(k,l,\ldots\)</span> 是各个轮换的长度。设 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
+为轮换长度都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，<span class="math inline">\(\sigma\)</span> 只跑遍 <span class="math inline">\(\mathcal{E}_{2n}\)</span>，不属于 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
 的那些置换整体对行列式的贡献为 0。</p>
 <p>分两种情况：</p>
 <ol type="1">
@@ -407,7 +408,7 @@ a_{1\sigma(1)}a_{2\sigma(2)}\cdots .\]</span> 这里 <span class="math inline">\
 <span class="math inline">\(a_{i\sigma(i)}=0\)</span> 从而 <span class="math inline">\(\sigma\)</span> 对行列式的贡献为 0。</li>
 <li>如果 <span class="math inline">\(\sigma\)</span>
 没有不动点，但是包含长度为奇数的轮换，选择其中含有最小元素的那个，设为
-<span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span>，这里 <span class="math inline">\(k\)</span> 为奇数且大于等于 3。定义置换 <span class="math inline">\(\sigma'\)</span> 如下：<span class="math inline">\(\sigma'\)</span> 的其它轮换与 <span class="math inline">\(\sigma\)</span> 完全相同，只是把 <span class="math inline">\(C\)</span> 改成 <span class="math inline">\((i_k\cdots i_2i_1)\)</span>。举个例子，比如 <span class="math inline">\(n=10\)</span>，<span class="math inline">\(\sigma=(13)(246)(578)(9,10)\)</span>，则 <span class="math inline">\(\sigma\)</span> 有 2 个长度为奇数的轮换 <span class="math inline">\((246)\)</span> 和 <span class="math inline">\((578)\)</span>，这两个轮换中最小的元素是 <span class="math inline">\(2\)</span>，它出现在 <span class="math inline">\((246)\)</span> 中，所以 <span class="math inline">\(\sigma'=(13)(642)(578)(9,10)\)</span>。显然
+<span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span>，这里 <span class="math inline">\(k\)</span> 为奇数且大于等于 3。定义置换 <span class="math inline">\(\sigma'\)</span> 如下：<span class="math inline">\(\sigma'\)</span> 的其它轮换与 <span class="math inline">\(\sigma\)</span> 完全相同，只是把 <span class="math inline">\(C\)</span> 整个倒过来变成 <span class="math inline">\((i_k\cdots i_2i_1)\)</span>。举个例子，比如 <span class="math inline">\(n=10\)</span>，<span class="math inline">\(\sigma=(13)(246)(578)(9,10)\)</span>，则 <span class="math inline">\(\sigma\)</span> 有 2 个长度为奇数的轮换 <span class="math inline">\((246)\)</span> 和 <span class="math inline">\((578)\)</span>，这两个轮换中最小的元素是 <span class="math inline">\(2\)</span>，它出现在 <span class="math inline">\((246)\)</span> 中，所以 <span class="math inline">\(\sigma'=(13)(642)(578)(9,10)\)</span>。显然
 <span class="math inline">\(\sigma'\)</span> 对应的和项与 <span class="math inline">\(\sigma\)</span> 抵消，而且如果对 <span class="math inline">\(\sigma'\)</span> 执行此操作又会回到 <span class="math inline">\(\sigma\)</span>。于是所有没有不动点，而且包含长度是奇数的轮换的置换可以两两配对抵消。</li>
 </ol>
 <p>这就证明了在行列式的求和中，我们只需要考虑那些轮换分解长度都是偶数的置换。</p>
@@ -421,10 +422,9 @@ a_{1\sigma(1)}a_{2\sigma(2)}\cdots .\]</span> 这里 <span class="math inline">\
 <span class="math inline">\([2n]\)</span>，两个顶点如果在 <span class="math inline">\(\pi\)</span>
 中配成一对就在它们之间连一条红色边，两个顶点如果在 <span class="math inline">\(\pi'\)</span>
 中配成一对就在它们之间连一条蓝色边。这样我们得到的是一个顶点度数都是 2
-的正则图：每个顶点恰好有一条红边和一条蓝边与之相连，从而这个图可以表示为若干条不相交的回路的并
-(想一想，为什么？提示：从任一顶点 <span class="math inline">\(x\)</span>
-出发沿着红边到达顶点 <span class="math inline">\(y\)</span>，再从 <span class="math inline">\(y\)</span> 出发沿着蓝边到达顶点 <span class="math inline">\(z\)</span>，再从 <span class="math inline">\(z\)</span> 出发沿着红边到达顶点 <span class="math inline">\(w\)</span>，这样一直继续下去肯定会回到起点 <span class="math inline">\(x\)</span>)，在一个回路中，红边和蓝边是交错出现的，因此每个回路的长度都是偶数。</p>
-<p>设 <span class="math inline">\(C\)</span> 是这样的一条回路，<span class="math inline">\(i_1\)</span> 是 <span class="math inline">\(C\)</span> 中最小的元素，从 <span class="math inline">\(i_1\)</span> 出发，沿着红色的边 (匹配 <span class="math inline">\(\pi\)</span> 的方向) 绕 <span class="math inline">\(C\)</span> 一圈： <span class="math display">\[i_1\,\color{red}{\xrightarrow{\quad\pi\quad}}\,i_2\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_3\,\color{red}{\xrightarrow{\quad\pi\quad}}\,\cdots\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_1.\]</span>
+的正则图：每个顶点恰好有一条红边和一条蓝边与之相连，从而这个图可以表示为若干条不相交的回路的并（想一想，为什么？提示：从任一顶点
+<span class="math inline">\(x\)</span> 出发沿着红边到达顶点 <span class="math inline">\(y\)</span>，再从 <span class="math inline">\(y\)</span> 出发沿着蓝边到达顶点 <span class="math inline">\(z\)</span>，再从 <span class="math inline">\(z\)</span> 出发沿着红边到达顶点 <span class="math inline">\(w\)</span>，这样一直继续下去肯定会回到起点 <span class="math inline">\(x\)</span>），在一个回路中，红边和蓝边是交错出现的，因此每个回路的长度都是偶数。</p>
+<p>设 <span class="math inline">\(C\)</span> 是这样的一条回路，<span class="math inline">\(i_1\)</span> 是 <span class="math inline">\(C\)</span> 中最小的元素，从 <span class="math inline">\(i_1\)</span> 出发，沿着红色的边，即 <span class="math inline">\(\pi\)</span> 的方向绕 <span class="math inline">\(C\)</span> 一圈： <span class="math display">\[i_1\,\color{red}{\xrightarrow{\quad\pi\quad}}\,i_2\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_3\,\color{red}{\xrightarrow{\quad\pi\quad}}\,\cdots\,\color{blue}{\xrightarrow{\quad\pi'\quad}}\,i_1.\]</span>
 这自然就得到了一个轮换 <span class="math inline">\((i_1i_2\cdots
 i_k)\)</span>，与 <span class="math inline">\((\pi,\pi')\)</span>
 对应的置换 <span class="math inline">\(\sigma\)</span>
@@ -467,17 +467,17 @@ a_{C_l}\)</span>，所以只要让每一个 <span class="math inline">\(a_{C_i}=
 <span class="math inline">\(C_i\)</span> 都是长度为偶数的回路，即 <span class="math inline">\(k\)</span> 是偶数，因此只要 <span class="math inline">\(\{a_{i_1i_2},\ldots,a_{i_ki_1}\}\)</span>
 中有奇数个是 -1 即可。换句话说，当沿着回路 <span class="math display">\[i_1\rightarrow i_2\rightarrow \cdots \rightarrow
 i_k\rightarrow i_1\]</span> 绕 <span class="math inline">\(C\)</span>
-一圈时，有奇数条边的定向与行走方向一致即可
-(当然也就有奇数条边与行走方向相反)。</p>
+一圈时，有奇数条边的定向与行走方向一致即可，当然也就有奇数条边与行走方向相反。</p>
 <blockquote><p><strong>定义</strong>：在一个有向图 <span class="math inline">\(G\)</span> 中，如果一条回路的 <span class="math inline">\(C\)</span> 的长度是偶数，且删除 <span class="math inline">\(C\)</span> 后剩下的部分仍然存在完美匹配，就称
-<span class="math inline">\(C\)</span> 是一个好的回路。如果 <span class="math inline">\(G\)</span> 的一个定向使得 <span class="math inline">\(G\)</span> 的所有好的回路都是奇定向的
-(即沿着回路的任一方向行走都有奇数条边的定向与行走方向一致)，就称这个定向是
+<span class="math inline">\(C\)</span> 是一个好的回路。如果 <span class="math inline">\(G\)</span> 的一个定向使得 <span class="math inline">\(G\)</span>
+的所有好的回路都是奇定向的，即沿着回路的任一方向行走都有奇数条边的定向与行走方向一致，就称这个定向是
 <span class="math inline">\(G\)</span> 的一个 Pfaffian 定向。</p>
 </blockquote>
 <p>对一般的图，找到其 Pfaffian
 定向是困难的事，但是对平面图却很简单。这就是下面的定理：</p>
-<blockquote><p><strong>Kasteleyn 定理</strong>：设 <span class="math inline">\(G\)</span> 是一个简单平面图，则可以给 <span class="math inline">\(G\)</span> 的边适当定向，使得当逆时针沿着 <span class="math inline">\(G\)</span> 的每个面行走时
-(外部的无穷区域不算)，都有奇数条边与行走方向一致，这种定向就是 <span class="math inline">\(G\)</span> 的 Pfaffian 定向。</p>
+<blockquote><p><strong>Kasteleyn 定理</strong>：设 <span class="math inline">\(G\)</span> 是一个简单平面图，则可以给 <span class="math inline">\(G\)</span> 的边适当定向，使得当逆时针沿着 <span class="math inline">\(G\)</span>
+的每个面行走时（外部的无穷区域不算），都有奇数条边与行走方向一致，这种定向就是
+<span class="math inline">\(G\)</span> 的 Pfaffian 定向。</p>
 </blockquote>
 <p><strong>证明</strong>：首先说明存在这样的定向，使得 <span class="math inline">\(G\)</span>
 的每个面都是奇定向的。对面的个数归纳：<span class="math inline">\(f=0\)</span>，则 <span class="math inline">\(G\)</span> 是一个树，任何定向都是 Pfaffian
@@ -486,20 +486,20 @@ i_k\rightarrow i_1\]</span> 绕 <span class="math inline">\(C\)</span>
 个面的图 <span class="math inline">\(G\)</span>，找到一条内部面与外部区域相邻的边 <span class="math inline">\(e\)</span>，删去 <span class="math inline">\(e\)</span> 得到的是一个有 <span class="math inline">\(f-1\)</span>
 个面的有向图，因此由归纳假设，可以让每个面都是奇定向，然后把 <span class="math inline">\(e\)</span> 补回去，适当给 <span class="math inline">\(e\)</span>
 定向使得最后这个面也是奇定向的即可。</p>
-<p>接下来说明这样的定向是 Pfaffian 定向。为此需要说明对 <span class="math inline">\(G\)</span> 中任意好的回路 <span class="math inline">\(C\)</span>，当绕着 <span class="math inline">\(C\)</span> 的内部逆时针 (或者顺时针也行)
-行走一圈时，有奇数条边的定向与行走方向一致。</p>
+<p>接下来说明这样的定向是 Pfaffian 定向。为此需要说明对 <span class="math inline">\(G\)</span> 中任意好的回路 <span class="math inline">\(C\)</span>，当绕着 <span class="math inline">\(C\)</span>
+的内部逆时针行走一圈时，有奇数条边的定向与行走方向一致。</p>
 <p>设 <span class="math inline">\(C\)</span> 长度为 <span class="math inline">\(l\)</span>，<span class="math inline">\(C\)</span>
 内部有 <span class="math inline">\(p\)</span> 个顶点，<span class="math inline">\(q\)</span> 条边，<span class="math inline">\(r\)</span> 个面，<span class="math inline">\(C\)</span> 上逆时针定向的边的个数为 <span class="math inline">\(c\)</span>，内部的第 <span class="math inline">\(i\)</span> 个面 (<span class="math inline">\(1\leq
 i\leq r\)</span>) 上逆时针定向的边的个数为 <span class="math inline">\(c_i\)</span>。</p>
 <p>绕着所有面都逆时针走一圈，遇到的与行走方向定向相同的边的个数是 <span class="math inline">\(\sum\limits_{i=1}^rc_i=c+q\)</span>，这是因为
-<span class="math inline">\(C\)</span> 内部的每条边 (一共有 <span class="math inline">\(q\)</span> 条)
-都被走了两次，一次逆时针，一次顺时针，因此都被计算了一次；而 <span class="math inline">\(C\)</span> 上的边只有逆时针定向的那些边 (一共有
-<span class="math inline">\(c\)</span> 条) 被计算了一次。</p>
+<span class="math inline">\(C\)</span> 内部的 <span class="math inline">\(q\)</span>
+条边都被走了两次，一次逆时针，一次顺时针，因此都被计算了一次；而 <span class="math inline">\(C\)</span> 上的边只有逆时针定向的那些边（一共有
+<span class="math inline">\(c\)</span> 条）被计算了一次。</p>
 <p>由于每个 <span class="math inline">\(c_i\)</span> 都是奇数，因此
 <span class="math display">\[r\equiv c+q\ (\text{mod}\ 2).\]</span></p>
 <p>另一方面对 <span class="math inline">\(C\)</span> 包含的区域用 Euler
 定理，得到 <span class="math display">\[(p+l)-(q+l)+r=1.\]</span> 从而
-<span class="math inline">\(p\)</span> 与 <span class="math inline">\(c\)</span> 奇偶性相反，但是 <span class="math inline">\(p\)</span> 是偶数 (因为删去 <span class="math inline">\(C\)</span> 以后仍然存在匹配说明 <span class="math inline">\(C\)</span> 的内部和外部各有偶数个顶点)，因此 <span class="math inline">\(c\)</span> 是奇数，这就证明了定理。</p>
+<span class="math inline">\(p\)</span> 与 <span class="math inline">\(c\)</span> 奇偶性相反，但是 <span class="math inline">\(p\)</span> 是偶数，这是因为删去 <span class="math inline">\(C\)</span> 以后仍然存在匹配说明 <span class="math inline">\(C\)</span> 的内部和外部各有偶数个顶点，因此 <span class="math inline">\(c\)</span> 是奇数，这就证明了定理。</p>
 <h1 id="棋盘的多米诺骨牌密铺的计数">棋盘的多米诺骨牌密铺的计数</h1>
 <p>回到文章开始的问题。</p>
 <p>设棋盘的大小为 <span class="math inline">\(m\times n\)</span>，<span class="math inline">\(m\)</span> 是行数。这里 <span class="math inline">\(m,n\)</span>
@@ -508,19 +508,18 @@ i\leq r\)</span>) 上逆时针定向的边的个数为 <span class="math inline"
 的顶点，两个方格对应的顶点 <span class="math inline">\(u,v\)</span> 在
 <span class="math inline">\(G\)</span>
 中相邻当且仅当它们有公共的边，这样就得到一个有 <span class="math inline">\(mn\)</span> 个顶点的平面图。棋盘的多米诺密铺与
-<span class="math inline">\(G\)</span> 的完美匹配是一一对应的
-(密铺中的每个骨牌恰好盖住两个相邻的方格，这两个方格匹配在了一起)。</p>
+<span class="math inline">\(G\)</span>
+的完美匹配是一一对应的：密铺中的每个骨牌恰好盖住两个相邻的方格，这两个方格匹配在了一起。</p>
 <p>为了求出 <span class="math inline">\(G\)</span>
 的完美匹配个数，只要标记出 <span class="math inline">\(G\)</span> 的一个
 Pfaffian 定向，写出对应的邻接矩阵，然后求出行列式，再开平方即可。</p>
 <p>Pfaffian 定向是很容易找的，如下图所示：</p>
 <p><img style="margin:0px auto;display:block" src="/images/pfaff/pfaffian.png"></p>
-<p>下一步是写出这个定向图的邻接矩阵来
-(顶点标号的顺序就是第一行从左到右，然后是第二行从左到右，以此类推)。设
+<p>下一步是写出这个定向图的邻接矩阵。我们按照从第一行开始，每一行从左到右的顺序给顶点排序。设
 <span class="math display">\[B_n=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{n\times
 n}.\]</span> 则邻接矩阵为 <span class="math display">\[L(m,n)=\begin{pmatrix}B_n&amp;I_n&amp;&amp;&amp;\\-I_n&amp;-B_n&amp;I_n&amp;&amp;\\&amp;-I_n&amp;B_n&amp;&amp;\\&amp;&amp;&amp;\ddots&amp;I_n\\&amp;&amp;&amp;-I_n&amp;(-1)^{m-1}B_n\end{pmatrix}_{m\times
 m}.\]</span></p>
-<p>我把求邻接矩阵的详细过程放在后面的附录中，先来求 <span class="math inline">\(L(m,n)\)</span> 的行列式。</p>
+<p>我把求邻接矩阵的详细过程放在后面的附录中。下面先来求 <span class="math inline">\(L(m,n)\)</span> 的行列式。</p>
 <p>适当给 <span class="math inline">\(L(m,n)\)</span>
 的行列变号，可以得到 <span class="math display">\[\begin{align*}
 \det
@@ -538,22 +537,21 @@ I_n\otimes C_m) = \prod_{i=1}^n\prod_{j=1}^m(\lambda_i-\mu_j).\]</span>
 此即为要求的完美匹配的个数。</p>
 <h1 id="未尽的讨论">未尽的讨论</h1>
 <p>我们已经得到了一个关于 <span class="math inline">\(m\times n\)</span>
-棋盘的多米诺骨牌密铺的漂亮的表达式，事情可以结束了吗？其实还没有，这个表达式虽然很漂亮，但是我们没法用它来具体计算匹配个数的值
-(一堆三角函数的乘积怎么算？)。那应该怎么办呢？这里需要一些关于多项式的结式的知识，本文就不写了，有兴趣的读者可以参考
-Martin Aigner 的《A Course in Enumeration》一书 10.1 小节。</p>
+棋盘的多米诺骨牌密铺的漂亮的表达式，事情可以结束了吗？其实还没有，这个表达式虽然很漂亮，但是我们没法用它来具体计算匹配个数的值（一堆三角函数的乘积怎么算？）。那应该怎么办呢？这里需要一些关于多项式的结式的知识，本文就不写了，有兴趣的读者可以参考
+Martin Aigner 的 "A Course in Enumeration" 一书 10.1 小节。</p>
 <h1 id="附录">附录</h1>
 <h2 id="求邻接矩阵-lmn-的具体步骤">求邻接矩阵 <span class="math inline">\(L(m,n)\)</span> 的具体步骤</h2>
 <p>考虑从 <span class="math inline">\(G\)</span>
 中取出红色箭头标记的一行后得到的图：</p>
 <p><img style="margin:0px auto;display:block" src="/images/pfaff/row.png"></p>
-<p>这个图有 <span class="math inline">\(n\)</span> 个顶点
-(顺序从左到右)，其邻接矩阵为 <span class="math display">\[B_n=(b_{ij})=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{n\times
+<p>这个图有 <span class="math inline">\(n\)</span>
+个顶点，顺序从左到右，其邻接矩阵为 <span class="math display">\[B_n=(b_{ij})=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{n\times
 n}.\]</span></p>
 <p>同理 <span class="math inline">\(G\)</span>
 的绿色箭头标记的行对应的图的邻接矩阵是 <span class="math inline">\(-B_n\)</span>：</p>
 <p><img style="margin:0px auto;display:block" src="/images/pfaff/rowback.png"></p>
-<p>以及 <span class="math inline">\(G\)</span> 的任何一列对应的图 (包含
-<span class="math inline">\(m\)</span> 个顶点) 的邻接矩阵是 <span class="math inline">\(A_m\)</span>：</p>
+<p>以及 <span class="math inline">\(G\)</span> 的任何一列对应的图（包含
+<span class="math inline">\(m\)</span> 个顶点）的邻接矩阵是 <span class="math inline">\(A_m\)</span>：</p>
 <p><img style="margin:0px auto;display:block" src="/images/pfaff/col.png"></p>
 <p><span class="math display">\[A_m=(a_{ij})=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{m\times
 m}.\]</span></p>
@@ -612,8 +610,8 @@ even}.\end{cases}\]</span></p>
 <p><span class="math display">\[f_m = \lambda f_{m-1} -
 f_{m-2},\]</span></p>
 <p>结合初始条件 <span class="math inline">\(f_0=1, f_1=\lambda\)</span>
-(初始条件可以从 <span class="math inline">\(m=2\)</span> 的情形展开确定)
-可得</p>
+（初始条件可以从 <span class="math inline">\(m=2\)</span>
+的情形展开确定） 可得</p>
 <p><span class="math display">\[f_m(\lambda) =
 \frac{1}{\sqrt{\lambda^2-4}}\left[\left(\frac{\lambda+\sqrt{\lambda^2-4}}{2}\right)^{m+1}-\left(\frac{\lambda-\sqrt{\lambda^2-4}}{2}\right)^{m+1}\right].\]</span></p>
 <p>由此不难确定 <span class="math inline">\(C_m\)</span> 的 <span class="math inline">\(m\)</span> 个特征值为 <span class="math inline">\(2\cos\dfrac{k\pi}{m+1},k=1,\ldots,m\)</span>。</p>

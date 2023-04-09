@@ -11,7 +11,7 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="问题：一个边长为 \(a\times
-b\times c\) 的平行六边形 (\(a,b,c\) 都是正整数)，每个内角都是 120
+b\times c\) 的平行六边形（\(a,b,c\) 都是正整数），每个内角都是 120
 度。用边长为 1 的菱形密铺，有多少种不同的方法？
 
 
@@ -355,7 +355,7 @@ b\times c\) 的平行六边形 (\(a,b,c\) 都是正整数)，每个内角都是 
 
             <div class="entry pink-link-context">
                 <blockquote><p><strong>问题</strong>：一个边长为 <span class="math inline">\(a\times
-b\times c\)</span> 的平行六边形 (<span class="math inline">\(a,b,c\)</span> 都是正整数)，每个内角都是 120
+b\times c\)</span> 的平行六边形（<span class="math inline">\(a,b,c\)</span> 都是正整数），每个内角都是 120
 度。用边长为 1 的菱形密铺，有多少种不同的方法？</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/hexagon.svg"></p>
 </blockquote>
@@ -363,8 +363,8 @@ b\times c\)</span> 的平行六边形 (<span class="math inline">\(a,b,c\)</span
 <p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/planepartition.svg"></p>
 <span id="more"></span>
 <p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足一个规律：从墙角到外侧，箱子的高度是递减的。我们把箱子对应的高度填充在一个
-<span class="math inline">\(b\)</span> 行 <span class="math inline">\(a\)</span> 列的矩阵中：(习惯上空白位置的 0
-不写出来)</p>
+<span class="math inline">\(b\)</span> 行 <span class="math inline">\(a\)</span> 列的矩阵中：（习惯上空白位置的 0
+不写出来）</p>
 <table>
 <tbody>
 <tr class="odd">
@@ -410,15 +410,15 @@ b\times c\)</span> 的平行六边形 (<span class="math inline">\(a,b,c\)</span
 </tbody>
 </table>
 <p>记这个矩阵为 <span class="math inline">\(A\)</span>，<span class="math inline">\(A\)</span> 有如下特点：</p>
-<hr>
+<blockquote>
 <ul>
 <li><span class="math inline">\(A\)</span> 的元素 <span class="math inline">\(a_{ij}\)</span> 表示地面上第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列处箱子的高度。</li>
 <li><span class="math inline">\(A\)</span>
-的每一行从左到右，每一列从上到下都是递减的 (于是 <span class="math inline">\(a_{11}\)</span> 必然是矩阵中最大的元素)。</li>
-<li>每个元素 <span class="math inline">\(a_{ij}\)</span> 是介于 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(c\)</span> 之间的非负整数
-(箱子的高度不能超过天花板的高度 <span class="math inline">\(c\)</span>)。</li>
+的每一行从左到右，每一列从上到下都是递减的。</li>
+<li><span class="math inline">\(a_{ij}\)</span> 都是介于 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(c\)</span>
+之间的整数（箱子的高度不能超过天花板的高度 <span class="math inline">\(c\)</span>）。</li>
 </ul>
-<hr>
+</blockquote>
 <p>我们把这样的矩阵 <span class="math inline">\(A\)</span>
 叫做一个参数为 <span class="math inline">\((a,b,c)\)</span>
 的受限制的平面分拆。</p>
@@ -498,8 +498,8 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
 <p>这个求和是每个置换 <span class="math inline">\(\sigma\)</span>
 都跑遍其所有可能的路径组 <span class="math inline">\(P_\sigma\)</span>。</p>
 <p>我们要证明在上面的求和中所有相交的路径组对应的和项是可以两两配对抵消的，剩下的只有不相交的路径组，而由于不相交的路径组只有在
-<span class="math inline">\(\sigma\)</span> 为恒等置换时才可能发生
-(从图上可以很容易看出这一点)。这样就得到 <span class="math inline">\(\det M=\sum\limits_{\mathcal{P}}1\)</span>，而且
+<span class="math inline">\(\sigma\)</span>
+为恒等置换时才可能发生（从图上可以很容易看出这一点）。这样就得到 <span class="math inline">\(\det M=\sum\limits_{\mathcal{P}}1\)</span>，而且
 <span class="math inline">\(\mathcal{P}\)</span>
 只跑遍满足每个路径都是从 <span class="math inline">\(A_i\)</span> 到
 <span class="math inline">\(B_i\)</span>
@@ -511,16 +511,15 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
 <span class="math inline">\(p_i:A_i\rightarrow B_{\sigma(i)}\)</span>
 与其它路径有交点，并选择最大的 <span class="math inline">\(j,j&lt;i\)</span> 使得 <span class="math inline">\(p_j\)</span> 与 <span class="math inline">\(p_i\)</span> 相交，然后选择二者的最后一个交点
 <span class="math inline">\(C\)</span>。构造 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span> 如下：交换
-<span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 在 <span class="math inline">\(C\)</span> 点之后的部分，保持其它 <span class="math inline">\(p_k\)</span> 不动 (想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们在点 <span class="math inline">\(C\)</span>
-相遇时，强迫他们改变路线，沿着对方剩下的路径前往对方的目的地)。</p>
+<span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 在 <span class="math inline">\(C\)</span> 点之后的部分，保持其它 <span class="math inline">\(p_k\)</span> 不动 （想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们在点 <span class="math inline">\(C\)</span>
+相遇时，强迫他们改变路线，沿着对方剩下的路径前往对方的目的地）。</p>
 <p>于是在 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span>
 中有 <span class="math inline">\(p_i':A_i\rightarrow
 B_{\sigma(j)}\)</span>，<span class="math inline">\(p_j':A_j\rightarrow
 B_{\sigma(i)}\)</span>。显然置换 <span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此符号相反。更重要的是如果对
 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span>
-也进行这个变换的话，又回到了 <span class="math inline">\(\mathcal{P}_\sigma\)</span>
-(这一点很重要，这才能保证是名符其实的
-"两两配对")，因此它们对应的和项抵消，这就证明了结论。</p>
+也进行这个变换的话，又回到了 <span class="math inline">\(\mathcal{P}_\sigma\)</span>。这一点很重要，这才能保证是名符其实的
+"两两配对"。因此它们对应的和项抵消，这就证明了结论。</p>
 <blockquote>
 <p>这个选择 <span class="math inline">\(p_i,p_j\)</span> 和 <span class="math inline">\(C\)</span>
 的过程实际是给路径组的所有交点规定了一个字典序，我们选择字典序下最大的交点构造交换后的路径组
@@ -536,13 +535,13 @@ condensation。这是一个递归求解行列式的方法：设 <span class="mat
 A_1^1\det A_n^n-\det A_1^n\det A_n^1.\]</span></p>
 <p>用一个形象的图片描述：</p>
 <p><img style="margin:0px auto;display:block" width="450" src="/images/macmahon/dodgson.svg"></p>
-<p>这个结论的证明不难，可以见<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Dodgson_condensation">维基百科</a>，这里就不再写了。</p>
+<p>这个结论的证明不难，可以见 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Dodgson_condensation">维基百科</a>，这里就不再写了。</p>
 <p>我们对 <span class="math inline">\(c\)</span> 归纳来证明</p>
 <blockquote><p><strong>Macmahon 公式</strong>：<span class="math display">\[\det_{1\leq i,j\leq
 c}\left(\left(\begin{array}{c}a+b\\a+i-j\end{array}\right)\right)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
 </blockquote>
-<p>首先你需要对 <span class="math inline">\(c=1\)</span> 和 <span class="math inline">\(c=2\)</span> 的情形手算验证 (略繁琐，不过只是一个
-2 阶矩阵)，设 <span class="math inline">\(M_c(a, b)\)</span>
+<p>首先你需要对 <span class="math inline">\(c=1\)</span> 和 <span class="math inline">\(c=2\)</span> 的情形手算验证（略繁琐，不过只是一个
+2 阶矩阵），设 <span class="math inline">\(M_c(a, b)\)</span>
 为所求的行列式，注意到</p>
 <p><span class="math display">\[\begin{cases}(M_c(a,b))_1^1=M_{c-1}(a,b),\\(M_c(a,b))_n^n=M_{c-1}(a,b),\\(M_c(a,b))_1^n=M_{c-1}(a-1,b+1),\\(M_c(a,b))_n^1=M_{c-1}(a+1,b-1),\\(M_c(a,b))^{1,n}_{1,n}=M_{c-2}(a,b).\end{cases}\]</span></p>
 <p>然后应用归纳假设即可。</p>
@@ -553,7 +552,7 @@ c}\left(\left(\begin{array}{c}a+b\\a+i-j\end{array}\right)\right)=\prod_{i=1}^a\
 世纪英国牛津大学的数学教授，细心点的读者可能注意到这位老兄的名字实在让人不敢恭维：Dodgson，dog
 ..
 son？大概他也知道自己的名字难登大雅之堂，所以他给自己取了一个很好听的笔名：Lewis
-Carroll (路易斯·卡罗尔)。</p>
+Carroll（路易斯·卡罗尔）。</p>
 <p>你对这个名字没有反应么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学的数学教授，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。他曾经专门为邻居家的女儿写了一部童话来哄她开心，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把
 Dodgson
 的全部著作都搜集呈上来，于是大臣献上了一本厚厚的《符号逻辑》，当然结果你猜得到的

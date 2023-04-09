@@ -459,6 +459,8 @@ Markov 链 <span class="math inline">\(M\)</span>
 <li>如果步骤 2 中的 <span class="math inline">\(|S|\)</span> 个链在时刻
 0 给出的状态相同，记此状态为 <span class="math inline">\(s^\ast\)</span>，则输出 <span class="math inline">\(s^\ast\)</span> 并退出程序。否则将 <span class="math inline">\(m\)</span> 的值加 1 并重复步骤 2。</li>
 </ol>
+<p>下图显示了算法的每个重启时刻，相同颜色的随机数是在同一批中生成的。</p>
+<p><img style="margin:0px auto;display:block" src="/images/cftp/random_numbers.svg"></p>
 <p><strong>断言</strong>：如果上述步骤以概率 1
 在有限时间内结束，则其返回值 <span class="math inline">\(s^\ast\)</span>
 服从平稳分布 <span class="math inline">\(\pi\)</span>: <span class="math display">\[\mathbb{P}(s^\ast = s) = \pi(s),\quad \forall
