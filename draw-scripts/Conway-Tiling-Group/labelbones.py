@@ -12,6 +12,13 @@ G = (0.4, 1.0, 0.1)
 B = (0.0, 0.5, 1.0)
 
 
+def circ(x, y, rad, col):
+    newpath()
+    circle(x, y, rad)
+    fill(*col)
+    stroke()
+
+
 def hexagon(color, indices):
     newpath()
     v = Vector(0, 1)
@@ -63,29 +70,34 @@ def hexagon(color, indices):
 init("bone.eps", 500, 200)
 center()
 scale(30)
-for v in [(0, 0), (-SQRT3, 0), (SQRT3, 0)]:
+for i, v in enumerate([(0, 0), (-SQRT3, 0), (SQRT3, 0)]):
     gsave()
     translate(v)
     hexagon(G, [0, 1, 2, 3, 4, 5])
+    if i == 1:
+        circ(-cos(pi/6), -sin(pi/6), 0.1, (1, 0, 1))
     grestore()
-
 
 a = 5.5
 gsave()
 translate(-a, 0)
-for v in [(0, 0), (SQRT3/2, 1.5), (-SQRT3/2, -1.5)]:
+for i, v in enumerate([(0, 0), (SQRT3/2, 1.5), (-SQRT3/2, -1.5)]):
     gsave()
     translate(v)
     hexagon(R, [0, 1, 2, 3, 4, 5])
+    if i == 2:
+        circ(0, -1, 0.1, (1, 0, 1))
     grestore()
 grestore()
 
 gsave()
 translate(a, 0)
-for v in [(0, 0), (SQRT3/2, -1.5), (-SQRT3/2, 1.5)]:
+for i, v in enumerate([(0, 0), (SQRT3/2, -1.5), (-SQRT3/2, 1.5)]):
     gsave()
     translate(v)
     hexagon(B, [0, 1, 2, 3, 4, 5])
+    if i == 1:
+        circ(cos(pi/6), -sin(pi/6), 0.1, (1, 0, 1))
     grestore()
 grestore()
 

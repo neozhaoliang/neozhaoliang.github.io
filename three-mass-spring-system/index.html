@@ -16,7 +16,8 @@
 初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力。那么这个系统的简正模式
 (normal mode) 是什么？
 
-这里简正模式的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。">
+这里 简正模式
+的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -171,14 +172,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/组合数学/">
-                    组合数学 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论/">
                     Durrett-概率论 <span class="right">1 篇</span></a>
                 </a>
@@ -236,7 +229,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                    有限群表示与结合代数 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -244,7 +237,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
+                    线性代数 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -361,7 +354,8 @@
 <p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力。那么这个系统的简正模式
 (normal mode) 是什么？</p>
 </blockquote>
-<p>这里简正模式的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
+<p>这里 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Normal_mode">简正模式</a>
+的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
 <span id="more"></span>
 <p>比较容易发现的简正模式有：</p>
 <ol type="1">
@@ -373,11 +367,12 @@
 <p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"></p></li>
 </ol>
 <p>但是要找出其它的简正模式，并保证没有遗漏，就不能只靠想象了。</p>
-<p>我们首先把这个物理问题转换为一个线性代数问题，然后用一些简单的群表示论知识解决它。</p>
+<p>我们把这个物理问题转换为一个线性代数问题，然后用一些群表示论的知识解决它。</p>
 <p>这个三质点—弹簧组成的系统在任一时刻的状态可以由 6 个物理量 <span class="math inline">\(q_1\sim q_6\)</span> 来刻画：<span class="math inline">\((q_1,q_2)\)</span> 分别表示质点 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(x,y\)</span> 方向上相对于其平衡位置的位移，<span class="math inline">\((q_3,q_4)\)</span>，<span class="math inline">\((q_5,q_6)\)</span> 的含义类似。</p>
 <p><img style="margin:0px auto;display:block" width="300" src="/images/mass-spring/coords.svg"></p>
 <p>设弹簧的弹性系数为 <span class="math inline">\(k\)</span>，原点在三角形中心，<span class="math inline">\(x\)</span>
-轴水平向右，于是三个弹簧所含的弹性势能为 (投影到弹簧所在的方向) <span class="math display">\[
+轴水平向右，于是三个弹簧所含的弹性势能为 （将形变投影到弹簧所在的方向）
+<span class="math display">\[
 \begin{align*}
 V=&amp;\frac{1}{2}k(q_3-q_1)^2+\frac{1}{2}k\left[\frac{-1}{2}(q_5-q_3) +
 \frac{\sqrt{3}}{2}(q_6-q_4)\right]^2+\\&amp;\frac{1}{2}k\left[\frac{1}{2}(q_1-q_5)
@@ -420,8 +415,8 @@ t}\)</span>，其中 <span class="math inline">\(\overline{q}_i\)</span>
 <p><span class="math inline">\(S_3\)</span>
 在系统状态上的作用由如下方式定义：我们把系统状态 <span class="math inline">\(\mathbf{q}\)</span> 所在的空间 <span class="math inline">\(\mathbb{R}^6\)</span> 看做是 <span class="math inline">\(\mathbb{R}^3\)</span> 和 <span class="math inline">\(\mathbb{R}^2\)</span> 的张量积 <span class="math inline">\(\mathbb{R}^3\otimes\mathbb{R}^2\)</span>，<span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\mathbb{R}^3\otimes\mathbb{R}^2\)</span>
 上的表示就是其在 <span class="math inline">\(\mathbb{R}^3\)</span>
-上的表示 (三元坐标的置换) 和在 <span class="math inline">\(\mathbb{R}^2\)</span> 上的表示 (正三角形的对称群)
-的张量积。</p>
+上的表示 （三元坐标的置换） 和在 <span class="math inline">\(\mathbb{R}^2\)</span> 上的表示
+（正三角形的对称群） 的张量积。</p>
 <p>我们把这个张量积表示记作 <span class="math inline">\(\rho\)</span>，其特征记作 <span class="math inline">\(\chi\)</span>，记 <span class="math display">\[R=\begin{pmatrix}\frac{\cos2\pi}{3}&amp;-\frac{\sin2\pi}{3}\\\frac{\sin2\pi}{3}&amp;\frac{\cos2\pi}{3}\end{pmatrix},\quad
 S=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}.\]</span></p>
 <p>下面列出了 <span class="math inline">\(S_3\)</span> 的各个元素在
@@ -442,8 +437,9 @@ SR^2=\begin{pmatrix}SR^2&amp;0&amp;0\\0&amp;0&amp;SR^2\\0&amp;SR^2&amp;0\end{pma
 \end{align*}
 \]</span> 一个比较直观的事实是 <span class="math inline">\(\rho\)</span>
 保持系统的势能不变，即对任何状态 <span class="math inline">\(\mathbf{q}\)</span> 有 <span class="math inline">\(V(\rho(g)\mathbf{q})=V(\mathbf{q})\)</span>，即
-<span class="math inline">\(\rho(g)U=U\rho(g)\)</span> (不放心的话可以对
-<span class="math inline">\(a,b\)</span> 验证即可)，所以 <span class="math inline">\(U\)</span> 是表示 <span class="math inline">\(\rho\)</span> 的一个自同态。</p>
+<span class="math inline">\(\rho(g)U=U\rho(g)\)</span>
+（不放心的话可以对 <span class="math inline">\(a,b\)</span>
+验证即可），所以 <span class="math inline">\(U\)</span> 是表示 <span class="math inline">\(\rho\)</span> 的一个自同态。</p>
 <p>容易验证 <span class="math inline">\(\chi(e)=6\)</span>，<span class="math inline">\(\chi(g)=0, \forall g\ne e\)</span>，于是 <span class="math inline">\(\rho\)</span> 同构于 <span class="math inline">\(S_3\)</span>
 的正则表示，从而可以分解为两个一次表示和两个二次不可约表示的和： <span class="math display">\[\chi = \chi_1 + \chi_2 + 2\chi_3.\]</span> 其中
 <span class="math inline">\(\chi_1\)</span> 是平凡表示的特征，<span class="math inline">\(\chi_2\)</span>
@@ -495,7 +491,7 @@ V_{\lambda_3}=\dim V_{\lambda_4}=2\)</span>。这里可能有些 <span class="ma
 0，而平移包含了 <span class="math inline">\(x\)</span> 轴和 <span class="math inline">\(y\)</span> 轴两个线性无关的方向上的平移，所以
 <strong>0 作为 <span class="math inline">\(U\)</span>
 的特征值至少是三重的</strong>。我们已经解得 <span class="math inline">\(\lambda_2=0\)</span> 是一个，所以 <span class="math inline">\(\lambda_3\)</span> 和 <span class="math inline">\(\lambda_4\)</span> 中必然还有一个是 0，不妨设
-<span class="math inline">\(\lambda_3=0\)</span>，则 <span class="math inline">\(\lambda_4=3/2\)</span>。(严格的话可以论证 <span class="math inline">\(U\)</span> 的秩是 2，从而齐次线性方程组 <span class="math inline">\(UX=0\)</span> 有三个线性无关解)</p>
+<span class="math inline">\(\lambda_3=0\)</span>，则 <span class="math inline">\(\lambda_4=3/2\)</span>。（严格的话可以论证 <span class="math inline">\(U\)</span> 的秩是 2，从而齐次线性方程组 <span class="math inline">\(UX=0\)</span> 有三个线性无关解）</p>
 <p>总结起来就是：</p>
 <p><span class="math inline">\(S_3\)</span> 在系统状态空间 <span class="math inline">\(\mathbb{R}^6=\mathbb{R}^3\otimes\mathbb{R}^2\)</span>
 上的表示 <span class="math inline">\(\rho\)</span>
