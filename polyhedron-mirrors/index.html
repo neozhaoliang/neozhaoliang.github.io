@@ -377,8 +377,6 @@ dodecahedron</a>)，它有个独特之处是自身在镜子反射下成的像可
 <p>下图显示的是截顶的八面体，你觉得它有什么问题不？</p>
 <object data="/code/trunc-octahedron.svg">
 </object>
-<p><a target="_blank" rel="noopener" href="https://mathstodon.xyz/@11011110/">David Eppstein</a> <a target="_blank" rel="noopener" href="https://mathstodon.xyz/@11011110/109374557204468126">评论说</a>
-可以把截顶八面体对半切开，两部分转一个角度再拼上，然后得到的就是一个内部镜像可以密铺整个空间的多面体。不过我的几何直觉差的太远了。</p>
 <p>这个代码可以渲染绝大部分的 uniform polyhedron
 及其对偶，入口函数为</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">generate_polytope_data(<br>    coxeter_diagram,<br>    trunc_type,<br>    extra_relations=(),<br>    snub=<span class="hljs-literal">False</span>,<br>    dual=<span class="hljs-literal">False</span><br>):<br></code></pre></td></tr></tbody></table></figure>
