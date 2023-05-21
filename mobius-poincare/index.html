@@ -7,7 +7,7 @@
 
     
 
-    <title>Möbius 变换的分类与 Poincaré 双曲空间的等距 | 朝花夕拾</title>
+    <title>Möbius 变换与 Poincaré 双曲空间的等距 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="这几天因为疫情居家观察难得多出点时间（不用健步挤地铁），可以写点小文章。我之前写过一篇介绍
@@ -15,7 +15,7 @@ Möbius
 变换分类的文章，今天继续那里的讨论，介绍一个 Möbius 变换 \(M\) 作为 Poincaré 双曲空圆盘 \(\mathbb{H}\) 上的等距的两种构造方法：
 
 指定 \(M\)
-的不动点的位置，不动点的位置就可以决定变换的类型。
+的不动点的个数和位置，不动点的个数和位置可以决定变换的类型。
 指定两个反射镜面的位置：取 \(\mathbb{H}\)
 中的两条测地线作为镜面，则关于这两个镜面的反演变换的复合变换就是一个
 Möbius 变换。镜面之间的关系也可以决定变换的类型。
@@ -29,7 +29,7 @@ Möbius 变换。镜面之间的关系也可以决定变换的类型。
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Möbius 变换的分类与 Poincaré 双曲空间的等距"/>
+    <meta property="og:title" content="Möbius 变换与 Poincaré 双曲空间的等距"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -179,14 +179,6 @@ Möbius 变换。镜面之间的关系也可以决定变换的类型。
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/组合数学/">
-                    组合数学 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论/">
                     Durrett-概率论 <span class="right">1 篇</span></a>
                 </a>
@@ -236,7 +228,7 @@ Möbius 变换。镜面之间的关系也可以决定变换的类型。
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/几何/">
-                    几何 <span class="right">3 篇</span></a>
+                    几何 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -329,7 +321,7 @@ Möbius 变换。镜面之间的关系也可以决定变换的类型。
             <div class="article-title">
                 
     
-        <h1>Möbius 变换的分类与 Poincaré 双曲空间的等距</h1>
+        <h1>Möbius 变换与 Poincaré 双曲空间的等距</h1>
     
 
 
@@ -374,7 +366,7 @@ Möbius 变换。镜面之间的关系也可以决定变换的类型。
 变换分类的文章</a>，今天继续那里的讨论，介绍一个 Möbius 变换 <span class="math inline">\(M\)</span> 作为 Poincaré 双曲空圆盘 <span class="math inline">\(\mathbb{H}\)</span> 上的等距的两种构造方法：</p>
 <ol type="1">
 <li>指定 <span class="math inline">\(M\)</span>
-的不动点的位置，不动点的位置就可以决定变换的类型。</li>
+的不动点的个数和位置，不动点的个数和位置可以决定变换的类型。</li>
 <li>指定两个反射镜面的位置：取 <span class="math inline">\(\mathbb{H}\)</span>
 中的两条测地线作为镜面，则关于这两个镜面的反演变换的复合变换就是一个
 Möbius 变换。镜面之间的关系也可以决定变换的类型。</li>
@@ -395,7 +387,7 @@ Möbius 变换。镜面之间的关系也可以决定变换的类型。</li>
 </blockquote>
 <h1 id="用不动点构造双曲等距">用不动点构造双曲等距</h1>
 <p>在复分析课程中，我们学过 <span class="math inline">\(\mathbb{H}\)</span> 的保持定向的等距同构是 Möbius
-群的一个子群，其中元素具有如下的表示形式： <span class="math display">\[M(z) = \mathrm{e}^{i\theta}\frac{z -
+群的一个子群，其元素具有如下的表示形式： <span class="math display">\[M(z) = \mathrm{e}^{i\theta}\frac{z -
 a}{1-\overline{a}z},\quad \theta\in\mathbb{R},\, |a|&lt;1.\]</span> 可见
 <span class="math inline">\(M\)</span> 的迹 <span class="math inline">\(\mathrm{tr}(M)=\mathrm{e}^{i\theta}+1\)</span>
 总是满足 <span class="math inline">\(0\leq|\mathrm{tr}(M)|\leq2\)</span>，所以 <span class="math inline">\(M\)</span> 不可能是斜航型的 (loxodromic)，从而
@@ -412,8 +404,8 @@ a}{1-\overline{a}z},\quad \theta\in\mathbb{R},\, |a|&lt;1.\]</span> 可见
 <p><img style="margin:0px auto;display:block" width="400" src="/images/mobius/elliptic.svg"></p>
 <p>图中画出了两族圆：</p>
 <ol type="1">
-<li>第一族圆是彩色的，它们在双曲度量下的中心都是 <span class="math inline">\(p_1\)</span>，<span class="math inline">\(M\)</span>
-作用在它们上面保持每个圆不变，同时将圆上的每个点绕着 <span class="math inline">\(p_1\)</span> 旋转。</li>
+<li>第一族圆是彩色的，它们在双曲度量下的中心都是 <span class="math inline">\(p_1\)</span>，<span class="math inline">\(M\)</span> 保持每个圆不变，同时将圆上的每个点绕着
+<span class="math inline">\(p_1\)</span> 旋转。</li>
 <li>第二族圆用虚线标注，这些圆都和第一族圆正交、同时经过 <span class="math inline">\(p_1\)</span> 和 <span class="math inline">\(p_2\)</span>，并且都与单位圆正交。<span class="math inline">\(M\)</span>
 作用在这些圆上会把一个圆变成同族中的另一个。</li>
 </ol>
@@ -455,7 +447,7 @@ cz,\,c\in\mathbb{R}^+\)</span>，它们总是有两个不动点。如果 <span c
 <span class="math inline">\(M\)</span> 的构造：</p>
 <table>
 <colgroup>
-<col style="width: 33%">
+<col style="width: 32%">
 <col style="width: 33%">
 <col style="width: 33%">
 </colgroup>
@@ -510,7 +502,8 @@ Möbius 变换 <span class="math inline">\(T\)</span> 将 <span class="math inli
 <span class="math inline">\(S\)</span> 形如 <span class="math display">\[S(z) = \frac{a\overline{z} +
 b}{c\overline{z}+d},\quad
 a,b,c,d\in\mathbb{C},\,z\in\mathbb{C}_{\infty}.\]</span>
-所以两个反演变换的复合是 Möbius 变换。</p>
+里面包含了复共轭，所以 <span class="math inline">\(S\)</span> 不是一个
+Möbius 变换，但两个反演变换的复合就是 Möbius 变换。</p>
 </blockquote>
 
                 

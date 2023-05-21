@@ -180,14 +180,6 @@ n\) 的正方形网格图 \(G_n\)
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/组合数学/">
-                    组合数学 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论/">
                     Durrett-概率论 <span class="right">1 篇</span></a>
                 </a>
@@ -237,7 +229,7 @@ n\) 的正方形网格图 \(G_n\)
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/几何/">
-                    几何 <span class="right">3 篇</span></a>
+                    几何 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -396,7 +388,7 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 <span id="more"></span>
 <table>
 <colgroup>
-<col style="width: 33%">
+<col style="width: 32%">
 <col style="width: 33%">
 <col style="width: 33%">
 </colgroup>
@@ -427,9 +419,9 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 趋于固定的值，详细结果见下表：</p>
 <table>
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 13%">
+<col style="width: 80%">
+<col style="width: 5%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -463,32 +455,24 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 </table>
 <p>所以在一个随机的完美迷宫中，最多的其实是“拐角” 和“直路”
 (45%)，其次是“死角” (30%)，再次是“丁字岔路”
-(22%)，而“十字路口”是非常少的 (3.6%)。进一步也不难得出度数 2
-的两种情形拐角和直路的极限概率的精确值分别为 <span class="math inline">\((32-20\pi+4\pi^2)/\pi^3\approx 0.279\)</span> 和
+(22%)，而“十字路口”是非常少的
+(3.6%)。进一步也不难算出拐角和直路的极限概率分别为 <span class="math inline">\((32-20\pi+4\pi^2)/\pi^3\approx 0.279\)</span> 和
 <span class="math inline">\((16-16\pi+4\pi^2)/\pi^3\approx
 0.168\)</span>。</p>
-<p>这些概率是怎样计算出来的呢？它和我们这个系列的主题二维随机游动又有何关系呢？这里面的故事相当精彩。粗略地说，上面这些关于随机生成树的概率量，都可以翻译为图上随机游动的概率量，把整个图看做一个电网络，它们又可以翻译为这个电网络的物理量，而这些物理量是可以用各种方法来计算的。在我们这个问题中，一个房间是死角/拐角/岔路/十字路口的概率都可以从一个矩阵出发通过求其主子式得到
+<p>这些概率是怎样计算出来的呢？它和我们这个系列的主题二维随机游动又有何关系呢？这里面的故事相当精彩。粗略地说，上面这些关于随机生成树的概率量，都可以翻译为图上随机游动的概率量，把整个图看做一个电网络，它们又可以翻译为这个电网络的物理量，而这些物理量是可以用各种方法（主要是线性代数）来算的。上面提到的这些概率值都可以从一个矩阵出发通过求其主子式得到
 （或者稍微加点变化），这个矩阵叫做<strong>转移电流矩阵</strong>
-(transfer current
-matrix)，是本文内容的核心。转移电流矩阵的物理定义如下：将 <span class="math inline">\(G_n\)</span> 看作一个电网络，每条边的电阻都是单位
+(transfer current matrix)，其定义为：对给定的图 <span class="math inline">\(G\)</span>，将 <span class="math inline">\(G\)</span> 看作一个电网络，每条边的电阻都是单位
 1。在其中一条边 <span class="math inline">\(e\)</span>
 的两端加上电极，使得流入整个网络的电流总量为 1 个单位，记此时流过边
 <span class="math inline">\(e'\)</span> 的电流总量为 <span class="math inline">\(Y(e,e')\)</span>，则矩阵 <span class="math inline">\(Y=Y(e,e')_{e,e'\in E}\)</span> 叫做网络
-<span class="math inline">\(G_n\)</span> 的转移电流矩阵。</p>
-<p>转移电流矩阵有许多有趣的性质，比如：</p>
-<ul>
-<li><p>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(G_n\)</span>
-的一个随机生成树（从所有生成树中以均匀分布采样），我们后面会介绍任一边
-<span class="math inline">\(e\)</span> 属于 <span class="math inline">\(T\)</span> 的概率 <span class="math inline">\(\mathbb{P}(e\in T)\)</span> 正是 <span class="math inline">\(Y(e, e)\)</span>。一个概率量 <span class="math inline">\(\mathbb{P}(e\in T)\)</span> 等于一个物理量 <span class="math inline">\(Y(e,e)\)</span>，这还是一个挺奇妙的事情。特别当
-<span class="math inline">\(n\to\infty\)</span> 时 <span class="math inline">\(G_n\to\mathbb{Z}^2\)</span>，我们将看到 <span class="math inline">\(Y(e,e)\)</span> 会趋近于极限 <span class="math inline">\(\frac{1}{2}\)</span>。所以如果把 <span class="math inline">\(\mathbb{Z}^2\)</span> 看作一个电网络并在一条边
-<span class="math inline">\(e\)</span>
-的一端输入电流，另一端接地的话，那么恰好会有一半的电流直接从边 <span class="math inline">\(e\)</span> 流过。</p></li>
-<li><p>仍然设 <span class="math inline">\(T\)</span>
-是一个随机生成树，对任何 <span class="math inline">\(k\)</span> 条边
-<span class="math inline">\(e_1,\ldots,e_k\)</span>，定义 <span class="math inline">\(k\times k\)</span> 矩阵 <span class="math inline">\(Y^{(k)}\)</span> 为 <span class="math inline">\(Y^{(k)}(i,j)=Y(e_i,e_j)\)</span>，则我们有如下结论
-（转移电流矩阵定理）： <span class="math display">\[\mathbb{P}(e_1,\ldots,e_k \in T)=\det
-Y^{(k)}.\]</span> 举个例子，在无穷大网格图 <span class="math inline">\(\mathbb{Z}^2\)</span> 中，考虑原点 <span class="math inline">\((0, 0)\)</span> 相邻的四条边 <span class="math inline">\(e_1=(1,0)\)</span>，<span class="math inline">\(e_2=(0, 1)\)</span>，<span class="math inline">\(e_3=(-1,0)\)</span>，<span class="math inline">\(e_4=(0,
--1)\)</span>，我们后面会计算出这四条边对应的转移电流矩阵为 <span class="math display">\[Y^{(4)}=
+<span class="math inline">\(G\)</span> 的转移电流矩阵。</p>
+<p>对 <span class="math inline">\(G\)</span> 的任何 <span class="math inline">\(k\)</span> 条边 <span class="math inline">\(e_1,\ldots,e_k\)</span>，定义 <span class="math inline">\(k\times k\)</span> 矩阵 <span class="math inline">\(Y^{(k)}\)</span> 为 <span class="math inline">\(Y^{(k)}(i,j)=Y(e_i,e_j)\)</span>，则我们有如下结论
+（转移电流矩阵定理）：设 <span class="math inline">\(T\)</span>
+是一个随机生成树，则边 <span class="math inline">\(e_1,\ldots,e_k\)</span> 都属于 <span class="math inline">\(T\)</span> 的概率 <span class="math display">\[\mathbb{P}(e_1,\ldots,e_k \in T)=\det
+Y^{(k)}.\]</span> 举个例子，在 <span class="math inline">\(\mathbb{Z}^2\)</span> 中，与原点 <span class="math inline">\((0, 0)\)</span> 相邻的四条边为 <span class="math inline">\(e_1=(1,0)\)</span>，<span class="math inline">\(e_2=(0, 1)\)</span>，<span class="math inline">\(e_3=(-1,0)\)</span>，<span class="math inline">\(e_4=(0,
+-1)\)</span>，我们后面会计算出这四条边对应的转移电流矩阵为</p>
+<p><span class="math display">\[
+Y^{(4)}=
 \begin{pmatrix}
 \frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi} &amp;
 \frac{2}{\pi}-\frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi}\\
@@ -498,14 +482,17 @@ Y^{(k)}.\]</span> 举个例子，在无穷大网格图 <span class="math inline"
 \frac{1}{2} &amp; \frac{1}{2}-\frac{1}{\pi}\\
 \frac{1}{2}-\frac{1}{\pi} &amp; \frac{2}{\pi}-\frac{1}{2} &amp;
 \frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2}
-\end{pmatrix}.\]</span> 于是原点的度数等于 4 的概率是 <span class="math display">\[\mathbb{P}(e_1,e_2,e_3,e_4\in\mathbb{T})=\det
+\end{pmatrix}.
+\]</span></p>
+<p>于是原点的度数等于 4 的概率是 <span class="math display">\[\mathbb{P}(e_1,e_2,e_3,e_4\in\mathbb{T})=\det
 Y^{(4)}=\left(\frac{4}{\pi}-1\right)\left(1-\frac{2}{\pi}\right)^2\approx
 0.0361.\]</span> 这正是上面列出的十字路口的概率！</p>
 <p>如果是计算概率 <span class="math inline">\(\mathbb{P}(e_1,e_2,e_3\notin T, e_4\in T)\)</span>
 呢？方法如下，把 <span class="math inline">\(e_1,e_2,e_3\)</span> 对应的
 <span class="math inline">\(Y^{(4)}\)</span>
-的前三行全部取负值，并且给前三个对角元加上 1，保持第 4 行不变，得到
-<span class="math display">\[Y^{(4)}_{\overline{123}4}=\begin{pmatrix}
+的前三行全部取负值，并且给前三个对角元加上 1，保持第 4 行不变，得到</p>
+<p><span class="math display">\[
+Y^{(4)}_{\overline{123}4}=\begin{pmatrix}
 \frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2} &amp;
 -\frac{2}{\pi}+\frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2}\\
 \frac{1}{\pi}-\frac{1}{2} &amp; \frac{1}{2} &amp;
@@ -513,14 +500,14 @@ Y^{(4)}=\left(\frac{4}{\pi}-1\right)\left(1-\frac{2}{\pi}\right)^2\approx
 -\frac{2}{\pi}+\frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2} &amp;
 \frac{1}{2} &amp; \frac{1}{\pi}-\frac{1}{2}\\
 \frac{1}{2}-\frac{1}{\pi} &amp; \frac{2}{\pi}-\frac{1}{2} &amp;
-\frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2}\end{pmatrix}.\]</span> 则
-<span class="math display">\[\mathbb{P}(e_1,e_2,e_3\notin T, e_4\in
-T)=\det
+\frac{1}{2}-\frac{1}{\pi} &amp; \frac{1}{2}\end{pmatrix}.
+\]</span></p>
+<p>则 <span class="math display">\[\mathbb{P}(e_1,e_2,e_3\notin T,
+e_4\in T)=\det
 Y^{(4)}_{\overline{123}4}=\frac{2}{\pi^2}-\frac{4}{\pi^3}.\]</span>
 于是原点是叶节点的概率是 <span class="math inline">\(4\times\det
 Y^{(4)}_{\overline{123}4}\approx
-0.2945\)</span>，这正是之前看到的死角的比例。</p></li>
-</ul>
+0.2945\)</span>，这正是之前看到的死角的比例。</p>
 <p>所以解决问题的关键就是求解 <span class="math inline">\(\mathbb{Z}^2\)</span>
 上的转移电流矩阵，本文接下来就来介绍具体的理论。这个故事并无特别的难点，但确实比较长。我主要参考了
 Lyons 等人关于图随机游动的专著 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，Stanley
@@ -566,8 +553,9 @@ y)\big[f(x)-f(y)\big]=c(e)\big[f(e^-)-f(e^+)\big].\]</span> 如果把 <span clas
 y)=\frac{1}{c(x)}\sum_{e^-=x}\theta(e).\]</span>
 上式右边可能有的求和项大于 0，有的小于 0。如果把 <span class="math inline">\(\theta\)</span>
 理解为每条边上的有向电流的话，散度算子给出的是每个顶点处的净流出量。</p></li>
-<li><p>定义<strong>拉普拉斯</strong>算子 <span class="math inline">\(\Delta:\ell^2(V)\to\ell^{2}(V)\)</span> 为 <span class="math display">\[(\Delta f)(x) = (\mathrm{div}\,\nabla f)(x) =
-f(x)-\sum_{y\sim x}\frac{c(x,y)}{c(x)}f(y).
+<li><p>定义<strong>拉普拉斯</strong>算子 <span class="math inline">\(\Delta:\ell^2(V)\to\ell^{2}(V)\)</span> 为 <span class="math display">\[
+(\Delta f)(x) = (\mathrm{div}\,\nabla f)(x) = f(x)-\sum_{y\sim
+x}\frac{c(x,y)}{c(x)}f(y).
 \]</span> 如果 <span class="math inline">\((\Delta f)(x)=0\)</span> 对
 <span class="math inline">\(x\in V\)</span> 成立，我们就称 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(x\)</span> 处是<strong>调和</strong>的。</p></li>
 </ol>
@@ -772,14 +760,17 @@ i^{e'})_E=(P_\bigstar\chi^e,P_\bigstar\chi^{e'})_E=(P_\bigstar\chi^e,\chi^{e'})_
 \sum_{y\sim x}P(x, y)h(y).\]</span> 此即为全概率公式，下一步到某个 <span class="math inline">\(y\sim x\)</span> 的概率是 <span class="math inline">\(P(x,y)\)</span>，从 <span class="math inline">\(y\)</span> 继续出发获胜的概率是 <span class="math inline">\(h(y)\)</span>，求和即可。</p>
 <p>现在假设 <span class="math inline">\(a\)</span> 点加上的电压大小是
 1，则其电势 <span class="math inline">\(v(a)=1\)</span>，由于 <span class="math inline">\(Z\)</span> 接地所以 <span class="math inline">\(v(Z)=0\)</span>。我们断言电势函数 <span class="math inline">\(v(x)\)</span> 在任何一点 <span class="math inline">\(x\notin\{a\}\cup Z\)</span> 处也是调和的： <span class="math display">\[v(x) = \sum_{y\sim x}P(x, y)v(y).\]</span>
-这是因为设 <span class="math inline">\(v\)</span> 对应的电流是 <span class="math inline">\(i\)</span>，则 <span class="math display">\[\begin{align*}
+这是因为设 <span class="math inline">\(v\)</span> 对应的电流是 <span class="math inline">\(i\)</span>，则</p>
+<p><span class="math display">\[
+\begin{align*}
 v(x) - \sum_{y\sim x}P(x, y)v(y)&amp;=
 \sum_{y\sim x}P(x, y)(v(x)-v(y))\\&amp;=
 \sum_{y\sim x}\frac{c(x,y)}{c(x)}i(x,y)r(x,y)\\&amp;=
 \frac{1}{c(x)}\sum_{y\sim x}i(x,y)\\&amp;=
 0.
-\end{align*}\]</span> 其中最后一个等号是根据基尔霍夫定律对任何中间节点
-<span class="math inline">\(x\)</span> 有 <span class="math inline">\((\mathrm{div}\,i)(x)=0\)</span>。</p>
+\end{align*}
+\]</span></p>
+<p>其中最后一个等号是根据基尔霍夫定律对任何中间节点 <span class="math inline">\(x\)</span> 有 <span class="math inline">\((\mathrm{div}\,i)(x)=0\)</span>。</p>
 <p>现在获胜概率 <span class="math inline">\(\mathbb{P}_x(\tau_a&lt;\tau_Z)\)</span> 和电势函数
 <span class="math inline">\(v(x)\)</span> 在 <span class="math inline">\(\{a\}\cup Z\)</span> 上有相同的边界条件，在 <span class="math inline">\((\{a\}\cup Z)^c\)</span>
 上都是调和的，则它俩必然是同一个函数！（提示：考虑两个函数之差并利用有限图上的调和函数必然在边界上取得最大最小值）
@@ -805,7 +796,8 @@ v(x) - \sum_{y\sim x}P(x, y)v(y)&amp;=
 </blockquote>
 <p>注意 <span class="math inline">\(v(a)/\|i\|\)</span>
 正是网络的等效电阻。</p>
-<p>证明： <span class="math display">\[
+<p>证明：</p>
+<p><span class="math display">\[
 \begin{align*}
 \mathbb{P}(a\to Z) &amp;= \sum_{x\sim a}P(a, x)\mathbb{P}_x(\tau_Z &lt;
 \tau_a)\\&amp;=
@@ -815,7 +807,8 @@ a}\frac{c(a,x)}{c(a)}\left(1-\frac{v(x)}{v(a)}\right)\\&amp;=
 \sum_{x\sim a}\frac{i(a,x)}{c(a)v(a)}\\&amp;=
 \frac{\|i\|}{c(a)v(a)}.
 \end{align*}
-\]</span> <span class="math inline">\(\blacksquare\)</span></p>
+\]</span></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
 <p>对任何边 <span class="math inline">\(x\sim y\)</span>，定义随机变量
 <span class="math inline">\(N_{x\to y}^Z\)</span> 为从 <span class="math inline">\(a\)</span> 出发的随机游动在访问 <span class="math inline">\(Z\)</span> 之前从 <span class="math inline">\(x\)</span> 走到 <span class="math inline">\(y\)</span> 的次数，则我们有如下定理：</p>
 <div id="theorem3">
@@ -842,7 +835,8 @@ a)}{c(a)}=\frac{1}{c(a)\mathbb{P}(a\to Z)}=v(a).\]</span> 所以 <span class="ma
 在边界上与电势函数是一致的，只要再证明在任意中间节点 <span class="math inline">\(x\)</span> 的调和性质。注意随机游动必然是从与
 <span class="math inline">\(x\)</span> 相邻的顶点走过去访问 <span class="math inline">\(x\)</span>，所以 <span class="math display">\[\frac{\mathcal{G}_Z(a,
 x)}{c(x)}=\frac{1}{c(x)}\sum_{y\sim x}\mathbb{E}_a[N_{y\to
-x}^Z].\]</span> 另一方面 <span class="math display">\[
+x}^Z].\]</span> 另一方面</p>
+<p><span class="math display">\[
 \begin{align*}
 \mathbb{E}_a[N_{y\to x}^Z]&amp;=
 \mathbb{E}_a\left[\sum_{0\leq t&lt;\tau_Z}\mathbb{1}_{\{ X_t=y,X_{t+1}=x
@@ -854,11 +848,14 @@ P(y,x)\mathbb{E}_a\left[\sum_{0\leq t&lt;\tau_Z}\mathbb{1}_{\{ X_t=y
 P(y,x)\mathcal{G}_Z(a,y).
 \end{align*}
 \label{eq:cross}
-\]</span> 所以代入求和后有 <span class="math display">\[
+\]</span></p>
+<p>所以代入求和后有</p>
+<p><span class="math display">\[
 \frac{1}{c(x)}\sum_{y\sim x}\mathbb{E}_a[N_{y\to
 x}^Z]=\frac{1}{c(x)}\sum_{y\sim x}P(y,x)\mathcal{G}_Z(a,y)=\sum_{y\sim
 x}P(x,y)\frac{\mathcal{G}_Z(a,y)}{c(y)}.
-\]</span> 其中我们使用了 Markov 链的可逆性：<span class="math inline">\(c(x)P(x,y)=c(y)P(y,x)\)</span>。这就证明了 <span class="math inline">\(\mathcal{G}_Z(a, x)/c(x)\)</span>
+\]</span></p>
+<p>其中我们使用了 Markov 链的可逆性：<span class="math inline">\(c(x)P(x,y)=c(y)P(y,x)\)</span>。这就证明了 <span class="math inline">\(\mathcal{G}_Z(a, x)/c(x)\)</span>
 在中间节点的调和性，从而它就是电势函数，这证明了 1。</p></li>
 <li><p>直接验证即可： <span class="math display">\[\begin{align*}\mathbb{E}_a\left[N_{x\to y}^Z -
 N_{y\to
@@ -916,15 +913,16 @@ $(x,y)$}\right].\]</span></p>
 </ol>
 <p>于是我们证明了 <span class="math inline">\(e\in T\)</span> 当且仅当从
 <span class="math inline">\(x\)</span> 出发的随机游动首次到达 <span class="math inline">\(y\)</span> 是从边 <span class="math inline">\(e\)</span> 走过去的。</p>
-<p>另一方面在 <a href="#theorem3">定理 3.1</a> 中取 <span class="math inline">\(Z=\{y\}\)</span> 有 <span class="math display">\[
+<p>另一方面在 <a href="#theorem3">定理 3.1</a> 中取 <span class="math inline">\(Z=\{y\}\)</span> 有</p>
+<p><span class="math display">\[
 i^e(x,y)=\mathbb{E}_x\left[N^{\{y\}}_{x\to y} - N^{\{y\}}_{y\to
 x}\right].
-\]</span> 注意到从 <span class="math inline">\(x\)</span>
+\]</span></p>
+<p>注意到从 <span class="math inline">\(x\)</span>
 出发的随机游动不可能在到达 <span class="math inline">\(y\)</span> 之前从
 <span class="math inline">\(y\)</span> 走到 <span class="math inline">\(x\)</span>，所以 <span class="math inline">\(N^{\{y\}}_{y\to x}=0\)</span>。同时它在到达 <span class="math inline">\(y\)</span> 之前从 <span class="math inline">\(x\)</span> 走到 <span class="math inline">\(y\)</span> 的次数只能是 0 或者 1，所以 <span class="math inline">\(N^{\{y\}}_{x\to y}\in\{0,1\}\)</span>，从而 <span class="math display">\[\mathbb{E}_xN^{\{y\}}_{x\to
 y}=\mathbb{P}_x(N^{\{y\}}_{x\to y}=1)=\mathbb{P}_x\left[\text{the first
-visit to $y$ is across $(x,y)$}\right].
-\]</span> 这就完成了证明。</p>
+visit to $y$ is across $(x,y)$}\right].\]</span> 这就完成了证明。</p>
 <h1 id="图的收缩">5 图的收缩</h1>
 <p>设 <span class="math inline">\(\mathcal{N}=(G,c)\)</span>
 是一个网络，<span class="math inline">\(F\subset E\)</span> 是边的子集且
@@ -956,8 +954,12 @@ visit to $y$ is across $(x,y)$}\right].
 F\}\)</span>，<span class="math inline">\(Z=\mathrm{span}\{i^f,f\in
 F\}=P_\bigstar\chi^F\)</span>，则 <span class="math inline">\(Z\subset\bigstar\)</span>。我们来证明对 <span class="math inline">\(G/F\)</span> 的环空间 <span class="math inline">\(\widehat{\lozenge}\)</span> 有 <span class="math display">\[\widehat{\lozenge} = \lozenge + \chi^F.\]</span>
 首先若 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(G\)</span> 中的环： <span class="math display">\[v_1\xrightarrow{e_1}v_2\xrightarrow{e_2}\cdots\xrightarrow{e_{k-1}}v_k\xrightarrow{e_k}v_1.
-\]</span> 那自然有 <span class="math display">\[[v_1]\xrightarrow{e_1}[v_2]\xrightarrow{e_2}\cdots\xrightarrow{e_{k-1}}[v_k]\xrightarrow{e_k}[v_1].
-\]</span> 从而 <span class="math inline">\(C\)</span> 也是 <span class="math inline">\(G/F\)</span> 中的环，其对应的 <span class="math inline">\(f^C\in\widehat{\lozenge}\)</span>。此外 <span class="math inline">\(F\)</span> 中的边在 <span class="math inline">\(G/F\)</span> 变成自边，所以 <span class="math inline">\(\chi^F\)</span> 也属于 <span class="math inline">\(\widehat{\lozenge}\)</span>。即 <span class="math inline">\(\widehat{\lozenge} \supseteq \lozenge +
+\]</span></p>
+<p>那自然有</p>
+<p><span class="math display">\[
+[v_1]\xrightarrow{e_1}[v_2]\xrightarrow{e_2}\cdots\xrightarrow{e_{k-1}}[v_k]\xrightarrow{e_k}[v_1].
+\]</span></p>
+<p>从而 <span class="math inline">\(C\)</span> 也是 <span class="math inline">\(G/F\)</span> 中的环，其对应的 <span class="math inline">\(f^C\in\widehat{\lozenge}\)</span>。此外 <span class="math inline">\(F\)</span> 中的边在 <span class="math inline">\(G/F\)</span> 变成自边，所以 <span class="math inline">\(\chi^F\)</span> 也属于 <span class="math inline">\(\widehat{\lozenge}\)</span>。即 <span class="math inline">\(\widehat{\lozenge} \supseteq \lozenge +
 \chi^F\)</span>。</p>
 <p>反之对 <span class="math inline">\(G/F\)</span> 中的一个环 <span class="math inline">\(C_{G/F}\)</span>，我们显然可以通过适当插入 <span class="math inline">\(F\)</span> 中的边来得到 <span class="math inline">\(G\)</span> 中的一个环 <span class="math inline">\(C\)</span> （把每个等价类顶点展开为由 <span class="math inline">\(F\)</span> 中的边组成的路径即可），对应的 <span class="math inline">\(f^C\)</span> 是 <span class="math inline">\(f^{C_{G/F}}\)</span> 加上一些 <span class="math inline">\(\chi^f\)</span> 的和，所以 <span class="math inline">\(\widehat{\lozenge} \subseteq \lozenge +
 \chi^F\)</span>，从而反向的包含关系也成立，二者确实相等。</p>
@@ -1014,13 +1016,18 @@ i^e\big\|^2.\]</span> 其中 <span class="math inline">\(Z\)</span> 是由
 Y^{(k)}.\]</span></p>
 </blockquote>
 <blockquote><p><strong>推论</strong>：考虑其中 <span class="math inline">\(r\)</span> 条边 <span class="math inline">\(\{e_1,\ldots,e_r\}\)</span> 不属于 <span class="math inline">\(T\)</span>，另外 <span class="math inline">\(k-r\)</span> 条边 <span class="math inline">\(\{e_{r+1},\ldots,e_k\}\)</span> 属于 <span class="math inline">\(T\)</span> 的概率 <span class="math inline">\(\mathbb{P}(e_1,\ldots,e_r\notin T,
-e_{r+1},\ldots,e_k\in T)\)</span>，令 <span class="math inline">\(M^{(r)}\)</span> 是对 <span class="math inline">\(Y^{(k)}\)</span> 的前 <span class="math inline">\(r\)</span> 行取反，给前 <span class="math inline">\(r\)</span> 个对角元加上 1，并保持后 <span class="math inline">\(k-r\)</span> 行不变得到的矩阵： <span class="math display">\[M^{(r)}(i, j) =\begin{cases}\delta_{ij} -
+e_{r+1},\ldots,e_k\in T)\)</span>，令 <span class="math inline">\(M^{(r)}\)</span> 是对 <span class="math inline">\(Y^{(k)}\)</span> 的前 <span class="math inline">\(r\)</span> 行取反，给前 <span class="math inline">\(r\)</span> 个对角元加上 1，并保持后 <span class="math inline">\(k-r\)</span> 行不变得到的矩阵：</p>
+<p><span class="math display">\[
+M^{(r)}(i, j) =\begin{cases}\delta_{ij} -
 Y^{(k)}(i, j), &amp; i\leq r\\Y^{(k)}(i,j), &amp;  r+1\leq i\leq
-k.\end{cases}\]</span> 则 <span class="math display">\[\mathbb{P}(e_1,\ldots,e_r\notin T,
+k.\end{cases}
+\]</span></p>
+<p>则 <span class="math display">\[\mathbb{P}(e_1,\ldots,e_r\notin T,
 e_{r+1},\ldots,e_k\in T)=\det M^{(r)}.\]</span></p>
 </blockquote>
 <p>我们首先说明怎样用转移电流定理得出推论的结论。对排除的边的个数 <span class="math inline">\(r\)</span> 归纳，<span class="math inline">\(r=0\)</span>
-的情形就是转移电流定理。设推论对任何小于 <span class="math inline">\(r\)</span> 的情形成立，对 <span class="math inline">\(r\)</span> 的情形，考虑矩阵 <span class="math display">\[
+的情形就是转移电流定理。设推论对任何小于 <span class="math inline">\(r\)</span> 的情形成立，对 <span class="math inline">\(r\)</span> 的情形，考虑矩阵</p>
+<p><span class="math display">\[
 P(i, j) = \begin{cases}
   \delta_{ij} - Y^{(k)}(i,j),  &amp; i &lt; r \\
   \delta_{ij}, &amp; i = r  \\
@@ -1031,12 +1038,17 @@ P(i, j) = \begin{cases}
 <span class="math inline">\(i\ne r\)</span> 的行都相等，但是 <span class="math inline">\(M^{(r)}\)</span> 和 <span class="math inline">\(M^{(r-1)}\)</span> 的第 <span class="math inline">\(r\)</span> 行之和等于 <span class="math inline">\(P\)</span> 第 <span class="math inline">\(r\)</span> 行，于是根据行列式的多重线性性质，
 <span class="math display">\[\det M^{(r)}+\det M^{(r-1)}=\det
 P.\]</span> 将 <span class="math inline">\(\det P\)</span> 按照 <span class="math inline">\(P\)</span> 的第 <span class="math inline">\(r\)</span> 行展开并对 <span class="math inline">\(\{e_1,\ldots,e_{r-1},e_{r+1},\ldots,e_k\}\)</span>
-利用归纳假设，得到 <span class="math display">\[
+利用归纳假设，得到</p>
+<p><span class="math display">\[
 \det P=\mathbb{P}(e_1,\ldots,e_{r-1}\notin T, e_{r+1},\ldots,e_k\in T).
-\]</span> 又对 <span class="math inline">\(\{e_1,\ldots,e_{r-1},e_r,\ldots,e_k\}\)</span>
-利用归纳假设得到 <span class="math display">\[\det M^{(r-1)} =
-\mathbb{P}(e_1,\ldots,e_{r-1}\notin T, e_{r},\ldots,e_k\in T)
-\]</span> 相减即得结论。</p>
+\]</span></p>
+<p>又对 <span class="math inline">\(\{e_1,\ldots,e_{r-1},e_r,\ldots,e_k\}\)</span>
+利用归纳假设得到</p>
+<p><span class="math display">\[
+\det M^{(r-1)} = \mathbb{P}(e_1,\ldots,e_{r-1}\notin T,
+e_{r},\ldots,e_k\in T)
+\]</span></p>
+<p>相减即得结论。</p>
 <p>回到转移电流定理的证明。分两种情形：</p>
 <ol type="1">
 <li><p>如果 <span class="math inline">\(\{e_1,\ldots,e_k\}\)</span>
@@ -1045,7 +1057,7 @@ P.\]</span> 将 <span class="math inline">\(\det P\)</span> 按照 <span class="
 a_i\chi^{e_i}=f_C\in\lozenge\)</span>，这里对不属于 <span class="math inline">\(C\)</span> 的 <span class="math inline">\(e_i\)</span> 取 <span class="math inline">\(a_i=0\)</span>，对属于 <span class="math inline">\(C\)</span> 的 <span class="math inline">\(e_i\)</span> 通过选择 <span class="math inline">\(a_i=\pm1\)</span>
 使得它们的方向为依次首尾相接。根据基尔霍夫电压定律，对任何电流 <span class="math inline">\(i^{e_m}\,(1\leq m\leq
 k)\)</span>，其绕回路一圈电势的改变为 0，所以 <span class="math display">\[ 0 =
-\sum_{i=1}^kr(e_i)i^{e_m}(a_ie_i)=\sum_{i=1}^ka_ir(e_i)i^{e_m}(e_i)=\sum_{i=1}^ka_ir(e_i)Y^{(k)}(e_m,e_i).\]</span>
+\sum*{i=1}^kr(e_i)i^{e_m}(a_ie_i)=\sum*{i=1}^ka*ir(e_i)i^{e_m}(e_i)=\sum*{i=1}^ka_ir(e_i)Y^{(k)}(e_m,e_i).\]</span>
 所以 <span class="math inline">\(Y^{(k)}\)</span> 的列是线性相关的，从而
 <span class="math inline">\(\mathbb{P}(e_1,\ldots,e_k\in T)=\det
 Y^{(k)}=0\)</span>，结论成立。</p></li>
@@ -1077,27 +1089,35 @@ k}\)</span> 的第 <span class="math inline">\(j\)</span> 列上乘以 <span cla
 中顶点在随机迷宫中度数分布的问题归结为求解 <span class="math inline">\(\mathbb{Z}^2\)</span>
 上的转移电流矩阵，即令所有边的电导值均为 1，在一条边 <span class="math inline">\(e=(x,y)\)</span> 两端通入单位电流时，流过另一条边
 <span class="math inline">\(e'\)</span>
-的电流流量，这等价于求解对应的电势函数 <span class="math inline">\(v\)</span>，也等价于求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上拉普拉斯算子的解 <span class="math display">\[
+的电流流量，这等价于求解对应的电势函数 <span class="math inline">\(v\)</span>，也等价于求解 <span class="math inline">\(\mathbb{Z}^2\)</span> 上拉普拉斯算子的解</p>
+<p><span class="math display">\[
 (\Delta v)(x) = \mathbb{1}_{\{ x=e^- \}} - \mathbb{1}_{\{ x=e^+ \}}.
-\]</span> 这一步可以通过 Fourier 分析的方法来做，比如 Lyons
+\]</span></p>
+<p>这一步可以通过 Fourier 分析的方法来做，比如 Lyons
 等人的教材就是采用的这种方法。但是假定你看过本系列的 <a href="/random-walk-potential-kernel">第一篇文章</a>
 的话，我们可以省很多事情，直接用二维随机游动的势核函数 <span class="math inline">\(a(x)\)</span> 来构造电势函数 <span class="math inline">\(v\)</span>。注意到 <span class="math inline">\(a(x)\)</span>
-在除去原点之外的任何点是调和的，并且在原点处的值为 0。记 <span class="math display">\[
+在除去原点之外的任何点是调和的，并且在原点处的值为 0。记</p>
+<p><span class="math display">\[
 g(u) = \frac{a(u-y)-a(u-x)}{4}.
-\]</span> 则 <span class="math inline">\(g\)</span> 在除去 <span class="math inline">\(x,y\)</span> 外任何点处是调和的，从而 <span class="math inline">\(i=\nabla g\)</span> 满足欧姆定律、在除 <span class="math inline">\(x,y\)</span> 之外满足基尔霍夫定律，且 <span class="math inline">\(g(x)=a(x-y)/4 = -g(y)\)</span>。又 <span class="math display">\[\begin{align*}
+\]</span></p>
+<p>则 <span class="math inline">\(g\)</span> 在除去 <span class="math inline">\(x,y\)</span> 外任何点处是调和的，从而 <span class="math inline">\(i=\nabla g\)</span> 满足欧姆定律、在除 <span class="math inline">\(x,y\)</span> 之外满足基尔霍夫定律，且 <span class="math inline">\(g(x)=a(x-y)/4 = -g(y)\)</span>。又</p>
+<p><span class="math display">\[
+\begin{align*}
 \|i\| &amp;= \sum_{z\sim x}i(x, z)=\sum_{z\sim x}[g(x)-g(z)]\\
 &amp;=a(x-y)-\sum_{z\sim x}\frac{a(z-y)-a(z-x)}{4}\\
 &amp;=\left(a(x-y)-\sum_{z\sim x}\frac{a(z-y)}{4}\right) +
 \sum_{z\in\{\pm(1,0),\pm(0,1)\}}\frac{a(z)}{4}\\
 &amp;=1.
 \end{align*}
-\]</span>
-其中最后一个等号是因为势核在除去原点之外是调和的，且在原点的四个邻居处值为
+\]</span></p>
+<p>其中最后一个等号是因为势核在除去原点之外是调和的，且在原点的四个邻居处值为
 1。</p>
 <p>于是 <span class="math inline">\(v(u)=g(u)-g(y)\)</span> 即为当 <span class="math inline">\(x\)</span> 通入单位电流，<span class="math inline">\(y\)</span> 接地时 <span class="math inline">\(\mathbb{Z}^2\)</span>
-上的电势函数，从而其在任何一边 <span class="math inline">\(e'=(z,w)\)</span> 上的电流为 <span class="math display">\[
+上的电势函数，从而其在任何一边 <span class="math inline">\(e'=(z,w)\)</span> 上的电流为</p>
+<p><span class="math display">\[
 i(z,w) = g(z) - g(w)=\frac{1}{4}\big[a(z-y)-a(z-x)-a(w-y)+a(w-x)\big].
-\]</span> 当 <span class="math inline">\(e=(x,y)\)</span> 和 <span class="math inline">\(e'=(z,w)\)</span>
+\]</span></p>
+<p>当 <span class="math inline">\(e=(x,y)\)</span> 和 <span class="math inline">\(e'=(z,w)\)</span>
 都取自原点相邻的四条边时，根据下图中的势核值代入上式即得本文开头的转移电流矩阵。</p>
 <p><img style="margin:0px auto;display:block" src="/images/electric-network/greenfunction.svg" width="350"></p>
 <p>举个例子验证一下：取 <span class="math inline">\(e_1=(0,
