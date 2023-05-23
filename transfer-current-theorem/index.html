@@ -173,7 +173,7 @@ n\) 的正方形网格图 \(G_n\)
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">2 篇</span></a>
+                    pywonderland-项目 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -197,7 +197,7 @@ n\) 的正方形网格图 \(G_n\)
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -388,7 +388,7 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 <span id="more"></span>
 <table>
 <colgroup>
-<col style="width: 32%">
+<col style="width: 33%">
 <col style="width: 33%">
 <col style="width: 33%">
 </colgroup>
@@ -407,9 +407,6 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>绘制上述插图的 Python 代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/ust_leaves.py">这里</a>，你可以自己试一试。</p>
-</blockquote>
 <p>本文的主题就是证明对 <span class="math inline">\(G_n\)</span>
 的一个均匀生成树 <span class="math inline">\(T\)</span>，<span class="math inline">\(T\)</span> 包含的叶节点的比例随着 <span class="math inline">\(n\)</span> 趋于无穷收敛到常数 <span class="math inline">\(8(\pi-2)/\pi^3\approx 0.2945449\)</span> （想不到
 <span class="math inline">\(\pi\)</span>
@@ -419,9 +416,9 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 趋于固定的值，详细结果见下表：</p>
 <table>
 <colgroup>
-<col style="width: 13%">
-<col style="width: 80%">
-<col style="width: 5%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -469,7 +466,7 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
 <p>对 <span class="math inline">\(G\)</span> 的任何 <span class="math inline">\(k\)</span> 条边 <span class="math inline">\(e_1,\ldots,e_k\)</span>，定义 <span class="math inline">\(k\times k\)</span> 矩阵 <span class="math inline">\(Y^{(k)}\)</span> 为 <span class="math inline">\(Y^{(k)}(i,j)=Y(e_i,e_j)\)</span>，则我们有如下结论
 （转移电流矩阵定理）：设 <span class="math inline">\(T\)</span>
 是一个随机生成树，则边 <span class="math inline">\(e_1,\ldots,e_k\)</span> 都属于 <span class="math inline">\(T\)</span> 的概率 <span class="math display">\[\mathbb{P}(e_1,\ldots,e_k \in T)=\det
-Y^{(k)}.\]</span> 举个例子，在 <span class="math inline">\(\mathbb{Z}^2\)</span> 中，与原点 <span class="math inline">\((0, 0)\)</span> 相邻的四条边为 <span class="math inline">\(e_1=(1,0)\)</span>，<span class="math inline">\(e_2=(0, 1)\)</span>，<span class="math inline">\(e_3=(-1,0)\)</span>，<span class="math inline">\(e_4=(0,
+Y^{(k)}.\]</span> 举个例子，<span class="math inline">\(\mathbb{Z}^2\)</span> 中与原点 <span class="math inline">\((0, 0)\)</span> 相邻的四条边为 <span class="math inline">\(e_1=(1,0)\)</span>，<span class="math inline">\(e_2=(0, 1)\)</span>，<span class="math inline">\(e_3=(-1,0)\)</span>，<span class="math inline">\(e_4=(0,
 -1)\)</span>，我们后面会计算出这四条边对应的转移电流矩阵为</p>
 <p><span class="math display">\[
 Y^{(4)}=
@@ -488,8 +485,7 @@ Y^{(4)}=
 Y^{(4)}=\left(\frac{4}{\pi}-1\right)\left(1-\frac{2}{\pi}\right)^2\approx
 0.0361.\]</span> 这正是上面列出的十字路口的概率！</p>
 <p>如果是计算概率 <span class="math inline">\(\mathbb{P}(e_1,e_2,e_3\notin T, e_4\in T)\)</span>
-呢？方法如下，把 <span class="math inline">\(e_1,e_2,e_3\)</span> 对应的
-<span class="math inline">\(Y^{(4)}\)</span>
+呢？方法如下，把要排除掉的 <span class="math inline">\(e_1,e_2,e_3\)</span> 对应的 <span class="math inline">\(Y^{(4)}\)</span>
 的前三行全部取负值，并且给前三个对角元加上 1，保持第 4 行不变，得到</p>
 <p><span class="math display">\[
 Y^{(4)}_{\overline{123}4}=\begin{pmatrix}
