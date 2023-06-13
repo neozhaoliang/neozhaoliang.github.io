@@ -439,7 +439,10 @@ m_{s,t}&lt;\infty,\\
 S\}\)</span>。这是一组线性无关的线性泛函，根据线性方程组解的判定定理，我们一定可以取
 <span class="math inline">\(V\)</span> 中的一组向量 <span class="math inline">\(\{\alpha_s^\vee\mid s\in S\}\)</span> 使得对任何
 <span class="math inline">\(s,t\in S\)</span> 有 <span class="math inline">\(\langle
-\alpha_s,\,\alpha_t^\vee\rangle=c_{s,t}\)</span> 成立。</p>
+\alpha_s,\,\alpha_t^\vee\rangle=c_{s,t}\)</span> 成立。注意 <span class="math inline">\(\{\alpha_s^\vee\}\)</span> 未必构成 <span class="math inline">\(V\)</span> 的一组基。比如 Coxeter 矩阵 <span class="math inline">\(\begin{bmatrix}1 &amp;
+\infty\\\infty&amp;1\end{bmatrix}\)</span> 给出的 Cartan 矩阵是 <span class="math inline">\(\begin{pmatrix}2 &amp;
+-2\\-2&amp;2\end{pmatrix}\)</span>，这时 <span class="math inline">\(\alpha^\vee=-\beta^\vee\)</span>
+是线性相关的。</p>
 <p>对任一 <span class="math inline">\(s\in S\)</span>，定义 <span class="math inline">\(V\)</span> 上的反射 <span class="math inline">\(\rho_s\)</span> 为 <span class="math display">\[\rho_s(v) = v - \langle
 \alpha_s,\,v\rangle\alpha_s^\vee,\quad v\in V.\]</span> 显然 <span class="math inline">\(\rho_s(\alpha_s^\vee) =
 -\alpha_s^\vee\)</span>。</p>
@@ -465,9 +468,9 @@ V^\ast.\]</span></p>
 <span class="math inline">\(\{\alpha_s\mid s\in S\}\)</span> 为 <span class="math inline">\(V\)</span> 的一组基，并定义 <span class="math inline">\(V\)</span> 上的内积 <span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[\alpha_s\bullet\alpha_t=\begin{cases}-\cos\dfrac{\pi}{m_{s,t}}&amp;m_{s,t}&lt;\infty,\\-1&amp;m_{s,t}=\infty.\end{cases}\]</span>
 并使用这个内积来定义反射。这种做法的好处是会简化一些讨论，比如可以很快证明下面要介绍的关键定理；但缺点是无法用来定义万花筒的基本区域。如果我们想把所有反射镜面的正半空间之交
 <span class="math display">\[\bigcap_{s\in S}\{v\in V\mid\alpha_s\bullet
-v&gt;0\}\]</span> 作为万花筒的基本区域 <span class="math inline">\(\mathcal{D}\)</span>，则 <span class="math inline">\(\mathcal{D}\)</span> 可能会是空集。比如 Coxeter
+v&gt;0\}\]</span> 作为万花筒的基本区域 <span class="math inline">\(\mathcal{D}\)</span>，则 <span class="math inline">\(\mathcal{D}\)</span> 可能会是空集。仍然以 Coxeter
 矩阵 <span class="math inline">\(\begin{bmatrix}1 &amp;
-\infty\\\infty&amp;1\end{bmatrix}\)</span> 给出的内积 <span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[
+\infty\\\infty&amp;1\end{bmatrix}\)</span> 为例，它给出的内积 <span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[
 \begin{pmatrix}\alpha_s\bullet\alpha_s &amp; \alpha_s\bullet\alpha_t\\
 \alpha_t\bullet\alpha_t&amp; \alpha_t\bullet\alpha_t\end{pmatrix}
 =\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}.
@@ -653,34 +656,15 @@ t}^{\leq m-1},\]</span> 正好是序列的前 <span class="math inline">\(m\)</s
 <p>我们知道基本区域 <span class="math inline">\(\mathcal{D}\)</span>
 这个房间是所有 <span class="math inline">\(\{\alpha_s &gt; 0\mid s\in
 S\}\)</span> 的交，这个房间有 <span class="math inline">\(|S|\)</span>
-个不同的墙壁，其中“墙壁 <span class="math inline">\(s\)</span>”位于超平面 <span class="math inline">\(\{\alpha_s=0\}\)</span> 上。</p>
-<p>对任何 <span class="math inline">\(w\in W\)</span>，设 <span class="math inline">\(w=s_{i_1}s_{i_2}\cdots s_{i_k}\)</span>
-是一个既约表示，<span class="math inline">\(l(w)=k\)</span>，则我们有
-<span class="math inline">\(k+1\)</span> 个连续的房间 <span class="math display">\[\mathcal{D},\ s_{i_1}\mathcal{D},\
-s_{i_1}s_{i_2}\mathcal{D},\ \ldots,\ s_{i_1}s_{i_2}\cdots
-s_{i_k}\mathcal{D}.\]</span> 你可以从 <span class="math inline">\(\mathcal{D}\)</span> 出发，依次从左到右，先穿过
-<span class="math inline">\(\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s_{i_1}\)</span> 的墙壁，再穿过 <span class="math inline">\(s_{i_1}\mathcal{D}\)</span> 的标号为 <span class="math inline">\(s_{i_2}\)</span> 的墙壁，这样一直下去到达 <span class="math inline">\(w\mathcal{D}\)</span>。</p>
-<p>这里有点反直觉的是，穿过的墙壁标号和群作用的顺序是反过来的：<span class="math inline">\(w\mathcal{D}=s_{i_1}s_{i_2}\cdots
-s_{i_k}\mathcal{D}\)</span> 是首先将反射 <span class="math inline">\(s_{i_k}\)</span> 作用在 <span class="math inline">\(\mathcal{D}\)</span> 上，其次是 <span class="math inline">\(s_{i_{k-1}}\)</span> 作用在 <span class="math inline">\(s_{i_k}\mathcal{D}\)</span> 上，...，最后才是反射
-<span class="math inline">\(s_{i_1}\)</span>，但是几何上从 <span class="math inline">\(\mathcal{D}\)</span> 到 <span class="math inline">\(w\mathcal{D}\)</span> 首先穿过的墙壁是 <span class="math inline">\(s_{i_1}\)</span>，其次是 <span class="math inline">\(s_{i_2}\)</span>，...，最后才是 <span class="math inline">\(s_{i_k}\)</span>。为了理解这一点，只要记住 <span class="math inline">\(\mathcal{D}\)</span> 和 <span class="math inline">\(s_{i_j}\mathcal{D}\)</span> 是被墙壁 <span class="math inline">\(s_{i_j}\)</span> 隔开的，从而 <span class="math inline">\(s_{i_1}\cdots s_{i_{j-1}}\mathcal{D}\)</span> 和
-<span class="math inline">\(s_{i_1}\cdots
-s_{i_{j-1}}(s_{i_j}\mathcal{D})\)</span> 仍然被标号 <span class="math inline">\(s_{i_j}\)</span>
-的墙壁隔开。所以我们有如下依次相邻的房间路径 <span class="math display">\[\mathcal{D}\xrightarrow{\text{cross }
-s_{i_1}}s_{i_1}\mathcal{D}\xrightarrow{\text{cross }
-s_{i_2}}s_{i_1}s_{i_2}\mathcal{D}\xrightarrow{\text{cross }
-s_{i_3}}\cdots\xrightarrow{\text{cross } s_{i_k}}s_{i_1}s_{i_2}\cdots
-s_{i_k}\mathcal{D}.\]</span></p>
-<p>下图 (from Casselman) 显示了从 <span class="math inline">\(\mathcal{D}\)</span> （蓝色三角形区域）出发到达
-<span class="math inline">\(w\mathcal{D}=s_3s_1s_2s_3s_2s_1\mathcal{D}\)</span>
-的路径。其中红、绿、蓝箭头分别表示穿过标号 <span class="math inline">\(s_1,s_2,s_3\)</span> 的墙壁：</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter-groups/gallery.svg" width="350"></p>
+个不同的墙壁，其中“墙壁 <span class="math inline">\(s\)</span>”位于超平面 <span class="math inline">\(\{\alpha_s=0\}\)</span> 上。在 <span class="math inline">\(w\in W\)</span> 的作用下，这个墙壁被映射为 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(ws\mathcal{D}\)</span> 之间标号为 <span class="math inline">\(s\)</span> 的墙壁。</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter-groups/wd.svg" width="400"></p>
 <p>对一个房间 <span class="math inline">\(w\mathcal{D}\)</span>，如果我们穿过它的标号为
 <span class="math inline">\(s\)</span> 的墙壁到达相邻的房间 <span class="math inline">\(ws\mathcal{D}\)</span>，那么 <span class="math inline">\(w\mathcal{D}\)</span> 与 <span class="math inline">\(ws\mathcal{D}\)</span> 谁距离 <span class="math inline">\(\mathcal{D}\)</span> 更远？注意 <span class="math inline">\(\mathcal{D}\)</span> 和 <span class="math inline">\(s\mathcal{D}\)</span> 位于超平面 <span class="math inline">\(\alpha_s=0\)</span> 的两侧，所以 <span class="math inline">\(w\mathcal{D}\)</span> 和 <span class="math inline">\(ws\mathcal{D}\)</span> 位于超平面 <span class="math inline">\(w\alpha_s=0\)</span> 的两侧。<span class="math inline">\(\mathcal{D}\)</span> 站在它们俩的哪一边决定了
 <span class="math inline">\(l(ws)\)</span> 和 <span class="math inline">\(l(w)\)</span> 的大小关系：</p>
 <table>
 <colgroup>
 <col style="width: 50%">
-<col style="width: 49%">
+<col style="width: 50%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -827,10 +811,10 @@ J}k_t\alpha_t.\]</span> 由于 <span class="math inline">\(\lambda\in
 <ol type="1">
 <li>我们使用了 Tits “锥” 这个称呼，但 <span class="math inline">\(\mathcal{C}\)</span>
 真的是一个锥吗？这可不显然。</li>
-<li>一般来说 <span class="math inline">\(\mathcal{C}\)</span>
-并不等于全空间 <span class="math inline">\(V\)</span>，这一点在前一篇文章中已经看到了，只有在
-<span class="math inline">\(W\)</span> 是有限群的情形才有 <span class="math inline">\(\mathcal{C}=V\)</span> 成立，在仿射的情形 <span class="math inline">\(\mathcal{C}\)</span>
-是个半空间加上原点，而在双曲的情形 <span class="math inline">\(\mathcal{C}\)</span> 是个严格的尖锥。</li>
+<li>一般来说 Tits
+锥的结构是很复杂的，除了知道它是一个凸锥之外，其它的信息我们所知甚少。但是在
+<span class="math inline">\((W,S)\)</span> 不可约，且内积 <span class="math inline">\(\bullet\)</span>
+是有限、仿射或者双曲时，我们确实可以得出一些更多的信息，本文最后会对此进行讨论。</li>
 </ol>
 <p>定义 <span class="math inline">\(\mathrm{PLC}(\Delta)\)</span>
 为单根系 <span class="math inline">\(\Delta\)</span>
@@ -887,6 +871,12 @@ wv\in\overline{\mathcal{D}}\}\subseteq W_J\)</span>。我们只要从 <span clas
 \langle \alpha_s,\,v\rangle\geq0.\]</span> 其中第一个不等号是因为 <span class="math inline">\(w\alpha_s\)</span> 是负根和 <span class="math inline">\(wv\in\overline{\mathcal{D}}\)</span>。所以 <span class="math inline">\(\langle \alpha_s,\,v\rangle=0\)</span>，即 <span class="math inline">\(s\in J\)</span>，从而 <span class="math inline">\(sv=v\)</span>，于是 <span class="math inline">\(wv=w'sv=w'v\in\overline{\mathcal{D}}\)</span>，从而我们可以对
 <span class="math inline">\(l(w')&lt;l(w)\)</span> 重复此论证，得到
 <span class="math inline">\(w\)</span> 的乘积中所有因子都属于 <span class="math inline">\(J\)</span>，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
+<p>上面的证明还可以换一种表述：设 <span class="math inline">\(w=w^Jw_J\)</span> 是如<a href="#lemma1">引理 1</a>
+中那样关于标准椭圆子群 <span class="math inline">\(W_J\)</span>
+的陪集分解，<span class="math inline">\(w^J\)</span>
+是长度最短的陪集代表元，于是对任何 <span class="math inline">\(s\in
+J\)</span> 都有 <span class="math inline">\(l(w^Js)&gt;l(w^J)\)</span>，从而 <span class="math inline">\(w^J\alpha_s\in\Phi^+\)</span> 对任何 <span class="math inline">\(s\in J\)</span> 成立。我们断言 <span class="math inline">\(w^J\)</span> 必然是单位元，从而 <span class="math inline">\(w=w_J\in W_J\)</span>。否则任取单根 <span class="math inline">\(\alpha_t\)</span> 使得 <span class="math inline">\(w^J\alpha_t\in\Phi^-\)</span>，则 <span class="math inline">\(t\notin J\)</span>。但另一方面由 <span class="math inline">\(wv=w^Jw_Jv=w^Jv\in\mathcal{D}\)</span>，有 <span class="math display">\[0\geq \langle w^J\alpha_t,\,w^Jv\rangle = \langle
+\alpha_t,\,v\rangle\geq0.\]</span> 这只能是 <span class="math inline">\(\langle \alpha_t,\,v\rangle=0\)</span>，从而 <span class="math inline">\(t\in J\)</span>，矛盾！</p>
 <div id="prop9">
 <blockquote><p><strong>推论 9</strong>：Tits 锥 <span class="math inline">\(\mathcal{C} = \{v\in V \mid |\mathrm{Neg}(v)| &lt;
 \infty\}\)</span>。</p>
