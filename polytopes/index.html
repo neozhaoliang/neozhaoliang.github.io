@@ -1359,7 +1359,7 @@ faces in total.</p>
 <p>Most star polytopes can be generated using the Wythoff construction,
 but generally, it is not enough to use the method described above
 directly. You also need to add an additional generating relation into
-the group's representation.</p>
+the group's presentation.</p>
 <p>To illustrate, let's take the great dodecahedron as an example. Its
 Coxeter-Dynkin diagram is shown below:</p>
 <p><img style="margin:0px auto;display:block" src="/images/polytopes/coxeter552.svg" width="250"></p>
@@ -1404,12 +1404,13 @@ vertices and edges of the icosahedron untouched, but change its faces.
 To do this we start a walk from vertex <span class="math inline">\(Q\)</span> and move along edge <span class="math inline">\(QA\)</span> to reach the next vertex <span class="math inline">\(A\)</span>. At <span class="math inline">\(A\)</span>, we skip the first edge on the right
 (<span class="math inline">\(AO\)</span>) and choose the second one,
 which is <span class="math inline">\(AK\)</span>, to follow and move to
-vertex <span class="math inline">\(K\)</span>. We continue moving in
-this way by always choosing the second edge to the right. It takes five
-steps to return to <span class="math inline">\(O\)</span>, forming a
-pentagonal face of the great dodecahedron. By performing this operation
-for all edges of the icosahedron, we can generate all the faces of the
-great dodecahedron.</p>
+vertex <span class="math inline">\(K\)</span> (sorry for abusing the
+notation <span class="math inline">\(K\)</span> here). We continue
+moving in this way by always choosing the second edge to the right. It
+takes five steps to return to <span class="math inline">\(Q\)</span>,
+forming a pentagonal face of the great dodecahedron. By performing this
+operation for all edges of the icosahedron, we can generate all the
+faces of the great dodecahedron.</p>
 <p>This operaion is called <strong>faceting</strong>, it changes the
 faces of a given polyhedron while preserving its vertices and edges.
 This is achieved by walking along the edges of the original polyhedron
@@ -1446,10 +1447,10 @@ of the icosahedron forms a pentagon.</p>
 stabilizer of the edge <span class="math inline">\(AQ\)</span>. Thus,
 the great dodecahedron shares its edges with those of the
 icosahedron.</p>
-<p><span class="math inline">\(\langle\tau_0,\tau_1\rangle\)</span> is
-the stabilizer subgroup of one of the faces of the great dodecahedron.
-Note that <span class="math inline">\(\tau_0\tau_1\)</span> is a
-rotation of <span class="math inline">\(2\pi/5\)</span> arounds <span class="math inline">\(O\)</span>. It maps the edge <span class="math inline">\(QA\)</span> to the edge <span class="math inline">\(AK\)</span>, corresponding to the operation of
+<p>Thirdly, <span class="math inline">\(\langle\tau_0,\tau_1\rangle\)</span> is the
+stabilizer subgroup of one of the faces of the great dodecahedron. Note
+that <span class="math inline">\(\tau_0\tau_1\)</span> is a rotation of
+<span class="math inline">\(2\pi/5\)</span> arounds <span class="math inline">\(O\)</span>. It maps the edge <span class="math inline">\(QA\)</span> to the edge <span class="math inline">\(AK\)</span>, corresponding to the operation of
 selecting the <span class="math inline">\(k\)</span>-th edge to walk on.
 Repeatedly applying <span class="math inline">\(\tau_0\tau_1\)</span> to
 <span class="math inline">\(QA\)</span> will give the five edges of one
