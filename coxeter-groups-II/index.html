@@ -531,28 +531,27 @@ l(ws)&lt;l(w)&amp;\Leftrightarrow l((ws)s) &gt; l(ws)\\
 <div id="lemma1">
 <blockquote><p><strong>引理 1</strong>：设 <span class="math inline">\(I\subseteq
 S\)</span> 是 <span class="math inline">\(S\)</span> 的子集，<span class="math inline">\(I\)</span> 中的生成元在 <span class="math inline">\((W,S)\)</span> 中生成一个子群 <span class="math inline">\(W_I \leqslant (W,S)\)</span>，<span class="math inline">\(W_I\)</span> 叫做<strong>标准椭圆子群</strong>。记
-<span class="math inline">\(l_I(\cdot)\)</span> 是 <span class="math inline">\(W_I\)</span> 上的长度函数。则显然有 <span class="math inline">\(l(w)\leq l_I(w)\)</span> 对任何 <span class="math inline">\(w\in W_I\)</span> 成立。又记 <span class="math display">\[W^I=\{w\in W\mid l(wt)&gt;l(w),\ \forall t\in
+<span class="math inline">\(l_I(\cdot)\)</span> 是 <span class="math inline">\(W_I\)</span> 上的长度函数。则显然有 <span class="math inline">\(l(w)\leq l_I(w)\)</span> 对任何 <span class="math inline">\(w\in W_I\)</span> 成立。又记 <span class="math display">\[W^I=\{x\in W\mid l(xt)&gt;l(x),\ \forall t\in
 I\}.\]</span> 则任何 <span class="math inline">\(w\in W\)</span>
-都可以写成 <span class="math inline">\(w=xu\)</span>，其中 <span class="math inline">\(x\in W^I,\,u\in W_I\)</span> 且 <span class="math inline">\(l(w)=l(x)+l_I(u)\)</span>。</p>
-<p><span class="math inline">\(w^I\)</span> 中的元素叫做子群 <span class="math inline">\(W_I\)</span> 的最小长度陪集代表元。</p>
+都可以写成 <span class="math inline">\(w=xu\)</span> 的形式，其中 <span class="math inline">\(x\in W^I,\,u\in W_I\)</span> 且 <span class="math inline">\(l(w)=l(x)+l_I(u)\)</span>。</p>
 </blockquote>
 </div>
-<p><strong>引理 1 的证明</strong>：对 <span class="math inline">\(l(w)\)</span> 归纳，<span class="math inline">\(l(w)=0\)</span> 时 <span class="math inline">\(w=1\)</span> 结论显然成立。设 <span class="math inline">\(l(w)\geq 1\)</span> 以及结论对所有长度小于 <span class="math inline">\(l(w)\)</span> 的元素成立。</p>
-<p>如果 <span class="math inline">\(w\in w^I\)</span> 结论自然成立，因为
-<span class="math inline">\(x=w,\,u=1\)</span> 就满足要求。所以不妨假设
-<span class="math inline">\(w\notin w^I\)</span>，从而存在 <span class="math inline">\(t\in I\)</span> 使得 <span class="math inline">\(l(wt)&lt;l(w)\)</span>。对元素 <span class="math inline">\(wt\)</span> 应用归纳假设，则存在 <span class="math inline">\(x'\in W^I\)</span> 和 <span class="math inline">\(u'\in W_I\)</span> 满足 <span class="math display">\[wt=x'u',\quad l(wt) =
-l(x')+l_I(u').\]</span> 另一方面由 <span class="math inline">\(wt=x'u'\)</span> 可得 <span class="math inline">\(w=x'u't\)</span>，我们只要再论证 <span class="math display">\[l(w)=l(x')+l_I(u't)\]</span>
-即可完成证明（取 <span class="math inline">\(x=x',\,u=u't\)</span>）。将 <span class="math inline">\(l(x')=l(wt)-l_I(u')\)</span>
-代入上式，即只要论证 <span class="math display">\[l(w) + l_I(u') =
-l(wt) + l_I(u't).\]</span> 由于 <span class="math inline">\(l(w)&gt;l(wt)\)</span> 所以 <span class="math inline">\(l(w)=l(wt)+1\)</span>，所以我们只要再论证 <span class="math inline">\(l_I(u't)&gt;l_I(u')\)</span>。用反证法，若不然，则
-<span class="math inline">\(l_I(u't)&lt;l_I(u')\)</span>，于是
-<span class="math display">\[\begin{align*}
-l(w)&gt;l(wt) &amp;= l(x') + l_I(u')\\
-&amp;&gt; l(x') + l_I(u't) \\
-&amp;\geq l(x') + l(u't)\\
-&amp;\geq l(x'u't)\\
-&amp;=l(w).
-\end{align*}\]</span> 矛盾。于是引理得证。</p>
+<p><strong>引理 1 的证明</strong>：满足引理要求的 <span class="math inline">\((x,u)\)</span> 可以用如下步骤构造出来：</p>
+<figure class="highlight matlab"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs matlab">x := w<br>u := <span class="hljs-number">1</span><br><br><span class="hljs-keyword">while</span> l(xt) &lt; l(x) <span class="hljs-keyword">for</span> some t in I:<br>   x := xt<br>   u := tu<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></tbody></table></figure>
+<p>在上面的 <code>while</code> 循环中，由于每一次 <span class="math inline">\(x\)</span>
+的长度都严格减少，所以循环必然在有限次后结束，并且在循环结束后，不可能再有某个
+<span class="math inline">\(t\in I\)</span> 满足 <span class="math inline">\(l(xt)&lt;l(x)\)</span>，那就只能是对所有 <span class="math inline">\(t\in I\)</span> 都有 <span class="math inline">\(l(xt)&gt;l(x)\)</span>。此外等式 <span class="math inline">\(w=xu=xt\cdot tu\)</span>
+在循环前后保持成立，所以只要再说明循环结束以后有等式 <span class="math inline">\(l(w)=l(x)+l_I(u)\)</span> 成立即可。</p>
+<p>实际上我们将论证在每次循环前和循环后，等式 <span class="math inline">\(l(w)=l(x)+l_I(u)\)</span>
+始终保持成立。在循环开始前，<span class="math inline">\(x=w,\,u=1\)</span>，等式 <span class="math inline">\(l(w)=l(x)+l_I(u)\)</span>
+显然成立。设某次循环开始前此等式成立，且循环对某个 <span class="math inline">\(t\in I\)</span> 执行，则 <span class="math display">\[l(x) + l_I(u) = l(w) = l(xt\cdot tu)\leq l(xt) +
+l(tu)\leq l(xt) + l_I(tu).\]</span> 其中最后一个不等号是因为 <span class="math inline">\(l(w_I)\leq l_I(w_I)\)</span> 对任何 <span class="math inline">\(w_I\in W_I\)</span> 都成立。</p>
+<p>于是 <span class="math inline">\(l_I(tu)\geq l_I(u) + (l(x) -
+l(xt))\)</span>。由于循环执行的条件是 <span class="math inline">\(l(x)
+&gt; l(xt)\)</span>，所以 <span class="math inline">\(l(x) -
+l(xt)=1\)</span>，从而 <span class="math inline">\(l_I(tu)\geq
+l_I(u)+1\)</span>，那只能是 <span class="math inline">\(l_I(tu)=l_I(u)+1\)</span>，于是 <span class="math display">\[l(xt) + l_I(tu) = (l(x)-1) + (l_I(u)+1) =
+l(x)+l_I(u)=l(w).\quad \blacksquare\]</span></p>
 <p><strong><a href="#theorem1">定理 1</a> 的证明</strong>：</p>
 <p>我们先证明充分性：若 <span class="math inline">\(l(ws)&gt;l(w)\)</span> 则 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>。</p>
 <p>对 <span class="math inline">\(w\)</span> 的长度 <span class="math inline">\(l(w)\)</span> 归纳：<span class="math inline">\(l(w)=0\)</span> 时 <span class="math inline">\(w=1\)</span>，结论显然成立，下面设结论对 <span class="math inline">\(W\)</span> 中所有长度小于 <span class="math inline">\(l(w)\)</span> 的元素成立。</p>
@@ -775,16 +774,10 @@ S}c_s\alpha_s,c_s\geq0\right\}.\]</span> 显然 <span class="math inline">\(\mat
 \alpha_s,\,v\rangle=0\}\)</span>，则 <span class="math display">\[\{w\in
 W\mid wv=v\} = W_J = \{w\in W\mid
 wv\in\overline{\mathcal{D}}\}.\]</span></p>
+<p>即 <span class="math inline">\(v\)</span> 在 <span class="math inline">\(W\)</span> 中的稳定化子群 <span class="math inline">\(\mathrm{Stab}(v)\)</span> 由那些包含 <span class="math inline">\(v\)</span> 的墙面 <span class="math inline">\(\{\alpha_s\mid \langle
+\alpha_s,\,v\rangle=0\}\)</span> 对应的反射组成。</p>
 </blockquote>
 </div>
-<p><strong>定理 2 的几何直观</strong>：对 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 中的一点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
-在 <span class="math inline">\(W\)</span> 中的稳定化子群 <span class="math inline">\(\mathrm{Stab}(v)\)</span>
-是个标准椭圆子群，由那些包含 <span class="math inline">\(v\)</span>
-的墙面 <span class="math inline">\(\{\alpha_s\mid \langle
-\alpha_s,\,v\rangle=0\}\)</span> 对应的反射组成。如果 <span class="math inline">\(v\)</span> 落在房间内部，即 <span class="math inline">\(v\in\mathcal{D}\)</span>，那么 <span class="math inline">\(\mathrm{Stab}(v)\)</span> 是平凡的；如果 <span class="math inline">\(v\)</span> 落在单个墙壁 <span class="math inline">\(s\)</span> 上，则 <span class="math inline">\(\mathrm{Stab}(v)=\langle s\rangle\)</span>
-是二阶循环群；如果 <span class="math inline">\(v\)</span> 落在两个墙壁
-<span class="math inline">\(s,t\)</span> 的交线上，则 <span class="math inline">\(\mathrm{Stab}(v)=\langle s,t\rangle\)</span>
-是个二面体群；以此类推。</p>
 <p><strong><a href="#theorem2">定理 2</a> 的证明</strong>：</p>
 <p>直观地，<span class="math inline">\(J\)</span> 由那些包含 <span class="math inline">\(v\)</span> 的墙壁组成，关于这些墙壁的反射是保持
 <span class="math inline">\(v\)</span> 不动的，即对任何 <span class="math inline">\(s\in J\)</span> 有 <span class="math display">\[s\cdot v= v-\langle
@@ -956,7 +949,7 @@ w\mathcal{D}\subset\mathcal{C}^\circ\)</span>。</p>
 群的有限子群的重要结论：</p>
 <div id="theorem4">
 <blockquote><p><strong>定理 4</strong>：设 <span class="math inline">\(H\)</span> 是
-<span class="math inline">\((W,S)\)</span> 的有限子群，则存在子集 <span class="math inline">\(J\subseteq S\)</span> 和 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(W_J\)</span> 是有限标准椭圆子群且 <span class="math inline">\(H\subseteq wW_Jw^{-1}\)</span>。</p>
+<span class="math inline">\((W,S)\)</span> 的有限子群，则 <span class="math inline">\(H\)</span> 必然包含在 <span class="math inline">\(W\)</span> 的某个有限椭圆子群中，即存在 <span class="math inline">\(J\subseteq S\)</span> 和 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(W_J\)</span> 是有限群且 <span class="math inline">\(H\subseteq wW_Jw^{-1}\)</span>。</p>
 </blockquote>
 </div>
 <p>证明：在基本区域中任取一点 <span class="math inline">\(x\in\mathcal{D}\)</span>，则 <span class="math inline">\(x\in\mathcal{C}^\circ\)</span>。考虑 <span class="math inline">\(x\)</span> 在 <span class="math inline">\(H\)</span> 作用下轨道的重心 <span class="math display">\[z=\frac{1}{|H|}\sum_{h\in H}hx.\]</span> 注意到
@@ -970,11 +963,6 @@ w\mathcal{D}\subset\mathcal{C}^\circ\)</span>。</p>
 中的对偶锥。但是我们还没有严格介绍什么是对偶锥，所以要补上这一课，介绍一些关于锥的预备知识。</p>
 <hr>
 <h3 id="一些关于锥的预备知识">一些关于锥的预备知识</h3>
-<blockquote>
-<p><strong>注意</strong>：本段内容中的 <span class="math inline">\(V,V^\ast\)</span>
-等均代表一般的实数域上有限维向量空间及其对偶空间，结论也是针对这些一般空间的，请不要与本段之外内容中的
-<span class="math inline">\(V,V^\ast\)</span> 对号入座。</p>
-</blockquote>
 <p>在本段中，我们设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(V\)</span> 中的一个锥，定义 <span class="math inline">\(C\)</span> 的对偶锥 <span class="math inline">\(C^\ast\in V^\ast\)</span> 为 <span class="math display">\[C^\ast = \{f\in V^\ast\mid f(v)\geq0,\ \forall
 v\in C\}.\]</span> <span class="math inline">\(C^\ast\)</span>
 是对偶空间中一些线性泛函组成的集合。</p>
@@ -1122,11 +1110,10 @@ c\geq0\}\)</span>，Tits 锥 <span class="math inline">\(\mathcal{C}=\{0\}\cup\{
 </blockquote>
 <p>这个结论的证明有点长，本文不作介绍。</p>
 <p>在双曲的情形，内积 <span class="math inline">\(\bullet\)</span>
-的符号是 <span class="math inline">\((n-1,1)\)</span>，从而 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 都是 <span class="math inline">\(n\)</span> 维双曲空间，<span class="math inline">\(W\)</span> 是空间中的正交变换群。满足 <span class="math inline">\(v\bullet v\leq0\)</span> 的点由上下两个连通分支
-<span class="math inline">\(L^+=-L^-\)</span>
-构成，满足对任何两个非零向量 <span class="math inline">\(x\in
-L^+\)</span> 和 <span class="math inline">\(y\in L^-\)</span> 有 <span class="math inline">\(x\bullet y&gt;0\)</span>，从而 <span class="math inline">\(L^+,L^-\)</span>
-互相包含在对方的对偶锥中。可以证明 Tits 锥的对偶锥 <span class="math inline">\(\mathcal{C}^\ast\ne\emptyset\)</span>，以及 <span class="math inline">\(\mathcal{C}^\ast\cap L^+,\,\mathcal{C}^\ast\cap
+的符号是 <span class="math inline">\((n-1,1)\)</span>，从而 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 都是 <span class="math inline">\(n\)</span> 维双曲空间，<span class="math inline">\(W\)</span> 是空间中的正交变换群。满足 <span class="math inline">\(v\bullet v\leq0\)</span>
+的点，除去原点以后由两个连通分支 <span class="math inline">\(L^+=-L^-\)</span> 构成，满足对任何两个非零向量
+<span class="math inline">\(x\in L^+\)</span> 和 <span class="math inline">\(y\in L^-\)</span> 有 <span class="math inline">\(x\bullet y&gt;0\)</span>，从而 <span class="math inline">\(L^+,L^-\)</span>
+互相包含在对方的对偶锥中。这时可以证明 Tits 锥的对偶锥 <span class="math inline">\(\mathcal{C}^\ast\ne\emptyset\)</span>，以及 <span class="math inline">\(\mathcal{C}^\ast\cap L^+,\,\mathcal{C}^\ast\cap
 L^-\)</span> 中必有一个是空集，于是根据 <a href="#prop12">推论
 12</a>，<span class="math inline">\(\mathcal{C}^\ast\)</span> 必然属于
 <span class="math inline">\(L^+,\,L^-\)</span> 中的一个，不妨设为 <span class="math inline">\(\mathcal{C}^\ast\subseteq
