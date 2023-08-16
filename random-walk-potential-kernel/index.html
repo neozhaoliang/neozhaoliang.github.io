@@ -757,9 +757,11 @@ B(r)}})|\tau_{\partial B(r)}&lt;\tau_{0}\right]}.
 \]</span></p>
 <p>记上面的分母为 <span class="math inline">\(g=\mathbb{E}_x\left[a(S_{\tau_{\partial
 B(r)}})|\tau_{\partial B(r)}&lt;\tau_{0}\right]\)</span>，则 <span class="math inline">\(g\)</span> 是势核 <span class="math inline">\(a(\cdot)\)</span> 在圆周 <span class="math inline">\(\partial B(r)\)</span>
-上关于一个条件概率测度的积分，而我们已经看到势核 <span class="math inline">\(a(y)\)</span> 是近似球对称的，它只依赖于 <span class="math inline">\(|y|\)</span>。当随机游动刚好走到 <span class="math inline">\(B(r)\)</span> 范围之外时，其位置 <span class="math inline">\(y\)</span> 未必正好落在圆周上，但是必然存在 <span class="math inline">\(x\in B(r)\)</span> 和单位向量 <span class="math inline">\(e\in\{\pm e_1,\pm e_2\}\)</span> 使得 <span class="math inline">\(y=x+e\)</span>，并且 <span class="math inline">\(r-1&lt;|x|\leq r\)</span>。根据上一节的推论，<span class="math inline">\(|a(y)-a(x)|=O(1/r)\)</span>。所以 <span class="math inline">\(g\)</span> 作为 <span class="math inline">\(a(\cdot)\)</span> 在 <span class="math inline">\(\partial B(r)\)</span>
-附近的一些值在一个条件概率下的加权组合，其值近似等于 <span class="math display">\[\frac{2}{\pi}\ln r + \frac{2\gamma+\ln8}{\pi} +
-O(r^{-1}).\]</span></p>
+上关于一个条件概率测度的积分，而我们已经看到势核 <span class="math inline">\(a(y)\)</span> 是近似球对称的，它只依赖于 <span class="math inline">\(|y|\)</span>。当随机游动刚好走到 <span class="math inline">\(B(r)\)</span> 范围之外时，其位置 <span class="math inline">\(y\)</span> 未必正好落在圆周上，但是满足 <span class="math inline">\(r\leq |y|&lt;
+r+1\)</span>。我们滥用一点记号，对任意的实数 <span class="math inline">\(r&gt;0\)</span>，记 <span class="math display">\[a(r) = \frac{2}{\pi}\ln r +
+\frac{2\gamma+\ln8}{\pi},\]</span> 则根据上一节推论同样的道理，当 <span class="math inline">\(r&lt;|y|\leq r+1\)</span> 时有 <span class="math display">\[|a(y) - a(r)| = O(1/r).\]</span> 所以 <span class="math inline">\(g\)</span> 作为 <span class="math inline">\(a(\cdot)\)</span> 在 <span class="math inline">\(\partial B(r)\)</span> 附近的一些 <span class="math inline">\(y\)</span> 在一个条件概率下的加权组合，其值等于
+<span class="math display">\[\frac{2}{\pi}\ln r +
+\frac{2\gamma+\ln8}{\pi} + O(r^{-1}).\]</span></p>
 <p>至此我们就证明了如下结论：</p>
 <blockquote><p><strong>定理 4</strong>： 设 <span class="math inline">\(x\in
 B(r)\)</span> 且 <span class="math inline">\(x\ne 0\)</span>，考虑从
@@ -778,6 +780,11 @@ e_2\}}\frac{a(x)}{\dfrac{2}{\pi}\ln r +
 \dfrac{2\gamma+\ln8}{\pi} + O(r^{-1})}\approx\left(\dfrac{2}{\pi}\ln r +
 1.0293737\right)^{-1},\quad r\to\infty,\]</span> 这也正是我们之前介绍的
 B 的获胜概率！</p>
+<blockquote>
+<p>我们需要根据第一步将概率进行分解是因为 <span class="math inline">\(a(x)\)</span> 在 <span class="math inline">\(x\ne
+0\)</span> 时才是调和的，从而 <span class="math inline">\(a(S_{n\wedge
+\tau})\)</span> 是鞅。</p>
+</blockquote>
 <h1 id="结语">结语</h1>
 <p>洋洋洒洒一大篇，总算回答了开头提出的一个小问题。你可能要问了：诶？这只是二维的情形呀，如果是三维太阳系中的真·随机游动，A
 和 B 获胜的概率又该怎么算？这种情形方法其实是类似的，需要估计势核 Green
