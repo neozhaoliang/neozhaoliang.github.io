@@ -188,7 +188,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">2 篇</span></a>
+                    代数 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -196,23 +196,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机完美取样/">
-                    随机完美取样 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy-作品/">
-                    Shadertoy-作品 <span class="right">1 篇</span></a>
+                    可视化复分析 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -220,7 +204,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/几何/">
-                    几何 <span class="right">2 篇</span></a>
+                    几何 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -228,7 +212,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">4 篇</span></a>
+                    有限群表示与结合代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -236,31 +220,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机游动/">
-                    随机游动 <span class="right">2 篇</span></a>
+                    线性代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -328,9 +288,9 @@
             
     <div class="tags-row">
         
-            <a href="/tags/离散鞅，Backward-induction/" class="chip pink lighten-1">离散鞅，Backward induction</a>
+            <a href="/tags/discrete-martingale/" class="chip pink lighten-1">discrete martingale</a>
         
-            <a href="/tags/Williams-概率和鞅/" class="chip pink lighten-1">Williams 概率和鞅</a>
+            <a href="/tags/backward-induction/" class="chip pink lighten-1">backward induction</a>
         
     </div>
 
@@ -445,9 +405,9 @@ S_n=X_n\}\)</span>，则 <span class="math inline">\(\tau\)</span>
 确实是最优的停止策略呢？想法是这样的：设 <span class="math inline">\(T\)</span> 是任意停时，我们要证明 <span class="math inline">\(\mathbb{E}X_\tau\geq
 \mathbb{E}X_T\)</span>，为此我们利用 <span class="math inline">\(\{S_n\}\)</span> 和 <span class="math inline">\(\{X_n\}\)</span>
 的关系，给式子中间塞进去两项，搭一座桥： <span class="math display">\[
-\mathbb{E}X*\tau = \mathbb{E}S*\tau \geq \mathbb{E}S*T\geq
+\mathbb{E}X_\tau = \mathbb{E}S_\tau \geq \mathbb{E}S_T\geq
 \mathbb{E}X_T.\]</span> 注意第一个等号是根据 <span class="math inline">\(\tau\)</span> 的定义，最后一个不等号是根据定理
-1。所以我们只要证明中间的不等号 <span class="math inline">\(\mathbb{E}S*\tau\geq \mathbb{E}S_T\)</span>
+1。所以我们只要证明中间的不等号 <span class="math inline">\(\mathbb{E}S_\tau\geq \mathbb{E}S_T\)</span>
 即可。</p>
 <p>我们已经知道 <span class="math inline">\(\{S_n\}\)</span>
 是一个上鞅，那么自然不管什么停时 <span class="math inline">\(T\)</span>，统统都有 <span class="math inline">\(\mathbb{E}S_T\leq \mathbb{E}S_0\)</span>。但是关于
@@ -477,10 +437,10 @@ S_n=X_n\}\)</span>，则 <span class="math inline">\(\tau\)</span>
 <span class="math inline">\(\nu\)</span> 是任一最优停时，则 <span class="math inline">\(\tau\leq\nu\)</span> （回顾一下 <span class="math inline">\(\tau\)</span>
 的定义）。换句话说，我们之前设计的相亲策略是所有最优策略中时间成本最低的！</p>
 <p>我们还可以给出最优停止策略中最大的一个来：</p>
-<blockquote><p><strong>定理 5</strong>：设 <span class="math inline">\(S_n=M_n+A_n\)</span> 是 <span class="math inline">\(\{S_n\}\)</span> 的 Doob - Meyer 分解，其中 <span class="math inline">\(\{M_n\}\)</span> 是鞅，<span class="math inline">\(A_n\)</span> 是可料递增过程，定义 <span class="math display">\[\tau_\max = \begin{cases}N &amp; A_N=0,\\
+<blockquote><p><strong>定理 5</strong>：设 <span class="math inline">\(S_n=M_n+A_n\)</span> 是 <span class="math inline">\(\{S_n\}\)</span> 的 Doob-Meyer 分解，其中 <span class="math inline">\(\{M_n\}\)</span> 是鞅，<span class="math inline">\(A_n\)</span> 是可料递增过程，定义 <span class="math display">\[\tau_\max = \begin{cases}N &amp; A_N=0,\\
 \inf\{n\ |\ A_{n+1}&gt;0\} &amp; A_N&gt;0.\end{cases}\]</span> 则 <span class="math inline">\(\tau_\max\)</span> 是所有最优停时中最大的。</p>
 </blockquote>
-<p>定理 4，5 的证明都不难，这里就省略了。</p>
+<p>定理 4, 5 的证明都不难，这里就省略了。</p>
 <h1 id="参考文献">参考文献</h1>
 <blockquote>
 <p>Risk-Neutral Valuation: Pricing and Hedging of Financial Derivatives.
@@ -489,8 +449,8 @@ By Nicholas H. Bingham, Rüdiger Kiesel.</p>
 
                 
 <p class="pink-link-context">
-    <a href="/coin-and-coding-theory/" rel="next" title="称硬币问题、小白鼠找毒药问题与编码理论">
-    上一篇：称硬币问题、小白鼠找毒药问题与编码理论
+    <a href="/Birkhoff-ergodic-theorem/" rel="next" title="Birkhoff 遍历定理">
+    上一篇：Birkhoff 遍历定理
   </a>
 </p>
 
