@@ -142,7 +142,7 @@ plane {
 #declare rad = 0.04;
 
 union {
-  
+
   FundCone(ht)
 
   sphere {

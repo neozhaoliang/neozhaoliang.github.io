@@ -1,6 +1,7 @@
 #version 3.7;
 
 #include "colors.inc"
+#include "transforms.inc"
 
 global_settings {
   assumed_gamma 1.0
@@ -11,7 +12,6 @@ background { Quartz }
 #declare imagename = "tex-noncompact.png";
 
 #declare hyperboloid_transparency = 0.3;
-
 // mirrors for the (7, 3) tiling
 #declare m1 = <1, 0, 0>;
 #declare m2 = <-cos(pi/3), sin(pi/3), 0>;
@@ -28,20 +28,11 @@ background { Quartz }
   #local p1 = A / A.z * ht;
   #local p2 = B / B.z * ht;
   #local p3 = C / C.z * ht;
-  mesh2 {
-    vertex_vectors {
-      4,
-      0, p1, p2, p3
-    }
-    face_indices {
-      4,
-      <0, 1, 2>,
-      <0, 1, 3>,
-      <0, 2, 3>,
-      <1, 2, 3>
-    }
-    pigment { color Red }
-    finish { ambient 0.3 diffuse 0.8 specular 0.2 roughness 0.2 }
+  #local n = vnormalize(vcross(p2, p3));
+  box {
+    <p2.x, p2.y, p2.z>, <-p2.x, -p2.y, -0.001>
+    pigment { color Blue transmit 0.4 }
+    finish { ambient 0.7 diffuse 0.3 specular 0.2 roughness 0.02 }
   }
 #end
 
@@ -111,26 +102,24 @@ background { Quartz }
     2, <1, 0, 0, 0, 1, 0, 0, -1, 0, 0>
   }
   clipped_by{ plane{-z, 0} }
-  clipped_by{ plane{ z, 2} }
-  pigment { Pink  transmit 0.5 }
+  clipped_by{ plane{ z, 1.5} }
+  pigment { Pink }
   finish {
     ambient 0.8
     diffuse 0.2
     reflection 0
     roughness 0.25
-    irid { 0.3 thickness 0.2 turbulence 0.05 }
-    conserve_energy
   }
 }
 
-object{ hyperboloid }
+//object{ hyperboloid }
 object { lightcone }
 plane {
   z, 1
   pigment {
     image_map { png imagename once }
     translate <-0.5, -0.5, 0>
-    scale 4
+    scale 2
   }
   finish {
     ambient 0.3 diffuse 0.7 reflection 0 roughness 0.25
@@ -138,7 +127,7 @@ plane {
 }
 
 
-#declare ht = min(3*clock, 2);
+#declare ht = 2;
 
 #declare rad = 0.04;
 
@@ -173,7 +162,7 @@ sphere {
 }
 
 camera {
-  location <2, 1.5, 5>*1.2
+  location <2, 0, 4>
   look_at <0, 0, 1>
   sky z
   up z
@@ -189,4 +178,18 @@ light_source {
   jitter
   orient
   adaptive 2
+}
+
+torus {
+  0.98, 0.02
+  pigment { Red }
+  finish {
+    ambient 0.7
+    diffuse 0.3
+    specular 0.2
+    roughness 0.02
+  } // major radius, minor radius
+  clipped_by {plane {-x, 0}}
+  rotate <90, 0, 0>
+  translate <0, 0, 1>
 }

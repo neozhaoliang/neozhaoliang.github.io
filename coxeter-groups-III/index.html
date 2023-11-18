@@ -1,0 +1,1321 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Coxeter 群基础知识 （三）：双曲 Coxeter 群与 Boyd-Maxwell 球堆 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="本系列的前两篇文章 反射 和 几何实现 介绍了 Coxeter
+群的一些基本知识。本文是系列的第三篇，将正式介绍双曲 Coxeter 群与球堆
+(sphere packing) 的关系。本文主要是对 George Maxwell
+的两篇文章的重新整理：
+
+Sphere packings and hyperbolic reflection groups, Journal of
+Algebra, Volume 79, Issue 1, 1982.
+Wythoff&#39;s construction for Coxeter groups, Journal of Algebra,
+Volume 123, Issue 2, 1989.
+
+在文中我将分别用 Maxwell&#39;82 和 Maxwell&#39;89 来引用它们。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Coxeter 群基础知识 （三）：双曲 Coxeter 群与 Boyd-Maxwell 球堆"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Coxeter-Groups/">Coxeter Groups</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Coxeter 群基础知识 （三）：双曲 Coxeter 群与 Boyd-Maxwell 球堆</h1>
+    
+
+
+            </div>
+            <time class="pink-link-context" datetime="2021-12-23T16:00:00.000Z"><a href="/coxeter-groups-III/">2021-12-24</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Root-system/" class="chip pink lighten-1">Root system</a>
+        
+            <a href="/tags/Cartan-matrix/" class="chip pink lighten-1">Cartan matrix</a>
+        
+            <a href="/tags/Hyperbolic-space/" class="chip pink lighten-1">Hyperbolic space</a>
+        
+            <a href="/tags/Coxeter-groups/" class="chip pink lighten-1">Coxeter groups</a>
+        
+            <a href="/tags/Coxeter-matrix/" class="chip pink lighten-1">Coxeter matrix</a>
+        
+            <a href="/tags/Tits-cone/" class="chip pink lighten-1">Tits cone</a>
+        
+            <a href="/tags/Boyd-Maxwell-ball-packings/" class="chip pink lighten-1">Boyd-Maxwell ball packings</a>
+        
+            <a href="/tags/Reflection/" class="chip pink lighten-1">Reflection</a>
+        
+            <a href="/tags/Sphere-inversion/" class="chip pink lighten-1">Sphere inversion</a>
+        
+            <a href="/tags/Circle-packing/" class="chip pink lighten-1">Circle packing</a>
+        
+    </div>
+
+
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%B8%8A%E6%9C%9F%E5%9B%9E%E9%A1%BE"><span class="section table-of-contents-text">上期回顾</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">背景知识</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E7%BE%A4%E7%9A%84-level"><span class="section table-of-contents-text">Coxeter 群的 level</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#level-1-%E7%9A%84%E7%BE%A4%E6%98%AF%E5%8F%8C%E6%9B%B2%E7%9A%84"><span class="section table-of-contents-text">Level 1 的群是双曲的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#level-2-%E7%9A%84%E7%BE%A4%E4%B9%9F%E6%98%AF%E5%8F%8C%E6%9B%B2%E7%9A%84"><span class="section table-of-contents-text">Level 2 的群也是双曲的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#level-1-2-%E7%AD%89%E4%BB%B7%E4%BA%8E%E5%8F%8C%E6%9B%B2%E5%92%8C%E5%88%86%E7%A6%BB"><span class="section table-of-contents-text">level &#x3D; 1, 2 等价于双曲和分离</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%9F%BA%E6%9C%AC%E5%90%8C%E6%9E%84"><span class="section table-of-contents-text">基本同构</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%B0%86-mathbbrn-%E5%92%8C-sn-%E6%8F%90%E5%8D%87%E5%88%B0-mathbbrn1-1-%E4%B8%AD"><span class="section table-of-contents-text">将 \(\mathbb{R}^n\) 和 \(S^{n}\) 提升到 \(\mathbb{R}^{n+1, 1}\) 中</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%B0%86-mathbbrn-%E4%B8%AD%E7%9A%84%E7%90%83%E6%8F%90%E5%8D%87%E5%88%B0-mathbbrn11-%E4%B8%AD"><span class="section table-of-contents-text">将 \(\mathbb{R}^n\) 中的球提升到 \(\mathbb{R}^{n+1,1}\) 中</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E7%90%83%E9%9D%A2%E4%B9%8B%E9%97%B4%E7%9A%84-seperation"><span class="section table-of-contents-text">球面之间的 seperation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%85%B3%E4%BA%8E%E7%90%83%E9%9D%A2%E7%9A%84%E5%8F%8D%E6%BC%94"><span class="section table-of-contents-text">关于球面的反演</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%90%83%E5%A0%86"><span class="section table-of-contents-text">球堆</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#maxwell-89"><span class="section table-of-contents-text">Maxwell 89</span></a></li></ol>
+</div>
+
+            
+
+
+            <div class="entry pink-link-context">
+                <p>本系列的前两篇文章 <a href="/coxeter-groups-I/">反射</a> 和 <a href="/coxeter-groups-II/">几何实现</a> 介绍了 Coxeter
+群的一些基本知识。本文是系列的第三篇，将正式介绍双曲 Coxeter 群与球堆
+(sphere packing) 的关系。本文主要是对 George Maxwell
+的两篇文章的重新整理：</p>
+<ol type="1">
+<li>Sphere packings and hyperbolic reflection groups, Journal of
+Algebra, Volume 79, Issue 1, 1982.</li>
+<li>Wythoff's construction for Coxeter groups, Journal of Algebra,
+Volume 123, Issue 2, 1989.</li>
+</ol>
+<p>在文中我将分别用 Maxwell'82 和 Maxwell'89 来引用它们。</p>
+<span id="more"></span>
+<h1 id="上期回顾">上期回顾</h1>
+<p>设 <span class="math inline">\((W,S)\)</span> 是 Coxeter 群，<span class="math inline">\(M=(m_{s,t})_{s,t\in S}\)</span> 是 Coxeter
+矩阵，<span class="math inline">\(\Delta=\{\alpha_s\}_{s\in S}\in
+V^\ast\)</span> 是一组单根，<span class="math inline">\(V^\ast\)</span>
+上的内积 <span class="math inline">\((\cdot,\cdot)\)</span> 定义为</p>
+<p><span class="math display">\[(\alpha_s,\alpha_t)=c_{s,t}/2=\begin{cases}-\cos\dfrac{\pi}{m_{s,t}}&amp;m_{s,t}&lt;\infty,\\-a_{s,t}&amp;m_{s,t}=\infty.\end{cases}\]</span>
+其中 <span class="math inline">\(a_{s,t}\)</span> 是 <span class="math inline">\(\geq1\)</span> 的实数，<span class="math inline">\(C=(c_{s,t})\)</span> 是 Cartan
+矩阵。在此内积下，每个 <span class="math inline">\(\alpha_s\)</span>
+都是单位向量：<span class="math inline">\((\alpha_s,\alpha_s)=1\)</span>，且不同 <span class="math inline">\(\alpha_s\)</span> 之间的内积非正：<span class="math inline">\((\alpha_s,\alpha_t)\leq0,\,s\ne t\)</span>。</p>
+<p>如果内积是非退化的，即不存在 <span class="math inline">\(x\in
+V^\ast\)</span> 使得 <span class="math inline">\((x,v)=0\)</span> 对任何
+<span class="math inline">\(v\in V^\ast\)</span> 成立，则我们可以将
+<span class="math inline">\(V^\ast\)</span> 和 <span class="math inline">\(V\)</span> 等同起来，将 <span class="math inline">\(\{\alpha_s\}\)</span> 取为 <span class="math inline">\(V\)</span> 中的向量使得 <span class="math inline">\(\langle
+\alpha_s,\,\cdot\rangle=(\alpha_s,\cdot)\)</span> （实际上令 <span class="math inline">\(\alpha_s=\alpha_s^\vee/2\)</span> 即可），于是根系
+<span class="math inline">\(\Phi\)</span> 和 Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 都属于 <span class="math inline">\(V\)</span>，我们可以抛掉对偶空间 <span class="math inline">\(V^\ast\)</span>，只在 <span class="math inline">\(V\)</span> 中进行讨论。</p>
+<p>对每个 <span class="math inline">\(s\in S\)</span>，反射变换 <span class="math inline">\(\rho_s\)</span> 是 <span class="math inline">\((\cdot,\cdot)\)</span> 下的正交变换： <span class="math display">\[\rho_s:\ x\to x - 2(\alpha_s, x)\alpha_s,\quad
+x\in V.\]</span></p>
+<p>继续定义基本区域为 <span class="math inline">\(\mathcal{D}=\cap_{s\in
+S}\{v\in V\mid (\alpha_s, v)&gt;0\}\)</span>，<span class="math inline">\(\overline{\mathcal{D}}\)</span> 为 <span class="math inline">\(\mathcal{D}\)</span>
+的闭包，则我们之前的所有讨论都仍然适用。</p>
+<p><span class="math inline">\(\{\alpha_s\}\)</span> 的对偶基 <span class="math inline">\(\{\omega_s\}\)</span> 也非常有用，它定义为 <span class="math inline">\((\alpha_s,\omega_t)=\delta_{s,t},\,s,t\in
+S\)</span>。<span class="math inline">\(\{\omega_s\}\)</span>
+就是基本区域 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
+的“墙角”。</p>
+<blockquote>
+<p><strong>定义</strong>：我们称 <span class="math inline">\(\{\omega_s\}\)</span>
+为<strong>基本权</strong>，集合 <span class="math inline">\(\{w\omega_s\mid w\in W, s\in S\}\)</span>
+为<strong>权</strong>。</p>
+</blockquote>
+<h1 id="背景知识">背景知识</h1>
+<p>设 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(\mathbb{R}\)</span> 上的 <span class="math inline">\(n\)</span> 维向量空间，<span class="math inline">\((\cdot,\cdot)\)</span> 是 <span class="math inline">\(V\)</span> 上的一个符号为 <span class="math inline">\((n-1,1)\)</span> 的内积，于是 <span class="math inline">\(V\)</span> 在此内积下成为一个 Lorentz 空间。对
+<span class="math inline">\(v\in V\)</span>，我们称 <span class="math inline">\(v\)</span> 是</p>
+<ol type="1">
+<li>space-like 的，如果 <span class="math inline">\((v,v)&gt;0\)</span>；</li>
+<li>light-like 的，如果 <span class="math inline">\((v,v)=0\)</span>；</li>
+<li>time-like 的，如果 <span class="math inline">\((v,v)&lt;0\)</span>。</li>
+</ol>
+<p>如果 <span class="math inline">\(U\subset V\)</span>
+是一个子空间，我们称 <span class="math inline">\(U\)</span> 是</p>
+<ol type="1">
+<li>space-like 的，如果 <span class="math inline">\((\cdot,\cdot)\mid_U\)</span> 是正定的；</li>
+<li>light-like 的，如果 <span class="math inline">\((\cdot,\cdot)\mid_U\)</span>
+是半正定的，但不是正定的；</li>
+<li>time-like 的，如果 <span class="math inline">\((\cdot,\cdot)\mid_U\)</span>
+不是正定或者半正定的，或者等价地，<span class="math inline">\(U\)</span>
+包含 time-like 的向量。</li>
+</ol>
+<p>记 <span class="math inline">\(U^\bot\)</span> 是 <span class="math inline">\(U\)</span> 在 <span class="math inline">\(V\)</span> 中的正交补，则我们有如下结论：</p>
+<ol type="1">
+<li><span class="math inline">\(U\)</span> 是 space-like 的当且仅当
+<span class="math inline">\(U^\bot\)</span> 是 time-like 的；</li>
+<li><span class="math inline">\(U\)</span> 是 light-like 的当且仅当
+<span class="math inline">\(U^\bot\)</span> 是 light-like 的。</li>
+</ol>
+<p>这个结论会在后面经常用到。</p>
+<p>设 <span class="math inline">\(C=\{v\in V\mid (v,v)\leq 0\}\)</span>
+是所有非 space-like 向量组成的集合，在除去原点以后 <span class="math inline">\(C\)</span> 可以分成两个不相交的连通分支 <span class="math inline">\(C=C_+\cup C_-\)</span>，<span class="math inline">\(C_+,\,C_-\)</span> 都是点锥且 <span class="math inline">\(C_+=-C_-\)</span>。下面的结论也是经常用到的：</p>
+<blockquote><p>对任何 <span class="math inline">\(x,y\in C-\{0\}\)</span>：</p>
+<ol type="1">
+<li>若 <span class="math inline">\((x,y)&lt;0\)</span> 则 <span class="math inline">\(x,y\)</span> 必然属于同一个连通分支；</li>
+<li>若 <span class="math inline">\((x,y)&gt;0\)</span> 则 <span class="math inline">\(x,y\)</span> 必然属于不同的连通分支；</li>
+<li><span class="math inline">\((x,y)=0\)</span> 当前仅当 <span class="math inline">\(x,y\)</span> 是共线的 light-like 的向量。</li>
+</ol>
+</blockquote>
+<p>在本文中我们用记号 <span class="math inline">\(x\sim y\)</span>
+来表示 <span class="math inline">\(x,y\)</span> 属于同一个连通分支。</p>
+<h1 id="coxeter-群的-level">Coxeter 群的 level</h1>
+<p>记 <span class="math inline">\(\Gamma\)</span> 为 Coxeter 群 <span class="math inline">\((W, S)\)</span> 的 Coxeter
+图。<strong>在本文中都假定 <span class="math inline">\(\Gamma\)</span>
+是连通的</strong>。</p>
+<p>记 <span class="math inline">\(|\Gamma|=n\)</span>。回忆我们之前给出的有限、仿射、双曲
+Coxeter 群的定义：</p>
+<blockquote>
+<p><strong>定义</strong>：我们称 <span class="math inline">\(W\)</span>
+具有</p>
+<ol type="1">
+<li><strong>有限</strong>型，如果内积 <span class="math inline">\((\cdot,\cdot)\)</span> 是正定的；</li>
+<li><strong>仿射</strong>型，如果内积 <span class="math inline">\((\cdot,\cdot)\)</span> 的符号是 <span class="math inline">\((n-1,0)\)</span>；</li>
+<li><strong>双曲</strong>型，如果内积 <span class="math inline">\((\cdot,\cdot)\)</span> 的符号是 <span class="math inline">\((n-1, 1)\)</span>。</li>
+</ol>
+</blockquote>
+<p>当 <span class="math inline">\(W\)</span>
+属于以上某种类型之一时，我们也称其 Coxeter 图 <span class="math inline">\(\Gamma\)</span> 具有对应的类型。</p>
+<p>如果 <span class="math inline">\(\Gamma'\)</span> 是 <span class="math inline">\(\Gamma\)</span> 的子图，其顶点集是 <span class="math inline">\(I\subseteq S\)</span>，则 <span class="math inline">\(\Gamma'\)</span> 对应的 Coxeter 群是椭圆子群
+<span class="math inline">\(W_I\)</span>，<span class="math inline">\(W_I\)</span> 的类型（当然也是 <span class="math inline">\(\Gamma'\)</span> 的类型）由 <span class="math inline">\((\cdot,\cdot)\)</span> 在子空间 <span class="math inline">\(U={\rm span}\{\alpha_s,s\in I\}\)</span>
+上的限制决定。</p>
+<blockquote><p><strong>定义</strong>：一个 Coxeter 群 <span class="math inline">\((W,S)\)</span> 的 level 定义为最小的非负整数 <span class="math inline">\(l\)</span>，使得在其 Coxeter 图 <span class="math inline">\(\Gamma\)</span> 中删去任何 <span class="math inline">\(l\)</span>
+个顶点后，剩下的连通分支都是仿射或者有限的。</p>
+</blockquote>
+<p>根据定义有限和仿射 Coxeter 群的 level 都是
+0（因为不需要删去任何顶点）。</p>
+<p>我们来看几个 level 大于 0 的例子：</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">level=1</td>
+<td style="text-align: center;">level=2</td>
+<td style="text-align: center;">level=3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img src="/images/coxeter/level1.svg" height="120"></td>
+<td style="text-align: center;"><img src="/images/coxeter/level2.svg" height="120"></td>
+<td style="text-align: center;"><img src="/images/coxeter/level3.svg" height="120"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>第一个图的三条边标号分别是 <span class="math inline">\((3,3,7)\)</span>，它不是有限的也不是仿射的，但是删去任何一个顶点以后剩下的两个顶点都构成一个有限二面体群，所以其
+level 等于 1。</li>
+<li>第二个图的三条边标号分别是 <span class="math inline">\((3, 4,
+-1.1)\)</span>，它删去红色顶点以后剩下的两个顶点仍然构成一个 Vinberg
+记号下的双曲群，所以 level 肯定大于
+1；删去任何两个顶点的话只剩一个顶点当然是有限的，所以这个群的 level 等于
+2。</li>
+<li>第三个图删去两个红色顶点以后剩下的两个顶点仍然构成一个 Vinberg
+记号下的双曲群，所以 level 肯定大于
+2；删去任何三个顶点以后只剩一个顶点当然是有限的，所以这个群的 level 等于
+3。</li>
+</ul>
+<div id="thm1">
+<blockquote><p><strong>定理 1</strong> (Maxwell'82 proposition 1.1)：在一个 level
+等于 <span class="math inline">\(l\)</span> 的图中删去任何 <span class="math inline">\(l+1\)</span>
+个顶点后，剩下的必然是一些有限的子图。</p>
+</blockquote>
+</div>
+<p><strong>证明</strong>：对 <span class="math inline">\(l\)</span>
+归纳。当 <span class="math inline">\(l=0\)</span>
+时，由于在一个有限或者仿射的图里面删去一个顶点剩下的一定都是有限子图 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，所以结论成立。</p>
+<p>假设结论对所有小于 <span class="math inline">\(l\)</span>
+的正整数成立，考虑 <span class="math inline">\(l\)</span>
+的情形。用反证法。</p>
+<p>不妨设删去 <span class="math inline">\(\{i_1,\ldots,i_{l+1}\}\)</span> 这 <span class="math inline">\(l+1\)</span>
+个顶点后得到的不都是有限子图，那么剩下的部分中某个连通分支必然是仿射的。不妨设
+<span class="math inline">\(\Gamma-\{i_1,\ldots,i_{l+1}\}=\Gamma'\cup\Gamma''\)</span>，其中
+<span class="math inline">\(\Gamma'\)</span>
+是一个仿射的连通分支，<span class="math inline">\(\Gamma''\)</span>（可能为空集）和 <span class="math inline">\(\Gamma'\)</span> 之间没有边相连。</p>
+<p>由于 <span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(\Gamma'\)</span> 必然和 <span class="math inline">\(\{i_1,\ldots,i_{l+1}\}\)</span>
+中某个顶点有边连接，不妨设为 <span class="math inline">\(i_{l+1}\)</span>：</p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/coxeter-groups/lemma.svg"></p>
+<p>由于 <span class="math inline">\(\Gamma\)</span> 的 level 是 <span class="math inline">\(l\)</span>，所以 <span class="math inline">\(\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma-\{i_1,\ldots,i_l\}\)</span>
+是一个仿射的连通子图，这个仿射子图删除 <span class="math inline">\(i_{l+1}\)</span> 后得到的 <span class="math inline">\(\Gamma'\)</span> 仍然是仿射的，这与 <span class="math inline">\(l=0\)</span> 的情形矛盾，所以结论得证。</p>
+<h2 id="level-1-的群是双曲的">Level 1 的群是双曲的</h2>
+<p>本节来证明 level 1 的群都是双曲的。</p>
+<p>首先是两个定义：</p>
+<ul>
+<li>如果 <span class="math inline">\(v\in V\)</span> 满足 <span class="math inline">\((v, v)&gt;0\)</span>，我们就称 <span class="math inline">\(v\)</span> 是<strong>实的</strong>。</li>
+<li>如果 <span class="math inline">\(u,v\in V\)</span> 满足 <span class="math inline">\((u,v)\leq 0\)</span> 且 <span class="math inline">\((\cdot,\cdot)\)</span> 限制在 <span class="math inline">\(u,v\)</span>
+张成的二维子空间上<strong>不是正定</strong>的，就称 <span class="math inline">\(u,v\)</span> 是<strong>分离</strong>的
+(disjoint)。</li>
+</ul>
+<h2 id="level-2-的群也是双曲的">Level 2 的群也是双曲的</h2>
+<p>本节我们在上一小节的结论中再进一步，证明 level 2
+的群也是双曲的。需要的论证会更加繁琐一些。</p>
+<div id="thm3">
+<blockquote><p><strong>定理 3</strong> (Maxwell'82 proposition 1.6)：level 等于 2
+的群都是双曲的，所有的 <span class="math inline">\(\{\omega_s\}_{s\in
+S}\)</span> 两两分离。<span class="math inline">\(\omega_s\)</span>
+是实的当且仅当 <span class="math inline">\(T-\{s\}\)</span> 的 level
+等于 1，且对这样的 <span class="math inline">\(\omega_s\)</span> 有
+<span class="math inline">\(0&lt;(\omega_s,\omega_s)\leq
+1\)</span>。</p>
+</blockquote>
+</div>
+<p>证明：我们需要针对 <span class="math inline">\(\Gamma\)</span>
+的顶点个数是否大于 3 分别处理。在 <span class="math inline">\(\Gamma\)</span> 只包含 3 个顶点的情形，<span class="math inline">\(\Gamma\)</span> 的 level 是 2 说明其必然有一条边的
+Vinberg 标号小于 -1。不妨设 <span class="math inline">\((\cdot,\cdot)\)</span> 的矩阵形如 <span class="math display">\[\begin{pmatrix}1&amp;a&amp;b\\a&amp;1&amp;c\\b&amp;c&amp;1\end{pmatrix}.\]</span>
+其中 <span class="math inline">\(a,\,b,\,c\leq0\)</span> 且 <span class="math inline">\(a &lt; -1\)</span>。这个矩阵的行列式是 <span class="math display">\[1 - a^2 + 2abc - b^2-c^2 = 1-a^2 +
+2bc(a+1)-(b+c)^2&lt;0.\]</span> 考虑到矩阵的迹等于 3，所以矩阵的
+Sylvester 惯性指数必然是 <span class="math inline">\((2,
+1)\)</span>，从而是双曲的。</p>
+<p>下面再处理 <span class="math inline">\(\Gamma\)</span> 包含至少 4
+个顶点的情形。</p>
+<p>和 level 1 的情形类似，如果 <span class="math inline">\(\Gamma\)</span>
+不是双曲的，则我们可以取两个非零且正交的向量 <span class="math inline">\(u,v\)</span> 满足 <span class="math inline">\((u,
+u)&lt;0,\,(v, v)=0\)</span>。</p>
+<p>我们也有如下两个断言：</p>
+<ol type="1">
+<li><strong>我们断言任何满足 <span class="math inline">\((u,u)&lt;0\)</span> 的向量，当其表示为 <span class="math inline">\(u=\sum_{s\in S}u_s\alpha_s\)</span>
+时，除去至多一个系数 <span class="math inline">\(u_j\)</span>
+之外，其它的 <span class="math inline">\(u_s\)</span>
+都非零且同号</strong>。</li>
+<li><strong>我们断言任何满足 <span class="math inline">\((v,v)=0\)</span> 的向量，当其表示为 <span class="math inline">\(v=\sum_{s\in S}v_s\alpha_s\)</span> 时，除了断言 1
+的情形之外，还有一种情形是 <span class="math inline">\(\{v_s\}\)</span>
+中有两个是 0，其余的非零且同号</strong>。</li>
+</ol>
+<p>和之前一样，我们仍然记 <span class="math inline">\(I_+,I_-,I_0,u_+,u_-\)</span> 如前。</p>
+<p>对断言 1，如果 <span class="math inline">\(|I_0|\geq2\)</span>，则
+<span class="math inline">\((u,u)&lt;0\)</span> 与 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 矛盾。所以 <span class="math inline">\(|I_0|\leq 1\)</span>。</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(I_+,I_-\)</span> 都不是空集，则
+<span class="math inline">\(u_+,\,u_-\)</span> 均不为 0 且 <span class="math inline">\((u_+, u_+) &lt; 0\)</span> 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span> 中至少有一个成立。不妨设
+<span class="math inline">\((u_+,u_+)&lt;0\)</span>，结合 <span class="math inline">\(\Gamma\)</span> 的 level 是 2，这要求 <span class="math inline">\(|I_-\cup I_0|\leq 1\)</span>，从而只能是 <span class="math inline">\(|I_-|=1,\, I_0=\emptyset\)</span>。即系数全部非 0
+且恰好有一个异号。</li>
+<li>如果 <span class="math inline">\(I_+,I_-\)</span>
+中有一个是空集，不妨设 <span class="math inline">\(I_-=\emptyset\)</span>，我们仍然有 <span class="math inline">\(|I_-\cup
+I_0|=|I_0|\leq1\)</span>。即系数至多有一个为 0 且其它的均同号。</li>
+</ol>
+<p>总之我们证明了除去至多一个系数之外，其它的系数均非 0 且同号。断言 1
+得证。</p>
+<p>对断言 2，同样记 <span class="math inline">\(I_+,I_-,I_0,v_+,v_-\)</span> 如前。</p>
+<p>首先 <span class="math inline">\(|I_0|\leq2\)</span> 是显然的，否则
+<span class="math inline">\((v,v)=0\)</span> 与 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 和<a href="#thm1">定理 1</a> 矛盾。</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(I_0\ne\emptyset\)</span>，则 <span class="math inline">\(I_+,I_-\)</span> 中必有一个为空。否则 <span class="math inline">\(|I_+\cup I_0|\geq2,\,|I_-\cup
+I_0|\geq2\)</span>。level 2 要求 <span class="math inline">\((v_+,v_+)\geq0,\,(v_-,v_-)\geq0\)</span>，从而
+<span class="math inline">\((v_+,v_+)=(v_-,
+v_-)=(v_+,v_-)=0\)</span>。由于 <span class="math inline">\(\Gamma\)</span> 至少包含 4 个顶点，所以 <span class="math inline">\(I_+,\,I_-\)</span>
+中必有一个包含两个或者更多的顶点。不妨设 <span class="math inline">\(|I_+|\geq2\)</span>，则删除 <span class="math inline">\(I_+\cup I_0\)</span> 会至少删掉 3
+个顶点，但得到的子图不是正定的，与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 2 矛盾。所以系数
+<span class="math inline">\(\{v_s\}\)</span> 中如果有 0
+的话，则至多只有两个 0，且剩下的都同号。</li>
+<li>如果 <span class="math inline">\(I_0=\emptyset\)</span>
+是空集，则要么 <span class="math inline">\(I_+,I_-\)</span>
+中有一个也是空集，从而所有的系数都非 0 且同号；要么 <span class="math inline">\(v_+,\,v_-\)</span> 均不为 0。这时 <span class="math inline">\(\Gamma\)</span> 连通说明 <span class="math inline">\((v_+,v_-)&gt;0\)</span>，所以 <span class="math inline">\((v_+,v_+) &lt; 0\)</span> 和 <span class="math inline">\((v_-, v_-)&lt;0\)</span> 中至少有一个成立。不妨设
+<span class="math inline">\((v_+,v_+)&lt;0\)</span>，则 level 2 要求
+<span class="math inline">\(|I_-|\leq1\)</span>，即 <span class="math inline">\(\{v_s\}\)</span>
+均非零且恰有一个元素与其它元素异号。</li>
+</ol>
+<p>至此断言 2 得证。</p>
+<p>现在由于 <span class="math inline">\(u\)</span> 的系数 <span class="math inline">\(\{u_s\}\)</span> 中至多只有一个是 0，<span class="math inline">\(v\)</span> 的系数 <span class="math inline">\(\{v_s\}\)</span> 中至多只有两个是 0，而 <span class="math inline">\(|\Gamma|\geq4\)</span>，所以存在下标 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(u_i,\,v_i\)</span> 均不为 0。记 <span class="math inline">\(a=v_i/u_i\ne 0\)</span>。于是 <span class="math inline">\(u'=au-v\)</span> 仍然满足 <span class="math inline">\(u'\)</span> 与 <span class="math inline">\(v\)</span> 正交和 <span class="math inline">\(u'\bullet u'&lt;0\)</span>，但是它的下标
+<span class="math inline">\(i\)</span> 的系数 <span class="math inline">\(u'_i=0\)</span>，所以我们不妨一开始就取 <span class="math inline">\(u\)</span> 为 <span class="math inline">\(u'\)</span>，于是 <span class="math inline">\(u\)</span> 有一个 <span class="math inline">\(u_i=0\)</span>，其它系数都非 0
+且同号，不妨假设这些非零系数都大于 0。</p>
+<p>由于 <span class="math inline">\(\{v_s\}\)</span> 中至多只有两个为
+0，而 <span class="math inline">\(|\Gamma|\geq4\)</span>，所以 <span class="math inline">\(\{v_j,\,j\ne i\}\)</span> 中至少还有一个非零。</p>
+<ul>
+<li><p>如果 <span class="math inline">\(\{v_j,\,j\ne i\}\)</span>
+中仅有一个非零，则这时必有 <span class="math inline">\(|\Gamma|=4\)</span> 且 <span class="math inline">\(v\)</span> 形如 <span class="math inline">\(v=v_i\alpha_i + v_j\alpha_j\)</span>。<span class="math inline">\(\{\alpha_i,\alpha_j\}\)</span>
+张成的二维平面是有限/或者仿射的，但是由于此平面包含 <span class="math inline">\((v,v)=0\)</span>，所以是仿射的，从而 <span class="math inline">\((\alpha_i,\alpha_j)=-1\)</span>。我们可以不妨把
+<span class="math inline">\(v\)</span> 取为 <span class="math inline">\(v=\alpha_i+\alpha_j\)</span>。</p>
+<p>此外 <span class="math inline">\(u_i=0\)</span> 说明 <span class="math inline">\(u\)</span> 形如 <span class="math inline">\(u=u_j\alpha_j+u_k\alpha_k+u_m\alpha_m\)</span>。
+由 <span class="math inline">\((u,v)=0\)</span> 以及 <span class="math inline">\((\alpha_j,v)=0\)</span> 有 <span class="math display">\[(u, v)=(u_j\alpha_j+u_k\alpha_k+u_m\alpha_m,
+v)=(u_k\alpha_k+u_m\alpha_m, \alpha_i+\alpha_j)=0,\]</span> 由于 <span class="math inline">\(\{\alpha_k,\alpha_m\}\)</span> 和 <span class="math inline">\(\{\alpha_i,\alpha_j\}\)</span>
+之间的内积都小于等于 0，而 <span class="math inline">\(u_k,u_m\)</span>
+大于 0，这说明 <span class="math display">\[(\alpha_k,\alpha_i) =
+(\alpha_k,\alpha_j) =(\alpha_m, \alpha_i)
+=(\alpha_m,\alpha_j)=0.\]</span> 即顶点 <span class="math inline">\(\{i,
+j\}\)</span> 与 <span class="math inline">\(\{k,m\}=\Gamma-\{i,j\}\)</span> 是不连通的，与
+<span class="math inline">\(\Gamma\)</span> 连通矛盾。</p></li>
+<li><p>如果 <span class="math inline">\(\{v_j,\,j\ne i\}\)</span>
+包含两个下标 <span class="math inline">\(j,k\)</span>，即 <span class="math inline">\(v_j/u_j\ne0,\,v_k/u_k\ne0\)</span>，由于 <span class="math inline">\(v_i\ne0\)</span>，通过选择 <span class="math inline">\(v\)</span> 或者 <span class="math inline">\(-v\)</span> 可以不妨设 <span class="math inline">\(v_i&lt;0\)</span>，并不妨设 <span class="math inline">\(v_j/u_j\leq v_k/u_k\)</span>。记 <span class="math inline">\(a=v_j/u_j\)</span>，则 <span class="math inline">\(u'=au-v\)</span> 满足 <span class="math inline">\((u',u')&lt;0\)</span>，但是 <span class="math inline">\(u'_i=-v_i&gt;0\)</span>，<span class="math inline">\(u'_j=0\)</span>，<span class="math inline">\(u'_k\leq 0\)</span>，这与上面断言中 <span class="math inline">\(u'\)</span>
+的系数除去至多一个例外，剩下的均非零且同号矛盾。</p></li>
+</ul>
+<p>至此我们证明了当 <span class="math inline">\(\Gamma\)</span> 的 level
+等于 2 时是双曲的。</p>
+<p>我们接下来证明所有的基本权 <span class="math inline">\(\{\omega_s\}\)</span> 是两两分离的。</p>
+<p>仍然利用恒等式</p>
+<p><span class="math display">\[\begin{align*}
+\omega_s &amp;= (\omega_s,\omega_s)\alpha_s + \sum_{t\ne s}
+(\omega_s,\omega_t)\alpha_t,\\
+1 &amp;= (\omega_s,\omega_s) + \sum_{t\ne s}
+(\omega_s,\omega_t)(\alpha_t,\alpha_s).\end{align*}\]</span></p>
+<ul>
+<li><p>如果 <span class="math inline">\((\omega_s,\omega_s)\leq0\)</span>，则根据第二个等式，<span class="math inline">\(\{(\omega_s,\omega_t)\}_{t\ne s}\)</span>
+中必然至少有一个严格小于 0，从而 <span class="math inline">\(\{(\omega_s,\omega_t)\}_{t\ne s}\)</span>
+中至多有一个严格大于 0。这是因为根据前面的断言，在 <span class="math inline">\(\omega_s\)</span> 的所有的系数中不可能出现两个大于
+0，一个严格小于 0，还有一个 <span class="math inline">\(\leq0\)</span>
+的情况。但我们将证明大于 0 也不可能。否则不妨设 <span class="math inline">\(k\ne s\)</span> 使得 <span class="math inline">\((\omega_s,\omega_k)&gt;0\)</span>。在第一个等式两边用
+<span class="math inline">\(\alpha_k\)</span> 内积得到 <span class="math display">\[0=(\omega_s,\omega_s)(\alpha_s,\alpha_k)
++\sum_{t\ne s,k} (\omega_s,\omega_t)(\alpha_t,\alpha_k) +
+(\omega_s,\omega_k).\]</span> 上面的和项前两个都非负，最后一个大于
+0，矛盾。</p></li>
+<li><p>如果 <span class="math inline">\((\omega_s,\omega_s)&gt;0\)</span>，显然这当且仅当其正交补
+<span class="math inline">\(U=\omega_s^\bot={\rm span}\{\alpha_t,\,t\ne
+s\}\)</span> 是双曲的，即 <span class="math inline">\(\Gamma-\{s\}\)</span> 的 level 是 1。考虑 <span class="math inline">\(\alpha_s\)</span> 在 <span class="math inline">\(U\)</span> 上的正交投影 <span class="math inline">\(\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)\)</span>。<span class="math inline">\(\alpha_s'\)</span> 满足对任何 <span class="math inline">\(t\ne s\)</span> 有 <span class="math inline">\((\alpha_s',\alpha_t)\leq0\)</span>，从而 <span class="math inline">\(-\alpha_s'\)</span> 属于 <span class="math inline">\(\Gamma-\{s\}\)</span> 的基本区域的闭包，即 <span class="math inline">\(-\alpha_s'\in\overline{ \{\omega_t,t\ne s\}
+}\)</span>。而<a href="#thm2">定理 2</a> 及其推论已经证明了 <span class="math inline">\(\Gamma-\{s\}\)</span> 是双曲的，其基本区域的闭包
+<span class="math inline">\(\overline{ \{\omega_t,t\ne s\} }\)</span>
+属于光锥的一个连通分支，从而 <span class="math inline">\((\alpha_s',\alpha_s')=
+1-(\omega_s,\omega_s)^{-1}\leq0\)</span>，即 <span class="math inline">\(0&lt;(\omega_s,\omega_s)\leq1\)</span>。又由于
+<span class="math inline">\(-\alpha_s'\)</span> 和所有 <span class="math inline">\(\{\omega_t,t\ne s\}\)</span>
+属于光锥的同一连通分支，所以对任何 <span class="math inline">\(t\ne
+s\)</span> 有 <span class="math inline">\((-\alpha_s',\omega_t)=(\omega_s,\omega_t)/(\omega_s,\omega_s)\leq0\)</span>，即
+<span class="math inline">\((\omega_s,\omega_t)\leq
+0\)</span>，于是所有的 <span class="math inline">\(\{(\omega_s,\omega_t)\}_{t\ne s}\)</span>
+都非正。</p></li>
+</ul>
+<blockquote>
+<p>注：我们需要考虑 <span class="math inline">\(\alpha_s\)</span> 的投影
+<span class="math inline">\(\alpha_s'\)</span> 是因为 <span class="math inline">\(\alpha_s\)</span> 不属于 <span class="math inline">\({\rm span}\{\alpha_t,\,t\ne s\}\)</span>，无法根据
+<span class="math inline">\((\alpha_s,\alpha_t)\leq0\)</span> 得出 <span class="math inline">\(\alpha_s\)</span> 属于 <span class="math inline">\(\Gamma-\{s\}\)</span> 的基本区域的闭包。</p>
+</blockquote>
+<p>总之我们证明了不论 <span class="math inline">\((\omega_s,\omega_s)\)</span>
+的符号如何，它与其它的基本权的内积 <span class="math inline">\((\omega_s, \omega_t)\)</span> 都非正。</p>
+<p>又因为对任何 <span class="math inline">\(s,t\)</span>，<span class="math inline">\(\Gamma-\{s,t\}\)</span>
+是有限或者仿射的，所以其正交补，即 <span class="math inline">\(\{\omega_s,\omega_t\}\)</span>
+张成的二维子空间不是正定的，即 <span class="math inline">\(\{\omega_s\}\)</span> 之间是两两分离的。</p>
+<h2 id="level-1-2-等价于双曲和分离">level = 1, 2 等价于双曲和分离</h2>
+<blockquote><p><strong>定理 4</strong> (Maxwell'82 theorem
+1.9)：下面两点是等价的：</p>
+<ol type="1">
+<li><span class="math inline">\(\Gamma\)</span> 的 level 等于 1 或
+2；</li>
+<li><span class="math inline">\(\Gamma\)</span>
+是双曲的，且任何两个权都互相分离。</li>
+</ol>
+</blockquote>
+<p>证明：</p>
+<p><span class="math inline">\(1\Rightarrow 2\)</span>：只要再证明对任何
+<span class="math inline">\(w\in W\)</span>，以及两个基本权 <span class="math inline">\(\omega_i,\,\omega_j\)</span>，如果有 <span class="math inline">\(\omega_i\ne w(\omega_j)\)</span>，则 <span class="math inline">\((\omega_i,w(\omega_j))\leq0\)</span>，并且二维子空间
+<span class="math inline">\(\{\omega_i,w(\omega_j)\}\)</span>
+不是正定的。</p>
+<p>对长度 <span class="math inline">\(l(w)\)</span> 归纳：<span class="math inline">\(l(w)=0\)</span> 的情形在<a href="#thm2">定理 2</a>
+和<a href="#thm3">定理 3</a> 中已经证明。下面假设 <span class="math inline">\(l(w)&gt;0\)</span>，且结论对所有长度 <span class="math inline">\(&lt;l(w)\)</span> 的群元素成立。</p>
+<ol type="1">
+<li><p>如果存在 <span class="math inline">\(k\ne i\)</span> 使得 <span class="math inline">\(l(s_kw)&lt;l(w)\)</span>，则由 <span class="math inline">\(s_k(\omega_i)=\omega_i\)</span> 有 <span class="math inline">\(\omega_i=s_k(\omega_i)\ne
+s_kw(\omega_j)\)</span>，由归纳假设 <span class="math inline">\(\{\omega_i,s_k(\omega_j)\}\)</span> 是分离的，从而
+<span class="math inline">\(\{\omega_i,\omega_j\}\)</span> 作为 <span class="math inline">\(\{\omega_i,s_k(\omega_j)\}\)</span>
+的正交变换也是分离的。</p></li>
+<li><p>如果对任何 <span class="math inline">\(k\ne i\)</span> 都有 <span class="math inline">\(l(s_kw)&gt;l(w)\)</span>，则 <span class="math inline">\(w\)</span> 的任一既约表示必然以 <span class="math inline">\(s_i\)</span> 开头，即 <span class="math inline">\(w\)</span> 形如 <span class="math inline">\(w=s_iw'\)</span> 且 <span class="math inline">\(l(w)&gt;l(w')\)</span>。从而 <span class="math display">\[(\omega_i,w(\omega_j))=(s_i(\omega_i),
+w'(\omega_j))=(\omega_i,
+w'(\omega_j))-2(\alpha_i,w'(\omega_j)).\]</span></p>
+<ul>
+<li>如果 <span class="math inline">\(\omega_i\ne
+w'(\omega_j)\)</span>，则由归纳假设上面第一项 <span class="math inline">\((\omega_i,
+w'(\omega_j))\leq0\)</span>。第二项由于 <span class="math inline">\(l(s_iw')&gt;l(w')\)</span> 所以 <span class="math inline">\(w'^{-1}\alpha_i\in\Phi^+\)</span>，从而 <span class="math inline">\((w'^{-1}\alpha_i, \omega_j)\geq0\)</span>，即
+<span class="math inline">\((\alpha_i,
+w'(\omega_j))\geq0\)</span>，所以 <span class="math inline">\((\omega_i,w(\omega_j))\leq0\)</span> 成立。</li>
+<li>如果 <span class="math inline">\(\omega_i=w'(\omega_j)\)</span>，则 <span class="math inline">\(s_i(\omega_i)=w(\omega_j)\)</span>，于是 <span class="math display">\[(\omega_i, w(\omega_j))=(\omega_i,
+s_i(\omega_i))=(\omega_i,\omega_i-2\alpha_i)=(\omega_i, \omega_i)-2 \leq
+0.\]</span> 其中最后一个不等号是利用了<a href="#thm3">定理 3</a>
+的结论。</li>
+</ul>
+<p>为了证明 <span class="math inline">\(\text{span}\{\omega_i,w(\omega_j)\}\)</span>
+不是正定的，用反证法。我们先插入一个简单的线性代数引理：</p>
+<blockquote>
+<p><strong>引理</strong>：在一个内积空间中，设 <span class="math inline">\(x\)</span> 是一个向量，<span class="math inline">\(U\)</span> 是一个子空间，<span class="math inline">\(v\)</span> 是 <span class="math inline">\(x\)</span> 在 <span class="math inline">\(U\)</span> 上的投影分量，<span class="math inline">\(U_1\)</span> 是 <span class="math inline">\(v\)</span> 在 <span class="math inline">\(U\)</span> 中的正交补，则 <span class="math inline">\(U_1=x^\bot\cap U\)</span>。</p>
+</blockquote>
+<p>引理的证明很简单，我这里省略。</p>
+<p>回到反证法。如果二维子空间 <span class="math inline">\({\rm
+span}\{\omega_i,w(\omega_j)\}\)</span> 是正定的，设 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(w(\omega_j)\)</span> 在 <span class="math display">\[U=\omega_i^\bot={\rm span}\{\alpha_k,\,k\ne
+i\}\]</span> 上的投影分量，<span class="math inline">\(U_1\)</span> 是
+<span class="math inline">\(v\)</span> 在 <span class="math inline">\(U\)</span> 中的正交补，则 <span class="math display">\[U_1=w(\omega_j)^\bot\cap
+U=w(\omega_j)^\bot\cap\omega_i^\bot=\{\omega_i,w(\omega_j)\}^\bot\]</span>
+是一个双曲子空间，所以 <span class="math inline">\(v\in
+U_1^\bot\)</span> 是 space-like 的：<span class="math inline">\((v,v)&gt;0\)</span>。然而对任何 <span class="math inline">\(k\ne i\)</span>，由于 <span class="math inline">\(\alpha_k\in\omega_i^\bot\)</span> 所以 <span class="math inline">\((v,\alpha_k) = (w(\omega_j),\alpha_k)=(\omega_j,
+w^{-1}\alpha_k)\)</span>。而 <span class="math inline">\(l(s_kw)&gt;l(w)\)</span> 说明 <span class="math inline">\(w^{-1}\alpha_k\in\Phi^+\)</span>，所以 <span class="math inline">\((\omega_j, w^{-1}\alpha_k)\geq0\)</span>，即 <span class="math inline">\((v,\alpha_k)\geq0\)</span>。这对任何 <span class="math inline">\(k\ne i\)</span> 都成立所以 <span class="math inline">\(v\)</span> 属于 <span class="math inline">\(\Gamma-\{i\}\)</span> 的基本区域的闭包。但是 <span class="math inline">\(\omega_i\)</span> 是实的，所以 <span class="math inline">\(\Gamma-\{i\}\)</span> 的 level 是
+1，它的基本区域的闭包都包含在光锥的一个连通分支中，从而必须有 <span class="math inline">\((v, v)\leq0\)</span>，矛盾。</p></li>
+</ol>
+<p><span class="math inline">\(2\Rightarrow 1\)</span>：由于内积 <span class="math inline">\((\cdot,\cdot)\)</span> 是双曲的，而子空间 <span class="math inline">\(\text{span}\{\omega_i,\omega_j\}\)</span>
+不是正定的，所以正交补是正定或者半正定的。于是 <span class="math inline">\(\Gamma-\{i,j\}\)</span> 是有限或者仿射的，从而
+<span class="math inline">\(\Gamma\)</span> 的 level 等于 1 或 2。</p>
+<h1 id="基本同构">基本同构</h1>
+<p>这一节对应的是 Maxwell'82 的第 2 部分，我们将介绍，<span class="math inline">\(\mathbb{R}^n\)</span> 中的球和超平面可以表示为
+<span class="math inline">\(n+1\)</span> 维射影空间 <span class="math inline">\(\mathrm{P}(\mathbb{R}^{n+1,1})=\mathbb{R}\mathrm{P}^{n+1}\)</span>
+中 space-like 的点，并且 <span class="math inline">\(\mathbb{R}^n\)</span>
+中关于球面的反演和超平面的反射可以表示为 <span class="math inline">\(\mathrm{P}(\mathbb{R}^{n+1,1})\)</span>
+中的反射变换。这里的叙述和 Maxwell'82 本质是一样的，但稍有不同。</p>
+<h2 id="将-mathbbrn-和-sn-提升到-mathbbrn1-1-中">将 <span class="math inline">\(\mathbb{R}^n\)</span> 和 <span class="math inline">\(S^{n}\)</span> 提升到 <span class="math inline">\(\mathbb{R}^{n+1, 1}\)</span> 中</h2>
+<p>我们先从 Lorentz 空间 <span class="math inline">\(\mathbb{R}^{n+1,
+1}\)</span> 说起。设 <span class="math inline">\(n\)</span>
+是正整数，<span class="math inline">\(e_1,e_2,\ldots,e_{n+2}\)</span> 是
+<span class="math inline">\(\mathbb{R}^{n+2}\)</span> 的一组基，在 <span class="math inline">\(\mathbb{R}^{n+2}\)</span> 上定义内积 <span class="math inline">\((\cdot,\cdot)\)</span> 如下：对任何 <span class="math inline">\(i\ne j\)</span> 有 <span class="math inline">\((e_i,e_j)=0\)</span>，对 <span class="math inline">\(1\leq i\leq n+1\)</span> 有 <span class="math inline">\((e_i,e_i)=1\)</span>，以及 <span class="math inline">\((e_{n+2},e_{n+2})=-1\)</span>。即这组基下内积的
+Gram 矩阵为 <span class="math display">\[\begin{pmatrix}I_{n+1} &amp;\\
+&amp; -1\end{pmatrix}.\]</span> 此内积的符号为 <span class="math inline">\((n+1,1)\)</span>，在此内积下 <span class="math inline">\(\mathbb{R}^{n+2}\)</span> 成为 Lorentz 空间 <span class="math inline">\(\mathbb{R}^{n+1,1}\)</span>。</p>
+<p><span class="math inline">\(e_1,e_2,\ldots,e_{n+2}\)</span>
+是一组标准正交基，但是在处理球面时，另一组基更方便。定义 <span class="math display">\[e_0=\frac{1}{2}(e_{n+2}-e_{n+1}),\quad
+e_\infty=\frac{1}{2}(e_{n+2}+e_{n+1}).\]</span> <span class="math inline">\(\{e_1,\ldots,e_n,e_0,e_\infty\}\)</span> 也构成
+<span class="math inline">\(\mathbb{R}^{n+1,1}\)</span> 的一组基，<span class="math inline">\((\cdot,\cdot){\,}{}\)</span> 在这组基下的 Gram
+矩阵为 <span class="math display">\[\begin{pmatrix}I_n&amp;&amp;\\&amp;0&amp;
+-\frac{1}{2}\\&amp;-\frac{1}{2}&amp;0\end{pmatrix}.\]</span>
+坐标变换公式为（假设 <span class="math inline">\(x\in\mathbb{R}^n\)</span> 来自前 <span class="math inline">\(n\)</span> 个分量） <span class="math display">\[x+x_{n+1}e_{n+1}+x_{n+2}e_{n+2}=
+x+(x_{n+2}-x_{n+1})e_0+(x_{n+2}+x_{n+1})e_\infty.\]</span></p>
+<p>对 <span class="math inline">\(v\in\mathbb{R}^{n+1,1}\)</span>，我们约定用 <span class="math inline">\([v]\)</span> 表示 <span class="math inline">\(v\)</span> 在射影空间 <span class="math inline">\(\mathrm{P}(\mathbb{R}^{n+1,1})\)</span>
+中的等价类。</p>
+<blockquote><p><strong>定义</strong>：定义光锥 (light cone/null cone) 为 <span class="math display">\[\mathbb{L}^{n+1} = \{v\in \mathbb{R}^{n+1,
+1}\mid(v,v)=0\}.\]</span> 以及 <span class="math display">\[\mathcal{Q}=\mathrm{P}(\mathbb{L}^{n+1})=\{[v]\in\mathrm{P}(\mathbb{R}^{n+1,1})\mid(
+v,v)=0\}\]</span> <span class="math inline">\(\mathcal{Q}\)</span>
+可以看作是 <span class="math inline">\(\mathbb{L}^{n+1}\)</span>
+中所有直线组成的集合。</p>
+</blockquote>
+<p>我们知道 <span class="math inline">\(\overline{\mathbb{R}^n}=\mathbb{R}^n\cup\{\infty\}\)</span>
+和单位球 <span class="math inline">\(S^n=\{x_1^2+x_2^2+\cdots+x_{n+1}^2=1\}\subset\mathbb{R}^{n+1}\)</span>
+在球极投影下是一一对应的。实际上它们都可以提升为光锥中的点，如下图所示：</p>
+<p>（原图出自 <a target="_blank" rel="noopener" href="http://conformalgeometricalgebra.org/wiki/index.php?title=Main_Page">conformalgeometricalgebra</a>，我拿来在
+inkscape 里面做了一些修改）</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/coxeter-groups/Horosphere.svg"></p>
+<p><span class="math inline">\(S^n\)</span> 对应的是图中的红圈，它是光锥
+(null cone) 与超平面 <span class="math inline">\(x_{n+2}=1\)</span>
+相交的截线；<span class="math inline">\(\mathbb{R}^n\)</span>
+对应的是图中的 horosphere，它是光锥和超平面 <span class="math inline">\(x_{n+2}-x_{n+1}=1\)</span> 相交的截线；<span class="math inline">\(\infty\)</span> 对应 <span class="math inline">\(e_\infty\)</span>。</p>
+<p>我们来验证这一点。</p>
+<p>记 <span class="math inline">\(\|x\|\)</span> 为向量 <span class="math inline">\(x\)</span> 的 Euclidean 范数，则 <span class="math display">\[x\in
+S_n\Leftrightarrow\|x\|=1\Leftrightarrow((x,1),(x,1))=0\Leftrightarrow(x,1)\in\mathbb{L}^{n+1}.\]</span>
+所以 <span class="math inline">\(S^n\)</span> 确实可以等同于截线 <span class="math inline">\(Q_1^n=\{v\in\mathbb{L}^{n+1}\mid
+v_{n+2}=1\}\)</span>，对应由映射 <span class="math display">\[S^n\to\mathcal{Q}_1^n: x\to x + e_{n+2}\]</span>
+给出。由于 <span class="math inline">\(\mathcal{Q}\)</span> 中每个元素在
+<span class="math inline">\(Q_1^n\)</span> 中有唯一代表元，所以 <span class="math inline">\(\mathcal{Q}\)</span> 可以写成 <span class="math inline">\(\mathcal{Q}=\{[v]\mid v\in Q_1^n\}\)</span>。这是
+<span class="math inline">\(\mathcal{Q}\)</span>
+的第一种参数化表示。</p>
+<p>另一方面我们可以把 <span class="math inline">\(\mathbb{R}^n\)</span>
+等同于截线 <span class="math display">\[Q_0^n=\{v\in\mathbb{L}^{n+1}\mid
+(v,e_\infty)=-1/2\}=\{v\in\mathbb{L}^{n+1}\mid
+v_{n+2}-v_{n+1}=1\},\]</span> 此对应由映射 <span class="math display">\[\mathbb{R}^n\to Q_0^n: x\to x + e_0 +
+\|x\|^2e_\infty\]</span> 给出。<span class="math inline">\(\mathcal{Q}\)</span> 上每个 <span class="math inline">\(e_0\)</span> 分量非零的点都具有如上的形式，而
+<span class="math inline">\(\mathcal{Q}\)</span> 上 <span class="math inline">\(e_0\)</span> 分量为 0 的点只有 <span class="math inline">\([e_\infty]\)</span>，将 <span class="math inline">\(\infty\)</span> 对应到 <span class="math inline">\(e_\infty\)</span>，我们就得到了 <span class="math inline">\(\overline{\mathbb{R}^n}\)</span> 和 <span class="math inline">\(\mathcal{Q}\)</span> 之间的一一对应。于是 <span class="math inline">\(\mathcal{Q}\)</span> 也可以写成 <span class="math display">\[\mathcal{Q}=\begin{cases}[x+e_0+\|x\|^2e_\infty],
+&amp;x\in\mathbb{R}^n\\
+[e_\infty],&amp;x=\infty\end{cases}\]</span> 为了方便记 <span class="math inline">\(\overline{ Q_0^n
+}=Q_0^n\cup\{e_\infty\}\)</span>，则上面的式子可以写成 <span class="math inline">\(\mathcal{Q}= \{[v]\mid v\in\overline{ Q_0^n
+}\}\)</span>，此即为 <span class="math inline">\(\mathcal{Q}\)</span>
+的第二种参数化表示。</p>
+<p><span class="math inline">\(\mathcal{Q}\)</span>
+的这两种参数化表示可以通过球极投影联系起来：设 <span class="math inline">\(x\in\mathbb{R}^n\)</span> 和 <span class="math inline">\(y\in S^n\)</span> 对应的是 <span class="math inline">\(\mathcal{Q}\)</span> 上同一点，即 <span class="math display">\[[x + e_0 + \|x\|^2e_\infty] = [y +
+e_{n+2}].\]</span> 记 <span class="math display">\[y=\widetilde{y}+y_{n+1}e_{n+1} +
+e_{n+2}=\widetilde{y} +(1-y_{n+1})e_0+(1+y_{n+1})e_\infty,\]</span> 其中
+<span class="math inline">\(\widetilde{y}\in\mathbb{R}^n\)</span>，则存在非零实数
+<span class="math inline">\(\lambda\)</span> 满足 <span class="math display">\[x + e_0 + \|x\|^2e_\infty
+=\lambda\left(\widetilde{y}+(1-y_{n+1})e_0+(1+y_{n+1})e_\infty\right).\]</span>
+比较两边 <span class="math inline">\(e_0\)</span> 的系数即得 <span class="math inline">\(\lambda=\frac{1}{1-y_{n+1}}\)</span>，于是 <span class="math display">\[x=(x_1,\ldots,x_n)=\lambda\widetilde{y}=\frac{\widetilde{y}}{1-y_{n+1}}=\frac{(y_1,\ldots,y_n)}{1-y_{n+1}}.\]</span>
+这正是以 <span class="math inline">\(e_{n+1}\)</span>
+为极点的球极投影。</p>
+<p>当 <span class="math inline">\(x=\infty\)</span> 时，<span class="math inline">\(x\)</span> 在球极投影下对应的是球面的北极点 <span class="math inline">\(e_{n+1}\in S^n\)</span>，<span class="math inline">\(x\)</span> 在 <span class="math inline">\(\overline{ Q_0^n }\)</span> 中对应的点是 <span class="math inline">\(e_\infty\)</span>，<span class="math inline">\(e_{n+1}\)</span> 在 <span class="math inline">\(Q_1^n\)</span> 中对应的点是 <span class="math inline">\(e_{n+1}+e_{n+2}=2e_\infty\)</span>，两种参数化表示下对应的点分别是
+<span class="math inline">\(e_\infty\)</span> 和 ，显然 <span class="math inline">\([e_\infty]=[e_{n+1}+e_{n+2}]\)</span>。</p>
+<p>总之 <span class="math inline">\(\overline{\mathbb{R}^n}\)</span> 和
+<span class="math inline">\(S^n\)</span> 在球极投影下对应的点，在 <span class="math inline">\(\mathcal{Q}\)</span>
+的两种参数化表示中对应的也是同一个点。</p>
+<h2 id="将-mathbbrn-中的球提升到-mathbbrn11-中">将 <span class="math inline">\(\mathbb{R}^n\)</span> 中的球提升到 <span class="math inline">\(\mathbb{R}^{n+1,1}\)</span> 中</h2>
+<p>我们知道 <span class="math inline">\(\mathbb{R}^n\)</span>
+中的球（包含超平面）在球极投影下对应于 <span class="math inline">\(S^n\)</span> 上的圆。它们在 <span class="math inline">\(\mathbb{R}^{n+1,1}\)</span>
+中也有对应的表示吗？下面来分析一下。</p>
+<p>记 <span class="math display">\[\mathcal{S}=\{v\in\mathbb{R}^{n+1,1}\mid(
+v,v)=1\}\]</span> 是所有 space-like 的单位向量组成的集合，我们来建立
+<span class="math inline">\(\mathbb{R}^n\)</span> 中的球/超平面和 <span class="math inline">\(\mathcal{S}\)</span> 的一一对应。</p>
+<p>设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中以 <span class="math inline">\(a\)</span> 为中心，半径为 <span class="math inline">\(r\ne 0\)</span> 的球，注意我们允许 <span class="math inline">\(r\)</span> 是负数以区分球的内部和外部，于是 <span class="math inline">\(r&gt;0\)</span> 时 <span class="math inline">\(C\)</span> 的内部就是通常意义下满足 <span class="math inline">\(\|x-a\|&lt; r\)</span> 的有界集合；<span class="math inline">\(r&lt;0\)</span> 时 <span class="math inline">\(C\)</span> 的内部是满足 <span class="math inline">\(\|x-a\|&gt;|r|\)</span> 的无界集合。对 <span class="math inline">\(\mathbb{R}^n\)</span> 中的球，在球极投影下它对应
+<span class="math inline">\(S^n\)</span>
+上的一个圆，它的内部和外部对应圆两侧的球冠，所以把 <span class="math inline">\(C\)</span>
+的外部和内部统一处理是非常合理的。不难验证 <span class="math display">\[s=\frac{a + e_0 + (\|a\|^2 -
+r^2)e_\infty}{r}\]</span> 满足 <span class="math inline">\((s,s)=1\)</span>，所以 <span class="math inline">\(s\in\mathcal{S}\)</span>。对 <span class="math inline">\(x\in\mathbb{R}^n\)</span>，设 <span class="math inline">\(z=x + e_0 + \|x\|^2e_\infty\in Q_0^n\)</span> 是
+<span class="math inline">\(x\)</span> 在光锥中对应的点，则 <span class="math display">\[(z,s)=\left(x + e_0 + \|x\|^2e_\infty,\, \frac{a
++ e_0 + (\|a\|^2 -
+r^2)e_\infty}{r}\right)=\frac{r^2-\|x-a\|^2}{2r}.\]</span></p>
+<p>于是 <span class="math inline">\(\mathbb{R}^n\)</span> 中圆 <span class="math inline">\(C\)</span> 的方程 <span class="math inline">\(\|x-a\|=|r|\)</span> 在 <span class="math inline">\(\mathbb{R}^{n+1,1}\)</span> 中变成了 <span class="math inline">\((z,s)=0,\, z\in Q_0^n\)</span>。</p>
+<p>可以看到不论 <span class="math inline">\(r&gt;0\)</span> 或是 <span class="math inline">\(r&lt;0\)</span>，<span class="math inline">\(x\)</span> 落在 <span class="math inline">\(C\)</span> 的边界或者内部当且仅当 <span class="math inline">\((z,s)\geq0\)</span>。这个内部是有界的，当且仅当
+<span class="math inline">\(e_\infty\)</span> 位于 <span class="math inline">\(C\)</span> 的外部，即 <span class="math inline">\((e_\infty, s)&lt;0\)</span>。</p>
+<p>对 <span class="math inline">\(\mathbb{R}^n\)</span>
+中的超平面，设其方程为 <span class="math inline">\((n,x)=d\)</span>，其中 <span class="math inline">\(n\)</span> 是超平面的单位法向量，<span class="math inline">\(d\in\mathbb{R}\)</span>。我们将其对应到 <span class="math inline">\(s=n+2de_\infty\in\mathcal{S}\)</span>。不难验证
+<span class="math display">\[(z,s)=(x + e_0 + \|x\|^2e_\infty,\,
+n+2de_\infty)=(x,d)-d.\]</span> 所以 <span class="math inline">\(x\)</span> 属于超平面的正半空间当且仅当 <span class="math inline">\((z,s)\geq0\)</span>。</p>
+<h2 id="球面之间的-seperation">球面之间的 seperation</h2>
+<p>设 <span class="math inline">\(C_1,C_2\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中的两个球，球心分别为 <span class="math inline">\(a_1,a_2\)</span>，半径分别为 <span class="math inline">\(r_1,r_2\)</span>。设 <span class="math inline">\(s_1=\frac{a_1+e_0+(\|a_1\|^2-r_1^2)e_\infty}{r_1}\)</span>，<span class="math inline">\(s_2=\frac{a_2+e_0+(\|a_2\|^2-r_2^2)e_\infty}{r_2}\)</span>
+是它们在 <span class="math inline">\(\mathbb{R}^{n+1,1}\)</span>
+中对应的点，我们称 <span class="math display">\[(s_1,s_2)=\frac{r_1^2+r_2^2 -
+\|a_1-a_2\|^2}{2r_1r_2}\]</span> 为 <span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(C_2\)</span> 的 seperation。</p>
+<p>在 <span class="math inline">\(r_1,r_2\)</span> 都大于 0
+时，不难验证：</p>
+<ol type="1">
+<li><span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(C_2\)</span> 没有公共点当且仅当 <span class="math inline">\(|(s_1,s_2)|&gt;1\)</span>。在 <span class="math inline">\((s_1,s_2)&lt;-1\)</span> 时互相分离，在 <span class="math inline">\((s_1,s_2)&gt;1\)</span>
+时一个完全包含另一个。</li>
+<li><span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(C_2\)</span> 相交当且仅当 <span class="math inline">\(|(s_1,s_2)|\leq1\)</span>，并且在 <span class="math inline">\((s_1,s_2)=-1\)</span> 时两球外切，<span class="math inline">\((s_1,s_2)=1\)</span> 时两球内切。不难验证这时
+<span class="math inline">\((s_1,s_2)\)</span>
+的值就是它们球面交点处的<strong>外法向量</strong>夹角的余弦值。</li>
+</ol>
+<p>有一点需要注意的是，如果 <span class="math inline">\(C_1,C_2\)</span>
+相交，并且恰有一个是超平面，不妨设 <span class="math inline">\(C_2\)</span> 的方程为 <span class="math inline">\((x,n)=d\)</span>，则 <span class="math inline">\(s_2=n + 2de_\infty\)</span>， <span class="math display">\[(s_1,s_2)=\frac{r_1^2+r_2^2 -
+\|a_1-a_2\|^2}{2r_1r_2}=\frac{(a_1,n)-d}{r_1}.\]</span> 这时 <span class="math inline">\((s_1,s_2)\)</span> 等于 <span class="math inline">\(C_1\)</span>
+在球面交点处的外法向量和平面法向量夹角余弦的<strong>相反数</strong>。这是因为球面的外法向量指向的是球的外部，而
+<span class="math inline">\(s_1\)</span> 指向的是球的内部。</p>
+<h2 id="关于球面的反演">关于球面的反演</h2>
+<p>设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中以 <span class="math inline">\(a\)</span> 为中心，半径为 <span class="math inline">\(r\)</span> 的球，关于 <span class="math inline">\(C\)</span> 的反演变换将 <span class="math inline">\(a\)</span> 映射为 <span class="math inline">\(\infty\)</span>（反之亦然），将 <span class="math inline">\(x\ne a\)</span> 映射为 <span class="math inline">\(\frac{r^2}{\|x-a\|^2}(x-a)
++a\)</span>。这个变换可以通过射影空间 <span class="math inline">\(\mathrm{P}(\mathbb{R}^{n+1,1})\)</span> 中关于
+<span class="math inline">\(s\)</span> 的反射 <span class="math display">\[\rho_s: z \to z - 2(z,s)s\]</span> 来计算。由于
+<span class="math inline">\((s,s)=1\)</span>，这是一个保持 Lorentz
+内积的正交变换。我们来验证 <span class="math display">\[\begin{align*}z-2(z,s)s&amp;=(x+e_0+\|x\|^2e_\infty)-\frac{r^2-\|x-a\|^2}{r^2}(a
++ e_0 + (\|a\|^2-r^2)e_\infty)\\
+&amp;=\left(x-a+a\frac{\|x-a\|^2}{r^2}\right)+\frac{\|x-a\|^2}{r^2}e_0+\ast
+e_\infty\\
+&amp;\sim \left(\frac{r^2}{\|x-a\|^2}(x-a)+a \right)+ e_0 + \ast
+e_\infty\end{align*}\]</span> 这里我们不用关心 <span class="math inline">\(e_\infty\)</span> 的系数，最后的 <span class="math inline">\(\sim\)</span> 表示两个向量是射影等价的，我们只要将
+<span class="math inline">\(e_0\)</span> 分量归一化即可。</p>
+<p>将另一个球关于 <span class="math inline">\(C\)</span>
+作反演同样可以用反射 <span class="math inline">\(\rho_s\)</span>
+来实现，步骤和上面是类似的，这里不再赘述。</p>
+<h1 id="球堆">球堆</h1>
+<blockquote><p><strong>定义</strong>：我们称一个非空集合 <span class="math inline">\(\mathcal{P}\subset V\)</span>
+是一个<strong>球堆</strong>，如果 <span class="math inline">\(\mathcal{P}\)</span> 满足：</p>
+<ol type="1">
+<li>对任何 <span class="math inline">\(k\in\mathcal{P}\)</span> 有 <span class="math inline">\((k,k)=1\)</span>。</li>
+<li>对 <span class="math inline">\(\mathcal{P}\)</span> 中任何 <span class="math inline">\(k\ne k'\)</span> 有 <span class="math inline">\((k,k')\leq -1\)</span>。</li>
+</ol>
+</blockquote>
+<p>类似 <span class="math inline">\(\mathcal{P}=\{k,-k\}\)</span>
+这样的球堆是平凡的，它对应单个球的内部和外部。反之则称为非平凡的。非平凡的球堆中的点必然两两互不共线。</p>
+<p>对任何满足 <span class="math inline">\((k,k)=1\)</span> 的点 <span class="math inline">\(k\)</span>，我们定义球帽 <span class="math display">\[C_k = \{v\in Q_0^n\mid (v,k)\geq0\}.\]</span>
+根据上一节的讨论，<span class="math inline">\(C_k\)</span> 对应的是
+<span class="math inline">\(\mathbb{R}^n\)</span>
+中某个球的边界和内部（或者某超平面法向量指向的正半空间），这个内部可以是包含
+<span class="math inline">\(\infty\)</span> 的无界区域。</p>
+<p>对一个非平凡的球堆 <span class="math inline">\(\mathcal{P}\)</span>，<span class="math inline">\(-\mathcal{P}=\{-k\mid k\in\mathcal{P}\}\)</span>
+也是非平凡的球堆，而且它翻转 <span class="math inline">\(\mathcal{P}\)</span>
+中每个球的内部和外部。我们将证明，<span class="math inline">\(\mathcal{P}\)</span> 和 <span class="math inline">\(-\mathcal{P}\)</span> 中必有一个可以给出 <span class="math inline">\(\mathbb{R}^n\)</span>
+中一族两两分离或者相切的球：</p>
+<blockquote><p><strong>定理 5</strong> (Maxwell'82 proposition 3.1)：设 <span class="math inline">\(\mathcal{P}\)</span> 是 <span class="math inline">\(V\)</span>
+的一个非空子集，则下面两点是等价的：</p>
+<ol type="1">
+<li><span class="math inline">\(\mathcal{P}\)</span>
+是一个非平凡的球堆。</li>
+<li>对 <span class="math inline">\(\mathcal{P}\)</span> 或者 <span class="math inline">\(-\mathcal{P}\)</span> 之一，其包含的任何两个球帽
+<span class="math inline">\(C_k\)</span> 和 <span class="math inline">\(C_{k'}\)</span> 至多有一个公共点。</li>
+</ol>
+</blockquote>
+<p>证明：首先注意到 <span class="math inline">\(Q_0^n\)</span>
+位于光锥的上半分支，即对任何 <span class="math inline">\(v,v'\in
+Q_0^n\)</span> 都有 <span class="math inline">\(v\sim
+v'\)</span>。</p>
+<p>1 <span class="math inline">\(\Rightarrow\)</span> 2：设 <span class="math inline">\(k,\,k'\in\mathcal{P}\)</span> 且 <span class="math inline">\(k\ne k'\)</span>，我们来证明 <span class="math inline">\(C_k\cap C_{k'}\)</span> 和 <span class="math inline">\(C_{-k}\cap C_{-k'}\)</span>
+必有一个至多只包含一个点。设 <span class="math inline">\(v\in C_k\cap
+C_{k'}\)</span>，<span class="math inline">\(v'\in C_{-k}\cap
+C_{-k'}\)</span>，则我们有</p>
+<ol type="1">
+<li><span class="math inline">\((v, k+k')\geq0\)</span>，<span class="math inline">\((v',k+k')\leq0\)</span>。</li>
+<li><span class="math inline">\((k+k',k+k')=2+2(k,k')\leq
+0\)</span>。</li>
+</ol>
+<p>如果 <span class="math inline">\((k+k',k+k')&lt;0\)</span>，即 <span class="math inline">\(k+k'\)</span> 是 time-like 的，则 <span class="math inline">\(v'\sim k+k'\)</span>。但是 <span class="math inline">\(v\sim v'\)</span>，所以 <span class="math inline">\(v\sim k+k'\)</span>，从而 <span class="math inline">\((v,k+k')&lt;0\)</span>，矛盾。所以 <span class="math inline">\((k+k',k+k')=0\)</span>，即 <span class="math inline">\(k+k'\)</span> 是 light-like 的。进一步如果
+<span class="math inline">\((v,k+k')&gt;0\)</span> 且 <span class="math inline">\((v',k+k')&lt;0\)</span>，则 <span class="math inline">\(v'\sim k+k'\)</span> 但是 <span class="math inline">\(v\not\sim k+k'\)</span>，这与 <span class="math inline">\(v\sim v'\)</span> 矛盾。所以 <span class="math inline">\((v,k+k')\)</span> 和 <span class="math inline">\((v',k+k')\)</span> 中必然有一个是 0，即
+<span class="math inline">\(v\)</span> 和 <span class="math inline">\(v'\)</span> 中必有一个是 <span class="math inline">\(k+k'\)</span> 的倍数，然而 <span class="math inline">\(Q_0^n\)</span> 中与 <span class="math inline">\(k+k'\)</span> 共线的点是唯一确定的，所以 <span class="math inline">\(C_k\cap C_{k'}\)</span> 和 <span class="math inline">\(C_{-k}\cap C_{-k'}\)</span>
+中必有一个至多包含一个点。</p>
+<p>不妨设 <span class="math inline">\(k_1,k_2\in\mathcal{P}\)</span>
+使得 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span>
+至多包含一个点。我们来证明 <span class="math inline">\(\mathcal{P}\)</span>
+中的所有球冠两两之间至多有一个公共点。为此设 <span class="math inline">\(k, k'\in\mathcal{P}\)</span> 且 <span class="math inline">\(k\ne k'\)</span>，并设 <span class="math inline">\(v\in C_k\cap C_{k'}\)</span> 是一个公共点。记
+<span class="math inline">\(u=v-(v, k_2)k_2\)</span>，则我们有 <span class="math inline">\((u,k_2)=0\)</span> 和 <span class="math display">\[(u,u)=(u,v)=(v,v)-(v,k_2)^2 \leq0.\]</span>
+我们想说明 <span class="math inline">\(u\sim v\)</span>，这样结合 <span class="math inline">\((u,k_2)=0\)</span> 可以得出 <span class="math inline">\(u\)</span> 落在 <span class="math inline">\(C_{k_2}\)</span>
+的边界上。注意到若上式中严格的不等号成立，那么 <span class="math inline">\((u,u)=(u,v)&lt;0\)</span> 自然可以推出 <span class="math inline">\(u\sim v\)</span>；若等号成立则 <span class="math inline">\((v,v)=(v,k_2)=0\)</span>，从而 <span class="math inline">\(u=v\)</span>，也有 <span class="math inline">\(u\sim v\)</span> 成立。于是 <span class="math inline">\(u\)</span> 落在 <span class="math inline">\(C_{k_2}\)</span> 的边界上。</p>
+<p>由于 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span>
+至多只有一个点，所以 <span class="math inline">\(u\)</span> 落在 <span class="math inline">\(C_{k_1}\)</span> 的外部或者边界上，即 <span class="math display">\[(u,k_1)=(v-(v,k_2)k_2, k_1)=(v,
+k_1-(k_1,k_2)k_2)\leq0.\]</span> 记 <span class="math inline">\(w=k_1-(k_1,k_2)k_2\)</span>，则 <span class="math inline">\(w\)</span> 满足 <span class="math inline">\((w,w)\leq0\)</span> 和 <span class="math inline">\((v,w)\leq 0\)</span>。如果 <span class="math inline">\((w,v)&lt;0\)</span> 自然有 <span class="math inline">\(w\sim v\)</span>；若 <span class="math inline">\((w,v)=0\)</span> 但是 <span class="math inline">\(w\not\sim v\)</span>，则必有 <span class="math inline">\((w,w)=(v,v)=0\)</span>，且 <span class="math inline">\(v=cw(c&lt;0)\)</span>，即 <span class="math inline">\(w,v\)</span> 是反向共线的 light-like 的向量。由
+<span class="math inline">\((w,w)=0\)</span> 可得 <span class="math inline">\(w=\)</span> <span class="math inline">\((k_1,k_2)=-1\)</span> 且 <span class="math inline">\(w=k_1+k_2\)</span>，从而 <span class="math inline">\(v=c(k_1+k_2)\)</span> 满足 <span class="math inline">\((v,k_1)\geq0\)</span> 和 <span class="math inline">\((v,k_2)\geq0\)</span>，且这俩不等式至少有一个严格成立，这与
+<span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span>
+至多只有一个点矛盾，所以 <span class="math inline">\(w\sim
+v\)</span>。</p>
+<p>总之 <span class="math inline">\(w\sim v\)</span>，从而 <span class="math inline">\(w\)</span> 的某个正倍数 <span class="math inline">\(w'\)</span> 属于 <span class="math inline">\(H\)</span>。我们有 <span class="math inline">\((w',k)\leq 0\)</span> 和 <span class="math inline">\((w',k')\leq0\)</span>，这两个不等式至少有一个是严格成立的，根据上一段的讨论，这必须有
+<span class="math inline">\((k,k')=-1\)</span> 并且 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(k+k'\)</span> 的倍数。</p>
+<p>2 <span class="math inline">\(\Rightarrow\)</span> 1: 内积 <span class="math inline">\((\cdot,\cdot)\)</span> 限制在 <span class="math inline">\(k,k'\)</span>
+张成的二维子空间上肯定不是正定的，否则的话 <span class="math inline">\(C_k\)</span> 和 <span class="math inline">\(C_{k'}\)</span> 会在 <span class="math inline">\(H\)</span> 的内部有交点，所以 <span class="math inline">\(|(k,k')|\geq1\)</span>。如果是 <span class="math inline">\((k,k')\geq1\)</span> 的话，则 <span class="math inline">\(C_k\cap C_{-k'}\)</span> 和 <span class="math inline">\(C_{-k}\cap C_{k'}\)</span>
+二者中必有一个至多只包含一个点，不妨设为 <span class="math inline">\(C_{k}\cap C_{-k'}\)</span>。但是根据已知 <span class="math inline">\(C_k\cap C_{k'}\)</span>
+也至多只包含一个点，从而 <span class="math inline">\(C_k\)</span>
+作为二者的并也只多只有一个点，矛盾。</p>
+<h1 id="maxwell-89">Maxwell 89</h1>
+<blockquote>
+<p><strong>定理</strong>：设 <span class="math inline">\(s\in S\)</span>
+使得 <span class="math inline">\((\omega_s\bullet
+\omega_s)=0\)</span>，即 <span class="math inline">\(X=S\backslash
+s\)</span> 是 Euclidean 的，则对任何 <span class="math inline">\(x\in\overline{\mathcal{D}}\)</span> 都有 <span class="math inline">\(\omega_s\in\overline{ \cup_{w\in W_X}wp
+}\)</span>。</p>
+</blockquote>
+<p>证明：由于 <span class="math inline">\(\omega_s\bullet
+\omega_s=0\)</span>，所以 <span class="math inline">\(\omega_s =
+\sum_{i\ne s}(\omega_s, \omega_i)\alpha_i\in V_X\)</span>，所以 <span class="math inline">\(\mathbb{R}\omega_s\)</span> 张成了 <span class="math inline">\({\rm Rad}(V_X)\)</span>，并且标准椭圆子群 <span class="math inline">\(W_X\)</span> 保持 <span class="math inline">\({\rm
+Rad}(V_X)\)</span> 不动：<span class="math inline">\(w\omega_s=\omega_s\)</span> 对任何 <span class="math inline">\(w\in W_X\)</span> 成立，从而 <span class="math inline">\(W_X\)</span> 作用在 <span class="math inline">\(V_X/\mathbb{R}\omega_s\)</span>
+上，此作用给出了一个同态 <span class="math inline">\(W_X\to{\rm
+GL}(V_X/\mathbb{R}\omega_s)\)</span>。令 <span class="math inline">\(W_X'\)</span> 为此同态的核，则对任何 <span class="math inline">\(w\in W_X'\)</span>， <span class="math display">\[w(v + \mathbb{R}\omega_s) = v +
+\mathbb{R}\omega_s,\quad v\in V_X\]</span> 即 <span class="math inline">\((w-1)v\in\mathbb{R}\omega_s\)</span>，于是 <span class="math inline">\(w\)</span> 满足 <span class="math inline">\((w-1)\alpha_i\in\mathbb{R}\omega_s\)</span> 对任何
+<span class="math inline">\(i\in X\)</span> 成立，从而 <span class="math inline">\((w-1)^2\)</span> 在整个 <span class="math inline">\(V_X\)</span> 上恒为 0。更进一步，<span class="math inline">\(w\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和 <span class="math inline">\(\{\alpha_i,i\in X\}\)</span> 的线性组合，所以
+<span class="math inline">\(w\alpha_s-\alpha_s=(w-1)\alpha_s\in
+V_X\)</span>，所以 <span class="math inline">\((w-1)^2V\subset\mathbb{R}\omega_s\)</span>，<span class="math inline">\((w-1)^3V\equiv0\)</span>。</p>
+<p>如果 <span class="math inline">\(p\)</span> 是 <span class="math inline">\(\omega_s\)</span> 的正倍数，则结论是平凡的。否则取
+<span class="math inline">\(w\in W_X'\)</span> 且 <span class="math inline">\(w\ne 1\)</span>，则存在 <span class="math inline">\(k\in X\)</span> 使得 <span class="math inline">\(w\alpha_k\ne\alpha_k\)</span>。设 <span class="math inline">\(w\alpha_k=\alpha_k+a\omega_s,\,a\ne
+0\)</span>，并构造换位子 <span class="math inline">\(w_1=s_kws_k^{-1}w^{-1}\in W_X'\)</span>，则
+<span class="math inline">\((w_1-1)^2p=b\omega_s\)</span>，其中 <span class="math inline">\(b\in\mathbb{R}\)</span>。我们来计算 <span class="math inline">\(b\)</span>。</p>
+<p>注意到 <span class="math inline">\(ws_kw^{-1}=s_{w\alpha_k}\)</span>，所以 <span class="math display">\[\begin{align*}
+s_{w\alpha_k}(p)&amp;=p - 2(p\bullet w\alpha_k)w\alpha_k\\
+&amp;=p-2(p, \alpha_k+a\omega_s)(\alpha_k+a\omega_s)\\
+&amp;=p-2(p, \alpha_k+a\omega_s)\alpha_k - c\omega_s\\
+&amp;=s_k(p) - 2a(p, \omega_s)\alpha_k - c\omega_s.
+\end{align*}\]</span> 其中 <span class="math inline">\(c=2a(p,
+\alpha_k+a\omega_s)\)</span> 是实数。于是 <span class="math display">\[(w_1-1)p=s_ks_{w\alpha_k}p-p =
+2a(p,\omega_s)\alpha_k - c\omega_s.\]</span> 其中我们利用了 <span class="math inline">\(s_k(\omega_s)=\omega_s\)</span>。继续由于 <span class="math inline">\((w_1-1)\omega_s=0\)</span>，所以 <span class="math display">\[(w_1-1)^2p =
+2a(p,\omega_s)(w_1-1)\alpha_k.\]</span> 对于 <span class="math inline">\((w_1-1)\alpha_k\)</span>，我们可以应用上面对 <span class="math inline">\(p\)</span> 的计算，并利用 <span class="math inline">\((\alpha_k,\omega_s)=0\)</span> 和 <span class="math inline">\((\alpha_k,\alpha_k)=1\)</span>，得到 <span class="math display">\[(w_1-1)\alpha_k=2a(\alpha_k, \omega_s)\alpha_k -
+2a(\alpha_k, \alpha_k+a\omega_s)\omega_s=-2a\omega_s.\]</span> 于是
+<span class="math inline">\((w_1-1)^2p=-4a^2(p,\omega_s)\omega_s\)</span>，即
+<span class="math inline">\(b=-4a^2(\omega_s\bullet p)\)</span>。由于
+<span class="math inline">\(p\in\overline{\mathcal{D}}\)</span> 是 <span class="math inline">\(\{\omega_s,s\in S\}\)</span>
+的非负线性组合，以及对任何 <span class="math inline">\(i\ne s\)</span>
+有 <span class="math inline">\((\omega_s,\omega_i)&lt;0\)</span>，我们有
+<span class="math inline">\(\omega_s\bullet p&lt;0\)</span>，从而 <span class="math inline">\(b&gt;0\)</span>。</p>
+<p>最后利用 <span class="math inline">\((w_1-1)^3=0\)</span>
+我们得到对任何 <span class="math inline">\(N\geq 1\)</span> 有 <span class="math display">\[w_1^Np=p + \binom{N}{1}(w_1-1)(p) +
+\binom{N}{2}b\omega_s,\]</span> 可见 <span class="math inline">\(\lim_{N\to\infty}\frac{w_1^Np}{\binom{N}{2}b} =
+\omega_s\)</span>，即得所证。</p>
+<blockquote>
+<p><strong>定理</strong>：如果 <span class="math inline">\((W,S)\)</span> 的 level 大于等于 2，则 <span class="math inline">\(\overline{ \mathcal{C}_r } = \overline{
+\mathcal{C} }\)</span>。</p>
+</blockquote>
+<p>证明：只要证明 <span class="math inline">\(\overline{ \mathcal{C}_r
+}\)</span> 包含那些满足 <span class="math inline">\(e_k\bullet e_k\leq
+0\)</span> 的 <span class="math inline">\(e_k\)</span> 即可。若如此，则
+<span class="math inline">\(\overline{ \mathcal{C}_r }\)</span>
+包含所有的 <span class="math inline">\(\{\omega_s,s\in
+S\}\)</span>，再结合 <span class="math inline">\(\overline{
+\mathcal{C}_r }\)</span> 是 <span class="math inline">\(W-\)</span>
+不变的，即得 <span class="math inline">\(\overline{ \mathcal{C}_r
+}\)</span> 包含所有 <span class="math inline">\(\{w\omega_s\mid w\in
+W,s\in S\}\)</span>，从而包含它们的凸包 <span class="math inline">\(\overline{ \mathcal{C} }\)</span>。</p>
+<p><span class="math inline">\(e_k\bullet e_k&lt;0\)</span>
+的情形比较容易，由于 <span class="math inline">\(e_k\)</span> 是
+time-like 的，所以其正交补 <span class="math inline">\(\{\alpha_s,s\in
+S\backslash k\}\)</span> 是正定的，从而标准椭圆子群 <span class="math inline">\(W_{S\backslash k}\)</span> 是有限的。任取 <span class="math inline">\(\omega_s\)</span> 满足 <span class="math inline">\(\omega_s\bullet \omega_s&gt;0\)</span> 并考虑
+<span class="math display">\[v = \sum_{w\in W_{S\backslash
+k}}w\omega_s,\]</span> 显然 <span class="math inline">\(v\in\overline{
+\mathcal{C}_r }\)</span>，并且对任何 <span class="math inline">\(s\in
+S\backslash k\)</span> 都有 <span class="math inline">\(\langle
+\alpha_s,\,v\rangle=0\)</span>。这个线性方程组的解空间是一维的，所以
+<span class="math inline">\(v\)</span> 和 <span class="math inline">\(e_k\)</span> 共线：存在 <span class="math inline">\(a\in\mathbb{R}\)</span> 使得 <span class="math inline">\(v=ae_k\)</span>。两边同时与 <span class="math inline">\(\alpha_k\)</span> 作内积得到 <span class="math display">\[a = \sum_{w\in W_{S\backslash k}}(\alpha_k\bullet
+w\omega_s)=\sum_{w\in W_{S\backslash k}}(w\alpha_k\bullet
+\omega_s).\]</span> 对任何 <span class="math inline">\(w\in
+W_{S\backslash k}\)</span>，<span class="math inline">\(w\alpha_k\)</span> 是 <span class="math inline">\(\alpha_k\)</span> 和一些 <span class="math inline">\(\{\alpha_i,i\ne k\}\)</span> 的线性组合，<span class="math inline">\(\alpha_k\)</span> 的系数总是 1，所以 <span class="math inline">\(w\alpha_k\)</span>
+仍然是正根，所以上面求和的每一项都非负。由于 <span class="math inline">\(\Gamma\)</span> 是连通的，所以存在一条从 <span class="math inline">\(k\)</span> 到 <span class="math inline">\(s\)</span> 的路径 <span class="math inline">\(k\sim i_1\sim\cdots\sim i_m\sim
+s\)</span>。不难验证对 <span class="math inline">\(w=s_{i_m}\cdots
+s_{i_1}\in W_{S\backslash k}\)</span>，<span class="math inline">\(w\alpha_k\)</span> 的表达式中 <span class="math inline">\(\alpha_s\)</span> 的系数大于 0，所以 <span class="math inline">\(a\)</span> 必然严格大于 0，所以 <span class="math inline">\(e_k=v/a\in\overline{ \mathcal{C}_r
+}\)</span>。</p>
+<p>如果 <span class="math inline">\(e_k\bullet
+e_k=0\)</span>，则其正交补 <span class="math inline">\(e_k^\bot\)</span>
+是 Euclidean 的，Sylvester 符号为 <span class="math inline">\((n-2,0)\)</span>，并且包含 <span class="math inline">\(\{\alpha_s,s\in S\backslash k\}\)</span>。于是
+<span class="math inline">\(\Gamma\backslash k\)</span> 是 Euclidean
+的。特别地，<span class="math inline">\(\Gamma\backslash k\)</span>
+由一些 Euclidean 和有限连通成分组成，并且有且恰有一个连通成分是
+Euclidean 的。设 <span class="math inline">\(\omega_s\)</span> 满足
+<span class="math inline">\(\omega_s\bullet
+\omega_s&gt;0\)</span>，我们需要讨论两种情况：</p>
+<ol type="1">
+<li><p>如果 <span class="math inline">\(\omega_s\)</span>
+属于某个有限型的连通成分 <span class="math inline">\(Y\)</span>，类似上面的讨论，<span class="math inline">\(v = \sum_{w\in W_Y}w\omega_s\)</span> 满足对任何
+<span class="math inline">\(t\in k\)</span> 都有 <span class="math inline">\(\langle \alpha_t,\,v\rangle=0\)</span>，从而等于
+<span class="math inline">\(\omega_s\)</span> 乘以一个正实数，从而属于
+<span class="math inline">\(\overline{ \mathcal{C}_r
+}\)</span>。</p></li>
+<li><p>如果 <span class="math inline">\(\omega_s\)</span> 属于某个
+Euclidean 型的连通成分 <span class="math inline">\(X\)</span>，设 <span class="math inline">\(Y=S\backslash(X\cup\{k\})\)</span> 是 <span class="math inline">\(\Gamma\backslash k\)</span> 的除 <span class="math inline">\(X\)</span> 以外的连通成分的并，则 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 互不连通，从而 <span class="math display">\[e_k = (e_k\bullet e_k)\alpha_k + \sum_{t\ne k}
+(e_k\bullet \omega_t)\alpha_t=\sum_{t\in X} (e_k\bullet
+\omega_t)\alpha_t + \sum_{t\in Y} (e_k\bullet
+\omega_t)\alpha_t=e_k'+e_k''.\]</span> 并且 <span class="math inline">\(e_k'\)</span> 和 <span class="math inline">\(e_k''\)</span> 是正交的。于是 <span class="math display">\[e_k'\bullet e_k' + e_k''\bullet
+e_k'' = e_k\bullet e_k=0.\]</span> 由于 <span class="math inline">\(e_k'\in V_X\)</span> 来自 Euclidean 型，<span class="math inline">\(e_k''\in V_Y\)</span>
+来自有限型，所以只能是 <span class="math inline">\(e_k'\bullet
+e_k'= 0\)</span> 并且 <span class="math inline">\(e_k''=0\)</span>，从而 <span class="math inline">\(e_k=e_k'\in X\)</span>。于是 <span class="math inline">\(e_k\)</span> 张成了 <span class="math inline">\({\rm Rad}(V_X)\)</span>，从而它表示为 <span class="math inline">\(\{\alpha_i,i\in X\}\)</span>
+的线性组合时所有的系数 <span class="math inline">\((e_k,\omega_i)\)</span>
+系数都是非零且同号的。我们断言它们都小于 0。实际上由 <span class="math display">\[e_k=\sum_{t\in X} (e_k\bullet
+\omega_t)\alpha_t\]</span> 两边同时用 <span class="math inline">\(\alpha_k\)</span> 作内积有 <span class="math display">\[1=e_k\bullet\alpha_k=\sum_{t\in X} (e_k\bullet
+\omega_t)(\alpha_t\bullet\alpha_k).\]</span> 由于 <span class="math inline">\(\alpha_t\bullet\alpha_k\leq
+0\)</span>，所以必须所有 <span class="math inline">\(e_k\bullet
+\omega_t&lt;0\)</span>。特别地，<span class="math inline">\(e_k\bullet
+\omega_s&lt;0\)</span>。利用前面的定理，我们得到 <span class="math display">\[e_k\in\overline{\bigcup_{w\in
+W_x}w\omega_s}\subset\overline{ \mathcal{C}_r }.\]</span></p></li>
+</ol>
+<blockquote>
+<p>定理：<span class="math inline">\(\mathcal{C}_r\)</span>
+是堆积当且仅当 <span class="math inline">\(\Gamma\)</span> 的 level 是
+2。并且在 level 2 时 <span class="math inline">\(\mathcal{C}_r\)</span>
+还是极大堆积。</p>
+</blockquote>
+<p>证明：若 <span class="math inline">\(\Gamma\)</span> 的 level 是
+2，则根据前面的定理，<span class="math inline">\(\mathcal{C}_r\)</span>
+中的两两分离，将 <span class="math inline">\(\mathcal{C}_r\)</span>
+中的向量单位化，则这些单位化后的权仍然两两分离，并且任何两个权张成的子空间都不是正定的，所以它们两两之间的内积
+<span class="math inline">\(\leq -1\)</span>。所以 <span class="math inline">\(\mathcal{C}_r\)</span>
+确实给出一个堆积。如果存在某个圆与任何 <span class="math inline">\(\mathcal{C}_r\)</span>
+中的圆都不相交/相切的话，则这个圆对应于一个单位向量 <span class="math inline">\((k,k)=1\)</span> 并且 <span class="math inline">\((k,x)\leq 0\)</span> 对任何 <span class="math inline">\(x\in\mathcal{C}_r\)</span> 成立。由于 <span class="math inline">\(\overline{ \mathcal{C}_r }=\overline{ \mathcal{C}
+}\)</span>，这意味着 <span class="math inline">\((k,y)\leq0\)</span>
+对任何 <span class="math inline">\(y\in\mathcal{C}\)</span> 成立。于是
+<span class="math inline">\((k,k)\leq0\)</span>，矛盾。这就证明了 level
+2 时 <span class="math inline">\(\mathcal{C}_r\)</span> 是极大堆积。</p>
+<p>反之若 <span class="math inline">\(W\)</span> 是双曲的，并且 <span class="math inline">\(\mathcal{C}_r\)</span>
+是一个堆积，那么由于实权之间两两分离，而一个非实权和其它任何权张成的子空间当然不可能是正定的，所以也是分离的，所以
+<span class="math inline">\(\Gamma\)</span> 的 level 只能是 2。</p>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>这是 Coxeter 群中的一个熟知结论：如果 Coxeter 群 <span class="math inline">\((W,S)\)</span> 的 Coxeter 图 <span class="math inline">\(\Gamma\)</span> 是连通的，且 Cartan
+矩阵是半正定的，则 Cartan 矩阵的任何余子式都是正定的，即从 <span class="math inline">\(\Gamma\)</span> 中删除若干顶点后得到的是有限
+Coxeter 群。见 Humphreys 的 "Reflection groups and Coxeter groups" 2.6
+小节。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+                
+<p class="pink-link-context">
+    <a href="/mobius-ball-rigid-motion/" rel="next" title="Möbius 变换与球的刚体运动">
+    上一篇：Möbius 变换与球的刚体运动
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/coxeter-groups-II/" rel="next" title="Coxeter 群基础知识 （二）：几何实现">
+    下一篇：Coxeter 群基础知识 （二）：几何实现
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+</script>
+
+
+
+</body>
+</html>

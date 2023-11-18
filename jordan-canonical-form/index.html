@@ -164,7 +164,7 @@ Jordan
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">1 篇</span></a>
+                    pywonderland-项目 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -203,14 +203,6 @@ Jordan
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/几何/">
-                    几何 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
                     有限群表示与结合代数 <span class="right">3 篇</span></a>
                 </a>
@@ -221,6 +213,14 @@ Jordan
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
                     线性代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -324,10 +324,10 @@ Jordan
 <blockquote><p>设 <span class="math inline">\(T\)</span> 是向量空间 <span class="math inline">\(V\)</span> 上的线性变换，如果 <span class="math inline">\(V\)</span> 可以分解为一些非平凡的子空间的直和
 <span class="math inline">\(V=V_1\oplus\cdots\oplus
 V_k\)</span>，使得每一个 <span class="math inline">\(V_i\)</span> 都是
-<span class="math inline">\(T-\)</span> 不变的子空间，则称 <span class="math inline">\(T\)</span> 是可以分解的； 如果 <span class="math inline">\(V\)</span> 不存在这样的分解，则称 <span class="math inline">\(T\)</span> 是不可分解的线性变换。</p>
+<span class="math inline">\(T\)</span>- 不变的子空间，则称 <span class="math inline">\(T\)</span> 是可以分解的； 如果 <span class="math inline">\(V\)</span> 不存在这样的分解，则称 <span class="math inline">\(T\)</span> 是不可分解的线性变换。</p>
 </blockquote>
 <p>这样我们就可以比较准确的表述线性变换的唯一分解定理了：</p>
-<blockquote><p><strong>线性变换的唯一分解定理</strong> （修正的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 可以分解为若干个 <span class="math inline">\(T-\)</span> 不变子空间的直和 <span class="math inline">\(V=V_1\oplus\cdots\oplus V_k\)</span>，<span class="math inline">\(T\)</span> 限制在每个 <span class="math inline">\(V_i\)</span>
+<blockquote><p><strong>线性变换的唯一分解定理</strong> （修正的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 可以分解为若干个 <span class="math inline">\(T\)</span>- 不变子空间的直和 <span class="math inline">\(V=V_1\oplus\cdots\oplus V_k\)</span>，<span class="math inline">\(T\)</span> 限制在每个 <span class="math inline">\(V_i\)</span>
 上是不可分解的线性变换。这个分解还是唯一的，即如果 <span class="math inline">\(V=W_1\oplus\cdots\oplus W_l\)</span>
 是另一种分解，则 <span class="math inline">\(k=l\)</span>
 且适当重排以后对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(V_i\)</span> 上的限制与 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(W_i\)</span> 上的限制是相似的。</p>
@@ -349,7 +349,7 @@ v_{n-1}),\quad J_0=\begin{pmatrix}0&amp;1&amp;&amp;\\ &amp;\ddots
 块。注意 <span class="math inline">\(T\)</span> 是一个幂零算子：<span class="math inline">\(T^n=0\)</span>，它仅有唯一的特征值 0。</p>
 <p>为什么移位算子 <span class="math inline">\(T\)</span>
 是不可分解的？假设 <span class="math inline">\(V=U\oplus W\)</span>
-是两个非平凡 <span class="math inline">\(T-\)</span>
+是两个非平凡 <span class="math inline">\(T\)</span>-
 不变子空间的直和，则 <span class="math inline">\(T\)</span> 作为 <span class="math inline">\(U\)</span> 和 <span class="math inline">\(W\)</span> 上的幂零线性变换必然各有一个特征值为 0
 的特征向量，因此齐次线性方程组 <span class="math inline">\(TX=0\)</span>
 的解空间至少包含两个线性无关的向量。但是 <span class="math inline">\(T\)</span> 的秩是 <span class="math inline">\(n-1\)</span>，即 <span class="math inline">\(TX=0\)</span> 的解空间是 1
@@ -374,7 +374,7 @@ J_{\lambda_r}.\]</span> 这种分解是唯一的，意思是如果存在 <span c
 所以完全可以先看结论，跳过证明，这不影响对本文的理解。</p>
 <blockquote><p><strong>准素分解定理</strong>：设 <span class="math inline">\(T\)</span> 的特征多项式为 <span class="math inline">\(f(x)\)</span>，且 <span class="math inline">\(f(x)\)</span> 在复数域上分解为一次因式的乘积 <span class="math display">\[f(x)=(x-\lambda_1)^{n_1}\cdots(x-\lambda_k)^{n_k},\]</span>
 这里的 <span class="math inline">\(\lambda_i\)</span> 互不相同。令 <span class="math inline">\(V_i=\ker (T-\lambda_i I)^{n_i}\)</span>，则每个
-<span class="math inline">\(V_i\)</span> 都是 <span class="math inline">\(T-\)</span> 不变子空间而且 <span class="math display">\[V=V_1\oplus\cdots\oplus V_m.\]</span></p>
+<span class="math inline">\(V_i\)</span> 都是 <span class="math inline">\(T\)</span>- 不变子空间而且 <span class="math display">\[V=V_1\oplus\cdots\oplus V_m.\]</span></p>
 </blockquote>
 <p>准素分解定理告诉我们，要证明 <span class="math inline">\(T\)</span>
 可以表示为一些 Jordan 块的直和，只要证明 <span class="math inline">\(T\)</span> 在每个 <span class="math inline">\(V_i\)</span> 上的限制 <span class="math inline">\(T_i=T|_{V_i}\)</span> 可以表示为一些 Jordan
@@ -419,7 +419,7 @@ Nv\rightarrow \cdots \rightarrow N^kv\rightarrow 0.\]</span>
 <p>对 <span class="math inline">\(V\)</span> 的维数 <span class="math inline">\(\dim V\)</span> 归纳，<span class="math inline">\(\dim V=1\)</span> 时显然结论成立。</p>
 <p>现假设结论对所有维数小于 <span class="math inline">\(\dim V\)</span>
 的向量空间成立，考虑 <span class="math inline">\(V\)</span> 的像空间
-<span class="math inline">\(N(V)\)</span>。这是一个 <span class="math inline">\(N-\)</span> 不变子空间，且由于 <span class="math inline">\(N\)</span> 是幂零线性变换所以 <span class="math inline">\(\dim N(V)&lt;\dim V\)</span>，所以可以对子空间
+<span class="math inline">\(N(V)\)</span>。这是一个 <span class="math inline">\(N\)</span>- 不变子空间，且由于 <span class="math inline">\(N\)</span> 是幂零线性变换所以 <span class="math inline">\(\dim N(V)&lt;\dim V\)</span>，所以可以对子空间
 <span class="math inline">\(N(V)\)</span> 使用归纳假设：存在 <span class="math inline">\(N(V)\)</span> 的一组基如下，它们构成 <span class="math inline">\(q\)</span> 条不相交的轨道 <span class="math inline">\(\mathcal{O}_1,\cdots,\mathcal{O}_q\)</span>：</p>
 <p><span class="math display">\[\begin{array}{l}&amp;v_{1,1}\rightarrow
 v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow
