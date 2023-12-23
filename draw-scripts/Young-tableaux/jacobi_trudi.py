@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
+plt.rcParams.update({"text.usetex": True, "font.family": "Courier"})
 
 class PlanePartition(object):
 
@@ -20,7 +21,7 @@ class PlanePartition(object):
         return result
 
     def nonintersect_path_system(self):
-        fig = plt.figure(figsize=(6, 4), dpi=100)
+        fig = plt.figure(figsize=(6, 4), dpi=300)
         ax = fig.add_axes([0, 0, 1, 1], aspect=1)
         ax.axis([self.xmin-1, self.xmax+1, -0.5, self.ymax])
         ax.axis("off")

@@ -204,8 +204,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机完美取样/">
+                    随机完美取样 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">3 篇</span></a>
+                    有限群表示与结合代数 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -214,6 +222,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
                     线性代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -320,7 +336,7 @@
 </ol>
 <p>但是要找出其它的简正模式，并保证没有遗漏，就不能只靠想象了。</p>
 <p>我们把这个物理问题转换为一个线性代数问题，然后用一些群表示论的知识解决它。</p>
-<p>这个三质点—弹簧组成的系统在任一时刻的状态可以由 6 个物理量 <span class="math inline">\(q_1\sim q_6\)</span> 来刻画：<span class="math inline">\((q_1,q_2)\)</span> 分别表示质点 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(x,y\)</span> 方向上相对于其平衡位置的位移，<span class="math inline">\((q_3,q_4)\)</span>，<span class="math inline">\((q_5,q_6)\)</span> 的含义类似。</p>
+<p>这个质点 — 弹簧系统在任一时刻的状态可以由 6 个物理量 <span class="math inline">\(q_1\sim q_6\)</span> 来刻画：<span class="math inline">\((q_1,q_2)\)</span> 分别表示质点 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(x,y\)</span> 方向上相对于其平衡位置的位移，<span class="math inline">\((q_3,q_4)\)</span>，<span class="math inline">\((q_5,q_6)\)</span> 的含义类似。</p>
 <p><img style="margin:0px auto;display:block" width="300" src="/images/mass-spring/coords.svg"></p>
 <p>设弹簧的弹性系数为 <span class="math inline">\(k\)</span>，原点在三角形中心，<span class="math inline">\(x\)</span>
 轴水平向右，于是三个弹簧所含的弹性势能为 （将形变投影到弹簧所在的方向）
@@ -355,9 +371,7 @@ t}\)</span>，其中 <span class="math inline">\(\overline{q}_i\)</span>
 阶矩阵的特征值还是一件挺麻烦的事情，鉴于搞数学的人一般比较懒，我们可以换个思路想一想。</p>
 <p>注意到这个系统具有对称性，其对称群是 <span class="math inline">\(S_3\)</span>。<span class="math inline">\(S_3\)</span> 这个群很特殊，一方面它是集合 <span class="math inline">\(\{1,2,3\}\)</span>
 上的置换群，另一方面它是平面上的二面体群 <span class="math inline">\(D_3\)</span>。<span class="math inline">\(S_3\)</span>
-在这个质点—弹簧系统上有一个自然的作用：它在置换质点的同时，也变换质点的
-<span class="math inline">\(q_i\)</span> 坐标，这两种表示合起来给出了
-<span class="math inline">\(S_3\)</span> 在状态空间 <span class="math inline">\(\mathbb{R}^6\)</span> 上的作用。</p>
+在这个系统上有一个自然的作用：它在置换质点的同时，也变换质点的 <span class="math inline">\(q_i\)</span> 坐标，这两种表示合起来给出了 <span class="math inline">\(S_3\)</span> 在状态空间 <span class="math inline">\(\mathbb{R}^6\)</span> 上的作用。</p>
 <p>回忆 <span class="math inline">\(S_3\)</span> 的一个表现为 <span class="math display">\[S_3=\{a,b\mid a^2=b^3=(ab)^2=1\}.\]</span>
 当作为置换群时，<span class="math inline">\(a=(12),\,b=(123)\)</span>。当作为二面体群时，<span class="math inline">\(a=\left(\begin{smallmatrix}-1&amp;0\\0&amp;1\end{smallmatrix}\right)\)</span>
 是关于 <span class="math inline">\(y\)</span> 轴的反射，<span class="math inline">\(b=\left(\begin{smallmatrix}\cos2\pi/3&amp;-\sin2\pi/3\\\sin2\pi/3&amp;\cos2\pi/3\end{smallmatrix}\right)\)</span>
@@ -369,7 +383,8 @@ t}\)</span>，其中 <span class="math inline">\(\overline{q}_i\)</span>
 分别是 <span class="math inline">\(A,B,C\)</span>
 三个质点的坐标空间。<span class="math inline">\(S_3\)</span>
 在置换这三个直和项的同时，又以二面体群的方式作用在每个直和项上，所以这个表示是
-<span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\mathbb{R}^3\)</span> 上的置换表示和在 <span class="math inline">\(\mathbb{R}^2\)</span> 上的二面体表示的张量积。</p>
+<span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\mathbb{R}^3\)</span> 上的置换表示和在 <span class="math inline">\(\mathbb{R}^2\)</span>
+上的二面体表示的张量积。例如，对换 <span class="math inline">\(a=(12)\)</span> 交换 <span class="math inline">\(A,B\)</span>，同时将它们的坐标关于 <span class="math inline">\(y\)</span> 轴作反射：将 <span class="math inline">\(A\otimes (q_1,q_2)\)</span> 映射为 <span class="math inline">\(B\otimes(-q_1,q_2)\)</span>。</p>
 <p>我们把这个张量积表示记作 <span class="math inline">\(\rho\)</span>，并记 <span class="math display">\[R=\begin{pmatrix}\cos\frac{2\pi}{3}&amp;-\sin\frac{2\pi}{3}\\\sin\frac{2\pi}{3}&amp;\cos\frac{\pi}{3}\end{pmatrix},\quad
 S=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}.\]</span></p>
 <p>举个例子，<span class="math inline">\(a=(12)\)</span> 作为轮换，在
@@ -402,10 +417,11 @@ SR^2=\begin{pmatrix}SR^2&amp;0&amp;0\\0&amp;0&amp;SR^2\\0&amp;SR^2&amp;0\end{pma
 q}=U\)</span>，由于 <span class="math inline">\(\rho(g)\)</span>
 正交所以 <span class="math inline">\(\rho(g)U=U\rho(g)\)</span>，从而
 <span class="math inline">\(U\)</span> 是表示 <span class="math inline">\(\rho\)</span> 的一个自同态。</p>
-<p>设 <span class="math inline">\(\rho\)</span> 对应的特征为 <span class="math inline">\(\chi\)</span>，容易验证 <span class="math inline">\(\chi(e)=6\)</span>，<span class="math inline">\(\chi(g)=0, \forall g\ne
-e\)</span>（这一点很容易从置换表示是张量积的一个分量看出来），于是 <span class="math inline">\(\rho\)</span> 同构于 <span class="math inline">\(S_3\)</span>
-的正则表示，从而可以分解为两个一次表示和两个二次不可约表示的和： <span class="math display">\[\chi = \chi_1 + \chi_2 + 2\chi_3.\]</span> 其中
-<span class="math inline">\(\chi_1\)</span> 是平凡表示的特征，<span class="math inline">\(\chi_2\)</span>
+<p>注意到 <span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\{1,2,3\}\)</span> 上的置换表示，其特征只有在
+<span class="math inline">\(g=e\)</span> 时等于 3，对任何 <span class="math inline">\(g\ne e\)</span> 都是 0，且它是 <span class="math inline">\(\rho\)</span> 的张量积表示的分量，所以 <span class="math inline">\(\rho\)</span> 的特征 <span class="math inline">\(\chi\)</span> 也具有此性质。显然 <span class="math inline">\(\chi(e)=6\)</span>，于是 <span class="math inline">\(\rho\)</span> 与 <span class="math inline">\(S_3\)</span>
+的正则表示的特征完全相同，从而同构于正则表示，从而可以分解为两个一次表示和两个二次不可约表示的和：
+<span class="math display">\[\chi = \chi_1 + \chi_2 + 2\chi_3.\]</span>
+其中 <span class="math inline">\(\chi_1\)</span> 是平凡表示的特征，<span class="math inline">\(\chi_2\)</span>
 是符号表示的特征，这两个特征都是一次的。<span class="math inline">\(\chi_3\)</span> 是 <span class="math inline">\(S_3\)</span>
 作为二面体群的二维不可约表示的特征。</p>
 <p>那么表示 <span class="math inline">\(\rho\)</span> 与 <span class="math inline">\(U\)</span> 的特征值有何关系呢？</p>

@@ -203,8 +203,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机完美取样/">
+                    随机完美取样 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">3 篇</span></a>
+                    有限群表示与结合代数 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -213,6 +221,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
                     线性代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -358,23 +374,28 @@ Map。不过可以用归纳法证明 <span class="math inline">\(\frac{N-1}{N+1}
 <p>请注意，虽然我们已经设计出了一个不错的策略，但这个策略到底是不是最优的呢？我们还没有严格证明。而且就算这个策略是最优的，是否只有这一种最优策略呢？没准还有其它最优策略能让你更省时省心地娶到好太太呢！要严格的解释这些，就要用到鞅的理论。</p>
 <blockquote>
 <p><strong>Warning</strong>:
-接下来的内容要用到概率论中鞅的知识，这通常属于数学专业研究生阶段的内容。</p>
+接下来的内容要用到鞅的知识，这通常属于概率专业研究生阶段的内容。</p>
 </blockquote>
 <h1 id="转换为鞅的语言">转换为鞅的语言</h1>
-<blockquote><p><strong>问题</strong>：设 <span class="math inline">\(N\)</span>
+<p>用鞅的语言重新表述上面的问题，会给人一种画风突变的感觉，看起来非常晦涩，不像是在说人话：
+</p><blockquote><p><strong>问题</strong>：设 <span class="math inline">\(N\)</span>
 是一个给定的正整数，<span class="math inline">\(\{\mathcal{F}_n\}_{n=0}^N\)</span>
 是某概率空间上的递增的 <span class="math inline">\(\sigma-\)</span>
 域流，<span class="math inline">\(\{X_n\}_{n=0}^N\)</span>
 是一列可积的随机变量且 <span class="math inline">\(X_k\in\mathcal{F}_k\)</span>。设 <span class="math inline">\(\mathcal{M}\)</span> 是所有满足 <span class="math inline">\(0\leq\tau\leq N\)</span> 的停时 <span class="math inline">\(\tau\)</span> 组成的集合。我们想求出值函数 <span class="math display">\[V= \sup_{\tau\in\mathcal{M}}
 \mathbb{E}X_\tau\]</span> 以及使得这个最大值取到的停时 <span class="math inline">\(\tau\)</span>。</p>
-</blockquote>
-<p>定义 <span class="math inline">\(\{X_n\}\)</span> 的 <strong>Snell
-包络</strong>为 <span class="math display">\[S_n=\left\{\begin{array}{ll}X_N&amp;n=N\\\max\{X_n,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}&amp;
+</blockquote><p></p>
+<p>但它确实是用严格的测度语言重新表述了上面的相亲问题：<span class="math inline">\(\mathcal{F}_n=\{X_1,\ldots,X_n\}\)</span> 是前
+<span class="math inline">\(n\)</span> 位女士的分数（这是 <span class="math inline">\(n\)</span> 个独立的随机变量）生成的 <span class="math inline">\(\sigma-\)</span> 域，它包含了所有你第 <span class="math inline">\(n\)</span> 次相亲后可能知道的信息，<span class="math inline">\(\mathcal{F}_n\)</span>
+显然是递增的。你的一个相亲策略对应一个停时 <span class="math inline">\(\tau\)</span>，所有相亲策略构成的集合就是 <span class="math inline">\(\mathcal{M}\)</span>。</p>
+<p>我们把倒向递归的方法也翻译成概率的语言：定义 <span class="math inline">\(\{X_n\}\)</span> 的 <strong>Snell 包络</strong>为
+<span class="math display">\[S_n=\left\{\begin{array}{ll}X_N&amp;n=N\\\max\{X_n,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}&amp;
 n=N-1,\ldots,0.\end{array}\right.\]</span> 这里的 <span class="math inline">\(S_n\)</span> 是从 <span class="math inline">\(N\)</span> 开始倒向递归定义的。注意 <span class="math inline">\(S_n\)</span> 关于 <span class="math inline">\(\mathcal{F}_n\)</span> 可测。</p>
 <p><span class="math inline">\(S_n\)</span>
 的直观意义很好理解，它就是在时刻 <span class="math inline">\(n\)</span>
-对当下收益和未来收益的比较：如果过程在当前时刻结束，那么收益就是 <span class="math inline">\(X_n\)</span>；否则继续前进到下一个时刻 <span class="math inline">\(n+1\)</span>，其期望收益是 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>，二者取最大值即为
-<span class="math inline">\(n\)</span> 时刻对最佳收益的估计。</p>
+对当下女士的分数和后面所有女士期望分数的比较：如果和当前的女士 <span class="math inline">\(n\)</span> 结婚，那么分数就是 <span class="math inline">\(X_n\)</span>；否则继续前进到下一个时刻 <span class="math inline">\(n+1\)</span>，未来太太的期望分数就是 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>，二者取最大值
+<span class="math inline">\(\max\{X_n,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}\)</span>
+即为 <span class="math inline">\(n\)</span> 时刻对最佳分数的估计。</p>
 <blockquote>
 <p>注意这里的条件期望不可少，一般来说 <span class="math inline">\(\{X_n\}\)</span> 之间不是独立的，根据前 <span class="math inline">\(n\)</span> 个时刻获得的信息不同，你在 <span class="math inline">\(n+1\)</span> 时刻对最佳收益的估计也可能不同。</p>
 </blockquote>
@@ -382,8 +403,7 @@ n=N-1,\ldots,0.\end{array}\right.\]</span> 这里的 <span class="math inline">\
 S_n=X_n\}\)</span>，则 <span class="math inline">\(\tau\)</span>
 是停时。注意由于 <span class="math inline">\(S_N=X_N\)</span>，因此
 <span class="math inline">\(\tau\)</span> 的定义合理且 <span class="math inline">\(0\leq\tau\leq N\)</span>。<span class="math inline">\(\tau\)</span>
-的直观意义就是我们应该采取的最优停止策略：每个时刻，用当前的 <span class="math inline">\(X_n\)</span> 与未来的期望收益 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>
-比较，见好就收。</p>
+的直观意义就是我们应该采取的最优停止策略：在 <span class="math inline">\(\tau\)</span> 时刻，由于这时 <span class="math inline">\(n\)</span> 号女士的分数 <span class="math inline">\(X_n\)</span> 大于等于后面所有女士的期望分数 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>，剩下的相亲就不必再进行了。</p>
 <blockquote><p><strong>定理 1</strong>：<span class="math inline">\(\{S_n\}\)</span>
 是控制 <span class="math inline">\(\{X_n\}\)</span> 的最小上鞅。</p>
 </blockquote>
