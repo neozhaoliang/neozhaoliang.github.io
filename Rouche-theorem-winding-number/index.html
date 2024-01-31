@@ -160,7 +160,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">2 篇</span></a>
+                    pywonderland-项目 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -192,15 +192,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机完美取样/">
-                    随机完美取样 <span class="right">1 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -322,8 +314,8 @@
 "Winding numbers and topology" 中的结论：</p>
 <span id="more"></span>
 <blockquote><p>一个人和他的狗在公园里绕着一棵树散步，人和狗各自走的路径都是闭曲线，即经过一段时间后都会回到起点。如果人把狗绳抓的紧一些，使得整个过程中狗<strong>无法接触</strong>到树，则结束后人和狗绕着树走的圈数是一样的，这就是下面这个动画演示的：（树的位置是原点，用一个表盘标记）</p>
-<object data="/code/rouche.svg">
-</object>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fdK3RD?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
+</iframe>
 </blockquote>
 <p>对应的数学结论是：两条闭曲线 <span class="math inline">\(\gamma_1,\gamma_2\)</span> 如果都不经过原点，且
 <span class="math inline">\(\gamma_1\)</span>
@@ -339,11 +331,12 @@
 关于原点的环绕数分别等于 <span class="math inline">\(f,g\)</span> 在
 <span class="math inline">\(S^1\)</span> 内部的零点个数。进一步 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem">Rouché
 定理</a> 告诉我们，如果对任何 <span class="math inline">\(z\in
-S^1\)</span> 都有 <span class="math inline">\(|f(z)|&gt;|f(z)-g(z)|\)</span> 成立，即假设人站在
-<span class="math inline">\(f(z)\)</span> 处，狗的位置是 <span class="math inline">\(g(z)\)</span>，绳子 <span class="math inline">\(l(z)=f(z)-g(z)\)</span> 的长度 <span class="math inline">\(|l(z)|\)</span> 始终小于人到原点的距离 <span class="math inline">\(|f(z)|\)</span>，就可以保证狗始终够不到原点，从而
+S^1\)</span> 都有 <span class="math inline">\(|f(z)|&gt;|f(z)-g(z)|\)</span> 成立，即可保证
 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
-关于原点有相同的环绕数，于是 <span class="math inline">\(f,g\)</span> 在
-<span class="math inline">\(S^1\)</span> 内部的零点个数也是相同的。</p>
+关于原点有相同的环绕数，从而 <span class="math inline">\(f,g\)</span> 在
+<span class="math inline">\(S^1\)</span>
+内部的零点个数也是相同的。Rouché 定理的条件其实就是，假设人的位置是
+<span class="math inline">\(f(z)\)</span>，狗的位置是 <span class="math inline">\(g(z)\)</span>，绳子 <span class="math inline">\(l(z)=f(z)-g(z)\)</span> 的长度 <span class="math inline">\(|l(z)|\)</span> 始终小于人到原点的距离 <span class="math inline">\(|f(z)|\)</span>，就可以保证狗始终够不到原点。</p>
 <p>动画中左下角的圆周是 <span class="math inline">\(S^1\)</span>，动画右边红、绿两条路径分别是 <span class="math inline">\(f(S^1)\)</span> 和 <span class="math inline">\(g(S^1)\)</span>。这里的 <span class="math inline">\(f\)</span> 我取的形如 <span class="math display">\[f(z)
 =\frac{z-a}{1-\overline{a}z}\frac{z-b}{1-\overline{b}z}\frac{z-c}{1-\overline{c}z}
 (z-2-2i),\quad |a|,|b|,|c|&lt;1.\]</span> <span class="math inline">\(f(z)\)</span> 在 <span class="math inline">\(S^1\)</span> 的内部有 3 个根
