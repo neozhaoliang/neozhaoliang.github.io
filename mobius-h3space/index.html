@@ -301,7 +301,7 @@ pearls, chapter 3.
 
 
             </div>
-            <time class="pink-link-context" datetime="2018-05-08T16:00:00.000Z"><a href="/mobius-cn/">2018-05-09</a></time>
+            <time class="pink-link-context" datetime="2018-05-08T16:00:00.000Z"><a href="/mobius-h3space/">2018-05-09</a></time>
 
             <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
@@ -325,7 +325,7 @@ pearls, chapter 3.
         
             <a href="/tags/Dupin-cyclide/" class="chip pink lighten-1">Dupin cyclide</a>
         
-            <a href="/tags/Quaternions/" class="chip pink lighten-1">Quaternions</a>
+            <a href="/tags/Quaternion/" class="chip pink lighten-1">Quaternion</a>
         
     </div>
 
@@ -484,7 +484,7 @@ e^{i\theta}z\)</span>。</p>
 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span> 的反复作用下的轨迹是一条双螺线 (double
 spiral)，其与 <span class="math inline">\(\mathcal{C}_1\)</span> 和
 <span class="math inline">\(\mathcal{C}_2\)</span> 的夹角仍然都是常数
-(Möbius 变换是保角的）。</p>
+（Möbius 变换是保角的）。</p>
 <p>判断 Möbius 变换 <span class="math inline">\(M\)</span>
 具体属于哪一类可以根据其迹的平方 <span class="math inline">\(\mu=(a+d)^2\)</span>
 来判断（这是一个共轭不变量）：</p>
@@ -611,6 +611,8 @@ Dupin cyclide 的任何显示或者隐式的曲面方程，用 <span class="math
 的测地线，即锥面。换言之，判断场景中的一个点 <span class="math inline">\(p\)</span> 是不是落在 Dupin cyclide 上，只要判断
 <span class="math inline">\(g^{-1}(p)\)</span>
 是不是落在锥面上。这就好办了。</p>
+<p>抛物的情形更简单一些，可以用 <span class="math inline">\(g(z)=1/z\)</span>
+把位于无穷远的不动点变到原点。</p>
 <p>动画使用的是 GLSL 语言和 raymarching 的技术。我在 Roice
 的代码基础上作了许多优化，但肯定还可以更精炼。限于我写 shader
 的能力不足，做出更美轮美奂的效果就不指望了 ...</p>
