@@ -204,7 +204,7 @@ Jordan
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">4 篇</span></a>
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -479,9 +479,9 @@ n}\]</span></p>
 <p><span class="math display">\[\begin{pmatrix}0&amp;\cdots&amp;1\\&amp;\ddots&amp;\vdots\\&amp;&amp;0\end{pmatrix},\]</span></p>
 <p>最终 <span class="math inline">\(J_0^n=0\)</span>。用这个规则我们可以计算出对任何
 <span class="math inline">\(\lambda\in\mathbb{C}\)</span> 和 <span class="math inline">\(m\in\mathbb{Z}^+\)</span>，<span class="math inline">\(T\)</span> 的 Jordan 标准形中 <span class="math inline">\(m\)</span> 阶 Jordan 块 <span class="math inline">\(J_{\lambda,m}\)</span> 的个数 <span class="math inline">\(n_m\)</span> 来：</p>
-<p><span class="math display">\[n_m=\text{rank}(T-\lambda
-I)^{m-1}-2\cdot\text{rank}(T-\lambda I)^{m}+\text{rank}(T-\lambda
-I)^{m+1}.\]</span></p>
+<p><span class="math display">\[n_m=\mathop{\mathrm{rk}}{(T-\lambda
+I)^{m-1}}-2\cdot\mathop{\mathrm{rk}}{(T-\lambda
+I)^{m}}+\mathop{\mathrm{rk}}{(T-\lambda I)^{m+1}}.\]</span></p>
 <p>道理是这样的：以 <span class="math inline">\(\lambda=0\)</span>
 为例子来计算。会算 0 特征值 Jordan 块的个数，你就会算任何特征值的 Jordan
 块的个数。设 <span class="math inline">\(T\)</span> 的一个 Jordan
@@ -494,17 +494,17 @@ J_{0,k}^{m}\right) \bigoplus_{\mu\ne0}J_{\mu}^{m}.\]</span></p>
 <p>注意后半部分 <span class="math inline">\(\oplus_{\mu\ne0}J^m_\mu\)</span> 对任何 <span class="math inline">\(m\)</span>
 都是保持满秩的，因此这部分的秩始终不变。前面的部分中所有阶数小于等于
 <span class="math inline">\(m\)</span> 的 Jordan 块 <span class="math inline">\(J_{0,k}(k\leq m)\)</span> 的 <span class="math inline">\(m\)</span> 次幂都变成了 0 矩阵，<span class="math inline">\(J_{0,m+1}^m\)</span> 的秩是 1； <span class="math inline">\(J_{0,m+2}^m\)</span> 的秩是 2，依次类推，所以</p>
-<p><span class="math display">\[\text{rank}T^m=n_{m+1}\cdot1+n_{m+2}\cdot2+\cdots
-+\text{rank}\bigoplus_{\mu\ne0}J_\mu^m.\]</span></p>
+<p><span class="math display">\[\mathop{\mathrm{rk}}{T^m}=n_{m+1}\cdot1+n_{m+2}\cdot2+\cdots
++\mathop{\mathrm{rk}}{\bigoplus_{\mu\ne0}J_\mu^m}.\]</span></p>
 <p>同理</p>
-<p><span class="math display">\[\text{rank}T^{m+1}=n_{m+2}\cdot1+n_{m+3}\cdot2+\cdots
-+\text{rank}\bigoplus_{\mu\ne0}J_\mu^{m+1}.\]</span></p>
+<p><span class="math display">\[\mathop{\mathrm{rk}}{T^{m+1}}=n_{m+2}\cdot1+n_{m+3}\cdot2+\cdots
++\mathop{\mathrm{rk}}{\bigoplus_{\mu\ne0}J_\mu^{m+1}}.\]</span></p>
 <p>相减得到</p>
-<p><span class="math display">\[\text{rank}T^m-\text{rank}T^{m+1}=n_{m+1}+n_{m+2}+\cdots,\]</span></p>
+<p><span class="math display">\[\mathop{\mathrm{rk}}{T^m}-\mathop{\mathrm{rk}}{T^{m+1}}=n_{m+1}+n_{m+2}+\cdots.\]</span></p>
 <p>同理</p>
-<p><span class="math display">\[\text{rank}T^{m-1}-\text{rank}T^{m}=n_{m}+n_{m+1}+\cdots,\]</span></p>
+<p><span class="math display">\[\mathop{\mathrm{rk}}{T^{m-1}}-\mathop{\mathrm{rk}}{T^{m}}=n_{m}+n_{m+1}+\cdots.\]</span></p>
 <p>所以再次相减有</p>
-<p><span class="math display">\[n_m=\text{rank}T^{m-1}-2\cdot\text{rank}T^{m}+\text{rank}T^{m+1}.\]</span></p>
+<p><span class="math display">\[n_m=\mathop{\mathrm{rk}}{T^{m-1}}-2\cdot\mathop{\mathrm{rk}}{T^{m}}+\mathop{\mathrm{rk}}{T^{m+1}}.\]</span></p>
 <p>现在你可以看到 <span class="math inline">\(n_m\)</span>
 的表达式不依赖于具体的基的选择，仅依赖于线性变换自身的相似不变量，所以
 <span class="math inline">\(T\)</span> 的 Jordan
