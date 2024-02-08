@@ -38,8 +38,9 @@ def caustics():
 
     setdash([4, 4])
     newpath()
-    moveto(0, 0)
-    lineto(x, y)
+    moveto(x, y)
+    lineto(0, 0)
+    lineto(-1, 0)
     stroke(0)
 
     newpath()
@@ -84,6 +85,10 @@ def caustics():
     t.translate(-t.width, -t.height)
     place(t, -1.05, -0.05)
 
+    t = texinsert("$t$")
+    t.scale(1.5)
+    t.translate(-t.width, -t.height)
+    place(t, 0, 0.1)
 
     flush()
 
