@@ -331,9 +331,8 @@
 <p>为了简便起见，我们分别用 <span class="math inline">\(V_\mathbb{R}\)</span> 和 <span class="math inline">\(V_\mathbb{C}\)</span> 表示将 <span class="math inline">\(V\)</span> 视作 <span class="math inline">\(\mathbb{R}G\)</span>- 模和 <span class="math inline">\(\mathbb{C}G\)</span>- 模。</p>
 <p>答案其实与 <span class="math inline">\(V_\mathbb{C}\)</span>
 分解为不可约复表示的方式有关。注意虽然 <span class="math inline">\(V_\mathbb{R}\)</span> 是不可约的，但是 <span class="math inline">\(V_\mathbb{C}\)</span>
-就未必是不可约的了。我们将说明 <span class="math inline">\(D\)</span>
-的三种可能分别对应 <span class="math inline">\(V_\mathbb{C}\)</span>
-的三种分解可能：</p>
+就未必是不可约的了。我们将说明 <span class="math inline">\(V_\mathbb{C}\)</span>
+的分解具有如下的“三分性质”：</p>
 <blockquote>
 <ol type="1">
 <li><span class="math inline">\(D=\mathbb{R}\)</span> 当且仅当 <span class="math inline">\(V_\mathbb{C}\)</span> 仍然是不可约的。</li>
@@ -400,8 +399,8 @@ k}\to\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix}.\]</span>
 由于 <span class="math inline">\(Q_8\)</span>
 没有二维不可约实表示，因此这个二维不可约复表示不能在实数域上实现。</p>
 <p>那要使得一个不可约复表示可以在实数域上实现，它应该满足怎样的条件？下面就来讨论这个问题。</p>
-<p>首先我们将论证 <span class="math inline">\(V\)</span>
-必然属于下面三种情形之一，且这三种情形是互斥的：</p>
+<p>我们将论证 <span class="math inline">\(V\)</span>
+具有如下的“三分性质”：</p>
 <blockquote><p><strong>定理</strong>：记 <span class="math inline">\(V^\ast\)</span>
 为 <span class="math inline">\(V\)</span> 的对偶表示。</p>
 <ol type="1">
@@ -417,17 +416,19 @@ type)。</li>
 </blockquote>
 <p>我们来分析一下为什么会这样。</p>
 <p>如果 <span class="math inline">\(V\cong V^\ast\)</span>，根据 Schur
-引理，<span class="math inline">\(\mathrm{Hom}(V,V^\ast)\cong\mathbb{C}\)</span>
+引理，<span class="math inline">\(\mathrm{Hom}_G(V,V^\ast)\cong\mathbb{C}\)</span>
 是一维的。但是我们有 <span class="math inline">\(G\)</span>- 模同构
-<span class="math display">\[\mathrm{Hom}(V,V^\ast)\cong \mathrm{Bil}(V)
-\cong V^\ast\otimes V^\ast.\]</span></p>
-<p>但是 <span class="math inline">\(V^\ast\otimes V^\ast\)</span>
+<span class="math display">\[\mathrm{Hom}_G(V,V^\ast)\cong
+\mathrm{Bil}(V) \cong V^\ast\otimes V^\ast.\]</span></p>
+<p>所以 <span class="math inline">\(V^\ast\otimes V^\ast\)</span> 作为
+<span class="math inline">\(\mathbb{C}G\)</span>- 模也是一维的。但是
+<span class="math inline">\(V^\ast\otimes V^\ast\)</span>
 总是可以分解为两个 <span class="math inline">\(G\)</span>-
 不变子空间的直和，即对称和反对称的双线性形式：</p>
 <p><span class="math display">\[V^\ast\otimes
 V^\ast=S^2V^\ast\oplus\Lambda^2V^\ast.\]</span> 其中 <span class="math inline">\(S^2V^\ast\)</span> 是二阶对称张量组成的空间，<span class="math inline">\(\Lambda^2V^\ast\)</span>
 是二阶反对称张量组成的空间。</p>
-<p>于是 <span class="math inline">\(V\)</span> 上的任何 <span class="math inline">\(G\)</span>- 不变双线性型 <span class="math inline">\(g\)</span> 必然要么是对称的： <span class="math display">\[g(v,w)=g(w,v).\]</span> 要么是反对称的： <span class="math display">\[g(v,w)=-g(w,v).\]</span> 二者必居其一。</p>
+<p>于是 <span class="math inline">\(V\)</span> 上的任何 <span class="math inline">\(G\)</span>- 不变双线性型 <span class="math inline">\(g\)</span> 要么是对称的： <span class="math display">\[g(v,w)=g(w,v).\]</span> 要么是反对称的： <span class="math display">\[g(v,w)=-g(w,v).\]</span> 二者必居其一。</p>
 <p>取 <span class="math inline">\(\langle\,,\,\rangle\)</span> 为 <span class="math inline">\(V\)</span> 上的任一 <span class="math inline">\(G\)</span>- 不变的正定 Hermite 内积。其中 <span class="math inline">\(\langle\,,\,\rangle\)</span>
 关于第一个分量是共轭线性的，关于第二个分量是线性的。从而在一组标准正交基
 <span class="math inline">\(\{e_i\}_{i=1}^n\)</span>下 <span class="math inline">\(\langle\,,\,\rangle\)</span> 形如 <span class="math display">\[\langle\sum_{i=1}^n x_ie_i,\,\sum_{i=1}^n
@@ -435,7 +436,8 @@ y_ie_i\rangle=\sum_{i=1}^n\overline{x_i} y_i.\]</span> 固定 <span class="math 
 表示定理，存在唯一的 <span class="math inline">\(v^\ast\in V\)</span>
 使得 <span class="math display">\[g(v, w) = \langle v^\ast,
 w\rangle.\]</span> 这里 <span class="math inline">\(v^\ast\)</span>
-依赖于 <span class="math inline">\(v\)</span>。我们记这个从 <span class="math inline">\(v\)</span> 到 <span class="math inline">\(v^\ast\)</span> 的映射为 <span class="math inline">\(J:v\to v^\ast\)</span>。由于 <span class="math inline">\(g\)</span> 和内积 <span class="math inline">\(\langle\,,\,\rangle\)</span> 都是 <span class="math inline">\(G\)</span>- 不变的，因此 <span class="math inline">\(J\)</span> 必然与 <span class="math inline">\(G\)</span> 的作用交换 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p>
+依赖于 <span class="math inline">\(v\)</span>。我们记这个从 <span class="math inline">\(v\)</span> 到 <span class="math inline">\(v^\ast\)</span> 的映射为 <span class="math inline">\(J:v\to v^\ast\)</span>。从而 <span class="math display">\[g(v, w) = \langle Jv, w\rangle.\]</span> 由于
+<span class="math inline">\(g\)</span> 和内积 <span class="math inline">\(\langle\,,\,\rangle\)</span> 都是 <span class="math inline">\(G\)</span>- 不变的，因此 <span class="math inline">\(J\)</span> 必然与 <span class="math inline">\(G\)</span> 的作用交换 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p>
 <p>注意到 <span class="math inline">\(g\)</span>
 关于第一个分量是线性的，但是 <span class="math inline">\(\langle\,,\,\rangle\)</span>
 关于第一个分量是共轭线性的，所以 <span class="math inline">\(J\)</span>
