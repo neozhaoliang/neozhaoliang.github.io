@@ -19,7 +19,7 @@ Egan
 是澳大利亚的一位非常高产的科幻小说作家，有不少作品已经被国内引入。他的小说属于硬科幻风格，而且是非常硬的那种。他的
 博客文章
 同样精彩！不过与 John Baez 不同的是，Greg Egan
-的文章不太会去兼顾不同水平的读者，要看懂他在说什么经常不是一件容易的事情。
+的文章不太会去兼顾不同水平的读者，对我来说，要看懂他在说什么经常不是一件容易的事情。
 John Baez 博客上有一个系列 Rolling
 circles and balls 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 文章
 更深入的讨论了曲线的焦散。这个话题非常有意思，我也一时手痒写了代码试验了一番并记录在此。">
@@ -336,7 +336,7 @@ Egan
 是澳大利亚的一位非常高产的科幻小说作家，有不少作品已经被国内引入。他的小说属于硬科幻风格，而且是非常硬的那种。他的
 <a target="_blank" rel="noopener" href="https://www.gregegan.net/SCIENCE/Science.html">博客文章</a>
 同样精彩！不过与 John Baez 不同的是，Greg Egan
-的文章不太会去兼顾不同水平的读者，要看懂他在说什么经常不是一件容易的事情。</p>
+的文章不太会去兼顾不同水平的读者，对我来说，要看懂他在说什么经常不是一件容易的事情。</p>
 <p>John Baez 博客上有一个系列 <a target="_blank" rel="noopener" href="https://johncarlosbaez.wordpress.com/2012/08/31/rolling-circles-and-balls-part-1/">Rolling
 circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 <a target="_blank" rel="noopener" href="https://www.gregegan.net/SCIENCE/Catacaustics/Catacaustics.html">文章</a>
 更深入的讨论了曲线的焦散。这个话题非常有意思，我也一时手痒写了代码试验了一番并记录在此。</p>
@@ -346,7 +346,7 @@ circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇
 <p><img style="margin:0px auto;display:block" width="400" src="/images/caustics/cup.jpg"></p>
 <p>形成焦散的原因是，光线在杯子内壁反射以后，光子的分布是不均匀的，某些区域经过的光子特别密集，所以亮度就更高。</p>
 <p>焦散是一条曲线，它和所有的反射光线相切，即它是所有反射光线的包络
-(envelope)。焦散的具体形状和杯子的形状，以及光源的位置有关。假设杯子是圆形的，则当光源是一个点光源且恰好位于杯子边缘上某一点时，得到的焦散叫做
+(envelope)。焦散的具体形状和杯子的形状、光源的位置都有关。假设杯子是圆形的，则当光源是一个点光源且恰好位于杯子边缘上某一点时，得到的焦散叫做
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cardioid">心脏线</a>
 (cardioid)。当光源位于无穷远时（可以视作平行光源），得到的焦散是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Nephroid">肾形线</a>
 (nephroid)。一般情况下焦散的形状介于心脏线和肾形线之间。</p>
@@ -369,7 +369,7 @@ circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇
 </tr>
 </tbody>
 </table>
-<p>心脏线和肾形线都是所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Epicycloid">外摆线</a>，只是两圆的半径之比不同：</p>
+<p>值得注意的是，心脏线和肾形线都是所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Epicycloid">外摆线</a>，只是两圆的半径之比不同：</p>
 <table>
 <colgroup>
 <col style="width: 50%">
@@ -386,7 +386,7 @@ circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇
 </tr>
 </tbody>
 </table>
-<p>你可能好奇，这个规律能不能继续下去？即如果在肾形线的内部或者尖点放一个光源，是不是又会得到下一个外摆线？然而根据
+<p>所以我们很容易作出如下的猜想：如果在肾形线的内部或者尖点放一个光源，是不是又会得到下一个外摆线？然而根据
 Greg Egan 在他博客中的试验，这个应该是不成立的。</p>
 <p>理论上这个 POV-Ray 脚本可以渲染任意的参数曲线反射的效果
 （你需要自己作一些修改，比如调整尺度和光源位置），但是 POV-Ray 渲染
@@ -394,7 +394,10 @@ parametric surface + radiosity
 非常慢，所以如果你想试一试的话，最好还是用 POV-Ray 原生的 CSG
 来构造镜面曲线。</p>
 <p>最后我们来介绍怎样计算一般的参数曲线 <span class="math inline">\(C(t)=(x(t),y(t))\)</span> 的焦散曲线。</p>
-<p>设点光源的位置是 <span class="math inline">\((a,b)\)</span>，则在曲线上的一点 <span class="math inline">\((x,y)\)</span> 处，入射光线的方向是 <span class="math display">\[\mathbf{r}=(x-a,y-b).\]</span> 此外同样是在 <span class="math inline">\((x,y)\)</span> 处，曲线的法向量是 <span class="math display">\[\mathbf{n}=\frac{(-y',
+<p>设点光源的位置是 <span class="math inline">\((a,b)\)</span>，则在曲线上的一点 <span class="math inline">\((x,y)\)</span> 处，入射光线的方向是 <span class="math display">\[\mathbf{r}=(x-a,y-b).\]</span> 不需要把 <span class="math inline">\(\mathbf{r}\)</span>
+单位化，因为我们只关心入射光线和反射光线的方向，并不在乎它们的长度。</p>
+<p>同样是在 <span class="math inline">\((x,y)\)</span>
+处，曲线的法向量是 <span class="math display">\[\mathbf{n}=\frac{(-y',
 x')}{\sqrt{(x')^2+(y')^2}}=\frac{(-y',
 x')}{|\mathbf{r}'|}.\]</span> 于是 <span class="math inline">\((x,y)\)</span> 处的反射光线的方向 <span class="math inline">\(\widetilde{\bf r}\)</span> 由如下反射公式给出：
 <span class="math display">\[\widetilde{\bf r}= \mathbf{r}-
@@ -402,10 +405,10 @@ x')}{|\mathbf{r}'|}.\]</span> 于是 <span class="math inline">\((x,y)\)</span> 
 r}_x,\widetilde{\bf r}_y)\)</span>，则 <span class="math inline">\((X-x,Y-y)\)</span> 与 <span class="math inline">\((-\widetilde{\bf r}_y, \widetilde{\bf
 r}_x)\)</span> 垂直，即 <span class="math display">\[(X-x,
 Y-y)\cdot(-\widetilde{\bf r}_y, \widetilde{\bf r}_x)=0.\]</span> 记
-<span class="math inline">\(F(X,Y,t)=(X-x, Y-y)\cdot(-\widetilde{\bf
-r}_y, \widetilde{\bf r}_x)\)</span>，则我们得到了反射光线 <span class="math inline">\((X(t), Y(t))\)</span> 满足的曲线族方程 <span class="math inline">\(F(X,Y,t)=0\)</span>。于是焦散曲线可以通过解方程组
+<span class="math display">\[F(X,Y,t)=(X-x, Y-y)\cdot(-\widetilde{\bf
+r}_y, \widetilde{\bf r}_x),\]</span> 则我们得到了反射光线 <span class="math inline">\((X(t), Y(t))\)</span> 满足的曲线族方程 <span class="math inline">\(F(X,Y,t)=0\)</span>。于是焦散曲线可以通过联立方程组
 <span class="math display">\[\begin{cases}F(X,Y,t)&amp;=0,\\\frac{\partial
-F}{\partial t}F(X,Y,t)&amp;=0.\end{cases}\]</span> 解出 <span class="math inline">\(X,Y\)</span> 得到。</p>
+F}{\partial t}F(X,Y,t)&amp;=0.\end{cases}\]</span> 解出 <span class="math inline">\(X,Y\)</span> （用 <span class="math inline">\(t\)</span> 表示）得到。</p>
 <p>按照上面的方法，我写了一个小脚本，用 <code>sympy</code>
 来计算圆的焦散线。其中圆的中心在原点，半径为 1，光源在 <span class="math inline">\((1,0)\)</span> 处。</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>x = cos(t)<br>y = sin(t)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>ray = curve - light_source<br>dx = diff(x, t)<br>dy = diff(y, t)<br>n = Matrix([dy, -dx])<br>reflected_ray = simplify(ray - <span class="hljs-number">2</span> * ray.dot(n) * n / n.dot(n))<br>F = (Y - y) * reflected_ray[<span class="hljs-number">0</span>] - (X - x) * reflected_ray[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y)<br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{simplify(result[X])}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{simplify(result[Y])}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
