@@ -407,14 +407,19 @@ r}_x)\)</span> 垂直，即 <span class="math display">\[(X-x,
 Y-y)\cdot(-\widetilde{\bf r}_y, \widetilde{\bf r}_x)=0.\]</span> 记
 <span class="math display">\[F(X,Y,t)=(X-x, Y-y)\cdot(-\widetilde{\bf
 r}_y, \widetilde{\bf r}_x),\]</span> 则我们得到了反射光线 <span class="math inline">\((X(t), Y(t))\)</span> 满足的曲线族方程 <span class="math inline">\(F(X,Y,t)=0\)</span>。于是焦散曲线可以通过联立方程组
-<span class="math display">\[\begin{cases}F(X,Y,t)&amp;=0,\\\frac{\partial
-F}{\partial t}F(X,Y,t)&amp;=0.\end{cases}\]</span> 解出 <span class="math inline">\(X,Y\)</span> （用 <span class="math inline">\(t\)</span> 表示）得到。</p>
+<span class="math display">\[\begin{align*}F(X,Y,t)=0,\\\frac{\partial
+F}{\partial t}F(X,Y,t)=0.\end{align*}\]</span> 也就是 <span class="math display">\[\begin{align*}(X-x, Y-y)\cdot(-\widetilde{\bf
+r}_y, \widetilde{\bf
+r}_x)&amp;=0,\\-(x',y')\cdot(-\widetilde{\bf r}_y,
+\widetilde{\bf r}_x) + (X-x,Y-y)\cdot(-\widetilde{\bf r}_y',
+\widetilde{\bf r}_x') &amp;=0.\end{align*}\]</span> 然后解出 <span class="math inline">\(X,Y\)</span>
+得到。（现在你知道为什么不把内积展开了吧？）</p>
 <p>按照上面的方法，我写了一个小脚本，用 <code>sympy</code>
 来计算圆的焦散线。其中圆的中心在原点，半径为 1，光源在 <span class="math inline">\((1,0)\)</span> 处。</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>x = cos(t)<br>y = sin(t)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>ray = curve - light_source<br>dx = diff(x, t)<br>dy = diff(y, t)<br>n = Matrix([dy, -dx])<br>reflected_ray = simplify(ray - <span class="hljs-number">2</span> * ray.dot(n) * n / n.dot(n))<br>F = (Y - y) * reflected_ray[<span class="hljs-number">0</span>] - (X - x) * reflected_ray[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y)<br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{simplify(result[X])}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{simplify(result[Y])}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
 <p><code>sympy</code> 给出的结果如下：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">X(t)=(-<span class="hljs-number">3</span>*cos(t) + cos(<span class="hljs-number">3</span>*t) + <span class="hljs-number">2</span>)/(<span class="hljs-number">6</span>*(cos(t) - <span class="hljs-number">1</span>))<br>Y(t)=<span class="hljs-number">2</span>*sin(t)**<span class="hljs-number">3</span>/(<span class="hljs-number">3</span> - <span class="hljs-number">3</span>*cos(t))<br></code></pre></td></tr></tbody></table></figure>
-<p>虽然这确实是心脏线的一种参数表示，但是不是我想要的。这可能和
+<p>虽然这确实是心脏线的一种参数表示，但不是我想要的。这可能和
 <code>sympy</code>
 对三角函数的除法简化不够有关。可以验证它其实和另一种常用的参数表示 <span class="math display">\[\left\{\begin{align*}x(t)&amp;=\frac{\cos(2t) +
 2\cos(t)}{3}\\ y(t)&amp;=\frac{\sin(2t) +
