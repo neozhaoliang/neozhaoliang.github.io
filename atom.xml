@@ -6,7 +6,7 @@
   <link href="https://neozhaoliang.github.io/atom.xml" rel="self"/>
   
   <link href="https://neozhaoliang.github.io/"/>
-  <updated>2024-02-06T13:42:22.414Z</updated>
+  <updated>2024-02-11T11:44:13.899Z</updated>
   <id>https://neozhaoliang.github.io/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>咖啡杯中的焦散线</title>
+    <link href="https://neozhaoliang.github.io/envelope-and-caustics/"/>
+    <id>https://neozhaoliang.github.io/envelope-and-caustics/</id>
+    <published>2024-02-08T16:00:00.000Z</published>
+    <updated>2024-02-11T11:44:13.899Z</updated>
+    
+    <content type="html"><![CDATA[<p>春节的晚上，外面鞭炮喧天，家人在看电视，我躲在屋里看数学，还是挺惬意的。</p><p>我正在看的是 <a href="https://johncarlosbaez.wordpress.com">JohnBaez</a> 和 <a href="https://www.gregegan.net">Greg Egan</a>的博客。John Baez是一位在科普方面非常高产的数学家，写过不计其数的科普文章。读他的文章非常让人享受：他很喜欢从直观的例子入手，一步步启发读者，展开到更高级的数学。尤其是他行文的风格，字里行间都洋溢着他对所讨论的数学对象的喜爱。GregEgan是澳大利亚的一位非常高产的科幻小说作家，有不少作品已经被国内引入。他的小说属于硬科幻风格，而且是非常硬的那种。他的<a href="https://www.gregegan.net/SCIENCE/Science.html">博客文章</a>同样精彩！不过与 John Baez 不同的是，Greg Egan的文章不太会去兼顾不同水平的读者，要看懂他在说什么经常不是一件容易的事情。</p><p>John Baez 博客上有一个系列 <a href="https://johncarlosbaez.wordpress.com/2012/08/31/rolling-circles-and-balls-part-1/">Rollingcircles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 <a href="https://www.gregegan.net/SCIENCE/Catacaustics/Catacaustics.html">文章</a>更深入的讨论了曲线的焦散。这个话题非常有意思，我也一时手痒写了代码试验了一番并记录在此。</p><span id="more"></span><p>有个有趣的物理现象，当光线照在咖啡杯的内壁上时，光线反射以后会形成一个亮斑，术语叫做焦散(caustic)。</p><p><img style="margin:0px auto;display:block" width="400" src="/images/caustics/cup.jpg"></p><p>形成焦散的原因是，光线在杯子内壁反射以后，光子的分布是不均匀的，某些区域经过的光子特别密集，所以亮度就更高。</p><p>焦散是一条曲线，它和所有的反射光线相切，即它是所有反射光线的包络(envelope)。焦散的具体形状和杯子的形状，以及光源的位置有关。假设杯子是圆形的，则当光源是一个点光源且恰好位于杯子边缘上某一点时，得到的焦散叫做<a href="https://en.wikipedia.org/wiki/Cardioid">心脏线</a>(cardioid)。当光源位于无穷远时（可以视作平行光源），得到的焦散是 <a href="https://en.wikipedia.org/wiki/Nephroid">肾形线</a>(nephroid)。一般情况下焦散的形状介于心脏线和肾形线之间。</p><p>更有意思的是，如果杯子的外形是心脏线，而且光源正好位于心脏线的尖点时，得到的焦散正好是肾形线。我写了一个<a href="https://gist.github.com/neozhaoliang/15d0350450885b90c5efbc73ddcdbdde">POV-Ray脚本</a>，模拟了这一现象：</p><table><colgroup><col style="width: 50%"><col style="width: 50%"></colgroup><tbody><tr class="odd"><td style="text-align: center;">圆形杯子给出心脏线</td><td style="text-align: center;">心脏线杯子给出肾形线</td></tr><tr class="even"><td style="text-align: center;"><img style="margin:0px auto;display:block" width="400" src="/images/caustics/caustics_cardioid.png"></td><td style="text-align: center;"><img style="margin:0px auto;display:block" width="400" src="/images/caustics/caustics_nephroid.png"></td></tr></tbody></table><p>心脏线和肾形线都是所谓的 <a href="https://en.wikipedia.org/wiki/Epicycloid">外摆线</a>，只是两圆的半径之比不同：</p><table><colgroup><col style="width: 50%"><col style="width: 50%"></colgroup><tbody><tr class="odd"><td style="text-align: center;">心脏线</td><td style="text-align: center;">肾形线</td></tr><tr class="even"><td style="text-align: center;"><video src="/images/caustics/cardioid.mp4" controls=""></video></td><td style="text-align: center;"><video src="/images/caustics/nephroid.mp4" controls=""></video></td></tr></tbody></table><p>你可能好奇，这个规律能不能继续下去？即如果在肾形线的内部或者尖点放一个光源，是不是又会得到下一个外摆线？然而根据Greg Egan 在他博客中的试验，这个应该是不成立的。</p><p>理论上这个 POV-Ray 脚本可以渲染任意的参数曲线反射的效果（你需要自己作一些修改，比如调整尺度和光源位置），但是 POV-Ray 渲染parametric surface + radiosity非常慢，所以如果你想试一试的话，最好还是用 POV-Ray 原生的 CSG来构造镜面曲线。</p><p>最后我们来介绍怎样计算一般的参数曲线 <span class="math inline">\(C(t)=(x(t),y(t))\)</span> 的焦散曲线。</p><p>设点光源的位置是 <span class="math inline">\((a,b)\)</span>，则在曲线上的一点 <span class="math inline">\((x,y)\)</span> 处，入射光线的方向是 <span class="math display">\[\mathbf{r}=(x-a,y-b).\]</span> 此外同样是在 <span class="math inline">\((x,y)\)</span> 处，曲线的法向量是 <span class="math display">\[\mathbf{n}=\frac{(-y',x')}{\sqrt{(x')^2+(y')^2}}=\frac{(-y',x')}{|\mathbf{r}'|}.\]</span> 于是 <span class="math inline">\((x,y)\)</span> 处的反射光线的方向 <span class="math inline">\(\widetilde{\bf r}\)</span> 由如下反射公式给出：<span class="math display">\[\widetilde{\bf r}= \mathbf{r}-2(\mathbf{r}, \mathbf{n})\mathbf{n}.\]</span> 设 <span class="math inline">\((X,Y)\)</span> 是反射光线上的任一点，由于 <span class="math inline">\((x,y)\)</span> 是反射光线的起点，所以 <span class="math inline">\((X-x,Y-y)\)</span> 与 <span class="math inline">\(\widetilde{\bf r}\)</span> 平行。记 <span class="math inline">\(\widetilde{\bf r}=(\widetilde{\bfr}_x,\widetilde{\bf r}_y)\)</span>，则 <span class="math inline">\((X-x,Y-y)\)</span> 与 <span class="math inline">\((-\widetilde{\bf r}_y, \widetilde{\bfr}_x)\)</span> 垂直，即 <span class="math display">\[(X-x,Y-y)\cdot(-\widetilde{\bf r}_y, \widetilde{\bf r}_x)=0.\]</span> 记<span class="math inline">\(F(X,Y,t)=(X-x, Y-y)\cdot(-\widetilde{\bfr}_y, \widetilde{\bf r}_x)\)</span>，则我们得到了反射光线 <span class="math inline">\((X(t), Y(t))\)</span> 满足的曲线族方程 <span class="math inline">\(F(X,Y,t)=0\)</span>。于是焦散曲线可以通过解方程组<span class="math display">\[\begin{cases}F(X,Y,t)&amp;=0,\\\frac{\partialF}{\partial t}F(X,Y,t)&amp;=0.\end{cases}\]</span> 解出 <span class="math inline">\(X,Y\)</span> 得到。</p><p>按照上面的方法，我写了一个小脚本，用 <code>sympy</code>来计算圆的焦散线。其中圆的中心在原点，半径为 1，光源在 <span class="math inline">\((1,0)\)</span> 处。</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>x = cos(t)<br>y = sin(t)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>ray = curve - light_source<br>dx = diff(x, t)<br>dy = diff(y, t)<br>n = Matrix([dy, -dx])<br>reflected_ray = simplify(ray - <span class="hljs-number">2</span> * ray.dot(n) * n / n.dot(n))<br>F = (Y - y) * reflected_ray[<span class="hljs-number">0</span>] - (X - x) * reflected_ray[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y)<br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{simplify(result[X])}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{simplify(result[Y])}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure><p><code>sympy</code> 给出的结果如下：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">X(t)=(-<span class="hljs-number">3</span>*cos(t) + cos(<span class="hljs-number">3</span>*t) + <span class="hljs-number">2</span>)/(<span class="hljs-number">6</span>*(cos(t) - <span class="hljs-number">1</span>))<br>Y(t)=<span class="hljs-number">2</span>*sin(t)**<span class="hljs-number">3</span>/(<span class="hljs-number">3</span> - <span class="hljs-number">3</span>*cos(t))<br></code></pre></td></tr></tbody></table></figure><p>虽然这确实是心脏线的一种参数表示，但是不是我想要的。这可能和<code>sympy</code>对三角函数的除法简化不够有关。可以验证它其实和另一种常用的参数表示 <span class="math display">\[\left\{\begin{align*}x(t)&amp;=\frac{\cos(2t) +2\cos(t)}{3}\\ y(t)&amp;=\frac{\sin(2t) +2\sin(t)}{3}\end{align*}\right.\]</span> 是相等的。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;春节的晚上，外面鞭炮喧天，家人在看电视，我躲在屋里看数学，还是挺惬意的。&lt;/p&gt;
+&lt;p&gt;我正在看的是 &lt;a href=&quot;https://johncarlosbaez.wordpress.com&quot;&gt;John
+Baez&lt;/a&gt; 和 &lt;a href=&quot;https://www.gregegan.net&quot;&gt;Greg Egan&lt;/a&gt;
+的博客。John Baez
+是一位在科普方面非常高产的数学家，写过不计其数的科普文章。读他的文章非常让人享受：他很喜欢从直观的例子入手，一步步启发读者，展开到更高级的数学。尤其是他行文的风格，字里行间都洋溢着他对所讨论的数学对象的喜爱。Greg
+Egan
+是澳大利亚的一位非常高产的科幻小说作家，有不少作品已经被国内引入。他的小说属于硬科幻风格，而且是非常硬的那种。他的
+&lt;a href=&quot;https://www.gregegan.net/SCIENCE/Science.html&quot;&gt;博客文章&lt;/a&gt;
+同样精彩！不过与 John Baez 不同的是，Greg Egan
+的文章不太会去兼顾不同水平的读者，要看懂他在说什么经常不是一件容易的事情。&lt;/p&gt;
+&lt;p&gt;John Baez 博客上有一个系列 &lt;a href=&quot;https://johncarlosbaez.wordpress.com/2012/08/31/rolling-circles-and-balls-part-1/&quot;&gt;Rolling
+circles and balls&lt;/a&gt; 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 &lt;a href=&quot;https://www.gregegan.net/SCIENCE/Catacaustics/Catacaustics.html&quot;&gt;文章&lt;/a&gt;
+更深入的讨论了曲线的焦散。这个话题非常有意思，我也一时手痒写了代码试验了一番并记录在此。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="闲聊" scheme="https://neozhaoliang.github.io/categories/%E9%97%B2%E8%81%8A/"/>
+    
+    
+    <category term="Caustics" scheme="https://neozhaoliang.github.io/tags/Caustics/"/>
+    
+    <category term="POV-Ray" scheme="https://neozhaoliang.github.io/tags/POV-Ray/"/>
+    
+    <category term="String art" scheme="https://neozhaoliang.github.io/tags/String-art/"/>
+    
+    <category term="Envelope" scheme="https://neozhaoliang.github.io/tags/Envelope/"/>
+    
+    <category term="Cardioid" scheme="https://neozhaoliang.github.io/tags/Cardioid/"/>
+    
+    <category term="Nephroid" scheme="https://neozhaoliang.github.io/tags/Nephroid/"/>
+    
+    <category term="Sympy" scheme="https://neozhaoliang.github.io/tags/Sympy/"/>
+    
+  </entry>
   
   <entry>
     <title>Möbius 变换与球的刚体运动</title>
@@ -723,32 +768,6 @@ Jacobson 根的定义让人舒服一些。&lt;/p&gt;</summary>
     <category term="Noether-Skolem theorem" scheme="https://neozhaoliang.github.io/tags/Noether-Skolem-theorem/"/>
     
     <category term="double centralizer theorem" scheme="https://neozhaoliang.github.io/tags/double-centralizer-theorem/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hurwitz 平方和定理</title>
-    <link href="https://neozhaoliang.github.io/hurwitz-square-sum-theorem/"/>
-    <id>https://neozhaoliang.github.io/hurwitz-square-sum-theorem/</id>
-    <published>2009-12-05T00:00:00.000Z</published>
-    <updated>2023-09-06T04:28:43.980Z</updated>
-    
-    <content type="html"><![CDATA[<p>Hurwitz平方和定理是有限群表示论的一个精彩应用，本文是若干年前读书时的笔记。</p><span id="more"></span><h1 id="hurwitz-平方和定理">Hurwitz 平方和定理</h1><p>我们都熟悉复数的乘法：如果 <span class="math inline">\(z_1=x_1+y_1i,\,z_2=x_2+y_2i\)</span>是两个复数，则 <span class="math inline">\(|z_1z_2|=|z_1|\cdot|z_2|\)</span>，也就是 <span class="math display">\[(x_1^2+y_1^2)(x_2^2+y_2^2)=(x_1x_2-y_1y_2)^2+(x_1y_2+x_2y_1)^2.\]</span>1748 年 Euler 发现了如下的 4 平方和等式： <span class="math display">\[(x_1^2+x_2^2+x_3^2+x_4^2)(y_1^2+y_2^2+y_3^2+y_4^2)=z_1^2+z_2^2+z_3^2+z_4^2.\]</span>其中 <span class="math display">\[\begin{align*}&amp;z_1=x_1y_1-x_2y_2-x_3y_3-x_4y_4,\\&amp;z_2=x_1y_2+x_2y_1+x_3y_4-x_4y_3,\\&amp;z_3=x_1y_3+x_3y_1-x_2y_4+x_4y_2,\\&amp;z_4=x_1y_4+x_4y_1+x_2y_3-x_3y_2.\end{align*}\]</span>4 平方和等式说的是在 Hamilton 四元数体中范数仍然是乘性的。1848 年 Caley发现了八元数，从而导出了类似的 8平方和等式，当然具体写出来会很复杂，这里就按下不表了。</p><p>一般地，如果能在 <span class="math inline">\(n\)</span> 维欧式空间<span class="math inline">\(\mathbb{R}^n\)</span> 上定义向量之间的乘法：<span class="math display">\[\mathbb{R}^n\times\mathbb{R}^n\rightarrow\mathbb{R}^n:(v,w)\rightarrowv\times w\]</span> 使得 <span class="math inline">\(v\times w\)</span>对 <span class="math inline">\(v,w\)</span>都是线性的，而且乘积的范数等于范数的乘积：<span class="math inline">\(|v\times w|=|v|\cdot |w|\)</span> （这里 <span class="math inline">\(|\cdot|\)</span> 是通常的 Euclidean范数），则我们就得到了一个 <span class="math inline">\(n\)</span>平方和等式。</p><p>在接下来的 50 年里，人们一直致力于寻找可能的 16平方和等式，但是都失败了，于是开始怀疑是否没有这样的等式成立。终于在1898 年 Hurwitz 证明了这样的结论：</p><blockquote><p><strong>Hurwitz 平方和定理</strong>：设 <span class="math inline">\(x=(x_1,\ldots,x_n)\)</span>, <span class="math inline">\(y=(y_1,\dots,y_n)\)</span> 为 <span class="math inline">\(\mathbb{R}^n\)</span> 中的向量。如果存在关于 <span class="math inline">\(x,y\)</span> 的双线性函数 <span class="math inline">\(z_1(x,y),\ldots,z_n(x,y)\)</span> 使得等式 <span class="math display">\[(x_1^2+\cdots+x_n^2)(y_1^2+\cdots+y_n^2)=z_1^2+\cdots+z_n^2\]</span>恒成立，那么 <span class="math inline">\(n=1,2,4,8\)</span>。</p></blockquote><p>正如前面说过的，Huiwitz 平方和定理说的是在实数域 <span class="math inline">\(\mathbb{R}\)</span>，复数域 <span class="math inline">\(\mathbb{C}\)</span>，四元数 <span class="math inline">\(\mathbb{H}\)</span> 和八元数 <span class="math inline">\(\mathbb{O}\)</span> 中，元素的 Euclidean范数和向量的乘法是相容的，而在其它维数的 <span class="math inline">\(\mathbb{R}^n\)</span> 上是不可能定义与 Euclidean范数相容的向量乘法的。</p><p>Hurwitz本人的证明是纯线性代数的，线性代数的证明较为初等，不过步骤略长。1943 年Eckmann用有限群表示论的方法给了一个漂亮的证明，本文就来介绍这个证明。</p><h1 id="将问题转化为矩阵方程">将问题转化为矩阵方程</h1><p>设 <span class="math inline">\(z=(z_1,\ldots,z_n)\)</span>，则每个<span class="math inline">\(z_i\)</span> 关于 <span class="math inline">\(y\)</span> 都是线性的，因此存在 <span class="math inline">\(n\)</span> 阶矩阵 <span class="math inline">\(A\)</span> 满足 <span class="math inline">\(z=yA\)</span>，当然矩阵 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(x\)</span> 有关。于是 Hurwitz 定理中的等式变成<span class="math display">\[(x_1^2+x_2^2+\cdots+x_n^2)yy'=yAA'y'.\]</span>由于 <span class="math inline">\(y\)</span> 是不定元，因此 <span class="math display">\[AA'=(x_1^2+\cdots+x_n^2)I_n.\]</span>进一步，由于 <span class="math inline">\(A\)</span> 关于 <span class="math inline">\(x\)</span> 也是线性的，因此设 <span class="math inline">\(A=A_1x_1+\cdots+A_nx_n\)</span>，则 <span class="math display">\[AA'=\sum_{i=1}^nA_iA_i'x_i^2+\sum_{1\leqi&lt;j\leq n}(A_iA_j'+A_jA_i')x_ix_j.\]</span>从而我们得到一组矩阵方程 <span class="math display">\[A_iA_i'=I_n,\quad A_iA_j'+A_jA_i'=0\quad \text{for}\ i\ne j.\]</span> 进一步可以把 <span class="math inline">\(A_n\)</span> 归一化为单位矩阵：令 <span class="math inline">\(Q_i=A_iA_n^{-1}\)</span>，于是 <span class="math inline">\(Q_1,\ldots,Q_{n-1}\)</span> 满足 <span class="math display">\[Q_i'=-Q_i,\quad Q_i^2=-I_n,\quadQ_iQ_j=-Q_jQ_i\quad\text{for}\ i\ne j.\]</span> 显然 <span class="math inline">\(n\)</span> 必须是偶数 （奇数阶反对称矩阵行列式都是0），而 <span class="math inline">\(n=2\)</span>的时候结论是成立的，所以下面我们都假定 <span class="math inline">\(n&gt;2\)</span>，于是 <span class="math inline">\(n\)</span> 的可能值为 <span class="math inline">\(4,6,8,\ldots\)</span></p><h1 id="用群表示论的工具得出矛盾">用群表示论的工具得出矛盾</h1><p>考虑这样一个抽象群 <span class="math inline">\(G\)</span>，它由元素<span class="math inline">\(a,g_1,\ldots,g_{n-1}\)</span> 生成，且 <span class="math display">\[ a^2=1,\quad g_i^2=a,\quad g_ig_j=ag_jg_i\\text{when}\ i\ne j.\]</span> 这个群的结构很好分析：</p><ul><li><span class="math inline">\(|G|=2^n\)</span>，每个元素形如 <span class="math inline">\(a^{e_0}g_1^{e_1}\cdotsg_{n-1}^{e_{n-1}}\)</span>，其中 <span class="math inline">\(e_i\in\{0,1\}\)</span>。</li><li><span class="math inline">\(G\)</span> 的中心 <span class="math inline">\(Z(G)=\{1,a,g_1g_2\cdots g_{n-1},ag_1g_2\cdotsg_{n-1}\}\)</span>。</li><li><span class="math inline">\(G\)</span> 的换位子群 <span class="math inline">\([G,G]=\{1,a\}\)</span>，从而 <span class="math inline">\(G\)</span> 有 <span class="math inline">\(|G/[G,G]|=2^{n-1}\)</span> 个线性表示。</li><li><span class="math inline">\(G\)</span>的任何非平凡共轭类都只有两个元素 <span class="math inline">\(\{g,ag\}\)</span>，从而 <span class="math inline">\(G\)</span> 有 <span class="math inline">\(2^{n-1}+2\)</span>个共轭类，从而其不可约复表示的个数也是 <span class="math inline">\(2^{n-1}+2\)</span>。</li></ul><p>于是我们知道 <span class="math inline">\(G\)</span> 有 <span class="math inline">\(2^{n-1}\)</span> 个一次表示，还有 2 个次数大于 1的表示，设它俩的次数分别是 <span class="math inline">\(f_1,f_2\)</span>，根据不可约表示次数的平方和等于<span class="math inline">\(G\)</span> 的阶，得到方程 <span class="math display">\[f_1^2+f_2^2 + 2^{n-1}=|G|=2^n.\]</span> 即 <span class="math inline">\(f_1^2+f_2^2=2^{n-1}\)</span>。再利用不可约表示的次数整除<span class="math inline">\(G\)</span> 的阶，知道 <span class="math inline">\(f_1\)</span> 和 <span class="math inline">\(f_2\)</span> 都是 2 的幂，这只有一种可能，就是<span class="math display">\[ f_1=f_2=2^{\frac{n}{2}-1}.\]</span></p><p>现在 Hurwitz 矩阵方程给出了 <span class="math inline">\(G\)</span>的一个 <span class="math inline">\(n\)</span>维表示，这个表示可以分解为若干不可约表示的直和，我们断言其中不含有一次表示，从而只能是若干个<span class="math inline">\(2^{\frac{n}{2}-1}\)</span>次表示的直和：这是因为元素 <span class="math inline">\(a\)</span>在这个表示下是 <span class="math inline">\(n\)</span> 阶矩阵 <span class="math inline">\(-I_n\)</span>，从而其在任何不变子空间上的作用都是乘以-1。但是任何一次表示都把 <span class="math inline">\(a\in [G,G]\)</span>映射为 1，矛盾！</p><p>于是 <span class="math inline">\(2^{\frac{n}{2}-1}\big|n\)</span>，设 <span class="math inline">\(n=2^r\cdot s\)</span>，其中<span class="math inline">\(s\)</span> 为奇数，则 <span class="math inline">\(\frac{n}{2}-1\leq r\)</span>，从而 <span class="math display">\[ 2^r\leq n\leq 2r+2.\]</span> 注意 <span class="math inline">\(n\)</span> 是偶数，所以只能是 <span class="math inline">\(n=4,6,8\)</span>，这就完成了 Hurwitz定理的证明。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;Hurwitz
-平方和定理是有限群表示论的一个精彩应用，本文是若干年前读书时的笔记。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="有限群表示与结合代数" scheme="https://neozhaoliang.github.io/categories/%E6%9C%89%E9%99%90%E7%BE%A4%E8%A1%A8%E7%A4%BA%E4%B8%8E%E7%BB%93%E5%90%88%E4%BB%A3%E6%95%B0/"/>
-    
-    
-    <category term="representation theory" scheme="https://neozhaoliang.github.io/tags/representation-theory/"/>
-    
-    <category term="linear algebra" scheme="https://neozhaoliang.github.io/tags/linear-algebra/"/>
-    
-    <category term="Hurwitz theorem" scheme="https://neozhaoliang.github.io/tags/Hurwitz-theorem/"/>
     
   </entry>
   
