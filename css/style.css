@@ -214,6 +214,9 @@ nav .brand-logo {
 footer.page-footer {
   padding-top: inherit;
 }
+.align-left {
+  margin-left: auto;
+}
 @font-face {
   font-family: Borg;
   src: url("/css/font/BorgSansMono.ttf");
@@ -225,10 +228,11 @@ footer.page-footer {
 @font-face {
   font-family: Roboto;
   src: url("/css/font/Roboto/Roboto-Regular.ttf");
+  font-weight: normal;
 }
 @font-face {
   font-family: Roboto;
-  src: url("/css/font/Roboto/Roboto-blod.ttf");
+  src: url("/css/font/Roboto/Roboto-Bold.ttf");
   font-weight: bold;
 }
 @font-face {
@@ -253,10 +257,6 @@ footer.page-footer {
 }
 @font-face {
   font-family: Roboto-Condensed;
-  src: url("/css/font/Roboto_Condensed/RobotoCondensed-Regular.ttf");
-}
-@font-face {
-  font-family: Roboto-Condensed;
   src: url("/css/font/Roboto_Condensed/RobotoCondensed-Italic.ttf");
   font-style: italic;
 }
@@ -271,9 +271,30 @@ footer.page-footer {
   font-weight: bold;
   font-style: italic;
 }
+@font-face {
+  font-family: Cantarell;
+  src: url("/css/font/Cantarell/Cantarell-Regular.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: Cantarell;
+  src: url("/css/font/Cantarell/Cantarell-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: Cantarell;
+  src: url("/css/font/Cantarell/Cantarell-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Cantarell;
+  src: url("/css/font/Cantarell/Cantarell-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
 html,
 body {
-  font-family: "Roboto", "Lucida Grande", "sans-serif", "微软雅黑", "Helvetica Neue";
+  font-family: "Roboto", "Cantarell", "Lucida Grande", "微软雅黑", "Helvetica Neue", sans-serif;
 }
 body {
   background-color: #f5f5f5;

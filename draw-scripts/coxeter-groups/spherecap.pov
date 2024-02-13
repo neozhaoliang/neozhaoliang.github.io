@@ -18,9 +18,9 @@ background { color White }
 #declare invd = 1 / dist;
 
 torus {
-    sqrt(1-invd*invd), 0.01
+    sqrt(1-invd*invd), 0.025
     pigment {
-        color rgb <1, 0.2, 0.2>
+        color Red
     }
     finish {
         ambient 0.5
@@ -34,8 +34,8 @@ torus {
 sphere {
     <0, 0, 0> 1
     pigment {
-        color rgb Blue
-        transmit 0.9
+        color rgb 0.6
+        transmit 0.8
     }
     finish {
         ambient 0.4
@@ -53,11 +53,16 @@ light_source {
     color <1.0, 1.0,  1.0>
 }
 
+light_source {
+    <100, -10, -100>
+    color rgb 0.8
+}
+
 
 sphere {
-    s, 0.02
+    s, 0.04
     pigment {
-        color Gold
+        color Blue
     }
     finish {
         ambient 0.5
@@ -72,15 +77,13 @@ box {
     #local k = 1.2;
     <-k, -0.001, -k>, <k, 0.001, k>
     pigment {
-        color rgb <0.4, 1, 0.1>
-        transmit 0.75
+        color Green
+        transmit 0.7
     }
     finish {
-        diffuse 0.5 ambient 0.5 reflection 0.1
-        specular 0.2 roughness 0.02
+        diffuse .5 ambient .5 reflection .2 phong 0.5
     }
     translate invd * y
-    no_shadow
 }
 
 

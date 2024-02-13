@@ -74,38 +74,38 @@ def hyperbolic2d():
     P = np.array([0.3, 1.6])
 
     sc = 1.5
-    t = texinsert("$K$")
+    t = texinsert("$\mathcal{D}$")
     t.translate(-t.width/2, t.height/2)
     t.scale(sc)
     place(t, *P)
 
-    t = texinsert("$sK$")
+    t = texinsert("$s\mathcal{D}$")
     t.translate(-t.width/2, t.height/2)
     t.scale(sc)
     Q = ref(P)
     place(t, *Q)
 
-    t = texinsert("$tK$")
+    t = texinsert("$t\mathcal{D}$")
     t.translate(-t.width/2, t.height/2)
     t.scale(sc)
     Q = ref2(P)
     place(t, *Q)
 
 
-    t = texinsert("$stK$")
+    t = texinsert("$st\mathcal{D}$")
     t.translate(-t.width/2, t.height/2)
     t.scale(sc)
     Q = ref(ref2(P))
     place(t, *Q)
 
 
-    t = texinsert("$tsK$")
+    t = texinsert("$ts\mathcal{D}$")
     t.translate(-t.width/2, t.height/2)
     t.scale(sc)
     Q = ref2(ref(P))
     place(t, *Q)
 
-    t = texinsert("$stsK$")
+    t = texinsert("$sts\mathcal{D}$")
     t.translate(-t.width/2, t.height/2)
     t.scale(sc)
     Q = ref(ref2(ref(P)))

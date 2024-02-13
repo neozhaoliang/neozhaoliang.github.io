@@ -1,21 +1,24 @@
-settings.outformat = "eps";
+settings.outformat = "svg";
 usepackage("mathpazo");
-string outname = "244-424-424-2-1111";
+string outname = "cp2";
 
 real u = 3cm;
 real radius = 0.15cm;
 
-pair v2 = E * u;
-pair v3 = N * u;
-pair v4 = W * u;
-pair v1 = S * u;
-pair v0 = (0, 0);
+pair v0 = E * u + E * sqrt(3) * u / 2 + N * 0.5 * u;
+pair v1 = (E + N) * u;
+pair v3 = (0, 0);
+pair v4 = E * u ;
+pair v2 = N * u ;
+//pair v0 = (-v2.x, v2.y);
+//pair v1 = (-v3.x, v3.y);
 
 pen p2 = black + linewidth(0.03cm);
-draw(v2 -- v3 -- v4 -- v1 -- v2, p2);
-draw(v2 -- v0 -- v4, p2);
+draw(v2 -- v3 -- v4 -- v2 -- v1 -- v4 -- v0 -- v1 , p2);
+//draw(v0 -- v1 -- v4 -- cycle, p2);
+//draw(v0 -- v1, p2);
 
-pen p3 = red + 0.2green;
+pen p3 = yellow + 0.2green;
 filldraw(circle(v0, radius), p3);
 filldraw(circle(v1, radius), p3);
 filldraw(circle(v2, radius), p3);
@@ -28,13 +31,10 @@ pair mid(pair p1, pair p2) {
 
 pen p0 = fontsize(0.8cm) + black;
 real a = 0.7u;
-label("4", mid(v2, v3), p=p0);
-label("4", mid(v3, v4), p=p0);
-label("4", mid(v4, v1), p=p0);
-label("4", mid(v1, v2), p=p0);
-label("4", mid(v2, v0), p=p0);
-label("4", mid(v4, v0), p=p0);
-
+//label("", mid(v2, v3), p=p0);
+label("5", mid(v0, v4), p=p0);
+label("$\infty$", mid(v0, v1), p=p0);
+label("$\infty$", mid(v4, v1), p=p0);
 
 shipout(
     outname,
