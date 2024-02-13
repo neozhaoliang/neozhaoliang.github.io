@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -7,7 +8,8 @@
 
     
 
-    <title>Todd-Coxeter algorithm and uniform polytopes | 朝花夕拾</title>
+        <title>
+            Todd-Coxeter algorithm and uniform polytopes | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="This project uses Python and POV-Ray to render 3D/4D uniform
@@ -38,11 +40,10 @@ and requires the numpy library and the free raytr">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
-<body>
-    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
-
-    <nav class="indigo">
+        <nav class="indigo">
     <div class="nav-wrapper">
         <a href="#" data-activates="main-menu" class="button-collapse">
             <i class="fa fa-navicon"></i>
@@ -259,8 +260,8 @@ and requires the numpy library and the free raytr">
 </div>
 
 
-    <main>
-        <div class="container main-container">
+            <main>
+                <div class="container main-container">
     <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
@@ -273,40 +274,40 @@ and requires the numpy library and the free raytr">
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
+    <article>
+        <div class="card">
+            <div class="card-content">
                 
+
+                            <div class="article-title">
+                                
     
         <h1>Todd-Coxeter algorithm and uniform polytopes</h1>
     
 
 
-            </div>
-            <time class="pink-link-context" datetime="2018-05-20T16:00:00.000Z"><a href="/polytopes/index.html">2018-05-21</a></time>
+                            </div>
+                            <time class="pink-link-context" datetime="2018-05-20T16:00:00.000Z"><a href="/polytopes/index.html">2018-05-21</a></time>
 
-            <span id="busuanzi_container_page_pv" class="read-times-container">
+                                <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
     <span id="busuanzi_value_page_pv"></span>
 </span>
 
-            
+                                    
 
-            <div class="toc pink-link-context hide-on-med-and-down">
+                                        <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#examples"><span class="section table-of-contents-text">Examples</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#what-are-these-examples-about"><span class="section table-of-contents-text">What are these examples
 about?</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#how-to-compute-the-data-of-a-uniform-polytope"><span class="section table-of-contents-text">How to compute
 the data of a uniform polytope</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#finitely-presented-groups-and-todd-coxeter-algorithm"><span class="section table-of-contents-text">Finitely
 presented groups and Todd-Coxeter algorithm</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#snub-polytopes"><span class="section table-of-contents-text">Snub polytopes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-polytopes"><span class="section table-of-contents-text">Star polytopes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#appendix"><span class="section table-of-contents-text">Appendix</span></a></li></ol>
 </div>
 
-            
+                                            
 
 
-            <div class="entry pink-link-context">
-                <p>This project uses Python and POV-Ray to render 3D/4D uniform
+                                                <div class="entry pink-link-context">
+                                                    <p>This project uses Python and POV-Ray to render 3D/4D uniform
 polytopes. The code is hosted on <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/polytopes">GitHub</a>
 and requires the <code>numpy</code> library and the free raytracer,
 <code>POV-Ray</code>.</p>
@@ -1468,17 +1469,17 @@ output should be (with some output omitted)<p></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plain">           a    A    b    B<br>------------------------------<br>    1:     2    2    3    2<br>    2:     1    1    1    4<br>    3:     4    5    6    1<br>    4:     7    3    2    8<br>  ...    ...  ...  ...  ...<br>  ...    ...  ...  ...  ...<br>  ...    ...  ...  ...  ...<br>  446:   444  444  441  430<br>  447:   438  433  432  443<br>  448:   445  445  440  445<br></code></pre></td></tr></tbody></table></figure>
 <p>so <span class="math inline">\(G/H\)</span> has 448 cosets.</p>
 
-                
+                                                        
 
 
+
+                                                </div>
 
             </div>
-			
         </div>
-    </div>
-</article>
+    </article>
 
-
+    
 
 
     <section id="comment">
@@ -1500,10 +1501,9 @@ output should be (with some output omitted)<p></p>
     </section>
 
 
-
 </div>
 
-        <div class="fixed-action-btn float-sitemap">
+                    <div class="fixed-action-btn float-sitemap">
     <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
@@ -1513,8 +1513,8 @@ output should be (with some output omitted)<p></p>
     </ul>
   </div>
 
-    </main>
-    
+            </main>
+            
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -1533,7 +1533,7 @@ output should be (with some output omitted)<p></p>
 
 
 
-    <noscript>
+                <noscript>
     <div class="noscript">
         <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
     </div>
@@ -1761,5 +1761,6 @@ MathJax.Hub.Config({
 
 
 
-</body>
-</html>
+    </body>
+
+    </html>

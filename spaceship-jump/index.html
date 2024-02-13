@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -7,7 +8,8 @@
 
     
 
-    <title>飞船空间跳跃问题 | 朝花夕拾</title>
+        <title>
+            飞船空间跳跃问题 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文的问题出自 Williams 的教材 Probability
@@ -43,11 +45,10 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
-<body>
-    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
-
-    <nav class="indigo">
+        <nav class="indigo">
     <div class="nav-wrapper">
         <a href="#" data-activates="main-menu" class="button-collapse">
             <i class="fa fa-navicon"></i>
@@ -264,8 +265,8 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
 </div>
 
 
-    <main>
-        <div class="container main-container">
+            <main>
+                <div class="container main-container">
     <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
@@ -282,27 +283,27 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
+    <article>
+        <div class="card">
+            <div class="card-content">
                 
+
+                            <div class="article-title">
+                                
     
         <h1>飞船空间跳跃问题</h1>
     
 
 
-            </div>
-            <time class="pink-link-context" datetime="2011-04-05T00:00:00.000Z"><a href="/spaceship-jump/">2011-04-05</a></time>
+                            </div>
+                            <time class="pink-link-context" datetime="2011-04-05T00:00:00.000Z"><a href="/spaceship-jump/">2011-04-05</a></time>
 
-            <span id="busuanzi_container_page_pv" class="read-times-container">
+                                <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
     <span id="busuanzi_value_page_pv"></span>
 </span>
 
-            
+                                    
     <div class="tags-row">
         
             <a href="/tags/discrete-martingale/" class="chip pink lighten-1">discrete martingale</a>
@@ -312,15 +313,15 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
     </div>
 
 
-            <div class="toc pink-link-context hide-on-med-and-down">
+                                        <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">预备知识</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%9D%A1%E4%BB%B6%E6%9C%9F%E6%9C%9B%E7%9A%84%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">条件期望的预备知识</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%88%86%E6%9E%90%E7%9A%84%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">分析的预备知识</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">建立模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AF%B9%E7%AD%96%E7%95%A5%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90"><span class="section table-of-contents-text">对策略的进一步分析</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">最优策略</span></a></li></ol>
 </div>
 
-            
+                                            
 
 
-            <div class="entry pink-link-context">
-                <p>本文的问题出自 Williams 的教材 <a target="_blank" rel="noopener" href="https://www.cambridge.org/highereducation/books/probability-with-martingales/B4CFCE0D08930FB46C6E93E775503926#overview">Probability
+                                                <div class="entry pink-link-context">
+                                                    <p>本文的问题出自 Williams 的教材 <a target="_blank" rel="noopener" href="https://www.cambridge.org/highereducation/books/probability-with-martingales/B4CFCE0D08930FB46C6E93E775503926#overview">Probability
 with
 Martingales</a>，虽然不算很难但是综合使用了许多知识，展示了抽象的鞅理论其实有着丰富多彩的应用。</p>
 <blockquote><p><strong>问题</strong>：一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
@@ -557,7 +558,7 @@ n}]=\mathbb{E}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]+\mathbb{E}[\lim_{n\to\infty}Z_n\
 n}]=\mathbb{E}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]\leq\frac{1}{r-\epsilon}\mathbb{P}(T&lt;\infty).\]</span>
 综合两个式子就证明了 <span class="math inline">\(\mathbb{P}(T&lt;\infty)\geq(r-\epsilon)/R\)</span>。</p>
 
-                
+                                                        
 <p class="pink-link-context">
     <a href="/mabinogion-sheep-problem/" rel="next" title="洛奇绵羊问题">
     上一篇：洛奇绵羊问题
@@ -573,13 +574,13 @@ n}]=\mathbb{E}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]\leq\frac{1}{r-\epsilon}\mathbb{P
 </p>
 
 
+                                                </div>
+
             </div>
-			
         </div>
-    </div>
-</article>
+    </article>
 
-
+    
 
 
     <section id="comment">
@@ -601,10 +602,9 @@ n}]=\mathbb{E}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]\leq\frac{1}{r-\epsilon}\mathbb{P
     </section>
 
 
-
 </div>
 
-        <div class="fixed-action-btn float-sitemap">
+                    <div class="fixed-action-btn float-sitemap">
     <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
@@ -614,8 +614,8 @@ n}]=\mathbb{E}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]\leq\frac{1}{r-\epsilon}\mathbb{P
     </ul>
   </div>
 
-    </main>
-    
+            </main>
+            
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -634,7 +634,7 @@ n}]=\mathbb{E}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]\leq\frac{1}{r-\epsilon}\mathbb{P
 
 
 
-    <noscript>
+                <noscript>
     <div class="noscript">
         <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
     </div>
@@ -862,5 +862,6 @@ MathJax.Hub.Config({
 
 
 
-</body>
-</html>
+    </body>
+
+    </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -7,7 +8,8 @@
 
     
 
-    <title>Artinian 环与 Wedderburn-Artin 定理 | 朝花夕拾</title>
+        <title>
+            Artinian 环与 Wedderburn-Artin 定理 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="讲述 Wedderburn-Artin
@@ -42,11 +44,10 @@ Jacobson 根的定义让人舒服一些。">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
-<body>
-    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
-
-    <nav class="indigo">
+        <nav class="indigo">
     <div class="nav-wrapper">
         <a href="#" data-activates="main-menu" class="button-collapse">
             <i class="fa fa-navicon"></i>
@@ -263,8 +264,8 @@ Jacobson 根的定义让人舒服一些。">
 </div>
 
 
-    <main>
-        <div class="container main-container">
+            <main>
+                <div class="container main-container">
     <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
@@ -281,27 +282,27 @@ Jacobson 根的定义让人舒服一些。">
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
+    <article>
+        <div class="card">
+            <div class="card-content">
                 
+
+                            <div class="article-title">
+                                
     
         <h1>Artinian 环与 Wedderburn-Artin 定理</h1>
     
 
 
-            </div>
-            <time class="pink-link-context" datetime="2010-10-22T00:00:00.000Z"><a href="/wedderburn-artin-theorem/">2010-10-22</a></time>
+                            </div>
+                            <time class="pink-link-context" datetime="2010-10-22T00:00:00.000Z"><a href="/wedderburn-artin-theorem/">2010-10-22</a></time>
 
-            <span id="busuanzi_container_page_pv" class="read-times-container">
+                                <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
     <span id="busuanzi_value_page_pv"></span>
 </span>
 
-            
+                                    
     <div class="tags-row">
         
             <a href="/tags/representation-theory/" class="chip pink lighten-1">representation theory</a>
@@ -317,15 +318,15 @@ Jacobson 根的定义让人舒服一些。">
     </div>
 
 
-            <div class="toc pink-link-context hide-on-med-and-down">
+                                        <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%83%8C%E6%99%AF"><span class="section table-of-contents-text">背景</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%AE%B0%E5%8F%B7%E4%B8%8E%E7%BA%A6%E5%AE%9A"><span class="section table-of-contents-text">记号与约定</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AE%9A%E4%B9%89%E7%8E%AF-r-%E7%9A%84%E6%A0%B9-mathrmradr"><span class="section table-of-contents-text">定义环 \(R\) 的根 \(\mathrm{rad(R)}\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%B0%86%E5%8D%8A%E5%8D%95%E7%8E%AF%E5%88%86%E8%A7%A3%E4%B8%BA%E5%8D%95%E7%8E%AF%E7%9A%84%E7%9B%B4%E5%92%8C"><span class="section table-of-contents-text">将半单环分解为单环的直和</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8D%95%E7%8E%AF%E7%9A%84%E7%BB%93%E6%9E%84%E5%AE%9A%E7%90%86"><span class="section table-of-contents-text">单环的结构定理</span></a></li></ol>
 </div>
 
-            
+                                            
 
 
-            <div class="entry pink-link-context">
-                <p>讲述 Wedderburn-Artin
+                                                <div class="entry pink-link-context">
+                                                    <p>讲述 Wedderburn-Artin
 定理的教材已经非常多了，在介绍群表示论或者非交换环的书里通常都可以找到，证明途径也大同小异。据我个人的体会，讲群表示论的书往往只介绍有限维群代数的情形，显得不太够用；而讲非交换环的书则喜欢从
 Jacobson 根和密度定理讲起，念起来很让人劝退。我觉得 Artinian 环情形的
 Wedderburn-Artin 定理还是非常有用的。我打算仿照 Curtis 和 Reiner
@@ -724,7 +725,7 @@ Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span> 到 <span class="math inline">\
 </ol>
 </aside>
 
-                
+                                                        
 <p class="pink-link-context">
     <a href="/schur-polynomials-and-hook-length-formula/" rel="next" title="Schur 多项式与钩子长度公式">
     上一篇：Schur 多项式与钩子长度公式
@@ -740,13 +741,13 @@ Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span> 到 <span class="math inline">\
 </p>
 
 
+                                                </div>
+
             </div>
-			
         </div>
-    </div>
-</article>
+    </article>
 
-
+    
 
 
     <section id="comment">
@@ -768,10 +769,9 @@ Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span> 到 <span class="math inline">\
     </section>
 
 
-
 </div>
 
-        <div class="fixed-action-btn float-sitemap">
+                    <div class="fixed-action-btn float-sitemap">
     <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
@@ -781,8 +781,8 @@ Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span> 到 <span class="math inline">\
     </ul>
   </div>
 
-    </main>
-    
+            </main>
+            
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -801,7 +801,7 @@ Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span> 到 <span class="math inline">\
 
 
 
-    <noscript>
+                <noscript>
     <div class="noscript">
         <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
     </div>
@@ -1029,5 +1029,6 @@ MathJax.Hub.Config({
 
 
 
-</body>
-</html>
+    </body>
+
+    </html>

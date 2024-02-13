@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -7,7 +8,8 @@
 
     
 
-    <title>Coupling from the past 算法与 Markov 链的随机取样 | 朝花夕拾</title>
+        <title>
+            Coupling from the past 算法与 Markov 链的随机取样 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文使用的采样和绘图代码在 Github
@@ -42,11 +44,10 @@
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
-<body>
-    <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
-
-    <nav class="indigo">
+        <nav class="indigo">
     <div class="nav-wrapper">
         <a href="#" data-activates="main-menu" class="button-collapse">
             <i class="fa fa-navicon"></i>
@@ -263,8 +264,8 @@
 </div>
 
 
-    <main>
-        <div class="container main-container">
+            <main>
+                <div class="container main-container">
     <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">当前位置（分类目录）</span>
@@ -281,27 +282,27 @@
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
+    <article>
+        <div class="card">
+            <div class="card-content">
                 
+
+                            <div class="article-title">
+                                
     
         <h1>Coupling from the past 算法与 Markov 链的随机取样</h1>
     
 
 
-            </div>
-            <time class="pink-link-context" datetime="2016-07-01T16:00:00.000Z"><a href="/coupling-from-the-past/">2016-07-02</a></time>
+                            </div>
+                            <time class="pink-link-context" datetime="2016-07-01T16:00:00.000Z"><a href="/coupling-from-the-past/">2016-07-02</a></time>
 
-            <span id="busuanzi_container_page_pv" class="read-times-container">
+                                <span id="busuanzi_container_page_pv" class="read-times-container">
     <i class="fa fa-eye"></i>
     <span id="busuanzi_value_page_pv"></span>
 </span>
 
-            
+                                    
     <div class="tags-row">
         
             <a href="/tags/coupling-from-the-past/" class="chip pink lighten-1">coupling from the past</a>
@@ -315,17 +316,17 @@
     </div>
 
 
-            <div class="toc pink-link-context hide-on-med-and-down">
+                                        <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#markov-%E9%93%BE%E7%9A%84%E9%9A%8F%E6%9C%BA%E5%8F%96%E6%A0%B7"><span class="section table-of-contents-text">Markov 链的随机取样</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#markov-%E9%93%BE%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%98%A0%E5%B0%84%E8%A1%A8%E7%A4%BA"><span class="section table-of-contents-text">Markov 链的随机映射表示</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coupling-from-the-past-%E7%AE%97%E6%B3%95"><span class="section table-of-contents-text">Coupling from the past 算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E8%8B%A5%E5%B9%B2%E9%99%B7%E9%98%B1"><span class="section table-of-contents-text">算法中的若干陷阱</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E6%96%B0%E5%87%BD%E6%95%B0%E4%B8%8D%E8%83%BD%E6%98%AF%E4%BB%BB%E6%84%8F%E7%9A%84"><span class="section table-of-contents-text">为什么更新函数不能是任意的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-coupling-into-the-future-%E4%B8%8D%E8%A1%8C"><span class="section table-of-contents-text">为什么 Coupling into the
 future 不行</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%8F%E6%AC%A1%E4%B8%8D%E8%83%BD%E9%87%8D%E6%96%B0%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="section table-of-contents-text">为什么每次不能重新生成随机数</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#monotone-coupling-from-the-past"><span class="section table-of-contents-text">Monotone coupling from the
 past</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="section table-of-contents-text">参考文献</span></a></li></ol>
 </div>
 
-            
+                                            
 
 
-            <div class="entry pink-link-context">
-                <blockquote>
+                                                <div class="entry pink-link-context">
+                                                    <blockquote>
 <p>本文使用的采样和绘图代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/cftp">Github</a>
 上。</p>
 </blockquote>
@@ -632,7 +633,7 @@ Randall, Alistair Sinclair.</li>
 tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
 </ol>
 
-                
+                                                        
 <p class="pink-link-context">
     <a href="/reducible-mod-p/" rel="next" title="模任何素数都可约的整系数不可约多项式">
     上一篇：模任何素数都可约的整系数不可约多项式
@@ -648,13 +649,13 @@ tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
 </p>
 
 
+                                                </div>
+
             </div>
-			
         </div>
-    </div>
-</article>
+    </article>
 
-
+    
 
 
     <section id="comment">
@@ -676,10 +677,9 @@ tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
     </section>
 
 
-
 </div>
 
-        <div class="fixed-action-btn float-sitemap">
+                    <div class="fixed-action-btn float-sitemap">
     <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
     </a>
@@ -689,8 +689,8 @@ tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
     </ul>
   </div>
 
-    </main>
-    
+            </main>
+            
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -709,7 +709,7 @@ tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
 
 
 
-    <noscript>
+                <noscript>
     <div class="noscript">
         <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
     </div>
@@ -937,5 +937,6 @@ MathJax.Hub.Config({
 
 
 
-</body>
-</html>
+    </body>
+
+    </html>
