@@ -455,7 +455,7 @@ V_\lambda.\]</span> 并且每个权空间的维数 <span class="math inline">\(\
 V_{\lambda+\alpha}\)</span>。</li>
 </ol>
 <p>这几点的证明都不难，这里只解释第三点。</p>
-<blockquote><p><strong>命题</strong>：如果 <span class="math inline">\(N\subset
+<blockquote><p><strong>命题 1</strong>：如果 <span class="math inline">\(N\subset
 V\)</span> 是一个子模，则 <span class="math inline">\(N\)</span>
 也是权模，并且有分解 <span class="math display">\[N =
 \bigoplus_{\lambda\in\mathfrak{b}^\ast} (N\cap V_\lambda).\]</span></p>
@@ -590,7 +590,7 @@ Casimir 元素的特征子空间分解给出表示的分解。</p>
 <p>任取 <span class="math inline">\(\mathfrak{g}\)</span> 的一组基 <span class="math inline">\(\{x_i\}\)</span>，设它们在 Killing 型下的对偶基为
 <span class="math inline">\(\{y_i\}\)</span>，即 <span class="math inline">\(\kappa(x_i,y_j)=\delta_{ij}\)</span>。</p>
 <blockquote>
-<p><strong>定义</strong>：Casimir 算子定义为 <span class="math inline">\(\Omega = \sum_{i=1}^n x_iy_i\)</span>，其中 <span class="math inline">\(n=\dim\mathfrak{g}\)</span>。</p>
+<p><strong>定义 4</strong>：Casimir 算子定义为 <span class="math inline">\(\Omega = \sum_{i=1}^n x_iy_i\)</span>，其中 <span class="math inline">\(n=\dim\mathfrak{g}\)</span>。</p>
 </blockquote>
 <p>不难证明 Carimir 算子的定义与基 <span class="math inline">\(\{x_i\}\)</span>
 的选择无关。但是为了计算方便，我们会选取 <span class="math inline">\(\mathfrak{g}\)</span>
@@ -621,7 +621,7 @@ v_\lambda.\]</span> 我们来计算这个 <span class="math inline">\(c_\lambda\
 &amp;= |\lambda+\rho|^2-|\rho|^2.
 \end{align}\]</span></p>
 <p>其中倒数第二个等号是利用了一个简单的线性代数结论：</p>
-<blockquote><p><strong>引理</strong>：设 <span class="math inline">\(\{x_i\}\)</span> 是内积空间 <span class="math inline">\((\cdot)\)</span> 的一组基，<span class="math inline">\(\{y_j\}\)</span> 是 <span class="math inline">\(\{x_i\}\)</span> 在这个内积下的对偶基，
+<blockquote><p><strong>引理 1</strong>：设 <span class="math inline">\(\{x_i\}\)</span> 是内积空间 <span class="math inline">\((\cdot)\)</span> 的一组基，<span class="math inline">\(\{y_j\}\)</span> 是 <span class="math inline">\(\{x_i\}\)</span> 在这个内积下的对偶基，
 则对任何向量 <span class="math inline">\(x\)</span> 有<span class="math display">\[(x,x)=\sum_{i=1}^n(x,x_i)(x,y_i).\]</span></p>
 </blockquote>
 <p>这个计算对任何最高权循环模都适用，这样我们就得到一个重要的结论：</p>
@@ -634,7 +634,7 @@ Noetherian
 的。于是任何最高权循环模都有有限的合成列。不过我们最好把分析扩展到更广泛的一类模上，即由
 Bernstein, Gelfand 和 Gelfand 三人引入的范畴 <span class="math inline">\(\mathcal{O}\)</span>：</p>
 <blockquote>
-<p><strong>定义 4</strong>：我们称一个 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，如果它是一个权模，并且存在有限多个权
+<p><strong>定义 5</strong>：我们称一个 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，如果它是一个权模，并且存在有限多个权
 <span class="math inline">\(\{\lambda_1,\ldots,\lambda_n\}\)</span> 使得
 <span class="math inline">\(V_\mu\ne0\)</span> 当且仅当对某个 <span class="math inline">\(\lambda_i\)</span> 有 <span class="math inline">\(\mu\preceq\lambda_i\)</span>。</p>
 </blockquote>
@@ -643,17 +643,17 @@ Bernstein, Gelfand 和 Gelfand 三人引入的范畴 <span class="math inline">\
 <span class="math inline">\(\mathcal{O}\)</span>。范畴 <span class="math inline">\(\mathcal{O}\)</span>
 对有限直和运算也是封闭的。</p>
 <blockquote>
-<p><strong>定义 5</strong>：设 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，<span class="math inline">\(v\in V\)</span> 是一个非零向量。如果存在 <span class="math inline">\(V\)</span> 的子模 <span class="math inline">\(U\)</span> 使得 <span class="math inline">\(v\)</span> 是商模 <span class="math inline">\(V/U\)</span> 中的最高权向量，我们就称 <span class="math inline">\(v\)</span> 是一个<strong>本原向量</strong>。如果
+<p><strong>定义 6</strong>：设 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，<span class="math inline">\(v\in V\)</span> 是一个非零向量。如果存在 <span class="math inline">\(V\)</span> 的子模 <span class="math inline">\(U\)</span> 使得 <span class="math inline">\(v\)</span> 是商模 <span class="math inline">\(V/U\)</span> 中的最高权向量，我们就称 <span class="math inline">\(v\)</span> 是一个<strong>本原向量</strong>。如果
 <span class="math inline">\(V_\mu\)</span> 包含一个本原向量，我们也称
 <span class="math inline">\(\mu\)</span>
 是一个<strong>本原权</strong>。</p>
 </blockquote>
 <blockquote>
-<p><strong>引理</strong>：设 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，则 <span class="math inline">\(V\)</span> 可以由本原向量生成。</p>
+<p><strong>引理 2</strong>：设 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，则 <span class="math inline">\(V\)</span> 可以由本原向量生成。</p>
 </blockquote>
 <p>证明：设 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(V\)</span> 中所有本原向量生成的 <span class="math inline">\(\mathfrak{g}-\)</span> 子模，我们断言 <span class="math inline">\(U=V\)</span>。若不然，考虑商模 <span class="math inline">\(V/U\)</span>，它在范畴 <span class="math inline">\(\mathcal{O}\)</span> 中，所以存在权向量 <span class="math inline">\(u\)</span> 使得 <span class="math inline">\(u\)</span> 对应的权是偏序 <span class="math inline">\(\preceq\)</span> 下的极大元。但是 <span class="math inline">\(u\)</span> 在 <span class="math inline">\(V\)</span> 中的原像必然是个本原向量，从而 <span class="math inline">\(u=0\)</span>，矛盾。<span class="math inline">\(\blacksquare\)</span></p>
 <blockquote>
-<p><strong>命题</strong>：设 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，且 <span class="math inline">\(V\)</span> 只有有限多个本原权，则 <span class="math inline">\(V\)</span> 的合成列长度有限，即存在 <span class="math inline">\(V\)</span> 的子模序列 <span class="math display">\[(0)\subset V_1\subset\cdots\subset
+<p><strong>命题 2</strong>：设 <span class="math inline">\(\mathfrak{g}-\)</span> 模 <span class="math inline">\(V\)</span> 属于范畴 <span class="math inline">\(\mathcal{O}\)</span>，且 <span class="math inline">\(V\)</span> 只有有限多个本原权，则 <span class="math inline">\(V\)</span> 的合成列长度有限，即存在 <span class="math inline">\(V\)</span> 的子模序列 <span class="math display">\[(0)\subset V_1\subset\cdots\subset
 V_k=V.\]</span> 使得每个合成因子 <span class="math inline">\(V_i/V_{i-1}\)</span> 都是不可约最高权模。</p>
 </blockquote>
 <p>证明：由于 <span class="math inline">\(V\)</span>
@@ -726,11 +726,13 @@ x_n^{a_n}\in\mathbb{Z}[x_1^{\pm1},\ldots,x_n^{\pm1}]\]</span>
 特征中关于 <span class="math inline">\(\prod_{\alpha\in\Phi^+}\)</span>
 的连乘，即 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{M_\lambda}=
 e^{\lambda+\rho}.\]</span> 在后面我们要用到 <span class="math inline">\(q\)</span> 的如下性质：</p>
+<div id="qalt">
 <blockquote>
-<p><strong>命题</strong>：<span class="math inline">\(q\)</span>
+<p><strong>命题 3</strong>：<span class="math inline">\(q\)</span>
 是“交错的”，即对任何 <span class="math inline">\(w\in W\)</span> 有
 <span class="math display">\[w\cdot q = (-1)^{l(w)}q.\]</span></p>
 </blockquote>
+</div>
 <p>证明：只要对单反射 <span class="math inline">\(s_\alpha\)</span>
 验证有 <span class="math inline">\(s_\alpha\cdot q=-q\)</span>
 即可。我们有 <span class="math display">\[s_\alpha\cdot
@@ -757,7 +759,7 @@ W\)</span> 有 <span class="math inline">\(w_1\bullet(w_2\bullet\lambda)=(w_1w_2
 w\in W\}\)</span>，则我们有如下结论：</p>
 <div id="bullet">
 <blockquote>
-<p><strong>命题</strong>：若 <span class="math inline">\(\lambda\in
+<p><strong>命题 4</strong>：若 <span class="math inline">\(\lambda\in
 P^+\)</span> 是支配整权，则集合 <span class="math inline">\(W\bullet\lambda\)</span> 中的元素互不相同。</p>
 </blockquote>
 </div>
@@ -814,12 +816,12 @@ b(\lambda,\mu)\mathop{\mathrm{ch}}{M_\mu}.\label{eq:q1}\tag{1}\]</span>
 我们有如下引理：</p>
 <div id="important-lemma">
 <blockquote>
-<p><strong>引理</strong>：集合 <span class="math inline">\(\{\mu\in
+<p><strong>引理 3</strong>：集合 <span class="math inline">\(\{\mu\in
 S^\lambda\mid b_\mu\ne0\}\)</span> 和集合 <span class="math inline">\(W\bullet\lambda\)</span> 一一对应，并且若 <span class="math inline">\(\mu=w\bullet\lambda\)</span> 则 <span class="math inline">\(b_\mu=(-1)^{l(w)}\)</span>。</p>
 </blockquote>
 </div>
 <p>我们把这个引理的证明先放一放，继续用它得出重要的 Weyl 公式。</p>
-<p>由 <a href="#important-lemma">引理</a> 我们可以把 <span class="math inline">\((\ref{eq:q2})\)</span> 改写成 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{w\in
+<p>由 <a href="#important-lemma">引理 3</a> 我们可以把 <span class="math inline">\((\ref{eq:q2})\)</span> 改写成 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{w\in
 W}(-1)^{l(w)}e^{w\bullet\lambda+\rho}=\sum_{w\in
 W}(-1)^{l(w)}e^{w(\lambda+\rho)}.\]</span> 即 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{w\in
 W}(-1)^{l(w)}e^{w(\lambda+\rho)}.\label{eq:q3}\tag{3}\]</span></p>
@@ -834,12 +836,14 @@ W}(-1)^{l(w)}e^{w(\rho)}.\]</span></p>
 \frac{\sum_{w\in W}(-1)^{l(w)}e^{w(\lambda+\rho)}}{\sum_{w\in
 W}(-1)^{l(w)}e^{w(\rho)}}.\]</span></p>
 </blockquote>
-<p>回到 <a href="#important-lemma">引理</a> 的证明。</p>
+<p>回到 <a href="#important-lemma">引理 3</a> 的证明。</p>
 <blockquote>
 <p>我们先证明当 <span class="math inline">\(\mu=w\bullet\lambda\)</span>
 时有 <span class="math inline">\(b_\mu=(-1)^{l(w)}\)</span> 成立。</p>
 </blockquote>
-<p>将 <span class="math inline">\(w\in W\)</span> 作用在 <span class="math inline">\((\ref{eq:q2})\)</span> 两边，并注意 <span class="math inline">\(\mathop{\mathrm{ch}}{L_\lambda}\)</span> 是 <span class="math inline">\(W-\)</span> 不变的以及 <span class="math inline">\(w\cdot q=(-1)^{l(w)}q\)</span>，得到 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{\mu\in
+<p>将 <span class="math inline">\(w\in W\)</span> 作用在 <span class="math inline">\((\ref{eq:q2})\)</span> 两边，并注意 <span class="math inline">\(\mathop{\mathrm{ch}}{L_\lambda}\)</span> 是 <span class="math inline">\(W-\)</span> 不变的以及 <a href="#qalt">命题 3</a>
+的结论 <span class="math inline">\(w\cdot q=(-1)^{l(w)}q\)</span>，得到
+<span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{\mu\in
 S^\lambda}(-1)^{l(w)}b_\mu e^{w(\mu+\rho)}.\label{eq:q4}\tag{4}\]</span>
 将 <span class="math inline">\((\ref{eq:q4})\)</span> 中的求和符号换成
 <span class="math inline">\(\nu\)</span>，并比较 <span class="math inline">\((\ref{eq:q2})\)</span> 和 <span class="math inline">\((\ref{eq:q4})\)</span>，我们有 <span class="math display">\[\sum_{\mu\in S^\lambda} b_\mu
@@ -851,7 +855,7 @@ e^{w(\nu+\rho)}.\label{eq:q5}\tag{5}\]</span></p>
 <p>再证明 <span class="math inline">\(\{\mu\in S^\lambda\mid
 b_\mu\ne0\}\)</span> 和 <span class="math inline">\(W\bullet\lambda\)</span> 是一一对应的。</p>
 </blockquote>
-<p>在前面的 <a href="#bullet">命题</a> 中我们已经看到 <span class="math inline">\(\{w\bullet\lambda\mid w\in W\}\)</span>
+<p>在前面的 <a href="#bullet">命题 4</a> 中我们已经看到 <span class="math inline">\(\{w\bullet\lambda\mid w\in W\}\)</span>
 是互不相同的。设 <span class="math inline">\(\mu=w\bullet\lambda\)</span>，我们来说明 <span class="math inline">\(\mu\in S^\lambda\)</span>。这比较简单，因为 <span class="math inline">\(\lambda+\rho\)</span> 是强支配整权，对所有 <span class="math inline">\(w\)</span> 都有 <span class="math inline">\(w(\lambda+\rho)\preceq \lambda+\rho\)</span>，从而
 <span class="math inline">\(\mu=w\bullet\lambda\preceq\lambda\)</span>。另一方面
 <span class="math inline">\(w\)</span> 保持内积 <span class="math inline">\((\cdot,\cdot)\)</span>，所以 <span class="math display">\[|\lambda+\rho| =
@@ -872,7 +876,8 @@ W\bullet\lambda\)</span>。</p>
 是强支配整权，<span class="math inline">\(\nu+\rho=w(\mu+\rho)\)</span>
 是支配整权，<span class="math inline">\(\gamma\)</span>
 是正根的非负整系数线性组合，所以上面的和等于 0 只能在 <span class="math inline">\(\gamma=0\)</span> 时才能发生，即 <span class="math inline">\(\nu=\lambda\)</span>。</p>
-<p>至此 Weyl 特征公式得证。</p>
+<p>至此 <a href="#important-lemma">引理 3</a> 得证，从而 Weyl
+特征公式得证。</p>
 <h1 id="例子mathfraksl_nmathbbc-的特征公式">例子：<span class="math inline">\(\mathfrak{sl}_n(\mathbb{C})\)</span>
 的特征公式</h1>
 <p>本节以 <span class="math inline">\(\mathfrak{sl}_n(\mathbb{C})\)</span>
