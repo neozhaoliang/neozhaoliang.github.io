@@ -1,0 +1,993 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Aztec 钻石图的完美匹配与多米诺洗牌算法 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="2021/03/15 更新：刚得知 Youtube 上的博主 mathologer
+制作了一期非常精彩的节目，介绍 Aztec
+钻石图与多米诺洗牌算法，非常值得一看！
+
+
+
+2021/01/01 更新：2021 年的第一天，有人在 Shadertoy
+上放了一个精彩的动画，演示多米诺洗牌算法的步骤：
+
+
+
+Aigner 和 Ziegler 所著的 Proofs from
+the book 一书 （中文译版《数学天书中的证明》）
+是一本非常精彩的数学读物，其中包含了 40
+余个著名的数学问题和它们的巧妙解答。这些问题并不深奥，但也绝非没有受过严格数学训练的人所能欣赏，其中往往包含了相当的洞察力和聪明才智，读起来让人神清气爽，大叹数学之妙。
+然而读完这本书的人恐怕都会有意犹未尽的感觉：这就没啦？我还没看够呢！
+有一个问题我想是非常适合放在这本书里的，我也非常期待能在未来的版本中看到它，这就是
+Aztec 钻石图的多米诺铺砌的计数问题。这个问题完美符合该书选题的标准：
+
+表述初等，不需要太多的背景知识就能能理解。
+内涵丰富。Aztec
+钻石图是当前代数组合学中一个热点问题，它与交错符号矩阵、表示论、概率论、统计力学都有着深刻而奇妙的联系，有许多悬而未决的问题有待解决。
+有多种令人拍案叫绝的解答，每个解答都不平凡，要么需要深刻的数学知识，要么需要开很大的脑洞。
+
+我来介绍一下这个问题：
+依次把 \(2,4,\ldots,2n\)
+个单位正方形对称地摞在一起，放在 \(x\)
+轴上方，然后关于 \(x\)
+轴对称地反射过去，得到的图形叫做 \(n\)
+阶的 Aztec 钻石图，记作 \(\mathrm{AZ}(n)\)。下图显示的是 \(\mathrm{AZ}(10)\) 的例子：
+
+用 1x2 的多米诺骨牌不重叠不遗漏地盖住这些方格，可以得到 Aztec
+钻石图的一个多米诺骨牌铺砌。下图显示的是 \(\mathrm{AZ}(10)\) 的一种可能的铺砌：
+
+你可以看到图中出现了四种不同颜色的骨牌，为什么这样染色后面会解释。
+我们的问题是：
+
+问题 1：\(\mathrm{AZ}(n)\)
+总共有多少种不同的多米诺骨牌铺砌？
+
+这里不考虑铺砌的对称性，比如全部用水平的骨牌铺砌和全部用竖直的骨牌铺砌是两种不同的铺砌。
+问题 2：如何在 \(\mathrm{AZ}(n)\)
+的所有铺砌中等概率地随机任选一种？
+第一个问题的答案是 \(2^{n(n+1)/2}\)，这个表达式很简洁，这暗示这个问题也应该有一个简洁的解答（确实如此）。
+第二个问题的答案叫做多米诺洗牌算法，正是本文要介绍的。
+Aztec 钻石图多米诺铺砌的计数问题最早由 Elkies、Kuperberg、Propp 和
+Larson 在 1992 年的论文 Alternating sign matrices and
+domino tilings 中进行了深入的研究，在这篇文章中他们一共给出了 4
+种不同的解答。时至今日人们发现的解法已经超过一打，不幸的是没有一种可以算是“简单的”，但其中最精彩的仍然要数
+Elkies 等人论文中的第四个解法：多米诺洗牌算法。后来 Propp 在另一篇文章
+Generalized
+domino-shuffling
+中用图变换的方式重新表述了这个算法，并同时解决了在给定边的权重情况下对铺砌随机取样的问题。本文就来介绍
+Propp 的结果。
+本文的代码放在 Github 上。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Aztec 钻石图的完美匹配与多米诺洗牌算法"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/闲聊/">
+                    闲聊 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/计数组合学/">计数组合学</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Aztec 钻石图的完美匹配与多米诺洗牌算法</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2009-01-01T16:00:00.000Z"><a href="/domino-shuffling/">2009-01-02</a></time>
+
+                                <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+                                    
+    <div class="tags-row">
+        
+            <a href="/tags/Perfect-matching/" class="chip pink lighten-1">Perfect matching</a>
+        
+            <a href="/tags/Domino-shuffling/" class="chip pink lighten-1">Domino shuffling</a>
+        
+            <a href="/tags/Aztec-diamond/" class="chip pink lighten-1">Aztec diamond</a>
+        
+            <a href="/tags/Spider-move/" class="chip pink lighten-1">Spider move</a>
+        
+    </div>
+
+
+                                        <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E7%B1%B3%E8%AF%BA%E6%B4%97%E7%89%8C%E7%AE%97%E6%B3%95"><span class="section table-of-contents-text">什么是多米诺洗牌算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%A4%9A%E7%B1%B3%E8%AF%BA%E6%B4%97%E7%89%8C%E7%AE%97%E6%B3%95"><span class="section table-of-contents-text">多米诺洗牌算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%9B%BE%E5%8F%98%E6%8D%A2%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="section table-of-contents-text">图变换的技巧</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%93%BA%E7%A0%8C%E8%AE%A1%E6%95%B0%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E8%A7%A3%E6%B3%95"><span class="section table-of-contents-text">铺砌计数的另一种解法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%A4%9A%E7%B1%B3%E8%AF%BA%E6%B4%97%E7%89%8C%E7%AE%97%E6%B3%95%E5%92%8C%E8%9C%98%E8%9B%9B%E7%A7%BB%E5%8A%A8%E6%98%AF%E7%AD%89%E4%BB%B7%E7%9A%84"><span class="section table-of-contents-text">多米诺洗牌算法和蜘蛛移动是等价的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BB%93%E8%AF%AD"><span class="section table-of-contents-text">结语</span></a></li></ol>
+</div>
+
+                                            
+
+
+                                                <div class="entry pink-link-context">
+                                                    <p><strong>2021/03/15 更新</strong>：刚得知 Youtube 上的博主 mathologer
+制作了一期非常精彩的节目，介绍 Aztec
+钻石图与多米诺洗牌算法，非常值得一看！</p>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/Yy7Q8IWNfHM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<hr>
+<p><strong>2021/01/01 更新</strong>：2021 年的第一天，有人在 Shadertoy
+上放了一个精彩的动画，演示多米诺洗牌算法的步骤：</p>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/Wldyzj?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
+</iframe>
+<hr>
+<p>Aigner 和 Ziegler 所著的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK">Proofs from
+the book</a> 一书 （中文译版《数学天书中的证明》）
+是一本非常精彩的数学读物，其中包含了 40
+余个著名的数学问题和它们的巧妙解答。这些问题并不深奥，但也绝非没有受过严格数学训练的人所能欣赏，其中往往包含了相当的洞察力和聪明才智，读起来让人神清气爽，大叹数学之妙。</p>
+<p>然而读完这本书的人恐怕都会有意犹未尽的感觉：这就没啦？我还没看够呢！</p>
+<p>有一个问题我想是非常适合放在这本书里的，我也非常期待能在未来的版本中看到它，这就是
+Aztec 钻石图的多米诺铺砌的计数问题。这个问题完美符合该书选题的标准：</p>
+<ol type="1">
+<li>表述初等，不需要太多的背景知识就能能理解。</li>
+<li>内涵丰富。Aztec
+钻石图是当前代数组合学中一个热点问题，它与交错符号矩阵、表示论、概率论、统计力学都有着深刻而奇妙的联系，有许多悬而未决的问题有待解决。</li>
+<li>有多种令人拍案叫绝的解答，每个解答都不平凡，要么需要深刻的数学知识，要么需要开很大的脑洞。</li>
+</ol>
+<p>我来介绍一下这个问题：</p>
+<p>依次把 <span class="math inline">\(2,4,\ldots,2n\)</span>
+个单位正方形对称地摞在一起，放在 <span class="math inline">\(x\)</span>
+轴上方，然后关于 <span class="math inline">\(x\)</span>
+轴对称地反射过去，得到的图形叫做 <span class="math inline">\(n\)</span>
+阶的 Aztec 钻石图，记作 <span class="math inline">\(\mathrm{AZ}(n)\)</span>。下图显示的是 <span class="math inline">\(\mathrm{AZ}(10)\)</span> 的例子：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/azgraph.svg" width="350"></p>
+<p>用 1x2 的多米诺骨牌不重叠不遗漏地盖住这些方格，可以得到 Aztec
+钻石图的一个多米诺骨牌铺砌。下图显示的是 <span class="math inline">\(\mathrm{AZ}(10)\)</span> 的一种可能的铺砌：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/az10.svg" width="350"></p>
+<p>你可以看到图中出现了四种不同颜色的骨牌，为什么这样染色后面会解释。</p>
+<p>我们的问题是：</p>
+<blockquote>
+<p><strong>问题 1</strong>：<span class="math inline">\(\mathrm{AZ}(n)\)</span>
+总共有多少种不同的多米诺骨牌铺砌？</p>
+</blockquote>
+<p>这里不考虑铺砌的对称性，比如全部用水平的骨牌铺砌和全部用竖直的骨牌铺砌是两种不同的铺砌。</p>
+<p><strong>问题 2</strong>：如何在 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的所有铺砌中等概率地随机任选一种？</p>
+<p>第一个问题的答案是 <span class="math inline">\(2^{n(n+1)/2}\)</span>，这个表达式很简洁，这暗示这个问题也应该有一个简洁的解答（确实如此）。</p>
+<p>第二个问题的答案叫做多米诺洗牌算法，正是本文要介绍的。</p>
+<p>Aztec 钻石图多米诺铺砌的计数问题最早由 Elkies、Kuperberg、Propp 和
+Larson 在 1992 年的论文 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/math/9201305">Alternating sign matrices and
+domino tilings</a> 中进行了深入的研究，在这篇文章中他们一共给出了 4
+种不同的解答。时至今日人们发现的解法已经超过一打，不幸的是没有一种可以算是“简单的”，但其中最精彩的仍然要数
+Elkies 等人论文中的第四个解法：多米诺洗牌算法。后来 Propp 在另一篇文章
+<a target="_blank" rel="noopener" href="http://arxiv.org/abs/math/0111034">Generalized
+domino-shuffling</a>
+中用图变换的方式重新表述了这个算法，并同时解决了在给定边的权重情况下对铺砌随机取样的问题。本文就来介绍
+Propp 的结果。</p>
+<p>本文的代码放在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland">Github</a> 上。</p>
+<span id="more"></span>
+<h1 id="什么是多米诺洗牌算法">什么是多米诺洗牌算法</h1>
+<p>理解多米诺洗牌算法的关键是理解多米诺骨牌的定向。</p>
+<p>把 <span class="math inline">\(\mathbb{Z}^2\)</span>
+看做一张无穷大的国际象棋棋盘，每个方格染成黑白两色之一，相邻方格的颜色是不同的，于是任何
+1x2 的骨牌都恰好覆盖一个黑方格和一个白方格。</p>
+<p>乍看起来，骨牌只有水平或者竖直两种不同的类型，其实不然，骨牌有
+<code>N</code>、<code>S</code>、<code>W</code>、<code>E</code>（北南西东）四种不同的类型，认识到这一点非常重要。下面介绍怎样定义和区分骨牌的类型。</p>
+<p>如果棋盘上一个 <span class="math inline">\(2\times2\)</span>
+的正方形区域的左上角的方格是黑色的，我们就称这是一个<strong>黑方块</strong>，如下图所示：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/block.svg" width="100"></p>
+<p>类似地可以定义<strong>白方块</strong>为左上角方格为白色的 2x2
+正方形区域。</p>
+<p>对任意一张骨牌 <span class="math inline">\(d\)</span>，它必然落在唯一的一个黑方块 <span class="math inline">\(B\)</span> 中。规定 <span class="math inline">\(d\)</span> 的移动规则为：把 <span class="math inline">\(d\)</span> 移动到它在 <span class="math inline">\(B\)</span> 中的对面的位置上，根据 <span class="math inline">\(d\)</span>
+的移动方向上、下、左、右规定其定向分别为
+<code>N</code>、<code>S</code>、<code>W</code>、<code>E</code>。如下图所示：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/orientation.svg" width="400"></p>
+<p>注意到在移动以后，定向为 <code>N</code> 的骨牌变成了定向为
+<code>S</code> 的骨牌，定向为 <code>S</code> 的骨牌变成了定向为
+<code>N</code> 的骨牌，对 <code>E</code>, <code>W</code>
+类型的骨牌亦然。</p>
+<p>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的一个多米诺铺砌，如果一个黑方块 <span class="math inline">\(B\)</span>
+恰好包含 <span class="math inline">\(T\)</span>
+中一对平行放置的骨牌，就称 <span class="math inline">\(B\)</span> 是
+<span class="math inline">\(T\)</span>
+的一个<strong>坏方块</strong>。在一个坏方块中，这对骨牌的定向是互相“朝着”对方的。</p>
+<p>设 <span class="math inline">\(T_1\)</span> 和 <span class="math inline">\(T_2\)</span> 是 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的两个不同的铺砌，如果把它们各自的坏方块中的骨牌全部移走以后剩下的部分完全一致，就称
+<span class="math inline">\(T_1\)</span> 和 <span class="math inline">\(T_2\)</span> 是等价的。不难验证这定义了 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的所有铺砌之间的一个等价关系，在这个等价关系下 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的所有铺砌被分成了若干等价类，对任一铺砌 <span class="math inline">\(T\)</span>，记其所在的等价类为 <span class="math inline">\(\mathcal{T}\)</span>。显然如果 <span class="math inline">\(T\)</span> 包含 <span class="math inline">\(k\)</span> 个坏方块的话则 <span class="math inline">\(|\mathcal{T}|=2^k\)</span>。</p>
+<h1 id="多米诺洗牌算法">多米诺洗牌算法</h1>
+<p>把 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+放在棋盘上，使得其最上方一行的最左边的方格是白色，规定 <span class="math inline">\(\mathrm{AZ}(n)\)</span> 的对称中心为原点。设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的任一铺砌，如下图所示：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/step0.svg" width="350"></p>
+<p>注意图中根据骨牌的定向
+<code>N</code>、<code>S</code>、<code>W</code>、<code>E</code>
+将其染成了红、黄、绿、蓝四种颜色。我还画出了棋盘上一个形状为 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span> 的背景区域。</p>
+<ol type="1">
+<li><p>移走 <span class="math inline">\(T\)</span>
+的所有坏方块中的骨牌，这一操作叫做删除
+(deletion)。注意坏方块中包含的要么是一对水平的黄上红下骨牌，要么是一对竖直的蓝左绿右骨牌。上图中的铺砌在删除后的结果如下图所示：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/step1.svg" width="350"></p></li>
+<li><p>将 <span class="math inline">\(T\)</span>
+中剩下的骨牌按照其定向各自移动一步，这一操作叫做移动
+(sliding)。容易验证移动后这些剩下的骨牌位于更大一些的 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+的区域内，且不会出现骨牌重叠的情况。如下图所示：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/step2.svg" width="350"></p></li>
+<li><p>可以证明在移动结束后 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+中的空白部分可以唯一地表示为若干不相交的黑方块的并，对每个这样的黑方块，任意用一对水平的或者是竖直的骨牌将其填充，则我们得到了
+<span class="math inline">\(\mathrm{AZ}(n+1)\)</span> 的一个铺砌 <span class="math inline">\(T'\)</span>，这一操作叫做填充
+(creation)。上图中的空白区域可以表示为 14
+个不相交的黑方块的并，因此一共有 <span class="math inline">\(2^{14}\)</span>
+种不同的填充方式，其中一种如下：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/step3.svg" width="350"></p></li>
+</ol>
+<p>于是从 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的任一铺砌出发，经过删除、移动、填充三次操作后，可以得到 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+的一个铺砌。这个步骤就叫做多米诺洗牌算法。</p>
+<blockquote>
+<p><strong>注意</strong>：一个细节是，算法开始时要求 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+最左上边的方格是白色。但是填充结束后，得到的 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+的铺砌的最左上边的方格是黑色。所以如果我们想从这个 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span> 的铺砌继续洗牌得到 <span class="math inline">\(\mathrm{AZ}(n+2)\)</span>
+的铺砌的话，就要翻转棋盘的染色。否则我们会回到一个 <span class="math inline">\(\mathrm{AZ}(n)\)</span> 的铺砌。</p>
+</blockquote>
+<p>用 GIF 动图演示这个过程：</p>
+<p><img src="/images/aztec/dominoshuffling.gif" style="margin:0px auto;display:block"></p>
+<p>上图演示的是从 1 阶 Aztec 钻石图的一个随机铺砌出发，反复地执行删除
+-&gt; 移动 -&gt; 填充 -&gt; 删除 -&gt; 移动 -&gt; ... 的步骤，最终生成
+30 阶 Aztec 钻石图的随机铺砌。其中每次填充之后都翻转棋盘的染色。</p>
+<p><strong>算法中最难的部分是证明在第二步移动结束后，<span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+区域中的空白部分可以表示为不相交的黑方块的并</strong>。Elkies
+等人的原证明很简单，但是并未从本质上解释多米诺算法为什么是成立的。这个算法用
+Propp 论文中介绍的图变换的角度更容易看清楚。</p>
+<h1 id="图变换的技巧">图变换的技巧</h1>
+<p>多米诺铺砌实质上是图的完美匹配：考虑图 <span class="math inline">\(G_n\)</span>，<span class="math inline">\(G_n\)</span> 的顶点与 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+中的方格一一对应，两个顶点相邻当且仅当它们对应的方格在 <span class="math inline">\(\mathrm{AZ}(n)\)</span> 中有公共的边，于是 <span class="math inline">\(\mathrm{AZ}(n)\)</span> 的多米诺铺砌与 <span class="math inline">\(G_n\)</span> 的完美匹配 (perfect matching)
+一一对应。</p>
+<p><img src="/images/aztec/matching.svg" style="margin:0px auto;display:block" width="350"></p>
+<p>现在问题转化为求 <span class="math inline">\(G_n\)</span>
+的完美匹配的个数，基本的想法是权函数。</p>
+<p>设 <span class="math inline">\(G\)</span> 是一个简单平面图，<span class="math inline">\(G\)</span> 的每条边 <span class="math inline">\(e\)</span> 有一个权值 <span class="math inline">\(w(e)\)</span>，<span class="math inline">\(w(e)\)</span> 是一个变量，比如 <span class="math inline">\(x,y,z,w\)</span>。对 <span class="math inline">\(G\)</span> 的每一个完美匹配 <span class="math inline">\(\pi\)</span>，定义 <span class="math inline">\(\pi\)</span> 的权值 <span class="math inline">\(w(\pi)\)</span> 为 <span class="math inline">\(\pi\)</span> 中所有边的权值的乘积：</p>
+<p><span class="math display">\[w(\pi)=\prod_{e\in
+\pi}w(e),\]</span></p>
+<p>然后定义 <span class="math inline">\(G\)</span> 的权函数 <span class="math inline">\(w(G)\)</span> 为 <span class="math inline">\(G\)</span> 的所有完美匹配的权值的和： <span class="math display">\[w(G)=\sum_{\pi}w(\pi).\]</span></p>
+<p>如果 <span class="math inline">\(G\)</span> 的每条边的权值都是
+1，那么 <span class="math inline">\(w(G)\)</span> 就是 <span class="math inline">\(G\)</span>
+的完美匹配的个数。但是一般情况下边的权值是未定元，所以 <span class="math inline">\(w(G)\)</span>
+是一个包含未定元的多元函数。但是只要求出了权函数 <span class="math inline">\(w(G)\)</span>
+的表达式，那么只要把其中所有变元都赋值为 1，就得到了 <span class="math inline">\(G\)</span> 的完美匹配的个数。</p>
+<p>能求出权函数来当然是一件好事，因为权函数里面包含了图的非常多的信息，可以帮助我们计算出许多其它感兴趣的量来。比如说指定一条边
+<span class="math inline">\(e\)</span>，问 <span class="math inline">\(G\)</span> 有多少个匹配不包含 <span class="math inline">\(e\)</span>？为此只要把边 <span class="math inline">\(e\)</span> 的权值设置为 0，其它的边权值保持为
+1，代入权函数中即可。</p>
+<p>看起来求出图的权函数是一个比直接计算其完美匹配的个数更复杂的问题，那为什么我们要舍近求远呢？权函数方法的奥秘在哪里呢？</p>
+<p>这就是关键所在：对于一个复杂的图，我们想通过一些 "手术" 或者 "变换"
+把它变成简单一些的图，比如删去一些顶点和边，或者把其中的一部分用一个新图去替换。这些变换通常会改变图的完美匹配的个数，但是权函数却在变换前后保持某种不变性或者相似性，这样就可以找到权函数所满足的递推关系进而把它求出来。这种操作我们其实都见到过，高中物理中电网络的各种等效电路替换（如
+<span class="math inline">\(Y-\Delta\)</span> 变换）就是图变换。</p>
+<p>本文要使用的图变换的关键是下面的这个蜘蛛引理：</p>
+<blockquote><p><strong>蜘蛛移动</strong>：假设图 <span class="math inline">\(G\)</span> 的某个局部如下图左边所示：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/spidermove.svg" width="600"></p>
+<p>这里位于中心处的胞腔的四条边的权值分别为 <span class="math inline">\(x,y,z,w\)</span>，胞腔与周围四个顶点 <span class="math inline">\(A,B,C,D\)</span> 相连的四条边的权值都是 1。</p>
+<p>现在我们删去中心的胞腔，把 <span class="math inline">\(A,B,C,D\)</span>
+连接为一个新的胞腔，并且规定边的权值为（如图右边所示） <span class="math display">\[x'=\frac{z}{\Delta},\quad
+y'=\frac{w}{\Delta},\quad z'=\frac{x}{\Delta},\quad
+w'=\frac{y}{\Delta}.\]</span> 其中 <span class="math inline">\(\Delta = xz+yw\)</span>，图 <span class="math inline">\(G\)</span> 其它的部分保持保持不变，则得到的新图
+<span class="math inline">\(G'\)</span> 与原图 <span class="math inline">\(G\)</span> 的权函数的关系为 <span class="math display">\[w(G)=\Delta\cdot w(G').\]</span></p>
+</blockquote>
+<p><strong>证明</strong>：对 <span class="math inline">\(G\)</span>
+的任一匹配 <span class="math inline">\(\pi\)</span>，我们考察 <span class="math inline">\(\pi\)</span> 在这个局部的匹配情况。<span class="math inline">\(\pi\)</span> 必然属于下列三种情形之一：</p>
+<ol type="1">
+<li><span class="math inline">\(A,B,C,D\)</span>
+无一与胞腔的四个顶点匹配；</li>
+<li><span class="math inline">\(A,B,C,D\)</span>
+中有两个和胞腔中的顶点匹配，另外两个与外部的顶点匹配；</li>
+<li><span class="math inline">\(A,B,C,D\)</span>
+与胞腔的四个顶点一一匹配。</li>
+</ol>
+<p>设 <span class="math inline">\(Q\)</span> 是 <span class="math inline">\(\pi\)</span>
+在除去这个局部外其它部分的边的权的乘积。依次讨论这三种可能：</p>
+<ol type="1">
+<li>若 <span class="math inline">\(\pi\)</span>
+属于第一类情形，则存在同属于第一类情形的另一个匹配 <span class="math inline">\(\pi'\)</span>，<span class="math inline">\(\pi\)</span> 和 <span class="math inline">\(\pi'\)</span>
+在外部是相同的，仅在胞腔处不同。两者在蜘蛛变换下对应于 <span class="math inline">\(G'\)</span>
+的同一个匹配（保持外部的匹配不变），如下图所示：</li>
+</ol>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/case1.svg" width="600"></p>
+<p><span class="math inline">\(\pi\)</span> 和 <span class="math inline">\(\pi'\)</span> 的权一个是 <span class="math inline">\(xzQ\)</span>，一个是 <span class="math inline">\(ywQ\)</span>，二者的权和是 <span class="math inline">\(\Delta Q\)</span>，变换后对应的匹配的权值是 <span class="math inline">\(Q\)</span>，变换后的权值是变换前的 <span class="math inline">\(1/\Delta\)</span>。</p>
+<ol start="2" type="1">
+<li>若 <span class="math inline">\(\pi\)</span>
+属于第二类情形，则不妨设顶点 <span class="math inline">\(\{B,C\}\)</span>
+与胞腔中的顶点匹配（另外三种可能的情形是 <span class="math inline">\(\{A,B\}\)</span>，<span class="math inline">\(\{C,D\}\)</span>，<span class="math inline">\(\{A,D\}\)</span>，分析是类似的，而 <span class="math inline">\(\{A,C\}\)</span> 和 <span class="math inline">\(\{B,D\}\)</span> 是不可能出现的），则 <span class="math inline">\(\pi\)</span> 可以唯一地映射为 <span class="math inline">\(G'\)</span> 的一个匹配，如下图所示：</li>
+</ol>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/case2.svg" width="600"></p>
+<p>这里 <span class="math inline">\(\pi\)</span>
+在外部的部分仍然保持不变。<span class="math inline">\(\pi\)</span>
+的权值为 <span class="math inline">\(wQ\)</span>，变换后的匹配的权值为
+<span class="math inline">\(wQ/\Delta\)</span>，变换后的权值仍然是变换前的
+<span class="math inline">\(1/\Delta\)</span>。</p>
+<ol start="3" type="1">
+<li>若 <span class="math inline">\(\pi\)</span> 属于第三类情形，则 <span class="math inline">\(\pi\)</span> 可以映射为 <span class="math inline">\(G'\)</span> 中的两个匹配：</li>
+</ol>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/case3.svg" width="600"></p>
+<p>由于 <span class="math inline">\(\pi\)</span>
+在这个局部的四条边的权值都是 1，因此 <span class="math inline">\(\pi\)</span> 的权值是 <span class="math inline">\(Q\)</span>，变换后对应的两个匹配的权值分别是 <span class="math inline">\(y'w'Q\)</span> 和 <span class="math inline">\(x'z'Q\)</span>，变换后的权值仍然是变换前的
+<span class="math inline">\(y'w'+x'z'=1/\Delta\)</span>。</p>
+<p>于是 <span class="math inline">\(G\)</span>
+的匹配可以划分为不相交的三个子集 <span class="math inline">\(X_1,X_2,X_3\)</span>，<span class="math inline">\(G'\)</span> 的匹配也可以分为三个不相交的子集
+<span class="math inline">\(Y_1,Y_2,Y_3\)</span>。<span class="math inline">\(X_1\)</span> 中每两个匹配对应 <span class="math inline">\(Y_1\)</span> 中的一个匹配，<span class="math inline">\(X_2\)</span> 中每个匹配对应 <span class="math inline">\(Y_2\)</span> 中的一个匹配，<span class="math inline">\(X_3\)</span> 中每个匹配对应 <span class="math inline">\(Y_3\)</span> 中的两个匹配，且对每个 <span class="math inline">\(i\)</span> 有 <span class="math display">\[\sum\limits_{\pi\in
+X_i}w(\pi)=\Delta\cdot\sum\limits_{\pi'\in Y_i}w(\pi').\]</span>
+综上所述就得到了 <span class="math inline">\(w(G)=\Delta\cdot
+w(G')\)</span>。</p>
+<p>最后是一个简单的引理，在下一节要用到。</p>
+<blockquote><p><strong>顶点分裂</strong>：设顶点 <span class="math inline">\(v\in
+G\)</span> 的邻居 <span class="math inline">\(N(v)\)</span>
+可以分成两个不相交的集合 <span class="math inline">\(N(v)=H\cup
+K\)</span>，这里 <span class="math inline">\(H\)</span> 和 <span class="math inline">\(K\)</span> 中允许有一个是空集。我们对图 <span class="math inline">\(G\)</span> 作一个简单的变换：从 <span class="math inline">\(v\)</span> 中分裂出两个新的顶点 <span class="math inline">\(v',v''\)</span>，用 <span class="math inline">\(v'\)</span> 代替 <span class="math inline">\(v\)</span> 去和 <span class="math inline">\(H\)</span> 中的顶点相连，用 <span class="math inline">\(v''\)</span> 代替 <span class="math inline">\(v\)</span> 去和 <span class="math inline">\(K\)</span> 中的顶点相连，<span class="math inline">\(v\)</span> 与 <span class="math inline">\(v'\)</span> 和 <span class="math inline">\(v''\)</span> 之间的边权值都定义为
+1，则得到的新图 <span class="math inline">\(G'\)</span>
+与原图有同样的权函数：<span class="math inline">\(w(G)=w(G')\)</span>。</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/split.svg" width="250"></p>
+</blockquote>
+<p>证明是非常简单的，这里不再赘述。</p>
+<h1 id="铺砌计数的另一种解法">铺砌计数的另一种解法</h1>
+<p>我们用蜘蛛移动技巧给出 Aztec 钻石图多米诺铺砌的另一种解答。将 <span class="math inline">\(G_n\)</span> 倾斜 45 度放置，这样清楚地显示了
+<span class="math inline">\(n^2\)</span>
+个胞腔，每个胞腔的边的权值与蜘蛛引理中一样，依顺时针方向为 <span class="math inline">\(x,y,z,w\)</span>。设 <span class="math inline">\(G_n\)</span> 的权函数为 <span class="math inline">\(w(G_n)\)</span>，我们来求出序列 <span class="math inline">\(\{w(G_n)\}_{n\geq1}\)</span>
+所满足的递归关系：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/G0.svg" width="350"></p>
+<p>首先对 <span class="math inline">\(G_n\)</span>
+的每一个顶点都使用顶点分裂，我们得到图 <span class="math inline">\(G_n'\)</span>，新增加的边的权值都是 1：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/G1.svg" width="350"></p>
+<p>由于顶点分裂不改变权函数，因此 <span class="math inline">\(G_n'\)</span> 的权函数仍然是 <span class="math inline">\(w(G_n)\)</span>。</p>
+<p>然后对 <span class="math inline">\(G_n'\)</span>
+在各个胞腔处分别使用蜘蛛移动，得到图 <span class="math inline">\(G_n^{'\phantom{}'}\)</span>：</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/G2.svg" width="350"></p>
+<p><span class="math inline">\(n^2\)</span> 个胞腔总共使用了 <span class="math inline">\(n^2\)</span> 次蜘蛛移动，因此 <span class="math inline">\(G_n^{'\phantom{}'}\)</span> 的权函数是
+<span class="math inline">\(\frac{w(G_n)}{\Delta^{n^2}}\)</span>。</p>
+<p>我们再换另一个角度来计算 <span class="math inline">\(G_n^{'\phantom{}'}\)</span>
+的权函数，这也是整个证明峰回路转，柳暗花明之处！注意 <span class="math inline">\(G_n^{'\phantom{}'}\)</span>
+的匹配在边界上是限制死的，真正自由的部分是内部的一个低一阶的图 <span class="math inline">\(G_{n-1}\)</span>，所以可以剥去外面的这层顶点！</p>
+<p><img style="margin:0px auto;display:block" src="/images/aztec/G3.svg" width="350"></p>
+<p>而且这个 <span class="math inline">\(G_{n-1}\)</span>
+图的边的权值的标记规则是 <span class="math inline">\(z/\Delta,w/\Delta,x/\Delta,y/\Delta\)</span>，因此其权函数为
+<span class="math inline">\(\frac{w(G_{n-1})}{\Delta^{n(n-1)}}\)</span>（因为
+<span class="math inline">\(G_{n-1}\)</span> 的每个匹配包含 <span class="math inline">\(n(n-1)\)</span> 条边，是 <span class="math inline">\(G_{n-1}\)</span>
+的顶点个数的一半）。从而我们用两种方法得到了 <span class="math inline">\(G_n^{'\phantom{}'}\)</span> 的权函数，即
+<span class="math display">\[\frac{w(G_n)}{\Delta^{n^2}}=\frac{w(G_{n-1})}{\Delta^{n(n-1)}},\]</span>
+也就是 <span class="math inline">\(w(G_n)=\Delta^nw(G_{n-1})\)</span>。</p>
+<p>注意 <span class="math inline">\(n=1\)</span> 时 <span class="math inline">\(w(G_1)=\Delta\)</span>，从而 <span class="math inline">\(w(G_n)=\Delta^{\frac{n(n+1)}{2}}\)</span>。特别令
+<span class="math inline">\(w=x=y=z=1\)</span> 我们就得到 <span class="math inline">\(n\)</span> 阶 Aztec 钻石图 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的所有多米诺骨牌覆盖的个数为 <span class="math inline">\(2^{\frac{n(n+1)}{2}}\)</span>。</p>
+<h1 id="多米诺洗牌算法和蜘蛛移动是等价的">多米诺洗牌算法和蜘蛛移动是等价的</h1>
+<p>最后我们来解释为什么多米诺洗牌算法和蜘蛛移动是等价的，特别还要补上前面多米诺洗牌算法表述中留下的坑：在
+slide 操作后 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+区域内所有的洞可以唯一地表示为不相交的黑方块的并。下面将会看到虽然在多米诺洗牌算法中三个操作是有先后顺序的，但它们不过是蜘蛛移动作用在不同胞腔上的表现，即多米诺洗牌算法的删除、移动、填充三步分别对应于蜘蛛移动中的三种情形。</p>
+<p>注意到对一个图 <span class="math inline">\(G\)</span>
+的所有胞腔都进行顶点分裂 + 蜘蛛移动后得到的是一个新图 <span class="math inline">\(G'\)</span>，<span class="math inline">\(G'\)</span> 的形状依赖于 <span class="math inline">\(G\)</span>
+的边界，因此不是每个胞腔都能恢复原状，可能某些胞腔会有悬在外面的边
+（正如上面证明中看到的），但是当 <span class="math inline">\(G=\mathbb{Z}^2\)</span> 是网格图时我们得到的仍然是
+<span class="math inline">\(\mathbb{Z}^2\)</span>。我们来考察 <span class="math inline">\(\mathbb{Z}^2\)</span>
+的一个局部的胞腔在变换下的结果。为了表述方便，我们使用先蜘蛛移动然后进行顶点合并的操作，这个操作是先顶点分裂再蜘蛛移动的逆操作，因此仍然把
+<span class="math inline">\(\mathbb{Z}^2\)</span> 变为自身。</p>
+<ol type="1">
+<li><p>delete：
+<img style="margin:0px auto;display:block" src="/images/aztec/delete.svg" width="600">
+其中第一个箭头表示蜘蛛移动，第二个箭头表示顶点合并后又回到一个正方形胞腔。</p></li>
+<li><p>slide：
+<img style="margin:0px auto;display:block" src="/images/aztec/slide.svg" width="600">
+同上，第一个箭头表示蜘蛛移动，第二个箭头表示顶点合并后又回到一个正方形胞腔。</p></li>
+<li><p>create：
+<img style="margin:0px auto;display:block" src="/images/aztec/create.svg" width="600">
+同样地第一个箭头表示蜘蛛移动，第二个箭头表示顶点合并后又回到一个正方形胞腔。</p></li>
+</ol>
+<p>你可以看到变换前后匹配的变化情况确实与洗牌算法的三步一一对应。注意到新匹配的边要么来自
+slide 中移动的原匹配中的边，要么来自 creation
+中补充的边，从而我们证明了如下结论：</p>
+<blockquote><p><strong>推论</strong>：将 <span class="math inline">\(\mathbb{Z}^2\)</span> 看做无穷大的国际象棋棋盘，设
+<span class="math inline">\(\mathcal{T}\)</span>
+是其一个多米诺铺砌，则在 delete 和 slide
+操作后平面上的空白区域可以表示为不相交的黑方块的并，因而可以用 create
+操作补全为新的匹配。</p>
+</blockquote>
+<p>那么怎么说明在 slide 操作后 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+区域内的洞可以唯一地表示为不相交的黑方块的并呢？</p>
+<p>为此我们先将最初的 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的铺砌扩展为整个平面的铺砌：对 <span class="math inline">\(\mathrm{AZ}(n)\)</span> 外部的区域，位于 <span class="math inline">\(x\)</span> 轴上方的方格一律用形如
+<code>白 | 黑</code> 的水平骨牌铺砌，位于 <span class="math inline">\(x\)</span> 轴下方的方格一律用形如
+<code>黑 | 白</code> 的水平骨牌铺砌，容易看出在这个扩展后的铺砌中 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+外部没有坏方块，所有的坏方块都位于区域 <span class="math inline">\(\mathrm{AZ}(n)\)</span> 中，所以 delete 操作后
+<span class="math inline">\(\mathrm{AZ}(n)\)</span> 外部区域不变；在
+slide 操作中 <span class="math inline">\(\mathrm{AZ}(n)\)</span>
+的外部位于 <span class="math inline">\(x\)</span>
+轴上方的骨牌整体向上移动一步，位于 <span class="math inline">\(x\)</span>
+轴下方的骨牌整体向下移动一步，因此在得到的 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+的两侧出现了两个半无穷长的宽度为 2
+的带状空白。整个棋盘的空白区域由这两个半无穷带状区域和 <span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+内部的洞组成。根据上面的推论，这些空白区域可以表示为不相交的黑方块的并，但是容易观察看出这些黑方块不可能跨越
+<span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+的边界，从而两个半无穷带状区域可以表示为不相交的黑方块的并
+（易见这个表示是唯一的），<span class="math inline">\(\mathrm{AZ}(n+1)\)</span>
+内部也可以表示为不相交黑方块的并
+（易见也是唯一的，考虑最右上方的黑方块，这个必然是唯一确定的，拿走以后继续考虑剩下的黑方块中最右上方的，如此继续下去可得表示的唯一性）。</p>
+<p>至此我们就从图变换的角度论证了多米诺洗牌算法的正确性。</p>
+<h1 id="结语">结语</h1>
+<p>Aztec
+钻石图背后有许多有趣而深刻的数学，即便是计数这样看似初等的问题也有许多奥妙在里面，比如还有基于
+graph condensation 的证明、转化为不相交路径组计数的证明、利用 <span class="math inline">\({\rm GL}_n(\mathbb{C})\)</span>
+的表示等精彩的证明，它们背后的思想已经广泛应用在计数组合学的许多问题中。借用丘吉尔的一句话作为结尾：“Now
+this is not the end. It is not even the beginning of the end. But it is,
+perhaps, the end of the beginning”。</p>
+<p>顺便一提，演示多米诺算法的 GIF 动图是我学习 Python
+的第一个正式程序，从开始看语法到写出最初的粗糙版本花了一周左右的时间。</p>
+
+                                                        
+<p class="pink-link-context">
+    <a href="/macmahon-formula-plane-partitions/" rel="next" title="平面分拆的 Macmahon 公式">
+    上一篇：平面分拆的 Macmahon 公式
+  </a>
+</p>
+
+
+
+
+                                                </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  tex: 'ams'
+});
+</script>
+  <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+  </script>
+  
+
+    </body>
+
+    </html>

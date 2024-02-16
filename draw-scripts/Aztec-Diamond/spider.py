@@ -36,7 +36,7 @@ def line(p, q, color=None):
     moveto(p)
     lineto(q)
     if color:
-        stoke(*color)
+        stroke(*color)
     else:
         stroke()
 
