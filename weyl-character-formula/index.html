@@ -15,15 +15,17 @@
     <meta name="description" content="本文是我念 Humphreys 的教材 《Introduction to Lie Algebras and
 Representation Theory》 时的读书笔记，目的是介绍该书的核心定理
 24.3，即有限维复半单李代数的 Weyl 特征公式。Humphreys 书中对 Weyl
-特征公式的证明来自 Bernstein, Gelfand 和 Gelfand 1971 年的论证 1。Humphrey 的书在 1972 年出版。1974
-年，Victor Kac 给出了 BGG 证明的一个简化版本，这个证明也收录在他所著的
-《Infinite-dimensional Lie algebras》一书第 10 章中。但 Humphreys 写书时
-Kac 的证明还未出现。Humphreys 遵循的 BGG 证明依赖于 Harish-Chandra
-关于泛包络代数的中心 \(Z =
-Z(U(\mathfrak{g}))\) 的一个结果。Kac 的论证避开了 Harish-Chandra
-的定理，而是巧妙地仅使用 \(Z\)
-的一个元素，即 Casimir 元素。现在的教材大多采用 Kac
-的论证，本文也是如此。">
+特征公式的证明来自 Bernstein, Gelfand 和 Gelfand 1971 年的论证。1974 年
+Victor Kac 给出了 BGG 证明的一个简化版本，这个证明也收录在 Kac 所著的
+《Infinite-dimensional Lie algebras》一书第 10 章中。但 Humphreys
+的书的第一版在 1972 年出版，当时 Kac 的证明还未出现。在第二版中
+Humphreys Humphreys 将 Kac 的证明作为附录加入 24 节中。Humphreys 遵循的
+BGG 证明依赖于 Harish-Chandra 关于泛包络代数的中心 \(Z = Z(U(\mathfrak{g}))\) 的一个结果。Kac
+的论证避开了 Harish-Chandra 的定理，而是巧妙地仅使用 \(Z\) 的一个元素，即 Casimir
+元素。现在的教材大多采用 Kac 的论证，本文也是如此。
+但是注意 Humphreys 也解释了 BGG 证明的优点，比如 Proposition 24.2
+中证明一般 Verma 模具有有限合成列几乎无法避免使用 Harish-Chandra
+定理。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -336,7 +338,8 @@ Z(U(\mathfrak{g}))\) 的一个结果。Kac 的论证避开了 Harish-Chandra
 
 
                                         <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%83%8C%E6%99%AF%E5%9B%9E%E9%A1%BE%E4%B8%8E%E7%AC%A6%E5%8F%B7%E7%BA%A6%E5%AE%9A"><span class="section table-of-contents-text">背景回顾与符号约定</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9D%83%E6%A8%A1"><span class="section table-of-contents-text">权模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E9%AB%98%E6%9D%83%E5%BE%AA%E7%8E%AF%E6%A8%A1"><span class="section table-of-contents-text">最高权循环模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#verma-%E6%A8%A1"><span class="section table-of-contents-text">Verma 模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#casimir-%E7%AE%97%E5%AD%90"><span class="section table-of-contents-text">Casimir 算子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%8C%83%E7%95%B4-mathcalo-%E4%B8%8E%E5%90%88%E6%88%90%E5%88%97"><span class="section table-of-contents-text">范畴 \(\mathcal{O}\) 与合成列</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#verma-%E6%A8%A1%E7%9A%84%E7%89%B9%E5%BE%81"><span class="section table-of-contents-text">Verma 模的特征</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#weyl-%E7%89%B9%E5%BE%81%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">Weyl 特征公式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BE%8B%E5%AD%90mathfraksl_nmathbbc-%E7%9A%84%E7%89%B9%E5%BE%81%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">例子：\(\mathfrak{sl}_n(\mathbb{C})\)
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%83%8C%E6%99%AF%E5%9B%9E%E9%A1%BE%E4%B8%8E%E7%AC%A6%E5%8F%B7%E7%BA%A6%E5%AE%9A"><span class="section table-of-contents-text">背景回顾与符号约定</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9D%83%E6%A8%A1"><span class="section table-of-contents-text">权模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E9%AB%98%E6%9D%83%E5%BE%AA%E7%8E%AF%E6%A8%A1"><span class="section table-of-contents-text">最高权循环模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#verma-%E6%A8%A1"><span class="section table-of-contents-text">Verma 模</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#casimir-%E7%AE%97%E5%AD%90"><span class="section table-of-contents-text">Casimir 算子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%8C%83%E7%95%B4-mathcalo-%E4%B8%8E%E5%90%88%E6%88%90%E5%88%97"><span class="section table-of-contents-text">范畴 \(\mathcal{O}\) 与合成列</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#verma-%E6%A8%A1%E7%9A%84%E7%89%B9%E5%BE%81"><span class="section table-of-contents-text">Verma 模的特征</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bullet-%E4%BD%9C%E7%94%A8"><span class="section table-of-contents-text">\(\bullet\)
+作用</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#weyl-%E7%89%B9%E5%BE%81%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">Weyl 特征公式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BE%8B%E5%AD%90mathfraksl_nmathbbc-%E7%9A%84%E7%89%B9%E5%BE%81%E5%85%AC%E5%BC%8F"><span class="section table-of-contents-text">例子：\(\mathfrak{sl}_n(\mathbb{C})\)
 的特征公式</span></a></li></ol>
 </div>
 
@@ -347,15 +350,17 @@ Z(U(\mathfrak{g}))\) 的一个结果。Kac 的论证避开了 Harish-Chandra
                                                     <p>本文是我念 Humphreys 的教材 《Introduction to Lie Algebras and
 Representation Theory》 时的读书笔记，目的是介绍该书的核心定理
 24.3，即有限维复半单李代数的 Weyl 特征公式。Humphreys 书中对 Weyl
-特征公式的证明来自 Bernstein, Gelfand 和 Gelfand 1971 年的论证 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。Humphrey 的书在 1972 年出版。1974
-年，Victor Kac 给出了 BGG 证明的一个简化版本，这个证明也收录在他所著的
-《Infinite-dimensional Lie algebras》一书第 10 章中。但 Humphreys 写书时
-Kac 的证明还未出现。Humphreys 遵循的 BGG 证明依赖于 Harish-Chandra
-关于泛包络代数的中心 <span class="math inline">\(Z =
-Z(U(\mathfrak{g}))\)</span> 的一个结果。Kac 的论证避开了 Harish-Chandra
-的定理，而是巧妙地仅使用 <span class="math inline">\(Z\)</span>
-的一个元素，即 Casimir 元素。现在的教材大多采用 Kac
-的论证，本文也是如此。</p>
+特征公式的证明来自 Bernstein, Gelfand 和 Gelfand 1971 年的论证。1974 年
+Victor Kac 给出了 BGG 证明的一个简化版本，这个证明也收录在 Kac 所著的
+《Infinite-dimensional Lie algebras》一书第 10 章中。但 Humphreys
+的书的第一版在 1972 年出版，当时 Kac 的证明还未出现。在第二版中
+Humphreys Humphreys 将 Kac 的证明作为附录加入 24 节中。Humphreys 遵循的
+BGG 证明依赖于 Harish-Chandra 关于泛包络代数的中心 <span class="math inline">\(Z = Z(U(\mathfrak{g}))\)</span> 的一个结果。Kac
+的论证避开了 Harish-Chandra 的定理，而是巧妙地仅使用 <span class="math inline">\(Z\)</span> 的一个元素，即 Casimir
+元素。现在的教材大多采用 Kac 的论证，本文也是如此。</p>
+<p>但是注意 Humphreys 也解释了 BGG 证明的优点，比如 Proposition 24.2
+中证明一般 Verma 模具有有限合成列几乎无法避免使用 Harish-Chandra
+定理。</p>
 <span id="more"></span>
 <h1 id="背景回顾与符号约定">背景回顾与符号约定</h1>
 <p>令 <span class="math inline">\(\mathfrak{g}\)</span>
@@ -664,7 +669,11 @@ V_k=V.\]</span> 使得每个合成因子 <span class="math inline">\(V_i/V_{i-1}
 都有有限长度的合成列，由于我们有子模序列 <span class="math display">\[(0)\subset W_1\subset W\subset V.\]</span> 把
 <span class="math inline">\(W_1\)</span> 和 <span class="math inline">\(V/W\)</span> 的合成列塞到上面的式子中就得到了
 <span class="math inline">\(V\)</span> 的合成列。<span class="math inline">\(\blacksquare\)</span></p>
-<blockquote><p><strong>推论</strong>：Verma 模 <span class="math inline">\(M_\lambda\)</span> 有有限长度的合成列。</p>
+<blockquote>
+<p><strong>推论</strong>：设 <span class="math inline">\(\lambda\in\mathfrak{h}^\ast_{\mathbb{R}}\)</span>，即
+<span class="math inline">\(\lambda\)</span> 是单根的实线性组合，则
+Verma 模 <span class="math inline">\(M_\lambda\)</span>
+有有限长度的合成列。</p>
 </blockquote>
 <p><strong>证明</strong>：只要说明 <span class="math inline">\(M_\lambda\)</span>
 只包含有限多个线性无关的本原向量即可。由于任何权为 <span class="math inline">\(\mu\)</span> 的本原向量 <span class="math inline">\(u\)</span> 都生成一个最高权循环模 <span class="math inline">\(V_\mu\)</span>，而 Casimir 算子在 <span class="math inline">\(V_\mu\)</span> 上的作用是数乘 <span class="math inline">\(|\mu+\rho|^2-|\rho|^2\)</span>，这个值必须与
@@ -674,14 +683,32 @@ Casimir 算子在 <span class="math inline">\(M_\lambda\)</span> 上的数乘
 <span class="math inline">\(\mu\)</span> 构成的集合 <span class="math display">\[S^\lambda = \{\mu\mid \mu\preceq\lambda,\,
 |\mu+\rho|^2=|\lambda+\rho|^2\}\]</span> 是一个有限集，而权空间 <span class="math inline">\(V_\mu\)</span>
 的维数又是有限的，于是线性无关的本原向量的个数也是有限的。<span class="math inline">\(\blacksquare\)</span></p>
+<p>这个推论对所有 <span class="math inline">\(\lambda\in\mathfrak{h}^\ast\)</span>
+都是对的，但是一般情形的证明要更加复杂。上面的证明利用了 <span class="math inline">\((\cdot,\cdot)\)</span> 在 <span class="math inline">\(\mathfrak{h}^\ast_{\mathbb{R}}\)</span>
+上是正定的，这保证了 <span class="math inline">\(S^\lambda\)</span>
+是紧集。</p>
 <h1 id="verma-模的特征">Verma 模的特征</h1>
 <p>设 <span class="math inline">\(V=\oplus_{\lambda\in\mathfrak{h}^\ast}V_\lambda\)</span>
-是权模，定义形式幂级数 <span class="math display">\[\mathop{\mathrm{ch}}{V} = \sum_{\lambda} \dim
-V_\lambda\, e^\lambda.\]</span> <span class="math inline">\(\mathop{\mathrm{ch}}{V}\)</span>
+是权模，定义形式幂级数 <span class="math display">\[\mathop{\mathrm{ch}}{V} = \sum_{\lambda}(\dim
+V_\lambda)\, e^\lambda.\]</span> <span class="math inline">\(\mathop{\mathrm{ch}}{V}\)</span>
 是一个形式幂级数，叫做 <span class="math inline">\(V\)</span>
 的特征。<span class="math inline">\(e^\lambda\)</span>
 是一个形式指数，满足运算 <span class="math inline">\(e^\lambda\cdot
 e^\mu=e^{\lambda+\mu}\)</span>，其在 Weyl 权 <span class="math inline">\(W\)</span> 下的作用规定为 <span class="math inline">\(w\cdot e^\lambda=e^{w(\lambda)}\)</span>。</p>
+<p>特征通常是一个无穷项的线性组合，是一个形式级数，不存在收敛到某个值的说法。但在
+<span class="math inline">\(V\)</span> 是有限维表示时，<span class="math inline">\(\mathop{\mathrm{ch}}{V}\)</span> 其实是一个
+Laurent 多项式，我们来解释下为什么：</p>
+<p>取 <span class="math inline">\(\omega_1,\ldots,\omega_n\in
+P^+\)</span> 为一组基本整权，即 <span class="math inline">\(P\)</span>
+的一组整基。定义变元 <span class="math inline">\(x_i=e^{\omega_i}\)</span>，则对 <span class="math inline">\(V\)</span> 的任何权空间 <span class="math inline">\(V_\lambda\)</span>，由于有限维表示的权都是整权，故
+<span class="math inline">\(\lambda\)</span> 可以表示为 <span class="math inline">\(\omega_1,\ldots,\omega_n\)</span> 的整系数线性组合
+<span class="math display">\[\lambda=a_1\omega_1+\cdots+a_n\omega_n,\quad
+a_i\in\mathbb{Z}.\]</span> 则 <span class="math display">\[\mathop{\mathrm{ch}}{V} = \sum_{\lambda}(\dim
+V_\lambda)\, x_1^{a_1}\cdots
+x_n^{a_n}\in\mathbb{Z}[x_1^{\pm1},\ldots,x_n^{\pm1}]\]</span>
+是一个关于变元 <span class="math inline">\(x_1,\ldots,x_n\)</span>
+的有理多项式。实际上它关于 <span class="math inline">\(W\)</span>
+还是对称的。</p>
 <p>我们来计算 Verma 模的特征。考虑如下的乘积： <span class="math display">\[e^{\lambda}\cdot\prod_{\alpha\in\Phi^+}(1+e^{-\alpha}+e^{-2\alpha}+\cdots).\]</span>
 这个乘积展开的时候，是在每个正根 <span class="math inline">\(\alpha\)</span> 的括号中分别取形如 <span class="math inline">\(e^{-k_\alpha
 \alpha}\,(k_\alpha\in\mathbb{Z}_{\geq0})\)</span> 的一项，全部乘起来再和
@@ -694,28 +721,70 @@ e^\mu=e^{\lambda+\mu}\)</span>，其在 Weyl 权 <span class="math inline">\(W\)
 的权子空间的维数，所以上面的乘积就是 <span class="math inline">\(M_\lambda\)</span> 的特征，即 <span class="math display">\[\mathop{\mathrm{ch}}{M_\lambda} = e^\lambda
 \prod_{\alpha\in\Phi_+}(1+e^{-\alpha}+e^{-2\alpha}+\cdots).\]</span>
 这个式子可以进一步简化为 <span class="math display">\[\mathop{\mathrm{ch}}{M_\lambda} = e^\lambda
-\prod_{\alpha\in\Phi_+}(1-e^{-\alpha})^{-1}.\]</span></p>
+\prod_{\alpha\in\Phi_+}(1-e^{-\alpha})^{-1}.\]</span> 记 <span class="math display">\[q=e^\rho\prod_{\alpha\in\Phi_+}(1-e^{-\alpha}),\]</span>
+<span class="math inline">\(q\)</span> 叫做 Weyl 分母。它可以消掉 Verma
+特征中关于 <span class="math inline">\(\prod_{\alpha\in\Phi^+}\)</span>
+的连乘，即 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{M_\lambda}=
+e^{\lambda+\rho}.\]</span> 在后面我们要用到 <span class="math inline">\(q\)</span> 的如下性质：</p>
+<blockquote>
+<p><strong>命题</strong>：<span class="math inline">\(q\)</span>
+是“交错的”，即对任何 <span class="math inline">\(w\in W\)</span> 有
+<span class="math display">\[w\cdot q = (-1)^{l(w)}q.\]</span></p>
+</blockquote>
+<p>证明：只要对单反射 <span class="math inline">\(s_\alpha\)</span>
+验证有 <span class="math inline">\(s_\alpha\cdot q=-q\)</span>
+即可。我们有 <span class="math display">\[s_\alpha\cdot
+q=e^{s_\alpha(\rho)}\prod_{\gamma\in\Phi_+}(1-e^{-s_\alpha(\gamma)})=e^{s_\alpha(\rho)}(1-e^{-s_\alpha(\alpha)})\prod_{\gamma\in\Phi_+,\,\gamma\ne\alpha}(1-e^{-s_\alpha(\gamma)}).\]</span>
+由于 <span class="math inline">\(s_\alpha(\rho)=\rho-\alpha\)</span>
+以及 <span class="math inline">\(s(\alpha)=-\alpha\)</span>，所以前两个因子的乘积等于
+<span class="math inline">\(-e^{\rho}(1-e^{-\alpha})\)</span>。又由于
+<span class="math inline">\(s_\alpha\)</span> 置换 <span class="math inline">\(\Phi^+\setminus\{\alpha\}\)</span>，所以第三个因子等于
+<span class="math inline">\(\prod\limits_{\gamma\in\Phi_+,\,\gamma\ne\alpha}(1-e^{-\gamma})\)</span>。合起来就是
+<span class="math display">\[s_\alpha\cdot
+q=-e^{\rho}(1-e^{-\alpha})\prod_{\gamma\in\Phi_+,\,\gamma\ne\alpha}(1-e^{-\gamma})=-q.\]</span></p>
+<h1 id="bullet-作用"><span class="math inline">\(\bullet\)</span>
+作用</h1>
+<p>一种很方便的约定是规定 Weyl 群 <span class="math inline">\(W\)</span>
+在 <span class="math inline">\(\mathfrak{h}^\ast\)</span> 上的“点”作用
+<span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[w\bullet \lambda = w(\lambda+\rho) -
+\rho.\]</span> 这个作用和通常 <span class="math inline">\(W\)</span> 在
+<span class="math inline">\(\mathfrak{h}^\ast\)</span>
+上的线性作用相比不过是把原点变换到了 <span class="math inline">\(-\rho\)</span>，即它是以 <span class="math inline">\(-\rho\)</span>
+为中心进行变换。所以它不是线性的，即不再有 <span class="math inline">\(w\bullet(\lambda+\mu)=w\bullet\lambda+w\bullet\mu\)</span>
+成立。但它仍然是个群作用，即对 <span class="math inline">\(w_1,w_2\in
+W\)</span> 有 <span class="math inline">\(w_1\bullet(w_2\bullet\lambda)=(w_1w_2)\bullet\lambda\)</span>。</p>
+<p>记 <span class="math inline">\(W\bullet\lambda = \{w\bullet\lambda,
+w\in W\}\)</span>，则我们有如下结论：</p>
+<div id="bullet">
+<blockquote>
+<p><strong>命题</strong>：若 <span class="math inline">\(\lambda\in
+P^+\)</span> 是支配整权，则集合 <span class="math inline">\(W\bullet\lambda\)</span> 中的元素互不相同。</p>
+</blockquote>
+</div>
+<p>证明：只要证明若 <span class="math inline">\(w\bullet\lambda =
+1\bullet\lambda\)</span> 则 <span class="math inline">\(w=1\)</span>
+即可。由 <span class="math inline">\(w\bullet\lambda =
+1\bullet\lambda\)</span> 可得 <span class="math inline">\(w(\lambda+\rho)=\lambda+\rho\)</span>。由于 <span class="math inline">\(\lambda\)</span> 是支配整权，所以 <span class="math inline">\(\lambda+\rho\)</span>
+是强支配整权，它严格位于基本胞腔 <span class="math inline">\(\mathcal{D}\)</span> 的内部。<span class="math inline">\(W\)</span> 中仅有唯一的元素 1 可以将 <span class="math inline">\(\lambda+\rho\)</span> 映射到 <span class="math inline">\(\mathcal{D}\)</span> 中，所以 <span class="math inline">\(w=1\)</span>。</p>
 <h1 id="weyl-特征公式">Weyl 特征公式</h1>
 <p>在本节中，约定 <span class="math inline">\(\lambda\in P^+\)</span>
-总是支配整权。</p>
-<p>对任一整权 <span class="math inline">\(\mu\in P\)</span>，我们用
-<span class="math inline">\(S^\mu\)</span> 表示有限集 <span class="math display">\[S^\mu =
-\{\nu\mid\nu\preceq\mu,\,|\nu+\rho|^2=|\mu+\rho|^2\}.\]</span></p>
+总是支配整权。这时不可约模 <span class="math inline">\(L_\lambda\)</span> 是有限维的，Weyl 特征公式给出了
+<span class="math inline">\(\mathop{\mathrm{ch}}{L_\lambda}\)</span>
+的具体形式。</p>
+<p>记 <span class="math inline">\(S^\lambda\)</span> 为有限集 <span class="math display">\[S^\lambda =
+\{\mu\mid\mu\preceq\lambda,\,|\mu+\rho|^2=|\lambda+\rho|^2\}.\]</span></p>
 <p>根据我们之前的结论，Verma <span class="math inline">\(M_\lambda\)</span>
-有有限的合成列，且合成列中每个不可约因子的最高权 <span class="math inline">\(\mu\in S^\lambda\)</span>。设 <span class="math inline">\(a(\lambda,\mu)\)</span> 是不可约模 <span class="math inline">\(L_\mu\)</span> 在 <span class="math inline">\(M_\lambda\)</span> 的合成列中出现的次数，则</p>
-<p><span class="math display">\[\mathop{\mathrm{ch}}{M_\lambda}=\sum_{\mu\in
-S^\lambda}a(\lambda,\mu)\mathop{\mathrm{ch}}{L_\mu}.\]</span></p>
-<p>同理对每个 <span class="math inline">\(\mu\in
+有有限的合成列，且合成列中每个不可约因子 <span class="math inline">\(L_\mu\)</span> 满足 <span class="math inline">\(\mu\in S^\lambda\)</span>。进一步，对 <span class="math inline">\(\mu\in S^\lambda\)</span>，注意到 <span class="math inline">\(S^\mu\)</span> 是 <span class="math inline">\(S^\lambda\)</span> 的子集，所以 Verma 模 <span class="math inline">\(M_\mu\)</span> 的所有不可约因子 <span class="math inline">\(L_\nu\)</span> 满足 <span class="math inline">\(\nu\in S^\mu\subset S^\lambda\)</span>。</p>
+<p>对 <span class="math inline">\(\mu,\nu\in S^\lambda\)</span>，我们用
+<span class="math inline">\(a(\mu,\nu)\)</span> 表示不可约模 <span class="math inline">\(L_\nu\)</span> 在 Verma 模 <span class="math inline">\(M_\mu\)</span> 的合成列因子中出现的次数。则 <span class="math inline">\(a(\mu,\nu)\)</span> 是非负整数，满足 <span class="math inline">\(a(\mu,\mu)=1\)</span>，以及 <span class="math inline">\(\nu\not\preceq\mu\)</span> 则 <span class="math inline">\(a(\mu,\nu)=0\)</span>。</p>
+<p>于是对每个 <span class="math inline">\(\mu\in
 S^\lambda\)</span>，Verma 模 <span class="math inline">\(M_\mu\)</span>
-也可以分解为 <span class="math display">\[\mathop{\mathrm{ch}}{M_\mu}=\sum_{\nu\in
-S^\mu}a(\mu,\nu)\mathop{\mathrm{ch}}{L_\nu}.\]</span> 其中非负整数 <span class="math inline">\(a(\mu,\nu)\)</span> 满足 <span class="math inline">\(a(\mu,\mu)=1\)</span>，以及若 <span class="math inline">\(\nu\not\preceq\mu\)</span> 则 <span class="math inline">\(a(\mu,\nu)=0\)</span>。</p>
-<p>注意由于 <span class="math inline">\(\nu\preceq\mu\preceq\lambda\)</span>，以及 <span class="math inline">\(|\nu+\rho|=|\mu+\rho|=|\lambda+\rho|\)</span>，所以
-<span class="math inline">\(S^\mu\)</span> 是 <span class="math inline">\(S^\lambda\)</span> 的子集，上面对 <span class="math inline">\(\nu\)</span> 的求和实际上仍然在 <span class="math inline">\(S^\lambda\)</span> 中。</p>
-<p>设 <span class="math inline">\(\{L_{\mu_i},1\leq i\leq l\}\)</span>
-是所有出现在 <span class="math inline">\(M_\lambda\)</span>
-中的互不相同的不可约因子，其中 <span class="math inline">\(\mu_1=\lambda\)</span>。将这些 <span class="math inline">\(\{\mathop{\mathrm{ch}}{M_{\mu_i}},\mathop{\mathrm{ch}}{L_{\mu_i}}\}\)</span>
-按照偏序 <span class="math inline">\(\preceq\)</span> 排列，使得若 <span class="math inline">\(\mu_i\prec\mu_j\)</span> 则 <span class="math inline">\(i &gt; j\)</span>，则 <span class="math inline">\(\{\mathop{\mathrm{ch}}{M_\mu}\}\)</span> 和 <span class="math inline">\(\{\mathop{\mathrm{ch}}{L_\mu}\}\)</span>
-之间的矩阵是一个对角线上都是 1 的上三角矩阵： <span class="math display">\[\begin{pmatrix}
+可以分解为 <span class="math display">\[\mathop{\mathrm{ch}}{M_\mu}=\sum_{\nu\in
+S^\mu}a(\mu,\nu)\mathop{\mathrm{ch}}{L_\nu}.\]</span></p>
+<p>设 <span class="math inline">\(S^\lambda=\{\mu_1,\ldots,\mu_l\}\)</span>，我们将这些
+<span class="math inline">\(\{\mathop{\mathrm{ch}}{M_{\mu_i}},\mathop{\mathrm{ch}}{L_{\mu_i}}\}\)</span>
+按照降序排列，使得若 <span class="math inline">\(\mu_i\prec\mu_j\)</span> 则 <span class="math inline">\(i &gt; j\)</span>（这时必有 <span class="math inline">\(\mu_1=\lambda\)</span>），则它们之间的矩阵是一个对角线上都是
+1 的上三角矩阵： <span class="math display">\[\begin{pmatrix}
 \mathop{\mathrm{ch}}{M_\lambda}\\
 \mathop{\mathrm{ch}}{M_{\mu_2}}\\
 \vdots\\
@@ -734,97 +803,75 @@ S^\mu}a(\mu,\nu)\mathop{\mathrm{ch}}{L_\nu}.\]</span> 其中非负整数 <span c
 \mathop{\mathrm{ch}}{L_{\mu_l}}
 \end{pmatrix}
 \]</span> 这个矩阵可逆，且逆矩阵也是对角元是 1
-的上三角矩阵，所以可以反解出 <span class="math display">\[\mathop{\mathrm{ch}}{L_\mu} = \sum_{\nu\in S^\mu}
-b(\mu,\nu)\mathop{\mathrm{ch}}{M_\nu}.\]</span> 其中 <span class="math inline">\(b(\mu,\mu)=1\)</span>，以及对任何 <span class="math inline">\(\nu\not\preceq\mu\)</span> 有 <span class="math inline">\(b(\mu,\nu)=0\)</span>。</p>
-<p>记 <span class="math inline">\(q=e^\rho\prod_{\alpha\in\Phi_+}(1-e^{-\alpha})\)</span>，<span class="math inline">\(q\)</span> 叫做 Weyl 分母。它可以消掉 Verma
-特征中关于 <span class="math inline">\(\prod_{\alpha\in\Phi^+}\)</span>
-的连乘，即对任何权 <span class="math inline">\(\mu\)</span> 有 <span class="math inline">\(q\cdot\mathop{\mathrm{ch}}{M_\mu}=
-e^{\mu+\rho}\)</span>。所以把 <span class="math inline">\(q\)</span>
-乘在上式两边得到 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda} =
-\sum_{\mu\in S^\lambda} b(\lambda,\mu)e^{\mu+\rho}.\]</span> 即 <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda}=q^{-1}\sum_{\mu\in
-S^\lambda} b(\lambda,\mu)e^{\mu+\rho}.\]</span> 记 <span class="math inline">\(b_\mu=b(\lambda,\mu)\)</span>，我们现在只差计算出
-<span class="math inline">\(b_\mu\)</span>
-的值了。不过在这之前我们先做一点准备工作。</p>
-<p>一种很方便的约定是规定 Weyl 群 <span class="math inline">\(W\)</span>
-在 <span class="math inline">\(\mathfrak{h}^\ast\)</span> 上的“点”作用
-<span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[w\bullet \lambda = w(\lambda+\rho) -
-\rho.\]</span> 这个作用和通常 <span class="math inline">\(W\)</span> 在
-<span class="math inline">\(\mathfrak{h}^\ast\)</span>
-上的线性作用相比不过是把原点变换到了 <span class="math inline">\(-\rho\)</span>。所以它是仿射的，即不再有 <span class="math inline">\(w\bullet(\lambda+\mu)=w\bullet\lambda+w\bullet\mu\)</span>
-成立。但它仍然是个群作用，即对 <span class="math inline">\(w_1,w_2\in
-W\)</span> 有 <span class="math inline">\(w_1\bullet(w_2\bullet\lambda)=(w_1w_2)\bullet\lambda\)</span>。</p>
-<p>记 <span class="math inline">\(W\bullet\lambda = \{w\bullet\lambda,
-w\in W\}\)</span>，则集合 <span class="math inline">\(W\bullet\lambda\)</span> 中的元素互不相同，由于
-<span class="math inline">\(\lambda\in P^+\)</span> 是支配整权，所以
-<span class="math inline">\(\lambda+\rho\)</span>
-是强支配整权，所以对任何 <span class="math inline">\(w\in W\)</span> 有
-<span class="math inline">\(w(\lambda+\rho)\preceq
-\lambda+\rho\)</span>，即 <span class="math inline">\(w\bullet\lambda\preceq\lambda\)</span>，且等号成立当且仅当
-<span class="math inline">\(w=1\)</span>。又 <span class="math display">\[|w\bullet\lambda +
-\rho|=|w(\lambda+\rho)|=|\lambda+\rho|\]</span> 所以 <span class="math inline">\(W\bullet\lambda\subseteq S^\lambda\)</span>。</p>
+的上三角矩阵，所以可以反解出 <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda} = \sum_{\mu\in
+S^\lambda}
+b(\lambda,\mu)\mathop{\mathrm{ch}}{M_\mu}.\label{eq:q1}\tag{1}\]</span>
+其中 <span class="math inline">\(b(\lambda,\lambda)=1\)</span>，以及对任何 <span class="math inline">\(\mu\not\preceq\lambda\)</span> 有 <span class="math inline">\(b(\lambda,\mu)=0\)</span>。</p>
+<p>记 <span class="math inline">\(b_\mu=b(\lambda,\mu)\)</span>，我们下面来解出系数
+<span class="math inline">\(b_\mu\)</span>。</p>
+<p>将 <span class="math inline">\(q\)</span> 乘在 <span class="math inline">\((\ref{eq:q1})\)</span> 两边得到 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda} =
+\sum_{\mu\in S^\lambda} b_\mu e^{\mu+\rho}\label{eq:q2}\tag{2}.\]</span>
+我们有如下引理：</p>
+<div id="important-lemma">
 <blockquote>
-<p><strong>引理</strong>：集合 <span class="math inline">\(W\bullet\lambda\)</span> 和 <span class="math inline">\(S^\lambda\)</span> 是一一对应的，且当 <span class="math inline">\(\mu=w\bullet\lambda\)</span> 时有 <span class="math inline">\(b_\mu=(-1)^{l(w)}\)</span>。</p>
+<p><strong>引理</strong>：集合 <span class="math inline">\(\{\mu\in
+S^\lambda\mid b_\mu\ne0\}\)</span> 和集合 <span class="math inline">\(W\bullet\lambda\)</span> 一一对应，并且若 <span class="math inline">\(\mu=w\bullet\lambda\)</span> 则 <span class="math inline">\(b_\mu=(-1)^{l(w)}\)</span>。</p>
 </blockquote>
-<p>我们把引理的证明稍微推迟一下，先用它导出 Weyl 特征公式。</p>
-<p>由引理我们可以把等式 <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda}=q^{-1}\sum_{\mu\in
-S^\lambda} b_{\mu}e^{\mu+\rho}\]</span> 改写为 <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda}=q^{-1}\sum_{w\in
-W}(-1)^{l(w)}e^{w\bullet\lambda+\rho}=q^{-1}\sum_{w\in
-W}(-1)^{l(w)}e^{w(\lambda+\rho)}.\]</span> 特别令 <span class="math inline">\(\lambda=0\)</span> 为一维平凡表示，则 <span class="math inline">\(\mathop{\mathrm{ch}}{L_\lambda}=e^{0}=1\)</span>，于是我们有</p>
+</div>
+<p>我们把这个引理的证明先放一放，继续用它得出重要的 Weyl 公式。</p>
+<p>由 <a href="#important-lemma">引理</a> 我们可以把 <span class="math inline">\((\ref{eq:q2})\)</span> 改写成 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{w\in
+W}(-1)^{l(w)}e^{w\bullet\lambda+\rho}=\sum_{w\in
+W}(-1)^{l(w)}e^{w(\lambda+\rho)}.\]</span> 即 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{w\in
+W}(-1)^{l(w)}e^{w(\lambda+\rho)}.\label{eq:q3}\tag{3}\]</span></p>
+<p>特别令 <span class="math inline">\(\lambda=0\)</span>
+为一维平凡表示，则 <span class="math inline">\(\mathop{\mathrm{ch}}{L_\lambda}=e^{0}=1\)</span>，于是我们有</p>
 <blockquote><p><strong>Weyl 分母公式</strong>: <span class="math display">\[q=\sum_{w\in
 W}(-1)^{l(w)}e^{w(\rho)}.\]</span></p>
 </blockquote>
-<p>从而有</p>
+<p>再把 Weyl 分母公式代入 <span class="math inline">\((\ref{eq:q3})\)</span>，我们得到</p>
 <blockquote>
 <p><strong>Weyl 特征公式</strong>： <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda} =
 \frac{\sum_{w\in W}(-1)^{l(w)}e^{w(\lambda+\rho)}}{\sum_{w\in
 W}(-1)^{l(w)}e^{w(\rho)}}.\]</span></p>
 </blockquote>
-<p>回到引理的证明。</p>
+<p>回到 <a href="#important-lemma">引理</a> 的证明。</p>
 <blockquote>
 <p>我们先证明当 <span class="math inline">\(\mu=w\bullet\lambda\)</span>
 时有 <span class="math inline">\(b_\mu=(-1)^{l(w)}\)</span> 成立。</p>
 </blockquote>
-<p>首先我们来说明 Weyl 分母 <span class="math inline">\(q\)</span>
-是“交错的”，即对任何 <span class="math inline">\(w\in W\)</span> 有
-<span class="math display">\[w\cdot q = (-1)^{l(w)}q.\]</span>
-而这只要对单反射 <span class="math inline">\(s_\alpha\)</span> 验证有
-<span class="math inline">\(s_\alpha\cdot q=-q\)</span> 即可。我们有
-<span class="math display">\[s_\alpha\cdot
-q=e^{s_\alpha(\rho)}\prod_{\gamma\in\Phi_+}(1-e^{-s_\alpha(\gamma)})=e^{s_\alpha(\rho)}(1-e^{-s_\alpha(\alpha)})\prod_{\gamma\in\Phi_+,\,\gamma\ne\alpha}(1-e^{-s_\alpha(\gamma)}).\]</span>
-由于 <span class="math inline">\(s_\alpha(\rho)=\rho-\alpha\)</span>
-以及 <span class="math inline">\(s(\alpha)=-\alpha\)</span>，所以前两个因子的乘积等于
-<span class="math inline">\(-e^{\rho}(1-e^{-\alpha})\)</span>。又由于
-<span class="math inline">\(s_\alpha\)</span> 置换除 <span class="math inline">\(\alpha\)</span> 以外的其它正根，所以第三个因子等于
-<span class="math inline">\(\prod\limits_{\gamma\in\Phi_+,\,\gamma\ne\alpha}(1-e^{-\gamma})\)</span>。合起来就是
-<span class="math display">\[s_\alpha\cdot
-q=-e^{\rho}(1-e^{-\alpha})\prod_{\gamma\in\Phi_+,\,\gamma\ne\alpha}(1-e^{-\gamma})=-q.\]</span></p>
-<p>在等式 <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda}=q^{-1}\sum_{\mu\in
-S^\lambda} b_{\mu}e^{\mu+\rho}\]</span> 两边用 <span class="math inline">\(w\in W\)</span> 作用，利用我们刚刚证明的 <span class="math inline">\(w\cdot q=(-1)^{l(w)}q\)</span>，以及 <span class="math inline">\(\mathop{\mathrm{ch}}{L_\lambda}\)</span> 是 <span class="math inline">\(W-\)</span> 不变的，得到 <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda}=q^{-1}\sum_{\nu\in
-S^\lambda}(-1)^{l(w)}b_{\nu}e^{w(\nu+\rho)}.\]</span>
-注意我们把上面的求和下标从 <span class="math inline">\(\mu\)</span>
-换成了 <span class="math inline">\(\nu\)</span>。把它与 <span class="math display">\[\mathop{\mathrm{ch}}{L_\lambda}=q^{-1}\sum_{\mu\in
-S^\lambda} b_{\mu}e^{\mu+\rho}\]</span> 比较，得到 <span class="math display">\[q^{-1}\sum_{\mu\in S^\lambda}
-b_{\mu}e^{\mu+\rho}=q^{-1}\sum_{\nu\in
-S^\lambda}(-1)^{l(w)}b_{\nu}e^{w(\nu+\rho)}.\]</span></p>
-<p>比较两边 <span class="math inline">\(e^{\mu+\rho}\)</span>
-的系数，可见若 <span class="math inline">\(\mu+\rho=w(\nu+\rho)\)</span>
-则 <span class="math inline">\(b_\mu=(-1)^{l(w)}b_\nu\)</span>。即若
-<span class="math inline">\(\mu = w\bullet\nu\)</span> 则 <span class="math inline">\(b_\mu=(-1)^{l(w)}b_\nu\)</span>。特别地由于 <span class="math inline">\(b_\lambda=1\)</span> 所以若 <span class="math inline">\(\mu=w\bullet\lambda\)</span> 则 <span class="math inline">\(b_\mu=(-1)^{l(w)}\)</span>。</p>
+<p>将 <span class="math inline">\(w\in W\)</span> 作用在 <span class="math inline">\((\ref{eq:q2})\)</span> 两边，并注意 <span class="math inline">\(\mathop{\mathrm{ch}}{L_\lambda}\)</span> 是 <span class="math inline">\(W-\)</span> 不变的以及 <span class="math inline">\(w\cdot q=(-1)^{l(w)}q\)</span>，得到 <span class="math display">\[q\cdot\mathop{\mathrm{ch}}{L_\lambda}=\sum_{\mu\in
+S^\lambda}(-1)^{l(w)}b_\mu e^{w(\mu+\rho)}.\label{eq:q4}\tag{4}\]</span>
+将 <span class="math inline">\((\ref{eq:q4})\)</span> 中的求和符号换成
+<span class="math inline">\(\nu\)</span>，并比较 <span class="math inline">\((\ref{eq:q2})\)</span> 和 <span class="math inline">\((\ref{eq:q4})\)</span>，我们有 <span class="math display">\[\sum_{\mu\in S^\lambda} b_\mu
+e^{\mu+\rho}=\sum_{\nu\in S^\lambda}(-1)^{l(w)}b_\nu
+e^{w(\nu+\rho)}.\label{eq:q5}\tag{5}\]</span></p>
+<p>设 <span class="math inline">\(\mu\)</span> 使得 <span class="math inline">\(b_\mu\ne0\)</span>。比较 <span class="math inline">\((\ref{eq:q5})\)</span> 两边 <span class="math inline">\(e^{\mu+\rho}\)</span> 项的系数，我们得到若 <span class="math inline">\(\mu+\rho=w(\nu+\rho)\)</span>，即如果 <span class="math inline">\(\mu=w\bullet\nu\)</span>，则 <span class="math display">\[b_\mu =
+(-1)^{l(w)}b_\nu.\label{eq:q6}\tag{6}\]</span> 特别地由于 <span class="math inline">\(b_\lambda=1\)</span>，所以如果 <span class="math inline">\(\mu=w\bullet\lambda\)</span> 则 <span class="math display">\[b_\mu=(-1)^{l(w)}.\label{eq:q7}\tag{7}\]</span></p>
 <blockquote>
-<p>再证明 <span class="math inline">\(W\bullet\lambda\)</span> 和 <span class="math inline">\(S^\lambda\)</span> 是一一对应的，即 <span class="math inline">\(W\bullet\lambda = S^\lambda\)</span>。</p>
+<p>再证明 <span class="math inline">\(\{\mu\in S^\lambda\mid
+b_\mu\ne0\}\)</span> 和 <span class="math inline">\(W\bullet\lambda\)</span> 是一一对应的。</p>
 </blockquote>
-<p>我们已经看到 <span class="math inline">\(W\bullet\lambda\subset
-S^\lambda\)</span>，只要再证明反向包含。即如果 <span class="math inline">\(\mu\preceq\lambda\)</span> 满足 <span class="math inline">\(|\mu+\rho|=|\lambda+\rho|\)</span>，则 <span class="math inline">\(\mu\in W\bullet\lambda\)</span>。我们知道 Weyl
-群传递地作用在所有的胞腔 (chambers) 上，因此总可以选取 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w(\mu+\rho)\)</span> 落在基本胞腔 <span class="math inline">\(\mathcal{D}\)</span> 内，即 <span class="math inline">\(w(\mu+\rho)\)</span> 是一个支配整权。</p>
+<p>在前面的 <a href="#bullet">命题</a> 中我们已经看到 <span class="math inline">\(\{w\bullet\lambda\mid w\in W\}\)</span>
+是互不相同的。设 <span class="math inline">\(\mu=w\bullet\lambda\)</span>，我们来说明 <span class="math inline">\(\mu\in S^\lambda\)</span>。这比较简单，因为 <span class="math inline">\(\lambda+\rho\)</span> 是强支配整权，对所有 <span class="math inline">\(w\)</span> 都有 <span class="math inline">\(w(\lambda+\rho)\preceq \lambda+\rho\)</span>，从而
+<span class="math inline">\(\mu=w\bullet\lambda\preceq\lambda\)</span>。另一方面
+<span class="math inline">\(w\)</span> 保持内积 <span class="math inline">\((\cdot,\cdot)\)</span>，所以 <span class="math display">\[|\lambda+\rho| =
+|w(\lambda+\rho)|=|\mu+\rho|.\]</span> 从而 <span class="math inline">\(\mu\in S^\lambda\)</span>。此外 <span class="math inline">\((\ref{eq:q7})\)</span> 告诉我们这时 <span class="math inline">\(b_\mu=(-1)^{l(w)}\ne0\)</span>，所以我们证明了
+<span class="math inline">\(W\bullet\lambda\)</span> 可以嵌入到 <span class="math inline">\(\{\mu\in S^\lambda\mid b_\mu\ne0\}\)</span>
+中。</p>
+<p>再证明反向的包含关系。即如果 <span class="math inline">\(\mu\in
+S^\lambda\)</span> 且 <span class="math inline">\(b_\mu\ne0\)</span>，则
+<span class="math inline">\(\mu\in W\bullet\lambda\)</span>。我们知道
+Weyl 群传递地作用在所有的胞腔 (chambers) 上，因此总可以选取 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w(\mu+\rho)\)</span> 落在基本胞腔 <span class="math inline">\(\mathcal{D}\)</span> 内，即 <span class="math inline">\(w(\mu+\rho)\)</span> 是一个支配整权。</p>
 <p>设 <span class="math inline">\(\nu=w\bullet\mu=w(\mu+\rho)-\rho\)</span>，我们来证明
 <span class="math inline">\(\nu=\lambda\)</span>，从而 <span class="math inline">\(\mu=w^{-1}\bullet\lambda\in
 W\bullet\lambda\)</span>。</p>
-<p>由于 <span class="math inline">\(\mu\preceq\lambda\)</span>，所以可以设 <span class="math inline">\(\lambda
--\mu=\sum_{\alpha\in\Phi^+}k_\alpha\alpha\)</span>
-为正根的非负整系数线性组合。则 <span class="math display">\[0=|\lambda+\rho|^2-|\nu+\rho|^2=(\lambda+\rho,\sum_{\alpha\in\Phi^+}k_\alpha\alpha)+(\nu+\rho,\sum_{\alpha\in\Phi^+}k_\alpha\alpha).\]</span>
+<p>由于 <span class="math inline">\(\nu=w\bullet\mu\)</span> 和 <span class="math inline">\(b_\mu\ne0\)</span>，根据 <span class="math inline">\((\ref{eq:q6})\)</span>，<span class="math inline">\(b_\nu\)</span> 也不等于 0。这说明 <span class="math inline">\(\nu\preceq\lambda\)</span>。所以可以设 <span class="math display">\[\lambda
+-\nu=\gamma=\sum_{\alpha\in\Phi^+}k_\alpha\alpha\]</span>
+为正根的非负整系数线性组合。则 <span class="math display">\[0=|\lambda+\rho|^2-|\nu+\rho|^2=(\lambda+\rho,\gamma)+(\nu+\rho,\gamma).\]</span>
 由于 <span class="math inline">\(\lambda+\rho\)</span>
-是强支配整权，<span class="math inline">\(\nu+\rho\)</span>
-是支配整权，所以上面的和等于 0 只能在所有 <span class="math inline">\(\{k_\alpha\}\)</span> 均为 0 时才能发生，即 <span class="math inline">\(\mu=\lambda\)</span>。</p>
+是强支配整权，<span class="math inline">\(\nu+\rho=w(\mu+\rho)\)</span>
+是支配整权，<span class="math inline">\(\gamma\)</span>
+是正根的非负整系数线性组合，所以上面的和等于 0 只能在 <span class="math inline">\(\gamma=0\)</span> 时才能发生，即 <span class="math inline">\(\nu=\lambda\)</span>。</p>
 <p>至此 Weyl 特征公式得证。</p>
 <h1 id="例子mathfraksl_nmathbbc-的特征公式">例子：<span class="math inline">\(\mathfrak{sl}_n(\mathbb{C})\)</span>
 的特征公式</h1>
@@ -879,12 +926,6 @@ x_{\sigma(n)}^{0}}=\frac{\det(x_j^{\lambda_i+n-i})}{\det(x_j^{n-i})}.\]</span>
 是一个整系数对称多项式 <span class="math inline">\(s_\lambda(x_1,\ldots,x_n)\)</span>，叫做 Schur
 多项式。</p></li>
 </ol>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>这段背景介绍摘自 Bump 的讲义。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 
                                                         
 <p class="pink-link-context">
