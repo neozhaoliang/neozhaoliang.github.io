@@ -263,6 +263,14 @@ DPP 的 Andrews 猜想，并仅使用初等的 \(q-\)
 
         
 
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
     </ul>
 </div>
 
@@ -664,7 +672,8 @@ q^{|Q'|}\)</span> 保持不变，从而 Gessel-Viennot 引理仍然可用。</p>
 q^{\sum_{i=1}^m
 a_i}\cdot\det\left(\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}=
 \det\left(q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}.
-\]</span> 通过用 <span class="math inline">\(a_i-1\)</span> 代替 <span class="math inline">\(a_i\)</span> 并使用前面的 <a href="#linalg1">引理</a>，我们得到</p>
+\]</span> 通过用 <span class="math inline">\(a_i-1\)</span> 代替 <span class="math inline">\(a_i\)</span> 并使用前面的 <a href="#linalg1">引理
+1</a>，我们得到</p>
 <blockquote><p><strong>定理 3</strong>：<span class="math inline">\({\rm
 dpp}(n)\)</span> 的 <span class="math inline">\(q-\)</span> 计数为 <span class="math display">\[
 \det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq i,j\leq
@@ -793,7 +802,7 @@ dpp}(n+1)\)</span></th>
 <span class="math inline">\(R\)</span> 是由 <span class="math inline">\(R_1,\ldots,R_n\)</span> 为行向量排成的 <span class="math inline">\(n\times n\)</span> 矩阵 （不含 <span class="math inline">\(k=0\)</span>），则 <span class="math display">\[
 RC = \begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
 \]</span> <strong>注意到 <span class="math inline">\(R\)</span>
-是一个对角线上都是 1 的上三角矩阵</strong> （在 <a href="#theorem-Hkn">前面定理</a> 中对 <span class="math inline">\(n+1\)</span> 的情形依次令 <span class="math inline">\(k=1,\ldots,n\)</span>)，所以 <span class="math inline">\(R\)</span> 是可逆的，从而 <span class="math display">\[
+是一个对角线上都是 1 的上三角矩阵</strong> （在 <a href="#theorem-Hkn">定理 4</a> 中对 <span class="math inline">\(n+1\)</span> 的情形依次令 <span class="math inline">\(k=1,\ldots,n\)</span>)，所以 <span class="math inline">\(R\)</span> 是可逆的，从而 <span class="math display">\[
 C = R^{-1}\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
 \]</span> 另一方面对矩阵 <span class="math inline">\(H_{0n}\)</span>，其最后一行 <span class="math inline">\(R_0\)</span> 满足 <span class="math inline">\(R_0\cdot C=\det
 H_{0n}=h_{0n}\)</span>，而其它的任何行与 <span class="math inline">\(C\)</span> 的内积是 0，所以 <span class="math display">\[
@@ -806,13 +815,13 @@ h_{0n}R\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix}.
 \]</span> 记 <span class="math inline">\(A_n=RH_{0n}R^{-1}\)</span>，
 <span class="math display">\[
 V_n=R\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix},
-\]</span> 则我们有 <span class="math display">\[
-\begin{equation}
+\]</span> 则我们有 <span class="math display">\[\begin{equation}
 A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
 \end{equation}
-\]</span></p>
-<p>到目前为止这些都是寻常的线性代数操作，并无出彩之处。Mills
-等人的第一个想法是：上式中给出的递推关系，加上我们已知的初始条件 <span class="math inline">\(h_1=1+q^2\)</span>，是否能够唯一确定序列 <span class="math inline">\(\{h_{kn}\}\)</span>？这就是下面的引理：</p>
+\label{eq:recurrent}\tag{1}\]</span></p>
+<p>到目前为止这些都是寻常的线性代数操作，并无出彩之处。<span class="math inline">\(A_n\)</span> 和 <span class="math inline">\(V_n\)</span>
+都是可以计算出来的（你从右边目录栏里面可以看到这一点），而 <span class="math inline">\(\{h_{kn}\}\)</span> 是我们要求的。Mills
+等人的想法是：上式中给出的递推关系，加上我们已知的初始条件 <span class="math inline">\(h_1=1+q^2\)</span>，是否能够唯一确定序列 <span class="math inline">\(\{h_{kn}\}\)</span>？答案是肯定的：</p>
 <div id="lemma3">
 <blockquote><p><strong>引理 3</strong>：如果序列 <span class="math inline">\(\{b_{kn},n\geq1,0\leq k\leq n\}\)</span> 满足</p>
 <ol type="1">
@@ -829,17 +838,23 @@ A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
 <span class="math inline">\(A_nX=h_{0n}V_n\)</span>的解，由于 <span class="math inline">\(A_n\)</span> 是可逆矩阵，此方程组有唯一解，从而
 <span class="math inline">\(b_{kn}=h_{kn}\)</span> 对任何 <span class="math inline">\(k,n\)</span> 成立。</p>
 <p>所以如果我们能构造出一个满足 <a href="#lemma3">引理 3</a>
-中三个条件的序列来，那么它必然就是我们要求的 <span class="math inline">\(\{h_{kn}\}\)</span>。怎么构造好呢？我们观察 <span class="math display">\[\begin{equation}
+中三个条件的序列来，那么它必然就是我们要求的 <span class="math inline">\(\{h_{kn}\}\)</span>。怎么构造好呢？我们观察 <span class="math inline">\((\ref{eq:recurrent})\)</span>： <span class="math display">\[\begin{equation}
 A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
-\end{equation}\]</span> 看起来 <span class="math inline">\(b_{0n}\)</span>
-孤零零地放在右边，这不美观啊？可不可以把它和 <span class="math inline">\(b_{1n},\ldots,b_{nn}\)</span> 放在一起呢？这就是
+\end{equation}\]</span> 看起来 <span class="math inline">\(h_{0n}\)</span>
+孤零零地放在右边，这不美观啊？可不可以把它和 <span class="math inline">\(h_{1n},\ldots,h_{nn}\)</span> 放在一起呢？这就是
 Mills 等人接下来的精彩操作了：记 <span class="math display">\[
 K_n=\begin{pmatrix}\ast&amp;\ast\\V_n&amp;I_n-A_n\end{pmatrix}.
 \]</span> 注意 <span class="math inline">\(K_n\)</span> 是一个 <span class="math inline">\(n+1\)</span> 阶的矩阵，<span class="math inline">\(\ast\)</span> 位置是 <span class="math inline">\(K_n\)</span> 的第一行，暂时不确定是什么，但是不管
 <span class="math inline">\(\ast\)</span> 是什么，<span class="math inline">\(K_n\)</span> 都满足 <span class="math display">\[K_n\begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}=
   \begin{pmatrix}\ast\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}.
-\]</span> 哎呦，这不很像一个特征值是 1 的特征向量嘛？所以如果我们能在
-<span class="math inline">\(K_n\)</span> 中适当填入 <span class="math inline">\(\ast\)</span> 位置的元素，并找到 <span class="math inline">\(K_n\)</span> 的<strong>任何一个</strong>特征值是 1
+\]</span>
+上面右边向量的第一个分量不知道，但是它应该是什么是显而易见的，肯定是
+<span class="math inline">\(h_{0n}\)</span> 啊！这不就是一个特征值是 1
+的特征向量嘛？所以我们下面的任务肯定是构造合适的 <span class="math inline">\(K_n\)</span>，使得 <span class="math display">\[K_n\begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}=
+  \begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}.
+\]</span> 成立啊！</p>
+<p>所以如果我们能在 <span class="math inline">\(K_n\)</span> 中适当填入
+<span class="math inline">\(\ast\)</span> 位置的元素，并找到 <span class="math inline">\(K_n\)</span> 的<strong>任何一个</strong>特征值是 1
 的特征向量 <span class="math inline">\(v_n=(v_{0n},\ldots,v_{nn})^T\)</span>，则 <span class="math display">\[
 \begin{pmatrix}v_{0n}\\v_{1n}\\\vdots\\v_{nn}\end{pmatrix}=
 K_n\begin{pmatrix}v_{0n}\\v_{1n}\\\vdots\\v_{nn}\end{pmatrix}=
@@ -848,8 +863,19 @@ v_{0n}\\v_{0n}V_n+(I_n-A_n)\begin{pmatrix}v_{1n}\\\vdots\\v_{nn}\end{pmatrix}
 \end{pmatrix}.
 \]</span> 即 <span class="math display">\[
 A_n\begin{pmatrix}v_{1n}\\\vdots\\v_{nn}\end{pmatrix}=v_{0n}V_n.
-\]</span> 从而取 <span class="math inline">\(b_1=h_1=1+q^2\)</span>，<span class="math inline">\(b_{01}=h_{01}=1\)</span>，<span class="math inline">\(b_{11}=h_{11}=q^2\)</span>，并假设对任何 <span class="math inline">\(i&lt;n\)</span> 已经得到了 <span class="math inline">\(b_i\)</span> 和 <span class="math inline">\(b_{ki}(0\leq k\leq i)\)</span> 的值，定义 <span class="math inline">\(b_{kn}=\dfrac{b_{n-1}}{v_{0n}}v_{kn}\)</span> 和
-<span class="math inline">\(b_n=\sum_{k=0}^nb_{kn}\)</span>，则不难验证
+\]</span> 则 <span class="math inline">\(\{v_{kn}\}\)</span> 与 <span class="math inline">\(\{h_{kn}\}\)</span>
+满足同样的递推关系，仅初始条件不同。根据 <a href="#lemma3">引理
+3</a>，它们只会相差一个倍数。</p>
+<p>假设我们已经得到了 <span class="math inline">\(\{v_{kn}\}\)</span>，那么 <span class="math inline">\(\{h_{kn}\}\)</span> 可以通过如下方式得到：</p>
+<p>记 <span class="math inline">\(b_{01}=1,b_{11}=q^2\)</span>，以及
+<span class="math inline">\(b_1=b_{01}+b_{11}=1+q^2\)</span>。即我们令
+<span class="math inline">\(\{b_{kn}\}\)</span> 与 <span class="math inline">\(\{h_{kn}\}\)</span> 在 <span class="math inline">\(n=1\)</span> 时有同样的初始条件。</p>
+<p>假设对所有 <span class="math inline">\(i&lt;n\)</span> 我们已经得到了
+<span class="math inline">\(\{b_{ki}\mid 0\leq k\leq i\}\)</span>，从而
+<span class="math inline">\(b_i=\sum_{k=0}^ib_{ki}\)</span>
+也是知道的。对 <span class="math inline">\(n\)</span> 的情形，我们对
+<span class="math inline">\(\{v_{kn}\}\)</span> 整体进行一个放缩，使得
+<span class="math inline">\(v_{0n}\)</span> 变成 <span class="math inline">\(b_{n-1}=b_{0n}\)</span>，则其它的 <span class="math inline">\(v_{kn}\)</span> 必然变成了 <span class="math inline">\(b_{kn}\)</span>。即令 <span class="math inline">\(b_{kn}=\dfrac{b_{n-1}}{v_{0n}}v_{kn}\)</span>。不难验证
 <span class="math inline">\(\{b_{kn}\}\)</span> 满足 <a href="#lemma3">引理 3</a> 的条件，从而必然等于 <span class="math inline">\(\{h_{kn}\}\)</span>，这样就得到了 DPP 的 <span class="math inline">\(q-\)</span> 计数。</p>
 <p>Mills 等人算出了 <span class="math inline">\(I_n-A_n\)</span> 和
 <span class="math inline">\(V_n\)</span>： <span class="math display">\[
@@ -880,9 +906,8 @@ q^{\text{some power}}\times\binom{n+k}{k}_q\binom{2n-k}{n-k}_q.
 \]</span> 经过试验以后他们发现取 <span class="math display">\[
 v_{kn}=q^{k(n+1)}\binom{n+k}{k}_q\binom{2n-k}{n-k}_q
 \]</span> 即可。<strong>这一步即为 Mills 等人的“灵魂一猜”</strong>。</p>
-<p>不难验证 <span class="math inline">\(v_{0n}=\binom{2n}{n}_q\)</span>
-和 <span class="math inline">\(\sum_{k=0}^nv_{kn}=\binom{3n+1}{n}_q\)</span>，所以如前所述记
-<span class="math inline">\(b_{kn}=b_{n-1}\dfrac{v_{0n}}{v_{kn}}\)</span>，则
+<p>经过计算可以得到 <span class="math display">\[v_{0n}=\binom{2n}{n}_q,\quad
+\sum_{k=0}^nv_{kn}=\binom{3n+1}{n}_q.\]</span> 所以如前所述记 <span class="math inline">\(b_{kn}=b_{n-1}\dfrac{v_{0n}}{v_{kn}}\)</span>，则
 <span class="math display">\[
 b_n=\sum_{k=0}^nb_{kn}=b_{n-1}\frac{\sum_{k=0}^nv_{kn}}{v_{0n}}=b_{n-1}\frac{\binom{3n+1}{n}_q}{\binom{2n}{n}_q}.
 \]</span> 此即为序列 <span class="math inline">\(\{b_n\}\)</span>
