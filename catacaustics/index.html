@@ -1,0 +1,879 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Catacaustics of a coffee cup | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="I love reading the blogs of John Baez and Greg Egan. John Baez is a
+very prolific mathematician in popular science, and he has written
+countless popul">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Catacaustics of a coffee cup"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/闲聊/">
+                    闲聊 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Catacaustics of a coffee cup</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2024-02-08T16:00:00.000Z"><a href="/catacaustics/index.html">2024-02-09</a></time>
+
+                                <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+                                    
+
+                                        <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#pov-ray-optical-experiment"><span class="section table-of-contents-text">POV-Ray Optical Experiment</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#catacaustics-of-parametric-curves"><span class="section table-of-contents-text">Catacaustics of parametric
+curves</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#catacaustics-of-polynomial-curves"><span class="section table-of-contents-text">Catacaustics of polynomial
+curves</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#some-notes"><span class="section table-of-contents-text">Some notes</span></a></li></ol>
+</div>
+
+                                            
+
+
+                                                <div class="entry pink-link-context">
+                                                    <p>I love reading the blogs of John Baez and Greg Egan. John Baez is a
+very prolific mathematician in popular science, and he has written
+countless popular science articles. Greg Egan is also a very prolific
+science fiction writer from Australia. His blog articles are equally
+wonderful! However, unlike John Baez, Greg Egan's articles do not tend
+to cater to readers of different levels. For me, understanding what he
+is saying is often not an easy task.</p>
+<p>John Baez's blog has a series called <a target="_blank" rel="noopener" href="https://johncarlosbaez.wordpress.com/2012/08/31/rolling-circles-and-balls-part-1/">Rolling
+circles and balls</a> that discussing the involute of a circle and
+catacaustics. Greg Egan also has an <a href="#https://www.gregegan.net/SCIENCE/Catacaustics/Catacaustics.html">article</a>
+that delves deeper into the catacaustics of curves. This topic is very
+interesting, and I couldn't resist the temptation to write some code,
+conduct experiments, and document them here.</p>
+<h1 id="pov-ray-optical-experiment">POV-Ray Optical Experiment</h1>
+<p>There is an interesting physical phenomenon. When light shines on the
+inner wall of a coffee cup, it reflects and forms a bright spot, called
+catacaustic.</p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/caustics/cup.jpg"></p>
+<p>The reason for the formation of the catacaustic is that after the
+light is reflected on the inner wall of the cup, the distribution of
+photons is uneven, and some areas have a particularly high density of
+photons, resulting in higher brightness.</p>
+<p>The catacaustic is a curve that is tangent to all reflected rays,
+meaning it is the envelope of all reflected rays. The specific shape of
+catacaustic depends on the shape of the cup and the position of the
+light source. Assuming the cup is circular, when the light source is a
+point source located exactly on the edge of the cup, the resulting
+catacaustic is a <a href="#https://en.wikipedia.org/wiki/Cardioid">cardioid</a>. When the
+light source is at infinity (can be considered as a parallel light
+source), the resulting scattering is a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Nephroid">nephroid</a>. In general,
+the shape of the catacaustic lies between a cardioid and a nephroid.</p>
+<p>What's even more interesting is that if the shape of the cup is the
+cardioid curve, and the light source is positioned exactly at the cusp.
+The resulting catacaustic is exactly the nephroid. I wrote a <a href="#https://gist.github.com/neozhaoliang/15d0350450885b90c5efbc73ddcdbdde">POV-Ray
+script</a> to simulate this phenomenon.</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A cardioid catacaustic</td>
+<td style="text-align: center;">A nephroid catacaustic</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="400" src="/images/caustics/caustics_cardioid.png"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="400" src="/images/caustics/caustics_nephroid.png"></td>
+</tr>
+</tbody>
+</table>
+<p>It is worth noting that both the cardioid and the nephroid are
+so-called <a href="#https://en.wikipedia.org/wiki/Epicycloid">epicycloids</a>, with
+the only difference being the ratio of the radii of the two circles.</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Cardioid</td>
+<td style="text-align: center;">Nephroid</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><video src="/images/caustics/cardioid.mp4" controls=""></video></td>
+<td style="text-align: center;"><video src="/images/caustics/nephroid.mp4" controls=""></video></td>
+</tr>
+</tbody>
+</table>
+<p>So we can easily make the following conjecture: if we place a light
+source inside or at the cusp of a nephroid, will we obtain another
+epicycloid? However, according to Greg Egan's experiment on his blog,
+this should not hold true.</p>
+<p>In theory, this POV-Ray script can render the effect of any parameter
+curve reflection (you need to make some modifications yourself, such as
+adjusting the scale and light source position). However, rendering
+parametric surface + radiosity in POV-Ray is very slow. So if you want
+to give it a try, it is best to use POV-Ray's native CSG to construct
+the specular curve.</p>
+<h1 id="catacaustics-of-parametric-curves">Catacaustics of parametric
+curves</h1>
+<p>In this section, we will introduce how to calculate the catacaustic
+of a general parameter curve <span class="math inline">\(\mathbf{c}(t)=(x(t),y(t))\)</span>。</p>
+<p>If the position of the light source is <span class="math inline">\((a,b)\)</span>, then at a point <span class="math inline">\((x,y)\)</span> on the curve, the direction of the
+incident light ray is <span class="math display">\[\mathbf{l}=(x-a,y-b).\]</span> We don't need to
+normalize <span class="math inline">\(\mathbf{l}\)</span> because we
+will only need the direction of the light ray and not its length.</p>
+<p>At the same point <span class="math inline">\((x,y)\)</span>, the
+normal vector of the curve is <span class="math display">\[\mathbf{n}=\frac{(-y',
+x')}{\sqrt{(x')^2+(y')^2}}=\frac{(-y',
+x')}{|\mathbf{r}'|}.\]</span></p>
+<p>so the direction of the reflected ray at point <span class="math inline">\((x,y)\)</span> is given by the following
+reflection formula: <span class="math display">\[\mathbf{r}= \mathbf{l}-
+2(\mathbf{l}\cdot \mathbf{n})\mathbf{n}.\]</span></p>
+<p>Let <span class="math inline">\((X,Y)\)</span> be any point on the
+reflected ray, since <span class="math inline">\((x,y)\)</span> is the
+starting point of the reflected ray, <span class="math inline">\((X-x,Y-y)\)</span> is parallel to <span class="math inline">\(\mathbf{r}\)</span>. Let <span class="math inline">\(\mathbf{r}=(r_x,r_y)\)</span>, then <span class="math inline">\((X-x,Y-y)\)</span> is perpendicular to <span class="math inline">\((-r_y, r_x)\)</span>, that is, <span class="math display">\[(X-x, Y-y)\cdot(-r_y, r_x)=0.\]</span> Let <span class="math display">\[F(X,Y,t)=(X-x, Y-y)\cdot(-r_y, r_x),\]</span>
+then we obtain the equation of the curve family satisfied by the
+reflected ray: <span class="math inline">\(F(X,Y,t)=0\)</span>.
+Therefore, the catacaustic, as the envelope of all reflected rays, can
+be obtained by solving the system of equations <span class="math display">\[\begin{align*}F(X,Y,t)=0,\\\frac{\partial
+F}{\partial t}F(X,Y,t)=0.\end{align*}\]</span> that is, <span class="math display">\[\begin{align*}(X-x, Y-y)\cdot(-r_y,
+r_x)&amp;=0,\\-(x',y')\cdot(-r_y, r_x) +
+(X-x,Y-y)\cdot(-r_y', r_x') &amp;=0.\end{align*}\]</span> And
+then solving for <span class="math inline">\(X,Y\)</span>.</p>
+<p>If you still remember the inverse formula of a 2x2 matrix, this
+system of equations can actually be visually written out for its
+solution. Let's write it as</p>
+<p><span class="math display">\[\begin{pmatrix}-r_y &amp; r_x\\
+-r_y'&amp;r_x'\end{pmatrix}\cdot\begin{pmatrix}X-x\\Y-y\end{pmatrix}=\begin{pmatrix}0\\
+r_xy'-r_yx'\end{pmatrix}.\]</span> So <span class="math display">\[\begin{align*}\begin{pmatrix}X-x\\Y-y\end{pmatrix}&amp;=\begin{pmatrix}-r_y
+&amp; r_x\\ -r_y'&amp;r_x'\end{pmatrix}^{-1}\begin{pmatrix}0\\
+r_xy'- r_yx'\end{pmatrix}\\
+&amp;=\frac{1}{r_xr_y'-r_yr_x'}\begin{pmatrix}r_x' &amp;
+-r_x\\ r_y'&amp;-r_y\end{pmatrix}\begin{pmatrix}0\\
+r_xy'-r_yx'\end{pmatrix}\\
+&amp;=\frac{r_xy'-r_yx'}{r_yr_x'-r_xr_y'}\begin{pmatrix}r_x\\
+r_y\end{pmatrix}.\end{align*}\]</span> That is, <span class="math display">\[\begin{pmatrix}X\\
+Y\end{pmatrix}=\begin{pmatrix}x\\y\end{pmatrix} +
+\frac{r_xy'-r_yx'}{r_yr_x'-r_xr_y'}\begin{pmatrix}r_x\\
+r_y\end{pmatrix}.\]</span></p>
+<p>According to the deductions above, I wrote a small script to
+calculate the catacaustic of a circle using <code>sympy</code>
+(version=1.12). The center of the circle is at the origin with a radius
+of 1, and the light source is at <span class="math inline">\((1,0)\)</span>.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>x = cos(t)<br>y = sin(t)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>ray = curve - light_source<br>dx = diff(x, t)<br>dy = diff(y, t)<br>n = Matrix([dy, -dx])<br>reflected_ray = simplify(ray - <span class="hljs-number">2</span> * ray.dot(n) * n / n.dot(n))<br>F = (Y - y) * reflected_ray[<span class="hljs-number">0</span>] - (X - x) * reflected_ray[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y)<br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{trigsimp(result[X], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{trigsimp(result[Y], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
+<p>The result returned by <code>sympy</code> is:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">X(t)=<span class="hljs-number">2</span>*cos(t)/<span class="hljs-number">3</span> + cos(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span><br>Y(t)=<span class="hljs-number">2</span>*sin(t)/<span class="hljs-number">3</span> + sin(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span><br></code></pre></td></tr></tbody></table></figure>
+<p>This is exactly the parametric representation of the cardioid:</p>
+<p><span class="math display">\[\left\{\begin{align*}x(t)&amp;=\frac{\cos(2t) +
+2\cos(t)}{3},\\ y(t)&amp;=\frac{\sin(2t) +
+2\sin(t)}{3}.\end{align*}\right.\]</span></p>
+<p>Using this parameter, we continue to calculate the catacaustic
+obtained when the light source is placed at the cusp of the cardioid,
+corresponding to point <span class="math inline">\((-\frac{1}{3},0)\)</span> when <span class="math inline">\(t=\pi\)</span>:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>x = (<span class="hljs-number">2</span>*cos(t) + cos(<span class="hljs-number">2</span>*t)) / <span class="hljs-number">3</span><br>y = (<span class="hljs-number">2</span>*sin(t) + sin(<span class="hljs-number">2</span>*t)) / <span class="hljs-number">3</span><br>curve = Matrix([x, y])<br>light_source = Matrix([S(<span class="hljs-string">'-1/3'</span>, evaluate=<span class="hljs-literal">False</span>), <span class="hljs-number">0</span>])<br>ray = curve - light_source<br>dx = diff(x, t)<br>dy = diff(y, t)<br>n = Matrix([dy, -dx])<br>reflected_ray = simplify(ray - <span class="hljs-number">2</span> * ray.dot(n) * n / n.dot(n))<br>F = (Y - y) * reflected_ray[<span class="hljs-number">0</span>] - (X - x) * reflected_ray[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y)<br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{trigsimp(result[X], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{trigsimp(result[Y], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
+<p><code>sympy</code> quickly calculated the correct result:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">X(t)=sin(t)*sin(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span> + cos(t)/<span class="hljs-number">3</span><br>Y(t)=-sin(t)*cos(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span> + sin(t)/<span class="hljs-number">3</span><br></code></pre></td></tr></tbody></table></figure>
+<p>It's not difficult to verify</p>
+<p><span class="math display">\[\begin{align*}\frac{\sin(t)\sin(2t) +
+\cos(t)}{3}&amp;=\frac{3\cos(t) - \cos(3t)}{6},\\ \frac{-\sin(t)\cos(2t)
++ \sin(t)}{3}&amp;=\frac{3\sin(t) -
+\sin(3t)}{6}.\end{align*}\]</span></p>
+<p>This is exactly the parametric form in the <a href="#https://en.wikipedia.org/wiki/Nephroid#Parametric">Wikipedia</a>
+page when <span class="math inline">\(a\)</span> is set to <span class="math inline">\(a=1/6\)</span>.</p>
+<h1 id="catacaustics-of-polynomial-curves">Catacaustics of polynomial
+curves</h1>
+<p>Usually, the equation of a curve is given in the form of an implicit
+function <span class="math inline">\(P(x,y)=0\)</span>, where <span class="math inline">\(P\)</span> is a polynomial in two variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Such curves are called plane algebraic
+curves. In this case, solving for the catacaustic requires the use of
+tools like Gröbner bases.</p>
+<p>Let's go back to the case of parametric equations. We have already
+seen that in this case, the catacaustic <span class="math inline">\((X,Y)\)</span> has an explicit expression</p>
+<p><span class="math display">\[\begin{pmatrix}X\\
+Y\end{pmatrix}=\begin{pmatrix}x\\y\end{pmatrix} +
+\frac{r_xy'-r_yx'}{r_yr_x'-r_xr_y'}\begin{pmatrix}r_x\\
+r_y\end{pmatrix}.\]</span></p>
+<p>Where <span class="math inline">\(x,y,r_x,r_y\)</span> are functions
+in one-variable <span class="math inline">\(t\)</span>，and their
+derivatives are also computable, so <span class="math inline">\((X,Y)\)</span> can be computed.</p>
+<p>However, in the case of implicit functions, we do not have an
+expression for <span class="math inline">\(x,y\)</span> in terms of
+<span class="math inline">\(t\)</span>. But it's okay, let's assume that
+there is such a parameter expression and see what conclusions we can
+draw. Let <span class="math inline">\(x=x(t),y=y(t)\)</span> be
+functions of some parameter <span class="math inline">\(t\)</span>, and
+differentiating both sides of <span class="math inline">\(P(x,y)=0\)</span> with respect to <span class="math inline">\(t\)</span> yields <span class="math display">\[\frac{\partial P}{\partial t}=\frac{\partial
+P}{\partial x}x'(t) + \frac{\partial P}{\partial
+y}y'(t)=0.\]</span> Let <span class="math inline">\(k=-\frac{\partial P}{\partial x}/\frac{\partial
+P}{\partial y}\)</span>, then <span class="math inline">\(y'(t)=kx'(t)\)</span>.</p>
+<p>For the two components <span class="math inline">\((r_x,r_y)\)</span>
+of the reflected light <span class="math inline">\(\mathbf{r}\)</span>,
+we also use chain rule to differentiate them separately. We have <span class="math display">\[\begin{align*}\frac{\partial r_x}{\partial
+t}&amp;=\frac{\partial r_x}{\partial x}x'(t) + \frac{\partial
+r_x}{\partial y}y'(t),\\
+\frac{\partial r_y}{\partial t}&amp;=\frac{\partial r_y}{\partial
+x}x'(t) + \frac{\partial r_y}{\partial
+y}y'(t).\end{align*}\]</span> so we find that the ratio <span class="math display">\[\begin{align*}
+\frac{r_xy'-r_yx'}{r_yr_x'-r_xr_y'}&amp;=\frac{r_xk-r_y}{r_y(\frac{\partial
+r_x}{\partial x}+\frac{\partial r_x}{\partial y}k)-r_x(\frac{\partial
+r_y}{\partial x} + \frac{\partial r_y}{\partial y}k)}\\
+&amp;=-\frac{r_x\frac{\partial P}{\partial x}+r_y\frac{\partial
+P}{\partial y}}{r_y(\frac{\partial r_x}{\partial x}\frac{\partial
+P}{\partial y}-\frac{\partial r_x}{\partial y}\frac{\partial P}{\partial
+x})-r_x(\frac{\partial r_y}{\partial x}\frac{\partial P}{\partial y} -
+\frac{\partial r_y}{\partial y}\frac{\partial P}{\partial
+x})}.\end{align*}\]</span> becomes a quantity that does not explicitly
+depend on <span class="math inline">\(t\)</span>, i.e., the variable
+<span class="math inline">\(t\)</span> "cancels out". Substituting this
+into the expression for catacaustic above, we obtain <span class="math display">\[\begin{pmatrix}X\\
+Y\end{pmatrix}=\begin{pmatrix}x\\y\end{pmatrix}-\frac{r_x\frac{\partial
+P}{\partial x}+r_y\frac{\partial P}{\partial y}}{r_y(\frac{\partial
+r_x}{\partial x}\frac{\partial P}{\partial y}-\frac{\partial
+r_x}{\partial y}\frac{\partial P}{\partial x})-r_x(\frac{\partial
+r_y}{\partial x}\frac{\partial P}{\partial y} - \frac{\partial
+r_y}{\partial y}\frac{\partial P}{\partial x})}\begin{pmatrix}r_x\\
+r_y\end{pmatrix}.\]</span> This equation can be further simplified:
+noting that the normal vector at point <span class="math inline">\((x,y)\)</span> is given by <span class="math inline">\(\mathbf{n}=\frac{\nabla P}{|\nabla P|}\)</span>,
+where <span class="math inline">\(\nabla P=(\frac{\partial P}{\partial
+x},\frac{\partial P}{\partial y})\)</span>. From <span class="math display">\[\mathbf{r}= \mathbf{l}- 2(\mathbf{l}\cdot
+\mathbf{n})\mathbf{n}\]</span> We can derive <span class="math display">\[\mathbf{r}\cdot \nabla P=-\mathbf{l}\cdot \nabla
+P.\]</span> and thus <span class="math display">\[\begin{pmatrix}X\\
+Y\end{pmatrix}=\begin{pmatrix}x\\y\end{pmatrix}+\frac{\mathbf{l}\cdot\nabla
+P}{r_y(\frac{\partial r_x}{\partial x}\frac{\partial P}{\partial
+y}-\frac{\partial r_x}{\partial y}\frac{\partial P}{\partial
+x})-r_x(\frac{\partial r_y}{\partial x}\frac{\partial P}{\partial y} -
+\frac{\partial r_y}{\partial y}\frac{\partial P}{\partial
+x})}\begin{pmatrix}r_x\\ r_y\end{pmatrix}.\]</span> These are two
+equations satisfied by four variables <span class="math inline">\((x,y,X,Y)\)</span>, in the form of <span class="math inline">\(F(X,x,y)=0\)</span> and <span class="math inline">\(G(Y,x,y)=0\)</span>. Remember that we also have a
+known equation <span class="math inline">\(P(x,y)=0\)</span>. In order
+to eliminate <span class="math inline">\(x,y\)</span> from these three
+equations and obtain an expression that only contains <span class="math inline">\((X,Y)\)</span>, we can try using the <a href="#https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis">Gröbner basis
+method</a>. The Gröbner basis method transforms the polynomial
+system</p>
+<p><span class="math display">\[F=G=P=0\]</span> into a set of
+equivalent new equations <span class="math display">\[g_1=g_2=\cdots=g_m=0.\]</span> which have exactly
+the same solution set.</p>
+<p><span class="math inline">\(\{g_1,\ldots,g_m\}\)</span> is a set of
+generators of the ideal <span class="math inline">\(I=\langle
+F,G,P\rangle\)</span> generated by <span class="math inline">\(F,G,P\)</span> in the ring <span class="math inline">\(\mathbb{R}[x,y,X,Y]\)</span>, and <span class="math inline">\(\{g_1,\ldots,g_m\}\)</span> is called the reduced
+Gröbner basis of <span class="math inline">\(I\)</span>. The value of
+<span class="math inline">\(m\)</span> is difficult to determine before
+computation, but it is always finite. Under lexicographic order, the
+reduced Gröbner basis has a nice property that when changing from <span class="math inline">\(g_1\)</span> to <span class="math inline">\(g_m\)</span>, the variables in the polynomials
+<span class="math inline">\(\{g_1,\ldots,g_m\}\)</span> are eliminated
+in the order <span class="math inline">\(x\to y\to X\to Y\)</span>. Note
+that this is not a rigorous statement, as we cannot always eliminate
+variables in this order, but if elimination occurs, it will follow this
+order. This allows us to perform a "back-substitution" operation similar
+to the Gaussian elimination. As a result, solving the new system of
+equations will be simpler than the original one.</p>
+<p>Let's try an experiment with <code>sympy</code>:</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>x, y, X, Y = symbols(<span class="hljs-string">"x y X Y"</span>)<br>P = x**<span class="hljs-number">2</span> + y**<span class="hljs-number">2</span> - <span class="hljs-number">1</span><br>dx = diff(P, x)  <span class="hljs-comment"># gradient of P</span><br>dy = diff(P, y)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>l = curve - light_source  <span class="hljs-comment"># the incident ray</span><br>n = Matrix([dx, dy])  <span class="hljs-comment"># the normal vector</span><br>r = simplify(l - <span class="hljs-number">2</span> * l.dot(n) * n / n.dot(n))  <span class="hljs-comment"># the reflected ray</span><br>rx, ry = r<br>dxrx = diff(rx, x)<br>dyrx = diff(rx, y)<br>dxry = diff(ry, x)<br>dyry = diff(ry, y)<br>denominator = ry * (dxrx * dy - dyrx * dx) - rx * (dxry * dy - dyry * dx)<br>nominator = dx * l[<span class="hljs-number">0</span>] + dy * l[<span class="hljs-number">1</span>]<br>F = (X - x) * denominator - nominator * rx<br>G = (Y - y) * denominator - nominator * ry<br>eqs = [eq.as_numer_denom()[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> eq <span class="hljs-keyword">in</span> [F, G, P]]<br>gb = groebner(eqs, [x, y, X, Y])<br>print(gb)<br></code></pre></td></tr></tbody></table></figure>
+<p>The last item of the given results is</p>
+<p><span class="math display">\[27 X^{4} y^{2} + 54 X^{2} Y^{2} y^{2} -
+18 X^{2} y^{2} - 8 X y^{2} + 27 Y^{4} y^{2} - 18 Y^{2} y^{2} -
+y^{2}.\]</span></p>
+<p><span class="math inline">\(x\)</span> has been eliminated! The
+solutions to the original system of equations <span class="math inline">\(F=G=P\)</span> must necessarily be a subset of the
+solutions to the above single equation. Observing each term, it is
+evident that they all contain a term <span class="math inline">\(y^2\)</span>, which is clearly not the solution we
+want. Removing it, we are left with the remaining factor</p>
+<p><span class="math display">\[27x^{4}+54x^{2}y^{2}-18x^{2} -8x +
+27y^{4}-18y^{2}-1=0.\]</span></p>
+<p>It is the implicit function representation of the cardioid. Don't
+believe it? Let's draw it in <a target="_blank" rel="noopener" href="https://www.desmos.com/geometry/vtjbq3ete1">Desmos</a>!</p>
+<p><img style="margin:0px auto;display:block" width="300" src="/images/caustics/desmos_cardioid.png"></p>
+<h1 id="some-notes">Some notes</h1>
+<p>This article mainly covers the first half of Greg Egan's blog post. I
+feel that the second half is a bit too technical, so I decided not to
+cover it.</p>
+<p>Although our experiment with <code>sympy</code> was very successful,
+but keep in mind that it is not always possible to obtain the
+catacaustic in all situations, and calculating curves with complicated
+expressions in <code>sympy</code> can be very slow.</p>
+<p>During my graduate studies, I took a course on computer algebra, and
+at that time, we used Maple as the teaching software. Programming is
+Maple was very inconvenient, so I actually don't have much experience in
+computer algebra programming. I used to think that <code>sympy</code>
+was slow and the output were not simplified enough, so I was not very
+willing to use it. This experiment has somewhat refreshed my
+understanding of <code>sympy</code>. I still remember that the course
+required each of us to submit a book report, and I wrote notes on
+"Ideals, Varieties, and Algorithms". But it's been many years since
+graduation, and this is the first time I've used Gröbner bases!</p>
+
+                                                        
+
+
+
+                                                </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  tex: 'ams'
+});
+</script>
+  <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+  </script>
+  
+
+    </body>
+
+    </html>
