@@ -1,0 +1,749 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            test | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="非退化双线性型是一个很有用的概念，它可以把一个空间中的问题“镜像”地映射到其对偶空间中去，并在对偶空间中得到解决。粗略地讲，一个空间内的高维问题实际上是其对偶空间内的一个低维问题；一个关于商空间的问题实际是对偶空间内的子空间问题。这常常可以帮助我们简化问题。
+什么是非退化双线性型？
+设 \(V,W\">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="test"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy-作品/">
+                    Shadertoy-作品 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/闲聊/">
+                    闲聊 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>test</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2024-02-17T13:31:41.000Z"><a href="/null/">2024-02-17</a></time>
+
+                                <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+                                    
+
+                                        <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%9E%E9%80%80%E5%8C%96%E5%8F%8C%E7%BA%BF%E6%80%A7%E5%9E%8B"><span class="section table-of-contents-text">什么是非退化双线性型？</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%9B%B6%E5%8C%96%E5%AD%90"><span class="section table-of-contents-text">零化子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BC%B4%E9%9A%8F%E5%8F%98%E6%8D%A2"><span class="section table-of-contents-text">伴随变换</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%90%E5%88%B6-vs-%E8%AF%B1%E5%AF%BC"><span class="section table-of-contents-text">限制 VS 诱导</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%89%E7%90%86%E6%A0%87%E5%87%86%E5%BD%A2%E7%9A%84%E7%AE%80%E6%B4%81%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">有理标准形的简洁证明</span></a></li></ol>
+</div>
+
+                                            
+
+
+                                                <div class="entry pink-link-context">
+                                                    <p>非退化双线性型是一个很有用的概念，它可以把一个空间中的问题“镜像”地映射到其对偶空间中去，并在对偶空间中得到解决。粗略地讲，一个空间内的高维问题实际上是其对偶空间内的一个低维问题；一个关于商空间的问题实际是对偶空间内的子空间问题。这常常可以帮助我们简化问题。</p>
+<h1 id="什么是非退化双线性型">什么是非退化双线性型？</h1>
+<p>设 <span class="math inline">\(V,W\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，映射 <span class="math inline">\(B(v,w):V\times W\rightarrow F\)</span>
+称作是一个双线性函数，如果它对每个分量都是线性的：</p>
+<p><span class="math display">\[\begin{align*}B(a_1v_1+a_2v_2,w)&amp;=a_1B(v_1,w)+a_2B(v_2,w),\\B(v,a_1w_1+a_2w_2)&amp;=a_1B(v,w_1)+a_2B(v,w_2).\mathrm{End}{align*}
+\]</span></p>
+<p>如果 <span class="math inline">\(B\)</span> 满足下面的条件，我们就称
+<span class="math inline">\(B\)</span>
+为非退化的双线性函数，简称非退化双线性型。</p>
+<ol type="1">
+<li>若 <span class="math inline">\(v\in V\)</span> 使得对任何 <span class="math inline">\(w\in W\)</span> 有 <span class="math inline">\(B(v,w)=0\)</span> 则 <span class="math inline">\(v=0\)</span>.</li>
+<li>若 <span class="math inline">\(w\in W\)</span> 使得对任何 <span class="math inline">\(v\in W\)</span> 有 <span class="math inline">\(B(v,w)=0\)</span> 则 <span class="math inline">\(w=0\)</span>.</li>
+</ol>
+<p>现在设 <span class="math inline">\(B(v,w):V\times W\rightarrow
+F\)</span> 是一个非退化双线性型，给定 <span class="math inline">\(v\in
+V\)</span>，我们可以定义一个 <span class="math inline">\(W\)</span>
+上的线性泛函 <span class="math inline">\(\varphi_v\)</span>： <span class="math display">\[\varphi_v(w)=B(v,w).\]</span> 映射 <span class="math inline">\(v\rightarrow\varphi_v\)</span> 是一个从 <span class="math inline">\(V\)</span> 到 <span class="math inline">\(W\)</span> 的对偶空间 <span class="math inline">\(W^\ast\)</span>
+的映射，此映射显然是线性的，而且很容易验证是单射，从而 <span class="math inline">\(\dim V\leq \dim W^\ast\)</span>。同理线性映射
+<span class="math display">\[w\rightarrow\phi_w: \phi_w(v)
+=B(v,w)\]</span> 是从 <span class="math inline">\(W\)</span> 到 <span class="math inline">\(V^\ast\)</span> 的单射，因此 <span class="math inline">\(\dim W\leq \dim
+V^\ast\)</span>。由于任何有限维向量空间和它的对偶空间维数相同，因此综合两个不等式就得到了
+<span class="math inline">\(\dim V=\dim W\)</span>，而且 <span class="math inline">\(v\rightarrow\varphi_v\)</span> 是从 <span class="math inline">\(V\)</span> 到 <span class="math inline">\(W^\ast\)</span> 的线性同构，<span class="math inline">\(w\rightarrow\phi_w\)</span> 是从 <span class="math inline">\(W\)</span> 到 <span class="math inline">\(V^\ast\)</span> 的线性同构。</p>
+<p>总结一下：如果存在 <span class="math inline">\(V\times W\rightarrow
+F\)</span> 的非退化双线性型 <span class="math inline">\(B\)</span>，则
+<span class="math inline">\(\dim V=\dim W\)</span>，而且 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(W\)</span> 可以借助于 <span class="math inline">\(B\)</span> 同构地映射为对方的对偶空间，这时我们称
+<span class="math inline">\(V\)</span> 和 <span class="math inline">\(W\)</span> 关于 <span class="math inline">\(B\)</span> 互为对偶空间。</p>
+<h1 id="零化子">零化子</h1>
+<p>设 <span class="math inline">\(V_1\subset V\)</span> 是 <span class="math inline">\(V\)</span> 的子空间，定义其关于 <span class="math inline">\(B\)</span> 的零化子 <span class="math inline">\(V_1^\bot\subset W\)</span> 为 <span class="math display">\[V_1^{\bot}=\{w\in W\ |\ B(v,w)=0, \ \forall v\in
+V_1 \}.\]</span> 类似地对 <span class="math inline">\(W\)</span>
+的子空间 <span class="math inline">\(W_1\)</span> 可以定义其零化子 <span class="math inline">\(W_1^\bot\subset V\)</span> 为 <span class="math display">\[W_1^{\bot}=\{v\in V\ |\ B(v,w)=0, \ \forall w\in
+W_1\}.\]</span> 由于 <span class="math inline">\(B\)</span>
+的双线性性，不难验证 <span class="math inline">\(V_1^\bot,W_1^\bot\)</span> 都是子空间。</p>
+<p>定义双线性函数 <span class="math inline">\(B_1:V_1\times
+W/V_1^\bot\rightarrow F\)</span> 为 <span class="math display">\[B_1(v_1,[w])=B(v_1,w),\quad v_1\in V_1, w\in
+W.\]</span> 不难验证 <span class="math inline">\(B_1\)</span>
+的定义是合理的（不依赖于商空间代表元的选取），同时也是非退化的，从而我们得到
+<span class="math display">\[\dim V_1=\dim W/V_1^\bot =\dim W-\dim
+V_1^\bot.\]</span></p>
+<p>接下来是个很有用的结论：如果 <span class="math inline">\(V=V_1\oplus
+V_2\)</span> 是子空间的直和，则 <span class="math inline">\(W\)</span>
+也分解对对应的零化子的直和：<span class="math inline">\(W=V_1^\bot\oplus
+V_2^\bot\)</span>（证明是平凡的）。</p>
+<h1 id="伴随变换">伴随变换</h1>
+<blockquote>
+<p>定义：设 <span class="math inline">\(A:V\rightarrow V\)</span>
+是一个线性变换，定义 <span class="math inline">\(A\)</span>（关于双线性型 <span class="math inline">\(B\)</span>）的伴随变换 <span class="math inline">\(A^\ast: W\rightarrow W\)</span>
+为满足如下等式的唯一的线性变换： <span class="math display">\[B(Av,w)=B(v,A^\ast w)\quad v\in V,w\in
+W.\]</span></p>
+</blockquote>
+<p>这个一句话的定义固然很爽快，但是问题是满足要求的 <span class="math inline">\(A^\ast\)</span>
+存在吗？存在的话唯一吗？下面来解决这两个问题。</p>
+<p>设 <span class="math inline">\(\(W)\)</span> 是 <span class="math inline">\(W\)</span> 上全体线性变换组成的空间，<span class="math inline">\(\mathrm{Bil}(V,W)\)</span> 是 <span class="math inline">\(V\times W\)</span>
+上全体双线性函数组成的向量空间。</p>
+<p>对任意 <span class="math inline">\(f\in\mathrm{End}(W)\)</span>，定义
+<span class="math inline">\(V\times W\)</span> 上的双线性函数 <span class="math inline">\(B_f\)</span> 为 <span class="math inline">\(B_f=B(v,fw)\)</span>。映射 <span class="math inline">\(f\rightarrow B_f\)</span> 明显是线性的，而且利用
+<span class="math inline">\(B\)</span> 的非退化性可见这是一个单射，于是
+<span class="math inline">\(f\rightarrow B_f\)</span> 是一个从 <span class="math inline">\(\mathrm{End}(W)\)</span> 到 <span class="math inline">\(\mathrm{Bil}(V,W)\)</span> 的线性单射。然而 <span class="math inline">\(\mathrm{End}(W)\)</span> 和 <span class="math inline">\(\mathrm{Bil}(V,W)\)</span> 的维数相同，都是 <span class="math inline">\(\dim V\times \dim
+W\)</span>，从而这是线性同构。因此 <span class="math inline">\(\mathrm{Bil}(V,W)\)</span> 中任何元素都形如 <span class="math inline">\(B(v,fw)\)</span>，其中 <span class="math inline">\(f\in\mathrm{End}(W)\)</span>
+是唯一确定的。特别地对双线性型 <span class="math inline">\(B(Av,w)\)</span> 应用此结论可知存在唯一的 <span class="math inline">\(A^\ast\in\ed(W)\)</span> 使得 <span class="math inline">\(B(Av,w)=B(v,A^\ast w)\)</span>
+成立，这就证明了结论。</p>
+<h1 id="限制-vs-诱导">限制 VS 诱导</h1>
+<p>现在假设 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，子空间 <span class="math inline">\(V_1\)</span> 是 <span class="math inline">\(A\)</span> 的不变子空间，容易验证这时 <span class="math inline">\(V_1^\bot\)</span> 是 <span class="math inline">\(A^\ast\)</span> 的不变子空间，于是我们可以考虑
+<span class="math inline">\(A\)</span> 在 <span class="math inline">\(V_1\)</span> 上的限制 <span class="math inline">\(A_1=A|_{V_1}\)</span>，以及 <span class="math inline">\(A^\ast\)</span> 在商空间 <span class="math inline">\(W/V_1^\bot\)</span> 上的诱导 <span class="math inline">\(\widetilde{A^\ast}\)</span>。</p>
+<blockquote>
+<p>定理：<span class="math inline">\(A_1\)</span> 和 <span class="math inline">\(\widetilde{A^\ast}\)</span> 关于双线性型 <span class="math inline">\(B_1(v_1,[w])=B(v_1,w)\)</span> 互为伴随变换：
+<span class="math display">\[B_1(A_1 v_1,
+[w])=B_1(v_1,\widetilde{A^\ast}[w]),\quad v_1\in V_1, [w]\in
+W/V_1^\bot.\]</span></p>
+</blockquote>
+<p>证明很直接，故不再赘述。</p>
+<p>好了，到此为止我们作一个总结：在已经介绍的非退化双线性型的理论中，处处都展现了高度的对称性：<span class="math inline">\(V\)</span> 和 <span class="math inline">\(W\)</span> 互为对偶空间；零化子建立了 <span class="math inline">\(V\)</span> 的子空间与 <span class="math inline">\(W\)</span>
+的子空间（甚至子空间直和分解）的一一对应；<span class="math inline">\(V\)</span> 上的线性变换与 <span class="math inline">\(W\)</span>
+上的线性变换的一一对应；限制与诱导的对应。这种高度的对称性非常适合把
+<span class="math inline">\(V\)</span> 中的问题转移到对偶空间 <span class="math inline">\(W\)</span>
+中去。下面就是这一思想的一个精彩应用。</p>
+<h1 id="有理标准形的简洁证明">有理标准形的简洁证明</h1>
+<p>这一段将给出有理标准形定理的一个非常简洁的证明。这个证明过程可以看做是非退化双线性型的
+"典型用法"。</p>
+<p>对每个向量 <span class="math inline">\(v\in V\)</span>，定义它的阶为
+<span class="math inline">\(m_v(x)\in F[x]\)</span>，这里 <span class="math inline">\(m_v(x)\)</span> 是使得 <span class="math inline">\(m_v(A)v=0\)</span>
+的次数最低的首一多项式。任何使得 <span class="math inline">\(g(A)v=0\)</span> 的多项式 <span class="math inline">\(g(x)\)</span> 都是 <span class="math inline">\(m_v(x)\)</span> 的倍式。</p>
+<blockquote>
+<p>定理：设 <span class="math inline">\(A\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 中存在一组非零的向量 <span class="math inline">\(\{v_1,\ldots,v_r\}\)</span>，它们的阶都是 <span class="math inline">\(F[x]\)</span> 中素多项式的幂 <span class="math inline">\(\{p_1(x)^{e_1},\ldots,p_r(x)^{e_r}\}\)</span>，而且
+<span class="math inline">\(V\)</span> 是循环子空间 <span class="math inline">\(\{\langle v_i\rangle,1\leq i\leq r\}\)</span>
+的直和： <span class="math display">\[V=\langle v_1\rangle\oplus\langle
+v_2\rangle\oplus\cdots\oplus\langle v_r\rangle.\]</span></p>
+<p>这个分解方式在下面的意义下是唯一确定的：如果 <span class="math display">\[V=\langle w_1\rangle\oplus\langle
+w_2\rangle\oplus\cdots\oplus\langle v_s\rangle.\]</span>
+是另一种分解为循环子空间的方式，<span class="math inline">\(\{w_1,\ldots,w_s\}\)</span> 的阶也都是素多项式的幂
+<span class="math inline">\(\{q_1(x)^{f_1},\ldots,q_s(x)^{f_s}\}\)</span>，则
+<span class="math inline">\(r=s\)</span> 且两个集合 <span class="math display">\[\{p_1(x)^{e_1},\ldots,p_r(x)^{e_r}\}\quad\text{和}\quad\{q_1(x)^{f_1},\ldots,q_s(x)^{f_s}\}\]</span>
+只相差一个重排。</p>
+</blockquote>
+<p>证明： 所有证明有理标准形定理的第一步都是利用准素分解，只要对 <span class="math inline">\(A\)</span> 的极小多项式 <span class="math inline">\(m_A(x)=p(x)^a\)</span>
+是一个素多项式的幂的情形证明即可。</p>
+<p>我们断言这时必然有一个 <span class="math inline">\(v\in V\)</span>
+的阶恰好是 <span class="math inline">\(p(x)^a\)</span>。否则任何 <span class="math inline">\(v\)</span> 的阶都是 <span class="math inline">\(p(x)^a\)</span> 的因子但又不等于 <span class="math inline">\(p(x)^a\)</span>，那么就都是 <span class="math inline">\(p(x)^{a-1}\)</span> 的因子，从而 <span class="math inline">\(p(A)^{a-1}=0\)</span>，与 <span class="math inline">\(A\)</span> 的极小多项式是 <span class="math inline">\(p(x)^a\)</span> 矛盾。</p>
+<p>所以取 <span class="math inline">\(v_1\)</span> 使得 <span class="math inline">\(v_1\)</span> 的阶为 <span class="math inline">\(p(x)^a\)</span>，则 <span class="math inline">\(v_1\)</span> 生成一个循环子空间 <span class="math inline">\(\langle v_1\rangle\)</span>。如果 <span class="math inline">\(\langle v_1\rangle\ne
+V\)</span>，我们断言可以找到一个 <span class="math inline">\(A-\)</span>
+不变子空间 <span class="math inline">\(W\)</span> 使得 <span class="math display">\[V= \langle v_1\rangle\oplus W.\]</span>
+这样就可以对 <span class="math inline">\(W\)</span> 继续这个操作，最终把
+<span class="math inline">\(V\)</span> 分解为一些循环子空间的直和。 考虑
+<span class="math inline">\(V\times V^\ast\rightarrow F\)</span>
+的非退化双线性型 <span class="math display">\[(v,f)\rightarrow
+f(v),\quad v\in V,f\in V^\ast.\]</span> 设 <span class="math inline">\(A^\ast\)</span> 为 <span class="math inline">\(A\)</span> 的伴随变换：<span class="math inline">\((Av,f)=(v,A^\ast f)\)</span>，则对任何多项式 <span class="math inline">\(g(x)\in F[x]\)</span> 有 <span class="math inline">\((g(A)v,f)=(v,g(A^\ast)f)\)</span>，由此可见 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(A^\ast\)</span> 有相同的极小多项式。</p>
+<p>证明想法是这样的：现在我们还不知道在 <span class="math inline">\(V\)</span> 中是否有分解 <span class="math inline">\(V=\langle v_1\rangle\oplus
+W\)</span>存在，但是我们知道在 <span class="math inline">\(V^\ast\)</span> 中 <span class="math inline">\(\langle v_1\rangle^\bot\)</span> 是 <span class="math inline">\(A^\ast-\)</span> 不变子空间，如果能在 <span class="math inline">\(V^\ast\)</span> 中给 <span class="math inline">\(\langle v_1\rangle^\bot\)</span> 找到不变子空间
+<span class="math inline">\(W_1\)</span> 使得 <span class="math inline">\(V^\ast=\langle v_1\rangle^\bot\oplus W_1\)</span>
+的话，那么返回 <span class="math inline">\(V\)</span> 中去就有 <span class="math inline">\(V=\langle v_1\rangle\oplus
+W_1^\bot\)</span>，<span class="math inline">\(W_1^\bot\)</span>
+就是我们要找的补空间！</p>
+<p>设 <span class="math inline">\(\langle v_1\rangle^\bot\)</span> 为
+<span class="math inline">\(\langle v_1\rangle\)</span> 在 <span class="math inline">\(V^\ast\)</span> 中的零化子，则 <span class="math inline">\(\langle v_1\rangle^\bot\)</span> 是 <span class="math inline">\(A^\ast\)</span> 的不变子空间，从而 <span class="math inline">\(A^\ast\)</span> 在 <span class="math inline">\(V^\ast/\langle v_1\rangle^\bot\)</span>
+上有诱导变换 <span class="math inline">\(\widetilde{A^\ast}\)</span>。我们已经知道 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(\langle
+v_1\rangle\)</span> 上的限制 <span class="math inline">\(A_1\)</span> 与
+<span class="math inline">\(\widetilde{A^\ast}\)</span> 在 <span class="math inline">\(V^\ast/\langle v_1\rangle^\bot\)</span>
+上的作用是一对伴随变换，因此 <span class="math inline">\(\widetilde{A^\ast}\)</span> 在 <span class="math inline">\(V^\ast/\langle v_1\rangle^\bot\)</span>
+上的极小多项式也是 <span class="math inline">\(p(x)^a\)</span>，从而存在
+<span class="math inline">\([f]\in V^\ast/\langle
+v_1\rangle^\bot\)</span> 使得 <span class="math inline">\([f]\)</span>
+的阶是 <span class="math inline">\(p(x)^a\)</span>。</p>
+<p>令 <span class="math inline">\(W_1\)</span> 为 <span class="math inline">\(\{f,A^\ast f,\ldots,(A^\ast)^{d-1}f\}\)</span> 在
+<span class="math inline">\(V^\ast\)</span> 中张成的子空间，其中 <span class="math inline">\(d=\deg p(x)^a\)</span>。显然 <span class="math inline">\(W_1\)</span> 是一个 <span class="math inline">\(A^\ast-\)</span> 不变子空间，其维数是 <span class="math inline">\(d\)</span>，而且 <span class="math inline">\(W_1\cap \langle v_1\rangle^\bot=0\)</span>。</p>
+<p>现在 <span class="math inline">\(\dim\langle v_1\rangle^\bot=\dim
+V^\ast-d\)</span>，因此</p>
+<p><span class="math display">\[V^\ast = \langle v_1\rangle^\bot \oplus
+W_1,\]</span></p>
+<p>这是一个 <span class="math inline">\(V^\ast\)</span> 的 <span class="math inline">\(A^\ast-\)</span> 不变子空间直和分解，回到 <span class="math inline">\(V\)</span> 中去：</p>
+<p><span class="math display">\[V=\langle v_1\rangle\oplus
+(W_1)^\bot.\]</span></p>
+<p>这样就得到了想要的 <span class="math inline">\(A-\)</span>
+不变子空间直和分解。</p>
+
+                                                        
+
+
+<p class="pink-link-context">
+    <a href="/envelope-and-caustics/" rel="next" title="咖啡杯中的焦散线">
+    下一篇：咖啡杯中的焦散线
+  </a>
+</p>
+
+
+                                                </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <div class="site-visitors-container white-text">
+        <span>
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+        </span>
+        <span>&nbsp;|&nbsp;</span>
+        <span>
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+
+
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  tex: 'ams'
+});
+</script>
+  <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
+  </script>
+  
+
+    </body>
+
+    </html>
