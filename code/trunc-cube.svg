@@ -1,4 +1,4 @@
-<svg id="container" xmlns="http://www.w3.org/2000/svg" width="480" height="320" style="background: white;">
+<svg id="container" xmlns="http://www.w3.org/2000/svg" width="640" height="360" style="background: white;">
 <style>
     text {
         user-select: none;
@@ -310,7 +310,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 #ifdef INSIDE_VIEW
     float radius = 0.1;
 #else
-    float radius = 2.;
+    float radius = 2.3;
 #endif
     vec3 eye = radius * vec3(
         cos(move.x)*cos(move.y),
