@@ -213,7 +213,7 @@ circles and balls 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 文
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -429,7 +429,10 @@ parametric surface + radiosity
 <p>同样是在 <span class="math inline">\((x,y)\)</span>
 处，曲线的法向量是 <span class="math display">\[\mathbf{n}=\frac{(-y',
 x')}{\sqrt{(x')^2+(y')^2}}=\frac{(-y',
-x')}{|\mathbf{r}'|}.\]</span> 于是 <span class="math inline">\((x,y)\)</span> 处的反射光线的方向 <span class="math inline">\(\mathbf{r}\)</span> 由如下反射公式给出： <span class="math display">\[\mathbf{r}= \mathbf{l}- 2(\mathbf{l}\cdot
+x')}{|\mathbf{r}'|}.\]</span> 这里我们用 <span class="math inline">\(x',y'\)</span> 表示 <span class="math inline">\(x,y\)</span> 关于 <span class="math inline">\(t\)</span> 的导数。</p>
+<p>于是 <span class="math inline">\((x,y)\)</span> 处的反射光线的方向
+<span class="math inline">\(\mathbf{r}\)</span> 由如下反射公式给出：
+<span class="math display">\[\mathbf{r}= \mathbf{l}- 2(\mathbf{l}\cdot
 \mathbf{n})\mathbf{n}.\]</span> 设 <span class="math inline">\((X,Y)\)</span> 是反射光线上的任一点，由于 <span class="math inline">\((x,y)\)</span> 是反射光线的起点，所以 <span class="math inline">\((X-x,Y-y)\)</span> 与 <span class="math inline">\(\mathbf{r}\)</span> 平行。记 <span class="math inline">\(\mathbf{r}=(r_x,r_y)\)</span>，则 <span class="math inline">\((X-x,Y-y)\)</span> 与 <span class="math inline">\((-r_y, r_x)\)</span> 垂直，即 <span class="math display">\[(X-x, Y-y)\cdot(-r_y, r_x)=0.\]</span> 记 <span class="math display">\[F(X,Y,t)=(X-x, Y-y)\cdot(-r_y, r_x),\]</span>
 则我们得到了反射光线 <span class="math inline">\((X(t), Y(t))\)</span>
 满足的曲线族方程 <span class="math inline">\(F(X,Y,t)=0\)</span>。于是焦散曲线可以通过联立方程组
@@ -571,6 +574,16 @@ y^{2}.\]</span></p>
 的认知。我还记得当时课程要求每人提交一份读书报告，我写的是 <a target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-3-319-16721-3">Ideals,
 Varieties, and Algorithms</a> 的笔记，但毕业多年以来这还是我第一次用到
 Gröbner 基！</p>
+<p>我写这篇文章的时候正好临近情人节，所以我在想有没有什么曲线的焦散能给出
+<a target="_blank" rel="noopener" href="https://www.desmos.com/geometry/ngdpq0zrei">爱心曲线</a>：</p>
+<p><img style="margin:0px auto;display:block" width="300" src="/images/caustics/heart.png"></p>
+<p>于是我找到了 <a target="_blank" rel="noopener" href="https://www.tandfonline.com/doi/full/10.1080/00029890.2020.1722019">这篇文章</a>。不过看起来里面给出的结论计算量很大，很难用在爱心线上（也许是我错了）。</p>
+<p>另一个发散思考的角度是，如果这个咖啡杯是放在 Poincaré
+双曲圆盘里面，它的焦散是怎么样的。这个时候光走的是双曲空间中的测地线（与单位圆正交的圆弧），所以看起来有点难办。但是如果我们先从
+Beltrami-Klein
+模型入手（测地线是直线），就会发现一切和我们上面的分析是一样的。所以
+Poincaré 圆盘里的真实焦散和我们上面计算的焦散只差一个从 Beltrami-Klein
+模型到 Poincaré 模型的变换。</p>
 
                                                         
 
