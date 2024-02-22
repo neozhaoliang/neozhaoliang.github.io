@@ -22,9 +22,9 @@
             Coxeter groups, automata and uniform tilings | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="This program can draw 2d and 3d uniform tilings in Euclidean,
-spherical and hyperbolic spaces by treating them in an uniform approach:
-word processing">
+    <meta name="description" content="Since using POV-Ray to render 3D hyperbolic honeycombs was incredibly
+slow, I&#39;ve decided to abandon this approach and have removed the code
+from the m">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -324,19 +324,43 @@ math stuff</span></a></li></ol>
 
 
                                                 <div class="entry pink-link-context">
-                                                    <p>This program can draw 2d and 3d uniform tilings in Euclidean,
-spherical and hyperbolic spaces by treating them in an uniform approach:
-word processing in Coxeter groups. The code is on <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/uniform-tilings">github</a>.</p>
-<p>I learned most of the math stuff from <a target="_blank" rel="noopener" href="https://www.math.ubc.ca/~cass/">Casselman</a>'s essays, he's Java
-implementation (unpublished) of the minimal roots algorithm was also
-very helpful.</p>
+                                                    <blockquote>
+<p>Since using POV-Ray to render 3D hyperbolic honeycombs was incredibly
+slow, I've decided to abandon this approach and have removed the code
+from the main branch on GitHub. You can find the code used in this
+article in the <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/releases/tag/0.1.0">old
+release version</a>. For how to render hyperbolic honeycombs, readers
+can refer to <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/Hyperbolic-Honeycombs/">another
+project</a>.</p>
+</blockquote>
+<p>This article introduces a <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/uniform-tilings">Python
+program</a> I just finished. Although it's freshly completed, it took up
+most of my free time over the last six months. It was quite the
+challenge, requiring a lot of effort and dedication. The main reason is
+that it involves a few complicated theories, specifically the deep
+properties of Coxeter groups, known as the automatic property. A
+significant portion of these months was spent learning from articles by
+Casselman, Brink &amp; Howlett, and others, which helped me understand
+the mathematical principles (see references at the end).</p>
+<p>Although finishing this program is a great achievement for me, I
+don't mean to boast about any superiority of this program: the
+computational method it uses for Coxeter groups is not advanced and
+might not impress the experts. Moreover, its code is somewhat
+unattractive, and likely difficult for anyone else to use.</p>
+<p>The purpose of this program is to use group theory to draw various
+two-dimensional and three-dimensional <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_tiling">uniform tilings</a>.
+You can think of uniform tiling as using some regular polygon tiles to
+fill the entire space so that the vertices of the tiles are transitive
+under the action of a symmetry group (forming a single orbit).</p>
+<p>I will first show some examples of what this program can do, and then
+explain how it works.</p>
 <h1 id="examples">Examples</h1>
 <ul>
 <li><p>Below is the 2d Euclidean tiling omnitruncated (4, 2, 4):</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-4-2-4.png" width="600"></p></li>
 <li><p>Below is the 2d hyperbolic tiling regular (2, 3, 13) in
 Poincaré's disk model:</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter/2-3-13.png" width="500"></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/2-3-13.png" width="600"></p></li>
 <li><p>Below is the 2d hyperbolic tiling omnitruncated (4, 3, 3) in
 upper half plane model:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/uhp-4-3-3.png" width="600"></p></li>
@@ -368,43 +392,70 @@ more examples, like rectified (3, 5, 3) and rectified (5, 3, 4)：</p>
 order-5 cubic</a> tiling from the [5, 3<sup>1,1</sup>] family:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/cantic-order-5-cubic.png" width="600"></p></li>
 <li><p>Below is a 2d spherical tiling rendered in 3d:</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-5-2-3.png" width="500"></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-5-2-3.png" width="600"></p></li>
 <li><p>Finally a shader program exported from Matt Zucker's excellent
 work on <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tsSzM">shadertoy</a>:</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter/wythoff_shader.png" width="800"></p></li>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/wythoff_shader.png" width="600"></p></li>
 </ul>
-<p>For 2d tilings the program computes the coordinates of each vertex,
-the indices of each edge/face and then export the data to svg/POV-Ray
-for rendering. For 3d hyperbolic tilings the program only computes the
-coordinates of the cells and exports the data of the edges to POV-Ray
-(because it's too slow to compute all exact information in this case).
-It usually takes ten minutes to generate 1.5M edges in Python and two
-hours to render a scene as above on a machine with 16G memory. I usually
-run the Python part on a machine in my office after work, start the
-rendering process before I go home and check the result the next
-morning.</p>
 <h1 id="wythoff-construction">Wythoff construction</h1>
-<p>All these tilings can be generated via Wythoff construction. The
-principal of this construction is the same as how a kaleidoscope works,
-as illustrated in the video below. We align some reflection mirrors in
-the space where the dihedral angles between them are carefully chosen,
-then choose an initial point in the space and iteratively compute the
-virtual images of this point in the mirrors, the virtual images of
-virtual images, ..., and so on. The resulting kaleidoscopic pattern is
-exactly the tiling we want.</p>
+<p>The main theoretical tool for drawing uniform tilings is the
+so-called <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythoff
+construction</a>, also known as the kaleidoscope method. This involves
+placing several reflecting planes (mirrors) in space, then starting from
+an initial point, and repeatedly applying reflection transformations
+about these mirrors to obtain all the virtual images, which gives all
+the vertices of the tiling.</p>
+<p>The following video demonstrates the effect of the Wythoff
+construction: in the 2D Poincaré hyperbolic disk, the walls around the
+room are all mirrors. The scene in the room is repeatedly reflected in
+the mirrors, creating infinitely many virtual image rooms, filling the
+entire hyperbolic space. Note that, there is only one 'real' room,
+namely the room where the observer is standing in; all other rooms are
+virtual images of the real one.</p>
 <video src="/images/hyperbolic-honeycombs/lego-hyperbolic-kaleido.mp4" width="600" controls="">
 </video>
-<p>The key step in building the tiling is to efficiently compute the set
-of virtual images and extract edge/face information between them. This
-is where this program differs with most of other open-source
-tiling-generation programs: most of the computations are done in a
-symbolic computational manner using only integer arithmetics: it knows
-all exact information required to construct the tiling like how many
-vertices are there, how these vertices are transformed from the initial
-point, which pairs of them form the edges, ..., etc, without knowing the
-coordinates of any vertex!</p>
-<p>Sounds interesting? I'll give an example to illustrate the
-procedure.</p>
+<p>There are two different approaches to implemente the Wythoff
+construction in a program:</p>
+<ol type="1">
+<li><p>Inverse Pixel Method. This method involves calculating, for each
+pixel in the image, its corresponding point <span class="math inline">\(p\)</span> in the world space. Then, <span class="math inline">\(p\)</span> is repeatedly reflected off mirrors
+until it lands within the fundamental region, resulting in a point <span class="math inline">\(q\)</span>. Essentially, we find the pre-image
+<span class="math inline">\(q\)</span> of <span class="math inline">\(p\)</span> in the room. Then, based on <span class="math inline">\(q\)</span>'s position within the fundamental
+region, the pixel corresponding to <span class="math inline">\(p\)</span> is colored. This method allows for
+parallel computation on all pixels, and when combined with shader
+programming, it can produce very stunning effects. Here are two examples
+from shadertoy:</p>
+<p><iframe width="480" height="270" frameborder="0" src="https://www.shadertoy.com/embed/mlGfzV?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe></p>
+<p><iframe width="480" height="270" frameborder="0" src="https://www.shadertoy.com/embed/Nd3cR2?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe></p>
+<p>The inverse pixel method cares solely about the final pixel color,
+without concern for their coordinates. It produces raster images and
+cannot output vector graphics. Moreover, exporting data for use in
+modeling software is not very convenient with this method.</p></li>
+<li><p>Coordinate Method. This approach starts from a given initial
+point <span class="math inline">\(v_0\)</span> and calculates all its
+virtual images (within some maximum number of vertices) as well as the
+connections between edges and faces, then draws them one by one. This
+method allows for the acquisition of specific vertex coordinate
+information and outputs vector graphics and model files, making it more
+suitable for usage in academic papers. However, it cannot be
+parallelized and is quite slow in computing hyperbolic tilings, as the
+structures grows exponentially.</p></li>
+</ol>
+<p>My program uses the coordinate method. It first performs symbolic
+calculations within the symmetry group of the tiling to determine the
+word representation corresponding to each vertex in the shortest
+lexicographical order (a word is a tuple where each element is an
+integer), as well as the connections between edges and faces (also
+tuples of integers), and then applies the word corresponding to each
+vertex to the initial vertex to obtain the floating-point coordinates of
+that vertex. In other words, before computing the final coordinates of
+each vertex, it has already pre-calculated how many vertices there are,
+how each vertex is obtained through reflections from the initial vertex,
+which vertices form edges, which form faces, which form cells, etc.
+These calculations involve only integer operations, completely avoiding
+issues with floating-point precision loss.</p>
+<p>Sounds amazing? Let me demonstrate the specific steps with an
+example.</p>
 <h1 id="example-omnitruncated-7-2-3-tiling">Example: omnitruncated (7,
 2, 3) tiling</h1>
 <p>The Coxeter-Dynkin diagram for the omnitruncated (7, 2, 3) tiling
@@ -415,39 +466,50 @@ Coxeter matrix</p>
 <p><span class="math display">\[M=\begin{pmatrix} 1 &amp; 7 &amp; 2 \\ 7
 &amp;1 &amp;3\\ 2 &amp; 3 &amp;1\end{pmatrix}\]</span></p>
 <p>and has presentation</p>
-<p><span class="math display">\[G = \langle s_0,s_1, s_2\ |\
+<p><span class="math display">\[W = \langle s_0,s_1, s_2\ |\
 s_0^2=s_1^2=s_2^2=(s_0s_1)^7=(s_1s_2)^3=(s_0s_2)^2=1\rangle.\]</span></p>
 <p>The initial vertex <span class="math inline">\(v_0\)</span> is not on
 any of the three mirrors, so its stabilizing subgroup is <span class="math inline">\(\langle 1\rangle\)</span>, by <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Group_action_(mathematics)#Orbit-stabilizer_theorem">orbit-stabilizer
-theorem</a> each element <span class="math inline">\(g\)</span> of <span class="math inline">\(G\)</span> maps <span class="math inline">\(v_0\)</span> to a distinct vertex in the
+theorem</a> each element <span class="math inline">\(w\)</span> of <span class="math inline">\(W\)</span> maps <span class="math inline">\(v_0\)</span> to a distinct vertex in the
 tiling.</p>
-<p>We know that <span class="math inline">\(g\)</span> can be
-represented as a word in the generators <span class="math inline">\(\{s_0,s_1,s_2\}\)</span> and such a representation
-is not unique. For example from the relations given above we can easily
-verify that <span class="math inline">\(s_0s_2=s_2s_0\)</span>, <span class="math inline">\(s_1s_2s_1=s_2s_1s_2\)</span>, etc. We can choose a
-well-defined "normal form" for <span class="math inline">\(g\)</span> by
-firstly defining the alphabetical order of <span class="math inline">\(s_0,s_1,s_2\)</span> as <span class="math inline">\(s_0&lt;s_1&lt;s_2\)</span> and then extend this
-ordering to the set of all words:</p>
-<blockquote><p><strong>Shortlex ordering</strong>: Let <span class="math inline">\(w_1=s_{i_1}s_{i_2}\cdots s_{i_n}\)</span> and
-<span class="math inline">\(w_2=s_{j_1}s_{j_2}\cdots s_{j_m}\)</span> be
-two different words, their ordering is determined as follows:</p>
+<p>Every element <span class="math inline">\(w\)</span> in <span class="math inline">\(W\)</span> can be expressed as a product of the
+generators <span class="math inline">\(s_0,s_1,s_2\)</span>. We call any
+such expression a word representation of <span class="math inline">\(w\)</span>. If <span class="math inline">\(w=s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> is a word
+expression, and there are no other expressions of <span class="math inline">\(w\)</span> with length less than <span class="math inline">\(k\)</span>, we call <span class="math inline">\(s_{i_1}s_{i_2}\cdots s_{i_k}\)</span> a reduced
+expression, and define <span class="math inline">\(l(w)=k\)</span> to be
+the length of <span class="math inline">\(w\)</span>. The reduced
+expression of <span class="math inline">\(w\)</span> is generally not
+unique. For example, from the defining relations of <span class="math inline">\(W\)</span>, we can see that <span class="math inline">\(s_0s_2=s_2s_0\)</span> and <span class="math inline">\(s_1s_2s_1=s_2s_1s_2\)</span>, etc. However, all
+reduced expressions of <span class="math inline">\(w\)</span> must have
+the same length, so the definition of <span class="math inline">\(l(w)\)</span> is reasonable.</p>
+<p>We can choose a smallest one among all reduced expressions <span class="math inline">\(w\)</span> as the normal form of <span class="math inline">\(w\)</span>. This sorting is called shortlex order.
+As the name implies, shortlex order is the order used by dictionaries to
+arrange words.</p>
+<p>First, define the alphabetical order of the generators <span class="math inline">\(s_0,s_1,s_2\)</span> as <span class="math inline">\(s_0&lt;s_1&lt;s_2\)</span>​, then extend this order
+to any two reduced expression <span class="math inline">\(w_1\)</span>
+and <span class="math inline">\(w_2\)</span>: : </p><blockquote><p><strong>Shortlex Order</strong>: Let <span class="math inline">\(w_1
+= s_{i_1}s_{i_2}\ldots s_{i_n}\)</span> and <span class="math inline">\(w_2=s_{j_1}s_{j_2}\cdots s_{j_m}\)</span> be two
+different reduced expressions, where <span class="math inline">\(w_1,
+w_2\)</span> can be different group elements. The relationship between
+them in shortlex order is determined as follows:</p>
 <ol type="1">
-<li>Compare their lengths first. If <span class="math inline">\(n&lt;m\)</span> then <span class="math inline">\(w_1&lt;w_2\)</span>, if <span class="math inline">\(n&gt;m\)</span> then <span class="math inline">\(w_1&gt;w_2\)</span>.</li>
-<li>Else <span class="math inline">\(n=m\)</span> and we compare them
-element-wise from left to right: let <span class="math inline">\(k\)</span> be the smallest index such that for all
-<span class="math inline">\(l&lt;k\)</span> it holds <span class="math inline">\(s_{i_l}=s_{j_l}\)</span> and <span class="math inline">\(s_{i_k}\ne s_{j_k}\)</span>, the ordering of <span class="math inline">\(w_1,w_2\)</span> is the same with the ordering of
-<span class="math inline">\(s_{i_k},s_{j_k}\)</span>.</li>
+<li>First, compare the lengths. If the lengths are different, the one
+with the shorter length is considered smaller, that is, if <span class="math inline">\(n &lt; m\)</span> then <span class="math inline">\(w_1 &lt; w_2\)</span>, conversely if <span class="math inline">\(n &gt; m\)</span> then <span class="math inline">\(w_1 &gt; w_2\)</span>.</li>
+<li>If the lengths are the same, then compare the alphabetical order
+from left to right. Let <span class="math inline">\(k\)</span> be the
+first index such that for any <span class="math inline">\(l &lt;
+k\)</span>, <span class="math inline">\(s_{i_l} = s_{j_l}\)</span> but
+<span class="math inline">\(s_{i_k} \ne s_{j_k}\)</span>, then the
+relationship between <span class="math inline">\(w_1, w_2\)</span> is
+the same as the relationship between <span class="math inline">\(s_{i_k}\)</span> and <span class="math inline">\(s_{j_k}\)</span>.</li>
 </ol>
-</blockquote>
-<p>Since shortlex ordering is a total ordering on the set of all words,
-each <span class="math inline">\(g\in G\)</span> has an unique normal
-form in this ordering. We define the length of any <span class="math inline">\(g\in G\)</span> to be the length of its normal
-form and define the ordering of any two group elements <span class="math inline">\(g,g'\)</span> to be the samw with the shortlex
-ordering of their normal forms.</p>
-<p>Let <span class="math inline">\(\mathcal{SL}(G)\)</span> be the set
-of normal forms for all <span class="math inline">\(g\in G\)</span>, all
-the 37 elements in <span class="math inline">\(\mathcal{SL}(G)\)</span>
-with length &lt;= 5 are listed below (row first):</p>
+</blockquote><p></p>
+<p>Thus, every <span class="math inline">\(w\in W\)</span> has a unique
+normal form under shortlex order.</p>
+<p>Define <span class="math inline">\(\mathcal{SL}(W)\)</span> as the
+set consisting of the normal forms of all elements in <span class="math inline">\(W\)</span>. Below is a list of all elements in
+<span class="math inline">\(\mathcal{SL}(W)\)</span> with lengths up to
+5, totaling 37: (arranged in rows from smallest to largest)</p>
 <p><span class="math display">\[
 \begin{array}{lllll}e&amp;s_{0}&amp;s_{1}&amp;s_{2}&amp;s_{0}s_{1}\\s_{0}s_{2}&amp;s_{1}s_{0}&amp;s_{1}s_{2}&amp;s_{2}s_{1}&amp;s_{0}s_{1}s_{0}\\s_{0}s_{1}s_{2}&amp;s_{0}s_{2}s_{1}&amp;s_{1}s_{0}s_{1}&amp;s_{1}s_{0}s_{2}&amp;s_{1}s_{2}s_{1}\\s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{1}&amp;s_{0}s_{1}s_{0}s_{2}&amp;s_{0}s_{1}s_{2}s_{1}&amp;s_{0}s_{2}s_{1}s_{0}\\s_{1}s_{0}s_{1}s_{0}&amp;s_{1}s_{0}s_{1}s_{2}&amp;s_{1}s_{0}s_{2}s_{1}&amp;s_{1}s_{2}s_{1}s_{0}&amp;s_{2}s_{1}s_{0}s_{1}\\s_{0}s_{1}s_{0}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{1}s_{2}&amp;s_{0}s_{1}s_{0}s_{2}s_{1}&amp;s_{0}s_{1}s_{2}s_{1}s_{0}&amp;s_{0}s_{2}s_{1}s_{0}s_{1}\\s_{1}s_{0}s_{1}s_{0}s_{1}&amp;s_{1}s_{0}s_{1}s_{0}s_{2}&amp;s_{1}s_{0}s_{1}s_{2}s_{1}&amp;s_{1}s_{0}s_{2}s_{1}s_{0}&amp;s_{1}s_{2}s_{1}s_{0}s_{1}\\s_{2}s_{1}s_{0}s_{1}s_{0}&amp;s_{2}s_{1}s_{0}s_{1}s_{2}&amp;\end{array}
 \]</span></p>
@@ -456,14 +518,14 @@ than five is <span class="math inline">\(1+3+\cdots+3^5=364\)</span>,
 the list above tells us that they indeed contain only 37 different ones,
 the remaining 364 - 37 = 327 ones are duplicates. A further computation
 shows that the number of all words with length no more than six is 1093
-but they contain only 53 different ones. So we can gain a great
-improvement in efficiency if we only use words in <span class="math inline">\(\mathcal{SL}(G)\)</span> instead of traversing all
+but they contain only 53 different elements. So we can gain a great
+improvement in efficiency if we only use words in <span class="math inline">\(\mathcal{SL}(W)\)</span> instead of traversing all
 possible combinations of the generators.</p>
-<p>How can we generate those words that are precisely in <span class="math inline">\(\mathcal{SL}(G)\)</span>? This leads us to a very
+<p>How can we generate those words that are precisely in <span class="math inline">\(\mathcal{SL}(W)\)</span>? This leads us to a very
 important theorem on Coxeter groups:</p>
 <blockquote><p><strong>Theorem [Brigitte Brink &amp; Robert B. Howlett,
 1993]</strong>: If <span class="math inline">\(G\)</span> is a finitely
-generated Coxeter group then <span class="math inline">\(\mathcal{SL}(G)\)</span> is a regular
+generated Coxeter group then <span class="math inline">\(\mathcal{SL}(W)\)</span> is a regular
 language.</p>
 </blockquote>
 <p>The term "regular language" comes from computer science, a basic fact
@@ -472,7 +534,7 @@ language can always be recognized by a definite finite automaton (DFA),
 such DFA may not be unique but there is a "minimal one" with the least
 number of states and this minimal one is unique if we don't distinct
 relabellings of the states.</p>
-<p>Below is the automaton recognizes <span class="math inline">\(\mathcal{SL}(G)\)</span> for the (7, 2, 3)
+<p>Below is the automaton recognizes <span class="math inline">\(\mathcal{SL}(W)\)</span> for the (7, 2, 3)
 group:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/dfa_723.svg" width="600"></p>
 <p>You can see there are 19 nodes (i.e. states) in the automaton. The
@@ -483,24 +545,25 @@ automaton does not change the language it recognizes.</p>
 the states. The edges are labelled by the generators of the group, i.e.
 <span class="math inline">\(i\)</span> for <span class="math inline">\(s_i\)</span>. If we start from the initial state
 and keep on moving to a next state along an edge up to a finite number
-of steps, then the path we travelled gives a word in <span class="math inline">\(\mathcal{SL}(G)\)</span>. All words in <span class="math inline">\(\mathcal{SL}(G)\)</span> can be generated in this
+of steps, then the path we travelled gives a word in <span class="math inline">\(\mathcal{SL}(W)\)</span>. All words in <span class="math inline">\(\mathcal{SL}(W)\)</span> can be generated in this
 way.</p>
-<blockquote><p><strong>Example</strong>:</p>
+<p>For example:</p>
 <ol type="1">
 <li>The only path of length 0 correspondes to the identidy 1.</li>
-<li>The three paths of length 1 <span class="math inline">\(0\xrightarrow{\ s_0\ }1\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\)</span>, <span class="math inline">\(0\xrightarrow{\ s_2\ }8\)</span> corresponde to
-the three generators <span class="math inline">\(s_0,s_1,s_2\)</span> in
-<span class="math inline">\(\mathcal{SL}(G)\)</span>.</li>
-<li>The five paths <span class="math inline">\(0\xrightarrow{\ s_0\
-}1\xrightarrow{\ s_1\ }2\)</span>, <span class="math inline">\(0\xrightarrow{\ s_0\ }1\xrightarrow{\ s_2\
-}8\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\
-}2\xrightarrow{\ s_0\ }3\)</span>, <span class="math inline">\(0\xrightarrow{\ s_1\ }2\xrightarrow{\ s_2\
-}8\)</span>, <span class="math inline">\(0\xrightarrow{\ s_2\
-}8\xrightarrow{\ s_1\ }9\)</span> corresponde to the five elements of
-length 2 in <span class="math inline">\(\mathcal{SL}(G)\)</span>: <span class="math inline">\(s_0s_1,s_0s_2,s_1s_0,s_1s_2,s_2s_1\)</span>.</li>
+<li>The three paths of length 1 <span class="math display">\[\begin{align*}
+0&amp;\xrightarrow{\ s_0\ }1,\\
+0&amp;\xrightarrow{\ s_1\ }2,\\
+0&amp;\xrightarrow{\ s_2\ }8.
+\end{align*}\]</span> corresponde to the three generators <span class="math inline">\(s_0,s_1,s_2\)</span> in <span class="math inline">\(\mathcal{SL}(W)\)</span>.</li>
+<li>The five paths <span class="math display">\[\begin{align*}0&amp;\xrightarrow{\ s_0\
+}1\xrightarrow{\ s_1\ }2\\
+0&amp;\xrightarrow{\ s_0\ }1\xrightarrow{\ s_2\ }8\\
+0&amp;\xrightarrow{\ s_1\ }2\xrightarrow{\ s_0\ }3\\
+0&amp;\xrightarrow{\ s_1\ }2\xrightarrow{\ s_2\ }8\\
+0&amp;\xrightarrow{\ s_2\ }8\xrightarrow{\ s_1\ }9\end{align*}
+\]</span> corresponde to the five elements of length 2 in <span class="math inline">\(\mathcal{SL}(W)\)</span>: <span class="math inline">\(s_0s_1,s_0s_2,s_1s_0,s_1s_2,s_2s_1\)</span>.</li>
 </ol>
-</blockquote>
-<p>Using breadth-first search we can easily generate all words in <span class="math inline">\(\mathcal{SL}(G)\)</span> up to any given
+<p>Using breadth-first search we can easily generate all words in <span class="math inline">\(\mathcal{SL}(W)\)</span> up to any given
 depth.</p>
 <p>Note for an infinite Coxeter group the automaton must have cycles,
 but for a finite Coxeter group the automaton must be a directed tree,
@@ -512,7 +575,7 @@ of tetrahedron:</p>
 \begin{array}{llll}e&amp;s_{0}&amp;s_{1}&amp;s_{2}\\s_{0}s_{1}&amp;s_{0}s_{2}&amp;s_{1}s_{0}&amp;s_{1}s_{2}\\s_{2}s_{1}&amp;s_{0}s_{1}s_{0}&amp;s_{0}s_{1}s_{2}&amp;s_{0}s_{2}s_{1}\\s_{1}s_{0}s_{2}&amp;s_{1}s_{2}s_{1}&amp;s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{2}\\s_{0}s_{1}s_{2}s_{1}&amp;s_{0}s_{2}s_{1}s_{0}&amp;s_{1}s_{0}s_{2}s_{1}&amp;s_{1}s_{2}s_{1}s_{0}\\s_{0}s_{1}s_{0}s_{2}s_{1}&amp;s_{0}s_{1}s_{2}s_{1}s_{0}&amp;s_{1}s_{0}s_{2}s_{1}s_{0}&amp;s_{0}s_{1}s_{0}s_{2}s_{1}s_{0}\end{array}
 \]</span></p>
 <p>Now the big question:</p>
-<blockquote><p><strong>Question 1</strong>: How to compute <span class="math inline">\(\mathcal{SL}(G)\)</span>?</p>
+<blockquote><p><strong>Question 1</strong>: How to compute <span class="math inline">\(\mathcal{SL}(W)\)</span>?</p>
 </blockquote>
 <p>The answer to this question is too complicated to be covered in this
 article, a simple sketch of the main thread is appended at the end. When
@@ -526,7 +589,7 @@ use them to map the initial vertex <span class="math inline">\(v_0\)</span> to o
 s_{i_n}\)</span>, we adopt the convention that the action of <span class="math inline">\(w\)</span> on <span class="math inline">\(v_0\)</span> is to successively apply each
 generator in <span class="math inline">\(w\)</span> from right to left:
 <span class="math display">\[w\cdot v_0 = s_{i_0}(s_{i_1}(\cdots
-s_{i_n}(v_0)).\]</span> Since <span class="math inline">\(G\)</span> is
+s_{i_n}(v_0))).\]</span> Since <span class="math inline">\(W\)</span> is
 infinite we can only generate words up to a given depth. Suppose we have
 the 37 words listed above stored in a list <span class="math inline">\(L\)</span>, they map <span class="math inline">\(v_0\)</span> to 37 different vertices in the
 tiling. To draw the edges between them we need to compute which of them
@@ -868,13 +931,68 @@ face.</p>
 edges and 11541 polygons.</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-7-2-3.png" width="500"></p>
 <h1 id="about-the-code">About the code</h1>
-<p>The core part of the code is the <code>CoxeterGroup</code> class
-which is initialized by a Coxeter matrix and is responsible for
-computing the reflection table of minimal roots, doing multiplications
-in this group, computing coset representatives and drawing the
-automaton. I have delegated most of the drawing stuff to a 3rd party lib
-<a target="_blank" rel="noopener" href="https://github.com/cduck/hyperbolic/">hyperbolic</a> and
-POV-Ray.</p>
+<p>The entire code mainly includes the following functionalities:</p>
+<ol type="1">
+<li>Computation of Coxeter groups. This part is implemented by the
+<code>CoxeterGroup</code> class in the <code>coxeter</code> module. The
+computation of Coxeter groups includes the following aspects:
+<ul>
+<li>Compute the minimal root reflection table of the Coxeter group.</li>
+<li>Compute the multiplication of two words in the Coxeter group, and
+returning the result in its normal form.</li>
+<li>Compute the coset representatives of group elements with respect to
+a given standard parabolic subgroup, and returning the result in its
+normal form.</li>
+<li>Compute of the finite state machine that recognizes <span class="math inline">\(\mathcal{SL}(W)\)</span>, minimizing it, and
+drawing the state machine.</li>
+</ul></li>
+<li>Tiling drawing. Mainly implemented in the <code>tiling.py</code>
+file. It includes the following steps:
+<ul>
+<li>For a given Coxeter group and specified initial vertex position,
+calculate the reflection mirrors and fundamental domain.</li>
+<li>Compute the normal forms of all vertices, as well as the connections
+of edges and faces.</li>
+<li>Apply the words of vertices obtained in the previous step to the
+initial vertex to obtain the floating-point coordinates of all vertices.
+These calculations are all performed in one higher dimension, because in
+the higher dimension all reflections are linear transformations, which
+avoids the use of affine transformations and inversion. Then project to
+two dimensions.</li>
+<li>Call the drawing library to draw the tiling.</li>
+</ul></li>
+</ol>
+<p>The drawing of the finite state machine of <span class="math inline">\(\mathcal{SL}(W)\)</span> requires the use of the
+<code>pygraphviz</code> module, which depends on the
+<code>graphviz</code> software and <code>libgraphviz-dev</code>.</p>
+<p>The minimization of the finite state machine was referenced from <a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/BF00264025">Gries's
+paper</a>. Gries's article is excellent, but I think he did not clarify
+the property of the list that storing the <span class="math inline">\((B,a)\)</span> pairs.</p>
+<p>The drawing of the hyperbolic case uses a third-party library <a target="_blank" rel="noopener" href="https://github.com/cduck/hyperbolic/">hyperbolic</a>. I'm actually
+not very satisfied with this library, but I don't have the energy to
+write another one at the moment, so I'll make do for now. The biggest
+advantage of this library is that it can draw edges with a constant
+hyperbolic width, namely the so-called <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hypercycle_(hyperbolic_geometry)">hypercycle</a>.</p>
+<p>The algorithm for calculating minimal roots is the biggest
+performance bottleneck in this code. In determining whether a minimal
+root <span class="math inline">\(\gamma\)</span> remains a minimal root
+after a single reflection <span class="math inline">\(s_\alpha\)</span>,
+the method used is to determine whether <span class="math inline">\(s_\gamma\)</span> and <span class="math inline">\(s_\alpha\)</span> generate a finite dihedral
+group, that is, whether the matrix corresponding to <span class="math inline">\(s_\gamma s_\alpha\)</span> under the basis <span class="math inline">\(\Delta\)</span> of simple roots becomes the
+identity matrix after a certain power. The elements of the matrix are
+algebraic integers in the cyclotomic field, in the form of <span class="math inline">\(p(\xi)\)</span>, where <span class="math inline">\(p(x)\)</span> is an irreducible polynomial with
+integer coefficients, and <span class="math inline">\(\xi\)</span> is a
+primitive <span class="math inline">\(m\)</span>-th root of unity, where
+<span class="math inline">\(m\)</span> is twice the least common
+multiple of all elements in the Coxeter matrix. <span class="math inline">\(\xi\)</span> can be described by the cyclotomic
+polynomial <span class="math inline">\(\Phi_m(x)\)</span>. Thus, the
+computation of the matrix is reduced to polynomial operations in <span class="math inline">\(\mathbb{Z}[x]/(\Phi_m(x))\)</span>. This
+computational complexity heavily depends on the value of <span class="math inline">\(m\)</span>: for example, for a triangle group like
+(19, 20, 21), the expression of <span class="math inline">\(\Phi_m(x)\)</span> is very complicated, and the
+computation speed is very slow. This is different from the inverse pixel
+reflection method, whose computational complexity hardly changes with
+the group.</p>
+<p>A more reasonable implementation method can be seen <a target="_blank" rel="noopener" href="https://github.com/ulthiel/CoxeterGroups.jl">here</a>.</p>
 <h1 id="more-explainations-on-the-math-stuff">More explainations on the
 math stuff</h1>
 <p>In this section I'll give a short sketch of the core part of the math
@@ -889,18 +1007,33 @@ example:</p>
 labelled mirrors, these mirror have particular importance among all
 roots in the root system: they are the set of minimal roots in the root
 system.</p>
-<p>You can think the root system of <span class="math inline">\(G\)</span> as the mirrors in the image which are
-colored in white. Each mirror is a geodesic line and intersects the
-boundary at two points. It also cuts the space into two disjoint
-halfspaces, one for a positive root and the other for its negative
-counterpart. The halfspace contains the fundamental triangle <span class="math inline">\(\Delta ABC\)</span> correspondes to the positive
-root.</p>
-<p>Intuitively speaking, a minimal root <span class="math inline">\(r\)</span> is a mirror such that if one stands
-inside the fundamental domain <span class="math inline">\(\Delta
-ABC\)</span> and looks outwards, there is no other mirror <span class="math inline">\(r'\ne r\)</span> can completely screen off
-<span class="math inline">\(r\)</span> from being seen. Simple roots are
-always minimal since they are the "walls" of the fundamental domain. The
-most important fact about minimal root is:</p>
+<p>You can think the root system of <span class="math inline">\(W\)</span> as all the circular arcs in the
+diagram, each of which is a reflection mirror. These mirrors are the
+result of the action of the group <span class="math inline">\(W\)</span>
+on the initial mirrors <span class="math inline">\(AB, AC, BC\)</span>
+that are the edges of <span class="math inline">\(\Delta ABC\)</span>.
+Each mirror has two sides, where the side where the fundamental domain
+<span class="math inline">\(\Delta ABC\)</span> is located is considered
+the positive side of the mirror, and the other side is the negative
+side. The normal vector of the mirror's positive side gives a positive
+root, while the normal vector corresponding to the other side is the
+negative of that positive root (negative root).</p>
+<p>We always use a mirror's positive normal vector (positive root) to
+represent that mirror.</p>
+<p>Intuitively, a minimal root <span class="math inline">\(\gamma\)</span> is characterized by the following
+condition: suppose a person stands inside <span class="math inline">\(\Delta ABC\)</span> looking outward, there exists
+no mirror <span class="math inline">\(\beta \neq \gamma\)</span>
+completely blocking the view of <span class="math inline">\(\gamma\)</span>, preventing the person from seeing
+any part of <span class="math inline">\(\gamma\)</span>. In other words,
+this means that if the person wants to walk from the inside of <span class="math inline">\(\Delta ABC\)</span> to the negatve side of <span class="math inline">\(\gamma\)</span>, and he must cross another mirror
+<span class="math inline">\(\beta \neq \gamma\)</span> first, regardless
+of the path he chooses, then <span class="math inline">\(\gamma\)</span>
+is <strong>not</strong> a minimal root.</p>
+<p>Simple roots are necessarily minimal roots, as they are the
+boundaries of the fundamental domain <span class="math inline">\(\Delta
+ABC\)</span>, and it is impossible for there to be another mirror
+blocking between them and the basic region.</p>
+<p>The most important fact about minimal root is:</p>
 <blockquote><p><strong>Theorem</strong>: The set of minimal roots is finite.</p>
 </blockquote>
 <p>This theorem is the key step in Brink and Howlett's proof that
@@ -1036,7 +1169,7 @@ hyperplanes. In each family there is a pair of minimal roots such that
 the fundamental domain lies between them and all other mirrors in this
 family are completely screened off by them hence are not minimal. See
 the image for (6, 2, 3) (affine <span class="math inline">\(\widetilde{G}_2\)</span>) for an example:</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter/roots_623.png" width="800"></p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter/roots_623.png" width="600"></p>
 <aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
