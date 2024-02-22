@@ -341,17 +341,17 @@ that it involves a few complicated theories, specifically the deep
 properties of Coxeter groups, known as the automatic property. A
 significant portion of these months was spent learning from articles by
 Casselman, Brink &amp; Howlett, and others, which helped me understand
-the mathematical principles (see references at the end).</p>
+the mathematicas of this project (see references at the end).</p>
 <p>Although finishing this program is a great achievement for me, I
 don't mean to boast about any superiority of this program: the
 computational method it uses for Coxeter groups is not advanced and
-might not impress the experts. Moreover, its code is somewhat
-unattractive, and likely difficult for anyone else to use.</p>
+might not impress the experts. Moreover, its code is somewhat ugly, and
+likely difficult for other people to use.</p>
 <p>The purpose of this program is to use group theory to draw various
 two-dimensional and three-dimensional <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_tiling">uniform tilings</a>.
-You can think of uniform tiling as using some regular polygon tiles to
-fill the entire space so that the vertices of the tiles are transitive
-under the action of a symmetry group (forming a single orbit).</p>
+You can think of uniform tiling as using some regular polygons to tile
+the space so that the vertices of the tiles are transitive under the
+action of a symmetry group (forming a single orbit).</p>
 <p>I will first show some examples of what this program can do, and then
 explain how it works.</p>
 <h1 id="examples">Examples</h1>
@@ -419,16 +419,18 @@ construction in a program:</p>
 <ol type="1">
 <li><p>Inverse Pixel Method. This method involves calculating, for each
 pixel in the image, its corresponding point <span class="math inline">\(p\)</span> in the world space. Then, <span class="math inline">\(p\)</span> is repeatedly reflected off mirrors
-until it lands within the fundamental region, resulting in a point <span class="math inline">\(q\)</span>. Essentially, we find the pre-image
-<span class="math inline">\(q\)</span> of <span class="math inline">\(p\)</span> in the room. Then, based on <span class="math inline">\(q\)</span>'s position within the fundamental
-region, the pixel corresponding to <span class="math inline">\(p\)</span> is colored. This method allows for
+until it falls within the fundamental region, say the final location is
+<span class="math inline">\(q\)</span>. Essentially, we find the
+pre-image <span class="math inline">\(q\)</span> of <span class="math inline">\(p\)</span> in the real room (called the
+fundamental domain). Then, based on <span class="math inline">\(q\)</span>'s position within the fundamental
+domain, the pixel corresponding to <span class="math inline">\(p\)</span> is colored. This method allows for
 parallel computation on all pixels, and when combined with shader
 programming, it can produce very stunning effects. Here are two examples
 from shadertoy:</p>
 <p><iframe width="480" height="270" frameborder="0" src="https://www.shadertoy.com/embed/mlGfzV?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe></p>
 <p><iframe width="480" height="270" frameborder="0" src="https://www.shadertoy.com/embed/Nd3cR2?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe></p>
-<p>The inverse pixel method cares solely about the final pixel color,
-without concern for their coordinates. It produces raster images and
+<p>The inverse pixel method cares solely about the final pixel color. It
+doesn't care about the actual coordinates. It produces raster images and
 cannot output vector graphics. Moreover, exporting data for use in
 modeling software is not very convenient with this method.</p></li>
 <li><p>Coordinate Method. This approach starts from a given initial
