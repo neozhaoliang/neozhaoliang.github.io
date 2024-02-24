@@ -472,7 +472,10 @@ Gram-Schimdt 正交化处理，得到了 <span class="math inline">\(P\)</span>
 <p>把 <span class="math inline">\(\Phi\)</span> 投影到 <span class="math inline">\(P\)</span>
 上这一步就很简单了，只要对根系中的每个向量，计算它在 <span class="math inline">\(u,v\)</span> 这组基下的坐标即可：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">roots_2d = [(np.dot(u, x), np.dot(v, x)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> roots]<br></code></pre></td></tr></tbody></table></figure>
-<p>剩下的就是把这些点，和它们之间的边画出来了。具体绘图过程我这里就不再赘述了。</p>
+<p>剩下的就是把这些点，和它们之间的边画出来了。具体的绘图过程这俩不再赘述。</p>
+<p>但是如果你去看 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py">Github
+代码</a>
+的话，会发现那里并不是完全按上面这个逻辑写的。这是怎么回事呢？</p>
 <h1 id="进一步改进">进一步改进</h1>
 <p>上一节的计算有个美中不足之处，就是我们需要显式地指定两个集合 <span class="math inline">\(I,J\)</span>。这一步也是可以避免的，但是需要对
 Cartan 矩阵 <span class="math inline">\(C\)</span> 和 <span class="math inline">\(\gamma\)</span> 进行更仔细的分析。下面的内容是在
