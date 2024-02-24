@@ -204,16 +204,8 @@ circles and balls 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 文
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/闲聊/">
-                    闲聊 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">5 篇</span></a>
+                    pywonderland-项目 <span class="right">7 篇</span></a>
                 </a>
             </li>
 
@@ -297,7 +289,7 @@ circles and balls 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 文
             
     
     
-    <a class="breadcrumb" href="/categories/闲聊/">闲聊</a>
+    <a class="breadcrumb" href="/categories/pywonderland-项目/">pywonderland 项目</a>
 
 
         
@@ -347,7 +339,7 @@ circles and balls 讨论了圆的外摆线和焦散，Greg Egan 也有一篇 文
 
 
                                         <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#pov-ray-%E5%85%89%E5%AD%A6%E5%AE%9E%E9%AA%8C"><span class="section table-of-contents-text">POV-Ray 光学实验</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%B1%82%E8%A7%A3%E5%8F%82%E6%95%B0%E6%9B%B2%E7%BA%BF%E7%9A%84%E7%84%A6%E6%95%A3"><span class="section table-of-contents-text">求解参数曲线的焦散</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%B1%82%E8%A7%A3%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9B%B2%E7%BA%BF%E7%9A%84%E7%84%A6%E6%95%A3"><span class="section table-of-contents-text">求解多项式曲线的焦散</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%B8%80%E4%BA%9B%E6%B3%A8%E8%A7%A3"><span class="section table-of-contents-text">一些注解</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#pov-ray-%E5%85%89%E5%AD%A6%E5%AE%9E%E9%AA%8C"><span class="section table-of-contents-text">POV-Ray 光学实验</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%B1%82%E8%A7%A3%E5%8F%82%E6%95%B0%E6%9B%B2%E7%BA%BF%E7%9A%84%E7%84%A6%E6%95%A3"><span class="section table-of-contents-text">求解参数曲线的焦散</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%B1%82%E8%A7%A3%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9B%B2%E7%BA%BF%E7%9A%84%E7%84%A6%E6%95%A3"><span class="section table-of-contents-text">求解多项式曲线的焦散</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%B3%A8%E8%AE%B0"><span class="section table-of-contents-text">注记</span></a></li></ol>
 </div>
 
                                             
@@ -379,7 +371,7 @@ circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇
 (cardioid)。当光源位于无穷远时（可以视作平行光源），得到的焦散是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Nephroid">肾形线</a>
 (nephroid)。一般情况下焦散的形状介于心脏线和肾形线之间。</p>
 <p>更有意思的是，如果杯子的外形是心脏线，而且光源正好位于心脏线的尖点时，得到的焦散正好是肾形线。我写了一个
-<a target="_blank" rel="noopener" href="https://gist.github.com/neozhaoliang/15d0350450885b90c5efbc73ddcdbdde">POV-Ray
+<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/catacaustic">POV-Ray
 脚本</a>，模拟了这一现象：</p>
 <table>
 <colgroup>
@@ -459,14 +451,14 @@ r_y\end{pmatrix}.\]</span></p>
 <p>按照上面的理论，我写了一个小脚本，用 <code>sympy</code>
 (version=1.12) 来计算圆的焦散线。其中圆的中心在原点，半径为 1，光源在
 <span class="math inline">\((1,0)\)</span> 处。</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>x = cos(t)<br>y = sin(t)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>ray = curve - light_source<br>dx = diff(x, t)<br>dy = diff(y, t)<br>n = Matrix([dy, -dx])<br>reflected_ray = simplify(ray - <span class="hljs-number">2</span> * ray.dot(n) * n / n.dot(n))<br>F = (Y - y) * reflected_ray[<span class="hljs-number">0</span>] - (X - x) * reflected_ray[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y)<br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{trigsimp(result[X], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{trigsimp(result[Y], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>C = Matrix([cos(t), sin(t)]) <span class="hljs-comment"># curve</span><br>light = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]) <span class="hljs-comment"># light source</span><br>l = C - light <span class="hljs-comment"># incident ray</span><br>dx, dy = diff(C, t)<br>n = Matrix([dy, -dx]) <span class="hljs-comment"># normal vector</span><br>r = simplify(l - <span class="hljs-number">2</span> * l.dot(n) * n / n.dot(n)) <span class="hljs-comment"># reflected ray</span><br>F = (Y - y) * r[<span class="hljs-number">0</span>] - (X - x) * r[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y) <span class="hljs-comment"># solve the envelope</span><br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{trigsimp(result[X], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{trigsimp(result[Y], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
 <p><code>sympy</code> 给出的结果是：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">X(t)=<span class="hljs-number">2</span>*cos(t)/<span class="hljs-number">3</span> + cos(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span><br>Y(t)=<span class="hljs-number">2</span>*sin(t)/<span class="hljs-number">3</span> + sin(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span><br></code></pre></td></tr></tbody></table></figure>
 <p>这正是喜闻乐见的心脏线的参数表示： <span class="math display">\[\left\{\begin{align*}x(t)&amp;=\frac{\cos(2t) +
 2\cos(t)}{3},\\ y(t)&amp;=\frac{\sin(2t) +
 2\sin(t)}{3}.\end{align*}\right.\]</span></p>
 <p>使用这个参数表示，我们继续计算当光源放在心脏线的尖点，即 <span class="math inline">\(t=\pi\)</span> 对应的点 <span class="math inline">\((-\frac{1}{3},0)\)</span> 时得到的焦散：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>x = (<span class="hljs-number">2</span>*cos(t) + cos(<span class="hljs-number">2</span>*t)) / <span class="hljs-number">3</span><br>y = (<span class="hljs-number">2</span>*sin(t) + sin(<span class="hljs-number">2</span>*t)) / <span class="hljs-number">3</span><br>curve = Matrix([x, y])<br>light_source = Matrix([S(<span class="hljs-string">'-1/3'</span>, evaluate=<span class="hljs-literal">False</span>), <span class="hljs-number">0</span>])<br>ray = curve - light_source<br>dx = diff(x, t)<br>dy = diff(y, t)<br>n = Matrix([dy, -dx])<br>reflected_ray = simplify(ray - <span class="hljs-number">2</span> * ray.dot(n) * n / n.dot(n))<br>F = (Y - y) * reflected_ray[<span class="hljs-number">0</span>] - (X - x) * reflected_ray[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y)<br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{trigsimp(result[X], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{trigsimp(result[Y], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>t, X, Y = symbols(<span class="hljs-string">"t X Y"</span>)<br>C = Matrix([(<span class="hljs-number">2</span>*cos(t) + cos(<span class="hljs-number">2</span>*t)) / <span class="hljs-number">3</span>, (<span class="hljs-number">2</span>*sin(t) + sin(<span class="hljs-number">2</span>*t)) / <span class="hljs-number">3</span>])<br>light = Matrix([S(<span class="hljs-string">'-1/3'</span>, evaluate=<span class="hljs-literal">False</span>), <span class="hljs-number">0</span>])<br>l = C - light <span class="hljs-comment"># incident ray</span><br>dx, dy = diff(C, t)<br>n = Matrix([dy, -dx]) <span class="hljs-comment"># normal vector</span><br>r = simplify(l - <span class="hljs-number">2</span> * l.dot(n) * n / n.dot(n)) <span class="hljs-comment"># reflected ray</span><br>F = (Y - y) * r[<span class="hljs-number">0</span>] - (X - x) * r[<span class="hljs-number">1</span>]<br>dF = diff(F, t)<br>result = solve((F, dF), X, Y) <span class="hljs-comment"># solve the envelope</span><br>print(<span class="hljs-string">f"X(t)=<span class="hljs-subst">{trigsimp(result[X], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br>print(<span class="hljs-string">f"Y(t)=<span class="hljs-subst">{trigsimp(result[Y], method=<span class="hljs-string">'groebner'</span>)}</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
 <p><code>sympy</code> 很快算出了正确的结果：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">X(t)=sin(t)*sin(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span> + cos(t)/<span class="hljs-number">3</span><br>Y(t)=-sin(t)*cos(<span class="hljs-number">2</span>*t)/<span class="hljs-number">3</span> + sin(t)/<span class="hljs-number">3</span><br></code></pre></td></tr></tbody></table></figure>
 <p>不难验证</p>
@@ -560,11 +552,11 @@ y^{2}.\]</span></p>
 <p>就是心脏线的隐函数表示。不信？在 <a target="_blank" rel="noopener" href="https://www.desmos.com/geometry/vtjbq3ete1">Desmos</a>
 里面画出来看看！</p>
 <p><img style="margin:0px auto;display:block" width="300" src="/images/caustics/desmos_cardioid.png"></p>
-<h1 id="一些注解">一些注解</h1>
+<h1 id="注记">注记</h1>
 <p>这篇文章主要覆盖了 Greg Egan
 博文的前半部分，他的后半部分内容我觉得有点放飞自我，也没怎么仔细看。</p>
 <p>虽然我们用 <code>sympy</code>
-的实验很成功，但并不是所有情况下都能得到焦散曲线，而且对复杂的曲线
+的实验很成功，但注意并不是所有情况下都能得到焦散曲线（比如光源位于抛物线的焦点时，反射光线都是平行的），而且对复杂的曲线
 <code>sympy</code> 算起来非常慢。</p>
 <p>我研究生的时候上过计算机代数的课程，当时用的教学软件是 Maple。Maple
 编程是很不方便的，所以我其实没有多少计算机代数的编程经验。我之前一直觉得
