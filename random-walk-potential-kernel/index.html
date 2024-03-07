@@ -556,7 +556,8 @@ X} - 1 - i\theta\cdot X - \frac{1}{2}(i\theta\cdot X)^2\right]}.
 X)}&amp;=\mathop{\mathrm{\mathbb{E}}}{(x_1\theta_1 + x_2\theta)}=0,\\
 \mathop{\mathrm{\mathbb{E}}}{(\theta\cdot
 X)^2}&amp;=\mathop{\mathrm{\mathbb{E}}}{(x_1\theta_1+x_2\theta_2)^2}=\mathop{\mathrm{\mathbb{E}}}{(\theta_1^2+\theta_2^2)}=\mathop{\mathrm{\mathbb{E}}}{|\theta|^2}.
-\end{align*}\]</span> 由于对任何实数 <span class="math inline">\(z\)</span> 都有不等式 <span class="math display">\[
+\end{align*}\]</span> 由于对任何实数 <span class="math inline">\(z\)</span> 都有不等式 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>
+<span class="math display">\[
 \left|\mathrm{e}^{iz} - 1 - iz -
 \frac{(iz)^2}{2}\right|\leq\frac{|z|^3}{6},
 \]</span> 所以 <span class="math display">\[
@@ -620,7 +621,7 @@ u}{u}\,\mathrm{d}u=\gamma
 常数的另一种等价表示形式），它给出的外层积分值是 <span class="math inline">\(\frac{2}{\pi}\gamma\)</span>；第二个求和项等于
 <span class="math display">\[\ln\pi + \ln |x| + \ln\sin\alpha,\]</span>
 它给出的外层积分值是 <span class="math display">\[\frac{2}{\pi}\left(\ln\pi + \ln |x|-\ln 2
-\right).\]</span> 第三个求和项满足 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <span class="math display">\[
+\right).\]</span> 第三个求和项满足 <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="math display">\[
 \lim_{|x|\to\infty}\int_0^{\frac{\pi}{2}}\mathrm{d}\alpha\int_{\pi
 |x|\sin\alpha}^\infty\frac{\cos u}{u}\,\mathrm{d}u=0.
 \]</span> 所以 <span class="math display">\[
@@ -780,7 +781,10 @@ G(x)=\frac{\gamma_d}{|x|^{d-2}} + O(|x|^{-d}).
 New York: Springer-Verlag. Graduate Texts in Mathematics, Vol. 34.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Lawler, G. F., and Limic, V. 2010. Random walk: a modern
 introduction. Cambridge Studies in Advanced Mathematics, vol. 123.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>我们来证明 <span class="math display">\[
+<li id="fn4"><p>Durrett, R. 2019. Probability: theory and examples.
+Fifth edn. Cambridge Series in Statistical and Probabilistic
+Mathematics. 参见引理 3.3.19。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>我们来证明 <span class="math display">\[
 \lim_{x\to+\infty}\int_0^{\pi/2}\mathrm{d}\alpha\int_{x\sin\alpha}^\infty\frac{\cos
 u}{u}\,\mathrm{d}u=0.
 \]</span> 将内层的积分 <span class="math inline">\(\int_{x
@@ -793,7 +797,7 @@ u}{u}\,\mathrm{d}u&amp;=\int_0^{\pi/2}\mathrm{d}\alpha\int_{\sin\alpha}^1\frac{\
 zx}{z}\,\mathrm{d}z\\&amp;=\int_0^1\mathrm{d}z\int_0^{\arcsin
 z}\frac{\cos zx}{z}\,\mathrm{d}\alpha\\&amp;=\int_0^1\frac{\arcsin
 z}{z}\cos zx\,\mathrm{d}z.\end{align*}\]</span> 再使用 Riemann-Lebesgue
-引理即得。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+引理即得。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
 
