@@ -26,19 +26,29 @@ class Room:
 
         return trajectory, target
 
-    def draw_trajectory(self, origin, target):
+    def draw_trajectory(self, origin, target, **kwargs):
         trajectory, final_position = self.get_bounce_trajectory(origin, target)
         points = [origin] + trajectory + [final_position]
         xx, yy = zip(*points)
-        plt.plot(xx, yy, "gray", "-", lw=0.5)
+        lw = kwargs.get("lw", 0.5)
+        plt.plot(xx, yy, "gray", "-", lw=lw)
         guard = origin.midpoint(target)
-        trajectory, real_guard = self.get_bounce_trajectory(origin, guard)
+        _, real_guard = self.get_bounce_trajectory(origin, guard)
+        outside = False
         for mirror in self.mirrors:
             if not mirror.on_positive_side(guard):
                 q = mirror.intersect(origin, guard)
                 if q is not None:
-                    plt.gca().plot(*zip(q, target), "gray", linestyle="dashed", lw=0.5)
+                    plt.gca().plot(*zip(q, target), "gray", linestyle="dashed", lw=lw)
+                    outside = True
                     break
+
+        if not outside:
+            if len(trajectory) > 0:
+                plt.gca().plot(
+                    *zip(trajectory[-1], target), "gray", linestyle="dashed", lw=lw
+                )
+
         return final_position, real_guard
 
 

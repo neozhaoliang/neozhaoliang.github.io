@@ -34,7 +34,7 @@ plt.plot(
 )
 plt.plot(*zip(*odd_targets), "o", color=palette[1], **marker_style, label="Odd targets")
 assin.plot("ro", **marker_style, label="Assassin")
-
+target.plot("co", **marker_style, label="Target")
 marker_style["markersize"] = 5
 marker_style["lw"] = 0.3
 plt.plot(*zip(*even_guards), "o", color=palette[0], **marker_style, label="Even Guards")
@@ -50,6 +50,6 @@ ax.set_xlim(xmin, xmax)
 ax.set_ylim(ymin, ymax)
 ax.axis("off")
 ax.set_aspect("equal")
+# plt.legend()
 plt.tight_layout()
-plt.legend()
 plt.savefig("parallel.svg", dpi=300)

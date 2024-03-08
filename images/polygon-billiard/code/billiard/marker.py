@@ -39,6 +39,9 @@ class Marker:
         self.points = [g(p) for p in self.points]
         return self
 
+    def center(self):
+        return sum(self.points, Vec2(0, 0)) / len(self.points)
+
     def plot(self, *args, **kwargs):
         x, y = zip(*self.points)
         plt.plot(x, y, *args, **kwargs)

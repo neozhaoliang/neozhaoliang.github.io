@@ -331,6 +331,39 @@
     
     
     <entry>
+      <title>狗仔队 vs 保镖</title>
+      <link href="finite-blocking-property/"/>
+      <url>finite-blocking-property/</url>
+      
+        <content type="html"><![CDATA[<p>Maryam Mirzakhani 在 2014 年的 <a href="https://www.youtube.com/watch?v=tprlQMClSYQ">一次报告</a>中提出了如下的问题：（问题大约在视频的 25 分 50 秒处）</p><blockquote><p><strong>问题</strong>：假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子，即光线在碰到墙壁时会按照入射角等于出射角的规律一直反射下去。房间中有一个明星和一个狗仔队成员。能否在房间中放置若干名（数目有限）保镖，使得这些保镖可以封死狗仔队的所有拍摄角度，从而保护明星不被拍到？</p><p>明星和狗仔对的位置是固定的，但可能是房间中任何两点。</p></blockquote><p>据 <a href="http://www.numdam.org/item/10.5802/aif.2124.pdf">考据</a>，这个问题曾经在1989 年列宁格勒的数学竞赛中出现过。不久前通过 <a href="https://www.youtube.com/watch?v=a7gp9c2p0UQ">PBS</a> 和 <a href="https://www.math3ma.com/blog/is-the-square-a-secure-polygon">math3ma的博客</a>的科普，这个问题又被更多人所了解。如果你还没有看过这个视频和博客的话，我强烈建议你先去观看它们，然后再阅读本文。因为她们讲的真的非常棒，而且是真正面向一般大众的科普！</p><p>Greg Egan <a href="https://gregegan.net/SCIENCE/Lattices/Lattices.html">进一步讨论了</a>当房间是正三角形和正六边形的情况。他给出的答案是正确的，但是我感觉他对正六边形情形的解释有点让人难懂（GregEgan 的一贯风格）。</p><p>本文是对 math3ma 和 Greg Egan博客文章的补充。也就是说，我这里不会再给出正方形情形的解答，math3ma的博客文章已经解释的很好了。但是如果你看完 Greg Egan的文章以后对正三角形和正六边形的情形还有疑问，这篇文章也许可以帮助你。</p><span id="more"></span><h1 id="反射和平移">反射和平移</h1><p>在照镜子的时候，你和自己在镜子中的像的左右是相反的。即镜面反射会改变“手性”。所以任何人不可能经过平移和旋转之后与自己在镜子中的像重合。</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/inception.jpg" width="500"></p><p>然而不管是旋转还是平移，它们都可以分解成两个反射变换的复合：</p><ol type="1"><li>两个夹角为 <span class="math inline">\(\theta\)</span>的镜面反射的复合是一个角度为 <span class="math inline">\(2\theta\)</span> 的旋转。</li><li>两个平行且距离为 <span class="math inline">\(d\)</span>的镜面反射的复合是一个距离为 <span class="math inline">\(2d\)</span>的平移。</li></ol><p>所以偶数次反射等同于若干次旋转和平移，手性不变；奇数次反射等同于若干次旋转和平移后再附加一次反射，手性相反。</p><p>观察上面盗梦空间的剧照，小李子位于两个平行的镜子中间，他有无穷多个虚像。这些像是交错出现的：正对着他的像是经过奇数次反射得到的，这些像和他的手性是相反的，它们构成集合<span class="math inline">\(L_1\)</span>；背对着他的像是经过偶数次反射得到的（小李子本人看作<span class="math inline">\(0\)</span>次反射的像），这些像和他是可以经过平移以后重合的，它们构成集合 <span class="math inline">\(L_2\)</span>。假设两个镜子的距离为 <span class="math inline">\(d\)</span>，则同一 <span class="math inline">\(L_i\)</span> 中的像以 <span class="math inline">\(2d\)</span> 为间隔均匀分布在一条直线上。</p><p>如果我们想在场景中放置若干保镖，挡住摄像师从任何角度拍摄到小李子的话，则恰好需要4名保镖，他们分别挡住小李子本人、小李子在两个镜子中的一次虚像，以及某个二次虚像。</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/parallel.svg" height="400"></p><p>为什么是 4 呢？假设一个保镖 <span class="math inline">\(G\)</span>挡住了小李子的某个虚像 <span class="math inline">\(A\inL_i\)</span>，<span class="math inline">\(i\)</span> 可以是 1 或者2。<span class="math inline">\(G\)</span>的所有虚像也由两个格点组成，每个格点也都是间隔 <span class="math inline">\(2d\)</span>均匀排列的。根据三角形的相似原理，<span class="math inline">\(G\)</span>的偶数次反射构成的格点在 <span class="math inline">\(L_i\)</span>上的投影间距是 <span class="math inline">\(4d\)</span>，即他的偶数次虚像只能挡住 <span class="math inline">\(L_i\)</span> 中一半的格点。另一方面 <span class="math inline">\(G\)</span>的奇数次反射构成的格点一般来说是无用的（除非狗仔和明星恰好位于某些特殊位置）。所以一个保镖只能挡住1/4 比例的小李子的虚像。</p><h1 id="正方形-正三角形-正六边形">正方形 | 正三角形 | 正六边形</h1><p>当房间是正方形时，明星的所有虚像由 4 个不同的二维格点组成：</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/square_lattice.svg" height="350"></p><p>对于狗仔队来说，只要能看到任何一个虚像，他就能拍摄到明星。因为他和任何虚像之间的连线都对应一条光线的反射路径：</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/square_lattice_with_targets.svg" height="350"></p><p>一个二维格点可以看作两个一维格点的直积，我们已经看到封锁一维格点需要2 名保镖，所以封锁一个二维格点需要 4 名保镖，一共需要 4x4=16名保镖。</p><p>当房间是正三角形时，明星的所有虚像由 6 个不同的二维格点组成：</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/triangle_lattice.svg" height="350"></p><p>狗仔队与任何虚像之间的连线都对应一条反射路径：</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/triangle_lattice_with_targets.svg" height="350"></p><p>同样地，封锁每个二维格点需要 4 个保镖，所以总共需要 4x6 = 24名保镖。</p><p>房间是正六边形是一个非常容易产生迷惑的情形。我最开始的想法是类比正三角形和正方形的情形：正六边形关于边作反射也是可以铺满整个平面的，这些正六边形虚像房间也可以分成若干不同的二维格点，每个二维格点需要4 名保镖，所以总数应该是不同格点的个数 x 4。</p><p>但是很快我就发现了不对劲：将一个房间绕着一个顶点反射三次回到自身，房间被翻转了：</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/chirality.svg" height="350"></p><p>实际上绕着房间反射可以把标记移动到房间里任何六个三角形的内部：</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/chirality-2.svg" height="350"></p><p>所以我们不可能给房间标记一个类型，使得同一类型的房间是平移等价的。</p><p>但是有一点仍然是成立的，即房间中每个点 <span class="math inline">\(p\)</span> 在平面上的像由至多 6个不同的二维格点构成。如果 <span class="math inline">\(p\)</span>位于某个正三角形的内部，那么它在平面上每个正三角形中都有一个虚像。所有正三角形在平移等价下有6 个不同的等价类，所以 <span class="math inline">\(p\)</span> 的虚像由 6个不同的格点组成。特殊情况下，如果 <span class="math inline">\(p\)</span>位于两个正三角形相邻的边上，那么它的虚像由 3 个不同的格点组成。如果<span class="math inline">\(p\)</span>位于正六边形的中心，那么它的虚像只构成一个格点。</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/hexagon_lattice.svg" height="350"></p><p>在上图的染色中，任何两个同颜色的三角形只差一个平移。</p><p>所以一般情形下明星的虚像仍然由 6 个二维格点组成。封锁每个格点需要 4名保镖，所以我们仍然需要 4x6=24 名保镖，是这样吗？</p><p>答案是 NO！请看下图：</p><p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/24_guards_each_lattice.svg" height="350"></p><p>我选择了明星的 6个虚像格点中的一个，用黄色的点标记；狗仔与每个虚像连线的中点有一个虚拟保镖，这个虚拟保镖是房间中某个真实保镖（用青色的点标记）的虚像，把这个射线折叠回房间我们可以得到保镖的真实位置。然而即便对同一个保镖，随着他的虚像变化，这个真实位置也可能不同，有6 种可能，所以封锁这个格点需要 4x6=24 个保镖，封锁全部 6 个格点需要24x6=144 个保镖！</p><p>正六边形和正三角形的情形有这个区别，是因为正六边形并不是对称群作用下的“基本区域”，相反它包含基本区域（正三角形）的6 个拷贝。如果我们取定房间内一个正三角形 <span class="math inline">\(\Delta\)</span>作为基本区域的话，那么对一个保镖和他的全部偶数次虚像构成的格点，确实它们在<span class="math inline">\(\Delta\)</span>中只有唯一的真实原像。这就是正三角形对应的情形。但现在房间是正六边形，在把光线折叠回房间时，只要落入6 个三角形中的任何一个就算看到。这当然会导致保镖的数目膨胀 6 倍。</p><p>在上图中，你可以看到房间中的 6 个三角形中每个都恰好包含 4个保镖，固定一个房间，其它房间中保镖的位置可以通过将二面体群 <span class="math inline">\(D_3\)</span> 中的元素作用在这个房间上得到。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> pywonderland 项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Billiard ball </tag>
+            
+            <tag> Dynamic system </tag>
+            
+            <tag> Reflection </tag>
+            
+            <tag> Affine Weyl group </tag>
+            
+            <tag> Lattice </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Todd-Coxeter 算法和 3D/4D 均匀多胞体</title>
       <link href="Todd-Coxeter-and-uniform-polytopes/"/>
       <url>Todd-Coxeter-and-uniform-polytopes/</url>

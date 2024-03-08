@@ -191,7 +191,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">7 篇</span></a>
+                    pywonderland-项目 <span class="right">8 篇</span></a>
                 </a>
             </li>
 
@@ -507,34 +507,26 @@ Coxeter
             <div class="article-title">
                 
     
-        <h1 class="indigo-link-context"><a href="/Todd-Coxeter-and-uniform-polytopes/">Todd-Coxeter 算法和 3D/4D 均匀多胞体</a></h1>
+        <h1 class="indigo-link-context"><a href="/finite-blocking-property/">狗仔队 vs 保镖</a></h1>
     
 
 
             </div>
 
-            <time class="pink-link-context" datetime="2018-05-21T00:00:00.000Z"><a href="/Todd-Coxeter-and-uniform-polytopes/">2018-05-21</a></time>
+            <time class="pink-link-context" datetime="2019-07-18T16:00:00.000Z"><a href="/finite-blocking-property/">2019-07-19</a></time>
 
             
     <div class="tags-row">
         
-            <a href="/tags/POV-Ray/" class="chip pink lighten-1">POV-Ray</a>
+            <a href="/tags/Billiard-ball/" class="chip pink lighten-1">Billiard ball</a>
         
-            <a href="/tags/uniform-polytopes/" class="chip pink lighten-1">uniform polytopes</a>
+            <a href="/tags/Dynamic-system/" class="chip pink lighten-1">Dynamic system</a>
         
-            <a href="/tags/pywonderland/" class="chip pink lighten-1">pywonderland</a>
+            <a href="/tags/Reflection/" class="chip pink lighten-1">Reflection</a>
         
-            <a href="/tags/Todd-Coxeter/" class="chip pink lighten-1">Todd-Coxeter</a>
+            <a href="/tags/Affine-Weyl-group/" class="chip pink lighten-1">Affine Weyl group</a>
         
-            <a href="/tags/finitely-presented-group/" class="chip pink lighten-1">finitely presented group</a>
-        
-            <a href="/tags/polychora/" class="chip pink lighten-1">polychora</a>
-        
-            <a href="/tags/polyhedra/" class="chip pink lighten-1">polyhedra</a>
-        
-            <a href="/tags/coxeter-groups/" class="chip pink lighten-1">coxeter groups</a>
-        
-            <a href="/tags/coset-enumeration/" class="chip pink lighten-1">coset enumeration</a>
+            <a href="/tags/Lattice/" class="chip pink lighten-1">Lattice</a>
         
     </div>
 
@@ -542,20 +534,30 @@ Coxeter
 
             
                 <div class="entry pink-link-context">
-                    <blockquote>
-<p>The English version of this doc is <a href="/polytopes">here</a>.</p>
+                    <p>Maryam Mirzakhani 在 2014 年的 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tprlQMClSYQ">一次报告</a>
+中提出了如下的问题：（问题大约在视频的 25 分 50 秒处）</p>
+<blockquote>
+<p><strong>问题</strong>：假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子，即光线在碰到墙壁时会按照入射角等于出射角的规律一直反射下去。房间中有一个明星和一个狗仔队成员。能否在房间中放置若干名（数目有限）保镖，使得这些保镖可以封死狗仔队的所有拍摄角度，从而保护明星不被拍到？</p>
+<p>明星和狗仔对的位置是固定的，但可能是房间中任何两点。</p>
 </blockquote>
-<p>本文介绍我写的一个高颜值的、脱离了低级趣味的小程序：用 Python 和
-POV-Ray 绘制各种三维多面体和四维多胞体，代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/polytopes">Github</a>
-上。</p>
-<p>以下是用这个程序渲染的一些例子，其中不同颜色的顶点/边/面表示它们在对称群的作用下位于不同的轨道中，具体解释见后。</p>
+<p>据 <a target="_blank" rel="noopener" href="http://www.numdam.org/item/10.5802/aif.2124.pdf">考据</a>，这个问题曾经在
+1989 年列宁格勒的数学竞赛中出现过。不久前通过 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=a7gp9c2p0UQ">PBS</a> 和 <a target="_blank" rel="noopener" href="https://www.math3ma.com/blog/is-the-square-a-secure-polygon">math3ma
+的博客</a>
+的科普，这个问题又被更多人所了解。如果你还没有看过这个视频和博客的话，我强烈建议你先去观看它们，然后再阅读本文。因为她们讲的真的非常棒，而且是真正面向一般大众的科普！</p>
+<p>Greg Egan <a target="_blank" rel="noopener" href="https://gregegan.net/SCIENCE/Lattices/Lattices.html">进一步讨论了</a>
+当房间是正三角形和正六边形的情况。他给出的答案是正确的，但是我感觉他对正六边形情形的解释有点让人难懂（Greg
+Egan 的一贯风格）。</p>
+<p>本文是对 math3ma 和 Greg Egan
+博客文章的补充。也就是说，我这里不会再给出正方形情形的解答，math3ma
+的博客文章已经解释的很好了。但是如果你看完 Greg Egan
+的文章以后对正三角形和正六边形的情形还有疑问，这篇文章也许可以帮助你。</p>
                 </div>
             
         </div>
 
         
         <div class="card-action pink-link-context">
-            <a href="/Todd-Coxeter-and-uniform-polytopes/">阅读全文</a>
+            <a href="/finite-blocking-property/">阅读全文</a>
         </ div>
         
     </div>

@@ -63,5 +63,10 @@ def plot_hexagon(x, y, **kwargs):
             color=palette[i],
         )
         plt.gca().add_patch(tri)
-    hexagon = Polygon(vertices, closed=True, color="none", ec="k", lw=1, **kwargs)
+        if kwargs.get("marker", False):
+            Marker().scale(0.8).transform_by_group_element(utils.D3[i]).translate(
+                (Vec2(x + 0.5, y + sq3 / 2) + vertices[i] + vertices[(i + 1) % 6]) / 3
+            ).plot("k", lw=0.8)
+
+    hexagon = Polygon(vertices, closed=True, color="none", ec="k", lw=1)
     plt.gca().add_patch(hexagon)
