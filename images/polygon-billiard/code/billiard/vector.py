@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 class Vec2(np.ndarray):
@@ -31,5 +30,5 @@ class Vec2(np.ndarray):
     def midpoint(self, other):
         return (self + other) / 2
 
-    def plot(self, *args, **kwargs):
-        plt.gca().plot(self.x, self.y, *args, **kwargs)
+    def length(self):
+        return np.linalg.norm(self)

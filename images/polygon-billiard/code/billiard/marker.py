@@ -2,13 +2,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from .vector import Vec2
-from .utils import reflect_about_line
+from .transform import reflect_about_line
 
 size = 0.1
 default_marker = [Vec2(-size, -size), Vec2(-size, size), Vec2(size, size)]
 
 
 class Marker:
+    """Draw markers in the polygons to help visualize the different lattices."""
 
     def __init__(self, pts=None):
         if pts is None:
