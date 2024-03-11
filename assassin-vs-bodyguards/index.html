@@ -429,12 +429,11 @@ L_i\)</span>，<span class="math inline">\(i\)</span> 可以是 1 或者
 的奇数次反射构成的格点一般来说是无用的（除非狗仔和明星恰好位于某些特殊位置）。所以一个保镖只能挡住
 1/4 比例的小李子的虚像。</p>
 <h1 id="正方形-正三角形-正六边形">正方形 | 正三角形 | 正六边形</h1>
-<p>理解正多边形房间情形的第一个关键，是要知道刺客的任何射击轨迹都可以展开为平面上的一条射线。刺客可以击中目标当且仅当这条射线经过政要的某个虚像。这个操作叫做展开
+<p>理解正多边形房间情形的第一个关键，是要知道刺客的任何射击轨迹都可以展开为平面上的一条射线。刺客可以击中目标当且仅当这条射线经过目标的某个虚像。这个操作叫做展开
 (unfolding)。</p>
 <p>反之，我们可以用所谓的折叠 (folding)
 操作将从刺客发出的任何射线折叠回房间变成一条射击轨迹。</p>
-<p>在讨论数学时，我们用展开操作来将轨迹转化为更容易处理的直线；在编程时，我们用折叠操作来计算任何射线对应的射击轨迹。</p>
-<p>当房间是正方形时，政要的所有虚像由 4 个不同的二维格点组成：</p>
+<p>当房间是正方形时，目标的所有虚像由 4 个不同的二维格点组成：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/square_lattice.svg" height="350"></p>
 <p>对于刺客来说，只要朝着任何一个虚像开枪他就能击中目标。因为他和任何虚像之间的连线都可以通过折叠操作变成一条子弹的反射路径：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/square_lattice_with_targets.svg" height="350"></p>
@@ -448,8 +447,8 @@ L_i\)</span>，<span class="math inline">\(i\)</span> 可以是 1 或者
 名保镖。</p>
 <p>房间是正六边形是一个非常容易产生迷惑的情形。注意到将一个房间绕着一个顶点反射三次回到自身，房间被翻转了，而且标记被移动到了相邻的三角形中：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/chirality.svg" height="350"></p>
-<p>换句话说，（镜面反射生成的）对称群可以在保持房间本身不变的同时将房间内的点移动到房间中其它的位置，这一点与前面平行镜面、正方形、正三角形的情形是不同的。在那些情形中，任何保持房间不变的群元素必然保持房间中每一个点都不变。</p>
-<p>这就导致房间中的一点，在其它房间中可以有 6
+<p>即（镜面反射生成的）对称群可以在保持房间本身不变的同时将房间内的点移动到房间中其它的位置。这就导致房间中的一点在其它房间中可以有
+6
 个不同的虚像。这取决于射线的方向，沿着不同的射线看过去，可以看到不同的虚像：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/chirality-2.svg" height="350"></p>
 <p>用群论的语言解释，就是存在多个不同的群元素 <span class="math inline">\(w\)</span> 可以将房间 <span class="math inline">\(H\)</span> 映射为另一个房间 <span class="math inline">\(H'\)</span>：<span class="math inline">\(wH=H'\)</span>。每一条从 <span class="math inline">\(H\)</span> 到 <span class="math inline">\(H'\)</span> 的射线都给出一个这样的 <span class="math inline">\(w\)</span>。不同的 <span class="math inline">\(w\)</span> 可能会导致 <span class="math inline">\(H'\)</span> 中 6 个虚像的排列发生变化。</p>
@@ -457,25 +456,21 @@ L_i\)</span>，<span class="math inline">\(i\)</span> 可以是 1 或者
 6
 个拷贝。注意到正六边形的镜面集合和正三角形的情形是一样的，都由三组夹角为
 120 度的、间隔为 1
-的平行线组成。所以它们给出的对称群是一样的这个群实际上是仿射 Weyl 群
-<span class="math inline">\(\widetilde{A}_2\)</span>。但是每个正六边形的内部会被三个镜面“穿过”，切成
+的平行线组成。所以它们给出的对称群是一样的。但是每个正六边形的内部会被三个镜面“穿过”，切成
 6 个小三角形。所以正六边形的情形基本区域还是正三角形。于是房间中每个点
 <span class="math inline">\(p\)</span> 在平面上的像仍然由 6
 个不同的二维格点构成 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/hexagon_lattice.svg" height="350"></p>
-<p>在上图中，相同颜色的三角形构成一个格点。</p>
-<p>我解释一下图中标号的含义：如果一个正三角形被映射到了另一个具有同样颜色的正三角形，那么它们的标号必然一致。</p>
+<p>在上图中，相同颜色的三角形构成一个格点。图中标号的含义是：如果一个正三角形被映射到了另一个具有同样颜色的正三角形，那么它们的标号必然一致。</p>
 <p>所以一般情形下目标的虚像仍然由 6 个二维格点组成。封锁每个格点需要 4
 名保镖，所以我们仍然需要 4x6=24 名保镖，是这样吗？请看下图：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/24_guards_each_lattice.svg" height="350"></p>
 <p>我选择了明星的 6
-个虚像格点中的一个，用黄色的点标记；刺客与每个虚像连线的中点有一个虚拟保镖，这个虚拟保镖是房间中某个真实保镖（用青色的点标记）的虚像，把这个射线折叠回房间我们可以得到保镖的真实位置。然而即便对同一个保镖，随着他的虚像变化，这个真实位置也可能不同，有
+个虚像格点中的一个，用黄色的点标记；刺客与每个虚像连线的中点有一个保镖的虚像，这个虚像来自房间中某个真实的保镖（用青色的点标记）。把射线折叠回房间我们可以得到真实保镖的位置。然而即便对同一个保镖，随着他的虚像变化，这个位置也可能不同，有
 6 种可能，所以封锁这个格点需要 4x6=24 个保镖，封锁全部 6 个格点需要
 24x6=144 个保镖！</p>
-<p>为什么保镖的数目增加了 6
-倍？这是因为每一个虚拟保镖的原像可能来自房间中 6
-个位置中的任何一个。即如果我们固定一个保镖 <span class="math inline">\(G\)</span>
-并考虑他的所有（偶数次反射）给出的虚像集合 <span class="math inline">\(X\)</span>，每条从刺客到某个 <span class="math inline">\(x\in X\)</span> 的射线对应一个群元素 <span class="math inline">\(w_x\in\widetilde{A}_2\)</span>，<span class="math inline">\(w_x\)</span> 将 <span class="math inline">\(x\)</span> 映射回真实的房间。当 <span class="math inline">\(x\)</span> 变化时，最终的位置 <span class="math inline">\(w_x\cdot x\)</span> 有 6
+<p>为什么保镖的数目增加了 6 倍？这是因为每一个保镖虚像可能来自房间中 6
+个位置中的任何一个。即如果我们固定一个保镖 <span class="math inline">\(G\)</span> 并考虑所有和他平移等价的虚像集合 <span class="math inline">\(X\)</span>，从刺客到某个 <span class="math inline">\(x\in X\)</span> 的一条射线对应一个群元素 <span class="math inline">\(w_x\in\widetilde{A}_2\)</span>，<span class="math inline">\(w_x\)</span> 将 <span class="math inline">\(x\)</span> 映射回真实的房间。当 <span class="math inline">\(x\)</span> 变化时，最终的位置 <span class="math inline">\(w_x\cdot x\)</span> 有 6
 种不同的可能。所以保镖的数目要增加 6 倍。</p>
 <p>在前面正三角形等情形中，所有 <span class="math inline">\(w_x\cdot
 x\)</span> 对应的是真实房间中同一个位置。</p>
@@ -508,7 +503,9 @@ Weyl
 <p>在正四边形或者正三角形的情形，所有房间与 <span class="math inline">\(W\)</span>
 的群元素是一一对应的。但是在正六边形的情形，群元素和房间是 6 对 1
 的关系：任何 <span class="math inline">\(D_3\)</span>
-中的元素作用在真实房间上都保持真实房间不变（非恒等元会变动房间中的点）。然后有一个唯一的平移将它们的中心重合。</p>
+中的元素作用在真实房间上都保持真实房间不变（非恒等元会变动房间中的点）。然后有一个唯一的平移将它们的中心重合。刺客与保镖虚像之间的连线给出的群元素
+<span class="math inline">\(w\)</span> 在分解为 <span class="math inline">\(D_3\)</span> 和 <span class="math inline">\(L\)</span> 中元素的乘积时，任何 <span class="math inline">\(D_3\)</span> 中的元素都会出现，所以保镖有 6
+个可能的真实位置。</p>
 <aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
