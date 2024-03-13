@@ -17,7 +17,7 @@ click_point = Vec2(0, 0)
 
 margin = 0.02
 if shape == "square":
-    bbox = [0, 1, 0, 1]
+    bbox = [-margin, 1 + margin, -margin, 1 + margin]
 elif shape == "triangle":
     bbox = [-margin, 1 + margin, -margin, 3**0.5 / 2 + margin]
 elif shape == "hexagon":
