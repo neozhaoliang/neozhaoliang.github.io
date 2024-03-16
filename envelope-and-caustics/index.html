@@ -408,9 +408,8 @@ circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇
 </table>
 <p>所以我们很容易作出如下的猜想：如果在肾形线的内部或者尖点放一个光源，是不是又会得到下一个外摆线？然而根据
 Greg Egan 在他博客中的实验，这个应该是不成立的。</p>
-<p>理论上这个 POV-Ray 脚本可以渲染任意的参数曲线反射的效果
-（你需要自己作一些修改，比如调整尺度和光源位置），但是 POV-Ray 渲染
-parametric surface + radiosity
+<p>理论上这个 POV-Ray 脚本可以渲染任意的参数曲线反射的效果，但是 POV-Ray
+渲染 parametric surface + radiosity
 非常慢，所以如果你想试一试的话，最好还是用 POV-Ray 原生的 CSG
 来构造镜面曲线。</p>
 <h1 id="求解参数曲线的焦散">求解参数曲线的焦散</h1>
@@ -531,12 +530,12 @@ x})}\begin{pmatrix}r_x\\ r_y\end{pmatrix}.\]</span></p>
 <span class="math inline">\(x,y\)</span>，得到一个仅包含 <span class="math inline">\((X,Y)\)</span> 的表达式，我们可以尝试用 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis">Gröbner
 basis</a> 方法。Gröbner 基方法会把多项式方程组 <span class="math display">\[F=G=P=0\]</span> 转化为一组等价的新方程组 <span class="math display">\[g_1=g_2=\cdots=g_m=0.\]</span>
 即它们有完全相同的解集。</p>
-<p><span class="math inline">\(\{g_1,\ldots,g_m\}\)</span> 是 <span class="math inline">\(F,G,P\)</span> 在 <span class="math inline">\(\mathbb{R}[x,y,X,Y]\)</span> 中生成的理想 <span class="math inline">\(I=\langle F,G,P\rangle\)</span>
+<p><span class="math inline">\(\{g_1,\ldots,g_m\}\)</span> 是 <span class="math inline">\(F,G,P\)</span> 在 4 个变元的多项式环 <span class="math inline">\(\mathbb{R}[x,y,X,Y]\)</span> 中生成的理想 <span class="math inline">\(I=\langle F,G,P\rangle\)</span>
 的一组生成元，<span class="math inline">\(\{g_1,\ldots,g_m\}\)</span>
 叫做 <span class="math inline">\(I\)</span> 的约化的 Gröbner
 基。在字典序 <span class="math inline">\(x\succ y\succ X\succ Y\)</span>
 下，约化的 Gröbner 基会有一个好的属性，即从 <span class="math inline">\(g_1\)</span> 变化到 <span class="math inline">\(g_m\)</span> 时，多项式中的变元会按照从 <span class="math inline">\(x\to y\to X\to Y\)</span>
-的顺序被消除掉。注意这是个不太严格的说法，我们并不是总能消掉顺序靠前的变元，但是如果消除发生的话，它就会按照这个顺序来。这样我们就可以执行类似高斯消元法中的“回代”操作。从而新的方程组求解会比原方程组更加简单。</p>
+的先后顺序被消除掉。注意这是个不太严格的说法，我们并不是总能消掉顺序靠前的变元，但是如果消除发生的话，它就会按照这个顺序来。这样我们就可以执行类似高斯消元法中的“回代”操作。从而新的方程组求解会比原方程组更加简单。</p>
 <p>我们来用 <code>sympy</code> 实验一下：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>x, y, X, Y = symbols(<span class="hljs-string">"x y X Y"</span>)<br>P = x**<span class="hljs-number">2</span> + y**<span class="hljs-number">2</span> - <span class="hljs-number">1</span><br>dx = diff(P, x)  <span class="hljs-comment"># gradient of P</span><br>dy = diff(P, y)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>l = curve - light_source  <span class="hljs-comment"># the incident ray</span><br>n = Matrix([dx, dy])  <span class="hljs-comment"># the normal vector</span><br>r = simplify(l - <span class="hljs-number">2</span> * l.dot(n) * n / n.dot(n))  <span class="hljs-comment"># the reflected ray</span><br>rx, ry = r<br>dxrx = diff(rx, x)<br>dyrx = diff(rx, y)<br>dxry = diff(ry, x)<br>dyry = diff(ry, y)<br>denominator = ry * (dxrx * dy - dyrx * dx) - rx * (dxry * dy - dyry * dx)<br>nominator = dx * l[<span class="hljs-number">0</span>] + dy * l[<span class="hljs-number">1</span>]<br>F = (X - x) * denominator - nominator * rx<br>G = (Y - y) * denominator - nominator * ry<br>eqs = [eq.as_numer_denom()[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> eq <span class="hljs-keyword">in</span> [F, G, P]]<br>gb = groebner(eqs, [x, y, X, Y])<br>print(gb)<br></code></pre></td></tr></tbody></table></figure>
 <p><code>sympy</code> 给出的结果的最后一项是</p>
@@ -545,8 +544,8 @@ basis</a> 方法。Gröbner 基方法会把多项式方程组 <span class="math 
 y^{2}.\]</span></p>
 <p><span class="math inline">\(x\)</span> 被消掉了！原方程组 <span class="math inline">\(F=G=P\)</span>
 的解必然是上面这个方程的解的子集。观察它的每一项都带有一个 <span class="math inline">\(y^2\)</span>，这显然不是我们要的解。把 <span class="math inline">\(y^2\)</span> 去掉，剩下的因子</p>
-<p><span class="math display">\[27x^{4}+54x^{2}y^{2}-18x^{2} -8x +
-27y^{4}-18y^{2}-1=0.\]</span></p>
+<p><span class="math display">\[27X^{4}+54X^{2}Y^{2}-18X^{2} -8X +
+27Y^{4}-18Y^{2}-1=0.\]</span></p>
 <p>就是心脏线的隐函数表示。不信？在 <a target="_blank" rel="noopener" href="https://www.desmos.com/geometry/vtjbq3ete1">Desmos</a>
 里面画出来看看！</p>
 <p><img style="margin:0px auto;display:block" width="300" src="/images/caustics/desmos_cardioid.png"></p>
