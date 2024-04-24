@@ -1,7 +1,7 @@
-window.requestAnimationFrame = window.requestAnimationFrame       ||
-                               window.mozRequestAnimationFrame    ||
-                               window.webkitRequestAnimationFrame ||
-                               window.msRequestAnimationFrame;
+window.requestAnimationFrame = window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame;
 window.onload = start;
 
 
@@ -86,10 +86,10 @@ function loopErasedRandomWalk() {
         for (var i = index + 1; i < currPath.length; i++) {
             markCell(currPath[i], WALL);
             if (i < currPath.length - 1) {
-                markSpace(currPath[i], currPath[i+1], WALL);
+                markSpace(currPath[i], currPath[i + 1], WALL);
             }
         }
-        markSpace(currPath[index], currPath[index+1], WALL);
+        markSpace(currPath[index], currPath[index + 1], WALL);
         currPath = currPath.slice(0, index + 1);
         ctx.restore();
     }
@@ -100,7 +100,7 @@ function loopErasedRandomWalk() {
         for (var i = 0; i < currPath.length; i++) {
             markCell(currPath[i], TREE);
             if (i < currPath.length - 1) {
-                markSpace(currPath[i], currPath[i+1], TREE);
+                markSpace(currPath[i], currPath[i + 1], TREE);
             }
         }
         markSpace(current, next, TREE);
@@ -141,10 +141,10 @@ function randomNeighbour(cell) {
     if (y >= 2) {
         neighbours.push([x, y - 2]);
     }
-    if (x <= width -3) {
+    if (x <= width - 3) {
         neighbours.push([x + 2, y]);
     }
-    if (y <= height -3) {
+    if (y <= height - 3) {
         neighbours.push([x, y + 2]);
     }
     return neighbours[Math.floor(Math.random() * neighbours.length)];
