@@ -45,6 +45,8 @@ circles and balls&lt;/a&gt; 讨论了圆的外摆线和焦散，Greg Egan 也有
     <category term="pywonderland 项目" scheme="https://pywonderland.com/categories/pywonderland-%E9%A1%B9%E7%9B%AE/"/>
     
     
+    <category term="POV-Ray" scheme="https://pywonderland.com/tags/POV-Ray/"/>
+    
     <category term="Caustics" scheme="https://pywonderland.com/tags/Caustics/"/>
     
     <category term="String art" scheme="https://pywonderland.com/tags/String-art/"/>
@@ -52,8 +54,6 @@ circles and balls&lt;/a&gt; 讨论了圆的外摆线和焦散，Greg Egan 也有
     <category term="Envelope" scheme="https://pywonderland.com/tags/Envelope/"/>
     
     <category term="Cardioid" scheme="https://pywonderland.com/tags/Cardioid/"/>
-    
-    <category term="POV-Ray" scheme="https://pywonderland.com/tags/POV-Ray/"/>
     
     <category term="Nephroid" scheme="https://pywonderland.com/tags/Nephroid/"/>
     
@@ -230,9 +230,9 @@ about Each Other&lt;/a&gt;&lt;/p&gt;
     <category term="可视化复分析" scheme="https://pywonderland.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%A4%8D%E5%88%86%E6%9E%90/"/>
     
     
-    <category term="Shadertoy" scheme="https://pywonderland.com/tags/Shadertoy/"/>
-    
     <category term="Caustics" scheme="https://pywonderland.com/tags/Caustics/"/>
+    
+    <category term="Shadertoy" scheme="https://pywonderland.com/tags/Shadertoy/"/>
     
     <category term="Visual Complex analysis" scheme="https://pywonderland.com/tags/Visual-Complex-analysis/"/>
     
@@ -262,6 +262,8 @@ about Each Other&lt;/a&gt;&lt;/p&gt;
     <category term="可视化复分析" scheme="https://pywonderland.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%A4%8D%E5%88%86%E6%9E%90/"/>
     
     
+    <category term="shadertoy" scheme="https://pywonderland.com/tags/shadertoy/"/>
+    
     <category term="visual Complex analysis" scheme="https://pywonderland.com/tags/visual-Complex-analysis/"/>
     
     <category term="Gauss-Lucas theorem" scheme="https://pywonderland.com/tags/Gauss-Lucas-theorem/"/>
@@ -269,8 +271,6 @@ about Each Other&lt;/a&gt;&lt;/p&gt;
     <category term="electrostatics" scheme="https://pywonderland.com/tags/electrostatics/"/>
     
     <category term="Steiner inellipse" scheme="https://pywonderland.com/tags/Steiner-inellipse/"/>
-    
-    <category term="shadertoy" scheme="https://pywonderland.com/tags/shadertoy/"/>
     
     <category term="plane geometry" scheme="https://pywonderland.com/tags/plane-geometry/"/>
     
@@ -395,9 +395,9 @@ Coxeter
     <category term="pywonderland 项目" scheme="https://pywonderland.com/categories/pywonderland-%E9%A1%B9%E7%9B%AE/"/>
     
     
-    <category term="POV-Ray" scheme="https://pywonderland.com/tags/POV-Ray/"/>
-    
     <category term="Coxeter group" scheme="https://pywonderland.com/tags/Coxeter-group/"/>
+    
+    <category term="POV-Ray" scheme="https://pywonderland.com/tags/POV-Ray/"/>
     
     <category term="Uniform tilings" scheme="https://pywonderland.com/tags/Uniform-tilings/"/>
     
@@ -508,9 +508,9 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 &lt;a href=&qu
     <category term="pywonderland 项目" scheme="https://pywonderland.com/categories/pywonderland-%E9%A1%B9%E7%9B%AE/"/>
     
     
-    <category term="POV-Ray" scheme="https://pywonderland.com/tags/POV-Ray/"/>
-    
     <category term="uniform polytopes" scheme="https://pywonderland.com/tags/uniform-polytopes/"/>
+    
+    <category term="POV-Ray" scheme="https://pywonderland.com/tags/POV-Ray/"/>
     
     <category term="pywonderland" scheme="https://pywonderland.com/tags/pywonderland/"/>
     
@@ -638,17 +638,18 @@ Undergraduate texts in mathematics. chapter IX, section 2.&lt;/li&gt;
     <link href="https://pywonderland.com/reducible-mod-p/"/>
     <id>https://pywonderland.com/reducible-mod-p/</id>
     <published>2017-03-02T00:00:00.000Z</published>
-    <updated>2023-09-06T06:11:03.968Z</updated>
+    <updated>2024-04-25T12:29:06.960Z</updated>
     
-    <content type="html"><![CDATA[<p>几年前在知乎上有这么 <a href="https://www.zhihu.com/question/38156113/answer/139354565">一个问题</a>：</p><blockquote><p><strong>问题</strong>：有哪些 <span class="math inline">\(\mathbb{Z}[x]\)</span> 中的多项式，它们在有理数域<span class="math inline">\(\mathbb{Q}\)</span>上是不可约的，而对任意素数 <span class="math inline">\(p\)</span>，模<span class="math inline">\(p\)</span> 以后在 <span class="math inline">\(\mathbb{Z}_p[x]\)</span> 上都是可约的？</p></blockquote><p>当时我给了回答，后来账号注销了，答案也一并删除了。现在把我的原答案贴在这里：</p><span id="more"></span><p>我所知道的有两大类多项式：</p><p>第一类是所有的 Swinnerdon-Dyer 多项式，它们形如 <span class="math display">\[f(x)=\prod(x\pm\sqrt{p_1}\pm\sqrt{p_2}\cdots\pm\sqrt{p_n}),\]</span>其中 <span class="math inline">\(p_1,\ldots,p_n\)</span>是互不相同的素数，乘积跑遍所有 <span class="math inline">\(2^n\)</span>种不同的组合。这种多项式都是不可约的整系数多项式，但是模任何素数 <span class="math inline">\(p\)</span>以后都分解为一次或者二次因式的乘积。</p><p>第二类来自分圆多项式，分圆多项式 <span class="math inline">\(\Phi_n(x)\)</span> 是本原 <span class="math inline">\(n\)</span> 次单位根在 <span class="math inline">\(\mathbb{Q}\)</span> 上的极小多项式，其次数为 <span class="math inline">\(\phi(n)\)</span>，这里 <span class="math inline">\(\phi(\cdot)\)</span> 是 Euler totient函数。绝大多数分圆多项式模任何素数 <span class="math inline">\(p\)</span> 都是可约的！实际上我们有如下结论：</p><blockquote><p><strong>定理</strong>：分圆多项式 <span class="math inline">\(\Phi_n(x)\)</span> 模任何素数 <span class="math inline">\(p\)</span> 都可约当且仅当 <span class="math inline">\(n\ne1,2,p,2p^k\)</span>，其中 <span class="math inline">\(p\)</span> 是奇素数，<span class="math inline">\(k\)</span> 是正整数。</p></blockquote><p>你可以看到知乎那个问题下的回答中举的例子都是最简单的 Swinnerdon-Dyer多项式或者分圆多项式的例子。</p><p>我知道这个结论还是研究生时上夏壁灿老师的符号计算课程，讲到分解整系数多项式的Zassenhaus算法，这两类多项式被用来分析算法的最差复杂度。我还在校园书摊上淘到了一本破损的<a href="https://www.cambridge.org/core/books/modern-computer-algebra/DB3563D4013401734851CF683D2F03F0">ModernComputer Algebra</a>，在 15.3 节 "Frobenius' and Chebotarev's densitytheorems" 中有介绍。</p><p>这两类多项式属于比较容易分析的，还有别的例子吗？也是有的，<a href="https://projecteuclid.org/euclid.rmjm/1289916905">这篇文章</a>给出了更多不那么显然的构造。</p>]]></content>
+    <content type="html"><![CDATA[<p>几年前在知乎上有这么 <a href="https://www.zhihu.com/question/38156113/answer/139354565">一个问题</a>：</p><div class="unnumbered statement question-unnumbered definition"><p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>有哪些 <span class="math inline">\(\mathbb{Z}[x]\)</span> 中的多项式，它们在有理数域<span class="math inline">\(\mathbb{Q}\)</span>上是不可约的，而对任意素数 <span class="math inline">\(p\)</span>，模<span class="math inline">\(p\)</span> 以后在 <span class="math inline">\(\mathbb{Z}_p[x]\)</span> 上都是可约的？</p></div><p>当时我给了回答，后来账号注销了，答案也一并删除了。现在把我的原答案贴在这里：</p><span id="more"></span><p>我所知道的有两大类多项式：</p><p>第一类是所有的 Swinnerdon-Dyer 多项式，它们形如 <span class="math display">\[f(x)=\prod(x\pm\sqrt{p_1}\pm\sqrt{p_2}\cdots\pm\sqrt{p_n}),\]</span>其中 <span class="math inline">\(p_1,\ldots,p_n\)</span>是互不相同的素数，乘积跑遍所有 <span class="math inline">\(2^n\)</span>种不同的组合。这种多项式都是不可约的整系数多项式，但是模任何素数 <span class="math inline">\(p\)</span>以后都分解为一次或者二次因式的乘积。</p><p>第二类来自分圆多项式，分圆多项式 <span class="math inline">\(\Phi_n(x)\)</span> 是本原 <span class="math inline">\(n\)</span> 次单位根在 <span class="math inline">\(\mathbb{Q}\)</span> 上的极小多项式，其次数为 <span class="math inline">\(\phi(n)\)</span>，这里 <span class="math inline">\(\phi(\cdot)\)</span> 是 Euler totient函数。绝大多数分圆多项式模任何素数 <span class="math inline">\(p\)</span> 都是可约的！实际上我们有如下结论：</p><div class="unnumbered statement theorem-unnumbered plain"><p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah"></span>分圆多项式 <span class="math inline">\(\Phi_n(x)\)</span>模任何素数 <span class="math inline">\(p\)</span> 都可约当且仅当 <span class="math inline">\(n\ne1,2,p,2p^k\)</span>，其中 <span class="math inline">\(p\)</span> 是奇素数，<span class="math inline">\(k\)</span> 是正整数。</p></div><p>你可以看到知乎那个问题下的回答中举的例子都是最简单的 Swinnerdon-Dyer多项式或者分圆多项式的例子。</p><p>我知道这个结论还是研究生时上夏壁灿老师的符号计算课程，讲到分解整系数多项式的Zassenhaus算法，这两类多项式被用来分析算法的最差复杂度。我还在校园书摊上淘到了一本破损的<a href="https://www.cambridge.org/core/books/modern-computer-algebra/DB3563D4013401734851CF683D2F03F0">ModernComputer Algebra</a>，在 15.3 节 "Frobenius' and Chebotarev's densitytheorems" 中有介绍。</p><p>这两类多项式属于比较容易分析的，还有别的例子吗？也是有的，<a href="https://projecteuclid.org/euclid.rmjm/1289916905">这篇文章</a>给出了更多不那么显然的构造。</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;几年前在知乎上有这么 &lt;a href=&quot;https://www.zhihu.com/question/38156113/answer/139354565&quot;&gt;一个问题&lt;/a&gt;：&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：有哪些 &lt;span class=&quot;math inline&quot;&gt;&#92;(&#92;mathbb{Z}[x]&#92;)&lt;/span&gt; 中的多项式，它们在有理数域
+&lt;div class=&quot;unnumbered statement question-unnumbered definition&quot;&gt;
+&lt;p&gt;&lt;span class=&quot;statement-heading&quot;&gt;&lt;span class=&quot;statement-label&quot;&gt;问题&lt;/span&gt;：&lt;/span&gt;&lt;span class=&quot;statement-spah&quot;&gt; &lt;/span&gt;有哪些 &lt;span class=&quot;math inline&quot;&gt;&#92;(&#92;mathbb{Z}[x]&#92;)&lt;/span&gt; 中的多项式，它们在有理数域
 &lt;span class=&quot;math inline&quot;&gt;&#92;(&#92;mathbb{Q}&#92;)&lt;/span&gt;
 上是不可约的，而对任意素数 &lt;span class=&quot;math inline&quot;&gt;&#92;(p&#92;)&lt;/span&gt;，模
 &lt;span class=&quot;math inline&quot;&gt;&#92;(p&#92;)&lt;/span&gt; 以后在 &lt;span class=&quot;math inline&quot;&gt;&#92;(&#92;mathbb{Z}_p[x]&#92;)&lt;/span&gt; 上都是可约的？&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/div&gt;
 &lt;p&gt;当时我给了回答，后来账号注销了，答案也一并删除了。现在把我的原答案贴在这里：&lt;/p&gt;</summary>
     
     
