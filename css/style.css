@@ -265,6 +265,16 @@ footer.page-footer {
   font-weight: normal;
   font-variant: normal;
 }
+.csl-entry {
+  border-left: 1px solid #777;
+  padding-left: 1em;
+  margin-left: 2em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-right: 0em;
+  font-size: 100%;
+  line-height: 150%;
+}
 @font-face {
   font-family: Borg;
   src: url("/css/font/BorgSansMono.ttf");
