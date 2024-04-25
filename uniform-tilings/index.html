@@ -23,7 +23,7 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="Since using POV-Ray to render 3D hyperbolic honeycombs was incredibly
-slow, I&#39;ve decided to abandon this approach and have removed the code
+slow, I’ve decided to abandon this approach and have removed the code
 from the m">
     
     
@@ -318,7 +318,7 @@ math stuff</span></a></li></ol>
                                                 <div class="entry pink-link-context">
                                                     <blockquote>
 <p>Since using POV-Ray to render 3D hyperbolic honeycombs was incredibly
-slow, I've decided to abandon this approach and have removed the code
+slow, I’ve decided to abandon this approach and have removed the code
 from the main branch on GitHub. You can find the code used in this
 article in the <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/releases/tag/0.1.0">old
 release version</a>. For how to render hyperbolic honeycombs, readers
@@ -326,7 +326,7 @@ can refer to <a target="_blank" rel="noopener" href="https://github.com/neozhaol
 project</a>.</p>
 </blockquote>
 <p>This article introduces a <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/uniform-tilings">Python
-program</a> I just finished. Although it's freshly completed, it took up
+program</a> I just finished. Although it’s freshly completed, it took up
 most of my free time over the last six months. It was quite the
 challenge, requiring a lot of effort and dedication. The main reason is
 that it involves a few complicated theories, specifically the deep
@@ -335,7 +335,7 @@ significant portion of these months was spent learning from articles by
 Casselman, Brink &amp; Howlett, and others, which helped me understand
 the mathematicas of this project (see references at the end).</p>
 <p>Although finishing this program is a great achievement for me, I
-don't mean to boast about any superiority of this program: the
+don’t mean to boast about any superiority of this program: the
 computational method it uses for Coxeter groups is not advanced and
 might not impress the experts. Moreover, its code is somewhat ugly, and
 likely difficult for other people to use.</p>
@@ -351,23 +351,23 @@ explain how it works.</p>
 <li><p>Below is the 2d Euclidean tiling omnitruncated (4, 2, 4):</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-4-2-4.png" width="600"></p></li>
 <li><p>Below is the 2d hyperbolic tiling regular (2, 3, 13) in
-Poincaré's disk model:</p>
+Poincaré’s disk model:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/2-3-13.png" width="600"></p></li>
 <li><p>Below is the 2d hyperbolic tiling omnitruncated (4, 3, 3) in
 upper half plane model:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/uhp-4-3-3.png" width="600"></p></li>
 <li><p>A hyperbolic weave pattern:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/weave_pattern.png" width="500"></p></li>
-<li><p>Below is the 3d hyperbolic tiling regular (3, 5, 3) in Poincaré's
+<li><p>Below is the 3d hyperbolic tiling regular (3, 5, 3) in Poincaré’s
 ball model:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/3-5-3.png" width="600"></p></li>
-<li><p>Below is the 3d hyperbolic tiling regular (5, 3, 5) in Poincaré's
+<li><p>Below is the 3d hyperbolic tiling regular (5, 3, 5) in Poincaré’s
 ball model:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/5-3-5.png" width="600"></p></li>
-<li><p>Below is the 3d hyperbolic tiling regular (5, 3, 4) in Poincaré's
+<li><p>Below is the 3d hyperbolic tiling regular (5, 3, 4) in Poincaré’s
 ball model:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/5-3-4.png" width="600"></p></li>
-<li><p>Below is the 3d hyperbolic tiling regular (4, 3, 5) in Poincaré's
+<li><p>Below is the 3d hyperbolic tiling regular (4, 3, 5) in Poincaré’s
 ball model:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/4-3-5.png" width="600"></p></li>
 <li><p>The above four regular tilings are the only regular ones with
@@ -376,9 +376,9 @@ the cells must have finite volume, then we have ten more regular
 tilings, with each has a Euclidean vertex configure. For example (6, 3,
 3)：</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/6-3-3.png" width="600"></p>
-<p>You can see the cells have ideal vertices, i.e. vertices at the
-infinity. These tilings are called "paracompact".</p></li>
-<li><p>If we drop the restriction on being "regular" then we have lots
+<p>You can see the cells have ideal vertices, i.e.&nbsp;vertices at the
+infinity. These tilings are called “paracompact”.</p></li>
+<li><p>If we drop the restriction on being “regular” then we have lots
 more examples, like rectified (3, 5, 3) and rectified (5, 3, 4)：</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/rectified-3-5-3.png" width="600"></p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/rectified-5-3-4.png" width="600"></p>
@@ -387,7 +387,7 @@ order-5 cubic</a> tiling from the [5, 3<sup>1,1</sup>] family:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/cantic-order-5-cubic.png" width="600"></p></li>
 <li><p>Below is a 2d spherical tiling rendered in 3d:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/omnitruncated-5-2-3.png" width="600"></p></li>
-<li><p>Finally a shader program exported from Matt Zucker's excellent
+<li><p>Finally a shader program exported from Matt Zucker’s excellent
 work on <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/3tsSzM">shadertoy</a>:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/wythoff_shader.png" width="600"></p></li>
 </ul>
@@ -403,7 +403,7 @@ the vertices of the tiling.</p>
 construction: in the 2D Poincaré hyperbolic disk, the walls around the
 room are all mirrors. The scene in the room is repeatedly reflected in
 the mirrors, creating infinitely many virtual image rooms, filling the
-entire hyperbolic space. Note that, there is only one 'real' room,
+entire hyperbolic space. Note that, there is only one ‘real’ room,
 namely the room where the observer is standing in; all other rooms are
 virtual images of the real one.</p>
 <video src="/images/hyperbolic-honeycombs/lego-hyperbolic-kaleido.mp4" width="600" controls="">
@@ -416,7 +416,7 @@ pixel in the image, its corresponding point <span class="math inline">\(p\)</spa
 until it falls within the fundamental region, say the final location is
 <span class="math inline">\(q\)</span>. Essentially, we find the
 pre-image <span class="math inline">\(q\)</span> of <span class="math inline">\(p\)</span> in the real room (called the
-fundamental domain). Then, based on <span class="math inline">\(q\)</span>'s position within the fundamental
+fundamental domain). Then, based on <span class="math inline">\(q\)</span>’s position within the fundamental
 domain, the pixel corresponding to <span class="math inline">\(p\)</span> is colored. This method allows for
 parallel computation on all pixels, and when combined with shader
 programming, it can produce very stunning effects. Here are two examples
@@ -424,7 +424,7 @@ from shadertoy:</p>
 <p><iframe width="480" height="270" frameborder="0" src="https://www.shadertoy.com/embed/mlGfzV?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe></p>
 <p><iframe width="480" height="270" frameborder="0" src="https://www.shadertoy.com/embed/Nd3cR2?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe></p>
 <p>The inverse pixel method cares solely about the final pixel color. It
-doesn't care about the actual coordinates. It produces raster images and
+doesn’t care about the actual coordinates. It produces raster images and
 cannot output vector graphics. Moreover, exporting data for use in
 modeling software is not very convenient with this method.</p></li>
 <li><p>Coordinate Method. This approach starts from a given initial
@@ -524,22 +524,22 @@ important theorem on Coxeter groups:</p>
 generated Coxeter group then <span class="math inline">\(\mathcal{SL}(W)\)</span> is a regular
 language.</p>
 </blockquote>
-<p>The term "regular language" comes from computer science, a basic fact
+<p>The term “regular language” comes from computer science, a basic fact
 about a regular language over a finite alphabetical set is that this
 language can always be recognized by a definite finite automaton (DFA),
-such DFA may not be unique but there is a "minimal one" with the least
-number of states and this minimal one is unique if we don't distinct
+such DFA may not be unique but there is a “minimal one” with the least
+number of states and this minimal one is unique if we don’t distinct
 relabellings of the states.</p>
 <p>Below is the automaton recognizes <span class="math inline">\(\mathcal{SL}(W)\)</span> for the (7, 2, 3)
 group:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/dfa_723.svg" width="600"></p>
-<p>You can see there are 19 nodes (i.e. states) in the automaton. The
+<p>You can see there are 19 nodes (i.e.&nbsp;states) in the automaton. The
 labels of the states are irrevalent because renumbering the states of an
 automaton does not change the language it recognizes.</p>
 <p>The red node is the initial state.</p>
 <p>The directed edges in the graph tell us the transition rule between
-the states. The edges are labelled by the generators of the group, i.e.
-<span class="math inline">\(i\)</span> for <span class="math inline">\(s_i\)</span>. If we start from the initial state
+the states. The edges are labelled by the generators of the group,
+i.e.&nbsp;<span class="math inline">\(i\)</span> for <span class="math inline">\(s_i\)</span>. If we start from the initial state
 and keep on moving to a next state along an edge up to a finite number
 of steps, then the path we travelled gives a word in <span class="math inline">\(\mathcal{SL}(W)\)</span>. All words in <span class="math inline">\(\mathcal{SL}(W)\)</span> can be generated in this
 way.</p>
@@ -575,7 +575,7 @@ of tetrahedron:</p>
 </blockquote>
 <p>The answer to this question is too complicated to be covered in this
 article, a simple sketch of the main thread is appended at the end. When
-I was developing this program I mainly referred to Casselman's notes <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and
+I was developing this program I mainly referred to Casselman’s notes <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and
 the textbook by Humphreys <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. These should be enough
 for a reader with a solid background in undergradute abstract
 algebra.</p>
@@ -882,13 +882,12 @@ the second column:</p>
 </div>
 </details>
 <p>Hence for any word <span class="math inline">\(w=s_{i_0}s_{i_1}\cdots
-s_{i_n}\)</span>, we can start from the first row of <span class="math inline">\(T\)</span>, find the index of <span class="math inline">\(s_{i_n}\)</span> in <span class="math inline">\(L\)</span>, say <span class="math inline">\(k\)</span>, then jump to the <span class="math inline">\(k\)</span>-th row and find the index of <span class="math inline">\(s_{i_{n-1}}s_{i_n}\)</span> in <span class="math inline">\(L\)</span>, ..., and finally get the index of
-<span class="math inline">\(w\)</span> (or <code>None</code>).</p>
+s_{i_n}\)</span>, we can start from the first row of <span class="math inline">\(T\)</span>, find the index of <span class="math inline">\(s_{i_n}\)</span> in <span class="math inline">\(L\)</span>, say <span class="math inline">\(k\)</span>, then jump to the <span class="math inline">\(k\)</span>-th row and find the index of <span class="math inline">\(s_{i_{n-1}}s_{i_n}\)</span> in <span class="math inline">\(L\)</span>, …, and finally get the index of <span class="math inline">\(w\)</span> (or <code>None</code>).</p>
 <p>Suppose the reflection of the initial vertex <span class="math inline">\(v_0\)</span> about the <span class="math inline">\(i\)</span>-th mirror gives a virtual image <span class="math inline">\(v_1=s_i(v_0)\)</span>, then <span class="math inline">\(e=(v_0,v_1)\)</span> is an edge of type <span class="math inline">\(i\)</span>. By the orbit-stabilizer theorem all
 edges of type <span class="math inline">\(i\)</span> can be obtained by
 applying the coset representatives in <span class="math inline">\(G/H\)</span> to <span class="math inline">\(e\)</span>, where <span class="math inline">\(H=\langle i\rangle\)</span> is the stabilizing
 subgroup of <span class="math inline">\(e\)</span> (<span class="math inline">\(H\)</span> is called a standard parabolic
-subgroup). It's easy to see the words of the two ends of <span class="math inline">\(e\)</span> are <span class="math inline">\(1\)</span> and <span class="math inline">\(s_i\)</span> respectively. We then compute the
+subgroup). It’s easy to see the words of the two ends of <span class="math inline">\(e\)</span> are <span class="math inline">\(1\)</span> and <span class="math inline">\(s_i\)</span> respectively. We then compute the
 coset representatives of the words in <span class="math inline">\(L\)</span> for the subgroup <span class="math inline">\(H\)</span>, use a set to remove duplicates, apply
 each resulting coset representative <span class="math inline">\(w\)</span> to the two ends of <span class="math inline">\(e\)</span>. The words of the two ends of <span class="math inline">\(w\cdot e\)</span> are <span class="math inline">\(w\)</span> and <span class="math inline">\(ws_i\)</span> respectively. We can find the
 indices of <span class="math inline">\(w\)</span> and <span class="math inline">\(ws_i\)</span> as shown above to get <span class="math inline">\(w\cdot e\)</span>.</p>
@@ -896,7 +895,7 @@ indices of <span class="math inline">\(w\)</span> and <span class="math inline">
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/723_edges.png" width="500"></p>
 <p>0 is the initial vertex, the number of white strips in an edge
 indices the type of it (no white strips for <span class="math inline">\(s_0\)</span>, one for <span class="math inline">\(s_1\)</span> and two for <span class="math inline">\(s_2\)</span>).</p>
-<p>It's worth noting that one can easily read the shortlex word
+<p>It’s worth noting that one can easily read the shortlex word
 representation of any vertex <span class="math inline">\(v\)</span> from
 the above image, just start from vertex 0, trace a shortest path from 0
 to <span class="math inline">\(v\)</span> (if there are more than one
@@ -961,12 +960,12 @@ two dimensions.</li>
 <p>The drawing of the finite state machine of <span class="math inline">\(\mathcal{SL}(W)\)</span> requires the use of the
 <code>pygraphviz</code> module, which depends on the
 <code>graphviz</code> software and <code>libgraphviz-dev</code>.</p>
-<p>The minimization of the finite state machine was referenced from <a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/BF00264025">Gries's
-paper</a>. Gries's article is excellent, but I think he did not clarify
+<p>The minimization of the finite state machine was referenced from <a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/BF00264025">Gries’s
+paper</a>. Gries’s article is excellent, but I think he did not clarify
 the property of the list that storing the <span class="math inline">\((B,a)\)</span> pairs.</p>
-<p>The drawing of the hyperbolic case uses a third-party library <a target="_blank" rel="noopener" href="https://github.com/cduck/hyperbolic/">hyperbolic</a>. I'm actually
-not very satisfied with this library, but I don't have the energy to
-write another one at the moment, so I'll make do for now. The biggest
+<p>The drawing of the hyperbolic case uses a third-party library <a target="_blank" rel="noopener" href="https://github.com/cduck/hyperbolic/">hyperbolic</a>. I’m actually
+not very satisfied with this library, but I don’t have the energy to
+write another one at the moment, so I’ll make do for now. The biggest
 advantage of this library is that it can draw edges with a constant
 hyperbolic width, namely the so-called <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hypercycle_(hyperbolic_geometry)">hypercycle</a>.</p>
 <p>The algorithm for calculating minimal roots is the biggest
@@ -991,10 +990,10 @@ the group.</p>
 <p>A more reasonable implementation method can be seen <a target="_blank" rel="noopener" href="https://github.com/ulthiel/CoxeterGroups.jl">here</a>.</p>
 <h1 id="more-explainations-on-the-math-stuff">More explainations on the
 math stuff</h1>
-<p>In this section I'll give a short sketch of the core part of the math
+<p>In this section I’ll give a short sketch of the core part of the math
 stuff. This requires you know some basic concepts like geometric
-realizations of Coxeter groups, Tit's cone, root systems. These are
-fairly standard materials and can be found in Humphreys's book.</p>
+realizations of Coxeter groups, Tit’s cone, root systems. These are
+fairly standard materials and can be found in Humphreys’s book.</p>
 <p>Almost everything relies upon a 2d table called <strong>reflection
 table of minimal roots</strong>. Again we use group (7, 2, 3) as
 example:</p>
@@ -1011,10 +1010,10 @@ that are the edges of <span class="math inline">\(\Delta ABC\)</span>.
 Each mirror has two sides, where the side where the fundamental domain
 <span class="math inline">\(\Delta ABC\)</span> is located is considered
 the positive side of the mirror, and the other side is the negative
-side. The normal vector of the mirror's positive side gives a positive
+side. The normal vector of the mirror’s positive side gives a positive
 root, while the normal vector corresponding to the other side is the
 negative of that positive root (negative root).</p>
-<p>We always use a mirror's positive normal vector (positive root) to
+<p>We always use a mirror’s positive normal vector (positive root) to
 represent that mirror.</p>
 <p>Intuitively, a minimal root <span class="math inline">\(\gamma\)</span> is characterized by the following
 condition: suppose a person stands inside <span class="math inline">\(\Delta ABC\)</span> looking outward, there exists
@@ -1032,10 +1031,10 @@ blocking between them and the basic region.</p>
 <p>The most important fact about minimal root is:</p>
 <blockquote><p><strong>Theorem</strong>: The set of minimal roots is finite.</p>
 </blockquote>
-<p>This theorem is the key step in Brink and Howlett's proof that
+<p>This theorem is the key step in Brink and Howlett’s proof that
 Coxeter groups are automatic groups.</p>
 <p>The reflection table of minimal roots <code>reftable</code> is
-defined as follows: it's a 2d array with its <span class="math inline">\(i\)</span>-th row correspondes to the <span class="math inline">\(i\)</span>-th minimal root <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(j\)</span>-th column correspondes to the <span class="math inline">\(j\)</span>-th generator <span class="math inline">\(s_j\)</span>. The <span class="math inline">\((i,j)\)</span>-entry records the action of <span class="math inline">\(s_j\)</span> on <span class="math inline">\(\alpha_i\)</span>. Let <span class="math inline">\(\beta=s_j(\alpha_i)\)</span>:</p>
+defined as follows: it’s a 2d array with its <span class="math inline">\(i\)</span>-th row correspondes to the <span class="math inline">\(i\)</span>-th minimal root <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(j\)</span>-th column correspondes to the <span class="math inline">\(j\)</span>-th generator <span class="math inline">\(s_j\)</span>. The <span class="math inline">\((i,j)\)</span>-entry records the action of <span class="math inline">\(s_j\)</span> on <span class="math inline">\(\alpha_i\)</span>. Let <span class="math inline">\(\beta=s_j(\alpha_i)\)</span>:</p>
 <ol type="1">
 <li>If <span class="math inline">\(\beta=\alpha_k\)</span> is the <span class="math inline">\(k\)</span>-th minimal root then set this entry to
 <span class="math inline">\(k\)</span>.</li>
@@ -1135,7 +1134,7 @@ automaton are subsets of <span class="math inline">\(\Sigma\)</span>,
 the transition rule between the subsets is:</p>
 <p><span class="math display">\[S\xrightarrow{\ s_i\ } \{s_i\} \cup
 (s_i(S)\cup\{ s_i(\alpha_j),j&lt;i\})\cap\Sigma.\]</span></p>
-<p>One can use breadth-first search to build this automaton and use <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/DFA_minimization#Hopcroft's_algorithm">Hopcroft's
+<p>One can use breadth-first search to build this automaton and use <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/DFA_minimization#Hopcroft's_algorithm">Hopcroft’s
 algorithm</a> to get a minimized version of it.</p>
 <p>The image below shows the subsets of minimal roots for each state in
 the automaton:</p>
@@ -1150,7 +1149,7 @@ the invshortlex ordering. The computations in shortlex can be obtained
 by doing computations in invshortlex first and then reverse the result
 back.</p>
 <blockquote><p>The intermedian step of doing computations in invshortlex ordering is
-mainly for keeping consistent with Casselman's paper.</p>
+mainly for keeping consistent with Casselman’s paper.</p>
 </blockquote>
 <p>Finding the coset representative of a given word for a standard
 parabolic subgroup is quite straight-forward: let <span class="math inline">\(T\)</span> be the set of generators of this

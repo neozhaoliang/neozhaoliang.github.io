@@ -350,9 +350,12 @@
 <span id="more"></span>
 <h1 id="不可约实表示在复数域上的分解">不可约实表示在复数域上的分解</h1>
 <p>在有限群的表示论中，第一个遇到的重要结论可能要算 Schur 引理：</p>
-<blockquote>
-<p><strong>Schur 引理</strong>：设 <span class="math inline">\(G\)</span> 是一个有限群，<span class="math inline">\(k\)</span> 是一个特征为 0 的域，<span class="math inline">\(V\)</span> 是一个不可约左 <span class="math inline">\(kG\)</span>- 模。则 <span class="math inline">\(D=\mathrm{Hom}_{kG}(V,V)\)</span> 是 <span class="math inline">\(k\)</span> 上的有限维结合可除代数。</p>
-</blockquote>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+1.1</span>.</span><span class="statement-spah"> </span>（Schur
+引理）</p>
+<p>设 <span class="math inline">\(G\)</span> 是一个有限群，<span class="math inline">\(k\)</span> 是一个特征为 0 的域，<span class="math inline">\(V\)</span> 是一个不可约左 <span class="math inline">\(kG\)</span>- 模。则 <span class="math inline">\(D=\mathrm{Hom}_{kG}(V,V)\)</span> 是 <span class="math inline">\(k\)</span> 上的有限维结合可除代数。</p>
+</div>
 <p>在我学到这个结论时我就想到，如果 <span class="math inline">\(k=\mathbb{R}\)</span> 是实数域的话，那么 <span class="math inline">\(D\)</span> 作为 <span class="math inline">\(\mathbb{R}\)</span>
 上的有限维结合可除代数只有三种：实数域 <span class="math inline">\(\mathbb{R}\)</span>，复数域 <span class="math inline">\(\mathbb{C}\)</span>，四元数体 <span class="math inline">\(\mathbb{H}\)</span>。这三种可能性分别对应 <span class="math inline">\(V\)</span> 的什么性质呢？</p>
 <p>为了简便起见，我们分别用 <span class="math inline">\(V_\mathbb{R}\)</span> 和 <span class="math inline">\(V_\mathbb{C}\)</span> 表示将 <span class="math inline">\(V\)</span> 视作 <span class="math inline">\(\mathbb{R}G\)</span>- 模和 <span class="math inline">\(\mathbb{C}G\)</span>- 模。</p>
@@ -360,27 +363,30 @@
 分解为不可约复表示的方式有关。注意虽然 <span class="math inline">\(V_\mathbb{R}\)</span> 是不可约的，但是 <span class="math inline">\(V_\mathbb{C}\)</span>
 就未必是不可约的了。我们将说明 <span class="math inline">\(V_\mathbb{C}\)</span>
 的分解具有如下的“三分性质”：</p>
-<blockquote>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+1.2</span>.</span></p>
 <ol type="1">
 <li><span class="math inline">\(D=\mathbb{R}\)</span> 当且仅当 <span class="math inline">\(V_\mathbb{C}\)</span> 仍然是不可约的。</li>
 <li><span class="math inline">\(D=\mathbb{C}\)</span> 当且仅当 <span class="math inline">\(V_\mathbb{C}\)</span> 可以分解为 <span class="math inline">\(V_\mathbb{C}=V_1\oplus V_2\)</span>，其中 <span class="math inline">\(V_1\not\cong V_2\)</span>
 是两个不同构的不可约复表示。</li>
 <li><span class="math inline">\(D=\mathbb{H}\)</span> 当且仅当 <span class="math inline">\(V_\mathbb{C}\)</span> 可以分解为 <span class="math inline">\(V=2V_1\)</span>，其中 <span class="math inline">\(V_1\)</span> 是一个不可约复表示。</li>
 </ol>
-</blockquote>
+</div>
 <p>本节剩下的部分将致力于解释这一结论。</p>
 <p>首先，把 <span class="math inline">\(V\)</span>
 看作一个复向量空间，其实就是考虑 <span class="math inline">\(V\)</span>
 的复化 (complexification)： <span class="math display">\[V_\mathbb{C}=V\otimes_\mathbb{R}\mathbb{C}.\]</span>
 <span class="math inline">\(V_\mathbb{C}\)</span> 是一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模。那怎么计算 <span class="math inline">\(V_\mathbb{C}\)</span>
 的分解呢？这就要用到群表示论中的一个常用结论：</p>
-<blockquote>
-<p>设 <span class="math inline">\(V\)</span> 是一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模，<span class="math inline">\(V = n_1V_1\oplus n_2V_2\oplus\cdots\oplus
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+1.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(V\)</span> 是一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模，<span class="math inline">\(V = n_1V_1\oplus n_2V_2\oplus\cdots\oplus
 n_rV_r\)</span>，其中 <span class="math inline">\(V_i\)</span>
 是互不同构的 <span class="math inline">\(\mathbb{C}G\)</span>- 模，<span class="math inline">\(n_i\)</span> 是 <span class="math inline">\(V_i\)</span> 出现在 <span class="math inline">\(V\)</span> 中的重数，则我们有 <span class="math inline">\(\mathbb{C}\)</span>- 代数同构 <span class="math display">\[\mathrm{End}_{\mathbb{C}G}(V) \cong
 \mathrm{Mat}_{n_1}(\mathbb{C})\times
 \mathrm{Mat}_{n_2}(\mathbb{C})\times\cdots\times\mathrm{Mat}_{n_r}(\mathbb{C}).\]</span></p>
-</blockquote>
+</div>
 <p>所以要计算 <span class="math inline">\(V_\mathbb{C}\)</span>
 的分解，我们只要考察 <span class="math inline">\(\mathrm{End}_{\mathbb{C}G}(V_\mathbb{C})\)</span>
 的结构即可。然而 <span class="math display">\[\mathrm{End}_{\mathbb{C}G}(V)=\mathrm{End}_{\mathbb{R}G}(V)\otimes_{\mathbb{R}}\mathbb{C}=D\otimes_\mathbb{R}
@@ -399,12 +405,12 @@ n_rV_r\)</span>，其中 <span class="math inline">\(V_i\)</span>
 是某个不可约模的二重和。</li>
 </ol>
 <h1 id="不可约复表示在实数域上的实现">不可约复表示在实数域上的实现</h1>
-<blockquote>
-<p><strong>问题</strong>：设 <span class="math inline">\(G\)</span>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(G\)</span>
 是一个有限群，<span class="math inline">\(V\)</span> 是一个不可约的
 <span class="math inline">\(\mathbb{C}G-\)</span> 模，其特征为 <span class="math inline">\(\chi\)</span>。我们想知道这个表示是否能在实数域上实现？即是否存在一个
 <span class="math inline">\(\mathbb{R}G-\)</span> 模 <span class="math inline">\(W\)</span>，使得 <span class="math inline">\(W\)</span> 的特征也是 <span class="math inline">\(\chi\)</span>？</p>
-</blockquote>
+</div>
 <p>显然 <span class="math inline">\(V\)</span>
 可以在实数域上可以实现的一个必要条件是 <span class="math inline">\(\chi\)</span> 是实特征，即对任何 <span class="math inline">\(g\in G\)</span>，<span class="math inline">\(\chi(g)\)</span>
 都是实数，但这个条件是否也是充分的呢？</p>
@@ -428,8 +434,9 @@ k}\to\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix}.\]</span>
 <p>那要使得一个不可约复表示可以在实数域上实现，它应该满足怎样的条件？下面就来讨论这个问题。</p>
 <p>我们将论证 <span class="math inline">\(V\)</span>
 具有如下的“三分性质”：</p>
-<blockquote><p><strong>定理</strong>：记 <span class="math inline">\(V^\ast\)</span>
-为 <span class="math inline">\(V\)</span> 的对偶表示。</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span>.</span><span class="statement-spah"> </span>记 <span class="math inline">\(V^\ast\)</span> 为 <span class="math inline">\(V\)</span> 的对偶表示。</p>
 <ol type="1">
 <li>如果 <span class="math inline">\(V\ncong V^\ast\)</span>，就称 <span class="math inline">\(V\)</span> 是复的 (complex type)；</li>
 <li>如果 <span class="math inline">\(V\cong V^\ast\)</span> 且 <span class="math inline">\(V\)</span> 是某个不可约 <span class="math inline">\(\mathbb{R}G\)</span>- 模 <span class="math inline">\(W\)</span> 的复化：<span class="math inline">\(V\cong
@@ -440,7 +447,7 @@ type)。</li>
 </ol>
 <p>则 <span class="math inline">\(V\)</span>
 必然恰好属于复、实、四元数三种类型之一。</p>
-</blockquote>
+</div>
 <p>我们来分析一下为什么会这样。</p>
 <p>如果 <span class="math inline">\(V\cong V^\ast\)</span>，根据 Schur
 引理，<span class="math inline">\(\mathrm{Hom}_G(V,V^\ast)\cong\mathbb{C}\)</span>
@@ -495,26 +502,31 @@ W\otimes_{\mathbb{R}}\mathbb{C}\)</span>，从而表示 <span class="math inline
 上将同时存在一个对称双线性型和一个反对称双线性型。</p>
 <p>总之我们证明了表示 <span class="math inline">\(V\)</span>
 必然恰好属于实、复、四元数三种类型之一，其中只有实类型可以在实数域上实现。而且由上面的分析不难得出下面的推论：</p>
-<blockquote><p><strong>推论</strong>：</p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+2.2</span>.</span></p>
 <ol type="1">
 <li><span class="math inline">\(V\)</span> 是复的当且仅当 <span class="math inline">\(V\)</span> 上不存在任何非零的 <span class="math inline">\(G\)</span>- 不变双线性型。</li>
 <li><span class="math inline">\(V\)</span> 是实的当且仅当 <span class="math inline">\(V\)</span> 上存在一个非零的 <span class="math inline">\(G\)</span>- 不变对称双线性型。</li>
 <li><span class="math inline">\(V\)</span> 是四元数的当且仅当 <span class="math inline">\(V\)</span> 上存在一个非零的 <span class="math inline">\(G\)</span>- 不变反对称双线性型。</li>
 </ol>
-</blockquote>
+</div>
 <p>这三种情形分别对应 <span class="math inline">\(\dim_{\mathbb{C}}(S^2V^\ast)-\dim_{\mathbb{C}}(\Lambda^2V^\ast)\)</span>
 的值是 0, +1 和 -1。通过一些简单的计算不难得到 <span class="math display">\[\dim_{\mathbb{C}}(S^2V^\ast)-\dim_{\mathbb{C}}(\Lambda^2V^\ast)=\frac{1}{|G|}\sum_{g\in
 G}\chi(g^2).\]</span></p>
 <p><span class="math inline">\(F(\chi)=\dfrac{1}{|G|}\sum\limits_{g\in
 G}\chi(g^2)\)</span> 叫做 <span class="math inline">\(\chi\)</span> 的
 Frobenius-Schur 指标，于是我们有</p>
-<blockquote><p><strong>Frobenius-Schur 指标定理</strong>：</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.3</span>.</span><span class="statement-spah"> </span>（Frobenius-Schur
+指标）</p>
 <ol type="1">
 <li><span class="math inline">\(V\)</span> 是复的当且仅当 <span class="math inline">\(F(\chi)=0\)</span>。</li>
 <li><span class="math inline">\(V\)</span> 是实的当且仅当 <span class="math inline">\(F(\chi)=1\)</span>。</li>
 <li><span class="math inline">\(V\)</span> 是四元数的当且仅当 <span class="math inline">\(F(\chi)=-1\)</span>。</li>
 </ol>
-</blockquote>
+</div>
 <aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>

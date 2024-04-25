@@ -23,8 +23,8 @@
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="I made a Shadertoy animation that demonstrates a metaphor from
-chapter 7, &#34;Winding numbers and topology&#34;, of Needham&#39;s famous book
-&#34;Visual Complex Ana">
+chapter 7, “Winding numbers and topology”, of Needham’s famous book
+“Visual Complex Ana">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -315,14 +315,14 @@ chapter 7, &#34;Winding numbers and topology&#34;, of Needham&#39;s famous book
 
                                                 <div class="entry pink-link-context">
                                                     <p>I made a Shadertoy animation that demonstrates a metaphor from
-chapter 7, "Winding numbers and topology", of Needham's famous book
-"Visual Complex Analysis":</p>
+chapter 7, “Winding numbers and topology”, of Needham’s famous book
+“Visual Complex Analysis”:</p>
 <blockquote><p>A man and his dog walking around a tree in a park, both of their
 paths are closed curves, meaning they return to their starting point
 after some time. If the person keeps the dog leash tight enough, such
 that the dog cannot touch the tree, then after they return to their
 starting positions, the number of circles made around the tree by the
-person and the dog are the same: (The tree's location is the origin,
+person and the dog are the same: (The tree’s location is the origin,
 marked with a dial)</p>
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fdK3RD?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
 </iframe>
@@ -341,11 +341,11 @@ analytic functions <span class="math inline">\(f,g\)</span>, the <a target="_bla
 principle</a> tells us that the winding numbers of <span class="math inline">\(\gamma_1,\gamma_2\)</span> around the origin are
 equal to the number of zeros of <span class="math inline">\(f,g\)</span>
 inside <span class="math inline">\(S^1\)</span>, respectively. Further,
-Rouché's theorem tells us that if for any <span class="math inline">\(z\in S^1\)</span> we have <span class="math inline">\(|f(z)|&gt;|f(z)-g(z)|\)</span>, then <span class="math inline">\(\gamma_1,\gamma_2\)</span> have the same winding
+Rouché’s theorem tells us that if for any <span class="math inline">\(z\in S^1\)</span> we have <span class="math inline">\(|f(z)|&gt;|f(z)-g(z)|\)</span>, then <span class="math inline">\(\gamma_1,\gamma_2\)</span> have the same winding
 number around the origin, thereby <span class="math inline">\(f,g\)</span> have the same number of zeros inside
-<span class="math inline">\(S^1\)</span>. The condition of Rouché's
-theorem is essentially saying, if we assume the person's position is
-<span class="math inline">\(f(z)\)</span>, the dog's position is <span class="math inline">\(g(z)\)</span>, and the leash <span class="math inline">\(l(z)=f(z)-g(z)\)</span> has length <span class="math inline">\(|l(z)|\)</span> always less than the distance from
+<span class="math inline">\(S^1\)</span>. The condition of Rouché’s
+theorem is essentially saying, if we assume the person’s position is
+<span class="math inline">\(f(z)\)</span>, the dog’s position is <span class="math inline">\(g(z)\)</span>, and the leash <span class="math inline">\(l(z)=f(z)-g(z)\)</span> has length <span class="math inline">\(|l(z)|\)</span> always less than the distance from
 the person to the origin <span class="math inline">\(|f(z)|\)</span>,
 then it can be guaranteed that the dog cannot reach the origin.</p>
 <p>In the animation, the circle in the bottom left is <span class="math inline">\(S^1\)</span>, and the paths on the right in red
@@ -359,19 +359,19 @@ factors of <span class="math inline">\(f(z)\)</span> form a Blaschke
 product, mapping the inside of <span class="math inline">\(S^1\)</span>
 to its inside and mapping <span class="math inline">\(S^1\)</span> to
 <span class="math inline">\(S^1\)</span> itself, so for any <span class="math inline">\(z\in S^1\)</span> we have <span class="math display">\[|f(z)| = |z - 2 - 2i| \geq 2\sqrt{2} - 1,\quad
-z\in S^1.\]</span> Thus, as long as the leash <span class="math inline">\(l(z)\)</span> satisfies <span class="math inline">\(|l(S^1)| &lt; 2\sqrt{2}-1\)</span>, the dog's path
-<span class="math inline">\(g(S^1)=f(S^1)+l(S^1)\)</span> won't touch
+z\in S^1.\]</span> Thus, as long as the leash <span class="math inline">\(l(z)\)</span> satisfies <span class="math inline">\(|l(S^1)| &lt; 2\sqrt{2}-1\)</span>, the dog’s path
+<span class="math inline">\(g(S^1)=f(S^1)+l(S^1)\)</span> won’t touch
 the origin. Here, I took <span class="math inline">\(l(z) = cz\)</span>,
 where <span class="math inline">\(c\)</span> is a positive real number
 less than <span class="math inline">\(2\sqrt{2}-1\)</span>.</p>
-<p>Chapter 7 of Needham's book also discussed another fact: the winding
+<p>Chapter 7 of Needham’s book also discussed another fact: the winding
 number of a curve <span class="math inline">\(\gamma\)</span> is
 constant on each connected component of <span class="math inline">\(\mathbb{C}\setminus\gamma\)</span>. For a point
 <span class="math inline">\(z\notin\gamma\)</span>, we can slightly move
 <span class="math inline">\(z\)</span> to another point <span class="math inline">\(z'\)</span>, as long as <span class="math inline">\(z'\)</span> remains within the same connected
 component as <span class="math inline">\(z\)</span>, then <span class="math inline">\(\gamma\)</span> has the same winding number around
 <span class="math inline">\(z\)</span> and <span class="math inline">\(z'\)</span>. Using this fact, combined with
-the argument principle, it's not difficult to derive the following
+the argument principle, it’s not difficult to derive the following
 corollary:</p>
 <blockquote>
 <p><strong>Corollary</strong>: Let <span class="math inline">\(\gamma\)</span> be a simple closed curve,

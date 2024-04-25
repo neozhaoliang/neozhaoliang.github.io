@@ -841,8 +841,7 @@ s_{i_n}(v_0))).\]</span>
 </p>
 <p>于是对任意的单词 <span class="math inline">\(w=s_{i_0}s_{i_1}\cdots
 s_{i_n}\)</span>，我们可以从 <span class="math inline">\(T\)</span> 的第
-0 行出发，先找到 <span class="math inline">\(s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，假设是第 <span class="math inline">\(k\)</span> 个，那么就跳到第 <span class="math inline">\(k\)</span> 行，由 <span class="math inline">\(s_{i_{n-1}}\)</span> 对应的列找到 <span class="math inline">\(s_{i_{n-1}}s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，再顺藤摸瓜找到 <span class="math inline">\(s_{i_{n-2}}s_{i_{n-1}}s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，...，如此下去即可确定
-<span class="math inline">\(w\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素 （或者
+0 行出发，先找到 <span class="math inline">\(s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，假设是第 <span class="math inline">\(k\)</span> 个，那么就跳到第 <span class="math inline">\(k\)</span> 行，由 <span class="math inline">\(s_{i_{n-1}}\)</span> 对应的列找到 <span class="math inline">\(s_{i_{n-1}}s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，再顺藤摸瓜找到 <span class="math inline">\(s_{i_{n-2}}s_{i_{n-1}}s_{i_n}\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素，…，如此下去即可确定 <span class="math inline">\(w\)</span> 在 <span class="math inline">\(L\)</span> 中对应的元素 （或者
 <code>None</code>）。</p>
 <p>有了表 <span class="math inline">\(T\)</span>
 的帮助，我们可以来计算边的信息了。这里一条边 <span class="math inline">\(e\)</span> 用一对整数 <span class="math inline">\(e=(i,j)\)</span> 来表示，<span class="math inline">\(i,j\)</span> 分别是 <span class="math inline">\(e\)</span> 的两个端点在 <span class="math inline">\(L\)</span> 中的下标。</p>
