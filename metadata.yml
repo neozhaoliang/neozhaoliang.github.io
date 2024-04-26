@@ -1,0 +1,45 @@
+---
+link-citations: true
+reference-section-title: "References"
+bibliography: "/home/zhao/文档/Hexo博客/ref.bib"
+statement:
+  supply-header: no
+  count-within: section
+  crossref-prefixes: true
+statement-kinds:
+  theorem:
+    label: 定理
+  lemma:
+    label: 引理
+    counter: theorem
+  proposition:
+    label: 命题
+    counter: theorem
+  corollary:
+    label: 推论
+    counter: theorem
+  definition:
+    label: 定义
+    counter: theorem
+  proof:
+    label: 证明
+    counter: none
+    style: definition
+  note:
+    label: 注记
+    counter: none
+    style: definition
+  example:
+    label: 例
+    counter: none
+    style: definition
+  question:
+    label: 问题
+    counter: theorem
+    style: definition
+statement-styles:
+  definition:
+    punctuation: '：'
+  note:
+    punctuation: '：'
+---
