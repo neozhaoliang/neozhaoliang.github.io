@@ -1,7 +1,7 @@
 ---
 link-citations: true
 reference-section-title: "References"
-bibliography: "/home/zhao/文档/Hexo博客/ref.bib"
+bibliography: "./ref.bib"
 statement:
   supply-header: no
   count-within: section
@@ -24,7 +24,6 @@ statement-kinds:
   proof:
     label: 证明
     counter: none
-    style: definition
   note:
     label: 注记
     counter: none
