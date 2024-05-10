@@ -353,9 +353,7 @@ Examples”。这本书的好处我就不再介绍了，院长陈大岳老师在
 <span class="math inline">\(A,B\in F\)</span>
 几乎处处相等，是指它们的示性函数 <span class="math inline">\(\mathbb{1}_A,\mathbb{1}_B\)</span>
 几乎处处相等，记作 <span class="math inline">\(A\stackrel{\mathrm{a.e.}}{=}B\)</span>。等价的说法是
-<span class="math inline">\(A,B\)</span>
-只差一个零测集，或者说它们的差集 <span class="math inline">\(A\Delta
-B\)</span> 是零测集。</p>
+<span class="math inline">\(A,B\)</span> 只差一个零测集，或者差集 <span class="math inline">\(A\Delta B\)</span> 是零测集。</p>
 <p>设 <span class="math inline">\(T:\Omega\rightarrow \Omega\)</span>
 是一个可测变换，即对任何 <span class="math inline">\(E\in\mathcal{F}\)</span> 有 <span class="math inline">\(T^{-1}E\in\mathcal{F}\)</span>。</p>
 <div id="def-1" class="statement definition plain">
@@ -379,10 +377,8 @@ T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\}\]</span> 构成 <span class="math inline">
 是保测变换，则 <span class="math display">\[\int_\Omega
 f\,\mathrm{d}\mu=\int_\Omega f\circ T\,\mathrm{d}\mu.\]</span></p>
 </div>
-<p>证明：若 <span class="math inline">\(E\in\mathcal{F}\)</span>
-是可测集，由于 <span class="math inline">\(\omega\in
-T^{-1}E\Leftrightarrow T(\omega)\in E\Leftrightarrow(\mathbb{1}_E\circ
-T) (\omega)=1\)</span>，所以 <span class="math inline">\(\mathbb{1}_{E}\circ
+<p><strong>证明</strong>：若 <span class="math inline">\(E\in\mathcal{F}\)</span> 是可测集，由于 <span class="math display">\[\omega\in T^{-1}E\Leftrightarrow T(\omega)\in
+E\Leftrightarrow(\mathbb{1}_E\circ T) (\omega)=1.\]</span> 所以 <span class="math inline">\(\mathbb{1}_{E}\circ
 T=\mathbb{1}_{\{T^{-1}E\}}\)</span>，因此 <span class="math display">\[\int_\Omega
 \mathbb{1}_E\,\mathrm{d}\mu=\mu(E)=\mu(T^{-1}E)=\int_\Omega
 \mathbb{1}_{\{T^{-1}E\}}\,\mathrm{d}\mu=\int_\Omega \mathbb{1}_E\circ
@@ -395,7 +391,7 @@ T\,\mathrm{d}\mu.\]</span>
 </div>
 <p>这是 Durrett
 书中的一道习题，我一直觉得它很平凡，其实之前的处理有问题，这个结论还是需要论证一番的。</p>
-<p>证明：</p>
+<p><strong>证明</strong>：</p>
 <p><span class="math inline">\(\Rightarrow\)</span>：如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 Borel 集 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B)\stackrel{\mathrm{a.e.}}{=}X^{-1}B\)</span>，这说明
 <span class="math inline">\(\{X\circ T\in
 B\}\stackrel{\mathrm{a.e.}}{=}\{X\in B\}\)</span>。特别地取 <span class="math inline">\(B=(-\infty, t)\)</span> 我们得到 <span class="math inline">\(\{X\circ
@@ -441,14 +437,14 @@ a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换
 <h1 id="birkhoff-遍历定理的证明">Birkhoff 遍历定理的证明</h1>
 <p>首先可以假定条件期望 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，若不然，我们可以以
 <span class="math inline">\(f-\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
-代替 <span class="math inline">\(f\)</span>，注意到 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span> 是 <span class="math inline">\(T-\)</span> 不变的，所以根据上面的引理 2 有 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\circ T^k =
-\mathbb{E}[f\,|\,\mathcal{I}],\mathrm{a.e.}\)</span> 对所有的正整数
-<span class="math inline">\(k\)</span> 都成立，这时定理的命题左边 <span class="math inline">\(S_n\)</span> 中每一项都会多出来一个 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>，除以 <span class="math inline">\(n\)</span> 正好和右边的 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
+代替 <span class="math inline">\(f\)</span>，注意到 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span> 是 <span class="math inline">\(T-\)</span> 不变的，所以根据上面的 <a href="#lemma-2" title="引理 1.4">引理 1.4</a> 有 <span class="math display">\[\mathbb{E}[f\,|\,\mathcal{I}]\circ T^k =
+\mathbb{E}[f\,|\,\mathcal{I}],\quad \mathrm{a.e.}\]</span>
+对所有的正整数 <span class="math inline">\(k\)</span> 都成立，这时 <a href="#birkhoff" title="定理 2.1">定理 2.1</a> 的左边 <span class="math inline">\(S_n\)</span> 中每一项都会多出来一个 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>，除以 <span class="math inline">\(n\)</span> 正好和右边的 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
 抵消掉。</p>
 <p>这样问题变成在 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>
 的前提下证明 <span class="math display">\[\lim\limits_{n\to\infty}\frac{S_n}{n}=0.\quad
 \text{a.e.}\]</span> 设 <span class="math inline">\(a\)</span>
-是任一正数，考虑集合 <span class="math display">\[A= \left\{\omega\ |\
+是任一正数，考虑集合 <span class="math display">\[A= \left\{\omega \mid
 \varlimsup_{n\to\infty}\frac{S_n}{n}&gt;a\right\}.\]</span> 我们想证明
 <span class="math inline">\(\mu(A)=0\)</span>。若真如此，则有 <span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\leq a\)</span>
 几乎处处成立，根据 <span class="math inline">\(a\)</span> 的任意性就得到
@@ -457,7 +453,7 @@ a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换
 也几乎处处成立，这样就证明了 <span class="math inline">\(\lim\limits_{n\to\infty}S_n/n=0\)</span>
 几乎处处成立。（拗口）</p>
 <p>为了证明 <span class="math inline">\(\mu(A)=0\)</span>，我们希望对函数 <span class="math inline">\(f\)</span> 和集合 <span class="math inline">\(A\)</span> 应用极大不等式： <span class="math display">\[\int_A f\,\mathrm{d}\mu\geq a\mu(A).\]</span>
-由于 <span class="math inline">\(A\in\mathcal{I}\)</span> 是 <span class="math inline">\(T-\)</span> 不变的（请自行验证这一点），以及 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，所以根据条件期望的性质，上式的左边其实是
+这是因为，<span class="math inline">\(A\)</span> 其实是一个 <span class="math inline">\(T-\)</span> 不变的集合，即 <span class="math inline">\(A\in\mathcal{I}\)</span>，我们会在证明末尾再验证这一点。于是根据条件期望的性质，上式的左边其实是
 0： <span class="math display">\[\int_A f\,\mathrm{d}\mu = \int_A
 \mathbb{E}[f\,|\,\mathcal{I}]\,\mathrm{d}\mu =0.\]</span> 即 <span class="math inline">\(0\geq a\mu(A)\)</span>，结合 <span class="math inline">\(a&gt;0\)</span> 即得 <span class="math inline">\(\mu(A)=0\)</span>。</p>
 <p>但是，我们能对 <span class="math inline">\(A\)</span>
@@ -482,6 +478,17 @@ f\,\mathrm{d}\mu\geq a \mu(A),\]</span> 这样就证明了 Birkhoff
 遍历定理。</p>
 <p>实际上定理中的收敛也是一个依 <span class="math inline">\(L^1\)</span>
 范数的收敛，这点的证明相比几乎处处收敛就容易多了，这里不再赘述。</p>
+<p>好了，我们来验证上面提到的 <span class="math inline">\(A\)</span>
+确实是 <span class="math inline">\(T-\)</span> 不变的：</p>
+<p>利用 <span class="math inline">\(S_{n+1} = f + S_n\circ T\)</span>
+可得 <span class="math display">\[\frac{S_{n+1}}{n+1} = \frac{f}{n+1} +
+\frac{S_n\circ T}{n}\cdot \frac{n}{n+1}.\]</span>
+在两边同时取上极限，注意到由于 <span class="math inline">\(f\in
+L^1(\Omega)\)</span> 所以 <span class="math inline">\(f\)</span>
+几乎处处有限，从而 <span class="math display">\[\lim_{n\to\infty}\frac{f}{n+1}=0,\quad
+\text{a.e.}\]</span> 所以 <span class="math display">\[\varlimsup_{n\to\infty} \frac{S_{n+1}}{n+1} =
+\varlimsup_{n\to\infty}\frac{S_{n}\circ T}{n}.\]</span> 这正说的是 <span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\)</span> 是
+<span class="math inline">\(T-\)</span> 不变的随机变量，从而 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变的集合。</p>
 <p>最后来证明极大遍历定理。</p>
 <h1 id="极大遍历定理的证明">极大遍历定理的证明</h1>
 <p>只要证明 <span class="math inline">\(a=0\)</span>
