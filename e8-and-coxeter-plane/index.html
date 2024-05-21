@@ -357,15 +357,30 @@ is mainly for convenience in later computations.</p>
 <p>The Cartan matrix is given by</p>
 <p><span class="math display">\[C=\left((\alpha_i,\alpha_j)\right)_{1\leq i,j\leq
 8}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span></p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注记</span>：</span><span class="statement-spah"> </span>Here’s a point that can be easily
+confusing: please remember that in the mathematical derivations in this
+article, the inner product we use is the one given by the Cartan matrix
+<span class="math inline">\(C\)</span>. However, in the actual code, we
+can directly call <code>np.dot</code> to calculate the inner product of
+two vectors. The reasoning is as follows:</p>
+<p>Let <span class="math inline">\(u=\sum_{i=1}^8 x_i\alpha_i\)</span>
+and <span class="math inline">\(v=\sum_{i=1}^8 y_i\alpha_i\)</span> be
+two vectors, and let <span class="math inline">\(X=(x_1,\ldots,x_8)\)</span> and <span class="math inline">\(Y=(y_1,\ldots,y_8)\)</span> be their coordinates
+in the basis <span class="math inline">\(\Delta\)</span>. Also, let
+<span class="math inline">\(u=(u_1,\ldots,u_8)\)</span> and <span class="math inline">\(v=(v_1,\ldots,v_8)\)</span> be their coordinates
+in the standard basis <span class="math display">\[\{e_i=(0,\ldots,\underbrace{1}_{\text{$i$-th
+position}},\ldots,0)\mid 1\leq i\leq 8\},\]</span> then their inner
+product is <span class="math display">\[(u,v)=XCY'=X\Delta\Delta'Y'=\sum_{i=1}^8
+u_i v_i = \mathrm{np.dot}(u,v).\]</span></p>
+<p>From now on, we will no longer emphasize that <span class="math inline">\((\,,\,)\)</span> is the inner product under <span class="math inline">\(C\)</span>. But readers must be aware of this.</p>
+</div>
 <p>Each simple root <span class="math inline">\(\alpha_i\)</span>
 corresponds to a simple reflection <span class="math inline">\(s_i\)</span>:</p>
 <p><span class="math display">\[s_i(v) = v -
 \frac{2(v,\alpha_i)}{(\alpha_i, \alpha_i)}\alpha_i =
 v-(v,\alpha_i)\alpha_i,\quad 1\leq i\leq 8.\]</span></p>
-<p>Here, <span class="math inline">\((\,,\,)\)</span> denotes the
-standard Euclidean inner product. This expression shows the advantage of
-making each simple root <span class="math inline">\(\alpha_i\)</span>
-have a length of <span class="math inline">\(\sqrt{2}\)</span>: <span class="math inline">\(\alpha_i\)</span> is equal to its coroot <span class="math inline">\(\frac{2\alpha_i}{(\alpha_i,\alpha_i)}\)</span>,
+<p>This expression shows the advantage of making each simple root <span class="math inline">\(\alpha_i\)</span> have a length of <span class="math inline">\(\sqrt{2}\)</span>: <span class="math inline">\(\alpha_i\)</span> is equal to its coroot <span class="math inline">\(\frac{2\alpha_i}{(\alpha_i,\alpha_i)}\)</span>,
 resulting in the simple form of reflection about <span class="math inline">\(\alpha_i\)</span>.</p>
 <p>To express this in code:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># A set of simple roots listed by rows of 'delta'</span><br>delta = np.array([<br>    [<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],<br>    [-<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]<br>])<br><br><span class="hljs-comment"># The cartan matrix:</span><br>cartan = np.dot(delta, delta.transpose())<br></code></pre></td></tr></tbody></table></figure>
@@ -480,15 +495,6 @@ the root system, compute its coordinates in the basis <span class="math inline">
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">roots_2d = [(np.dot(u, x), np.dot(v, x)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> roots]<br></code></pre></td></tr></tbody></table></figure>
 <p>What remains is to draw these points and the edges between them. The
 details of the drawing process are not discussed here.</p>
-<blockquote>
-<p><strong>Note</strong>: The inner product here is given by the Cartan
-matrix <span class="math inline">\(C\)</span>, and the orthogonalization
-and projection of the root system are also performed under this inner
-product. Since we represented <span class="math inline">\(u,v\)</span>
-as combinations of the basis <span class="math inline">\(\Delta\)</span>, <code>np.dot(x, u)</code>
-actually computes the projection under the inner product defined by
-<span class="math inline">\(C\)</span>.</p>
-</blockquote>
 <h1 id="further-improvement">Further Improvement</h1>
 <p>If you look at the <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py#L123">GitHub
 code</a>, you’ll find that it’s not written exactly as described above.
