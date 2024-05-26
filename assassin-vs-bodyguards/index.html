@@ -25,7 +25,8 @@
     <meta name="description" content="Maryam Mirzakhani 在 2014 年的 一次报告
 中提出了如下的问题：（问题大约在视频的 25 分 50 秒处）
 
-问题：假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子，即子弹在碰到墙壁时会按照入射角等于出射角的规律一直反射下去。房间中有一位政要和一个刺客。能否在房间中放置若干名（数目有限）保镖，使得这些保镖可以封死刺客的所有射击角度，从而保护政要不被子弹击中？
+问题：
+假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子，即子弹在碰到墙壁时会按照入射角等于出射角的规律一直反射下去。房间中有一位政要和一个刺客。能否在房间中放置若干名（数目有限）保镖，使得这些保镖可以封死刺客的所有射击角度，从而保护政要不被子弹击中？
 政要和刺客的位置是固定的，但可能是房间中任何两点。
 
 据 考据，这个问题曾经在
@@ -35,10 +36,10 @@
 Greg Egan 进一步讨论了
 当房间是正三角形和正六边形的情况。他给出的答案是正确的，但是我感觉他对正六边形情形的解释有点让人难懂（Greg
 Egan 的一贯风格）。
-本文是对 math3ma 和 Greg Egan
-博客文章的补充。也就是说，我这里不会再给出正方形情形的解答，math3ma
-的博客文章已经解释的很好了。但是如果你看完 Greg Egan
-的文章以后对正三角形和正六边形的情形还有疑问，这篇文章也许可以帮助你。
+本文是对 math3ma 和 Greg Egan 博客文章的补充，我将尝试从仿射 Weyl
+群的角度给出这三种情形的解答。关于仿射 Weyl 群的相关知识读者可以参考
+(Humphreys 1990, chap.
+4)。
 本文的代码在 Github
 上。这个项目包含了一个交互式的脚本，你可以在窗口中点击并拖拽鼠标来查看刺客射击的轨迹以及保镖的位置：
 
@@ -354,7 +355,7 @@ Egan 的一贯风格）。
 
 
                                         <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8D%E5%B0%84%E5%92%8C%E5%B9%B3%E7%A7%BB"><span class="section table-of-contents-text">反射和平移</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%AD%A3%E6%96%B9%E5%BD%A2-%E6%AD%A3%E4%B8%89%E8%A7%92%E5%BD%A2-%E6%AD%A3%E5%85%AD%E8%BE%B9%E5%BD%A2"><span class="section table-of-contents-text">正方形 | 正三角形 | 正六边形</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BB%BF%E5%B0%84-weyl-%E7%BE%A4"><span class="section table-of-contents-text">仿射 Weyl 群</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8D%E5%B0%84%E5%92%8C%E5%B9%B3%E7%A7%BB"><span class="section table-of-contents-text">反射和平移</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%AD%A3%E6%96%B9%E5%BD%A2-%E6%AD%A3%E4%B8%89%E8%A7%92%E5%BD%A2-%E6%AD%A3%E5%85%AD%E8%BE%B9%E5%BD%A2"><span class="section table-of-contents-text">正方形 | 正三角形 | 正六边形</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BB%BF%E5%B0%84-weyl-%E7%BE%A4"><span class="section table-of-contents-text">仿射 Weyl 群</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
 
                                             
@@ -363,10 +364,11 @@ Egan 的一贯风格）。
                                                 <div class="entry pink-link-context">
                                                     <p>Maryam Mirzakhani 在 2014 年的 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tprlQMClSYQ">一次报告</a>
 中提出了如下的问题：（问题大约在视频的 25 分 50 秒处）</p>
-<blockquote>
-<p><strong>问题</strong>：假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子，即子弹在碰到墙壁时会按照入射角等于出射角的规律一直反射下去。房间中有一位政要和一个刺客。能否在房间中放置若干名（数目有限）保镖，使得这些保镖可以封死刺客的所有射击角度，从而保护政要不被子弹击中？</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子，即子弹在碰到墙壁时会按照入射角等于出射角的规律一直反射下去。房间中有一位政要和一个刺客。能否在房间中放置若干名（数目有限）保镖，使得这些保镖可以封死刺客的所有射击角度，从而保护政要不被子弹击中？</p>
 <p>政要和刺客的位置是固定的，但可能是房间中任何两点。</p>
-</blockquote>
+</div>
 <p>据 <a target="_blank" rel="noopener" href="http://www.numdam.org/item/10.5802/aif.2124.pdf">考据</a>，这个问题曾经在
 1989 年列宁格勒的数学竞赛中出现过。不久前通过 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=a7gp9c2p0UQ">PBS</a> 和 <a target="_blank" rel="noopener" href="https://www.math3ma.com/blog/is-the-square-a-secure-polygon">math3ma
 的博客</a>
@@ -374,10 +376,10 @@ Egan 的一贯风格）。
 <p>Greg Egan <a target="_blank" rel="noopener" href="https://gregegan.net/SCIENCE/Lattices/Lattices.html">进一步讨论了</a>
 当房间是正三角形和正六边形的情况。他给出的答案是正确的，但是我感觉他对正六边形情形的解释有点让人难懂（Greg
 Egan 的一贯风格）。</p>
-<p>本文是对 math3ma 和 Greg Egan
-博客文章的补充。也就是说，我这里不会再给出正方形情形的解答，math3ma
-的博客文章已经解释的很好了。但是如果你看完 Greg Egan
-的文章以后对正三角形和正六边形的情形还有疑问，这篇文章也许可以帮助你。</p>
+<p>本文是对 math3ma 和 Greg Egan 博客文章的补充，我将尝试从仿射 Weyl
+群的角度给出这三种情形的解答。关于仿射 Weyl 群的相关知识读者可以参考
+<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, chap.
+4</a>)</span>。</p>
 <p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/assassin_vs_bodyguards">Github
 上</a>。这个项目包含了一个交互式的脚本，你可以在窗口中点击并拖拽鼠标来查看刺客射击的轨迹以及保镖的位置：</p>
 <table>
@@ -401,29 +403,28 @@ Egan 的一贯风格）。</p>
 </table>
 <span id="more"></span>
 <h1 id="反射和平移">反射和平移</h1>
-<p>在照镜子的时候，你和自己在镜子中的像的左右是相反的。即镜面反射会改变“手性”。所以任何人不可能经过平移和旋转之后与自己在镜子中的像重合。</p>
+<p>在照镜子的时候，你和自己在镜子中的像的左右是相反的。即镜面反射会改变“手性”。所以任何人，不管怎么平移或者旋转方向，都不可能与自己在镜子中的像重合。</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/inception.jpg" width="500"></p>
-<p>然而不管是旋转还是平移，它们都可以分解成两个反射变换的复合：</p>
+<p>但是如果把镜子中的虚像关于另一面镜子再作一次反射，得到一个二次虚像，那么通过适当的平移或者旋转，你是可以和这个二次虚像完全重合的。这是因为，两个反射变换的复合是一个平移或者旋转。具体取决于两个镜子的夹角：</p>
 <ol type="1">
-<li>两个夹角为 <span class="math inline">\(\theta\)</span>
+<li>两个相交且夹角为 <span class="math inline">\(\theta\)</span>
 的镜面反射的复合是一个角度为 <span class="math inline">\(2\theta\)</span> 的旋转。</li>
 <li>两个平行且距离为 <span class="math inline">\(d\)</span>
 的镜面反射的复合是一个距离为 <span class="math inline">\(2d\)</span>
 的平移。</li>
 </ol>
-<p>所以偶数次反射等同于若干次旋转和平移，手性不变；奇数次反射等同于若干次旋转和平移后再附加一次反射，手性相反。</p>
-<p>观察上面盗梦空间的剧照，小李子位于两个平行的镜子中间，他有无穷多个虚像。这些像是交错出现的：正对着他的像是经过奇数次反射得到的，这些像和他的手性是相反的，它们构成集合
+<p>所以偶数次反射等同于若干次旋转和平移的叠加，手性不变；奇数次反射等同于若干次旋转和平移后再附加一次反射，手性相反。</p>
+<p>观察上面盗梦空间的剧照，小李子位于两个平行的镜子中间，他有无穷多个虚像。这些像是交错出现的：那些脸对着他的像是经过奇数次反射得到的，这些像和他的手性是相反的，它们构成集合
 <span class="math inline">\(L_1\)</span>；背对着他的像是经过偶数次反射得到的（小李子本人看作
 <span class="math inline">\(0\)</span>
-次反射的像），这些像和他是可以经过平移以后重合的，它们构成集合 <span class="math inline">\(L_2\)</span>。假设两个镜子的距离为 <span class="math inline">\(d\)</span>，则同一 <span class="math inline">\(L_i\)</span> 中的像以 <span class="math inline">\(2d\)</span> 为间隔均匀分布在一条直线上。</p>
+次反射的像），这些像和他是可以经过平移以后重合的，它们构成集合 <span class="math inline">\(L_2\)</span>。假设两个镜子的距离为 <span class="math inline">\(d\)</span>，则对每个 <span class="math inline">\(i\)</span>，<span class="math inline">\(L_i\)</span> 中的像以 <span class="math inline">\(2d\)</span> 为间隔均匀分布在一条直线上。</p>
 <p>如果我们想在两个镜子中间放置若干保镖，挡住摄像师从任何角度拍摄到小李子的话，则恰好需要
 4
 名保镖。他们需要分别挡住小李子本人、小李子在两个镜子中的一次虚像，以及某个二次虚像。</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/parallel.svg" height="400"></p>
 <p>为什么是 4 呢？假设一个保镖 <span class="math inline">\(G\)</span>
 挡住了小李子的某个虚像 <span class="math inline">\(A\in
-L_i\)</span>，<span class="math inline">\(i\)</span> 可以是 1 或者
-2。<span class="math inline">\(G\)</span>
+L_i,\,i\in\{1,2\}\)</span>。<span class="math inline">\(G\)</span>
 的所有虚像也由两个格点组成，每个格点也都是间隔 <span class="math inline">\(2d\)</span>
 均匀排列的。根据三角形的相似原理，<span class="math inline">\(G\)</span>
 的偶数次反射构成的格点在 <span class="math inline">\(L_i\)</span>
@@ -433,8 +434,8 @@ L_i\)</span>，<span class="math inline">\(i\)</span> 可以是 1 或者
 <h1 id="正方形-正三角形-正六边形">正方形 | 正三角形 | 正六边形</h1>
 <p>理解正多边形房间情形的第一个关键，是要知道刺客的任何射击轨迹都可以展开为平面上的一条射线。刺客可以击中目标当且仅当这条射线经过目标的某个虚像。这个操作叫做展开
 (unfolding)。</p>
-<p>反之，我们可以用所谓的折叠 (folding)
-操作将从刺客发出的任何射线折叠回房间变成一条射击轨迹。</p>
+<p>与展开相对的操作是折叠 (folding)
+，我们可以用折叠操作将刺客发出的任何射线折叠回房间变成一条射击轨迹。</p>
 <p>当房间是正方形时，目标的所有虚像由 4 个不同的二维格点组成：</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/square_lattice.svg" height="350"></p>
 <p>对于刺客来说，只要朝着任何一个虚像开枪他就能击中目标。因为他和任何虚像之间的连线都可以通过折叠操作变成一条子弹的反射路径：</p>
@@ -471,43 +472,46 @@ L_i\)</span>，<span class="math inline">\(i\)</span> 可以是 1 或者
 个虚像格点中的一个，用黄色的点标记；刺客与每个虚像连线的中点有一个保镖的虚像，这个虚像来自房间中某个真实的保镖（用青色的点标记）。把射线折叠回房间我们可以得到真实保镖的位置。然而即便对同一个保镖，随着他的虚像变化，这个位置也可能不同，有
 6 种可能，所以封锁这个格点需要 4x6=24 个保镖，封锁全部 6 个格点需要
 24x6=144 个保镖！</p>
-<p>为什么保镖的数目增加了 6 倍？这是因为每一个保镖虚像可能来自房间中 6
-个位置中的任何一个。即如果我们固定一个保镖 <span class="math inline">\(G\)</span> 并考虑所有和他平移等价的虚像集合 <span class="math inline">\(X\)</span>，从刺客到某个 <span class="math inline">\(x\in X\)</span> 的一条射线对应一个群元素 <span class="math inline">\(w_x\in\widetilde{A}_2\)</span>，<span class="math inline">\(w_x\)</span> 将 <span class="math inline">\(x\)</span> 映射回真实的房间。当 <span class="math inline">\(x\)</span> 变化时，最终的位置 <span class="math inline">\(w_x\cdot x\)</span> 有 6
-种不同的可能。所以保镖的数目要增加 6 倍。</p>
-<p>在前面正三角形等情形中，所有 <span class="math inline">\(w_x\cdot
-x\)</span> 对应的是真实房间中同一个位置。</p>
+<p>为什么会出现这种现象？我们固定一个保镖 <span class="math inline">\(G\)</span> 并考虑所有和他平移等价的虚像集合 <span class="math inline">\(X\)</span>，从刺客到某个 <span class="math inline">\(x\in X\)</span> 的一条射线对应一个群元素 <span class="math inline">\(w_x\in\widetilde{A}_2\)</span>，<span class="math inline">\(w_x\)</span> 将 <span class="math inline">\(x\)</span> 映射回真实的房间，但这个最终的位置
+<span class="math inline">\(w_x\cdot x\)</span> 未必与 <span class="math inline">\(G\)</span> 重合。当 <span class="math inline">\(x\)</span> 变化时，<span class="math inline">\(w_x\cdot x\)</span> 有 6
+种不同的可能，所以保镖的数目要增加 6
+倍。但是在前面正三角形等情形中，所有 <span class="math inline">\(w_x\cdot x\)</span>
+对应的是真实房间中同一个位置。</p>
+<p>上面的解释非常肤浅，实际上我是从仿射 Weyl 群的角度理解的。</p>
 <h1 id="仿射-weyl-群">仿射 Weyl 群</h1>
-<p>利用仿射 Weyl 群的知识，我们可以给出答案背后更准确的解释。</p>
+<p>借助仿射 Weyl 群的知识（参见 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, chap.
+4</a>)</span>），我们可以给出答案背后更准确的解释。</p>
 <p>正三角形、正方形、正六边形房间的共同之处，是房间的所有虚像可以密铺整个平面。关于房间墙壁的镜面反射生成的群是一个仿射
-Weyl 群 <span class="math inline">\(W\)</span>：</p>
+Weyl 群 <span class="math inline">\(W\)</span>，<span class="math inline">\(W\)</span> 可以表示为一个有限二面体群 <span class="math inline">\(D_n\)</span> 和一个格点群 <span class="math inline">\(L\)</span> 的半直积 <span class="math inline">\(W=D_n\ltimes L\)</span>。</p>
 <ol type="1">
-<li>在正方形的情形，<span class="math inline">\(W=\widetilde{A}_1\times
-\widetilde{A}_1\)</span>。</li>
-<li>在正三角形和六边形的情形，<span class="math inline">\(W=\widetilde{A}_2\)</span>。</li>
-</ol>
-<p>这两种情形下仿射 Weyl 群可以表示为一个有限二面体群 <span class="math inline">\(D_n\)</span> 和一个格点群 <span class="math inline">\(L\)</span> 的半直积：</p>
-<ol type="1">
-<li><p>在正方形的情形，<span class="math inline">\(\widetilde{A}_1\times\widetilde{A}_1\cong
-D_2\rtimes\mathbb{Z}^2\)</span>。<span class="math inline">\(D_2\)</span> 是两个夹角为 90 度的镜面生成的 4
-阶二面体群，也叫做 Klein 群。假设房间是单位正方形，则格点群 <span class="math inline">\(L=\mathbb{Z}^2\)</span>
-对应所有房间的顶点，它们到所有镜子的距离都是整数。</p></li>
+<li><p>在正方形的情形，假设房间是单位正方形，则 <span class="math inline">\(W=\widetilde{A}_1\times\widetilde{A}_1\cong
+D_2\rtimes(2\mathbb{Z})^2\)</span>。<span class="math inline">\(D_2\)</span> 是两个夹角为 90 度的镜面生成的 4
+阶二面体群，也叫做 Klein 群。<span class="math inline">\(L=(2\mathbb{Z})^2\)</span>
+是所有坐标都是偶数的那些整数构成的格点。</p></li>
 <li><p>在正三角形和正六边形的情形，<span class="math inline">\(\widetilde{A}_2\cong D_3\rtimes
 L(\Phi^\vee)\)</span>。<span class="math inline">\(D_3\)</span>
-是正三角的对称群，格点群 <span class="math inline">\(L(\Phi^\vee)\)</span> 是一个记号 (coroot
+是正三角形的对称群，格点群 <span class="math inline">\(L(\Phi^\vee)\)</span> 是一个记号 (coroot
 lattice)，表示所有正三角形的顶点。假设所有平行线间距是 1
 的话，这些点到所有镜面的距离都是整数。</p></li>
 </ol>
 <p>假设真实房间的对称中心位于原点。任何虚像房间可以按照如下方式得到：首先将有限
-Weyl
-群作用在真实房间上，把房间原地反射或者旋转一下，然后用格点中的元素平移过去。由于
-<span class="math inline">\(D_2\)</span> 和 <span class="math inline">\(D_3\)</span> 分别是 4 阶 和 6
+Weyl 群作用在真实房间上，把房间原地反射或者旋转一下，然后用格点 <span class="math inline">\(L\)</span> 中的某个元素平移过去。由于 <span class="math inline">\(D_2\)</span> 和 <span class="math inline">\(D_3\)</span> 分别是 4 阶 和 6
 阶群，所以虚像可以分成 4 个或者 6 个格点。</p>
 <p>在正四边形或者正三角形的情形，所有房间与 <span class="math inline">\(W\)</span>
 的群元素是一一对应的。但是在正六边形的情形，群元素和房间是 6 对 1
 的关系：任何 <span class="math inline">\(D_3\)</span>
-中的元素作用在真实房间上都保持真实房间不变（非恒等元会变动房间中的点）。然后有一个唯一的平移将它们的中心重合。刺客与保镖虚像之间的连线给出的群元素
-<span class="math inline">\(w\)</span> 在分解为 <span class="math inline">\(D_3\)</span> 和 <span class="math inline">\(L\)</span> 中元素的乘积时，任何 <span class="math inline">\(D_3\)</span> 中的元素都会出现，所以保镖有 6
+中的元素作用在真实房间上都保持真实房间不变（非恒等元会变动房间中的点）。然后有一个唯一的平移将它们的中心重合。对目标的每个虚像格点，虽然这些虚像来自同一个
+<span class="math inline">\(a\in
+D_3\)</span>，但是它们和刺客的连线中点，即保镖的虚像，在分解为 <span class="math inline">\(D_3\)</span> 和 <span class="math inline">\(L\)</span> 中元素的乘积时，任何 <span class="math inline">\(D_3\)</span> 中的元素都会出现，所以保镖有 6
 个可能的真实位置。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Humphreys90" class="csl-entry" role="listitem">
+Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
+Cambridge Studies in Advanced Mathematics. Cambridge University Press.
+<a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
+</div>
+</div>
 <aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
