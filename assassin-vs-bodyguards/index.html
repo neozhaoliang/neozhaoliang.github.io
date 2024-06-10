@@ -515,12 +515,17 @@ Weyl 群</a>。仿射 Weyl
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/a2.svg" height="500"></p>
 <p>对正六边形的情形，我们可以继续使用上图来分析。注意到正六边形房间给出的反射群和正三角形的情形一样，都是
 <span class="math inline">\(\widetilde{A}_2\)</span>，因为它们都是由关于所有网格线的反射生成的。所以目标虚像也由
-6 个不同的格点组成。任何虚像房间也可以分两步生成：首先用 <span class="math inline">\(D_3\)</span>
-中的某个元素作用在正六边形房间上，然后按照余根格点中的一个向量平移过去。但是
-<span class="math inline">\(D_3\)</span>
-中的任何元素都保持真实房间不变，只是置换其内部的 6
-个正三角形，所以群元素和房间是 6 对 1 的关系，即有 6
-个不同的群元素可以将真实房间映射为同一个虚像房间。所以平面上的任何一点，在沿着与房间中一点的连线折叠回真实房间时，根据连线不同，得到的最终位置也不同。</p>
+6 个不同的格点组成。任何虚像房间也可以分两步得到：先用 <span class="math inline">\(D_3\)</span>
+中的某个元素作用在房间上，再沿着余根格点中的一个向量平移过去。但是 <span class="math inline">\(D_3\)</span> 保持真实房间不变，只是置换其内部的 6
+个正三角形，所以群元素和房间是 6 对 1 的关系。</p>
+<p>设 <span class="math inline">\(p\)</span> 是房间内的一点，<span class="math inline">\(q\)</span> 是 <span class="math inline">\(p\)</span> 的某个虚像，从而存在 <span class="math inline">\(x\in D_3\)</span> 和 <span class="math inline">\(t\in L\)</span> 使得 <span class="math inline">\(q=x\cdot p + t\)</span>。并且 <span class="math inline">\(p\)</span> 的全部虚像是 <span class="math display">\[q+L=q+\mathbb{Z}\alpha_1^\vee+\mathbb{Z}\alpha_2^\vee.\]</span>
+我们考虑真实房间中的集合 <span class="math inline">\(S=\{y\cdot p\mid
+y\in D_3\}\)</span>。对其中任一点 <span class="math inline">\(y\cdot
+p\in S\)</span>，用 <span class="math inline">\(xy^{-1}\)</span>
+作用在上面，然后平移一个 <span class="math inline">\(L\)</span>
+中的向量，就可以得到 <span class="math inline">\(q+L\)</span>
+中的点。这就证明了 <span class="math inline">\(p\)</span>
+的虚像格点可以来自房间内 6 个不同的位置。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Humphreys90" class="csl-entry" role="listitem">
