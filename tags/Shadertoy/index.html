@@ -190,14 +190,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy-作品/">
-                    Shadertoy-作品 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
                     可视化复分析 <span class="right">6 篇</span></a>
                 </a>
@@ -245,6 +237,14 @@
 
         
 
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
     </ul>
 </div>
 
@@ -284,6 +284,12 @@
 
 
     <div class="collection mt-0">
+        
+            <a href="/ifs-demystified/" class="collection-item grey-text text-darken-1">
+                <time datetime="2024-06-16T00:00:00.000Z">2024-06-16</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                揭秘 Shadertoy 上那些酷炫的分形作品
+            </a>
         
             <a href="/Rouche-theorem-winding-number/" class="collection-item grey-text text-darken-1">
                 <time datetime="2021-09-10T16:00:00.000Z">2021-09-11</time>
@@ -567,8 +573,33 @@ MathJax.Hub.Config({
   tex: 'ams'
 });
 </script>
-  <script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/3.1.2/es5/tex-svg-full.min.js">
-  </script>
+  <script type="text/x-mathjax-config">
+	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+	  var TEX = MathJax.InputJax.TeX,
+	      MML = MathJax.ElementJax.mml;
+	  var CheckDimen = function (dimen) {
+	    if (dimen === "" ||
+	        dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+	            return dimen.replace(/ /g,"");
+	    TEX.Error("Bad dimension for image: "+dimen);
+	  };
+	  TEX.Definitions.macros.img = "myImage";
+	  TEX.Parse.Augment({
+	    myImage: function (name) {
+	      var src = this.GetArgument(name),
+	          valign = CheckDimen(this.GetArgument(name)),
+	          width  = CheckDimen(this.GetArgument(name)),
+	          height = CheckDimen(this.GetArgument(name));
+	      var def = {src:src};
+	      if (valign) {def.valign = valign}
+	      if (width)  {def.width  = width}
+	      if (valign) {def.height = height}
+	      this.Push(this.mmlToken(MML.mglyph().With(def)));
+	    }
+	  });
+	});
+	</script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
   
 
     </body>
