@@ -75,7 +75,7 @@ Undergraduate texts in mathematics. chapter IX, section 2.
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -340,7 +340,7 @@ Undergraduate texts in mathematics. chapter IX, section 2.
                                     
     <div class="tags-row">
         
-            <a href="/tags/Shadertoy/" class="chip pink lighten-1">Shadertoy</a>
+            <a href="/tags/shadertoy/" class="chip pink lighten-1">shadertoy</a>
         
             <a href="/tags/Riemann-sphere/" class="chip pink lighten-1">Riemann sphere</a>
         
@@ -369,7 +369,8 @@ Undergraduate texts in mathematics. chapter IX, section 2.
 
 
                                                 <div class="entry pink-link-context">
-                                                    <p><strong>2021/06/27 更新</strong>：我更新了一下 shader
+                                                    
+<p><strong>2021/06/27 更新</strong>：我更新了一下 shader
 代码，把每个动画放在一个 SVG
 图片中。最后几个动画代码是可以使用键盘选择场景的，具体操作如下：</p>
 <ul>
@@ -560,7 +561,182 @@ Riemann 球面 <span class="math inline">\(S^2\)</span>，所以 Möbius
 在扩充复平面上的两个不动点。当这两个不动点分别是原点和无穷远时，这两个极点就是通常意义下的北极和南极。这时球面上的“经线”是所有过两个极点的大圆，在球极投影下它们对应于同时过两个不动点的圆族
 <span class="math inline">\(\mathcal{C}_1\)</span>；球面上的纬线是所有与经线正交的圆，在球极投影下它们对应于反演圆族
 <span class="math inline">\(\mathcal{C}_2\)</span>，球面上每个点的轨迹是对数螺线轨迹在逆球极投影下在球面上的对应曲线，这条曲线与经线纬线的夹角都是常数（因为球极投影是保角的），从而是一条斜航线！</p>
-<blockquote><p><strong>练习</strong>：解释下面这个动画的含义：</p>
+<blockquote>
+
+
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>dummy</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+
+
+<p><strong>练习</strong>：解释下面这个动画的含义：</p>
 <object data="/images/mobius/parabolic-sphere.svg">
 </object>
 <p>提示：这个动画有两种解释，它既可以看作是一个抛物型变换在 Riemann
@@ -569,6 +745,8 @@ Riemann 球面 <span class="math inline">\(S^2\)</span>，所以 Möbius
 <span class="math inline">\(z=0\)</span>
 相切的球，其半径为无穷大。Möbius
 变换在上半双曲空间上的作用见下一节。</p>
+
+
 </blockquote>
 <h1 id="möbius-变换作为上半双曲空间的等距">Möbius
 变换作为上半双曲空间的等距</h1>
@@ -649,6 +827,8 @@ Dupin cyclide 的任何显示或者隐式的曲面方程，而是直接用 <span
 <p>严格讲，这些动画其实还是尝试在欧式空间中去观察双曲空间中的对象，因为
 raymarching
 技术假定的是光走直线，但在双曲空间中光一般不走直线，所以我们这里看到的效果与真实的生活在双曲空间中的“外星人”所看到的还是有差别的。</p>
+
+
 
                                                         
 <p class="pink-link-context">
