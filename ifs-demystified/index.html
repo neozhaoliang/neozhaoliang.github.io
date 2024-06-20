@@ -44,15 +44,15 @@ Radiosity by Xor
 
 
 
-然而代码短可不代表它们容易看懂。特别是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对不了解背后原理的人来说，看这些代码和看天书没啥区别。
+然而代码短可不代表它们容易看懂。特别是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对不了解背后原理的人来说，阅读这些代码就像阅读天书一样困难。
 在这篇文章中，我将为大家揭示这些作品背后的奥秘。别看场景千变万化，其实它们都是用同一个套路制作出来的。下面这段伪代码就概括了这些分形作品背后的基本逻辑：
 123456789vec3 getPixelColor(vec2 pixel) {    vec3 p = screenToSpace(pixel);    vec3 color = vec3(0);    for (int i=0; i&amp;lt;max_iterations; i++) {        p = fold(p);        color += someColorFunc(p);    }    return color;}
-首先，将屏幕上的像素映射为空间中的某个点，然后使用一个
+首先，将屏幕上的像素映射为空间中的某个点，然后用一个
 fold 函数，即所谓的 迭代函数系统（iterated
 function system，简称
 IFS）反复作用在该点上。每次迭代结束后，生成一个颜色并将其添加到当前的颜色
 color 上。当达到一定的迭代次数后，返回 color
-的值作为最终的像素颜色。
+的值作为像素最终的颜色。
 整个过程主要包括三个要素：
 
 用 IFS 来构造分形。
@@ -386,15 +386,15 @@ Xor</td>
 </tr>
 </tbody>
 </table>
-<p>然而代码短可不代表它们容易看懂。特别是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对不了解背后原理的人来说，看这些代码和看天书没啥区别。</p>
+<p>然而代码短可不代表它们容易看懂。特别是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对不了解背后原理的人来说，阅读这些代码就像阅读天书一样困难。</p>
 <p>在这篇文章中，我将为大家揭示这些作品背后的奥秘。别看场景千变万化，其实它们都是用同一个套路制作出来的。下面这段伪代码就概括了这些分形作品背后的基本逻辑：</p>
 <figure class="highlight glsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> getPixelColor(<span class="hljs-type">vec2</span> pixel) {<br>    <span class="hljs-type">vec3</span> p = screenToSpace(pixel);<br>    <span class="hljs-type">vec3</span> color = <span class="hljs-type">vec3</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;max_iterations; i++) {<br>        p = fold(p);<br>        color += someColorFunc(p);<br>    }<br>    <span class="hljs-keyword">return</span> color;<br>}<br></code></pre></td></tr></tbody></table></figure>
-<p>首先，将屏幕上的像素映射为空间中的某个点，然后使用一个
+<p>首先，将屏幕上的像素映射为空间中的某个点，然后用一个
 <code>fold</code> 函数，即所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Iterated_function_system">迭代函数系统</a>（iterated
 function system，简称
 IFS）反复作用在该点上。每次迭代结束后，生成一个颜色并将其添加到当前的颜色
 <code>color</code> 上。当达到一定的迭代次数后，返回 <code>color</code>
-的值作为最终的像素颜色。</p>
+的值作为像素最终的颜色。</p>
 <p>整个过程主要包括三个要素：</p>
 <ol type="1">
 <li>用 IFS 来构造分形。</li>
@@ -426,8 +426,8 @@ f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^2).\]</span>
 <span class="math inline">\(r=\max\{r_1,\ldots,r_N\}\)</span>。于是根据
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem">Banach
 不动点定理</a>，存在唯一的紧集 <span class="math inline">\(A\subset\mathbb{R}^2\)</span> 使得 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(F\)</span> 的不动点： <span class="math display">\[F(A) = A.\]</span> 不仅如此，对 <span class="math inline">\(K(\mathbb{R}^2)\)</span> 中的任何一点，即任何紧集
-<span class="math inline">\(B\subset\mathbb{R}^2\)</span>，都有 <span class="math display">\[\lim_{n\to\infty} F^n(B) =A.\]</span> 紧集 <span class="math inline">\(A\)</span> 叫做 <span class="math inline">\(F\)</span> 的极限集，<span class="math inline">\(A\)</span> 就是一个分形。它具有自相似的特征。</p>
-<p>我们以一个简单的二维分形 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpiński
+<span class="math inline">\(B\subset\mathbb{R}^2\)</span>，都有 <span class="math display">\[\lim_{n\to\infty} F^n(B) =A.\]</span> 紧集 <span class="math inline">\(A\)</span> 叫做 <span class="math inline">\(F\)</span> 的极限集，<span class="math inline">\(A\)</span> 是一个分形，它具有自相似的特征。</p>
+<p>我们以著名的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpiński
 三角形</a> 为例来说明这个过程。我们选择的三个压缩映射分别是</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -448,11 +448,16 @@ T_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
 <p><span class="math display">\[K_3 = T_1(K_2)\cup T_2(K_2)\cup T_3(K_2)
 = \img{/images/ifs/dot3.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>以此类推，当迭代次数趋于无穷，就得到了 Sierpiński 分形：</p>
-<p><span class="math display">\[K = T_1(K)\cup T_2(K)\cup T_3(K) =
+<p><span class="math display">\[\lim_{n\to\infty} K_n = K = T_1(K)\cup
+T_2(K)\cup T_3(K) =
 \img{/images/ifs/dot6.svg}{-1.75em}{}{4em}.\]</span></p>
-<p>你可以很容易看出来为什么初始紧集的选择是不重要的：因为在压缩的过程中，任何紧集都会逐渐缩小到一个单点。所以
-<span class="math inline">\(K_0\)</span> 哪怕取成一个点也是可以的。</p>
-<p>压缩映射当然是无穷无尽的，但绝大多数情况下我们只会用到平移、旋转、反射、缩放、球反演这几种变换（球反演变换是将单位球的外部反演到内部，单位球内部保持不动），通过构造它们的复合变换来实现空间压缩。</p>
+<p>你可以很容易看出来为什么初始紧集的选择是不重要的：因为在压缩的过程中，任何紧集都会逐渐缩小到一个单点，所以
+<span class="math inline">\(K_0\)</span> 甚至取成一个点也是可以的。</p>
+<p>压缩映射当然是无穷无尽的，所以 IFS
+给出的分形也是无穷无尽的。为了避免选择困难，我们一般只使用平移、旋转、反射、缩放、球反演这几种变换（球反演变换是将单位球的外部反演到内部，单位球内部保持不动），通过它们的复合变换来实现空间压缩。</p>
+<p>你可能想问，那应该怎样具体选择 <span class="math inline">\(f_1,\ldots,f_N\)</span>？我会在后面介绍，在着色器中实现
+IFS 是通过“空间折叠”操作进行的，这个操作可以看作是 <span class="math inline">\(F\)</span>
+的逆映射，它自动包含了多个压缩映射，所以你根本不需要单独指定每个 <span class="math inline">\(f_i\)</span>！</p>
 <h1 id="轨道着色">轨道着色</h1>
 <p>我们希望给分形染上漂亮的颜色，这个染色应该满足如下的条件：</p>
 <ol type="1">
@@ -464,9 +469,9 @@ T_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
 <p>做到这一点并不难，但是需要在每一次迭代时考虑当前点的位置信息。</p>
 <p>我们首先取一个底色，比如说
 <code>color=vec3(0)</code>，在每一次迭代中，根据当前位置 <code>p</code>
-生成一个颜色，并一定的权重加到 <code>color</code> 上。理论上颜色的 rgb
+生成一个颜色，并以一定的权重加到 <code>color</code> 上。理论上颜色的 rgb
 的取值范围应该是 <span class="math inline">\([0,1]\)</span>，但是多数情况下我们要放宽到 <span class="math inline">\([-1,1]\)</span>
-之间。即颜色可以增加也可以减少。否则如果颜色只增不减的话，那么多次迭代以后，rgb
+之间，即颜色可以增加也可以减少。否则如果颜色只增不减的话，那么多次迭代以后，rgb
 值很可能会溢出，变成白色。此外，随着迭代次数的增加，新颜色的权重应该单调下降，这样才能保证突出分形细节的部分。想象一下，当一位画家作画时，在开始的时候他可以浓墨重彩地画一个轮廓，但是越到后面描绘更加精细的部分时，他就会换用更细的画笔，小心地蘸一点颜料。</p>
 <p>根据 <code>p</code>
 生成颜色的着色方案无穷无尽，请随便发挥你的创造力。当然，你需要根据具体的场景来调整。以下是两个示例：</p>
@@ -478,7 +483,7 @@ T_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
 <p><img style="margin:0px auto;display:block" width="600" src="/images/ifs/shadertoy.png"></p>
 <p>左边的窗口是画布，显示渲染的结果；右边窗口是代码编辑器，你在这里书写着色器代码。</p>
 <p>画布是由若干像素组成的，你需要根据每个像素的位置，即它的
-<code>fragCooord</code> 值指定一个颜色。这个过程是在
+<code>fragCoord</code> 值指定一个颜色。这个过程是在
 <code>mainImage</code> 函数中实现的：</p>
 <figure class="highlight glsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">void</span> mainImage(<span class="hljs-keyword">out</span> <span class="hljs-type">vec4</span> fragColor, <span class="hljs-keyword">in</span> <span class="hljs-type">vec2</span> fragCoord);<br></code></pre></td></tr></tbody></table></figure>
 <p>其中 <code>fragCoord</code> 是像素的位置，<code>fragColor</code>
@@ -489,9 +494,9 @@ T_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
 <p><img style="margin:0px auto;display:block" width="600" src="/images/ifs/array.png"></p>
 <p>如果你一个一个地对每个演员下指令，张三你应该显示红色，李四你应该显示蓝色，等等
 …
-对成千上万个演员，这么挨个下指令还不得把人累死？相反，你应该同时对所有演员发出相同的指令：“每个人，根据自己的位置，<span class="math inline">\(x\)</span> 坐标 （即 <code>fragCoord.x</code>）
+对成千上万个演员，这么挨个下指令还不得把人累死？相反，你应该同时对所有演员发出相同的指令，比如：“每个人，根据自己的位置，<span class="math inline">\(x\)</span> 坐标 （即 <code>fragCoord.x</code>）
 是偶数的显示红色，<span class="math inline">\(x\)</span>
-坐标是奇数的显示蓝色”（这样你应该会看到红蓝相间、纵向排列的条纹图案）。在这个场景中，每个演员本质上就是一个单独的
+坐标是奇数的显示蓝色”。这样你应该会看到红蓝相间、纵向排列的条纹图案。在这个场景中，每个演员本质上就是一个单独的
 GPU
 计算单元，他们可以根据相同的指令独立计算各自的颜色。这种基于相同指令并行计算的工作方式才是
 GPU 流水线的机制。</p>
@@ -506,19 +511,25 @@ GPU 流水线的机制。</p>
 <p>来设置各自的颜色。</p>
 <p>这个例子其实蕴含了 shader
 编程的一个非常核心的概念，即<strong>距离场</strong> (distance
-field)。当我们想绘制某个图案时，我们实际上需要计算像素到这个图案的距离，然后根据距离的值对像素进行着色。</p>
+field)。当我们想绘制某个图案时，我们通过计算像素到这个图案的距离来对像素进行着色。</p>
 <h2 id="ifs-分形的绘制">IFS 分形的绘制</h2>
 <p>在使用着色器绘制IFS分形时，我们需要将之前介绍的压缩迭代映射的步骤倒过来，采取相反的操作：即我们首先将每个像素对应到空间中的一点
 <span class="math inline">\(p\)</span>，然后将逆映射 <span class="math inline">\(F^{-1}\)</span> 迭代作用在 <span class="math inline">\(p\)</span>
-上，执行足够的迭代次数后，我们再绘制任意的紧集。换句话说，我们实际上是用一个<strong>空间膨胀</strong>的映射作用反复作用在
-<span class="math inline">\(p\)</span> 上。</p>
+上，执行足够的迭代次数后，我们再绘制任意的紧集。换句话说，我们实际上是用一个<strong>空间折叠</strong>的映射作用反复作用在
+<span class="math inline">\(p\)</span>
+上，并且这个映射是<strong>空间膨胀</strong>的。</p>
 <p>这个过程也可以用一个生活中的例子形象地解释，即剪纸艺术：</p>
 <p><img style="margin:0px auto;display:block" width="480" src="/images/ifs/papercut.jpg"></p>
 <p>在剪纸过程中，首先把纸张反复折叠，然后在折叠后的纸张上画出某个特定的图形，沿着这个图形裁剪，再将纸张展开得到的就是美丽的图案。</p>
 <p>这里展开纸张的操作对应的就是迭代映射 <span class="math inline">\(F\)</span>，它把一个初始的紧集铺开到空间中变成分形；折叠纸张的操作就是
 <span class="math inline">\(F^{-1}\)</span>，它把分形折叠回最初的紧集。换言之，在画
 IFS 分形的时候，本质上我们只画了一个初始紧集 <span class="math inline">\(K\)</span>。</p>
-<p>这里有一个细节是，我们还需要在每次折叠的过程中记录一个形变因子，用于纠正最终得到的距离场。我简单解释一下原因：</p>
+<p>如果你去看那些分形作品的代码的话，会发现它们几乎都使用了
+<code>abs</code>
+函数。这个函数会把整个空间折叠到第一象限，这对应了原始的压缩映射 <span class="math inline">\(F\)</span> 包含 4 个不同的 <span class="math inline">\(f_i\)</span>。进一步，在加上关于其它平面/球面的折叠可以产生出更多的
+<span class="math inline">\(f_i\)</span>。这就解释了为什么在着色器中我们不需要显示地写出每个单独的
+<span class="math inline">\(f_i\)</span>。</p>
+<p>另一个重要细节是，我们需要在每次折叠的过程中记录一个形变因子，用于纠正最终得到的距离场。我简单解释一下：</p>
 <p>在绘制 IFS 分形时，设 <span class="math inline">\(K\)</span>
 是初始的紧集，我们要绘制的是 <span class="math inline">\(K\)</span>
 在压缩映射 <span class="math inline">\(F\)</span>
@@ -533,7 +544,7 @@ K)\)</span>，但 <span class="math inline">\(d(p,F^n(K))\)</span> 和
 <p>但如果 <span class="math inline">\(F\)</span> 是一个缩放变换，比如
 <span class="math inline">\(F(x) = x/s\,(s&gt;1)\)</span>，那么 <span class="math display">\[d(p, F(K)) = d(p, 1/s\cdot K) = 1/s\cdot d(s\cdot
 p, K) = 1/s\cdot d(F^{-1}(p), K).\]</span>
-即我们要对折叠以后算出来的距离值再除以放大的比例 <span class="math inline">\(s\)</span>。</p>
+即我们要对折叠以后算出来的距离值再除以 <span class="math inline">\(s\)</span>。</p>
 <p>对球的反演变换也有类似的结论，这是因为球反演在空间中每个点的局部是一个缩放。</p>
 <p>于是用 <span class="math inline">\(F^{-1}\)</span> 迭代 <span class="math inline">\(n\)</span> 次以后累积放大的比例就是 <span class="math inline">\(s^n\)</span>，我们要将 <span class="math inline">\(d(F^{-n}(p), K)\)</span> 再除以 <span class="math inline">\(s^n\)</span> 才是最终正确的距离值。</p>
 <h2 id="实战演示">实战演示</h2>

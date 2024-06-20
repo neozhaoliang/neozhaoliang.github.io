@@ -428,15 +428,15 @@ Xor</td>
 </tr>
 </tbody>
 </table>
-<p>然而代码短可不代表它们容易看懂。特别是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对不了解背后原理的人来说，看这些代码和看天书没啥区别。</p>
+<p>然而代码短可不代表它们容易看懂。特别是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对不了解背后原理的人来说，阅读这些代码就像阅读天书一样困难。</p>
 <p>在这篇文章中，我将为大家揭示这些作品背后的奥秘。别看场景千变万化，其实它们都是用同一个套路制作出来的。下面这段伪代码就概括了这些分形作品背后的基本逻辑：</p>
 <figure class="highlight glsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> getPixelColor(<span class="hljs-type">vec2</span> pixel) {<br>    <span class="hljs-type">vec3</span> p = screenToSpace(pixel);<br>    <span class="hljs-type">vec3</span> color = <span class="hljs-type">vec3</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;max_iterations; i++) {<br>        p = fold(p);<br>        color += someColorFunc(p);<br>    }<br>    <span class="hljs-keyword">return</span> color;<br>}<br></code></pre></td></tr></tbody></table></figure>
-<p>首先，将屏幕上的像素映射为空间中的某个点，然后使用一个
+<p>首先，将屏幕上的像素映射为空间中的某个点，然后用一个
 <code>fold</code> 函数，即所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Iterated_function_system">迭代函数系统</a>（iterated
 function system，简称
 IFS）反复作用在该点上。每次迭代结束后，生成一个颜色并将其添加到当前的颜色
 <code>color</code> 上。当达到一定的迭代次数后，返回 <code>color</code>
-的值作为最终的像素颜色。</p>
+的值作为像素最终的颜色。</p>
 <p>整个过程主要包括三个要素：</p>
 <ol type="1">
 <li>用 IFS 来构造分形。</li>
