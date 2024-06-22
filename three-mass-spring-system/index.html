@@ -200,6 +200,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
                     可视化复分析 <span class="right">6 篇</span></a>
                 </a>
@@ -242,14 +250,6 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -333,10 +333,9 @@
 </div>
 
                                             
-
-
                                                 <div class="entry pink-link-context">
-                                                    <p>今天的问题是群表示论在物理中的一个小应用：</p>
+                                                    
+<p>今天的问题是群表示论在物理中的一个小应用：</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于一个正三角形的三个顶点处。质点之间两两由一根弹簧相连，三个弹簧都是一样的，但是弹簧质量忽略不计。</p>
 <p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/abc.png"></p>
@@ -511,6 +510,8 @@ S_3\)</span>，根据前面列出的 <span class="math inline">\(\rho(g)\)</span
 后得到。这两个简正模式的频率都是 <span class="math inline">\(\omega=\sqrt{\frac{3k}{2m}}\)</span>。</p></li>
 </ol>
 <p>至此我们就求出了系统的全部简正模式。</p>
+
+
 
                                                         
 <p class="pink-link-context">
@@ -805,40 +806,17 @@ S_3\)</span>，根据前面列出的 <span class="math inline">\(\rho(g)\)</span
 
 
 
-  <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-  tex: 'ams'
-});
-</script>
-  <script type="text/x-mathjax-config">
-	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-	  var TEX = MathJax.InputJax.TeX,
-	      MML = MathJax.ElementJax.mml;
-	  var CheckDimen = function (dimen) {
-	    if (dimen === "" ||
-	        dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
-	            return dimen.replace(/ /g,"");
-	    TEX.Error("Bad dimension for image: "+dimen);
-	  };
-	  TEX.Definitions.macros.img = "myImage";
-	  TEX.Parse.Augment({
-	    myImage: function (name) {
-	      var src = this.GetArgument(name),
-	          valign = CheckDimen(this.GetArgument(name)),
-	          width  = CheckDimen(this.GetArgument(name)),
-	          height = CheckDimen(this.GetArgument(name));
-	      var def = {src:src};
-	      if (valign) {def.valign = valign}
-	      if (width)  {def.width  = width}
-	      if (valign) {def.height = height}
-	      this.Push(this.mmlToken(MML.mglyph().With(def)));
-	    }
-	  });
-	});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
 	</script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-  
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	</script>
+
+	
 
     </body>
 

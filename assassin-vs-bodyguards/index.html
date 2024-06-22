@@ -225,6 +225,14 @@ Weyl 群感兴趣，可以参考 Humphreys (1990) chapter 4。
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
                     可视化复分析 <span class="right">6 篇</span></a>
                 </a>
@@ -267,14 +275,6 @@ Weyl 群感兴趣，可以参考 Humphreys (1990) chapter 4。
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -342,11 +342,11 @@ Weyl 群感兴趣，可以参考 Humphreys (1990) chapter 4。
                                     
     <div class="tags-row">
         
+            <a href="/tags/Reflection/" class="chip pink lighten-1">Reflection</a>
+        
             <a href="/tags/Billiard-ball/" class="chip pink lighten-1">Billiard ball</a>
         
             <a href="/tags/Dynamic-system/" class="chip pink lighten-1">Dynamic system</a>
-        
-            <a href="/tags/Reflection/" class="chip pink lighten-1">Reflection</a>
         
             <a href="/tags/Affine-Weyl-group/" class="chip pink lighten-1">Affine Weyl group</a>
         
@@ -362,10 +362,9 @@ Weyl 群感兴趣，可以参考 Humphreys (1990) chapter 4。
 </div>
 
                                             
-
-
                                                 <div class="entry pink-link-context">
-                                                    <p>Maryam Mirzakhani 在 2014 年的 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tprlQMClSYQ">一次报告</a>
+                                                    
+<p>Maryam Mirzakhani 在 2014 年的 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tprlQMClSYQ">一次报告</a>
 中提出了如下的问题：（问题大约在视频的 25 分 50 秒处）</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
@@ -534,6 +533,8 @@ Cambridge Studies in Advanced Mathematics. Cambridge University Press.
 <a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
 </div>
 </div>
+
+
 
                                                         
 <p class="pink-link-context">
@@ -828,40 +829,17 @@ Cambridge Studies in Advanced Mathematics. Cambridge University Press.
 
 
 
-  <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-  tex: 'ams'
-});
-</script>
-  <script type="text/x-mathjax-config">
-	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-	  var TEX = MathJax.InputJax.TeX,
-	      MML = MathJax.ElementJax.mml;
-	  var CheckDimen = function (dimen) {
-	    if (dimen === "" ||
-	        dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
-	            return dimen.replace(/ /g,"");
-	    TEX.Error("Bad dimension for image: "+dimen);
-	  };
-	  TEX.Definitions.macros.img = "myImage";
-	  TEX.Parse.Augment({
-	    myImage: function (name) {
-	      var src = this.GetArgument(name),
-	          valign = CheckDimen(this.GetArgument(name)),
-	          width  = CheckDimen(this.GetArgument(name)),
-	          height = CheckDimen(this.GetArgument(name));
-	      var def = {src:src};
-	      if (valign) {def.valign = valign}
-	      if (width)  {def.width  = width}
-	      if (valign) {def.height = height}
-	      this.Push(this.mmlToken(MML.mglyph().With(def)));
-	    }
-	  });
-	});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
 	</script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-  
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	</script>
+
+	
 
     </body>
 

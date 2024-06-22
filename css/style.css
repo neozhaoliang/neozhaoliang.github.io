@@ -284,6 +284,27 @@ footer.page-footer {
   src: url("/css/font/LucidaGrande.ttf");
 }
 @font-face {
+  font-family: "segoe ui";
+  src: url("/css/font/segoe-ui/Segoe UI.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "segoe ui";
+  src: url("/css/font/segoe-ui/Segoe UI Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "segoe ui";
+  src: url("/css/font/segoe-ui/Segoe UI Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "segoe ui";
+  src: url("/css/font/segoe-ui/Segoe UI Bold Italic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
   font-family: Roboto;
   src: url("/css/font/Roboto/Roboto-Regular.ttf");
   font-weight: normal;
@@ -352,7 +373,7 @@ footer.page-footer {
 }
 html,
 body {
-  font-family: "Roboto", "Cantarell", "Lucida Grande", "微软雅黑", "Helvetica Neue", sans-serif;
+  font-family: "Segoe UI", "Roboto", "Cantarell", "Lucida Grande", "微软雅黑", "Helvetica Neue", sans-serif;
 }
 main {
   -webkit-box-flex: 1;

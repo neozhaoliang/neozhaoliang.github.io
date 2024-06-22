@@ -190,6 +190,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
                     可视化复分析 <span class="right">6 篇</span></a>
                 </a>
@@ -232,14 +240,6 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -412,6 +412,33 @@
             
                 <div class="entry pink-link-context">
                     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+      var TEX = MathJax.InputJax.TeX,
+          MML = MathJax.ElementJax.mml;
+      var CheckDimen = function (dimen) {
+        if (dimen === "" ||
+            dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+                return dimen.replace(/ /g,"");
+        TEX.Error("Bad dimension for image: "+dimen);
+      };
+      TEX.Definitions.macros.img = "myImage";
+      TEX.Parse.Augment({
+        myImage: function (name) {
+          var src = this.GetArgument(name),
+              valign = CheckDimen(this.GetArgument(name)),
+              width  = CheckDimen(this.GetArgument(name)),
+              height = CheckDimen(this.GetArgument(name));
+          var def = {src:src};
+          if (valign) {def.valign = valign}
+          if (width)  {def.width  = width}
+          if (valign) {def.height = height}
+          this.Push(this.mmlToken(MML.mglyph().With(def)));
+        }
+      });
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 <p>在 Shadertoy
 上有很多效果酷炫，但是代码非常短的分形作品。我挑选了其中三个优秀的例子展示如下：</p>
 <table>
@@ -486,7 +513,8 @@ Xor</td>
 
             
                 <div class="entry pink-link-context">
-                    <p>春节的晚上，外面鞭炮喧天，家人在看电视，我躲在屋里看数学，还是挺惬意的。</p>
+                    
+<p>春节的晚上，外面鞭炮喧天，家人在看电视，我躲在屋里看数学，还是挺惬意的。</p>
 <p>我正在看的是 <a target="_blank" rel="noopener" href="https://johncarlosbaez.wordpress.com">John
 Baez</a> 和 <a target="_blank" rel="noopener" href="https://www.gregegan.net">Greg Egan</a>
 的博客。John Baez
@@ -549,7 +577,8 @@ circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇
 
             
                 <div class="entry pink-link-context">
-                    <p>五一期间我写了一个 shadertoy 小动画，演示 Möbius
+                    
+<p>五一期间我写了一个 shadertoy 小动画，演示 Möbius
 变换与球的刚体运动之间的关系：</p>
                 </div>
             
@@ -601,7 +630,8 @@ circles and balls</a> 讨论了圆的外摆线和焦散，Greg Egan 也有一篇
 
             
                 <div class="entry pink-link-context">
-                    <p>这几天因为疫情居家观察难得多出点时间（不用健步挤地铁），可以写点小文章。我之前写过一篇介绍
+                    
+<p>这几天因为疫情居家观察难得多出点时间（不用健步挤地铁），可以写点小文章。我之前写过一篇介绍
 <a href="/mobius-h3space">Möbius
 变换分类的文章</a>，今天继续那里的讨论，介绍一个 Möbius 变换 <span class="math inline">\(M\)</span> 作为二维 Poincaré 双曲空圆盘 <span class="math inline">\(\mathbb{H}\)</span> 上的等距的两种构造方法：</p>
 <ol type="1">
@@ -661,7 +691,8 @@ Möbius 变换。<span class="math inline">\(M\)</span>
 
             
                 <div class="entry pink-link-context">
-                    <p>前几天在网上看到了一位艺术家 <a target="_blank" rel="noopener" href="https://www.operagallery.com/artist/anthony-james">Anthony
+                    
+<p>前几天在网上看到了一位艺术家 <a target="_blank" rel="noopener" href="https://www.operagallery.com/artist/anthony-james">Anthony
 James</a>
 的展览作品，使用多面体和镜子生成万花筒的效果，觉得很有意思：</p>
                 </div>
@@ -955,40 +986,17 @@ James</a>
 
 
 
-  <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-  tex: 'ams'
-});
-</script>
-  <script type="text/x-mathjax-config">
-	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-	  var TEX = MathJax.InputJax.TeX,
-	      MML = MathJax.ElementJax.mml;
-	  var CheckDimen = function (dimen) {
-	    if (dimen === "" ||
-	        dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
-	            return dimen.replace(/ /g,"");
-	    TEX.Error("Bad dimension for image: "+dimen);
-	  };
-	  TEX.Definitions.macros.img = "myImage";
-	  TEX.Parse.Augment({
-	    myImage: function (name) {
-	      var src = this.GetArgument(name),
-	          valign = CheckDimen(this.GetArgument(name)),
-	          width  = CheckDimen(this.GetArgument(name)),
-	          height = CheckDimen(this.GetArgument(name));
-	      var def = {src:src};
-	      if (valign) {def.valign = valign}
-	      if (width)  {def.width  = width}
-	      if (valign) {def.height = height}
-	      this.Push(this.mmlToken(MML.mglyph().With(def)));
-	    }
-	  });
-	});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
 	</script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-  
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	</script>
+
+	
 
     </body>
 

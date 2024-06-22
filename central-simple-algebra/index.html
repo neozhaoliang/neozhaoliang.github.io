@@ -199,6 +199,14 @@ Noether-Skolem 定理。
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
                     可视化复分析 <span class="right">6 篇</span></a>
                 </a>
@@ -241,14 +249,6 @@ Noether-Skolem 定理。
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -334,10 +334,9 @@ Noether-Skolem 定理。
 </div>
 
                                             
-
-
                                                 <div class="entry pink-link-context">
-                                                    <p>本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个基本结论：</p>
+                                                    
+<p>本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个基本结论：</p>
 <ol type="1">
 <li>中心单代数对张量积运算是封闭的。</li>
 <li>Noether-Skolem 定理。</li>
@@ -518,6 +517,8 @@ Jacobson, Nathan. 1980. <em>Basic Algebra. <span>II</span></em>. San
 Francisco, Calif.: W. H. Freeman; Co.
 </div>
 </div>
+
+
 
                                                         
 <p class="pink-link-context">
@@ -812,40 +813,17 @@ Francisco, Calif.: W. H. Freeman; Co.
 
 
 
-  <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-  tex: 'ams'
-});
-</script>
-  <script type="text/x-mathjax-config">
-	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-	  var TEX = MathJax.InputJax.TeX,
-	      MML = MathJax.ElementJax.mml;
-	  var CheckDimen = function (dimen) {
-	    if (dimen === "" ||
-	        dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
-	            return dimen.replace(/ /g,"");
-	    TEX.Error("Bad dimension for image: "+dimen);
-	  };
-	  TEX.Definitions.macros.img = "myImage";
-	  TEX.Parse.Augment({
-	    myImage: function (name) {
-	      var src = this.GetArgument(name),
-	          valign = CheckDimen(this.GetArgument(name)),
-	          width  = CheckDimen(this.GetArgument(name)),
-	          height = CheckDimen(this.GetArgument(name));
-	      var def = {src:src};
-	      if (valign) {def.valign = valign}
-	      if (width)  {def.width  = width}
-	      if (valign) {def.height = height}
-	      this.Push(this.mmlToken(MML.mglyph().With(def)));
-	    }
-	  });
-	});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
 	</script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-  
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	</script>
+
+	
 
     </body>
 

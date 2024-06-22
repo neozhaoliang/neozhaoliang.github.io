@@ -67,6 +67,7 @@ pts = [p0, p1, p2]
 for i in range(len(pts) - 1):
     draw_arrow(pts[i], pts[i + 1], fc="y", ec="k", lw=0.5, shorten=0.8, shift=(0, 0))
 
+draw_arrow(p0, p2, fc="none", ec="k", lw=0.8, shorten=0.9, linestyle="--")
 style = "b-"
 marker = Marker().scale(0.8).translate((0, 1.2))
 q0 = marker.center()
@@ -80,4 +81,6 @@ q2 = marker.center()
 pts = [q0, q1, q2]
 for i in range(len(pts) - 1):
     draw_arrow(pts[i], pts[i + 1], fc="c", ec="k", lw=0.5, shorten=0.8, shift=(0, 0))
+draw_arrow(q0, q2, fc="none", ec="k", lw=0.8, shorten=0.9, linestyle="--")
+
 plt.savefig("chirality-2.svg", bbox_inches="tight")

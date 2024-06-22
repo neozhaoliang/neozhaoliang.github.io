@@ -204,6 +204,14 @@ Humphreys 将 Kac 的证明作为附录加入 24 节中。Humphreys 遵循的 BG
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
                     可视化复分析 <span class="right">6 篇</span></a>
                 </a>
@@ -246,14 +254,6 @@ Humphreys 将 Kac 的证明作为附录加入 24 节中。Humphreys 遵循的 BG
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -321,13 +321,13 @@ Humphreys 将 Kac 的证明作为附录加入 24 节中。Humphreys 遵循的 BG
                                     
     <div class="tags-row">
         
+            <a href="/tags/Root-system/" class="chip pink lighten-1">Root system</a>
+        
             <a href="/tags/Complex-semisimple-Lie-algebra/" class="chip pink lighten-1">Complex semisimple Lie algebra</a>
         
             <a href="/tags/Weyl-character-formula/" class="chip pink lighten-1">Weyl character formula</a>
         
             <a href="/tags/Cartan-subalgebra/" class="chip pink lighten-1">Cartan subalgebra</a>
-        
-            <a href="/tags/Root-system/" class="chip pink lighten-1">Root system</a>
         
             <a href="/tags/Weyl-group/" class="chip pink lighten-1">Weyl group</a>
         
@@ -353,10 +353,9 @@ Humphreys 将 Kac 的证明作为附录加入 24 节中。Humphreys 遵循的 BG
 </div>
 
                                             
-
-
                                                 <div class="entry pink-link-context">
-                                                    <p>本文是我念教材 <span class="citation" data-cites="Humphreys1973">Humphreys (<a href="#ref-Humphreys1973" role="doc-biblioref">1973</a>)</span>
+                                                    
+<p>本文是我念教材 <span class="citation" data-cites="Humphreys1973">Humphreys (<a href="#ref-Humphreys1973" role="doc-biblioref">1973</a>)</span>
 时的读书笔记，目的是介绍该书的核心定理 24.3，即有限维复半单李代数的 Weyl
 特征公式。Humphreys 书中对 Weyl 特征公式的证明来自 Bernstein, Gelfand 和
 Gelfand 1971 年的论证。1974 年 Victor Kac 给出了 BGG
@@ -971,6 +970,8 @@ Cambridge University Press.
 </div>
 </div>
 
+
+
                                                         
 <p class="pink-link-context">
     <a href="/descending-plane-partitions/" rel="next" title="递降平面分拆的 Andrews 猜想">
@@ -1264,40 +1265,17 @@ Cambridge University Press.
 
 
 
-  <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-  tex: 'ams'
-});
-</script>
-  <script type="text/x-mathjax-config">
-	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-	  var TEX = MathJax.InputJax.TeX,
-	      MML = MathJax.ElementJax.mml;
-	  var CheckDimen = function (dimen) {
-	    if (dimen === "" ||
-	        dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
-	            return dimen.replace(/ /g,"");
-	    TEX.Error("Bad dimension for image: "+dimen);
-	  };
-	  TEX.Definitions.macros.img = "myImage";
-	  TEX.Parse.Augment({
-	    myImage: function (name) {
-	      var src = this.GetArgument(name),
-	          valign = CheckDimen(this.GetArgument(name)),
-	          width  = CheckDimen(this.GetArgument(name)),
-	          height = CheckDimen(this.GetArgument(name));
-	      var def = {src:src};
-	      if (valign) {def.valign = valign}
-	      if (width)  {def.width  = width}
-	      if (valign) {def.height = height}
-	      this.Push(this.mmlToken(MML.mglyph().With(def)));
-	    }
-	  });
-	});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
 	</script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-  
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	</script>
+
+	
 
     </body>
 

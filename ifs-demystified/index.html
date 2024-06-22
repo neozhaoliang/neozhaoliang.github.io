@@ -22,7 +22,33 @@
             IFS 分形揭秘 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="在 Shadertoy
+    <meta name="description" content="MathJax.Hub.Register.StartupHook(&#34;TeX Jax Ready&#34;,function () {
+      var TEX = MathJax.InputJax.TeX,
+          MML = MathJax.ElementJax.mml;
+      var CheckDimen = function (dimen) {
+        if (dimen === &#34;&#34; ||
+            dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+                return dimen.replace(/ /g,&#34;&#34;);
+        TEX.Error(&#34;Bad dimension for image: &#34;+dimen);
+      };
+      TEX.Definitions.macros.img = &#34;myImage&#34;;
+      TEX.Parse.Augment({
+        myImage: function (name) {
+          var src = this.GetArgument(name),
+              valign = CheckDimen(this.GetArgument(name)),
+              width  = CheckDimen(this.GetArgument(name)),
+              height = CheckDimen(this.GetArgument(name));
+          var def = {src:src};
+          if (valign) {def.valign = valign}
+          if (width)  {def.width  = width}
+          if (valign) {def.height = height}
+          this.Push(this.mmlToken(MML.mglyph().With(def)));
+        }
+      });
+    });
+
+
+在 Shadertoy
 上有很多效果酷炫，但是代码非常短的分形作品。我挑选了其中三个优秀的例子展示如下：
 
 
@@ -67,7 +93,7 @@ Radiosity by Xor
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -215,6 +241,14 @@ Radiosity by Xor
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
                     可视化复分析 <span class="right">6 篇</span></a>
                 </a>
@@ -257,14 +291,6 @@ Radiosity by Xor
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -352,10 +378,35 @@ Radiosity by Xor
 </div>
 
                                             
-
-
                                                 <div class="entry pink-link-context">
                                                     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+      var TEX = MathJax.InputJax.TeX,
+          MML = MathJax.ElementJax.mml;
+      var CheckDimen = function (dimen) {
+        if (dimen === "" ||
+            dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+                return dimen.replace(/ /g,"");
+        TEX.Error("Bad dimension for image: "+dimen);
+      };
+      TEX.Definitions.macros.img = "myImage";
+      TEX.Parse.Augment({
+        myImage: function (name) {
+          var src = this.GetArgument(name),
+              valign = CheckDimen(this.GetArgument(name)),
+              width  = CheckDimen(this.GetArgument(name)),
+              height = CheckDimen(this.GetArgument(name));
+          var def = {src:src};
+          if (valign) {def.valign = valign}
+          if (width)  {def.width  = width}
+          if (valign) {def.height = height}
+          this.Push(this.mmlToken(MML.mglyph().With(def)));
+        }
+      });
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 <p>在 Shadertoy
 上有很多效果酷炫，但是代码非常短的分形作品。我挑选了其中三个优秀的例子展示如下：</p>
 <table>
@@ -833,40 +884,17 @@ p, K) = 1/s\cdot d(F^{-1}(p), K).\]</span>
 
 
 
-  <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-  tex: 'ams'
-});
-</script>
-  <script type="text/x-mathjax-config">
-	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-	  var TEX = MathJax.InputJax.TeX,
-	      MML = MathJax.ElementJax.mml;
-	  var CheckDimen = function (dimen) {
-	    if (dimen === "" ||
-	        dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
-	            return dimen.replace(/ /g,"");
-	    TEX.Error("Bad dimension for image: "+dimen);
-	  };
-	  TEX.Definitions.macros.img = "myImage";
-	  TEX.Parse.Augment({
-	    myImage: function (name) {
-	      var src = this.GetArgument(name),
-	          valign = CheckDimen(this.GetArgument(name)),
-	          width  = CheckDimen(this.GetArgument(name)),
-	          height = CheckDimen(this.GetArgument(name));
-	      var def = {src:src};
-	      if (valign) {def.valign = valign}
-	      if (width)  {def.width  = width}
-	      if (valign) {def.height = height}
-	      this.Push(this.mmlToken(MML.mglyph().With(def)));
-	    }
-	  });
-	});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
 	</script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-  
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	</script>
+
+	
 
     </body>
 
