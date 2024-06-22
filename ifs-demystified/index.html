@@ -443,7 +443,7 @@ T_2(K)\cup T_3(K) =
 \img{/images/ifs/dot6.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>你可以很容易看出来为什么初始紧集的选择是不重要的：因为在压缩的过程中，任何紧集都会逐渐缩小到一个单点，所以
 <span class="math inline">\(K_0\)</span> 甚至取成一个点也是可以的。</p>
-<p>压缩映射当然是无穷无尽的，所以 IFS
+<p>压缩映射是无穷无尽的，所以 IFS
 给出的分形也是无穷无尽的。为了避免选择困难，我们一般只使用平移、旋转、反射、缩放、球反演这几种变换（球反演变换是将单位球的外部反演到内部，单位球内部保持不动），通过它们的复合变换来实现空间压缩。</p>
 <p>你可能想问，那应该怎样具体选择 <span class="math inline">\(f_1,\ldots,f_N\)</span>？我会在后面介绍，在着色器中实现
 IFS 是通过“空间折叠”操作进行的，这个操作可以看作是 <span class="math inline">\(F\)</span>
@@ -837,38 +837,39 @@ p, K) = 1/s\cdot d(F^{-1}(p), K).\]</span>
   		tex: 'ams'
 		});
 	</script>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-		  var TEX = MathJax.InputJax.TeX,
-			  MML = MathJax.ElementJax.mml;
-		  var CheckDimen = function (dimen) {
-			if (dimen === "" ||
-				dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
-					return dimen.replace(/ /g,"");
-			TEX.Error("Bad dimension for image: "+dimen);
-		  };
-		  TEX.Definitions.macros.img = "myImage";
-		  TEX.Parse.Augment({
-			myImage: function (name) {
-			  var src = this.GetArgument(name),
-				  valign = CheckDimen(this.GetArgument(name)),
-				  width  = CheckDimen(this.GetArgument(name)),
-				  height = CheckDimen(this.GetArgument(name));
-			  var def = {src:src};
-			  if (valign) {def.valign = valign}
-			  if (width)  {def.width  = width}
-			  if (valign) {def.height = height}
-			  this.Push(this.mmlToken(MML.mglyph().With(def)));
-			}
-		  });
-		});
-	</script>
+
 
 	
-			<script type="text/javascript"
-				src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+			  var TEX = MathJax.InputJax.TeX,
+				  MML = MathJax.ElementJax.mml;
+			  var CheckDimen = function (dimen) {
+				if (dimen === "" ||
+					dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+						return dimen.replace(/ /g,"");
+				TEX.Error("Bad dimension for image: "+dimen);
+			  };
+			  TEX.Definitions.macros.img = "myImage";
+			  TEX.Parse.Augment({
+				myImage: function (name) {
+				  var src = this.GetArgument(name),
+					  valign = CheckDimen(this.GetArgument(name)),
+					  width  = CheckDimen(this.GetArgument(name)),
+					  height = CheckDimen(this.GetArgument(name));
+				  var def = {src:src};
+				  if (valign) {def.valign = valign}
+				  if (width)  {def.width  = width}
+				  if (valign) {def.height = height}
+				  this.Push(this.mmlToken(MML.mglyph().With(def)));
+				}
+			  });
+			});
+		</script>
+		<script type="text/javascript"
+			src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
-			
+		
 				
 
     </body>
