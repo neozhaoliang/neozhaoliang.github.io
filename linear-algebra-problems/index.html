@@ -383,10 +383,12 @@ q\)</span>。类似的考虑极大半负定子空间可得 <span class="math inl
 来即可。</p>
 <p>在求解行列式的时候，通过引入变量，把待求的行列式看做一个或者多个变元的函数，然后找出这个函数可能满足的关系（微分方程、递推关系、根等等）是一种重要的思路。</p>
 <h1 id="矩阵空间的线性同态与反同态">矩阵空间的线性同态与反同态</h1>
-<p>::: 设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域
-<span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
+<div class="statement question definition">
+<p><span class="statement-heading"><span class="statement-label">问题
+3.1</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
 上的一个线性变换，而且保持矩阵的乘法： <span class="math display">\[f(AB)=f(A)f(B),\quad\forall
-A,B\in\mathrm{Mat}_n(F).\]</span> 问：<span class="math inline">\(f\)</span> 应该是什么样子的？ :::</p>
+A,B\in\mathrm{Mat}_n(F).\]</span> 问：<span class="math inline">\(f\)</span> 应该是什么样子的？</p>
+</div>
 <p>这个问题当然有初等的解法，不过初等解法很繁琐。其实它是代数学中关于中心单代数结构定理的一个直接推论：</p>
 <p>考虑 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
 用两种方式作用在 <span class="math inline">\(F^n\)</span> 上使得 <span class="math inline">\(F^n\)</span> 成为左 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>- 模：第一种就是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 在 <span class="math inline">\(F^n\)</span> 上的自然作用，第二种是 <span class="math display">\[A\cdot v= f(A)v,\quad A\in \mathrm{Mat}_n(F),v\in
@@ -397,10 +399,12 @@ F^n.\]</span> 由于 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是 
 用这两种方式看成 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>-
 模是同构的，即存在可逆线性变换 <span class="math inline">\(T:F^n\rightarrow F^n\)</span> 使得 <span class="math display">\[Tf(A)v=ATv.\]</span> 即 <span class="math inline">\(f(A)=T^{-1}AT\)</span>。这说明 <span class="math inline">\(f\)</span> 必然是由某个可逆矩阵 <span class="math inline">\(T\)</span> 诱导的相似变换。</p>
 <p>把上面的问题改一改：</p>
-<p>::: 设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域
-<span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
+<div class="statement question definition">
+<p><span class="statement-heading"><span class="statement-label">问题
+3.2</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
 上的一个线性变换，而且反交换矩阵的乘法： <span class="math display">\[f(AB)=f(B)f(A),\quad\forall
-A,B\in\mathrm{Mat}_n(F).\]</span> 问：<span class="math inline">\(f\)</span> 应该是什么样子的？ :::</p>
+A,B\in\mathrm{Mat}_n(F).\]</span> 问：<span class="math inline">\(f\)</span> 应该是什么样子的？</p>
+</div>
 <p>这下问题好像有点难办了，不过你可以大概猜到答案应该与转置有关，因此我们可以照葫芦画瓢写出下面的证明：</p>
 <p>考虑 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 在 <span class="math inline">\(F^n\)</span> 上的两种不同的作用方式使得 <span class="math inline">\(F^n\)</span> 成为左 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>- 模：（这次 <span class="math inline">\(v\)</span> 是行向量） <span class="math display">\[\begin{align*}
 A\cdot v &amp; = vA',\\
@@ -409,10 +413,12 @@ A\ast  v &amp; = vf(A).
 模是同构的，因此存在可逆矩阵 <span class="math inline">\(T\)</span> 使得
 <span class="math display">\[(A\cdot v)T=A\ast(vT),\]</span> 即 <span class="math inline">\(f(A)=T^{-1}A'T\)</span>。</p>
 <p>最后我们把这两个问题捏在一起，凑成下面这个问题：</p>
-<p>::: 设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域
-<span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f:\mathrm{Mat}_n(F)\to\mathrm{Mat}_n(F)\)</span>
+<div class="statement question definition">
+<p><span class="statement-heading"><span class="statement-label">问题
+3.3</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f:\mathrm{Mat}_n(F)\to\mathrm{Mat}_n(F)\)</span>
 是一个线性变换，而且对任何矩阵 <span class="math inline">\(A,B\)</span>，等式 <span class="math inline">\(f(AB)=f(A)f(B)\)</span> 和 <span class="math inline">\(f(AB)=f(B)f(A)\)</span> 至少有一个是成立的。问
-<span class="math inline">\(f\)</span> 应该是什么样子的？ :::</p>
+<span class="math inline">\(f\)</span> 应该是什么样子的？</p>
+</div>
 <p>这回问题一下子变得更麻烦了，对于一个矩阵 <span class="math inline">\(A\)</span> 来说，有可能它与某个 <span class="math inline">\(B\)</span> 满足 <span class="math inline">\(f(AB)=f(A)f(B)\)</span>，但是又与某个矩阵 <span class="math inline">\(C\)</span> 满足 <span class="math inline">\(f(AC)=f(C)f(A)\)</span>。我们要做的就是首先排除这种可能：</p>
 <p>对任意矩阵 <span class="math inline">\(A\)</span>， 设 <span class="math inline">\(L_A\)</span> 是所有满足 <span class="math inline">\(f(AB)=f(A)f(B)\)</span> 的矩阵 <span class="math inline">\(B\)</span> 组成的集合，<span class="math inline">\(R_A\)</span> 是所有满足 <span class="math inline">\(f(AC)=f(C)f(A)\)</span> 的矩阵 <span class="math inline">\(C\)</span> 组成的集合，于是 <span class="math inline">\(L_A,R_A\)</span> 都是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
 的子空间而且它俩的并等于 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>。我们要用到一个线性代数里面的著名结论：一个无限域
