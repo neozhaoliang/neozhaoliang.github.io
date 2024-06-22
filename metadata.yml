@@ -7,6 +7,9 @@ statement:
   count-within: section
   crossref-prefixes: true
 statement-kinds:
+  simple:
+    label: ""
+    counter: none
   theorem:
     label: 定理
   lemma:
