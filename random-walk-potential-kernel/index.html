@@ -24,178 +24,8 @@
     
     <meta name="description" content="这是一个关于二维随机游动的小系列，整理自我研究生时的读书笔记，每篇文章会从一个有趣直观的问题出发，介绍随机游动理论中的一个相关知识。这些问题是我精心挑选的，总体上都比较基础，并不涉及多么复杂的知识。但是请你也不要期待很快就可以看完问题的解答，因为它们不是那种用个什么巧办法三两下就能搞定的急转弯！
 
-
-
-  
-  
-  
-  dummy
-  
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li &gt; ol, li &gt; ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, &#39;Lucida Console&#39;, monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC &gt; ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type=&#34;checkbox&#34;] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  
-  
-
-
-问题：假设某醉汉以太阳系的中心为原点出发，在一个固定的平面内，以恒为
-1
+问题：
+假设某醉汉以太阳系的中心为原点出发，在一个固定的平面内，以恒为 1
 米的步长作随机行走。每次醉汉等概率地在东、南、西、北四个方向中任选一个，然后向此方向移动
 1 米的距离。如果某个时刻醉汉回到了原点，或者离开了太阳系则过程结束。
 现在有 A, B 两个旁观者打赌哪一种情形先发生，A 认为醉汉会先回到原点，B
@@ -411,16 +241,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机游动/">
-                    随机游动 <span class="right">2 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -509,190 +339,16 @@
                                                 <div class="entry pink-link-context">
                                                     
 <p>这是一个关于二维随机游动的小系列，整理自我研究生时的读书笔记，每篇文章会从一个有趣直观的问题出发，介绍随机游动理论中的一个相关知识。这些问题是我精心挑选的，总体上都比较基础，并不涉及多么复杂的知识。但是请你也不要期待很快就可以看完问题的解答，因为它们不是那种用个什么巧办法三两下就能搞定的急转弯！</p>
-<blockquote>
-
-
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-
-
-<p><strong>问题</strong>：假设某醉汉以太阳系的中心为原点出发，在一个固定的平面内，以恒为
-1
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>假设某醉汉以太阳系的中心为原点出发，在一个固定的平面内，以恒为 1
 米的步长作随机行走。每次醉汉等概率地在东、南、西、北四个方向中任选一个，然后向此方向移动
 1 米的距离。如果某个时刻醉汉回到了原点，或者离开了太阳系则过程结束。</p>
 <p>现在有 A, B 两个旁观者打赌哪一种情形先发生，A 认为醉汉会先回到原点，B
 认为醉汉会先离开太阳系。请问 A 和 B 获胜的概率分别是多少？</p>
 <p>作为参考，太阳系半径约为 45
 亿千米，看作一个中心在原点的圆形区域。</p>
-
-
-</blockquote>
+</div>
 <span id="more"></span>
 <p>题目其实是在说，醉汉的行为是 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的简单随机游动，而我们熟知
 <span class="math inline">\(\mathbb{Z}^d\)</span> 上的随机游动在 <span class="math inline">\(d=1,2\)</span> 时是常返的，所以醉汉以概率 1
@@ -820,11 +476,12 @@ Lebesgue 可积的：将积分区域 <span class="math inline">\(\mathbb{T}=[-\p
 2\sqrt{2}\pi^2&lt;\infty.\]</span></p>
 <p>所以 <span class="math inline">\(\dfrac{1-\mathrm{e}^{i\theta\cdot
 x}}{1-\phi(\theta)}\)</span> 是 Lebesgue 可积的，这就证明了 <span class="math inline">\(a(x)\)</span> 对任何 <span class="math inline">\(x\in\mathbb{Z}^2\)</span> 都有定义。</p>
-<blockquote>
-<p><strong>定理 1</strong>：势核 <span class="math inline">\(a(x)=\sum\limits_{k=0}^\infty\left[\mathbb{P}_k(0,
+<div id="potential-kernel-integ" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span>.</span><span class="statement-spah"> </span>势核 <span class="math inline">\(a(x)=\sum\limits_{k=0}^\infty\left[\mathbb{P}_k(0,
 0)-\mathbb{P}_k(x, 0)\right]\)</span> 几乎处处有限且等于 <span class="math display">\[a(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
 x}}{1-\phi(\theta)}\,\mathrm{d}\theta.\]</span></p>
-</blockquote>
+</div>
 <h1 id="势核在除去原点之外是调和的">势核在除去原点之外是调和的</h1>
 <p>我们接下来证明势核 <span class="math inline">\(a(x)\)</span>
 在除去原点之外都是调和的： <span class="math display">\[
@@ -864,188 +521,13 @@ a(x)=0+\frac{1}{4}\sum_{y\sim x}a(y)=\frac{1}{4}\sum_{y\sim x}a(y).
 <h1 id="势核的渐进估计">势核的渐进估计</h1>
 <p>我们关心的是势核 <span class="math inline">\(a(x)\)</span> 当 <span class="math inline">\(|x|\to\infty\)</span>
 时的渐进大小，为此我们有如下定理：</p>
-<blockquote>
-
-
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-
-
-<p><strong>定理 2</strong>： <span class="math display">\[\lim_{|x|\to\infty} a(x) - \frac{2}{\pi}\ln |x| =
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.1</span>.</span><span class="statement-spah"> </span><span class="math display">\[\lim_{|x|\to\infty} a(x) - \frac{2}{\pi}\ln |x| =
 \frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\approx 1.0293737.\]</span> 其中
 <span class="math inline">\(\gamma\approx 0.5772156649\)</span> 是 Euler
 常数。</p>
-
-
-</blockquote>
+</div>
 <p>当你看到这个定理的时候，是不是感觉已经快要接近证明文章开头的结论了呢？那可太抱歉了，真正麻烦的地方才刚开始。这个定理的证明非常棘手，我们需要首先论证
 <span class="math inline">\(a(x)\)</span> 的渐进行为只与 <span class="math inline">\(x\)</span> 的长度有关，与 <span class="math inline">\(x\)</span> 方向无关，然后用一个特殊的方向 <span class="math inline">\(x=(n, n)\)</span> 代入 <span class="math inline">\(a(x)\)</span> 的表达式计算积分值。</p>
 <p><strong>证明</strong>： 我们先来论证 <span class="math inline">\(a(x)\)</span> 的渐进行为不依赖于 <span class="math inline">\(x\)</span> 的方向。我们的思路是取一个函数 <span class="math inline">\(g(\theta)\)</span>，使得积分 <span class="math display">\[\begin{equation}
@@ -1201,194 +683,17 @@ n\right]+\frac{\ln8}{\pi}\\&amp;=
 <p>上面这些讨论基本上是对 Spitzer
 著作中内容的重新表述，利用局部中心极限定理可以证明极限的误差项大约是
 <span class="math inline">\(O(|x|^{-2})\)</span> 量级的，即</p>
-<blockquote>
-
-
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-
-
-<p><strong>定理 3</strong>：<span class="math display">\[a(x) =
-\frac{2}{\pi}\ln|x| + \frac{2\gamma+\ln8}{\pi} +
-O(|x|^{-2}).\]</span></p>
-
-
-</blockquote>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.2</span>.</span><span class="statement-spah"> </span><span class="math display">\[a(x) = \frac{2}{\pi}\ln|x| +
+\frac{2\gamma+\ln8}{\pi} + O(|x|^{-2}).\]</span></p>
+</div>
 <p>证明见 Lawler 书的 4.4 节。下文要用到这个渐进估计的一个推论：</p>
-<div id="axorder">
-<blockquote>
-<p><strong>推论</strong>：对任何 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span> 和单位向量
+<div id="axorder" class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span>对任何 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span> 和单位向量
 <span class="math inline">\(|e|=1\)</span> 有 <span class="math display">\[a(x + e) - a(x) = O(|x|^{-1}).\]</span>
 特别地存在常数 <span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|a(x+e)-a(x)|\leq M\)</span> 对任何 <span class="math inline">\(x\)</span> 恒成立。</p>
-</blockquote>
 </div>
 <p><strong>证明</strong>：</p>
 <p><span class="math display">\[\begin{align*}a(x+e)-a(x)&amp;=\frac{1}{\pi}\ln\frac{\langle
@@ -1417,7 +722,7 @@ B(r)}\}\)</span>，则 <span class="math inline">\(\tau_{0},\,\tau_{\partial B(r
 <p>注意到 <span class="math inline">\(\{S_{n\wedge\tau}\}\)</span>
 是一个限制在 <span class="math inline">\(B(r)\)</span>
 内的随机游动，它访问其中任何一点的期望步数都是有限的，所以 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{\tau}&lt;\infty\)</span>。其次根据上一节的
-<a href="#axorder">推论</a>，<span class="math inline">\(|a(x+e)-a(x)|\)</span> 是一致有界的，所以停时
+<a href="#axorder" title="推论">推论</a>，<span class="math inline">\(|a(x+e)-a(x)|\)</span> 是一致有界的，所以停时
 <span class="math inline">\(\tau\)</span> 满足 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Optional_stopping_theorem">可料停时定理的条件</a>，从而</p>
 <p><span class="math display">\[\begin{align*}
 a(x)&amp;=a(S_0)=\mathbb{E}_x\,a(S_{\tau})\\&amp;=
@@ -1438,189 +743,12 @@ r\)</span>。我们滥用一点记号，对任意的实数 <span class="math inl
 <span class="math display">\[\frac{2}{\pi}\ln r +
 \frac{2\gamma+\ln8}{\pi} + O(r^{-1}).\]</span></p>
 <p>至此我们就证明了如下结论：</p>
-<blockquote>
-
-
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-
-
-<p><strong>定理 4</strong>： 设 <span class="math inline">\(x\in
-B(r)\)</span> 且 <span class="math inline">\(x\ne 0\)</span>，考虑从
-<span class="math inline">\(x\)</span> 出发的简单随机游动，则 <span class="math display">\[\mathbb{P}_x(\tau_{\partial B(r)} &lt; \tau_0) =
+<div id="-------4" class="statement sta____4 plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">定理
+4</span>.</span><span class="statement-spah"> </span>： 设 <span class="math inline">\(x\in B(r)\)</span> 且 <span class="math inline">\(x\ne 0\)</span>，考虑从 <span class="math inline">\(x\)</span> 出发的简单随机游动，则 <span class="math display">\[\mathbb{P}_x(\tau_{\partial B(r)} &lt; \tau_0) =
 \frac{a(x)}{\dfrac{2}{\pi}\ln r + \dfrac{2\gamma+\ln8}{\pi} +
 O(r^{-1})}.\]</span></p>
-
-
-</blockquote>
+</div>
 <p>本文开头的赌局的答案就蕴含在这个定理的结论中：由于从原点出发的随机游动第一步必然走到某个邻居
 <span class="math inline">\(x\in\{\pm e_1,\pm e_2\}\)</span>
 上，所以从原点出发的随机游动能够逃逸到 <span class="math inline">\(B(r)\)</span> 之外的概率是 <span class="math display">\[\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
@@ -1978,9 +1106,34 @@ z}{z}\cos zx\,\mathrm{d}z.\end{align*}\]</span> 再使用 Riemann-Lebesgue
   		tex: 'ams'
 		});
 	</script>
-
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+		  var TEX = MathJax.InputJax.TeX,
+			  MML = MathJax.ElementJax.mml;
+		  var CheckDimen = function (dimen) {
+			if (dimen === "" ||
+				dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+					return dimen.replace(/ /g,"");
+			TEX.Error("Bad dimension for image: "+dimen);
+		  };
+		  TEX.Definitions.macros.img = "myImage";
+		  TEX.Parse.Augment({
+			myImage: function (name) {
+			  var src = this.GetArgument(name),
+				  valign = CheckDimen(this.GetArgument(name)),
+				  width  = CheckDimen(this.GetArgument(name)),
+				  height = CheckDimen(this.GetArgument(name));
+			  var def = {src:src};
+			  if (valign) {def.valign = valign}
+			  if (width)  {def.width  = width}
+			  if (valign) {def.height = height}
+			  this.Push(this.mmlToken(MML.mglyph().With(def)));
+			}
+		  });
+		});
 	</script>
+
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
 	
 

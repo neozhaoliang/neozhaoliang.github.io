@@ -36,9 +36,15 @@ statement-kinds:
     label: 问题
     counter: theorem
     style: definition
+  exercise:
+    label: 练习
+    counter: theorem
+    style: definition
 statement-styles:
   definition:
     punctuation: '：'
   note:
+    punctuation: '：'
+  exercise:
     punctuation: '：'
 ---

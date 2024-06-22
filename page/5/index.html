@@ -230,16 +230,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机游动/">
-                    随机游动 <span class="right">2 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -446,8 +446,6 @@ Github 项目</a>。此外还用 Javascript + canvas
             
     <div class="tags-row">
         
-            <a href="/tags/Cartan-matrix/" class="chip pink lighten-1">Cartan matrix</a>
-        
             <a href="/tags/Coxeter-group/" class="chip pink lighten-1">Coxeter group</a>
         
             <a href="/tags/Coxeter-element/" class="chip pink lighten-1">Coxeter element</a>
@@ -455,6 +453,8 @@ Github 项目</a>。此外还用 Javascript + canvas
             <a href="/tags/Coxeter-plane/" class="chip pink lighten-1">Coxeter plane</a>
         
             <a href="/tags/root-system/" class="chip pink lighten-1">root system</a>
+        
+            <a href="/tags/Cartan-matrix/" class="chip pink lighten-1">Cartan matrix</a>
         
     </div>
 
@@ -593,184 +593,11 @@ Examples”。这本书的好处我就不再介绍了，院长陈大岳老师在
 <p>本文要讨论的问题比较常见，但是好像很少有人从纠错码的角度给出解释。从纠错码的角度看问题的好处是可以很容易理解为什么要这样设计策略，而且能举一反三处理其它类似的问题。事实上我觉得这种趣味问题正是帮助初学者理解纠错码基本概念的绝好例子。</p>
 <p>不过本文并不假定读者事先学过编码论，但是需要懂一点有限域的知识。</p>
 <h1 id="称硬币问题">称硬币问题</h1>
-<blockquote>
-
-
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>dummy</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-
-
-<p><strong>问题 1</strong>：有 12
+<div class="statement question definition">
+<p><span class="statement-heading"><span class="statement-label">问题
+1.1</span>：</span><span class="statement-spah"> </span>有 12
 枚外表一模一样的硬币，其中一枚是假币，其余都是真币。假币的重量与真币不同，但是更重还是更轻不知道。给你一个没有砝码和刻度的天平，最少称几次才能确保找出假币？</p>
-
-
-</blockquote>
+</div>
                 </div>
             
         </div>
@@ -1122,9 +949,34 @@ Examples”。这本书的好处我就不再介绍了，院长陈大岳老师在
   		tex: 'ams'
 		});
 	</script>
-
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+		  var TEX = MathJax.InputJax.TeX,
+			  MML = MathJax.ElementJax.mml;
+		  var CheckDimen = function (dimen) {
+			if (dimen === "" ||
+				dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+					return dimen.replace(/ /g,"");
+			TEX.Error("Bad dimension for image: "+dimen);
+		  };
+		  TEX.Definitions.macros.img = "myImage";
+		  TEX.Parse.Augment({
+			myImage: function (name) {
+			  var src = this.GetArgument(name),
+				  valign = CheckDimen(this.GetArgument(name)),
+				  width  = CheckDimen(this.GetArgument(name)),
+				  height = CheckDimen(this.GetArgument(name));
+			  var def = {src:src};
+			  if (valign) {def.valign = valign}
+			  if (width)  {def.width  = width}
+			  if (valign) {def.height = height}
+			  this.Push(this.mmlToken(MML.mglyph().With(def)));
+			}
+		  });
+		});
 	</script>
+
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
 	
 
