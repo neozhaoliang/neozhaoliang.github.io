@@ -424,25 +424,25 @@ f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^2).\]</span>
 三角形</a> 为例来说明这个过程。我们选择的三个压缩映射分别是</p>
 <p><span class="math display">\[
 \begin{align*}
-T_1(x,y) &amp;= (x/2, y/2),\\
-T_2(x,y) &amp;= (x/2, y/2) + (0, 1/2),\\
-T_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
+f_1(x,y) &amp;= (x/2, y/2),\\
+f_2(x,y) &amp;= (x/2, y/2) + (0, 1/2),\\
+f_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
 \end{align*}
 \]</span></p>
 <p>这三个压缩映射的压缩比都是 1/2。初始的紧集 <span class="math inline">\(K_0\)</span> 可以随便选，比如就取为一个圆： <span class="math display">\[K_0 =
 \img{/images/ifs/dot0.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>在第 1 次迭代后，它变成</p>
-<p><span class="math display">\[K_1 = T_1(K_0)\cup T_2(K_0)\cup T_3(K_0)
+<p><span class="math display">\[K_1 = f_1(K_0)\cup f_2(K_0)\cup f_3(K_0)
 = \img{/images/ifs/dot1.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>在第 2 次迭代后，结果是</p>
-<p><span class="math display">\[K_2 = T_1(K_1)\cup T_2(K_1)\cup T_3(K_1)
+<p><span class="math display">\[K_2 = f_1(K_1)\cup f_2(K_1)\cup f_3(K_1)
 = \img{/images/ifs/dot2.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>第 3 次迭代：</p>
-<p><span class="math display">\[K_3 = T_1(K_2)\cup T_2(K_2)\cup T_3(K_2)
+<p><span class="math display">\[K_3 = f_1(K_2)\cup f_2(K_2)\cup f_3(K_2)
 = \img{/images/ifs/dot3.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>以此类推，当迭代次数趋于无穷，就得到了 Sierpiński 分形：</p>
-<p><span class="math display">\[\lim_{n\to\infty} K_n = K = T_1(K)\cup
-T_2(K)\cup T_3(K) =
+<p><span class="math display">\[\lim_{n\to\infty} K_n = K = f_1(K)\cup
+f_2(K)\cup f_3(K) =
 \img{/images/ifs/dot6.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>你可以很容易看出来为什么初始紧集的选择是不重要的：因为在压缩的过程中，任何紧集都会逐渐缩小到一个单点，所以
 <span class="math inline">\(K_0\)</span> 甚至取成一个点也是可以的。</p>
