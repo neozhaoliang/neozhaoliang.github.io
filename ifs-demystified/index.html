@@ -270,6 +270,14 @@ Radiosity by Xor
 
         
 
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
     </ul>
 </div>
 
@@ -343,7 +351,7 @@ Radiosity by Xor
 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#ifs-%E6%96%B9%E6%B3%95"><span class="section table-of-contents-text">IFS 方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BD%A8%E9%81%93%E7%9D%80%E8%89%B2"><span class="section table-of-contents-text">轨道着色</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%9D%80%E8%89%B2%E5%99%A8%E7%BC%96%E7%A8%8B"><span class="section table-of-contents-text">着色器编程</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="section table-of-contents-text">基础概念</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#ifs-%E5%88%86%E5%BD%A2%E7%9A%84%E7%BB%98%E5%88%B6"><span class="section table-of-contents-text">IFS 分形的绘制</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%AE%9E%E6%88%98%E6%BC%94%E7%A4%BA"><span class="section table-of-contents-text">实战演示</span></a></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#ifs-%E6%96%B9%E6%B3%95"><span class="section table-of-contents-text">IFS 方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BD%A8%E9%81%93%E7%9D%80%E8%89%B2"><span class="section table-of-contents-text">轨道着色</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%9D%80%E8%89%B2%E5%99%A8%E7%BC%96%E7%A8%8B"><span class="section table-of-contents-text">着色器编程</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="section table-of-contents-text">基础概念</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E7%A9%BA%E9%97%B4%E6%8A%98%E5%8F%A0"><span class="section table-of-contents-text">空间折叠</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%AE%9E%E6%88%98%E6%BC%94%E7%A4%BA"><span class="section table-of-contents-text">实战演示</span></a></li></ol></li></ol>
 </div>
 
                                         
@@ -459,7 +467,7 @@ IFS 是通过“空间折叠”操作进行的，这个操作可以看作是 <sp
 之间，即颜色可以增加也可以减少。否则如果颜色只增不减的话，那么多次迭代以后，rgb
 值很可能会溢出，变成白色。此外，随着迭代次数的增加，新颜色的权重应该单调下降，这样才能保证突出分形细节的部分。想象一下，当一位画家作画时，在开始的时候他可以浓墨重彩地画一个轮廓，但是越到后面描绘更加精细的部分时，他就会换用更细的画笔，小心地蘸一点颜料。</p>
 <p>根据 <code>p</code>
-生成颜色的着色方案无穷无尽，请随便发挥你的创造力。当然，你需要根据具体的场景来调整。以下是两个示例：</p>
+生成颜色的着色方案无穷无尽，请随便发挥你的创造力。一般来说你需要反复试验各种不同的方案才能找到最合适的。以下是两个示例：</p>
 <figure class="highlight glsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> colorFunc1(<span class="hljs-type">vec3</span> p) {<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">cos</span>(<span class="hljs-built_in">dot</span>(p, <span class="hljs-type">vec3</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)) + iTime);<br>}<br><br><span class="hljs-type">vec3</span> colorFunc2(<span class="hljs-type">vec3</span> p) {<br>    <span class="hljs-keyword">return</span> hsv2rgb(<span class="hljs-built_in">length</span>(p) + iTime);<br>}<br></code></pre></td></tr></tbody></table></figure>
 <h1 id="着色器编程">着色器编程</h1>
 <h2 id="基础概念">基础概念</h2>
@@ -497,12 +505,12 @@ GPU 流水线的机制。</p>
 <p>这个例子其实蕴含了 shader
 编程的一个非常核心的概念，即<strong>距离场</strong> (distance
 field)。当我们想绘制某个图案时，我们通过计算像素到这个图案的距离来对像素进行着色。</p>
-<h2 id="ifs-分形的绘制">IFS 分形的绘制</h2>
+<h2 id="空间折叠">空间折叠</h2>
 <p>在使用着色器绘制IFS分形时，我们需要将之前介绍的压缩迭代映射的步骤倒过来，采取相反的操作：即我们首先将每个像素对应到空间中的一点
 <span class="math inline">\(p\)</span>，然后将逆映射 <span class="math inline">\(F^{-1}\)</span> 迭代作用在 <span class="math inline">\(p\)</span>
 上，执行足够的迭代次数后，我们再绘制任意的紧集。换句话说，我们实际上是用一个<strong>空间折叠</strong>的映射作用反复作用在
 <span class="math inline">\(p\)</span>
-上，并且这个映射是<strong>空间膨胀</strong>的。</p>
+上，并且这个映射是<strong>放大距离</strong>的。</p>
 <p>这个过程也可以用一个生活中的例子形象地解释，即剪纸艺术：</p>
 <p><img style="margin:0px auto;display:block" width="480" src="/images/ifs/papercut.jpg"></p>
 <p>在剪纸过程中，首先把纸张反复折叠，然后在折叠后的纸张上画出某个特定的图形，沿着这个图形裁剪，再将纸张展开得到的就是美丽的图案。</p>
