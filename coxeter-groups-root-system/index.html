@@ -1,0 +1,873 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            从 Coxeter 群到双曲球堆（二）：根系 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="书接 上文，我们来分析
+Coxeter 群的根系的性质。
+根系
+
+定义
+1.1. 我们称集合 \[\Phi=\{w\alpha_s\mid w\in W, \, s\in S\}\]
+为 \((W, S)\)
+的根系，任何 \(\lambda\in\Phi\)
+叫做根向量，简称为根。\(\Delta">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="从 Coxeter 群到双曲球堆（二）：根系"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论/">
+                    Durrett-概率论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">8 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Coxeter-Groups/">Coxeter Groups</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>从 Coxeter 群到双曲球堆（二）：根系</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2021-12-04T16:00:00.000Z"><a href="/coxeter-groups-root-system/">2021-12-05</a></time>
+
+                                
+    <div class="tags-row">
+        
+            <a href="/tags/Root-system/" class="chip pink lighten-1">Root system</a>
+        
+            <a href="/tags/Reflection/" class="chip pink lighten-1">Reflection</a>
+        
+            <a href="/tags/Coxeter-groups/" class="chip pink lighten-1">Coxeter groups</a>
+        
+    </div>
+
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%A0%B9%E7%B3%BB"><span class="section table-of-contents-text">根系</span></a></li></ol>
+</div>
+
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>书接 <a href="/coxeter-groups-geometric-realization/">上文</a>，我们来分析
+Coxeter 群的根系的性质。</p>
+<h1 id="根系">根系</h1>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+1.1</span>.</span><span class="statement-spah"> </span>我们称集合 <span class="math display">\[\Phi=\{w\alpha_s\mid w\in W, \, s\in S\}\]</span>
+为 <span class="math inline">\((W, S)\)</span>
+的<strong>根系</strong>，任何 <span class="math inline">\(\lambda\in\Phi\)</span>
+叫做根向量，简称为<strong>根</strong>。<span class="math inline">\(\Delta=\{\alpha_s\mid s\in S\}\)</span>
+叫做<strong>单根系</strong>，其中的根叫做<strong>单根</strong>。由于
+<span class="math inline">\(\Delta\)</span> 构成 <span class="math inline">\(V\)</span> 的一组基，所以 <span class="math inline">\(\Phi\)</span> 中任何根 <span class="math inline">\(\lambda\)</span> 都是单根的线性组合： <span class="math display">\[\lambda = \sum_{s\in S}c_s\alpha_s,\quad
+c_s\in\mathbb{R}.\]</span> 如果上面的所有系数 <span class="math inline">\(c_s\)</span> 都非负，就称 <span class="math inline">\(\lambda\)</span>
+是一个<strong>正根</strong>；若所有系数 <span class="math inline">\(c_s\)</span> 都非正，就称 <span class="math inline">\(\lambda\)</span>
+是一个<strong>负根</strong>。正根和负根组成的集合分别记作 <span class="math inline">\(\Phi^+\)</span> 和 <span class="math inline">\(\Phi^-\)</span>，显然 <span class="math inline">\(\Phi^+\cap\Phi^-=\emptyset\)</span>。</p>
+</div>
+<p>这里有个问题：每个根都必然是正根或者负根吗？即是否有 <span class="math inline">\(\Phi=\Phi^+\cup\Phi^-\)</span>
+成立？虽然答案是肯定的，但这并不显然。为此我们需要一个关键引理。这个引理的证明有点长，但是它非常重要，Coxeter
+群的几乎所有性质的证明多少都会用到它。在引入它之前，我们需要做一点小小的准备。</p>
+<p>设 <span class="math inline">\(I\subseteq S\)</span> 是 <span class="math inline">\(S\)</span> 的子集，<span class="math inline">\(I\)</span> 中的生成元在 <span class="math inline">\((W,S)\)</span> 中生成一个子群 <span class="math inline">\(W_I \leqslant (W,S)\)</span>，<span class="math inline">\(W_I\)</span> 叫做<strong>标准椭圆子群</strong>。记
+<span class="math inline">\(l_I(\cdot)\)</span> 是 <span class="math inline">\(W_I\)</span> 上的长度函数，则显然对任何 <span class="math inline">\(w\in W_I\)</span> 有 <span class="math inline">\(l(w)\leq l_I(w)\)</span> 成立（因为 <span class="math inline">\(W_I\)</span> 中的最短表示放到 <span class="math inline">\(W\)</span> 里可能进一步缩短）。我们后面会看到
+<span class="math inline">\(l_I=l\mid_{W_I}\)</span>，但现在我们暂时还证明不了它。</p>
+<p>现在我们给出一个重要的引理，不夸张地说，几乎所有 Coxeter
+群性质的证明中多少都要用到它。</p>
+<div id="key-lemma" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+1.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(s\in S,\, w\in W\)</span>，则</p>
+<ol type="1">
+<li><span class="math inline">\(l(ws) &gt; l(w)\)</span> 当且仅当 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>。</li>
+<li><span class="math inline">\(l(ws) &lt; l(w)\)</span> 当且仅当 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>。</li>
+</ol>
+</div>
+<p>这里 1 和 2 是等价的：如果 1 成立，则</p>
+<p><span class="math display">\[
+\begin{align*}
+l(ws)&lt;l(w)&amp;\Leftrightarrow l((ws)s) &gt; l(ws)\\
+&amp;\Leftrightarrow ws(\alpha_s)\in\Phi^+\\
+&amp;\Leftrightarrow w(-\alpha_s)\in\Phi^+\\
+&amp;\Leftrightarrow w\alpha_s\in\Phi^-.
+\end{align*}
+\]</span></p>
+<p>所以只需要证明 1 即可。</p>
+<p>我们先证明充分性：若 <span class="math inline">\(l(ws)&gt;l(w)\)</span> 则 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>。</p>
+<p>对 <span class="math inline">\(l(w)\)</span> 归纳：<span class="math inline">\(l(w)=0\)</span> 时 <span class="math inline">\(w=1\)</span>，结论显然成立。下面设结论对所有长度小于
+<span class="math inline">\(l(w)\)</span> 的元素成立。</p>
+<p>我们总是可以取 <span class="math inline">\(t\ne s\)</span> 使得 <span class="math inline">\(l(wt)&lt;l(w)\)</span>，比如 <span class="math inline">\(t\)</span> 取为 <span class="math inline">\(w\)</span> 的某个既约表达式的最后一项。令 <span class="math inline">\(I=\{s,t\}\)</span>，定义 <span class="math display">\[A = \{(x,x_I)\in W\times W_I\mid
+w=xx_I,\,l(w)=l(x)+l_I(x_I)\}.\]</span> 由于 <span class="math inline">\((wt,t)\in A\)</span> 所以 <span class="math inline">\(A\)</span> 不是空集。取 <span class="math inline">\((v,v_I)\in A\)</span> 使得 <span class="math inline">\(l(v)\)</span> 取得最小值，则 <span class="math inline">\(l(v)\leq l(wt)=l(w)-1\)</span>。我们断言对任何
+<span class="math inline">\(u\in I\)</span> 都有 <span class="math inline">\(l(vu)&gt;l(v)\)</span>。若不然，则 <span class="math inline">\(l(vu)=l(v)-1\)</span>，于是 <span class="math display">\[\begin{align*}
+l(w)&amp;=l(vu\cdot uv_I)\leq l(vu) + l(uv_I) = (l(v) -1) + l(uv_I)\\
+&amp;\leq (l(v) -1) + l_I(uv_I)\\
+&amp;\leq (l(v) -1) + (l_I(v_I) + 1)\\
+&amp; = l(v) + l_I(v_I)=l(w).
+\end{align*}\]</span> 于是所有的不等号都是等式，从而 <span class="math inline">\((vu,uv_I)\in A\)</span>，但这与 <span class="math inline">\((v,v_I)\)</span> 的选择矛盾。所以不论 <span class="math inline">\(u=s\)</span> 或是 <span class="math inline">\(u=t\)</span> 都有 <span class="math inline">\(l(vu)&gt;l(v)\)</span>。</p>
+<p>由于 <span class="math inline">\(l(v)\leq l(w)-1\)</span>
+所以根据归纳假设 <span class="math inline">\(v\alpha_s,\,v\alpha_t\)</span>
+都是正根。如果我们能够证明 <span class="math inline">\(v_I\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和 <span class="math inline">\(\alpha_t\)</span> 的非负线性组合：<span class="math display">\[v_I\alpha_s = a\alpha_s + b\alpha_t,\quad
+a,\,b\geq0,\]</span> 则 <span class="math display">\[w\alpha_s=vv_I\alpha_s=v(a\alpha_s +
+b\alpha_t)=av\alpha_s + bv\alpha_t\in\Phi^+.\]</span>
+这就证明了结论。</p>
+<p>首先注意到 <span class="math inline">\(v_I\in W_I\)</span>
+的任何既约表示都是 <span class="math inline">\(s,t\)</span>
+的交错乘积，而且不能以 <span class="math inline">\(s\)</span> 结尾，否则
+<span class="math inline">\(l_I(v_Is)=l_I(v_I)-1\)</span>，从而 <span class="math display">\[l(ws)=l(vv_Is)\leq l(v) + l(v_Is)\leq
+l(v)+l_I(v_Is)=l(v)+l_I(v_I)-1=l(w)-1.\]</span> 这与 <span class="math inline">\(l(ws) &gt; l(w)\)</span> 矛盾！</p>
+<p>于是 <span class="math inline">\(v_I\)</span> 形如 <span class="math inline">\(v_I=st\cdots t\)</span> 或者 <span class="math inline">\(v_I=ts\cdots t\)</span>，问题归结为分析这样的
+<span class="math inline">\(v_I\)</span> 在 <span class="math inline">\(\alpha_s\)</span> 上的作用。这个我们已经在 <a href="/coxeter-groups-geometric-realization#rank2-roots">前一篇文章中计算过了</a>：</p>
+<ol type="1">
+<li><p><span class="math inline">\(m=m_{s,t}&lt;\infty\)</span>
+时，<span class="math display">\[\alpha_s\xrightarrow{\ t\ }\dfrac{\sin
+\theta}{\sin\theta}\alpha_s+\dfrac{\sin
+2\theta}{\sin\theta}\alpha_t\xrightarrow{\ s\ }\dfrac{\sin
+3\theta}{\sin\theta}\alpha_s+\dfrac{\sin
+2\theta}{\sin\theta}\alpha_t\xrightarrow{\ t\ }\cdots\]</span> 其中
+<span class="math inline">\(\theta=\pi/m\)</span>。这个链的第 <span class="math inline">\(k\)</span> 项形如 <span class="math display">\[
+\begin{cases}
+\dfrac{\sin k\theta}{\sin\theta}\alpha_s + \dfrac{\sin
+(k-1)\theta}{\sin\theta}\alpha_t, &amp; \text{$k$ odd},\\
+\newline
+\dfrac{\sin (k-1)\theta}{\sin\theta}\alpha_s + \dfrac{\sin
+k\theta}{\sin\theta}\alpha_t, &amp; \text{$k$ even}.
+\end{cases}
+\]</span> 看起来并不是每一项都是 <span class="math inline">\(\alpha_s,\alpha_t\)</span> 的非负线性组合，但是前
+<span class="math inline">\(m\)</span> 项都是，这就足够了：由于 <span class="math inline">\(v_I\)</span> 的任何既约表示不能以 <span class="math inline">\(s\)</span> 结尾，所以 <span class="math inline">\(v_I\)</span> 可能的取值是二面体群 <span class="math inline">\(D_m\)</span> 中所有长度小于 <span class="math inline">\(m\)</span> 且以 <span class="math inline">\(t\)</span> 结尾的那些元素： <span class="math display">\[1,\ t,\ st,\ \ldots,\ \overbrace{\ast\cdots\ast
+t}^{\leq m-1},\]</span> 它们正好构成序列的前 <span class="math inline">\(m\)</span> 项。</p>
+<p>为什么 <span class="math inline">\(v_I\)</span> 的长度不能等于 <span class="math inline">\(m\)</span>？因为根据辫关系 <span class="math display">\[\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}.\]</span>
+即 <span class="math inline">\(v_I\)</span> 会等于以 <span class="math inline">\(s\)</span> 结尾的另一个既约表示，与 <span class="math inline">\(v_I\)</span> 的任何既约表示不能以 <span class="math inline">\(s\)</span> 结尾矛盾。</p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/coxeter/finite2d.svg"></p></li>
+<li><p><span class="math inline">\(m=m_{s,t}=\infty\)</span> 时，仍然记
+<span class="math inline">\(\cosh\theta=a_{s,t},\,\theta\geq0\)</span>，则
+<span class="math display">\[\alpha_s\xrightarrow{\ t\ }\dfrac{\sinh
+\theta}{\sinh\theta}\alpha_s+\dfrac{\sinh
+2\theta}{\sinh\theta}\alpha_t\xrightarrow{\ s\ }\dfrac{\sinh
+3\theta}{\sinh\theta}\alpha_s+\dfrac{\sinh
+2\theta}{\sinh\theta}\alpha_t\xrightarrow{\ t\ }\cdots\]</span>
+每一项都是 <span class="math inline">\(\alpha_s,\alpha_t\)</span>
+的非负线性组合。</p></li>
+</ol>
+<p>当 <span class="math inline">\(\theta=0\)</span> 时，<span class="math inline">\(W_{s,t}\)</span>
+是一维直线上两个平行镜面生成的（仿射）反射群（包含了平移），它可以处理成二维平面上的线性反射群：</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/coxeter/affine2d.svg"></p>
+<p>当 <span class="math inline">\(\theta&gt;0\)</span> 时，<span class="math inline">\(W_{s,t}\)</span>
+是双曲空间中两个超平行的镜面生成的双曲反射群，它也可以处理成二维平面上的线性反射群：</p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/coxeter/hyperbolic2d.svg"></p>
+<p>必要性的证明：</p>
+<p>我们要证明若 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>
+则 <span class="math inline">\(l(ws)&gt;l(w)\)</span>。若不然，则 <span class="math inline">\(l(w)=l(wss)&gt;l(ws)\)</span>，从而由充分性的证明知道
+<span class="math inline">\(ws\alpha_s\in\Phi^+\)</span>，即 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，矛盾！至此关键引理得证。<span class="math inline">\(\blacksquare\)</span></p>
+<p>从 <a href="#key-lemma" title="引理 1.2">引理 1.2</a>
+出发我们可以得到许多重要推论：</p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.3</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(w\in W\)</span> 满足对任何 <span class="math inline">\(v\in V\)</span> 有 <span class="math inline">\(wv=v\)</span> 则 <span class="math inline">\(w=1\)</span>。即表示 <span class="math inline">\(\rho: W\to{\rm GL}(V)\)</span> 是忠实的。</p>
+</div>
+<p><strong>证明</strong>：若 <span class="math inline">\(w\ne
+1\)</span>，则存在 <span class="math inline">\(s\in S\)</span> 使得
+<span class="math inline">\(l(ws)&lt;l(w)\)</span>，从而 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，这与 <span class="math inline">\(w\alpha_s=\alpha_s\)</span> 矛盾。</p>
+<div id="pos-neg" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.4</span>.</span><span class="statement-spah">
+</span>每个根不是正根就是负根，即 <span class="math inline">\(\Phi=\Phi^+\cup\Phi^-\)</span>。</p>
+</div>
+<p><strong>证明</strong>：由定义任何 <span class="math inline">\(\lambda\in\Phi\)</span> 可以表示为 <span class="math inline">\(\lambda=w\alpha_s\)</span>。若 <span class="math inline">\(l(ws)&gt;l(w)\)</span> 则 <span class="math inline">\(\lambda\in\Phi^+\)</span>，否则 <span class="math inline">\(\lambda\in\Phi^-\)</span>。</p>
+<div id="simple-ref" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.5</span>.</span><span class="statement-spah"> </span>任何单反射 <span class="math inline">\(s\)</span> 置换 <span class="math inline">\(\Phi^+-\{\alpha_s\}\)</span> 中的正根，同时将
+<span class="math inline">\(\alpha_s\)</span> 变为 <span class="math inline">\(-\alpha_s\)</span>。</p>
+</div>
+<p><strong>证明</strong>：这是因为对任何正根 <span class="math inline">\(\lambda\ne\alpha_s\in\Phi^+\)</span>，其作为单根的线性组合
+<span class="math inline">\(\lambda=\sum_{t\in S}c_t\alpha_t\)</span>
+中必有某个 <span class="math inline">\(t\ne s\)</span> 使得 <span class="math inline">\(c_t&gt;0\)</span>，于是 <span class="math inline">\(s\lambda=\lambda-2(\lambda,\alpha_s)\alpha_s\)</span>
+的 <span class="math inline">\(\alpha_t\)</span>
+分量保持不变仍然为正，从而根据 <a href="#pos-neg" title="推论 1.4">推论
+1.4</a> <span class="math inline">\(s\lambda\)</span>
+必须仍然是正根。</p>
+<div id="lw-nw" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.6</span>.</span><span class="statement-spah"> </span>对 <span class="math inline">\(w\in W\)</span>，定义 <span class="math inline">\(N(w)\)</span> 为被 <span class="math inline">\(w\)</span> 变成负根的那些正根组成的集合： <span class="math display">\[N(w)=\{\lambda\in\Phi^+\mid
+w\lambda\in\Phi^-\},\]</span> 则 <span class="math inline">\(|N(w)|=l(w)\)</span>。</p>
+</div>
+<p><strong>证明</strong>：我们已经知道 <span class="math inline">\(l(w)\)</span> 满足如下的递推关系：</p>
+<p><span class="math display">\[
+l(ws) =\begin{cases}
+l(w)+1,&amp; w\alpha_s\in\Phi^+,\\
+l(w)-1,&amp; w\alpha_s\in\Phi^-.
+\end{cases}
+\]</span></p>
+<p>以及 <span class="math inline">\(l(1)=0\)</span>。由于 <span class="math inline">\(N(1)=\emptyset\)</span>，所以只需要证明 <span class="math inline">\(|N(w)|\)</span> 也满足同样的递推关系即可：</p>
+<p><span class="math display">\[
+|N(ws)| =\begin{cases}|N(w)|+1,&amp; w\alpha_s\in\Phi^+,\\
+|N(w)|-1,&amp; w\alpha_s\in\Phi^-.\end{cases}
+\]</span></p>
+<p>实际上对任何 <span class="math inline">\(\lambda\in\Phi^+\)</span> 且
+<span class="math inline">\(\lambda\ne\alpha_s\)</span>，根据 <a href="#simple-ref" title="推论 1.5">推论 1.5</a> <span class="math inline">\(s\lambda\)</span> 也是正根，所以由恒等式 <span class="math display">\[(ws)\lambda\in\Phi^- \Leftrightarrow
+w(s\lambda)\in\Phi^-.\]</span> 可得当 <span class="math inline">\(\lambda\in\Phi^+-\{\alpha_s\}\)</span> 时有 <span class="math display">\[\lambda\in N(ws)\Leftrightarrow s\lambda\in
+N(w),\]</span> 即 <span class="math inline">\(\lambda\leftrightarrow
+s\lambda\)</span> 给出了 <span class="math inline">\(N(ws)-\{\alpha_s\}\)</span> 和 <span class="math inline">\(N(w)-\{\alpha_s\}\)</span>
+的一一对应。除此之外，<span class="math inline">\(\alpha_s\)</span>
+必然恰好属于 <span class="math inline">\(N(ws)\)</span> 和 <span class="math inline">\(N(w)\)</span> 之一：</p>
+<ul>
+<li>当 <span class="math inline">\(l(ws) &gt; l(w)\)</span> 时 <span class="math inline">\(w\alpha_s\in\Phi^+\Rightarrow
+ws\alpha_s\in\Phi^-\Rightarrow\alpha_s\in
+N(ws)\)</span>，这对应第一条递推关系；</li>
+<li>当 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 时 <span class="math inline">\(w\alpha_s\in\Phi^-\Rightarrow\alpha_s\in
+N(w)\)</span>，这对应第二条递推关系。</li>
+</ul>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<div id="nw-zero-means-identity" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.7</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(w\in W\)</span> 把正根仍然映射为正根，即 <span class="math inline">\(w(\Phi^+)\subseteq\Phi^+\)</span>，则 <span class="math inline">\(w=1\)</span>。</p>
+</div>
+<p><strong>证明</strong>：若 <span class="math inline">\(w\)</span>
+将正根仍然映射为正根，则根据 <a href="#lw-nw" title="推论 1.6">推论
+1.6</a> 有 <span class="math inline">\(l(w)=|N(w)|=0\)</span>，从而
+<span class="math inline">\(w=1\)</span>。</p>
+<div id="w-phi-both-finite-infinite" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.8</span>.</span><span class="statement-spah"> </span><span class="math inline">\(|W|&lt;\infty\)</span> 当且仅当 <span class="math inline">\(|\Phi|&lt;\infty\)</span>。</p>
+</div>
+<p><strong>证明</strong>：如果 <span class="math inline">\(W\)</span>
+是有限群，由于 <span class="math inline">\(\Phi=W\cdot
+\Delta\)</span>，<span class="math inline">\(|\Phi|\leq |W|\cdot
+|\Delta|\)</span> 也是有限的。</p>
+<p>反之若 <span class="math inline">\(|\Phi|&lt;\infty\)</span>，由于
+<span class="math inline">\(W\)</span> 保持 <span class="math inline">\(\Phi\)</span> 不变，所以 <span class="math inline">\(W\)</span> 置换地作用在 <span class="math inline">\(\Phi\)</span> 上，即有 <span class="math inline">\(W\)</span> 到置换群 <span class="math inline">\(S_{|\Phi|}\)</span> 的同态 <span class="math inline">\(W\xrightarrow{\varphi} S_{|\Phi|}\)</span>。<a href="#nw-zero-means-identity" title="推论 1.7">推论 1.7</a> 说明 <span class="math inline">\(\varphi\)</span> 是嵌入，从而 <span class="math inline">\(W\)</span> 也是有限的。</p>
+<div id="longest" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.9</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(W\)</span> 是一个有限群，则存在唯一的元素 <span class="math inline">\(w\)</span>，<span class="math inline">\(w\)</span>
+是 <span class="math inline">\(W\)</span> 中长度最大者，它交换 <span class="math inline">\(\Phi^+\)</span> 和 <span class="math inline">\(\Phi^-\)</span>：<span class="math inline">\(w(\Phi^+)=\Phi^-\)</span>，且 <span class="math inline">\(w\)</span> 是一个对合：<span class="math inline">\(w^2=1\)</span>。</p>
+</div>
+<p><strong>证明</strong>：由于 <span class="math inline">\(W\)</span>
+有限所以可以任取一个长度最大的元素 <span class="math inline">\(w\)</span>。于是对任何 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(l(ws)&lt;l(w)\)</span>，从而 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，从而 <span class="math inline">\(w\)</span> 把 <span class="math inline">\(\Phi^+\)</span> 变为 <span class="math inline">\(\Phi^-\)</span>。</p>
+<p>由于 <span class="math inline">\(w^2\)</span> 仍然把 <span class="math inline">\(\Phi^+\)</span> 映射为 <span class="math inline">\(\Phi^+\)</span>，所以由 <a href="#nw-zero-means-identity" title="推论 1.7">推论 1.7</a> <span class="math inline">\(w^2=1\)</span>，因此 <span class="math inline">\(w\)</span> 是一个对合。</p>
+<p>如果还存在其它的最长元素 <span class="math inline">\(w'\ne
+w\)</span> 的话，则 <span class="math inline">\(w'\)</span> 也满足
+<span class="math inline">\(w'(\Phi^+)=\Phi^-\)</span>，从而 <span class="math inline">\(w^{-1}w'\)</span> 保持 <span class="math inline">\(\Phi^+\)</span> 不变，根据 <a href="#nw-zero-means-identity" title="推论 1.7">推论 1.7</a> 有 <span class="math inline">\(w^{-1}w'=1\)</span>，即 <span class="math inline">\(w=w'\)</span>。</p>
+<div id="remain-positive-root" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.10</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(I\subsetneqq S\)</span> 是真子集，<span class="math inline">\(\lambda\in \Phi^+\backslash \Phi^+_I\)</span>
+是正根，则对任何 <span class="math inline">\(w\in W_I\)</span>，<span class="math inline">\(w\lambda\)</span> 仍然是正根。</p>
+</div>
+<p><strong>证明</strong>：注意到对任何根 <span class="math inline">\(\lambda\in\Phi\)</span> 和 <span class="math inline">\(s\in S\)</span>，<span class="math inline">\(s\lambda=\lambda-2(\alpha_s,\lambda)\alpha_s\)</span>
+是 <span class="math inline">\(\lambda\)</span> 和 <span class="math inline">\(\alpha_s\)</span> 的线性组合。同理 <span class="math inline">\(ts\lambda\)</span> 是 <span class="math inline">\(s\lambda\)</span> 和 <span class="math inline">\(\alpha_t\)</span> 的线性组合，从而是 <span class="math inline">\(\lambda,\alpha_s,\alpha_t\)</span>
+的线性组合。由此可以推广到对任何 <span class="math inline">\(w=s_1s_2\cdots s_k\)</span>，<span class="math inline">\(w\lambda\)</span> 是 <span class="math inline">\(\lambda\)</span> 和 <span class="math inline">\(\{\alpha_1,\ldots,\alpha_k\}\)</span> 的线性组合：
+<span class="math display">\[w\lambda=\lambda + \sum_{t\in
+I}c_t\alpha_t.\]</span> 由于 <span class="math inline">\(\lambda\in
+\Phi^+\backslash \Phi^+_I\)</span>，所以 <span class="math inline">\(\lambda\)</span>
+表示为单根的线性组合时，其至少有一项 <span class="math inline">\(\alpha_s,\,s\notin I\)</span> 的系数大于 0，从而
+<span class="math inline">\(w\lambda\)</span> 关于这一项的系数也大于
+0，所以 <span class="math inline">\(w\lambda\)</span>
+不可能是负根。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="wv-minus-v" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(w=s_{\alpha_1}s_{\alpha_2}\cdots
+s_{\alpha_n}\)</span>，则对任何 <span class="math inline">\(v\in
+V\)</span> 有 <span class="math display">\[wv = v -
+\sum_{i=1}^n2(v,\alpha_i)\beta_i.\]</span> 其中 <span class="math inline">\(\beta_i=s_{\alpha_1}\cdots
+s_{\alpha_{i-1}}(\alpha_i)\)</span> 是正根。（<span class="math inline">\(i=1\)</span> 时 <span class="math inline">\(\beta_1\)</span> 理解为 <span class="math inline">\(\alpha_1\)</span>）</p>
+</div>
+<p><strong>证明</strong>：对 <span class="math inline">\(n\)</span>
+归纳，<span class="math inline">\(n=1\)</span> 时 <span class="math inline">\(w=s_{\alpha_1}\)</span>，<span class="math inline">\(\beta_1=\alpha_1\)</span>，所以 <span class="math display">\[wv=s_{\alpha_1}v=v-2(v,\alpha_1)\alpha_1=v-2(v,\alpha_1)\beta_1.\]</span>
+结论成立。下设结论在小于 <span class="math inline">\(n\)</span>
+时都成立。对 <span class="math inline">\(w'=s_{\alpha_2}\cdots
+s_{\alpha_n}\)</span> 应用归纳假设，有 <span class="math display">\[w'v=v -
+\sum_{i=2}^n2(v,\alpha_i)\beta_i'.\]</span> 其中 <span class="math inline">\(\beta_i'=s_{\alpha_2}\cdots
+s_{\alpha_{i-1}}(\alpha_i)\)</span>，并且由归纳假设 <span class="math inline">\(\beta_i'\)</span> 是正根。 于是 <span class="math display">\[wv=s_{\alpha_1}w'v=s_{\alpha_1}v-\sum_{i=2}^n2(v,\alpha_i)s_{\alpha_1}(\beta_i')=\sum_{i=1}^n2(v,\alpha_i)\beta_i.\]</span>
+注意到每个 <span class="math inline">\(\beta_i'\)</span> 是 <span class="math inline">\(\{\alpha_i,2\leq i\leq i\}\)</span>
+的线性组合，它是正根说明 <span class="math inline">\(\beta_i'\ne\alpha_1\)</span>，从而 <span class="math inline">\(s_{\alpha_1}(\beta_i')=\beta_i\)</span>
+仍然是正根。于是结论对 <span class="math inline">\(n\)</span>
+也成立。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="lI-equals-l" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+1.12</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(w\in W_I\)</span>，则对 <span class="math inline">\(w\)</span> 的任何既约表示 <span class="math inline">\(w=s_{i_1}\cdots s_{i_r}\)</span> 都有 <span class="math inline">\(s_{i_1},\ldots,s_{i_r}\in I\)</span>，特别地 <span class="math inline">\(l_I(w)=l(w)\)</span>。</p>
+</div>
+<p><strong>证明</strong>：我们从右到左依次验证 <span class="math inline">\(s_{i_r},\ldots,s_{i_1}\in I\)</span>。记 <span class="math inline">\(s=s_{i_r}\)</span>，由于 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 所以 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>。又由于 <span class="math inline">\(w\in W_I\)</span> 所以 <span class="math inline">\(w\)</span> 形如 <span class="math inline">\(w=t_1\cdots t_q,\,t_i\in I\)</span>。于是 <span class="math inline">\(w\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和一些 <span class="math inline">\(\alpha_{t_i}\)</span> 的线性组合： <span class="math display">\[w\alpha_s=\alpha_s+\sum_{i=1}^q
+c_i\alpha_{t_i}.\]</span> 由于 <span class="math inline">\(w\alpha_s&lt;0\)</span> 所以必然有某个 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(s=t_i\)</span>，即 <span class="math inline">\(s\in I\)</span>。继续对 <span class="math inline">\(ws=s_{i_1}\cdots s_{i_{r-1}}\in W_I\)</span>
+重复此论证即得每个 <span class="math inline">\(s_{i_j}\in
+I\)</span>。</p>
+
+
+
+                                                    
+<p class="pink-link-context">
+    <a href="/polyhedron-mirrors/" rel="next" title="DIY 多面体镜面万花筒">
+    上一篇：DIY 多面体镜面万花筒
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/coxeter-groups-geometric-realization/" rel="next" title="从 Coxeter 群到双曲球堆（一）：抽象 Coxeter 群与几何实现">
+    下一篇：从 Coxeter 群到双曲球堆（一）：抽象 Coxeter 群与几何实现
+  </a>
+</p>
+
+
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>
