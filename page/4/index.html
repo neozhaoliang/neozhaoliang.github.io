@@ -247,7 +247,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">3 篇</span></a>
+                    Coxeter-Groups <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -383,6 +383,97 @@
     
 
 <div id="article-list" class="container main-container">
+    
+        <article class="simple-article">
+    <div class="card">
+        <div class="card-content">
+            <div class="article-title">
+                
+    
+        <h1 class="indigo-link-context"><a href="/assassin-vs-bodyguards/">刺客 vs 保镖</a></h1>
+    
+
+
+            </div>
+
+            <time class="pink-link-context" datetime="2019-07-18T16:00:00.000Z"><a href="/assassin-vs-bodyguards/">2019-07-19</a></time>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/Billiard-ball/" class="chip pink lighten-1">Billiard ball</a>
+        
+            <a href="/tags/Dynamic-system/" class="chip pink lighten-1">Dynamic system</a>
+        
+            <a href="/tags/Reflection/" class="chip pink lighten-1">Reflection</a>
+        
+            <a href="/tags/Affine-Weyl-group/" class="chip pink lighten-1">Affine Weyl group</a>
+        
+            <a href="/tags/Lattice/" class="chip pink lighten-1">Lattice</a>
+        
+            <a href="/tags/Finite-blocking-property/" class="chip pink lighten-1">Finite blocking property</a>
+        
+    </div>
+
+
+
+            
+                <div class="entry pink-link-context">
+                    
+<p>Maryam Mirzakhani 在 2014 年的 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tprlQMClSYQ">一次报告</a>
+中提出了如下的问题：（问题大约在视频的 25 分 50 秒处）</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子。子弹在碰到墙壁时会遵循入射角等于出射角的规律无限反射下去。房间中有一位政要和一个刺客，他们的位置是固定的，但可能是房间中任何两点。问题是：能否在房间中放置有限数量的保镖，使得这些保镖可以封锁刺客的所有射击角度，从而确保政要不被子弹击中？</p>
+</div>
+<p>根据 <a target="_blank" rel="noopener" href="http://www.numdam.org/item/10.5802/aif.2124.pdf">这篇论文</a>
+的考据，这个问题曾经在 1989 年列宁格勒的数学竞赛中出现过。最近，通过 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=a7gp9c2p0UQ">PBS</a> 和 <a target="_blank" rel="noopener" href="https://www.math3ma.com/blog/is-the-square-a-secure-polygon">math3ma
+的博客</a>
+的科普推广，这个问题又引起了更多人的兴趣。我强烈建议读者在深入阅读本文之前，先观看这些视频和博客。它们的讲解非常通俗易懂，对于普通读者来说非常友好。</p>
+<p>Greg Egan 在<a target="_blank" rel="noopener" href="https://gregegan.net/SCIENCE/Lattices/Lattices.html">他的博客中</a>
+进一步讨论了房间是正三角形和正六边形的情况。虽然他给出的答案是正确的，但是他对正六边形情形的解释有点让人难以理解（Greg
+Egan 的一贯风格）。</p>
+<p>正方形、正三角形和正六边形是仅有的三种可以用有限多个保镖保护目标的情形，对其它正
+<span class="math inline">\(N\,(N\ne3,4,6)\)</span>
+边形房间，有限数量的保镖是不行的。</p>
+<p>本文是对 math3ma 和 Greg Egan
+博客文章的补充，我将主要针对正六边形的情况进行详细解释。我觉得从仿射
+Weyl
+群的角度来看这个情形最方便，但这对大多数读者来说可能是个陌生的概念。我还是假定读者知道群的概念，并尽量结合直观的图形来解释。如果读者对深入了解仿射
+Weyl 群感兴趣，可以参考 <span class="citation" data-cites="Humphreys90">Humphreys (<a href="#ref-Humphreys90" role="doc-biblioref">1990</a>)</span> chapter 4。</p>
+<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/assassin_vs_bodyguards">Github
+上</a>。这个项目包含了一个交互式的脚本，你可以在窗口中点击并拖拽鼠标来查看刺客射击的轨迹以及保镖的位置：</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">正方形</td>
+<td style="text-align: center;">正三角形</td>
+<td style="text-align: center;">正六边形</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img style="margin:0px auto;display:block" src="/images/polygon-billiard/square_guards.svg" height="200"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" src="/images/polygon-billiard/triangle_guards.svg" height="200"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" src="/images/polygon-billiard/hexagon_guards.svg" height="200"></td>
+</tr>
+</tbody>
+</table>
+                </div>
+            
+        </div>
+
+        
+        <div class="card-action pink-link-context">
+            <a href="/assassin-vs-bodyguards/">阅读全文</a>
+        </ div>
+        
+    </div>
+</article>
+
     
         <article class="simple-article">
     <div class="card">
@@ -632,64 +723,6 @@ Undergraduate texts in mathematics. chapter IX, section 2.</li>
         
         <div class="card-action pink-link-context">
             <a href="/reducible-mod-p/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/random-walk-potential-kernel/">二维随机游动 （一）：逃出太阳系可没有你想象的那么难！</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2016-09-30T16:00:00.000Z"><a href="/random-walk-potential-kernel/">2016-10-01</a></time>
-
-            
-    <div class="tags-row">
-        
-            <a href="/tags/Random-walks/" class="chip pink lighten-1">Random walks</a>
-        
-            <a href="/tags/Potential-kernel/" class="chip pink lighten-1">Potential kernel</a>
-        
-            <a href="/tags/Green-function/" class="chip pink lighten-1">Green function</a>
-        
-            <a href="/tags/Recurrence/" class="chip pink lighten-1">Recurrence</a>
-        
-            <a href="/tags/Stopping-time/" class="chip pink lighten-1">Stopping time</a>
-        
-    </div>
-
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>这是一个关于二维随机游动的小系列，整理自我研究生时的读书笔记，每篇文章会从一个有趣直观的问题出发，介绍随机游动理论中的一个相关知识。这些问题是我精心挑选的，总体上都比较基础，并不涉及多么复杂的知识。但是请你也不要期待很快就可以看完问题的解答，因为它们不是那种用个什么巧办法三两下就能搞定的急转弯！</p>
-<div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
-</span>假设某醉汉以太阳系的中心为原点出发，在一个固定的平面内，以恒为 1
-米的步长作随机行走。每次醉汉等概率地在东、南、西、北四个方向中任选一个，然后向此方向移动
-1 米的距离。如果某个时刻醉汉回到了原点，或者离开了太阳系则过程结束。</p>
-<p>现在有 A, B 两个旁观者打赌哪一种情形先发生，A 认为醉汉会先回到原点，B
-认为醉汉会先离开太阳系。请问 A 和 B 获胜的概率分别是多少？</p>
-<p>作为参考，太阳系半径约为 45
-亿千米，看作一个中心在原点的圆形区域。</p>
-</div>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/random-walk-potential-kernel/">阅读全文</a>
         </ div>
         
     </div>
