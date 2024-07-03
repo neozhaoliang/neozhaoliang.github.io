@@ -188,6 +188,14 @@ It displays the r">
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
                     pywonderland-项目 <span class="right">8 篇</span></a>
                 </a>
@@ -236,14 +244,6 @@ It displays the r">
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机游动/">
-                    随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计数组合学/">
                     计数组合学 <span class="right">5 篇</span></a>
                 </a>
@@ -252,8 +252,8 @@ It displays the r">
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -360,12 +360,12 @@ is mainly for convenience in later computations.</p>
 <p><span class="math display">\[C=\left((\alpha_i,\alpha_j)\right)_{1\leq i,j\leq
 8}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span></p>
 <div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注记</span>：</span><span class="statement-spah"> </span>Here’s a point that can be easily
-confusing: please remember that in the mathematical derivations in this
-article, the inner product we use is the one given by the Cartan matrix
-<span class="math inline">\(C\)</span>. However, in the actual code, we
-can directly call <code>np.dot</code> to calculate the inner product of
-two vectors. The reasoning is as follows:</p>
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>Here’s a point that can be easily confusing: please remember that
+in the mathematical derivations in this article, the inner product we
+use is the one given by the Cartan matrix <span class="math inline">\(C\)</span>. However, in the actual code, we can
+directly call <code>np.dot</code> to calculate the inner product of two
+vectors. The reasoning is as follows:</p>
 <p>Let <span class="math inline">\(u=\sum_{i=1}^8 x_i\alpha_i\)</span>
 and <span class="math inline">\(v=\sum_{i=1}^8 y_i\alpha_i\)</span> be
 two vectors, and let <span class="math inline">\(X=(x_1,\ldots,x_8)\)</span> and <span class="math inline">\(Y=(y_1,\ldots,y_8)\)</span> be their coordinates

@@ -189,6 +189,14 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
                     pywonderland-项目 <span class="right">8 篇</span></a>
                 </a>
@@ -237,14 +245,6 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机游动/">
-                    随机游动 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计数组合学/">
                     计数组合学 <span class="right">5 篇</span></a>
                 </a>
@@ -253,8 +253,8 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -469,7 +469,7 @@ Coxeter-Dynkin 图是一样的，但是边的标号是 (3, 4)。</li>
 S\)</span>，<span class="math inline">\(x\)</span> 的稳定化子群是 <span class="math inline">\(H\)</span>。则集合 <span class="math inline">\(S\)</span> 与 <span class="math inline">\(G/H\)</span> 中的右陪集之间有一一对应：<span class="math inline">\(Hg\to x\cdot g\)</span>。</p>
 </div>
 <div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注记</span>：</span><span class="statement-spah">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>和一般的约定不同，这里群在集合上的作用为作用在右边，主要是为了编程方便，实际上左边右边都一样。</p>
 </div>
 <p>这个定理告诉我们，如果群 <span class="math inline">\(G\)</span>
@@ -598,8 +598,9 @@ i=0,1,2\)</span> 以及 <span class="math inline">\(K(\rho_0\rho_1)^4=K(\rho_1\r
 </blockquote>
 <p>其中每条关系前面的数字是我们加上的编号以便于称呼。</p>
 <div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注记</span>：</span><span class="statement-spah"> </span>在非 Coxeter
-群的情形还要把每个生成元的逆也作为生成元加入，其在 <span class="math inline">\(T\)</span> 中也占据一列，所以实际上 <span class="math inline">\(T\)</span> 的列的个数要 <span class="math inline">\(\times2\)</span>。但是在 Coxeter
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>在非 Coxeter 群的情形还要把每个生成元的逆也作为生成元加入，其在
+<span class="math inline">\(T\)</span> 中也占据一列，所以实际上 <span class="math inline">\(T\)</span> 的列的个数要 <span class="math inline">\(\times2\)</span>。但是在 Coxeter
 群的情形每个生成元是 2
 阶的，其逆元素等于自身，所以不需要额外考虑逆元素。</p>
 </div>
@@ -675,7 +676,8 @@ i=0,1,2\)</span> 以及 <span class="math inline">\(K(\rho_0\rho_1)^4=K(\rho_1\r
 </tbody>
 </table>
 <div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注记</span>：</span><span class="statement-spah"> </span>每次定义新陪集时，比如将 <span class="math inline">\(H_i\rho_j\)</span> 定义为 <span class="math inline">\(H_k\)</span>，我们同时自动得到了 <span class="math inline">\(H_k\rho_j=H_i\rho_j^2=H_i\)</span>，因此每次填表时我们都填写一对数字而不是一个，这样可以保证表格
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>每次定义新陪集时，比如将 <span class="math inline">\(H_i\rho_j\)</span> 定义为 <span class="math inline">\(H_k\)</span>，我们同时自动得到了 <span class="math inline">\(H_k\rho_j=H_i\rho_j^2=H_i\)</span>，因此每次填表时我们都填写一对数字而不是一个，这样可以保证表格
 <span class="math inline">\(T\)</span> 的 “对称性”。</p>
 </div>
 <p>(3). 第 3 条和第 4 条关系已经满足，继续。</p>
@@ -797,7 +799,7 @@ deduction。这时 <span class="math inline">\(T\)</span> 为</p>
 </tbody>
 </table>
 <div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注记</span>：</span><span class="statement-spah">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>在实际的程序实现中，我们总是从关系的两头同时开始扫描，直到它们相遇为止。</p>
 </div>
 <p>(5). 关系 6 已经满足，继续。</p>
@@ -1154,7 +1156,7 @@ H_7=H_6\cdot\rho_0=H_0\cdot
 <p>从而其一组陪集代表元可以选为 <span class="math display">\[\begin{array}{llll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\end{array}\]</span></p>
 <p>这正是我们前面看到过的。</p>
 <div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注记</span>：</span><span class="statement-spah">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>这个例子看似有点长，但还是一个比较简单的例子，其中并没有出现已知陪集重复的情形（Holt
 的书中称之为
 coincidence）。这种情形的处理麻烦一些，因为一旦出现重复的陪集，就有可能顺藤摸瓜找到更多重复的陪集。这时就要立刻暂停扫描，流程跳转到处理
