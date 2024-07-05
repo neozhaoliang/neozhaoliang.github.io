@@ -372,7 +372,7 @@ p\)</span>。</li>
 <p>注意连通性保证了算法会以概率 1 结束。</p>
 </blockquote>
 <p>Wilson
-算法的描述很简单，但是单从描述上完全看不出算法的正确性来。注意其中有两个任意：</p>
+算法的描述很简单，但是单从描述上完全看不出算法的正确性来。注意其中有两个<strong>任意</strong>：</p>
 <ol type="1">
 <li>初始时可以任选一个初始根节点 <span class="math inline">\(r\)</span>。</li>
 <li>每次可以任选一个不属于 <span class="math inline">\(T\)</span>
@@ -385,7 +385,8 @@ p\)</span>。</li>
 的具体描述我们先按下不表。我们将寻找一个从 <span class="math inline">\(\Omega\)</span> 到 <span class="math inline">\(\mathcal{T}\)</span> 的映射 <span class="math inline">\(\phi\)</span>，<span class="math inline">\(\phi\)</span> 满足如下条件：</p>
 <p>(1). <span class="math inline">\(\phi\)</span> 对几乎处处的 <span class="math inline">\(\omega\in\Omega\)</span> 有定义
 （不是所有的随机游动都能得到一个生成树，但这种例外发生的概率是 0）。</p>
-<p>(2). <span class="math inline">\(\phi\)</span> 必须是满射。</p>
+<p>(2). <span class="math inline">\(\phi\)</span>
+必须是满射。（不能漏掉任何一个树）</p>
 <p>(3). 对任何 <span class="math inline">\(T\in\mathcal{T}\)</span>，其在 <span class="math inline">\(\Omega\)</span> 中的原像 <span class="math inline">\(\phi^{-1}(T)\)</span> 的测度是一个与 <span class="math inline">\(T\)</span> 无关的常数。</p>
 <p>一旦找到这样的概率空间 <span class="math inline">\(\Omega\)</span>
 和映射 <span class="math inline">\(\phi\)</span>，则对任何 <span class="math inline">\(\omega\in\Omega\)</span>，<span class="math inline">\(\phi(\omega)\)</span> 以概率 1
