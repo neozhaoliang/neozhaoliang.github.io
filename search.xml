@@ -1296,35 +1296,6 @@
     
     
     <entry>
-      <title>Lebesgue-Stieltjes 测度的构造</title>
-      <link href="lebesgue-stieltjes%20measure/"/>
-      <url>lebesgue-stieltjes%20measure/</url>
-      
-        <content type="html"><![CDATA[<p>这篇文章我想谈谈 Lebesgue-Stieltjes测度的构造。这是测度论中的基本内容，这方面的文章在网上俯拾皆是，所以写这种内容的时候我都会很小心，一定要在开头说明为什么我也要来上一篇，并且尽量和其它人的讲述有所区别，避免变成抄书。</p><p>我写本文的主要原因是，Lebesgue-Stieltjes测度的构造过程没有那么复杂，但是网上绝大多数文章都又臭又长，先罗列一堆<span class="math inline">\(\pi\)</span> 系，半代数，代数和 <span class="math inline">\(\sigma\)</span>代数的定义，中间塞上一大堆命题，人为把过程拉的很长。要是再遇上爱用花体字的作者，那感觉真是酸爽。</p><p>另一个原因是，绝大多数文章都把测度构造的最后一步，Carathéodory定理作为重点来讲。我不否认这个定理的重要意义，而且它证明起来确实挺长。但是我认为，同样重要的事情是说清楚Carathéodory 定理所依赖的前提 —代数上的可数可加测度是怎么来的。这个据我所见大部分文章这一点上做的都不太好。<span class="citation" data-cites="Durrett2019">Durrett (<a href="#ref-Durrett2019" role="doc-biblioref">2019</a>)</span>的书虽然写了这一步的证明，但是我认为他在启发性上做的并不好。</p><p>没有必要搞得那么正式，我们直接开始。</p><span id="more"></span><h1 id="目标">目标</h1><p>设 <span class="math inline">\(F\)</span> 是 <span class="math inline">\(\mathbb{R}\)</span>上的任一<strong>单调递增</strong>、<strong>右连续</strong>的函数，我们将在<span class="math inline">\(\mathbb{R}\)</span> 上构造一个测度 <span class="math inline">\((\mathbb{R},\mathcal{F},\mu)\)</span>，使得它满足对任何左开右闭区间<span class="math inline">\((a,b]\)</span> 有 <span class="math display">\[\mu((a,b])=F(b)-F(a),\quad -\infty \leq a \leq b\leq \infty.\]</span></p><p><span class="math inline">\(\mathcal{F}\)</span> 是 Lebesgue可测集，<span class="math inline">\(\mu\)</span> 是 <span class="math inline">\(\mathcal{F}\)</span> 上的可数可加测度。<span class="math inline">\((\mathbb{R},\mathcal{F},\mu)\)</span> 叫做Lebesgue-Stieltjes 测度。由于 Lebesgue 可测集是 Borel可测集加上零测集，所以我们只要在 <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span> 上构造 <span class="math inline">\(\mu\)</span> 即可。</p><h1 id="第一步左开右闭区间族">第一步：左开右闭区间族</h1><p>我们记 <span class="math inline">\(\mathcal{I}\)</span>是所有左开右闭的区间构成的集合：</p><p><span class="math display">\[\mathcal{I}= \{ (a,b] \mid -\infty\leq a\leq b \leq \infty\}.\]</span></p><p>并定义函数 <span class="math inline">\(\mu:\mathcal{I}\to\mathbb{R}\)</span> 为 <span class="math display">\[\mu((a,b])=F(b)-F(a),\quad(a,b]\in\mathcal{I}.\]</span></p><p>现在 <span class="math inline">\(\mu\)</span>只是一个函数，它还远远不是一个测度。</p><p>对任何 <span class="math inline">\(I_1,I_2\in\mathcal{I}\)</span>，显然 <span class="math inline">\(I_1\cap I_2\in I\)</span>，即 <span class="math inline">\(\mathcal{I}\)</span>对交运算是封闭的，满足这种条件的集合族叫做 <strong><span class="math inline">\(\pi\)</span> 系</strong>。</p><p><span class="math inline">\(\mathcal{I}\)</span>还满足两个性质：对任何 <span class="math inline">\(I_1,I_2\in\mathcal{I}\)</span>，<span class="math inline">\(I_1\setminus I_2\)</span> 可以表示为 <span class="math inline">\(\mathcal{I}\)</span>中若干区间的不交并（实际是至多两个）。</p><h1 id="第二步左开右闭区间族的有限不交并">第二步：左开右闭区间族的有限不交并</h1><p>我们考虑从 <span class="math inline">\(\mathcal{I}\)</span>中取有限多个互不相交的区间，然后求并集得到的所有可能的集合构成的集合族：</p><p><span class="math display">\[\mathcal{D}=\{I_1\uplusI_2\uplus\cdots\uplus I_n\mid I_1,I_2,\ldots,I_n\in\mathcal{I}\}.\]</span></p><p>显然 <span class="math inline">\(\mathcal{I}\subset\mathcal{D}\)</span>。</p><p>我们可以将 <span class="math inline">\(\mu\)</span> 进一步扩张为<span class="math inline">\(\mathcal{D}\)</span> 上的函数：对任一 <span class="math inline">\(D=\uplus_{i=1}^n I_i\)</span>，定义 <span class="math display">\[\mu(D) = \sum_{i=1}^n \mu(I_i).\]</span></p><p>这个定义的问题在于合理性：因为 <span class="math inline">\(D\)</span>可以有多种不同的方式表示成 <span class="math inline">\(\mathcal{I}\)</span> 中区间的不交并。设 <span class="math inline">\(D=\uplus_{k=1}^m J_k\)</span>是另一种表示方式，我们来说明有 <span class="math display">\[\sum_{i=1}^n \mu(I_i) =  \sum_{k=1}^m \mu(J_k).\]</span> 从而 <span class="math inline">\(\mu\)</span> 在 <span class="math inline">\(\mathcal{D}\)</span>上的定义是合理的。为此只要注意到 <span class="math display">\[I_i =I_i\cap D = \uplus_{k=1}^m I_i\cap J_k.\]</span></p><h1 class="unnumbered" id="bibliography">References</h1><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list"><div id="ref-Durrett2019" class="csl-entry" role="listitem">Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. 5th ed.Cambridge Series in Statistical and Probabilistic Mathematics. CambridgeUniversity Press.</div></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> Durrett 概率论 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Durrett probability </tag>
-            
-            <tag> Lebesgue-Stieltjes measure </tag>
-            
-            <tag> measure extension </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>中心单代数的三个基本结论</title>
       <link href="central-simple-algebra/"/>
       <url>central-simple-algebra/</url>
