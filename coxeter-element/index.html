@@ -41,9 +41,8 @@ Lie algebra
 有两个顶点被同时投影到了原点，其余 30 个顶点分布在 3
 个圆周上，每个圆周包含 10 个均匀分布的顶点，所以其 Coxeter 数 \(h=10\)。
 本文下面以 \(E_8\)
-为例子，通过具体的计算来解释背后的数学。我会不加证明地引用 Humphrey
-的教材 《Reflection groups and Coxeter groups》中的结论 （主要来自 3.16
-小节）。
+为例子，通过具体的计算来解释背后的数学。我会不加证明地引用 Humphreys (1990)
+中的结论。
 本文的代码在 Github
 上。
 David Madore 也有一个很棒的 交互式网页
@@ -352,7 +351,7 @@ David Madore 也有一个很棒的 交互式网页
 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#e_8-%E7%9A%84%E7%BB%93%E6%9E%84"><span class="section table-of-contents-text">\(E_8\) 的结构</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%85%83"><span class="section table-of-contents-text">Coxeter 元</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%B9%B3%E9%9D%A2"><span class="section table-of-contents-text">Coxeter 平面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%94%B9%E8%BF%9B"><span class="section table-of-contents-text">进一步改进</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#e_8-%E7%9A%84%E7%BB%93%E6%9E%84"><span class="section table-of-contents-text">\(E_8\) 的结构</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%85%83"><span class="section table-of-contents-text">Coxeter 元</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%B9%B3%E9%9D%A2"><span class="section table-of-contents-text">Coxeter 平面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%94%B9%E8%BF%9B"><span class="section table-of-contents-text">进一步改进</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
 
                                         
@@ -377,9 +376,8 @@ David Madore 也有一个很棒的 交互式网页
 <p>有两个顶点被同时投影到了原点，其余 30 个顶点分布在 3
 个圆周上，每个圆周包含 10 个均匀分布的顶点，所以其 Coxeter 数 <span class="math inline">\(h=10\)</span>。</p>
 <p>本文下面以 <span class="math inline">\(E_8\)</span>
-为例子，通过具体的计算来解释背后的数学。我会不加证明地引用 Humphrey
-的教材 《Reflection groups and Coxeter groups》中的结论 （主要来自 3.16
-小节）。</p>
+为例子，通过具体的计算来解释背后的数学。我会不加证明地引用 <span class="citation" data-cites="Humphreys90">Humphreys (<a href="#ref-Humphreys90" role="doc-biblioref">1990</a>)</span>
+中的结论。</p>
 <p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/raw/master/src/misc/E8.py">Github
 上</a>。</p>
 <p>David Madore 也有一个很棒的 <a target="_blank" rel="noopener" href="http://www.madore.org/~david/math/e8w.html">交互式网页</a>
@@ -464,11 +462,7 @@ W\)</span> 叫做 Coxeter 元。</p>
 </div>
 <p>由于 <span class="math inline">\(\gamma\)</span> 是有限群 <span class="math inline">\(W\)</span> 中的元素，所以 <span class="math inline">\(\gamma\)</span> 的 8 个特征都形如 <span class="math display">\[\{\zeta^{m_1},\ldots,\zeta^{m_8},0\leq
 m_i&lt;h\}.\]</span> 其中 <span class="math inline">\(\zeta\)</span>
-是本原 <span class="math inline">\(h\)</span>- 次单位根。Humphreys 书中
-3.16 小节证明了 <span class="math inline">\(\gamma\)</span>
-的特征值不可能是 1，所以每个 <span class="math inline">\(1\leq
-m_i&lt;h\)</span>。<span class="math inline">\(\gamma\)</span>
-如果有实特征值的话只有可能是 <span class="math inline">\(-1\)</span>（对应 <span class="math inline">\(\zeta^{h/2}\)</span>）。<span class="math inline">\(\gamma\)</span> 的复特征值成对共轭出现，形如 <span class="math inline">\(\{\zeta^{m_i},\zeta^{h-m_i}\}\)</span>。</p>
+是本原 <span class="math inline">\(h\)</span>- 次单位根。<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 3.16</a>)</span> 证明了 <span class="math inline">\(\gamma\)</span> 的特征值不可能是 1，所以每个 <span class="math inline">\(1\leq m_i&lt;h\)</span>。<span class="math inline">\(\gamma\)</span> 如果有实特征值的话只有可能是 <span class="math inline">\(-1\)</span>（对应 <span class="math inline">\(\zeta^{h/2}\)</span>）。<span class="math inline">\(\gamma\)</span> 的复特征值成对共轭出现，形如 <span class="math inline">\(\{\zeta^{m_i},\zeta^{h-m_i}\}\)</span>。</p>
 <p>一种经典的选择 Coxeter 元的方式是这样的：注意到 <span class="math inline">\(E_8\)</span> 的 Dynkin 图的八个顶点可以分为 <span class="math inline">\(\{1, 3, 5, 7\}\)</span> 和 <span class="math inline">\(\{2, 4, 6, 8\}\)</span>
 两组，同组中的顶点互不相邻，所以对应的单反射两两交换。记 <span class="math display">\[x=s_1s_3s_5s_7,\quad y=s_2s_4s_6s_8.\]</span> 则
 <span class="math inline">\(\gamma=xy\)</span> 是一个 Coxeter 元。</p>
@@ -484,7 +478,8 @@ Frobenius-Perron 定理，<span class="math inline">\(2I-C\)</span>
 <p>其中 <code>eigenvecs</code> 的列向量就是 <span class="math inline">\(C\)</span>
 的全部特征向量，它们是按照特征值递增的顺序排列的，所以第一列就是最小的特征值对应的特征向量，也就是我们要找的
 <span class="math inline">\({\bf c}\)</span>。</p>
-<p>下面是 Humphreys 书中 77 页采用的记号：</p>
+<p>下面是 <span class="citation" data-cites="Humphreys90">Humphreys (<a href="#ref-Humphreys90" role="doc-biblioref">1990, 77</a>)</span>
+采用的记号：</p>
 <p>设 <span class="math inline">\(\{\omega_i,1\leq i\leq 8\}\)</span> 是
 <span class="math inline">\(\Delta\)</span> 的对偶基，即 <span class="math display">\[(\alpha_i,\omega_j)=\delta_{ij}.\]</span></p>
 <p>并设 <span class="math inline">\({\bf
@@ -508,15 +503,14 @@ Gram-Schimdt 正交化，得到了 <span class="math inline">\(P\)</span>
 <p>把 <span class="math inline">\(\Phi\)</span> 投影到 <span class="math inline">\(P\)</span>
 上这一步就很简单了，只要对根系中的每个向量，计算它在 <span class="math inline">\(u,v\)</span> 这组基下的坐标即可：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">roots_2d = [(np.dot(u, x), np.dot(v, x)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> roots]<br></code></pre></td></tr></tbody></table></figure>
-<p>剩下的就是把这些点，和它们之间的边画出来了。具体的绘图过程这俩不再赘述。</p>
+<p>剩下的就是把这些点，和它们之间的边画出来了。具体的绘图过程不再赘述。</p>
 <h1 id="进一步改进">进一步改进</h1>
 <p>如果你去看 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py">Github
 代码</a>
 的话，会发现那里并不是完全按上面的逻辑写的。这是怎么回事呢？</p>
-<p>前面的计算有个美中不足之处，就是我们需要显式地指定两个集合 <span class="math inline">\(I,J\)</span>。这一步也是可以避免的，但是需要对
-Cartan 矩阵 <span class="math inline">\(C\)</span> 和 <span class="math inline">\(\gamma\)</span> 进行更仔细的分析。下面的结论是在
-<a target="_blank" rel="noopener" href="https://secure.math.ubc.ca/~cass/research/pdf/Element.pdf">Casselman
-的文章</a> 中介绍的：</p>
+<p>前面的计算有个美中不足之处，就是我们需要显式地指定两个集合 <span class="math inline">\(I,J\)</span>，使得 <span class="math inline">\(I,J\)</span>
+中的生成元互相交换。这一步也是可以避免的，实际上我们只需要 Cartan 矩阵
+<span class="math inline">\(C\)</span> 和 <span class="math inline">\(\Delta\)</span> 就足够计算出 <span class="math inline">\(u,v\)</span> 来。下面的结论是在 <span class="citation" data-cites="CasselmanCoxeterElement">Casselman (<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">2017</a>)</span> 中介绍的：</p>
 <blockquote>
 <p><strong>命题</strong>：<span class="math inline">\(2I + \gamma +
 \gamma^{-1}= (2I-C)^2\)</span>。</p>
@@ -573,6 +567,18 @@ V_{\bar{s}}\)</span> 是 <span class="math inline">\((2I-C)^2\)</span>
 的一组基，只要分别求出 <span class="math inline">\(C\)</span>
 的极小极大特征值对应的特征向量 <span class="math inline">\(u,v\)</span>， <span class="math display">\[\alpha=\sum_{i=1}^8 u_i\alpha_i,\quad
 \beta=\sum_{i=1}^8 v_i\alpha_i.\]</span> 就是 <span class="math inline">\(P\)</span> 的一组基。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-CasselmanCoxeterElement" class="csl-entry" role="listitem">
+Casselman, Bill. 2017. <span>“Coxeter Elements in Finite Coxeter
+Groups”</span> Essays on Coxeter groups. <a target="_blank" rel="noopener" href="https://personal.math.ubc.ca/~cass/research/pdf/Element.pdf">https://personal.math.ubc.ca/~cass/research/pdf/Element.pdf</a>.
+</div>
+<div id="ref-Humphreys90" class="csl-entry" role="listitem">
+Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
+Cambridge Studies in Advanced Mathematics. Cambridge University Press.
+<a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
+</div>
+</div>
 <aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
