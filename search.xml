@@ -76,6 +76,33 @@
     
     
     <entry>
+      <title>Humphreys《反射群与 Coxeter 群》的一些注解</title>
+      <link href="undefined/"/>
+      <url>undefined/</url>
+      
+        <content type="html"><![CDATA[<p><span class="citation" data-cites="Humphreys90">Humphreys (<a href="#ref-Humphreys90" role="doc-biblioref">1990</a>)</span>是学习反射群和 Coxeter群的标准入门教材，书写的很棒，但是个别地方不太好懂。这里整理了我学习时写的一些注解，希望帮到后来人。</p><span id="more"></span><h1 id="the-length-function">1.6 The length function</h1><p>设 <span class="math inline">\(\mathrm{Neg}(w)\)</span> 是那些被<span class="math inline">\(w\)</span> 变成负根的正根的集合： <span class="math display">\[\mathrm{Neg}(w)=\{\lambda&gt;0\midw\lambda&lt;0\}.\]</span> 并记 <span class="math inline">\(n(w)=|\mathrm{Neg}(w)|\)</span>。这一节证明了<span class="math inline">\(n(w)\)</span> 满足的递推关系。这个递推关系和<span class="math inline">\(l(w)\)</span> 是一样的。</p><p>首先注意到任何单根 <span class="math inline">\(\alpha\in\Delta\)</span> 必然恰好属于 <span class="math inline">\(\mathrm{Neg}(w)\)</span> 或者 <span class="math inline">\(\mathrm{Neg}(ws_\alpha)\)</span> 之一，这取决于<span class="math inline">\(w\alpha\)</span> 是正根还是负根：</p><ul><li><span class="math inline">\(w\alpha&lt;0\Rightarrow\alpha\in\mathrm{Neg}(w)\)</span>。</li><li><span class="math inline">\(w\alpha&gt;0\Rightarrowws_\alpha\alpha&lt;0\Rightarrow \alpha\in\mathrm{Neg}(ws_\alpha)\)</span>。</li></ul><p>另一方面对任何正根 <span class="math inline">\(\gamma\ne\alpha\)</span>，<span class="math inline">\(s_\alpha\gamma\)</span> 仍然是正根。从恒等式 <span class="math display">\[(ws_\alpha)\gamma &lt; 0\Longleftrightarroww(s_\alpha\gamma)&lt;0\]</span> 我们看到 <span class="math inline">\(\gamma\in\mathrm{Neg}(ws_\alpha)\)</span> 当且仅当<span class="math inline">\(\gamma\in\mathrm{Neg}(w)\)</span>，所 <span class="math inline">\(\gamma\leftrightarrow s_\alpha\gamma\)</span>给出了 <span class="math inline">\(\mathrm{Neg}(ws_\alpha)\)</span> 和<span class="math inline">\(\mathrm{Neg}(w)\)</span> 中不等于 <span class="math inline">\(\alpha\)</span> 的正根之间的一一对应，所以</p><p><span class="math display">\[n(ws_\alpha)=\begin{cases}n(w)+1 &amp; \alpha\in\mathrm{Neg}(ws_\alpha),\\n(w)-1 &amp; \alpha\in \mathrm{Neg}(w).\end{cases}\]</span></p><h1 id="a-formula-for-the-order-of-w">4.9 A formula for the order of<span class="math inline">\(W\)</span></h1><p>从前面的学习中我们知道，一个仿射 Weyl 群 <span class="math inline">\(W_a\)</span> 总是可以写成一个有限 Weyl 群 <span class="math inline">\(W\)</span> 和一个格点群 <span class="math inline">\(L\)</span> 的半直积：<span class="math inline">\(W_a=W\ltimes L\)</span>。这里的 <span class="math inline">\(L\)</span> 实际上是 <span class="math inline">\(W\)</span> 的余根格点：<span class="math inline">\(L=L(\Phi^\vee)\)</span>。这一节介绍了怎样计算<span class="math inline">\(W\)</span> 的阶 <span class="math inline">\(|W|\)</span>。</p><p>我们以 <span class="math inline">\(\widetilde{B}_2\)</span>为例来说明。<span class="math inline">\(\Delta\)</span> 包含两个单根<span class="math inline">\(\alpha_1=e_1-e_2,\,\alpha_2=e_2\)</span>。最高根<span class="math inline">\(\widetilde{\alpha}=\alpha_1+2\alpha_2\)</span>，于是<span class="math inline">\(c_1=1,c_2=2\)</span>。</p><p><img style="margin:0px auto;display:block" width="500" src="/images/humphreys/b2.svg"></p><ul><li>图中<strong>黄色</strong>区域是由所有的房间 <span class="math inline">\(\{wA_o\mid w\in W\}\)</span> 组成。即 <span class="math inline">\(\Pi=\bigcup_{w\inW}wA_o\)</span>。另一个等价的描述是 <span class="math display">\[ \Pi =\{x\in V\mid -1 &lt; (x,\alpha) &lt; 1 \text{ for all }\alpha\in\Phi^+\}.\]</span> 所以 <span class="math inline">\(\mathrm{Vol}(\Pi)=|W|\cdot\mathrm{Vol}(A_o)\)</span>。<span class="math inline">\(\Pi\)</span> 是余根格点 <span class="math inline">\(L(\Phi^\vee)\)</span>的基本区域，因为书中已经证明了 <span class="math inline">\(W_a=W\ltimesL\)</span>，并且 <span class="math inline">\(A_o\)</span> 是 <span class="math inline">\(W_a\)</span> 作用下的基本区域，所以 <span class="math inline">\(\Pi\)</span> 在 <span class="math inline">\(L\)</span>的作用下互不相交，并且密铺了整个平面。</li><li>图中<strong>绿色</strong>区域是余权格点 <span class="math inline">\(\hat{L}(\Phi^\vee)\)</span> 的基本区域 <span class="math inline">\(\hat{\Pi}\)</span>，它是一个平行多面体，由基本余权<span class="math inline">\(\{\omega_1,\ldots,\omega_n\}\)</span>张成，并且 <span class="math inline">\(\dfrac{\mathrm{Vol}(\Pi)}{\mathrm{Vol}(\hat{\Pi}) } = f\)</span>。</li><li>基本区域 <span class="math inline">\(A_o\)</span> 是由 <span class="math inline">\(\left\{0,\dfrac{\omega_1}{c_1},\ldots,\dfrac{\omega_n}{c_n}\right\}\)</span>生成的单纯形，它和 <span class="math inline">\(\{\omega_1,\ldots,\omega_n\}\)</span>生成的平行多面体 <span class="math inline">\(\hat{\Pi}\)</span>的体积关系为 <span class="math display">\[\mathrm{Vol}(\hat{\Pi}) =n!c_1\cdots c_n\cdot\mathrm{Vol}(A_o).\]</span></li><li>综上可得 <span class="math display">\[\dfrac{\mathrm{Vol}(\Pi)}{\mathrm{Vol}(\hat{\Pi}) } =\frac{|W|\mathrm{Vol}(A_o)}{n!c_1\cdotsc_n\cdot\mathrm{Vol}(A_o)}=f.\]</span> 即 <span class="math inline">\(|W| = n!c_1\cdots c_n f\)</span>。</li></ul><h1 class="unnumbered" id="bibliography">References</h1><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list"><div id="ref-Humphreys90" class="csl-entry" role="listitem">Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.Cambridge Studies in Advanced Mathematics. Cambridge University Press.<a href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.</div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 代数 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Humphreys </tag>
+            
+            <tag> Coxeter groups </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Möbius 变换与球的刚体运动</title>
       <link href="mobius-ball-rigid-motion/"/>
       <url>mobius-ball-rigid-motion/</url>
