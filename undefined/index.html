@@ -432,7 +432,8 @@ s_i\)</span> 挪到左边来得到 <span class="math display">\[s_{i+1}\cdots
 s_{j-1} = s_i\cdots s_j.\]</span> 这意味着 <span class="math inline">\(s_i\cdots s_j\)</span> 这一段可以用更短的 <span class="math inline">\(s_{i+1}\cdots s_{j-1}\)</span> 来代替，这就是定理
 1.7 中的 (c)。</p>
 <h1 id="generators-and-relations">1.9 Generators and relations</h1>
-<p>这一节证明了满足 deletion 条件的群一定是 Coxeter 群。即任何形如 <span class="math display">\[s_1s_2\cdots s_r=1\]</span>
+<p>这是比较难读的一节。这一节证明了满足 deletion 条件的群一定是 Coxeter
+群。即任何形如 <span class="math display">\[s_1s_2\cdots s_r=1\]</span>
 的关系，都可以通过形如 <span class="math inline">\((s_\alpha
 s_\beta)^{m_{\alpha,\beta}}=1\)</span> 的关系转化为恒等式 <span class="math inline">\(1=1\)</span>。</p>
 <p>若不然设 <span class="math display">\[s_1s_2\cdots s_r=1,\quad
@@ -455,9 +456,9 @@ s_r=1\)</span> 改写为 <span class="math display">\[s_1\cdots s_{q+1} =
 s_r\cdots s_{q+2}.\]</span> 左边是 <span class="math inline">\(q+1\)</span> 项的乘积，右边是 <span class="math inline">\(q-1\)</span> 项的乘积，所以 <span class="math inline">\(l(s_1\cdots s_{q+1})\leq
 q-1\)</span>。根据删除条件，存在 <span class="math inline">\(1\leq
 i&lt;j\leq m+1\)</span> 使得有 <span class="math display">\[s_i\cdots
-s_j = s_{i+1}\cdots s_{j-1}. \tag{$\ast$}\]</span> 我们希望说明有 <span class="math inline">\(i=1,j=q+1\)</span> 成立。若不然，则上式至多包含
-<span class="math inline">\(2q-2=r-2\)</span> 项，从而可以由 Coxeter
-关系 <span class="math inline">\(\{(s_\alpha
+s_j = s_{i+1}\cdots s_{j-1}. \tag{$\ast$}\]</span> 我们希望说明有 <span class="math inline">\(i=1,j=q+1\)</span> 成立，从而 I 成立。若不然，则
+<span class="math inline">\((\ast)\)</span> 式至多包含 <span class="math inline">\(2q-2=r-2\)</span> 项，从而可以由 Coxeter 关系
+<span class="math inline">\(\{(s_\alpha
 s_\beta)^{m_{\alpha,\beta}}=1\mid \alpha,\beta\in\Delta\}\)</span>
 表达出来。当然和 <span class="math inline">\((\ast)\)</span> 式等价的
 <span class="math display">\[s_1\cdots s_r =
