@@ -324,7 +324,7 @@
                                     <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generation-by-simple-reflections"><span class="section table-of-contents-text">1.5 Generation by simple
 reflections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-length-function"><span class="section table-of-contents-text">1.6 The length function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#deletion-and-exchange-conditions"><span class="section table-of-contents-text">1.7 Deletion and Exchange
-Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
+Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
 \(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
 
@@ -434,8 +434,8 @@ s_{j-1} = s_i\cdots s_j.\]</span> 这意味着 <span class="math inline">\(s_i\c
 <h1 id="generators-and-relations">1.9 Generators and relations</h1>
 <p>这是比较难读的一节。这一节证明了满足 deletion 条件的群一定是 Coxeter
 群。即任何形如 <span class="math display">\[s_1s_2\cdots s_r=1\]</span>
-的关系，都可以通过形如 <span class="math inline">\((s_\alpha
-s_\beta)^{m_{\alpha,\beta}}=1\)</span> 的关系转化为恒等式 <span class="math inline">\(1=1\)</span>。</p>
+的关系，都可以通过 <span class="math inline">\((s_\alpha
+s_\beta)^{m_{\alpha,\beta}}=1\)</span> 中的关系推导出来。</p>
 <p>若不然设 <span class="math display">\[s_1s_2\cdots s_r=1,\quad
 r=2q\]</span> 是一个长度最短的反例。这里 <span class="math inline">\(r\)</span> 必须是偶数，因为每个 <span class="math inline">\(\det s_i=-1\)</span>。</p>
 <p>我们将证明有 <span class="math inline">\(s_1=s_3=\cdots\)</span> 以及
@@ -463,9 +463,9 @@ s_\beta)^{m_{\alpha,\beta}}=1\mid \alpha,\beta\in\Delta\}\)</span>
 表达出来。当然和 <span class="math inline">\((\ast)\)</span> 式等价的
 <span class="math display">\[s_1\cdots s_r =
 s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots s_r.\]</span> 也可以从 Coxeter
-关系表达出来。但是我们已知 <span class="math display">\[s_1\cdots s_r =
+关系推导出来。但是我们已知 <span class="math display">\[s_1\cdots s_r =
 s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots s_r=1.\]</span> 根据 <span class="math inline">\(r\)</span> 的选取 <span class="math inline">\(s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots
-s_r=1\)</span> 可以由 Coxeter 关系得出，从而 <span class="math inline">\(s_1\cdots s_r =1\)</span>
+s_r=1\)</span> 可以由 Coxeter 关系推导得到，从而 <span class="math inline">\(s_1\cdots s_r =1\)</span>
 也可以，这导致了矛盾，从而 I 得证。</p></li>
 <li><p>为了证明 II，将 <span class="math inline">\(s_1\cdots s_r
 =1\)</span> 改写为 <span class="math inline">\(s_2\cdots
@@ -476,6 +476,41 @@ s_{q+2}\)</span> 挪到左边的后面，得到 <span class="math display">\[s_3
 1.\]</span> 仍然和 I 的证明同理，我们可以得到 <span class="math display">\[s_3s_2\cdots s_q = s_2\cdots s_{q+1}.\]</span>
 这就是 II 中的等式。</p></li>
 </ul>
+<h1 id="counting-hyperplanes">4.4 Counting hyperplanes</h1>
+<p>回忆 <span class="math inline">\(\mathcal{H}\)</span> 是所有超平面
+<span class="math inline">\(\{H_{\alpha,k}\mid
+\alpha\in\Phi,k\in\mathbb{Z}\}\)</span> 组成的集合。其中 <span class="math display">\[H_{\alpha,k}=\{v\in V\mid
+(\alpha,v)=k\}.\]</span></p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(H_s\)</span> 是 <span class="math inline">\(\mathcal{H}\)</span> 中唯一分隔 <span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 的超平面，即 <span class="math inline">\(\mathcal{L}(s)=\{H_s\}\)</span>。</p>
+</div>
+<p>证明：我们先说明对任何正根 <span class="math inline">\(\beta\ne\alpha_s\)</span>，以及任何 <span class="math inline">\(k\in\mathbb{Z}\)</span>，<span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 都在超平面 <span class="math inline">\(H_{\beta,k}\)</span> 的同一侧。</p>
+<p>首先根据 <span class="math inline">\(A_o\)</span>
+的刻画，它满足对任何正根 <span class="math inline">\(\gamma\)</span>
+都有 <span class="math inline">\(0&lt;(A_o,\gamma)&lt;1\)</span>，特别地
+<span class="math inline">\(0&lt;(A_o,\beta)&lt;1\)</span>。由于 <span class="math inline">\(\beta\ne\alpha_s\)</span> 所以 <span class="math inline">\(s\beta\)</span> 仍然是正根，因此 <span class="math display">\[0&lt;(A_o,s\beta)&lt;1\Longrightarrow
+0&lt;(sA_o,\beta)&lt;1.\]</span> 这说明 <span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 在 <span class="math inline">\(H_\beta\)</span> 和 <span class="math inline">\(H_{\beta,1}\)</span>
+围成的带状区域中间。所以对任何 <span class="math inline">\(k\)</span>
+它们都在 <span class="math inline">\(H_{\beta,k}\)</span> 的同一侧。</p>
+<p>另一方面不难看出 <span class="math inline">\(-1 &lt;
+(sA_o,\alpha_s)&lt;0\)</span>，也就是说 <span class="math inline">\(sA_o\)</span> 和 <span class="math inline">\(A_o\)</span> 位于 <span class="math inline">\(H_{\alpha_s,0}\)</span> 的两侧，但是对任何 <span class="math inline">\(k\ne0\)</span>，它们位于 <span class="math inline">\(H_{\alpha_s,k}\)</span> 的同侧。</p>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>固定 <span class="math inline">\(s\in S_a\)</span>。对任何 <span class="math inline">\(w\in\widehat{W_a}\)</span>，有如下结论成立：</p>
+<ul>
+<li><span class="math inline">\(H_s\)</span> 恰好属于 <span class="math inline">\(\mathcal{L}(w)\)</span> 和 <span class="math inline">\(\mathcal{L}(sw)\)</span> 之一。</li>
+<li><span class="math inline">\(s(\mathcal{L}(w)\setminus\{H_s\}) =
+\mathcal{L}(sw)\setminus\{H_s\}\)</span>。</li>
+</ul>
+</div>
+<p>证明：第一点是显然的，因为 <span class="math inline">\(wA_o\)</span>
+和 <span class="math inline">\(swA_o\)</span> 位于 <span class="math inline">\(H_s\)</span> 的两侧，它俩有且恰有一个和 <span class="math inline">\(A_o\)</span> 位于 <span class="math inline">\(H_s\)</span> 的同一侧。</p>
+<p>对于第二点，我们要证明的是 <span class="math inline">\(H\leftrightarrow sH\)</span> 给出了 <span class="math inline">\(\mathcal{L}(w)\)</span> 和 <span class="math inline">\(\mathcal{L}(sw)\)</span> 中除 <span class="math inline">\(H_s\)</span> 之外的超平面的一一对应。然而若 <span class="math inline">\(H\ne H_s\)</span>，根据上面的引理，<span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 位于 <span class="math inline">\(H\)</span> 的同一侧，所以</p>
+<p><span class="math display">\[H\in\mathcal{L}(w)\Longleftrightarrow
+\begin{matrix}A_o\\ sA_o\end{matrix}\stackrel{H=0}{\biggl\lvert} wA_o
+\Longleftrightarrow \begin{matrix}sA_o\\
+A_o\end{matrix}\stackrel{sH=0}{\biggl\lvert} swA_o.\]</span> 可见 <span class="math inline">\(sH\in \mathcal{L}(sw)\)</span> 并且显然 <span class="math inline">\(sH\ne H_s\)</span>。此即为所证。</p>
 <h1 id="a-formula-for-the-order-of-w">4.9 A formula for the order of
 <span class="math inline">\(W\)</span></h1>
 <p>从前面的学习中我们知道，一个仿射 Weyl 群 <span class="math inline">\(W_a\)</span> 总是可以写成一个有限 Weyl 群 <span class="math inline">\(W\)</span> 和一个格点群 <span class="math inline">\(L\)</span> 的半直积：<span class="math inline">\(W_a=W\ltimes L\)</span>。这里的 <span class="math inline">\(L\)</span> 实际上是 <span class="math inline">\(W\)</span> 的余根格点：<span class="math inline">\(L=L(\Phi^\vee)\)</span>。这一节介绍了怎样计算
