@@ -24,7 +24,8 @@
     
     <meta name="description" content="Humphreys (1990)
 是学习反射群和 Coxeter
-群的标准入门教材，书写的很棒，但是个别地方不太好懂。这里整理了我学习时写的一些注解，希望帮到后来人。">
+群的标准入门教材，书写的很棒，但是个别地方不太好懂。这里整理了我学习时写的一些注解。我使用的记号会与
+Humphreys 文中保持一致。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -324,7 +325,7 @@
                                     <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generation-by-simple-reflections"><span class="section table-of-contents-text">1.5 Generation by simple
 reflections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-length-function"><span class="section table-of-contents-text">1.6 The length function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#deletion-and-exchange-conditions"><span class="section table-of-contents-text">1.7 Deletion and Exchange
-Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
+Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
 \(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
 
@@ -333,7 +334,8 @@ Conditions</span></a></li><li class="section table-of-contents-item section tabl
                                                 
 <p><span class="citation" data-cites="Humphreys90">Humphreys (<a href="#ref-Humphreys90" role="doc-biblioref">1990</a>)</span>
 是学习反射群和 Coxeter
-群的标准入门教材，书写的很棒，但是个别地方不太好懂。这里整理了我学习时写的一些注解，希望帮到后来人。</p>
+群的标准入门教材，书写的很棒，但是个别地方不太好懂。这里整理了我学习时写的一些注解。我使用的记号会与
+Humphreys 文中保持一致。</p>
 <span id="more"></span>
 <h1 id="generation-by-simple-reflections">1.5 Generation by simple
 reflections</h1>
@@ -460,11 +462,11 @@ s_j = s_{i+1}\cdots s_{j-1}. \tag{$\ast$}\]</span> 我们希望说明有 <span c
 <span class="math inline">\((\ast)\)</span> 式至多包含 <span class="math inline">\(2q-2=r-2\)</span> 项，从而可以由 Coxeter 关系
 <span class="math inline">\(\{(s_\alpha
 s_\beta)^{m_{\alpha,\beta}}=1\mid \alpha,\beta\in\Delta\}\)</span>
-表达出来。当然和 <span class="math inline">\((\ast)\)</span> 式等价的
+推导出来。当然和 <span class="math inline">\((\ast)\)</span> 式等价的
 <span class="math display">\[s_1\cdots s_r =
 s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots s_r.\]</span> 也可以从 Coxeter
 关系推导出来。但是我们已知 <span class="math display">\[s_1\cdots s_r =
-s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots s_r=1.\]</span> 根据 <span class="math inline">\(r\)</span> 的选取 <span class="math inline">\(s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots
+s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots s_r=1.\]</span> 根据 <span class="math inline">\(r\)</span> 的选取，长度小于 <span class="math inline">\(r\)</span> 的关系 <span class="math inline">\(s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots
 s_r=1\)</span> 可以由 Coxeter 关系推导得到，从而 <span class="math inline">\(s_1\cdots s_r =1\)</span>
 也可以，这导致了矛盾，从而 I 得证。</p></li>
 <li><p>为了证明 II，将 <span class="math inline">\(s_1\cdots s_r
@@ -476,10 +478,48 @@ s_{q+2}\)</span> 挪到左边的后面，得到 <span class="math display">\[s_3
 1.\]</span> 仍然和 I 的证明同理，我们可以得到 <span class="math display">\[s_3s_2\cdots s_q = s_2\cdots s_{q+1}.\]</span>
 这就是 II 中的等式。</p></li>
 </ul>
+<h1 id="the-coxeter-number">3.18 The Coxeter number</h1>
+<p>这一节证明了如下结论：对一个有限 Coxeter 群，正根的个数 <span class="math inline">\(N=|\Phi^+|\)</span>，Coxeter 数 <span class="math inline">\(h\)</span>，单根的个数 <span class="math inline">\(n=|\Delta|\)</span> 满足 <span class="math display">\[N = \frac{nh}{2}.\]</span></p>
+<p>回忆 <span class="math inline">\(y=s_1\cdots s_r,z=s_{r+1}\cdots
+s_n\)</span> 在 <span class="math inline">\(P\)</span>
+上的作用都是反射，它们在 <span class="math inline">\(P\)</span>
+上生成的群是二面体群 <span class="math inline">\(I_2(h)\)</span>，这个群包含 <span class="math inline">\(h\)</span> 个反射和 <span class="math inline">\(h\)</span> 个旋转。记 <span class="math inline">\(I_2(h)\)</span> 中的 <span class="math inline">\(h\)</span> 个反射对应的超平面在 <span class="math inline">\(P\)</span> 上的截线分别是 <span class="math inline">\(L_1,\ldots,L_h\)</span>，这些 <span class="math inline">\(L_i\)</span> 是 <span class="math inline">\(I_2(h)\)</span> 作用在直线 <span class="math inline">\(L=\mathbb{R}\lambda\)</span> 和 <span class="math inline">\(M=\mathbb{R}\mu\)</span> 上得到的。设 <span class="math inline">\(\beta\in\Phi\)</span>，我们来分析 <span class="math inline">\(\beta\)</span> 对应的超平面 <span class="math inline">\(H_\beta\)</span> 在 <span class="math inline">\(P\)</span> 上的截线是什么。</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>对任何 <span class="math inline">\(\beta\in\Phi\)</span>，<span class="math inline">\(H_\beta\cap P\in \{L_1,\ldots,L_h\}\)</span>。</p>
+</div>
+<p>证明：首先注意到 <span class="math inline">\(P\)</span> 不可能包含在
+<span class="math inline">\(H_\beta\)</span> 中。因为 <span class="math inline">\(P\)</span> 和基本区域 <span class="math display">\[C=\{v\in V\mid (\alpha, v)&gt;0 \text { for all
+}\alpha\in\Delta\}\]</span> 的交是 <span class="math display">\[P\cap
+C=\{a\lambda + b\mu\mid a&gt;0,b&gt;0\}.\]</span> 它当然是非空的，而
+<span class="math inline">\(H_\beta\)</span> 不可能包含 <span class="math inline">\(C\)</span> 中的点，所以 <span class="math inline">\(H_\beta\cap P\)</span> 是 <span class="math inline">\(P\)</span> 的一条截线。</p>
+<p>其次如果这条截线不是上述 <span class="math inline">\(\{L_i\}\)</span>
+任何之一，那么我们可以用 <span class="math inline">\(y,z\)</span>
+的某个组合将其变换到 <span class="math inline">\(P\cap C\)</span>
+中，这相当于用某个 <span class="math inline">\(w\in I_2(h)\)</span> 使得
+<span class="math inline">\(\gamma=w\beta\)</span> 的超平面 <span class="math inline">\(H_\gamma\)</span> 与 <span class="math inline">\(P\)</span> 的交线穿过 <span class="math inline">\(P\cap C\)</span>，这与任何根的镜面与 <span class="math inline">\(C\)</span> 之交为空集矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+<p>我们只要讨论哪些 <span class="math inline">\(H_\beta\)</span> 满足
+<span class="math inline">\(H_\beta\cap P =L\)</span> 或者 <span class="math inline">\(H_\beta\cap P =M\)</span> 即可。其它的 <span class="math inline">\(L_i\)</span> 由于形如 <span class="math inline">\(L_i=wL\)</span> 或者 <span class="math inline">\(L_i=wM\)</span>，这里 <span class="math inline">\(w\in I_2(h)\)</span>，所以对应的是 <span class="math inline">\(wH_\beta\)</span>。</p>
+<p>如果 <span class="math inline">\(H_\beta\cap P = L\)</span>，则反射
+<span class="math inline">\(s_\beta\)</span> 保持 <span class="math inline">\(L\)</span> 不动。这时 <span class="math inline">\((\beta,\lambda=0)\)</span>。设 <span class="math inline">\(\beta=\sum\limits_{i=1}^n a_i\alpha_i (a_i\geq
+0)\)</span>，由于 <span class="math inline">\(\lambda=\sum_{i\in
+I}c_i\omega_i\)</span>，所以 <span class="math display">\[(\beta,\lambda) = \sum_{i\in I} a_ic_i=
+0.\]</span> 由于 <span class="math inline">\(c_i(1\leq i\leq n)\)</span>
+都是正的，所以必须对每个 <span class="math inline">\(i\in I\)</span> 有
+<span class="math inline">\(a_i=0\)</span>，即 <span class="math inline">\(\beta\)</span> 是 <span class="math inline">\(\{\alpha_j,j\in J\}\)</span> 的线性组合，从而
+<span class="math inline">\(\beta\)</span> 属于标准椭圆子群 <span class="math inline">\(J\)</span> 的根系 <span class="math inline">\(\Phi_J\)</span>。但是 <span class="math inline">\(J\)</span> 中的生成元两两交换，<span class="math inline">\(\Phi_J\)</span> 中的正根只有 <span class="math inline">\(\{\alpha_j,j\in J\}\)</span>，所以满足 <span class="math inline">\(H_\beta\cap P=L\)</span> 的正根 <span class="math inline">\(\beta\)</span> 有 <span class="math inline">\(|J|=n-r\)</span> 个。</p>
+<p>同样的分析可得满足 <span class="math inline">\(H_\beta\cap
+P=M\)</span> 的正根 <span class="math inline">\(\beta\)</span> 有 <span class="math inline">\(|I|=r\)</span> 个。</p>
+<p>当 <span class="math inline">\(h\)</span> 是偶数时，<span class="math inline">\(I_2(h)\)</span> 在 <span class="math inline">\(\{L_1,\ldots,L_h\}\)</span>
+上的作用分成两个长度同为 <span class="math inline">\(h/2\)</span>
+的轨道，分别由 <span class="math inline">\(L\)</span> 和 <span class="math inline">\(M\)</span> 生成，<span class="math inline">\(L\)</span> 所在的轨道每个超平面来自 <span class="math inline">\(n-r\)</span> 个正根，<span class="math inline">\(M\)</span> 所在的轨道每个超平面来自 <span class="math inline">\(r\)</span> 个正根，所以一共是 <span class="math inline">\(h(n-r)/2 + hr/2 = nh/2=N\)</span> 个正根。</p>
+<p>当 <span class="math inline">\(h\)</span> 是奇数时，<span class="math inline">\(I_2(h)\)</span> 传递地作用在 <span class="math inline">\(\{L_1,\ldots,L_h\}\)</span> 上，所以 <span class="math inline">\(L\)</span> 和 <span class="math inline">\(M\)</span> 来自同样数目的正根，即 <span class="math inline">\(r=n-r\)</span>，所以 <span class="math inline">\(r=n/2\)</span>。同样地 <span class="math inline">\(N=nh/2\)</span>。</p>
+<p>这里需要对 <span class="math inline">\(h\)</span>
+的奇偶性分别讨论是因为在二面体群中，奇数时两个生成元是共轭的，偶数时则不共轭。</p>
 <h1 id="counting-hyperplanes">4.4 Counting hyperplanes</h1>
 <p>回忆 <span class="math inline">\(\mathcal{H}\)</span> 是所有超平面
 <span class="math inline">\(\{H_{\alpha,k}\mid
-\alpha\in\Phi,k\in\mathbb{Z}\}\)</span> 组成的集合。其中 <span class="math display">\[H_{\alpha,k}=\{v\in V\mid
+\alpha\in\Phi,k\in\mathbb{Z}\}\)</span> 组成的集合。其中 <span class="math display">\[H_{\_alpha,k}=\{v\in V\mid
 (\alpha,v)=k\}.\]</span></p>
 <div class="unnumbered statement lemma-unnumbered plain">
 <p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
