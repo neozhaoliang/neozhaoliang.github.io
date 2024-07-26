@@ -386,7 +386,7 @@ q\)</span>。类似的考虑极大半负定子空间可得 <span class="math inl
 来即可。</p>
 <p>在求解行列式的时候，通过引入变量，把待求的行列式看做一个或者多个变元的函数，然后找出这个函数可能满足的关系（微分方程、递推关系、根等等）是一种重要的思路。</p>
 <h1 id="矩阵空间的线性同态与反同态">矩阵空间的线性同态与反同态</h1>
-<div class="statement question definition">
+<div id="commute" class="statement question definition">
 <p><span class="statement-heading"><span class="statement-label">问题
 3.1</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
 上的一个线性变换，而且保持矩阵的乘法： <span class="math display">\[f(AB)=f(A)f(B),\quad\forall
@@ -402,7 +402,7 @@ F^n.\]</span> 由于 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是 
 用这两种方式看成 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>-
 模是同构的，即存在可逆线性变换 <span class="math inline">\(T:F^n\rightarrow F^n\)</span> 使得 <span class="math display">\[Tf(A)v=ATv.\]</span> 即 <span class="math inline">\(f(A)=T^{-1}AT\)</span>。这说明 <span class="math inline">\(f\)</span> 必然是由某个可逆矩阵 <span class="math inline">\(T\)</span> 诱导的相似变换。</p>
 <p>把上面的问题改一改：</p>
-<div class="statement question definition">
+<div id="anti-commute" class="statement question definition">
 <p><span class="statement-heading"><span class="statement-label">问题
 3.2</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
 上的一个线性变换，而且反交换矩阵的乘法： <span class="math display">\[f(AB)=f(B)f(A),\quad\forall
@@ -418,23 +418,20 @@ A\ast  v &amp; = vf(A).
 <p>最后我们把这两个问题捏在一起，凑成下面这个问题：</p>
 <div class="statement question definition">
 <p><span class="statement-heading"><span class="statement-label">问题
-3.3</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span> 是数域 <span class="math inline">\(F\)</span> 上全体 <span class="math inline">\(n\)</span> 阶矩阵组成的向量空间，<span class="math inline">\(f:\mathrm{Mat}_n(F)\to\mathrm{Mat}_n(F)\)</span>
+3.3</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(F\)</span> 是无限域，<span class="math inline">\(f:\mathrm{Mat}_n(F)\to\mathrm{Mat}_n(F)\)</span>
 是一个线性变换，而且对任何矩阵 <span class="math inline">\(A,B\)</span>，等式 <span class="math inline">\(f(AB)=f(A)f(B)\)</span> 和 <span class="math inline">\(f(AB)=f(B)f(A)\)</span> 至少有一个是成立的。问
 <span class="math inline">\(f\)</span> 应该是什么样子的？</p>
 </div>
 <p>这回问题一下子变得更麻烦了，对于一个矩阵 <span class="math inline">\(A\)</span> 来说，有可能它与某个 <span class="math inline">\(B\)</span> 满足 <span class="math inline">\(f(AB)=f(A)f(B)\)</span>，但是又与某个矩阵 <span class="math inline">\(C\)</span> 满足 <span class="math inline">\(f(AC)=f(C)f(A)\)</span>。我们要做的就是首先排除这种可能：</p>
 <p>对任意矩阵 <span class="math inline">\(A\)</span>， 设 <span class="math inline">\(L_A\)</span> 是所有满足 <span class="math inline">\(f(AB)=f(A)f(B)\)</span> 的矩阵 <span class="math inline">\(B\)</span> 组成的集合，<span class="math inline">\(R_A\)</span> 是所有满足 <span class="math inline">\(f(AC)=f(C)f(A)\)</span> 的矩阵 <span class="math inline">\(C\)</span> 组成的集合，于是 <span class="math inline">\(L_A,R_A\)</span> 都是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>
-的子空间而且它俩的并等于 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>。我们要用到一个线性代数里面的著名结论：一个无限域
-（数域当然是无限域）
-上的向量空间不可能是它的两个真子空间的并集。所以必然有 <span class="math inline">\(R_A=\mathrm{Mat}_n(F)\)</span> 或者 <span class="math inline">\(L_A=\mathrm{Mat}_n(F)\)</span> 之一成立。</p>
+的子空间而且它俩的并等于 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>。我们要用到一个线性代数里面的著名结论：一个无限域上的向量空间不可能是它的两个真子空间的并集。所以必然有
+<span class="math inline">\(R_A=\mathrm{Mat}_n(F)\)</span> 或者 <span class="math inline">\(L_A=\mathrm{Mat}_n(F)\)</span> 之一成立。</p>
 <p>不过问题还没完，因为可能对某个矩阵 <span class="math inline">\(A\)</span> 有 <span class="math inline">\(L_A=\mathrm{Mat}_n(F)\)</span>
 成立，但是对另一个矩阵 <span class="math inline">\(B\)</span> 有 <span class="math inline">\(R_B=\mathrm{Mat}_n(F)\)</span>
 成立。这次我们故技重施：设 <span class="math inline">\(U\)</span>
 是所有满足 <span class="math inline">\(L_A=\mathrm{Mat}_n(F)\)</span>
 的矩阵 <span class="math inline">\(A\)</span> 组成的集合，<span class="math inline">\(W\)</span> 是所有满足 <span class="math inline">\(R_B=\mathrm{Mat}_n(F)\)</span> 的矩阵 <span class="math inline">\(B\)</span> 组成的集合，则我们刚刚证明了 <span class="math inline">\(U,W\)</span> 的并集是 <span class="math inline">\(\mathrm{Mat}_n(F)\)</span>，而且它俩显然都是子空间，因此必然有一个等于
-<span class="math inline">\(\mathrm{Mat}_n(F)\)</span>。如果是 <span class="math inline">\(U=\mathrm{Mat}_n(F)\)</span>，则我们回到了问题 A
-的情形；如果是 <span class="math inline">\(W=\mathrm{Mat}_n(F)\)</span>
-则我们回到了问题 B 的情形。</p>
+<span class="math inline">\(\mathrm{Mat}_n(F)\)</span>。如果是 <span class="math inline">\(U=\mathrm{Mat}_n(F)\)</span>，则我们回到了 <a href="#commute" title="问题 3.1">问题 3.1</a> 的情形；如果是 <span class="math inline">\(W=\mathrm{Mat}_n(F)\)</span> 则我们回到了 <a href="#anti-commute" title="问题 3.2">问题 3.2</a> 的情形。</p>
 <p>因此所求的 <span class="math inline">\(f(A)=T^{-1}AT\)</span> 或者
 <span class="math inline">\(f(A)=T^{-1}A'T\)</span>，这里 <span class="math inline">\(T\)</span> 是任意的可逆矩阵。</p>
 
