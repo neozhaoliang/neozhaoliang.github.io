@@ -379,8 +379,9 @@ Lebesgue-Stieltjes 测度 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)
 (cylinder set) <span class="math display">\[(a_1,b_1]\times\cdots\times(a_k,b_k]\]</span>
 的补是有限多个不相交柱集的并。</p>
 <p>定义 <span class="math inline">\(\mathcal{S}\)</span> 上的测度 <span class="math inline">\(\overline{\mu}\)</span> 如下： <span class="math display">\[\overline{\mu}((a, b]) = F(b) - F(a),\quad
-(a,b]\in\mathcal{S}.\]</span> 我们使用记号 <span class="math inline">\(\overline{\mu}\)</span> 以区别于最终要构造的测度
-<span class="math inline">\(\mu\)</span>。</p>
+(a,b]\in\mathcal{S}.\]</span> 目前 <span class="math inline">\(\overline{\mu}\)</span> 只是半代数 <span class="math inline">\(\mathcal{S}\)</span>
+上的集合函数，虽然我们用了测度这个称呼，但它还远不是最终要构造的测度
+<span class="math inline">\(\mu\)</span>，所以我们用记号 <span class="math inline">\(\overline{\mu}\)</span> 加以区别。</p>
 <p><span class="math inline">\(\overline{\mu}\)</span> 作为半代数 <span class="math inline">\(\mathcal{S}\)</span> 上的测度满足
 <strong>有限可加性质</strong>：若 <span class="math inline">\(\{A_i\}_{i=1}^m \in\mathcal{S}\)</span> 满足 <span class="math inline">\(\sqcup_{i=1}^m A_i = A\in \mathcal{S}\)</span>，则
 <span class="math display">\[\sum_{i=1}^m\overline{\mu}(A_i)=\overline{\mu}(A).\]</span></p>
@@ -453,7 +454,10 @@ A_n\in\mathcal{S}\)</span>，则 <span class="math inline">\(\overline{\mu}(\sqc
 A_n)\leq\sum_{n=1}^\infty\overline{\mu}(A_n)\)</span>。</p></li>
 </ol>
 </div>
-<p>我请你再次阅读这个引理，明确它的前提条件和重要意义。</p>
+<p>我请你再次阅读这个引理，明确它的前提条件和重要意义。实际上，在代数
+<span class="math inline">\(\mathcal{A}\)</span>
+上，从有限可加性总是可以推出超可数可加性的；要验证次可数可加性，我们只要下降到更简单的半代数
+<span class="math inline">\(\mathcal{S}\)</span> 上验证即可。</p>
 <p><strong>证明</strong>：<span class="math inline">\(\Rightarrow\)</span>
 是显然的，可数可加必然蕴含次可数可加。</p>
 <p><span class="math inline">\(\Leftarrow\)</span>：要论证 <span class="math inline">\(\overline{\mu}\)</span> 是 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>

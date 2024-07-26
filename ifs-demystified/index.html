@@ -527,7 +527,7 @@ K)\)</span>，但 <span class="math inline">\(d(p,F^n(K))\)</span> 和
 p, K) = 1/s\cdot d(F^{-1}(p), K).\]</span>
 即我们要对折叠以后算出来的距离值再除以 <span class="math inline">\(s\)</span>。</p>
 <p>对球的反演变换也有类似的结论，这是因为球反演在空间中每个点的局部是一个缩放。</p>
-<p>于是用 <span class="math inline">\(F^{-1}\)</span> 迭代 <span class="math inline">\(n\)</span> 次以后累积放大的比例就是 <span class="math inline">\(s^n\)</span>，我们要将 <span class="math inline">\(d(F^{-n}(p), K)\)</span> 再除以 <span class="math inline">\(s^n\)</span> 才是最终正确的距离值。</p>
+<p>既然每次迭代 <span class="math inline">\(F\)</span> 以比例 <span class="math inline">\(1/s\)</span> 缩小，那么用 <span class="math inline">\(F^{-1}\)</span> 迭代 <span class="math inline">\(n\)</span> 次以后累积放大的比例就是 <span class="math inline">\(s^n\)</span>，我们要将 <span class="math inline">\(d(F^{-n}(p), K)\)</span> 再除以 <span class="math inline">\(s^n\)</span> 才是最终正确的距离值。</p>
 <h2 id="实战演示">实战演示</h2>
 <p>我以 Shadertoy 上一个混淆过的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/WlGyWK">作品</a>
 为例子来完整展示上面的理论。下面是重新改写后的可读版本，我在注释中解释了每一步的含义：</p>
