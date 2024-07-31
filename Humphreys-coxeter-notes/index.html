@@ -327,7 +327,8 @@ Humphreys 书中保持一致。">
 reflections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-length-function"><span class="section table-of-contents-text">1.6 The length function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#deletion-and-exchange-conditions"><span class="section table-of-contents-text">1.7 Deletion and Exchange
 Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
 \(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#more-on-the-geometric-representation"><span class="section table-of-contents-text">6.2 More on the geometric
-representation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+representation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#radical-of-the-bilinear-form-finite-coxeter-groups"><span class="section table-of-contents-text">6.3 + 6.4
+Radical of the bilinear form &#x2F; Finite Coxeter groups</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
 
                                         
@@ -622,6 +623,38 @@ v_1v_2^{-1}\in VV^{-1} \subset U.\]</span> 因此 <span class="math inline">\(v_
 是有限的。这是因为对每个 <span class="math inline">\(x\in
 H\)</span>，取其邻域 <span class="math inline">\(U_x\)</span> 使得 <span class="math inline">\(U_x\cap H=\{x\}\)</span>，这些开集加上 <span class="math inline">\(G\backslash H\)</span> 构成 <span class="math inline">\(G\)</span> 的一个开覆盖，由 <span class="math inline">\(G\)</span> 的紧性可得存在 <span class="math inline">\(G\)</span> 的有限子覆盖。于是有限多个 <span class="math inline">\(\{U_{x_i}\}_{i=1}^n\)</span> 覆盖了 <span class="math inline">\(H\)</span>。然而每个 <span class="math inline">\(U_{x_i}\)</span> 只包含一个 <span class="math inline">\(H\)</span> 中的元素 <span class="math inline">\(x_i\)</span>，所以 <span class="math inline">\(H\)</span> 是有限的。<span class="math inline">\(\blacksquare\)</span></p>
 <p>现在 <span class="math inline">\(W\)</span> 保持 Euclidean 内积 <span class="math inline">\(B\)</span> 不变，从而是正交群 <span class="math inline">\(O(n,\mathbb{R})\)</span> 的子群。而 <span class="math inline">\(O(n,\mathbb{R})\)</span> 是紧群，<span class="math inline">\(W\)</span> 是离散子群，所以 <span class="math inline">\(W\)</span> 是有限群。</p>
+<h1 id="radical-of-the-bilinear-form-finite-coxeter-groups">6.3 + 6.4
+Radical of the bilinear form / Finite Coxeter groups</h1>
+<p>这两节合起来证明了 6.2 的逆命题：如果 <span class="math inline">\(W\)</span> 是有限群，则 <span class="math inline">\(B\)</span>
+必然是正定的。这个结论是如下几个命题合起来得到的：</p>
+<div id="-------1" class="unnumbered statement sta____1 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(V\)</span> 的一个真 <span class="math inline">\(W-\)</span> 子模，则 <span class="math inline">\(U\subset V^\bot\)</span>。</p>
+</div>
+<p>这个命题背后的关键是任何单根 <span class="math inline">\(\alpha_s\)</span> 必须属于 <span class="math inline">\(U\)</span> 或者 <span class="math inline">\(U^\bot\)</span> 之一。由于 <span class="math inline">\(W\)</span> 是不可约 Coxeter 群，<span class="math inline">\(\Delta\)</span>
+不能分成两个互相正交的子集，所以要么 <span class="math inline">\(\Delta\in U\)</span>，这与 <span class="math inline">\(U\)</span> 是真子模矛盾；要么 <span class="math inline">\(\Delta\in U^\bot\)</span>，从而 <span class="math inline">\(U\subset V^\bot\)</span>。</p>
+<div id="-------2" class="unnumbered statement sta____2 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span> 上的作用是完全可约的。</p>
+</div>
+<p>这是群表示论里面的 Maschke 定理。证明技巧就是取平均构造 <span class="math inline">\(W-\)</span> 不变的正定内积。</p>
+<div id="-------3" class="unnumbered statement sta____3 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B\)</span> 是非退化的。</p>
+</div>
+<p>若不然 <span class="math inline">\(V^\bot\ne(0)\)</span>，完全可约性说明 <span class="math inline">\(V^\bot\)</span> 有直和补 <span class="math inline">\(U\)</span>，但是 <span class="math inline">\(U\)</span> 也在 <span class="math inline">\(V^\bot\)</span> 中，矛盾。</p>
+<div id="-------4" class="unnumbered statement sta____4 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span> 上是不可约的。</p>
+</div>
+<p>这是命题 3 的直接结论，因为有非平凡的真子模意味着 <span class="math inline">\(V^\bot\)</span> 也非平凡，与 <span class="math inline">\(B\)</span> 非退化矛盾。</p>
+<div id="-------5" class="unnumbered statement sta____5 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+5</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B\)</span> 是正定的。</p>
+</div>
+<p>实际上 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(W\)</span> 的不可约表示说明 <span class="math inline">\(V\)</span> 上的 <span class="math inline">\(W-\)</span>
+不变双线性函数构成的向量空间是一维的。而我们已经有一个 <span class="math inline">\(W-\)</span> 不变的正定内积，所以 <span class="math inline">\(B\)</span>
+必然是它的一个倍数，从而也是正定的。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Humphreys90" class="csl-entry" role="listitem">
