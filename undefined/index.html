@@ -326,7 +326,8 @@ Humphreys 书中保持一致。">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generation-by-simple-reflections"><span class="section table-of-contents-text">1.5 Generation by simple
 reflections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-length-function"><span class="section table-of-contents-text">1.6 The length function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#deletion-and-exchange-conditions"><span class="section table-of-contents-text">1.7 Deletion and Exchange
 Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
-\(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+\(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#more-on-the-geometric-representation"><span class="section table-of-contents-text">6.2 More on the geometric
+representation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
 
                                         
@@ -584,6 +585,42 @@ n!c_1\cdots c_n\cdot\mathrm{Vol}(A_o).\]</span></li>
 \frac{|W|\mathrm{Vol}(A_o)}{n!c_1\cdots
 c_n\cdot\mathrm{Vol}(A_o)}=f.\]</span> 即 <span class="math inline">\(|W| = n!c_1\cdots c_n f\)</span>。</li>
 </ul>
+<h1 id="more-on-the-geometric-representation">6.2 More on the geometric
+representation</h1>
+<p>这一节证明了如果几何实现中的二次型 <span class="math inline">\(B(\alpha_s,\alpha_t)=-\cos\frac{\pi}{m_{s,t}}\)</span>
+是正定的，则 <span class="math inline">\(W\)</span>
+是有限群。这一点是两个结论合起来的结果：</p>
+<div id="discrete-action" class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(W\)</span> 是 <span class="math inline">\(O(n,\mathbb{R})\)</span> 的离散子集，即对任何
+<span class="math inline">\(w\in W\)</span>，存在 <span class="math inline">\(w\)</span> 的开邻域 <span class="math inline">\(w\in U\)</span> 使得 <span class="math inline">\(U\)</span> 不包含 <span class="math inline">\(W\)</span> 中除 <span class="math inline">\(w\)</span> 外的任何元素。</p>
+</div>
+<p>证明：固定一个基本区域中的点 <span class="math inline">\(x\in
+C\)</span>，考虑从 <span class="math inline">\(\mathrm{GL}(V^\ast)\)</span> 到 <span class="math inline">\(V^\ast\)</span> 的连续映射 <span class="math display">\[g\to g\cdot x,\quad
+g\in\mathrm{GL}(V^\ast).\]</span> <span class="math inline">\(C\)</span>
+在此映射下的逆像是 <span class="math inline">\(\mathrm{GL}(V^\ast)\)</span> 中的某个开集 <span class="math inline">\(U\)</span>，并且 <span class="math inline">\(U\)</span> 显然包含恒等元 1，因为 <span class="math inline">\(1\cdot x=x\in C\)</span>，即 <span class="math inline">\(U\)</span> 是 1 的一个开邻域。<span class="math inline">\(U\)</span> 不包含其它任何 <span class="math inline">\(w\ne 1\in W\)</span>，否则 <span class="math inline">\(w\cdot x\in C\)</span>，这与 <span class="math inline">\(C\)</span> 是基本区域矛盾。同理任何 <span class="math inline">\(w\in W\)</span> 都有一个开邻域不包含其它 <span class="math inline">\(W\)</span> 中的点。</p>
+<div id="discrete-subgroup" class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>紧 Hausdorff 拓扑群 <span class="math inline">\(G\)</span>
+的离散子群 <span class="math inline">\(H\)</span> 必然是有限群。</p>
+</div>
+<p>证明：</p>
+<p>第一步：设 <span class="math inline">\(U\)</span> 是单位元 <span class="math inline">\(e\)</span> 的邻域且满足 <span class="math inline">\(U \cap H = \{e\}\)</span>，我们来说明存在一个邻域
+<span class="math inline">\(e\in V\subset U\)</span> 满足 <span class="math inline">\(VV^{-1}\subset U\)</span>。</p>
+<p>令 <span class="math inline">\(\sigma:U\times U\to G\)</span> 为映射
+<span class="math inline">\(\sigma(x, y) =
+xy^{-1}\)</span>。由连续性，存在一个邻域 <span class="math inline">\(N\subset U\times U\)</span> 包含 <span class="math inline">\((e,e)\)</span> 使得 <span class="math inline">\(\sigma(N)\subset U\)</span>。那么 <span class="math inline">\(N\)</span> 包含一个形如 <span class="math inline">\(V_1\times V_2\)</span> 的开集，其中 <span class="math inline">\(V_1, V_2 \subset U\)</span> 是开集且 <span class="math inline">\(e\in V_1\cap V_2\)</span>。取 <span class="math inline">\(V=V_1 \cap V_2\)</span>，于是 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(e\)</span> 的一个邻域，并且 <span class="math inline">\(V\times V\subset V_1\times V_2\)</span>，因此
+<span class="math inline">\(VV^{-1}=\sigma(V \times
+V)\subset\sigma(V_1\times V_2) \subset U\)</span>。</p>
+<p>第二步：我们来论证 <span class="math inline">\(G\backslash H\)</span>
+是开集。为此只要说明对任意 <span class="math inline">\(x\in G\backslash
+H\)</span>，存在 <span class="math inline">\(x\)</span> 的邻域 <span class="math inline">\(U\)</span> 使得 <span class="math inline">\(U\cap
+H=\emptyset\)</span>。设 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(e\)</span> 的邻域且 <span class="math inline">\(U\cap H=\{e\}\)</span>。令 <span class="math inline">\(V\subset U\)</span> 为具有上面第一步中性质的 <span class="math inline">\(e\)</span> 的邻域，则 <span class="math inline">\(N=Vx\)</span> 是 <span class="math inline">\(x\)</span> 的邻域。假设 <span class="math inline">\(h_1, h_2\in N\cap H\)</span>，那么存在 <span class="math inline">\(v_1,v_2\in V\)</span> 满足 <span class="math inline">\(h_1 = v_1x\)</span> 且 <span class="math inline">\(h_2=v_2x\)</span>。于是 <span class="math display">\[v_1^{-1}h_1=x=v_2^{-1}h_2\implies h_1h_2^{-1} =
+v_1v_2^{-1}\in VV^{-1} \subset U.\]</span> 因此 <span class="math inline">\(v_1v_2^{-1}\in H\cap U\)</span>，所以 <span class="math inline">\(h_1h_2^{-1}=e\)</span>，因此 <span class="math inline">\(h_1=h_2\)</span>。这意味着 <span class="math inline">\(N\)</span> 至多包含 <span class="math inline">\(H\)</span> 的一个元素。如果 <span class="math inline">\(N\)</span> 不包含 <span class="math inline">\(H\)</span> 的任何元素，则 <span class="math inline">\(N\)</span> 即为所求。否则若 <span class="math inline">\(N\cap H=\{h\}\)</span>，由于 <span class="math inline">\(G\)</span> 是 Hausdorff 空间，我们可以取开邻域
+<span class="math inline">\(U_x, U_h\subset N\)</span> 将 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(h\)</span> 分开，那么 <span class="math inline">\(U_x\)</span> 是所求的邻域。</p>
+<p>第三步：<span class="math inline">\(H\)</span>
+是有限的。这是因为对每个 <span class="math inline">\(x\in
+H\)</span>，取其邻域 <span class="math inline">\(U_x\)</span> 使得 <span class="math inline">\(U_x\cap H=\{x\}\)</span>，这些开集加上 <span class="math inline">\(G\backslash H\)</span> 构成 <span class="math inline">\(G\)</span> 的一个开覆盖，由 <span class="math inline">\(G\)</span> 的紧性可得存在 <span class="math inline">\(G\)</span> 的有限子覆盖。于是有限多个 <span class="math inline">\(\{U_{x_i}\}_{i=1}^n\)</span> 覆盖了 <span class="math inline">\(H\)</span>。然而每个 <span class="math inline">\(U_{x_i}\)</span> 只包含一个 <span class="math inline">\(H\)</span> 中的元素 <span class="math inline">\(x_i\)</span>，所以 <span class="math inline">\(H\)</span> 是有限的。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Humphreys90" class="csl-entry" role="listitem">
