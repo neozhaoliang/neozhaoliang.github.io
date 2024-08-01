@@ -325,7 +325,7 @@ Humphreys 书中保持一致。">
                                     <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generation-by-simple-reflections"><span class="section table-of-contents-text">1.5 Generation by simple
 reflections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-length-function"><span class="section table-of-contents-text">1.6 The length function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#deletion-and-exchange-conditions"><span class="section table-of-contents-text">1.7 Deletion and Exchange
-Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
+Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#subgraphs"><span class="section table-of-contents-text">2.6 Subgraphs</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
 \(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#more-on-the-geometric-representation"><span class="section table-of-contents-text">6.2 More on the geometric
 representation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#radical-of-the-bilinear-form-finite-coxeter-groups"><span class="section table-of-contents-text">6.3 + 6.4
 Radical of the bilinear form &#x2F; Finite Coxeter groups</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
@@ -365,9 +365,9 @@ w's_\alpha\alpha\)</span>。</li>
 <li>如果 <span class="math inline">\(\beta&gt;0\)</span> 但不是单根，设
 <span class="math inline">\(\beta=\sum c_s\alpha_s\)</span>，那么 <span class="math inline">\(0&lt;(\beta,\beta)=\sum c_s(\beta,
 \alpha_s)\)</span> 说明一定存在单根 <span class="math inline">\(\alpha_s\)</span> 满足 <span class="math inline">\((\beta,\alpha_s)&gt;0\)</span>。考察 <span class="math inline">\(\gamma=s\beta\)</span>。</li>
-<li><span class="math inline">\(\gamma\)</span> 仍然是正根，并且 <span class="math inline">\({\rm ht}(\gamma) &lt; {\rm
-ht}(\beta)\)</span>。如果 <span class="math inline">\(\gamma\)</span>
-不是单根，那就一直重复此步骤直到 <span class="math inline">\(\gamma\)</span>
+<li><span class="math inline">\(\gamma\)</span> 仍然是正根，并且 <span class="math inline">\(\mathrm{ht}(\gamma) &lt;
+\mathrm{ht}(\beta)\)</span>。如果 <span class="math inline">\(\gamma\)</span> 不是单根，那就一直重复此步骤直到
+<span class="math inline">\(\gamma\)</span>
 变成单根为止。这个操作一定会在有限次后终止，否则我们会得到一个无穷的、高度严格降低、从而互不相同的正根序列，这与根系是有限集矛盾。</li>
 <li>设 <span class="math inline">\(\gamma=s_1\cdots
 s_r\beta\in\Delta\)</span> 是最终得到的单根，则 <span class="math inline">\(\beta\in W'\Delta\)</span>，结论成立。</li>
@@ -480,6 +480,63 @@ s_{q+2}\)</span> 挪到左边的后面，得到 <span class="math display">\[s_3
 1.\]</span> 仍然和 I 的证明同理，我们可以得到 <span class="math display">\[s_3s_2\cdots s_q = s_2\cdots s_{q+1}.\]</span>
 这就是 II 中的等式。</p></li>
 </ul>
+<h1 id="subgraphs">2.6 Subgraphs</h1>
+<p>在本节中，<span class="math inline">\(\Gamma\)</span> 是一个不可约
+Coxeter 图，内积 <span class="math inline">\((\alpha_s,\alpha_t)=-\cos\frac{\pi}{m_{s,t}}\)</span>
+是半正定的，但不是正定的。</p>
+<p>记 <span class="math inline">\(N=\{v\in V\mid (v,v)=0\}\)</span> 以及
+<span class="math display">\[\mathrm{rad}(V)=\{v\in V\mid (v, u)=0
+\text{ for all } u \in V\}.\]</span> 显然 <span class="math inline">\(\mathrm{rad}(V)\)</span> 总是 <span class="math inline">\(V\)</span> 的子空间并且 <span class="math inline">\(\mathrm{rad}(V)\subset N\)</span>，但是一般来说
+<span class="math inline">\(N\)</span> 并不是 <span class="math inline">\(V\)</span> 的子空间。</p>
+<p>但是在内积半正定时，我们有如下的结论：</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>若内积半正定，则 <span class="math inline">\(N=\mathrm{rad}(V)\)</span>。</p>
+</div>
+<p>证明：只要证明 <span class="math inline">\(N\subset\mathrm{rad}(V)\)</span> 即可，即若 <span class="math inline">\(u\in V\)</span> 满足 <span class="math inline">\((u,u)=0\)</span>，则对任何 <span class="math inline">\(v\in V\)</span> 都有 <span class="math inline">\((u,v)=0\)</span>。若不然，设 <span class="math inline">\(v\)</span> 满足 <span class="math inline">\((u,v)\ne0\)</span>，我们给 <span class="math inline">\(v\)</span> 乘以适当实数使得 <span class="math inline">\((u,v)=1\)</span>。设 <span class="math inline">\(k\)</span> 是实数，考虑向量 <span class="math inline">\(z=ku +v\)</span>： <span class="math display">\[(z,z)=(ku+v,ku+v) = (v,v) + 2k.\]</span>
+所以只要选择 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(2k &lt; -(v,v)\)</span> 就有 <span class="math inline">\((z,z)&lt;0\)</span>，这与内积的半正定性矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+<p>这一节的主要结论是：</p>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span></p>
+<ol type="1">
+<li><span class="math inline">\(\mathrm{rad}(V)\)</span>
+是一维的，由一个向量 <span class="math inline">\(\delta=\sum_{s\in
+S}c_s\alpha_s\)</span> 生成，并且每个系数 <span class="math inline">\(c_s\)</span> 都大于 0。</li>
+<li><span class="math inline">\(\Gamma\)</span>
+删去任意多个顶点后得到的子图是正定的。</li>
+</ol>
+</div>
+<p>这里给出一个不同于 Humphreys 书上的证明。</p>
+<p>1 的证明：</p>
+<p>设 <span class="math inline">\(u=\sum_{s\in
+S}c_s\alpha_s\in\mathrm{rad}(V)\)</span> 是一个非零向量，记 <span class="math display">\[I_+=\{s\in S\mid c_s&gt;0\},\quad I_-=\{s\in
+S\mid c_s&lt;0\},\quad I_0=\{s\in S\mid c_s=0\}.\]</span> <span class="math display">\[u_+=\sum_{s\in I_+}c_s\alpha_s,\quad
+u_-=\sum_{s\in I_-}c_s\alpha_s.\]</span> 则 <span class="math inline">\(u=u_++u_-\)</span>，并且 <span class="math display">\[(u_+,u_-)=\sum_{c\in I_+}\sum_{t\in
+I_-}\underbrace{c_sc_t}_{&lt;0}\,\underbrace{\alpha_s\alpha_t}_{\leq0}\geq0.\]</span></p>
+<p>由于 <span class="math inline">\(u\in\mathrm{rad}(V)\)</span> 所以
+<span class="math inline">\((u,u)=0\)</span>，即 <span class="math display">\[(u,u)=(u_+,u_+)+(u_-,u_-)+2(u_+,u_-)=0.\]</span>
+根据半正定性和上面的分析，上式的三项都是非负的，所以只能是 <span class="math display">\[(u_+,u_+)=(u_-,u_-)=(u_+,u_-)=0.\]</span></p>
+<p>此外 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 中至少有一个非空，不妨设 <span class="math inline">\(I_+\ne\emptyset\)</span>，我们来证明 <span class="math inline">\(I_-\)</span> 和 <span class="math inline">\(I_0\)</span> 必须都是空集。</p>
+<p>若不然，<span class="math inline">\(I_-\cup I_0\)</span> 非空，任取
+<span class="math inline">\(t\in I_-\cup I_0\)</span>，设 <span class="math inline">\(\delta\)</span> 是正数，考虑向量 <span class="math inline">\(z=u_+ +\delta\alpha_t\)</span>。我们有</p>
+<p><span class="math display">\[(z,z)=\delta^2+2\delta(u_+,\alpha_t)=\delta^2+2\delta\sum_{s\in
+I_+}\underbrace{c_s}_{&gt;0}\underbrace{(\alpha_s,\alpha_t)}_{\leq0}.\]</span>
+注意到每一项 <span class="math inline">\(c_s(\alpha_s,\alpha_t)\leq0\)</span>，所以 <span class="math inline">\(\sum_{s\in
+I_+}c_s(\alpha_s,\alpha_t)\leq0\)</span>，并且如果存在 <span class="math inline">\(s\in I_+\)</span> 使得 <span class="math inline">\(s\)</span> 与 <span class="math inline">\(t\)</span> 之间有边相连的话则 <span class="math inline">\(\sum_{s\in I_+}c_s(\alpha_s,\alpha_t)\)</span>
+严格小于 0。这时取 <span class="math inline">\(\delta\)</span>
+足够小可以使得 <span class="math inline">\((z,z)&lt;0\)</span>，这与内积
+<span class="math inline">\((,)\)</span>
+是半正定的矛盾。所以必须是对每个 <span class="math inline">\(s\in
+I_+\)</span> 有 <span class="math inline">\((\alpha_s,\alpha_t)=0\)</span>。由 <span class="math inline">\(t\)</span> 的任意性可得 <span class="math inline">\(I_-\cup I_0\)</span> 与 <span class="math inline">\(I_+\)</span> 互不连通，但这又与 <span class="math inline">\(\Gamma\)</span> 不可约矛盾。</p>
+<p>总之我们证明了 <span class="math inline">\(\mathrm{rad}(V)\)</span>
+中非零向量的系数必须同时为正或者同时为负。</p>
+<p>如果 <span class="math inline">\(\mathrm{rad}(V)\)</span>
+包含两个线性无关的向量 <span class="math inline">\(u,v\)</span>，根据上面的证明，我们可以不妨设 <span class="math inline">\(u,v\)</span>
+的各项系数都是正数。适当缩放以后我们可以让 <span class="math inline">\(u,v\)</span> 的 <span class="math inline">\(\alpha_1\)</span> 项系数都是 1。于是 <span class="math inline">\(u-v\)</span> 也在 <span class="math inline">\(\mathrm{rad}(V)\)</span> 中，并且其 <span class="math inline">\(\alpha_1\)</span> 项系数是 0，这就导致了矛盾。</p>
+<p>2 的证明：</p>
+<p>我们只要证明若 <span class="math inline">\(I\subsetneqq
+\Gamma\)</span> 是真子集，则对任何非零向量 <span class="math inline">\(u=\sum_{s\in I}c_s\alpha_s\)</span> 都有 <span class="math inline">\((u,u)&gt;0\)</span>。若不然，<span class="math inline">\(u=\sum_{s\in I}c_s\alpha_s+\sum_{t\notin
+I}0\cdot\alpha_t\)</span> 并且 <span class="math inline">\((u,u)=0\)</span>，这与 <span class="math inline">\(u\)</span> 的系数必须全部非零矛盾。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="the-coxeter-number">3.18 The Coxeter number</h1>
 <p>这一节证明了如下结论：对一个有限 Coxeter 群，正根的个数 <span class="math inline">\(N=|\Phi^+|\)</span>，Coxeter 数 <span class="math inline">\(h\)</span>，单根的个数 <span class="math inline">\(n=|\Delta|\)</span> 满足 <span class="math display">\[N = \frac{nh}{2}.\]</span></p>
 <p>回忆 <span class="math inline">\(y=s_1\cdots s_r,z=s_{r+1}\cdots
