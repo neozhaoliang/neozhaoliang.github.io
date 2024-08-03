@@ -176,7 +176,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -453,8 +453,8 @@ s\in S.\]</span></p>
 </ol>
 <p><strong>证明</strong>：任取 <span class="math inline">\(s_i\in
 S\)</span>，只要证明对任何 <span class="math inline">\(\epsilon&gt;0\)</span> 都有 <span class="math display">\[|\mathbb{P}(s^\ast=s_i) -
-\pi(s_i)|&lt;\epsilon.\]</span> 设 <span class="math inline">\(\Omega=\{(U_{-1},U_{-2},\ldots)\mid U_i \text{\
-i.i.d on\ } [0,1]\}\)</span> 是所有随机数流组成的样本空间，<span class="math display">\[A = \{ \text{the algorithm terminates in finite
+\pi(s_i)|&lt;\epsilon.\]</span> 设 <span class="math inline">\(\Omega=\{(U_{-1},U_{-2},\ldots)\mid U_i \text{
+i.i.d on } [0,1]\}\)</span> 是所有随机数流组成的样本空间，<span class="math display">\[A = \{ \text{the algorithm terminates in finite
 time}\}.\]</span> 即 <span class="math inline">\(A\)</span>
 为那些可以使得算法在有限时间内结束的序列组成的集合，则 <span class="math inline">\(\mathbb{P}(A)=1\)</span>。</p>
 <p>又记 <span class="math display">\[A_i = \{ \text{the algorithm does
@@ -574,7 +574,8 @@ past</h1>
 很大时所耗的时间和计算量都很不划算。但是如果 <span class="math inline">\(S\)</span> 是一个偏序集 <span class="math inline">\((S, \preceq)\)</span>，有最大最小元 <span class="math inline">\(s_\max, s_\min\)</span>，并且更新函数 <span class="math inline">\(f\)</span> 与偏序 <span class="math inline">\(\preceq\)</span> 相容，即对任何 <span class="math inline">\(s,s'\in S\)</span>，<span class="math inline">\(u\in[0,1]\)</span>， <span class="math display">\[s\preceq s' \Rightarrow f(s, u) \preceq
 f(s', u),\]</span> 则我们每次只要对 <span class="math inline">\(s_\max, s_\min\)</span>
 这两个状态跑两个不同的链即可，当它俩耦合时，所有其它的链也会被“挤压”到相同的状态。这就是前面六边形的菱形密铺取样所采取的方法。</p>
-<p>我们首先在所有菱形密铺组成的集合 <span class="math inline">\(S\)</span> 上定义一个偏序 <span class="math inline">\(\preceq\)</span>，这个偏序的定义颇有技巧性，它需要将任一密铺对应到一个不相交的格点路径组，如下图所示：</p>
+<p>我们在所有菱形密铺组成的集合 <span class="math inline">\(S\)</span>
+上定义一个偏序 <span class="math inline">\(\preceq\)</span>，这个偏序的定义颇有技巧性，它需要将任一密铺对应到一个不相交的格点路径组，如下图所示：</p>
 <p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/non-intersecting_paths_lozenge.svg"></p>
 <p>图中一共出现了 <span class="math inline">\(c+2\)</span>
 条不相交的路径，其中最上方和最下方两条路径对任何密铺都是固定的

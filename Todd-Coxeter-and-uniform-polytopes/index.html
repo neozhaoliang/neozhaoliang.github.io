@@ -174,7 +174,7 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -464,9 +464,12 @@ Coxeter-Dynkin 图是一样的，但是边的标号是 (3, 4)。</li>
 算法</h1>
 <p>怎样求出初始顶点在所有镜子中的镜像？有个简单的办法：只要反复地将初始顶点关于每个镜面作反射，算出得到的镜像点的坐标，并与之前得到的点的坐标相比较（浮点数比较需要在一定的误差范围内考虑），直到不再有新的镜像点出现为止，不就得到全部顶点集吗？这个方法确实可行，但是既笨又丑陋：它完全没有用到多胞体具有对称性这一事实！</p>
 <p>这个程序采用的是基于符号计算的途径，这个方法可以精准地得出所有顶点/边/面的信息，代价就是涉及的数学略复杂，需要读者学过抽象代数中群论的知识。我们先回忆一下群在集合上的作用的轨道—稳定化子定理：</p>
-<div id="---------------------------" class="unnumbered statement sta__________ plain">
-<p><span class="statement-heading"><span class="statement-label">轨道—稳定化子定理</span>.</span><span class="statement-spah"> </span>设群 <span class="math inline">\(G\)</span> 传递地作用在集合 <span class="math inline">\(S\)</span> 上，<span class="math inline">\(x\in
-S\)</span>，<span class="math inline">\(x\)</span> 的稳定化子群是 <span class="math inline">\(H\)</span>。则集合 <span class="math inline">\(S\)</span> 与 <span class="math inline">\(G/H\)</span> 中的右陪集之间有一一对应：<span class="math inline">\(Hg\to x\cdot g\)</span>。</p>
+<div id="-----------------------------" class="unnumbered statement sta____________ plain">
+<p><span class="statement-heading"><span class="statement-label">轨道 —
+稳定化子定理</span>.</span><span class="statement-spah"> </span>设群
+<span class="math inline">\(G\)</span> 传递地作用在集合 <span class="math inline">\(S\)</span> 上，设 <span class="math inline">\(x\in
+S\)</span> 的稳定化子群是 <span class="math inline">\(H\)</span>，则集合
+<span class="math inline">\(S\)</span> 与 <span class="math inline">\(G/H\)</span> 中的右陪集之间有一一对应：<span class="math inline">\(Hg\to x\cdot g\)</span>。</p>
 </div>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
@@ -1336,9 +1339,9 @@ Borcherds 的视频，他的演示非常精彩：</p>
 <ol type="1">
 <li>首先我们在空白纸上画出第一个顶点，它对应的陪集是 <span class="math inline">\(H=H_0\)</span> 自身。<span class="math inline">\(H\)</span> 包含 <span class="math inline">\(s_0,s_1\)</span>，所以红、绿边是自边。<span class="math inline">\(s_2\)</span>，即蓝色的边，会把它映射为一个新顶点
 <span class="math inline">\(H_1\)</span>。</li>
-<li>红蓝交换，所以红色保持 <span class="math inline">\(H_1\)</span>
-不动。绿蓝不交换，所以绿色将 <span class="math inline">\(H_1\)</span>
-映射为新顶点 <span class="math inline">\(H_2\)</span>。</li>
+<li>从 <span class="math inline">\(H_0\)</span>
+出发，利用红蓝交换，可得红色保持 <span class="math inline">\(H_1\)</span> 不动。但是绿蓝不交换，所以绿色将
+<span class="math inline">\(H_1\)</span> 映射为新顶点 <span class="math inline">\(H_2\)</span>。</li>
 <li><span class="math inline">\((\text{绿蓝})^3=1\)</span>，即 <span class="math inline">\(H_2\xrightarrow{(\text{绿蓝})^3}H_2\)</span>，所以
 <span class="math display">\[H_2\xrightarrow{\text{绿}}
 H_1\xrightarrow{\text{蓝}} H_0\xrightarrow{\text{绿}}

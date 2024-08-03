@@ -37,12 +37,12 @@ Greg Egan 在他的博客中
 Egan 的一贯风格）。
 正方形、正三角形和正六边形是仅有的三种可以用有限多个保镖保护目标的情形，对其它正
 \(N\,(N\ne3,4,6)\)
-边形房间，有限数量的保镖是不行的。
+边形房间，有限数量的保镖是不行的。（不要问我怎么证，我也不知道）
 本文是对 math3ma 和 Greg Egan
 博客文章的补充，我将主要针对正六边形的情况进行详细解释。我觉得从仿射
 Weyl
 群的角度来看这个情形最方便，但这对大多数读者来说可能是个陌生的概念。我还是假定读者知道群的概念，并尽量结合直观的图形来解释。如果读者对深入了解仿射
-Weyl 群感兴趣，可以参考 Humphreys (1990) chapter 4。
+Weyl 群感兴趣，可以参考 (Humphreys 1990, chap. 4)。
 本文的代码在 Github
 上。这个项目包含了一个交互式的脚本，你可以在窗口中点击并拖拽鼠标来查看刺客射击的轨迹以及保镖的位置：
 
@@ -202,7 +202,7 @@ Weyl 群感兴趣，可以参考 Humphreys (1990) chapter 4。
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -382,12 +382,12 @@ Weyl 群感兴趣，可以参考 Humphreys (1990) chapter 4。
 Egan 的一贯风格）。</p>
 <p>正方形、正三角形和正六边形是仅有的三种可以用有限多个保镖保护目标的情形，对其它正
 <span class="math inline">\(N\,(N\ne3,4,6)\)</span>
-边形房间，有限数量的保镖是不行的。</p>
+边形房间，有限数量的保镖是不行的。（不要问我怎么证，我也不知道）</p>
 <p>本文是对 math3ma 和 Greg Egan
 博客文章的补充，我将主要针对正六边形的情况进行详细解释。我觉得从仿射
 Weyl
 群的角度来看这个情形最方便，但这对大多数读者来说可能是个陌生的概念。我还是假定读者知道群的概念，并尽量结合直观的图形来解释。如果读者对深入了解仿射
-Weyl 群感兴趣，可以参考 <span class="citation" data-cites="Humphreys90">Humphreys (<a href="#ref-Humphreys90" role="doc-biblioref">1990</a>)</span> chapter 4。</p>
+Weyl 群感兴趣，可以参考 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, chap. 4</a>)</span>。</p>
 <p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/assassin_vs_bodyguards">Github
 上</a>。这个项目包含了一个交互式的脚本，你可以在窗口中点击并拖拽鼠标来查看刺客射击的轨迹以及保镖的位置：</p>
 <table>
@@ -430,13 +430,17 @@ Weyl 群感兴趣，可以参考 <span class="citation" data-cites="Humphreys90"
 4
 名保镖。他们需要分别挡住小李子本人、小李子在两个镜子中的一次虚像，以及某个二次虚像。</p>
 <p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/parallel.svg" height="400"></p>
-<p>为什么需要 4 名保镖呢？假设一个保镖 <span class="math inline">\(G\)</span> 挡住了小李子的某个虚像 <span class="math inline">\(A\)</span>，不妨设 <span class="math inline">\(A\in L_1\)</span>。<span class="math inline">\(G\)</span>
+<p>为什么需要 4 名保镖呢？假设一个保镖 <span class="math inline">\(G\)</span> 挡住了小李子的某个虚像 <span class="math inline">\(A\)</span>，不妨设 <span class="math inline">\(A\)</span> 来自小李子的奇数次虚像组成的格点 <span class="math inline">\(L_1\)</span>。保镖 <span class="math inline">\(G\)</span>
 的所有虚像也由两个格点组成，每个格点也都是间隔 <span class="math inline">\(2d\)</span>
 均匀排列的。根据三角形的相似原理，<span class="math inline">\(G\)</span>
-的偶数次反射构成的格点在 <span class="math inline">\(L_1\)</span>
-上的投影间隔是 <span class="math inline">\(4d\)</span>，这些偶数次虚像能挡住 <span class="math inline">\(L_1\)</span> 中一半的格点。另一方面 <span class="math inline">\(G\)</span>
-的奇数次反射构成的格点一般来说是无效的（除非狗仔和明星恰好位于某些特殊位置）。所以一个保镖只能挡住小李子的所有虚像的
+的奇数次反射构成的格点在 <span class="math inline">\(L_1\)</span>
+上的投影间隔是 <span class="math inline">\(4d\)</span>，这些投影覆盖了
+<span class="math inline">\(L_1\)</span> 中一半的格点。另一方面 <span class="math inline">\(G\)</span>
+的偶数次反射构成的格点一般来说是无用的（除非狗仔和明星恰好位于某些特殊位置）。所以保镖
+<span class="math inline">\(G\)</span> 只能挡住小李子的所有虚像的
 1/4。</p>
+<p>同理如果 <span class="math inline">\(G\)</span>
+挡住的是小李子的某个偶数次虚像，那么 <span class="math inline">\(G\)</span> 和他的偶数次虚像只能挡住 <span class="math inline">\(L_2\)</span> 中一半的虚像，并且 <span class="math inline">\(G\)</span> 的奇数次虚像是无用的。</p>
 <h1 id="正方形-正三角形-正六边形">正方形 | 正三角形 | 正六边形</h1>
 <p>理解正多边形房间情形的第一个关键，是要知道刺客的任何射击轨迹都可以展开为平面上的一条射线。刺客可以击中目标当且仅当这条射线经过目标的某个虚像。这个操作叫做展开
 (unfolding)。</p>
@@ -525,12 +529,15 @@ Weyl 群</a>。仿射 Weyl
 中的某个元素作用在房间上，再沿着余根格点中的一个向量平移过去。但是，注意这里出现了正六边形和正三角形的真正区别：由于房间是正六边形的，而
 <span class="math inline">\(D_3\)</span>
 保持真实房间不变，只是置换其内部的 6 个正三角形，所以群元素和房间是 6 对
-1 的关系！</p>
-<p>设 <span class="math inline">\(p\)</span> 是真实房间内的一点，<span class="math inline">\(q\)</span> 是 <span class="math inline">\(p\)</span> 的某个虚像，从而存在 <span class="math inline">\(x\in D_3\)</span> 和 <span class="math inline">\(t\in L\)</span> 使得 <span class="math inline">\(q=x\cdot p + t\)</span>。于是 <span class="math inline">\(q\)</span> 所在的格点是 <span class="math display">\[q+L=q+\mathbb{Z}\alpha_1^\vee+\mathbb{Z}\alpha_2^\vee.\]</span>
-与正四边形和正三角形的情形不同的是，<span class="math inline">\(p\)</span> 并不是真实房间中唯一可以生成 <span class="math inline">\(q+L\)</span> 的点。 我们将 <span class="math inline">\(D_3\)</span> 作用在 <span class="math inline">\(p\)</span> 上得到集合 <span class="math inline">\(S=\{y\cdot p\mid y\in D_3\}\)</span>。由于 <span class="math inline">\(D_3\)</span> 保持真实房间不变，所以 <span class="math inline">\(S\)</span> 都是真实房间中的点。对任何 <span class="math inline">\(y\cdot p\in S\)</span>，我们用 <span class="math inline">\(xy^{-1}\in D_3\)</span> 作用在上面，得到 <span class="math inline">\(x\cdot p\)</span>，然后平移一个 <span class="math inline">\(L\)</span> 中的向量，就可以得到 <span class="math inline">\(q+L\)</span> 中的点。这就证明了 <span class="math inline">\(p\)</span>
-的虚像中，同一个格点里的虚像<strong>可能</strong> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
-来自房间内 6
-个不同的位置。所以对一个固定的保镖来说，把刺客和他（偶数次反射）形成的虚像构成的连线折叠回房间时，随着虚像不同，有
+1
+的关系！这是一个非常重要的不同，在正方形和正三角形房间的情形，群元素和房间都是一一对应的。</p>
+<p>这会导致什么后果呢？我们断言：目标的任何虚像格点可以来自房间中 6
+个不同的位置。这一点也与正方形和正三角形的情形不同，在那两种情形中目标的任何虚像格点只能来自房间中某个固定的位置。</p>
+<p>我们作如下分析：设 <span class="math inline">\(p\)</span>
+是真实房间内的一点，<span class="math inline">\(q\)</span> 是 <span class="math inline">\(p\)</span> 的某个虚像，从而存在 <span class="math inline">\(x\in D_3\)</span> 和 <span class="math inline">\(t\in L\)</span> 使得 <span class="math inline">\(q=x\cdot p + t\)</span>。于是 <span class="math inline">\(q\)</span> 所在的格点是 <span class="math display">\[q+L=q+\mathbb{Z}\alpha_1^\vee+\mathbb{Z}\alpha_2^\vee.\]</span>
+<span class="math inline">\(p\)</span> 并不是真实房间中唯一可以生成
+<span class="math inline">\(q+L\)</span> 的点。考虑集合 <span class="math inline">\(S=\{y\cdot p\mid y\in D_3\}\)</span>，由于 <span class="math inline">\(D_3\)</span> 保持真实房间不变，所以 <span class="math inline">\(S\)</span> 都是真实房间中的点。对任何 <span class="math inline">\(y\cdot p\in S\)</span>，我们用 <span class="math inline">\(xy^{-1}\in D_3\)</span> 作用在上面，得到 <span class="math inline">\(x\cdot p\)</span>，然后按照 <span class="math inline">\(L\)</span> 进行平移，就可以得到格点 <span class="math inline">\(q+L\)</span>。这就证明了 <span class="math inline">\(p\)</span> 的一个虚像格点<strong>可能</strong> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 来自房间内 6
+个不同的位置。所以对一个保镖来说，把刺客和他的虚像格点构成的连线折叠回房间时，随着虚像不同，有
 6
 个可能的位置。我们需要在每个位置上都放置一名保镖才能保证目标安全。这就是为什么保镖数目要乘以
 6。</p>

@@ -27,7 +27,7 @@ with
 Martingales，虽然不算很难但是综合使用了许多知识，展示了抽象的鞅理论其实有着丰富多彩的应用。
 
 问题：
-：一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
+一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
 \(r\)，发生故障时飞船与太阳的距离为
 \(R&amp;gt;r\)。好消息是在每个时刻，飞船能够知道自身与太阳系的距离。
 求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 \(r/R\)；但是对任何 \(\epsilon&amp;gt;0\)，可以采取适当的策略，使得飞船返回太阳系的概率大于
@@ -178,7 +178,7 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -338,9 +338,9 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
 <p>本文的问题出自 Williams 的教材 <a target="_blank" rel="noopener" href="https://www.cambridge.org/highereducation/books/probability-with-martingales/B4CFCE0D08930FB46C6E93E775503926#overview">Probability
 with
 Martingales</a>，虽然不算很难但是综合使用了许多知识，展示了抽象的鞅理论其实有着丰富多彩的应用。</p>
-<div id="------" class="unnumbered statement sta___ definition">
+<div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
-</span>：一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
+</span>一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
 <span class="math inline">\(r\)</span>，发生故障时飞船与太阳的距离为
 <span class="math inline">\(R&gt;r\)</span>。好消息是在每个时刻，飞船能够知道自身与太阳系的距离。</p>
 <p>求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 <span class="math inline">\(r/R\)</span>；但是对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，可以采取适当的策略，使得飞船返回太阳系的概率大于
@@ -409,22 +409,22 @@ a&gt;R,\\ 1/R &amp; a\leq R.\end{cases}\]</span> 其中 <span class="math inline
 8</a>)</span>。</p>
 <h1 id="建立模型">建立模型</h1>
 <ol type="1">
-<li><p>初始时刻设为 0，太阳系是以原点为圆心，半径为 <span class="math inline">\(r\)</span> 的球体，飞船初始位置在 <span class="math inline">\((R,0,0)\)</span> 处。</p></li>
+<li><p>初始时刻为 0，太阳系是以原点为圆心，半径为 <span class="math inline">\(r\)</span> 的球，飞船初始位置在 <span class="math inline">\((R,0,0)\)</span> 处。</p></li>
 <li><p>设 <span class="math inline">\(\{U_n\}_{n\geq 1}\)</span>
 是定义在某个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>
 上的一组独立同分布的、在单位球面上均匀分布的随机向量，它们表示飞船每次空间跳跃的随机方向。并设
 <span class="math inline">\(\mathcal{F}_n=\sigma(U_1,\ldots,U_n)\)</span> 以及
 <span class="math inline">\(\mathcal{F}_0=(\Omega,\emptyset)\)</span>。</p></li>
 <li><p>设第 <span class="math inline">\(n\)</span> 次空间跳跃的距离为
-<span class="math inline">\(l_n(n\geq1)\)</span>，因为在第 <span class="math inline">\(n\)</span> 次空间跳跃时要根据以前的信息来决定第
-<span class="math inline">\(n\)</span> 次的跳跃距离，所以 <span class="math inline">\(l_n\)</span> 关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测。</p></li>
-<li><p>于是若设第 <span class="math inline">\(n\)</span>
+<span class="math inline">\(l_n(n\geq1)\)</span>，由于 <span class="math inline">\(l_n\)</span> 是根据 <span class="math inline">\(n\)</span> 时刻之前的信息决定的，所以 <span class="math inline">\(l_n\)</span> 关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测。</p></li>
+<li><p>设第 <span class="math inline">\(n\)</span>
 次空间跳跃后飞船的坐标为 <span class="math inline">\(X_n\)</span>，那么
 <span class="math display">\[X_n=X_{n-1} + l_n U_n.\quad
 n=1,2,\ldots.\]</span> 其中 <span class="math inline">\(X_0=(R,0,0)\)</span> 是飞船的初始位置。</p></li>
 <li><p>设 <span class="math inline">\(T\)</span>
-是飞船首次返回太阳系的时间： <span class="math display">\[T = \inf\ \{
-n:|\ X_n\in B(0,r)\ \},\]</span>则 <span class="math inline">\(T\)</span> 的取值范围是 <span class="math inline">\(\mathbb{N^+}\cup\{+\infty\}\)</span>。我们要估算的是事件
+是飞船首次返回太阳系的时间： <span class="math display">\[T = \inf\,\{
+n\mid X_n\in B(0,r)\},\]</span>则 <span class="math inline">\(T\)</span>
+的取值范围是 <span class="math inline">\(\mathbb{N^+}\cup\{+\infty\}\)</span>。我们要估算的是事件
 <span class="math inline">\(\{T&lt;+\infty\}\)</span>
 的概率，这正是飞船能够在有限时间内回到太阳系的概率。</p></li>
 </ol>

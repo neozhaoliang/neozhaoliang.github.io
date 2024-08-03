@@ -174,7 +174,7 @@ Github 项目。此外还用 Javascript + canvas
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -352,7 +352,7 @@ Lyons 等人的 <a target="_blank" rel="noopener" href="https://rdlyons.pages.iu
 on trees and networks</a> 一书时，在网上查阅资料发现了 <a target="_blank" rel="noopener" href="https://bl.ocks.org/mbostock/11357811">这个动画</a>。当时就大叹奇妙，一顿看起来没头没脑的操作怎么就得出了一个迷宫呢？而且这个迷宫还服从所有迷宫
 （准确的说是所有完美迷宫） 上的均匀分布！</p>
 <p>Wilson
-本人给出的证明相当有技巧性，而且有一些晦涩的部分，我是花了很久才真正理解，回过头来看其实也不复杂，但是把细节说清楚需要花一番功夫。本文就来介绍这个证明。</p>
+本人给出的证明相当有技巧性，而且有一些晦涩的部分，我是花了很久才真正理解，回过头来看倒不算复杂，但是把细节说清楚需要花一番功夫。本文就来介绍这个证明。</p>
 <h1 id="算法的表述">算法的表述</h1>
 <p>考虑这样的问题：给定一个有限无向的连通图，怎样在它的所有生成树中等概率地任选一种？我们熟悉的
 Prim 算法、Kruskal
@@ -403,22 +403,20 @@ r\)</span>，定义一个栈结构 <span class="math inline">\(S_v=\{S_{v,1},S_{
 <p>此外我们规定每个栈的第 <span class="math inline">\(i\)</span> 个元素
 <span class="math inline">\(S_{v,i}\)</span> 的颜色是 <span class="math inline">\(i\)</span>。</p></li>
 <li><p>在任何时刻，这些栈 <span class="math inline">\(\{S_v,v\ne
-r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline">\(G_S\)</span>，<span class="math inline">\(G_S\)</span> 叫做栈顶图：<span class="math inline">\(G_S\)</span> 的顶点集就是 <span class="math inline">\(G\)</span> 的顶点集 <span class="math inline">\(V\)</span>，<span class="math inline">\(G_S\)</span> 中从 <span class="math inline">\(v\)</span> 连一条指向 <span class="math inline">\(u\)</span> 的有向边当且仅当 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(S_v\)</span> 的栈顶元素。每个 <span class="math inline">\(v\ne r\)</span> 的出度都恰好是 1，顶点 <span class="math inline">\(r\)</span> 的出度是 0，于是若 <span class="math inline">\(G_S\)</span> 不含回路的话它就是一个以 <span class="math inline">\(r\)</span> 为根的生成树。</p></li>
+r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline">\(G_S\)</span>，<span class="math inline">\(G_S\)</span> 叫做栈顶图：<span class="math inline">\(G_S\)</span> 的顶点集就是 <span class="math inline">\(G\)</span> 的顶点集 <span class="math inline">\(V\)</span>，<span class="math inline">\(G_S\)</span> 中从 <span class="math inline">\(v\)</span> 连一条指向 <span class="math inline">\(u\)</span> 的有向边当且仅当 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(S_v\)</span> 的栈顶元素。每个 <span class="math inline">\(v\ne r\)</span> 的出度都恰好是 1，顶点 <span class="math inline">\(r\)</span> 的出度是 0，所以如果 <span class="math inline">\(G_S\)</span> 不含回路的话它就是一个以 <span class="math inline">\(r\)</span> 为根的生成树。</p></li>
 <li><p>下面我们来玩一个“回路弹出” (cycle popping)
-的游戏。这个游戏有点类似俄罗斯方块，目的是消除栈顶图中的所有回路：给定栈的一个状态
-<span class="math inline">\(\omega\in\Omega\)</span>，设 <span class="math inline">\(G_S\)</span> 是 <span class="math inline">\(\omega\)</span> 的栈顶图，若 <span class="math inline">\(G_S\)</span>
-不含回路的话则它已经是一个生成树，游戏结束；否则设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(G_S\)</span>
-中的一个回路，我们可以将其“弹出”：对回路中的每个顶点 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素，于是若 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span>。这样得到一个更新后的 <span class="math inline">\(G_S\)</span>。玩家可以每次任选 <span class="math inline">\(G_S\)</span>
+的游戏。这个游戏有点类似俄罗斯方块，目的是消除栈顶图 <span class="math inline">\(G_S\)</span> 中的所有回路，把它变成生成树：若
+<span class="math inline">\(G_S\)</span>
+不含回路的话则它已经是一个生成树，游戏结束；否则设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(G_S\)</span> 中的一个回路，对回路中的每个顶点
+<span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 当前的栈顶元素，于是若弹出前 <span class="math inline">\(S_v\)</span> 的栈顶元素是 <span class="math inline">\(S_{v,i}\)</span>，则弹出后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span>。这样得到一个更新后的 <span class="math inline">\(G_S\)</span>。玩家可以每次任选 <span class="math inline">\(G_S\)</span>
 中的一个回路并将其弹出，如果经过有限多次弹出操作后使得 <span class="math inline">\(G_S\)</span>
 中不含任何回路，则玩家获胜，这时得到的 <span class="math inline">\(G_S\)</span> 是一个生成树。</p></li>
 <li><p>你可以每次无脑选一个回路将其弹出，也可以将 <span class="math inline">\(G_S\)</span>
 的所有回路在某种顺序下排好，每次弹出最小的那个，这都是不同的游戏策略。Wilson
 算法使用的是“跟着导航走”的策略：每次从一个不属于 <span class="math inline">\(T\)</span>
 的顶点出发，跟着栈顶图的路牌指示走，每当走出一个回路，就把这个回路弹掉。撞到
-<span class="math inline">\(T\)</span>
-的话，那就说明当前路径上的顶点不会属于任何回路（因为栈顶图的每个顶点出度至多是
-1），它们都是“安全”的。把当前路径加入 <span class="math inline">\(T\)</span>，再从任意一个不属于 <span class="math inline">\(T\)</span> 的顶点出发重复这个过程。</p></li>
-<li><p>Wilson 的策略可行吗？它能保证以概率 1
+<span class="math inline">\(T\)</span> 的话，把当前路径加入 <span class="math inline">\(T\)</span>，再从任意一个不属于 <span class="math inline">\(T\)</span> 的顶点出发重复这个过程。</p></li>
+<li><p>显然，Wilson 的策略是一个随机策略。它可行吗？它能保证以概率 1
 得到一个生成树吗？会不会在某次循环时一直在擦圈，永远撞不到 <span class="math inline">\(T\)</span>？答案是不会。由于 <span class="math inline">\(G\)</span>
 有限且连通，其上的简单随机游动是正常返的，每次循环时，随机游动以概率 1
 在有限时间内撞到 <span class="math inline">\(T\)</span>，所以算法确实以概率 1
@@ -429,7 +427,7 @@ r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline
 <span class="math inline">\(G_S\)</span> 不含任何回路，就令 <span class="math inline">\(\phi(\omega)=G_S\)</span>，否则 <span class="math inline">\(\phi(\omega)\)</span> 无定义。</p>
 <p><strong>这里有一个重要的问题：<span class="math inline">\(\phi\)</span>
 的定义是合理无歧义的吗</strong>？注意 Wilson
-算法允许每次从任意一个不属于 <span class="math inline">\(T\)</span>
+算法具有随机性，它允许每次从任意一个不属于 <span class="math inline">\(T\)</span>
 的顶点出发作擦圈的随机游动，不同的选择会不会导致不同的 <span class="math inline">\(G_S\)</span>？下面就来解决这个疑问。</p></li>
 <li><p>我们假设有若干玩家分别玩这个游戏，每个人采取的游戏策略是不同的。我们想知道，对给定的初始栈状态
 <span class="math inline">\(\omega\in\Omega\)</span>，这些玩家都能获胜吗？他们最终得到的栈顶图

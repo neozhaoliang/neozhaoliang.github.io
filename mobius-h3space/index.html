@@ -200,7 +200,7 @@ Undergraduate texts in mathematics. chapter IX, section 2.
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -444,24 +444,22 @@ z\)</span>，其中 <span class="math inline">\(\lambda&gt;0\)</span>
 (loxodromic)，如果它共轭于一个缩放和一个旋转的复合：<span class="math inline">\(z\to cz\)</span>，其中 <span class="math inline">\(c\in\mathbb{C}\)</span> 且 <span class="math inline">\(c\notin\mathbb{R}\)</span>。这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
 </ol>
 <p>我们把形如 <span class="math inline">\(z\to z+a\)</span> 和 <span class="math inline">\(z\to\lambda z\)</span>
-的变换称作<strong>特殊位置</strong>的变换，前者是抛物型的，以无穷远点为唯一不动点，后者包含了所有非抛物型的变换，它的两个不动点是原点和无穷远点。这时的
+的变换称作<strong>特殊位置</strong>的变换，前者是抛物型的，以无穷远点为唯一不动点，后者包含了所有非抛物型的变换，它的两个不动点是原点和无穷远点。这两种
 Möbius
-变换具有简单的表现形式，其在两个圆族上的作用也很容易分析，所以在研究每种类型的变换时，我们都先考虑这种简单的形式，然后再推广到一般的情形。</p>
+变换具有简单的表现形式，其在两个圆族上的作用也很容易分析，所以在研究每种类型的变换时，我们都先考虑这种简单的形式，然后再通过取共轭扩展到一般的情形。</p>
 <h2 id="抛物型">1. 抛物型</h2>
 <p>我们先考察最简单的抛物型变换 <span class="math inline">\(z\to
 z+1\)</span>。</p>
-<p>这时唯一的不动点是无穷远点，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有和 <span class="math inline">\(x\)</span> 轴平行的直线组成，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有和 <span class="math inline">\(y\)</span> 轴平行的直线组成，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 是正交的，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
+<p>这时唯一的不动点是无穷远点，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有和 <span class="math inline">\(x\)</span> 轴平行的直线组成，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有和 <span class="math inline">\(y\)</span> 轴平行的直线组成，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
 中的每条直线变成同族中的另一条直线：</p>
 <object data="/images/mobius/parabolic-plane.svg">
 </object>
-<p>所有点都向着不动点（无穷远点）的方向“前进”。</p>
+<p>由动画可见所有点都向着不动点（无穷远点）的方向“前进”。</p>
 <p>对一般的抛物型变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的唯一不动点 <span class="math inline">\(z_0\)</span> 有限的情形，结论仍然类似：圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的圆都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_1\)</span>，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 也都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_2\)</span>，<span class="math inline">\(\ell_1\)</span> 和 <span class="math inline">\(\ell_2\)</span> 互相垂直：</p>
 <object data="/images/mobius/parabolic-plane2.svg">
 </object>
 <p>由动画可见左右两侧的圆在旋转，但是圆本身保持不变，它们是圆族 <span class="math inline">\(\mathcal{C}_1\)</span>；上下两侧的圆在“扩散”，它们是圆族
-<span class="math inline">\(\mathcal{C}_2\)</span>。所有点都向着不动点
-<span class="math inline">\(z_0\)</span>
-的位置前进。事实上可以证明对任何 <span class="math inline">\(z\in\mathbb{C}\)</span> 都有 <span class="math inline">\(\lim\limits_{n\to\infty}M^n(z)=z_0\)</span>，即任何点在
+<span class="math inline">\(\mathcal{C}_2\)</span>。可以证明对任何 <span class="math inline">\(z\in\mathbb{C}\)</span> 都有 <span class="math inline">\(\lim\limits_{n\to\infty}M^n(z)=z_0\)</span>，即任何点在
 <span class="math inline">\(M\)</span> 反复作用下的轨迹都朝着 <span class="math inline">\(z_0\)</span> 的位置移动。</p>
 <p>在 <a target="_blank" rel="noopener" href="http://klein.math.okstate.edu/IndrasPearls/">Indra’s
 pearls</a> 一书中，把 <span class="math inline">\(\mathcal{C}_1\)</span>
@@ -478,7 +476,7 @@ e^{i\theta}z\)</span>。</p>
 中的直线变成同族的另一条直线，同时保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变：</p>
 <object data="/images/mobius/elliptic-plane.svg">
 </object>
-<p>对一般的椭圆变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，结论同样成立，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_1\)</span>
+<p>对于 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，结论同样成立，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_1\)</span>
 中的每个圆变为同族中的另一个圆：</p>
 <object data="/images/mobius/elliptic-plane2.svg">
 </object>
@@ -503,7 +501,7 @@ e^{i\theta}z\)</span>。</p>
 <p>仍然先看 <span class="math inline">\(z\to cz\)</span> 的情形。</p>
 <p>这时不动点是原点和无穷远点，显然 <span class="math inline">\(M\)</span> 把圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
 中的每个圆变为同族中的另一个圆，同样地也把圆族 <span class="math inline">\(\mathcal{C}_2\)</span>
-中的每个圆变为同族中的另一个圆，<strong>从而斜航型的变换没有不变圆</strong>：</p>
+中的每个圆变为同族中的另一个圆，<strong>所以斜航型的变换没有不变圆</strong>：</p>
 <object data="/images/mobius/loxodromic-plane.svg">
 </object>
 <p>这时点 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span>

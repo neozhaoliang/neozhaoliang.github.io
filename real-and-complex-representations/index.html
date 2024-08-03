@@ -24,7 +24,7 @@
     
     <meta name="description" content="在数学中有许多“三分天下”的例子，比如说：
 
-常曲率空间只有欧式、球面、双曲三种。
+常曲率空间只有欧氏、球面、双曲三种。
 三类典型的偏微分方程：热方程 （抛物）、Laplace 方程 （椭圆）、波方程
 （双曲）。
 复平面上全纯等价下只有三种单连通区域：单位圆 \(\mathbb{D}\)、复平面 \(\mathbb{C}\)、扩充复平面 \(\bar{\mathbb{C}}\)。
@@ -179,7 +179,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -340,7 +340,7 @@
                                                 
 <p>在数学中有许多“三分天下”的例子，比如说：</p>
 <ol type="1">
-<li>常曲率空间只有欧式、球面、双曲三种。</li>
+<li>常曲率空间只有欧氏、球面、双曲三种。</li>
 <li>三类典型的偏微分方程：热方程 （抛物）、Laplace 方程 （椭圆）、波方程
 （双曲）。</li>
 <li>复平面上全纯等价下只有三种单连通区域：单位圆 <span class="math inline">\(\mathbb{D}\)</span>、复平面 <span class="math inline">\(\mathbb{C}\)</span>、扩充复平面 <span class="math inline">\(\bar{\mathbb{C}}\)</span>。</li>
@@ -351,17 +351,23 @@
 <p>本文要介绍的是另外两个三分天下的例子，它们来自群表示论，即有限群的不可约实表示在复数域上的分解，和不可约复表示在实数域上的实现。这两个例子是紧密相关的。</p>
 <span id="more"></span>
 <h1 id="不可约实表示在复数域上的分解">不可约实表示在复数域上的分解</h1>
-<p>在有限群的表示论中，第一个遇到的重要结论可能要算 Schur 引理：</p>
+<p>在有限群的表示论中，第一个遇到的重要结论大概非 Schur 引理莫属：</p>
 <div id="schur-------" class="statement sta_schur___ plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">Schur
 引理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(G\)</span> 是一个有限群，<span class="math inline">\(k\)</span> 是一个特征为 0 的域，<span class="math inline">\(V\)</span> 是一个不可约左 <span class="math inline">\(kG\)</span>- 模。则 <span class="math inline">\(D=\mathrm{Hom}_{kG}(V,V)\)</span> 是 <span class="math inline">\(k\)</span> 上的有限维结合可除代数。</p>
 </div>
-<p>在我学到这个结论时我就想到，如果 <span class="math inline">\(k=\mathbb{R}\)</span> 是实数域的话，那么 <span class="math inline">\(D\)</span> 作为 <span class="math inline">\(\mathbb{R}\)</span>
-上的有限维结合可除代数只有三种：实数域 <span class="math inline">\(\mathbb{R}\)</span>，复数域 <span class="math inline">\(\mathbb{C}\)</span>，四元数体 <span class="math inline">\(\mathbb{H}\)</span>。这三种可能性分别对应 <span class="math inline">\(V\)</span> 的什么性质呢？</p>
-<p>为了简便起见，我们分别用 <span class="math inline">\(V_\mathbb{R}\)</span> 和 <span class="math inline">\(V_\mathbb{C}\)</span> 表示将 <span class="math inline">\(V\)</span> 视作 <span class="math inline">\(\mathbb{R}G\)</span>- 模和 <span class="math inline">\(\mathbb{C}G\)</span>- 模。</p>
-<p>答案其实与 <span class="math inline">\(V_\mathbb{C}\)</span>
-分解为不可约复表示的方式有关。注意虽然 <span class="math inline">\(V_\mathbb{R}\)</span> 是不可约的，但是 <span class="math inline">\(V_\mathbb{C}\)</span>
-就未必是不可约的了。我们将说明 <span class="math inline">\(V_\mathbb{C}\)</span>
+<p>我记得我还是本科生的时候，在自学到这个结论时就曾经想过这个问题： 如果
+<span class="math inline">\(k=\mathbb{R}\)</span> 是实数域的话，那么
+<span class="math inline">\(D\)</span> 作为 <span class="math inline">\(\mathbb{R}\)</span>
+上的有限维结合可除代数只有三种：实数域 <span class="math inline">\(\mathbb{R}\)</span>，复数域 <span class="math inline">\(\mathbb{C}\)</span>，四元数体 <span class="math inline">\(\mathbb{H}\)</span>。这三种可能性分别对应 <span class="math inline">\(\mathbb{R}G\)</span>- 模 <span class="math inline">\(V\)</span> 的什么性质呢？</p>
+<p>答案是，<span class="math inline">\(D\)</span> 的不同可能决定了 <span class="math inline">\(\mathbb{C}G\)</span>- 模 <span class="math inline">\(V_\mathbb{C}\)</span>
+分解为不可约复表示的方式。这里 <span class="math inline">\(V_\mathbb{C}\)</span> 是将 <span class="math inline">\(V\)</span> 视作复表示得到的 <span class="math inline">\(\mathbb{C}G\)</span>- 模。等一下，把 <span class="math inline">\(V\)</span> 视作一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模是什么意思来着？</p>
+<p>让我们回忆，<span class="math inline">\(V\)</span> 是一个 <span class="math inline">\(\mathbb{R}G\)</span>- 模的含义是，<span class="math inline">\(G\)</span> 通过群同态 <span class="math inline">\(G\to {\rm GL}(n,\mathbb{R})\)</span> 作用在 <span class="math inline">\(V\)</span> 上，其中 <span class="math inline">\(n=\dim
+V\)</span>。实矩阵当然也都是复矩阵，所以这自然是一个 <span class="math inline">\(G\)</span> 到 <span class="math inline">\({\rm
+GL}(n,\mathbb{C})\)</span> 的同态，于是 <span class="math inline">\(G\)</span> 也作用在 <span class="math inline">\(V_\mathbb{C}\)</span> 上，这里 <span class="math inline">\(V_\mathbb{C}\)</span> 是把 <span class="math inline">\(V\)</span> 看作复数域上的向量空间，即 <span class="math inline">\(V\otimes_\mathbb{R}\mathbb{C}\)</span>。</p>
+<p>注意虽然 <span class="math inline">\(V\)</span> 是不可约的，但是
+<span class="math inline">\(V_\mathbb{C}\)</span>
+就未必还是不可约的了。我们将说明 <span class="math inline">\(V_\mathbb{C}\)</span>
 的分解具有如下的“三分性质”：</p>
 <div class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
@@ -373,11 +379,7 @@
 <li><span class="math inline">\(D=\mathbb{H}\)</span> 当且仅当 <span class="math inline">\(V_\mathbb{C}\)</span> 可以分解为 <span class="math inline">\(V=2V_1\)</span>，其中 <span class="math inline">\(V_1\)</span> 是一个不可约复表示。</li>
 </ol>
 </div>
-<p>本节剩下的部分将致力于解释这一结论。</p>
-<p>首先，把 <span class="math inline">\(V\)</span>
-看作一个复向量空间，其实就是考虑 <span class="math inline">\(V\)</span>
-的复化 (complexification)： <span class="math display">\[V_\mathbb{C}=V\otimes_\mathbb{R}\mathbb{C}.\]</span>
-<span class="math inline">\(V_\mathbb{C}\)</span> 是一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模。那怎么计算 <span class="math inline">\(V_\mathbb{C}\)</span>
+<p>怎么计算 <span class="math inline">\(V_\mathbb{C}\)</span>
 的分解呢？这就要用到群表示论中的一个常用结论：</p>
 <div class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题

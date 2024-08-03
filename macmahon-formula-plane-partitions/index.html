@@ -173,7 +173,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">3 篇</span></a>
+                    代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -402,7 +402,11 @@
 <p>我们把这样的矩阵 <span class="math inline">\(A\)</span>
 叫做一个参数为 <span class="math inline">\((a,b,c)\)</span>
 的受限制的<strong>平面分拆</strong>。</p>
-<p>每一个受限制的平面分拆都对应于一个堆箱子的方式，从而对应于六边形的一个菱形密铺。这个对应是一一的，于是我们就把开头的密铺问题转化为平面分拆的计数问题：</p>
+<p>每一个受限制的平面分拆都对应于一个堆箱子的方式，从而对应于六边形的一个菱形密铺，并且这个对应是一一的
+——
+较真的读者可能会说：“且慢，你这只是从视觉直观上看出来菱形密铺和堆箱子是一一对应的，这不够严格吧？”
+没错，严格的证明是可以有的，但是这里我们的目的是欣赏一处数学奇趣，不必搞得那么学究。</p>
+<p>至此我们就把开头的密铺问题转化为平面分拆的计数问题：</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>满足如下两个条件的 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列矩阵有多少个？</p>
 <ol type="1">
@@ -420,7 +424,7 @@
 <p>虽然问题看起来很初等，但是答案的复杂暗示我们它并不像看起来那么容易。接下来你会看到，用一个巧妙的方法可以把问题转化为求一个行列式的值。</p>
 <h1 id="不相交的路径组">不相交的路径组</h1>
 <p>我们知道在平面上从原点 <span class="math inline">\((0,0)\)</span>
-出发，每次向右或者向上移动一个单位的距离，到达点 <span class="math inline">\((b,a)\)</span> 的路径总数为 <span class="math inline">\(\binom{a+b}{b}\)</span>，这样的一条路径叫做 Gauss
+出发，每次向右或者向上移动一个单位的距离，到达点 <span class="math inline">\((b,a)\)</span> 的路径总数是组合数 <span class="math inline">\(\binom{a+b}{b}\)</span>，这样的一条路径叫做 Gauss
 路径。</p>
 <p>任何一个平面分拆的矩阵 <span class="math inline">\(A\)</span>
 都对应于 <span class="math inline">\(c\)</span> 条这样的路径，其中第
