@@ -191,7 +191,7 @@ Jordan
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">8 篇</span></a>
+                    pywonderland-项目 <span class="right">9 篇</span></a>
                 </a>
             </li>
 
@@ -223,7 +223,7 @@ Jordan
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -362,9 +362,9 @@ V_k\)</span>，使得每一个 <span class="math inline">\(V_i\)</span> 都是
 <p><span class="statement-heading"><span class="statement-label">线性变换的唯一分解定理</span>.</span><span class="statement-spah"> </span>（修正的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 可以分解为若干个 <span class="math inline">\(T\)</span>- 不变子空间的直和 <span class="math inline">\(V=V_1\oplus\cdots\oplus V_k\)</span>，<span class="math inline">\(T\)</span> 限制在每个 <span class="math inline">\(V_i\)</span>
 上是不可分解的线性变换。这个分解还是唯一的，即如果 <span class="math inline">\(V=W_1\oplus\cdots\oplus W_l\)</span>
 是另一种分解，则 <span class="math inline">\(k=l\)</span>
-且适当重排以后对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(V_i\)</span> 上的限制与 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(W_i\)</span> 上的限制是相似的。</p>
+且适当重排以后，对每个 <span class="math inline">\(i\)</span>，<span class="math inline">\(T\)</span> 在 <span class="math inline">\(V_i\)</span> 上的限制与 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(W_i\)</span> 上的限制是相似的。</p>
 </div>
-<p>这里有一个重要的问题需要说明：在一般的域上研究“不可分解”的线性变换是一个棘手的多的问题，这个问题的解决要用到我们后面要学的
+<p>这里有一个重要的问题需要说明：在一般的域上研究“不可分解”的线性变换是一个棘手的多的问题，这个问题的解决要用到
 Frobenius 有理标准形，而在复数域上问题就简单很多，这就是 Jordan
 标准形做的事情。在本文中我们都在复数域上讨论。</p>
 <p>那么什么样的线性变换算是不可分解的线性变换呢？</p>
@@ -379,12 +379,10 @@ v_{n-1}),\quad J_0=\begin{pmatrix}0&amp;1&amp;&amp;\\ &amp;\ddots
 &amp;&amp;&amp;0\end{pmatrix}.\]</span></p>
 <p><span class="math inline">\(J_0\)</span> 叫做特征值为 0 的 Jordan
 块。注意 <span class="math inline">\(T\)</span> 是一个幂零算子：<span class="math inline">\(T^n=0\)</span>，它仅有唯一的特征值 0。</p>
-<p>为什么移位算子 <span class="math inline">\(T\)</span>
-是不可分解的？假设 <span class="math inline">\(V=U\oplus W\)</span>
-是两个非平凡 <span class="math inline">\(T\)</span>-
-不变子空间的直和，则 <span class="math inline">\(T\)</span> 作为 <span class="math inline">\(U\)</span> 和 <span class="math inline">\(W\)</span> 上的幂零线性变换必然各有一个特征值为 0
+<p>为什么 <span class="math inline">\(T\)</span> 是不可分解的？假设
+<span class="math inline">\(V=U\oplus W\)</span> 是两个非平凡 <span class="math inline">\(T\)</span>- 不变子空间的直和，则 <span class="math inline">\(T\)</span> 作为 <span class="math inline">\(U\)</span> 和 <span class="math inline">\(W\)</span> 上的幂零线性变换必然各有一个特征值为 0
 的特征向量，因此齐次线性方程组 <span class="math inline">\(TX=0\)</span>
-的解空间至少包含两个线性无关的向量。但是 <span class="math inline">\(T\)</span> 的秩是 <span class="math inline">\(n-1\)</span>，即 <span class="math inline">\(TX=0\)</span> 的解空间是 1
+的解空间至少包含两个线性无关的向量。但是 <span class="math inline">\(T\)</span> 的秩是 <span class="math inline">\(n-1\)</span>，所以 <span class="math inline">\(TX=0\)</span> 的解空间是 1
 维的，这就导致了矛盾。</p>
 <p>用同样的方法可以说明给移位算子 <span class="math inline">\(T\)</span>
 加上一个数乘变换以后得到的仍然是不可分解的线性变换：设 <span class="math inline">\(\lambda\in\mathbb{C}\)</span>，<span class="math inline">\(S=T+\lambda I\)</span>，则 <span class="math inline">\(S\)</span> 也是不可分解线性变换，其对应的矩阵
@@ -395,7 +393,7 @@ v_{n-1}),\quad J_0=\begin{pmatrix}0&amp;1&amp;&amp;\\ &amp;\ddots
 Jordan 标准形定理：</p>
 <div id="jordan----------------" class="unnumbered statement sta_jordan______ plain">
 <p><span class="statement-heading"><span class="statement-label">Jordan
-标准形定理</span>.</span><span class="statement-spah"> </span>：设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上有限维向量空间 <span class="math inline">\(V\)</span> 上的线性变换，则存在 <span class="math inline">\(V\)</span> 的一组基使得 <span class="math inline">\(T\)</span> 在这组基下的矩阵为 Jordan 块的直和：
+标准形定理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上有限维向量空间 <span class="math inline">\(V\)</span> 上的线性变换，则存在 <span class="math inline">\(V\)</span> 的一组基使得 <span class="math inline">\(T\)</span> 在这组基下的矩阵为 Jordan 块的直和：
 <span class="math display">\[T=J_{\lambda_1}\oplus\cdots\oplus
 J_{\lambda_r}.\]</span> 这种分解是唯一的，意思是如果存在 <span class="math inline">\(V\)</span> 的另一组基使得 <span class="math inline">\(T\)</span> 的矩阵也是 Jordan 块的直和 <span class="math display">\[T=J_{\mu_1}\oplus\cdots\oplus J_{\mu_s},\]</span>
 则 <span class="math inline">\(r=s\)</span> 且适当重排后有 <span class="math inline">\(J_{\lambda_i}=J_{\mu_i}\)</span>。</p>
@@ -440,7 +438,7 @@ g_i\equiv1\pmod{(x-\lambda_i)^{n_i}}, &amp;
 \]</span></p>
 <p>不难看出 <span class="math inline">\(\sum_{i=1}^kg_i\equiv1\pmod{f}\)</span> 以及对
 <span class="math inline">\(i\ne j\)</span> 有 <span class="math inline">\(g_ig_j\equiv0\pmod{f}\)</span> 成立，所以根据
-Hamilton-Cayley 定理有 <span class="math inline">\(g_1(T)+\cdots+g_k(T)=I\)</span> 以及 <span class="math inline">\(g_ig_j(T)=0\)</span>。记 <span class="math inline">\(E_i=g_i(T)\)</span>，则由引理的结论有 <span class="math inline">\(E_i^2=E_i\)</span> 以及 <span class="math display">\[ V=E_1(V)\oplus\cdots\oplus\cdots
+Hamilton-Cayley 定理有 <span class="math inline">\(g_1(T)+\cdots+g_k(T)=I\)</span> 以及 <span class="math inline">\(g_i(T)g_j(T)=0\)</span>。记 <span class="math inline">\(E_i=g_i(T)\)</span>，则由引理的结论有 <span class="math inline">\(E_i^2=E_i\)</span> 以及 <span class="math display">\[ V=E_1(V)\oplus\cdots\oplus\cdots
 E_k(V).\]</span> 我们只需要再证明对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(E_i(V)=\ker(T-\lambda_i)^{n_i}\)</span> 即可。</p>
 <p>设 <span class="math inline">\(v\in E_i(V)\)</span>，则 <span class="math inline">\(v=E_iv\)</span>，所以 <span class="math display">\[(T-\lambda_i)^{n_i}v=(T-\lambda_i)^{n_i}g_i(T)(v)=0.\]</span>
 这里第二个等号是因为 <span class="math inline">\((x-\lambda_i)^{n_i}g_i(x)\)</span> 被 <span class="math inline">\(f(x)\)</span> 整除，从而 <span class="math inline">\(E_i(V)\subset\ker(T-\lambda_i)^{n_i}\)</span>。</p>
@@ -457,14 +455,13 @@ Nv\rightarrow \cdots \rightarrow N^kv\rightarrow 0.\]</span>
 <p>对 <span class="math inline">\(V\)</span> 的维数 <span class="math inline">\(\dim V\)</span> 归纳，<span class="math inline">\(\dim V=1\)</span> 时显然结论成立。</p>
 <p>现假设结论对所有维数小于 <span class="math inline">\(\dim V\)</span>
 的向量空间成立，考虑 <span class="math inline">\(V\)</span> 的像空间
-<span class="math inline">\(N(V)\)</span>。这是一个 <span class="math inline">\(N\)</span>- 不变子空间，且由于 <span class="math inline">\(N\)</span> 是幂零线性变换所以 <span class="math inline">\(\dim N(V)&lt;\dim V\)</span>，所以可以对子空间
-<span class="math inline">\(N(V)\)</span> 使用归纳假设：存在 <span class="math inline">\(N(V)\)</span> 的一组基如下，它们构成 <span class="math inline">\(q\)</span> 条不相交的轨道 <span class="math inline">\(\mathcal{O}_1,\cdots,\mathcal{O}_q\)</span>：</p>
+<span class="math inline">\(N(V)\)</span>。这是一个 <span class="math inline">\(N\)</span>- 不变子空间，且由于 <span class="math inline">\(N\)</span> 是幂零线性变换所以 <span class="math inline">\(\dim N(V)&lt;\dim V\)</span>，所以可以对 <span class="math inline">\(N(V)\)</span> 使用归纳假设：存在 <span class="math inline">\(N(V)\)</span> 的一组基如下，它们构成 <span class="math inline">\(q\)</span> 条不相交的轨道 <span class="math inline">\(\mathcal{O}_1,\cdots,\mathcal{O}_q\)</span>：</p>
 <p><span class="math display">\[\begin{array}{l}&amp;v_{1,1}\rightarrow
 v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow
 0.\\&amp;v_{2,1}\rightarrow v_{2,2}\rightarrow\cdots\rightarrow
-v_{2,n_2}\rightarrow 0.\\&amp;\cdots\cdots\cdots\\&amp;
-v_{q,1}\rightarrow v_{q,2}\rightarrow\cdots\rightarrow
-v_{q,n_q}\rightarrow 0.\end{array}\]</span></p>
+v_{2,n_2}\rightarrow 0.\\&amp;\cdots\\&amp; v_{q,1}\rightarrow
+v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
+0.\end{array}\]</span></p>
 <p>由于 <span class="math inline">\(v_{i,1}\in N(V)\)</span> 因此可以设
 <span class="math inline">\(v_{i,1}=Nw_i\)</span>，从而我们得到一组更长的轨道（就是在前面加上一项）</p>
 <p><span class="math display">\[\begin{array}{l}&amp;w_1\rightarrow
@@ -478,7 +475,7 @@ v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
 <span class="math inline">\(V\)</span> 中长度是 1，但是在 <span class="math inline">\(N(V)\)</span> 中“消失”了的轨道：注意 <span class="math inline">\(\{v_{1,n_1},\cdots,v_{q,n_q}\}\)</span> 是 <span class="math inline">\(\ker N\)</span> 中的线性无关元，但是 <span class="math inline">\(\ker N\)</span> 还可能有其它的基向量。将它们扩充为
 <span class="math inline">\(\ker N\)</span> 的一组基</p>
 <p><span class="math display">\[\{ v_{1,n_1},\cdots,v_{q,n_1}\}\cup \{
-w_{q+1},\cdots,w_{K}\}\quad K=\dim\ker N.\]</span></p>
+w_{q+1},\cdots,w_{K}\},\quad K=\dim\ker N.\]</span></p>
 <p>从而我们最终得到下面的轨道图：</p>
 <p><span class="math display">\[\begin{array}{r}\mathbf{w_1}\rightarrow
 v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow
@@ -593,15 +590,15 @@ Jordan 块和 1 个 2 阶的 Jordan 块。</p>
 必然分解成一些次数相同的多项式的乘积：</p>
 <p><span class="math display">\[f=f_1f_2\cdots f_r,\quad \deg
 f_1=\cdots=\deg f_r.\]</span></p>
-<p>类似的还有代数数论中素理想的分解，群表示论中不可约表示
+<p>类似的现象还有代数数论中素理想的分解，群表示论中不可约表示
 （在诱导和限制下） 的分解，代数几何中不可约代数簇的分解等等。</p>
 
 
 
                                                     
 <p class="pink-link-context">
-    <a href="/hurwitz-square-sum-theorem/" rel="next" title="Hurwitz 平方和定理">
-    上一篇：Hurwitz 平方和定理
+    <a href="/jordan-canonical-form/" rel="next" title="Jordan 标准形">
+    上一篇：Jordan 标准形
   </a>
 </p>
 
