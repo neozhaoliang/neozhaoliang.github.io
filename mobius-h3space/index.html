@@ -423,11 +423,11 @@ Möbius 变换 <span class="math inline">\(M\)</span> 的两个不动点时 <spa
 a,b,c,d\in\mathbb{C},ad-bc\ne0, z\in \hat{\mathbb{C}}.\]</span> 所有的
 Möbius 变换构成一个群 <span class="math inline">\({\rm
 PSL}_2(\mathbb{C})\)</span>。</p>
-<p>我们称两个 Möbius 变换 <span class="math inline">\(M_1,M_2\)</span>
-是共轭的，当且仅当存在 <span class="math inline">\(g\in{\rm
-PSL}_2(\mathbb{C})\)</span> 使得 <span class="math display">\[M_1=gM_2
-g^{-1}.\]</span></p>
-<p>可以证明在共轭的意义下，任何非恒等元的 Möbius
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>我们称两个 Möbius 变换 <span class="math inline">\(M_1,M_2\)</span> 是共轭的，当且仅当存在 <span class="math inline">\(g\in{\rm PSL}_2(\mathbb{C})\)</span> 使得 <span class="math display">\[M_1=gM_2 g^{-1}.\]</span></p>
+</div>
+<p>可以证明，在共轭的意义下，任何非恒等元的 Möbius
 变换都属于下面四种类型之一：</p>
 <ol type="1">
 <li><span class="math inline">\(M\)</span> 称作是抛物型的
@@ -441,20 +441,21 @@ e^{i\theta}z\)</span>，其中 <span class="math inline">\(\theta\in\mathbb{R}\)
 z\)</span>，其中 <span class="math inline">\(\lambda&gt;0\)</span>
 是实数且不为 1。这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
 <li><span class="math inline">\(M\)</span> 称作是斜航型的
-(loxodromic)，如果它共轭于一个缩放和一个旋转的复合：<span class="math inline">\(z\to cz\)</span>，其中 <span class="math inline">\(c\in\mathbb{C}\)</span> 且 <span class="math inline">\(c\notin\mathbb{R}\)</span>。这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
+(loxodromic)，如果它共轭于一个缩放和一个旋转的复合：<span class="math inline">\(z\to cz\)</span>，其中 <span class="math inline">\(c\in\mathbb{C}\setminus \mathbb{R}\)</span>。这时
+<span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
 </ol>
 <p>我们把形如 <span class="math inline">\(z\to z+a\)</span> 和 <span class="math inline">\(z\to\lambda z\)</span>
-的变换称作<strong>特殊位置</strong>的变换，前者是抛物型的，以无穷远点为唯一不动点，后者包含了所有非抛物型的变换，它的两个不动点是原点和无穷远点。这两种
-Möbius
-变换具有简单的表现形式，其在两个圆族上的作用也很容易分析，所以在研究每种类型的变换时，我们都先考虑这种简单的形式，然后再通过取共轭扩展到一般的情形。</p>
+的变换称作<strong>特殊位置</strong>的变换，前者是抛物型的，以 <span class="math inline">\(\infty\)</span>
+为唯一不动点，后者包含了所有非抛物型的变换，它的两个不动点是 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span>。这两种 Möbius
+变换具有简单的表现形式，并且它们在两个圆族上的作用也很容易分析，所以在研究每种类型的变换时，我们都先考虑这种简单的形式，然后再通过取共轭扩展到一般的情形。</p>
 <h2 id="抛物型">1. 抛物型</h2>
 <p>我们先考察最简单的抛物型变换 <span class="math inline">\(z\to
 z+1\)</span>。</p>
-<p>这时唯一的不动点是无穷远点，圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有和 <span class="math inline">\(x\)</span> 轴平行的直线组成，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 由所有和 <span class="math inline">\(y\)</span> 轴平行的直线组成，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
+<p>这时唯一的不动点是 <span class="math inline">\(\infty\)</span>，<span class="math inline">\(\mathcal{C}_1\)</span> 是直线族 <span class="math inline">\(\{y=k\mid k\in\mathbb{R}\}\)</span>，<span class="math inline">\(\mathcal{C}_2\)</span> 是直线族 <span class="math inline">\(\{x=l\mid l\in\mathbb{R}\}\)</span>。<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
 中的每条直线变成同族中的另一条直线：</p>
 <object data="/images/mobius/parabolic-plane.svg">
 </object>
-<p>由动画可见所有点都向着不动点（无穷远点）的方向“前进”。</p>
+<p>由动画可见所有点都向着不动点 <span class="math inline">\(\infty\)</span> 的方向“前进”。</p>
 <p>对一般的抛物型变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的唯一不动点 <span class="math inline">\(z_0\)</span> 有限的情形，结论仍然类似：圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的圆都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_1\)</span>，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 也都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_2\)</span>，<span class="math inline">\(\ell_1\)</span> 和 <span class="math inline">\(\ell_2\)</span> 互相垂直：</p>
 <object data="/images/mobius/parabolic-plane2.svg">
 </object>
@@ -469,21 +470,18 @@ pearls</a> 一书中，把 <span class="math inline">\(\mathcal{C}_1\)</span>
 <h2 id="椭圆型">2. 椭圆型</h2>
 <p>我们先考察最简单的椭圆型变换 <span class="math inline">\(z\to
 e^{i\theta}z\)</span>。</p>
-<p>这时两个不动点是原点和无穷远点。圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
-由所有过原点的直线组成，<span class="math inline">\(\mathcal{C}_2\)</span>
-由所有以原点为中心的同心圆组成。<span class="math inline">\(M\)</span>
-是个旋转，所以会把 <span class="math inline">\(\mathcal{C}_1\)</span>
+<p>这时两个不动点是 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span>。圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有过 <span class="math inline">\(0\)</span> 的直线组成，<span class="math inline">\(\mathcal{C}_2\)</span> 由所有以 <span class="math inline">\(0\)</span> 为中心的同心圆组成。<span class="math inline">\(M\)</span> 是个旋转，所以会把 <span class="math inline">\(\mathcal{C}_1\)</span>
 中的直线变成同族的另一条直线，同时保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变：</p>
 <object data="/images/mobius/elliptic-plane.svg">
 </object>
-<p>对于 <span class="math inline">\(M\)</span> 的两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，结论同样成立，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_1\)</span>
+<p>对两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，结论同样成立，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_1\)</span>
 中的每个圆变为同族中的另一个圆：</p>
 <object data="/images/mobius/elliptic-plane2.svg">
 </object>
 <h2 id="双曲型">3. 双曲型</h2>
 <p>与椭圆变换 <span class="math inline">\(z\to e^{i\theta}z\)</span>
-的情形类似，<span class="math inline">\(z\to\lambda z\)</span>
-也以原点和无穷远点为不动点，但是圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的运动方式发生了互换：这次
+的情形类似，<span class="math inline">\(z\to\lambda z\)</span> 也以
+<span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span> 为不动点，但是圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的运动方式发生了互换：这次
 <span class="math inline">\(\mathcal{C}_1\)</span>
 中的每条直线在放缩下保持不变，<span class="math inline">\(\mathcal{C}_2\)</span>
 中的每个圆在放缩下变成同族的另一个圆：</p>
@@ -499,19 +497,19 @@ e^{i\theta}z\)</span>。</p>
 一个是“源点”，另一个是“汇点”，轨迹从源点源源不竭地发出，汇聚到汇点中。</p>
 <h2 id="斜航型">4. 斜航型</h2>
 <p>仍然先看 <span class="math inline">\(z\to cz\)</span> 的情形。</p>
-<p>这时不动点是原点和无穷远点，显然 <span class="math inline">\(M\)</span> 把圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
+<p>这时不动点是 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span>，<span class="math inline">\(M\)</span> 把圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
 中的每个圆变为同族中的另一个圆，同样地也把圆族 <span class="math inline">\(\mathcal{C}_2\)</span>
 中的每个圆变为同族中的另一个圆，<strong>所以斜航型的变换没有不变圆</strong>：</p>
 <object data="/images/mobius/loxodromic-plane.svg">
 </object>
-<p>这时点 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span>
+<p>这时平面上一点 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span>
 的反复作用下的轨迹是一条形如“旋臂”的曲线，方程为 <span class="math inline">\(\gamma(t)=c^tz\)</span>，这是一条对数螺线
 (spiral)，其与 <span class="math inline">\(\mathcal{C}_1\)</span> 和
 <span class="math inline">\(\mathcal{C}_2\)</span> 的夹角都是常数。</p>
 <p>这个结论对一般的斜航型变换也成立：</p>
 <object data="/images/mobius/loxodromic-plane2.svg">
 </object>
-<p>由于斜航型变换包含双曲变换作为组成成分，因此看起来它也有一个源点和一个汇点。这时任意点
+<p>由于斜航型变换包含双曲变换作为组成成分，因此看起来它也有一个源点和一个汇点。这时任意一点
 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span> 的反复作用下的轨迹是一条双螺线 (double
 spiral)，其与 <span class="math inline">\(\mathcal{C}_1\)</span> 和
 <span class="math inline">\(\mathcal{C}_2\)</span> 的夹角仍然都是常数
@@ -538,11 +536,12 @@ Nunes (1492-1577)
 <p>在大航海的时代，没有卫星导航，只能靠罗盘或者星座来标识船的航向，而星座的方法在遇到恶劣天气的时候又不能使用，只有罗盘是最可靠的方法。理论上地球表面两点之间的最短路径是过球心的大圆，但罗盘只能定出经线的方向
 （原理是地球的磁极和南北极近似重合），这二者的夹角不是固定的，要保持沿着大圆的弧走就必须不停调整船的航向，但现实中的船不可能一直有人守在船舵处调整方向，一般是事先定好航向以后接下来的若干天都沿着这个方向走，所以在一定路程内船实际上走的是斜航线。</p>
 <p>荷兰地图学家墨卡托 (Mercator) 据此于 1569
-年提出了墨卡托地图，将地球投影至墨卡托地图是一个保角变换，即曲线的夹角保持不变。所以要从地球上的
-<span class="math inline">\(A\)</span> 点航向到 <span class="math inline">\(B\)</span> 点，只要找到它们在墨卡托地图上的对应点
-<span class="math inline">\(A',B'\)</span>，算出地图上的直线
-<span class="math inline">\(A'B'\)</span> 与经线的夹角 <span class="math inline">\(\theta\)</span>，则航行时只要让罗盘与经线一直保持角度为
-<span class="math inline">\(\theta\)</span> 就可以从 <span class="math inline">\(A\)</span> 航行到 <span class="math inline">\(B\)</span>
+年提出了墨卡托地图，将地球投影至墨卡托地图是一个保角变换，即曲线的夹角保持不变。不仅如此，球面上的斜航线在墨卡托地图中成为一条直线：</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/mobius/mercator.jpg"></p>
+<p>所以要从地球上的 <span class="math inline">\(A\)</span> 点航向到
+<span class="math inline">\(B\)</span>
+点，只要找到它们在墨卡托地图上的对应点 <span class="math inline">\(A',B'\)</span>，算出地图上的直线 <span class="math inline">\(A'B'\)</span> 与经线的夹角 <span class="math inline">\(\theta\)</span>，航行时只要让罗盘与经线一直保持角度为
+<span class="math inline">\(\theta\)</span> 就可以按照斜航线从 <span class="math inline">\(A\)</span> 航行到 <span class="math inline">\(B\)</span>
 了。这个路径虽不是最短，但是好在不容易迷失航向。</p>
 <p>那这和 Möbius 变换有什么关系呢？</p>
 <h1 id="möbius-变换作用在-riemann-球面上">Möbius 变换作用在 Riemann
@@ -557,7 +556,7 @@ Riemann 球面 <span class="math inline">\(S^2\)</span>，所以 Möbius
 <p>我来解释一下这个动画的含义：从动画可见 Riemann
 球面上有一对源点和汇点，这对源点和汇点可以理解为球面的“北极”和“南极”，它们在球极投影下对应于
 <span class="math inline">\(M\)</span>
-在扩充复平面上的两个不动点。当这两个不动点分别是原点和无穷远时，这两个极点就是通常意义下的北极和南极。这时球面上的“经线”是所有过两个极点的大圆，在球极投影下它们对应于同时过两个不动点的圆族
+在扩充复平面上的两个不动点。当这两个不动点分别是原点和无穷远点时，这两个极点就是通常意义下的北极和南极。这时球面上的“经线”是所有过两个极点的大圆，在球极投影下它们对应于同时过两个不动点的圆族
 <span class="math inline">\(\mathcal{C}_1\)</span>；球面上的纬线是所有与经线正交的圆，在球极投影下它们对应于反演圆族
 <span class="math inline">\(\mathcal{C}_2\)</span>，球面上每个点的轨迹是对数螺线轨迹在逆球极投影下在球面上的对应曲线，这条曲线与经线纬线的夹角都是常数（因为球极投影是保角的），从而是一条斜航线！</p>
 <div class="unnumbered statement exercise-unnumbered definition">
@@ -610,7 +609,7 @@ cz\)</span> 的斜航型变换扩展到 <span class="math inline">\(\mathbb{H}_3
 <span class="math inline">\(d\)</span> 是定值。所以虽然在欧式空间 <span class="math inline">\(\mathbb{R}^3\)</span> 中看它是一个锥体，但是在
 <span class="math inline">\(\mathbb{H}_3\)</span> 中它其实是圆柱体。</p>
 <p>你可以看到这时 <span class="math inline">\(\overline{M}\)</span>
-有两个不动点，都位于无穷远处，这样的点叫做“理想点”。两个不动点之间的连线构成圆柱的轴。两个不动点一个是源点，一个是汇点，空间中的点在变换的作用下“远离”源点，“趋向”汇点。</p>
+有两个不动点，都位于无穷远边界上，这样的点叫做“理想点”。两个不动点之间的连线构成圆柱的轴。两个不动点一个是源点，一个是汇点，空间中的点在变换的作用下“远离”源点，“趋向”汇点。</p>
 <p>对于一般的斜航型变换 <span class="math inline">\(M\)</span>，且其两个不动点都是扩充复平面上的有限点时，<span class="math inline">\(M\)</span> 在 <span class="math inline">\(\mathbb{H}_3\)</span> 上的扩展 <span class="math inline">\(\overline{M}\)</span> 仍然保持一个 <span class="math inline">\(\mathbb{H}_3\)</span> 中的圆柱体不变：</p>
 <object data="/images/mobius/loxodromic-dupin.svg">
 </object>

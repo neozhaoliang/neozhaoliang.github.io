@@ -38,8 +38,8 @@ Young
 \(1\leq k\leq n\) 和 \(1\leq i&amp;lt;j\leq m\)，序列的前 \(k\) 项中数字 \(i\) 出现的次数都大于等于数字 \(j\) 出现的次数。
 
 虽然问题的表述很简单，但其实答案相当复杂，叫做钩长公式 (hook length
-formula)。钩长公式有多种不同的证明，但我最喜欢的方法是使用 Schur
-多项式的理论，我接下来就来介绍它。">
+formula)。钩长公式有好几个证明，但我最喜欢的证明是使用 Schur
+多项式的理论，接下来就来介绍它。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -369,8 +369,8 @@ formula)。钩长公式有多种不同的证明，但我最喜欢的方法是使
 <span class="math inline">\(1\leq k\leq n\)</span> 和 <span class="math inline">\(1\leq i&lt;j\leq m\)</span>，序列的前 <span class="math inline">\(k\)</span> 项中数字 <span class="math inline">\(i\)</span> 出现的次数都大于等于数字 <span class="math inline">\(j\)</span> 出现的次数。</p>
 </div>
 <p>虽然问题的表述很简单，但其实答案相当复杂，叫做钩长公式 (hook length
-formula)。钩长公式有多种不同的证明，但我最喜欢的方法是使用 Schur
-多项式的理论，我接下来就来介绍它。</p>
+formula)。钩长公式有好几个证明，但我最喜欢的证明是使用 Schur
+多项式的理论，接下来就来介绍它。</p>
 <span id="more"></span>
 <h1 id="schur-多项式组合定义">Schur 多项式：组合定义</h1>
 <p>设 <span class="math inline">\(\lambda=(\lambda_1,\lambda_2,\ldots)\)</span>
@@ -402,6 +402,12 @@ k\)</span>，我们可以用一个图 <span class="math inline">\(F_\lambda\)</s
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -430,6 +436,12 @@ Ferrers 图中。</p>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
 <td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -508,8 +520,8 @@ Young 表 (semistandard Young tableaux)，简称为 SSYT；如果一个形状为
 <p>我们用记号 <span class="math inline">\({\rm SSYT}(n,\lambda)\)</span>
 表示所有形状为 <span class="math inline">\(\lambda\)</span>
 且填入的数字不超过 <span class="math inline">\(n\)</span> 的半标准 Young
-表组成的集合，显然此集合非空则必有 <span class="math inline">\(n\geq
-l(\lambda)\)</span>。当 <span class="math inline">\(|\lambda|=n\)</span>
+表组成的集合，显然若要使得此集合非空，则必须有 <span class="math inline">\(n\geq l(\lambda)\)</span>（SSYT
+的每一行是递增的）。当 <span class="math inline">\(|\lambda|=n\)</span>
 时我们也将其简写为 <span class="math inline">\({\rm
 SSYT}(\lambda)\)</span>。用记号 <span class="math inline">\({\rm
 SYT}(\lambda)\)</span> 表示所有形状为 <span class="math inline">\(\lambda\)</span> 的标准 Young 表组成的集合。</p>
@@ -735,17 +747,11 @@ Young 表与容度为 <span class="math inline">\((\ldots,c_{i+1},c_i,\ldots)\)<
 Young 表一一对应即可。看起来只要对每个形状为 <span class="math inline">\(\lambda\)</span> 的半标准 Young 表，把其中的数字
 <span class="math inline">\(i\)</span> 全换成 <span class="math inline">\(i+1\)</span>，同时把 <span class="math inline">\(i+1\)</span> 全换成 <span class="math inline">\(i\)</span> 就可以了，是吗？</p>
 <p>问题出在这样简单粗暴地修改得到的未必还是半标准的 Young
-表。我们需要仔细点选择那些翻转的方格。如果某个 <span class="math inline">\(i\)</span> 的下方恰好是 <span class="math inline">\(i+1\)</span>，就称这样的 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(i+1\)</span> 是匹配了的。而那些下方没有 <span class="math inline">\(i+1\)</span> 的 <span class="math inline">\(i\)</span>，或者上方没有 <span class="math inline">\(i\)</span> 的 <span class="math inline">\(i+1\)</span>
-统称为未匹配的。下面的事实不难验证：</p>
-<blockquote>
-<p>在 <span class="math inline">\(T\)</span>
-的任意一行中，未匹配的元素总是构成一段连续的序列。即设 <span class="math inline">\(i=x\leq y\leq i+1\)</span>
-是两个未匹配的元素，则它们中间不可能有匹配的元素。</p>
-</blockquote>
+表。我们需要仔细点选择那些翻转的方格。我们作如下规定：如果某个 <span class="math inline">\(i\)</span> 的下方恰好是 <span class="math inline">\(i+1\)</span>，就称这样的 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(i+1\)</span> 是匹配了的。而那些下方没有 <span class="math inline">\(i+1\)</span> 的 <span class="math inline">\(i\)</span>，或者上方没有 <span class="math inline">\(i\)</span> 的 <span class="math inline">\(i+1\)</span> 统称为未匹配的。</p>
 <p>下图中演示了 <span class="math inline">\(i=2\)</span>
 的例子，绿色显示了匹配的元素，红色显示了未匹配的元素。</p>
 <style>
-table {max-width: 45%}
+table {max-width: 36%}
 </style>
 <table style="width:100%;">
 <colgroup>
@@ -768,7 +774,7 @@ table {max-width: 45%}
 <td style="text-align: center;"><span style="color:green">2</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span style="green">2</span></td>
+<td style="text-align: center;"><span style="color:green">2</span></td>
 <td style="text-align: center;"><span style="color:red">2</span></td>
 <td style="text-align: center;"><span style="color:red">2</span></td>
 <td style="text-align: center;"><span style="color:red">2</span></td>
@@ -796,10 +802,17 @@ table {max-width: 45%}
 </tr>
 </tbody>
 </table>
+<p>下面的事实不难验证：</p>
+<blockquote>
+<p>在 <span class="math inline">\(T\)</span>
+的任意一行中，未匹配的元素总是构成一段连续的序列。即设 <span class="math inline">\(i=x\leq y\leq i+1\)</span>
+是两个未匹配的元素，则它们中间不可能有匹配的元素。</p>
+</blockquote>
 <p>设在一行中，未匹配的元素是 <span class="math inline">\(r\)</span> 个
-<span class="math inline">\(i\)</span> 后面接着 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i+1\)</span>，我们把这段序列替换为 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i\)</span> 后面接上 <span class="math inline">\(r\)</span> 个 <span class="math inline">\(i+1\)</span>，对 <span class="math inline">\(T\)</span> 的每一行都进行这个操作而保持 <span class="math inline">\(T\)</span> 的其它数字不动。在这个变换下 <span class="math inline">\(T\)</span> 变成 <span class="math inline">\(T^\ast\)</span>，<span class="math inline">\(T^\ast\)</span> 仍然是半标准的：上图 <span class="math inline">\(T\)</span> 是 3 个 2 后面跟了 2 个 3，变换后在
-<span class="math inline">\(T^\ast\)</span> 中变成了 2 个 2 后面跟了 3
-个 3：</p>
+<span class="math inline">\(i\)</span> 后面接着 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i+1\)</span>，我们把这段序列替换为 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i\)</span> 后面接上 <span class="math inline">\(r\)</span> 个 <span class="math inline">\(i+1\)</span>，对 <span class="math inline">\(T\)</span> 的每一行都进行这个操作而保持 <span class="math inline">\(T\)</span> 的其它数字不动。在这个变换下 <span class="math inline">\(T\)</span> 变成 <span class="math inline">\(T^\ast\)</span>，<span class="math inline">\(T^\ast\)</span> 仍然是半标准的。</p>
+<p>例如在上面的 <span class="math inline">\(T\)</span>
+中，红色标注的未匹配的元素是 3 个 2 后面跟了 2 个 3，变换后在 <span class="math inline">\(T^\ast\)</span> 中变成了 2 个 2 后面跟了 3 个
+3：</p>
 <table style="width:100%;">
 <colgroup>
 <col style="width: 14%">
@@ -852,7 +865,9 @@ table {max-width: 45%}
 <p>容易验证若 <span class="math inline">\(T\)</span> 的容度为 <span class="math inline">\((\ldots,c_i,c_{i+1},\ldots)\)</span>，则 <span class="math inline">\(T^\ast\)</span> 的容度为 <span class="math inline">\((\ldots,c_{i+1},c_i,\ldots)\)</span>。这个变换显然是个对合：<span class="math inline">\((T^\ast)^\ast=T\)</span>，这就证明了 Schur
 多项式是对称的。</p>
 <h1 id="jacobi-trudi-恒等式">Jacobi-Trudi 恒等式</h1>
-<p>在这一节中，我们来把 Schur 多项式表示为行列式的形式。</p>
+<p>我们前面将 Schur 多项式定义为半标准 Young 表的生成函数。Schur
+多项式还有很多其它等价的定义。在这一节中，我们来把 Schur
+多项式表示为齐次对称多项式的行列式。</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 3.1</span>.</span><span class="statement-spah"> </span>记 <span class="math inline">\(h_k(x_1,\ldots,x_n)\)</span> 为所有 <span class="math inline">\(k\)</span> 次单项式的和： <span class="math display">\[h_k(x_1,\ldots,x_n)=\sum_{\begin{subarray}{c}\alpha_1+\alpha_2+\cdots+\alpha_n=k\\\alpha_i\in\mathbb{Z}_{\geq0}\end{subarray}}
