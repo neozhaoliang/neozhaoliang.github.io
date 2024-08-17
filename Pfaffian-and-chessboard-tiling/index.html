@@ -372,14 +372,15 @@ a_{\pi'}=a_\sigma\)</span> 以及 <span class="math inline">\(\pi'=\sigma\cdot\p
 j,\\-1&amp; j\rightarrow i,\\ 0&amp;\text{else}.\end{cases}\]</span></p>
 <p>则 <span class="math inline">\(A\)</span> 是一个反对称矩阵且</p>
 <p><span class="math display">\[\det
-A=\left(\sum_{\pi\in\mathcal{M}_{2n}}\mathrm{wt}(\pi)\right)^2.\]</span></p>
-<p>这里 <span class="math inline">\(\pi\)</span> 跑遍集合 <span class="math inline">\([2n]\)</span> 的所有匹配。由于每个 <span class="math inline">\(a_{ij}\)</span> 的取值是 <span class="math inline">\(\pm1\)</span> 或者 <span class="math inline">\(0\)</span>，所以 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 的值也是 <span class="math inline">\(\pm1\)</span> 或者 <span class="math inline">\(0\)</span>，并且 <span class="math inline">\(\mathrm{wt}(\pi)\ne0\)</span> 当且仅当 <span class="math inline">\(\pi\)</span> 给出图 <span class="math inline">\(\overrightarrow{G}\)</span> 的一个完美匹配，所以图
-<span class="math inline">\(G\)</span> 的所有匹配都和 Pfaffian
-多项式中的所有非零项一一对应。不幸的是，这些非零项有 +1 有
--1，把它们直接加起来得到的可不是图 <span class="math inline">\(G\)</span> 的所有匹配的个数。但是我们可以这样想：
-能否通过适当的定向 <span class="math inline">\(G\)</span>，即适当给
-<span class="math inline">\(a_{ij}\)</span> 赋以 +1 或者
--1，使得每一个非零的 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 都同为 +1 或者同为
+A=\left(\sum_{\pi\in\mathcal{M}_{2n}}\mathrm{wt}(\pi)\right)^2=\left(\sum_{\pi\in\mathcal{M}_{2n}}\text{sgn}(\pi)a_{i_1j_1}a_{i_2j_2}\cdots
+a_{i_nj_n}\right)^2.\]</span></p>
+<p>这里 <span class="math inline">\(\pi=(i_1,j_1)(i_2,j_2)\cdots(i_n,j_n)\)</span>
+跑遍集合 <span class="math inline">\([2n]\)</span> 的所有匹配。由于每个
+<span class="math inline">\(a_{ij}\)</span> 的取值是 <span class="math inline">\(\pm1\)</span> 或者 <span class="math inline">\(0\)</span>，所以 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 的值也是 <span class="math inline">\(\pm1\)</span> 或者 <span class="math inline">\(0\)</span>，并且 <span class="math inline">\(\mathrm{wt}(\pi)\ne0\)</span> 当且仅当对每个 <span class="math inline">\(1\leq k\leq n\)</span>，<span class="math inline">\(i_k\)</span> 和 <span class="math inline">\(j_k\)</span> 在 <span class="math inline">\(G\)</span> 中是相邻的，即 <span class="math inline">\(\pi\)</span> 给出 <span class="math inline">\(G\)</span> 的一个匹配。于是 <span class="math inline">\(G\)</span> 的所有匹配与 <span class="math inline">\(\mathrm{pf}(A)\)</span>
+中的非零项一一对应。不幸的是，这些非零项有 +1 有
+-1，把它们直接加起来得到的可不是 <span class="math inline">\(G\)</span>
+的所有匹配的个数。但是我们可以这样想： 能否通过适当的定向 <span class="math inline">\(G\)</span>，即适当给 <span class="math inline">\(a_{ij}\)</span> 赋以 +1 或者 -1，使得每一个非零的
+<span class="math inline">\(\mathrm{wt}(\pi)\)</span> 都同为 +1 或者同为
 -1？如果可以，那么<span class="math inline">\(\sqrt{|\det A|}\)</span>
 就是要求的匹配的个数。</p>
 <p>回忆在证明 <a href="#pfaff" title="定理 1.1">定理 1.1</a>
@@ -401,12 +402,10 @@ i_k\rightarrow i_1\]</span> 绕 <span class="math inline">\(C_i\)</span>
 中的定向与行走方向一致，当然也就有奇数条边的定向与行走方向相反。</p>
 <div class="unnumbered statement definition-unnumbered plain">
 <p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
-</span>在一个有向图 <span class="math inline">\(G\)</span>
-中，如果一条回路的 <span class="math inline">\(C\)</span>
-的长度是偶数，且删除 <span class="math inline">\(C\)</span>
-后剩下的部分仍然存在完美匹配，就称 <span class="math inline">\(C\)</span> 是一个好的回路。如果 <span class="math inline">\(G\)</span> 的一个定向 <span class="math inline">\(\overrightarrow{G}\)</span> 使得 <span class="math inline">\(G\)</span>
-的所有好的回路都是奇定向的，即沿着回路的任一方向行走都有奇数条边的定向与行走方向一致，就称这个定向是
-<span class="math inline">\(G\)</span> 的一个 Pfaffian 定向。</p>
+</span>设 <span class="math inline">\(G\)</span> 是有限图。如果 <span class="math inline">\(G\)</span> 的一个回路 <span class="math inline">\(C\)</span> 的长度是偶数，且删除 <span class="math inline">\(C\)</span> 后剩下的部分仍然存在匹配，就称 <span class="math inline">\(C\)</span> 是一个好的回路。如果 <span class="math inline">\(G\)</span> 的一个定向 <span class="math inline">\(\overrightarrow{G}\)</span> 使得 <span class="math inline">\(G\)</span>
+的所有好的回路都是奇定向的，即沿着回路的任一方向行走都有奇数条边的定向与行走方向一致，就称
+<span class="math inline">\(\overrightarrow{G}\)</span> 是一个 Pfaffian
+定向。</p>
 </div>
 <p>对一般的图，找到其 Pfaffian
 定向是困难的事，但是对平面图却很简单。这就是下面的定理：</p>
