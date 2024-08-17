@@ -384,16 +384,17 @@ A=\left(\sum_{\pi\in\mathcal{M}_{2n}}\mathrm{wt}(\pi)\right)^2.\]</span></p>
 就是要求的匹配的个数。</p>
 <p>回忆在证明 <a href="#pfaff" title="定理 1.1">定理 1.1</a>
 时，我们有结论 <span class="math display">\[\mathrm{wt}(\pi)\cdot
-\mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.\]</span> 为了让所有
-<span class="math inline">\(\mathrm{wt}(\pi)\)</span> 都同为 +1 或者同为
--1，只要让每一个 <span class="math inline">\(\text{sgn}(\sigma)a_{\sigma}=1\)</span> 即可。设
-<span class="math inline">\(\sigma\)</span> 的轮换分解为 <span class="math inline">\(\sigma=C_1\cdots C_l\)</span>，则 <span class="math inline">\(\text{sgn}(\sigma)=(-1)^l\)</span>，<span class="math inline">\(a_\sigma=a_{C_1}\cdots
-a_{C_l}\)</span>。如果我们能够使得每一个 <span class="math inline">\(a_{C_i}=-1\)</span>，那么就有 <span class="math display">\[\text{sgn}(\sigma)\cdot a_\sigma = (-1)^l\cdot
-(-1)^l=1.\]</span> 怎么才能让每个 <span class="math inline">\(a_{C_i}\)</span> 都等于 -1 呢？设 <span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span> 是任何一个回路，则
-<span class="math inline">\(a_{C}=a_{i_1i_2}\cdots
-a_{i_ki_1}\)</span>。注意 <span class="math inline">\(C\)</span>
-的长度是偶数，即 <span class="math inline">\(k\)</span>
-是偶数，因此我们需要 <span class="math inline">\(\{a_{i_1i_2},\ldots,a_{i_ki_1}\}\)</span> 中 -1
+\mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.\]</span>
+要使得所有非零的 <span class="math inline">\(\mathrm{wt}(\pi)\)</span>
+都同为 +1 或者同为 -1，只要让每个非零的 <span class="math inline">\(\text{sgn}(\sigma)a_{\sigma}=1\)</span> 即可。设
+<span class="math inline">\(\sigma\)</span> 是一个使得 <span class="math inline">\(a_\sigma\ne0\)</span> 的置换，且 <span class="math inline">\(\sigma\)</span> 的轮换分解为 <span class="math inline">\(\sigma=C_1\cdots C_l\)</span>，则 <span class="math inline">\(\text{sgn}(\sigma)=(-1)^l\)</span>，<span class="math inline">\(a_\sigma=a_{C_1}\cdots a_{C_l}\)</span>。记号
+<span class="math inline">\(a_{C_i}\)</span> 的含义是，如果轮换 <span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span>，则 <span class="math inline">\(a_{C}=a_{i_1i_2}\cdots
+a_{i_ki_1}\)</span>。如果我们能够使得每个 <span class="math inline">\(a_{C_i}=-1\)</span>，那么就有 <span class="math display">\[\text{sgn}(\sigma)\cdot a_\sigma = (-1)^l\cdot
+(-1)^l=1.\]</span> 怎么才能让每个 <span class="math inline">\(a_{C_i}\)</span> 都等于 -1 呢？注意到由于 <span class="math inline">\(a_\sigma\)</span> 非零，所以每个 <span class="math inline">\(a_{C_i}\)</span> 都不是 0。设 <span class="math inline">\(C_i=(i_1i_2\cdots i_k)\)</span>，则 <span class="math inline">\(i_1\to i_2\to\cdots\to i_k\to i_1\)</span> 是
+<span class="math inline">\(\overrightarrow{G}\)</span>
+中的一个回路。又注意 <span class="math inline">\(\sigma\)</span>
+的每个轮换的长度都是偶数，所以 <span class="math inline">\(k\)</span>
+是偶数，即回路的长度是偶数。要使得 <span class="math inline">\(a_{C_i}\)</span> 等于 -1，我们需要 <span class="math inline">\(\{a_{i_1i_2},\ldots,a_{i_ki_1}\}\)</span> 中 -1
 出现的次数是奇数。换句话说，当我们在 <span class="math inline">\(\overrightarrow{G}\)</span> 中沿着回路 <span class="math display">\[i_1\rightarrow i_2\rightarrow \cdots \rightarrow
 i_k\rightarrow i_1\]</span> 绕 <span class="math inline">\(C\)</span>
 一圈时，有奇数条边在 <span class="math inline">\(\overrightarrow{G}\)</span>
