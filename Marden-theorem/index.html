@@ -19,23 +19,18 @@
     
 
         <title>
-            关于 | 朝花夕拾</title>
+            静电场与 Marden 定理 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="欢迎来到 赵亮
-的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：
-
-从通俗有趣的问题出发介绍它们背后的数学。
-我写过的（自以为）有趣的开源项目。
-一些念书时的笔记（非常枯燥）。
-
-由于个人水平不足，文中难免出现错误，还请读者不吝指正。
-个人方面，以下信息也许对你了解我有">
+    <meta name="description" content="我昨晚刚完成了一个 shadertoy
+小动画，演示平面几何中的 Marden
+定理、复分析中的 Gauss-Lucas
+定理 和静电场之间的关系：">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="关于"/>
+    <meta property="og:title" content="静电场与 Marden 定理"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -52,7 +47,7 @@
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -221,177 +216,158 @@
 
 
             <main>
-                
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
     
+    
+    <a class="breadcrumb" href="/categories/可视化复分析/">可视化复分析</a>
 
-        <div class="container main-container">
-            <div class="card about-page row">
-                <div class="header indigo">
-                    <div class="avatar-wrapper center-align">
-                        <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
-                    </div>
-                    <div class="info center-align">
-                        <p class="name">
-                            Zhao Liang
-                        </p>
-                        <p class="desc">
-                            
-                        </p>
-                    </div>
 
-                    
-                        <div class="social-group center-align">
-                            
-                                <a class="social-link" href="https://twitter.com/neozhaoliang" target="_blank">
-                                    <i class="fa fa-2x fa-twitter"></i>
-                                </a>
-                                
-                                <a class="social-link" href="https://github.com/neozhaoliang" target="_blank">
-                                    <i class="fa fa-2x fa-github"></i>
-                                </a>
-                                
-                                <a class="social-link" href="/atom.xml" target="_blank">
-                                    <i class="fa fa-2x fa-rss"></i>
-                                </a>
-                                
-                        </div>
-                        
-                </div>
+        
 
-                <article>
-                    <div class="card-content">
-                        <section class="about-me">
-                            <h1 class="indigo-text">
-                                <i class="fa fa-street-view"></i>
-                                关于
-                            </h1>
-                            <div class="entry pink-link-context">
-                                
-<p>欢迎来到 <strong>赵亮</strong>
-的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：</p>
-<ol type="1">
-<li>从通俗有趣的问题出发介绍它们背后的数学。</li>
-<li>我写过的（自以为）有趣的开源项目。</li>
-<li>一些念书时的笔记（非常枯燥）。</li>
-</ol>
-<p>由于个人水平不足，文中难免出现错误，还请读者不吝指正。</p>
-<p>个人方面，以下信息也许对你了解我有帮助：</p>
-<ol type="1">
-<li>80 后，已婚，有娃一只。</li>
-<li>工作之余带娃、念数学、写代码。</li>
-<li>喜欢听罗大佑/邓丽君/Beyond，最喜欢的电影有《肖申克的救赎》，《真实的谎言》，《谍影重重》。</li>
-<li>郑渊洁和刘慈欣爱好者。</li>
-</ol>
-<p>博客使用 <a target="_blank" rel="noopener" href="https://hexo.io/">hexo</a> 搭建，主题为 <a target="_blank" rel="noopener" href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a>，我在其基础上做了一些修改，特此鸣谢作者。</p>
-<p>转载文章和图片注明出处即可。所有代码均采用 <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">MIT LICENSE</a>。</p>
-<hr>
-<p>Below is a selection of blog posts translated from my Chinese
-posts:</p>
-<ul>
-<li><a href="/rouche-theorem">Walk the dog: winding number and Rouché
-theorem</a></li>
-<li><a href="/e8-and-coxeter-plane">The E8 picture explained through
-code</a></li>
-<li><a href="/catacaustics">Catacaustics of a coffee cup</a></li>
-<li><a href="/uniform-tilings">Coxeter groups, automata and uniform
-tilings</a></li>
-<li><a href="/gifmaze">Make awesome gif animation in a few seconds with
-pure Python</a></li>
-<li><a href="/polytopes">Todd-Coxeter algorithm and uniform
-polytopes</a></li>
-</ul>
+        
+    </div>
+</nav>
 
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>静电场与 Marden 定理</h1>
+    
 
 
                             </div>
-                        </section>
-
-                        
+                            <time class="pink-link-context" datetime="2021-05-23T16:00:00.000Z"><a href="/Marden-theorem/">2021-05-24</a></time>
 
                                 
-                                        
-                                            <section class="reward">
-                                                <!-- Donate Module -->
-<div id="donate_module">
-    <style type="text/css">
-        .hidden {
-            display: none;
-        }
-        .donate_bar a.btn_donate {
-            display: inline-block;
-            width: 82px;
-            height: 82px;
-            background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
-            _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
 
-            -webkit-transition: background 0s;
-            -moz-transition: background 0s;
-            -o-transition: background 0s;
-            -ms-transition: background 0s;
-            transition: background 0s;
-        }
-        .donate_bar a.btn_donate:hover {
-            background-position: 0 -82px;
-        }
-        .donate_bar .donate_txt {
-            display: block;
-            color: #9d9d9d;
-            font: 14px/2 "Microsoft Yahei";
-        }
-        .bold {
-            font-weight: bold;
-        }
-
-        img.qrcode {
-            width: 90%;
-            margin-bottom: 10px;
-        }
-        @media only screen and (min-width: 1025px) {
-            img.qrcode {
-                width: 40%;
-                margin-right: 10px;
-            }
-        }
-
-    </style>
-
-    <!-- btn_donate & tips -->
-    <div id="donate_board" class="donate_bar center">
-        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
-        <span class="donate_txt">能看到这的都是真爱，打个赏呗=。=</span>
-    </div>
-    <!-- /btn_donate & tips -->
-
-    <!-- donate guide -->
-    <div id="donate_guide" class="donate_bar center hidden">
-        
-        <img class="qrcode" src="/sponsor.png" title="打赏"/>
-        
-    </div>
-    <!-- /donate guide -->
-
-    <!-- donate script -->
-    <script type="text/javascript">
-        document.getElementById('btn_donate').onclick = function() {
-            $('#donate_board').addClass('hidden');
-            $('#donate_guide').removeClass('hidden');
-        }
-
-        function donate_on_web() {
-            $('#donate').submit();
-        }
-    </script>
-    <!-- /donate script -->
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    
 </div>
-<!-- /Donate Module -->
 
-                                            </section>
-                                            
-                    </div>
-                </article>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>我昨晚刚完成了一个 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/7lf3Wn">shadertoy
+小动画</a>，演示平面几何中的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Marden%27s_theorem">Marden
+定理</a>、复分析中的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Lucas_theorem">Gauss-Lucas
+定理</a> 和静电场之间的关系：</p>
+<span id="more"></span>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/7lf3Wn?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
+</iframe>
+<p>这个动画的含义如下：</p>
+<ol type="1">
+<li><p>在复平面上三角形 <span class="math inline">\(\Delta ABC\)</span>
+的三个顶点处各自放置一个单位正电荷，则平面上电场强度为 0
+的点有两个（这两个点可能重合），它们位于 <span class="math inline">\(\Delta ABC\)</span> 的内部，并且是三次复多项式
+<span class="math inline">\(P(z) = (z-A)(z-B)(z-C)\)</span> 的导数 <span class="math inline">\(P'(z)\)</span> 的零点。</p></li>
+<li><p>不仅如此，这两个零点还是一个内切于 <span class="math inline">\(\Delta ABC\)</span>
+的椭圆的两个焦点，此椭圆是所有内切于 <span class="math inline">\(\Delta
+ABC\)</span> 的椭圆中面积最大者，并且其与 <span class="math inline">\(\Delta ABC\)</span>
+的三边的切点均为各边中点。这个椭圆叫做 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Steiner_inellipse">Steiner
+内切椭圆</a>。</p></li>
+</ol>
+<p>这个动画是受几天前 Albert Chern 的 <a target="_blank" rel="noopener" href="https://twitter.com/theAlbertChern/status/1395468792788967428?s=20">一篇推文</a>
+启发所作，John Baez 也写了一篇关于这个话题的 <a target="_blank" rel="noopener" href="https://johncarlosbaez.wordpress.com/2021/05/24/electrostatics-and-the-gauss-lucas-theorem/">文章</a>。我是由此才了解到
+Marden 定理还有如此有趣的物理学解释，的确大开眼界！</p>
+<hr>
+<p>在平面上不全共线的 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(a_1,\ldots,a_n\)</span>
+处放置若干单位正电荷，这规定了一个平面上的电势函数 <span class="math inline">\(V(z)\)</span> （标量） 和一个电场 <span class="math inline">\(\mathbf{E}(z)\)</span>
+（二维向量场）。电学知识告诉我们，在忽略物理常数意义下有 <span class="math display">\[V(z)
+=\sum_{i=1}^n\ln|z-a_i|=\ln\prod_{i=1}^n|z-a_i|=\ln|P(z)|.\]</span> 其中
+<span class="math inline">\(P(z)=(z-a_1)(z-a_2)\cdots(z-a_n)\)</span>
+是以 <span class="math inline">\(a_1,\ldots,a_n\)</span>
+为根的多项式。</p>
+<p>此外 <span class="math inline">\(\mathbf{E}(z) = -\nabla
+V(z)\)</span> 为电势的梯度向量取负。</p>
+<blockquote>
+<p><strong>问题</strong>：怎样确定平面上场强为 0 的点呢？</p>
+</blockquote>
+<p>场强为 0
+的点也叫做<strong>平衡点</strong>、<strong>鞍点</strong>，因为在这一点处的电荷不受电场的库仑力。</p>
+<p>答案有点出人意料：平衡点必然是 <span class="math inline">\(P'(z)\)</span> 的零点，而且这些点都属于 <span class="math inline">\(a_1,\ldots,a_n\)</span> 的凸包！</p>
+<p>注意 <span class="math inline">\(V(z)\)</span> 是 <span class="math inline">\(\ln P(z) = \ln |P(z)| + i\arg{P(z)}\)</span>
+的实部，由 Cauchy-Riemann 方程不难看出使得亚纯函数实部梯度为 0
+的点一定是其导数的零点，即满足 <span class="math inline">\(\nabla
+V=0\)</span> 的点都是 <span class="math inline">\((\ln
+P(z))'=P'(z)/P(z)\)</span> 的零点，所以平衡点都是 <span class="math inline">\(P'(z)\)</span> 的零点。平衡点属于 <span class="math inline">\(\{a_1,\ldots,a_n\}\)</span> 的凸包是根据 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Lucas_theorem">Gauss-Lucas
+定理</a>：任何复多项式 <span class="math inline">\(f\)</span>
+的导数的零点都属于 <span class="math inline">\(f\)</span>
+的零点构成的凸包！</p>
+<p>John Baez 的文章中利用凸集分离定理给出了 Gauss-Lucas
+定理的一个简洁证明。</p>
+<p>需要注意的是，反过来 <span class="math inline">\(P'(z)\)</span>
+的零点未必都是电场的平衡点，当 <span class="math inline">\(P(z)\)</span>
+有重根时，重根也是 <span class="math inline">\(P'(z)\)</span>
+的零点，但不是 <span class="math inline">\(P'(z)/P(z)\)</span>
+的零点，所以不是平衡点。</p>
+<p>此外平衡点是鞍点 (saddle point) 是由于 <span class="math inline">\(V(z)\)</span>
+的调和性质，其不存在局部的极大极小值，所以使得 <span class="math inline">\(\nabla V=0\)</span> 的点都是鞍点。</p>
+<p>在三个点电荷 <span class="math inline">\(A,B,C\)</span>
+的情形，平衡点有两个，它们位于 <span class="math inline">\(\Delta
+ABC\)</span> 的内部，且是多项式 <span class="math inline">\(P(z) =
+(z-A)(z-B)(z-C)\)</span> 的导数 <span class="math inline">\(P'(z)\)</span>
+的零点。那关于这两个点的具体位置我们可以说什么吗？这就是优美的 Marden
+定理，要表述这个定理，我们需要先介绍 Steiner 内切椭圆的概念：</p>
+<div id="steiner-inellipse" class="unnumbered statement sta_steiner_inellipse plain">
+<p><span class="statement-heading"><span class="statement-label">Steiner
+inellipse</span>.</span><span class="statement-spah">
+</span>在所有内切于 <span class="math inline">\(\Delta ABC\)</span>
+的椭圆中，存在唯一的一个面积最大者，叫做 Steiner inellipse，此椭圆与
+<span class="math inline">\(\Delta ABC\)</span>
+三边的切点为各边的中点。</p>
+</div>
+<p>Marden 定理断言 <span class="math inline">\(P'(z)\)</span>
+的两个根正是 Steiner 内切椭圆的两个焦点：</p>
+<div id="marden-------" class="unnumbered statement sta_marden___ plain">
+<p><span class="statement-heading"><span class="statement-label">Marden
+定理</span>.</span><span class="statement-spah"> </span>复多项式 <span class="math inline">\(P(z)=(z-A)(z-B)(z-C)\)</span> 的导数 <span class="math inline">\(P'(z)\)</span> 的两个零点正是 <span class="math inline">\(\Delta ABC\)</span> 的 Steiner inellipse
+的两个焦点。</p>
+</div>
+<p>Steiner inellipse 和 Marden
+定理的证明并不复杂，美国数学月刊上出现过两篇介绍其证明的文章，都非常值得一读：</p>
+<ol type="1">
+<li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/228698127_Triangles_Ellipses_and_Cubic_Polynomials">Triangles,
+Ellipses, and Cubic Polynomials</a>.</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/263136028_An_Elementary_Proof_of_Marden%27s_Theorem">An
+Elementary Proof of Marden’s Theorem</a>.</p></li>
+</ol>
+<p>其中第一篇文章采用了复数和仿射变换的途径，第二篇使用了椭圆的光学性质。</p>
+
+
+
+                                                    
+<p class="pink-link-context">
+    <a href="/Rouche-theorem-winding-number/" rel="next" title="遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理">
+    上一篇：遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/mobius-h3space/" rel="next" title="Möbius 变换的分类与上半双曲空间的等距">
+    下一篇：Möbius 变换的分类与上半双曲空间的等距
+  </a>
+</p>
+
+
+                                            </div>
+
             </div>
+        </div>
+    </article>
 
-            
+    
 
 
     <section id="comment">
@@ -413,7 +389,8 @@ polytopes</a></li>
     </section>
 
 
-        </div>
+</div>
+
                     <div class="fixed-action-btn float-sitemap">
     <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
