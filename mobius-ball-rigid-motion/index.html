@@ -19,13 +19,16 @@
     
 
         <title>
-            归档：2018 | 朝花夕拾</title>
+            Möbius 变换与球的刚体运动 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="五一期间我写了一个 shadertoy 小动画，演示 Möbius
+变换与球的刚体运动之间的关系：">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="Möbius 变换与球的刚体运动"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -204,38 +207,149 @@
 
             <main>
                 <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（归档）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/可视化复分析/">可视化复分析</a>
+
+
         
 
         
     </div>
 </nav>
 
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Möbius 变换与球的刚体运动</h1>
+    
 
 
-    <ul class="collapsible mt-0" data-collapsible="accordion">
-        
-        
-            <li>
-                    <div class="collection">
-                        
-                            <a href="/mobius-h3space/" class="collection-item grey-text text-darken-1">
-                                <time datetime="2018-05-08T16:00:00.000Z">2018-05-09</time>
-                                <span>&nbsp;&nbsp;&nbsp;</span>
-                                Möbius 变换的分类与上半双曲空间的等距
-                            </a>
-                        
-                    </div>
-            </li>
-        
-    </ul>
+                            </div>
+                            <time class="pink-link-context" datetime="2022-05-07T16:00:00.000Z"><a href="/mobius-ball-rigid-motion/">2022-05-08</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    
+</div>
+
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>五一期间我写了一个 shadertoy 小动画，演示 Möbius
+变换与球的刚体运动之间的关系：</p>
+<span id="more"></span>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fljfRm?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
+</iframe>
+<p>这个动画的名字叫做 Möbius transformation revealed，想法源自 Douglas
+N. Arnold 和 Jonathan Rogness 于 2007 年发布的 <a target="_blank" rel="noopener" href="https://www-users.cse.umn.edu/~arnold/moebius/">同名视频</a>。这是一个很有名的视频，它表达的核心思想是，扩充复平面
+<span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的 Möbius
+变换可以由球在三维空间中的刚体运动给出：</p>
+<ol type="1">
+<li>我们称一个球 <span class="math inline">\(S\)</span>
+是<strong>容许</strong>的，如果 <span class="math inline">\(S\)</span>
+的最高点，也就是北极点位于半空间 <span class="math inline">\(\{z&gt;0\}\)</span> 中。</li>
+<li>取任何一个可容许的球 <span class="math inline">\(S\)</span>，将
+<span class="math inline">\(\overline{\mathbb{C}}\)</span>
+在逆球极投影下对应到 <span class="math inline">\(S\)</span>
+的球面上。</li>
+<li>对 <span class="math inline">\(S\)</span> 作刚体变换 （平移和旋转）
+<span class="math inline">\(S\to T(S)\)</span>，使得 <span class="math inline">\(T(S)\)</span> 也是一个容许的球，即 <span class="math inline">\(T(S)\)</span> 的最高点也在半空间 <span class="math inline">\(\{z&gt;0\}\)</span> 中。</li>
+<li>将 <span class="math inline">\(T(S)\)</span>
+的表面通过球极投影再映射回 <span class="math inline">\(\overline{\mathbb{C}}\)</span>，我们就得到了一个
+<span class="math inline">\(\overline{\mathbb{C}}\to\overline{\mathbb{C}}\)</span>
+的变换，此变换是一个 Möbius 变换，且所有 Möbius
+变换都可以通过此种方式得到。</li>
+</ol>
+<p>整个过程如下所示：</p>
+<p><span class="math display">\[\underbrace{\overline{\mathbb{C}}\xrightarrow{\text{inverse
+stereographic projection}} S\xrightarrow{\text{rigid motion}}
+T(S)\xrightarrow{\text{stereographic
+projection}}\overline{\mathbb{C}}}_{\text{Möbius
+transformation}}.\]</span></p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>球极投影使用的北极点始终是球面的最高点。</p>
+</div>
+<p>详细的解释可以见原视频的解释 <a target="_blank" rel="noopener" href="https://www-users.cse.umn.edu/~arnold/papers/moebius.pdf">文章</a>。但是从直观上理解也不难：</p>
+<ul>
+<li><p><span class="math inline">\(S\)</span> 在 <span class="math inline">\(xy\)</span> 平面内的平移给出的是 <span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的平移。
+<video src="/images/mobius/translation.mp4" height="300" controls=""></video></p></li>
+<li><p><span class="math inline">\(S\)</span> 在 <span class="math inline">\(z\)</span> 方向上的平移给出的是 <span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的缩放。
+<video src="/images/mobius/scale.mp4" height="300" controls=""></video></p></li>
+<li><p>保持 <span class="math inline">\(S\)</span>
+的北极点不动的旋转给出的是 <span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的旋转。
+<video src="/images/mobius/rotation.mp4" height="300" controls=""></video></p></li>
+<li><p>绕 <span class="math inline">\(x\)</span> 轴旋转 180 度给出的是
+<span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的逆变换
+<span class="math inline">\(z\to 1/z\)</span>。
+<video src="/images/mobius/inversion.mp4" height="300" controls=""></video></p></li>
+</ul>
+<p>以上几种运动方式的复合可以给出可容许球的任何刚体运动，而任何 Möbius
+变换都是平移、缩放、旋转、逆变换的复合，所以 Möbius
+变换确实与可容许球体的刚体运动是对应的。</p>
+<p>反过来对给定的 Möbius 变换 <span class="math inline">\(M\)</span>
+和容许的球 <span class="math inline">\(S\)</span>，当 <span class="math inline">\(S\)</span> 的初始位置确定以后，给出 <span class="math inline">\(M\)</span> 的刚体运动 <span class="math inline">\(T\)</span> 也是唯一确定的。证明见 <a target="_blank" rel="noopener" href="https://scholar.rose-hulman.edu/cgi/viewcontent.cgi?article=1218&amp;context=rhumj">这个论文</a>。</p>
+
+
+
+                                                    
+<p class="pink-link-context">
+    <a href="/ifs-demystified/" rel="next" title="IFS 分形揭秘">
+    上一篇：IFS 分形揭秘
+  </a>
+</p>
+
+
+
+<p class="pink-link-context">
+    <a href="/Rouche-theorem-winding-number/" rel="next" title="遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理">
+    下一篇：遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理
+  </a>
+</p>
+
+
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
 
 
 </div>
+
                     <div class="fixed-action-btn float-sitemap">
     <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
@@ -476,11 +590,36 @@
 
 
 	
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+			  var TEX = MathJax.InputJax.TeX,
+				  MML = MathJax.ElementJax.mml;
+			  var CheckDimen = function (dimen) {
+				if (dimen === "" ||
+					dimen.match(/^\s*([-+]?(\.\d+|\d+(\.\d*)?))\s*(pt|em|ex|mu|px|mm|cm|in|pc)\s*$/))
+						return dimen.replace(/ /g,"");
+				TEX.Error("Bad dimension for image: "+dimen);
+			  };
+			  TEX.Definitions.macros.img = "myImage";
+			  TEX.Parse.Augment({
+				myImage: function (name) {
+				  var src = this.GetArgument(name),
+					  valign = CheckDimen(this.GetArgument(name)),
+					  width  = CheckDimen(this.GetArgument(name)),
+					  height = CheckDimen(this.GetArgument(name));
+				  var def = {src:src};
+				  if (valign) {def.valign = valign}
+				  if (width)  {def.width  = width}
+				  if (valign) {def.height = height}
+				  this.Push(this.mmlToken(MML.mglyph().With(def)));
+				}
+			  });
+			});
+		</script>
+		<script type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 
-			<script type="text/javascript"
-				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
-
-			
+		
 				
 
     </body>

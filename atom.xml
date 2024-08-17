@@ -40,6 +40,27 @@
   </entry>
   
   <entry>
+    <title>Möbius 变换与球的刚体运动</title>
+    <link href="https://pywonderland.com/mobius-ball-rigid-motion/"/>
+    <id>https://pywonderland.com/mobius-ball-rigid-motion/</id>
+    <published>2022-05-07T16:00:00.000Z</published>
+    <updated>2024-08-10T10:22:21.061Z</updated>
+    
+    <content type="html"><![CDATA[<p>五一期间我写了一个 shadertoy 小动画，演示 Möbius变换与球的刚体运动之间的关系：</p><span id="more"></span><iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fljfRm?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe><p>这个动画的名字叫做 Möbius transformation revealed，想法源自 DouglasN. Arnold 和 Jonathan Rogness 于 2007 年发布的 <a href="https://www-users.cse.umn.edu/~arnold/moebius/">同名视频</a>。这是一个很有名的视频，它表达的核心思想是，扩充复平面<span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的 Möbius变换可以由球在三维空间中的刚体运动给出：</p><ol type="1"><li>我们称一个球 <span class="math inline">\(S\)</span>是<strong>容许</strong>的，如果 <span class="math inline">\(S\)</span>的最高点，也就是北极点位于半空间 <span class="math inline">\(\{z&gt;0\}\)</span> 中。</li><li>取任何一个可容许的球 <span class="math inline">\(S\)</span>，将<span class="math inline">\(\overline{\mathbb{C}}\)</span>在逆球极投影下对应到 <span class="math inline">\(S\)</span>的球面上。</li><li>对 <span class="math inline">\(S\)</span> 作刚体变换 （平移和旋转）<span class="math inline">\(S\to T(S)\)</span>，使得 <span class="math inline">\(T(S)\)</span> 也是一个容许的球，即 <span class="math inline">\(T(S)\)</span> 的最高点也在半空间 <span class="math inline">\(\{z&gt;0\}\)</span> 中。</li><li>将 <span class="math inline">\(T(S)\)</span>的表面通过球极投影再映射回 <span class="math inline">\(\overline{\mathbb{C}}\)</span>，我们就得到了一个<span class="math inline">\(\overline{\mathbb{C}}\to\overline{\mathbb{C}}\)</span>的变换，此变换是一个 Möbius 变换，且所有 Möbius变换都可以通过此种方式得到。</li></ol><p>整个过程如下所示：</p><p><span class="math display">\[\underbrace{\overline{\mathbb{C}}\xrightarrow{\text{inversestereographic projection}} S\xrightarrow{\text{rigid motion}}T(S)\xrightarrow{\text{stereographicprojection}}\overline{\mathbb{C}}}_{\text{Möbiustransformation}}.\]</span></p><div class="statement note definition unnumbered"><p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah"></span>球极投影使用的北极点始终是球面的最高点。</p></div><p>详细的解释可以见原视频的解释 <a href="https://www-users.cse.umn.edu/~arnold/papers/moebius.pdf">文章</a>。但是从直观上理解也不难：</p><ul><li><p><span class="math inline">\(S\)</span> 在 <span class="math inline">\(xy\)</span> 平面内的平移给出的是 <span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的平移。<video src="/images/mobius/translation.mp4" height="300" controls=""></video></p></li><li><p><span class="math inline">\(S\)</span> 在 <span class="math inline">\(z\)</span> 方向上的平移给出的是 <span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的缩放。<video src="/images/mobius/scale.mp4" height="300" controls=""></video></p></li><li><p>保持 <span class="math inline">\(S\)</span>的北极点不动的旋转给出的是 <span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的旋转。<video src="/images/mobius/rotation.mp4" height="300" controls=""></video></p></li><li><p>绕 <span class="math inline">\(x\)</span> 轴旋转 180 度给出的是<span class="math inline">\(\overline{\mathbb{C}}\)</span> 上的逆变换<span class="math inline">\(z\to 1/z\)</span>。<video src="/images/mobius/inversion.mp4" height="300" controls=""></video></p></li></ul><p>以上几种运动方式的复合可以给出可容许球的任何刚体运动，而任何 Möbius变换都是平移、缩放、旋转、逆变换的复合，所以 Möbius变换确实与可容许球体的刚体运动是对应的。</p><p>反过来对给定的 Möbius 变换 <span class="math inline">\(M\)</span>和容许的球 <span class="math inline">\(S\)</span>，当 <span class="math inline">\(S\)</span> 的初始位置确定以后，给出 <span class="math inline">\(M\)</span> 的刚体运动 <span class="math inline">\(T\)</span> 也是唯一确定的。证明见 <a href="https://scholar.rose-hulman.edu/cgi/viewcontent.cgi?article=1218&amp;context=rhumj">这个论文</a>。</p>]]></content>
+    
+    
+    <summary type="html">
+&lt;p&gt;五一期间我写了一个 shadertoy 小动画，演示 Möbius
+变换与球的刚体运动之间的关系：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="可视化复分析" scheme="https://pywonderland.com/categories/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%A4%8D%E5%88%86%E6%9E%90/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理</title>
     <link href="https://pywonderland.com/Rouche-theorem-winding-number/"/>
     <id>https://pywonderland.com/Rouche-theorem-winding-number/</id>
