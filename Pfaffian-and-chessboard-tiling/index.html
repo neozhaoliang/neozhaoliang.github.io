@@ -507,64 +507,47 @@ I_n\otimes C_m) = \prod_{i=1}^n\prod_{j=1}^m(\lambda_i-\mu_j).\]</span>
 <span class="citation" data-cites="aigner07">(<a href="#ref-aigner07" role="doc-biblioref">Aigner 2007, sec. 10.1</a>)</span>。</p>
 <h1 id="附录">附录</h1>
 <h2 id="求邻接矩阵-lmn-的具体步骤">求邻接矩阵 <span class="math inline">\(L(m,n)\)</span> 的具体步骤</h2>
-<p>考虑从 <span class="math inline">\(G\)</span>
-中取出红色箭头标记的一行后得到的图：</p>
-<p><img style="margin:0px auto;display:block" src="/images/pfaff/row.svg"></p>
-<p>这个图有 <span class="math inline">\(n\)</span>
-个顶点，顺序从左到右，其邻接矩阵为 <span class="math display">\[B_n=(b_{ij})=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{n\times
-n}.\]</span></p>
-<p>同理 <span class="math inline">\(G\)</span>
-的绿色箭头标记的行对应的图的邻接矩阵是 <span class="math inline">\(-B_n\)</span>：</p>
-<p><img style="margin:0px auto;display:block" src="/images/pfaff/rowback.svg"></p>
-<p>以及 <span class="math inline">\(G\)</span> 的任何一列对应的图（包含
-<span class="math inline">\(m\)</span> 个顶点）的邻接矩阵是 <span class="math inline">\(A_m\)</span>：</p>
-<p><img style="margin:0px auto;display:block" src="/images/pfaff/col.svg"></p>
-<p><span class="math display">\[A_m=(a_{ij})=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{m\times
-m}.\]</span></p>
-<p>我们把网格图 <span class="math inline">\(G\)</span>
-的顶点标记如下：</p>
+<p>将 <span class="math inline">\(L(m,n)\)</span> 简写为 <span class="math inline">\(L=L(m,n)\)</span>。把网格图 <span class="math inline">\(G\)</span> 的顶点标记如下：</p>
 <p><span class="math display">\[\begin{matrix}(1,1)&amp;(1,2)&amp;\cdots&amp;(1,
 n)\\(2,1)&amp;(2,2)&amp;\cdots&amp;(2,n)\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\(m,
 1)&amp;(m,2)&amp;\cdots&amp;(m, n)\end{matrix}\]</span></p>
-<p>为了写出 <span class="math inline">\(G\)</span>
-的邻接矩阵，我们要先把这些顶点排序，排序规则就是先第一行从左到右，然后是第二行从左到右，以此类推，最后是第
-<span class="math inline">\(m\)</span> 行从左到右。在这个顺序下 <span class="math inline">\(G\)</span> 的邻接矩阵是一个 <span class="math inline">\(m\times m\)</span> 的分块矩阵，其每一个子块都是
-<span class="math inline">\(n\times n\)</span> 的矩阵，其中位于 <span class="math inline">\((i, i')\)</span> 位置处的子块的 <span class="math inline">\((j,j')\)</span> 位置处的元素是顶点 <span class="math inline">\((i,j)\)</span> 和顶点 <span class="math inline">\((i',j')\)</span>
-之间的边的权值。参考下面的示意图：</p>
-<p><span class="math display">\[\begin{array}{c|c|c}&amp;(i',1),
-\cdots, (i',j'),\cdots, (i',n)&amp;\\
-&amp;\hline&amp;\qquad\\(i,
+<p>对这些顶点排序，首先是第一行从左到右，然后是第二行从左到右，等等：
+<span class="math display">\[(1,1)&lt;(1,2)&lt;\cdots&lt;(1,n)&lt;(2,1)&lt;\cdots&lt;(2,n)&lt;\cdots&lt;(m,1)&lt;\cdots&lt;(m,n).\]</span></p>
+<p><span class="math inline">\(L\)</span> 是 <span class="math inline">\(mn\times mn\)</span> 阶矩阵，它的行和列分别由
+<span class="math inline">\((i,j)_{\begin{smallmatrix}1\leq i\leq
+m\\1\leq j\leq n\end{smallmatrix}}\)</span> 和 <span class="math inline">\((i',j')_{\begin{smallmatrix}1\leq
+i'\leq m\\1\leq j'\leq n\end{smallmatrix}}\)</span> 标记。<span class="math inline">\(L\)</span> 可以划分成 <span class="math inline">\(m\times m\)</span> 个子块，每个子块是 <span class="math inline">\(n\times n\)</span> 阶的，其中位于 <span class="math inline">\((i,i')\)</span> 处的子块对应的矩阵是 <span class="math inline">\((L_{(i,j)(i',j')})_{1\leq j,j'\leq
+n}\)</span>： <span class="math display">\[\begin{array}{c|c|c}&amp;(i',1), \cdots,
+(i',j'),\cdots, (i',n)&amp;\\ &amp;\hline&amp;\qquad\\(i,
 1)&amp;&amp;\\\vdots&amp;&amp;\\(i,j)&amp;\ast&amp;\\\vdots&amp;&amp;\\(i,n)&amp;&amp;\\
 &amp;\hline&amp;\qquad\\ &amp;&amp;\end{array}\]</span></p>
-<p>设 <span class="math inline">\((i, j)\)</span> 和 <span class="math inline">\((i',j')\)</span>
-是两个不同的顶点，则有三种情况：</p>
+<p>注意到 <span class="math inline">\((i,j)\)</span> 和 <span class="math inline">\((i',j')\)</span>
+之间有边相连当且仅当：</p>
 <ol type="1">
-<li><span class="math inline">\(i\ne i'\)</span> 且 <span class="math inline">\(j\ne j'\)</span>，即 <span class="math inline">\((i, j)\)</span> 和 <span class="math inline">\((i',j')\)</span>
-既不同行也不同列，它们之间没有边连接，所以权值是 0。</li>
-<li><span class="math inline">\(i = i'\)</span>，这时 <span class="math inline">\((i, j)\)</span> 和 <span class="math inline">\((i',j')\)</span> 都位于第 <span class="math inline">\(i\)</span> 行，若 <span class="math inline">\(i\)</span> 是奇数则它们之间的边的权值是 <span class="math inline">\(b_{jj'}\)</span>，若 <span class="math inline">\(i\)</span> 是偶数则它们之间的边的权值是 <span class="math inline">\(-b_{jj'}\)</span>。</li>
-<li><span class="math inline">\(j=j'\)</span>，这时 <span class="math inline">\((i, j)\)</span> 和 <span class="math inline">\((i',j')\)</span> 都位于第 <span class="math inline">\(j\)</span> 列，它们之间的权值是 <span class="math inline">\(a_{ii'}\)</span>。</li>
+<li><span class="math inline">\(i=i'\)</span> 且 <span class="math inline">\(j'=j\pm1\)</span>；</li>
+<li><span class="math inline">\(i'=i\pm1\)</span> 且 <span class="math inline">\(j=j'\)</span>。</li>
 </ol>
-<p>总之 <span class="math inline">\((i, j)\)</span> 和 <span class="math inline">\((i',j')\)</span>
-之间的边的权值可以表示为</p>
-<p><span class="math display">\[\begin{cases}\delta_{ii'}b_{jj'}+a_{ii'}\delta_{jj'}&amp;
-\text{$i$
-odd},\\-\delta_{ii'}b_{jj'}+a_{ii'}\delta_{jj'}&amp;
-\text{$i$ even}.\end{cases}\]</span></p>
-<p>考虑 <span class="math inline">\(m\times m\)</span> 的分块矩阵</p>
-<p><span class="math display">\[I_n\otimes
-A_m=\begin{pmatrix}0&amp;I_n&amp;0&amp;&amp;\\-I_n&amp;0&amp;I_n&amp;&amp;\\&amp;-I_n&amp;0&amp;I_n&amp;\\&amp;&amp;&amp;\ddots&amp;I_n\\&amp;&amp;&amp;-I_n&amp;0\end{pmatrix}_{m\times
-m}.\]</span></p>
-<p>此矩阵的第 <span class="math inline">\((i, i')\)</span> 个子块
-<span class="math inline">\(I_na_{ii'}\)</span> 的 <span class="math inline">\((j,j')\)</span> 位置处的元素是 <span class="math inline">\(a_{ii'}\delta_{jj'}\)</span>。</p>
-<p>类似地 <span class="math inline">\(m\times m\)</span>
-的对角分块矩阵</p>
-<p><span class="math display">\[\begin{pmatrix}B_n&amp;&amp;&amp;\\&amp;-B_n&amp;&amp;\\&amp;&amp;\ddots&amp;\\&amp;&amp;&amp;(-1)^{m-1}B_n\end{pmatrix}\]</span></p>
-<p>的第 <span class="math inline">\((i,i')\)</span> 个子块 <span class="math inline">\(\delta_{ii'}(-1)^{i-1}B_n\)</span> 的 <span class="math inline">\((j,j')\)</span> 位置处的元素是</p>
-<p><span class="math display">\[\begin{cases}\delta_{ii'}b_{jj'}&amp;
-\text{$i$ odd},\\-\delta_{ii'}b_{jj'}&amp; \text{$i$
-even}.\end{cases}\]</span></p>
-<p>于是二者之和就是 <span class="math inline">\(G\)</span>
-的邻接矩阵。</p>
+<p>这说明 <span class="math inline">\(L\)</span>
+在除去对角线以及两侧的次对角线以外的位置都是 0。</p>
+<p>在情形 1 中，由于水平的边（红色和绿色）是交替改变方向的，所以 <span class="math display">\[L_{(i,j)(i,j+1)} = (-1)^{i-1} \text{ for } 1\leq
+i\leq m \text{ and } 1\leq j\leq n-1.\]</span> 这说明 <span class="math inline">\(L\)</span> 对角线上的第 <span class="math inline">\(i\)</span> 个子块是 <span class="math inline">\((-1)^{i-1}B_n\)</span>，其中 <span class="math display">\[B_n=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{n\times
+n}.\]</span> 即 <span class="math inline">\(L\)</span> 形如 <span class="math display">\[\begin{pmatrix}
+B_n &amp;\ast&amp;&amp;&amp;\\
+\ast&amp; -B_n &amp;\ast&amp;&amp;\\
+&amp;\ast&amp;\ddots&amp;\ddots&amp;\\
+&amp;&amp;\ddots&amp;\ddots&amp; \ast\\
+&amp;&amp;&amp;\ast&amp;(-1)^{m-1}B_n
+\end{pmatrix}.\]</span> 在情形 2
+中，由于竖直的边（蓝色）是恒定向下的，所以 <span class="math display">\[L_{(i,j),(i+1,j)}  = 1  \text{ for } 1\leq i\leq
+m-1 \text{ and } 1\leq j\leq n.\]</span> 这说明 <span class="math inline">\(L\)</span> 右上方次对角线上的 <span class="math inline">\((i,i+1)\)</span> 位置的子块都是 <span class="math inline">\(I_n\)</span>。再结合 <span class="math inline">\(L\)</span> 是反对称的，下方次对角线上都是 <span class="math inline">\(-I_n\)</span>，所以 <span class="math inline">\(L\)</span> 形如 <span class="math display">\[\begin{pmatrix}
+B_n &amp;I_n&amp;&amp;&amp;\\
+-I_n&amp; -B_n &amp;I_n&amp;&amp;\\
+&amp;-I_n&amp;\ddots&amp;\ddots&amp;\\
+&amp;&amp;\ddots&amp;\ddots&amp; I_n\\
+&amp;&amp;&amp;-I_n&amp;(-1)^{m-1}B_n
+\end{pmatrix}.\]</span></p>
+<p>其它情况下的 <span class="math inline">\(L_{(i,j)(i',j')}\)</span> 都是
+0，于是上述即为 <span class="math inline">\(G\)</span> 的邻接矩阵。</p>
 <h2 id="求-b_n-和-c_m-的特征值">求 <span class="math inline">\(B_n\)</span> 和 <span class="math inline">\(C_m\)</span> 的特征值</h2>
 <p>我们以 <span class="math display">\[C_m=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\1&amp;0&amp;1&amp;&amp;\\&amp;1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;1&amp;0\end{pmatrix}.\]</span>
 为例来说明怎样求它的特征值，<span class="math inline">\(B_n\)</span>
