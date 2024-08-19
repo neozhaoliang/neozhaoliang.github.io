@@ -472,24 +472,23 @@ m}.\]</span> 这个变号步骤并不显然，我们需要选择 <span class="ma
 <span class="math inline">\(B_n\)</span>
 所在的行列要变号两次，要么不变。具体规则是这样的：由于 <span class="math inline">\(-B_n\)</span> 出现在 <span class="math inline">\(L(m,n)\)</span> 对角线上的 <span class="math inline">\(2,4,6,\ldots,\)</span> 位置上，我们选择：</p>
 <ol type="1">
-<li>将第 <span class="math inline">\(2,6,\ldots\)</span> 列变号；</li>
-<li>将第 <span class="math inline">\(4,8,\ldots\)</span> 行变号；</li>
-<li>将对角线上位于 <span class="math inline">\(3, 7,\ldots,\)</span>
-位置的 <span class="math inline">\(B_n\)</span>
-所在的行和列同时变号；</li>
-<li>对角线上位于 <span class="math inline">\(1,5,\ldots,\)</span> 位置的
-<span class="math inline">\(B_n\)</span> 不作处理。</li>
+<li>将所有形如 <span class="math inline">\(4k+2\)</span>
+的<strong>列</strong>变号；</li>
+<li>将所有形如 <span class="math inline">\(4k\)</span>
+的<strong>行</strong>变号；</li>
+<li>将所有形如 <span class="math inline">\(4k+3\)</span>
+的<strong>行和列</strong>同时变号；</li>
 </ol>
-<p>这样显然可以把对角线上都变成 <span class="math inline">\(B_n\)</span>。对每个位于 <span class="math inline">\((i-1, i)\)</span> 位置的 <span class="math inline">\(I_n\)</span>，</p>
+<p>这样显然可以把对角线上都变成 <span class="math inline">\(B_n\)</span>。对每个位于次对角线上 <span class="math inline">\((i-1, i)\)</span> 位置的 <span class="math inline">\(I_n\)</span>，</p>
 <ul>
-<li>如果 <span class="math inline">\(i=2,6,\ldots\)</span>，根据 1, 4
+<li>如果 <span class="math inline">\(i=4k+2\)</span>，则 <span class="math inline">\((i-1,i)=(4k+1, 4k+2)\)</span>，根据 1
 它改变了一次符号；</li>
-<li>如果 <span class="math inline">\(i=4,8,\ldots\)</span>，根据 3
+<li>如果 <span class="math inline">\(i=4k\)</span>，则 <span class="math inline">\((i-1,i)=(4k-1, 4k)\)</span>，根据 2, 3
+它改变了三次符号；</li>
+<li>如果 <span class="math inline">\(i=4k+1\)</span>，则 <span class="math inline">\((i-1,i)=(4k, 4k+1)\)</span>，根据 2
 它改变了一次符号；</li>
-<li>如果 <span class="math inline">\(i=5,9,\ldots\)</span>，根据 2, 4
-它改变了一次符号；</li>
-<li>如果 <span class="math inline">\(i=3,7,\ldots\)</span>，根据 3
-它改变了一次符号。</li>
+<li>如果 <span class="math inline">\(i=4k+3\)</span>，则 <span class="math inline">\((i-1,i)=(4k+2, 4k+3)\)</span>，根据 1, 3
+它改变了三次符号。</li>
 </ul>
 <p>总之 <span class="math inline">\(I_n\)</span> 都会变成 <span class="math inline">\(-I_n\)</span>。类似地所有 <span class="math inline">\(-I_n\)</span> 均保持不变。</p>
 <p>剩下的就是线性代数中求特征值的部分，需要一些关于矩阵张量积的知识，这里就不展开写了，大致逻辑是这样的：设
