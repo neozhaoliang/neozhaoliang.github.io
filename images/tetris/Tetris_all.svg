@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="264" height="168">
+	<defs>
+		<g id="x">
+			<rect height="24" width="24"/>
+			<path fill="#fff" fill-opacity=".7" d="m0,0 3,3 18,0 3,-3"/>
+			<path fill="#000" fill-opacity=".1" d="m0,0 3,3 0,18 -3,3 m24,-24 -3,3 0,18 3,3"/>
+			<path fill="#000" fill-opacity=".5" d="m0,24 3,-3 18,0 3,3"/>
+		</g>
+	</defs>
+
+	<g id="i">
+		<use x="  0" y="  0" xlink:href="#x" fill="#00f0f0"/>
+		<use x="  0" y=" 24" xlink:href="#x" fill="#00f0f0"/>
+		<use x="  0" y=" 48" xlink:href="#x" fill="#00f0f0"/>
+		<use x="  0" y=" 72" xlink:href="#x" fill="#00f0f0"/>
+	</g>
+	<g id="j">
+		<use x=" 72" y="  0" xlink:href="#x" fill="#0000f0"/>
+		<use x=" 72" y=" 24" xlink:href="#x" fill="#0000f0"/>
+		<use x=" 72" y=" 48" xlink:href="#x" fill="#0000f0"/>
+		<use x=" 48" y=" 48" xlink:href="#x" fill="#0000f0"/>
+	</g>
+	<g id="l">
+		<use x="144" y="  0" xlink:href="#x" fill="#f0a000"/>
+		<use x="144" y=" 24" xlink:href="#x" fill="#f0a000"/>
+		<use x="144" y=" 48" xlink:href="#x" fill="#f0a000"/>
+		<use x="168" y=" 48" xlink:href="#x" fill="#f0a000"/>
+	</g>
+	<g id="o">
+		<use x="216" y="  0" xlink:href="#x" fill="#f0f000"/>
+		<use x="240" y="  0" xlink:href="#x" fill="#f0f000"/>
+		<use x="216" y=" 24" xlink:href="#x" fill="#f0f000"/>
+		<use x="240" y=" 24" xlink:href="#x" fill="#f0f000"/>
+	</g>
+
+	<g id="s">
+		<use x=" 24" y="120" xlink:href="#x" fill="#00f000"/>
+		<use x=" 48" y="120" xlink:href="#x" fill="#00f000"/>
+		<use x="  0" y="144" xlink:href="#x" fill="#00f000"/>
+		<use x=" 24" y="144" xlink:href="#x" fill="#00f000"/>
+	</g>
+	<g id="t">
+		<use x=" 96" y="120" xlink:href="#x" fill="#a000f0"/>
+		<use x="120" y="120" xlink:href="#x" fill="#a000f0"/>
+		<use x="144" y="120" xlink:href="#x" fill="#a000f0"/>
+		<use x="120" y="144" xlink:href="#x" fill="#a000f0"/>
+	</g>
+	<g id="z">
+		<use x="192" y="120" xlink:href="#x" fill="#f00000"/>
+		<use x="216" y="120" xlink:href="#x" fill="#f00000"/>
+		<use x="216" y="144" xlink:href="#x" fill="#f00000"/>
+		<use x="240" y="144" xlink:href="#x" fill="#f00000"/>
+	</g>
+</svg>

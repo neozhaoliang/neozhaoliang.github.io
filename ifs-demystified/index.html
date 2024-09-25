@@ -172,7 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">2 篇</span></a>
+                    pywonderland-项目 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -275,7 +275,7 @@
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#ifs-%E6%96%B9%E6%B3%95"><span class="section table-of-contents-text">IFS 方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BD%A8%E9%81%93%E7%9D%80%E8%89%B2"><span class="section table-of-contents-text">轨道着色</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%9D%80%E8%89%B2%E5%99%A8%E7%BC%96%E7%A8%8B"><span class="section table-of-contents-text">着色器编程</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="section table-of-contents-text">基础概念</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E7%A9%BA%E9%97%B4%E6%8A%98%E5%8F%A0"><span class="section table-of-contents-text">空间折叠</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%AE%9E%E6%88%98%E6%BC%94%E7%A4%BA"><span class="section table-of-contents-text">实战演示</span></a></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#ifs-%E6%96%B9%E6%B3%95"><span class="section table-of-contents-text">IFS 方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BD%A8%E9%81%93%E7%9D%80%E8%89%B2"><span class="section table-of-contents-text">轨道着色</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%9D%80%E8%89%B2%E5%99%A8%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="section table-of-contents-text">着色器编程基础</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%A9%BA%E9%97%B4%E6%8A%98%E5%8F%A0"><span class="section table-of-contents-text">空间折叠</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AE%9E%E6%88%98%E6%BC%94%E7%A4%BA"><span class="section table-of-contents-text">实战演示</span></a></li></ol>
 </div>
 
                                         
@@ -401,8 +401,7 @@ rgb
 <p>根据 <code>p</code>
 生成颜色的着色方案无穷无尽，请随便发挥你的创造力。一般来说你需要反复试验各种不同的方案才能找到最合适的。以下是两个示例：</p>
 <figure class="highlight glsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">vec3</span> colorFunc1(<span class="hljs-type">vec3</span> p) {<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">cos</span>(<span class="hljs-built_in">dot</span>(p, <span class="hljs-type">vec3</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)) + iTime);<br>}<br><br><span class="hljs-type">vec3</span> colorFunc2(<span class="hljs-type">vec3</span> p) {<br>    <span class="hljs-keyword">return</span> hsv2rgb(<span class="hljs-built_in">length</span>(p) + iTime);<br>}<br></code></pre></td></tr></tbody></table></figure>
-<h1 id="着色器编程">着色器编程</h1>
-<h2 id="基础概念">基础概念</h2>
+<h1 id="着色器编程基础">着色器编程基础</h1>
 <p>我简单介绍一下着色器编程的基本概念。打开 shadertoy
 网站，点击右上角的<code>新建</code>按钮，你会看到一个 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/new">最简单的动画</a>：</p>
 <p><img style="margin:0px auto;display:block" width="600" src="/images/ifs/shadertoy.png"></p>
@@ -437,7 +436,7 @@ GPU 流水线的机制。</p>
 <p>这个例子其实蕴含了 shader
 编程的一个非常核心的概念，即<strong>距离场</strong> (distance
 field)。当我们想绘制某个图案时，我们通过计算像素到这个图案的距离来对像素进行着色。</p>
-<h2 id="空间折叠">空间折叠</h2>
+<h1 id="空间折叠">空间折叠</h1>
 <p>在前面关于 IFS 的介绍中我们可以看到，如果有 <span class="math inline">\(N\)</span> 个不同的压缩映射 <span class="math inline">\(f_1,\ldots,f_N\)</span>，那么每次迭代后集合的数目会乘以
 <span class="math inline">\(N\)</span>，这是指数增长的，10
 次迭代可能会产生多达 <span class="math inline">\(10^N\)</span>
@@ -478,7 +477,7 @@ p, K) = 1/s\cdot d(F^{-1}(p), K).\]</span>
 <p>既然每次迭代 <span class="math inline">\(F\)</span> 以比例 <span class="math inline">\(1/s\)</span> 缩小，那么用 <span class="math inline">\(F^{-1}\)</span> 迭代 <span class="math inline">\(n\)</span> 次以后累积放大的比例就是 <span class="math inline">\(s^n\)</span>，我们要将 <span class="math inline">\(d(F^{-n}(p), K)\)</span> 再除以 <span class="math inline">\(s^n\)</span> 才是最终正确的距离值。</p>
 <p>对于一般的映射 <span class="math inline">\(F\)</span>，我们可以通过计算 <span class="math inline">\(F^{-1}\)</span> 在 <span class="math inline">\(p\)</span> 处 Jacobian 矩阵的行列式的绝对值，作为
 <span class="math inline">\(p\)</span> 处缩放的近似。</p>
-<h2 id="实战演示">实战演示</h2>
+<h1 id="实战演示">实战演示</h1>
 <p>我以 Shadertoy 上一个混淆过的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/WlGyWK">作品</a>
 为例子来完整展示上面的理论。下面是重新改写后的可读版本，我在注释中解释了每一步的含义：</p>
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/l3cXR7?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
