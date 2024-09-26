@@ -191,7 +191,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">2 篇</span></a>
+                    Williams-概率和鞅 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -525,13 +525,13 @@ past
             <div class="article-title">
                 
     
-        <h1 class="indigo-link-context"><a href="/mabinogion-sheep-problem/">洛奇绵羊问题</a></h1>
+        <h1 class="indigo-link-context"><a href="/pattern-occurrence/">模式的等待时间与反直觉概率</a></h1>
     
 
 
             </div>
 
-            <time class="pink-link-context" datetime="2011-04-08T00:00:00.000Z"><a href="/mabinogion-sheep-problem/">2011-04-08</a></time>
+            <time class="pink-link-context" datetime="2011-06-02T16:00:00.000Z"><a href="/pattern-occurrence/">2011-06-03</a></time>
 
             
 
@@ -539,23 +539,25 @@ past
             
                 <div class="entry pink-link-context">
                     
-<p><img style="margin:0px auto;display:block" src="/images/midjourney/mabinogion.png" width="350"></p>
-<p>今天的问题源自中世纪威尔士人的故事集《Mabinogion》中的一段：</p>
-<blockquote>
-<p>一个男孩来到了一个美丽的山谷，有一条小河在谷中流淌。他看到河一边的草地上有一群黑绵羊，另一边的草地上有一群白绵羊。羊群被施以一种魔法：每个时刻都恰有一只绵羊发出咩咩的叫声。如果发出叫声的是白绵羊，就会有一只黑绵羊趟过小河跑过来并且变成白绵羊；如果发出叫声的是黑绵羊，则会有一只白绵羊趟过小河跑过去并且变成黑绵羊。每个时刻发出叫声的绵羊是完全随机的，整个过程没有绵羊出生或者死亡，一直持续到所有绵羊都变成同一种颜色为止。</p>
-</blockquote>
-<p>问题是这样的：</p>
+<p>著名概率学家 Feller 在他的名著 “An introduction to probability and
+its applications” 中提到了这样一个实验：</p>
 <div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>如果男孩可以选择在初始时刻 <span class="math inline">\(0\)</span>，或者是每个魔法时刻 <span class="math inline">\(1,2,\ldots\)</span>
-结束后将任意数量的白绵羊赶出山谷，那么为了最终得到尽可能多的黑绵羊，他应该采取怎样的策略？</p>
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>重复抛掷一枚均匀的硬币，用 <code>H</code>
+代表正面向上，<code>T</code> 代表背面向上，一直到连续出现 6 次
+<code>H</code> 为止。这里连续 6 个 <code>Ｈ</code> 组成的模式记作
+<code>HHHHHH</code>，所需要抛掷硬币的次数叫做等待时间。等待时间是一个随机变量，最小值是
+6，最大值可以是无限。Feller 问：等待时间的均值是多少？</p>
 </div>
+<p>这个问题可以用 Markov
+链来解，但是非常繁琐。香港中文大学李硕彦教授在他的论文 <span class="citation" data-cites="Li1980">(<a href="#ref-Li1980" role="doc-biblioref">Li 1980</a>)</span>
+中用离散鞅的知识给出了一个简洁而巧妙的解法，本文就来介绍他的方法。</p>
                 </div>
             
         </div>
 
         
         <div class="card-action pink-link-context">
-            <a href="/mabinogion-sheep-problem/">阅读全文</a>
+            <a href="/pattern-occurrence/">阅读全文</a>
         </ div>
         
     </div>
