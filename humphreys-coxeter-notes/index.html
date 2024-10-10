@@ -226,6 +226,14 @@ Humphreys 书中保持一致。">
 
         
 
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
     </ul>
 </div>
 
@@ -285,7 +293,7 @@ Humphreys 书中保持一致。">
                                     <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generation-by-simple-reflections"><span class="section table-of-contents-text">1.5 Generation by simple
 reflections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-length-function"><span class="section table-of-contents-text">1.6 The length function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#deletion-and-exchange-conditions"><span class="section table-of-contents-text">1.7 Deletion and Exchange
-Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#subgraphs"><span class="section table-of-contents-text">2.6 Subgraphs</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniqueness-of-the-degrees"><span class="section table-of-contents-text">3.7 Uniqueness of the degrees</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#acting-on-a-plane"><span class="section table-of-contents-text">3.17 Acting on a plane</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#eigenvalues-of-coxeter-elements"><span class="section table-of-contents-text">3.19 Eigenvalues of Coxeter
+Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#subgraphs"><span class="section table-of-contents-text">2.6 Subgraphs</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniqueness-of-the-degrees"><span class="section table-of-contents-text">3.7 Uniqueness of the degrees</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-elements"><span class="section table-of-contents-text">3.16 Coxeter elements</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#acting-on-a-plane"><span class="section table-of-contents-text">3.17 Acting on a plane</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#eigenvalues-of-coxeter-elements"><span class="section table-of-contents-text">3.19 Eigenvalues of Coxeter
 elements</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
 \(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#more-on-the-geometric-representation"><span class="section table-of-contents-text">6.2 More on the geometric
 representation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#and-6.4-radical-of-the-bilinear-form-finite-coxeter-groups"><span class="section table-of-contents-text">6.3
@@ -531,6 +539,69 @@ k_id_i\geq d_i\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
 </span><span class="math inline">\(S^G\)</span>
 的任何一组齐次、代数无关生成元的次数是唯一却定的。</p>
+</div>
+<h1 id="coxeter-elements">3.16 Coxeter elements</h1>
+<p>我们来证明任何两个 Coxeter 元都是共轭的。我们只要取一个特殊的 Coxeter
+元，并证明其它 Coxeter 元都和这个特殊元共轭即可。</p>
+<p>首先，取 Coxeter 图 <span class="math inline">\(\Gamma\)</span>
+的一个叶节点，将其记作 <span class="math inline">\(s_n\)</span>。从
+<span class="math inline">\(\Gamma\)</span> 中移走 <span class="math inline">\(s_n\)</span> 以后，剩下的部分 <span class="math inline">\(\Gamma_1=\Gamma-\{s_n\}\)</span>
+仍然是一个树，于是我们又可以取其叶节点，记作 <span class="math inline">\(s_{n-1}\)</span>。<span class="math inline">\(\Gamma_1-\{s_{n-1}\}\)</span>
+仍然是树，又可以取其一个叶节点 <span class="math inline">\(s_{n-2}\)</span>，以此类推。即我们将生成元排列为
+<span class="math inline">\(s_1,\ldots,s_n\)</span>，使得对每个 <span class="math inline">\(1\leq i\leq n\)</span>，<span class="math inline">\(s_1,\ldots,s_i\)</span> 构成 <span class="math inline">\(\Gamma\)</span> 的一个子树，并且 <span class="math inline">\(s_i\)</span> 是这个树的叶节点。</p>
+<p>首先我们注意到任何 Coxeter 元都可以通过循环移位共轭于某个以 <span class="math inline">\(s_n\)</span> 结尾的 Coxeter 元 <span class="math inline">\(s_{i_1}\cdots
+s_{i_{n-1}}s_n\)</span>，我们来证明这样的元素都共轭于 <span class="math inline">\(s_1s_2\cdots s_n\)</span>。</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>任何形如 <span class="math inline">\(s_{i_1}\cdots
+s_{i_{n-2}}{\color{blue}s_{i_{n-1}}}s_n\)</span> 的 Coxeter 元共轭于
+<span class="math display">\[{\color{blue}s_{i_{n-1}}}s_{i_1}\cdots
+s_{i_{n-2}}s_n.\]</span></p>
+</div>
+<p>引理的证明：如果 <span class="math inline">\(s_{i_{n-1}}\)</span> 与
+<span class="math inline">\(s_n\)</span> 交换，那么 <span class="math display">\[s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}s_n\to s_{i_1}\cdots
+s_{i_{n-2}}s_n\textcolor{blue}{s_{i_{n-1}}}\to
+\textcolor{blue}{s_{i_{n-1}}}s_{i_1}\cdots s_{i_{n-2}}s_n.\]</span>
+结论成立。否则 <span class="math inline">\(s_n\)</span> 与 <span class="math inline">\(s_{i_1}\sim s_{i_{n-2}}\)</span> 都交换，所以
+<span class="math display">\[\begin{aligned}
+s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}\textcolor{red}{s_n}&amp;\to\textcolor{red}{s_n}s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}
+\to s_{i_1}\textcolor{red}{s_n}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}\\
+&amp;\to s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{red}{s_n}\textcolor{blue}{s_{i_{n-1}}}\\
+&amp;\to\textcolor{blue}{s_{i_{n-1}}}s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{red}{s_n}.
+\end{aligned}\]</span> 结论同样成立。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(k\geq1\)</span>，任何形如 <span class="math inline">\(s_{i_1}\cdots\textcolor{blue}{s_{i_{n-k}}}
+s_{n-k+1}\cdots s_n\)</span> 的 Coxeter 元都共轭于 <span class="math display">\[\textcolor{blue}{s_{i_{n-k}}} s_{i_1}\cdots
+s_{i_{n-k-1}}s_{n-k+1}\cdots s_n.\]</span></p>
+</div>
+<p><span class="math inline">\(k=1\)</span>
+的情形在前一个的引理中已经证明了。对 <span class="math inline">\(k\geq2\)</span> 用归纳法，假设结论对小于 <span class="math inline">\(k\)</span> 的情形成立。</p>
+<p>如果 <span class="math inline">\(s_{i_{n-k}}\)</span> 和 <span class="math inline">\(s_{n-k+1}\)</span> 交换，那么 <span class="math display">\[s_{i_1}\cdots \textcolor{blue}{s_{i_{n-k}}}
+s_{n-k+1}\cdots s_n\to s_{i_1}\cdots
+s_{n-k+1}\textcolor{blue}{s_{i_{n-k}}}\cdots s_n.\]</span></p>
+<p>然而对 <span class="math inline">\(k-1\)</span>
+的情形应用归纳假设，上面右边共轭于 <span class="math display">\[\textcolor{blue}{s_{i_{n-k}}} s_{i_1}\cdots
+s_{n-k+1}\cdots s_n.\]</span> 于是结论成立。</p>
+<p>如果 <span class="math inline">\(s_{i_{n-k}}\)</span> 和 <span class="math inline">\(s_{n-k+1}\)</span> 不交换，那么 <span class="math inline">\(s_{n-k+1}\)</span> 和所有 <span class="math inline">\(s_{i_1}\sim s_{i_{n-k-1}}\)</span>
+都交换，于是直接用归纳假设有 <span class="math display">\[s_{i_1}\cdots\textcolor{blue}{s_{i_{n-k}}}\textcolor{red}{s_{n-k+1}}\cdots
+s_n\to
+\textcolor{red}{s_{n-k+1}}s_{i_1}\cdots\textcolor{blue}{s_{i_{n-k}}}\cdots
+s_n\to
+s_{i_1}\cdots\textcolor{red}{s_{n-k+1}}\textcolor{blue}{s_{i_{n-k}}}\cdots
+s_n.\]</span> 再一次应用归纳假设，上面右边共轭于 <span class="math display">\[\textcolor{blue}{s_{i_{n-k}}}s_{i_1}\cdots\textcolor{red}{s_{n-k+1}}\cdots
+s_n.\]</span> 结论同样成立。<span class="math inline">\(\blacksquare\)</span></p>
+<p>这样一来，下面的结论就是显然的了：</p>
+<div class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span>任何 Coxeter 元都共轭于 <span class="math inline">\(s_1\cdots
+s_n\)</span>。</p>
 </div>
 <h1 id="acting-on-a-plane">3.17 Acting on a plane</h1>
 <p>一点预备知识：如果 <span class="math inline">\(V\)</span>
