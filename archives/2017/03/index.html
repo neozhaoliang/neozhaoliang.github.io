@@ -19,18 +19,13 @@
     
 
         <title>
-            Todd Kemp 概率论课程笔记 | 朝花夕拾</title>
+            归档：2017/3 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
-    
-    <meta name="description" content="49.1 Optional Stopping and
-Sampling
-这一节介绍了停时，以及停时鞅序列 \(\{X_{n\wedge \tau}\}\) 的性质。
-一个简单的股票市场模型：设 \(\{X_n\}_{n=0}^\infty\) 是股票价格，\(\{U_n\}_{n=1}^\infty">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Todd Kemp 概率论课程笔记"/>
+    
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -265,127 +260,38 @@ Sampling
 
             <main>
                 <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
-    <div class="nav-wrapper indigo">
-        <span class="breadcrumb">当前位置（分类目录）</span>
-        
-            
+    
 
+<nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（归档）</span>
         
 
         
     </div>
 </nav>
 
-    <article>
-        <div class="card">
-            <div class="card-content">
-                
-
-                            <div class="article-title">
-                                
-    
-        <h1>Todd Kemp 概率论课程笔记</h1>
-    
 
 
-                            </div>
-                            <time class="pink-link-context" datetime="2021-02-28T16:00:00.000Z"><a href="/todd-kemp/new.html">2021-03-01</a></time>
-
-                                
-
-                                    <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#optional-stopping-and-sampling"><span class="section table-of-contents-text">49.1 Optional Stopping and
-Sampling</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#holders-inequality"><span class="section table-of-contents-text">49.2 Holder’s Inequality</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#submartingale-maximal-inequalities-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="section table-of-contents-text">49.3 (Sub)martingale
-Maximal Inequalities （未完成）</span></a></li></ol>
-</div>
-
-                                        
-                                            <div class="entry pink-link-context">
-                                                
-<h1 id="optional-stopping-and-sampling">49.1 Optional Stopping and
-Sampling</h1>
-<p>这一节介绍了停时，以及停时鞅序列 <span class="math inline">\(\{X_{n\wedge \tau}\}\)</span> 的性质。</p>
-<p>一个简单的股票市场模型：设 <span class="math inline">\(\{X_n\}_{n=0}^\infty\)</span> 是股票价格，<span class="math inline">\(\{U_n\}_{n=1}^\infty\)</span>
-是你的投资策略，即在时刻 <span class="math inline">\(n-1\)</span> 买入
-<span class="math inline">\(U_n\)</span> 并在时刻 <span class="math inline">\(n\)</span> 抛出。或者说，<span class="math inline">\(U_n\)</span> 是你在 <span class="math inline">\((n-1,n]\)</span>
-这个时间区间内的股票交易数量，那么到时刻 <span class="math inline">\(n\)</span> 时，你的净收益为 <span class="math display">\[I_n(U,X) = \sum_{j=1}^n
-U_j(X_j-X_{j-1}).\]</span> 这里 <span class="math inline">\(U_n\)</span>
-必须是关于 <span class="math inline">\(\mathcal{F}_{n-1}=\sigma(X_0,X_1,\ldots,X_{n-1})\)</span>
-可测。</p>
-<p>第一个重要观察是：</p>
-<div id="martingale-discrete-integration" class="statement theorem plain">
-<p><span class="statement-heading"><span class="statement-label">定理
-1.1</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(\{X_n\}\)</span> 是鞅/下鞅/上鞅，并且 <span class="math inline">\(U_n\geq0\)</span>，则 <span class="math inline">\(I_n(U,X)\)</span> 也是鞅/下鞅/上鞅。</p>
-</div>
-<p>证明：对下面的恒等式两边关于 <span class="math inline">\(\mathcal{F}_n\)</span> 取条件期望即可。 <span class="math display">\[I_{n+1}(U,X) =
-\underbrace{I_{n}(U,X)}_{\in\mathcal{F}_n} +
-\underbrace{U_{n+1}}_{\in\mathcal{F}_n}\underbrace{(X_{n+1}-X_{n})}_{\rm
-(sub/sup)martingale}.\]</span></p>
-<p>我们可以设定两个随机时间，比如 <span class="math inline">\(\sigma\)</span> 是股票首次低于 1 美元的时刻,
-这时立刻买入；<span class="math inline">\(\tau\)</span> 是股票首次高于
-10 美元的时刻，这时立刻抛出；在区间 <span class="math inline">\((\sigma,\tau]\)</span> 中保持持有股票，即 <span class="math inline">\(U_j=\mathbb{1}_{\sigma&lt;j\leq
-\tau}\)</span>。于是 <span class="math inline">\(U_j\mathbb{1}_{n\geq
-j}=\mathbb{1}_{(\sigma\wedge n, \tau\wedge n]}(j)\)</span>。</p>
-<p>那么净收益 <span class="math display">\[I_n(U,X) = \sum_{j=1}^n
-\mathbb{1}_{\sigma\wedge n&lt;j\leq \tau\wedge n}
-(X_j-X_{j-1})=X_{\tau\wedge n} - X_{\sigma\wedge n}.\]</span></p>
-<p>特别地，取 <span class="math inline">\(\sigma=0\)</span>，则 <span class="math inline">\(U_j=\mathbb{1}_{j\leq\tau}\)</span>，则我们有如下结论：</p>
-<div id="stopping-time-also-martingale" class="statement theorem plain">
-<p><span class="statement-heading"><span class="statement-label">定理
-1.2</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(\{X_n\}\)</span> 是鞅，那么 <span class="math inline">\(\{X_{n\wedge \tau}\}\)</span> 也是鞅。</p>
-</div>
-<p>证明：首先每一项 <span class="math inline">\(X_{n\wedge
-\tau}\)</span> 可以看成是一个关于 <span class="math inline">\(X_1,\ldots,X_n\)</span> 的部分和：</p>
-<p><span class="math display">\[X_{n\wedge \tau} =
-\sum_{k=0}^n\mathbb{1}_{\tau=k}X_k.\]</span></p>
-<p>显然 <span class="math inline">\(X_{n\wedge \tau}\)</span>
-是可积的。</p>
-<p>另一方面在 <a href="#martingale-discrete-integration" title="定理 1.1">定理 1.1</a> 中取 <span class="math inline">\(U_n=\mathbb{1}_{n\leq\tau}\)</span>，则 <span class="math inline">\(X_{n\wedge \tau} - X_0 = I_n(U,X)\)</span>
-仍然是鞅，那么加上一个 <span class="math inline">\(X_0\)</span> 得到的
-<span class="math inline">\(X_{n\wedge\tau}\)</span> 当然还是鞅。</p>
-<h1 id="holders-inequality">49.2 Holder’s Inequality</h1>
-<p>无特别内容</p>
-<h1 id="submartingale-maximal-inequalities-未完成">49.3 (Sub)martingale
-Maximal Inequalities （未完成）</h1>
-<p>开篇第一句话就是，鞅在一个有限区间上的极大值，可以以多种方式被它在区间终点的值所控制。</p>
-
-
-
-                                                    
-
-
-
-                                            </div>
-
-            </div>
-        </div>
-    </article>
-
-    
-
-
-    <section id="comment">
-       <script src="https://giscus.app/client.js"
-        data-repo="neozhaoliang/neozhaoliang.github.io"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
-        data-category="Announcements"
-        data-category-id="DIC_kwDOCKG3684CPDuy"
-        data-mapping="pathname"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-       </script>
-    </section>
+    <ul class="collapsible mt-0" data-collapsible="accordion">
+        
+        
+            <li>
+                    <div class="collection">
+                        
+                            <a href="/reducible-mod-p/" class="collection-item grey-text text-darken-1">
+                                <time datetime="2017-03-02T00:00:00.000Z">2017-03-02</time>
+                                <span>&nbsp;&nbsp;&nbsp;</span>
+                                模任何素数都可约的整系数不可约多项式
+                            </a>
+                        
+                    </div>
+            </li>
+        
+    </ul>
 
 
 </div>
-
                     <div class="fixed-action-btn float-sitemap">
     <a class="btn-floating btn-large pink">
       <i class="fa fa-caret-square-o-up"></i>
