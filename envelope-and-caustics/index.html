@@ -440,7 +440,7 @@ r_y\end{pmatrix}.\]</span></p>
 <p>很多时候曲线的方程是通过隐函数 <span class="math inline">\(P(x,y)=0\)</span> 的形式给出的，其中 <span class="math inline">\(P(x,y)\)</span> 是关于两个变元 <span class="math inline">\(x,y\)</span>
 的多项式。这样的曲线叫做平面代数曲线。这时求解焦散要用到 Gröbner
 基的工具。</p>
-<p>让我们回到参数方程的情形，我们已经看到，这时焦散 <span class="math inline">\((X,Y)\)</span> 有显示解</p>
+<p>让我们回到参数方程的情形，我们已经看到，这时焦散 <span class="math inline">\((X,Y)\)</span> 有显式解</p>
 <p><span class="math display">\[\begin{pmatrix}X\\
 Y\end{pmatrix}=\begin{pmatrix}x\\y\end{pmatrix} +
 \frac{r_xy'-r_yx'}{r_yr_x'-r_xr_y'}\begin{pmatrix}r_x\\
@@ -496,12 +496,12 @@ x})}\begin{pmatrix}r_x\\ r_y\end{pmatrix}.\]</span></p>
 <span class="math inline">\(x,y\)</span>，得到一个仅包含 <span class="math inline">\((X,Y)\)</span> 的表达式，我们可以尝试用 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis">Gröbner
 basis</a> 方法。Gröbner 基方法会把多项式方程组 <span class="math display">\[F=G=P=0\]</span> 转化为一组等价的新方程组 <span class="math display">\[g_1=g_2=\cdots=g_m=0.\]</span>
 即它们有完全相同的解集。</p>
-<p><span class="math inline">\(\{g_1,\ldots,g_m\}\)</span> 是 <span class="math inline">\(F,G,P\)</span> 在 4 个变元的多项式环 <span class="math inline">\(\mathbb{R}[x,y,X,Y]\)</span> 中生成的理想 <span class="math inline">\(I=\langle F,G,P\rangle\)</span>
+<p><span class="math inline">\(\{g_1,\ldots,g_m\}\)</span> 是 <span class="math inline">\(F,G,P\)</span> 在多项式环 <span class="math inline">\(\mathbb{R}[x,y,X,Y]\)</span> 中生成的理想 <span class="math inline">\(I=\langle F,G,P\rangle\)</span>
 的一组生成元，<span class="math inline">\(\{g_1,\ldots,g_m\}\)</span>
 叫做 <span class="math inline">\(I\)</span> 的约化的 Gröbner
 基。在字典序 <span class="math inline">\(x\succ y\succ X\succ Y\)</span>
-下，约化的 Gröbner 基会有一个好的属性，即从 <span class="math inline">\(g_1\)</span> 过渡到 <span class="math inline">\(g_m\)</span> 时，其中的变元会按照从 <span class="math inline">\(x\to y\to X\to Y\)</span>
-的先后顺序被消除掉。注意这是个不太严格的说法，我们并不是总能消掉顺序靠前的变元，但是如果消除发生的话，它就会按照这个顺序来。这样我们就可以执行类似高斯消元法中的“回代”操作，从而新方程组的求解会更加简单。</p>
+下，约化的 Gröbner 基会有一个好的属性，即从 <span class="math inline">\(g_1\)</span> 到 <span class="math inline">\(g_m\)</span>，其中的变元会按照从 <span class="math inline">\(x\to y\to X\to Y\)</span>
+的先后顺序被消除掉。注意这是个不太严格的说法，我们并不是总能消掉顺序靠前的变元，但是如果消除发生的话，它就会按照这个顺序来。这样我们就可以执行类似高斯消元法中的回代操作，从而新方程组的求解会更加简单。</p>
 <p>我们来用 <code>sympy</code> 实验一下：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sympy <span class="hljs-keyword">import</span> *<br><br>x, y, X, Y = symbols(<span class="hljs-string">"x y X Y"</span>)<br>P = x**<span class="hljs-number">2</span> + y**<span class="hljs-number">2</span> - <span class="hljs-number">1</span><br>dx = diff(P, x)  <span class="hljs-comment"># gradient of P</span><br>dy = diff(P, y)<br>curve = Matrix([x, y])<br>light_source = Matrix([<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])<br>l = curve - light_source  <span class="hljs-comment"># the incident ray</span><br>n = Matrix([dx, dy])  <span class="hljs-comment"># the normal vector</span><br>r = simplify(l - <span class="hljs-number">2</span> * l.dot(n) * n / n.dot(n))  <span class="hljs-comment"># the reflected ray</span><br>rx, ry = r<br>dxrx = diff(rx, x)<br>dyrx = diff(rx, y)<br>dxry = diff(ry, x)<br>dyry = diff(ry, y)<br>denominator = ry * (dxrx * dy - dyrx * dx) - rx * (dxry * dy - dyry * dx)<br>nominator = dx * l[<span class="hljs-number">0</span>] + dy * l[<span class="hljs-number">1</span>]<br>F = (X - x) * denominator - nominator * rx<br>G = (Y - y) * denominator - nominator * ry<br>eqs = [eq.as_numer_denom()[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> eq <span class="hljs-keyword">in</span> [F, G, P]]<br>gb = groebner(eqs, [x, y, X, Y])<br>print(gb)<br></code></pre></td></tr></tbody></table></figure>
 <p><code>sympy</code> 给出的结果的最后一项是</p>
