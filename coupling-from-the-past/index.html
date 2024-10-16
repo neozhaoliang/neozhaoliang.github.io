@@ -532,7 +532,7 @@ s_2.\end{align*}\]</span>
 注意以下两种演化路径是非法的，因为每个时刻两个链使用的随机数一样，不可能在某个时刻同时出现一个链
 <span class="math inline">\(s_1\to s_2\)</span>，另一个 <span class="math inline">\(s_1\to s_1\)</span> 的情况： <span class="math display">\[\begin{array}{ll}
 (*)\quad &amp; s_1\to s_1\to s_2,\quad &amp;s_2\to s_1 \to s_1.\\
-(**)\quad &amp; s_1\to s_1\to s_１,\quad &amp;s_2\to s_1 \to s_２.\\
+(**)\quad &amp; s_1\to s_1\to s_1,\quad &amp;s_2\to s_1 \to s_2.\\
 \end{array}\]</span></p>
 <p>在我们现在这个错误的版本中，由于使用了全新的随机数流，四种路径都是合法的。这四个路径中前三种都成功耦合，两个耦合于
 <span class="math inline">\(s_1\)</span> 一个耦合于 <span class="math inline">\(s_2\)</span>，所以 <span class="math inline">\(\mathbb{P}(s^\ast=s_1|\tau=2)=\frac{2}{3}\)</span>。</p>
