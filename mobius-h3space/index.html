@@ -544,14 +544,13 @@ cz\)</span> 的斜航型变换扩展到 <span class="math inline">\(\mathbb{H}_3
 <p>其实是因为我们现在是在双曲空间里看待它，在双曲度量下，锥面上所有点到
 <span class="math inline">\(t\)</span>
 轴的距离都是一样的，实际上如果设锥的顶角为 <span class="math inline">\(2\alpha\)</span>，则锥面上任何一点到 <span class="math inline">\(t\)</span> 轴的双曲距离 <span class="math inline">\(d\)</span> 满足（见 <span class="citation" data-cites="Bea95">(<a href="#ref-Bea95" role="doc-biblioref">Beardon
-1995, vol. 91, sec. 7.9.1</a>)</span>） <span class="math display">\[\sinh d\cdot \cot\alpha = 1.\]</span> 即 <span class="math inline">\(d\)</span> 是定值。所以虽然在欧式空间 <span class="math inline">\(\mathbb{R}^3\)</span> 中看它是一个锥体，但是在
-<span class="math inline">\(\mathbb{H}_3\)</span> 中它其实是圆柱体。</p>
+1995, vol. 91, sec. 7.9.1</a>)</span>） <span class="math display">\[\sinh d\cdot \cot\alpha = 1.\]</span> 即 <span class="math inline">\(d\)</span> 是定值。所以虽然在 <span class="math inline">\(\mathbb{R}^3\)</span> 中它是一个锥体，但是在 <span class="math inline">\(\mathbb{H}_3\)</span> 中它其实是圆柱体。</p>
 <p>你可以看到这时 <span class="math inline">\(\overline{M}\)</span>
 有两个不动点，都位于无穷远边界上，这样的点叫做“理想点”。两个不动点之间的连线构成圆柱的轴。两个不动点一个是源点，一个是汇点，空间中的点在变换的作用下“远离”源点，“趋向”汇点。</p>
 <p>对于一般的斜航型变换 <span class="math inline">\(M\)</span>，且其两个不动点都是扩充复平面上的有限点时，<span class="math inline">\(M\)</span> 在 <span class="math inline">\(\mathbb{H}_3\)</span> 上的扩展 <span class="math inline">\(\overline{M}\)</span> 仍然保持一个 <span class="math inline">\(\mathbb{H}_3\)</span> 中的圆柱体不变：</p>
 <object data="/images/mobius/loxodromic-dupin.svg">
 </object>
-<p>这个曲面在欧式空间中叫做 <a target="_blank" rel="noopener" href="https://www.maths.ox.ac.uk/about-us/departmental-art/dupin-cyclides">Dupin
+<p>这个曲面叫做 <a target="_blank" rel="noopener" href="https://www.maths.ox.ac.uk/about-us/departmental-art/dupin-cyclides">Dupin
 cyclide</a>，它的两个端点恰好是 <span class="math inline">\(M\)</span>
 的两个不动点。但在双曲空间中它其实是一个圆柱体，由于其两端落在无穷远平面上，因此也是无限长的。圆柱体的轴是连接两个端点的测地线。如果
 <span class="math inline">\(M\)</span> 是椭圆型的话，那么 <span class="math inline">\(\overline{M}\)</span> 将该圆柱绕着轴旋转：</p>
@@ -584,8 +583,8 @@ Dupin cyclide 的任何显式或者隐式的曲面方程，而是直接用 <span
 <p>动画使用的是 GLSL 语言和 raymarching 的技术。我在 Roice
 的代码基础上作了许多优化，但肯定还可以更精炼。限于我写 shader
 的能力不足，做出更美轮美奂的效果就不指望了 …</p>
-<p>严格讲，这些动画其实还是尝试在欧式空间中去观察双曲空间中的对象，因为
-raymarching
+<p>严格讲，这些动画其实还是尝试在 Euclidean
+空间中去观察双曲空间中的对象，因为 raymarching
 技术假定的是光走直线，但在双曲空间中光一般不走直线，所以我们这里看到的效果与真实的生活在双曲空间中的“外星人”所看到的还是有差别的。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
