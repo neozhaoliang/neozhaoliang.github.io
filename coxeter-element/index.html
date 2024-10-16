@@ -19,19 +19,32 @@
     
 
         <title>
-            The E8 picture explained through code | 朝花夕拾</title>
+            Coxeter 元 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="If you have heard of Lie algebras, chances are you have encountered
-the following pattern: (Refer to Wikipedia’s Lie algebra
-entry)
+    <meta name="description" content="如果你对 Lie 代数有所了解的话，相信很大概率你会见过下面的图案： (
+参考维基百科的 Lie
+algebra 词条 )
 
-It displays the r">
+它展示的是 Lie 代数 \(E_8\)
+的根系图。\(E_8\) 的根系由 8 维欧式空间
+\(\mathbb{R}^8\) 中的 240
+个向量组成，将这 240 个向量投影到一个特殊的 2 维平面 ( 叫做 Coxeter 平面
+) 上就会呈现出一个具有旋转对称的图案。在上图中可以看到，240
+个投影点分布在 8 个圆周上，每个圆周包含 30
+个均匀分布的点，整个图案在角度为 \(\frac{2\pi}{30}\) 的旋转下是不变的。\(h=30\) 正是 \(E_8\) 的 Coxeter 数。
+本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python
+中编写一个程序绘制上面的投影图案。我主要参考了 (Humphreys 1990) 和 (Casselman
+2017)。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。
+本文的代码在 Github
+上 。David Madore 也有一个很棒的 交互式网页
+可以绘制 \(E_8\)
+的多种不同风格的图案。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="The E8 picture explained through code"/>
+    <meta property="og:title" content="Coxeter 元"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -48,7 +61,7 @@ It displays the r">
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<meta name="generator" content="Hexo 5.4.0">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -271,6 +284,10 @@ It displays the r">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
             
+    
+    
+    <a class="breadcrumb" href="/categories/pywonderland-项目/">pywonderland 项目</a>
+
 
         
 
@@ -286,289 +303,273 @@ It displays the r">
                             <div class="article-title">
                                 
     
-        <h1>The E8 picture explained through code</h1>
+        <h1>Coxeter 元</h1>
     
 
 
                             </div>
-                            <time class="pink-link-context" datetime="2024-02-28T16:00:00.000Z"><a href="/e8-and-coxeter-plane/index.html">2024-02-29</a></time>
+                            <time class="pink-link-context" datetime="2013-10-10T16:00:00.000Z"><a href="/coxeter-element/">2013-10-11</a></time>
 
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-structure-of-e_8"><span class="section table-of-contents-text">The Structure of \(E_8\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-element"><span class="section table-of-contents-text">Coxeter Element</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-plane"><span class="section table-of-contents-text">Coxeter Plane</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#further-improvement"><span class="section table-of-contents-text">Further Improvement</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%85%83"><span class="section table-of-contents-text">Coxeter 元</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%B9%B3%E9%9D%A2"><span class="section table-of-contents-text">Coxeter 平面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%94%B9%E8%BF%9B"><span class="section table-of-contents-text">进一步改进</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#e_8-%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="section table-of-contents-text">\(E_8\) 的例子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
 
                                         
                                             <div class="entry pink-link-context">
                                                 
-<p>If you have heard of Lie algebras, chances are you have encountered
-the following pattern: (Refer to Wikipedia’s <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lie_algebra">Lie algebra
-entry</a>)</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/e8.svg" width="350"></p>
-<p>It displays the root system diagram for the Lie algebra <span class="math inline">\(E_8\)</span>, which consists of 240 vectors in an
-eight-dimensional Euclidean space <span class="math inline">\(\mathbb{R}^8\)</span>, each vector having exactly
-56 nearest neighbors. Projecting these 240 vectors onto a special
-two-dimensional plane (known as the Coxeter plane) reveals a
-rotationally symmetric pattern, as seen in the figure above, where the
-240 projected points are distributed across 8 concentric circles, each
-containing 30 evenly spaced vertices, thus remaining invariant under a
-rotation of angle <span class="math inline">\(\frac{2\pi}{30}\)</span>.
-The number <span class="math inline">\(h=30\)</span> is called the
-Coxeter number of <span class="math inline">\(E_8\)</span>.</p>
-<p>This phenomenon is not unique to <span class="math inline">\(E_8\)</span> but holds for any finite Coxeter
-group, as illustrated by the following figure, which shows the pattern
-obtained by projecting the 32 vertices of a 5-dimensional hypercube and
-its edges onto its Coxeter plane:</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/5-cube.svg" width="350"></p>
-<p>Two vertices are projected to the origin, with the remaining 30
-vertices distributed across 3 concentric circles, each containing 10
-evenly spaced vertices. Hence the Coxeter number is <span class="math inline">\(h=10\)</span>.</p>
-<p>In this blog post I will use <span class="math inline">\(E_8\)</span>
-as an example to explain the mathematics behind this, following the
-presentation in section 3.16 of Humphreys’ textbook “Reflection Groups
-and Coxeter Groups”.</p>
-<p>The code for this article is available on <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/raw/master/src/misc/E8.py">GitHub</a>.</p>
-<p>David Madore also has a beautiful <a target="_blank" rel="noopener" href="http://www.madore.org/~david/math/e8w.html">interactive demo</a>
-that can draw the root system of <span class="math inline">\(E_8\)</span> in various ways.</p>
-<h1 id="the-structure-of-e_8">The Structure of <span class="math inline">\(E_8\)</span></h1>
-<p>We know that the Dynkin diagram of <span class="math inline">\(E_8\)</span> is as follows:</p>
-<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/e8-dynkin.svg" width="400"></p>
-<p>A set of simple roots is given by</p>
-<p><span class="math display">\[\Delta=\begin{bmatrix}1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\end{bmatrix}.\]</span></p>
-<p>Here, the vertex numbered <span class="math inline">\(i\)</span> in
-the Dynkin diagram corresponds to the simple root <span class="math inline">\(\alpha_i\)</span>, which is the <span class="math inline">\(i\)</span>th row of the matrix. Note that each
-simple root has a length of <span class="math inline">\(\sqrt{2}\)</span>, hence not a unit vector. This
-is mainly for convenience in later computations.</p>
-<p>The Cartan matrix is given by</p>
-<p><span class="math display">\[C=\left((\alpha_i,\alpha_j)\right)_{1\leq i,j\leq
-8}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span></p>
-<div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
-</span>Here’s a point that can be easily confusing: please remember that
-in the mathematical derivations in this article, the inner product we
-use is the one given by the Cartan matrix <span class="math inline">\(C\)</span>. However, in the actual code, we can
-directly call <code>np.dot</code> to calculate the inner product of two
-vectors. The reasoning is as follows:</p>
-<p>Let <span class="math inline">\(u=\sum_{i=1}^8 x_i\alpha_i\)</span>
-and <span class="math inline">\(v=\sum_{i=1}^8 y_i\alpha_i\)</span> be
-two vectors, and let <span class="math inline">\(X=(x_1,\ldots,x_8)\)</span> and <span class="math inline">\(Y=(y_1,\ldots,y_8)\)</span> be their coordinates
-in the basis <span class="math inline">\(\Delta\)</span>. Also, let
-<span class="math inline">\(u=(u_1,\ldots,u_8)\)</span> and <span class="math inline">\(v=(v_1,\ldots,v_8)\)</span> be their coordinates
-in the standard basis <span class="math display">\[\{e_i=(0,\ldots,\underbrace{1}_{\text{$i$-th
-position}},\ldots,0)\mid 1\leq i\leq 8\},\]</span> then their inner
-product is <span class="math display">\[(u,v)=XCY'=X\Delta\Delta'Y'=\sum_{i=1}^8
-u_i v_i = \mathrm{np.dot}(u,v).\]</span></p>
-<p>From now on, we will no longer emphasize that <span class="math inline">\((\,,\,)\)</span> is the inner product under <span class="math inline">\(C\)</span>. But readers must be aware of this.</p>
-</div>
-<p>Each simple root <span class="math inline">\(\alpha_i\)</span>
-corresponds to a simple reflection <span class="math inline">\(s_i\)</span>:</p>
-<p><span class="math display">\[s_i(v) = v -
-\frac{2(v,\alpha_i)}{(\alpha_i, \alpha_i)}\alpha_i =
-v-(v,\alpha_i)\alpha_i,\quad 1\leq i\leq 8.\]</span></p>
-<p>This expression shows the advantage of making each simple root <span class="math inline">\(\alpha_i\)</span> have a length of <span class="math inline">\(\sqrt{2}\)</span>: <span class="math inline">\(\alpha_i\)</span> is equal to its coroot <span class="math inline">\(\frac{2\alpha_i}{(\alpha_i,\alpha_i)}\)</span>,
-resulting in the simple form of reflection about <span class="math inline">\(\alpha_i\)</span>.</p>
-<p>To express this in code:</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># A set of simple roots listed by rows of 'delta'</span><br>delta = np.array([<br>    [<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],<br>    [-<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]<br>])<br><br><span class="hljs-comment"># The cartan matrix:</span><br>cartan = np.dot(delta, delta.transpose())<br></code></pre></td></tr></tbody></table></figure>
-<p>The group <span class="math inline">\(W\)</span> generated by all
-simple reflections <span class="math inline">\(\{s_i\}\)</span> is
-called the Weyl group of <span class="math inline">\(E_8\)</span>,
-containing 696729600 elements. The set <span class="math display">\[\Phi
-= \{w\cdot\alpha\mid w\in W, \alpha\in\Delta\}\]</span> generated by the
-action of the Weyl group on the simple roots is called the root system
-of <span class="math inline">\(E_8\)</span>, containing 240 distinct
-vectors, with <span class="math inline">\(W\)</span> acting on <span class="math inline">\(\Phi\)</span> by permutations.</p>
-<p>The vectors in <span class="math inline">\(\Phi\)</span> can be
-divided into two categories:</p>
+<p>如果你对 Lie 代数有所了解的话，相信很大概率你会见过下面的图案： (
+参考维基百科的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lie_algebra">Lie
+algebra 词条</a> )</p>
+<p><img style="margin:0px auto;display: block" src="/images/coxeter-element/e8.svg" width="350"></p>
+<p>它展示的是 Lie 代数 <span class="math inline">\(E_8\)</span>
+的根系图。<span class="math inline">\(E_8\)</span> 的根系由 8 维欧式空间
+<span class="math inline">\(\mathbb{R}^8\)</span> 中的 240
+个向量组成，将这 240 个向量投影到一个特殊的 2 维平面 ( 叫做 Coxeter 平面
+) 上就会呈现出一个具有旋转对称的图案。在上图中可以看到，240
+个投影点分布在 8 个圆周上，每个圆周包含 30
+个均匀分布的点，整个图案在角度为 <span class="math inline">\(\frac{2\pi}{30}\)</span> 的旋转下是不变的。<span class="math inline">\(h=30\)</span> 正是 <span class="math inline">\(E_8\)</span> 的 Coxeter 数。</p>
+<p>本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python
+中编写一个程序绘制上面的投影图案。我主要参考了 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990</a>)</span> 和 <span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman
+2017</a>)</span>。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。</p>
+<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/raw/master/src/misc/E8.py">Github
+上</a> 。David Madore 也有一个很棒的 <a target="_blank" rel="noopener" href="http://www.madore.org/~david/math/e8w.html">交互式网页</a>
+可以绘制 <span class="math inline">\(E_8\)</span>
+的多种不同风格的图案。</p>
+<span id="more"></span>
+<h1 id="coxeter-元">Coxeter 元</h1>
+<p>在本文中，<span class="math inline">\((W,S)\)</span>
+总代表一个有限不可约 Coxeter 群，其中 <span class="math inline">\(|S|=n\)</span>。<span class="math inline">\(S\)</span> 中的生成元满足关系</p>
 <ol type="1">
-<li>The first category includes all permutations of <span class="math inline">\((\pm1,\pm1,0,0,0,0,0,0)\)</span>, with two
-components being <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span> and the remaining six being 0. There
-are 112 vectors of this type.</li>
-<li>The second category includes vectors of the form <span class="math inline">\(1/2\times(\pm1,\pm1,\cdots,\pm1)\)</span>, where
-the number of <span class="math inline">\(-1\)</span>s is even. There
-are 128 vectors of this type.</li>
+<li>对任何 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(s^2=1\)</span>。</li>
+<li>对任何 <span class="math inline">\(s_i,s_j\in S\)</span> 有 <span class="math inline">\((s_is_j)^{m_{ij}}=1\)</span>。其中 <span class="math inline">\(m_{ij}\geq 2\)</span> 是正整数。</li>
 </ol>
-<p><strong>For programming convenience, we will multiply all roots by 2
-to make them integer vectors</strong>. Thus, the code to generate the
-root system <span class="math inline">\(\Phi\)</span> can be written as
-follows:</p>
+<p>设 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(n\)</span> 维实向量空间，<span class="math inline">\(\Delta=\{\alpha_1,\ldots,\alpha_n\}\)</span> 是
+<span class="math inline">\(V\)</span> 的一组基，<span class="math inline">\(\Delta\)</span> 叫做一组单根。定义 <span class="math inline">\(V\)</span> 上的内积 <span class="math inline">\(\bullet\)</span> 如下： <span class="math display">\[\alpha_i\bullet\alpha_j=-\cos\frac{\pi}{m_{ij}}.\]</span>
+<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, secs.
+6.2–6.4</a>)</span> 中证明了 <span class="math inline">\(( W,S
+)\)</span> 是有限群当且仅当内积 <span class="math inline">\(\bullet\)</span> 是正定的。</p>
+<p>矩阵 <span class="math inline">\(A= ( a_{ij} )_{1\leq i,j\leq n}= (
+\alpha_i\bullet\alpha_j )_{1\leq i,j\leq n}\)</span> 叫做 Cartan
+矩阵。</p>
+<p>规定每个生成元 <span class="math inline">\(s_i\in S\)</span> 在 <span class="math inline">\(V\)</span> 上的作用为 <span class="math display">\[s_i ( v ) = v - 2 ( v\bullet\alpha_i )
+\alpha_i,\quad v\in V.\]</span> 即 <span class="math inline">\(s_i\)</span> 是关于以 <span class="math inline">\(\alpha_i\)</span>
+为法向量的超平面的反射。这个作用将 <span class="math inline">\(W\)</span> 同构地映射为 <span class="math inline">\(O ( V )\)</span> 的一个有限反射子群。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+1.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\{i_1,i_2,\ldots,i_n\}\)</span> 是集合 <span class="math inline">\(\{1,2,\ldots,n\}\)</span> 的一个置换，乘积 <span class="math inline">\(s_{i_1}s_{i_2}\cdots s_{i_n}\)</span> 叫做
+<strong>Coxeter 元</strong>。</p>
+</div>
+<p>换句话说，Coxeter 元就是把 <span class="math inline">\(W\)</span>
+的生成元 <span class="math inline">\(s_1,\ldots,s_n\)</span>
+按照任意顺序排列，然后相乘得到的群元素。</p>
+<div id="coxeter-conjugate" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+1.2</span> <span class="statement-info">(<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
+3.16</a>)</span>)</span>.</span><span class="statement-spah">
+</span>所有 Coxeter 元都是互相共轭的。</p>
+</div>
+<p>由于 Coxeter
+元都是共轭的，所以它们有相同的阶、特征多项式和特征值。任一 Coxeter
+元的阶叫做 <span class="math inline">\(W\)</span> 的 <strong>Coxeter
+数</strong>，记作 <span class="math inline">\(h\)</span>。</p>
+<p>设 <span class="math inline">\(\gamma\)</span> 是一个 Coxeter
+元，由于 <span class="math inline">\(\gamma\)</span> 满足 <span class="math inline">\(\gamma^h=1\)</span>，所以 <span class="math inline">\(\gamma\)</span> 的特征值必然都是 <span class="math inline">\(h\)</span> 次单位根，而且复特征值成对共轭出现：
+<span class="math display">\[\{\zeta^{m_1},\ldots,\zeta^{m_8},0\leq
+m_i&lt;h\}.\]</span> 其中 <span class="math inline">\(\zeta\)</span>
+是本原 <span class="math inline">\(h\)</span>- 次单位根。在 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 3.16</a>)</span> 中证明了 1
+不可能是 <span class="math inline">\(\gamma\)</span>
+的特征值，所以实际上每个指数 <span class="math inline">\(1\leq
+m_i&lt;h\)</span>。<span class="math inline">\(\gamma\)</span>
+如果有实特征值的话只可能是 <span class="math inline">\(-1\)</span>( 对应
+<span class="math inline">\(\zeta^{h/2}\)</span> ) 。</p>
+<p>我们选择一个特殊的 Coxeter 元如下：任取 <span class="math inline">\(\Gamma\)</span> 的一个顶点作为 <span class="math inline">\(s_n\)</span>，将 <span class="math inline">\(\Gamma\)</span> 的顶点按照与 <span class="math inline">\(s_n\)</span> 的图距离分成两个不相交的集合 <span class="math inline">\(\Gamma=I\sqcup J\)</span>：<span class="math inline">\(I\)</span> 由所有与 <span class="math inline">\(s_n\)</span> 的距离为偶数的顶点组成（包含 <span class="math inline">\(s_n\)</span>）；<span class="math inline">\(J\)</span> 由所有与 <span class="math inline">\(s_n\)</span> 的距离为奇数的顶点组成。于是 <span class="math inline">\(I\)</span> 中的顶点两两不相邻，从而 <span class="math inline">\(\{s_i,i\in I\}\)</span> 中的生成元两两交换。<span class="math inline">\(J\)</span> 也是如此。记 <span class="math display">\[x=\prod_{i\in I}s_i,\quad y=\prod_{j\in
+J}s_j.\]</span> 取 Coxeter 元 <span class="math inline">\(\gamma=xy\)</span>。我们下面对 <span class="math inline">\(\gamma\)</span> 进行分析。</p>
+<h1 id="coxeter-平面">Coxeter 平面</h1>
+<p>设 <span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span> 是 <span class="math inline">\(\{\alpha_i\}_{i=1}^n\)</span> 在内积 <span class="math inline">\(\bullet\)</span> 下的对偶基： <span class="math display">\[(\alpha_i\bullet\omega_j)=\delta_{ij}.\]</span>
+<span class="math inline">\({\bf A}\)</span> 是把每个 <span class="math inline">\(\omega_i\)</span> 映射为 <span class="math inline">\(\alpha_i\)</span> 的线性变换： <span class="math display">\[{\bf A}\omega_i=\alpha_i,\quad \forall 1\leq
+i\leq n.\]</span> 则 <span class="math inline">\({\bf A}\)</span> 在
+<span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span>
+这组基下的矩阵就是 Cartan 矩阵 <span class="math inline">\(A\)</span>。</p>
+<p>在 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
+2.6</a>)</span> 中证明了矩阵 <span class="math inline">\(A\)</span>
+的极小特征值 <span class="math inline">\(c&gt;0\)</span> 的重数是
+1，并且对应的特征向量 <span class="math inline">\({\bf
+c}=(c_1,\ldots,c_n)\)</span> 的所有分量都是正的。于是 <span class="math display">\[{\bf A}\sum_{i=1}^nc_i\omega_i =
+c\left(\sum_{i=1}^nc_i\omega_i\right).\]</span> 特征向量 <span class="math inline">\(\sum_{i=1}^nc_i\omega_i\)</span> 可以写成两个向量
+<span class="math inline">\(\lambda,\mu\)</span> 的和，其中 <span class="math display">\[\lambda=\sum_{i\in I} c_i\omega_i,\quad
+\mu=\sum_{j\in J}c_j\omega_j.\]</span> <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 3.17</a>)</span> 中证明了
+<span class="math inline">\(\lambda,\mu\)</span> 张成一个二维子空间
+<span class="math inline">\(P\)</span>，<span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 限制在 <span class="math inline">\(P\)</span> 上分别是保持直线 <span class="math inline">\(\mathbb{R}\mu\)</span> 和 <span class="math inline">\(\mathbb{R}\lambda\)</span> 不动的反射，从而 <span class="math inline">\(\gamma=xy\)</span> 限制在 <span class="math inline">\(P\)</span> 上是一个旋转，并且这个旋转的角度就是
+<span class="math inline">\(2\pi/h\)</span>。由于 <span class="math inline">\(\gamma\)</span> 置换根系 <span class="math inline">\(\Phi\)</span>，所以如果我们把 <span class="math inline">\(\Phi\)</span> 投影到 <span class="math inline">\(P\)</span> 上，就会看到一个具有 <span class="math inline">\(h\)</span> 阶旋转对称性的图案。</p>
+<p>不过直接使用上面 <span class="math inline">\(\lambda,\mu\)</span>
+的定义来计算 <span class="math inline">\(P\)</span>
+是很不方便的，因为其中涉及了对偶基 <span class="math inline">\(\{\omega_i\}\)</span>。我们可以绕开对偶基的计算，这一点其实隐藏在
+<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990,
+78</a>)</span> 中，那里证明了 <span class="math display">\[\begin{aligned}
+(c-1)\mu+\lambda &amp;=\sum_{i\in I}c_i\alpha_i,\\
+(c-1)\lambda+\mu &amp;=\sum_{j\in J}c_j\alpha_j.
+\end{aligned}\]</span></p>
+<p>由于 <span class="math inline">\(c\ne 1\)</span>（1 不是 Coxeter
+元的特征值），上式告诉我们 <span class="math display">\[P=\mathop{\mathrm{span}}\{\lambda,\,\mu\}=\mathop{\mathrm{span}}\left\{\sum_{i\in
+I}c_i\alpha_i,\,\sum_{j\in
+J}c_j\alpha_j\right\}.\tag{$\ast$}\label{eq:alpha}\]</span>
+所以我们完全可以通过特征向量 <span class="math inline">\({\bf
+c}\)</span> 和 <span class="math inline">\(\Delta\)</span> 得出 <span class="math inline">\(P\)</span> 的一组基。</p>
+<h1 id="进一步改进">进一步改进</h1>
+<p>如果你去看 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py">Github
+代码</a>
+的话，会发现那里并不是完全按上面的逻辑写的。这是怎么回事呢？</p>
+<p>前面的计算有个美中不足之处，就是我们需要显式地将 <span class="math inline">\(S\)</span> 的划分为两个不相交的子集 <span class="math inline">\(S=I\sqcup J\)</span>，使得 <span class="math inline">\(I,J\)</span>
+各自的生成元之间互相交换。这一步是可以避免的，下面的方法我是从 <span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman
+2017</a>)</span> 中学到的。</p>
+<p>我们仍然用 <span class="math inline">\(\gamma\)</span> 表示 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span> 这组基下的矩阵。</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3.1</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman 2017,
+lemma. 3.3</a>)</span>)</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(2I + \gamma + \gamma^{-1}= ( 2I-A
+)^2\)</span>。</p>
+</div>
+<p>根据这个结论，如果 <span class="math inline">\(V_s,V_{\bar{s}}\)</span> 分别是 <span class="math inline">\(\gamma\)</span> 的一对共轭的复特征值 <span class="math inline">\(s=e^{i\theta}\)</span> 和 <span class="math inline">\(\bar{s}=e^{-i\theta}\)</span> 对应的特征子空间，记
+<span class="math inline">\(U=V_s\oplus V_{\bar{s}}\)</span>，则对 <span class="math inline">\(v\in U\)</span> 有 <span class="math display">\[(
+2I-A )^2 ( v ) = ( 2+e^{i\theta}+e^{-i\theta} ) v= (
+4\cos^2\frac{\theta}{2} ) v.\]</span> 即 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(( 2I-A
+)^2\)</span> 的特征值为 <span class="math inline">\(4\cos^2\frac{\theta}{2}\)</span> 的特征向量。</p>
+<p>这看起来好像可以说，<span class="math inline">\(v\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>
+的特征向量？但是我们不知道 <span class="math inline">\(\pm
+2\cos\frac{\theta}{2}\)</span>
+是否都会出现，以及如果都出现的话重数是不是相等。</p>
+<p>Casselman 论证了这确实是成立的：</p>
+<div id="same-characteristic" class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3.2</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman
+2017</a>, lem. 3.5)</span>)</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(2I-A\)</span> 和 <span class="math inline">\(A-2I\)</span> 有同样的特征多项式。</p>
+</div>
+<p>这个命题告诉我们，若 <span class="math inline">\(\lambda\)</span> 是
+<span class="math inline">\(A-2I\)</span> 的特征值，则 <span class="math inline">\(-\lambda\)</span>
+也是，并且二者对应的特征子空间的维数相同。</p>
+<p>我们已经看到 <span class="math inline">\(U=V_s\oplus
+V_{\bar{s}}\)</span> 是 <span class="math inline">\(( 2I-A )^2\)</span>
+的特征值为 <span class="math inline">\(4\cos^2\frac{\theta}{2}\)</span>
+的特征子空间。我们断言</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3.3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm2\cos\frac{\theta}{2}\)</span>
+的特征子空间的直和。特征值 <span class="math inline">\(\pm2\cos\frac{\theta}{2}\)</span>
+都出现并且它们对应的特征子空间维数相等。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(U'\)</span>
+是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm2\cos\frac{\theta}{2}\)</span>
+的特征子空间的直和，我们要证明 <span class="math inline">\(U=U'\)</span>。显然 <span class="math inline">\(U'\subseteq
+U\)</span>，只要再证明反向包含。</p>
+<p><span class="math inline">\(U\)</span> 当然是 <span class="math inline">\(2I-A\)</span> 的不变子空间。由于 <span class="math inline">\(2I-A\)</span> 是可对角化的，从而 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征子空间的直和。显然 <span class="math inline">\(2I-A\)</span> 在 <span class="math inline">\(U\)</span> 上的特征值只有可能是 <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>，从而 <span class="math inline">\(U\subseteq U'\)</span>。根据 <a href="#same-characteristic" title="命题 3.2">命题 3.2</a> <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>
+都出现并且维数相等。<span class="math inline">\(\blacksquare\)</span></p>
+<p>下面的推论是显然的。</p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+3.4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(U\)</span> 是 <span class="math inline">\(A\)</span> 的特征值为 <span class="math inline">\(2\pm2\cos\frac{\theta}{2}\)</span>
+的特征子空间的直和。</p>
+</div>
+<p>一般来说 <span class="math inline">\(U\)</span> 的维数未必是 2，所以
+<span class="math inline">\(U\)</span> 未必是一个平面。但是假设 <span class="math inline">\(c_\min=2-2\cos\frac{\theta_0}{2}\)</span> 是 <span class="math inline">\(A\)</span> 的极小特征值，我们知道 <span class="math inline">\(c_\min\)</span> 的重数是 1，从而 <span class="math inline">\(A\)</span> 的极大特征值 <span class="math inline">\(c_\max=2+2\cos\frac{\theta_0}{2}\)</span>
+的重数也是 1，这时 <span class="math inline">\(U\)</span>
+是二维平面。<span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是角度为 <span class="math inline">\(\theta_0\)</span> 的旋转。这个 <span class="math inline">\(U\)</span> 就是 Coxeter 平面 <span class="math inline">\(P\)</span>。</p>
+<p>于是计算 <span class="math inline">\(P\)</span> 归结为计算线性变换
+<span class="math inline">\({\bf A}\)</span>
+的极小和极大特征值对应的特征向量。设 <span class="math inline">\((c_1,\ldots,c_n)\)</span> 和 <span class="math inline">\((c_1',\ldots,c_n')\)</span> 分别是矩阵
+<span class="math inline">\(A\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量，不难验证 <span class="math inline">\(\sum_{i=1}^nc_i\alpha_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^nc_i'\alpha_i\)</span> 分别是 <span class="math inline">\({\bf A}\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量，比如 <span class="math display">\[{\bf A}\left(\sum_{i=1}^nc_i\alpha_i\right)={\bf
+A}\cdot{\bf A}\left(\sum_{i=1}^nc_i\omega_i\right)={\bf
+A}\left(c_\min\sum_{i=1}^nc_i\omega_i\right)=c_\min\sum_{i=1}^nc_i\alpha_i.\]</span>
+所以 <span class="math display">\[P=\mathop{\mathrm{span}}\left\{\sum_{i=1}^nc_i\alpha_i,\,\sum_{i=1}^nc_i'\alpha_i\right\}.\]</span>
+这样我们就找到了只用 Cartan 矩阵和 <span class="math inline">\(\Delta\)</span> 计算 <span class="math inline">\(P\)</span> 的方法。</p>
+<h1 id="e_8-的例子"><span class="math inline">\(E_8\)</span> 的例子</h1>
+<p><span class="math inline">\(E_8\)</span> 的 Coxeter 图为</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/e8-dynkin.svg" width="400"></p>
+<p>单根系 <span class="math inline">\(\Delta\)</span>
+的选择不是唯一的，我们采用如下的选择，使得 <span class="math inline">\(\bullet\)</span> 就是 Euclidean 标准内积： <span class="math display">\[\Delta=\begin{bmatrix}1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\end{bmatrix}.\]</span>
+Coxeter 图中编号为 <span class="math inline">\(i\)</span>
+的顶点对应的单根 <span class="math inline">\(\alpha_i\)</span>
+是矩阵的第 <span class="math inline">\(i\)</span>
+行。注意每个单根的长度是 <span class="math inline">\(\sqrt{2}\)</span>，并不是单位向量，这样主要是为了书写代码更方便。</p>
+<p>Cartan 矩阵 <span class="math inline">\(A\)</span>
+由单根之间两两内积给出： <span class="math display">\[A=(\alpha_i\bullet\alpha_j)_{1\leq i,j\leq
+8}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span></p>
+<p>用代码来写的话，就是</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># A set of simple roots listed by rows of 'delta'</span><br>delta = np.array([<br>    [<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],<br>    [-<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]<br>])<br><br><span class="hljs-comment"># The cartan matrix:</span><br>cartan = np.dot(delta, delta.transpose())<br></code></pre></td></tr></tbody></table></figure>
+<p>所有单反射 <span class="math inline">\(\{s_i\}_{i=1}^8\)</span>
+生成的群 <span class="math inline">\(W\)</span> 叫做 <span class="math inline">\(E_8\)</span> 的 Weyl 群，这个群包含 696729600
+个元素。单根系在 <span class="math inline">\(W\)</span> 作用下生成的集合
+<span class="math inline">\(\Phi = \{w\cdot\alpha\,|\, w\in W,
+\alpha\in\Delta\}\)</span> 叫做 <span class="math inline">\(E_8\)</span>
+的根系，<span class="math inline">\(\Phi\)</span> 中包含 240
+个不同的向量，<span class="math inline">\(W\)</span> 置换 <span class="math inline">\(\Phi\)</span> 中的向量。</p>
+<p><span class="math inline">\(\Phi\)</span>
+中的向量从形式上看分为两类：</p>
+<ol type="1">
+<li>第一类包含 <span class="math inline">\((\pm1,\pm1,0,0,0,0,0,0)\)</span>
+的所有置换，即有两个分量是 <span class="math inline">\(+1\)</span> 或者
+<span class="math inline">\(-1\)</span>，其余６个分量都是 0
+的向量。这样的向量有 112 个。</li>
+<li>第二类包含所有形如 <span class="math inline">\(1/2\times(\pm1,\pm1,\cdots,\pm1)\)</span>
+的向量，其中 <span class="math inline">\(-1\)</span>
+的个数是偶数。这样的向量有 128 个。</li>
+</ol>
+<p>为了编程方便，我们可以把所有根都乘以
+2，使得它们都是整数向量。于是生成根系 <span class="math inline">\(\Phi\)</span> 的代码可以这样写：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> itertools<br><br>roots = []<br><br><span class="hljs-comment"># Roots of the form (+-1, +-1, 0, 0, 0, 0, 0, 0),</span><br><span class="hljs-comment"># signs can be chosen independently and the two non-zeros can be anywhere.</span><br><span class="hljs-keyword">for</span> i, j <span class="hljs-keyword">in</span> combinations(<span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>), <span class="hljs-number">2</span>):<br>    <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> product([-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>], repeat=<span class="hljs-number">2</span>):<br>        v = np.zeros(<span class="hljs-number">8</span>)<br>        v[i] = x<br>        v[j] = y<br>        roots.append(v)<br><br><span class="hljs-comment"># Roots of the form 1/2 * (+-1, +-1, ..., +-1), signs can be chosen</span><br><span class="hljs-comment"># indenpendently except that there must be an even numer of -1s.</span><br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> product([-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], repeat=<span class="hljs-number">8</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span>(v) % <span class="hljs-number">4</span> == <span class="hljs-number">0</span>:<br>        roots.append(v)<br>roots = np.array(roots).astype(<span class="hljs-built_in">int</span>)<br><br><span class="hljs-comment"># Connect a root to its nearest neighbors,</span><br><span class="hljs-comment"># two roots are connected if and only if they form an angle of pi/3.</span><br>edges = []<br><span class="hljs-keyword">for</span> i, r <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots):<br>    <span class="hljs-keyword">for</span> j, s <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots[i + <span class="hljs-number">1</span> :], i + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> np.<span class="hljs-built_in">sum</span>((r - s) ** <span class="hljs-number">2</span>) == <span class="hljs-number">8</span>:<br>            edges.append([i, j])<br></code></pre></td></tr></tbody></table></figure>
-<h1 id="coxeter-element">Coxeter Element</h1>
-<blockquote>
-<p><strong>Definition</strong>: An element <span class="math inline">\(\gamma\in W\)</span> obtained by arranging the
-simple reflections <span class="math inline">\(s_1,\ldots,s_8\)</span>
-in any order and then multiplying them is called a Coxeter element.</p>
-</blockquote>
-<p>Coxeter elements are not unique but are all conjugate to each other
-<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Therefore, they share the same
-order, characteristic polynomial, and eigenvalues.</p>
-<blockquote>
-<p><strong>Definition</strong>: The order of any Coxeter element is
-called the Coxeter number of <span class="math inline">\(W\)</span>,
-denoted by <span class="math inline">\(h\)</span>.</p>
-</blockquote>
-<p>Since <span class="math inline">\(\gamma\)</span> is an element of
-the finite group <span class="math inline">\(W\)</span>, its 8
-eigenvalues are of the form <span class="math display">\[\{\zeta^{m_1},\ldots,\zeta^{m_8},0\leq
-m_i&lt;h\}.\]</span></p>
-<p>where <span class="math inline">\(\zeta\)</span> is a primitive <span class="math inline">\(h\)</span>-th root of unity. Section 3.16 in
-Humphrey’s boook shows that <span class="math inline">\(\gamma\)</span>’s eigenvalues cannot be 1, so each
-<span class="math inline">\(1\leq m_i&lt;h\)</span>. If <span class="math inline">\(\gamma\)</span> has real eigenvalues, the only
-possibility is <span class="math inline">\(-1\)</span> (corresponding to
-<span class="math inline">\(\zeta^{h/2}\)</span>). <span class="math inline">\(\gamma\)</span>’s complex eigenvalues appear in
-conjugate pairs, like <span class="math inline">\({\zeta^{m_i},\zeta^{h-m_i}}\)</span>.</p>
-<p>A classical way to choose a Coxeter element is as follows: Note that
-the eight vertices of <span class="math inline">\(E_8\)</span>’s Dynkin
-diagram can be divided into two groups, <span class="math inline">\(\{1,
-3, 5, 7\}\)</span> and <span class="math inline">\(\{2, 4, 6,
-8\}\)</span>, with vertices within the same group not adjacent, hence
-the corresponding simple reflections commute. Let <span class="math display">\[x=s_1s_3s_5s_7,\quad y=s_2s_4s_6s_8.\]</span>
-Then <span class="math inline">\(\gamma=xy\)</span> is a Coxeter
-element.</p>
-<h1 id="coxeter-plane">Coxeter Plane</h1>
-<p>Now let’s examine the Cartan matrix <span class="math inline">\(C\)</span>. We assert that <span class="math inline">\(C\)</span> has an eigenvector <span class="math inline">\({\bf c}\)</span> with all positive components and
-a multiplicity of 1. Note that the diagonal entries of <span class="math inline">\(C\)</span> are all 2, and the off-diagonal entries
-are non-positive, making <span class="math inline">\(2I-C\)</span> a
-non-negative matrix. Since <span class="math inline">\(E_8\)</span> is
-an irreducible root system, both <span class="math inline">\(C\)</span>
-and <span class="math inline">\(2I-C\)</span> are irreducible matrices.
-By the Frobenius-Perron theorem, the largest eigenvalue of <span class="math inline">\(2I-C\)</span> has a multiplicity of 1, and its
-corresponding eigenvector <span class="math inline">\({\bf c}\)</span>
-has all positive components. <span class="math inline">\({\bf
-c}\)</span> is naturally the smallest eigenvalue’s corresponding
-eigenvector of <span class="math inline">\(C\)</span>.</p>
-<p>We can use <code>numpy.linalg.eigh</code> to find the eigenvalues and
-eigenvectors of the Cartan matrix <span class="math inline">\(C\)</span>:</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">eigenvals, eigenvecs = np.linalg.eigh(cartan)<br>c = eigenvecs[:, <span class="hljs-number">0</span>]<br></code></pre></td></tr></tbody></table></figure>
-<p>Where <code>eigenvecs</code> columns are all the eigenvectors of
-<span class="math inline">\(C\)</span>, arranged in ascending order of
-their eigenvalues. Therefore, the first column corresponds to the
-smallest eigenvalue’s eigenvector, which is our desired <span class="math inline">\({\bf c}\)</span>.</p>
-<p>Following the notation on page 77 of Humphreys’ book:</p>
-<p>Let <span class="math inline">\({\omega_i,1\leq i\leq 8}\)</span> be
-the dual basis of <span class="math inline">\(\Delta\)</span>, i.e.,
-<span class="math display">\[(\alpha_i,\omega_j)=\delta_{ij}.\]</span>
-Let <span class="math inline">\({\bf c}=(c_1,c_2,\ldots,c_8)\)</span>,
-and define <span class="math display">\[\lambda = \sum_{i\in
-I}c_i\omega_i,\quad \mu= \sum_{j\in J}c_j\omega_j.\]</span> Humphreys’
-book shows that the two-dimensional plane <span class="math inline">\(P={\rm span}\{\lambda,\mu\}\)</span> remains
-invariant under the actions of <span class="math inline">\(x,y\)</span>.
-In fact, <span class="math inline">\(x,y\)</span> act as reflections on
-<span class="math inline">\(P\)</span>, thus <span class="math inline">\(\gamma=xy\)</span> acts on <span class="math inline">\(P\)</span> as a rotation. The order of this
-rotation is the order of <span class="math inline">\(\gamma\)</span>,
-which is the Coxeter number <span class="math inline">\(h\)</span>.
-Since <span class="math inline">\(\gamma\)</span> permutes the root
-system <span class="math inline">\(\Phi\)</span>, projecting <span class="math inline">\(\Phi\)</span> onto plane <span class="math inline">\(P\)</span> theoretically should reveal a pattern
-with <span class="math inline">\(h\)</span>-fold rotational symmetry.
-(In fact, this is the image at the beginning of this article)</p>
-<p>Using the direct definitions of <span class="math inline">\(\lambda,\mu\)</span> to compute the projection of
-<span class="math inline">\(\Phi\)</span> onto <span class="math inline">\(P\)</span> is inconvenient because it involves the
-dual basis <span class="math inline">\({\omega_i}\)</span>. We can
-bypass the calculation of the dual basis. This is implicitly suggested
-in the calculations on page 78 of Humphreys’ book:</p>
-<p>If we define <span class="math display">\[\nu=\sum_{j\in
-J}c_j\alpha_j.\]</span> Then <span class="math inline">\(\mu=(1-c)\lambda+\nu\)</span> and <span class="math inline">\(\nu\perp\lambda\)</span>. This amounts to say that
-<span class="math inline">\(\nu\)</span> is the component of <span class="math inline">\(\mu\)</span> perpendicular to <span class="math inline">\(\lambda\)</span>. Similarly, if we define <span class="math display">\[\nu'=\sum_{i\in I}c_i\alpha_i.\]</span> Then
-<span class="math inline">\(\nu'\)</span> is the component of <span class="math inline">\(\lambda\)</span> perpendicular to <span class="math inline">\(\mu\)</span>. Hence, <span class="math inline">\(P={\rm span}\{\nu,\nu'\}\)</span>. And <span class="math inline">\(\nu,\nu'\)</span>’s expressions only involve
-<span class="math inline">\({\alpha_i}\)</span>, which simplifies the
-process.</p>
-<p>The code can be written as follows (using <span class="math inline">\(u,v\)</span> to represent <span class="math inline">\(\nu,\nu'\)</span>):</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">I = [<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>]<br>J = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>]<br>u = <span class="hljs-built_in">sum</span>(c[i] * delta[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> I)<br>v = <span class="hljs-built_in">sum</span>(c[j] * delta[j] <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> J)<br>u /= np.linalg.norm(u)<br>v -= np.dot(u, v) * u<br>v /= np.linalg.norm(v)<br></code></pre></td></tr></tbody></table></figure>
-<p>Here, we performed Gram-Schmidt orthogonalization on <span class="math inline">\(u,v\)</span> to obtain an orthonormal basis for
-<span class="math inline">\(P\)</span>.</p>
-<p>Projecting <span class="math inline">\(\Phi\)</span> onto <span class="math inline">\(P\)</span> is straightforward: for each vector in
-the root system, compute its coordinates in the basis <span class="math inline">\(u,v\)</span>:</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">roots_2d = [(np.dot(u, x), np.dot(v, x)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> roots]<br></code></pre></td></tr></tbody></table></figure>
-<p>What remains is to draw these points and the edges between them. The
-details of the drawing process are not discussed here.</p>
-<h1 id="further-improvement">Further Improvement</h1>
-<p>If you look at the <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py#L123">GitHub
-code</a>, you’ll find that it’s not written exactly as described above.
-What’s the reason for this?</p>
-<p>A minor drawback of the previous calculation is that we had to
-explicitly specify two sets <span class="math inline">\(I,J\)</span>.
-This step can also be avoided, but it requires a more detailed analysis
-of the Cartan matrix <span class="math inline">\(C\)</span> and Coxeter
-element <span class="math inline">\(\gamma\)</span>. The following
-proposition can be found in <a target="_blank" rel="noopener" href="https://secure.math.ubc.ca/~cass/research/pdf/Element.pdf">Casselman’s
-article</a>:</p>
-<blockquote>
-<p><strong>Proposition</strong>: <span class="math inline">\(2I + \gamma
-+ \gamma^{-1}= (2I-C)^2\)</span>.</p>
-</blockquote>
-<p>We can compute and verify that this identity indeed holds. Consider
-the matrix of <span class="math inline">\(\gamma\)</span> under the
-basis <span class="math inline">\(\Delta\)</span>:</p>
-<p><span class="math display">\[\gamma=xy=\begin{pmatrix}0&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;2&amp;-1&amp;1&amp;-1\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;0&amp;-1\end{pmatrix}.\]</span>
-Thus, <span class="math display">\[\gamma^{-1} =
-yx=\begin{pmatrix}-1&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;1&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;1&amp;-1&amp;1&amp;0&amp;1\\0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;0&amp;1\\0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;-1&amp;1\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;1&amp;0&amp;0\end{pmatrix}.\]</span>
-Therefore, <span class="math display">\[2I + \gamma + \gamma^{-1} =
-\begin{pmatrix}
-1&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0&amp;0\\
-0&amp;2&amp;0&amp;1&amp;0&amp;0&amp;0&amp;0\\
-1&amp;0&amp;2&amp;0&amp;1&amp;0&amp;0&amp;0\\
-0&amp;1&amp;0&amp;2&amp;0&amp;1&amp;0&amp;1\\
-0&amp;0&amp;1&amp;0&amp;3&amp;0&amp;1&amp;0\\
-0&amp;0&amp;0&amp;1&amp;0&amp;2&amp;0&amp;1\\
-0&amp;0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0\\
-0&amp;0&amp;0&amp;1&amp;0&amp;1&amp;0&amp;1
-\end{pmatrix}=(2I - C)^2.\]</span> This implies that <span class="math inline">\(v\)</span> is an eigenvector of <span class="math inline">\((2I-C)^2\)</span> with an eigenvalue of <span class="math inline">\(4\cos^2\frac{\theta}{2}\)</span>.</p>
-<p>It seems to suggest that <span class="math inline">\(v\)</span> is
-also an eigenvector of <span class="math inline">\(2I-C\)</span> with
-eigenvalues of <span class="math inline">\(\pm
-2\cos\frac{\theta}{2}\)</span>. However, it’s not clear whether both
-<span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span> will
-appear, or if they do, whether their multiplicities are equal.</p>
-<p>Casselman demonstrated that this is indeed the case:</p>
-<blockquote>
-<p><strong>Proposition</strong>: <span class="math inline">\(2I-C\)</span> and <span class="math inline">\(C-2I\)</span> have the same characteristic
-polynomial.</p>
-</blockquote>
-<p>According to this proposition, <span class="math inline">\(2I-C\)</span> and <span class="math inline">\(C-2I\)</span> have the same dimension for their
-eigenspaces corresponding to an eigenvalue <span class="math inline">\(\lambda\)</span>. Since the latter is the
-eigenspace of <span class="math inline">\(2I-C\)</span> for the
-eigenvalue <span class="math inline">\(-\lambda\)</span>, it follows
-that the dimensions of the eigenspaces of <span class="math inline">\(C-2I\)</span> for <span class="math inline">\(\pm\lambda\)</span> are equal. Let <span class="math inline">\(V_s,V_{\bar{s}}\)</span> be the eigenspaces
-corresponding to a pair of conjugate complex eigenvalues <span class="math inline">\(s=e^{i\theta}\)</span> and <span class="math inline">\(\bar{s}=e^{-i\theta}\)</span> of <span class="math inline">\(\gamma\)</span>. We have seen that <span class="math inline">\(P=V_s\oplus V_{\bar{s}}\)</span> is the eigenspace
-of <span class="math inline">\((2I-C)^2\)</span> for the eigenvalue
-<span class="math inline">\(4\cos^2\frac{\theta}{2}\)</span>. Since
-<span class="math inline">\(2I-C\)</span> commutes with <span class="math inline">\((2I-C)^2\)</span>, <span class="math inline">\(P\)</span> is also an invariant subspace of <span class="math inline">\(2I-C\)</span>. <span class="math inline">\(2I-C\)</span> is diagonalizable on <span class="math inline">\(P\)</span>, making <span class="math inline">\(P\)</span> the direct sum of eigenspaces of <span class="math inline">\(2I-C\)</span> for eigenvalues <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>. Thus, <span class="math inline">\(P\)</span> is the direct sum of eigenspaces of
-<span class="math inline">\(C\)</span> for eigenvalues <span class="math inline">\(2\pm2\cos\frac{\theta}{2}\)</span>.</p>
-<p>Let’s verify this: the eigenvalues of <span class="math inline">\(C\)</span> returned by
-<code>numpy.linalg.eigh</code> are as follows:</p>
+<p>我们来计算 Coxeter 平面 <span class="math inline">\(P\)</span>
+的一组基。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">eigenvals, eigenvecs = np.linalg.eigh(cartan)<br>u = eigenvecs[:, <span class="hljs-number">0</span>]<br>v = eigenvecs[:, -<span class="hljs-number">1</span>]<br><br>u = np.dot(u, delta)<br>v = np.dot(v, delta)<br></code></pre></td></tr></tbody></table></figure>
+<p>其中 <code>eigenvals</code> 返回 Cartan
+矩阵的特征值，按照从小到大排列；<code>eigenvecs</code> 的列向量是 Cartan
+矩阵的特征向量，也是按照特征值递增的顺序排列，第一列
+<code>u = eigenvecs[:, 0]</code> 和最后一列
+<code>v = eigenvecs[:, -1]</code>
+就是最小和最大特征值对应的特征向量。</p>
+<p>把 <code>eigenvals</code> 中的特征值打印出来：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-number">0.01095621</span> <span class="hljs-number">0.51371035</span> <span class="hljs-number">1.18652671</span> <span class="hljs-number">1.58417662</span> <span class="hljs-number">2.41582338</span> <span class="hljs-number">2.81347329</span> <span class="hljs-number">3.48628965</span> <span class="hljs-number">3.98904379</span>]<br></code></pre></td></tr></tbody></table></figure>
-<p>The sum of the first and the last is 4, the second and the
-second-to-last also sum to 4, the third and the third-to-last sum to 4,
-and the fourth and fifth sum to 4. Therefore, the eigenvalues of <span class="math inline">\(C\)</span> sum pairwise to 4, consistent with the
-theory!</p>
-<p>Generally, the dimension of <span class="math inline">\(P=V_s\oplus
-V_{\bar{s}}\)</span> might not be 2, so <span class="math inline">\(P\)</span> might not always be a plane. However,
-for the smallest eigenvalue of <span class="math inline">\(C\)</span>,
-we already know its multiplicity is 1, hence the multiplicity of its
-largest eigenvalue is also 1, making <span class="math inline">\(P\)</span> a two-dimensional plane. Thus, <span class="math inline">\(\gamma\)</span>’s action on <span class="math inline">\(P\)</span> is a rotation of angle <span class="math inline">\(\theta_0\)</span>.</p>
-<p>From the printed results, we see</p>
-<p><span class="math display">\[0.01095621 \approx
+<p>可以看到最小的特征值 <span class="math display">\[0.01095621 \approx
 2-2\cos\frac{\theta_0}{2},\quad \theta_0\approx
-2\arccos0.994521895\approx\frac{2\pi}{30}.\]</span> This verifies that
-<span class="math inline">\(\gamma\)</span>’s action on <span class="math inline">\(P\)</span> is a rotation of order 30, confirming
-the Coxeter number of <span class="math inline">\(W\)</span> is 30.</p>
-<p>To find a basis for <span class="math inline">\(P\)</span>, one needs
-only to find the eigenvectors <span class="math inline">\(u,v\)</span>
-corresponding to the smallest and largest eigenvalues of <span class="math inline">\(C\)</span>, <span class="math display">\[\alpha=\sum_{i=1}^8 u_i\alpha_i,\quad
-\beta=\sum_{i=1}^8 v_i\alpha_i.\]</span> These form a basis for <span class="math inline">\(P\)</span>.</p>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Proof seen in <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1302.2842">Conjugacy of Coxeter elements,
-Henrik Eriksson, Kimmo Eriksson</a>. The proof using graph theory
-presented there is particularly appealing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
+2\arccos0.994521895\approx\frac{2\pi}{30}.\]</span> 所以我们验证了 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(P\)</span> 上的作用是一个 30 阶的旋转，即 <span class="math inline">\(W\)</span> 的 Coxeter 数是 30。</p>
+<p>根据上一节末尾的介绍，<span class="math inline">\(\sum_{i=1}^8u_i\alpha_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^8v_i\alpha_i\)</span> 构成 <span class="math inline">\(P\)</span> 的一组基。作为对称矩阵 <span class="math inline">\(A\)</span> 的不同特征值对应的特征向量，它们在
+<span class="math inline">\(\bullet\)</span>
+（即标准内积）下是正交的。把它们归一化为单位向量，然后计算根系
+<code>roots</code> 到 <span class="math inline">\(P\)</span>
+的投影：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">u /= np.linalg.norm(u)<br>v /= np.linalg.norm(v)<br><br>roots_2d = [(np.dot(u, x), np.dot(v, x)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> roots]<br></code></pre></td></tr></tbody></table></figure>
+<p>剩下的就是具体的绘图过程了，这里不再赘述。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-CasselmanCoxeterElement" class="csl-entry" role="listitem">
+Casselman, Bill. 2017. <span>“Coxeter Elements in Finite Coxeter
+Groups”</span> Essays on Coxeter groups. <a target="_blank" rel="noopener" href="https://personal.math.ubc.ca/~cass/research/pdf/Element.pdf">https://personal.math.ubc.ca/~cass/research/pdf/Element.pdf</a>.
+</div>
+<div id="ref-Humphreys90" class="csl-entry" role="listitem">
+Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
+Cambridge Studies in Advanced Mathematics. Cambridge University Press.
+<a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
+</div>
+</div>
 
 
 
                                                     
+<p class="pink-link-context">
+    <a href="/coupling-from-the-past/" rel="next" title="Coupling from the past">
+    上一篇：Coupling from the past
+  </a>
+</p>
 
+
+
+<p class="pink-link-context">
+    <a href="/Birkhoff-ergodic-theorem/" rel="next" title="Birkhoff 遍历定理">
+    下一篇：Birkhoff 遍历定理
+  </a>
+</p>
 
 
                                             </div>
