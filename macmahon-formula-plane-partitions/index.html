@@ -314,9 +314,8 @@
 <p>下图是一种密铺的示例：</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/planepartition.svg"></p>
 <span id="more"></span>
-<p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足一个规律：从墙角到外侧，箱子的高度是递减的。我们把箱子对应的高度填充在一个
-<span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列的矩阵中：（习惯上空白位置的 0
-不写出来）</p>
+<p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足规律：从墙角开始，沿着两侧墙壁的方向，箱子的高度是递减的。我们把地面上第
+<span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列位置箱子的高度 <span class="math inline">\(a_{ij}\)</span> 填写在一个 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列的矩阵 <span class="math inline">\(A\)</span> 中（习惯上空白位置的 0 不写出来）：</p>
 <table>
 <tbody>
 <tr class="odd">
@@ -361,7 +360,7 @@
 </tr>
 </tbody>
 </table>
-<p>记这个矩阵为 <span class="math inline">\(A\)</span>，<span class="math inline">\(A\)</span> 的元素 <span class="math inline">\(a_{ij}\)</span> 表示地面上第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列处箱子的高度。<span class="math inline">\(A\)</span> 有如下特点：</p>
+<p><span class="math inline">\(A\)</span> 有如下特点：</p>
 <blockquote>
 <ul>
 <li><span class="math inline">\(A\)</span>
@@ -370,8 +369,8 @@
 之间的整数（箱子的高度不能超过天花板的高度 <span class="math inline">\(c\)</span>）。</li>
 </ul>
 </blockquote>
-<p>我们把这样的矩阵 <span class="math inline">\(A\)</span>
-叫做一个参数为 <span class="math inline">\((a,b,c)\)</span>
+<p>我们把矩阵 <span class="math inline">\(A\)</span> 叫做一个参数为
+<span class="math inline">\((a,b,c)\)</span>
 的受限制的<strong>平面分拆</strong>。</p>
 <p>每个受限制的平面分拆都对应一种堆箱子的方式，从而对应六边形的一个菱形密铺。这个对应是一一的。较真的读者可能会说：“且慢，你这只是从视觉直观上看出来菱形密铺和堆箱子是一一对应的，这不够严格吧？”
 没错，严格的证明是可以有的，但是这里我们的目的是欣赏一处数学奇趣，不必搞得那么学究。</p>
@@ -393,17 +392,22 @@
 <p>虽然问题看起来很初等，但是答案的复杂暗示我们它并不像看起来那么容易。接下来你会看到，用一个巧妙的方法可以把问题转化为求一个行列式的值。</p>
 <h1 id="不相交的路径组">不相交的路径组</h1>
 <p>我们知道在平面上从原点 <span class="math inline">\((0,0)\)</span>
-出发，每次向右或者向上移动一个单位的距离，到达点 <span class="math inline">\((b,a)\)</span> 的路径总数是组合数 <span class="math inline">\(\binom{a+b}{b}\)</span>，这样的一条路径叫做 Gauss
+出发，每次向右或者向上移动一个单位的距离，到达点 <span class="math inline">\((b,a)\)</span> 的路径个数是组合数 <span class="math inline">\(\binom{a+b}{b}\)</span>，这样的一条路径叫做 Gauss
 路径。</p>
-<p>每个平面分拆的矩阵 <span class="math inline">\(A\)</span> 都对应于
+<p>每个平面分拆的矩阵 <span class="math inline">\(A\)</span> 都对应
 <span class="math inline">\(c\)</span> 条这样的路径，其中第 <span class="math inline">\(k\)</span> 条路径是高度为 <span class="math inline">\(k\,(1\leq k\leq c)\)</span>
 的那一层的“等高线”：</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/paths-on-cubes.svg"></p>
 <p>我们把这些路径投影到 2D，和矩阵 <span class="math inline">\(A\)</span> 画在一起。从最下方的路径开始，第 <span class="math inline">\(i\)</span> 条路径对应的是矩阵中 <span class="math inline">\(\geq i\)</span> 的那些方格构成的区域的边界：</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/gauss_path.svg"></p>
-<p>注意平面分拆的行和列满足递降关系，这个递降关系反映在路径上就是对任何两条路径，它们可以有接触点或者重合的边，但彼此不能穿过对方。</p>
-<p>接下来是关键的一步：如果把各条路径向着左上方 <span class="math inline">\((-1,1)\)</span> 方向依次平移 <span class="math inline">\(0,1,\ldots,c-1\)</span> 个单位，则得到的 <span class="math inline">\(c\)</span>
-条平移后的路径两两之间将没有任何公共点。我们称之为一个不相交的路径组。如下图所示：</p>
+<p>注意 <span class="math inline">\(A\)</span>
+的行和列满足递降关系，这个递降关系反映在这 <span class="math inline">\(c\)</span>
+条路径上就是，对任何两条路径，它们可以有接触点或者重合的边，但彼此不能穿过对方。</p>
+<p>接下来是关键的一步：如果把这 <span class="math inline">\(c\)</span>
+条路径沿着 <span class="math inline">\((-1,1)\)</span> 方向，分别平移
+<span class="math inline">\(0,1,\ldots,c-1\)</span> 个单位，则平移后的
+<span class="math inline">\(c\)</span>
+条路径两两之间将没有任何公共点。我们称之为一个不相交的路径组。如下图所示：</p>
 <p><img style="margin:0px auto;display:block" width="600" src="/images/macmahon/nonintersecting_paths.gif"></p>
 <p>这里 <span class="math inline">\(A_i=(1-i,i-1)\)</span>，<span class="math inline">\(B_j=(b+1-j,a-1+j)\)</span>，<span class="math inline">\(\{p_i:A_i\rightarrow B_i,1\leq i\leq c\}\)</span>
 是一个不相交的路径组。反过来对每一个这样的不相交的路径组，我们也很容易还原出对应的平面分拆来。</p>
@@ -449,10 +453,10 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
 <p>这个求和是对每个置换 <span class="math inline">\(\sigma\)</span>，跑遍所有可能的路径组 <span class="math inline">\(P_\sigma\)</span>。</p>
 <p>我们来证明在上面的求和中，相交的路径组对应的项可以两两抵消，剩下的只有不相交的路径组。而根据条件，不相交的路径组只有在
 <span class="math inline">\(\sigma=1\)</span>
-时才可能发生（从图上可以很容易看出这个条件是满足的），这样就得到 <span class="math inline">\(\det M=\sum_{\mathcal{P}}1\)</span>，其中 <span class="math inline">\(\mathcal{P}\)</span> 只跑遍 <span class="math inline">\(\sigma={\rm id}\)</span>
+时才可能发生（从图上可以很容易看出这个条件是满足的），这样就得到 <span class="math inline">\(\det M=\sum_{\mathcal{P}}1\)</span>，其中 <span class="math inline">\(\mathcal{P}\)</span> 只跑遍 <span class="math inline">\(\sigma=1\)</span>
 对应的不相交路径组，这就是所求的答案。</p>
-<p>给定一个相交的路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们按照如下规则构造与之抵消的路径组
-<span class="math inline">\(\mathcal{P}'\)</span>：</p>
+<p>给定一个相交的路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们构造与之抵消的路径组
+<span class="math inline">\(\mathcal{P}'\)</span> 如下：</p>
 <ol type="1">
 <li>在 <span class="math inline">\(\mathcal{P}\)</span>
 的所有交点中，首先选择横坐标最大的那个，如果这样的交点有多个，就选择纵坐标最大的那个，将其记作
