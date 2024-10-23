@@ -451,10 +451,8 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
 <span class="math inline">\(\sigma=1\)</span>
 时才可能发生（从图上可以很容易看出这个条件是满足的），这样就得到 <span class="math inline">\(\det M=\sum_{\mathcal{P}}1\)</span>，其中 <span class="math inline">\(\mathcal{P}\)</span> 只跑遍 <span class="math inline">\(\sigma={\rm id}\)</span>
 对应的不相交路径组，这就是所求的答案。</p>
-<p>为此我们构造一个对合 <span class="math inline">\(\tau,\,\tau^2=1\)</span>，它将一个相交的路径组
-<span class="math inline">\(\mathcal{P}_\sigma\)</span>
-映射为另一个相交的路径组 <span class="math inline">\(\mathcal{P}'_{\sigma'}=\tau(\mathcal{P}_\sigma)\)</span>，并且
-<span class="math inline">\(\text{sgn}(\sigma)=-\text{sgn}(\sigma')\)</span>。规则如下：</p>
+<p>给定一个相交的路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们按照如下规则构造与之抵消的路径组
+<span class="math inline">\(\mathcal{P}'\)</span>：</p>
 <ol type="1">
 <li>在 <span class="math inline">\(\mathcal{P}\)</span>
 的所有交点中，首先选择横坐标最大的那个，如果这样的交点有多个，就选择纵坐标最大的那个，将其记作
@@ -464,17 +462,15 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
 <span class="math inline">\(p_i:A_i\rightarrow B_{\sigma(i)}\)</span>
 经过 <span class="math inline">\(C\)</span>，再选择最大的 <span class="math inline">\(j\ne i\)</span> 使得 <span class="math inline">\(p_j\)</span> 也经过 <span class="math inline">\(C\)</span>。</li>
 <li>交换 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 在 <span class="math inline">\(C\)</span>
-点之后的部分，保持路径组其它的部分不动。记这个新的路径组为 <span class="math inline">\(\mathcal{P}'\)</span>。</li>
+点之后的部分，保持路径组其它部分不动。记得到的新路径组为 <span class="math inline">\(\mathcal{P}'\)</span>。</li>
 </ol>
 <p>直观上，你可以想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们到达 <span class="math inline">\(C\)</span>
 时改变路线，沿着对方剩下的路径前往对方的目的地。</p>
 <p><img style="margin:0px auto;display:block" width="600" src="/images/macmahon/gessel_viennot.svg"></p>
-<p>于是在 <span class="math inline">\(\mathcal{P}_{\sigma'}\)</span>
-中有 <span class="math inline">\(p_i':A_i\rightarrow
-B_{\sigma(j)}\)</span>，<span class="math inline">\(p_j':A_j\rightarrow
-B_{\sigma(i)}\)</span>。显然置换 <span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此符号相反。更重要的是如果对
-<span class="math inline">\(\mathcal{P}_{\sigma'}\)</span>
-也进行交换路径这个操作的话，又回到了 <span class="math inline">\(\mathcal{P}_\sigma\)</span>，因此它们对应的和项抵消，这就证明了结论。</p>
+<p>于是 <span class="math inline">\(\mathcal{P}'\)</span> 对应的置换
+<span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\mathcal{P}\)</span> 对应的置换 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此 <span class="math inline">\(\text{sgn}(\sigma')=-\text{sgn}(\sigma)\)</span>。更重要的是，如果对
+<span class="math inline">\(\mathcal{P}'\)</span>
+也进行上述操作的话，又会回到 <span class="math inline">\(\mathcal{P}\)</span>，因此相交的路径组确实可以两两配对抵消，这就证明了结论。</p>
 <h1 id="dodgsons-condensation-method">Dodgson’s condensation method</h1>
 <p>为了求出行列式的值，我们介绍一个古老的方法：Dodgson’s
 condensation。这是一个递归求解行列式的方法：设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(n\times n\)</span> 矩阵，用 <span class="math inline">\(A_i^j\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(i\)</span> 行和第 <span class="math inline">\(j\)</span> 列后剩下的 <span class="math inline">\(n-1\)</span> 阶矩阵，用 <span class="math inline">\(A_{1,n}^{1,n}\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 1 行第 1 列和第 <span class="math inline">\(n\)</span> 行第 <span class="math inline">\(n\)</span> 列后剩下的 <span class="math inline">\(n-2\)</span> 阶矩阵，则我们有恒等式</p>
