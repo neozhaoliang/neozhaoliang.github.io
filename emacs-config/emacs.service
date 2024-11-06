@@ -1,0 +1,12 @@
+[Unit]
+Description=Emacs Daemon
+
+[Service]
+Type=notify
+Type=notify
+ExecStart=/usr/bin/emacsclient --fg-daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
