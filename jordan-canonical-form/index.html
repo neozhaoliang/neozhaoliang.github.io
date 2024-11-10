@@ -493,20 +493,16 @@ v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
 \end{array}\]</span></p>
 <p>注意到在链图中，从右边数起，从第 <span class="math inline">\(1\)</span> 到第 <span class="math inline">\(i\)</span> 列，都会被 <span class="math inline">\(N^i\)</span> 变成零向量。这些向量构成了 <span class="math inline">\(\mathrm{Ker}N^i\)</span>
 的一组基。例如在上面例子中，<span class="math inline">\(\{
-{\color{red}{\bullet}} \}\)</span> 的列构成了 <span class="math inline">\(\mathrm{Ker}N\)</span> 的一组基，<span class="math inline">\(\{
-{\color{red}{\bullet}},{\color{green}{\bullet}}\}\)</span> 的列构成了
-<span class="math inline">\(\mathrm{Ker}N^2\)</span>
-的一组基，等等。</p>
+{\color{red}{\bullet}} \}\)</span> 的列构成了 <span class="math inline">\(\mathrm{Ker}N\)</span> 的一组基，<span class="math inline">\(\{ {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}\)</span> 的列构成了 <span class="math inline">\(\mathrm{Ker}N^2\)</span> 的一组基，等等。</p>
 <p>于是我们有子空间的升链： <span class="math display">\[(0)\subset
 \underbrace{\mathrm{Ker}N}_{\{ {\color{red}{\bullet}} \}}\subset
-\underbrace{\mathrm{Ker}N^2}_{\{
-{\color{red}{\bullet}},{\color{green}{\bullet}}\}} \subset
-\underbrace{\mathrm{Ker}N^3}_{\{ {\color{blue}{\bullet}},
-{\color{red}{\bullet}},{\color{green}{\bullet}}\}} \subset
-\underbrace{\mathrm{Ker}N^4}_{\{ \bullet, {\color{blue}{\bullet}},
-{\color{red}{\bullet}},{\color{green}{\bullet}}\}}=U.\]</span>
-不难看到右边的第 <span class="math inline">\(i\)</span> 列正好构成商空间
-<span class="math inline">\(\mathrm{Ker}N^{i}/\mathrm{Ker}N^{i-1}\)</span>
+\underbrace{\mathrm{Ker}N^2}_{\{ {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}} \subset \underbrace{\mathrm{Ker}N^3}_{\{
+{\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}} \subset \underbrace{\mathrm{Ker}N^4}_{\{
+\bullet\mid {\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}}=U.\]</span> 不难看到右边的第 <span class="math inline">\(i\)</span> 列正好构成商空间 <span class="math inline">\(\mathrm{Ker}N^{i}/\mathrm{Ker}N^{i-1}\)</span>
 的一组基。 <span class="math display">\[\begin{aligned}
 \mathrm{Ker}N: \quad &amp;  \{ {\color{red}{\bullet}} \}\\
 \mathrm{Ker}N^2/\mathrm{Ker}N: \quad &amp; \{ {\color{green}{\bullet}}
