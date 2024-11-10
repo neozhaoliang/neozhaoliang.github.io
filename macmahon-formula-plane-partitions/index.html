@@ -420,7 +420,8 @@ c\}\]</span> 是平面上两组顶点集，求出所有不相交的路径组 <sp
 </div>
 <h1 id="gessel-viennot-的巧妙方法">Gessel-Viennot 的巧妙方法</h1>
 <p>考虑这样一个 <span class="math inline">\(c\times c\)</span> 的矩阵
-<span class="math inline">\(M\)</span>，其元素 <span class="math inline">\(m_{ij}\)</span> 是从点 <span class="math inline">\(A_i\)</span> 出发到达点 <span class="math inline">\(B_j\)</span> 的所有 Gauss 路径的数目。由于点 <span class="math inline">\(A_i\)</span> 坐标为 <span class="math inline">\((1-i,i-1)\)</span>，点 <span class="math inline">\(B_j\)</span> 坐标为 <span class="math inline">\((b+1-j,a-1+j)\)</span>，不难得到 <span class="math inline">\(m_{ij}=\binom{a+b}{b+i-j}\)</span>，这里如果 <span class="math inline">\(b+i-j&lt;0\)</span> 则 <span class="math inline">\(\binom{a+b}{b+i-j}=0\)</span>。Gessel-Viennot
+<span class="math inline">\(M\)</span>，其元素 <span class="math inline">\(m_{ij}\)</span> 是从点 <span class="math inline">\(A_i\)</span> 出发到达点 <span class="math inline">\(B_j\)</span> 的所有 Gauss 路径的数目。由于点 <span class="math inline">\(A_i\)</span> 坐标为 <span class="math inline">\((1-i,i-1)\)</span>，点 <span class="math inline">\(B_j\)</span> 坐标为 <span class="math inline">\((b+1-j,a-1+j)\)</span>，所以 <span class="math display">\[m_{ij}=\binom{a+b}{b+i-j}.\]</span> 这里如果
+<span class="math inline">\(b+i-j&lt;0\)</span> 则规定 <span class="math inline">\(m_{ij}=0\)</span>。Gessel-Viennot
 引理非常意外地告诉我们：</p>
 <div class="unnumbered statement lemma-unnumbered plain">
 <p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
@@ -428,8 +429,7 @@ c\}\]</span> 是平面上两组顶点集，求出所有不相交的路径组 <sp
 <p>记 <span class="math inline">\(\mathcal{A}=\{A_i,1\leq i\leq
 c\}\)</span> 和 <span class="math inline">\(\mathcal{B}=\{B_j,1\leq
 j\leq c\}\)</span> 是如上所述的两个顶点集合，对 <span class="math inline">\(c\)</span> 元组上的任一置换 <span class="math inline">\(\sigma\)</span>，记 <span class="math inline">\(\mathcal{P}_\sigma=\{p_i:A_i\to
-B_{\sigma(i)}\}\)</span> 为一个路径组。如果只有对 <span class="math inline">\(\sigma=1\)</span> 时 <span class="math inline">\(P_\sigma\)</span>
-之间的路径才有可能互不相交，则这样的不相交路径组的个数恰好为 <span class="math display">\[\det M=\det_{1\leq i,j\leq
+B_{\sigma(i)}\}\)</span> 为一个路径组。则所有不相交路径组的个数为 <span class="math display">\[\det M=\det_{1\leq i,j\leq
 c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right).\]</span></p>
 </div>
 <p>Gessel-Viennot
@@ -449,14 +449,12 @@ B_{\sigma(c)}}1\right),\]</span></p>
 <p>把它展开得到很多个 1，每个 1 对应一个路径组 <span class="math inline">\(\mathcal{P}_\sigma=\{p_i:A_i\rightarrow
 B_{\sigma(i)},1\leq i\leq c\}\)</span>，因此</p>
 <p><span class="math display">\[\det
-M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
+M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).
+\tag{$\ast$}\label{eq:det}\]</span></p>
 <p>这个求和是对每个置换 <span class="math inline">\(\sigma\)</span>，跑遍所有可能的路径组 <span class="math inline">\(P_\sigma\)</span>。</p>
-<p>我们来证明在上面的求和中，相交的路径组对应的项可以两两抵消，剩下的只有不相交的路径组。而根据条件，不相交的路径组只有在
-<span class="math inline">\(\sigma=1\)</span>
-时才可能发生（从图上可以很容易看出这个条件是满足的），这样就得到 <span class="math inline">\(\det M=\sum_{\mathcal{P}}1\)</span>，其中 <span class="math inline">\(\mathcal{P}\)</span> 只跑遍 <span class="math inline">\(\sigma=1\)</span>
-对应的不相交路径组，这就是所求的答案。</p>
-<p>给定一个相交的路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们构造与之抵消的路径组
-<span class="math inline">\(\mathcal{P}'\)</span> 如下：</p>
+<p>我们来证明在上面的求和中，相交的路径组对应的项可以两两抵消，剩下的只有不相交的路径组。</p>
+<p>设 <span class="math inline">\(\mathcal{P}\)</span>
+是一个相交的路径组，我们构造与之抵消的路径组 <span class="math inline">\(\mathcal{P}'\)</span> 如下：</p>
 <ol type="1">
 <li>在 <span class="math inline">\(\mathcal{P}\)</span>
 的所有交点中，首先选择横坐标最大的那个，如果这样的交点有多个，就选择纵坐标最大的那个，将其记作
@@ -474,7 +472,14 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).\]</span></p>
 <p>于是 <span class="math inline">\(\mathcal{P}'\)</span> 对应的置换
 <span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\mathcal{P}\)</span> 对应的置换 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此 <span class="math inline">\(\text{sgn}(\sigma')=-\text{sgn}(\sigma)\)</span>。更重要的是，如果对
 <span class="math inline">\(\mathcal{P}'\)</span>
-也进行上述操作的话，又会回到 <span class="math inline">\(\mathcal{P}\)</span>，因此相交的路径组确实可以两两配对抵消，这就证明了结论。</p>
+也进行上述操作的话，又会回到 <span class="math inline">\(\mathcal{P}\)</span>，因此相交的路径组确实可以两两配对抵消。</p>
+<p>于是我们可以把 <span class="math inline">\((\ref{eq:det})\)</span>
+改写为 <span class="math display">\[\det
+M=\sum_{\sigma,\mathcal{P}_\sigma \text{
+non-intersecting}}\text{sgn}(\sigma).\]</span></p>
+<p>但是注意，不相交的路径组只有在 <span class="math inline">\(\sigma=1\)</span> 时才可能发生，即每个 <span class="math inline">\(A_i\)</span> 的目的地必须是 <span class="math inline">\(B_i\)</span>。所以我们进一步得到 <span class="math display">\[
+\det M=\sum_{\sigma=1\text{ and } \mathcal{P}_\sigma \text{
+non-intersecting}}1.\]</span> 这正是所有不相交路径组的个数。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="dodgsons-condensation-method">Dodgson’s condensation method</h1>
 <p>为了求出行列式的值，我们介绍一个古老的方法：Dodgson’s
 condensation。这是一个递归求解行列式的方法：设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(n\times n\)</span> 矩阵，用 <span class="math inline">\(A_i^j\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(i\)</span> 行和第 <span class="math inline">\(j\)</span> 列后剩下的 <span class="math inline">\(n-1\)</span> 阶矩阵，用 <span class="math inline">\(A_{1,n}^{1,n}\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 1 行第 1 列和第 <span class="math inline">\(n\)</span> 行第 <span class="math inline">\(n\)</span> 列后剩下的 <span class="math inline">\(n-2\)</span> 阶矩阵，则我们有恒等式</p>
