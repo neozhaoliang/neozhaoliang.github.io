@@ -434,56 +434,47 @@ lemma. 3.3</a>)</span>)</span>.</span><span class="statement-spah">
 </div>
 <p>根据这个结论，如果 <span class="math inline">\(V_s,V_{\bar{s}}\)</span> 分别是 <span class="math inline">\(\gamma\)</span> 的一对共轭的复特征值 <span class="math inline">\(s=e^{i\theta}\)</span> 和 <span class="math inline">\(\bar{s}=e^{-i\theta}\)</span> 对应的特征子空间，记
 <span class="math inline">\(U=V_s\oplus V_{\bar{s}}\)</span>，则对 <span class="math inline">\(v\in U\)</span> 有 <span class="math display">\[(
-2I-A )^2 ( v ) = ( 2+e^{i\theta}+e^{-i\theta} ) v= (
-4\cos^2\frac{\theta}{2} ) v.\]</span> 即 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(( 2I-A
-)^2\)</span> 的特征值为 <span class="math inline">\(4\cos^2\frac{\theta}{2}\)</span> 的特征向量。</p>
-<p>这看起来好像可以说，<span class="math inline">\(v\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>
-的特征向量？但是我们不知道 <span class="math inline">\(\pm
-2\cos\frac{\theta}{2}\)</span>
-是否都会出现，以及如果都出现的话重数是不是相等。</p>
-<p>Casselman 论证了这确实是成立的：</p>
-<div id="same-characteristic" class="statement proposition plain">
+2I-A )^2 ( v ) = ( 2+e^{i\theta}+e^{-i\theta} ) v=
+4\cos^2\frac{\theta}{2} v.\]</span> 即 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(( 2I-A
+)^2\)</span> 的特征值为 <span class="math inline">\(4\cos^2\frac{\theta}{2}\)</span>
+的特征子空间。</p>
+<p>我们想把这个结论中的平方去掉，即证明 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>
+的特征子空间的直和。</p>
+<div id="u-pm" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-3.2</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman 2017,
+3.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(U=U_+\oplus U_-\)</span>，其中 <span class="math inline">\(U_{\pm}\)</span> 分别是 <span class="math inline">\(2I-A\)</span> 的 <span class="math inline">\(\pm2\cos\frac{\theta}{2}\)</span> 特征子空间，并且
+<span class="math inline">\(\dim U_+=\dim U_-\)</span>。</p>
+</div>
+<p><strong>证明</strong>：显然 <span class="math inline">\(U_+\oplus
+U_-\subseteq U\)</span>。下面证明反向包含。</p>
+<p><span class="math inline">\(U\)</span> 当然是 <span class="math inline">\(2I-A\)</span> 的不变子空间。由于 <span class="math inline">\(2I-A\)</span> 是可对角化的，从而 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征子空间的直和。显然 <span class="math inline">\(2I-A\)</span> 在 <span class="math inline">\(U\)</span> 上的特征值只有可能是 <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>，从而 <span class="math inline">\(U\subseteq U_+\oplus U_-\)</span>，即 <span class="math inline">\(U=U_+\oplus U_-\)</span>。</p>
+<p>为了说明 <span class="math inline">\(\dim U_+=\dim
+U_-\)</span>，我们需要下面的引理：</p>
+<div id="same-characteristic" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.3</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman 2017,
 lemma. 3.5</a>)</span>)</span>.</span><span class="statement-spah">
 </span><span class="math inline">\(2I-A\)</span> 和 <span class="math inline">\(A-2I\)</span> 有同样的特征多项式。</p>
 </div>
-<p>这个命题告诉我们，若 <span class="math inline">\(\lambda\)</span> 是
+<p>这个引理告诉我们，若 <span class="math inline">\(\lambda\)</span> 是
 <span class="math inline">\(A-2I\)</span> 的特征值，则 <span class="math inline">\(-\lambda\)</span>
-也是，并且二者对应的特征子空间的维数相同。</p>
-<p>我们已经看到 <span class="math inline">\(U=V_s\oplus
-V_{\bar{s}}\)</span> 是 <span class="math inline">\(( 2I-A )^2\)</span>
-的特征值为 <span class="math inline">\(4\cos^2\frac{\theta}{2}\)</span>
-的特征子空间。我们断言</p>
-<div class="statement proposition plain">
-<p><span class="statement-heading"><span class="statement-label">命题
-3.3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm2\cos\frac{\theta}{2}\)</span>
-的特征子空间的直和。特征值 <span class="math inline">\(\pm2\cos\frac{\theta}{2}\)</span>
-都出现并且它们对应的特征子空间维数相等。</p>
-</div>
-<p><strong>证明</strong>：设 <span class="math inline">\(U'\)</span>
-是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm2\cos\frac{\theta}{2}\)</span>
-的特征子空间的直和，我们要证明 <span class="math inline">\(U=U'\)</span>。显然 <span class="math inline">\(U'\subseteq
-U\)</span>，只要再证明反向包含。</p>
-<p><span class="math inline">\(U\)</span> 当然是 <span class="math inline">\(2I-A\)</span> 的不变子空间。由于 <span class="math inline">\(2I-A\)</span> 是可对角化的，从而 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征子空间的直和。显然 <span class="math inline">\(2I-A\)</span> 在 <span class="math inline">\(U\)</span> 上的特征值只有可能是 <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>，从而 <span class="math inline">\(U\subseteq U'\)</span>。根据 <a href="#same-characteristic" title="命题 3.2">命题 3.2</a> <span class="math inline">\(\pm 2\cos\frac{\theta}{2}\)</span>
-都出现并且维数相等。<span class="math inline">\(\blacksquare\)</span></p>
-<p>下面的推论是显然的。</p>
-<div class="statement corollary plain">
-<p><span class="statement-heading"><span class="statement-label">推论
-3.4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(U\)</span> 是 <span class="math inline">\(A\)</span> 的特征值为 <span class="math inline">\(2\pm2\cos\frac{\theta}{2}\)</span>
+也是，并且二者对应的特征子空间的维数相同（注意 <span class="math inline">\(A-2I\)</span> 是可对角化的）。于是 <span class="math inline">\(\dim U_+=\dim U_-\)</span>。<span class="math inline">\(\blacksquare\)</span>。</p>
+<p>现在我们抛弃 <span class="math inline">\(2I-A\)</span>，注意 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(A\)</span> 的特征值为 <span class="math inline">\(2\pm2\cos\frac{\theta}{2}\)</span>
 的特征子空间的直和。</p>
-</div>
 <p>一般来说 <span class="math inline">\(U\)</span> 的维数未必是 2，所以
-<span class="math inline">\(U\)</span> 未必是一个平面。但是假设 <span class="math inline">\(c_\min=2-2\cos\frac{\theta_0}{2}\)</span> 是 <span class="math inline">\(A\)</span> 的极小特征值，我们知道 <span class="math inline">\(c_\min\)</span> 的重数是 1，从而 <span class="math inline">\(A\)</span> 的极大特征值 <span class="math inline">\(c_\max=2+2\cos\frac{\theta_0}{2}\)</span>
-的重数也是 1，这时 <span class="math inline">\(U\)</span>
-是二维平面。<span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是角度为 <span class="math inline">\(\theta_0\)</span> 的旋转。这个 <span class="math inline">\(U\)</span> 就是 Coxeter 平面 <span class="math inline">\(P\)</span>。</p>
+<span class="math inline">\(U\)</span> 未必是一个平面。但是假设 <span class="math inline">\(c=2-2\cos\frac{\theta_0}{2}\)</span> 是 <span class="math inline">\(A\)</span> 的极小特征值，我们知道 <span class="math inline">\(c\)</span> 的重数是 1，从而 <span class="math inline">\(A\)</span> 的极大特征值 <span class="math inline">\(d=2+2\cos\frac{\theta_0}{2}\)</span> 的重数也是
+1，这时 <span class="math inline">\(U\)</span> 是二维平面。<span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是角度为 <span class="math inline">\(\theta_0\)</span> 的旋转。这个 <span class="math inline">\(U\)</span> 就是 Coxeter 平面 <span class="math inline">\(P\)</span>。</p>
 <p>于是计算 <span class="math inline">\(P\)</span> 归结为计算线性变换
-<span class="math inline">\({\bf A}\)</span>
-的极小和极大特征值对应的特征向量。设 <span class="math inline">\((c_1,\ldots,c_n)\)</span> 和 <span class="math inline">\((c_1',\ldots,c_n')\)</span> 分别是矩阵
-<span class="math inline">\(A\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量，不难验证 <span class="math inline">\(\sum_{i=1}^nc_i\alpha_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^nc_i'\alpha_i\)</span> 分别是 <span class="math inline">\({\bf A}\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量，比如 <span class="math display">\[{\bf A}\left(\sum_{i=1}^nc_i\alpha_i\right)={\bf
-A}\cdot{\bf A}\left(\sum_{i=1}^nc_i\omega_i\right)={\bf
-A}\left(c_\min\sum_{i=1}^nc_i\omega_i\right)=c_\min\sum_{i=1}^nc_i\alpha_i.\]</span>
-所以 <span class="math display">\[P=\mathop{\mathrm{span}}\left\{\sum_{i=1}^nc_i\alpha_i,\,\sum_{i=1}^nc_i'\alpha_i\right\}.\]</span>
+<span class="math inline">\({\bf A}\)</span> 在 <span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span>
+这组基下极小/极大特征值对应的特征向量。设 <span class="math inline">\((c_1,\ldots,c_n)\)</span> 和 <span class="math inline">\((d_1,\ldots,d_n)\)</span> 分别是矩阵 <span class="math inline">\(A\)</span> 对应 <span class="math inline">\(c,d\)</span> 的特征向量，不难验证 <span class="math inline">\(\sum_{i=1}^nc_i\alpha_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^nd_i\alpha_i\)</span>
+就是所求。比如由于 <span class="math display">\[\sum_{i=1}^nc_i\alpha_i={\bf
+A}\left(\sum_{i=1}^nc_i\omega_i\right)=c\sum_{i=1}^nc_i\omega_i.\]</span>
+所以 <span class="math display">\[{\bf
+A}\left(\sum_{i=1}^nc_i\alpha_i\right)={\bf
+A}\left(c\sum_{i=1}^nc_i\omega_i\right)=c\sum_{i=1}^nc_i\alpha_i.\]</span>
+同理 <span class="math inline">\({\bf
+A}\left(\sum\limits_{i=1}^nd_i\alpha_i\right)=d\sum\limits_{i=1}^nd_i\alpha_i\)</span>。所以
+<span class="math display">\[P=\mathop{\mathrm{span}}\left\{\sum_{i=1}^nc_i\alpha_i,\,\sum_{i=1}^nd_i\alpha_i\right\}.\]</span>
 这样我们就找到了只用 Cartan 矩阵和 <span class="math inline">\(\Delta\)</span> 计算 <span class="math inline">\(P\)</span> 的方法。</p>
 <h1 id="e_8-的例子"><span class="math inline">\(E_8\)</span> 的例子</h1>
 <p><span class="math inline">\(E_8\)</span> 的 Coxeter 图如下：</p>

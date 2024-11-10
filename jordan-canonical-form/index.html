@@ -383,45 +383,50 @@ J_{\lambda_r}.\]</span> 这种分解是唯一的，意思是如果存在 <span c
 <div id="primary-decomposition" class="unnumbered statement sta_______ plain">
 <p><span class="statement-heading"><span class="statement-label">准素分解定理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(T\)</span>
 的特征多项式为 <span class="math inline">\(f(x)\)</span>，且 <span class="math inline">\(f(x)\)</span> 在复数域上分解为一次因式的乘积 <span class="math display">\[f(x)=(x-\lambda_1)^{n_1}\cdots(x-\lambda_k)^{n_k},\]</span>
-这里的 <span class="math inline">\(\lambda_i\)</span> 互不相同。令 <span class="math inline">\(V_i=\ker (T-\lambda_i I)^{n_i}\)</span>， 则每个
-<span class="math inline">\(V_i\)</span> 都是 <span class="math inline">\(T\)</span>- 不变子空间而且 <span class="math display">\[V=V_1\oplus\cdots\oplus V_m.\]</span></p>
+这里的 <span class="math inline">\(\lambda_i\)</span> 互不相同。令 <span class="math inline">\(V_i=\mathrm{Ker}(T-\lambda_i I)^{n_i}\)</span>，
+则每个 <span class="math inline">\(V_i\)</span> 都是 <span class="math inline">\(T\)</span>- 不变子空间而且 <span class="math display">\[V=V_1\oplus\cdots\oplus V_m.\]</span></p>
 </div>
 <p><strong>证明</strong>：我们从一个简单的引理出发：</p>
 <div id="coprime" class="unnumbered statement lemma-unnumbered plain">
 <p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
 </span>设 <span class="math inline">\(T\)</span> 是域 <span class="math inline">\(F\)</span> 上有限维向量空间 <span class="math inline">\(V\)</span> 上的线性变换，<span class="math inline">\(p(x),q(x)\in F[x]\)</span>
 是两个互素的多项式，且有 <span class="math inline">\(p(T)\cdot
-q(T)=0\)</span>。则 <span class="math inline">\(V=\ker p(T)\oplus \ker
-q(T)\)</span>。</p>
+q(T)=0\)</span>。则 <span class="math inline">\(V=\mathrm{Ker}p(T)\oplus
+\mathrm{Ker}q(T)\)</span>。</p>
 </div>
 <p>引理的证明：由于 <span class="math inline">\(p(x),q(x)\)</span>
 是互素的多项式，所以存在多项式 <span class="math inline">\(s(x),t(x)\)</span> 满足 <span class="math display">\[s(x)p(x)+t(x)q(x)=1.\]</span> 即 <span class="math display">\[s(T)p(T)+t(T)q(T)=I.\]</span> 于是对任何 <span class="math inline">\(v\in V\)</span> 有 <span class="math display">\[v
-= \underbrace{s(T)p(T)v}_{\in\ker q(T)} +
-\underbrace{t(T)q(T)v}_{\in\ker p(T)}.\]</span> 所以 <span class="math inline">\(V = \ker p(T) + \ker
-q(T)\)</span>。要验证这是直和，只要注意到若 <span class="math inline">\(v\in\ker p(T)\cap\ker q(T)\)</span>，则 <span class="math inline">\(p(T)v=q(T)v=0\)</span>，于是 <span class="math display">\[v =s(T)p(T)v+t(T)q(T)v = 0.\]</span></p>
+= \underbrace{s(T)p(T)v}_{\in\mathrm{Ker}q(T)} +
+\underbrace{t(T)q(T)v}_{\in\mathrm{Ker}p(T)}.\]</span> 这说明 <span class="math inline">\(V = \mathrm{Ker}p(T) +
+\mathrm{Ker}q(T)\)</span>。要验证这是直和，不妨设 <span class="math inline">\(v\in\mathrm{Ker}p(T)\cap\mathrm{Ker}q(T)\)</span>，则
+<span class="math inline">\(p(T)v=q(T)v=0\)</span>，于是 <span class="math display">\[v =s(T)p(T)v+t(T)q(T)v = 0.\]</span></p>
 <p>把引理的结论反复应用在 <span class="math inline">\(f(x)\)</span>
 上即可得出准素分解定理。<span class="math inline">\(\blacksquare\)</span></p>
 <h2 id="分解存在性-2证明幂零的情形">分解存在性 2：证明幂零的情形</h2>
 <p>借助 <a href="#primary-decomposition" title="准素分解定理">准素分解定理</a>，我们把分解存在性转化为论证若
 <span class="math inline">\(N\)</span> 是某个向量空间 <span class="math inline">\(V\)</span> 上的幂零线性变换，则存在 <span class="math inline">\(V\)</span> 的一组基，使得 <span class="math inline">\(N\)</span> 在这组基下的矩阵是若干零特征值 Jordan
 块 <span class="math inline">\(J_0\)</span> 的和。注意一个 Jordan
-块对应的是一个移位轨道 <span class="math display">\[v\rightarrow
-Nv\rightarrow \cdots \rightarrow N^kv\rightarrow 0.\]</span>
-我们要证明存在若干条这样的互不相交的轨道，这些轨道所包含的全部非零向量构成
+块对应的是一个链 <span class="math display">\[v\rightarrow Nv\rightarrow
+\cdots \rightarrow N^kv\rightarrow 0.\]</span>
+我们要证明存在若干条这样的互不相交的链，这些链所包含的全部非零向量构成
 <span class="math inline">\(V\)</span> 的一组基。</p>
 <p>这一步的证明方法很多，但是相差不是很大，具体喜欢那种要看个人主观，这里介绍的是最简单也是最容易被初学者接受的一种。</p>
 <p>对 <span class="math inline">\(V\)</span> 的维数 <span class="math inline">\(\dim V\)</span> 归纳，<span class="math inline">\(\dim V=1\)</span> 时显然结论成立。</p>
 <p>现假设结论对所有维数小于 <span class="math inline">\(\dim V\)</span>
 的向量空间成立，考虑 <span class="math inline">\(V\)</span> 的像空间
-<span class="math inline">\(N(V)\)</span>。这是一个 <span class="math inline">\(N\)</span>- 不变子空间，且由于 <span class="math inline">\(N\)</span> 是幂零线性变换所以 <span class="math inline">\(\dim N(V)&lt;\dim V\)</span>，所以可以对 <span class="math inline">\(N(V)\)</span> 使用归纳假设：存在 <span class="math inline">\(N(V)\)</span> 的一组基如下，它们构成 <span class="math inline">\(q\)</span> 条不相交的轨道 <span class="math inline">\(\mathcal{O}_1,\cdots,\mathcal{O}_q\)</span>：</p>
+<span class="math inline">\(\mathrm{Im}(V)\)</span>。这是一个 <span class="math inline">\(N\)</span>- 不变子空间，且由于 <span class="math inline">\(N\)</span> 是幂零线性变换所以 <span class="math inline">\(\dim \mathrm{Im}(V)&lt;\dim V\)</span>，所以可以对
+<span class="math inline">\(\mathrm{Im}(V)\)</span> 使用归纳假设：存在
+<span class="math inline">\(\mathrm{Im}(V)\)</span>
+的一组基如下，它们构成 <span class="math inline">\(q\)</span>
+条不相交的链 <span class="math inline">\(\mathcal{O}_1,\cdots,\mathcal{O}_q\)</span>：</p>
 <p><span class="math display">\[\begin{array}{l}&amp;v_{1,1}\rightarrow
 v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow
 0.\\&amp;v_{2,1}\rightarrow v_{2,2}\rightarrow\cdots\rightarrow
 v_{2,n_2}\rightarrow 0.\\&amp;\cdots\\&amp; v_{q,1}\rightarrow
 v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
 0.\end{array}\]</span></p>
-<p>由于 <span class="math inline">\(v_{i,1}\in N(V)\)</span> 因此可以设
-<span class="math inline">\(v_{i,1}=Nw_i\)</span>，从而我们得到一组更长的轨道（就是在前面加上一项）</p>
+<p>由于 <span class="math inline">\(v_{i,1}\in \mathrm{Im}(V)\)</span>
+因此可以设 <span class="math inline">\(v_{i,1}=Nw_i\)</span>，从而我们得到一组更长的链（就是在前面加上一项）</p>
 <p><span class="math display">\[\begin{array}{l}&amp;w_1\rightarrow
 v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow
 v_{1,n_1}\rightarrow 0.\\&amp;w_2\rightarrow v_{2,1}\rightarrow
@@ -429,12 +434,12 @@ v_{2,2}\rightarrow\cdots\rightarrow v_{2,n_2}\rightarrow
 0.\\&amp;\cdots\cdots\cdots\\&amp;w_q\rightarrow v_{q,1}\rightarrow
 v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
 0.\end{array}\]</span></p>
-<p>那么这些新轨道包含的向量是否构成 <span class="math inline">\(V\)</span> 的一组基？答案是我们还要补上一些在
-<span class="math inline">\(V\)</span> 中长度是 1，但是在 <span class="math inline">\(N(V)\)</span> 中“消失”了的轨道：注意 <span class="math inline">\(\{v_{1,n_1},\cdots,v_{q,n_q}\}\)</span> 是 <span class="math inline">\(\ker N\)</span> 中的线性无关元，但是 <span class="math inline">\(\ker N\)</span> 还可能有其它的基向量。将它们扩充为
-<span class="math inline">\(\ker N\)</span> 的一组基</p>
+<p>那么这些新链包含的向量是否构成 <span class="math inline">\(V\)</span>
+的一组基？答案是我们还要补上一些在 <span class="math inline">\(V\)</span> 中长度是 1，但是在 <span class="math inline">\(\mathrm{Im}(V)\)</span> 中“消失”了的链：注意 <span class="math inline">\(\{v_{1,n_1},\cdots,v_{q,n_q}\}\)</span> 是 <span class="math inline">\(\mathrm{Ker}N\)</span> 中的线性无关元，但是 <span class="math inline">\(\mathrm{Ker}N\)</span>
+还可能有其它的基向量。将它们扩充为 <span class="math inline">\(\mathrm{Ker}N\)</span> 的一组基</p>
 <p><span class="math display">\[\{ v_{1,n_1},\cdots,v_{q,n_1}\}\cup \{
-w_{q+1},\cdots,w_{K}\},\quad K=\dim\ker N.\]</span></p>
-<p>从而我们最终得到下面的轨道图：</p>
+w_{q+1},\cdots,w_{K}\},\quad K=\dim\mathrm{Ker}N.\]</span></p>
+<p>从而我们最终得到下面的链图：</p>
 <p><span class="math display">\[\begin{array}{r}\mathbf{w_1}\rightarrow
 v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow
 v_{1,n_1}\rightarrow 0.&amp;\\\mathbf{w_2}\rightarrow v_{2,1}\rightarrow
@@ -445,63 +450,78 @@ v_{q,n_q}\rightarrow 0.&amp;\\\mathbf{w_{q+1}}\rightarrow
 0.&amp;\\\cdots\cdots&amp;\\\mathbf{w_K}\rightarrow0.\end{array}\]</span></p>
 <p>你可以看到 <span class="math inline">\(w_{q+1},\ldots,w_K\)</span>
 正是那些在 <span class="math inline">\(V\)</span> 中长度为 1，但是在
-<span class="math inline">\(N(V)\)</span> 中消失了的轨道。</p>
+<span class="math inline">\(\mathrm{Im}(V)\)</span> 中消失了的链。</p>
 <p>最后只剩下验证这些向量确实构成 <span class="math inline">\(V\)</span>
 的一组基。显然这些向量一共有 <span class="math display">\[\dim
-N(V)+\dim\ker N=\dim V\]</span> 个，所以只要再说明它们是线性无关的。</p>
+\mathrm{Im}(V)+\dim\mathrm{Ker}N=\dim V\]</span>
+个，所以只要再说明它们是线性无关的。</p>
 <p>假设有线性关系</p>
 <p><span class="math display">\[\cdots+(c_0w_i+c_1v_{i,1}+\cdots+c_{n_i}v_{i,n_i})+\cdots+\sum_{j=q+1}^K
 d_jw_j=0,\]</span></p>
 <p>我们要说明出现在上式中的所有系数 <span class="math inline">\(c_i,d_j\)</span> 都是 0。左边用 <span class="math inline">\(N\)</span> 作用得到</p>
 <p><span class="math display">\[\cdots+(c_0v_{i,1}+c_1v_{i,2}+\cdots+c_{n_i-1}v_{i,n_i})+\cdots=0.\]</span></p>
-<p>这是一个关于 <span class="math inline">\(N(V)\)</span>
+<p>这是一个关于 <span class="math inline">\(\mathrm{Im}(V)\)</span>
 的一组基的一个线性关系，于是 <span class="math inline">\(c_0=\cdots=c_{n_i-1}=0\)</span>，从而剩下的线性关系为</p>
 <p><span class="math display">\[\cdots+c_{n_i}v_{i,n_i}+\cdots+\sum_{j=q+1}^K
 d_jw_j=0.\]</span></p>
-<p>而这是一个关于 <span class="math inline">\(\ker N\)</span>
+<p>而这是一个关于 <span class="math inline">\(\mathrm{Ker}N\)</span>
 的一组基的一个线性关系，于是 <span class="math inline">\(c_{n_i}=d_{q+1}=\cdots=d_K=0\)</span>，从而所有的系数都是
 0，这就完成了 Jordan 标准形存在性的证明。</p>
 <h2 id="分解唯一性的证明">分解唯一性的证明</h2>
-<p>最后我们还剩下分解唯一性定理的证明，这部分要简单许多，主要是利用了
-Jordan 块的一个很特殊的性质：设</p>
-<p><span class="math display">\[J_0=\begin{pmatrix}0&amp;1&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\\&amp;&amp;0&amp;1\\&amp;&amp;&amp;0\end{pmatrix}_{n\times
-n}\]</span></p>
-<p>是一个 0 特征值的 Jordan 块，则 <span class="math inline">\(J_0^2\)</span> 就是把斜对角线上的 1
-向右上方平移一步，<span class="math inline">\(J_0^3\)</span>
-就是向右上方平移两步，以此类推，<span class="math inline">\(J_0^{n-1}\)</span> 变成</p>
-<p><span class="math display">\[\begin{pmatrix}0&amp;\cdots&amp;1\\&amp;\ddots&amp;\vdots\\&amp;&amp;0\end{pmatrix},\]</span></p>
-<p>最终 <span class="math inline">\(J_0^n=0\)</span>。用这个规则我们可以计算出对任何
-<span class="math inline">\(\lambda\in\mathbb{C}\)</span> 和 <span class="math inline">\(m\in\mathbb{Z}^+\)</span>，<span class="math inline">\(T\)</span> 的 Jordan 标准形中 <span class="math inline">\(m\)</span> 阶 Jordan 块 <span class="math inline">\(J_{\lambda,m}\)</span> 的个数 <span class="math inline">\(n_m\)</span> 来：</p>
-<p><span class="math display">\[n_m=\mathop{\mathrm{rk}}{(T-\lambda
-I)^{m-1}}-2\cdot\mathop{\mathrm{rk}}{(T-\lambda
-I)^{m}}+\mathop{\mathrm{rk}}{(T-\lambda I)^{m+1}}.\]</span></p>
-<p>道理是这样的：以 <span class="math inline">\(\lambda=0\)</span>
-为例子来计算。会算 0 特征值 Jordan 块的个数，你就会算任何特征值的 Jordan
-块的个数。设 <span class="math inline">\(T\)</span> 的一个 Jordan
-标准形为</p>
-<p><span class="math display">\[T= \left(\bigoplus_{k\geq1}n_k
-J_{0,k}\right) \bigoplus_{\mu\ne0}J_\mu,\]</span></p>
-<p><span class="math inline">\(T^m\)</span> 是分块对角矩阵，其 <span class="math inline">\(m\)</span> 次幂就是对每个直和项计算其 <span class="math inline">\(m\)</span> 次幂，所以</p>
-<p><span class="math display">\[T^{m}= \left(\bigoplus_{k\geq1}n_k
-J_{0,k}^{m}\right) \bigoplus_{\mu\ne0}J_{\mu}^{m}.\]</span></p>
-<p>注意后半部分 <span class="math inline">\(\oplus_{\mu\ne0}J^m_\mu\)</span> 对任何 <span class="math inline">\(m\)</span>
-都是保持满秩的，因此这部分的秩始终不变。前面的部分中所有阶数小于等于
-<span class="math inline">\(m\)</span> 的 Jordan 块 <span class="math inline">\(J_{0,k}(k\leq m)\)</span> 的 <span class="math inline">\(m\)</span> 次幂都变成了 0 矩阵，<span class="math inline">\(J_{0,m+1}^m\)</span> 的秩是 1； <span class="math inline">\(J_{0,m+2}^m\)</span> 的秩是 2，依次类推，所以</p>
-<p><span class="math display">\[\mathop{\mathrm{rk}}{T^m}=n_{m+1}\cdot1+n_{m+2}\cdot2+\cdots
-+\mathop{\mathrm{rk}}{\bigoplus_{\mu\ne0}J_\mu^m}.\]</span></p>
-<p>同理</p>
-<p><span class="math display">\[\mathop{\mathrm{rk}}{T^{m+1}}=n_{m+2}\cdot1+n_{m+3}\cdot2+\cdots
-+\mathop{\mathrm{rk}}{\bigoplus_{\mu\ne0}J_\mu^{m+1}}.\]</span></p>
-<p>相减得到</p>
-<p><span class="math display">\[\mathop{\mathrm{rk}}{T^m}-\mathop{\mathrm{rk}}{T^{m+1}}=n_{m+1}+n_{m+2}+\cdots.\]</span></p>
-<p>同理</p>
-<p><span class="math display">\[\mathop{\mathrm{rk}}{T^{m-1}}-\mathop{\mathrm{rk}}{T^{m}}=n_{m}+n_{m+1}+\cdots.\]</span></p>
-<p>所以再次相减有</p>
-<p><span class="math display">\[n_m=\mathop{\mathrm{rk}}{T^{m-1}}-2\cdot\mathop{\mathrm{rk}}{T^{m}}+\mathop{\mathrm{rk}}{T^{m+1}}.\]</span></p>
-<p>现在你可以看到 <span class="math inline">\(n_m\)</span>
-的表达式不依赖于具体的基的选择，仅依赖于线性变换自身的相似不变量，所以
-<span class="math inline">\(T\)</span> 的 Jordan
-标准形在只差一个排列的意义下是唯一的。</p>
+<p>要证明分解的唯一性，我们只要证明对任一特征值 <span class="math inline">\(\lambda_i\)</span>，<span class="math inline">\(T\)</span> 限制在 <span class="math inline">\(U=\mathrm{Ker}(T-\lambda_i)^{n_i}\)</span>
+上分解为 Jordan 块的方式是唯一的。我们可以不妨假设 <span class="math inline">\(\lambda_i=0\)</span>。记 <span class="math inline">\(N=T\mid_U\)</span>，则 <span class="math inline">\(N\)</span> 是 <span class="math inline">\(U\)</span> 上的幂零线性变换。根据存在性的证明，在
+<span class="math inline">\(U\)</span> 上我们有如下的链图： <span class="math display">\[\begin{array}{r}v_{1,1}\rightarrow
+v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow
+0.&amp;\\v_{2,1}\rightarrow v_{2,2}\rightarrow\cdots\rightarrow
+v_{2,n_2}\rightarrow 0.&amp;\\\cdots\cdots&amp;\\ v_{q,1}\rightarrow
+v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
+0.\end{array}\]</span> 这里每个链代表一个 Jordan
+块，链按照长度递减的顺序排列。我们要证明链的个数 <span class="math inline">\(q\)</span> 和链的长度 <span class="math inline">\((n_1,\ldots,n_q)\)</span>
+都是唯一确定的，不依赖于基的选择。</p>
+<p>我用一个具体的例子来说明：</p>
+<p><span class="math display">\[\begin{array}{r}
+\bullet\rightarrow {\color{blue}{\bullet}}
+\rightarrow{\color{green}{\bullet}}\rightarrow
+{\color{red}{\bullet}}\rightarrow 0.\\
+{\color{blue}{\bullet}}
+\rightarrow{\color{green}{\bullet}}\rightarrow{\color{red}{\bullet}}\rightarrow
+0.&amp;\\
+{\color{green}{\bullet}}\rightarrow{\color{red}{\bullet}}\rightarrow
+0.&amp;\\
+{\color{red}{\bullet}}\rightarrow 0.\\
+{\color{red}{\bullet}}\rightarrow 0.
+\end{array}\]</span></p>
+<p>注意到在链图中，从右边数起，从第 <span class="math inline">\(1\)</span> 到第 <span class="math inline">\(i\)</span> 列，都会被 <span class="math inline">\(N^i\)</span> 变成零向量。这些向量构成了 <span class="math inline">\(\mathrm{Ker}N^i\)</span>
+的一组基。例如在上面例子中，<span class="math inline">\(\{
+{\color{red}{\bullet}} \}\)</span> 的列构成了 <span class="math inline">\(\mathrm{Ker}N\)</span> 的一组基，<span class="math inline">\(\{
+{\color{red}{\bullet}},{\color{green}{\bullet}}\}\)</span> 的列构成了
+<span class="math inline">\(\mathrm{Ker}N^2\)</span>
+的一组基，等等。</p>
+<p>于是我们有子空间的升链： <span class="math display">\[(0)\subset
+\underbrace{\mathrm{Ker}N}_{\{ {\color{red}{\bullet}} \}}\subset
+\underbrace{\mathrm{Ker}N^2}_{\{
+{\color{red}{\bullet}},{\color{green}{\bullet}}\}} \subset
+\underbrace{\mathrm{Ker}N^3}_{\{ {\color{blue}{\bullet}},
+{\color{red}{\bullet}},{\color{green}{\bullet}}\}} \subset
+\underbrace{\mathrm{Ker}N^4}_{\{ \bullet, {\color{blue}{\bullet}},
+{\color{red}{\bullet}},{\color{green}{\bullet}}\}}=U.\]</span>
+不难看到右边的第 <span class="math inline">\(i\)</span> 列正好构成商空间
+<span class="math inline">\(\mathrm{Ker}N^{i}/\mathrm{Ker}N^{i-1}\)</span>
+的一组基。 <span class="math display">\[\begin{aligned}
+\mathrm{Ker}N: \quad &amp;  \{ {\color{red}{\bullet}} \}\\
+\mathrm{Ker}N^2/\mathrm{Ker}N: \quad &amp; \{ {\color{green}{\bullet}}
+\}\\
+\mathrm{Ker}N^3/\mathrm{Ker}N^2: \quad &amp; \{ {\color{blue}{\bullet}}
+\}\\
+\mathrm{Ker}N^4/\mathrm{Ker}N^3=U/\mathrm{Ker}N^3: \quad &amp; \{
+\bullet \}\\
+\end{aligned}
+\]</span> 所以右边第 <span class="math inline">\(i\)</span> 列的长度等于
+<span class="math inline">\(\dim\mathrm{Ker}N^i -
+\dim\mathrm{Ker}N^{i-1}\)</span>，是一个由 <span class="math inline">\(N\)</span>
+完全确定的值。所有的列都是如此。而各行的长度可以由各列长度得出，从而也是由
+<span class="math inline">\(N\)</span>
+唯一确定的。这就证明了分解的唯一性。</p>
 <h1 id="进一步的思考">进一步的思考</h1>
 <p>一个很有意思的问题是，给定</p>
 <p><span class="math display">\[J_\lambda=\begin{pmatrix}\lambda&amp;1&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\\&amp;&amp;\lambda&amp;1\\&amp;&amp;&amp;\lambda\end{pmatrix}_{n\times
@@ -527,18 +547,18 @@ n}.\]</span></p>
 <p>这时 <span class="math inline">\(J_0\)</span> 是一个移位算子：</p>
 <p><span class="math display">\[J_0:\quad v_n\rightarrow
 v_{n-1}\rightarrow \cdots \rightarrow v_1\rightarrow 0.\]</span></p>
-<p>整个轨道只有一条。但是 <span class="math inline">\(J_0^k\)</span>
-则是 <span class="math inline">\(k\)</span> 步 <span class="math inline">\(k\)</span> 步地跳：</p>
+<p>整个链只有一条。但是 <span class="math inline">\(J_0^k\)</span> 则是
+<span class="math inline">\(k\)</span> 步 <span class="math inline">\(k\)</span> 步地跳：</p>
 <p><span class="math display">\[J_0^k:\quad \left\{\begin{array}{l}
 v_n\rightarrow v_{n-k}\rightarrow \cdots
 \rightarrow0,\\v_{n-1}\rightarrow v_{n-1-k}\rightarrow \cdots\rightarrow
 0,\\\cdots\\v_{n-k+1}\rightarrow v_{n-2k+1}\rightarrow \cdots
 \rightarrow 0.\end{array}\right.\]</span></p>
-<p>所以 <span class="math inline">\(J_0^k\)</span> 有 <span class="math inline">\(k\)</span> 条轨道，每个轨道都是一个 Jordan 块，即
+<p>所以 <span class="math inline">\(J_0^k\)</span> 有 <span class="math inline">\(k\)</span> 条链，每个链都是一个 Jordan 块，即
 <span class="math inline">\(J_0^k\)</span> 的标准形中有 <span class="math inline">\(k\)</span> 个 Jordan 块。设 <span class="math inline">\(n=qk+r\)</span>，这里 <span class="math inline">\(0\leq r&lt; k\)</span>，则这 <span class="math inline">\(k\)</span> 个 Jordan 块中有 <span class="math inline">\(r\)</span> 个是 <span class="math inline">\(q+1\)</span> 阶的，<span class="math inline">\(k-r\)</span> 个是 <span class="math inline">\(q\)</span> 阶的。</p>
 <p>举个例子就明白了，一个 8 阶的 0 特征值 Jordan 块 <span class="math inline">\(J_0\)</span>，<span class="math inline">\(J_0^3\)</span> 的 Jordan
 标准形是什么样子的？这个时候 <span class="math inline">\(J_0^3\)</span>
-有 3 个轨道 <span class="math inline">\(\{v_8,v_5,v_2\}\)</span>, <span class="math inline">\(\{v_7,v_4,v_1 \}\)</span>, <span class="math inline">\(\{v_6,v_3\}\)</span>，所以 <span class="math inline">\(J_0^3\)</span> 的 Jordan 标准形有 2 个 3 阶的
+有 3 个链 <span class="math inline">\(\{v_8,v_5,v_2\}\)</span>, <span class="math inline">\(\{v_7,v_4,v_1 \}\)</span>, <span class="math inline">\(\{v_6,v_3\}\)</span>，所以 <span class="math inline">\(J_0^3\)</span> 的 Jordan 标准形有 2 个 3 阶的
 Jordan 块和 1 个 2 阶的 Jordan 块。</p>
 <p>总结一下：零特征值的 Jordan
 块的高次幂一定会分裂，而且是尽可能均匀的分裂；非零特征值的 Jordan
