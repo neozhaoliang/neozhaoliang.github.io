@@ -184,7 +184,7 @@ past
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">5 篇</span></a>
+                    pywonderland-项目 <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -437,7 +437,7 @@ i.i.d on } [0,1]\}\)</span> 是所有随机数流组成的样本空间， <span 
 time}\}.\]</span> 即 <span class="math inline">\(A\)</span>
 为那些可以使得算法在有限时间内结束的序列组成的集合，则 <span class="math inline">\(\mathbb{P}(A)=1\)</span>。</p>
 <p>又记 <span class="math display">\[A_i = \{ \text{the algorithm does
-not need to try starting times earlier than} -N_i\}.\]</span> 即 <span class="math inline">\(A_i\)</span> 为事件“算法从 <span class="math inline">\(-N_i\)</span> 或者更早的时间出发可以结束”。</p>
+not need to try starting times earlier than} -N_i\}.\]</span> 即 <span class="math inline">\(A_i\)</span> 为事件「算法从 <span class="math inline">\(-N_i\)</span> 或者更早的时间出发可以结束」。</p>
 <p>显然我们有 <span class="math inline">\(A_i\uparrow A\)</span>，<span class="math inline">\(\mathbb{P}(A_i)\uparrow\mathbb{P}(A)=1\)</span>。因此对充分大的
 <span class="math inline">\(K\)</span> 有 <span class="math inline">\(\mathbb{P}(A_K) \geq
 1-\epsilon\)</span>。取定这样的 <span class="math inline">\(K\)</span>，则在事件 <span class="math inline">\(A_K\)</span> 上，所有的链在时刻 0 耦合到相同的状态
@@ -465,8 +465,8 @@ s^\ast)\\&amp;\leq\epsilon.\end{aligned}\]</span> 从而 <span class="math displ
 算法的证明看似不难，但其实微妙之处不少，值得细细品味。最主要的地方有三个：</p>
 <blockquote>
 <p><strong>问题 1</strong>：为什么说更新函数 <span class="math inline">\(f\)</span> 的选择不能是任意的？</p>
-<p><strong>问题 2</strong>：既然 “coupling from the past” 可以，那
-“coupling to the future” 可不可以？从时刻 0 开始从每个 <span class="math inline">\(s\in S\)</span> 出发跑 <span class="math inline">\(|S|\)</span> 个不同的链，直到它们在未来某个时刻
+<p><strong>问题 2</strong>：既然 「coupling from the past」 可以，那
+「coupling to the future」 可不可以？从时刻 0 开始从每个 <span class="math inline">\(s\in S\)</span> 出发跑 <span class="math inline">\(|S|\)</span> 个不同的链，直到它们在未来某个时刻
 <span class="math inline">\(n\)</span>
 耦合为止，然后输出第一次耦合时的状态不行吗？</p>
 <p><strong>问题 3</strong>：每次重启步骤 2
@@ -575,31 +575,31 @@ s_\min\)</span>
 当且仅当对任何 <span class="math inline">\(1\leq i\leq
 c+2\)</span>，<span class="math inline">\(\mathcal{P}\)</span> 中的第
 <span class="math inline">\(i\)</span> 条路径 <span class="math inline">\(p_i\)</span> 整体地位于 <span class="math inline">\(\mathcal{P}'\)</span> 中第 <span class="math inline">\(i\)</span> 条路径 <span class="math inline">\(p_i'\)</span>
-的下方。在这个偏序下的最大元就是所有路径尽可能地“向上拱”：</p>
+的下方。在这个偏序下的最大元就是所有路径尽可能地「向上拱」：</p>
 <p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/max_state.svg"></p>
-<p>而最小元则是所有路径尽可能地“向下走”：</p>
+<p>而最小元则是所有路径尽可能地「向下走」：</p>
 <p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/min_state.svg"></p>
 <p>有了偏序，我们还要定义一个与之相容的更新函数 <span class="math inline">\(f\)</span>。<span class="math inline">\(f\)</span>
 的定义是这样的：对一个不相交路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们每次在 <span class="math inline">\(\mathcal{P}\)</span> 的中间 <span class="math inline">\(c\)</span> 条路径中，在路径内部 （两头端点除外）
 任选一个顶点 <span class="math inline">\(v\)</span>：</p>
 <ol type="1">
-<li>如果 <span class="math inline">\(v\)</span> 是一个“山峰”，即形如
+<li>如果 <span class="math inline">\(v\)</span> 是一个「山峰」，即形如
 <span class="math inline">\(\wedge\)</span>，则我们以 1/2 的概率保持
 <span class="math inline">\(\mathcal{P}\)</span> 不变，以 1/2
-的概率尝试将 <span class="math inline">\(\mathcal{P}\)</span> 在 <span class="math inline">\(v\)</span> 处翻转为一个“山谷” <span class="math inline">\(\vee\)</span>，如果翻转之后得到的路径组 <span class="math inline">\(\mathcal{P}'\)</span>
+的概率尝试将 <span class="math inline">\(\mathcal{P}\)</span> 在 <span class="math inline">\(v\)</span> 处翻转为一个「山谷」 <span class="math inline">\(\vee\)</span>，如果翻转之后得到的路径组 <span class="math inline">\(\mathcal{P}'\)</span>
 仍然满足路径之间不相交的约束，则规定 <span class="math inline">\(\mathcal{P}'=f(\mathcal{P})\)</span>，否则仍然保持
 <span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
-<li>如果 <span class="math inline">\(v\)</span> 是一个“山谷”，即形如
+<li>如果 <span class="math inline">\(v\)</span> 是一个「山谷」，即形如
 <span class="math inline">\(\vee\)</span>，则与上面的情形类似，我们以
 1/2 的概率保持 <span class="math inline">\(\mathcal{P}\)</span> 不变，以
 1/2 的概率尝试将 <span class="math inline">\(\mathcal{P}\)</span> 在
-<span class="math inline">\(v\)</span> 处翻转为一个山峰 <span class="math inline">\(\wedge\)</span>，如果翻转之后得到的路径组满足不相交的约束，则规定
+<span class="math inline">\(v\)</span> 处翻转为一个「山峰」 <span class="math inline">\(\wedge\)</span>，如果翻转之后得到的路径组满足不相交的约束，则规定
 <span class="math inline">\(\mathcal{P}'=f(\mathcal{P})\)</span>，否则仍然保持
 <span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
 <li>如果 <span class="math inline">\(v\)</span>
-既不是山峰也不是山谷，则保持 <span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
+既不是「山峰」也不是「山谷」，则保持 <span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
 </ol>
-<p>菱形密铺在三维空间中看起来像是“堆箱子”，这个翻转路径的操作就相当于从中添加/移除一个箱子，并且必须保证这个箱子有三个面可见：</p>
+<p>菱形密铺在三维空间中看起来像是「堆箱子」，这个翻转路径的操作就相当于从中添加/移除一个箱子，并且必须保证这个箱子有三个面可见：</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/cftp/flip_lozenge.svg"></p>
 <p>我们来验证 <span class="math inline">\(f\)</span>
 是和路径组之间的偏序 <span class="math inline">\(\preceq\)</span>
@@ -645,8 +645,8 @@ tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
 
 
 <p class="pink-link-context">
-    <a href="/coxeter-element/" rel="next" title="Coxeter element">
-    下一篇：Coxeter element
+    <a href="/wilson-algorithm/" rel="next" title="Wilson 均匀生成树算法">
+    下一篇：Wilson 均匀生成树算法
   </a>
 </p>
 
