@@ -227,7 +227,7 @@ DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">4 篇</span></a>
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -390,14 +390,19 @@ erased random walk ) ，即每当走到一个以前访问过的顶点 <span clas
 <p>一旦找到了这样的概率空间 <span class="math inline">\((
 \Omega,\mathbb{P} )\)</span> 和映射 <span class="math inline">\(\phi\)</span>，则 <span class="math inline">\(\phi
 ( \omega )\)</span> 以概率 1 是一个生成树，且服从 <span class="math inline">\(\mathcal{T}\)</span> 上的均匀分布。</p>
-<p>为了启发 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span>
-和 <span class="math inline">\(\phi\)</span> 的构造，我们来看看著名的
-Tetris 游戏（俄罗斯方块），它和 Wilson
-算法有许多类似之处。这可能听起来有点偏离主题，但是你要知道 Wilson
-算法是一个相当巧妙的算法，它的证明并不直观，通过一个类比应该可以帮助大家更好的理解证明思路。</p>
+<p>构造 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span> 和
+<span class="math inline">\(\phi\)</span> 的关键，是把 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span>
+看作一个游戏的系统随机性，Wilson
+算法看作一个游戏策略，但是这个策略对结果没有影响，即游戏结果完全由系统随机性
+<span class="math inline">\(\omega\in\Omega\)</span> 决定，这就是映射
+<span class="math inline">\(\phi\)</span>！</p>
+<p>直接介绍 Wilson
+算法背后的游戏可能有点难以理解。作为热身，我们先来看看大家都熟悉的
+Tetris
+游戏（俄罗斯方块）。我希望你能从中理解「系统随机性」与「玩家策略」的区别。</p>
 <p>经典的 Tetris 游戏是这样的，系统每次会随机从屏幕顶端落下 <span class="math inline">\(\{I,L,J,O,S,T,Z\}\)</span> 七种四方块 ( tetromino
 )
-中的一个。玩家可以在方块下落的过程中左右移动或者旋转它，尽可能地形成完整的水平行。每当出现完整的水平行时，这些行会被立刻消掉，同时玩家获得一定的分数。玩家的目的是获得尽可能高的分数。</p>
+中的一个。玩家可以在方块下落的过程中移动或者旋转它，尽可能地形成完整的水平行。每当出现完整的水平行时，这些行会被立刻消掉，同时玩家获得一定的分数。玩家的目的是获得尽可能高的分数。</p>
 <p><img style="margin:0px auto;display: block" width="500" src="/images/wilson/tetris.gif"></p>
 <p>显然 Tetris
 游戏的结果由两个因素决定：系统的随机性和玩家的操作。这里系统的随机性是指每次落下的方块的随机性。</p>
