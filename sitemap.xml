@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://pywonderland.com/mobius-poincare/</loc>
+    <loc>https://pywonderland.com/coupling-from-the-past/</loc>
     
     <lastmod>2024-11-23</lastmod>
     
@@ -11,7 +11,14 @@
   <url>
     <loc>https://pywonderland.com/wilson-algorithm/</loc>
     
-    <lastmod>2024-11-19</lastmod>
+    <lastmod>2024-11-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://pywonderland.com/mobius-poincare/</loc>
+    
+    <lastmod>2024-11-23</lastmod>
     
   </url>
   
@@ -80,13 +87,6 @@
   
   <url>
     <loc>https://pywonderland.com/space-of-matrices/</loc>
-    
-    <lastmod>2024-11-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://pywonderland.com/coupling-from-the-past/</loc>
     
     <lastmod>2024-11-11</lastmod>
     
@@ -350,6 +350,13 @@
   
   <url>
     <loc>https://pywonderland.com/categories/%E8%AE%A1%E6%95%B0%E7%BB%84%E5%90%88%E5%AD%A6/</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://pywonderland.com/categories/%E5%AE%8C%E7%BE%8E%E9%87%87%E6%A0%B7/</loc>
     <lastmod>2024-11-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
