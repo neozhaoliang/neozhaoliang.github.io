@@ -372,17 +372,18 @@ T\,\mathrm{d}\mu.\]</span>
 成立。这时我们称 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(T-\)</span> 不变的随机变量。</p>
 </div>
 <p>这是 Durrett
-书中的一道习题，我一直觉得它很平凡，其实之前的处理有问题，这个结论还是需要论证一番的。</p>
+书中的一道习题，我一直觉得它很平凡，其实之前文章中的处理有问题，这个结论还是需要论证一番的。</p>
 <p><strong>证明</strong>：</p>
 <p><span class="math inline">\(\Rightarrow\)</span>：如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 Borel 集 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B)\stackrel{\mathrm{a.e.}}{=}X^{-1}B\)</span>，这说明
 <span class="math inline">\(\{X\circ T\in
 B\}\stackrel{\mathrm{a.e.}}{=}\{X\in B\}\)</span>。特别地取 <span class="math inline">\(B=(-\infty, t)\)</span> 我们得到 <span class="math inline">\(\{X\circ
-T&lt;t\}\stackrel{\mathrm{a.e.}}{=}\{X&lt;t\}\)</span>。所以只要证明如果
+T&lt;t\}\stackrel{\mathrm{a.e.}}{=}\{X&lt;t\}\)</span>。我们来证明如果
 <span class="math inline">\(\xi,\,\eta\)</span>
 是两个可测函数且对任何实数 <span class="math inline">\(t\)</span> 有
 <span class="math inline">\(\{\xi&lt;t\}\stackrel{\mathrm{a.e.}}{=}\{\eta&lt;t\}\)</span>，则
-<span class="math inline">\(\xi=\eta,\,\mathrm{a.e.}\)</span>
-即可。若不然，不妨设 <span class="math inline">\(\{\xi&gt;\eta\}\)</span> 具有正测度，则存在有理数
+<span class="math inline">\(\xi=\eta,\,\mathrm{a.e.}\)</span>。然后对
+<span class="math inline">\(\xi=X\circ T,\,\eta=T\)</span>
+应用此结论即可。若不然，不妨设 <span class="math inline">\(\{\xi&gt;\eta\}\)</span> 具有正测度，则存在有理数
 <span class="math inline">\(c\)</span> 使得集合 <span class="math inline">\(\{\xi&gt;c&gt;\eta\}\)</span>
 具有正测度，这个集合在 <span class="math inline">\(\{\eta&lt;c\}\)</span> 中，但是不在 <span class="math inline">\(\{\xi&lt;c\}\)</span> 中，这与 <span class="math inline">\(\{\eta&lt;c\}\)</span> 和 <span class="math inline">\(\{\xi&lt;c\}\)</span> 只差一个零测集矛盾。</p>
 <p><span class="math inline">\(\Leftarrow\)</span>：如果 <span class="math inline">\(X\circ T=X\)</span> 几乎处处成立，则对任何 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\stackrel{\mathrm{a.e.}}{=}T^{-1}X^{-1}B\)</span>，这说明
@@ -414,7 +415,7 @@ a\mu(\{M_f&gt;a\}).\]</span></p>
 a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换成 <span class="math inline">\(f\)</span>，积分范围保持不变的话，不等式仍然成立。</p>
 <p>我把极大遍历定理的证明放在最后，先用它来证明 Birkhoff 遍历定理。</p>
 <h1 id="birkhoff-遍历定理的证明">Birkhoff 遍历定理的证明</h1>
-<p>首先可以假定条件期望 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，若不然，我们可以以
+<p>首先可以假定条件期望 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，否则我们可以用
 <span class="math inline">\(f-\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
 代替 <span class="math inline">\(f\)</span>，注意到 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span> 是 <span class="math inline">\(T-\)</span> 不变的，所以根据上面的 <a href="#lemma-2" title="引理 1.4">引理 1.4</a> 有 <span class="math display">\[\mathbb{E}[f\,|\,\mathcal{I}]\circ T^k =
 \mathbb{E}[f\,|\,\mathcal{I}],\quad \mathrm{a.e.}\]</span>
@@ -432,42 +433,44 @@ a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换
 也几乎处处成立，这样就证明了 <span class="math inline">\(\lim\limits_{n\to\infty}S_n/n=0\)</span>
 几乎处处成立。（拗口）</p>
 <p>为了证明 <span class="math inline">\(\mu(A)=0\)</span>，我们希望对函数 <span class="math inline">\(f\)</span> 和集合 <span class="math inline">\(A\)</span> 应用极大不等式： <span class="math display">\[\int_A f\,\mathrm{d}\mu\geq a\mu(A).\]</span>
-这是因为，<span class="math inline">\(A\)</span> 其实是一个 <span class="math inline">\(T-\)</span> 不变的集合，即 <span class="math inline">\(A\in\mathcal{I}\)</span>，我们会在证明末尾再验证这一点。于是根据条件期望的性质，上式的左边其实是
-0： <span class="math display">\[\int_A f\,\mathrm{d}\mu = \int_A
+这是因为，<span class="math inline">\(A\)</span> 其实是一个 <span class="math inline">\(T-\)</span> 不变的集合，即 <span class="math inline">\(A\in\mathcal{I}\)</span>，我们会在证明末尾再验证这一点。于是根据条件期望的性质，
+<span class="math display">\[\int_A f\,\mathrm{d}\mu = \int_A
 \mathbb{E}[f\,|\,\mathcal{I}]\,\mathrm{d}\mu =0.\]</span> 即 <span class="math inline">\(0\geq a\mu(A)\)</span>，结合 <span class="math inline">\(a&gt;0\)</span> 即得 <span class="math inline">\(\mu(A)=0\)</span>。</p>
 <p>但是，我们能对 <span class="math inline">\(A\)</span>
 使用极大不等式吗？请注意 <span class="math inline">\(\varlimsup\limits_{n\to\infty}\)</span> 和 <span class="math inline">\(\sup\limits_{n\geq 1}\)</span>
 的区别，它们定义的是两个不同的随机变量。<span class="math inline">\(A\)</span> 是用 <span class="math inline">\(\varlimsup\limits_{n\to\infty}\)</span>
 定义的，而极大遍历定理中说的是 <span class="math inline">\(\sup\limits_{n\geq 1}\)</span>。注意到 <span class="math display">\[A=\left\{\varlimsup_{n\to\infty}\frac{S_n}{n}&gt;a\right\}\subseteq
 \left\{\sup_{n\geq 1}\frac{S_n}{n}&gt;a\right\}=
-\left\{M_f&gt;a\right\},\]</span> 所以只要证明这样一个结论就好了：</p>
-<blockquote>
-<p>设 <span class="math inline">\(A\subseteq \{M_f&gt;a\}\)</span> 而且
-<span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(T-\)</span> 不变集合，那么极大遍历定理仍然成立：
+\left\{M_f&gt;a\right\},\]</span>
+所以我们只需要证明下面的结论就好了：</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\subseteq \{M_f&gt;a\}\)</span> 而且 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(T-\)</span> 不变集合，那么极大遍历定理仍然成立：
 <span class="math display">\[\int_A f\,\mathrm{d}\mu\geq
 a\mu(A).\]</span></p>
-</blockquote>
-<p>而这只要对函数 <span class="math inline">\(g=f\cdot\mathbb{1}_A\)</span>
-应用极大遍历定理即可： <span class="math display">\[\int_{\{M_g&gt;a\}}
+</div>
+<p><strong>引理的证明</strong>：对函数 <span class="math inline">\(g=f\cdot\mathbb{1}_A\)</span> 应用极大遍历定理：
+<span class="math display">\[\int_{\{M_g&gt;a\}}
 f\cdot\mathbb{1}_A\,\mathrm{d}\mu\geq a\mu(\{M_g&gt;a\}).\]</span> 但是
 <span class="math inline">\(M_g=M_f\cdot\mathbb{1}_A\)</span>，这一点要用到
 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变集合这个条件，因此 <span class="math display">\[\{M_g&gt;a\}=\{M_f&gt;a\}\cap A
 =A.\]</span>因此确实有 <span class="math display">\[\int_A
-f\,\mathrm{d}\mu\geq a \mu(A),\]</span> 这样就证明了 Birkhoff
+f\,\mathrm{d}\mu\geq a \mu(A).\]</span> 这样就证明了 Birkhoff
 遍历定理。</p>
 <p>实际上定理中的收敛也是一个依 <span class="math inline">\(L^1\)</span>
 范数的收敛，这点的证明相比几乎处处收敛就容易多了，这里不再赘述。</p>
-<p>好了，我们来验证上面提到的 <span class="math inline">\(A\)</span>
+<p>最后我们来补上证明中遗漏的部分，即验证集合 <span class="math inline">\(A=\left\{\varlimsup\limits_{n\to\infty}S_n/n&gt;a\right\}\)</span>
 确实是 <span class="math inline">\(T-\)</span> 不变的：</p>
 <p>利用 <span class="math inline">\(S_{n+1} = f + S_n\circ T\)</span>
 可得 <span class="math display">\[\frac{S_{n+1}}{n+1} = \frac{f}{n+1} +
 \frac{S_n\circ T}{n}\cdot \frac{n}{n+1}.\]</span>
-在两边同时取上极限，注意到由于 <span class="math inline">\(f\in
+对两边同时取上极限，注意由于 <span class="math inline">\(f\in
 L^1(\Omega)\)</span> 所以 <span class="math inline">\(f\)</span>
-几乎处处有限，从而 <span class="math display">\[\lim_{n\to\infty}\frac{f}{n+1}=0,\quad
-\text{a.e.}\]</span> 所以 <span class="math display">\[\varlimsup_{n\to\infty} \frac{S_{n+1}}{n+1} =
-\varlimsup_{n\to\infty}\frac{S_{n}\circ T}{n}.\]</span> 这正说的是 <span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\)</span> 是
-<span class="math inline">\(T-\)</span> 不变的随机变量，从而 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变的集合。</p>
+几乎处处有限，从而 <span class="math inline">\(\lim\limits_{n\to\infty}f/(n+1)=0,\,\text{a.e.}\)</span>。所以
+<span class="math display">\[\varlimsup_{n\to\infty} \frac{S_{n+1}}{n+1}
+= \varlimsup_{n\to\infty}\frac{S_{n}\circ T}{n}.\]</span> 这正说的是
+<span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\)</span>
+是 <span class="math inline">\(T-\)</span> 不变的随机变量，从而 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变的集合。</p>
 <p>最后来证明极大遍历定理。</p>
 <h1 id="极大遍历定理的证明">极大遍历定理的证明</h1>
 <p>只要证明 <span class="math inline">\(a=0\)</span>
