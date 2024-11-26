@@ -353,15 +353,20 @@ Y)|&lt;\infty\)</span>。令 <span class="math inline">\(g(x)=\mathop{\mathrm{\m
 Y)\)</span>，则 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,
 Y)|\mathcal{G}]=g(X).\]</span></p>
 </div>
-<p>我们举个例子：假设 <span class="math inline">\(X, Y\)</span>
+<p>在进入证明之前，我们来看个例子：</p>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>设 <span class="math inline">\(X, Y\)</span>
 是两个独立的随机变量，<span class="math inline">\(Y\)</span> 服从的是
 <span class="math inline">\([0, 1]\)</span> 上的均匀分布，<span class="math inline">\(X\)</span> 服从的分布我们可以不用关心。问条件期望
 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\sin(XY)|X]\)</span>
-是什么？这相当于在引理中取 <span class="math inline">\(\varphi(X,Y)=\sin(XY)\)</span> 和 <span class="math inline">\(\mathcal{G}=\sigma(X)\)</span>。<a href="#freeze" title="引理 1.1">引理 1.1</a> 告诉我们可以把 <span class="math inline">\(\sin(XY)\)</span> 中的 <span class="math inline">\(X\)</span> 冻结为常数 <span class="math inline">\(X=x\)</span>，把 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\sin(XY)|X]\)</span>
+是什么？</p>
+<p>这相当于在 <a href="#freeze" title="引理 1.1">引理 1.1</a> 中取 <span class="math inline">\(\varphi(X,Y)=\sin(XY)\)</span> 和 <span class="math inline">\(\mathcal{G}=\sigma(X)\)</span>。<a href="#freeze" title="引理 1.1">引理 1.1</a> 告诉我们可以把 <span class="math inline">\(\sin(XY)\)</span> 中的 <span class="math inline">\(X\)</span> 冻结为常数 <span class="math inline">\(X=x\)</span>，把 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\sin(XY)|X]\)</span>
 视作关于常数 <span class="math inline">\(x\)</span> 的积分 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\sin(xY)]=\int_0^1
 \sin(xy)\,\mathrm{d}y = \frac{1}{x}\int_0^x
 \sin(z)\,\mathrm{d}z=\frac{1-\cos x}{x}.\]</span> 然后把 <span class="math inline">\(x\)</span> 解冻为 <span class="math inline">\(X\)</span> 即得 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\sin(XY)|X] =
 \frac{1-\cos X}{X}.\]</span></p>
+</div>
 <p><a href="#freeze" title="引理 1.1">引理 1.1</a> 中的可测空间 <span class="math inline">\((S,\mathcal{S})\)</span> 可以是多维空间 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>，<span class="math inline">\(X,Y\)</span> 也可以是独立的随机向量。即如果 <span class="math inline">\(\varphi(X_1,\ldots,X_n,Y_1,\ldots,Y_m)\)</span>
 是关于随机变量的可测函数，<span class="math inline">\(\sigma(X_1,\ldots,X_n)\subset\mathcal{G}\)</span>
 并且 <span class="math inline">\(\mathcal{G}\)</span> 和 <span class="math inline">\(\sigma(Y_1,\ldots,Y_m)\)</span> 独立，那么条件期望
@@ -380,7 +385,7 @@ B\})\\&amp;=\int_C\mathbb{1}_A(X)\mathrm{d}\mu\cdot\mathbb{P}(\{Y\in
 B\})\\&amp;=\int_C g(X)\mathrm{d}\mu.\end{align*}\]</span></p>
 <p>于是结论对所有形如 <span class="math inline">\(A\times B\)</span>
 的集合的示性函数成立。这些函数构成一个 <span class="math inline">\(\pi-\)</span> 系。根据可测函数的单调类定理
-(monotone class theorem)，结论对所有非负或者可积函数都成立。</p>
+(monotone class theorem)，结论对所有非负或者可积函数都成立。<span class="math inline">\(\blacksquare\)</span></p>
 <h2 id="分析的预备知识">分析的预备知识</h2>
 <div id="newton-potential" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
@@ -394,6 +399,7 @@ B\})\\&amp;=\int_C g(X)\mathrm{d}\mu.\end{align*}\]</span></p>
 <span class="citation" data-cites="Donoghue2014">(<a href="#ref-Donoghue2014" role="doc-biblioref">Donoghue 2014, chap.
 8</a>)</span>。</p>
 <h1 id="建立模型">建立模型</h1>
+<p>我们开始正式求解本文开头的问题。</p>
 <ol type="1">
 <li><p>初始时刻为 0，太阳系是以原点为圆心，半径为 <span class="math inline">\(r\)</span> 的球，飞船初始位置在 <span class="math inline">\((R,0,0)\)</span> 处。</p></li>
 <li><p>设 <span class="math inline">\(\{U_n\}_{n\geq 1}\)</span>
@@ -432,13 +438,13 @@ l_nU_n\right|}\right|_{X_{n-1}=A}\leq\frac{1}{|A|}=\frac{1}{R_{n-1}}.
 <span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(l_n\leq R_{n-1}\)</span>，则 <span class="math inline">\(\{1/R_n\}\)</span> 还是一个鞅。</p>
 </div>
 <p><strong>证明</strong>：只要再说明每个 <span class="math inline">\(1/R_n\)</span> 是可积的随机变量即可。由于 <span class="math inline">\(1/R_n\)</span> 是非负的随机变量因此 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[1/R_n|\mathcal{F}_{n-1}]\)</span>
-是有定义的且已经证明其小于等于 <span class="math inline">\(1/R_{n-1}\)</span>，于是 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[1/R_n]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[1/R_n|\mathcal{F}_{n-1}]]\leq\mathop{\mathrm{\mathbb{E}}}[1/R_{n-1}],\]</span>
-所以对 <span class="math inline">\(n\)</span> 归纳即可。</p>
+是有定义的且已经证明其小于等于 <span class="math inline">\(1/R_{n-1}\)</span>，于是 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[1/R_n]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[1/R_n|\mathcal{F}_{n-1}]]\leq\mathop{\mathrm{\mathbb{E}}}[1/R_{n-1}].\]</span>
+对 <span class="math inline">\(n\)</span> 归纳即可。<span class="math inline">\(\blacksquare\)</span></p>
 <p><a href="#supermartingale" title="定理 2.1">定理 2.1</a>
-是解决整个问题最关键的一步，有了它就海阔天空，没有它就寸步难行。由它我们立刻可以导出一个有趣的观察：由于非负上鞅总是几乎处处收敛的，因此
+是解决整个问题最关键的一步，有了它就海阔天空，没有它就寸步难行。由它我们立刻可以导出一个有趣的观察：由于非负上鞅一定是几乎处处收敛的，因此
 <a href="#supermartingale" title="定理 2.1">定理 2.1</a> 的结论蕴含
 <span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)\)</span>
-是几乎处处存在的（可以是正无穷），而这有两种可能：<span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)=+\infty\)</span>
+几乎处处存在。这有两种可能：<span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)=+\infty\)</span>
 或者 <span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)=a&lt;+\infty\)</span>。所以飞船要么飞向无穷远，即迷失在宇宙的深处，要么被吸引到某个有限的位置。</p>
 <p>现在我们可以证明：</p>
 <div id="lessthan" class="statement theorem plain">
@@ -474,18 +480,22 @@ r/R\)</span>，即任何策略下飞船最终返回太阳系的概率不大于 <
 的话当然小于 <span class="math inline">\(r/R\)</span>，没什么好证的）。为此只要证明在事件
 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上几乎处处有 <span class="math inline">\(Z_T&gt;1/r\)</span>，即 <span class="math inline">\(R_T&lt;r\)</span> 即可。</p>
 <p>我们来证明对每个 <span class="math inline">\(n\geq0\)</span>，事件
-<span class="math inline">\(A_n=\{R_n\in\{0,r\}\}\)</span>
+<span class="math inline">\(A_n=\{R_n=0 \text{ or } R_n=r\}\)</span>
 都是零概率事件。</p>
-<p>对 <span class="math inline">\(n\)</span> 归纳：<span class="math inline">\(n=0\)</span> 时 <span class="math inline">\(R_0=R&gt;r\)</span>，结论自然成立。设当 <span class="math inline">\(k&lt;n\)</span> 时有 <span class="math inline">\(\mathbb{P}(A_k)=0\)</span>，来看 <span class="math inline">\(k=n\)</span> 的情形。</p>
+<p>对 <span class="math inline">\(n\)</span> 归纳：<span class="math inline">\(n=0\)</span> 时 <span class="math inline">\(R_0=R&gt;r\)</span>，结论成立。设结论在小于 <span class="math inline">\(n\)</span> 时都成立，来看 <span class="math inline">\(n\)</span> 的情形。</p>
 <p>由于 <span class="math inline">\(\mathbb{P}(A_n)
 =\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]]\)</span>，我们只要证明
 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]\)</span>
-是几乎处处为 0 的即可。而根据 freezing lemma， <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{\{0,r\}}\circ
+是几乎处处为 0 的随机变量即可。</p>
+<p>在 <a href="#freeze" title="引理 1.1">引理 1.1</a> 中取 <span class="math inline">\(X=(X_{n-1},l_n),\,Y=U_n,\,\mathcal{G}=\mathcal{F}_{n-1}\)</span>，我们得到
+<span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{\{0,r\}}\circ
 |X_{n-1}+l_nU_n|\bigg|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
 |X_{n-1}+l_nU_n|\right].\]</span>
-其中上式最右边的期望是对单位球面上均匀分布的 <span class="math inline">\(U_n\)</span> 进行积分，结果是一个关于 <span class="math inline">\(X_{n-1}\)</span> 的函数。</p>
+其中上式最右边的期望是对单位球面上均匀分布的 <span class="math inline">\(U_n\)</span> 进行积分，结果是一个关于 <span class="math inline">\((X_{n-1},l_n)\)</span>
+的函数。显然无论如何上式右边作为一个只取 <span class="math inline">\(\{0,1\}\)</span> 两个值的函数的积分，结果必然在
+<span class="math inline">\([0,1]\)</span> 中。</p>
 <ul>
-<li>如果 <span class="math inline">\(|X_{n-1}|\in\{0,r\}\)</span>，显然无论如何上式右边的期望取值在
+<li>如果 <span class="math inline">\(|X_{n-1}|\in\{0,r\}\)</span>，我们已经知道结果在
 <span class="math inline">\([0,1]\)</span> 中。</li>
 <li>如果 <span class="math inline">\(|X_{n-1}|\notin\{0,r\}\)</span>，这时以 <span class="math inline">\(X_{n-1}\)</span> 为中心，<span class="math inline">\(l_n\)</span> 为半径的球面上，与原点之间的距离为
 <span class="math inline">\(0\)</span> 或者 <span class="math inline">\(r\)</span> 的点的测度为 0，即积分项 <span class="math inline">\(\mathbb{1}_{\{0,r\}}\circ
