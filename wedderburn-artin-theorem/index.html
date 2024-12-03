@@ -454,6 +454,22 @@ L\)</span> 可知存在 <span class="math inline">\(a\in I\)</span> 满足
 </div>
 <p>不难验证环 <span class="math inline">\(R/\mathrm{rad}(R)\)</span>
 不含非零的幂零左理想，从而它符合我们对半单性的定义。下面的任务就是对半单环进行讨论。</p>
+<p><a href="#idempotent" title="引理 2.4">引理 2.4</a>
+有一个简单的推论，后面会用到。我把它写在这里：</p>
+<div id="L-proj" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+2.6</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是半单左 Artinian 环，<span class="math inline">\(L\)</span> 是 <span class="math inline">\(R\)</span> 的极小左理想，<span class="math inline">\(e\in L\)</span> 是幂等元，则：</p>
+<ol type="1">
+<li>对任何 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(I\supset L\)</span> 都有 <span class="math inline">\(Ie=L\)</span>。</li>
+<li>对任何 <span class="math inline">\(x\in L\)</span> 有 <span class="math inline">\(xe=x\)</span>。</li>
+</ol>
+</div>
+<p>这里 <span class="math inline">\(e\)</span> 的存在性由 <span class="math inline">\(R\)</span> 半单以及 <a href="#idempotent" title="引理 2.4">引理 2.4</a> 保证。这个结论的含义是，对 <span class="math inline">\(x\in R\)</span>，右乘 <span class="math inline">\(x\mapsto xe\)</span> 将 <span class="math inline">\(x\)</span> 投影到 <span class="math inline">\(L\)</span> 中。特别地，这个投影保持 <span class="math inline">\(L\)</span> 中的元素不动。</p>
+<p><strong>证明</strong>：</p>
+<ol type="1">
+<li>显然 <span class="math inline">\(Ie\subset L\)</span>，并且 <span class="math inline">\(e=e\cdot e\in Ie\)</span>，所以 <span class="math inline">\(Ie\ne (0)\)</span>，于是由 <span class="math inline">\(L\)</span> 是极小左理想可得 <span class="math inline">\(Ie=L\)</span>。</li>
+<li>取 <span class="math inline">\(I=R\)</span> 即得 <span class="math inline">\(L=Re\)</span>，即 <span class="math inline">\(L\)</span> 中的任何元素 <span class="math inline">\(x\)</span> 都形如 <span class="math inline">\(x=ae,\,a\in R\)</span>。于是 <span class="math inline">\(xe=ae^2=ae=x\)</span>。<span class="math inline">\(\blacksquare\)</span></li>
+</ol>
 <h1 id="将半单环分解为单环的直和">将半单环分解为单环的直和</h1>
 <p>我们将证明半单环总是可以分解为一些单环的直和（单环的含义后面会介绍），而且这种分解还是唯一的。如果用整数分解为素数乘积来类比的话，极小左理想相当于单个素因子，单环相当于某个素因子的幂。</p>
 <p>我们首先来证明半单环的极小左理想具有直和补性质。首先是一个引理：</p>
@@ -461,9 +477,8 @@ L\)</span> 可知存在 <span class="math inline">\(a\in I\)</span> 满足
 <p><span class="statement-heading"><span class="statement-label">引理
 3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是半单环，<span class="math inline">\(L\subset I\)</span> 都是 <span class="math inline">\(R\)</span> 的左理想并且 <span class="math inline">\(L\)</span> 还是极小左理想，则存在 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(J\)</span> 满足 <span class="math inline">\(I=L\oplus J\)</span>。</p>
 </div>
-<p><strong>证明</strong>：由于 <span class="math inline">\(R\)</span>
-是半单的所以 <span class="math inline">\(L\)</span> 不是幂零的，根据 <a href="#idempotent" title="引理 2.4">引理 2.4</a> <span class="math inline">\(L\)</span> 包含一个幂等元 <span class="math inline">\(e\)</span>。于是 <span class="math inline">\(Ie\subset L\)</span> 是包含在 <span class="math inline">\(L\)</span> 中的左理想，并且 <span class="math inline">\(Ie\)</span> 包含 <span class="math inline">\(e\cdot e=e\)</span> 从而非零，所以 <span class="math inline">\(L=Ie\)</span>。考虑 <span class="math inline">\(J=I(1-e)\)</span>，这也是一个包含在 <span class="math inline">\(I\)</span> 中的左理想。显然 <span class="math display">\[I=Ie\oplus I(1-e)=L\oplus J.\]</span></p>
-<p><span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>证明</strong>： 根据 <a href="#L-proj" title="推论 2.6">推论
+2.6</a>，设幂等元 <span class="math inline">\(e\in L\)</span> 满足 <span class="math inline">\(I=Le\)</span>。考虑 <span class="math inline">\(J=I(1-e)\)</span>，这也是一个包含在 <span class="math inline">\(I\)</span> 中的左理想。显然 <span class="math display">\[I=Ie\oplus I(1-e)=L\oplus J.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
 <div id="decompose-minimal" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
 3.2</span>.</span><span class="statement-spah"> </span>半单环 <span class="math inline">\(R\)</span> 一定可以分解为有限个极小左理想的直和
@@ -493,10 +508,7 @@ L'\)</span>。</p>
 <span class="math inline">\(L\cong L'\)</span> 当且仅当 <span class="math inline">\(L'L\ne0\)</span>。特别地这个同构可以由右乘一个元素
 <span class="math inline">\(a\in L\)</span> 给出：<span class="math inline">\(L'=La\)</span>。</p>
 </div>
-<p><strong>证明</strong>：首先根据 <a href="#idempotent" title="引理 2.4">引理 2.4</a> <span class="math inline">\(L\)</span>
-包含一个幂等元 <span class="math inline">\(e\)</span>，于是必然有 <span class="math inline">\(L=Re\)</span>，从而任何 <span class="math inline">\(x\in L\)</span> 都形如 <span class="math inline">\(x=ae,\,a\in R\)</span>，从而 <span class="math inline">\(xe=x\)</span>。</p>
-<p>其次由于 <span class="math inline">\(L'L\subset
-L\)</span>，它只能是 <span class="math inline">\((0)\)</span> 或者 <span class="math inline">\(L\)</span>，所以陈述 <span class="math inline">\(L'L\ne0\)</span> 等价于 <span class="math inline">\(L'L=L\)</span>。于是我们只要证明以下三点是等价的即可：</p>
+<p><strong>证明</strong>：由于 <span class="math inline">\(L'L\subset L\)</span>，它只能是 <span class="math inline">\((0)\)</span> 或者 <span class="math inline">\(L\)</span>，所以陈述 <span class="math inline">\(L'L\ne0\)</span> 等价于 <span class="math inline">\(L'L=L\)</span>。于是我们只要证明以下三点是等价的即可：</p>
 <div class="statement simple plain unnumbered">
 <ol type="1">
 <li><span class="math inline">\(L\cong L'\)</span>。</li>
@@ -504,7 +516,7 @@ L\)</span>，它只能是 <span class="math inline">\((0)\)</span> 或者 <span 
 <li><span class="math inline">\(L'L = L\)</span>。</li>
 </ol>
 </div>
-<p><span class="math inline">\(1\Rightarrow 2\)</span>： 设 <span class="math inline">\(\varphi: L\to L'\)</span> 是一个左 <span class="math inline">\(R-\)</span> 模同构，<span class="math inline">\(e\)</span> 是 <span class="math inline">\(L\)</span> 的幂等元，由于对任何 <span class="math inline">\(x\in L\)</span> 都有 <span class="math inline">\(x=xe\)</span>，所以 <span class="math display">\[\varphi(x)=\varphi(xe)=x\varphi(e),\quad x\in
+<p><span class="math inline">\(1\Rightarrow 2\)</span>： 设 <span class="math inline">\(\varphi: L\to L'\)</span> 是一个左 <span class="math inline">\(R-\)</span> 模同构，利用 <a href="#L-proj" title="推论 2.6">推论 2.6</a> 的结论，设 <span class="math inline">\(e\in L\)</span> 是幂等元，则对任何 <span class="math inline">\(x\in L\)</span> 都有 <span class="math inline">\(x=xe\)</span>，所以 <span class="math display">\[\varphi(x)=\varphi(xe)=x\varphi(e),\quad x\in
 L.\]</span> 即同构 <span class="math inline">\(\varphi\)</span> 由右乘
 <span class="math inline">\(a=\varphi(e)\)</span> 给出。</p>
 <p><span class="math inline">\(2\Rightarrow 3\)</span>： 注意到 <span class="math inline">\(L'L\subset L\)</span> 和 <span class="math inline">\(L'L\supset L'a=L\)</span> 即可。</p>
@@ -639,7 +651,7 @@ M,\,d\in D.\]</span> 的自同态 <span class="math inline">\(f\)</span>
 组成。显然 <span class="math inline">\(E\)</span> 是由 <span class="math inline">\(A_L\)</span> 在 <span class="math inline">\({\rm
 End}(M)\)</span> 中连续取两次中心化子得到的，且 <span class="math inline">\(A_L\subseteq E\)</span>。特别地，如果 <span class="math inline">\(A_L=E\)</span> 我们就称 <span class="math inline">\((A,M)\)</span>
 具有<strong>双重中心化子性质</strong>。</p>
-<p>设 <span class="math inline">\(M=Ae\)</span> 是单环 <span class="math inline">\(A\)</span> 的一个极小左理想，我们希望证明 <span class="math inline">\((A,M)\)</span> 具有双重中心化子性质。这时 <span class="math inline">\(D={\rm Hom}_A(M,M)\)</span> 是除环，<span class="math inline">\(M\)</span> 作为右 <span class="math inline">\(D-\)</span> 模是除环 <span class="math inline">\(D\)</span> 上的右向量空间。若 <span class="math inline">\((A,M)\)</span> 具有双重中心化子性质则 <span class="math inline">\(A\cong A_L\cong {\rm Hom}_D(M,M)\)</span>，即
+<p>设 <span class="math inline">\(M\)</span> 是 <span class="math inline">\(A\)</span> 的一个极小左理想，从而 <span class="math inline">\(M\)</span> 也是不可约左 <span class="math inline">\(A-\)</span> 模。我们希望证明 <span class="math inline">\((A,M)\)</span> 具有双重中心化子性质。这时 <span class="math inline">\(D={\rm Hom}_A(M,M)\)</span> 是除环，<span class="math inline">\(M\)</span> 作为右 <span class="math inline">\(D-\)</span> 模是除环 <span class="math inline">\(D\)</span> 上的右向量空间。若 <span class="math inline">\((A,M)\)</span> 具有双重中心化子性质则 <span class="math inline">\(A\cong A_L\cong {\rm Hom}_D(M,M)\)</span>，即
 <span class="math inline">\(A\)</span> 同构于除环 <span class="math inline">\(D\)</span> 上的右向量空间 <span class="math inline">\(M\)</span> 上的所有 <span class="math inline">\(D-\)</span> 线性变换构成的环。特别地如果维数 <span class="math inline">\(\dim_D M=n&lt;\infty\)</span>，则 <span class="math inline">\(A\cong {\rm Mat}_n(D)\)</span>，这就证明了
 Wedderburn-Artin 定理。</p>
 <p>于是我们的思路就是先证明 <span class="math inline">\((A, M)\)</span>
@@ -700,10 +712,12 @@ Hom}_D(M,M)\)</span> 中非平凡的双边理想。</p>
 M=\infty\)</span>，所以恒等映射不包含在 <span class="math inline">\(I\)</span> 中，所以 <span class="math inline">\(I\ne {\rm Hom}_D(M,M)\)</span>。</li>
 <li>由于 <span class="math inline">\({\rm im}(f_1+f_2)\subset {\rm
 im}(f_1)+{\rm im}(f_2)\)</span>，所以 <span class="math inline">\(I\)</span> 对加法是封闭的。</li>
-<li>设 <span class="math inline">\(f\in I\)</span>，<span class="math inline">\(g\in {\rm Hom}_D(M,M)\)</span>，则不难验证 <span class="math inline">\({\rm im}(fg)\)</span> 和 <span class="math inline">\({\rm im}(gf)\)</span> 都是有限维的。</li>
+<li>设 <span class="math inline">\(f\in I,\,g\in {\rm
+Hom}_D(M,M)\)</span>，则不难验证 <span class="math inline">\({\rm
+im}(fg)\)</span> 和 <span class="math inline">\({\rm im}(gf)\)</span>
+都是有限维的。</li>
 <li><span class="math inline">\(I\ne(0)\)</span>。为此只要取 <span class="math inline">\(M\)</span> 的一组 <span class="math inline">\(D-\)</span> 基 <span class="math inline">\(\{e_\alpha\}\)</span>，并固定某个基元素 <span class="math inline">\(e_\beta\)</span>，规定 <span class="math display">\[f\colon\ \sum e_\alpha d_\alpha\mapsto e_\beta
-d_\beta .\]</span> 则 <span class="math inline">\(f\in I\)</span> 并且
-<span class="math inline">\(f(\beta)=\beta\)</span> 不是零映射。</li>
+d_\beta .\]</span> 即 <span class="math inline">\(f\)</span> 是到 <span class="math inline">\(e_\beta\)</span> 生成的一维子空间的投影。<span class="math inline">\(f\in I\)</span> 并且 <span class="math inline">\(f(e_\beta)=e_\beta\)</span> 不是零映射。</li>
 </ol>
 <p><span class="math inline">\(\blacksquare\)</span></p>
 <p>最后我们来说明 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(D\)</span> 是唯一确定的，即若 <span class="math inline">\(n'\)</span> 和 <span class="math inline">\(D'\)</span> 使得 <span class="math inline">\(A\cong {\rm Mat}_n(D)\cong {\rm
