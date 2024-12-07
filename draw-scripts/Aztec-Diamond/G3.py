@@ -54,7 +54,7 @@ for i, j in cells:
         pts = [c + (-a, a), c + (a, a), c + (a, -a), c + (-a, -a)]
         square(pts)
 
-    if (i + j + n) % 2 == 1:
+    if (i + j + n) % 2 == 0:
         dot(v, (0, 0, 0))
         dot(v2, (1, 1, 1))
         dot(v1, (1, 1, 1))

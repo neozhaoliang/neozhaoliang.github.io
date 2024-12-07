@@ -62,7 +62,7 @@ for i, j in cells:
             stroke(*lc)
             newpath()
             circle(i + 1, j + 1, r)
-            fill(1)
+            fill(0)
             stroke()
             t = texinsert("$1$")
             t.scale(fs)
@@ -76,7 +76,7 @@ for i, j in cells:
             stroke(*lc)
             newpath()
             circle(i, j, r)
-            fill(1)
+            fill(0)
             stroke()
             t = texinsert("$1$")
             t.scale(fs)
@@ -90,7 +90,7 @@ for i, j in cells:
             stroke(*lc)
             newpath()
             circle(i, j + 1, r)
-            fill(0)
+            fill(1)
             stroke()
             t = texinsert("$1$")
             t.scale(fs)
@@ -104,7 +104,7 @@ for i, j in cells:
             stroke(*lc)
             newpath()
             circle(i + 1, j, r)
-            fill(0)
+            fill(1)
             stroke()
             t = texinsert("$1$")
             t.scale(fs)
@@ -113,7 +113,7 @@ for i, j in cells:
 
     newpath()
     circle(i + 0.5, j + 0.5, r)
-    if (i + j + n) % 2 == 0:
+    if (i + j + n) % 2 == 1:
         fill(1)
     else:
         fill(0)

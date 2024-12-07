@@ -53,7 +53,7 @@ for i, j in cells:
 
     newpath()
     circle(i + 0.5, j + 0.5, r)
-    if (i + j + n) % 2 == 1:
+    if (i + j + n) % 2 == 0:
         fill(1)
     else:
         fill(0)

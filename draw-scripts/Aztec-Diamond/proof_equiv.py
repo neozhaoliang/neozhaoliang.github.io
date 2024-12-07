@@ -22,7 +22,7 @@ def dot(p, rad, color=(1, 1, 1)):
 
 def dots(pts, rad):
     for i, p in enumerate(pts):
-        color = (1, 1, 1) if i % 2 == 1 else (0, 0, 0)
+        color = (1, 1, 1) if i % 2 == 0 else (0, 0, 0)
         dot(p, rad, color)
 
 
@@ -124,14 +124,14 @@ def gridlines(n, dash=False, flip=False):
 
     for x in range(-n, n + 1):
         for y in range(-n, n + 1):
-            if (x + y) % 2 == 1:
+            if ((x + y) % 2 == 1 and not flip) or ((x + y) % 2 == 0 and flip):
                 fillpoly([p + Vector(x, y) for p in out], color=(0.9,) * 3)
 
 
 def griddots(n, flip=False):
     for x in range(-n, n + 1):
         for y in range(-n, n + 1):
-            if ((x + y) % 2 == 0 and not flip) or ((x + y) % 2 == 1 and flip):
+            if ((x + y) % 2 == 1 and not flip) or ((x + y) % 2 == 0 and flip):
                 dot((x, y), rad, color=(1, 1, 1))
             else:
                 dot((x, y), rad, color=(0, 0, 0))

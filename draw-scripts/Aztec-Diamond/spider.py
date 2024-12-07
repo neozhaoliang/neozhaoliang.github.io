@@ -36,7 +36,7 @@ def dots(pts, rad):
     for i, p in enumerate(pts):
         newpath()
         circle(p, rad)
-        if i % 2 == 0:
+        if i % 2 == 1:
             fill(0)
         else:
             fill(1)
