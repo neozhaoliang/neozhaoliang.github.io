@@ -137,8 +137,34 @@ def griddots(n, flip=False):
                 dot((x, y), rad, color=(0, 0, 0))
 
 
+def picture1():
+    init("trans1.eps", 300, 300)
+    center()
+    scale(80)
+    translate(0.5, -0.5)
+    n = 3
+    gridlines(n, dash=True)
+    scalelinewidth(lw)
+    for p, q in [
+        [(0, 1), (1, 1)],
+        [(0, 0), (1, 0)],
+        [(-2, 0), (-1, 0)],
+        [(-2, 1), (-2, 2)],
+        [(-1, 1), (-1, 2)],
+        [(0, 2), (0, 3)],
+        [(1, 2), (1, 3)],
+    ]:
+        line(p, q, color=(1, 0, 0))
+    griddots(n)
+
+    text(r"\uppercase\expandafter{\romannumeral 1\relax}", (-1.5, 1.5), 1.5)
+    text(r"\uppercase\expandafter{\romannumeral 2\relax}", (0.5, 1.5), 1.5)
+    text(r"\uppercase\expandafter{\romannumeral 3\relax}", (-0.5, 0.5), 1.5)
+    finish()
+
+
 def picture2():
-    init("case2.eps", 300, 300)
+    init("trans2.eps", 300, 300)
     center()
     scale(80)
     translate(0.5, -0.5)
@@ -149,12 +175,16 @@ def picture2():
             if (i + j) % 2 == 1:
                 verts = [p + Vector(i, j) for p in corners]
                 oout = [p + Vector(i, j) for p in out]
-                if i == -1 and j == 0:
+                if i == -2 and j == 1:
+                    pairs = list(zip(verts, oout))
+                elif i == 0 and j == 1:
                     pairs = [
-                        (verts[0], verts[1]),
-                        (verts[2], oout[2]),
-                        (verts[3], oout[3]),
+                        [verts[2], verts[3]],
+                        [verts[0], oout[0]],
+                        [verts[1], oout[1]],
                     ]
+                elif i == -1 and j == 0:
+                    pairs = [[verts[0], verts[1]], [verts[2], verts[3]]]
                 else:
                     pairs = []
                 draw_transformed(verts, oout, dash=True, red_pairs=pairs)
@@ -164,24 +194,8 @@ def picture2():
     finish()
 
 
-def picture1():
-    init("case1.eps", 300, 300)
-    center()
-    scale(80)
-    translate(0.5, -0.5)
-    n = 3
-    gridlines(n, dash=True)
-    scalelinewidth(lw)
-    for p, q in [
-        [(-1, 1), (0, 1)],
-    ]:
-        line(p, q, color=(1, 0, 0))
-    griddots(n)
-    finish()
-
-
 def picture3():
-    init("case3.eps", 300, 300)
+    init("trans3.eps", 300, 300)
     center()
     scale(80)
     translate(0.5, -0.5)
@@ -191,12 +205,16 @@ def picture3():
             if (i + j) % 2 == 1:
                 verts = [p + Vector(i, j) for p in corners]
                 oout = [p + Vector(i, j) for p in out]
-                if i == -1 and j == 0:
+                if i == -2 and j == 1:
+                    pairs = list(zip(verts, oout))
+                elif i == 0 and j == 1:
                     pairs = [
-                        (verts[0], verts[1]),
-                        (verts[2], oout[2]),
-                        (verts[3], oout[3]),
+                        [verts[2], verts[3]],
+                        [verts[0], oout[0]],
+                        [verts[1], oout[1]],
                     ]
+                elif i == -1 and j == 0:
+                    pairs = [[verts[0], verts[1]], [verts[2], verts[3]]]
                 else:
                     pairs = []
                 draw_transformed(verts, oout, dash=True, red_pairs=pairs, fc=(0.9,) * 3)
@@ -207,7 +225,7 @@ def picture3():
 
 
 def picture4():
-    init("case4.eps", 300, 300)
+    init("trans4.eps", 300, 300)
     center()
     scale(80)
     translate(0.5, -0.5)
@@ -216,9 +234,15 @@ def picture4():
     scalelinewidth(lw)
     for p, q in [
         [(-1, 0), (0, 0)],
+        [(-1, 1), (0, 1)],
+        [(0, 2), (1, 2)],
     ]:
         line(p, q, color=(1, 0, 0))
     griddots(n, flip=True)
+
+    text(r"\uppercase\expandafter{\romannumeral 1\relax}", (-1.5, 1.5), 1.5)
+    text(r"\uppercase\expandafter{\romannumeral 2\relax}", (0.5, 1.5), 1.5)
+    text(r"\uppercase\expandafter{\romannumeral 3\relax}", (-0.5, 0.5), 1.5)
     finish()
 
 
