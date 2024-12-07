@@ -1,95 +1,89 @@
 from piscript.PiModule import *
 from math import *
 
-n = 4
-r = 0.08
+n = 3
+r = 0.05
+fs = 0.8
 init(400, 400)
 center()
-scale(50)
-fs = 1.5
-lc = (0, 0, 1)
+scale(65)
 
-def rectangle(x1, y1, x2, y2, gray):
+
+def dot(p, color=(1, 1, 1)):
     newpath()
-    moveto(x1, y2)
-    lineto(x1, y1)
-    lineto(x2, y1)
+    circle(p, r)
+    fill(*color)
     stroke()
+
+
+def square(pts):
+    newpath()
+    moveto(pts[0])
+    for p in pts[1:]:
+        lineto(p)
+    lineto(pts[0])
+    closepath()
+    stroke()
+
 
 cells = []
 for j in range(-n, n):
-    k = min(n+1+j, n-j)
+    k = min(n + 1 + j, n - j)
     for i in range(-k, k):
         cells.append((i, j))
 
-rotate(pi/4)
+
+a = 0.25
 for i, j in cells:
-    if (i + j + n) % 2 == 0 and (i+1, j+1) in cells and (i-1, j) in cells and (i, j-1) in cells:
-        newpath()
-        moveto(i+0.5, j+0.5)
-        lineto(i+0.5, j+1.5)
-        lineto(i+1.5, j+1.5)
-        lineto(i+1.5, j+0.5)
-        lineto(i+0.5, j+0.5)
-        closepath()
-        fill(1, 0.75, 0.75)
+    if (i + j + n) % 2 == 1:
+        v = Vector(i + 0.5, j + 0.5)
+        v1 = v + (a, a)
+        v2 = v - (a, a)
 
-    if (i, j+1) in cells:
-        newpath()
-        moveto(i+0.5, j+0.5)
-        lineto(i+0.5, j+1.5)
-        stroke()
+    else:
+        v = Vector(i + 0.5, j + 0.5)
+        v1 = v + (a, -a)
+        v2 = v - (a, -a)
 
-    if (i+1, j) in cells:
-        newpath()
-        moveto(i+0.5, j+0.5)
-        lineto(i+1.5, j+0.5)
-        stroke()
+    newpath()
+    moveto(v1)
+    lineto(v2)
+    stroke()
+    if (i + j + n) % 2 == 1 and (i + 1, j + 1) in cells:
+        c = Vector(i + 1, j + 1)
+        pts = [c + (-a, a), c + (a, a), c + (a, -a), c + (-a, -a)]
+        square(pts)
 
     if (i + j + n) % 2 == 1:
-        if (i, j+1) not in cells:
-            newpath()
-            moveto(i+0.5, j+0.5)
-            lineto(i+1, j+1)
-            stroke(*lc)
-            newpath()
-            circle(i+1, j+1, r)
-            fill(1,0, 0)
-            stroke()
-        if (i, j-1) not in cells:
-            newpath()
-            moveto(i+0.5, j+0.5)
-            lineto(i, j)
-            stroke(*lc)
-            newpath()
-            circle(i, j, r)
-            fill(1, 0, 0)
-            stroke()
+        dot(v, (0, 0, 0))
+        dot(v2, (1, 1, 1))
+        dot(v1, (1, 1, 1))
     else:
-        if (i-1, j) not in cells:
-            newpath()
-            moveto(i+0.5, j+0.5)
-            lineto(i, j+1)
-            stroke(*lc)
-            newpath()
-            circle(i, j+1, r)
-            fill(1, 0, 0)
-            stroke()
+        dot(v, (1, 1, 1))
+        dot(v2, (0, 0, 0))
+        dot(v1, (0, 0, 0))
 
-        if (i, j-1) not in cells:
-            newpath()
-            moveto(i+0.5, j+0.5)
-            lineto(i+1, j)
-            stroke(*lc)
-            newpath()
-            circle(i+1, j, r)
-            fill(1, 0, 0)
-            stroke()
-    
-    newpath()
-    circle(i+0.5, j+0.5, r)
-    fill(1, 0, 0)
-    stroke()
 
+for i, j in cells:
+    if (i + j + n) % 2 == 1 and (i + 1, j + 1) in cells:
+        newpath()
+        t = texinsert(r"$y/\Delta$")
+        t.scale(fs)
+        place(t, i + 0.85, j + 1.3)
+
+        newpath()
+        t = texinsert(r"$x/\Delta$")
+        t.scale(fs)
+        place(t, i + 0.45, j + 0.95)
+
+        newpath()
+        t = texinsert(r"$z/\Delta$")
+        t.scale(fs)
+        place(t, i + 1.3, j + 0.95)
+
+        newpath()
+        t = texinsert(r"$w/\Delta$")
+        t.scale(fs)
+        place(t, i + 0.85, j + 0.6)
 
 finish()
