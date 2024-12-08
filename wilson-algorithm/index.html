@@ -400,7 +400,7 @@ erased random walk ) ，即每当走到一个以前访问过的顶点 <span clas
 <p>构造 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span> 和
 <span class="math inline">\(\phi\)</span> 的关键，是把 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span>
 看作一个游戏的系统随机性，Wilson
-算法看作一个游戏策略，但是这个策略对结果没有影响，即游戏结果完全由系统随机性
+算法看作玩家的一种操作策略，但是这个策略对结果没有影响，即实际上任何游戏策略都会得到相同的结果，从而游戏结果完全由系统随机性
 <span class="math inline">\(\omega\in\Omega\)</span> 决定，这就是映射
 <span class="math inline">\(\phi\)</span>！</p>
 <p>直接介绍 Wilson
@@ -411,7 +411,7 @@ Tetris
 )
 中的一个。玩家可以在方块下落的过程中移动或者旋转它，尽可能地形成完整的水平行。每当出现完整的水平行时，这些行会被立刻消掉，同时玩家获得一定的分数。玩家的目的是获得尽可能高的分数。</p>
 <p><img style="margin:0px auto;display: block" width="500" src="/images/wilson/tetris.gif"></p>
-<p>显然 Tetris
+<p>Tetris
 游戏的结果由两个因素决定：系统的随机性和玩家的操作。这里系统的随机性是指每次落下的方块的随机性。</p>
 <p>系统的随机性可以用一个概率空间 <span class="math inline">\((
 \Omega,\mathbb{P} )\)</span> 来描述：任何样本点 <span class="math inline">\(\omega\in\Omega\)</span> 是一个无穷序列 <span class="math inline">\(\omega=\{X_i\}_{i=1}^\infty\)</span>，其中 <span class="math inline">\(X_i\)</span> 表示第 <span class="math inline">\(i\)</span> 个落下的方块的类型，它来自对集合 <span class="math inline">\(\{I,L,J,O,S,T,Z\}\)</span>
@@ -441,17 +441,13 @@ Tetris 游戏有一个关键不同：Wilson
 <p><span class="statement-heading"><span class="statement-label">概率空间 <span class="math inline">\((
 \Omega,\mathbb{P} )\)</span> 的构造</span>.</span></p>
 <ol type="1">
-<li>首先由玩家任意指定一个顶点 <span class="math inline">\(r\)</span>。</li>
-<li>对每个 <span class="math inline">\(v\ne r\)</span>，定义一个栈结构
-<span class="math inline">\(S_v=\{S_{v,1},S_{v,2},\ldots\}\)</span>，这里
-<span class="math inline">\(S_v\)</span> 的长度是无穷，每个元素 <span class="math inline">\(S_{v,i}\)</span> 都是随机变量，其取值为 <span class="math inline">\(v\)</span> 的邻居。所有栈元素都是独立的。顶点
-<span class="math inline">\(r\)</span> 的栈是一个空栈：<span class="math inline">\(S_r=\emptyset\)</span>。</li>
+<li>固定一个顶点 <span class="math inline">\(r\)</span>。对每个 <span class="math inline">\(v\ne r\)</span>，定义栈 <span class="math inline">\(S_v=\{S_{v,1},S_{v,2},\ldots\}\)</span>。<span class="math inline">\(S_v\)</span> 的长度是无穷，其元素 <span class="math inline">\(S_{v,i}\)</span> 都是来自 <span class="math inline">\(v\)</span>
+的邻居的均匀采样。所有栈元素都是独立的。顶点 <span class="math inline">\(r\)</span> 的栈是空栈：<span class="math inline">\(S_r=\emptyset\)</span>。</li>
 <li>概率空间 <span class="math inline">\(\Omega\)</span> 是所有栈 <span class="math inline">\(\{S_v\mid v\ne r\}\)</span>
 的所有可能的状态组成的集合。这是一个无穷离散的概率空间，其上的测度 <span class="math inline">\(\mathbb{P}\)</span> 为乘积测度。</li>
 </ol>
 </div>
-<p>为了方便，我们称栈的第 <span class="math inline">\(i\)</span> 个元素
-<span class="math inline">\(S_{v,i}\)</span> 的颜色是 <span class="math inline">\(i\)</span>。</p>
+<p>为了方便，我们称 <span class="math inline">\(S_v\)</span> 的第 <span class="math inline">\(i\)</span> 个元素 <span class="math inline">\(S_{v,i}\)</span> 的颜色是 <span class="math inline">\(i\)</span>。</p>
 <p>在任何时刻，这些栈 <span class="math inline">\(\{S_v,v\ne
 r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline">\(\overrightarrow{G}_S\)</span>：在 <span class="math inline">\(\overrightarrow{G}_S\)</span> 中 <span class="math inline">\(v\rightarrow u\)</span> 当且仅当 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(S_v\)</span> 的栈顶元素。每个 <span class="math inline">\(v\ne r\)</span> 的出度都恰好是 1，顶点 <span class="math inline">\(r\)</span> 的出度是 0。于是若 <span class="math inline">\(\overrightarrow{G}_S\)</span>
 不含回路的话它就是一个以 <span class="math inline">\(r\)</span>
@@ -459,31 +455,26 @@ r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline
 <div id="------------------" class="statement sta_______ plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">回路弹出游戏</span>.</span><span class="statement-spah"> </span>给定栈的一个状态 <span class="math inline">\(\omega\in\Omega\)</span>，<span class="math inline">\(\overrightarrow{G}_S\)</span> 是 <span class="math inline">\(\omega\)</span> 对应的栈顶图，若 <span class="math inline">\(\overrightarrow{G}_S\)</span>
 不含回路的话则它已经是一个生成树，游戏结束；否则设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(\overrightarrow{G}_S\)</span>
-中的一个回路，我们可以将其「弹出」：对每个 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素 ( 于是若当前 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span> ) ，这样得到一个更新的 <span class="math inline">\(\overrightarrow{G}_S\)</span>。玩家每次可以任选
+中的一个回路，我们可以将其「弹出」：对每个 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素 ( 于是若当前 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span> ) ，这样得到更新的 <span class="math inline">\(\overrightarrow{G}_S\)</span>。玩家每次可以任选
 <span class="math inline">\(\overrightarrow{G}_S\)</span>
 中的一个回路并将其弹出。如果玩家能够经过有限多次弹出操作后使得 <span class="math inline">\(\overrightarrow{G}_S\)</span> 中不含任何回路，即
 <span class="math inline">\(\overrightarrow{G}_S\)</span>
 是一个生成树，则玩家获胜。</p>
 </div>
-<p>有两点需要注意：</p>
-<ul>
-<li>在回路弹出游戏中，每次弹出一个回路以后，可能会有新的回路产生，「源源不绝」，所以这个游戏并不是一定会在有限次操作后结束。</li>
-<li>在游戏开始之前，<span class="math inline">\(\overrightarrow{G}_S\)</span> 中所有顶点的颜色都是
-1；但是随着游戏的进行，<span class="math inline">\(\overrightarrow{G}_S\)</span>
-会变得「五颜六色」。同一个回路中可以包含不同颜色的顶点。</li>
-</ul>
-<p>在回路弹出游戏中，玩家能做的就是每次选择一个需要弹出的回路，别的什么也做不了。不同的选择可能导致不同的结果（实际上并不是）。</p>
+<p>在回路弹出游戏中，玩家能做的就是每次选择一个需要弹出的回路，别的什么也做不了。游戏开始之前，<span class="math inline">\(\overrightarrow{G}_S\)</span> 中所有顶点的颜色都是
+1，但是随着游戏的进行，<span class="math inline">\(\overrightarrow{G}_S\)</span>
+会变得「五颜六色」。一个回路中可以包含不同颜色的顶点。</p>
 <div id="wilson-------------------------" class="statement sta_wilson_________ plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">Wilson
 算法作为游戏策略</span>.</span><span class="statement-spah">
-</span>这个策略可以形容为「跟着导航走」：每次任选一个不属于 <span class="math inline">\(T\)</span> 的顶点 <span class="math inline">\(v\)</span>，从 <span class="math inline">\(v\)</span> 出发按照 <span class="math inline">\(\overrightarrow{G}_S\)</span>
+</span>每次任选一个不属于 <span class="math inline">\(T\)</span> 的顶点
+<span class="math inline">\(v\)</span>，从 <span class="math inline">\(v\)</span> 出发按照 <span class="math inline">\(\overrightarrow{G}_S\)</span>
 的边的指引来搜索下一个要弹出的回路。</p>
 </div>
-<p>树 <span class="math inline">\(T\)</span> 的作用是什么？注意 <span class="math inline">\(T\subset\overrightarrow{G}_S\)</span> 始终是一个以
-<span class="math inline">\(r\)</span> 为根节点的有向树，于是从 <span class="math inline">\(T\)</span> 中的任何顶点出发沿着 <span class="math inline">\(\overrightarrow{G}_S\)</span>
-的有向边都会走到根节点 <span class="math inline">\(r\)</span>。由于
-<span class="math inline">\(r\)</span> 是个死胡同 ( <span class="math inline">\(r\)</span> 的出度是 0 ) ，所以 <span class="math inline">\(T\)</span> 中的顶点不可能属于任何回路。即 <span class="math inline">\(T\)</span>
-维护的是那些已经完全确定下来、必然属于最终生成树的那些边。</p>
+<p>树 <span class="math inline">\(T\)</span>
+的作用是维护那些已经完全确定下来、必然属于最终生成树的那些边。这是因为，<span class="math inline">\(T\subset\overrightarrow{G}_S\)</span> 始终是一个以
+<span class="math inline">\(r\)</span> 为根节点的有向树，从 <span class="math inline">\(T\)</span> 中的任何顶点出发沿着 <span class="math inline">\(\overrightarrow{G}_S\)</span>
+的有向边都会走到根节点 <span class="math inline">\(r\)</span>。而 <span class="math inline">\(r\)</span> 是个死胡同 ( <span class="math inline">\(r\)</span> 的出度是 0 ) ，所以 <span class="math inline">\(T\)</span> 中的顶点不可能属于任何回路。</p>
 <p>我们前面剧透过，回路弹出游戏的结果不依赖于玩家的操作。我们把这个事实的证明放在后面，先承认它是正确的，于是我们可以定义映射
 <span class="math inline">\(\phi\)</span>：</p>
 <div id="-phi----------" class="statement sta__phi____ plain unnumbered">
