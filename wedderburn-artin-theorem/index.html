@@ -26,7 +26,34 @@
 研究域上有限维结合代数的分类定理。在 Wedderburn
 考虑这个问题的时候，Killing 和 Cartan 等人已经完成了有限维复半单 Lie
 代数的分类工作，如果读者对有限维 Lie
-代数有所了解的话，可能已">
+代数有所了解的话，可能已经知道任何有限维复 Lie 代数 \(L\) 有一个极大可解理想 \(\mathrm{rad}(L)\)，叫做 \(L\) 的根 (radical)，去掉这个根的商代数
+\(L/\mathrm{rad}(L)\)
+是半单代数，其上的双线性型 Killing
+型是非退化的，从而可以通过反复取正交补的方式将 \(L/\mathrm{rad}(L)\)
+分解为一些单代数的直和，然后对单 Lie 代数的结构进行讨论得出其共有 9
+种不同的类型。Wedderburn 的思路自然受到了 Killing
+等人工作的启发，他采取了类似的套路：
+对域 \(F\) 上的有限维结合代数 \(A\)：
+
+定义根理想 \(\mathrm{rad}(A)\)。
+转移到半单代数 \(A/\mathrm{rad}(A)\)。
+将 \(A/\mathrm{rad}(A)\)
+分解为单代数的直和。
+讨论单代数的结构。
+
+整个路线图如下所示：
+
+总之虽然有限维复李代数和结合代数结构相差很大，但它们的结构定理遵循了类似的套路：拿走可解/幂零的部分，剩下的部分是半单的，而半单是单的直和，于是最终归结为对单成分的结构进行讨论。
+Wedderburn-Artin
+定理的过程比较长，不过在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。
+本文将针对左 Artinian 环的情形证明 Wedderburn-Artin
+定理。我主要参考了 Curtis 和 Reiner 的经典 (Curtis and Reiner 1962)，Herstein
+的精彩小书 (Herstein
+1994)，以及林节玄的 (Lam
+2001)。C&amp;amp;R
+的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
+的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
+Galois 上同调。林节玄的书风格则更为现代一些，我没有细读，不多评价。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -251,6 +278,14 @@
 
         
 
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-群/">
+                    Coxeter-群 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
     </ul>
 </div>
 
@@ -345,6 +380,7 @@
 的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
 的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
 Galois 上同调。林节玄的书风格则更为现代一些，我没有细读，不多评价。</p>
+<span id="more"></span>
 <div id="------" class="statement sta___ definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注意</span>：</span></p>
 <ol type="1">
