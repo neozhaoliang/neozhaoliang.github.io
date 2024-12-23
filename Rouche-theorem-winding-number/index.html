@@ -363,7 +363,7 @@ cz\)</span>，其中 <span class="math inline">\(c\)</span> 是一个小于
 <p>Needham 的书中还介绍了曲线 <span class="math inline">\(\gamma\)</span> 的环绕数在 <span class="math inline">\(\mathbb{C}\setminus\gamma\)</span>
 的每个连通分支上都是常数。对不在 <span class="math inline">\(\gamma\)</span> 上的一点 <span class="math inline">\(z\)</span>，我们可以稍稍移动 <span class="math inline">\(z\)</span> 到另一个点 <span class="math inline">\(z'\)</span>，只要保持 <span class="math inline">\(z'\)</span> 仍然位于 <span class="math inline">\(z\)</span> 所在的连通分支内，<span class="math inline">\(\gamma\)</span> 关于 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(z'\)</span>
 的环绕数就一定相同。利用这个事实并结合幅角原理不难得出下面的结论：</p>
-<div class="unnumbered statement corollary-unnumbered plain">
+<div id="connected-component" class="unnumbered statement sta___ plain">
 <p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
 </span>设 <span class="math inline">\(\gamma\)</span>
 是一条简单闭曲线，内部围的区域为 <span class="math inline">\(\Omega\)</span>，<span class="math inline">\(f(z)\)</span> 是一个非常数的解析函数，<span class="math inline">\(f\)</span> 在包含 <span class="math inline">\(\gamma\)</span>
@@ -383,6 +383,16 @@ z\in\gamma.\]</span></p>
 是非常数的解析函数，则 <span class="math inline">\(f(U)\)</span>
 也是开集。</p>
 </div>
+<p><strong>证明</strong>：任取 <span class="math inline">\(z_0\in
+U\)</span>，记 <span class="math inline">\(w_0=f(z_0)\)</span>。由于
+<span class="math inline">\(f\)</span> 不是常数，所以 <span class="math inline">\(f(z)-w_0\)</span> 的零点都是孤立的。我们可以取
+<span class="math inline">\(z_0\)</span> 的一个充分小的闭圆盘 <span class="math inline">\(B_\delta=\{z\in U\mid |z-z_0|\leq\delta\}\)</span>
+使得 <span class="math inline">\(f(z)-w_0\)</span> 在 <span class="math inline">\(B_\delta\)</span> 中除了 <span class="math inline">\(z_0\)</span> 以外没有其它零点。特别地，<span class="math inline">\(f(z)-w_0\)</span> 在 <span class="math inline">\(B_\delta\)</span> 的边界 <span class="math inline">\(\gamma =\{|z-z_0|=\delta\}\)</span> 上恒不为
+0，从而 <span class="math inline">\(|f(z)-w_0|\)</span> 在 <span class="math inline">\(\gamma\)</span> 上有正的极小值 <span class="math inline">\(e\)</span>，即对任何 <span class="math inline">\(z\in\gamma\)</span> 有 <span class="math inline">\(|f(z)-w_0|\geq e\)</span>。</p>
+<p>现在我们考虑 <span class="math inline">\(w_0\)</span> 的邻域 <span class="math inline">\(V_e=\{|w-w_0|&lt;e\}\)</span>。则任何 <span class="math inline">\(w_1\in V_e\)</span> 都满足 <a href="#connected-component" title="推论">推论</a> 中的条件：</p>
+<p><span class="math display">\[|f(z)- w_0| \geq e &gt; |w_1-w_0|,\quad
+z\in \gamma.\]</span></p>
+<p>所以 <span class="math inline">\(w_1\)</span> 在 <span class="math inline">\(\gamma\)</span> 内部至少有一个原像。由 <span class="math inline">\(w_1\)</span> 的任意性可得 <span class="math inline">\(V_e\subset f(U)\)</span> 是 <span class="math inline">\(w_0\)</span> 在 <span class="math inline">\(f(U)\)</span> 中的开邻域，从而 <span class="math inline">\(f(U)\)</span> 是开集。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Needham1997" class="csl-entry" role="listitem">
