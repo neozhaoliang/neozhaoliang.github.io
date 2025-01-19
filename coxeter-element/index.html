@@ -477,19 +477,13 @@ lemma. 3.5</a>)</span>)</span>.</span><span class="statement-spah">
 </div>
 <p>一般来说 <span class="math inline">\(U\)</span> 的维数未必是 2，所以
 <span class="math inline">\(U\)</span> 不一定是平面。</p>
-<p>设 <span class="math inline">\(c=2-2\cos(\theta_0/2)\)</span> 是
-<span class="math inline">\(A\)</span> 的极小特征值，则 <span class="math inline">\(d=2+2\cos(\theta_0/2)\)</span> 是 <span class="math inline">\(A\)</span> 的极大特征值。我们知道 <span class="math inline">\(c\)</span> 的重数是 1，从而 <span class="math inline">\(d\)</span> 的重数也是 1，这时 <span class="math inline">\(U\)</span> 就是一个二维平面，并且 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是角度为 <span class="math inline">\(\theta_0\)</span> 的旋转。这个 <span class="math inline">\(U\)</span> 就是要找的 Coxeter 平面 <span class="math inline">\(P\)</span>。</p>
+<p>设 <span class="math inline">\(c_\min=2-2\cos(\theta_0/2)\)</span> 是
+<span class="math inline">\(A\)</span> 的极小特征值，则 <span class="math inline">\(c_\max=2+2\cos(\theta_0/2)\)</span> 是 <span class="math inline">\(A\)</span> 的极大特征值。我们知道 <span class="math inline">\(c_\min\)</span> 的重数是 1，从而 <span class="math inline">\(c_\max\)</span> 的重数也是 1，这时 <span class="math inline">\(U\)</span> 就是一个二维平面，并且 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是角度为 <span class="math inline">\(\theta_0\)</span> 的旋转。这个 <span class="math inline">\(U\)</span> 就是要找的 Coxeter 平面 <span class="math inline">\(P\)</span>。</p>
 <p>于是计算 <span class="math inline">\(P\)</span> 归结为计算线性变换
 <span class="math inline">\({\bf A}\)</span> 在 <span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span>
-这组基下极小/极大特征值对应的特征向量。设 <span class="math inline">\((c_1,\ldots,c_n)\)</span> 和 <span class="math inline">\((d_1,\ldots,d_n)\)</span> 分别是矩阵 <span class="math inline">\(A\)</span> 对应 <span class="math inline">\(c,d\)</span> 的特征向量，不难验证 <span class="math inline">\(\sum_{i=1}^nc_i\alpha_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^nd_i\alpha_i\)</span>
-就是所求。比如由于 <span class="math display">\[\sum_{i=1}^nc_i\alpha_i={\bf
-A}\left(\sum_{i=1}^nc_i\omega_i\right)=c\sum_{i=1}^nc_i\omega_i.\]</span>
-所以 <span class="math display">\[{\bf
-A}\left(\sum_{i=1}^nc_i\alpha_i\right)={\bf
-A}\left(c\sum_{i=1}^nc_i\omega_i\right)=c\sum_{i=1}^nc_i\alpha_i.\]</span>
-同理 <span class="math inline">\({\bf
-A}\left(\sum\limits_{i=1}^nd_i\alpha_i\right)=d\sum\limits_{i=1}^nd_i\alpha_i\)</span>。所以
-<span class="math display">\[P=\mathop{\mathrm{span}}\left\{\sum_{i=1}^nc_i\alpha_i,\,\sum_{i=1}^nd_i\alpha_i\right\}.\]</span>
+这组基下极小/极大特征值对应的特征向量。设 <span class="math inline">\((c_1,\ldots,c_n)\)</span> 和 <span class="math inline">\((c_1',\ldots,c_n')\)</span> 分别是矩阵
+<span class="math inline">\(A\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量，则 <span class="math inline">\(\sum_{i=1}^nc_i\omega_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^nc_i'\omega_i\)</span> 就是 <span class="math inline">\({\bf A}\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量。它们被 <span class="math inline">\({\bf A}\)</span>
+作用以后与自身相差一个常数倍，从而 <span class="math inline">\(P\)</span> 由这两个向量张成： <span class="math display">\[P=\mathop{\mathrm{span}}\left\{\sum_{i=1}^nc_i\alpha_i,\,\sum_{i=1}^nc_i'\alpha_i\right\}.\]</span>
 这样我们就找到了只用 Cartan 矩阵和单根系 <span class="math inline">\(\Delta\)</span> 计算 <span class="math inline">\(P\)</span> 的方法。</p>
 <h1 id="e_8-的例子"><span class="math inline">\(E_8\)</span> 的例子</h1>
 <p>在这一节中，我们以 <span class="math inline">\(E_8\)</span>​
