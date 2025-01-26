@@ -320,7 +320,7 @@
 <p>今天的问题是群表示论在物理中的一个小应用：</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于正三角形的三个顶点。质点之间两两由弹簧相连，三个弹簧完全一样。弹簧质量忽略不计。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/abc.png"></p>
+<p><img src="/images/mass-spring/abc.png" class="fig" width="250"></p>
 <p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力，那么这个系统的简正模式
 (normal mode) 是什么？</p>
 </div>
@@ -330,18 +330,21 @@
 <p>比较容易发现的简正模式有：</p>
 <ol type="1">
 <li><p>平移。初始时给所有质点以同样的速度，它们会继续以相同的速度移动。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"></p></li>
+<p><img src="/images/mass-spring/trans.gif" class="fig" width="250"></p></li>
 <li><p>旋转。初始时给所有质点以相同的切向速度，它们会继续绕中心旋转。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"></p></li>
+<p><img src="/images/mass-spring/rot.gif" class="fig" width="250"></p></li>
 <li><p>呼吸。初始时给每个质点相同的径向速度，系统会重复膨胀 —
 收缩的过程。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"></p></li>
+<p><img src="/images/mass-spring/breath.gif" class="fig" width="250"></p></li>
 </ol>
 <p>但是要找出其它的简正模式，并保证没有遗漏，就不能只靠想象了。</p>
 <p>我们把这个物理问题转换为一个线性代数问题，然后用一些群表示论的知识解决它。</p>
 <p>这个质点弹簧系统有 6 个自由度 <span class="math inline">\(\{q_1,\ldots,q_6\}\)</span>，其中 <span class="math inline">\((q_1,q_2)\)</span>，<span class="math inline">\((q_3,q_4)\)</span>，<span class="math inline">\((q_5,q_6)\)</span> 分别是质点 <span class="math inline">\(A,B,C\)</span> 在 <span class="math inline">\(x,y\)</span>
 方向上相对于其平衡位置的位移，如下图所示：</p>
-<p><img style="margin:0px auto;display:block" width="300" src="/images/mass-spring/coords.svg"></p>
+<figure>
+<img src="/images/mass-spring/coords.svg" width="300" alt="建立坐标系，水平向右为 x 轴，竖直向上为 y 轴">
+<figcaption aria-hidden="true">建立坐标系，水平向右为 <span class="math inline">\(x\)</span> 轴，竖直向上为 <span class="math inline">\(y\)</span> 轴</figcaption>
+</figure>
 <p>设弹簧的弹性系数为 <span class="math inline">\(k\)</span>，原点在三角形中心，<span class="math inline">\(x\)</span>
 轴水平向右，于是三个弹簧所含的弹性势能为 （将形变投影到弹簧所在的方向）
 <span class="math display">\[
@@ -483,22 +486,34 @@ V_2\oplus V_3\oplus V_4.\]</span></p>
 的特征值至少是三重的</strong>。我们已经解得 <span class="math inline">\(\lambda_2=0\)</span> 是一个，所以 <span class="math inline">\(\lambda_3\)</span> 和 <span class="math inline">\(\lambda_4\)</span> 中必然还有一个是 0，不妨设
 <span class="math inline">\(\lambda_3=0\)</span>，则 <span class="math inline">\(\lambda_4=3/2\)</span>。</p>
 <p>得到了 <span class="math inline">\(\lambda_1,\lambda_2,\lambda_3,\lambda_4\)</span>，对应的频率就可以用
-<span class="math inline">\(\omega_i=\sqrt{\frac{\lambda_ik}{m}}\)</span>
+<span class="math inline">\(\omega_i=\sqrt{\lambda_ik/m}\)</span>
 算出来。</p>
 <p>总结一下，系统总共有 4 种简正模式：</p>
 <ol type="1">
 <li><p>平凡表示 (<span class="math inline">\(\lambda_1=3\)</span>)
-对应的简正模式是呼吸，其频率为 <span class="math inline">\(\omega=\sqrt{\frac{3k}{m}}\)</span>：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/breath.gif"></p></li>
+对应的简正模式是呼吸，其频率为 <span class="math inline">\(\omega=\sqrt{3k/m}\)</span>：</p>
+<figure>
+<img src="/images/mass-spring/breath.gif" width="250" alt="呼吸　\omega=\sqrt{3k/m}">
+<figcaption aria-hidden="true">呼吸　<span class="math inline">\(\omega=\sqrt{3k/m}\)</span></figcaption>
+</figure></li>
 <li><p>符号表示 (<span class="math inline">\(\lambda_2=0\)</span>)
 对应的简正模式是旋转，其频率 <span class="math inline">\(\omega=0\)</span>：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/rot.gif"></p></li>
+<figure>
+<img src="/images/mass-spring/rot.gif" width="250" alt="旋转　\omega=0">
+<figcaption aria-hidden="true">旋转　<span class="math inline">\(\omega=0\)</span></figcaption>
+</figure></li>
 <li><p>第一个二维不可约表示 (<span class="math inline">\(\lambda_3=0\)</span>)
 包含了两种简正模式，它们分别是沿着 <span class="math inline">\(x\)</span> 方向和 <span class="math inline">\(y\)</span> 方向的平移，其频率 <span class="math inline">\(\omega=0\)</span>。</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/trans.gif"></p></li>
+<figure>
+<img src="/images/mass-spring/trans.gif" width="250" alt="平移　\omega=0">
+<figcaption aria-hidden="true">平移　<span class="math inline">\(\omega=0\)</span></figcaption>
+</figure></li>
 <li><p>第二个二维不可约表示 (<span class="math inline">\(\lambda_4=3/2\)</span>)
 也包含了两种简正模式，它们分别是两个不同方向上的“鼓掌”：</p>
-<p><img style="margin:0px auto;display:block" width="250" src="/images/mass-spring/clap.gif"></p>
+<figure>
+<img src="/images/mass-spring/clap.gif" width="250" alt="鼓掌　\omega=\sqrt{\frac{3k}{2m}}">
+<figcaption aria-hidden="true">鼓掌　<span class="math inline">\(\omega=\sqrt{\frac{3k}{2m}}\)</span></figcaption>
+</figure>
 <p>另一种可以由上面的旋转 <span class="math inline">\(2\pi/3\)</span>
 后得到。这两个简正模式的频率都是 <span class="math inline">\(\omega=\sqrt{\frac{3k}{2m}}\)</span>。</p></li>
 </ol>

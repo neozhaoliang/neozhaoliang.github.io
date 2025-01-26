@@ -26,7 +26,14 @@
 度。用边长为 1 的菱形密铺，有多少种不同的方法？
 
 
-下图是一种密铺的示例：">
+\(a\times
+b\times c\) 的六边形
+
+
+下图是一种密铺的示例：
+
+
+一个密铺的例子，顶部的数字表示高度，解释见下文">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -316,10 +323,17 @@
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>一个边长为 <span class="math inline">\(a\times b\times c\)</span> 的平行六边形（<span class="math inline">\(a,b,c\)</span> 都是正整数），每个内角都是 120
 度。用边长为 1 的菱形密铺，有多少种不同的方法？</p>
-<p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/hexagon.svg"></p>
+<figure>
+<img src="/images/macmahon/hexagon.svg" width="400" alt="a\times b\times c 的六边形">
+<figcaption aria-hidden="true"><span class="math inline">\(a\times
+b\times c\)</span> 的六边形</figcaption>
+</figure>
 </div>
 <p>下图是一种密铺的示例：</p>
-<p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/planepartition.svg"></p>
+<figure>
+<img src="/images/macmahon/planepartition.svg" width="400" alt="一个密铺的例子，顶部的数字表示高度，解释见下文">
+<figcaption aria-hidden="true">一个密铺的例子，顶部的数字表示高度，解释见下文</figcaption>
+</figure>
 <span id="more"></span>
 <p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足规律：从墙角开始，沿着两侧墙壁的方向，箱子的高度是递减的。我们把地面上第
 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列位置箱子的高度 <span class="math inline">\(a_{ij}\)</span> 填写在一个 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列的矩阵 <span class="math inline">\(A\)</span> 中（习惯上空白位置的 0 不写出来）：</p>
@@ -404,9 +418,15 @@
 <p>每个平面分拆的矩阵 <span class="math inline">\(A\)</span> 都对应
 <span class="math inline">\(c\)</span> 条这样的路径，其中第 <span class="math inline">\(k\)</span> 条路径是高度为 <span class="math inline">\(k\,(1\leq k\leq c)\)</span>
 的那一层的「等高线」：</p>
-<p><img style="margin:0px auto;display:block" width="400" src="/images/macmahon/paths-on-cubes.svg"></p>
+<figure>
+<img src="/images/macmahon/paths-on-cubes.svg" width="400" alt="等高线示意图">
+<figcaption aria-hidden="true">等高线示意图</figcaption>
+</figure>
 <p>我们把这些路径投影到 2D，和矩阵 <span class="math inline">\(A\)</span> 画在一起。从最下方的路径开始，第 <span class="math inline">\(i\)</span> 条路径对应的是矩阵中 <span class="math inline">\(\geq i\)</span> 的那些方格构成的区域的边界：</p>
-<p><img style="margin:0px auto;display:block" width="500" src="/images/macmahon/gauss_path.svg"></p>
+<figure>
+<img src="/images/macmahon/gauss_path.svg" width="500" alt="等高线投影到 xy 平面上的效果图">
+<figcaption aria-hidden="true">等高线投影到 <span class="math inline">\(xy\)</span> 平面上的效果图</figcaption>
+</figure>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>在上图中，我稍微移动了各个路径的位置，使得它们容易在视觉中区分，所以导致看起来它们的起点和终点是不同的。实际上它们都是从
@@ -420,7 +440,7 @@
 <span class="math inline">\(0,1,\ldots,c-1\)</span> 个单位，则平移后的
 <span class="math inline">\(c\)</span>
 条路径两两之间将没有任何公共点。我们称之为一个不相交的路径组。如下图所示：</p>
-<p><img style="margin:0px auto;display:block" width="600" src="/images/macmahon/nonintersecting_paths.gif"></p>
+<p><img src="/images/macmahon/nonintersecting_paths.gif" class="fig" width="550"></p>
 <p>这里 <span class="math inline">\(A_i=(1-i,i-1)\)</span>，<span class="math inline">\(B_j=(b+1-j,a-1+j)\)</span>，<span class="math inline">\(\{p_i:A_i\rightarrow B_i,1\leq i\leq c\}\)</span>
 是一个不相交的路径组。反过来对每一个这样的不相交的路径组，我们也很容易还原出对应的平面分拆来。</p>
 <p>于是我们的问题又进一步转化为</p>
@@ -480,7 +500,7 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).
 </ol>
 <p>直观上，你可以想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们到达 <span class="math inline">\(C\)</span>
 时改变路线，沿着对方剩下的路径前往对方的目的地。</p>
-<p><img style="margin:0px auto;display:block" width="600" src="/images/macmahon/gessel_viennot.svg"></p>
+<p><img src="/images/macmahon/gessel_viennot.svg" class="fig" width="550"></p>
 <p>于是 <span class="math inline">\(\mathcal{P}'\)</span> 对应的置换
 <span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\mathcal{P}\)</span> 对应的置换 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此 <span class="math inline">\(\text{sgn}(\sigma')=-\text{sgn}(\sigma)\)</span>。更重要的是，如果对
 <span class="math inline">\(\mathcal{P}'\)</span>
@@ -498,7 +518,7 @@ condensation。这是一个递归求解行列式的方法：设 <span class="mat
 <p><span class="math display">\[\det A\cdot \det A_{1,n}^{1,n}=\det
 A_1^1\det A_n^n-\det A_1^n\det A_n^1.\]</span></p>
 <p>用一个形象的图片描述：</p>
-<p><img style="margin:0px auto;display:block" width="450" src="/images/macmahon/dodgson.svg"></p>
+<p><img src="/../images/macmahon/dodgson.svg" class="fig" width="450"></p>
 <p>这个结论的证明不难，可以见 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Dodgson_condensation">维基百科</a>，这里就不再写了。</p>
 <p>我们对 <span class="math inline">\(c\)</span> 归纳来证明</p>
 <div class="unnumbered statement theorem-unnumbered plain">
