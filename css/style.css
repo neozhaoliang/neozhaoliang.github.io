@@ -275,6 +275,14 @@ footer.page-footer {
   font-size: 100%;
   line-height: 150%;
 }
+.codeAndCanvas {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.fig {
+  margin: 0px auto;
+  display: block;
+}
 @font-face {
   font-family: Borg;
   src: url("/css/font/BorgSansMono.ttf");
@@ -421,6 +429,22 @@ object {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+figure {
+  text-align: center; /* 使图片和标题居中 */
+  margin: 0 auto; /* 使整个 figure 居中 */
+  display: table; /* 让 figure 宽度适应内容 */
+}
+figcaption {
+  display: block; /* 确保标题单独一行 */
+  margin-top: 0.1em; /* 调整标题与图片的间距 */
+  margin-bottom: 1em; /* 调整标题与下方内容的间距 */
+  font-size: 0.8em; /* 调整标题字体大小 */
+  color: #666; /* 调整标题颜色 */
+}
+img {
+  display: block;
+  margin: 0 auto;
 }
 .red-link-context a {
   color: #f44336 !important;
@@ -1020,12 +1044,13 @@ article .line:after {
 article code,
 article pre {
   font-family: Consolas, "微软雅黑", Monaco, Menlo, Courier New, monospace;
+  max-width: 100%;
   color: #333;
   font-size: 1em;
 }
 article p code,
 article li code {
-  font-family: Borg;
+  font-family: "Consolas", Borg;
   margin: 0 2px;
   color: #2e3fce;
 }
@@ -1112,6 +1137,14 @@ figure.highlight {
   margin-left: 0;
   margin-right: 0;
   overflow: auto;
+  width: 100%;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
 }
 figure.highlight td {
   padding: 0;
