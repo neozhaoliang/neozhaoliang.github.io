@@ -22,18 +22,20 @@
             Coxeter 群笔记（二）：根系 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="我们先来回顾一下 上文
-介绍的主要内容。
+    <meta name="description" content="我们先回顾一下 第一篇笔记
+中介绍的主要内容。
 设 \((W,S)\) 是一个 Coxeter 系。在
-第一篇笔记
-中，我们按照如下步骤，将 \((W,S)\)
+上文
+中，我们按照如下方式，将 \((W,S)\)
 表示为一个实向量空间 \(V\)
 上的正交反射群：
 
-设 \(V\) 是一个 \(n=|S|\) 维实向量空间，\(V\) 的一组基为 \(\{\alpha_s\mid s\in S\}\)；
-我们规定了 \(V\) 上的内积 \((\cdot,\cdot)\)；
+取一个 \(n=|S|\) 维实向量空间 \(V\)，\(V\)
+的一组基为 \(\{\alpha_s\mid s\in
+S\}\)；
+规定了 \(V\) 上的内积 \((\cdot,\cdot)\)；
 对每个生成元 \(s\in S\)，规定 \(s\) 在 \(V\) 上的作用为关于 \(\alpha_s\) 的反射 \(\rho_s\)；
-\(\rho\) 是从 \(W\to\mathrm{GL}(V)\) 的群同态，并且 \(\rho(W)\) 是保持内积 \((\cdot,\cdot)\) 的正交群。
+我们证明了 \(\rho\) 是从 \(W\to\mathrm{GL}(V)\) 的群同态，并且 \(\rho(W)\) 保持内积 \((\cdot,\cdot)\)。
 
 但是我们还需要证明 \(\rho\)
 是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故意炫技，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。😏">
@@ -331,18 +333,20 @@
                                         
                                             <div class="entry pink-link-context">
                                                 
-<p>我们先来回顾一下 <a href="/coxeter-groups-geometric-realization/">上文</a>
-介绍的主要内容。</p>
+<p>我们先回顾一下 <a href="/coxeter-groups-geometric-realization/">第一篇笔记</a>
+中介绍的主要内容。</p>
 <p>设 <span class="math inline">\((W,S)\)</span> 是一个 Coxeter 系。在
-<a href="/coxeter-groups-geometric-realization/">第一篇笔记</a>
-中，我们按照如下步骤，将 <span class="math inline">\((W,S)\)</span>
+<a href="/coxeter-groups-geometric-realization/">上文</a>
+中，我们按照如下方式，将 <span class="math inline">\((W,S)\)</span>
 表示为一个实向量空间 <span class="math inline">\(V\)</span>
 上的正交反射群：</p>
 <ol type="1">
-<li>设 <span class="math inline">\(V\)</span> 是一个 <span class="math inline">\(n=|S|\)</span> 维实向量空间，<span class="math inline">\(V\)</span> 的一组基为 <span class="math inline">\(\{\alpha_s\mid s\in S\}\)</span>；</li>
-<li>我们规定了 <span class="math inline">\(V\)</span> 上的内积 <span class="math inline">\((\cdot,\cdot)\)</span>；</li>
+<li>取一个 <span class="math inline">\(n=|S|\)</span> 维实向量空间 <span class="math inline">\(V\)</span>，<span class="math inline">\(V\)</span>
+的一组基为 <span class="math inline">\(\{\alpha_s\mid s\in
+S\}\)</span>；</li>
+<li>规定了 <span class="math inline">\(V\)</span> 上的内积 <span class="math inline">\((\cdot,\cdot)\)</span>；</li>
 <li>对每个生成元 <span class="math inline">\(s\in S\)</span>，规定 <span class="math inline">\(s\)</span> 在 <span class="math inline">\(V\)</span> 上的作用为关于 <span class="math inline">\(\alpha_s\)</span> 的反射 <span class="math inline">\(\rho_s\)</span>；</li>
-<li><span class="math inline">\(\rho\)</span> 是从 <span class="math inline">\(W\to\mathrm{GL}(V)\)</span> 的群同态，并且 <span class="math inline">\(\rho(W)\)</span> 是保持内积 <span class="math inline">\((\cdot,\cdot)\)</span> 的正交群。</li>
+<li>我们证明了 <span class="math inline">\(\rho\)</span> 是从 <span class="math inline">\(W\to\mathrm{GL}(V)\)</span> 的群同态，并且 <span class="math inline">\(\rho(W)\)</span> 保持内积 <span class="math inline">\((\cdot,\cdot)\)</span>。</li>
 </ol>
 <p>但是我们还需要证明 <span class="math inline">\(\rho\)</span>
 是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故意炫技，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。<span class="emoji" data-alias="smirk" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span></p>
