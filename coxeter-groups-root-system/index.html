@@ -38,7 +38,7 @@ S\}\)；
 我们证明了 \(\rho\) 是从 \(W\to\mathrm{GL}(V)\) 的群同态，并且 \(\rho(W)\) 保持内积 \((\cdot,\cdot)\)。
 
 但是我们还需要证明 \(\rho\)
-是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故意炫技，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。😏">
+是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。😏">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -349,7 +349,7 @@ S\}\)</span>；</li>
 <li>我们证明了 <span class="math inline">\(\rho\)</span> 是从 <span class="math inline">\(W\to\mathrm{GL}(V)\)</span> 的群同态，并且 <span class="math inline">\(\rho(W)\)</span> 保持内积 <span class="math inline">\((\cdot,\cdot)\)</span>。</li>
 </ol>
 <p>但是我们还需要证明 <span class="math inline">\(\rho\)</span>
-是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故意炫技，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。<span class="emoji" data-alias="smirk" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span></p>
+是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。<span class="emoji" data-alias="smirk" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span></p>
 <span id="more"></span>
 <h1 id="根系">根系</h1>
 <p>我们记 <span class="math inline">\(\Delta=\{\alpha_s\mid s\in
@@ -569,28 +569,9 @@ I}c_t\alpha_t.\]</span> 由于 <span class="math inline">\(\lambda\in\Phi^+\setm
 表示为单根的线性组合时，其至少有一项 <span class="math inline">\(\alpha_s,\,s\notin I\)</span> 的系数大于 0，从而
 <span class="math inline">\(w\lambda\)</span> 关于这一项的系数也大于
 0，所以 <span class="math inline">\(w\lambda\)</span> 必然是正根。<span class="math inline">\(\blacksquare\)</span></p>
-<div id="wv-minus-v" class="statement corollary plain">
-<p><span class="statement-heading"><span class="statement-label">推论
-1.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(w=s_{\alpha_1}s_{\alpha_2}\cdots
-s_{\alpha_n}\)</span>，则对任何 <span class="math inline">\(v\in
-V\)</span> 有 <span class="math display">\[wv = v -
-\sum_{i=1}^n2(v,\alpha_i)\beta_i.\]</span> 其中 <span class="math inline">\(\beta_i=s_{\alpha_1}\cdots
-s_{\alpha_{i-1}}(\alpha_i)\)</span> 是正根。（<span class="math inline">\(i=1\)</span> 时 <span class="math inline">\(\beta_1\)</span> 理解为 <span class="math inline">\(\alpha_1\)</span>）</p>
-</div>
-<p><strong>证明</strong>：对 <span class="math inline">\(n\)</span>
-归纳，<span class="math inline">\(n=1\)</span> 时 <span class="math inline">\(w=s_{\alpha_1}\)</span>，<span class="math inline">\(\beta_1=\alpha_1\)</span>，所以 <span class="math display">\[wv=s_{\alpha_1}v=v-2(v,\alpha_1)\alpha_1=v-2(v,\alpha_1)\beta_1.\]</span>
-结论成立。设结论在小于 <span class="math inline">\(n\)</span>
-时都成立。对 <span class="math inline">\(w'=s_{\alpha_2}\cdots
-s_{\alpha_n}\)</span> 应用归纳假设，有 <span class="math display">\[w'v=v -
-\sum_{i=2}^n2(v,\alpha_i)\beta_i'.\]</span> 其中 <span class="math inline">\(\beta_i'=s_{\alpha_2}\cdots
-s_{\alpha_{i-1}}(\alpha_i)\)</span>，并且由归纳假设 <span class="math inline">\(\beta_i'\)</span> 是正根。 于是 <span class="math display">\[wv=s_{\alpha_1}w'v=s_{\alpha_1}v-\sum_{i=2}^n2(v,\alpha_i)s_{\alpha_1}(\beta_i')=\sum_{i=1}^n2(v,\alpha_i)\beta_i.\]</span>
-注意到每个 <span class="math inline">\(\beta_i'\)</span> 是 <span class="math inline">\(\{\alpha_i,2\leq i\leq i\}\)</span>
-的线性组合，它是正根说明 <span class="math inline">\(\beta_i'\ne\alpha_1\)</span>，从而 <span class="math inline">\(s_{\alpha_1}(\beta_i')=\beta_i\)</span>
-仍然是正根。于是结论对 <span class="math inline">\(n\)</span>
-也成立。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="lI-equals-l" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-1.12</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(w\in W_I\)</span>，则对 <span class="math inline">\(w\)</span> 的任何既约表示 <span class="math inline">\(w=s_{i_1}\cdots s_{i_r}\)</span> 都有 <span class="math inline">\(s_{i_1},\ldots,s_{i_r}\in I\)</span>，特别地 <span class="math inline">\(l_I(w)=l(w)\)</span>。</p>
+1.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(w\in W_I\)</span>，则对 <span class="math inline">\(w\)</span> 的任何既约表示 <span class="math inline">\(w=s_{i_1}\cdots s_{i_r}\)</span> 都有 <span class="math inline">\(s_{i_1},\ldots,s_{i_r}\in I\)</span>，特别地 <span class="math inline">\(l_I(w)=l(w)\)</span>。</p>
 </div>
 <p><strong>证明</strong>：我们从右到左依次验证 <span class="math inline">\(s_{i_r},\ldots,s_{i_1}\in I\)</span>。记 <span class="math inline">\(s=s_{i_r}\)</span>，由于 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 所以 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>。又由于 <span class="math inline">\(w\in W_I\)</span> 所以 <span class="math inline">\(w\)</span> 形如 <span class="math inline">\(w=t_1\cdots t_q,\,t_i\in I\)</span>。于是 <span class="math inline">\(w\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和一些 <span class="math inline">\(\alpha_{t_i}\)</span> 的线性组合： <span class="math display">\[w\alpha_s=\alpha_s+\sum_{i=1}^q
 c_i\alpha_{t_i}.\]</span> 由于 <span class="math inline">\(w\alpha_s&lt;0\)</span> 所以必然有某个 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(s=t_i\)</span>，即 <span class="math inline">\(s\in I\)</span>。继续对 <span class="math inline">\(ws=s_{i_1}\cdots s_{i_{r-1}}\in W_I\)</span>
