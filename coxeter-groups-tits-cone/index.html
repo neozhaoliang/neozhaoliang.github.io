@@ -19,7 +19,7 @@
     
 
         <title>
-            Coxeter 群笔记（三）：Tits 锥 | 朝花夕拾</title>
+            Coxeter 群笔记（三）：Tits 锥和它的对偶锥 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="Tits 锥
@@ -31,7 +31,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Coxeter 群笔记（三）：Tits 锥"/>
+    <meta property="og:title" content="Coxeter 群笔记（三）：Tits 锥和它的对偶锥"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -253,7 +253,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">3 篇</span></a>
+                    Coxeter-Groups <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -306,7 +306,7 @@
                             <div class="article-title">
                                 
     
-        <h1>Coxeter 群笔记（三）：Tits 锥</h1>
+        <h1>Coxeter 群笔记（三）：Tits 锥和它的对偶锥</h1>
     
 
 
@@ -589,15 +589,18 @@ A+B=\cup_{p\in B}(A+p)\)</span>，这是一组开集的并，所以 <span class=
 <h1 id="tits-锥的对偶锥">Tits 锥的对偶锥</h1>
 <p>这一节来讨论 Tits 锥的对偶锥。研究对偶锥对理解 Tits
 锥本身的结构也很有帮助。</p>
-<p>设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(V\)</span> 中的一个锥，定义 <span class="math inline">\(C\)</span> 的对偶锥 <span class="math inline">\(C^\ast\in V^\ast\)</span> 为 <span class="math display">\[C^\ast = \{f\in V^\ast\mid f(v)\geq0,\ \forall
+<div id="dual-cone" class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+2.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(V\)</span> 中的一个锥，定义 <span class="math inline">\(C\)</span> 的对偶锥 <span class="math inline">\(C^\ast\in V^\ast\)</span> 为 <span class="math display">\[C^\ast = \{f\in V^\ast\mid f(v)\geq0,\ \forall
 v\in C\}.\]</span> 即 <span class="math inline">\(C^\ast\)</span>
 是对偶空间中那些在 <span class="math inline">\(C\)</span>
 上取值均非负的线性泛函组成的集合。</p>
+</div>
 <p>不难看出 <span class="math inline">\(C^\ast\)</span> 也构成 <span class="math inline">\(V^\ast\)</span>
 中的一个锥，所以我们又可以取其对偶锥 <span class="math inline">\(C^{\ast\ast}\subset V\)</span>。</p>
 <div id="dual-dual-cone" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-2.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(C^{\ast\ast} = \overline{C}\)</span>。其中 <span class="math inline">\(\overline{C}\)</span> 是 <span class="math inline">\(C\)</span> 的拓扑闭包。</p>
+2.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(C^{\ast\ast} = \overline{C}\)</span>。其中 <span class="math inline">\(\overline{C}\)</span> 是 <span class="math inline">\(C\)</span> 的拓扑闭包。</p>
 </div>
 <p><strong>证明</strong>：显然 <span class="math inline">\(\overline{C}\subseteq
 C^{\ast\ast}\)</span>，只要论证 <span class="math inline">\(C^{\ast\ast}
@@ -628,8 +631,8 @@ V^\ast\)</span> 所以 <span class="math inline">\(\mathcal{C}^\ast\in
 V\)</span>。我们有如下定理：</p>
 <div id="tits-cone-dual" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-2.2</span>.</span><span class="statement-spah"> </span>Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 的对偶锥为 <span class="math inline">\(\mathcal{C}^\ast=\bigcap\limits_{w\in
-W}w(\overline{\mathrm{cone}(\Delta)})\)</span>。</p>
+2.3</span>.</span><span class="statement-spah"> </span>Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 的对偶锥为 <span class="math inline">\(\mathcal{C}^\ast=\bigcap\limits_{w\in
+W}w(\mathrm{cone}(\Delta))\)</span>。</p>
 </div>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
@@ -646,19 +649,19 @@ z\in\overline{\mathcal{D}}\text{ and } w \in W\}\\
 v\in\overline{\mathcal{D}}\text{ and } w \in W\}\\
 &amp;= \{v\in V \mid w^{-1}v\in (\overline{\mathcal{D}})^\ast \text{ for
 all } w \in W\}\\
-&amp;\stackrel{(\ast)}{=} \{v\in V \mid w^{-1}v\in
-\overline{\mathrm{cone}(\Delta)} \text{ for all } w \in W\}\\
-&amp;= \{v\in V \mid v\in w(\overline{\mathrm{cone}(\Delta)}) \text{ for
-all } w \in W\}.
+&amp;\stackrel{(\ast)}{=} \{v\in V \mid w^{-1}v\in \mathrm{cone}(\Delta)
+\text{ for all } w \in W\}\\
+&amp;= \{v\in V \mid v\in w(\mathrm{cone}(\Delta)) \text{ for all } w
+\in W\}.
 \end{align}
 \]</span></p>
-<p>其中 <span class="math inline">\((\ast)\)</span> 一步正是将 <a href="#dual-dual-cone" title="定理 2.1">定理 2.1</a> 应用在 <span class="math inline">\(C=\mathrm{cone}(\Delta),\,C^\ast=\overline{\mathcal{D}}\)</span>
-上得到的。<span class="math inline">\(\blacksquare\)</span></p>
+<p>其中 <span class="math inline">\((\ast)\)</span> 一步正是将 <a href="#dual-dual-cone" title="定理 2.2">定理 2.2</a> 应用在 <span class="math inline">\(C=\mathrm{cone}(\Delta),\,C^\ast=\overline{\mathcal{D}}\)</span>
+上得到的。注意我们使用了 <span class="math inline">\(\mathrm{cone}(\Delta)\)</span> 是闭集这一点：<span class="math inline">\(\mathrm{cone}(\Delta)=\overline{\mathrm{cone}(\Delta)}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <p>虽然我们得到了上面关于 <span class="math inline">\(\mathcal{C}^\ast\)</span>
 的刻画，但是它并不好用。我们下面用内积的形式给出 <span class="math inline">\(\mathcal{C}^\ast\)</span> 的一个更好的刻画。</p>
 <div id="dual-cone-dot-neg" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-2.3</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(v\in\mathrm{cone}(\Delta)\)</span> 满足对任何
+2.4</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(v\in\mathrm{cone}(\Delta)\)</span> 满足对任何
 <span class="math inline">\(\alpha_s\in\Delta\)</span> 有 <span class="math inline">\((v,\alpha_s)\leq0\)</span>，则 <span class="math inline">\(v\in\mathcal{C}^\ast\)</span>。</p>
 </div>
 <p><strong>证明</strong>：只要证明对任何 <span class="math inline">\(w\)</span> 都有 <span class="math inline">\(wv\in\mathrm{cone}(\Delta)\)</span> 即可。对 <span class="math inline">\(l(w)\)</span> 归纳：<span class="math inline">\(l(w)=0\)</span> 的情形是已知，假设结论对小于 <span class="math inline">\(l(w)\)</span> 都成立，对 <span class="math inline">\(l(w)\)</span> 的情形设 <span class="math inline">\(w=w's\)</span>，其中 <span class="math inline">\(l(w')&lt;l(w)\)</span>，则 <span class="math inline">\(w'\alpha_s\in\Phi^+\)</span>。于是</p>
@@ -672,7 +675,7 @@ all } w \in W\}.
 <span class="math inline">\(w'\alpha_s\in\Phi^+\subset\mathrm{cone}(\Delta)\)</span>，所以结论成立。</p>
 <div id="dual-cone-nonspace" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-2.4</span>.</span><span class="statement-spah"> </span>对任何 <span class="math inline">\(u,v\in\mathcal{C}^\ast\)</span> 有 <span class="math inline">\((u,v)\leq 0\)</span>。</p>
+2.5</span>.</span><span class="statement-spah"> </span>对任何 <span class="math inline">\(u,v\in\mathcal{C}^\ast\)</span> 有 <span class="math inline">\((u,v)\leq 0\)</span>。</p>
 </div>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
@@ -712,8 +715,8 @@ X\)</span> 使得 <span class="math inline">\(S(y)\)</span> 是负数，这与
 
                                                     
 <p class="pink-link-context">
-    <a href="/mobius-poincare/" rel="next" title="Möbius 变换与二维 Poincaré 双曲空间的等距">
-    上一篇：Möbius 变换与二维 Poincaré 双曲空间的等距
+    <a href="/coxeter-groups-three-cases/" rel="next" title="Coxeter 群笔记（四）：有限、仿射、双曲三种情形的 Tits 锥">
+    上一篇：Coxeter 群笔记（四）：有限、仿射、双曲三种情形的 Tits 锥
   </a>
 </p>
 
