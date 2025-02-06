@@ -253,7 +253,7 @@ Tits 锥 \(\mathcal{C}\) 和对偶锥 \(\mathcal{C}^\ast\) 的结构。我们约
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">4 篇</span></a>
+                    Coxeter-Groups <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -538,38 +538,26 @@ time-like 的向量。</li>
 是实数，<span class="math inline">\(x\)</span> 和 <span class="math inline">\(z\)</span> 是正交的。</p>
 <p>记 <span class="math display">\[\mathcal{Q}=\{v\in V\mid (v,v)\leq
 0\}\]</span> 是所有非 space-like 的向量组成的集合，则 <span class="math inline">\(v=x+cz\in\mathcal{Q}\)</span> 当且仅当 <span class="math inline">\((x,x)-c^2\leq0\)</span>。</p>
-<p>在除去原点以后，<span class="math inline">\(\mathcal{Q}-\{0\}\)</span> 由两个连通分支 <span class="math inline">\(\mathcal{Q}_+,\,\mathcal{Q}_-\)</span>
+<p><span class="math inline">\(\mathcal{Q}\)</span> 由上、下两个分支
+<span class="math inline">\(\mathcal{Q}_+,\,\mathcal{Q}_-\)</span>
 组成，它们分别由 <span class="math inline">\(\mathcal{Q}\)</span> 中满足
-<span class="math inline">\(c&gt;0\)</span> 和 <span class="math inline">\(c&lt;0\)</span> 的点组成，并且 <span class="math inline">\(\mathcal{Q}_+=-\mathcal{Q}_-\)</span>。</p>
+<span class="math inline">\(c\geq0\)</span> 和 <span class="math inline">\(c\leq0\)</span> 的点组成，并且 <span class="math inline">\(\mathcal{Q}_+=-\mathcal{Q}_-\)</span>。</p>
 <p><img src="/images/coxeter/hyperboloid.svg" class="fig" width="350"></p>
-<div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
-</span><span class="math inline">\(\mathcal{Q}\)</span>
-是包含原点的，但是 <span class="math inline">\(\mathcal{Q}_+\)</span> 和
-<span class="math inline">\(\mathcal{Q}_-\)</span> 都不包含原点。</p>
-</div>
-<p>在本文中我们用记号 <span class="math inline">\(u\sim v\)</span>
-来表示 <span class="math inline">\(u,v\)</span>
-属于同一个连通分支，<span class="math inline">\(u\not\sim v\)</span>
-表示 <span class="math inline">\(u,v\)</span> 属于不同的连通分支。</p>
+<p>设 <span class="math inline">\(u,v\)</span>
+是两个非零向量，我们用记号 <span class="math inline">\(u\sim v\)</span>
+来表示 <span class="math inline">\(u,v\)</span> 属于同一个分支，即 <span class="math inline">\(u,v\)</span> 同时属于 <span class="math inline">\(\mathcal{Q}_+\)</span> 或者同时属于 <span class="math inline">\(\mathcal{Q}_-\)</span>；用记号 <span class="math inline">\(u\not\sim v\)</span> 表示 <span class="math inline">\(u,v\)</span> 属于不同的分支，即 <span class="math inline">\(u,v\)</span> 一个属于 <span class="math inline">\(\mathcal{Q}_+\)</span>，另一个属于 <span class="math inline">\(\mathcal{Q}_-\)</span>。</p>
 <div id="connected-component-dot" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-3.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(u,v\in \mathcal{Q}-\{0\}\)</span>。</p>
+3.2</span> <span class="statement-info">(<span class="citation" data-cites="ratcliffe">(<a href="#ref-ratcliffe" role="doc-biblioref">Ratcliffe 2006</a>, thm.
+3.1.1)</span>)</span>.</span><span class="statement-spah"> </span>设
+<span class="math inline">\(u,v\in \mathcal{Q}-\{0\}\)</span>。</p>
 <ol type="1">
 <li>如果 <span class="math inline">\(u\sim v\)</span> 则 <span class="math inline">\((u,v)\leq0\)</span>。</li>
-<li><span class="math inline">\((u,v)=0\)</span> 当且仅当 <span class="math inline">\(u,v\)</span> 是 light-like 的向量。</li>
+<li><span class="math inline">\((u,v)=0\)</span> 当且仅当 <span class="math inline">\(u,v\)</span> 是共线的 light-like 的向量。</li>
 </ol>
 </div>
-<p><strong>证明</strong>：</p>
-<ol type="1">
-<li><p>不妨设 <span class="math inline">\(u,v\)</span> 都属于 <span class="math inline">\(\mathcal{Q}_+\)</span>。记 <span class="math inline">\(u=x+cz,\, v=y+dz\)</span>，其中 <span class="math inline">\(x,y\)</span> 是 space-like 的向量，<span class="math inline">\(c,d&gt;0\)</span>。记 <span class="math inline">\(|x|=\sqrt{(x,x)}\)</span> 是 <span class="math inline">\(x\)</span> 的 Euclidean 范数，<span class="math inline">\(|y|\)</span> 同理，则 <span class="math inline">\(|x|\leq c,\, |y|\leq d\)</span>。由
-Cauchy-Schwartz 不等式有 <span class="math display">\[(u,v)=(x,y) -
-cd\leq |x| |y| - cd\leq cd-cd=0.\]</span> 此即为所证。</p></li>
-<li><p>由 <span class="math inline">\((u,v)=0\)</span> 可得 <span class="math inline">\((x,y)=cd\)</span>。结合 <span class="math inline">\(|(x,y)|\leq |x| |y|\)</span> 可得 <span class="math inline">\(|cd|\leq |x||y|\)</span>。然而 <span class="math inline">\(|x|\leq |c|,\, |y|\leq
-|d|\)</span>，所以所有的等号都成立，从而 <span class="math inline">\(|x|=|c|,\, |y|=|d|\)</span>。即 <span class="math inline">\(u,v\)</span> 都是 light-like 的向量。由 <span class="math inline">\(|(x,y)|=|x||y|\)</span> 可得 <span class="math inline">\(x,y\)</span> 共线，设 <span class="math inline">\(x=\lambda y\)</span>，代入 <span class="math inline">\((x,y)=cd\)</span> 可得 <span class="math inline">\(c=\lambda d\)</span>，从而 <span class="math inline">\(u=\lambda v\)</span>。</p></li>
-</ol>
-<p><span class="math inline">\(\blacksquare\)</span></p>
-<p>这个命题有显然的推论是：</p>
+<p><a href="#connected-component-dot" title="命题 3.2">命题 3.2</a>
+的显然推论是：</p>
 <div id="suff-for-equiv" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
 3.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(u,v\in\mathcal{Q}-\{0\}\)</span>。</p>
@@ -578,23 +566,22 @@ cd\leq |x| |y| - cd\leq cd-cd=0.\]</span> 此即为所证。</p></li>
 <li>若 <span class="math inline">\((u,v)\leq0\)</span>，且 <span class="math inline">\(u,v\)</span> 中至少有一个是 time-like 的，则 <span class="math inline">\(u\sim v\)</span>。</li>
 </ol>
 </div>
-<p>为了简化记号，我们记 <span class="math inline">\(\mathcal{Q}_+\)</span> 和 <span class="math inline">\(\mathcal{Q}_-\)</span> 的内点分别为 <span class="math inline">\(\mathcal{N}_+\)</span> 和 <span class="math inline">\(\mathcal{N}_-\)</span>，即 <span class="math inline">\(\mathcal{N}_+\)</span> 和 <span class="math inline">\(\mathcal{N}_-\)</span> 分别是 <span class="math inline">\(\mathcal{N}=\{v\in V\mid (v,v)&lt;0\}\)</span>
+<p>记 <span class="math inline">\(\mathcal{Q}_+\)</span> 和 <span class="math inline">\(\mathcal{Q}_-\)</span> 的内点分别为 <span class="math inline">\(\mathcal{N}_+\)</span> 和 <span class="math inline">\(\mathcal{N}_-\)</span>，即 <span class="math inline">\(\mathcal{N}_+\)</span> 和 <span class="math inline">\(\mathcal{N}_-\)</span> 分别是 <span class="math inline">\(\mathcal{N}=\{v\in V\mid (v,v)&lt;0\}\)</span>
 的两个连通分支。</p>
 <p>在双曲的情形，由于内积 <span class="math inline">\((\cdot,\cdot)\)</span> 非退化，所以我们可以把
 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 等同起来，从而根系 <span class="math inline">\(\Phi\)</span> 和 Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 都在 <span class="math inline">\(V\)</span> 中。</p>
 <p>我们将证明在双曲的情形，Tits 锥的闭包 <span class="math inline">\(\overline{ \mathcal{C} }\)</span> 必然包含 <span class="math inline">\(\mathcal{Q}_+,\,\mathcal{Q}_-\)</span>
-中的一个，同时与另一个的交为空。</p>
+中的一个，同时与另一个的交只有 <span class="math inline">\(\{0\}\)</span>。</p>
 <div id="dual-cone-trivial-intersection" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
 3.4</span>.</span><span class="statement-spah"> </span>在 <span class="math inline">\(W\)</span> 不可约且双曲的情形，<span class="math inline">\(\mathcal{C}^\ast\cap
-\mathcal{Q}_+,\,\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span>
-中必有一个是空集。</p>
+\mathcal{Q}_+,\,\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span> 中必有一个是
+<span class="math inline">\(\{0\}\)</span>。</p>
 </div>
-<p><strong>证明</strong>：若 <span class="math inline">\(u\in\mathcal{C}^\ast\cap\mathcal{Q}_+,\,u'\in
-\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span>，设 <span class="math inline">\(u=x+cz,\,u'=y+dz\)</span> 是 <a href="#lorentzinian-decomposition">如前面讨论的分解</a>，则 <span class="math inline">\(c&gt;0,\,d&lt;0\)</span>。考察 <span class="math inline">\(v=cu'-du=cy-dx\in(\mathbb{R}z)^\bot\)</span>，由于
-<span class="math inline">\((\mathbb{R}z)^\bot\)</span> 是 space-like
-的子空间，所以 <span class="math inline">\((v,v)\geq0\)</span>。但是
-<span class="math inline">\(v\)</span> 是 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(u'\)</span> 的非负线性组合，所以 <span class="math inline">\(v\in\mathcal{C}^\ast\)</span>，从而 <a href="/coxeter-groups-tits-cone/#dual-cone-nonspace">必须有 <span class="math inline">\((v,v)\leq0\)</span></a>，从而由正定性得到 <span class="math inline">\(v=0\)</span>，于是 <span class="math inline">\(cu'=du\)</span>。再结合 <span class="math inline">\(c,d\)</span> 异号可得 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(-u\)</span> 同时属于 <span class="math inline">\(\mathcal{C}^\ast\)</span>，从而同时属于 <span class="math inline">\(\mathrm{cone}(\Delta)\)</span>。这只能导致 <span class="math inline">\(u=0\)</span>，矛盾。所以 <span class="math inline">\(\mathcal{C}^\ast\cap\mathcal{Q}_+\)</span> 和
+<p><strong>证明</strong>：用反证法，若不然，设 <span class="math inline">\(u\in\mathcal{C}^\ast\cap\mathcal{Q}_+,\,u'\in
+\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span> 都是非零向量，<span class="math inline">\(u=x+cz,\,u'=y+dz\)</span> 是 <a href="#lorentzinian-decomposition">如前所述的分解</a>，则 <span class="math inline">\(c&gt;0,\,d&lt;0\)</span>。考察 <span class="math display">\[v=cu'-du=cy-dx\in(\mathbb{R}z)^\bot.\]</span>
+由于 <span class="math inline">\((\mathbb{R}z)^\bot\)</span> 是
+space-like 的子空间，所以 <span class="math inline">\((v,v)\geq0\)</span>。但是 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(u'\)</span> 的非负线性组合，所以 <span class="math inline">\(v\in\mathcal{C}^\ast\)</span>，从而 <a href="/coxeter-groups-tits-cone/#dual-cone-nonspace">必须有 <span class="math inline">\((v,v)\leq0\)</span></a>，从而由正定性得到 <span class="math inline">\(v=0\)</span>，于是 <span class="math inline">\(cu'=du\)</span>。再结合 <span class="math inline">\(c,d\)</span> 异号可得 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(-u\)</span> 同时属于 <span class="math inline">\(\mathcal{C}^\ast\)</span>，从而同时属于 <span class="math inline">\(\mathrm{cone}(\Delta)\)</span>，这只能导致 <span class="math inline">\(u=0\)</span>。所以 <span class="math inline">\(\mathcal{C}^\ast\cap\mathcal{Q}_+\)</span> 和
 <span class="math inline">\(\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span>
 中必有一个是空集。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="dual-cone-belongs-branch" class="statement corollary plain">
@@ -650,8 +637,8 @@ Second. Vol. 149. Graduate Texts in Mathematics. Springer.
 
                                                     
 <p class="pink-link-context">
-    <a href="/mobius-poincare/" rel="next" title="Möbius 变换与二维 Poincaré 双曲空间的等距">
-    上一篇：Möbius 变换与二维 Poincaré 双曲空间的等距
+    <a href="/coxeter-groups-level/" rel="next" title="Coxeter 群笔记（五）：Coxeter 群的 level">
+    上一篇：Coxeter 群笔记（五）：Coxeter 群的 level
   </a>
 </p>
 

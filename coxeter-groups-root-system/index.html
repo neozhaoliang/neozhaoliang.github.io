@@ -37,8 +37,8 @@ S\}\)；
 对每个生成元 \(s\in S\)，规定 \(s\) 在 \(V\) 上的作用为关于 \(\alpha_s\) 的反射 \(\rho_s\)；
 我们证明了 \(\rho\) 是从 \(W\to\mathrm{GL}(V)\) 的群同态，并且 \(\rho(W)\) 保持内积 \((\cdot,\cdot)\)。
 
-但是我们还需要证明 \(\rho\)
-是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。😏">
+但是我们还有一个未完成的工作：证明 \(\rho\)
+是嵌入映射。本文会完成它。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。😏">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -265,7 +265,7 @@ S\}\)；
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">4 篇</span></a>
+                    Coxeter-Groups <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -348,8 +348,8 @@ S\}\)</span>；</li>
 <li>对每个生成元 <span class="math inline">\(s\in S\)</span>，规定 <span class="math inline">\(s\)</span> 在 <span class="math inline">\(V\)</span> 上的作用为关于 <span class="math inline">\(\alpha_s\)</span> 的反射 <span class="math inline">\(\rho_s\)</span>；</li>
 <li>我们证明了 <span class="math inline">\(\rho\)</span> 是从 <span class="math inline">\(W\to\mathrm{GL}(V)\)</span> 的群同态，并且 <span class="math inline">\(\rho(W)\)</span> 保持内积 <span class="math inline">\((\cdot,\cdot)\)</span>。</li>
 </ol>
-<p>但是我们还需要证明 <span class="math inline">\(\rho\)</span>
-是嵌入映射。本文会完成这一点。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。<span class="emoji" data-alias="smirk" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span></p>
+<p>但是我们还有一个未完成的工作：证明 <span class="math inline">\(\rho\)</span>
+是嵌入映射。本文会完成它。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。<span class="emoji" data-alias="smirk" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span></p>
 <span id="more"></span>
 <h1 id="根系">根系</h1>
 <p>我们记 <span class="math inline">\(\Delta=\{\alpha_s\mid s\in
@@ -445,7 +445,18 @@ k\theta}{\sin\theta}\alpha_t, &amp; \text{$k$ even}.
 t}^{\leq m-1},\]</span> 这些元素作用在 <span class="math inline">\(\alpha_s\)</span> 上正好给出序列的前 <span class="math inline">\(m\)</span> 项。</p>
 <p>为什么 <span class="math inline">\(v_I\)</span> 的长度不能等于 <span class="math inline">\(m\)</span>？因为根据辫关系 <span class="math display">\[\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}.\]</span>
 即 <span class="math inline">\(v_I\)</span> 会等于以 <span class="math inline">\(s\)</span> 结尾的另一个既约表示，与 <span class="math inline">\(v_I\)</span> 的任何既约表示不能以 <span class="math inline">\(s\)</span> 结尾矛盾。</p>
-<p><img src="/images/coxeter/finite2d.svg" class="fig" width="400"></p></li>
+<figure>
+<img src="/images/coxeter/finite2d.svg" width="400" alt="m=5 的例子">
+<figcaption aria-hidden="true"><span class="math inline">\(m=5\)</span>
+的例子</figcaption>
+</figure>
+<p>由上图可见，所有正根位于 <span class="math inline">\(\alpha,\beta\)</span> 张成的楔形区域内。从 <span class="math inline">\(\alpha\)</span> 一侧开始的正根形如 <span class="math display">\[\dfrac{\sin
+k\theta}{\sin\theta}\alpha+\dfrac{\sin
+(k-1)\theta}{\sin\theta}\beta,\quad
+k=1,2,\ldots,\lfloor(m+1)/2\rfloor.\]</span> 从 <span class="math inline">\(\beta\)</span> 一侧开始的正根形如 <span class="math display">\[\dfrac{\sin
+(k-1)\theta}{\sin\theta}\alpha+\dfrac{\sin
+k\theta}{\sin\theta}\beta,\quad
+k=1,2,\ldots,\lfloor(m+1)/2\rfloor.\]</span></p></li>
 <li><p><span class="math inline">\(m=m_{s,t}=\infty\)</span> 时，仍然记
 <span class="math inline">\(\cosh\theta=a_{s,t},\,\theta\geq0\)</span>，则
 <span class="math display">\[\alpha_s\xrightarrow{\ t\ }\dfrac{\sinh
@@ -571,12 +582,11 @@ I}c_t\alpha_t.\]</span> 由于 <span class="math inline">\(\lambda\in\Phi^+\setm
 0，所以 <span class="math inline">\(w\lambda\)</span> 必然是正根。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="lI-equals-l" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-1.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(w\in W_I\)</span>，则对 <span class="math inline">\(w\)</span> 的任何既约表示 <span class="math inline">\(w=s_{i_1}\cdots s_{i_r}\)</span> 都有 <span class="math inline">\(s_{i_1},\ldots,s_{i_r}\in I\)</span>，特别地 <span class="math inline">\(l_I(w)=l(w)\)</span>。</p>
+1.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(w\in W_I\)</span>，则对 <span class="math inline">\(w\)</span> 的任何既约表示 <span class="math inline">\(w=s_1\cdots s_k\)</span> 都有 <span class="math inline">\(s_1,\ldots,s_k\in I\)</span>，特别地 <span class="math inline">\(l_I(w)=l(w)\)</span>。</p>
 </div>
-<p><strong>证明</strong>：我们从右到左依次验证 <span class="math inline">\(s_{i_r},\ldots,s_{i_1}\in I\)</span>。记 <span class="math inline">\(s=s_{i_r}\)</span>，由于 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 所以 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>。又由于 <span class="math inline">\(w\in W_I\)</span> 所以 <span class="math inline">\(w\)</span> 形如 <span class="math inline">\(w=t_1\cdots t_q,\,t_i\in I\)</span>。于是 <span class="math inline">\(w\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和一些 <span class="math inline">\(\alpha_{t_i}\)</span> 的线性组合： <span class="math display">\[w\alpha_s=\alpha_s+\sum_{i=1}^q
-c_i\alpha_{t_i}.\]</span> 由于 <span class="math inline">\(w\alpha_s&lt;0\)</span> 所以必然有某个 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(s=t_i\)</span>，即 <span class="math inline">\(s\in I\)</span>。继续对 <span class="math inline">\(ws=s_{i_1}\cdots s_{i_{r-1}}\in W_I\)</span>
-重复此论证即得每个 <span class="math inline">\(s_{i_j}\in
-I\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>证明</strong>：我们从右到左依次验证 <span class="math inline">\(s_k,\ldots,s_1\in I\)</span>。记 <span class="math inline">\(s=s_k\)</span>，由于 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 所以 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>。又由于 <span class="math inline">\(w\in W_I\)</span> 所以 <span class="math inline">\(w\)</span> 形如 <span class="math inline">\(w=t_1\cdots t_q,\,t_i\in I\)</span>。于是 <span class="math inline">\(w\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和一些 <span class="math inline">\(\alpha_{t_i}\)</span> 的线性组合： <span class="math display">\[w\alpha_s=\alpha_s+\sum_{i=1}^q
+c_i\alpha_{t_i}.\]</span> 由于 <span class="math inline">\(w\alpha_s&lt;0\)</span> 所以必然有某个 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(s=t_i\)</span>，即 <span class="math inline">\(s\in I\)</span>。继续对 <span class="math inline">\(ws=s_1\cdots s_{k-1}\in W_I\)</span>
+重复此论证即得每个 <span class="math inline">\(s_i\in I\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 
 
 

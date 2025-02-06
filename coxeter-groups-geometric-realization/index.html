@@ -251,7 +251,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">4 篇</span></a>
+                    Coxeter-Groups <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -330,7 +330,7 @@ if}\ m_{s,t}&lt;\infty\rangle.\]</span></p>
 <ol type="1">
 <li>对任何 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(s^2=1\)</span>。</li>
 <li>对任何 <span class="math inline">\(s\ne t\)</span> 且 <span class="math inline">\(m_{s,t}&lt;\infty\)</span>
-有<strong>辫关系</strong> (braid relation) <span class="math inline">\(\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}\)</span>
+有<strong>辫关系</strong> (braid relation) <span class="math display">\[\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}\]</span>
 成立。（当 <span class="math inline">\(m_{s,t}=\infty\)</span>
 时的关系是无用的）</li>
 </ol>
@@ -357,13 +357,20 @@ Coxeter 群。即我们在提到一个 Coxeter 群 <span class="math inline">\(W
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
 </span>Coxeter 矩阵 <span class="math display">\[\begin{pmatrix}1 &amp;
-3 &amp; 4\\3&amp;1&amp;\infty\\4&amp;\infty&amp;1\end{pmatrix}\]</span>
-对应的 Coxeter 图 <span class="math inline">\(\Gamma\)</span> 是</p>
-<figure id="3-4-inf">
-<img src="/images/coxeter/3-4-inf.svg" width="120" alt="三角形群 (3,4,\infty) 的 Coxeter 图 \Gamma，注意标号 3 被省略了">
-<figcaption aria-hidden="true">三角形群 <span class="math inline">\((3,4,\infty)\)</span> 的 Coxeter 图 <span class="math inline">\(\Gamma\)</span>，注意标号 <span class="math inline">\(3\)</span> 被省略了</figcaption>
+4 &amp; 2\\4&amp;1&amp;3\\2&amp;3&amp;1\end{pmatrix}\]</span> 对应的
+Coxeter 图 <span class="math inline">\(\Gamma\)</span> 是</p>
+<figure>
+<img src="/images/coxeter/cube43.svg" class="fig" width="120" alt="正方体对称群 (4,3) 的 Coxeter 图，注意标号 3 省略了">
+<figcaption aria-hidden="true">正方体对称群 <span class="math inline">\((4,3)\)</span> 的 Coxeter 图，注意标号 3
+省略了</figcaption>
 </figure>
-<p><span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(W\)</span> 是不可约的。</p>
+<p><span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(W\)</span>
+是不可约的。这个群是三维正方体的对称群：</p>
+<video src="/images/coxeter/cube.mp4" width="300" controls="">
+</video>
+<p>去掉最后一个顶点，前两个顶点构成二面体群 <span class="math inline">\(D_4\)</span>，对应正方体的每个面是正四边形；去掉第一个顶点，后两个顶点构成二面体群
+<span class="math inline">\(D_3\)</span>，对应每个顶点处有 3
+个面相遇。</p>
 </div>
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
@@ -373,7 +380,39 @@ Coxeter 群。即我们在提到一个 Coxeter 群 <span class="math inline">\(W
 <span class="math inline">\(\Gamma\)</span> 是</p>
 <p><img src="/images/coxeter/prism.svg" class="fig" width="120"></p>
 <p><span class="math inline">\(\Gamma\)</span> 有两个连通分支，所以
-<span class="math inline">\(W\)</span> 是可约的。</p>
+<span class="math inline">\(W\)</span> 是可约的。这个群给出的是三维
+Euclidean 空间的棱柱，前两个相邻的顶点在 <span class="math inline">\(xy\)</span> 平面内生成正 <span class="math inline">\(m\)</span>
+边形，最后的孤立顶点是一面镜子，它的作用是在 <span class="math inline">\(z\)</span>
+轴方向上将多边形作反射形成棱柱结构：</p>
+<video src="/images/coxeter/prism-6.mp4" width="300" controls="">
+</video>
+</div>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>Coxeter 矩阵 <span class="math display">\[\begin{pmatrix}1 &amp;
+3 &amp; 4\\3&amp;1&amp;\infty\\4&amp;\infty&amp;1\end{pmatrix}\]</span>
+对应的 Coxeter 图 <span class="math inline">\(\Gamma\)</span> 是</p>
+<figure id="3-4-inf">
+<img src="/images/coxeter/3-4-inf.svg" width="120" alt="三角形群 \Delta(3,4,\infty) 的 Coxeter 图 \Gamma，注意标号 3 被省略了">
+<figcaption aria-hidden="true">三角形群 <span class="math inline">\(\Delta(3,4,\infty)\)</span> 的 Coxeter 图 <span class="math inline">\(\Gamma\)</span>，注意标号 <span class="math inline">\(3\)</span> 被省略了</figcaption>
+</figure>
+<p><span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(W\)</span>
+是不可约的。这个群给出的是双曲空间中的密铺：</p>
+<p><img src="/images/coxeter/parallel.png" class="fig" width="250"></p>
+</div>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>Coxeter 矩阵 <span class="math display">\[\begin{pmatrix}1 &amp;
+5 &amp; 2 &amp;
+2\\5&amp;1&amp;3&amp;2\\2&amp;3&amp;1&amp;4\\2&amp;2&amp;4&amp;1\end{pmatrix}\]</span>
+对应的 Coxeter 图 <span class="math inline">\(\Gamma\)</span> 是</p>
+<p><img src="/images/coxeter/534.svg" id="534" class="fig" width="180"></p>
+<p><span class="math inline">\(W\)</span>
+是不可约的。这个群给出的是三维双曲空间中的密铺：</p>
+<p><img src="/images/coxeter/534-1000.jpg" class="fig" width="500"></p>
+<p>去掉最后一个顶点，前三个顶点给出正十二面体的对称群 <span class="math inline">\((5,3)\)</span>，说明这个密铺由正十二面体组成；去掉第一个顶点，剩下三个顶点给出正方体的对称群
+<span class="math inline">\((3,4)\cong(4,3)\)</span>，说明每个顶点处有 8
+个正十二面体在此相遇。</p>
 </div>
 <p>我们主要关心的是 <span class="math inline">\(\Gamma\)</span>
 不可约的情形。这是因为，如果 <span class="math inline">\(\Gamma=\Gamma_1\cup\cdots\cup\Gamma_k\,(k&gt;1)\)</span>
@@ -384,8 +423,9 @@ Coxeter 群。即我们在提到一个 Coxeter 群 <span class="math inline">\(W
 的边标号的方式，叫做 Vinberg 记号，允许给 <span class="math inline">\(m_{s,t}=\infty\)</span> 的那些边用 <span class="math inline">\(\leq-1\)</span>
 的实数作为标号。比如像下面这样：</p>
 <p><img src="/images/coxeter/level2.svg" id="level2" class="fig" width="120"></p>
-<p>作为抽象 Coxeter 群，它和前面的 <a href="#3-4-inf"><span class="math inline">\((3,4,\infty)\)</span></a> 是同一个群，但是这里
-<span class="math inline">\(\infty\)</span> 边的标号变成了 <span class="math inline">\(-1.1\)</span>。后面会解释，Vinberg
+<p>作为抽象 Coxeter 群，它和前面的 <a href="#3-4-inf"><span class="math inline">\(\Delta(3,4,\infty)\)</span></a>
+是同一个群，但是这里 <span class="math inline">\(\infty\)</span>
+边的标号变成了 <span class="math inline">\(-1.1\)</span>。后面会解释，Vinberg
 记号相当于指定了这条边的两个顶点在几何实现中对应的两个镜面的「双曲距离」。在后文中我们也会采用这种记号。</p>
 <p>用 Coxeter 图来表示 Coxeter
 群，除了直观上的好处外，它还能告诉我们一些关于 <span class="math inline">\((W,S)\)</span> 的结构信息。比如当 <span class="math inline">\(\Gamma\)</span> 包含回路时，你可以立刻知道 <span class="math inline">\((W,S)\)</span> 一定是无限群 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
@@ -429,25 +469,9 @@ Coxeter 矩阵，<span class="math inline">\(V\)</span> 是一个维数为 <span
 空间中两个平行的镜面（或者双曲空间中两个平行的镜面）；<span class="math inline">\(a_{s,t}&gt;1\)</span>
 表示双曲空间中两个超平行的镜面；<span class="math inline">\(2\leq
 m_{s,t}&lt;\infty\)</span> 表示两个相交的镜面。</p>
-<p>下图显示了对前面的 <a href="#3-4-inf"><span class="math inline">\((3,4,\infty)\)</span></a> 群，对标号为 <span class="math inline">\(\infty\)</span> 的边选择 <span class="math inline">\(a_{s,t}=1\)</span> 和 <span class="math inline">\(a_{s,t}=1.15\)</span> 时给出的效果：</p>
-<table>
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">平行 <span class="math inline">\(a_{s,t}=1\)</span></th>
-<th style="text-align: center;">超平行 <span class="math inline">\(a_{s,t}=1.15\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="/images/coxeter/parallel.png" class="fig" width="250"></td>
-<td style="text-align: center;"><img src="/images/coxeter/hypparallel.png" class="fig" width="250"></td>
-</tr>
-</tbody>
-</table>
+<p>下图显示了对前面的 <a href="#3-4-inf"><span class="math inline">\(\Delta(3,4,\infty)\)</span></a> 群，对标号为 <span class="math inline">\(\infty\)</span> 的边取 <span class="math inline">\(a_{s,t}=1.15\)</span> 时给出的效果：</p>
+<p><img src="/images/coxeter/hypparallel.png" class="fig" width="250"></p>
+<p>你可以看到每个三角形都不再是封闭的，它们的墙壁中有两条「超平行」的测地线，这两条测地线交点落在双曲空间的外面。</p>
 </div>
 <p>内积 <span class="math inline">\((\cdot,\cdot)\)</span> 未必是通常的
 Euclidean 内积，即它未必是正定的。但我们最关心的情形有三种：</p>
@@ -475,7 +499,8 @@ u,v\in V.\]</span> 即 <span class="math inline">\(\rho_s\)</span> 是以
 <span class="math inline">\(\alpha\)</span> 为法向量的镜面反射。</p>
 <p>我们来证明 <span class="math inline">\(s\to\rho_s\)</span> 实际上是从
 <span class="math inline">\((W,S)\)</span> 到 <span class="math inline">\(\mathrm{GL}(V)\)</span> 的群同态，从而 <span class="math display">\[\rho: W\to\rho(W)\leqslant\mathrm{GL}(V)\]</span>
-是一个线性表示。当然还是要用到泛性质。我们只要证明 <span class="math inline">\(\{\rho_s\}\)</span> 之间满足与 <span class="math inline">\((W,S)\)</span> 相同的生成关系：</p>
+是一个线性表示。特别地，由于每个 <span class="math inline">\(\rho(s)\)</span> 保持 <span class="math inline">\((\cdot,\cdot)\)</span> 不变，<span class="math inline">\(\rho(W)\)</span> 也保持 <span class="math inline">\((\cdot,\cdot)\)</span> 不变。即 <span class="math inline">\(\rho(W)\)</span> 是正交群 <span class="math inline">\(O(V)\)</span> 的子群。</p>
+<p>证明的方法当然还是使用商群的泛性质。我们只要证明 <span class="math inline">\(\{\rho_s\}\)</span> 之间满足与 <span class="math inline">\((W,S)\)</span> 相同的生成关系即可：</p>
 <div class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
 3.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\((\rho_s\rho_t)^{m_{s,t}}=1\)</span> 对任何 <span class="math inline">\(s,t\in S\)</span> 成立。</p>
