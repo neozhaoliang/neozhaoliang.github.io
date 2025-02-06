@@ -444,24 +444,29 @@ k\theta}{\sin\theta}\alpha_t, &amp; \text{$k$ even}.
 的非负线性组合，这就足够了：由于 <span class="math inline">\(v_I\)</span> 的任何既约表示不能以 <span class="math inline">\(s\)</span> 结尾，所以 <span class="math inline">\(v_I\)</span> 可能的取值是二面体群 <span class="math inline">\(D_m\)</span> 中所有长度小于 <span class="math inline">\(m\)</span> 且以 <span class="math inline">\(t\)</span> 结尾的那些元素： <span class="math display">\[1,\ t,\ st,\ \ldots,\ \overbrace{\ast\cdots
 st}^{m-1},\]</span> 这些元素作用在 <span class="math inline">\(\alpha_s\)</span> 上正好给出序列的前 <span class="math inline">\(m\)</span> 项。</p>
 <p>为什么 <span class="math inline">\(v_I\)</span> 的长度不能等于 <span class="math inline">\(m\)</span>？因为根据辫关系 <span class="math display">\[\overbrace{sts\cdots}^{m_{s,t}}=\overbrace{tst\cdots}^{m_{s,t}}.\]</span>
-即 <span class="math inline">\(v_I\)</span> 会等于以 <span class="math inline">\(s\)</span> 结尾的另一个既约表示，与 <span class="math inline">\(v_I\)</span> 的任何既约表示不能以 <span class="math inline">\(s\)</span> 结尾矛盾。</p>
+即 <span class="math inline">\(v_I\)</span> 会等于以 <span class="math inline">\(s\)</span> 结尾的另一个既约表示，与 <span class="math inline">\(v_I\)</span> 的任何既约表示不能以 <span class="math inline">\(s\)</span> 结尾矛盾。</p></li>
+</ol>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>以 <span class="math inline">\(m=5\)</span> 为例，所有 <span class="math inline">\(m\)</span> 个正根都位于 <span class="math inline">\(\alpha_s,\alpha_t\)</span> 张成的楔形区域内：</p>
 <figure>
 <img src="/images/coxeter/finite2d.svg" width="400" alt="m=5 的例子">
 <figcaption aria-hidden="true"><span class="math inline">\(m=5\)</span>
 的例子</figcaption>
 </figure>
-<p>由上图可见，所有 <span class="math inline">\(m\)</span> 个正根都位于
-<span class="math inline">\(\alpha_s,\alpha_t\)</span>
-张成的楔形区域内。从 <span class="math inline">\(\alpha\)</span>
-一侧开始数，这些正根形如 <span class="math display">\[\dfrac{\sin
+<p>从 <span class="math inline">\(\alpha_s\)</span>
+一侧开始，这些正根形如 <span class="math display">\[\dfrac{\sin
 k\theta}{\sin\theta}\alpha_s+\dfrac{\sin
-(k-1)\theta}{\sin\theta}\alpha_t,\quad k=1,2,\ldots,m.\]</span> 从 <span class="math inline">\(\alpha_t\)</span> 一侧开始数，它们形如 <span class="math display">\[\dfrac{\sin
+(k-1)\theta}{\sin\theta}\alpha_t,\quad k=1,2,\ldots,m.\]</span> 从 <span class="math inline">\(\alpha_t\)</span> 一侧开始，它们形如 <span class="math display">\[\dfrac{\sin
 (k-1)\theta}{\sin\theta}\alpha_s+\dfrac{\sin
-k\theta}{\sin\theta}\alpha_t,\quad k=1,2,\ldots,m.\]</span> 当 <span class="math inline">\(k\)</span> 增加时，第一个序列从 <span class="math inline">\(\alpha_s\)</span> 开始逐渐过渡到 <span class="math inline">\(\alpha_t\)</span>，第二个序列从 <span class="math inline">\(\alpha_t\)</span> 开始逐渐过渡到 <span class="math inline">\(\alpha_s\)</span>。它们最接近的位置是在 <span class="math inline">\(k=\lfloor(m+1)/2\rfloor\)</span> 处（<span class="math inline">\(m\)</span> 为奇数时重合）。这两个序列的前 <span class="math inline">\(k\)</span> 项合起来正好给出全部 <span class="math inline">\(m\)</span> 个正根。这 <span class="math inline">\(m\)</span> 个正根可以通过将 <span class="math inline">\(1,t,st,\ldots,\overbrace{\ast\cdots
+k\theta}{\sin\theta}\alpha_t,\quad k=1,2,\ldots,m.\]</span> 当 <span class="math inline">\(k\)</span> 跑遍 <span class="math inline">\(1,\ldots,m\)</span> 时，第一个序列从 <span class="math inline">\(\alpha_s\)</span> 开始过渡到 <span class="math inline">\(\alpha_t\)</span>，第二个序列从 <span class="math inline">\(\alpha_t\)</span> 开始过渡到 <span class="math inline">\(\alpha_s\)</span>。它们最接近的位置是在 <span class="math inline">\(k=\lfloor(m+1)/2\rfloor\)</span> 处（<span class="math inline">\(m\)</span> 为奇数时重合）。这两个序列的前 <span class="math inline">\(\lfloor(m+1)/2\rfloor\)</span>
+项合起来正好给出全部 <span class="math inline">\(m\)</span> 个正根。这
+<span class="math inline">\(m\)</span> 个正根可以通过将 <span class="math inline">\(1,t,st,\ldots,\overbrace{\ast\cdots
 st}^{m-1}\)</span> 这 <span class="math inline">\(m\)</span>
-个元素作用在 <span class="math inline">\(\alpha_s\)</span>
-上得到。</p></li>
-<li><p><span class="math inline">\(m=m_{s,t}=\infty\)</span> 时，仍然记
+个元素作用在 <span class="math inline">\(\alpha_s\)</span> 上得到。</p>
+</div>
+<ol start="2" type="1">
+<li><span class="math inline">\(m=m_{s,t}=\infty\)</span> 时，仍然记
 <span class="math inline">\(\cosh\theta=a_{s,t},\,\theta\geq0\)</span>，则
 <span class="math display">\[\alpha_s\xrightarrow{\ t\ }\dfrac{\sinh
 \theta}{\sinh\theta}\alpha_s+\dfrac{\sinh
@@ -469,7 +474,7 @@ st}^{m-1}\)</span> 这 <span class="math inline">\(m\)</span>
 3\theta}{\sinh\theta}\alpha_s+\dfrac{\sinh
 2\theta}{\sinh\theta}\alpha_t\xrightarrow{\ t\ }\cdots\]</span>
 每一项都是 <span class="math inline">\(\alpha_s,\alpha_t\)</span>
-的非负线性组合。</p></li>
+的非负线性组合。</li>
 </ol>
 <p>当 <span class="math inline">\(\theta=0\)</span> 时，<span class="math inline">\(W_{s,t}\)</span>
 是一维直线上两个平行镜面生成的（仿射）反射群（包含了平移），它可以处理成二维平面上的线性反射群：</p>
