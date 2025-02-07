@@ -803,35 +803,37 @@ s\}\)</span>，无法直接根据 <span class="math inline">\((\alpha_s,\alpha_t
 <li><p>如果存在 <span class="math inline">\(k\ne i\)</span> 使得 <span class="math inline">\(l(s_kw)&lt;l(w)\)</span>，则由于反射 <span class="math inline">\(s_k\)</span> 是正交变换，并且保持 <span class="math inline">\(\omega_i\)</span> 不动，有 <span class="math display">\[(\omega_i,s_kw(\omega_j))\xrightarrow{\ s_k\ }
 (\omega_i,w(\omega_j)).\]</span>
 由归纳假设左边是分离的，从而右边也是分离的。</p></li>
-<li><p>如果对任何 <span class="math inline">\(k\ne i\)</span> 都有 <span class="math inline">\(l(s_kw)&gt;l(w)\)</span>，则 <span class="math inline">\(w\)</span> 的任一既约表示必然以 <span class="math inline">\(s_i\)</span> 开头，即 <span class="math inline">\(w\)</span> 形如 <span class="math inline">\(w=s_iw'\)</span> 且 <span class="math inline">\(l(w)&gt;l(w')\)</span>。从而 <span class="math display">\[(\omega_i,w(\omega_j))=(s_i(\omega_i),
-w'(\omega_j))=(\omega_i,
+<li><p>如果对任何 <span class="math inline">\(k\ne i\)</span> 都有 <span class="math inline">\(l(s_kw)&gt;l(w)\)</span>，则 <span class="math inline">\(w\)</span> 的任一既约表示必然以 <span class="math inline">\(s_i\)</span> 开头，即 <span class="math inline">\(w\)</span> 形如 <span class="math inline">\(w=s_iw'\)</span> 且 <span class="math inline">\(l(w)&gt;l(w')\)</span>。从而 <span class="math display">\[(\omega_i,w(\omega_j))\xrightarrow{\ s_i\
+}(\omega_i-2\alpha_i, w'(\omega_j)) =(\omega_i,
 w'(\omega_j))-2(\alpha_i,w'(\omega_j)).\]</span></p>
 <ul>
 <li>如果 <span class="math inline">\(\omega_i\ne
 w'(\omega_j)\)</span>，则由归纳假设上面第一项 <span class="math inline">\((\omega_i,
-w'(\omega_j))\leq0\)</span>。第二项由于 <span class="math inline">\(l(s_iw')&gt;l(w')\)</span>，即 <span class="math inline">\(l(w'^{-1}s_i)&gt;l(w'^{-1})\)</span>，所以
-<span class="math inline">\(w'^{-1}\alpha_i\in\Phi^+\)</span>，从而
-<span class="math inline">\((w'^{-1}\alpha_i,
-\omega_j)\geq0\)</span>，即 <span class="math inline">\((\alpha_i,
-w'(\omega_j))\geq0\)</span>，所以 <span class="math inline">\((\omega_i,w(\omega_j))\leq0\)</span> 成立。</li>
-<li>如果 <span class="math inline">\(\omega_i=w'(\omega_j)\)</span>，则 <span class="math inline">\(s_i(\omega_i)=w(\omega_j)\)</span>，于是 <span class="math display">\[(\omega_i, w(\omega_j))=(\omega_i,
-s_i(\omega_i))=(\omega_i,\omega_i-2\alpha_i)=(\omega_i, \omega_i)-2
-&lt;0.\]</span> 其中最后一个不等号是利用了 <a href="#level-1" title="定理 3.3">定理 3.3</a> 和 <a href="#level-2" title="定理 4.1">定理 4.1</a> 的结论：若 <span class="math inline">\(\Gamma\)</span> 的 level 是 1 则 <span class="math inline">\((\omega_i, \omega_i)\leq0\)</span>，若 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 则 <span class="math inline">\((\omega_i,\omega_i)\leq 1\)</span>。</li>
+w'(\omega_j))\leq0\)</span>。第二项由于 <span class="math display">\[l(s_iw')&gt;l(w')\Rightarrow
+w'^{-1}\alpha_i\in\Phi^+\Rightarrow (w'^{-1}\alpha_i,
+\omega_j)\geq0 \Rightarrow (\alpha_i, w'(\omega_j))\geq0.\]</span>
+所以 <span class="math inline">\((\omega_i,w(\omega_j))\leq0\)</span>
+成立。</li>
+<li>如果 <span class="math inline">\(\omega_i=w'(\omega_j)\)</span>，则 <span class="math inline">\(w(\omega_j)=s_iw'(\omega_j)=s_i(\omega_i)\)</span>，于是
+<span class="math display">\[(\omega_i, w(\omega_j))=(\omega_i,
+s_i(\omega_i))\xrightarrow{\ s_i\
+}(\omega_i-2\alpha_i,\omega_i)=(\omega_i, \omega_i)-2 &lt;0.\]</span>
+其中最后一个不等号是利用了 <a href="#level-1" title="定理 3.3">定理
+3.3</a> 和 <a href="#level-2" title="定理 4.1">定理 4.1</a> 的结论：若
+<span class="math inline">\(\Gamma\)</span> 的 level 是 1 则 <span class="math inline">\((\omega_i, \omega_i)\leq0\)</span>，若 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 则 <span class="math inline">\((\omega_i,\omega_i)\leq 1\)</span>。</li>
 </ul>
-<p>为了证明 <span class="math inline">\({\rm
-span}\{\omega_i,w(\omega_j)\}\)</span>
-不是正定的，用反证法。我们先插入一个简单的线性代数引理，它的证明很简单，我这里省略。</p>
-<blockquote>
-<p><strong>引理</strong>：在一个内积空间中，设 <span class="math inline">\(x\)</span> 是一个向量，<span class="math inline">\(U\)</span> 是一个子空间，<span class="math inline">\(v\)</span> 是 <span class="math inline">\(x\)</span> 在 <span class="math inline">\(U\)</span> 上的投影分量，<span class="math inline">\(U_1\)</span> 是 <span class="math inline">\(v\)</span> 在 <span class="math inline">\(U\)</span> 中的正交补，则 <span class="math inline">\(U_1=x^\bot\cap U\)</span>。</p>
-</blockquote>
-<p>回到反证法。如果二维子空间 <span class="math inline">\({\rm
-span}\{\omega_i,w(\omega_j)\}\)</span> 是正定的，设 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(w(\omega_j)\)</span> 在 <span class="math display">\[U=\omega_i^\bot={\rm span}\{\alpha_k,\,k\ne
+<p>我们已经证明了 <span class="math inline">\((\omega_i,w(\omega_j))\)</span> 总是 <span class="math inline">\(\leq0\)</span> 的。还需要说明 <span class="math inline">\(\mathrm{span}\{\omega_i,w(\omega_j)\}\)</span>
+不是正定的。用反证法。如果二维子空间 <span class="math inline">\(\mathrm{span}\{\omega_i,w(\omega_j)\}\)</span>
+是正定的，设 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(w(\omega_j)\)</span> 在 <span class="math display">\[U=\omega_i^\bot={\rm span}\{\alpha_k,\,k\ne
 i\}\]</span> 上的投影分量，<span class="math inline">\(U_1\)</span> 是
 <span class="math inline">\(v\)</span> 在 <span class="math inline">\(U\)</span> 中的正交补，则 <span class="math display">\[U_1=w(\omega_j)^\bot\cap
 U=w(\omega_j)^\bot\cap\omega_i^\bot=\{\omega_i,w(\omega_j)\}^\bot\]</span>
 是一个 time-like 的子空间，所以 <span class="math inline">\(v\in
 U_1^\bot\)</span> 是 space-like 的：<span class="math inline">\((v,v)&gt;0\)</span>。然而对任何 <span class="math inline">\(k\ne i\)</span>，由于 <span class="math inline">\(\alpha_k\in U\)</span> 所以 <span class="math inline">\((\alpha_k, w(\omega_j)-v)=0\)</span>，所以 <span class="math display">\[(v,\alpha_k) = (w(\omega_j),\alpha_k)=(\omega_j,
-w^{-1}\alpha_k).\]</span> <span class="math inline">\(l(s_kw)&gt;l(w)\)</span> 说明 <span class="math inline">\(w^{-1}\alpha_k\in\Phi^+\)</span>，所以 <span class="math inline">\((\omega_j, w^{-1}\alpha_k)\geq0\)</span>，即 <span class="math inline">\((v,\alpha_k)\geq0\)</span>。这对任何 <span class="math inline">\(k\ne i\)</span> 都成立所以 <span class="math inline">\(v\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{i\}\)</span>
+w^{-1}\alpha_k).\]</span> 根据 <span class="math display">\[l(s_kw)&gt;l(w)\Rightarrow
+w^{-1}\alpha_k\in\Phi^+\Rightarrow(\omega_j,
+w^{-1}\alpha_k)\geq0\Rightarrow(v,\alpha_k)\geq0.\]</span> 这对任何
+<span class="math inline">\(k\ne i\)</span> 都成立所以 <span class="math inline">\(v\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{i\}\)</span>
 的基本区域的闭包。但是根据反证假设 <span class="math inline">\(\omega_i\)</span> 是实的，所以 <span class="math inline">\(\Gamma\setminus\{i\}\)</span> 的 level 是
 1，它的基本区域的闭包中的点都是 time-like 或者 light-like 的，从而必须有
 <span class="math inline">\((v, v)\leq0\)</span>，这与 <span class="math inline">\(v\)</span> 是 space-like 的矛盾。</p></li>
