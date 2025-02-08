@@ -19,19 +19,19 @@
     
 
         <title>
-            Coxeter 群笔记（三）：Tits 锥和它的对偶锥 | 朝花夕拾</title>
+            Coxeter 群笔记（三）：Tits 锥 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="Tits 锥
+    <meta name="description" content="本文主要参考了 Bob Howlett 教授的讲义 (Howlett 1996)。
+Tits 锥
 在获得了 \(V\)
-中关于根系的一些知识后，我们下面转移到 \(V\) 的对偶空间 \(V^\ast\) 中讨论万花筒的结构。本文主要参考了
-Bob Howlett 教授的讲义 (Howlett 1996)。
-设 \(V^\ast\) 是 \(V\) 的对偶空间，\(V\) 和 \(">
+中关于根系的一些知识后，我们下面转移到 \(V\) 的对偶空间 \(V^\ast\) 中讨论万花筒的结构。
+设 \(V^\ast\) 是 \(V\) 的对偶空间，\(V\) 和 \">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Coxeter 群笔记（三）：Tits 锥和它的对偶锥"/>
+    <meta property="og:title" content="Coxeter 群笔记（三）：Tits 锥"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -306,7 +306,7 @@ Bob Howlett 教授的讲义 (Howlett 1996)。
                             <div class="article-title">
                                 
     
-        <h1>Coxeter 群笔记（三）：Tits 锥和它的对偶锥</h1>
+        <h1>Coxeter 群笔记（三）：Tits 锥</h1>
     
 
 
@@ -321,10 +321,10 @@ Bob Howlett 教授的讲义 (Howlett 1996)。
                                         
                                             <div class="entry pink-link-context">
                                                 
+<p>本文主要参考了 Bob Howlett 教授的讲义 <span class="citation" data-cites="Howlett-note">(<a href="#ref-Howlett-note" role="doc-biblioref">Howlett 1996</a>)</span>。</p>
 <h1 id="tits-锥">Tits 锥</h1>
 <p>在获得了 <span class="math inline">\(V\)</span>
-中关于根系的一些知识后，我们下面转移到 <span class="math inline">\(V\)</span> 的对偶空间 <span class="math inline">\(V^\ast\)</span> 中讨论万花筒的结构。本文主要参考了
-Bob Howlett 教授的讲义 <span class="citation" data-cites="Howlett-note">(<a href="#ref-Howlett-note" role="doc-biblioref">Howlett 1996</a>)</span>。</p>
+中关于根系的一些知识后，我们下面转移到 <span class="math inline">\(V\)</span> 的对偶空间 <span class="math inline">\(V^\ast\)</span> 中讨论万花筒的结构。</p>
 <p>设 <span class="math inline">\(V^\ast\)</span> 是 <span class="math inline">\(V\)</span> 的对偶空间，<span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 之间有一个自然的双线性映射 <span class="math display">\[V\times V^\ast\to\mathbb{R}: \langle
 v,\,f\rangle= f(v).\]</span> 注意 <span class="math inline">\(\langle
 \,,\,\rangle\)</span> 和内积 <span class="math inline">\((\cdot,\cdot)\)</span> 的区别：<span class="math inline">\(\langle \,,\,\rangle\)</span> 是 <span class="math inline">\(V\times V^\ast\)</span>
@@ -351,10 +351,12 @@ w^{-1}v,\,f\rangle.\quad v\in V,\,f\in V^\ast.\]</span> 在 <a href="/coxeter-gr
 <p><span class="statement-heading"><span class="statement-label">定义
 1.1</span>.</span><span class="statement-spah"> </span>定义 <strong>Tits
 锥</strong>为 <span class="math display">\[\mathcal{C}= \bigcup_{w\in W}
-w\overline{\mathcal{D}}.\]</span> Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 即为万花筒，它是 <span class="math inline">\(W\)</span>- 不变的。</p>
+w\overline{\mathcal{D}}.\]</span></p>
 </div>
-<p>读者可能有疑问为什么 Tits
-锥是位于对偶空间中的。一个看起来更自然的想法是，直接把 <span class="math inline">\(V\)</span> 中所有以 <span class="math inline">\(\Delta\)</span> 为法向量的正半空间之交 <span class="math display">\[\bigcap_{s\in S}\{v\in V\mid(\alpha_s,
+<p>Tits 锥 <span class="math inline">\(\mathcal{C}\)</span>
+可以理解为万花筒，它是由原像房间 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 在 <span class="math inline">\(W\)</span> 下的所有虚像构成的。容易看到 <span class="math inline">\(\mathcal{C}\)</span> 是 <span class="math inline">\(W\)</span>- 不变的。</p>
+<p>读者可能有疑问为什么 Tits 锥位于对偶空间 <span class="math inline">\(V^\ast\)</span>
+中。一个看起来更自然的想法是，直接把 <span class="math inline">\(V\)</span> 中所有以 <span class="math inline">\(\Delta\)</span> 为法向量的正半空间之交 <span class="math display">\[\bigcap_{s\in S}\{v\in V\mid(\alpha_s,
 v)&gt;0\}\]</span> 作为基本区域 <span class="math inline">\(\mathcal{D}\)</span>。在内积 <span class="math inline">\((\cdot,\cdot)\)</span>
 非退化时，这样做是可以的，但是在 <span class="math inline">\((\cdot,\cdot)\)</span> 退化时，可能会出现 <span class="math inline">\(\mathcal{D}\)</span> 是空集的问题。我们以仿射
 <span class="math inline">\(\widetilde{A_1}\)</span> 为例，它的 Coxeter
@@ -364,9 +366,9 @@ v)&gt;0\}\]</span> 作为基本区域 <span class="math inline">\(\mathcal{D}\)<
 (\alpha_s,\alpha_t)\\(\alpha_t,\alpha_t)&amp;
 (\alpha_t,\alpha_t)\end{pmatrix}
 =\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}.\]</span> 假设 <span class="math inline">\(v=a\alpha_s+b\alpha_t\in\mathcal{D}\)</span> 满足
-<span class="math inline">\((v,\alpha_s)&gt;0\)</span> 且 <span class="math inline">\((v,\alpha_t)&gt;0\)</span>，你会发现这要求 <span class="math inline">\(a&gt;b\)</span> 且 <span class="math inline">\(b&gt;a\)</span>，不存在这样的 <span class="math inline">\(v\)</span>！但是通过区分 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 上的作用就可以避免这个问题。因为
-<span class="math inline">\(\Delta\)</span>
-是一组线性无关的泛函，它们在对偶空间中正半空间的交一定是个非空的拓扑开集。</p>
+<span class="math inline">\((v,\alpha_s)&gt;0\)</span> 且 <span class="math inline">\((v,\alpha_t)&gt;0\)</span>，你会发现这要求 <span class="math inline">\(a&gt;b\)</span> 且 <span class="math inline">\(b&gt;a\)</span>，不存在这样的 <span class="math inline">\(v\)</span>！但是通过区分 <span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 上的作用就可以避免这个问题。因为
+<span class="math inline">\(\Delta\)</span> 作为 <span class="math inline">\(V\)</span> 的一组基构成 <span class="math inline">\(V^\ast\)</span> 上一组线性无关的泛函，它们在 <span class="math inline">\(V^\ast\)</span>
+中正半空间的交是非空的拓扑开集。</p>
 <p>读者可能注意到了：我们使用了 Tits 锥这个称呼，但 <span class="math inline">\(\mathcal{C}\)</span>
 真的是一个锥吗？这可不显然。要证明 Tits
 锥确实是锥，我们需要它的另一种等价刻画。</p>
@@ -376,10 +378,11 @@ v)&gt;0\}\]</span> 作为基本区域 <span class="math inline">\(\mathcal{D}\)<
 1.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(C\)</span> 是某实向量空间的子集。如果对任何 <span class="math inline">\(x\in C\)</span> 和实数 <span class="math inline">\(\alpha\geq0\)</span> 都有 <span class="math inline">\(\alpha x\in C\)</span>，就称 <span class="math inline">\(C\)</span> 是一个<strong>锥</strong>。如果 <span class="math inline">\(C\)</span> 还是凸集，就称 <span class="math inline">\(C\)</span> 是<strong>凸锥</strong>。凸锥满足对任何
 <span class="math inline">\(x,y\in C\)</span> 和非负实数 <span class="math inline">\(\alpha,\beta\geq0\)</span>，<span class="math inline">\(\alpha x + \beta y\)</span> 仍然属于 <span class="math inline">\(C\)</span>。</p>
 </div>
-<p>设 <span class="math inline">\(X=\{x_1,\ldots,x_n\}\)</span>
-是某实向量空间的有限子集，我们用记号 <span class="math inline">\(\mathrm{cone}(X)\)</span> 表示 <span class="math inline">\(X\)</span> 中元素的所有非负线性组合： <span class="math display">\[\mathrm{cone}(X) = \left\{\sum_{i=1}^n c_ix_i,\,
-c_i\geq0\right\}.\]</span> 显然 <span class="math inline">\(\mathrm{cone}(X)\)</span> 总是凸锥，并且它还是包含
+<p>设 <span class="math inline">\(X\)</span>
+是某实向量空间的子集，我们用记号 <span class="math inline">\(\mathrm{cone}(X)\)</span> 表示 <span class="math inline">\(X\)</span> 中元素的所有有限非负线性组合： <span class="math display">\[\mathrm{cone}(X) = \left\{\sum_{i=1}^n c_ix_i,\,
+x_1,\ldots,x_n\in X,\, c_i\geq0.\right\}.\]</span> 显然 <span class="math inline">\(\mathrm{cone}(X)\)</span> 总是凸锥，并且它还是包含
 <span class="math inline">\(X\)</span> 的最小凸锥。</p>
+<p>注意，当 <span class="math inline">\(X\)</span> 是有限集时，<span class="math inline">\(\mathrm{cone}(X)\)</span> 总是闭集，但是当 <span class="math inline">\(X\)</span> 是无限集时 <span class="math inline">\(\mathrm{cone}(X)\)</span> 未必是闭集。</p>
 <div id="fundamental-weights" class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 1.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\Delta^\ast=\{\omega_t\}\subset V^\ast\)</span> 是
@@ -405,7 +408,7 @@ x\in\overline{\mathcal{D}}.
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 1.5</span>.</span><span class="statement-spah"> </span>对任一 <span class="math inline">\(x\in V^\ast\)</span>，定义 <span class="math display">\[\mathrm{Neg}(x)= \{\lambda\in \Phi^+\mid \langle
-\lambda,\,x\rangle&lt;0\}.\]</span> <span class="math inline">\(\mathrm{Neg}(x)\)</span> 是正根 <span class="math inline">\(\Phi^+\)</span> 的子集，表示 <span class="math inline">\(x\)</span> 位于哪些「镜子」的背面。</p>
+\lambda,\,x\rangle&lt;0\}.\]</span> <span class="math inline">\(\mathrm{Neg}(x)\)</span> 是正根 <span class="math inline">\(\Phi^+\)</span> 的子集，表示 <span class="math inline">\(x\)</span> 位于哪些镜子的背面。</p>
 </div>
 <p>显然 <span class="math inline">\(\overline{\mathcal{D}}=\{x\in
 V^\ast\mid\mathrm{Neg}(x)=\emptyset\}\)</span>。房间 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
@@ -640,11 +643,6 @@ t|z-u|^2.\]</span> 令 <span class="math inline">\(t\to0^+\)</span> 可得
 <span class="math inline">\(z=tu\)</span> 代入有 <span class="math display">\[(1-t)\cdot(u-x, u)\geq0.\]</span> 上式对任何
 <span class="math inline">\(t\geq0\)</span> 成立必须只能是 <span class="math inline">\((u-x, u)=0\)</span>。于是不等式 <span class="math display">\[(u-x,z-u)\geq 0\]</span> 可以改写为 <span class="math display">\[(u-x,z)\geq0\]</span> 对任何 <span class="math inline">\(z\in\overline{C}\)</span> 成立。而 <span class="math inline">\((u-x,x)=-(u-x,u-x)&lt;0\)</span>。所以 <span class="math inline">\(u-x\)</span> 即为所求的法向量 <span class="math inline">\(n\)</span>。</p>
 </div>
-<p>定义 <span class="math inline">\(\mathrm{cone}(\Delta)\)</span>
-为单根系 <span class="math inline">\(\Delta\)</span>
-的所有非负系数线性组合： <span class="math display">\[\mathrm{cone}(\Delta) = \left\{\sum_{s\in
-S}c_s\alpha_s,c_s\geq0\right\}.\]</span> 显然 <span class="math inline">\(\mathrm{cone}(\Delta)\)</span> 是 <span class="math inline">\(V\)</span> 中的一个闭凸锥，它在 <span class="math inline">\(V^\ast\)</span> 中的对偶锥正是基本区域的闭包 <span class="math inline">\(\overline{\mathcal{D}}\)</span>： <span class="math display">\[\overline{\mathcal{D}}= \{x\in V^\ast\mid \langle
-v,\,x\rangle\geq0,\ \forall v\in\mathrm{cone}(\Delta)\}.\]</span></p>
 <p>回到 Tits 锥 <span class="math inline">\(\mathcal{C}\)</span>
 的讨论上来。由于 <span class="math inline">\(\mathcal{C}\in
 V^\ast\)</span> 所以 <span class="math inline">\(\mathcal{C}^\ast\in
@@ -654,6 +652,10 @@ V\)</span>。我们有如下定理：</p>
 3.3</span>.</span><span class="statement-spah"> </span>Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 的对偶锥为 <span class="math inline">\(\mathcal{C}^\ast=\bigcap\limits_{w\in
 W}w(\mathrm{cone}(\Delta))\)</span>。</p>
 </div>
+<p>显然 <span class="math inline">\(\mathrm{cone}(\Delta)\)</span> 是
+<span class="math inline">\(V\)</span> 中的一个闭凸锥，它在 <span class="math inline">\(V^\ast\)</span> 中的对偶锥正是基本区域的闭包 <span class="math inline">\(\overline{\mathcal{D}}\)</span>： <span class="math display">\[\overline{\mathcal{D}}= \{x\in V^\ast\mid \langle
+\lambda,\,x\rangle\geq0,\ \forall
+\lambda\in\mathrm{cone}(\Delta)\}.\]</span></p>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>由定理结论可见 Tits 锥的对偶锥同样是 <span class="math inline">\(W\)</span>- 不变的。</p>
@@ -692,7 +694,7 @@ all } w \in W\}\\
 \end{align}
 \]</span></p>
 <p>根据归纳假设 <span class="math inline">\(w'v\in\mathrm{cone}(\Delta)\)</span>，再结合
-<span class="math inline">\(w'\alpha_s\in\Phi^+\subset\mathrm{cone}(\Delta)\)</span>，所以结论成立。</p>
+<span class="math inline">\(w'\alpha_s\in\Phi^+\subset\mathrm{cone}(\Delta)\)</span>，所以结论成立。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="dual-cone-nonspace" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
 3.5</span>.</span><span class="statement-spah"> </span>对任何 <span class="math inline">\(u,v\in\mathcal{C}^\ast\)</span> 有 <span class="math inline">\((u,v)\leq 0\)</span>。</p>
