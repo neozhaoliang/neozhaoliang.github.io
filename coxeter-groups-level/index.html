@@ -393,9 +393,11 @@ level 就是 2。</li>
 <p>这一节是纯技术性的，我会指明几个关于 <span class="math inline">\(\Delta=\{\alpha_s\mid s\in S\}\)</span> 和对偶基
 <span class="math inline">\(\Delta^\ast=\{\omega_s\mid s\in S\}\)</span>
 之间关系的显然等式，这样下文用到它们时就不必再重复说明。</p>
-<p>设内积 <span class="math inline">\((\cdot,\cdot)\)</span> 在 <span class="math inline">\(\Delta\)</span> 这组基下的 Gram 矩阵是 <span class="math display">\[A=\big((\alpha_s,\alpha_t)\big)_{s,t\in
-S}.\]</span> 则内积 <span class="math inline">\((\cdot,\cdot)\)</span>
-在 <span class="math inline">\(\Delta^\ast\)</span> 这组基下的 Gram
+<p>在本节中我们都假定内积 <span class="math inline">\((\cdot,\cdot)\)</span>
+是非退化的，于是我们可以通过 <span class="math inline">\((\cdot,\cdot)\)</span> 将 <span class="math inline">\(V\)</span> 和 <span class="math inline">\(V^\ast\)</span> 等同起来：对任何 <span class="math inline">\(\alpha_s\in\Delta\)</span> 和 <span class="math inline">\(\omega_t\in\Delta^\ast\)</span> 有 <span class="math inline">\((\alpha_s,\omega_t)=\delta_{st}\)</span>。</p>
+<p>内积 <span class="math inline">\((\cdot,\cdot)\)</span> 在 <span class="math inline">\(\Delta\)</span> 这组基下的 Gram 矩阵记作 <span class="math display">\[A=\big((\alpha_s,\alpha_t)\big)_{s,t\in
+S}.\]</span> 则 <span class="math inline">\((\cdot,\cdot)\)</span> 在
+<span class="math inline">\(\Delta^\ast\)</span> 这组基下的 Gram
 矩阵就是 <span class="math display">\[A^{-1}=\big((\omega_s,\omega_t)\big)_{s,t\in
 S}.\]</span> <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(s\)</span> 行与 <span class="math inline">\(A^{-1}\)</span> 的第 <span class="math inline">\(s\)</span> 列的点积是 1，所以 <span class="math display">\[1=\sum_{t\in S}(\alpha_s,\alpha_t)\cdot
 (\omega_t,\omega_s)=(\omega_s,\omega_s)+\sum_{t\ne
@@ -407,6 +409,21 @@ s}(\omega_t,\omega_s)\cdot(\alpha_s,\alpha_t).\tag{I}\label{eq:idI}\]</span>
 (\omega_t,\omega_s)=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s}
 (\omega_s,\omega_t)\alpha_t.\tag{II}\label{eq:idII}\]</span>
 这是我们的第二个恒等式。</p>
+<div id="observation">
+
+</div>
+<p>接下来是一个有用的观察：</p>
+<p>对任何 <span class="math inline">\(s\in S\)</span>，记 <span class="math inline">\(I = S\setminus\{s\}\)</span>，<span class="math inline">\(W_I\)</span> 是标准椭圆子群，<span class="math inline">\(V_I=\mathrm{span}\{\alpha_t\mid t\ne s\}\)</span>
+是 <span class="math inline">\(V\)</span> 的 <span class="math inline">\(n-1\)</span> 维子空间。</p>
+<p>当 <span class="math inline">\((\omega_s,\omega_s)\ne0\)</span>
+时，记 <span class="math inline">\(\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)\)</span>，显然
+<span class="math inline">\((\alpha_s',\omega_s)=0\)</span>，于是
+<span class="math display">\[\alpha_s'\in \omega_s^\bot =
+V_I.\]</span> 并且对任何 <span class="math inline">\(t\in I\)</span> 有
+<span class="math display">\[(\alpha_s',\alpha_t)=
+(\alpha_s,\alpha_t)\leq0.\]</span> 这说明 <span class="math inline">\(-\alpha_s'\)</span> 属于 <span class="math inline">\(W_I\)</span> 在 <span class="math inline">\(V_I\)</span> 上作用的基本区域的闭包 <span class="math display">\[\overline{\mathcal{D}}_s= \{v\in V_I\mid (v,
+\alpha_t)\geq0,\, t\in I\}=\mathrm{cone}(\{\omega_t\mid t\in
+I\}).\]</span> 这个观察虽然很简单，但是后面很有用。</p>
 <h1 id="level-1-是双曲的">Level 1 是双曲的</h1>
 <p>本节来证明 level 等于 1 的群都是双曲的。</p>
 <p>首先是一个定义：</p>
@@ -760,17 +777,15 @@ s)\)</span> 的内积满足 <span class="math inline">\((\omega_s,
 都非正。</p></li>
 <li><p>如果 <span class="math inline">\((\omega_s,\omega_s)&gt;0\)</span>，则其正交补
 <span class="math inline">\(U=\omega_s^\bot=\mathrm{span}\{\alpha_t\mid
-t\ne s\}\)</span> 是双曲的，即 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的 level 是 1。考虑
-<span class="math inline">\(\alpha_s\)</span> 在 <span class="math inline">\(U\)</span> 上的正交投影 <span class="math display">\[\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s).\]</span>
-<span class="math inline">\(\alpha_s'\)</span> 满足对任何 <span class="math inline">\(t\ne s\)</span> 有 <span class="math display">\[(\alpha_s',\alpha_t)=(\alpha_s,\alpha_t)\leq0.\]</span>
-从而 <span class="math inline">\(-\alpha_s'\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的基本区域的闭包
-<span class="math display">\[\overline{\mathcal{D}}_s=\mathrm{cone}(\{\omega_t\mid
-t\ne s\}).\]</span> 根据 <a href="#level-1-tits" title="推论 3.4">推论
-3.4</a>，<span class="math inline">\(\overline{\mathcal{D}}_s\)</span>
-中的点都是 time-like 或者 light-like 的，且属于 <span class="math inline">\(\{u\in U\mid (u,u)\leq0\}\)</span>
-的同一个分支，从而 <span class="math display">\[(\alpha_s',\alpha_s')=
-1-(\omega_s,\omega_s)^{-1}\leq0.\]</span> 即 <span class="math inline">\(0&lt;(\omega_s,\omega_s)\leq1\)</span>，以及对任何
-<span class="math inline">\(t\ne s\)</span> 有 <span class="math display">\[(-\alpha_s',\omega_t)=(\omega_s,\omega_t)/(\omega_s,\omega_s)\leq0.\]</span>
+t\ne s\}\)</span> 是双曲的，即 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的 level 是
+1。根据我们前面的 <a href="#observation">观察</a>，<span class="math inline">\(\alpha_s\)</span> 在 <span class="math inline">\(U\)</span> 上的正交投影 <span class="math display">\[\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s)\]</span>
+满足 <span class="math inline">\(-\alpha_s'\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的基本区域的闭包
+<span class="math inline">\(\overline{\mathcal{D}}_s\)</span>。根据 <a href="#level-1-tits" title="推论 3.4">推论 3.4</a>，<span class="math inline">\(\overline{\mathcal{D}}_s\)</span> 中的点都是
+time-like 或者 light-like 的，且属于 <span class="math inline">\(\mathcal{Q}\cap U=\{u\in U\mid
+(u,u)\leq0\}\)</span> 的同一个分支，从而 <span class="math display">\[(\alpha_s',\alpha_s')=
+1-(\omega_s,\omega_s)^{-1}\leq0.\]</span> 即 <span class="math inline">\(0&lt;(\omega_s,\omega_s)\leq1\)</span>。并且由于
+<span class="math inline">\(\overline{\mathcal{D}}_s\)</span> 在 <span class="math inline">\(\mathcal{Q}\cap U\)</span>
+的同一分支中，所以其中任何两点的内积非正，特别地对任何 <span class="math inline">\(t\ne s\)</span> 有 <span class="math display">\[(-\alpha_s',\omega_t)=(\omega_s,\omega_t)/(\omega_s,\omega_s)\leq0.\]</span>
 即 <span class="math inline">\((\omega_s,\omega_t)\leq
 0\)</span>，同样所有的 <span class="math inline">\(\{(\omega_s,\omega_t)\}_{t\ne s}\)</span>
 都非正。</p></li>
