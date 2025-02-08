@@ -574,7 +574,7 @@ W_I}\)</span>
 的那些镜面生成的椭圆子群会把基本区域无限压缩到 <span class="math inline">\(\omega_s\)</span> 附近，如下图所示：</p>
 <p><img src="/images/coxeter/ideal-vertex.jpg" class="fig" width="350"></p>
 </div>
-<p><strong>证明</strong>：由已知子空间 <span class="math inline">\(V_I=\mathrm{span}\{\alpha_t,\,t\ne s\}\)</span>
+<p><strong>证明</strong>：由已知子空间 <span class="math inline">\(V_I=\mathrm{span}\{\alpha_t\mid t\ne s\}\)</span>
 是仿射的，并且 <span class="math inline">\(\mathrm{rad}(V_I)\)</span>
 是一维的。根据恒等式 <span class="math inline">\((\ref{eq:idII})\)</span> <span class="math display">\[\omega_s =
 \underbrace{(\omega_s,\omega_s)}_{=0}\alpha_s +  \sum_{t\ne s}(\omega_s,
@@ -759,13 +759,13 @@ s)\)</span> 的内积满足 <span class="math inline">\((\omega_s,
 0，矛盾。所以所有的 <span class="math inline">\(\{(\omega_s,\omega_t)\}_{t\ne s}\)</span>
 都非正。</p></li>
 <li><p>如果 <span class="math inline">\((\omega_s,\omega_s)&gt;0\)</span>，则其正交补
-<span class="math inline">\(U=\omega_s^\bot={\rm span}\{\alpha_t,\,t\ne
-s\}\)</span> 是双曲的，即 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的 level 是 1。考虑
+<span class="math inline">\(U=\omega_s^\bot=\mathrm{span}\{\alpha_t\mid
+t\ne s\}\)</span> 是双曲的，即 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的 level 是 1。考虑
 <span class="math inline">\(\alpha_s\)</span> 在 <span class="math inline">\(U\)</span> 上的正交投影 <span class="math display">\[\alpha_s'=\alpha_s-\omega_s/(\omega_s,\omega_s).\]</span>
 <span class="math inline">\(\alpha_s'\)</span> 满足对任何 <span class="math inline">\(t\ne s\)</span> 有 <span class="math display">\[(\alpha_s',\alpha_t)=(\alpha_s,\alpha_t)\leq0.\]</span>
 从而 <span class="math inline">\(-\alpha_s'\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的基本区域的闭包
-<span class="math display">\[\overline{\mathcal{D}}_s=\mathrm{cone}(\{\omega_t,t\ne
-s\}).\]</span> 根据 <a href="#level-1-tits" title="推论 3.4">推论
+<span class="math display">\[\overline{\mathcal{D}}_s=\mathrm{cone}(\{\omega_t\mid
+t\ne s\}).\]</span> 根据 <a href="#level-1-tits" title="推论 3.4">推论
 3.4</a>，<span class="math inline">\(\overline{\mathcal{D}}_s\)</span>
 中的点都是 time-like 或者 light-like 的，且属于 <span class="math inline">\(\{u\in U\mid (u,u)\leq0\}\)</span>
 的同一个分支，从而 <span class="math display">\[(\alpha_s',\alpha_s')=
@@ -781,7 +781,7 @@ s\}).\]</span> 根据 <a href="#level-1-tits" title="推论 3.4">推论
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>我们需要考虑 <span class="math inline">\(\alpha_s\)</span> 的投影
-<span class="math inline">\(\alpha_s'\)</span> 是因为 <span class="math inline">\(\alpha_s\)</span> 不属于 <span class="math inline">\({\rm span}\{\alpha_t,\,t\ne
+<span class="math inline">\(\alpha_s'\)</span> 是因为 <span class="math inline">\(\alpha_s\)</span> 不属于 <span class="math inline">\(\mathrm{span}\{\alpha_t\mid t\ne
 s\}\)</span>，无法直接根据 <span class="math inline">\((\alpha_s,\alpha_t)\leq0\)</span> 得出 <span class="math inline">\(-\alpha_s\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{s\}\)</span>
 的基本区域的闭包。</p>
 </div>
@@ -853,9 +853,9 @@ level 等于 1 或 2。</p>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>这里考虑 <span class="math inline">\(w(\omega_j)\)</span>
-的投影分量 <span class="math inline">\(v\)</span> 的理由同样是因为 <span class="math inline">\(w(\omega_j)\)</span> 未必属于 <span class="math inline">\({\rm span}\{\alpha_k,\,k\ne i\}\)</span>，所以由
-<span class="math inline">\((w(\omega_j),\alpha_k)\geq0\)</span>
-无法得出 <span class="math inline">\(w(\omega_j)\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{i\}\)</span> 的基本区域。</p>
+的投影分量 <span class="math inline">\(v\)</span> 的理由同样是因为 <span class="math inline">\(w(\omega_j)\)</span> 未必属于 <span class="math inline">\(\mathrm{span}\{\alpha_k\mid k\ne
+i\}\)</span>，所以由 <span class="math inline">\((w(\omega_j),\alpha_k)\geq0\)</span> 无法得出
+<span class="math inline">\(w(\omega_j)\)</span> 属于 <span class="math inline">\(\Gamma\setminus\{i\}\)</span> 的基本区域。</p>
 </div>
 <h1 id="附录">附录</h1>
 <h2 id="level-1-情形断言的证明">level 1 情形断言的证明</h2>
