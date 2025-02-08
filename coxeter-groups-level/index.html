@@ -374,7 +374,9 @@ level 就是 2。</li>
 </div>
 <p><strong>证明</strong>：对 <span class="math inline">\(l\)</span>
 归纳。当 <span class="math inline">\(l=0\)</span>
-时，由于在一个有限或者仿射的连通图中删去任何一个顶点后剩下的一定是有限子图，所以结论成立。</p>
+时，由于在一个有限或者仿射的连通图中删去任何一个顶点后剩下的一定是有限子图
+<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
+2.6</a>)</span>，所以结论成立。</p>
 <p>假设结论对所有小于 <span class="math inline">\(l\)</span>
 的正整数成立，考虑 <span class="math inline">\(l\)</span>
 的情形。用反证法。</p>
@@ -399,10 +401,10 @@ S}.\]</span> <span class="math inline">\(A\)</span> 的第 <span class="math inl
 (\omega_t,\omega_s)=(\omega_s,\omega_s)+\sum_{t\ne
 s}(\omega_t,\omega_s)\cdot(\alpha_s,\alpha_t).\tag{I}\label{eq:idI}\]</span>
 这是我们的第一个恒等式。</p>
-<p>设 <span class="math inline">\(\mathbf{A}\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，满足对每个 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(\mathbf{A}(\omega_s)=\alpha_s\)</span>，则 <span class="math inline">\(\mathbf{A}\)</span> 在 <span class="math inline">\(\{\omega_s\}\)</span> 这组基下的矩阵就是 <span class="math inline">\(A\)</span>。即 <span class="math display">\[(\alpha_1,\ldots,\alpha_n)=
-(\omega_1,\ldots,\omega_n)A.\]</span> 于是 <span class="math display">\[(\omega_1,\ldots,\omega_n)=(\alpha_1,\ldots,\alpha_n)A^{-1}.\]</span></p>
-<p>特别地 <span class="math display">\[\omega_s = \sum_{t\in S}\alpha_t
-\cdot (\omega_t,\omega_s)=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s}
+<p>设 <span class="math inline">\(\mathbf{A}\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，满足对每个 <span class="math inline">\(s\in S\)</span> 有 <span class="math inline">\(\mathbf{A}(\omega_s)=\alpha_s\)</span>，则 <span class="math inline">\(\mathbf{A}\)</span> 在 <span class="math inline">\(\{\omega_s\}\)</span> 这组基下的矩阵就是 <span class="math inline">\(A\)</span>： <span class="math display">\[(\alpha_1,\ldots,\alpha_n)=
+(\omega_1,\ldots,\omega_n)A.\]</span> 于是 <span class="math display">\[(\omega_1,\ldots,\omega_n)=(\alpha_1,\ldots,\alpha_n)A^{-1}.\]</span>
+在两边取下标为 <span class="math inline">\(s\)</span> 的列，得到 <span class="math display">\[\omega_s = \sum_{t\in S}\alpha_t \cdot
+(\omega_t,\omega_s)=(\omega_s,\omega_s)\alpha_s + \sum_{t\ne s}
 (\omega_s,\omega_t)\alpha_t.\tag{II}\label{eq:idII}\]</span>
 这是我们的第二个恒等式。</p>
 <h1 id="level-1-是双曲的">Level 1 是双曲的</h1>
@@ -470,15 +472,14 @@ Lorentzian 内积时，<span class="math inline">\(v\)</span> 是实的等价于
 <li>任何满足 <span class="math inline">\((v,v)=0\)</span> 的向量 <span class="math inline">\(v=\sum_{s\in S}v_s\alpha_s\)</span> 其系数 <span class="math inline">\(v_s\)</span> 至多只有一个为 0，其余都同号。</li>
 </ol>
 <p>我把这两个断言的证明放在附录中，先承认它们是正确的，用它们来导出矛盾：</p>
-<p>取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(v_s\ne 0\)</span>，则 <span class="math inline">\(u'=v_su-u_sv\)</span> 满足 <span class="math inline">\((u',u')=v_s^2(u,u)&lt;0\)</span> 且 <span class="math inline">\(u'\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项的系数 <span class="math inline">\(u'_s=0\)</span>。但根据断言 1，<span class="math inline">\(u'\)</span>
+<p>取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(v_s\ne 0\)</span>，则 <span class="math inline">\(u'=v_su-u_sv\)</span> 满足 <span class="math inline">\((u',u')=v_s^2(u,u)&lt;0\)</span>，且 <span class="math inline">\(u'\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项系数 <span class="math inline">\(u'_s=0\)</span>。但根据断言 1，<span class="math inline">\(u'\)</span>
 的系数必须非零且同号，这就导致了矛盾，所以 <span class="math inline">\(\Gamma\)</span> 必然是双曲的，从而结论 1
 成立。</p>
 <p>再来证明结论 2。</p>
-<p>由于对任何 <span class="math inline">\(s\in S\)</span>，子图 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 的 level 等于
-0，所以 <span class="math inline">\({\rm span}\{\alpha_t,t\ne
-s\}\)</span> 是有限或者仿射的 <span class="math inline">\(n-1\)</span>
-维子空间。它的正交补显然是 <span class="math inline">\(\omega_s\)</span>
-张成的一维子空间 <span class="math inline">\(\mathbb{R}\omega_s\)</span>，再结合 <span class="math inline">\((\cdot,\cdot)\)</span> 是双曲的我们有 <span class="math inline">\((\omega_s,\omega_s)\leq 0\)</span>，所以 <span class="math inline">\(\{\omega_s\}_{s\in S}\)</span> 都不是实的。</p>
+<p>由于 <span class="math inline">\(\Gamma\)</span> 的 level 是
+1，对任何 <span class="math inline">\(s\in S\)</span>，子空间 <span class="math inline">\(U_{S\setminus\{s\}}=\mathrm{span}\{\alpha_t\mid
+t\ne s\}\)</span> 是有限或者仿射的。<span class="math inline">\(U_{S\setminus\{s\}}\)</span> 的正交补显然是 <span class="math inline">\(\mathbb{R}\omega_s\)</span>，并且 <a href="/coxeter-groups-three-cases/#orth-complement-lorentzian"><span class="math inline">\(\mathbb{R}\omega_s\)</span> 是 time-like 或者
+light-like 的</a>，所以 <span class="math inline">\((\omega_s,\omega_s)\leq 0\)</span>。即任何 <span class="math inline">\(\omega_s\,(s\in S)\)</span> 都不是实的。</p>
 <p>再来证明结论 3。</p>
 <p>观察恒等式 <span class="math inline">\((\ref{eq:idII})\)</span>：
 <span class="math display">\[\omega_s = (\omega_s,\omega_s)\alpha_s +
@@ -492,14 +493,16 @@ s\}\)</span> 是有限或者仿射的 <span class="math inline">\(n-1\)</span>
 <span class="math inline">\(\{(\omega_s,\omega_t)\}_{t\ne s}\)</span>
 都不为 0 且同号。我们来确定它们的符号：根据恒等式 <span class="math inline">\((\ref{eq:idI})\)</span> <span class="math display">\[1 = (\omega_s,\omega_s) + \sum_{t\ne s}
 (\omega_s,\omega_t)(\alpha_t,\alpha_s)=\sum_{t\ne s}
-(\omega_s,\omega_t)(\alpha_t,\alpha_s),\]</span> 以及对所有的 <span class="math inline">\(t\ne s\)</span> 有 <span class="math inline">\((\alpha_s,\alpha_t)\leq 0\)</span>，所以只能是
-<span class="math inline">\((\omega_s,\omega_t)&lt;0\)</span>。</li>
+(\omega_s,\omega_t)\underbrace{(\alpha_t,\alpha_s)}_{\leq0},\]</span>
+显然只能是 <span class="math inline">\((\omega_s,\omega_t)&lt;0\)</span>。</li>
 </ol>
 <p>总之我们说明了对任何 <span class="math inline">\(s\ne t\)</span> 都有
 <span class="math inline">\((\omega_s,\omega_t)&lt;0\)</span>。此外二维子空间
-<span class="math inline">\(U={\rm span}\{\omega_s,\omega_t\}\)</span>
-的正交补是 <span class="math inline">\(U^\bot={\rm
-span}\{\alpha_{k},\,k\ne s,t\}\)</span>，根据 <a href="#level-l" title="定理 1.2">定理 1.2</a> <span class="math inline">\(U^\bot\)</span> 是 space-like 的，所以 <span class="math inline">\(U\)</span> 必然是 time-like 的，从而 <span class="math inline">\(\{\omega_s,\omega_t\}\)</span> 是分离的。</p>
+<span class="math inline">\(U_{s,t}={\rm
+span}\{\omega_s,\omega_t\}\)</span> 的正交补是 <span class="math inline">\(U_{s,t}^\bot=\mathrm{span}\{\alpha_{k}\mid k\ne
+s,t\}\)</span>，根据 <a href="#level-l" title="定理 1.2">定理 1.2</a>
+<span class="math inline">\(U_{s,t}^\bot\)</span> 是 space-like 的，从而
+<span class="math inline">\(U_{s,t}\)</span> 是 time-like 的，从而 <span class="math inline">\(\{\omega_s,\omega_t\}\)</span> 是分离的。</p>
 <p>至此定理得证。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="level-1-tits" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
@@ -521,18 +524,19 @@ S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.\]</span> 即 <span class=
 W}w\overline{\mathcal{D}}\subset\mathcal{Q}\)</span>，从而 <span class="math inline">\(\overline{ \mathcal{C}
 }\subset\mathcal{Q}\)</span>。</p>
 <p>再来说明 <span class="math inline">\(\overline{ \mathcal{C}
-}\cap\mathcal{Q}_-=\{0\}\)</span>。首先注意到 <span class="math inline">\(\mathcal{C}^\ast\)</span> 必然包含某个 time-like
-的向量 <span class="math inline">\((z,z)&lt;0\)</span>。若不然，则 <a href="/coxeter-groups-tits-cone#dual-cone-nonspace"><span class="math inline">\(\mathcal{C}^\ast\)</span> 中的非零向量都是
-light-like 的</a>。由于 <span class="math inline">\((\cdot,\cdot)\)</span> 是双曲的，<span class="math inline">\(\mathcal{C}^\ast\)</span> 不能包含两个线性无关的
+}\cap\mathcal{Q}_-=\{0\}\)</span>。我们知道 <a href="/coxeter-groups-three-cases/#dual-cone-non-trivial"><span class="math inline">\(\mathcal{C}^\ast\ne\{0\}\)</span></a>。我们断言
+<span class="math inline">\(\mathcal{C}^\ast\)</span> 必然包含某个
+time-like 的向量 <span class="math inline">\((z,z)&lt;0\)</span>。否则
+<a href="/coxeter-groups-tits-cone#dual-cone-nonspace"><span class="math inline">\(\mathcal{C}^\ast\)</span> 中的非零向量都是
+light-like 的</a>。但是 <span class="math inline">\(\mathcal{C}^\ast\)</span> 不能包含两个线性无关的
 light-like 的向量（否则它们的正线性组合会得到 time-like
 的向量，这个向量属于 <span class="math inline">\(\mathcal{C}^\ast\)</span>），所以 <span class="math inline">\(\mathcal{C}^\ast\subset\mathbb{R}\delta\)</span>，其中
 <span class="math inline">\(\delta\)</span> 是一个 light-like
-的向量。取对偶得到 <span class="math inline">\(\overline{ \mathcal{C}
-}=\{v\in V\mid (v,\delta)\geq0\}\)</span>，这是一个半空间，显然包含
-space-like 的向量，这与 <span class="math inline">\(\overline{
-\mathcal{C} }\subset\mathcal{Q}\)</span> 矛盾。所以我们确实可以取 <span class="math inline">\(z\in\mathcal{C}^\ast\)</span> 满足 <span class="math inline">\((z,z)&lt;0\)</span>。</p>
-<p>由于 <span class="math inline">\((z,\overline{ \mathcal{C}
-})\geq0\)</span> 且 <span class="math inline">\(\mathcal{Q}_+\subset\overline{ \mathcal{C}
+的向量。取对偶得到 <span class="math display">\[\overline{ \mathcal{C}
+}=\mathcal{C}^{\ast\ast}\supset\{v\in V\mid (v,\delta)\geq0\}.\]</span>
+这是一个半空间，显然包含 space-like 的向量，这与 <span class="math inline">\(\overline{ \mathcal{C}
+}\subset\mathcal{Q}\)</span> 矛盾。所以我们确实可以取 <span class="math inline">\(z\in\mathcal{C}^\ast\)</span> 满足 <span class="math inline">\((z,z)&lt;0\)</span>，于是 <span class="math inline">\((z,\overline{ \mathcal{C} })\geq0\)</span>。又因为
+<span class="math inline">\(\mathcal{Q}_+\subset\overline{ \mathcal{C}
 }\)</span>，所以 <span class="math inline">\(z\in\mathcal{Q}_-\)</span>。</p>
 <p>设 <span class="math inline">\(x\ne0\in\overline{ \mathcal{C}
 }\cap\mathcal{Q}_-\)</span>，则 <span class="math inline">\(z\in\mathcal{C}^\ast\)</span> 和 <span class="math inline">\(x\in\overline{ \mathcal{C} }\)</span> 说明 <span class="math inline">\((z,x)\geq0\)</span>；但另一方面 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(z\)</span> 同时属于 <span class="math inline">\(\mathcal{Q}_-\)</span> 并且 <span class="math inline">\(z\)</span> 是 time-like 的导致 <span class="math inline">\((z,x)&lt;0\)</span>，矛盾。所以 <span class="math inline">\(\overline{ \mathcal{C}
@@ -930,6 +934,11 @@ I_0|\geq2\)</span>。level 2 要求 <span class="math inline">\((v_+,v_+)\geq0,\
 <p>至此断言 2 得证，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Humphreys90" class="csl-entry" role="listitem">
+Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
+Cambridge Studies in Advanced Mathematics. Cambridge University Press.
+<a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
+</div>
 <div id="ref-Maxwell82" class="csl-entry" role="listitem">
 Maxwell, George. 1982. <span>“Sphere Packings and Hyperbolic Reflection
 Groups.”</span> <em>Journal of Algebra</em> 79 (1): 78–97. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/0021-8693(82)90318-0">https://doi.org/10.1016/0021-8693(82)90318-0</a>.
