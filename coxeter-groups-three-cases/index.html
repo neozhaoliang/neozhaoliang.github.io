@@ -405,10 +405,9 @@ cone)。</p>
 <p><strong>证明</strong>：由于 <span class="math display">\[\mathcal{C}\cap-\mathcal{C}=\bigcup_{w_1,w_2\in
 W}w_1\overline{\mathcal{D}}\cap w_2(-\overline{\mathcal{D}}),\]</span>
 所以若 <span class="math inline">\(\mathcal{C}\cap-\mathcal{C}\ne\{0\}\)</span>
-则存在非零向量 <span class="math inline">\(x\in\overline{\mathcal{D}}\)</span> 和 <span class="math inline">\(w\in W\)</span> 满足 <span class="math inline">\(-wx\in\overline{\mathcal{D}}\)</span>。令 <span class="math display">\[J=\{s\in S\mid \langle
-\alpha_s,\,x\rangle=0\},\]</span> 则 <span class="math inline">\(x\ne
-0\)</span> 说明 <span class="math inline">\(J\subsetneqq S\)</span>
-是真子集，且对任何 <span class="math inline">\(\lambda\in\Phi^+\setminus\Phi^+_J\)</span> 都有
+则存在 <span class="math inline">\(x\ne0\in\overline{\mathcal{D}}\)</span> 和 <span class="math inline">\(w\in W\)</span> 满足 <span class="math inline">\(-wx\in\overline{\mathcal{D}}\)</span>。令 <span class="math display">\[J=\{s\in S\mid \langle
+\alpha_s,\,x\rangle=0\}\]</span> 是经过 <span class="math inline">\(x\)</span> 的那些镜子。<span class="math inline">\(x\ne 0\)</span> 说明 <span class="math inline">\(J\subsetneqq S\)</span> 是真子集。</p>
+<p>对任何 <span class="math inline">\(\lambda\in\Phi^+\setminus\Phi^+_J\)</span>，显然
 <span class="math inline">\(\langle
 \lambda,\,x\rangle&gt;0\)</span>，并且对这样的 <span class="math inline">\(\lambda\)</span> 有 <span class="math display">\[\langle w\lambda,\,-wx\rangle = \langle
 \lambda,\,-x\rangle&lt;0.\]</span> 而 <span class="math inline">\(-wx\in\overline{\mathcal{D}}\)</span>，所以 <span class="math inline">\(w\lambda\)</span> 是负根，从而 <span class="math inline">\(\Phi^+\setminus\Phi^+_J\subset\mathrm{Neg}(w)\)</span>，从而
@@ -465,27 +464,21 @@ c\geq0\}\)</span>，Tits 锥是以 <span class="math inline">\(\delta\)</span> �
 <span class="math inline">\(\mathcal{C}=\{z&gt;0\}\cup\{0\}\)</span>。<span class="math inline">\(\mathcal{C}\)</span> 与平面 <span class="math inline">\(z=1\)</span> 的交给出二维的 Euclidean 密铺。</p>
 <p><img src="/images/coxeter/Tits_affine.png" class="fig" width="350"></p>
 </div>
-<p><strong>证明</strong>：我们已经知道 <span class="math inline">\(\mathrm{rad}(V)=\mathbb{R}\delta\)</span>。根据 <a href="#dual-cone-non-trivial" title="推论 2.3">推论 2.3</a>，<span class="math inline">\(\mathcal{C}^\ast\)</span>
-包含非零向量，且对任何这样的非零向量 <span class="math inline">\(v\)</span>，由于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量 <a href="/coxeter-groups-tits-cone/#dual-cone-nonspace">满足 <span class="math inline">\((v,v)\leq0\)</span></a>，以及 <span class="math inline">\((\cdot,\cdot)\)</span> 半正定，所以 <span class="math inline">\((v,v)=0\)</span>，即 <span class="math inline">\(v\in\mathrm{rad}(V)\)</span>，从而 <span class="math inline">\(v\)</span> 与 <span class="math inline">\(\delta\)</span> 共线，从而 <span class="math inline">\(\{0\}\ne\mathcal{C}^\ast\subseteq\mathbb{R}\delta\)</span>。即
-<span class="math inline">\(\mathcal{C}^\ast\)</span> 包含在 <span class="math inline">\(\delta\)</span> 生成的一维直线中。</p>
-<p>另一方面从 <a href="/coxeter-groups-tits-cone/#dual-cone">对偶锥的定义</a> 易见 <span class="math inline">\(\mathcal{C}^\ast\cap-\mathcal{C}^\ast=\{0\}\)</span>，所以
-<span class="math inline">\(\mathcal{C}^\ast\)</span> 要么等于射线 <span class="math inline">\(\mathbb{R}_{\geq0}\delta\)</span>，要么等于射线
-<span class="math inline">\(\mathbb{R}_{\leq0}\delta\)</span>。结合
-<span class="math inline">\(\delta\)</span> 是 <span class="math inline">\(\Delta\)</span> 的正线性组合，以及 <span class="math inline">\(\mathcal{C}^\ast\subset\mathrm{cone}(\Delta)\)</span>，这只能是
+<p><strong>证明</strong>：我们已经知道 <span class="math inline">\(\mathrm{rad}(V)=\mathbb{R}\delta\)</span>。根据 <a href="#dual-cone-non-trivial" title="推论 2.3">推论 2.3</a>，<span class="math inline">\(\mathcal{C}^\ast\)</span> 包含某个非零向量 <span class="math inline">\(v\)</span>。由 <a href="/coxeter-groups-tits-cone/#dual-cone-nonspace"><span class="math inline">\((v,v)\leq0\)</span></a> 以及 <span class="math inline">\((\cdot,\cdot)\)</span> 半正定，所以 <span class="math inline">\((v,v)=0\)</span>，即 <span class="math inline">\(v\in\mathrm{rad}(V)\)</span>。从而 <span class="math inline">\(\{0\}\ne\mathcal{C}^\ast\subseteq\mathbb{R}\delta\)</span>。再结合
+<a href="/coxeter-groups-tits-cone/#tits-cone-dual-pointed"><span class="math inline">\(\mathcal{C}^\ast\)</span> 是点锥</a>，所以 <span class="math inline">\(\mathcal{C}^\ast\)</span> 只能是 <span class="math inline">\(\mathbb{R}_{\geq0}\delta\)</span> 或者 <span class="math inline">\(\mathbb{R}_{\leq0}\delta\)</span>。但由于 <span class="math inline">\(\delta\)</span> 是 <span class="math inline">\(\Delta\)</span> 的正线性组合，<span class="math inline">\(-\delta\notin\mathrm{cone}(\Delta)\)</span>，所以
 <span class="math inline">\(\mathcal{C}^\ast=\mathbb{R}_{\geq0}\delta\)</span>。这就给出了对偶锥
 <span class="math inline">\(\mathcal{C}^\ast\)</span> 的刻画。</p>
-<p>再来分析 Tits 锥 <span class="math inline">\(\mathcal{C}\)</span>。取对偶得到 <span class="math inline">\(\overline{\mathcal{C}}=\mathcal{C}^{\ast\ast}=\{\delta\geq0\}\)</span>。特别地
-<span class="math inline">\(\mathcal{C}\subset\{\delta\geq0\}\)</span>。</p>
+<p>再来分析 Tits 锥 <span class="math inline">\(\mathcal{C}\)</span>。取对偶得到 <span class="math inline">\(\overline{\mathcal{C}}=\mathcal{C}^{\ast\ast}=\{\delta\geq0\}\)</span>。由于一个凸集的内点和它的闭包的内点集相同，所以
+<span class="math inline">\(\mathcal{C}^\circ=\{\delta&gt;0\}\)</span>，于是
+<span class="math display">\[\{\delta&gt;0\}\subset\mathcal{C}\subset\overline{
+\mathcal{C} }=\{\delta\geq0\}.\]</span></p>
 <p>对任何 <span class="math inline">\(x\in\{\delta=0\}\)</span>，若
 <span class="math inline">\(x\in\mathcal{C}\)</span>，则存在 <span class="math inline">\(w\in W\)</span> 和 <span class="math inline">\(y\in\overline{\mathcal{D}}\)</span> 使得 <span class="math inline">\(x=wy\)</span>。于是 <span class="math display">\[0
 = \langle \delta,\,x\rangle=\langle \delta,\,wy\rangle=\langle
 w^{-1}\delta,\,y\rangle=\langle \delta,\,y\rangle=\sum_{s\in
 S}z_s\langle \alpha_s,\,y\rangle.\]</span> 然而每个 <span class="math inline">\(z_s&gt;0\)</span>，并且由于 <span class="math inline">\(y\in\overline{\mathcal{D}}\)</span> 所以每个 <span class="math inline">\(\langle
 \alpha_s,\,y\rangle\geq0\)</span>，这只能是 <span class="math inline">\(\langle \alpha_s,\,y\rangle=0\)</span> 对所有
-<span class="math inline">\(\alpha_s\in\Delta\)</span> 成立。结合 <span class="math inline">\(\Delta\)</span> 是 <span class="math inline">\(V\)</span> 的一组基，这导致 <span class="math inline">\(y=0\)</span>，从而 <span class="math inline">\(x=0\)</span>，所以超平面 <span class="math inline">\(\{\delta=0\}\)</span> 中属于 <span class="math inline">\(\mathcal{C}\)</span> 的只有 0。</p>
-<p>由于一个凸集的内点和它的闭包的内点集相同，所以 <span class="math inline">\(\mathcal{C}^\circ=\{\delta&gt;0\}\)</span>，于是
-<span class="math inline">\(\{\delta&gt;0\}\subset\mathcal{C}\)</span>，这就证明了
-<span class="math inline">\(\mathcal{C}=\{0\}\cup\{\delta&gt;0\}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<span class="math inline">\(\alpha_s\in\Delta\)</span> 成立。结合 <span class="math inline">\(\Delta\)</span> 是 <span class="math inline">\(V\)</span> 的一组基，这导致 <span class="math inline">\(y=0\)</span>，从而 <span class="math inline">\(x=0\)</span>，所以超平面 <span class="math inline">\(\{\delta=0\}\)</span> 中属于 <span class="math inline">\(\mathcal{C}\)</span> 的只有 0。这就证明了 <span class="math inline">\(\mathcal{C}=\{0\}\cup\{\delta&gt;0\}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="双曲">双曲</h1>
 <p>双曲的情形 Tits 锥的结构要复杂许多，一般来说没有完整的刻画。</p>
 <p>我们首先来介绍一些关于 Lorentzian 内积的基本知识。这些内容在 <span class="citation" data-cites="ratcliffe">(<a href="#ref-ratcliffe" role="doc-biblioref">Ratcliffe 2006, vol. 149, chap. 3</a>)</span>
@@ -573,8 +566,8 @@ time-like 的向量。</li>
 </div>
 <p><strong>证明</strong>：若不然，设 <span class="math inline">\(u\in\mathcal{C}^\ast\cap\mathcal{Q}_+,\,u'\in
 \mathcal{C}^\ast\cap\mathcal{Q}_-\)</span> 是非零向量，<span class="math inline">\(u=x+cz,\,u'=y+dz\)</span> 是 <a href="#lorentzinian-decomposition">如前所述的分解</a>，则 <span class="math inline">\(c&gt;0,\,d&lt;0\)</span>。考察 <span class="math display">\[v=cu'-du=cy-dx\in(\mathbb{R}z)^\bot.\]</span>
-由于 <span class="math inline">\((\mathbb{R}z)^\bot\)</span> 是
-space-like 的子空间，所以 <span class="math inline">\((v,v)\geq0\)</span>。但是 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(u'\)</span> 的非负线性组合，所以 <span class="math inline">\(v\in\mathcal{C}^\ast\)</span>，从而 <a href="/coxeter-groups-tits-cone/#dual-cone-nonspace">必须有 <span class="math inline">\((v,v)\leq0\)</span></a>，从而由正定性得到 <span class="math inline">\(v=0\)</span>，于是 <span class="math inline">\(cu'=du\)</span>。由于 <span class="math inline">\(c,d\)</span> 异号所以 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(-u\)</span> 同时属于 <span class="math inline">\(\mathcal{C}^\ast\)</span>，这只能是 <span class="math inline">\(u=0\)</span>。所以 <span class="math inline">\(\mathcal{C}^\ast\cap\mathcal{Q}_+\)</span> 和
+<span class="math inline">\(v\)</span> 是 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(u'\)</span> 的非负线性组合，所以 <span class="math inline">\(v\)</span> 也属于 <span class="math inline">\(\mathcal{C}^\ast\)</span>，从而 <a href="/coxeter-groups-tits-cone/#dual-cone-nonspace"><span class="math inline">\((v,v)\leq0\)</span></a>。结合 <span class="math inline">\((\mathbb{R}z)^\bot\)</span> 是 space-like 的可得
+<span class="math inline">\(v=0\)</span>，于是 <span class="math inline">\(cu'=du\)</span>。由于 <span class="math inline">\(c,d\)</span> 异号所以 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(-u\)</span> 同时属于 <span class="math inline">\(\mathcal{C}^\ast\)</span>，但 <span class="math inline">\(\mathcal{C}^\ast\)</span> 是点锥，所以 <span class="math inline">\(u=0\)</span>。从而 <span class="math inline">\(\mathcal{C}^\ast\cap\mathcal{Q}_+\)</span> 和
 <span class="math inline">\(\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span>
 中必有一个等于 <span class="math inline">\(\{0\}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="dual-cone-belongs-branch" class="statement corollary plain">
@@ -598,8 +591,9 @@ space-like 的子空间，所以 <span class="math inline">\((v,v)\geq0\)</span>
 互相包含在对方的对偶锥中。</p>
 <p>由 <a href="#dual-cone-belongs-branch" title="推论 4.5">推论
 4.5</a>，不妨设 <span class="math inline">\(\mathcal{C}^\ast\subseteq\mathcal{Q}_+\)</span>，<a href="/coxeter-groups-tits-cone/#dual-dual-cone">取对偶以后有</a> <span class="math inline">\(\overline{\mathcal{C}}=\mathcal{C}^{\ast\ast}\supseteq
-\mathcal{Q}_+^\ast\supseteq\mathcal{Q}_-\)</span>，即 <span class="math inline">\(\overline{\mathcal{C}}\supset\mathcal{Q}_-\)</span>。由于凸集的内点等于其闭包的内点，即得
-<span class="math inline">\(\mathcal{C}\supset\mathcal{Q}_-^\circ=\mathcal{N}_-\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+\mathcal{Q}_+^\ast\supseteq\mathcal{Q}_-\)</span>，即 <span class="math inline">\(\overline{\mathcal{C}}\supset\mathcal{Q}_-\)</span>。由于凸集的内点等于其闭包的内点，所以
+<span class="math display">\[\mathcal{C}^\circ=(\overline{ \mathcal{C}
+})^\circ\supset\mathcal{Q}_-^\circ=\mathcal{N}_-.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
 </span>以双曲群 <span class="math inline">\((7,3)\)</span>
