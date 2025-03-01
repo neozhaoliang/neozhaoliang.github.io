@@ -26,9 +26,11 @@
 和(Maxwell
 1989)。
 我们来介绍 Coxeter 群的 level 的概念，并证明 level 等于 1 或 2
-的群都是双曲的。我们约定 \((W,S)\)
-是一个 Coxeter 系，\(\Gamma\) 是其
-Coxeter 图。\(|">
+的群都是双曲的。
+level 的定义
+
+定义
+1.1 (Maxwell (1982)). \((W,S)\) 的 level 定">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -255,7 +257,7 @@ Coxeter 图。\(|">
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">5 篇</span></a>
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -318,7 +320,7 @@ Coxeter 图。\(|">
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="section table-of-contents-text">level 的定义</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%85%B3%E4%BA%8E-omega_s-%E7%9A%84%E6%81%92%E7%AD%89%E5%BC%8F"><span class="section table-of-contents-text">关于 \(\omega_s\) 的恒等式</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-1-%E6%98%AF%E5%8F%8C%E6%9B%B2%E7%9A%84"><span class="section table-of-contents-text">Level 1 是双曲的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-2-%E4%B9%9F%E6%98%AF%E5%8F%8C%E6%9B%B2%E7%9A%84"><span class="section table-of-contents-text">Level 2 也是双曲的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-1-2-%E7%AD%89%E4%BB%B7%E4%BA%8E%E5%8F%8C%E6%9B%B2%E5%92%8C%E5%88%86%E7%A6%BB"><span class="section table-of-contents-text">level &#x3D; 1, 2 等价于双曲和分离</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%84%E5%BD%95"><span class="section table-of-contents-text">附录</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#level-1-%E6%83%85%E5%BD%A2%E6%96%AD%E8%A8%80%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">level 1 情形断言的证明</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#level-2-%E6%83%85%E5%BD%A2%E6%96%AD%E8%A8%80%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">level 2 情形断言的证明</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="section table-of-contents-text">level 的定义</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%87%86%E5%A4%87"><span class="section table-of-contents-text">准备</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-1-%E6%98%AF%E5%8F%8C%E6%9B%B2%E7%9A%84"><span class="section table-of-contents-text">Level 1 是双曲的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-2-%E4%B9%9F%E6%98%AF%E5%8F%8C%E6%9B%B2%E7%9A%84"><span class="section table-of-contents-text">Level 2 也是双曲的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#level-1-2-%E7%AD%89%E4%BB%B7%E4%BA%8E%E5%8F%8C%E6%9B%B2%E5%92%8C%E5%88%86%E7%A6%BB"><span class="section table-of-contents-text">level &#x3D; 1, 2 等价于双曲和分离</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%84%E5%BD%95"><span class="section table-of-contents-text">附录</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#level-1-%E6%83%85%E5%BD%A2%E6%96%AD%E8%A8%80%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">level 1 情形断言的证明</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#level-2-%E6%83%85%E5%BD%A2%E6%96%AD%E8%A8%80%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">level 2 情形断言的证明</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
@@ -327,9 +329,7 @@ Coxeter 图。\(|">
 和<span class="citation" data-cites="Maxwell89">(<a href="#ref-Maxwell89" role="doc-biblioref">Maxwell
 1989</a>)</span>。</p>
 <p>我们来介绍 Coxeter 群的 level 的概念，并证明 level 等于 1 或 2
-的群都是双曲的。我们约定 <span class="math inline">\((W,S)\)</span>
-是一个 Coxeter 系，<span class="math inline">\(\Gamma\)</span> 是其
-Coxeter 图。<span class="math inline">\(|S|=n\)</span>。</p>
+的群都是双曲的。</p>
 <h1 id="level-的定义">level 的定义</h1>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
@@ -395,7 +395,7 @@ level 就是 2。</li>
 中某个顶点有边连接，不妨设为 <span class="math inline">\(i_{l+1}\)</span>。</p>
 <p>由于 <span class="math inline">\(\Gamma\)</span> 的 level 是 <span class="math inline">\(l\)</span>，所以 <span class="math inline">\(\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}\)</span>
 是一个仿射的连通子图，这个仿射子图删除 <span class="math inline">\(i_{l+1}\)</span> 后得到的 <span class="math inline">\(\Gamma'\)</span> 仍然是仿射的，这与 <span class="math inline">\(l=0\)</span> 的情形矛盾，所以结论得证。<span class="math inline">\(\blacksquare\)</span></p>
-<h1 id="关于-omega_s-的恒等式">关于 <span class="math inline">\(\omega_s\)</span> 的恒等式</h1>
+<h1 id="准备">准备</h1>
 <p>这一节是纯技术性的，我会指明几个关于 <span class="math inline">\(\Delta=\{\alpha_s\mid s\in S\}\)</span> 和对偶基
 <span class="math inline">\(\Delta^\ast=\{\omega_s\mid s\in S\}\)</span>
 之间关系的显然等式，这样下文用到它们时就不必再重复说明。</p>
@@ -488,22 +488,24 @@ Lorentzian 内积时，<span class="math inline">\(v\)</span> 是实的等价于
 <p>先证明 1。用反证法，如果 <span class="math inline">\(\Gamma\)</span>
 的 level 是 1 但不是双曲的，则根据 <a href="#lemma-uv" title="引理 3.2">引理 3.2</a> 我们可以取两个正交的非零向量 <span class="math inline">\(u,v\)</span> 满足 <span class="math inline">\((u,u)&lt;0,\, (v,v)=0\)</span>。</p>
 <p>我们有如下两个断言：</p>
+<div id="------" class="statement sta___ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">断言</span>.</span><span class="statement-spah">
+</span><br>
+</p>
 <ol type="1">
 <li>任何满足 <span class="math inline">\((u,u)&lt;0\)</span> 的向量
 <span class="math inline">\(u=\sum_{s\in S}u_s\alpha_s\)</span> 其系数
 <span class="math inline">\(u_s\)</span> 都非零且同号。</li>
 <li>任何满足 <span class="math inline">\((v,v)=0\)</span> 的向量 <span class="math inline">\(v=\sum_{s\in S}v_s\alpha_s\)</span> 其系数 <span class="math inline">\(v_s\)</span> 至多只有一个为 0，其余都同号。</li>
 </ol>
+</div>
 <p>我把这两个断言的证明放在附录中，先承认它们是正确的，用它们来导出矛盾：</p>
-<p>取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(v_s\ne 0\)</span>，则 <span class="math inline">\(u'=v_su-u_sv\)</span> 满足 <span class="math inline">\((u',u')=v_s^2(u,u)&lt;0\)</span>，且 <span class="math inline">\(u'\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项系数 <span class="math inline">\(u'_s=0\)</span>。但根据断言 1，<span class="math inline">\(u'\)</span>
-的系数必须非零且同号，这就导致了矛盾，所以 <span class="math inline">\(\Gamma\)</span> 必然是双曲的，从而结论 1
-成立。</p>
-<p>再来证明结论 2。</p>
+<p>取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(v_s\ne 0\)</span>，则 <span class="math inline">\(u'=v_su-u_sv\)</span> 满足 <span class="math inline">\((u',u')=v_s^2(u,u)&lt;0\)</span>，且 <span class="math inline">\(u'\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项系数 <span class="math inline">\(u'_s=0\)</span>，这与断言 1 矛盾。所以 <span class="math inline">\(\Gamma\)</span> 必然是双曲的。</p>
+<p>再来证明 2。</p>
 <p>由于 <span class="math inline">\(\Gamma\)</span> 的 level 是
-1，对任何 <span class="math inline">\(s\in S\)</span>，子空间 <span class="math inline">\(U=(\mathbb{R}\omega_s)^\bot=\mathrm{span}\{\alpha_t\mid
-t\ne s\}\)</span> 是有限或者仿射的，从而 <a href="/coxeter-groups-three-cases/#orth-complement-lorentzian"><span class="math inline">\(\omega_s\)</span> 不是 space-like 的</a>，即 <span class="math inline">\((\omega_s,\omega_s)\leq 0\)</span>。这就证明了任何
-<span class="math inline">\(\omega_s\,(s\in S)\)</span> 都不是实的。</p>
-<p>再来证明结论 3。</p>
+1，对任何 <span class="math inline">\(s\in S\)</span>，子空间 <span class="math inline">\(\omega_s^\bot=\mathrm{span}\{\alpha_t\mid t\ne
+s\}\)</span> 是有限或者仿射的，从而 <a href="/coxeter-groups-three-cases/#orth-complement-lorentzian"><span class="math inline">\(\omega_s\)</span> 不是 space-like 的</a>，即 <span class="math inline">\((\omega_s,\omega_s)\leq 0\)</span>。于是任何 <span class="math inline">\(\omega_s\,(s\in S)\)</span> 都不是实的。</p>
+<p>再来证明 3。</p>
 <p>观察恒等式 <span class="math inline">\((\ref{eq:idII})\)</span>：
 <span class="math display">\[\omega_s = (\omega_s,\omega_s)\alpha_s +
 \sum_{t\ne s} (\omega_s,\omega_t)\alpha_t.\]</span></p>
@@ -531,8 +533,8 @@ s,t\}\)</span>，根据 <a href="#level-l" title="定理 1.2">定理 1.2</a>
 <p><span class="statement-heading"><span class="statement-label">推论
 3.4</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(W\)</span> 的 level 为 1，则 Tits 锥的闭包 <span class="math inline">\(\overline{ \mathcal{C} }\)</span> 等于 <span class="math inline">\(\mathcal{Q}_+\)</span> 或者 <span class="math inline">\(\mathcal{Q}_-\)</span> 之一。</p>
 </div>
-<p><strong>证明</strong>：由于 level 1 的群是双曲的，根据我们 <a href="/coxeter-groups-three-cases#tits-closure">前面对双曲情形 Tits
-锥的分析</a>，<span class="math inline">\(\mathcal{C}\)</span> 包含
+<p><strong>证明</strong>：由于 level 1 的群是双曲的，根据 <a href="/coxeter-groups-three-cases#tits-closure">双曲情形 Tits
+锥的结论</a>，<span class="math inline">\(\mathcal{C}\)</span> 包含
 <span class="math inline">\(\mathcal{N}_+,\mathcal{N}_-\)</span>
 之一，不妨设为 <span class="math inline">\(\mathcal{C}\supset\mathcal{N}_+\)</span>，则 <span class="math inline">\(\overline{ \mathcal{C} }\supset\overline{
 \mathcal{N}_+
@@ -552,13 +554,18 @@ W}w\overline{\mathcal{D}}\subset\mathcal{Q}\)</span>，从而 <span class="math 
 time-like 的向量 <span class="math inline">\((z,z)&lt;0\)</span>。否则
 <a href="/coxeter-groups-tits-cone#dual-cone-nonspace"><span class="math inline">\(\mathcal{C}^\ast\)</span> 中的非零向量都是
 light-like 的</a>。但是 <span class="math inline">\(\mathcal{C}^\ast\)</span> 不能包含两个线性无关的
-light-like 的向量（否则它们的正线性组合会得到 time-like
-的向量，这个向量属于 <span class="math inline">\(\mathcal{C}^\ast\)</span>），所以 <span class="math inline">\(\mathcal{C}^\ast\subset\mathbb{R}\delta\)</span>，其中
+light-like 的向量（否则由于 <a href="/coxeter-groups-three-cases/#dual-cone-belongs-branch">它们属于
+<span class="math inline">\(\mathcal{Q}\)</span> 的同一个分支</a> 从而
+<a href="/coxeter-groups-three-cases/#connected-component-dot">内积小于
+0</a>，从而它们的和是属于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 的 time-like
+的向量），再结合 <span class="math inline">\(\mathcal{C}^\ast\)</span>
+是 <a href="/coxeter-groups-tits-cone/#tits-cone-dual-pointed">点锥</a>，所以
+<span class="math inline">\(\mathcal{C}^\ast=\mathbb{R}_{\geq0}\delta\)</span>，其中
 <span class="math inline">\(\delta\)</span> 是一个 light-like
 的向量。取对偶得到 <span class="math display">\[\overline{ \mathcal{C}
-}=\mathcal{C}^{\ast\ast}\supset\{v\in V\mid (v,\delta)\geq0\}.\]</span>
+}=\mathcal{C}^{\ast\ast}=\{v\in V\mid (v,\delta)\geq0\}.\]</span>
 这是一个半空间，显然包含 space-like 的向量，这与 <span class="math inline">\(\overline{ \mathcal{C}
-}\subset\mathcal{Q}\)</span> 矛盾。所以我们确实可以取 <span class="math inline">\(z\in\mathcal{C}^\ast\)</span> 满足 <span class="math inline">\((z,z)&lt;0\)</span>，于是 <span class="math inline">\((z,\overline{ \mathcal{C} })\geq0\)</span>。又因为
+}\subset\mathcal{Q}\)</span> 矛盾。所以确实存在 <span class="math inline">\(z\in\mathcal{C}^\ast\)</span> 满足 <span class="math inline">\((z,z)&lt;0\)</span>，于是 <span class="math inline">\((z,\overline{ \mathcal{C} })\geq0\)</span>。又因为
 <span class="math inline">\(\mathcal{Q}_+\subset\overline{ \mathcal{C}
 }\)</span>，所以 <span class="math inline">\(z\in\mathcal{Q}_-\)</span>。</p>
 <p>设 <span class="math inline">\(x\ne0\in\overline{ \mathcal{C}
@@ -988,8 +995,7 @@ Groups.”</span> <em>Journal of Algebra</em> 79 (1): 78–97. <a target="_blank
 <span class="math inline">\((\cdot,\cdot)\)</span> 在 <span class="math inline">\(V_I/\mathbb{R}\omega_s\)</span>
 上诱导了一个正定内积。商群 <span class="math inline">\(W_I/K\)</span> 是
 <span class="math inline">\(V_I/\mathbb{R}\omega_s\)</span>
-中的反射群，并且保持这个正定内积不变，所以根据 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 6.4</a>)</span> 的结论，<span class="math inline">\(W_I/K\)</span> 是有限群，而 <span class="math inline">\(W_I\)</span> 作为仿射 Coxeter 群是无限群，从而
-<span class="math inline">\(K\)</span> 也是无限群。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+中的反射群，并且保持这个正定内积不变，所以根据 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 6.4</a>)</span> 的结论，<span class="math inline">\(W_I/K\)</span> 是有限群。于是 <span class="math inline">\(W_I\)</span> 作为仿射 Coxeter 群是无限群，对 <span class="math inline">\(K\)</span> 取商群是有限群，所以 <span class="math inline">\(K\)</span> 必然是无限群。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
 
@@ -997,8 +1003,8 @@ Groups.”</span> <em>Journal of Algebra</em> 79 (1): 78–97. <a target="_blank
 
                                                     
   <p class="pink-link-context">
-    <a href="/mobius-poincare/" rel="next" title="Möbius 变换与二维 Poincaré 双曲空间的等距">
-      上一篇：Möbius 变换与二维 Poincaré 双曲空间的等距
+    <a href="/coxeter-groups-boyd-maxwell/" rel="next" title="Coxeter 群笔记（六）：Boyd-Maxwell 球堆">
+      上一篇：Coxeter 群笔记（六）：Boyd-Maxwell 球堆
     </a>
   </p>
   

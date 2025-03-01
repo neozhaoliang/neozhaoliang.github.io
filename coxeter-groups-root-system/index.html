@@ -22,8 +22,8 @@
             Coxeter 群笔记（二）：根系 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="我们先回顾一下 第一篇笔记
-中介绍的主要内容。
+    <meta name="description" content="我们先回顾 第一篇笔记
+的主要内容。
 设 \((W,S)\) 是一个 Coxeter 系。在
 上文
 中，我们按照如下方式，将 \((W,S)\)
@@ -35,10 +35,10 @@
 S\}\)；
 规定了 \(V\) 上的内积 \((\cdot,\cdot)\)；
 对每个生成元 \(s\in S\)，规定 \(s\) 在 \(V\) 上的作用为关于 \(\alpha_s\) 的反射 \(\rho_s\)；
-我们证明了 \(\rho\) 是从 \(W\to\mathrm{GL}(V)\) 的群同态，并且 \(\rho(W)\) 保持内积 \((\cdot,\cdot)\)。
+我们证明了 \(\rho\) 是从 \(W\to\mathrm{O}(V)\) 的群同态。
 
 但是我们还有一个未完成的工作：证明 \(\rho\)
-是嵌入映射。本文会完成它。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。😏">
+是同构。本文会完成它。此外我还会介绍关于根系的一些知识。如果你直接翻到本文后面，会发现我罗列了很多关于根系的推论。这并不是我在故故意掉书袋，这些推论每一条后面都会用到。不过读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -265,7 +265,7 @@ S\}\)；
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">5 篇</span></a>
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -333,8 +333,8 @@ S\}\)；
                                         
                                             <div class="entry pink-link-context">
                                                 
-<p>我们先回顾一下 <a href="/coxeter-groups-geometric-realization/">第一篇笔记</a>
-中介绍的主要内容。</p>
+<p>我们先回顾 <a href="/coxeter-groups-geometric-realization/">第一篇笔记</a>
+的主要内容。</p>
 <p>设 <span class="math inline">\((W,S)\)</span> 是一个 Coxeter 系。在
 <a href="/coxeter-groups-geometric-realization/">上文</a>
 中，我们按照如下方式，将 <span class="math inline">\((W,S)\)</span>
@@ -346,13 +346,13 @@ S\}\)；
 S\}\)</span>；</li>
 <li>规定了 <span class="math inline">\(V\)</span> 上的内积 <span class="math inline">\((\cdot,\cdot)\)</span>；</li>
 <li>对每个生成元 <span class="math inline">\(s\in S\)</span>，规定 <span class="math inline">\(s\)</span> 在 <span class="math inline">\(V\)</span> 上的作用为关于 <span class="math inline">\(\alpha_s\)</span> 的反射 <span class="math inline">\(\rho_s\)</span>；</li>
-<li>我们证明了 <span class="math inline">\(\rho\)</span> 是从 <span class="math inline">\(W\to\mathrm{GL}(V)\)</span> 的群同态，并且 <span class="math inline">\(\rho(W)\)</span> 保持内积 <span class="math inline">\((\cdot,\cdot)\)</span>。</li>
+<li>我们证明了 <span class="math inline">\(\rho\)</span> 是从 <span class="math inline">\(W\to\mathrm{O}(V)\)</span> 的群同态。</li>
 </ol>
 <p>但是我们还有一个未完成的工作：证明 <span class="math inline">\(\rho\)</span>
-是嵌入映射。本文会完成它。此外我还会介绍关于根系的一些详尽知识。如果你直接翻到本文后面，会发现我罗列了很多条关于根系的推论。这并不是我在故作高深，这些推论每一条都是有用的。读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。如果你觉得它们太多记不住，想想我可是一个字一个字把它们敲下来的。<span class="emoji" data-alias="smirk" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span></p>
+是同构。本文会完成它。此外我还会介绍关于根系的一些知识。如果你直接翻到本文后面，会发现我罗列了很多关于根系的推论。这并不是我在故故意掉书袋，这些推论每一条后面都会用到。不过读者初次阅读时只要大致浏览它们即可，等后面用到时再跳转过来查看细节。</p>
 <span id="more"></span>
 <h1 id="根系">根系</h1>
-<p>我们记 <span class="math inline">\(\Delta=\{\alpha_s\mid s\in
+<p>记 <span class="math inline">\(\Delta=\{\alpha_s\mid s\in
 S\}\)</span> 是如前所取的 <span class="math inline">\(V\)</span>
 的一组基。</p>
 <div class="statement definition plain">
@@ -413,7 +413,7 @@ l(w)&amp;=l(vu\cdot uv_I)\leq l(vu) + l(uv_I) = (l(v) -1) + l(uv_I)\\
 <p>由于 <span class="math inline">\(l(v)\leq l(w)-1\)</span>
 所以根据归纳假设 <span class="math inline">\(v\alpha_s,\,v\alpha_t\)</span>
 都是正根。如果我们能够证明 <span class="math inline">\(v_I\alpha_s\)</span> 是 <span class="math inline">\(\alpha_s\)</span> 和 <span class="math inline">\(\alpha_t\)</span> 的非负线性组合：<span class="math display">\[v_I\alpha_s = a\alpha_s + b\alpha_t,\quad
-a,\,b\geq0,\]</span> 则 <span class="math display">\[w\alpha_s=vv_I\alpha_s=v(a\alpha_s +
+a,\,b\geq0.\]</span> 则 <span class="math display">\[w\alpha_s=vv_I\alpha_s=v(a\alpha_s +
 b\alpha_t)=av\alpha_s + bv\alpha_t\in\Phi^+.\]</span>
 这就证明了结论。</p>
 <p>首先注意到 <span class="math inline">\(v_I\in W_I\)</span>
@@ -506,8 +506,9 @@ st}^{m-1}\)</span> 这 <span class="math inline">\(m\)</span>
 <span class="math inline">\(l(ws)&gt;l(w)\)</span> 则 <span class="math inline">\(\lambda\in\Phi^+\)</span>，否则 <span class="math inline">\(\lambda\in\Phi^-\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="simple-ref" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-1.5</span>.</span><span class="statement-spah"> </span>任何单反射 <span class="math inline">\(s\)</span> 置换 <span class="math inline">\(\Phi^+-\{\alpha_s\}\)</span> 中的正根，同时将
-<span class="math inline">\(\alpha_s\)</span> 变为 <span class="math inline">\(-\alpha_s\)</span>。</p>
+1.5</span>.</span><span class="statement-spah"> </span>任何单反射 <span class="math inline">\(s\)</span> 置换 <span class="math inline">\(\Phi^+\setminus\{\alpha_s\}\)</span>
+中的正根，同时将 <span class="math inline">\(\alpha_s\)</span> 变为
+<span class="math inline">\(-\alpha_s\)</span>。</p>
 </div>
 <p><strong>证明</strong>：这是因为对任何正根 <span class="math inline">\(\lambda\ne\alpha_s\in\Phi^+\)</span>，<span class="math inline">\(\lambda\)</span> 不可能与 <span class="math inline">\(\alpha_s\)</span> 共线，所以其作为单根的线性组合
 <span class="math inline">\(\lambda=\sum_{t\in S}c_t\alpha_t\)</span>
@@ -521,35 +522,14 @@ st}^{m-1}\)</span> 这 <span class="math inline">\(m\)</span>
 1.6</span>.</span><span class="statement-spah"> </span>对 <span class="math inline">\(w\in W\)</span>，定义 <span class="math inline">\(N(w)\)</span> 为被 <span class="math inline">\(w\)</span> 变成负根的那些正根组成的集合： <span class="math display">\[N(w)=\{\lambda\in\Phi^+\mid
 w\lambda\in\Phi^-\}.\]</span> 则 <span class="math inline">\(|N(w)|=l(w)\)</span>。</p>
 </div>
-<p><strong>证明</strong>：由 <a href="#key-lemma" title="引理 1.2">引理
-1.2</a> 我们已经知道 <span class="math inline">\(l(w)\)</span>
-满足如下的递推关系：</p>
-<p><span class="math display">\[
-l(ws) =\begin{cases}
-l(w)+1,&amp; w\alpha_s\in\Phi^+,\\
-l(w)-1,&amp; w\alpha_s\in\Phi^-.
-\end{cases}
-\]</span></p>
-<p>以及初始条件 <span class="math inline">\(l(1)=0\)</span>。由于 <span class="math inline">\(N(1)=\emptyset\)</span>，所以只需要证明 <span class="math inline">\(|N(w)|\)</span> 也满足同样的递推关系即可：</p>
-<p><span class="math display">\[
-|N(ws)| =\begin{cases}|N(w)|+1,&amp; w\alpha_s\in\Phi^+,\\
-|N(w)|-1,&amp; w\alpha_s\in\Phi^-.\end{cases}
-\]</span></p>
-<p>实际上对任何 <span class="math inline">\(\lambda\in\Phi^+\)</span> 且
-<span class="math inline">\(\lambda\ne\alpha_s\)</span>，根据 <a href="#simple-ref" title="推论 1.5">推论 1.5</a> <span class="math inline">\(s\lambda\)</span> 也是正根，所以由恒等式 <span class="math display">\[(ws)\lambda\in\Phi^- \Leftrightarrow
-w(s\lambda)\in\Phi^-.\]</span> 可得当 <span class="math inline">\(\lambda\in\Phi^+-\{\alpha_s\}\)</span> 时有 <span class="math display">\[\lambda\in N(ws)\Leftrightarrow s\lambda\in
-N(w).\]</span> 即 <span class="math inline">\(\lambda\leftrightarrow
-s\lambda\)</span> 给出了 <span class="math inline">\(N(ws)\setminus\{\alpha_s\}\)</span> 和 <span class="math inline">\(N(w)\setminus\{\alpha_s\}\)</span>
-的一一对应。除此之外，<span class="math inline">\(\alpha_s\)</span>
-必然恰好属于 <span class="math inline">\(N(ws)\)</span> 和 <span class="math inline">\(N(w)\)</span> 之一：</p>
-<ul>
-<li>当 <span class="math inline">\(l(ws) &gt; l(w)\)</span> 时 <span class="math inline">\(w\alpha_s\in\Phi^+\Rightarrow
-ws\alpha_s\in\Phi^-\Rightarrow\alpha_s\in
-N(ws)\)</span>，这对应第一条递推关系；</li>
-<li>当 <span class="math inline">\(l(ws)&lt;l(w)\)</span> 时 <span class="math inline">\(w\alpha_s\in\Phi^-\Rightarrow\alpha_s\in
-N(w)\)</span>，这对应第二条递推关系。</li>
-</ul>
-<p><span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>证明</strong>：对 <span class="math inline">\(l(w)\)</span>
+归纳。<span class="math inline">\(l(w)=0\)</span> 时 <span class="math inline">\(w=1\)</span>，结论成立。下设 <span class="math inline">\(l(w)&gt;0\)</span> 且结论对长度小于 <span class="math inline">\(l(w)\)</span> 的元素成立。取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(w=w's\)</span> 且 <span class="math inline">\(l(w')&lt;l(w)\)</span>。由 <a href="#key-lemma" title="引理 1.2">引理 1.2</a>，<span class="math inline">\(\alpha_s\in N(w)\)</span> 但是 <span class="math inline">\(\alpha_s\notin N(w')\)</span>。对任何正根
+<span class="math inline">\(\lambda\ne\alpha_s\)</span>，<span class="math inline">\(s\lambda\)</span> 仍然是正根。由恒等式 <span class="math display">\[w'\lambda\in\Phi^- \Leftrightarrow
+w(s\lambda)\in\Phi^-\]</span> 可得 <span class="math inline">\(\lambda\leftrightarrow s\lambda\)</span> 给出了
+<span class="math inline">\(N(w')\)</span> 和 <span class="math inline">\(N(w)\setminus\{\alpha_s\}\)</span>
+之间的一一对应，即 <span class="math display">\[N(w)=s\cdot
+N(w')\cup\{\alpha_s\}.\]</span> 从而由归纳假设 <span class="math display">\[|N(w)|=|N(w')|+1=l(w')+1=l(w).\]</span>
+<span class="math inline">\(\blacksquare\)</span></p>
 <div id="nw-zero-means-identity" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
 1.7</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(w\in W\)</span> 满足 <span class="math inline">\(w(\Phi^+)\subseteq\Phi^+\)</span>，则 <span class="math inline">\(w=1\)</span>。</p>
