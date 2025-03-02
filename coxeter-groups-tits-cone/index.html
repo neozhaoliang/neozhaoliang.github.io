@@ -383,7 +383,11 @@ v)&gt;0\}\]</span> 作为基本区域 <span class="math inline">\(\mathcal{D}\)<
 是某实向量空间的子集，我们用记号 <span class="math inline">\(\mathrm{cone}(X)\)</span> 表示 <span class="math inline">\(X\)</span> 中元素的所有有限非负线性组合： <span class="math display">\[\mathrm{cone}(X) = \left\{\sum_{i=1}^n c_ix_i,\,
 x_1,\ldots,x_n\in X,\, c_i\geq0.\right\}.\]</span> 显然 <span class="math inline">\(\mathrm{cone}(X)\)</span> 总是凸锥，并且它还是包含
 <span class="math inline">\(X\)</span> 的最小凸锥。</p>
-<p>当 <span class="math inline">\(X\)</span> 是有限集时，<span class="math inline">\(\mathrm{cone}(X)\)</span> 总是闭集，但是当 <span class="math inline">\(X\)</span> 是无限集时 <span class="math inline">\(\mathrm{cone}(X)\)</span> 未必是闭集。</p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>当 <span class="math inline">\(X\)</span> 是有限集时，<span class="math inline">\(\mathrm{cone}(X)\)</span> 总是闭集；但是当 <span class="math inline">\(X\)</span> 是无限集时则未必。例如当 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(\mathbb{R}^2\)</span> 中直线 <span class="math inline">\(y=1\)</span> 上的全体整点时，<span class="math inline">\(\mathrm{cone}(X)=\{y&gt;0\}\cup\{0\}\)</span>
+不是闭集。</p>
+</div>
 <div id="fundamental-weights" class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 1.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\Delta^\ast=\{\omega_t\}\subset V^\ast\)</span> 是
@@ -408,7 +412,8 @@ x\in\overline{\mathcal{D}}.
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 1.5</span>.</span><span class="statement-spah"> </span>对任一 <span class="math inline">\(x\in V^\ast\)</span>，定义 <span class="math display">\[\mathrm{Neg}(x)= \{\lambda\in \Phi^+\mid \langle
-\lambda,\,x\rangle&lt;0\}.\]</span> <span class="math inline">\(\mathrm{Neg}(x)\)</span> 是正根 <span class="math inline">\(\Phi^+\)</span> 的子集，表示 <span class="math inline">\(x\)</span> 位于哪些镜子的背面。</p>
+\lambda,\,x\rangle&lt;0\}.\]</span> <span class="math inline">\(\mathrm{Neg}(x)\)</span> 是正根 <span class="math inline">\(\Phi^+\)</span> 的子集，表示 <span class="math inline">\(x\)</span> 位于哪些镜子的「背面」。即这些镜子挡在
+<span class="math inline">\(x\)</span> 和基本区域 <span class="math inline">\(\mathcal{D}\)</span> 之间。</p>
 </div>
 <p>显然 <span class="math inline">\(\overline{\mathcal{D}}=\{x\in
 V^\ast\mid\mathrm{Neg}(x)=\emptyset\}\)</span>。房间 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
@@ -421,8 +426,8 @@ V^\ast\mid\mathrm{Neg}(x)=\emptyset\}\)</span>。房间 <span class="math inline
 </div>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
-</span>这个定理的几何意义是，每个镜子的正面是包含 <span class="math inline">\(\mathcal{D}\)</span> 的一侧，另一侧是背面，Tits
-锥就是那些只落在有限多个镜子背面的点，它们一定经过有限次单反射后变换到
+</span>这个定理的几何意义是，Tits 锥恰好由那些和基本区域 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
+之间只隔着有限多个镜子的点组成，这样的点一定可以通过有限次单反射变换到
 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
 中。换言之，Tits 锥中的点使得下面的 <code>while</code>
 循环可以在有限次后结束：</p>
@@ -438,7 +443,7 @@ V^\ast\mid\mathrm{Neg}(x)=\emptyset\}\)</span>。房间 <span class="math inline
 <span class="math inline">\(v\in\overline{\mathcal{D}}\)</span>，这说明
 <span class="math inline">\(w^{-1}\lambda\in\Phi^-\)</span>，从而 <span class="math inline">\(\mathrm{Neg}(x)\subseteq N(w^{-1})\)</span>，从而
 <span class="math display">\[|\mathrm{Neg}(x)|\leq
-|N(w^{-1})|=l(w^{-1})=l(w)&lt;\infty.\]</span></p>
+|N(w^{-1})|=l(w)&lt;\infty.\]</span></p>
 <p><span class="math inline">\(\Leftarrow\)</span>：反之若 <span class="math inline">\(|\mathrm{Neg}(x)|&lt;\infty\)</span>，我们来论证存在
 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(wx\in\overline{\mathcal{D}}\)</span>。这里的想法是，每次选择一个单根
 <span class="math inline">\(\alpha_s\)</span> 对应的镜面，使得 <span class="math inline">\(x\)</span> 落在这个镜子的背面，然后将 <span class="math inline">\(x\)</span> 关于 <span class="math inline">\(\alpha_s\)</span> 反射过去变到 <span class="math inline">\(\alpha_s\)</span> 的正面，这个操作会将遮挡在 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(\overline{\mathcal{D}}\)</span>
@@ -502,15 +507,15 @@ v,\,x\rangle-2(v,\alpha_s)\langle \alpha_s,\,x\rangle=\langle
 v,\,x\rangle.\]</span> 由 <span class="math inline">\(v\)</span>
 的任意性可得 <span class="math inline">\(sx=x\)</span>，从而 <span class="math inline">\(W_J\subseteq\mathrm{Stab}(x)\)</span>。</p>
 <p>为了证明反向的包含关系，设 <span class="math inline">\(w=s_1\cdots
-s_k\in\mathrm{Stab}(x)\)</span> 是一个既约表示，我们从最末一个元素 <span class="math inline">\(s_k\)</span> 开始向左逐个验证它们属于 <span class="math inline">\(J\)</span>。</p>
+s_k\in\mathrm{Stab}(x)\)</span> 是一个既约表示，我们从最末一个元素 <span class="math inline">\(s_k\)</span> 开始，向左逐个验证它们属于 <span class="math inline">\(J\)</span>。</p>
 <p>记 <span class="math inline">\(w'=s_1\cdots s_{k-1}\)</span>，则
 <span class="math inline">\(l(ws_k)=l(w')&lt;l(w)\)</span>，于是
 <span class="math inline">\(w\alpha_k\in\Phi^-\)</span>。我们有 <span class="math display">\[0\geq \langle w\alpha_k,\,x\rangle = \langle
-w\alpha_k,\,wx\rangle = \langle \alpha_k,\,x\rangle\geq0.\]</span>
+\alpha_k,\,wx\rangle = \langle \alpha_k,\,x\rangle\geq0.\]</span>
 其中第一个不等号是因为 <span class="math inline">\(w\alpha_k\)</span>
-是负根和 <span class="math inline">\(x\in\overline{\mathcal{D}}\)</span>。所以上面的不等式中等号都成立，从而
+是负根和 <span class="math inline">\(x\in\overline{\mathcal{D}}\)</span>。于是上面的不等式中等号都成立，从而
 <span class="math inline">\(\langle \alpha_k,\,x\rangle=0\)</span>，即
-<span class="math inline">\(s_k\in J\subset W_J\)</span>，从而 <span class="math inline">\(s_kx=x\)</span>。进一步 <span class="math inline">\(w'\)</span> 也满足 <span class="math inline">\(w'x=x\)</span>。对 <span class="math inline">\(w'\)</span> 重复此论证，便得到 <span class="math inline">\(s_1,\ldots,s_k\)</span> 都属于 <span class="math inline">\(J\)</span>，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
+<span class="math inline">\(s_k\in J\)</span> 且 <span class="math inline">\(s_kx=x\)</span>。进一步 <span class="math inline">\(w'\)</span> 也满足 <span class="math inline">\(w'x=x\)</span>。对 <span class="math inline">\(w'\)</span> 重复此论证，便得到 <span class="math inline">\(s_1,\ldots,s_k\)</span> 都属于 <span class="math inline">\(J\)</span>，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="fd-finite-stabilizer" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
 2.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(x\in\overline{\mathcal{D}}\)</span>，<span class="math inline">\(J\)</span> 的定义如 <a href="#stabilizer-parabolic-subgroup" title="定理 2.1">定理 2.1</a>，则
@@ -518,8 +523,7 @@ w\alpha_k,\,wx\rangle = \langle \alpha_k,\,x\rangle\geq0.\]</span>
 <span class="math inline">\(W_J\)</span> 是有限群。</p>
 </div>
 <p><strong>证明</strong>：</p>
-<p><span class="math inline">\(\Rightarrow\)</span>：我们的思路是，如果
-<span class="math inline">\(x\)</span> 是 <span class="math inline">\(\mathcal{C}\)</span> 的内点，并且经过 <span class="math inline">\(x\)</span> 的镜面有无穷多个，那么可以在 <span class="math inline">\(x\)</span> 的附近取一点 <span class="math inline">\(z\)</span>，<span class="math inline">\(z\)</span>
+<p><span class="math inline">\(\Rightarrow\)</span>：思路：如果 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(\mathcal{C}\)</span> 的内点，并且经过 <span class="math inline">\(x\)</span> 的镜面有无穷多个，那么可以在 <span class="math inline">\(x\)</span> 的附近取一点 <span class="math inline">\(z\)</span>，<span class="math inline">\(z\)</span>
 仍然是 <span class="math inline">\(\mathcal{C}\)</span>
 的内点，使得这无穷多个镜子都挡在基本区域和 <span class="math inline">\(z\)</span> 之间，从而 <span class="math inline">\(\mathrm{Neg}(z)\)</span> 是无限集，从而 <span class="math inline">\(z\notin\mathcal{C}\)</span>，导致矛盾。</p>
 <p>严格的论证如下：</p>
@@ -529,8 +533,7 @@ w\alpha_k,\,wx\rangle = \langle \alpha_k,\,x\rangle\geq0.\]</span>
 </figure>
 <p>任取 <span class="math inline">\(y\in\mathcal{D}\)</span>。由于 <span class="math inline">\(x\in\mathcal{C}^\circ\)</span>，所以在线段 <span class="math inline">\(\overline{[y, x]}\)</span> 上我们可以朝着 <span class="math inline">\(x\)</span> 的方向延伸一点点，得到点 <span class="math inline">\(z\)</span>，使得 <span class="math inline">\(z\)</span> 仍然位于 <span class="math inline">\(\mathcal{C}^\circ\)</span> 中。<span class="math inline">\(z\)</span> 可以表示为 <span class="math display">\[z=(1-t)x+ty,\quad t&lt;0.\]</span> 于是对所有
 <span class="math inline">\(s\in J\)</span> 都有 <span class="math inline">\(\langle \alpha_s,\,z\rangle=t\langle
-\alpha_s,\,y\rangle &lt; 0\)</span> 成立。这说明在 <span class="math inline">\(W_J\)</span> 的根系 <span class="math inline">\(\Phi_J=W_J\cdot \{\alpha_s\mid s\in J\}\)</span>
-中，所有的正根 <span class="math inline">\(\Phi_J^+\subset\mathrm{Neg}(z)\)</span>。如果
+\alpha_s,\,y\rangle &lt; 0\)</span>，从而 <span class="math inline">\(\Phi_J^+\subset\mathrm{Neg}(z)\)</span>。如果
 <span class="math inline">\(W_J\)</span> 是无限群那么 <span class="math inline">\(\Phi_J^+\)</span> 也是无限的，从而 <span class="math inline">\(\mathrm{Neg}(z)\)</span> 是无限集，从而 <span class="math inline">\(z\notin\mathcal{C}^\circ\)</span>，矛盾！</p>
 <p><span class="math inline">\(\Leftarrow\)</span>：反之若 <span class="math inline">\(W_J\)</span> 是有限群，仍然任取 <span class="math inline">\(y\in\mathcal{D}\)</span>。</p>
 <figure>
@@ -541,39 +544,33 @@ w\alpha_k,\,wx\rangle = \langle \alpha_k,\,x\rangle\geq0.\]</span>
 <p>对任何镜面 <span class="math inline">\(s\in S\setminus
 J\)</span>，由于 <span class="math inline">\(x\)</span>
 不属于此镜面，所以 <span class="math inline">\(\langle
-\alpha_s,\,x\rangle&gt;0\)</span>。另一方面对任何 <span class="math inline">\(w\in W_J\)</span>，根据 <a href="/coxeter-groups-root-system#remain-positive-root">前文中的结论</a>
-<span class="math inline">\(w^{-1}\alpha_s\)</span> 仍然是正根，所以也有
-<span class="math inline">\(\langle \alpha_s,\,wy\rangle=\langle
-w^{-1}\alpha_s,\,y\rangle&gt;0\)</span> 成立，于是 <span class="math display">\[\delta = \min\left\{\frac{\langle
+\alpha_s,\,x\rangle&gt;0\)</span>。</p>
+<p>另一方面对任何 <span class="math inline">\(w\in W_J\)</span>，<a href="/coxeter-groups-root-system#remain-positive-root"><span class="math inline">\(w^{-1}\alpha_s\)</span> 仍然是正根</a>，所以 <span class="math display">\[\langle \alpha_s,\,wy\rangle=\langle
+w^{-1}\alpha_s,\,y\rangle&gt;0.\]</span> 于是 <span class="math display">\[\delta = \min\left\{\frac{\langle
 \alpha_s,\,x\rangle}{\langle \alpha_s,\,wy\rangle}\,\middle|\,
-\alpha_s\in S\setminus J,\, w\in W_J\right\}&gt;0\]</span>
-是一个正数，将上面的分母乘到左边然后对 <span class="math inline">\(w\in
-W_J\)</span> 求和，我们有 <span class="math display">\[\delta\cdot\langle \alpha_s,\,\sum_{w\in
-W_J}wy\rangle\leq \langle \alpha_s,\,x\rangle\cdot |W_J| &lt; 2\langle
-\alpha_s,\,x\rangle\cdot |W_J|.\]</span> 即 <span class="math display">\[\delta\cdot\langle \alpha_s,\,\sum_{w\in
-W_J}wy\rangle&lt; 2\langle \alpha_s,\,x\rangle\cdot |W_J|,\quad s\in
-S\setminus J.\tag{1}\label{eq:strict}\]</span> 注意这个不等式两边关于
-<span class="math inline">\(\alpha_s\)</span> 都是线性的。</p>
+\alpha_s\in S\setminus J,\, w\in W_J\right\}&gt;0.\]</span>
+将上面的分母乘到左边然后对 <span class="math inline">\(w\in W_J\)</span>
+求和，我们有 <span class="math display">\[\delta\cdot\langle
+\alpha_s,\,\sum_{w\in W_J}wy\rangle\leq \langle \alpha_s,\,x\rangle\cdot
+|W_J| &lt; 2\langle \alpha_s,\,x\rangle\cdot |W_J|,\quad s\in S\setminus
+J.\tag{1}\label{eq:strict}\]</span> 注意这个不等式两边关于 <span class="math inline">\(\alpha_s\)</span> 都是线性的。</p>
 <p>既然对 <span class="math inline">\(s\in S\setminus J\)</span>
-上面的不等式是严格的，那么对 <span class="math inline">\(t\in J\)</span>
+上面的不等式是严格的，那么对 <span class="math inline">\(s\in J\)</span>
 又如何呢？这时右边 <span class="math inline">\(\langle
-\alpha_t,\,x\rangle=0\)</span>。又因为 <span class="math inline">\(\sum_{w\in W_J}wy\)</span> 在 <span class="math inline">\(W_J\)</span> 下保持不变，所以根据 <a href="#stabilizer-parabolic-subgroup" title="定理 2.1">定理 2.1</a> 可得
-<span class="math inline">\(\langle \alpha_{t},\,\sum_{w\in
+\alpha_s,\,x\rangle=0\)</span>。又因为 <span class="math inline">\(\sum_{w\in W_J}wy\)</span> 在 <span class="math inline">\(W_J\)</span> 下保持不变，所以根据 <a href="#stabilizer-parabolic-subgroup" title="定理 2.1">定理 2.1</a> 可得
+<span class="math inline">\(\langle \alpha_{s},\,\sum_{w\in
 W_J}wy\rangle=0\)</span>，从而上面的不等式变成了等式（两边都是 0）：
-<span class="math display">\[0=\delta\cdot\langle \alpha_t,\,\sum_{w\in
-W_J}wy\rangle= 2\langle \alpha_t,\,x\rangle\cdot |W_J|=0,\quad t\in
-J.\tag{2}\label{eq:equal}\]</span></p>
-<p>对任何 <span class="math inline">\(\lambda\in\Phi^+\setminus\Phi_J^+\)</span>，<span class="math inline">\(\lambda\)</span> 可以表示为一些 <span class="math inline">\(\{\alpha_s,\,s\in S\setminus J\}\)</span> 和一些
-<span class="math inline">\(\{\alpha_t,\,t\in J\}\)</span>
-的非负线性组合。我们已经看到对 <span class="math inline">\(s\in
-S\setminus J\)</span> 严格的不等式 <span class="math inline">\((\ref{eq:strict})\)</span> 成立，对 <span class="math inline">\(t\in J\)</span> 等式 <span class="math inline">\((\ref{eq:equal})\)</span>
-成立。把这些严格不等式和等式按照 <span class="math inline">\(\lambda\)</span> 的系数求线性组合，我们得到将
-<span class="math inline">\(\lambda\)</span> 代入 <span class="math inline">\((\ref{eq:strict})\)</span> 中 <span class="math inline">\(\alpha_s\)</span> 的位置，严格不等式仍然成立。</p>
-<p>于是对任何 <span class="math inline">\(\lambda\in\Phi^+\setminus\Phi_J^+\)</span> 有
+<span class="math display">\[0=\delta\cdot\langle \alpha_s,\,\sum_{w\in
+W_J}wy\rangle= 2\langle \alpha_s,\,x\rangle\cdot |W_J|,\quad s\in
+J.\tag{2}\label{eq:equal}\]</span> 对任何 <span class="math inline">\(\lambda\in\Phi^+\setminus\Phi_J^+\)</span>，设
+<span class="math display">\[\lambda=\sum_{s\in S\setminus J}c_s\alpha_s
++ \sum_{t\in J}d_t\alpha_t,\quad c_s,d_t\geq0.\]</span> 其中至少有一项
+<span class="math inline">\(c_s\)</span> 严格大于 0。将 <span class="math inline">\(\lambda\)</span> 代入 <span class="math inline">\((\ref{eq:strict})\)</span> 中 <span class="math inline">\(\alpha_s\)</span> 的位置，严格不等式仍然成立。即
 <span class="math display">\[\delta\cdot\langle \lambda,\,\sum_{w\in
 W_J}wy\rangle&lt; 2\langle \lambda,\,x\rangle\cdot |W_J|.\]</span>
-上面每一个 <span class="math inline">\(\langle
-\lambda,\,wy\rangle\)</span> 都是大于 0 的，我们可以只取 <span class="math inline">\(w=1\)</span> 的一项，其余全扔掉，得到 <span class="math display">\[\delta\cdot\langle \lambda,\,y\rangle&lt;
+注意对 <span class="math inline">\(w\in W_J\)</span>，<span class="math inline">\(w^{-1}\lambda\)</span> 作为 <span class="math inline">\(\lambda\)</span> 和 <span class="math inline">\(\{\alpha_s\mid s\in J\}\)</span>
+的线性组合仍然是正根，并且不在 <span class="math inline">\(\Phi_J^+\)</span> 中，所以上面的求和中每一项 <span class="math inline">\(\langle \lambda,\,wy\rangle=\langle
+w^{-1}\lambda,\,y\rangle&gt;0\)</span>，我们可以只取 <span class="math inline">\(w=1\)</span> 的一项，其余全扔掉，得到 <span class="math display">\[\delta\cdot\langle \lambda,\,y\rangle&lt;
 2\langle \lambda,\,x\rangle\cdot |W_J|.\]</span> 记 <span class="math inline">\(z = 2|W_J|x - \delta y\)</span>，我们得到 <span class="math inline">\(\langle \lambda,\,z\rangle&gt;0\)</span> 对任何
 <span class="math inline">\(\lambda\in\Phi^+\setminus\Phi_J^+\)</span>
 成立。</p>
@@ -605,8 +602,8 @@ A+B=\cup_{p\in B}(A+p)\)</span>，这是一组开集的并，所以 <span class=
 2.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(y\in\mathcal{C}\)</span>，则 <span class="math inline">\(y\in\mathcal{C}^\circ\)</span> 当且仅当 <span class="math inline">\(\mathrm{Stab}(y)\)</span> 是有限群。</p>
 </div>
 <p><strong>证明</strong>：<span class="math inline">\(y\)</span>
-可以写成 <span class="math inline">\(y=wx\)</span> 的形式，其中 <span class="math inline">\(w\in W,\,x\in\overline{\mathcal{D}}\)</span>，从而
-<span class="math inline">\({\rm Stab}(y)=w{\rm
+可以写成 <span class="math inline">\(y=wx\,(w\in
+W,\,x\in\overline{\mathcal{D}})\)</span> 的形式，从而 <span class="math inline">\({\rm Stab}(y)=w{\rm
 Stab}(x)w^{-1}\)</span>，二者同为有限群或者无限群；而且 <span class="math inline">\(x,y\)</span> 同时属于或者同时不属于 <span class="math inline">\(\mathcal{C}^\circ\)</span>。由 <a href="#fd-finite-stabilizer" title="命题 2.2">命题 2.2</a>
 即得结论。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="tits-锥的对偶锥">Tits 锥的对偶锥</h1>
