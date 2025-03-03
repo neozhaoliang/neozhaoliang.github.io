@@ -1,0 +1,1102 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Artinian 环与 Wedderburn-Artin 定理 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="Wedderburn-Artin 定理最早源于 1907 年 Wedderburn
+研究域上有限维结合代数的分类定理。在 Wedderburn
+考虑这个问题的时候，Killing 和 Cartan 等人已经完成了有限维复半单 Lie
+代数的分类工作，如果读者对有限维 Lie
+代数有所了解的话，可能已经知道任何有限维复 Lie 代数 \(L\) 有一个极大可解理想 \(\mathrm{rad}(L)\)，叫做 \(L\) 的根 (radical)，去掉这个根的商代数
+\(L/\mathrm{rad}(L)\)
+是半单代数，其上的双线性型 Killing
+型是非退化的，从而可以通过反复取正交补的方式将 \(L/\mathrm{rad}(L)\)
+分解为一些单代数的直和，然后对单 Lie 代数的结构进行讨论得出其共有 9
+种不同的类型。Wedderburn 的思路自然受到了 Killing
+等人工作的启发，他采取了类似的套路：
+对域 \(F\) 上的有限维结合代数 \(A\)：
+
+定义根理想 \(\mathrm{rad}(A)\)。
+转移到半单代数 \(A/\mathrm{rad}(A)\)。
+将 \(A/\mathrm{rad}(A)\)
+分解为单代数的直和。
+讨论单代数的结构。
+
+整个路线图如下所示：
+
+总之虽然有限维复李代数和结合代数结构相差很大，但它们的结构定理遵循了类似的套路：拿走可解/幂零的部分，剩下的部分是半单的，而半单是单的直和，于是最终归结为对单成分的结构进行讨论。
+Wedderburn-Artin
+定理的过程比较长，不过在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。
+本文将针对左 Artinian 环的情形证明 Wedderburn-Artin
+定理。我主要参考了 Curtis 和 Reiner 的经典 (Curtis and Reiner 1962)，Herstein
+的精彩小书 (Herstein
+1994)，以及林节玄的 (Lam
+2001)。C&amp;amp;R
+的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
+的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
+Galois 上同调。林节玄的书风格则更为现代一些，我没有细读，不多评价。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Artinian 环与 Wedderburn-Artin 定理"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/有限群表示与结合代数/">有限群表示与结合代数</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Artinian 环与 Wedderburn-Artin 定理</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2010-10-22T00:00:00.000Z"><a href="/wedderburn-artin-theorem/">2010-10-22</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%AE%B0%E5%8F%B7%E4%B8%8E%E7%BA%A6%E5%AE%9A"><span class="section table-of-contents-text">记号与约定</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AE%9A%E4%B9%89%E7%8E%AF-r-%E7%9A%84%E6%A0%B9-mathrmradr"><span class="section table-of-contents-text">定义环 \(R\) 的根 \(\mathrm{rad}(R)\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%B0%86%E5%8D%8A%E5%8D%95%E7%8E%AF%E5%88%86%E8%A7%A3%E4%B8%BA%E5%8D%95%E7%8E%AF%E7%9A%84%E7%9B%B4%E5%92%8C"><span class="section table-of-contents-text">将半单环分解为单环的直和</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8D%95%E7%8E%AF%E7%9A%84%E7%BB%93%E6%9E%84%E5%AE%9A%E7%90%86"><span class="section table-of-contents-text">单环的结构定理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>Wedderburn-Artin 定理最早源于 1907 年 Wedderburn
+研究域上有限维结合代数的分类定理。在 Wedderburn
+考虑这个问题的时候，Killing 和 Cartan 等人已经完成了有限维复半单 Lie
+代数的分类工作，如果读者对有限维 Lie
+代数有所了解的话，可能已经知道任何有限维复 Lie 代数 <span class="math inline">\(L\)</span> 有一个极大可解理想 <span class="math inline">\(\mathrm{rad}(L)\)</span>，叫做 <span class="math inline">\(L\)</span> 的根 (radical)，去掉这个根的商代数
+<span class="math inline">\(L/\mathrm{rad}(L)\)</span>
+是半单代数，其上的双线性型 Killing
+型是非退化的，从而可以通过反复取正交补的方式将 <span class="math inline">\(L/\mathrm{rad}(L)\)</span>
+分解为一些单代数的直和，然后对单 Lie 代数的结构进行讨论得出其共有 9
+种不同的类型。Wedderburn 的思路自然受到了 Killing
+等人工作的启发，他采取了类似的套路：</p>
+<p>对域 <span class="math inline">\(F\)</span> 上的有限维结合代数 <span class="math inline">\(A\)</span>：</p>
+<ol type="1">
+<li>定义根理想 <span class="math inline">\(\mathrm{rad}(A)\)</span>。</li>
+<li>转移到半单代数 <span class="math inline">\(A/\mathrm{rad}(A)\)</span>。</li>
+<li>将 <span class="math inline">\(A/\mathrm{rad}(A)\)</span>
+分解为单代数的直和。</li>
+<li>讨论单代数的结构。</li>
+</ol>
+<p>整个路线图如下所示：</p>
+<p><img src="/images/wedderburn-artin/steps.svg" class="fig"></p>
+<p>总之虽然有限维复李代数和结合代数结构相差很大，但它们的结构定理遵循了类似的套路：拿走可解/幂零的部分，剩下的部分是半单的，而半单是单的直和，于是最终归结为对单成分的结构进行讨论。</p>
+<p>Wedderburn-Artin
+定理的过程比较长，不过在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。</p>
+<p>本文将针对左 Artinian 环的情形证明 Wedderburn-Artin
+定理。我主要参考了 Curtis 和 Reiner 的经典 <span class="citation" data-cites="curtis-reiner">(<a href="#ref-curtis-reiner" role="doc-biblioref">Curtis and Reiner 1962</a>)</span>，Herstein
+的精彩小书 <span class="citation" data-cites="herstein-rings">(<a href="#ref-herstein-rings" role="doc-biblioref">Herstein
+1994</a>)</span>，以及林节玄的 <span class="citation" data-cites="Lam01">(<a href="#ref-Lam01" role="doc-biblioref">Lam
+2001</a>)</span>。C&amp;R
+的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
+的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
+Galois 上同调。林节玄的书风格则更为现代一些，我没有细读，不多评价。</p>
+<span id="more"></span>
+<div id="------" class="statement sta___ definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注意</span>：</span></p>
+<ol type="1">
+<li>Wedderburn 对 <span class="math inline">\(\mathrm{rad}(A)\)</span>
+的定义方法只适用于像左 Artinian 环这样有特殊限制的环。现代普遍采用
+Jacobson 根 <span class="math inline">\(J(A)\)</span> 来定义 <span class="math inline">\(\mathrm{rad}(A)\)</span>。Jacobson
+根的好处是它对任意的含 1 结合环都有定义，而且在建立了关于 Jacobson
+根的事实后，证明 Wedderburn-Artin 定理相对采用 Wedderburn
+的途径要简洁很多。</li>
+<li>定义 <span class="math inline">\(A\)</span>
+的半单性有两种定义方法：<span class="math inline">\(\mathrm{rad}(A)=(0)\)</span>
+或者完全可约性。后者是更常见的做法。在左 Artinian
+环的情形，这两种方法是等价的。</li>
+</ol>
+</div>
+<h1 id="记号与约定">记号与约定</h1>
+<ul>
+<li><p>在本文中，<span class="math inline">\(R\)</span>
+总表示含乘法单位元的结合环。我们称 <span class="math inline">\(R\)</span> 是<strong>左 Artinian 环</strong>，如果
+<span class="math inline">\(R\)</span> 的左理想满足所谓的降链条件
+(Descending chain condition, DCC)，即对任何左理想 <span class="math inline">\(\{I_n\}_{n=1}^\infty\)</span> 组成的无穷序列 <span class="math display">\[I_1\supseteq I_2\supseteq \cdots \supseteq
+I_n\supseteq\cdots\]</span> 都必然存在正整数 <span class="math inline">\(N\)</span> 使得 <span class="math inline">\(I_N=I_{N+1}=\cdots\)</span>。左 Artinian
+环的另一种等价刻画是，任何由 <span class="math inline">\(R\)</span>
+的左理想组成的非空集合必有极小元。</p></li>
+<li><p>如果一个左 <span class="math inline">\(R-\)</span> 模 <span class="math inline">\(M\)</span> 除了 <span class="math inline">\((0)\)</span> 和自身以外没有其它非平凡的子模，就称
+<span class="math inline">\(M\)</span>
+是<strong>不可约</strong>的。如果左理想 <span class="math inline">\(I\subseteq R\)</span> 作为左 <span class="math inline">\(R-\)</span> 模是不可约的，就称 <span class="math inline">\(I\)</span>
+是不可约左理想。非零的不可约左理想叫作<strong>极小左理想</strong>。</p></li>
+</ul>
+<h1 id="定义环-r-的根-mathrmradr">定义环 <span class="math inline">\(R\)</span> 的根 <span class="math inline">\(\mathrm{rad}(R)\)</span></h1>
+<p>前面提到，Wedderburn 的想法第一步是仿照 Lie 代数的情形定义环 <span class="math inline">\(R\)</span> 的根 <span class="math inline">\(\mathrm{rad}(R)\)</span>，它必须是一个双边理想，从而可以取商环
+<span class="math inline">\(R/\mathrm{rad}(R)\)</span>，<span class="math inline">\(R/\mathrm{rad}(R)\)</span> 的根是平凡的。</p>
+<p>Wedderburun 希望将 <span class="math inline">\(\mathrm{rad}(R)\)</span> 定义为 <span class="math inline">\(R\)</span> 的极大幂零理想，即 <span class="math inline">\(R\)</span>
+的所有<strong>幂零左理想</strong>的和。这个定义本身的合理性是存疑的，所有幂零左理想的和是否真的是双边理想？是否仍然幂零？虽然确实如此，但是背后的原因并不直观。这一节的任务就是解决这个问题。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+2.1</span>.</span><span class="statement-spah"> </span>我们称 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(I\)</span> 是幂零的，如果存在正整数 <span class="math inline">\(n\)</span> 使得 <span class="math inline">\(I^n=0\)</span>。</p>
+</div>
+<p>显然 <span class="math inline">\(I\)</span>
+幂零自动蕴含其元素都是幂零的：对任何 <span class="math inline">\(x\in
+I\)</span> 有 <span class="math inline">\(x^n=0\)</span>。但是反过来则未必对：<span class="math inline">\(I\)</span> 的每个元素都幂零并不能保证 <span class="math inline">\(I\)</span> 是幂零的。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+2.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(R\)</span> 的所有幂零左理想的和记作 <span class="math inline">\(\mathrm{rad}(R)\)</span>。</p>
+</div>
+<p>我们要解决两个问题：</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mathrm{rad}(R)\)</span>
+还是幂零左理想的吗？不难证明有限多个幂零左理想的和仍然是幂零的，但是无穷多个幂零左理想的和还幂零吗？</p></li>
+<li><p><span class="math inline">\(\mathrm{rad}(R)\)</span>
+是双边理想吗？</p></li>
+</ol>
+<p>这两个问题都可以用一个引理来解决，这个引理的证明颇有一点技巧性：</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+2.3</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(e\in R\)</span> 满足 <span class="math inline">\(e\ne0\)</span> 且 <span class="math inline">\(e^2=e\)</span>，就称 <span class="math inline">\(e\)</span> 是一个幂等元。</p>
+</div>
+<div id="idempotent" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+2.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是左 Artinian 环。如果左理想 <span class="math inline">\(I\subseteq R\)</span>
+不是幂零的，则其必然包含一个幂等元。</p>
+</div>
+<p>我们把 <a href="#idempotent" title="引理 2.4">引理 2.4</a>
+的证明稍微放一放，先看看它是怎么解决上面的问题 1, 2 的。</p>
+<p>记 <span class="math inline">\(N\)</span> 为 <span class="math inline">\(R\)</span> 的所有幂零左理想 <span class="math inline">\(\{I_{\alpha}\}\)</span> 的和，则 <span class="math inline">\(N\)</span> 也是左理想，并且其中的元素都是 <span class="math inline">\(\{I_{\alpha}\}\)</span> 中元素的有限线性组合：
+<span class="math display">\[x =
+x_{\alpha_1}+x_{\alpha_2}+\cdots+x_{\alpha_k},\quad x_{\alpha_i}\in
+I_{\alpha_i}.\]</span></p>
+<ol type="1">
+<li>如果 <span class="math inline">\(N\)</span> 不是幂零的，那么根据 <a href="#idempotent" title="引理 2.4">引理 2.4</a> 它包含一个幂等元 <span class="math inline">\(e\)</span>，于是 <span class="math inline">\(e\)</span>
+可以表示为有限多个幂零元的和，从而也是幂零的，矛盾！</li>
+<li><span class="math inline">\(NR\)</span>
+是一个双边理想，而且它是幂零的：<span class="math display">\[(NR)^i=N(RN)^{i-1}R\subseteq
+N^iR.\]</span>特别它是一个幂零左理想，于是 <span class="math inline">\(NR\subseteq N\)</span>，从而 <span class="math inline">\(N\)</span> 是双边理想。</li>
+</ol>
+<p><strong><a href="#idempotent" title="引理 2.4">引理 2.4</a>
+的证明</strong>：</p>
+<p>我们会反复使用 DCC 降链条件，即任何由 <span class="math inline">\(R\)</span> 的左理想构成的非空集合必有最小元。</p>
+<p>首先不妨假设 <span class="math inline">\(I\)</span>
+是「极小」非幂零的，即 <span class="math inline">\(I\)</span>
+本身不幂零，但 <span class="math inline">\(I\)</span>
+的任何真理想都是幂零的。否则考察所有包含在 <span class="math inline">\(I\)</span>
+内的、非幂零的左理想组成的集合，此集合包含 <span class="math inline">\(I\)</span> 所以非空，于是根据 DCC
+条件它包含一个极小元 <span class="math inline">\(I_1\)</span>，<span class="math inline">\(I_1\)</span> 不是幂零的，但是任何真包含于 <span class="math inline">\(I_1\)</span> 内的左理想都是幂零的。用 <span class="math inline">\(I_1\)</span> 代替 <span class="math inline">\(I\)</span>，故而可以假设 <span class="math inline">\(I\)</span> 是极小非幂零的。</p>
+<p><span class="math inline">\(I^2\)</span> 包含于 <span class="math inline">\(I\)</span> 内，但它不可能是幂零的，否则 <span class="math inline">\(I\)</span> 就幂零了，所以 <span class="math inline">\(I^2=I\)</span>。我们考察所有满足如下条件的左理想
+<span class="math inline">\(L\)</span> 组成的集合 <span class="math inline">\(S\)</span>：</p>
+<ol type="1">
+<li><span class="math inline">\(L\subseteq I\)</span>。</li>
+<li><span class="math inline">\(IL\ne0\)</span>。</li>
+</ol>
+<p>显然 <span class="math inline">\(S\)</span> 包含 <span class="math inline">\(I\)</span> 从而非空，于是 <span class="math inline">\(S\)</span> 包含一个极小元 <span class="math inline">\(L\)</span>。由于 <span class="math inline">\(IL\ne0\)</span> 所以存在 <span class="math inline">\(x\in L\)</span> 使得 <span class="math inline">\(Ix\ne 0\)</span>。由于 <span class="math inline">\(Ix\)</span> 是包含在 <span class="math inline">\(L\)</span> 内的一个左理想，而且 <span class="math inline">\(I(Ix)=Ix\ne0\)</span> 所以 <span class="math inline">\(Ix\)</span> 也在 <span class="math inline">\(S\)</span> 中，由 <span class="math inline">\(L\)</span> 的极小性有 <span class="math inline">\(Ix=L\)</span>。由 <span class="math inline">\(x\in
+L\)</span> 可知存在 <span class="math inline">\(a\in I\)</span> 满足
+<span class="math inline">\(x=ax\)</span>，从而 <span class="math display">\[x= ax = a^2x = \cdots.\]</span> 所以 <span class="math inline">\(a\)</span> 不可能是幂零的，并且 <span class="math inline">\((a^2-a)x=0\)</span>。我们断言 <span class="math inline">\(a^2-a\)</span> 是幂零的。为此进一步考虑包含在
+<span class="math inline">\(I\)</span> 内的左理想 <span class="math display">\[N = \{ u\in I\ |\ ux = 0\}.\]</span> 于是 <span class="math inline">\(Nx=0\)</span>，但 <span class="math inline">\(Ix\ne0\)</span>，所以 <span class="math inline">\(N\)</span> 真包含于 <span class="math inline">\(I\)</span> 内，所以 <span class="math inline">\(N\)</span>
+是幂零的，从而其每个元素都是幂零的，特别地 <span class="math inline">\(a^2-a\in N\)</span>
+是幂零的。我们断言存在一个多项式 <span class="math inline">\(p\)</span>
+使得 <span class="math inline">\(u=p(a)\)</span> 是一个幂等元。为此假设
+<span class="math inline">\((a^2-a)^k=0\)</span>，展开以后可得存在多项式
+<span class="math inline">\(q\)</span> 使得 <span class="math inline">\(a^k=a^{k+1}q(a)\)</span>，从而 （反复将等式右边的
+<span class="math inline">\(a^k\)</span> 替换为 <span class="math inline">\(a^{k+1}q(a)\)</span>） <span class="math display">\[a^k=a^kaq(a)=a^{k+2}q^2(a)=a^{k+3}q^3(a)=\cdots=a^{2k}q^{k}(a).\]</span>
+令 <span class="math inline">\(e=a^kq^k(a)\)</span>，则 <span class="math inline">\(a^k=a^ke\)</span>, 由于 <span class="math inline">\(a\)</span> 不是幂零的所以 <span class="math inline">\(e\ne0\)</span>。在 <span class="math inline">\(a^k=a^ke\)</span> 两边同乘以 <span class="math inline">\(q^k(a)\)</span> 得到 <span class="math inline">\(a^kq^k(a)=a^{k}q^{k}(a)e\)</span>，即 <span class="math inline">\(e=e^2\)</span>，从而 <span class="math inline">\(e\)</span> 是幂等元，这就证明了结论。<span class="math inline">\(\blacksquare\)</span></p>
+<p>整理上述讨论，我们给出半单性的定义：</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+2.5</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是左 Artinian 环，定义其根 <span class="math inline">\(\mathrm{rad}(R)\)</span> 为 <span class="math inline">\(R\)</span> 的所有幂零左理想之和，则 <span class="math inline">\(\mathrm{rad}(R)\)</span>
+是双边理想，且是幂零的。如果 <span class="math inline">\(\mathrm{rad}(R)=0\)</span>，即 <span class="math inline">\(R\)</span> 不含任何非零的幂零左理想，就称 <span class="math inline">\(R\)</span> 是<strong>半单</strong>的。</p>
+</div>
+<p>不难验证环 <span class="math inline">\(R/\mathrm{rad}(R)\)</span>
+不含非零的幂零左理想，从而它符合我们对半单性的定义。下面的任务就是对半单环进行讨论。</p>
+<p><a href="#idempotent" title="引理 2.4">引理 2.4</a>
+有一个简单的推论，后面会用到。我把它写在这里：</p>
+<div id="L-proj" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+2.6</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是半单左 Artinian 环，<span class="math inline">\(L\)</span> 是 <span class="math inline">\(R\)</span> 的极小左理想，<span class="math inline">\(e\in L\)</span> 是幂等元，则：</p>
+<ol type="1">
+<li>对任何 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(I\supset L\)</span> 都有 <span class="math inline">\(Ie=L\)</span>。</li>
+<li>对任何 <span class="math inline">\(x\in L\)</span> 有 <span class="math inline">\(xe=x\)</span>。</li>
+</ol>
+</div>
+<p>这里 <span class="math inline">\(e\)</span> 的存在性由 <span class="math inline">\(R\)</span> 半单以及 <a href="#idempotent" title="引理 2.4">引理 2.4</a> 保证。这个结论的含义是，对 <span class="math inline">\(x\in R\)</span>，右乘 <span class="math inline">\(x\mapsto xe\)</span> 将 <span class="math inline">\(x\)</span> 投影到 <span class="math inline">\(L\)</span> 中。特别地，这个投影保持 <span class="math inline">\(L\)</span> 中的元素不动。</p>
+<p><strong>证明</strong>：</p>
+<ol type="1">
+<li>显然 <span class="math inline">\(Ie\subset L\)</span>，并且 <span class="math inline">\(e=e\cdot e\in Ie\)</span>，所以 <span class="math inline">\(Ie\ne (0)\)</span>，于是由 <span class="math inline">\(L\)</span> 是极小左理想可得 <span class="math inline">\(Ie=L\)</span>。</li>
+<li>取 <span class="math inline">\(I=R\)</span> 即得 <span class="math inline">\(L=Re\)</span>，即 <span class="math inline">\(L\)</span> 中的任何元素 <span class="math inline">\(x\)</span> 都形如 <span class="math inline">\(x=ae,\,a\in R\)</span>。于是 <span class="math inline">\(xe=ae^2=ae=x\)</span>。<span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+<h1 id="将半单环分解为单环的直和">将半单环分解为单环的直和</h1>
+<p>我们将证明半单环总是可以分解为一些单环的直和（单环的含义后面会介绍），而且这种分解还是唯一的。如果用整数分解为素数乘积来类比的话，极小左理想相当于单个素因子，单环相当于某个素因子的幂。</p>
+<p>我们首先来证明半单环的极小左理想具有直和补性质。首先是一个引理：</p>
+<div id="ideal-decomp" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是半单环，<span class="math inline">\(L\subset I\)</span> 都是 <span class="math inline">\(R\)</span> 的左理想并且 <span class="math inline">\(L\)</span> 还是极小左理想，则存在 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(J\)</span> 满足 <span class="math inline">\(I=L\oplus J\)</span>。</p>
+</div>
+<p><strong>证明</strong>： 根据 <a href="#L-proj" title="推论 2.6">推论
+2.6</a>，设幂等元 <span class="math inline">\(e\in L\)</span> 满足 <span class="math inline">\(I=Le\)</span>。考虑 <span class="math inline">\(J=I(1-e)\)</span>，这也是一个包含在 <span class="math inline">\(I\)</span> 中的左理想。显然 <span class="math display">\[I=Ie\oplus I(1-e)=L\oplus J.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
+<div id="decompose-minimal" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+3.2</span>.</span><span class="statement-spah"> </span>半单环 <span class="math inline">\(R\)</span> 一定可以分解为有限个极小左理想的直和
+<span class="math inline">\(R=L_1\oplus\cdots\oplus L_n\)</span>。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(L_1\)</span> 是
+<span class="math inline">\(R\)</span> 的任一极小左理想，在 <a href="#ideal-decomp" title="引理 3.1">引理 3.1</a> 中取 <span class="math inline">\(L=L_1,I=R\)</span> 可得存在 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(J\)</span> 使得 <span class="math inline">\(R=L_1\oplus J\)</span>。如果 <span class="math inline">\(J\)</span> 非零，则它包含 <span class="math inline">\(R\)</span> 的某个极小左理想 <span class="math inline">\(L_2\)</span>。根据 <a href="#ideal-decomp" title="引理 3.1">引理 3.1</a> <span class="math inline">\(J\)</span>
+可以进一步分解为 <span class="math inline">\(J=L_2\oplus
+K\)</span>。其中 <span class="math inline">\(K\)</span> 也是 <span class="math inline">\(R\)</span> 的左理想。这样继续分解下去，由于左
+Artinian 条件这样的分解只能进行有限多次，于是 <span class="math display">\[R=L_1\oplus J =L_1\oplus L_2\oplus K = \cdots =
+L_1\oplus L_2\oplus\cdots\oplus L_n.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
+<p>我们接下来要把 <span class="math inline">\(R=\oplus_{i=1}^nL_i\)</span> 中所有同构于某个
+<span class="math inline">\(L_i\)</span>
+的极小左理想合起来，形成一个单环。这类似于在整数的素因子分解中把相同的素数的乘积合起来得到单一素因子的幂。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+3.3</span>.</span><span class="statement-spah">
+</span>如果两个极小左理想 <span class="math inline">\(L,L'\)</span>
+作为左 <span class="math inline">\(R-\)</span>
+模是同构的，就称它们是同构的，记作 <span class="math inline">\(L\cong
+L'\)</span>。</p>
+</div>
+<p>我们先来说明极小左理想具有某种「正交性」：</p>
+<div id="two-left-ideals" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.4</span>.</span><span class="statement-spah"> </span>两个极小左理想
+<span class="math inline">\(L\cong L'\)</span> 当且仅当 <span class="math inline">\(L'L\ne0\)</span>。特别地这个同构可以由右乘一个元素
+<span class="math inline">\(a\in L\)</span> 给出：<span class="math inline">\(L'=La\)</span>。</p>
+</div>
+<p><strong>证明</strong>：由于 <span class="math inline">\(L'L\subset L\)</span>，它只能是 <span class="math inline">\((0)\)</span> 或者 <span class="math inline">\(L\)</span>，所以陈述 <span class="math inline">\(L'L\ne0\)</span> 等价于 <span class="math inline">\(L'L=L\)</span>。于是我们只要证明以下三点是等价的即可：</p>
+<div class="statement simple plain unnumbered">
+<ol type="1">
+<li><span class="math inline">\(L\cong L'\)</span>。</li>
+<li>存在 <span class="math inline">\(a\in L\)</span> 使得 <span class="math inline">\(L=L'a\)</span>。</li>
+<li><span class="math inline">\(L'L = L\)</span>。</li>
+</ol>
+</div>
+<p><span class="math inline">\(1\Rightarrow 2\)</span>： 设 <span class="math inline">\(\varphi: L\to L'\)</span> 是一个左 <span class="math inline">\(R-\)</span> 模同构，利用 <a href="#L-proj" title="推论 2.6">推论 2.6</a> 的结论，设 <span class="math inline">\(e\in L\)</span> 是幂等元，则对任何 <span class="math inline">\(x\in L\)</span> 都有 <span class="math inline">\(x=xe\)</span>，所以 <span class="math display">\[\varphi(x)=\varphi(xe)=x\varphi(e),\quad x\in
+L.\]</span> 即同构 <span class="math inline">\(\varphi\)</span> 由右乘
+<span class="math inline">\(a=\varphi(e)\)</span> 给出。</p>
+<p><span class="math inline">\(2\Rightarrow 3\)</span>： 注意到 <span class="math inline">\(L'L\subset L\)</span> 和 <span class="math inline">\(L'L\supset L'a=L\)</span> 即可。</p>
+<p><span class="math inline">\(3\Rightarrow 1\)</span>： 若 <span class="math inline">\(L'L=L\)</span>，则存在 <span class="math inline">\(a\in L\)</span> 使得 <span class="math inline">\(L'a\ne0\)</span>，而 <span class="math inline">\((0)\ne L'a\subset L\)</span>，所以 <span class="math inline">\(L'a=L\)</span>，于是 <span class="math inline">\(y\to ya\)</span> 给出了从 <span class="math inline">\(L'\)</span> 到 <span class="math inline">\(L\)</span> 的一个左 <span class="math inline">\(R-\)</span> 模同构。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="left-ideal" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+3.5</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R=\oplus_{i=1}^n L_i\)</span> 是上面所述的将 <span class="math inline">\(R\)</span> 分解极小左理想的直和，则 <span class="math inline">\(R\)</span> 的任何极小左理想必然同构于某个 <span class="math inline">\(L_i\)</span>。</p>
+</div>
+<p><strong>证明</strong>：对任何极小左理想 <span class="math inline">\(L\)</span> 有 <span class="math inline">\(L=\oplus_{i=1}^nLL_i\)</span>，所以必然存在某个
+<span class="math inline">\(i\)</span> 使得 <span class="math inline">\(LL_i\ne0\)</span>，从而根据 <a href="#two-left-ideals" title="引理 3.4">引理 3.4</a> 有 <span class="math inline">\(L\cong L_i\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<p>对 <span class="math inline">\(R\)</span> 的任一极小左理想 <span class="math inline">\(L\)</span>，记 <span class="math inline">\(B_L\)</span> 为 <span class="math inline">\(R\)</span> 的所有同构于 <span class="math inline">\(L\)</span> 的极小左理想的和。我们来分析 <span class="math inline">\(B_L\)</span> 具有哪些性质。</p>
+<div id="Bi-orth" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.6</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B_LB_{L'}\ne 0\)</span> 当且仅当 <span class="math inline">\(L\cong L'\)</span>。</p>
+</div>
+<p><strong>证明</strong>：由 <a href="#two-left-ideals" title="引理 3.4">引理 3.4</a> 这是显然的。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.7</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B_L\)</span> 是双边理想。</p>
+</div>
+<p><strong>证明</strong>：记 <span class="math inline">\(R =
+\oplus_{i=1}^nL_i\)</span> 为极小左理想的直和，于是 <span class="math inline">\(B_LR=\oplus_{i=1}^nB_LL_i\)</span>。右边每个 <span class="math inline">\(B_LL_i\)</span> 要么是 <span class="math inline">\((0)\)</span> (<span class="math inline">\(L_i\ncong L\)</span>)，要么等于 <span class="math inline">\(L_i\)</span> (<span class="math inline">\(L_i\cong
+L\)</span>) 从而属于 <span class="math inline">\(B_L\)</span>，所以
+<span class="math inline">\(B_LR\subset B_L\)</span>，即 <span class="math inline">\(B_L\)</span> 是双边理想。<span class="math inline">\(\blacksquare\)</span></p>
+<p>为简便以下记 <span class="math inline">\(B_i = B_{L_i}\)</span>。</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.8</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B_L\)</span> 也有乘法单位元 （与 <span class="math inline">\(R\)</span> 的单位元未必相同）。</p>
+</div>
+<p><strong>证明</strong>：不妨设在 <span class="math inline">\(R =
+\oplus_{i=1}^nL_i\)</span> 中，<span class="math inline">\(\{L_1,\ldots,
+L_m\}\)</span> 是互不同构的，<span class="math inline">\(\{L_{m+1},\ldots, L_n\}\)</span> 中的任何一个都与
+<span class="math inline">\(\{L_1,\ldots, L_m\}\)</span>
+中的某一个同构，则 <span class="math inline">\(R=B_1+\cdots+B_m\)</span>。于是环 <span class="math inline">\(R\)</span> 的单位元可以表示为 <span class="math display">\[1 = e_1+\cdots + e_m,\quad e_i\in B_i.\]</span>
+对任何 <span class="math inline">\(x\in B_i\)</span>，利用 <span class="math inline">\(i\ne j\)</span> 时 <span class="math inline">\(B_iB_j=0\)</span> 有 <span class="math display">\[x=1\cdot x = e_1x+\cdots+e_mx = e_ix.
+\]</span> 同理也有 <span class="math inline">\(x=xe_i\)</span>。从而
+<span class="math inline">\(e_i\)</span> 是 <span class="math inline">\(B_i\)</span> 的乘法单位元。</p>
+<p>根据 <a href="#left-ideal" title="推论 3.5">推论 3.5</a> 任何 <span class="math inline">\(B_L\)</span> 必然等于 <span class="math inline">\(\{B_1,\ldots,B_m\}\)</span>
+之一，所以也是有单位元的。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.9</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B_L\)</span> 也满足左理想的 DCC 降链条件。</p>
+</div>
+<p><strong>证明</strong>：只要说明 <span class="math inline">\(B_{L}\)</span> 的左理想 <span class="math inline">\(I\)</span> 也是 <span class="math inline">\(R\)</span> 的左理想即可：由于 <span class="math inline">\(e\)</span> 是 <span class="math inline">\(B_{L}\)</span> 的乘法单位元所以 <span class="math inline">\(I=eI\)</span>，于是 <span class="math inline">\(RI=ReI\subset B_{L}I\subset I\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<p>与这个引理的证明类似，我们可以得出 <span class="math inline">\(B_L\)</span> 的右理想 <span class="math inline">\(I\)</span> 也是 <span class="math inline">\(R\)</span> 的右理想。特别地 <span class="math inline">\(B_L\)</span> 的双边理想也是 <span class="math inline">\(R\)</span> 的双边理想。</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.10</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B_L\)</span> 除了 (0)
+和自身外不含其它双边理想。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(D\)</span> 是
+<span class="math inline">\(B_L\)</span> 的非零双边理想，则 <span class="math inline">\(D\)</span> 也是 <span class="math inline">\(R\)</span> 的双边理想，从而其包含 <span class="math inline">\(R\)</span> 的某个极小左理想 <span class="math inline">\(L_1\)</span>，即<span class="math display">\[L_1\subset D \subset B_L.\]</span>由于 <span class="math inline">\(L_1B_L\supset L_1^2\ne0\)</span> 所以 <span class="math inline">\(L_1\cong L\)</span>。</p>
+<p>由于对任意的 <span class="math inline">\(a\in R\)</span> 都有 <span class="math inline">\(L_1a\subset D\)</span>，根据 <a href="#two-left-ideals" title="引理 3.4">引理 3.4</a>，这些 <span class="math inline">\(L_1a\)</span> 跑遍所有与 <span class="math inline">\(L_1\)</span> 同构的极小左理想，从而 <span class="math inline">\(B_L\subset D\)</span>，于是 <span class="math inline">\(B_L=D\)</span>，即 <span class="math inline">\(B_L\)</span> 不含非平凡的双边理想。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.11</span>.</span><span class="statement-spah"> </span><span class="math inline">\(R = B_1\oplus\cdots\oplus B_m\)</span>。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(x_i\in
+B_i\)</span> 满足 <span class="math inline">\(x_1+\cdots+x_m=0\)</span>，两边同时乘以 <span class="math inline">\(B_i\)</span> 的单位元 <span class="math inline">\(e_i\)</span> 并利用 <a href="#Bi-orth" title="引理 3.6">引理 3.6</a> 可得 <span class="math inline">\(x_i=0\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.12</span>.</span><span class="statement-spah"> </span><span class="math inline">\(R\)</span> 的任何双边理想 <span class="math inline">\(I\)</span> 都可以表示为若干 <span class="math inline">\(B_i\)</span> 的直和。</p>
+</div>
+<p><strong>证明</strong>：由 <span class="math inline">\(R=\oplus_{i=1}^mB_i\)</span> 有 <span class="math inline">\(I=\oplus_{i=1}^m IB_i\)</span>。每个 <span class="math inline">\(IB_i\)</span> 都是 <span class="math inline">\(B_i\)</span> 中的双边理想，而我们已经证明了 <span class="math inline">\(B_i\)</span> 没有非平凡的双边理想，所以每个 <span class="math inline">\(IB_i\)</span> 要么等于 <span class="math inline">\(B_i\)</span>，要么等于 <span class="math inline">\((0)\)</span>，从而 <span class="math inline">\(I\)</span> 是一些 <span class="math inline">\(B_i\)</span> 的直和。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+3.13</span>.</span><span class="statement-spah"> </span>如果左 Artinian
+环 <span class="math inline">\(R\)</span> 除了 <span class="math inline">\((0)\)</span> 和自身外不含有其它的双边理想，就称
+<span class="math inline">\(R\)</span> 是<strong>单环</strong>。</p>
+</div>
+<p>显然单环的根都是 <span class="math inline">\((0)\)</span>，所以也是半单的。</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3.14</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是单环，则在同构意义下只有一种不可约左
+<span class="math inline">\(R-\)</span> 模，即 <span class="math inline">\(R\)</span> 的某个极小左理想。</p>
+</div>
+<p><strong>证明</strong>：显然 <span class="math inline">\(R\)</span>
+的所有极小左理想都是互相同构的。设 <span class="math inline">\(M\)</span> 是任一不可约左 <span class="math inline">\(R-\)</span> 模，则 <span class="math inline">\(R\)</span> 的某个极小左理想 <span class="math inline">\(L\)</span> 满足 <span class="math inline">\(LM\ne
+0\)</span>，从而存在 <span class="math inline">\(m\in M\)</span> 满足
+<span class="math inline">\(Lm\ne 0\)</span>，从而 <span class="math inline">\(Lm=M\)</span>。<span class="math inline">\(\phi\colon\ x\mapsto xm\)</span> 给出了 <span class="math inline">\(L\)</span> 到 <span class="math inline">\(M\)</span> 的 <span class="math inline">\(R-\)</span> 模同构。<span class="math inline">\(\blacksquare\)</span></p>
+<p>至此我们已经把半单环 <span class="math inline">\(R\)</span>
+分解为了单环的直和： <span class="math display">\[R =
+B_1\oplus\cdots\oplus B_m.\]</span> 实际上这个分解还是唯一的，即若 <span class="math display">\[R = B'_1\oplus\cdots\oplus B'_l.\]</span>
+其中每个 <span class="math inline">\(B'_j\)</span> 是单环，并且是
+<span class="math inline">\(R\)</span> 的双边理想，则 <span class="math inline">\(m=l\)</span> 且适当重排以后有 <span class="math inline">\(B_i=B'_j\)</span>。（证明简单，略）</p>
+<h1 id="单环的结构定理">单环的结构定理</h1>
+<p>最终我们来到了单环的结构定理。在本节中，我们用 <span class="math inline">\(A\)</span> 来表示单环，以便与前面的半单环 <span class="math inline">\(R\)</span> 区分。</p>
+<div id="w-a" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.1</span> <span class="statement-info">(Wedderburn-Artin)</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\)</span>
+是单环，则存在除环 <span class="math inline">\(D\)</span> 使得 <span class="math inline">\(A\cong {\rm Mat}_n(D)\)</span>，这里 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(D\)</span> 由 <span class="math inline">\(A\)</span> 唯一确定。</p>
+</div>
+<p>我们先来验证 <span class="math inline">\({\rm Mat}_n(D)\)</span>
+是单环。记 <span class="math inline">\(e_{ij}\in {\rm Mat}_n(D)\)</span>
+是第 <span class="math inline">\((i,j)\)</span> 个分量为 1，其余位置都是
+0 的初等矩阵。</p>
+<ol type="1">
+<li>恒等矩阵 <span class="math inline">\(I_n\)</span>
+是乘法单位元。</li>
+<li><span class="math inline">\({\rm Mat}_n(D)\)</span>
+可以分解为极小左理想的直和 <span class="math display">\[{\rm
+Mat}_n(D)={\rm Mat}_n(D)e_{11}\oplus\cdots {\rm
+Mat}_n(D)e_{nn}.\]</span> 其中 <span class="math inline">\(\{e_{ii},\,1\leq i\leq n\}\)</span>
+是仅在对角线上第 <span class="math inline">\(i\)</span> 个元素为
+1，其余所有元素都为 0
+的矩阵，它们构成一组互相正交的幂等元，其和为单位矩阵。左理想 <span class="math inline">\(L_i={\rm Mat}_n(D)e_{ii}\)</span> 中的矩阵除了第
+<span class="math inline">\(i\)</span> 列以外，其余的列都是 0。<span class="math inline">\(L_i\)</span>
+是极小左理想是因为，对任何两个非零元素 <span class="math inline">\(x,y\in L_i\)</span>，我们总可以用初等行变换将
+<span class="math inline">\(x\)</span> 变成 <span class="math inline">\(y\)</span>，而初等行变换就是左乘一个 <span class="math inline">\({\rm Mat}_n(D)\)</span> 中的矩阵，所以任何非零元
+<span class="math inline">\(x\)</span> 都可以在 <span class="math inline">\({\rm Mat}_n(D)\)</span> 的左乘作用下生成整个 <span class="math inline">\(L_i\)</span>，所以 <span class="math inline">\(L_i\)</span> 确实是极小左理想。</li>
+<li>这些极小左理想 <span class="math inline">\(L_i\,(1\leq i\leq
+n)\)</span> 是互相同构的。为此只要说明 <span class="math display">\[L_iL_j={\rm Mat}_n(D)e_{ii}\cdot {\rm
+Mat}_n(D)e_{jj}\]</span> 不为 0 即可，而这个乘积包含 <span class="math inline">\(e_{ii}e_{ij}e_{jj}=e_{ij}\)</span>，当然不是
+0。</li>
+</ol>
+<p>下面回到 <a href="#w-a" title="定理 4.1">定理 4.1</a> 的证明。</p>
+<p>大多数文献上对这一步的处理方式都是证明单环 <span class="math inline">\(A\)</span>
+和它的不可约模满足所谓的双重中心化子性质。我们先介绍大致的思路：</p>
+<p>设 <span class="math inline">\(M\)</span> 是一个左 <span class="math inline">\(A-\)</span> 模，则 <span class="math inline">\(A\)</span> 在 <span class="math inline">\(M\)</span> 上的左乘给出了 <span class="math inline">\(A\to {\rm End}(M)\)</span> 的一个环同态，记 <span class="math inline">\(A\)</span> 在 <span class="math inline">\({\rm
+End}(M)\)</span> 中的同态像为 <span class="math inline">\(A_L\)</span>。由于 <span class="math inline">\(A\)</span> 是单环所以 <span class="math inline">\(A\cong A_L\)</span>。</p>
+<p>记 <span class="math inline">\(D={\rm Hom}_A(M,M)\)</span> 为 <span class="math inline">\(M\)</span> 的 <span class="math inline">\(A-\)</span> 模自同态。<span class="math inline">\(D\)</span> 正是 <span class="math inline">\(A_L\)</span> 在 <span class="math inline">\({\rm
+End}(M)\)</span> 中的中心化子： <span class="math display">\[(am)d =
+a(md),\quad a\in A_L,\,m\in M,\,d\in D.\]</span> 值得注意的是，我们把
+<span class="math inline">\(A_L\)</span>
+的作用写在左边（这就是为什么用了 <span class="math inline">\(L\)</span>
+作为下标），<span class="math inline">\(D\)</span> 在 <span class="math inline">\(M\)</span> 上的作用写在右边：对任何 <span class="math inline">\(d\in D\)</span>，<span class="math inline">\(d\)</span> 在 <span class="math inline">\(M\)</span> 上的作用为 <span class="math inline">\(m\to md\)</span>。把 <span class="math inline">\(D\)</span>
+的作用写在右边有两个好处：一是可以避免后面在矩阵中使用讨厌的反环记号 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，二是这样一来 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(D\)</span> 交换就等价于说 <span class="math inline">\(M\)</span> 是一个 <span class="math inline">\((A,
+D)-\)</span> 双模。</p>
+<p>进一步记 <span class="math inline">\(E={\rm Hom}_D(M,M)\)</span> 为
+<span class="math inline">\(D\)</span> 在 <span class="math inline">\({\rm End}(M)\)</span> 中的中心化子，<span class="math inline">\(E\)</span> 在 <span class="math inline">\(M\)</span> 上的作用写在左边。即 <span class="math inline">\(E\)</span> 由所有满足 <span class="math display">\[(fm)d = f(md),\quad f\in {\rm End}(M),\,m\in
+M,\,d\in D.\]</span> 的自同态 <span class="math inline">\(f\)</span>
+组成。显然 <span class="math inline">\(E\)</span> 是由 <span class="math inline">\(A_L\)</span> 在 <span class="math inline">\({\rm
+End}(M)\)</span> 中连续取两次中心化子得到的，且 <span class="math inline">\(A_L\subseteq E\)</span>。特别地，如果 <span class="math inline">\(A_L=E\)</span> 我们就称 <span class="math inline">\((A,M)\)</span>
+具有<strong>双重中心化子性质</strong>。</p>
+<p>设 <span class="math inline">\(M\)</span> 是 <span class="math inline">\(A\)</span> 的一个极小左理想，从而 <span class="math inline">\(M\)</span> 也是不可约左 <span class="math inline">\(A-\)</span> 模。我们希望证明 <span class="math inline">\((A,M)\)</span> 具有双重中心化子性质。这时 <span class="math inline">\(D={\rm Hom}_A(M,M)\)</span> 是除环，<span class="math inline">\(M\)</span> 作为右 <span class="math inline">\(D-\)</span> 模是除环 <span class="math inline">\(D\)</span> 上的右向量空间。若 <span class="math inline">\((A,M)\)</span> 具有双重中心化子性质则 <span class="math inline">\(A\cong A_L\cong {\rm Hom}_D(M,M)\)</span>，即
+<span class="math inline">\(A\)</span> 同构于除环 <span class="math inline">\(D\)</span> 上的右向量空间 <span class="math inline">\(M\)</span> 上的所有 <span class="math inline">\(D-\)</span> 线性变换构成的环。特别地如果维数 <span class="math inline">\(\dim_D  M=n&lt;\infty\)</span>，则 <span class="math inline">\(A\cong {\rm Mat}_n(D)\)</span>，这就证明了
+Wedderburn-Artin 定理。</p>
+<p>于是我们的思路就是先证明 <span class="math inline">\((A, M)\)</span>
+具有双重中心化子性质，再证明 <span class="math inline">\(\dim_D
+M&lt;\infty\)</span>。</p>
+<p>注意到对左正则模 <span class="math inline">\(_AA\)</span> ，<span class="math inline">\((A, \,_AA)\)</span>
+是具有双重中心化子性质的。事实上很容易验证 <span class="math inline">\(A\)</span> 在自身上的左乘 <span class="math inline">\(A_L\)</span> 和右乘 <span class="math inline">\(A_R\)</span> 互为对方在 <span class="math inline">\({\rm End}(A)\)</span> 中的中心化子，所以 <span class="math inline">\((A,\, _AA)\)</span> 是具有双重中心化子性质的。</p>
+<p>当 <span class="math inline">\(A\)</span> 是单环时，左正则模 <span class="math inline">\(_AA\)</span> 同构于 <span class="math inline">\(A\)</span> 的某个极小左理想 <span class="math inline">\(L\)</span> 的若干重直和：<span class="math inline">\(_AA\cong\oplus_{i=1}^nL\)</span>，所以我们只要证明这样的结论就好了：</p>
+<div id="A-M" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+4.2</span>.</span><span class="statement-spah"> </span>设左 <span class="math inline">\(A-\)</span> 模 <span class="math inline">\(V,M\)</span> 满足 <span class="math inline">\(V=\oplus_{i=1}^n M\)</span>。若 <span class="math inline">\((A, V)\)</span> 具有双重中心化子性质，则 <span class="math inline">\((A, M)\)</span> 也具有双重中心化子性质。</p>
+</div>
+<p>注意这个引理中 <span class="math inline">\(A\)</span>
+可以是任意的环，不仅限于单环；<span class="math inline">\(M\)</span>
+也是任意的左 <span class="math inline">\(A-\)</span>
+模，不仅限于不可约模。</p>
+<p><strong>证明</strong>：对任何 <span class="math inline">\(f\in E={\rm
+Hom}_D(M, M)\)</span>，将其提升为 <span class="math inline">\(V\)</span>
+的一个自同态 <span class="math display">\[f^\ast: (m_1,m_2,\ldots,
+m_n)\to (f(m_1), f(m_2), \ldots, f(m_n)).\]</span> 我们希望证明 <span class="math inline">\(f^\ast \in {\rm Hom}_{D^\ast}(V, V)\)</span>，其中
+<span class="math inline">\(D^\ast={\rm Hom}_A(V,
+V)\)</span>，这样利用已知 <span class="math inline">\((A, V)\)</span>
+具有双重中心化子性质，可得 <span class="math inline">\(f^\ast\)</span>
+来自某个 <span class="math inline">\(a\in A\)</span> 在 <span class="math inline">\(V\)</span> 上的左乘，即对任何 <span class="math inline">\((m_1,m_2,\ldots,m_n)\)</span> 有 <span class="math display">\[ f^\ast(m_1,m_2,\ldots, m_n)
+=  (am_1,am_2,\ldots,am_n).\]</span> 只看第一个分量即得对任何 <span class="math inline">\(m\in M\)</span> 有 <span class="math inline">\(f(m)=am\)</span>，这就证明了结论。</p>
+<p>为此我们只要注意到 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> （一个简单的练习，细节见脚注） <span class="math display">\[D^\ast={\rm Hom}_A(\oplus_{i=1}^nM,
+\oplus_{i=1}^nM)\cong {\rm Mat}_n({\rm Hom}_A(M, M)) = {\rm
+Mat}_n(D).\]</span> 换言之任何 <span class="math inline">\(\varphi\in
+D^\ast\)</span> 都形如 <span class="math inline">\(\varphi=(d_{ij})_{1\leq i,j\leq n}\)</span>，其中
+<span class="math inline">\(d_{ij}\in D={\rm
+Hom}_A(M,M)\)</span>，所以验证 <span class="math inline">\(f^\ast\in{\rm
+Hom}_{D^\ast}(V, V)\)</span> 变成了验证一串矩阵等式： <span class="math display">\[\begin{align*}
+(f^\ast(m_1,\ldots,m_n))\varphi&amp;=(f(m_1),\ldots,f(m_n))\varphi\\&amp;=(f(m_1),\ldots,f(m_n))\begin{pmatrix}d_{11}&amp;\cdots&amp;
+d_{1n}\\\vdots&amp;\ddots&amp;\vdots\\d_{n1}&amp;\cdots&amp;d_{nn}\end{pmatrix}\\&amp;=\left(\sum_{i=1}^nf(m_i)d_{i1},\ldots,\sum_{i=1}^nf(m_i)d_{in}\right)\\&amp;=\left(f(\sum_{i=1}^nm_id_{i1}),\ldots,f(\sum_{i=1}^nm_id_{in})\right)\\&amp;=f^\ast\left(\sum_{i=1}^nm_id_{i1},\ldots,\sum_{i=1}^nm_id_{in}\right)\\&amp;=f^\ast((m_1,\ldots,m_n)\varphi)
+\end{align*}
+\]</span></p>
+<p>即 <span class="math inline">\(f^\ast \in {\rm Hom}_{D^\ast}(V,
+V)\)</span>，<a href="#A-M" title="引理 4.2">引理 4.2</a> 得证。<span class="math inline">\(\blacksquare\)</span></p>
+<p>这样我们就证明了单环具有双重中心化子性质。我把结论明确写下来：</p>
+<div id="double-centralizer" class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+4.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\)</span> 是单环，<span class="math inline">\(M\)</span> 是不可约左 <span class="math inline">\(A-\)</span> 模。将除环 <span class="math inline">\(D={\rm Hom}_A(M,M)\)</span> 的作用写在 <span class="math inline">\(M\)</span> 右边，则 <span class="math inline">\(A\cong {\rm Hom}_D(M,M)\)</span>。特别地 <span class="math inline">\({\rm Hom}_D(M,M)\)</span> 也是单环。</p>
+</div>
+<p>我们还需要证明 <span class="math inline">\(\dim_D
+M&lt;\infty\)</span>。由于我们在 <a href="#double-centralizer" title="命题 4.3">命题 4.3</a> 中证明了 <span class="math inline">\({\rm
+Hom}_D(M,M)\)</span> 是单环，所以 <span class="math inline">\(\dim_D
+M&lt;\infty\)</span> 的结论立刻可以由下面的命题得出：</p>
+<div id="dim-D-finite" class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+4.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(M\)</span> 是除环 <span class="math inline">\(D\)</span> 上的右向量空间，则 <span class="math inline">\(\dim_D M&lt;\infty\)</span> 当且仅当 <span class="math inline">\({\rm Hom}_D(M,M)\)</span> 是单环。</p>
+</div>
+<p><strong>证明</strong>：<span class="math inline">\(\Rightarrow\)</span>
+说的是除环上的矩阵环都是单环，这一点在前面已经讨论过了。只要再证明 <span class="math inline">\(\Leftarrow\)</span>。用反证法，如果 <span class="math inline">\(\dim_D M=\infty\)</span>，考虑 <span class="math inline">\({\rm Hom}_D(M,M)\)</span> 的子集 <span class="math display">\[I = \{ f\in {\rm Hom}_D(M,M) \mid \dim_D  {\rm
+im}(f) &lt;\infty\}.\]</span> 我们来验证 <span class="math inline">\(I\)</span> 是 <span class="math inline">\({\rm
+Hom}_D(M,M)\)</span> 中非平凡的双边理想。</p>
+<ol type="1">
+<li>由于 <span class="math inline">\(\dim_D
+M=\infty\)</span>，所以恒等映射不包含在 <span class="math inline">\(I\)</span> 中，所以 <span class="math inline">\(I\ne {\rm Hom}_D(M,M)\)</span>。</li>
+<li>由于 <span class="math inline">\({\rm im}(f_1+f_2)\subset {\rm
+im}(f_1)+{\rm im}(f_2)\)</span>，所以 <span class="math inline">\(I\)</span> 对加法是封闭的。</li>
+<li>设 <span class="math inline">\(f\in I,\,g\in {\rm
+Hom}_D(M,M)\)</span>，则不难验证 <span class="math inline">\({\rm
+im}(fg)\)</span> 和 <span class="math inline">\({\rm im}(gf)\)</span>
+都是有限维的。</li>
+<li><span class="math inline">\(I\ne(0)\)</span>。为此只要取 <span class="math inline">\(M\)</span> 的一组 <span class="math inline">\(D-\)</span> 基 <span class="math inline">\(\{e_\alpha\}\)</span>，并固定某个基元素 <span class="math inline">\(e_\beta\)</span>，规定 <span class="math display">\[f\colon\ \sum e_\alpha d_\alpha\mapsto e_\beta
+d_\beta .\]</span> 即 <span class="math inline">\(f\)</span> 是到 <span class="math inline">\(e_\beta\)</span> 生成的一维子空间的投影。<span class="math inline">\(f\in I\)</span> 并且 <span class="math inline">\(f(e_\beta)=e_\beta\)</span> 不是零映射。</li>
+</ol>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<p>最后我们来说明 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(D\)</span> 是唯一确定的，即若 <span class="math inline">\(n'\)</span> 和 <span class="math inline">\(D'\)</span> 使得 <span class="math inline">\(A\cong {\rm Mat}_n(D)\cong {\rm
+Mat}_{n'}(D')\)</span>，则 <span class="math inline">\(n=n'\)</span> 且 <span class="math inline">\(D\cong D'\)</span>。从上面的证明中我们已经看到
+<span class="math inline">\(n\)</span> 是 <span class="math inline">\(A\)</span> 分解为极小左理想 <span class="math inline">\(M\)</span> 直和的重数，从而是唯一确定的。而除环
+<span class="math inline">\(D={\rm Hom}_A(M,M)\)</span>
+是其唯一不可约模的 <span class="math inline">\(A-\)</span>
+自同态环，所以也是唯一确定的。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-curtis-reiner" class="csl-entry" role="listitem">
+Curtis, C.W., and I. Reiner. 1962. <em>Representation Theory of Finite
+Groups and Associative Algebras</em>. New York: Interscience Publishers,
+a division of John Wiley &amp; Sons.
+</div>
+<div id="ref-herstein-rings" class="csl-entry" role="listitem">
+Herstein, I. N. 1994. <em>Noncommutative Rings</em>. Vol. 15. Carus
+Mathematical Monographs. Mathematical Association of America,
+Washington, DC.
+</div>
+<div id="ref-Lam01" class="csl-entry" role="listitem">
+Lam, T. Y. 2001. <em>A First Course in Noncommutative Rings</em>. Second
+edition. Vol. 131. Graduate Texts in Mathematics. Springer-Verlag, New
+York.
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>除环上的向量空间与域上的向量空间的一个显著不同是：如果
+<span class="math inline">\(V\)</span> 是一个左 <span class="math inline">\(D-\)</span> 向量空间且 <span class="math inline">\(\dim _DV=n\)</span>，则其 <span class="math inline">\(D-\)</span> 自同态环 <span class="math inline">\({\rm End}_D(V)\cong {\rm Mat}_n(D^{\rm
+op})\)</span>，这里 <span class="math inline">\(D^{\rm op}\)</span> 是
+<span class="math inline">\(D\)</span> 的反环。但是如果 <span class="math inline">\(V\)</span> 是右 <span class="math inline">\(D-\)</span> 向量空间，并且把 <span class="math inline">\({\rm End}_D(V)\)</span> 在 <span class="math inline">\(V\)</span> 上的作用写在左边的话（即把 <span class="math inline">\(V\)</span> 看作是 <span class="math inline">\(({\rm End}_D(V), D)-\)</span> 双模），则 <span class="math inline">\({\rm End}_D(V)\cong {\rm Mat}_n(D)\)</span>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>记 <span class="math inline">\(i_k\)</span> 是从 <span class="math inline">\(M\)</span> 到 <span class="math inline">\(\oplus_{i=1}^nM\)</span> 的第 <span class="math inline">\(k\)</span> 个分量的嵌入映射： <span class="math display">\[i_k: m\to(0, 0,\ldots, m,\ldots, 0).\]</span>
+<span class="math inline">\(\pi_l\)</span> 是从 <span class="math inline">\(\oplus_{i=1}^nM\)</span> 的第 <span class="math inline">\(l\)</span> 个分量到 <span class="math inline">\(M\)</span> 的投影： <span class="math display">\[\pi_l: (m_1,\ldots,m_l,\ldots, m_n) \to
+m_l.\]</span> 对任何 <span class="math inline">\(\varphi\in {\rm
+Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span>，<span class="math inline">\((m_1,\ldots,m_n)\varphi\)</span> 的第 <span class="math inline">\(j\)</span> 个分量当然就是 <span class="math inline">\((m_1,\ldots,m_n)\varphi\circ\pi_j\)</span>。进一步把左边的
+<span class="math inline">\((m_1,\ldots,m_n)\)</span> 拆成求和有 <span class="math display">\[(m_1,\ldots,m_n)\varphi\circ\pi_j=\left(\sum_{i=1}^nm_i\circ
+i_i\right)\varphi\circ\pi_j=\sum_{i=1}^n
+m_i(i_i\circ\varphi\circ\pi_j)=\sum_{i=1}^nm_i\varphi_{ij}.\]</span>
+其中 <span class="math inline">\(\varphi_{ij}=i_i\circ\varphi\circ\pi_j\in{\rm
+Hom}_A(M,M)\)</span>，注意 <span class="math inline">\(\varphi_{ij}\)</span> 是写在 <span class="math inline">\(m\)</span> 右边的，<span class="math inline">\(i_i\)</span> 先作用，其次是 <span class="math inline">\(\varphi\)</span>，最后是 <span class="math inline">\(\pi_j\)</span>。 这告诉我们 <span class="math inline">\((m_1,\ldots,m_n)\varphi\)</span> 的第 <span class="math inline">\(j\)</span> 个分量等于 <span class="math inline">\(\sum_{i=1}^nm_i\varphi_{ij}\)</span>，即下面的矩阵乘法等式成立：
+<span class="math display">\[(m_1,\ldots,m_n)\varphi=(m_1,\ldots,m_n)\begin{pmatrix}\varphi_{11}&amp;\cdots&amp;\varphi_{1n}\\\vdots&amp;\ddots&amp;\vdots\\\varphi_{n1}&amp;\cdots&amp;\varphi_{nn}\end{pmatrix}.\]</span>
+不难验证 <span class="math inline">\(\varphi\to(\varphi_{ij})\)</span>
+是一个从 <span class="math inline">\({\rm
+Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span> 到 <span class="math inline">\({\rm Mat}_n(D)\)</span> 的同构。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/spaceship-jump/" rel="next" title="飞船空间跳跃问题">
+      上一篇：飞船空间跳跃问题
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/central-simple-algebra/" rel="next" title="中心单代数的三个基本结论">
+          下一篇：中心单代数的三个基本结论
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

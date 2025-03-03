@@ -1,0 +1,871 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Coxeter element | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="如果你对 Lie 代数有所了解的话，相信很大概率你会见过下面的图案： (
+参考维基百科的 Lie
+algebra 词条 )
+
+它展示的是 Lie 代数 \(E_8\)
+的根系图。\(E_8\) 的根系由 8 维欧式空间
+\(\mathbb{R}^8\) 中的 240
+个向量组成，将这 240 个向量投影到一个特殊的 2 维平面 ( 叫做 Coxeter 平面
+) 上就会呈现出一个具有旋转对称性的图案。在上图中可以看到，240
+个投影点分布在 8 个圆周上，每个圆周包含 30
+个均匀分布的点，整个图案在角度为 \(2\pi/30\) 的旋转下是不变的。\(h=30\) 正是 \(E_8\) 的 Coxeter 数。
+本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python
+中编写一个程序绘制上面的投影图案。我主要参考了 (Humphreys 1990) 和 (Casselman
+2017)。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。
+本文的代码在 Github
+上 。David Madore 也有一个很棒的 交互式网页
+可以绘制 \(E_8\)
+的多种不同风格的图案。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Coxeter element"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/pywonderland-项目/">pywonderland 项目</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Coxeter element</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2013-10-10T16:00:00.000Z"><a href="/coxeter-element/">2013-10-11</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%85%83"><span class="section table-of-contents-text">Coxeter 元</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-%E5%B9%B3%E9%9D%A2"><span class="section table-of-contents-text">Coxeter 平面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%94%B9%E8%BF%9B"><span class="section table-of-contents-text">进一步改进</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#e_8-%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="section table-of-contents-text">\(E_8\) 的例子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>如果你对 Lie 代数有所了解的话，相信很大概率你会见过下面的图案： (
+参考维基百科的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lie_algebra">Lie
+algebra 词条</a> )</p>
+<p><img style="margin:0px auto;display: block" src="/images/coxeter-element/e8.svg" width="350"></p>
+<p>它展示的是 Lie 代数 <span class="math inline">\(E_8\)</span>
+的根系图。<span class="math inline">\(E_8\)</span> 的根系由 8 维欧式空间
+<span class="math inline">\(\mathbb{R}^8\)</span> 中的 240
+个向量组成，将这 240 个向量投影到一个特殊的 2 维平面 ( 叫做 Coxeter 平面
+) 上就会呈现出一个具有旋转对称性的图案。在上图中可以看到，240
+个投影点分布在 8 个圆周上，每个圆周包含 30
+个均匀分布的点，整个图案在角度为 <span class="math inline">\(2\pi/30\)</span> 的旋转下是不变的。<span class="math inline">\(h=30\)</span> 正是 <span class="math inline">\(E_8\)</span> 的 Coxeter 数。</p>
+<p>本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python
+中编写一个程序绘制上面的投影图案。我主要参考了 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990</a>)</span> 和 <span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman
+2017</a>)</span>。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。</p>
+<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/raw/master/src/misc/E8.py">Github
+上</a> 。David Madore 也有一个很棒的 <a target="_blank" rel="noopener" href="http://www.madore.org/~david/math/e8w.html">交互式网页</a>
+可以绘制 <span class="math inline">\(E_8\)</span>
+的多种不同风格的图案。</p>
+<span id="more"></span>
+<h1 id="coxeter-元">Coxeter 元</h1>
+<p>设 <span class="math inline">\((W,S)\)</span> 是一个有限不可约
+Coxeter 群。<span class="math inline">\(S\)</span>
+中的生成元满足关系：对任何 <span class="math inline">\(s_i,s_j\in
+S\)</span> 有 <span class="math inline">\((s_is_j)^{m_{ij}}=1\)</span>。其中 <span class="math inline">\(m_{ij}\geq 2\)</span> 是正整数，并且每个 <span class="math inline">\(m_{ii}=1\)</span>。记 <span class="math inline">\(|S|=n\)</span>。</p>
+<p>设 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(n\)</span> 维实向量空间，<span class="math inline">\(\Delta=\{\alpha_1,\ldots,\alpha_n\}\)</span> 是
+<span class="math inline">\(V\)</span> 的一组基，<span class="math inline">\(\Delta\)</span> 叫做一组单根。定义 <span class="math inline">\(V\)</span> 上的内积 <span class="math inline">\(\bullet\)</span> 如下： <span class="math display">\[\alpha_i\bullet\alpha_j=-\cos\frac{\pi}{m_{ij}}.\]</span>
+在这个内积下，每个 <span class="math inline">\(\alpha_i\in\Delta\)</span> 都是单位向量：<span class="math inline">\(\alpha_i\bullet\alpha_i=1\)</span>。</p>
+<p><span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, secs.
+6.2–6.4</a>)</span> 中证明了 <span class="math inline">\(( W,S
+)\)</span> 是有限群当且仅当 <span class="math inline">\(\bullet\)</span>
+是正定的。</p>
+<p>记 <span class="math inline">\(A= ( \alpha_i\bullet\alpha_j )_{1\leq
+i,j\leq n}\)</span> 是 <span class="math inline">\(\bullet\)</span> 在
+<span class="math inline">\(\Delta\)</span> 这组基下的 Gram 矩阵，<span class="math inline">\(A\)</span> 叫做 Cartan 矩阵。</p>
+<p>规定每个生成元 <span class="math inline">\(s_i\in S\)</span> 在 <span class="math inline">\(V\)</span> 上的作用为 <span class="math display">\[s_i ( v ) = v - 2 ( v\bullet\alpha_i )
+\alpha_i,\quad v\in V.\]</span> 即 <span class="math inline">\(s_i\)</span> 是关于以 <span class="math inline">\(\alpha_i\)</span>
+为法向量的超平面的反射。这个作用将 <span class="math inline">\(W\)</span> 同构地映射为 <span class="math inline">\(O ( V )\)</span> 的一个有限反射子群。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+1.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\{i_1,i_2,\ldots,i_n\}\)</span> 是集合 <span class="math inline">\(\{1,2,\ldots,n\}\)</span> 的一个置换，乘积 <span class="math inline">\(s_{i_1}s_{i_2}\cdots s_{i_n}\)</span> 叫做
+<strong>Coxeter 元</strong>。</p>
+</div>
+<p>换句话说，Coxeter 元就是把 <span class="math inline">\(W\)</span>
+的生成元 <span class="math inline">\(s_1,\ldots,s_n\)</span>
+按照任意顺序排列，然后相乘得到的群元素。</p>
+<div id="coxeter-conjugate" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+1.2</span> <span class="statement-info">(<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
+3.16</a>)</span>)</span>.</span><span class="statement-spah">
+</span>所有 Coxeter 元都是互相共轭的。</p>
+</div>
+<p>由于 Coxeter
+元都是共轭的，所以它们有相同的阶、特征多项式和特征值。任一 Coxeter
+元的阶叫做 <span class="math inline">\(W\)</span> 的 <strong>Coxeter
+数</strong>，记作 <span class="math inline">\(h\)</span>。</p>
+<p>设 <span class="math inline">\(\gamma\)</span> 是一个 Coxeter
+元，由于 <span class="math inline">\(\gamma\)</span> 满足 <span class="math inline">\(\gamma^h=1\)</span>，所以 <span class="math inline">\(\gamma\)</span> 的特征值必然都是 <span class="math inline">\(h\)</span>- 次单位根，而且复特征值成对共轭出现：
+<span class="math display">\[\{\zeta^{m_1},\ldots,\zeta^{m_n},0\leq
+m_i&lt;h\}.\]</span> 其中 <span class="math inline">\(\zeta\)</span>
+是本原 <span class="math inline">\(h\)</span>- 次单位根。在 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 3.16</a>)</span> 中证明了 1
+不可能是 <span class="math inline">\(\gamma\)</span>
+的特征值，所以实际上每个指数 <span class="math inline">\(1\leq m_i\leq
+h-1\)</span>。<span class="math inline">\(\gamma\)</span>
+如果有实特征值的话只可能是 <span class="math inline">\(-1\)</span>( 对应
+<span class="math inline">\(\zeta^{h/2}\)</span> ) 。</p>
+<p>我们取一种特殊的 Coxeter 元如下：设 <span class="math inline">\((W,S)\)</span> 的 Coxeter 图为 <span class="math inline">\(\Gamma\)</span>，由于 <span class="math inline">\(W\)</span> 是有限 Coxeter 群，<span class="math inline">\(\Gamma\)</span> 是一个树。任取 <span class="math inline">\(\Gamma\)</span> 的一个顶点作为 <span class="math inline">\(s_n\)</span>，将 <span class="math inline">\(\Gamma\)</span> 的顶点按照与 <span class="math inline">\(s_n\)</span> 的图距离分成两个不相交的集合 <span class="math inline">\(\Gamma=I\sqcup J\)</span>：<span class="math inline">\(I\)</span> 由所有与 <span class="math inline">\(s_n\)</span> 的距离为偶数的顶点组成（包含 <span class="math inline">\(s_n\)</span>）；<span class="math inline">\(J\)</span> 由所有与 <span class="math inline">\(s_n\)</span> 的距离为奇数的顶点组成。<span class="math inline">\(\Gamma\)</span>
+是树这一点保证了顶点之间的距离是唯一确定的。于是 <span class="math inline">\(I\)</span> 中的顶点两两不相邻，从而 <span class="math inline">\(\{s_i,i\in I\}\)</span> 中的生成元两两交换。<span class="math inline">\(J\)</span> 也是如此。记 <span class="math display">\[x=\prod_{i\in I}s_i,\quad y=\prod_{j\in
+J}s_j.\]</span> 则 <span class="math inline">\(\gamma=xy\)</span> 是
+Coxeter 元。我们下面对 <span class="math inline">\(\gamma\)</span>
+进行分析。</p>
+<h1 id="coxeter-平面">Coxeter 平面</h1>
+<p>设 <span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span> 是 <span class="math inline">\(\{\alpha_i\}_{i=1}^n\)</span> 在内积 <span class="math inline">\(\bullet\)</span> 下的对偶基： <span class="math display">\[(\alpha_i\bullet\omega_j)=\delta_{ij}.\]</span>
+<span class="math inline">\({\bf A}\)</span> 是把每个 <span class="math inline">\(\omega_i\)</span> 映射为 <span class="math inline">\(\alpha_i\)</span> 的线性变换： <span class="math display">\[{\bf A}\omega_i=\alpha_i,\quad \forall 1\leq
+i\leq n.\]</span> 则 <span class="math inline">\({\bf A}\)</span> 在
+<span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span>
+这组基下的矩阵就是 Cartan 矩阵 <span class="math inline">\(A\)</span>。</p>
+<p>在 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
+2.6</a>)</span> 中证明了矩阵 <span class="math inline">\(A\)</span>
+的极小特征值 <span class="math inline">\(c&gt;0\)</span> 的重数是
+1，并且对应的特征向量 <span class="math inline">\({\bf
+c}=(c_1,\ldots,c_n)\)</span> 的所有分量都是正的。于是 <span class="math display">\[{\bf A}\sum_{i=1}^nc_i\omega_i =
+c\left(\sum_{i=1}^nc_i\omega_i\right).\]</span> 特征向量 <span class="math inline">\(\sum_{i=1}^nc_i\omega_i\)</span> 可以写成两个向量
+<span class="math inline">\(\lambda,\mu\)</span> 的和，其中 <span class="math display">\[\lambda=\sum_{i\in I} c_i\omega_i,\quad
+\mu=\sum_{j\in J}c_j\omega_j.\]</span> <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 3.17</a>)</span> 中证明了
+<span class="math inline">\(\lambda,\mu\)</span> 张成一个二维子空间
+<span class="math inline">\(P\)</span>，<span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 限制在 <span class="math inline">\(P\)</span> 上分别是保持直线 <span class="math inline">\(\mathbb{R}\mu\)</span> 和 <span class="math inline">\(\mathbb{R}\lambda\)</span> 不动的反射，从而 <span class="math inline">\(\gamma=xy\)</span> 限制在 <span class="math inline">\(P\)</span> 上是一个旋转，并且这个旋转的阶与 <span class="math inline">\(\gamma\)</span> 的阶相同，也是 <span class="math inline">\(h\)</span>，从而旋转的角度等于 <span class="math inline">\(2\pi/h\)</span>。由于 <span class="math inline">\(\gamma\)</span> 置换根系 <span class="math inline">\(\Phi\)</span>，所以如果我们把 <span class="math inline">\(\Phi\)</span> 投影到 <span class="math inline">\(P\)</span> 上，就会看到一个具有 <span class="math inline">\(h\)</span> 阶旋转对称性的图案。</p>
+<p>不过直接使用上面 <span class="math inline">\(\lambda,\mu\)</span>
+的定义来计算 <span class="math inline">\(P\)</span>
+是很不方便的，因为其中涉及了对偶基 <span class="math inline">\(\{\omega_i\}\)</span>。我们可以绕开对偶基的计算，这一点其实隐藏在
+<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990,
+78</a>)</span> 中，那里证明了 <span class="math display">\[\begin{aligned}
+(c-1)\mu+\lambda &amp;=\sum_{i\in I}c_i\alpha_i,\\
+(c-1)\lambda+\mu &amp;=\sum_{j\in J}c_j\alpha_j.
+\end{aligned}\]</span></p>
+<p>由于 <span class="math inline">\(c\ne 1\)</span>（1 不是 Coxeter
+元的特征值），上式告诉我们 <span class="math display">\[P=\mathop{\mathrm{span}}\{\lambda,\,\mu\}=\mathop{\mathrm{span}}\left\{\sum_{i\in
+I}c_i\alpha_i,\,\sum_{j\in
+J}c_j\alpha_j\right\}.\tag{$\ast$}\label{eq:alpha}\]</span>
+所以我们完全可以通过特征向量 <span class="math inline">\({\bf
+c}\)</span> 和 <span class="math inline">\(\Delta\)</span> 得出 <span class="math inline">\(P\)</span> 的一组基。</p>
+<h1 id="进一步改进">进一步改进</h1>
+<p>如果你去看 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py">Github
+代码</a> 的话，会发现它并不是完全按上面的逻辑写的。这是怎么回事呢？</p>
+<p>前面的计算有个美中不足之处，就是我们需要显式地将 <span class="math inline">\(S\)</span> 的划分为两个不相交的子集 <span class="math inline">\(S=I\sqcup J\)</span>，使得 <span class="math inline">\(I,J\)</span>
+各自的生成元之间互相交换。这一步是可以避免的，下面的方法我是从 <span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman
+2017</a>)</span> 中学到的。</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3.1</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman 2017,
+lemma. 3.3</a>)</span>)</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(2I + \gamma + \gamma^{-1}= ( 2I-A
+)^2\)</span>。</p>
+</div>
+<p>根据这个结论，如果 <span class="math inline">\(s=e^{i\theta}\)</span>
+和 <span class="math inline">\(\bar{s}=e^{-i\theta}\)</span> 是 <span class="math inline">\(\gamma\)</span> 的一对共轭的复特征值，<span class="math inline">\(V_s,V_{\bar{s}}\)</span>
+分别是对应的特征子空间，记 <span class="math inline">\(U=V_s\oplus
+V_{\bar{s}}\)</span>，则对 <span class="math inline">\(v\in U\)</span>
+有 <span class="math display">\[( 2I-A )^2 ( v ) = (
+2+e^{i\theta}+e^{-i\theta} ) v= 4\cos^2(\theta/2) v.\]</span> 即 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(( 2I-A
+)^2\)</span> 的特征值为 <span class="math inline">\(4\cos^2(\theta/2)\)</span> 的特征子空间。</p>
+<p>我们想把这个结论中的平方去掉，即证明 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm 2\cos(\theta/2)\)</span>
+的特征子空间的直和。</p>
+<div id="u-pm" class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(U_{\pm}\)</span> 分别是 <span class="math inline">\(2I-A\)</span> 的 <span class="math inline">\(\pm2\cos(\theta/2)\)</span> 特征子空间，则 <span class="math inline">\(\dim U_+=\dim U_-\)</span> 并且 <span class="math inline">\(U=U_+\oplus U_-\)</span>。</p>
+</div>
+<p><strong>证明</strong>：显然 <span class="math inline">\(U_+\oplus
+U_-\subseteq U\)</span>。下面证明反向包含。</p>
+<p>显然 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的不变子空间。由于 <span class="math inline">\(2I-A\)</span> 是可对角化的，所以 <span class="math inline">\(2I-A\)</span> 限制在 <span class="math inline">\(U\)</span> 上也可以对角化，即 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征子空间的直和。显然 <span class="math inline">\(2I-A\)</span> 在 <span class="math inline">\(U\)</span> 上的特征值只有可能是 <span class="math inline">\(\pm 2\cos(\theta/2)\)</span>，从而 <span class="math inline">\(U\subseteq U_+\oplus U_-\)</span>，即 <span class="math inline">\(U=U_+\oplus U_-\)</span>。</p>
+<p>为了说明 <span class="math inline">\(\dim U_+=\dim
+U_-\)</span>，我们需要下面的引理：</p>
+<div id="same-characteristic" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.3</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman 2017,
+lemma. 3.5</a>)</span>)</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(2I-A\)</span> 和 <span class="math inline">\(A-2I\)</span> 有同样的特征多项式。</p>
+</div>
+<p>这个引理告诉我们，若 <span class="math inline">\(\lambda\)</span> 是
+<span class="math inline">\(A-2I\)</span> 的特征值，则 <span class="math inline">\(-\lambda\)</span>
+也是，并且二者对应的特征子空间的维数相同（注意 <span class="math inline">\(A-2I\)</span> 是可对角化的）。于是 <span class="math inline">\(\dim U_+=\dim U_-\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<p><a href="#u-pm" title="命题 3.2">命题 3.2</a> 的等价说法是 <span class="math inline">\(U_{\pm}\)</span> 分别是 <span class="math inline">\(A\)</span> 的特征值为 <span class="math inline">\(2\mp2\cos(\theta/2)\)</span>
+的特征子空间，所以我们有如下推论：</p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+3.4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(A\)</span> 的不等于 2 的特征值成对出现，它们形如
+<span class="math inline">\(2\mp2\cos(\theta/2)\)</span>，并且它们对应的特征子空间
+<span class="math inline">\(U_{\pm}\)</span> 的维数是相等的。<span class="math inline">\(U=U_+\oplus U_-\)</span> 是 <span class="math inline">\(\gamma\)</span> 的复特征值 <span class="math inline">\(e^{\pm i\theta}\)</span>
+对应的特征子空间的直和。</p>
+</div>
+<p>一般来说 <span class="math inline">\(U\)</span> 的维数未必是 2，所以
+<span class="math inline">\(U\)</span> 不一定是平面。</p>
+<p>设 <span class="math inline">\(c_\min=2-2\cos(\theta_0/2)\)</span> 是
+<span class="math inline">\(A\)</span> 的极小特征值，则 <span class="math inline">\(c_\max=2+2\cos(\theta_0/2)\)</span> 是 <span class="math inline">\(A\)</span> 的极大特征值。我们知道 <span class="math inline">\(c_\min\)</span> 的重数是 1，从而 <span class="math inline">\(c_\max\)</span> 的重数也是 1，这时 <span class="math inline">\(U\)</span> 就是一个二维平面，并且 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是角度为 <span class="math inline">\(\theta_0\)</span> 的旋转。这个 <span class="math inline">\(U\)</span> 就是要找的 Coxeter 平面 <span class="math inline">\(P\)</span>。</p>
+<p>于是计算 <span class="math inline">\(P\)</span> 归结为计算线性变换
+<span class="math inline">\({\bf A}\)</span> 在 <span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span>
+这组基下极小/极大特征值对应的特征向量。设 <span class="math inline">\((c_1,\ldots,c_n)\)</span> 和 <span class="math inline">\((c_1',\ldots,c_n')\)</span> 分别是矩阵
+<span class="math inline">\(A\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量，则 <span class="math inline">\(\sum_{i=1}^nc_i\omega_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^nc_i'\omega_i\)</span> 就是 <span class="math inline">\({\bf A}\)</span> 对应 <span class="math inline">\(c_\min,c_\max\)</span> 的特征向量。它们被 <span class="math inline">\({\bf A}\)</span>
+作用以后与自身相差一个常数倍，从而 <span class="math inline">\(P\)</span> 由这两个向量张成： <span class="math display">\[P=\mathop{\mathrm{span}}\left\{\sum_{i=1}^nc_i\alpha_i,\,\sum_{i=1}^nc_i'\alpha_i\right\}.\]</span>
+这样我们就找到了只用 Cartan 矩阵和单根系 <span class="math inline">\(\Delta\)</span> 计算 <span class="math inline">\(P\)</span> 的方法。</p>
+<h1 id="e_8-的例子"><span class="math inline">\(E_8\)</span> 的例子</h1>
+<p>在这一节中，我们以 <span class="math inline">\(E_8\)</span>​
+为例，应用上述理论进行实际计算。</p>
+<p>设 <span class="math inline">\(e_i=(0,\ldots,1,\ldots,0)\)</span> 是
+<span class="math inline">\(\mathbb{R}^8\)</span> 中第 <span class="math inline">\(i\)</span> 个分量为 1，其它分量都是 0
+的坐标方向。<span class="math inline">\(\bullet\)</span> 是标准
+Euclidean 内积，即对 <span class="math inline">\(x=\sum_{i=1}^8
+x_ie_i\)</span> 和 <span class="math inline">\(y=\sum_{i=1}^8
+y_ie_i\)</span> 有 <span class="math display">\[x\bullet y= \sum_{i=1}^8
+x_iy_i.\]</span> 则 <span class="math inline">\(\{e_i\}_{i=1}^8\)</span>
+是内积 <span class="math inline">\(\bullet\)</span> 下的标准正交基。</p>
+<p><span class="math inline">\(E_8\)</span> 的 Coxeter 图如下：</p>
+<p><img style="margin:0px auto;display:block" src="/images/coxeter-element/e8-dynkin.svg" width="400"></p>
+<p>图中编号为 <span class="math inline">\(i\)</span> 的顶点对应单根
+<span class="math inline">\(\alpha_i\)</span>，<span class="math inline">\(\alpha_i\)</span> 在 <span class="math inline">\(\{e_i\}_{i=1}^8\)</span>
+这组基下的系数由下面矩阵的第 <span class="math inline">\(i\)</span>
+行给出： <span class="math display">\[\begin{bmatrix}1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\end{bmatrix}.\]</span>
+所有 8 个单根 <span class="math inline">\(\{\alpha_i\}_{i=1}^8\)</span>
+构成 <span class="math inline">\(E_8\)</span> 的单根系 <span class="math inline">\(\Delta\)</span>。</p>
+<p>注意这里每个单根的长度是 <span class="math inline">\(\sqrt{2}\)</span>，并不是单位向量，这样主要是为了书写代码更方便。</p>
+<p>Cartan 矩阵 <span class="math inline">\(A\)</span>
+由单根之间两两内积给出： <span class="math display">\[A=(\alpha_i\bullet\alpha_j)_{1\leq i,j\leq
+8}=-2\cos\frac{\pi}{m_{ij}}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span></p>
+<p>用代码来写的话，就是</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># A set of simple roots listed by rows of 'delta'</span><br>delta = np.array([<br>    [<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],<br>    [-<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]<br>])<br><br><span class="hljs-comment"># The cartan matrix:</span><br>cartan = np.dot(delta, delta.transpose())<br></code></pre></td></tr></tbody></table></figure>
+<p>所有单反射 <span class="math inline">\(\{s_i\}_{i=1}^8\)</span>
+生成的群 <span class="math inline">\(W\)</span> 叫做 <span class="math inline">\(E_8\)</span> 的 Weyl 群，这个群包含 696729600
+个元素。单根系在 <span class="math inline">\(W\)</span> 作用下生成的集合
+<span class="math inline">\(\Phi = \{w\cdot\alpha\,|\, w\in W,
+\alpha\in\Delta\}\)</span> 叫做 <span class="math inline">\(E_8\)</span>
+的根系，<span class="math inline">\(\Phi\)</span> 中包含 240
+个不同的向量，<span class="math inline">\(W\)</span> 置换 <span class="math inline">\(\Phi\)</span> 中的向量。</p>
+<p><span class="math inline">\(\Phi\)</span>
+中的向量从形式上看分为两类：</p>
+<ol type="1">
+<li>第一类包含 <span class="math inline">\((\pm1,\pm1,0,0,0,0,0,0)\)</span>
+的所有置换，即有两个分量是 <span class="math inline">\(+1\)</span> 或者
+<span class="math inline">\(-1\)</span>，其余６个分量都是 0
+的向量。这样的向量有 112 个。</li>
+<li>第二类包含所有形如 <span class="math inline">\(1/2\times(\pm1,\pm1,\cdots,\pm1)\)</span>
+的向量，其中 <span class="math inline">\(-1\)</span>
+的个数是偶数。这样的向量有 128 个。</li>
+</ol>
+<p>为了编程方便，我们可以把所有根都乘以
+2，使得它们都是整数向量。于是生成根系 <span class="math inline">\(\Phi\)</span> 的代码可以这样写：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> itertools<br><br>roots = []<br><br><span class="hljs-comment"># Roots of the form (+-1, +-1, 0, 0, 0, 0, 0, 0),</span><br><span class="hljs-comment"># signs can be chosen independently and the two non-zeros can be anywhere.</span><br><span class="hljs-keyword">for</span> i, j <span class="hljs-keyword">in</span> combinations(<span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>), <span class="hljs-number">2</span>):<br>    <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> product([-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>], repeat=<span class="hljs-number">2</span>):<br>        v = np.zeros(<span class="hljs-number">8</span>)<br>        v[i] = x<br>        v[j] = y<br>        roots.append(v)<br><br><span class="hljs-comment"># Roots of the form 1/2 * (+-1, +-1, ..., +-1), signs can be chosen</span><br><span class="hljs-comment"># indenpendently except that there must be an even numer of -1s.</span><br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> product([-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], repeat=<span class="hljs-number">8</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span>(v) % <span class="hljs-number">4</span> == <span class="hljs-number">0</span>:<br>        roots.append(v)<br>roots = np.array(roots).astype(<span class="hljs-built_in">int</span>)<br><br><span class="hljs-comment"># Connect a root to its nearest neighbors,</span><br><span class="hljs-comment"># two roots are connected if and only if they form an angle of pi/3.</span><br>edges = []<br><span class="hljs-keyword">for</span> i, r <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots):<br>    <span class="hljs-keyword">for</span> j, s <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots[i + <span class="hljs-number">1</span> :], i + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> np.<span class="hljs-built_in">sum</span>((r - s) ** <span class="hljs-number">2</span>) == <span class="hljs-number">8</span>:<br>            edges.append([i, j])<br></code></pre></td></tr></tbody></table></figure>
+<p>我们来计算 Coxeter 平面 <span class="math inline">\(P\)</span>
+的一组基。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">eigenvals, eigenvecs = np.linalg.eigh(cartan)<br>u = eigenvecs[:, <span class="hljs-number">0</span>]<br>v = eigenvecs[:, -<span class="hljs-number">1</span>]<br><br>u = np.dot(u, delta)<br>v = np.dot(v, delta)<br></code></pre></td></tr></tbody></table></figure>
+<p>其中 <code>eigenvals</code> 返回 Cartan
+矩阵的特征值，按照从小到大排列；<code>eigenvecs</code> 的列向量是 Cartan
+矩阵的特征向量，也是按照特征值递增的顺序排列，第一列
+<code>u = eigenvecs[:, 0]</code> 和最后一列
+<code>v = eigenvecs[:, -1]</code>
+就是最小和最大特征值对应的特征向量。</p>
+<p>把 <code>eigenvals</code> 中的特征值打印出来：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-number">0.01095621</span> <span class="hljs-number">0.51371035</span> <span class="hljs-number">1.18652671</span> <span class="hljs-number">1.58417662</span> <span class="hljs-number">2.41582338</span> <span class="hljs-number">2.81347329</span> <span class="hljs-number">3.48628965</span> <span class="hljs-number">3.98904379</span>]<br></code></pre></td></tr></tbody></table></figure>
+<p>可以看到最小的特征值 <span class="math display">\[0.01095621 \approx
+2-2\cos\frac{\theta_0}{2},\quad \theta_0\approx
+2\arccos0.994521895\approx\frac{2\pi}{30}.\]</span> 所以我们验证了 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(P\)</span> 上的作用是一个 30 阶的旋转，即 <span class="math inline">\(W\)</span> 的 Coxeter 数是 30。</p>
+<p>根据上一节末尾的介绍，<span class="math inline">\(\sum_{i=1}^8u_i\alpha_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^8v_i\alpha_i\)</span> 构成 <span class="math inline">\(P\)</span> 的一组基。作为对称矩阵 <span class="math inline">\(A\)</span> 的不同特征值对应的特征向量，它们在内积
+<span class="math inline">\(\bullet\)</span>
+下一定是正交的。把它们归一化为单位向量，然后计算根系 <code>roots</code>
+到 <span class="math inline">\(P\)</span> 的投影：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">u /= np.linalg.norm(u)<br>v /= np.linalg.norm(v)<br><br>roots_2d = [(np.dot(u, x), np.dot(v, x)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> roots]<br></code></pre></td></tr></tbody></table></figure>
+<p>剩下的就是具体的绘图过程了，这里不再赘述。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-CasselmanCoxeterElement" class="csl-entry" role="listitem">
+Casselman, Bill. 2017. <span>“Coxeter Elements in Finite Coxeter
+Groups”</span> Essays on Coxeter groups. <a target="_blank" rel="noopener" href="https://personal.math.ubc.ca/~cass/research/pdf/Element.pdf">https://personal.math.ubc.ca/~cass/research/pdf/Element.pdf</a>.
+</div>
+<div id="ref-Humphreys90" class="csl-entry" role="listitem">
+Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
+Cambridge Studies in Advanced Mathematics. Cambridge University Press.
+<a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/wilson-algorithm/" rel="next" title="Wilson 均匀生成树算法">
+      上一篇：Wilson 均匀生成树算法
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/Birkhoff-ergodic-theorem/" rel="next" title="Birkhoff 遍历定理">
+          下一篇：Birkhoff 遍历定理
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

@@ -1,0 +1,817 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            矩阵空间的子空间 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="在数学里面经常可以提出这样一些问题：它们叙述起来很简单，答案看起来也很显然，但是要仔细证明却非常困难。即使是线性代数这样的「入门课」中也不缺少这样的问题：
+
+问题： 设域 \(\mathbb{F}\) 上的所有 \(n\) 阶矩阵构成的向量空间为 \({\rm Mat}_n(\mathbb{F})\)，\(M\) 是 \({\rm
+Mat}_n(\mathbb{F})\) 的一个子空间。
+
+如果 \(M\)
+中所有矩阵关于矩阵乘法两两可以交换，那么 \(M\) 的维数最大是多少？
+如果 \(M\) 中所有矩阵的秩都不超过
+\(r\)，这里 \(0&amp;lt;r&amp;lt;n\)，那么 \(M\) 的维数最大是多少？
+如果 \(M\)
+中所有矩阵都是幂零的，那么 \(M\)
+的维数最大是多少？
+如果 \(M\)
+中所有非零矩阵都是可逆矩阵，那么 \(M\)
+的维数最大是多少？">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="矩阵空间的子空间"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/线性代数/">线性代数</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>矩阵空间的子空间</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2009-06-07T16:00:00.000Z"><a href="/space-of-matrices/">2009-06-08</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BA%A4%E6%8D%A2%E5%AD%90%E7%A9%BA%E9%97%B4%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%B4%E6%95%B0"><span class="section table-of-contents-text">交换子空间的最大维数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m-%E4%B8%AD%E7%9F%A9%E9%98%B5%E7%A7%A9%E9%83%BD%E4%B8%8D%E8%B6%85%E8%BF%87-r-%E6%97%B6-m-%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%B4%E6%95%B0"><span class="section table-of-contents-text">\(M\) 中矩阵秩都不超过 \(r\) 时 \(M\) 的最大维数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m-%E4%B8%AD%E7%9F%A9%E9%98%B5%E9%83%BD%E6%98%AF%E5%B9%82%E9%9B%B6%E7%9F%A9%E9%98%B5"><span class="section table-of-contents-text">\(M\)
+中矩阵都是幂零矩阵</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m-%E4%B8%AD%E7%9A%84%E9%9D%9E%E9%9B%B6%E7%9F%A9%E9%98%B5%E9%83%BD%E6%98%AF%E5%8F%AF%E9%80%86%E7%9F%A9%E9%98%B5"><span class="section table-of-contents-text">\(M\) 中的非零矩阵都是可逆矩阵</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BB%93%E8%AF%AD"><span class="section table-of-contents-text">结语</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>在数学里面经常可以提出这样一些问题：它们叙述起来很简单，答案看起来也很显然，但是要仔细证明却非常困难。即使是线性代数这样的「入门课」中也不缺少这样的问题：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>设域 <span class="math inline">\(\mathbb{F}\)</span> 上的所有 <span class="math inline">\(n\)</span> 阶矩阵构成的向量空间为 <span class="math inline">\({\rm Mat}_n(\mathbb{F})\)</span>，<span class="math inline">\(M\)</span> 是 <span class="math inline">\({\rm
+Mat}_n(\mathbb{F})\)</span> 的一个子空间。</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(M\)</span>
+中所有矩阵关于矩阵乘法两两可以交换，那么 <span class="math inline">\(M\)</span> 的维数最大是多少？</li>
+<li>如果 <span class="math inline">\(M\)</span> 中所有矩阵的秩都不超过
+<span class="math inline">\(r\)</span>，这里 <span class="math inline">\(0&lt;r&lt;n\)</span>，那么 <span class="math inline">\(M\)</span> 的维数最大是多少？</li>
+<li>如果 <span class="math inline">\(M\)</span>
+中所有矩阵都是幂零的，那么 <span class="math inline">\(M\)</span>
+的维数最大是多少？</li>
+<li>如果 <span class="math inline">\(M\)</span>
+中所有非零矩阵都是可逆矩阵，那么 <span class="math inline">\(M\)</span>
+的维数最大是多少？</li>
+</ol>
+</div>
+<span id="more"></span>
+<p>我是在几年前一个偶然的时刻自己想到了这几个问题，那个时候我已经本科毕业了，不是初学线性代数的新手了，但是苦思冥想了很久，结果一个也没做出来。我当时很惊讶，这么有趣而不平凡的问题居然在我身边潜伏了那么久而没有注意到。长久以来我们一直都是把各种习题集做的滚瓜烂熟，然后考试拿个高分就自以为学的很好了，很少自己去发现问题。我可以肯定的讲这几个问题在任何本科线性代数的教材中都没有提到，但是教材上不讲并不是我们无视它们的理由。于是我开始查阅资料，发现这四个问题的确是有难度的问题，要完全弄懂并不容易，但是这种探索本身就是一种令人难忘而愉悦的经历。</p>
+<p>接下来将依次介绍前三个问题的解答，它们综合使用了各种各样的线性代数的技巧，这些技巧如果一步步拆开来，其实也很普通。总之这三个问题是对读者基本功的一次很好的检验。至于第四个问题嘛
+… 不会做很正常，会做才不正常。</p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>问题的提法中对域 <span class="math inline">\(\mathbb{F}\)</span>
+没有什么限制，实际上前三个问题的答案确实与域无关，只有第四个问题是例外。但是如果要让证明对任何域
+<span class="math inline">\(\mathbb{F}\)</span>
+都适用那就要花不少心思，旁生不少枝节。为了让文章读起来不那么晦涩，我适当放宽了域的条件，这样证明简明很多。</p>
+</div>
+<h1 id="交换子空间的最大维数">交换子空间的最大维数</h1>
+<p>如果 <span class="math inline">\(M\)</span>
+中的矩阵两两可以交换，我们来猜猜 <span class="math inline">\(M\)</span>
+的维数最大可能多少。首先很容易想到所有的对角矩阵是两两交换的，而所有对角矩阵构成的子空间维数是
+<span class="math inline">\(n\)</span>，所以答案不会小于 <span class="math inline">\(n\)</span>。</p>
+<p>但是实际上还可以更大，下面的构造是最优的：（<span class="math inline">\(N\)</span> 是任意子矩阵）</p>
+<p><span class="math display">\[\begin{pmatrix}\lambda
+I_m&amp;N\\0&amp;\lambda I_m\end{pmatrix}\ (n=2m),\quad
+\begin{pmatrix}\lambda I_m&amp;N\\0&amp;\lambda I_{m+1}\end{pmatrix}\
+(n=2m+1).\]</span></p>
+<p>这个结论于 1905 年被 Schur 所证明：</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+1.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(M\)</span> 的维数最大为 <span class="math inline">\(\left[\frac{n^2}{4}\right]+1\)</span>，其中 <span class="math inline">\([\cdot]\)</span> 为高斯取整函数。</p>
+</div>
+<p>证明：首先假设 <span class="math inline">\(\mathbb{F}\)</span>
+是代数闭域。对 <span class="math inline">\(n\)</span> 归纳，<span class="math inline">\(n=1\)</span> 时结论显然成立，设小于 <span class="math inline">\(n\)</span> 的时候结论成立，来看 <span class="math inline">\(n\)</span> 的情形。</p>
+<p>由于 <span class="math inline">\(\mathbb{F}\)</span> 是代数闭域且
+<span class="math inline">\(M\)</span>
+中的矩阵两两可以交换，因此存在可逆矩阵 <span class="math inline">\(P\in
+{\rm Mat}_n(\mathbb{F})\)</span> 使得 <span class="math inline">\(P^{-1}MP\)</span> 中的矩阵都是上三角的，而 <span class="math inline">\(M\)</span> 和 <span class="math inline">\(P^{-1}MP\)</span>
+是同构的空间，因此我们不妨一开始就假定 <span class="math inline">\(M\)</span> 中的矩阵都是上三角矩阵。</p>
+<p>对任何 <span class="math inline">\(A\in M\)</span>，记 <span class="math inline">\(f(A)\)</span> 为 <span class="math inline">\(A\)</span> 左上角的 <span class="math inline">\(n-1\)</span> 阶子矩阵，<span class="math inline">\(g(A)\)</span> 为 <span class="math inline">\(A\)</span> 右下角的 <span class="math inline">\(n-1\)</span> 阶子矩阵，则 <span class="math inline">\(f\)</span> 和 <span class="math inline">\(g\)</span> 都是从 <span class="math inline">\({\rm
+Mat}_n(\mathbb{F})\)</span> 到 <span class="math inline">\({\rm
+Mat}_{n-1}(\mathbb{F})\)</span> 的线性映射。<span class="math inline">\(f(M)=\{f(A)\ |\ A\in M\}\)</span> 和 <span class="math inline">\(g(M)=\{g(A)\ |\ A\in M\}\)</span> 都是 <span class="math inline">\({\rm Mat}_{n-1}(\mathbb{F})\)</span>
+的乘法交换子空间，因此由归纳假设 <span class="math display">\[\dim
+f(M)\leq\left[\frac{(n-1)^2}{4}\right]+1,\quad \dim
+g(M)\leq\left[\frac{(n-1)^2}{4}\right]+1.\]</span></p>
+<p>不难看出 <span class="math inline">\(\ker f\)</span> 中的元素形如
+<span class="math inline">\(\begin{pmatrix}\mathbf{0}_{n\times(n-1)}&amp;\alpha\end{pmatrix}\)</span>，<span class="math inline">\(\ker g\)</span> 中的元素形如 <span class="math inline">\(\begin{pmatrix}\beta'\\\mathbf{0}_{(n-1)\times
+n}\end{pmatrix}\)</span>。这里 <span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(\beta\)</span> 都是 <span class="math inline">\(n\times1\)</span> 向量，两者交换说明 <span class="math inline">\(\beta'\alpha=0\)</span>。设 <span class="math inline">\((\beta_1',\ldots,\beta_s')\)</span> 取自
+<span class="math inline">\(\ker g\)</span>
+的一组基并且排成行矩阵的形式，即设 <span class="math display">\[L=\left(\begin{array}{c}\beta_1'
+\\\beta_2' \\\vdots\\\beta_s' \\\end{array}\right),\]</span>则
+<span class="math inline">\(\ker f\)</span> 中的元素都是齐次方程组 <span class="math inline">\(LX=0\)</span> 的解，因此 <span class="math inline">\(\dim\ker f+\dim\ker g\leq n\)</span>，从而 <span class="math display">\[\begin{align*} \dim M&amp;=\dim \ker f+\dim
+f(M)=\dim\ker g+\dim g(M)\\
+&amp;\leq\frac{\dim\ker f+\dim\ker
+g}{2}+\left[\frac{(n-1)^2}{4}\right]+1\\
+&amp;\leq\frac{n}{2}+\left[\frac{(n-1)^2}{4}\right]+1.\end{align*}\]</span>
+这时需要分情况讨论：不论 <span class="math inline">\(n=2k\)</span>
+是偶数还是 <span class="math inline">\(n=2k+1\)</span> 是奇数，我们总有
+<span class="math display">\[\frac{n}{2}+\left[\frac{(n-1)^2}{4}\right]+1 &lt;
+k^2 + 2,\]</span> 因此 <span class="math inline">\(\dim M\leq k^2+1
+\leq\left[\frac{n^2}{4}\right]+1\)</span>。</p>
+<p>在 <span class="math inline">\(\mathbb{F}\)</span>
+不是代数闭域的情形，显然答案不会超过 <span class="math inline">\(\left[\frac{n^2}{4}\right]+1\)</span>，但是我们开头的构造的例子是在
+<span class="math inline">\(\mathbb{F}\)</span>
+内的，它取到了这个最大值，因此结论依然成立。</p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>有更简单的方式可以得出 <span class="math inline">\(\dim\ker f +
+\dim\ker g\leq n\)</span>。利用内积 <span class="math inline">\((\alpha,
+\beta) = \beta'\alpha\)</span> 是非退化的双线性型，以及 <span class="math inline">\(\ker f\)</span> 和 <span class="math inline">\(\ker g\)</span> 在这个双线性型下互相正交即可。</p>
+</div>
+<h1 id="m-中矩阵秩都不超过-r-时-m-的最大维数"><span class="math inline">\(M\)</span> 中矩阵秩都不超过 <span class="math inline">\(r\)</span> 时 <span class="math inline">\(M\)</span> 的最大维数</h1>
+<p>第二个问题的答案比较好猜，就是 <span class="math inline">\(rn\)</span>，取所有后 <span class="math inline">\(n-r\)</span> 行元素均为 0
+的矩阵构成的向量空间即可，但是不太好证明。</p>
+<p>证明的困难之处在于这个域 <span class="math inline">\(\mathbb{F}\)</span> 是任意的，如果 <span class="math inline">\(\mathbb{F}\)</span> 是实数域或者复数域这样有
+“内积” 的性质比较好的域，那么证明就简单很多。我们接下来就假定 <span class="math inline">\(\mathbb{F}\)</span>
+是实数域，对于一般的情形我把它留给</p>
+<blockquote>
+<p>H.landers 1962, On spaces of linear transformation of bounded
+rank.</p>
+</blockquote>
+<p>首先可以不妨假设 <span class="math inline">\(M\)</span>
+中存在一个形如 <span class="math display">\[A=\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}\]</span>
+的矩阵 （想一想，为什么？），于是我们有下面的结论：</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+2.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(M\)</span> 中的矩阵都形如 <span class="math display">\[\begin{pmatrix}B_{11}&amp;B_{12}\\B_{21}&amp;0\end{pmatrix}.\]</span>
+这里 <span class="math inline">\(B_{11}\)</span> 是 <span class="math inline">\(r\times r\)</span> 矩阵，且 <span class="math inline">\(B_{21}B_{12}=0\)</span>.</p>
+</div>
+<p>引理的证明：对任意的 <span class="math inline">\(B\in M\)</span>，设
+<span class="math display">\[B=\begin{pmatrix}B_{11}&amp;B_{12}\\B_{21}&amp;B_{22}\end{pmatrix},\]</span>
+那么对任何实数 <span class="math inline">\(t\)</span>，<span class="math inline">\(tA+B\)</span> 仍然是 <span class="math inline">\(M\)</span> 中的矩阵，其秩不超过 <span class="math inline">\(r\)</span>，所以其任何 <span class="math inline">\(r+1\)</span> 阶子式必为 <span class="math inline">\(0\)</span>， 即 <span class="math display">\[\Delta(t)=\begin{vmatrix}tI_r+B_{11}&amp;\beta_j\\\alpha_i&amp;b_{ij}\end{vmatrix}=0.\]</span>
+这里 <span class="math inline">\(b_{ij}\)</span> 表示<span class="math inline">\(B_{22}\)</span> 的第 <span class="math inline">\((i,j)\)</span> 个元素，<span class="math inline">\(\alpha_i\)</span> 表示 <span class="math inline">\(B_{21}\)</span> 的第 <span class="math inline">\(i\)</span> 行， <span class="math inline">\(\beta_j\)</span> 表示 <span class="math inline">\(B_{12}\)</span> 的第 <span class="math inline">\(j\)</span> 列。</p>
+<p><span class="math inline">\(\Delta(t)\)</span> 是关于 <span class="math inline">\(t\)</span> 的多项式，由于它必须恒等于 <span class="math inline">\(0\)</span>，所以首项 <span class="math inline">\(t^r\)</span> 的系数 <span class="math inline">\(b_{ij}=0\)</span>，从而由 <span class="math inline">\((i, j)\)</span> 的任意性有 <span class="math inline">\(B_{22}=0\)</span>。下面来求它的 <span class="math inline">\(t^{r-1}\)</span> 次项系数。</p>
+<p>由于讨论是在实数域上，从而存在无穷多个 <span class="math inline">\(t\)</span> 使得矩阵 <span class="math inline">\(tI_r+B_{11}\)</span> 可逆，对这些 <span class="math inline">\(t\)</span> 利用行列式的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Schur_complement">Schur
+补公式</a>，我们有 <span class="math display">\[\begin{align*}\Delta(t)&amp;=|tI_r+B_{11}|\cdot
+(0-\alpha_i(tI_r+B_{11})^{-1}\beta_j)\\&amp;=-\alpha_i(tI_r+B_{11})^\ast\beta_j.\end{align*}\]</span>
+这里 <span class="math inline">\((tI_r+B_{11})^\ast\)</span> 表示矩阵
+<span class="math inline">\(tI_t+B_{11}\)</span> 的伴随矩阵。</p>
+<p>由于 <span class="math inline">\(\Delta(t)=-\alpha_i(tI_r+B_{11})^\ast\beta_j\)</span>
+两边都是关于 <span class="math inline">\(t\)</span>
+的多项式而且对无穷多个 <span class="math inline">\(t\)</span>
+成立此等式成立，因此必然是恒等式。注意在伴随矩阵 <span class="math inline">\((tI_r+B_{11})^\ast\)</span> 的各个元素中，<span class="math inline">\(t^{r-1}\)</span> 项只出现在对角线上，且系数都是
+<span class="math inline">\(1\)</span>，因此 <span class="math inline">\(\Delta(t)\)</span> 的 <span class="math inline">\(r-1\)</span> 次项系数为 <span class="math inline">\(-\alpha_i\beta_j=0\)</span>，因此 <span class="math inline">\(B_{21}B_{12}=0\)</span>，引理成立。</p>
+<p>现在考虑 <span class="math inline">\({\rm Mat}_n(\mathbb{R})\)</span>
+的子空间 <span class="math display">\[J=\left\{\begin{pmatrix}0&amp;P\\P'&amp;Q\end{pmatrix}\mid
+P\in {\rm Mat}_{r\times(n-r)}(\mathbb{R}),\, Q\in {\rm
+Mat}_{n-r}(\mathbb{R})\right\}.\]</span></p>
+<p>于是 <span class="math inline">\(M\cap J=(0)\)</span>，因此 <span class="math inline">\(M+J\)</span> 是直和，从而 <span class="math inline">\(\dim M+\dim J\leq n^2\)</span>，再由 <span class="math inline">\(\dim J=n(n-r)\)</span> 即得 <span class="math inline">\(\dim M\leq rn\)</span>。</p>
+<p>注意这里利用了实数域内积的正定性： 实矩阵 <span class="math inline">\(P'P=0\)</span> 当且仅当 <span class="math inline">\(P=0\)</span>，对复数域的情形可以用厄米特内积代替。对一般的域
+<span class="math inline">\(\mathbb{F}\)</span> 是没有内积的概念的，
+但是我们有迹函数 <span class="math display">\[{\rm
+Mat}_n(\mathbb{F})\times {\rm Mat}_n(\mathbb{F})\rightarrow
+\mathbb{F}:\quad (A,B)\rightarrow\mathrm{tr}(AB).\]</span>
+这个非退化的双线性型可以代替内积，只是论证略麻烦。</p>
+<h1 id="m-中矩阵都是幂零矩阵"><span class="math inline">\(M\)</span>
+中矩阵都是幂零矩阵</h1>
+<p>这种情形答案也是很好猜的：所有严格上三角矩阵组成的子空间，其维数是
+<span class="math inline">\(n(n-1)/2\)</span>。</p>
+<p>我们在 <span class="math inline">\({\rm
+char}\,\mathbb{F}\ne2\)</span> 的条件下讨论。（当然特征是 2
+结论是一样的，不过证明要绕点弯路）</p>
+<p>首先是一个小小的引理：</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.1</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(A,B,A+B\)</span> 都是幂零矩阵，则 <span class="math inline">\(\mathrm{tr}(AB)=0\)</span>。</p>
+</div>
+<p>引理证明很简单，这里省略。</p>
+<p>其次我们需要迹函数的一些性质：<span class="math inline">\((A,B)\rightarrow\mathrm{tr}(AB)\)</span> 是一个
+<span class="math inline">\({\rm Mat}_n(\mathbb{F})\)</span>
+上的非退化的双线性函数，这里非退化的意思是如果某个 <span class="math inline">\(A\in{\rm Mat}_n(\mathbb{F})\)</span> 使得对任何
+<span class="math inline">\(B\in{\rm Mat}_n(\mathbb{F})\)</span> 有
+<span class="math inline">\(\mathrm{tr}(AB)=0\)</span> 成立的话，则
+<span class="math inline">\(A=0\)</span>。</p>
+<p>设 <span class="math inline">\(V\)</span> 是 <span class="math inline">\({\rm Mat}_n(\mathbb{F})\)</span> 的子空间，定义
+<span class="math inline">\(V\)</span> 在迹函数下的正交补空间 <span class="math inline">\(V^{\bot}\)</span> 为</p>
+<p><span class="math display">\[V^{\bot}=\{ B\in{\rm Mat}_n(\mathbb{F})\
+\left|\ \mathrm{tr}(AB)=0,\ \forall A\in V\right.\}.\]</span></p>
+<p>虽然未必有 <span class="math inline">\(V\cap
+V^{\bot}=(0)\)</span>，但是总是有 <span class="math display">\[\dim
+V+\dim V^{\bot}=\dim{\rm Mat}_n(\mathbb{F})=n^2.\]</span>
+（这是非退化双线性型的基本结论）</p>
+<p>设 <span class="math inline">\(M_1\)</span> 是 <span class="math inline">\(M\)</span>
+中所有严格上三角矩阵组成的集合，很容易验证 <span class="math inline">\(M_1\)</span> 是一个子空间；任取子空间 <span class="math inline">\(N\subset M\)</span> 使得 <span class="math inline">\(M=M_1\oplus N\)</span>，则 <span class="math inline">\(N\)</span> 中的非零矩阵都不是上三角矩阵，否则若
+<span class="math inline">\(A\in N\)</span> 是上三角矩阵，而 <span class="math inline">\(A\)</span>
+又是幂零矩阵，那么就必须是严格上三角矩阵，从而 <span class="math inline">\(A\in M_1\)</span>，这与 <span class="math inline">\(M_1\)</span> 和 <span class="math inline">\(N\)</span> 是直和矛盾。</p>
+<p>我们来考虑 <span class="math inline">\(M_1\)</span> 在 <span class="math inline">\(\mathrm{tr}(,)\)</span> 下的正交补。</p>
+<p>设 <span class="math inline">\(U\)</span>
+是所有上三角矩阵组成的集合，由于上三角矩阵和严格上三角矩阵的乘积是严格上三角矩阵，严格上三角矩阵的迹为
+0，因此 <span class="math inline">\(U\subset M_1^{\bot}\)</span>。</p>
+<p>把引理用在 <span class="math inline">\(A\in M_1\)</span> 和 <span class="math inline">\(B\in N\)</span> 上我们得到 <span class="math inline">\(N\subset M_1^{\bot}\)</span>。然而我们已经说明了
+<span class="math inline">\(U+N\)</span> 是直和，因此 <span class="math inline">\(U\oplus N\subset M_1^{\bot}\)</span>，从而 <span class="math display">\[\dim U+\dim N\leq n^2-\dim M_1.\]</span> 注意
+<span class="math inline">\(\dim U=\frac{n(n+1)}{2}\)</span>，这就推出
+<span class="math display">\[\dim M=\dim N+\dim M_1\leq
+\frac{n(n-1)}{2}.\]</span> 实际上可以证明如果 <span class="math inline">\(\dim M=\frac{n(n-1)}{2}\)</span>，则存在可逆矩阵
+<span class="math inline">\(P\)</span> 使得 <span class="math inline">\(P^{-1}MP\)</span>
+都是严格上三角矩阵，不过这需要更复杂的分析，本文就不再写了。</p>
+<h1 id="m-中的非零矩阵都是可逆矩阵"><span class="math inline">\(M\)</span> 中的非零矩阵都是可逆矩阵</h1>
+<p>最后这个问题是最重要的一个，也是最难回答的一个，如果你自己做不出来也不用灰心，这是
+Adams 在 1962 年的论文 <a target="_blank" rel="noopener" href="http://www.ams.org/journals/bull/1962-68-01/S0002-9904-1962-10693-4/S0002-9904-1962-10693-4.pdf">Vector
+fields on spheres</a> 中证明的经典结论，这篇论文也是代数 K-
+理论的开山之作。</p>
+<p>首先这个问题的答案依赖于域 <span class="math inline">\(\mathbb{F}\)</span>。在复数域上，如果 <span class="math inline">\(M\)</span> 的维数大于
+1，从中任取两个线性无关的矩阵 <span class="math inline">\(A,B\)</span>，则对任何复数 <span class="math inline">\(t\)</span>，<span class="math inline">\(A+tB\)</span>
+是非零矩阵因而可逆，这显然不可能，因此 <span class="math inline">\(M\)</span> 的维数只能是 1 （比如取所有形如 <span class="math inline">\(\lambda I_n\)</span> 的矩阵）。</p>
+<p>在实数域上，答案是非常难以猜到的，叫做 Radon-Hurwitz 数：设 <span class="math inline">\(n=2^ab\)</span>，<span class="math inline">\(b\)</span> 是奇数，<span class="math inline">\(a=c+4d\)</span>，<span class="math inline">\(0\leq
+c&lt;4\)</span>，定义 <span class="math inline">\(\rho(n)=2^c+8d\)</span>，则 <span class="math inline">\(M\)</span> 的维数最大是 <span class="math inline">\(\rho(n)\)</span>。</p>
+<p>证明这个结论分两步，首先用代数 K- 理论的知识证明 <span class="math inline">\(M\)</span> 的维数不会超过 <span class="math inline">\(\rho(n)\)</span>，然后用 Clifford
+代数的表示构造一个维数为 <span class="math inline">\(\rho(n)\)</span>
+的子空间。整个过程要用到非常多的数学知识以至于要完整写下来需要一本书的篇幅，这是本文力所不及的。</p>
+<h1 id="结语">结语</h1>
+<p>其实类似的问题还可以提出更多，比如 <span class="math inline">\(M\)</span> 中的非零矩阵的秩都不小于 <span class="math inline">\(r\)</span>，这里 <span class="math inline">\(0&lt;r&lt;n\)</span> 是个给定的正整数，那么 <span class="math inline">\(M\)</span> 的维数最大是多少？（答案仍然和
+Radon-Hurwitz
+数有关）你可以试着自己提出一些这样的问题，然后尝试给出它们的解答，遇到困难再去查阅资料，相信一定会有收获的。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/jordan-canonical-form/" rel="next" title="Jordan 标准形">
+      上一篇：Jordan 标准形
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/Pfaffian-and-chessboard-tiling/" rel="next" title="国际象棋棋盘的多米诺骨牌密铺">
+          下一篇：国际象棋棋盘的多米诺骨牌密铺
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

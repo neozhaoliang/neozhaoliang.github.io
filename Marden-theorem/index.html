@@ -1,0 +1,705 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            静电场与 Marden 定理 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="我昨晚刚完成了一个 shadertoy
+小动画，演示平面几何中的 Marden
+定理、复分析中的 Gauss-Lucas
+定理 和静电场之间的关系：">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="静电场与 Marden 定理"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/可视化复分析/">可视化复分析</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>静电场与 Marden 定理</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2021-05-23T16:00:00.000Z"><a href="/Marden-theorem/">2021-05-24</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>我昨晚刚完成了一个 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/7lf3Wn">shadertoy
+小动画</a>，演示平面几何中的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Marden%27s_theorem">Marden
+定理</a>、复分析中的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Lucas_theorem">Gauss-Lucas
+定理</a> 和静电场之间的关系：</p>
+<span id="more"></span>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/7lf3Wn?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
+</iframe>
+<p>这个动画的含义如下：</p>
+<ol type="1">
+<li><p>在复平面上三角形 <span class="math inline">\(\Delta ABC\)</span>
+的三个顶点处各自放置一个单位正电荷，则平面上电场强度为 0
+的点有两个（这两个点可能重合），它们位于 <span class="math inline">\(\Delta ABC\)</span> 的内部，并且是三次复多项式
+<span class="math inline">\(P(z) = (z-A)(z-B)(z-C)\)</span> 的导数 <span class="math inline">\(P'(z)\)</span> 的零点。</p></li>
+<li><p>不仅如此，这两个零点还是一个内切于 <span class="math inline">\(\Delta ABC\)</span>
+的椭圆的两个焦点，此椭圆是所有内切于 <span class="math inline">\(\Delta
+ABC\)</span> 的椭圆中面积最大者，并且其与 <span class="math inline">\(\Delta ABC\)</span>
+的三边的切点均为各边中点。这个椭圆叫做 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Steiner_inellipse">Steiner
+内切椭圆</a>。</p></li>
+</ol>
+<p>这个动画是受几天前 Albert Chern 的 <a target="_blank" rel="noopener" href="https://twitter.com/theAlbertChern/status/1395468792788967428?s=20">一篇推文</a>
+启发所作，John Baez 也写了一篇关于这个话题的 <a target="_blank" rel="noopener" href="https://johncarlosbaez.wordpress.com/2021/05/24/electrostatics-and-the-gauss-lucas-theorem/">文章</a>。我是由此才了解到
+Marden 定理还有如此有趣的物理学解释，的确大开眼界！</p>
+<hr>
+<p>在平面上不全共线的 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(a_1,\ldots,a_n\)</span>
+处放置若干单位正电荷，这规定了一个平面上的电势函数 <span class="math inline">\(V(z)\)</span> （标量） 和一个电场 <span class="math inline">\(\mathbf{E}(z)\)</span>
+（二维向量场）。电学知识告诉我们，在忽略物理常数意义下有 <span class="math display">\[V(z)
+=\sum_{i=1}^n\ln|z-a_i|=\ln\prod_{i=1}^n|z-a_i|=\ln|P(z)|.\]</span> 其中
+<span class="math inline">\(P(z)=(z-a_1)(z-a_2)\cdots(z-a_n)\)</span>
+是以 <span class="math inline">\(a_1,\ldots,a_n\)</span>
+为根的多项式。</p>
+<p>此外 <span class="math inline">\(\mathbf{E}(z) = -\nabla
+V(z)\)</span> 为电势的梯度向量取负。</p>
+<blockquote>
+<p><strong>问题</strong>：怎样确定平面上场强为 0 的点呢？</p>
+</blockquote>
+<p>场强为 0
+的点也叫做<strong>平衡点</strong>、<strong>鞍点</strong>，因为在这一点处的电荷不受电场的库仑力。</p>
+<p>答案有点出人意料：平衡点必然是 <span class="math inline">\(P'(z)\)</span> 的零点，而且这些点都属于 <span class="math inline">\(a_1,\ldots,a_n\)</span> 的凸包！</p>
+<p>注意 <span class="math inline">\(V(z)\)</span> 是 <span class="math inline">\(\ln P(z) = \ln |P(z)| + i\arg{P(z)}\)</span>
+的实部，由 Cauchy-Riemann 方程不难看出使得亚纯函数实部梯度为 0
+的点一定是其导数的零点，即满足 <span class="math inline">\(\nabla
+V=0\)</span> 的点都是 <span class="math inline">\((\ln
+P(z))'=P'(z)/P(z)\)</span> 的零点，所以平衡点都是 <span class="math inline">\(P'(z)\)</span> 的零点。平衡点属于 <span class="math inline">\(\{a_1,\ldots,a_n\}\)</span> 的凸包是根据 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Lucas_theorem">Gauss-Lucas
+定理</a>：任何复多项式 <span class="math inline">\(f\)</span>
+的导数的零点都属于 <span class="math inline">\(f\)</span>
+的零点构成的凸包！</p>
+<p>John Baez 的文章中利用凸集分离定理给出了 Gauss-Lucas
+定理的一个简洁证明。</p>
+<p>需要注意的是，反过来 <span class="math inline">\(P'(z)\)</span>
+的零点未必都是电场的平衡点，当 <span class="math inline">\(P(z)\)</span>
+有重根时，重根也是 <span class="math inline">\(P'(z)\)</span>
+的零点，但不是 <span class="math inline">\(P'(z)/P(z)\)</span>
+的零点，所以不是平衡点。</p>
+<p>此外平衡点是鞍点 (saddle point) 是由于 <span class="math inline">\(V(z)\)</span>
+的调和性质，其不存在局部的极大极小值，所以使得 <span class="math inline">\(\nabla V=0\)</span> 的点都是鞍点。</p>
+<p>在三个点电荷 <span class="math inline">\(A,B,C\)</span>
+的情形，平衡点有两个，它们位于 <span class="math inline">\(\Delta
+ABC\)</span> 的内部，且是多项式 <span class="math inline">\(P(z) =
+(z-A)(z-B)(z-C)\)</span> 的导数 <span class="math inline">\(P'(z)\)</span>
+的零点。那关于这两个点的具体位置我们可以说什么吗？这就是优美的 Marden
+定理，要表述这个定理，我们需要先介绍 Steiner 内切椭圆的概念：</p>
+<div id="steiner-inellipse" class="unnumbered statement sta_steiner_inellipse plain">
+<p><span class="statement-heading"><span class="statement-label">Steiner
+inellipse</span>.</span><span class="statement-spah">
+</span>在所有内切于 <span class="math inline">\(\Delta ABC\)</span>
+的椭圆中，存在唯一的一个面积最大者，叫做 Steiner inellipse，此椭圆与
+<span class="math inline">\(\Delta ABC\)</span>
+三边的切点为各边的中点。</p>
+</div>
+<p>Marden 定理断言 <span class="math inline">\(P'(z)\)</span>
+的两个根正是 Steiner 内切椭圆的两个焦点：</p>
+<div id="marden-------" class="unnumbered statement sta_marden___ plain">
+<p><span class="statement-heading"><span class="statement-label">Marden
+定理</span>.</span><span class="statement-spah"> </span>复多项式 <span class="math inline">\(P(z)=(z-A)(z-B)(z-C)\)</span> 的导数 <span class="math inline">\(P'(z)\)</span> 的两个零点正是 <span class="math inline">\(\Delta ABC\)</span> 的 Steiner inellipse
+的两个焦点。</p>
+</div>
+<p>Steiner inellipse 和 Marden
+定理的证明并不复杂，美国数学月刊上出现过两篇介绍其证明的文章，都非常值得一读：</p>
+<ol type="1">
+<li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/228698127_Triangles_Ellipses_and_Cubic_Polynomials">Triangles,
+Ellipses, and Cubic Polynomials</a>.</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/263136028_An_Elementary_Proof_of_Marden%27s_Theorem">An
+Elementary Proof of Marden’s Theorem</a>.</p></li>
+</ol>
+<p>其中第一篇文章采用了复数和仿射变换的途径，第二篇使用了椭圆的光学性质。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/Rouche-theorem-winding-number/" rel="next" title="遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理">
+      上一篇：遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/Todd-Coxeter-and-uniform-polytopes/" rel="next" title="Todd-Coxeter 算法和 3D/4D 均匀多胞体">
+          下一篇：Todd-Coxeter 算法和 3D/4D 均匀多胞体
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

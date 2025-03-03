@@ -1,0 +1,1428 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Todd Kemp 概率论课程笔记 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="1.1 Probability Motivation
+无要点
+1.2 \(\sigma\)-
+Fields
+介绍了 \(\sigma\)-
+域的概念，以及最重要的 \(\sigma\)-
+域的例子：拓扑空间中开集生成的 Borel 域。
+2.1 Measures Definition and
+Exa">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Todd Kemp 概率论课程笔记"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Todd Kemp 概率论课程笔记</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2021-02-28T16:00:00.000Z"><a href="/todd-kemp/index.html">2021-03-01</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-motivation"><span class="section table-of-contents-text">1.1 Probability Motivation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#sigma--fields"><span class="section table-of-contents-text">1.2 \(\sigma\)-
+Fields</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#measures-definition-and-examples"><span class="section table-of-contents-text">2.1 Measures Definition and
+Examples</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#finitely-additive-measures"><span class="section table-of-contents-text">2.2 Finitely Additive Measures</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#stieltjes-premeasures"><span class="section table-of-contents-text">3.1 Stieltjes Premeasures</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#outer-measure"><span class="section table-of-contents-text">3.2 Outer Measure</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#radon-measures"><span class="section table-of-contents-text">5.1 Radon Measures</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#random-variables-motivation"><span class="section table-of-contents-text">6.1 Random Variables
+Motivation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#riemann-stieltjes-integration"><span class="section table-of-contents-text">7.2 Riemann-Stieltjes
+Integration</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-radon-nikodym-theorem"><span class="section table-of-contents-text">11.1 The Radon-Nikodym Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#dynkins-multiplicative-systems-theorem"><span class="section table-of-contents-text">14.1 Dynkin’s
+Multiplicative Systems Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#product-measure"><span class="section table-of-contents-text">14.2 Product Measure</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-0-1-law"><span class="section table-of-contents-text">17.1 Kolmogorov’s 0-1 Law</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#convolution"><span class="section table-of-contents-text">17.2 Convolution</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#strong-law-of-large-numbers-part-1"><span class="section table-of-contents-text">18.1 Strong Law of Large
+Numbers, Part 1</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-convergence-criterion"><span class="section table-of-contents-text">18.2 Kolmogorov’s Convergence
+Criterion</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#strong-law-of-large-numbers-part-2"><span class="section table-of-contents-text">19.1 Strong Law of Large
+Numbers, Part 2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#renewal-theory"><span class="section table-of-contents-text">19.2 Renewal Theory</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#complex-integration-and-dynkins-theorem"><span class="section table-of-contents-text">24.1 Complex
+Integration and Dynkin’s Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#characteristic-function"><span class="section table-of-contents-text">24.2 Characteristic Function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-continuity-theorem"><span class="section table-of-contents-text">25.3 The Continuity Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#orthogonal-projections"><span class="section table-of-contents-text">31.1 Orthogonal Projections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-1"><span class="section table-of-contents-text">33.1 Probability Kernels, Part
+1</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#regular-conditional-distributions"><span class="section table-of-contents-text">33.2 Regular Conditional
+Distributions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-2"><span class="section table-of-contents-text">34.1 Probability Kernels, Part
+2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#random-dynamics"><span class="section table-of-contents-text">34.2 Random Dynamics</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#stochastic-processes"><span class="section table-of-contents-text">35.1 Stochastic Processes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-markov-property"><span class="section table-of-contents-text">36.1 The Markov property</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-revisited"><span class="section table-of-contents-text">36.2 Probability Kernels
+Revisited</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-extended-extension-theorem"><span class="section table-of-contents-text">37.2 Kolmogorov’s
+(Extended) Extension Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#walds-identity"><span class="section table-of-contents-text">46.3 Wald’s Identity</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<h1 id="probability-motivation">1.1 Probability Motivation</h1>
+<p>无要点</p>
+<h1 id="sigma--fields">1.2 <span class="math inline">\(\sigma\)</span>-
+Fields</h1>
+<p>介绍了 <span class="math inline">\(\sigma\)</span>-
+域的概念，以及最重要的 <span class="math inline">\(\sigma\)</span>-
+域的例子：拓扑空间中开集生成的 Borel 域。</p>
+<h1 id="measures-definition-and-examples">2.1 Measures Definition and
+Examples</h1>
+<p>介绍了可测空间，以及测度的定义和基本性质。</p>
+<blockquote>
+<p><strong>定义</strong>：设 <span class="math inline">\(\mathcal{F}\)</span> 是一个 <span class="math inline">\(\sigma\)</span>- 域，称 <span class="math inline">\(\mu:\ \mathcal{F}\to[0,\infty]\)</span>
+是测度，如果对任何可数多个不交并有 <span class="math inline">\(\mu(\uplus_{n=1}^\infty
+E_n)=\sum_{n=1}^\infty\mu(E_n)\)</span> 成立。</p>
+</blockquote>
+<p>测度的三个基本性质：</p>
+<ul>
+<li>单调性：<span class="math inline">\(A\subseteq B\Rightarrow
+\mu(A)\leq\mu(B)\)</span>。</li>
+<li>加法等式 <span class="math inline">\(\mu(A\cup B) + \mu(A\cap B) =
+\mu(A) + \mu(B)\)</span>。</li>
+<li>次可数可加：<span class="math inline">\(\mu(\cup_{n=1}^\infty
+E_n)\leq\sum_{n=1}^\infty\mu(E_n)\)</span>。</li>
+</ul>
+<p>此外如果 <span class="math inline">\(\{\mu_n\}_{n=1}^\infty\)</span>
+是一列测度，则它们的和 <span class="math inline">\(\mu=\sum\limits_{n=1}^\infty\mu_n\)</span>
+也是测度。</p>
+<p>预告了接下来构造测度的过程：有限可加测度 <span class="math inline">\(\Rightarrow\)</span> 预测度 <span class="math inline">\(\Rightarrow\)</span> ·测度。</p>
+<h1 id="finitely-additive-measures">2.2 Finitely Additive Measures</h1>
+<p>这一讲介绍了<strong>有限可加测度</strong>，<strong>预测度
+(pre-measure，即域上的可数可加测度)</strong>，<strong>半代数
+(semi-algebra)</strong> 等概念。</p>
+<blockquote>
+<p><strong>定义 1</strong>：</p>
+<ol type="1">
+<li>域上的可数可加测度叫做 <strong>预测度</strong>。</li>
+<li>域上的有限可加测度叫做 <strong>有限可加测度</strong>。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong>核心思想</strong>：半代数 <span class="math inline">\(\mathcal{S}\)</span> 上的有限可加测度 <span class="math inline">\(\Rightarrow\)</span> 代数 <span class="math inline">\(\mathcal{A}\)</span> 上的有限可加测度 <span class="math inline">\(\Rightarrow\)</span> 代数 <span class="math inline">\(\mathcal{A}\)</span> 上的可数可加测度 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sigma\)</span>- 域上的可数可加测度。</p>
+</blockquote>
+<p>域 <span class="math inline">\(\mathcal{A}\)</span>
+上的有限可加测度的基本性质：</p>
+<ul>
+<li>单调性、加法等式同可数可加的情形。</li>
+<li><strong>超可数可加</strong>：如果 <span class="math inline">\(\{E_n\}_{n=1}^{\infty}\)</span>
+是一列不相交的集合，则 <span class="math inline">\(\mu(\uplus_{n=1}^\infty
+E_n)\geq\sum_{n=1}^\infty\mu(E_n)\)</span>。这是由于单调性左边始终是右边部分和的上界。注意这里要求每个
+<span class="math inline">\(E_n\in\mathcal{A}\)</span> 以及 <span class="math inline">\(\mu(\uplus_{n=1}^\infty
+E_n)\in\mathcal{A}\)</span>。</li>
+</ul>
+<blockquote>
+<p><strong>定义</strong>：一个半代数 <span class="math inline">\(\mathcal{S}\)</span>
+是指满足如下条件的集合族：</p>
+<ol type="1">
+<li><span class="math inline">\(\emptyset\in\mathcal{S}\)</span>。</li>
+<li>若 <span class="math inline">\(A,\,B\in\mathcal{S}\)</span> 则 <span class="math inline">\(A\cap B\in\mathcal{S}\)</span>。</li>
+<li>若 <span class="math inline">\(A\in\mathcal{S}\)</span> 则 <span class="math inline">\(A^c\)</span> 可以表示为 <span class="math inline">\(\mathcal{S}\)</span> 中有限多个成员的不交并。</li>
+</ol>
+</blockquote>
+<p>半代数 <span class="math inline">\(\mathcal{S}\)</span> 生成一个代数
+<span class="math inline">\(\mathcal{A}\)</span>： <span class="math display">\[\mathcal{A}=\{\text{all finite disjoint unions of
+sets from }\mathcal{S} \}.\]</span></p>
+<p>第一步<strong>半代数 <span class="math inline">\(\mathcal{S}\)</span>
+上的有限可加测度 <span class="math inline">\(\Rightarrow\)</span> 代数
+<span class="math inline">\(\mathcal{A}\)</span>
+上的有限可加测度</strong>：这一步是显然的，只需要验证定义不依赖于 <span class="math inline">\(\mathcal{A}\)</span> 作为 <span class="math inline">\(\mathcal{S}\)</span>
+中集合不交并的表示方式即可。</p>
+<p>第三步<strong>代数 <span class="math inline">\(\mathcal{A}\)</span>
+上的可数可加测度 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\sigma\)</span>-
+域上的可数可加测度</strong>：这一步总是可以做到的，由后面的测度扩张定理给出。</p>
+<p>第二步<strong>代数 <span class="math inline">\(\mathcal{A}\)</span>
+上的有限可加测度 <span class="math inline">\(\Rightarrow\)</span> 代数
+<span class="math inline">\(\mathcal{A}\)</span>
+上的可数可加测度</strong>：这一步并不总是可以做到。举个例子，在是整数集
+<span class="math inline">\(\mathbb{Z}\)</span> 的所有子集上定义如下测度
+<span class="math inline">\(\mu\)</span>：若子集 <span class="math inline">\(E\)</span> 或者 <span class="math inline">\(E^c\)</span> 之一是有限集，则规定 <span class="math inline">\(\mu(E)=0\)</span>，否则 <span class="math inline">\(\mu(E)=1\)</span>。此测度有限可加但不是可数可加，所以也不会有可数可加的扩张。</p>
+<p>最重要的半代数 <span class="math inline">\(\mathcal{S}\)</span>
+的例子：所有形如 <span class="math inline">\(\{(a, b],-\infty\leq
+a&lt;b\leq \infty\}\)</span> 的半开区间。</p>
+<p>任何单调函数 <span class="math inline">\(F\)</span>
+都可以给出其上的一个有限可加测度：<span class="math inline">\(F((a, b]))
+= F(b) - F(a)\)</span>，从而可以扩张为代数 <span class="math inline">\(\mathcal{A}\)</span>
+上的有限可加测度。<strong>但是要使得这个测度是可数可加的，我们必须限制
+<span class="math inline">\(F\)</span>
+是右连续的</strong>，这样的测度叫做 Stieltjes 测度，会在下一讲介绍。</p>
+<h1 id="stieltjes-premeasures">3.1 Stieltjes Premeasures</h1>
+<p>本讲接着上一讲的内容，证明了当 <span class="math inline">\(F\)</span>
+单调且右连续时，<span class="math inline">\(\mu((a,b])=F(b)-F(a)\)</span> 确实给出 Borel 域
+<span class="math inline">\(\mathcal{A}\)</span>
+上的一个可数可加测度。当然 Borel 域还是太复杂了
+(虽然它们都是有限多个半开区间的不交并)，无法用可数可加的定义来验证。我们还是要回到由半开区间构成的半代数
+<span class="math inline">\(\mathcal{S}\)</span> 上。</p>
+<p>我们要从有限可加推出可数可加，而有限可加蕴涵了可数<strong>超</strong>可加，所以我们还缺少可数<strong>次</strong>可加。而
+<span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的可数次可加实际上可以由 <span class="math inline">\(\mathcal{S}\)</span> 上的可数次可加给出：</p>
+<blockquote>
+<p><strong>引理</strong>：代数 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 上的有限可加测度
+<span class="math inline">\(\mu\)</span>
+是可数可加的，<strong>当且仅当它限制在 <span class="math inline">\(\mathcal{S}\)</span>
+上是次可数可加的</strong>。这个话需要仔细解释清楚：<span class="math inline">\(\mu\)</span> 在 <span class="math inline">\(\mathcal{S}\)</span> 上次可数可加是指如果 <span class="math inline">\(\{E_n\}\)</span> 是半代数 <span class="math inline">\(\mathcal{S}\)</span>
+中互不相交的集合，并且它们的可数并 <span class="math inline">\(\uplus_{n} E_n\)</span> 也在半代数 <span class="math inline">\(\mathcal{S}\)</span> 中，则 <span class="math inline">\(\mu(\uplus_nE_n)\leq\sum_n\mu(E_n)\)</span>。</p>
+</blockquote>
+<p><strong>证明概要</strong>：<span class="math inline">\(\Rightarrow\)</span>
+是显然的，可数可加必然蕴含次可数可加。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：<span class="math inline">\(\mu\)</span> 作为 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的有限可加测度自然是超可数可加的，要证明它可数可加，只要再证明它次可数可加：即若
+<span class="math inline">\(\uplus_n A_n\)</span> 是 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+中的可数不交并，则 <span class="math inline">\(\mu(\uplus_n
+A_n)\leq\sum_n\mu(A_n)\)</span>。记住 <span class="math inline">\(\uplus_n A_n\)</span> 以及所有 <span class="math inline">\(A_n\)</span> 现在都是 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 中的元素，所以
+<span class="math inline">\(\uplus_n A_n = \uplus_{j=1}^N
+E_j\)</span>，其中 <span class="math inline">\(E_j\in\mathcal{S}\)</span>。于是 <span class="math display">\[E_j = \uplus_n (A_n\cap
+E_j)=\uplus_n\uplus_{i=1}^{N_n}E_i^n\cap E_j.\]</span> 利用 <span class="math inline">\(\mu\)</span> 在 <span class="math inline">\(\mathcal{S}\)</span> 上的次可数可加性有 <span class="math display">\[\mu(E_j)\leq \sum_n\sum_{i=1}^{N_n}\mu(E_i^n\cap
+E_j).\]</span> 再利用 <span class="math inline">\(\mu\)</span> 在 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 上的有限可加性有
+<span class="math display">\[\sum_{i=1}^{N_n}\mu(E_i^n\cap
+E_j)=\mu(A_n\cap E_j).\]</span> 于是 <span class="math display">\[\mu(\uplus_j
+E_j)=\sum_{j=1}^N\mu(E_j)\leq\sum_{j=1}^N\sum_{n=1}^\infty\mu(A_n\cap
+E_j)=\sum_{n=1}^\infty\sum_{j=1}^N\mu(A_n\cap
+E_j)=\sum_{n=1}^\infty\mu(A_n).\]</span> 即为所证。</p>
+<blockquote>
+<p><strong>定理</strong>：由单调右连续的函数 <span class="math inline">\(F\)</span> 给出的半代数 <span class="math inline">\(\mathcal{S}=\{(a,b]\ -\infty\leq
+a&lt;b\leq\infty\}\)</span> 上的 Stieltjes
+测度是次可数可加的，因而由上面引理它给出 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的可数可加测度。</p>
+</blockquote>
+<p><strong>Todd-Kemp 的精彩证明讲解</strong>：设 <span class="math inline">\((a,b]=\uplus_{i=1}^\infty (a_i,
+b_i]\)</span>，我们要证明 <span class="math display">\[F(b)-F(a)=\mu((a,
+b])\leq\sum_{i=1}^\infty\mu((a_i,b_i])=\sum_{i=1}^\infty
+(F(b_i)-F(a_i)).\]</span> 我们可以先假设 <span class="math inline">\(a,b\)</span> 都是有限的。</p>
+<p><strong>不要幻想可以给区间 <span class="math inline">\((a_i,b_i]\)</span>
+之间按照大小排顺序，它们可能有无穷多个聚点</strong>。</p>
+<p><strong>想法是把 <span class="math inline">\((a, b]\)</span>
+缩小一点变成 <span class="math inline">\([a+\delta, b]\)</span>，把
+<span class="math inline">\((a_i,b_i]\)</span> 放大一点变成 <span class="math inline">\((a_i,b_i+\delta_i)\)</span>，这样可以使用紧集的有限开覆盖性质</strong>。从而存在
+<span class="math inline">\(N\)</span> 使得前 <span class="math inline">\(N\)</span> 个开区间就足以覆盖 <span class="math inline">\([a+\delta,b]\)</span>： <span class="math display">\[[a+\delta,b] \subseteq \cup_{j=1}^N (a_j,
+b_j+\delta_j).\]</span> 现在 <span class="math inline">\(\mu\)</span>
+作为一个有限可加测度，由于 <span class="math inline">\((a+\delta,
+b]\)</span> 被 <span class="math inline">\(\cup_{j=1}^N (a_j,
+b_j+\delta_j]\)</span> 覆盖，因而必然有 <span class="math display">\[\mu((a+\delta, b])\leq \sum_{j=1}^N \mu((a_j,
+b_j+\delta_j])\leq\sum_{j=1}^\infty \mu((a_j, b_j+\delta_j]).\]</span>
+上式左边等于 <span class="math inline">\(F(b)-F(a+\delta)\)</span>，<span class="math inline">\(\delta\)</span> 是任意正数，所以令其趋于 0 并利用
+<span class="math inline">\(F\)</span> 的右连续有 <span class="math inline">\(F(a+\delta)\downarrow F(a)\)</span>，所以上式变为
+<span class="math display">\[\mu((a, b])\leq\sum_{j=1}^\infty\mu((a_j,
+b_j+\delta_j])=\sum_{j=1}^\infty \mu((a_j, b_j]) + \sum_{j=1}^\infty
+\mu((b_j, b_j+\delta_j]).\]</span> 注意到 <span class="math inline">\(\delta_j\)</span> 也是任意的，并且 <span class="math inline">\(F\)</span> 右连续，所以对任何 <span class="math inline">\(\epsilon&gt;0\)</span> 我们可以取 <span class="math inline">\(\delta_j\)</span> 足够小，使得 <span class="math inline">\(F(b_j+\delta_j)- F(b_j) &lt;
+\epsilon/2^j\)</span>。于是 <span class="math display">\[\mu((a,
+b])\leq\sum_{j=1}^\infty\mu((a_j, b_j+\delta_j])=\sum_{j=1}^\infty
+\mu((a_j, b_j]) + \epsilon.\]</span> 由 <span class="math inline">\(\epsilon\)</span> 任意性定理得证。</p>
+<h1 id="outer-measure">3.2 Outer Measure</h1>
+<p>这一节介绍了外测度的概念。</p>
+<p>如果我们有一个集合族 <span class="math inline">\(\mathcal{A}\)</span>
+(<span class="math inline">\(\mathcal{A}\)</span>
+一般是个代数)，以及其上的函数 <span class="math inline">\(\mu:\
+\mathcal{A}\to[0,+\infty]\)</span>，则我们可以定义 <span class="math inline">\(2^{\Omega}\)</span> 上的外测度 <span class="math inline">\(\mu^\ast\)</span> 为 <span class="math display">\[\mu^\ast(E) =
+\inf\left\{\sum_{n=1}^\infty\mu(E_n),\ E_n\in\mathcal{A},
+E\subset\bigcup_{n=1}^\infty E_n\right\}.\]</span> 外测度 <span class="math inline">\(\mu^\ast\)</span> 满足：</p>
+<blockquote>
+<ol type="1">
+<li><span class="math inline">\(\mu^\ast(\emptyset)=0\)</span>。</li>
+<li>单调性。</li>
+<li>次可数可加性。</li>
+</ol>
+</blockquote>
+<p>Todd Kemp 视频里面提到 <span class="math inline">\(\mu^\ast\)</span>
+可以用来区别有限可加测度和预测度：</p>
+<blockquote>
+<ol type="1">
+<li>如果 <span class="math inline">\((\mu, \mathcal{A})\)</span>
+是预测度，则<strong>在 <span class="math inline">\(\sigma(\mathcal{A})\)</span> 上有 <span class="math inline">\(\mu(E)\leq\mu^\ast(E)\)</span>，并且在 <span class="math inline">\(\mathcal{A}\)</span> 上有 <span class="math inline">\(\mu=\mu^\ast\)</span></strong>。</li>
+<li>如果 <span class="math inline">\((\mu, \mathcal{A})\)</span>
+是有限可加测度，则<strong>在 <span class="math inline">\(\mathcal{A}\)</span> 上有 <span class="math inline">\(\mu(E)\geq\mu^\ast(E)\)</span></strong>。</li>
+</ol>
+</blockquote>
+<h1 id="radon-measures">5.1 Radon Measures</h1>
+<p>本讲介绍了实直线上的 Radon 测度等价于 Stieltjes 测度。</p>
+<p>Radon 测度是指对任何紧集 <span class="math inline">\(K\)</span> 有
+<span class="math inline">\(\mu(K)&lt;\infty\)</span>
+的测度。这种测度的分布函数必然是单调、右连续的，从而根据之前介绍的预测度和测度扩张定理给出了实直线上的一个可数可加测度。</p>
+<h1 id="random-variables-motivation">6.1 Random Variables
+Motivation</h1>
+<p>本节介绍了随机变量，分布函数的概念。样本空间 <span class="math inline">\(\Omega\)</span> (modelling space)
+是难以接触到的，我们对其的观测是通过随机变量来进行的。</p>
+<p>随机变量 <span class="math inline">\(X\)</span> 的分布函数为 <span class="math inline">\(F(t) = \mathbb{P}(X\leq t),\,
+t\in\overline{\mathbb{R}}\)</span>。<span class="math inline">\(F(t)\)</span> 是单调递增且右连续的。</p>
+<h1 id="riemann-stieltjes-integration">7.2 Riemann-Stieltjes
+Integration</h1>
+<p>无要点。</p>
+<h1 id="the-radon-nikodym-theorem">11.1 The Radon-Nikodym Theorem</h1>
+<p>本讲介绍了 Radon-Nikodym 定理，不过没有给出证明。</p>
+<p><strong>Motivation</strong>: 设 <span class="math inline">\(\mu,\nu\)</span> 是两个测度，是否存在非负可测函数
+<span class="math inline">\(\rho\)</span> 使得 <span class="math inline">\(\nu(A)=\int_A\rho\,\mathrm{d}\mu\)</span>
+对任何可测集 <span class="math inline">\(A\)</span> 成立？</p>
+<p><strong>必要条件</strong>：<span class="math inline">\(\mu(A)=0\Rightarrow\nu(A)=0\)</span>。这时我们称
+<span class="math inline">\(\nu\)</span> 关于 <span class="math inline">\(\mu\)</span> <strong>绝对连续</strong>，记作 <span class="math inline">\(\nu\ll\mu\)</span>。</p>
+<p>此条件同样也是充分的：若 <span class="math inline">\(\nu\)</span>
+关于 <span class="math inline">\(\mu\)</span> 绝对连续，则存在 <span class="math inline">\(\rho\)</span> 使得 <span class="math inline">\(\rho=\dfrac{\mathrm{d}\nu}{\mathrm{d}\mu}\)</span>。</p>
+<p><strong>奇异连续测度的例子</strong>：Cantor 函数 (devil
+staircase)。<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dQXVn7pFsVI">YouTube
+科普</a>。此函数没有点质量，也没有密度函数，但是确实给出一个全质量为 1
+的概率测度。</p>
+<ul>
+<li>此函数是连续递增的，所以是一个分布函数。</li>
+<li>此函数是连续的，所以没有点质量，即单个点的测度是 0。</li>
+<li>此函数是奇异的，因为它在除去 Cantor
+集对应的点之外几乎处处是常数。</li>
+</ul>
+<h1 id="dynkins-multiplicative-systems-theorem">14.1 Dynkin’s
+Multiplicative Systems Theorem</h1>
+<p>本讲介绍了 Dynkin <span class="math inline">\(\pi-\lambda\)</span>
+定理的函数形式的版本。</p>
+<blockquote>
+<p><strong>定义</strong>：设 <span class="math inline">\((\Omega,\mathcal{F})\)</span> 是一个可测空间，称
+<span class="math inline">\(f\)</span> 是一个关于 <span class="math inline">\(\mathcal{F}\)</span> 可测的有界函数，如果存在
+<span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|f|\leq M\mathrm{a.e.}\)</span> 成立。记 <span class="math inline">\(\mathbb{B}(\Omega,\mathcal{F})\)</span>
+为全体这样的有界函数构成的向量空间。若 <span class="math inline">\(\{f_n\}\in\mathbb{B}(M,\mathcal{F})\)</span> 满足
+<span class="math inline">\(|f_n|\leq M\mathrm{a.e.}\)</span> 并且 <span class="math inline">\(f_n\to f\mathrm{a.e.}\)</span>，就称 <span class="math inline">\(f_n\)</span> <strong>一致有界收敛到 <span class="math inline">\(f\)</span></strong>。</p>
+</blockquote>
+<blockquote>
+<p><strong>定理</strong>：设 <span class="math inline">\(\mathcal{I}\subseteq\mathcal{F}\)</span> 是一个
+<span class="math inline">\(\pi\)</span>- 系，设 <span class="math inline">\(\mathbb{H}(\mathcal{I})\subseteq\mathbb{B}(\Omega,\mathcal{F})\)</span>
+满足如下条件：</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span>
+是一个向量空间。</li>
+<li><span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span> 包含
+<span class="math inline">\(\Omega\)</span> 上的常函数 <span class="math inline">\(\mathbb{1}\)</span>。</li>
+<li>若 <span class="math inline">\(\{f_n\}\)</span> 是 <span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span>
+中的可测函数序列，且 <span class="math inline">\(f_n\)</span>
+一致有界收敛到 <span class="math inline">\(f\)</span>，则 <span class="math inline">\(f\in\mathbb{H}(\mathcal{I})\)</span>。</li>
+<li><span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span> 包含
+<span class="math inline">\(\mathcal{I}\)</span> 中的所有指标函数 <span class="math inline">\(\mathbb{1}_{A},\,A\in\mathcal{I}\)</span>。</li>
+</ol>
+<p><strong>结论</strong>：<span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span> 包含所有关于
+<span class="math inline">\(\sigma(\mathcal{I})\)</span>-
+可测的有界函数。</p>
+</blockquote>
+<p><strong>证明概要</strong>：设 <span class="math display">\[\mathcal{A}=\{A\in\mathcal{F}:\
+\mathbb{1}_A\in\mathbb{H}(\mathcal{I})\}.\]</span></p>
+<ul>
+<li>由 2 <span class="math inline">\(\Omega\in\mathcal{A}\)</span>。</li>
+<li>由 1, 2 结合有若 <span class="math inline">\(A\in\mathcal{A}\)</span> 则 <span class="math inline">\(A^c\in\mathcal{A}\)</span>。</li>
+<li>由 3 有若 <span class="math inline">\(\{A_n\}\in\mathcal{A}\)</span>，<span class="math inline">\(A_n\uparrow\)</span> 则 <span class="math inline">\(\cup_{n}A_n\in\mathcal{A}\)</span>。</li>
+</ul>
+<p>于是 <span class="math inline">\(\mathcal{A}\)</span> 是一个 <span class="math inline">\(\lambda\)</span>- 系，并且由 4 有 <span class="math inline">\(\mathcal{A}\supseteq\mathcal{I}\)</span>，从而
+<span class="math inline">\(\mathcal{A}\supseteq\sigma(\mathcal{I})\)</span>。于是
+<span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span>
+包含所有形如 <span class="math inline">\(\mathbb{1}_A,\,A\in\sigma(\mathcal{I})\)</span>
+的指标函数，也就包含所有 <span class="math inline">\(\sigma(\mathcal{I})\)</span>
+上的简单可测函数，从而包含它们的所有一致有界极限，即全体 <span class="math inline">\(\sigma(\mathcal{I})\)</span>- 可测的有界函数。</p>
+<p><strong>补充</strong>：条件 3 其实可以减弱为 <span class="math inline">\(\{f_n\}\)</span> 是非负可测函数序列，且 <span class="math inline">\(f_n\uparrow f\)</span>，<span class="math inline">\(f\)</span> 有界。这样我们首先得到 <span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span> 包含所有 <span class="math inline">\(\sigma(\mathcal{I})\)</span>
+上的非负简单函数，因而包含所有的非负有界可测函数，而对任何一般的 <span class="math inline">\(\sigma(\mathcal{I})\)</span> 有界可测函数 <span class="math inline">\(f\)</span>，<span class="math inline">\(f^{\pm}\)</span> 都是 <span class="math inline">\(\sigma(\mathcal{I})\)</span>
+上的非负有界可测函数，因而 <span class="math inline">\(f^{\pm}\)</span>
+和它们的差 <span class="math inline">\(f=f^+-f^-\)</span> 都属于 <span class="math inline">\(\mathbb{H}(\mathcal{I})\)</span>。</p>
+<h1 id="product-measure">14.2 Product Measure</h1>
+<p>本讲介绍了乘积测度的构造。<strong>记住乘积测度的构造是用到重积分的</strong>。</p>
+<p><strong>可测空间的乘积</strong>：设 <span class="math inline">\((\Omega_1,\mathcal{F_1}),\,(\Omega_2,\mathcal{F_2})\)</span>
+是两个可测空间，其乘积空间定义为 <span class="math inline">\((\Omega_1\times\Omega_2,\,\sigma(\mathcal{F}_1\times\mathcal{F}_2))\)</span>。其中
+<span class="math inline">\(\mathcal{F}_1\otimes\mathcal{F}_2=\sigma(\mathcal{F}_1\times\mathcal{F}_2)\)</span>
+是由所有形如 <span class="math inline">\(\{A_1\times A_2,
+A_i\in\mathcal{F}_i\}\)</span> 的集合生成的 <span class="math inline">\(\sigma\)</span>- 域。</p>
+<p><span class="math inline">\(\mathcal{F}_1\otimes\mathcal{F}_2\)</span>
+还有一种等价的刻画：它是使得投影映射 <span class="math inline">\(\pi_i(\omega_1,\omega_2)=\omega_i\)</span>
+均可测的最小 <span class="math inline">\(\sigma\)</span>- 域。</p>
+<blockquote>
+<p><strong>引理</strong>：随机向量 <span class="math inline">\(f:(\Omega,
+\mathcal{F})\to(\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
+是可测的，当且仅当其每个分量 <span class="math inline">\(f_i\)</span>
+是可测的。</p>
+</blockquote>
+<p><span class="math inline">\(\Rightarrow\)</span>: 每个 <span class="math inline">\(f_i=\pi_i\circ f\)</span>
+作为两个可测映射的复合当然是可测的。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>: 本质是证明如果每个
+<span class="math inline">\(X_i\)</span> 都是随机变量，则 <span class="math inline">\(X=(X_1,\ldots,X_n)\)</span> 是随机向量。对任何形如
+<span class="math inline">\(E=E_i\times_{j\ne
+i}\mathcal{B}_i(\mathbb{R})\)</span> 的集合，<span class="math inline">\(X^{-1}(E) =\{\omega\in\Omega: X_i(\omega)\in
+E_i\}\)</span> 是可测集，而这样的 <span class="math inline">\(E\)</span>
+生成了 <span class="math inline">\(\mathcal{B}(\mathbb{R}^d)\)</span>，所以 <span class="math inline">\(X^{-1}(E)\)</span> 对任何 <span class="math inline">\(E\subset\mathcal{B}(\mathbb{R}^d)\)</span>
+都可测。结论得证。</p>
+<p>如果每个 <span class="math inline">\((\Omega_i,\mathcal{F}_i)\)</span>
+还是测度空间，其上的测度为 <span class="math inline">\(\mu_i\)</span>，则我们可以在 <span class="math inline">\((\Omega_1\times\Omega_2,\mathcal{F}_1\otimes\mathcal{F}_2)\)</span>
+上定义测度 <span class="math inline">\(\mu_1\otimes\mu_2\)</span> 使得
+<span class="math inline">\((\mu_1\otimes\mu_2)(E_1\times
+E_2)=\mu_1(E_1)\mu_2(E_2)\)</span> 对任何 <span class="math inline">\(E_i\in\mathcal{F}_i,\, i=1,2\)</span> 成立。</p>
+<p>实际上我们可以让这个乘积测度满足</p>
+<p><span class="math display">\[\int_{\Omega_1\times\Omega_2}f_1\otimes
+f_2\mathrm{d}(\mu_1\otimes\mu_2) =
+\int_{\Omega_1}f_1\mathrm{d}\mu_1\cdot\int_{\Omega_2}f_2\mathrm{d}\mu_2.\]</span></p>
+<p>考虑满足如下条件的乘积空间 <span class="math inline">\(\Omega_1\times\Omega_2\)</span> 上的可测函数 <span class="math inline">\(f\)</span>:</p>
+<blockquote>
+<ol type="1">
+<li><span class="math inline">\(\omega_1\to
+f(\omega_1,\omega_2)\)</span> 对任何 <span class="math inline">\(\omega_2\)</span> 都是可测函数。</li>
+<li><span class="math inline">\(\omega_2\to
+f(\omega_1,\omega_2)\)</span> 对任何 <span class="math inline">\(\omega_1\)</span> 都是可测函数。</li>
+<li><span class="math inline">\(\omega_1\to
+\int_{\Omega_2}f(\omega_1,\omega_2)\mu_2(\mathrm{d}\omega_2)\)</span> 是
+<span class="math inline">\(\mathcal{F}_1/\mathcal{B}(\overline{\mathbb{R}})\)</span>
+可测函数。注意这个积分值可能是无穷。</li>
+<li><span class="math inline">\(\omega_2\to
+\int_{\Omega_1}f(\omega_1,\omega_2)\mu_1(\mathrm{d}\omega_1)\)</span> 是
+<span class="math inline">\(\mathcal{F}_2/\mathcal{B}(\overline{\mathbb{R}})\)</span>
+可测函数。</li>
+<li><span class="math display">\[\int_{\Omega_1}\left(\int_{\Omega_2}f(\omega_1,\omega_2)\mu_2(\mathrm{d}\omega_2)\right)\mu_1(\mathrm{d}\omega_1)=\int_{\Omega_2}\left(\int_{\Omega_1}f(\omega_1,\omega_2)\mu_1(\mathrm{d}\omega_1)\right)\mu_2(\mathrm{d}\omega_2).\]</span></li>
+</ol>
+</blockquote>
+<p>容易验证对所有形如 <span class="math inline">\(f_1\otimes
+f_2\)</span> 的函数它们满足上面的性质。它们构成一个乘法系，包含所有形如
+<span class="math inline">\(\mathbb{1}_{E_1}\otimes\mathbb{1}_{E_2}\)</span>
+的函数，然后上面的条件对函数列的有界极限仍然成立。根据函数版本的 Dynkin
+定理，上面的条件对所有有界可测函数，或者非负可测函数都成立。</p>
+<p>由此我们可以定义乘积空间中的测度为</p>
+<p><span class="math display">\[\mu(E)=\int_{\Omega_1}\left(\int_{\Omega_2}\mathbb{1}_{E}\mu_2(\mathrm{d}\omega_2)\right)\mu_1(\mathrm{d}\omega_1)=\int_{\Omega_2}\left(\int_{\Omega_1}\mathbb{1}_{E}\mu_1(\mathrm{d}\omega_1)\right)\mu_2(\mathrm{d}\omega_2).\]</span>
+不难验证这样定义的积分是有限可加的
+(积分的线性性质)，可以取单调上升的极限，所以是可数可加的，并且当 <span class="math inline">\(E\)</span> 形如 <span class="math inline">\(E_1\times E_2\)</span> 时有 <span class="math inline">\(\mu(E)=\mu_1(E_1)\mu_2(E_2)\)</span>，从而确实给出符合要求的乘积测度。</p>
+<h1 id="kolmogorovs-0-1-law">17.1 Kolmogorov’s 0-1 Law</h1>
+<p>本讲介绍了独立随机变量序列的尾事件，以及 Kolmogrov 0-1 律。</p>
+<p>设 <span class="math inline">\(\{X_n\}\)</span> 是独立的随机变量序列
+(不是两两独立，而是任何有限多个都独立)称 <span class="math inline">\(\mathcal{T}=\cap_{n=1}^\infty\sigma(X_n,X_{n+1},\ldots)\)</span>
+为尾事件域。</p>
+<blockquote>
+<p><strong>Kolmogrov 0-1 律</strong>：对任何 <span class="math inline">\(A\in\mathcal{T}\)</span> 有 <span class="math inline">\(\mathbb{P}(A)\in\{0,1\}\)</span>。</p>
+</blockquote>
+<p><strong>证明概要</strong>：</p>
+<ul>
+<li><span class="math inline">\(\sigma(X_1,\ldots,X_n)\)</span> 和 <span class="math inline">\(\sigma(X_{n+1},X_{n+2},\ldots)\)</span>
+是独立的。因为考虑如下两个集合族： <span class="math display">\[\{\text{all finite intersections like }\cap A_i,
+A_i\in\sigma(X_i),i=1,2,\ldots,n\}.\]</span> <span class="math display">\[\{\text{all finite intersections like }\cap A_j,
+A_j\in\sigma(X_j),j=n+1,n+2,\ldots\}.\]</span> 这俩都是 <span class="math inline">\(\pi\)</span>- 系且互相独立，所以它们生成的 <span class="math inline">\(\sigma\)</span>- 域也独立。前者可以生成 <span class="math inline">\(\sigma(X_1,\ldots,X_n)\)</span>，后者可以生成
+<span class="math inline">\(\sigma(X_{n+1},X_{n+2},\ldots)\)</span>。</li>
+<li>于是 <span class="math inline">\(\sigma(X_1,\ldots,X_n)\)</span> 和
+<span class="math inline">\(\mathcal{T}\)</span> 是独立的。</li>
+<li>于是 <span class="math inline">\(\pi\)</span>- 系 <span class="math inline">\(\cup_{n=1}^\infty\sigma(X_1,\ldots,X_n)\)</span>
+和 <span class="math inline">\(\mathcal{T}\)</span> 是独立的。</li>
+<li>于是 <span class="math inline">\(\sigma\)</span>- 域 <span class="math inline">\(\sigma(X_1,\ldots,X_n,\ldots)\)</span> 和 <span class="math inline">\(\mathcal{T}\)</span> 独立，从而 <span class="math inline">\(\mathcal{T}\)</span> 和 <span class="math inline">\(\mathcal{T}\)</span> 独立，从而得证。</li>
+</ul>
+<h1 id="convolution">17.2 Convolution</h1>
+<p>本讲介绍了概率测度之间的卷积。</p>
+<blockquote>
+<p><strong>定义</strong>：两个概率测度 <span class="math inline">\(\mu,\nu\)</span> 之间的卷积定义为 <span class="math display">\[\mu\ast \nu(B) =
+\int_{\mathbb{R}^d\times\mathbb{R}^d}\mathbb{1}_B(x+y)\mu\otimes\nu(\,\mathrm{d}x\,\mathrm{d}y)=\int_{\mathbb{R}^d}\mu(B-y)\vdx{y}.\]</span></p>
+</blockquote>
+<h1 id="strong-law-of-large-numbers-part-1">18.1 Strong Law of Large
+Numbers, Part 1</h1>
+<p>本讲介绍了 Kolmogrov 强大数定理的表述，以及证明思想。</p>
+<p>基本思想是利用截断的序列与原序列是尾等价的，先对截断的序列证明结论，再回到原序列。</p>
+<blockquote>
+<p><strong>强大数定理</strong>：设 <span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(\mathrm{i.i.d}\)</span> 的 <span class="math inline">\(L^1\)</span> 序列且 <span class="math inline">\(\mathbb{E}[X_n]=a\)</span>，则 <span class="math inline">\(\dfrac{S_n}{n}\to a, \mathrm{a.e.}\)</span>。</p>
+</blockquote>
+<p><strong>重要技巧</strong>：同一个概率空间上的两个序列 <span class="math inline">\(\{X_n\},\,\{Y_n\}\)</span> 称作是尾等价的，如果
+<span class="math inline">\(\sum_{n=1}^\infty\mathbb{P}(X_n\ne
+Y_n)&lt;\infty\)</span>。</p>
+<p>这样根据 Borel-Cantelli 引理，<span class="math inline">\(\{X_n\ne
+Y_n,\mathrm{i.o.}\}\)</span> 是零测集，从而 <span class="math inline">\(X_n=Y_n\)</span>
+最终会几乎处处成立，从而二者的极限行为一致。即如果 <span class="math inline">\(b_n\uparrow\infty\)</span>，则 <span class="math display">\[\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum_{j=1}^n
+X_n = X \Leftrightarrow
+\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum_{j=1}^n Y_n = X.\]</span></p>
+<p><strong>截断的序列和原序列是尾等价的</strong></p>
+<blockquote>
+<p><strong>引理</strong>：若 <span class="math inline">\(X\in
+L^1,\,\epsilon&gt;0\)</span>，则 <span class="math display">\[\sum_{n=1}^\infty\mathbb{P}(X\geq n\epsilon)
+\leq\frac{1}{\epsilon}\mathbb{E}|X|.\]</span></p>
+</blockquote>
+<p>值得与 Markov 不等式比较一下，这个不等式更强。</p>
+<p><strong>证明概要</strong>：只要证明结论对 <span class="math inline">\(\epsilon=1\)</span> 成立即可。而这非常显然：</p>
+<p><span class="math display">\[X\geq\lfloor X\rfloor =
+\sum_{n=1}^\infty \mathbb{1}_{\{n\leq X\}}.\]</span></p>
+<blockquote>
+<p><strong>推论</strong>：若 <span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(\mathrm{i.i.d}\)</span> 的 <span class="math inline">\(L^1\)</span> 序列，令 <span class="math inline">\(Y_n = X_n\mathbb{1}_{\{|X_n|\leq n\}}\)</span>，则
+<span class="math inline">\(\{Y_n\}\)</span> 与 <span class="math inline">\(\{X_n\}\)</span> 是尾等价的。</p>
+</blockquote>
+<p>于是接下来的任务就是证明 <span class="math inline">\(S_n^Y =
+\dfrac{Y_1+\cdots+Y_n}{n}\to a,\,\mathrm{a.e.}\)</span>。</p>
+<h1 id="kolmogorovs-convergence-criterion">18.2 Kolmogorov’s Convergence
+Criterion</h1>
+<p>本讲介绍了 Kolmogrov 收敛判定：独立随机变量序列如果是 <span class="math inline">\(L^2\)</span> 意义下的 Cauchy
+序列，则也是逐点收敛意义下的 Cauchy 序列。</p>
+<p>在上一讲中，我们通过把 <span class="math inline">\(L^1\)</span>
+的序列 <span class="math inline">\(\{X_n\}\)</span> 取截断得到 <span class="math inline">\(Y_n=X_n\mathbb{1}_{\{|X_n|\leq
+n\}}\)</span>，这是一个与 <span class="math inline">\(\{X_n\}\)</span>
+尾等价的序列。从而只要证明 <span class="math inline">\(\frac{\sum_{k=1}^n Y_k}{n}\to
+a\)</span>。为此我们分两步：</p>
+<ol type="1">
+<li>证明 <span class="math inline">\(\frac{\sum_{k=1}^n
+(Y_k-\mathbb{E}Y_k)}{n}\to 0\)</span>。</li>
+<li>证明 <span class="math inline">\(\mathbb{E}Y_n\to a\)</span>，从而
+<span class="math inline">\(\frac{\sum_{k=1}^n\mathbb{E}Y_k}{n}\to
+a\)</span>。结合上一点就证明了强大数定理。</li>
+</ol>
+<p>2 用控制收敛定理很容易得出，所以关键是证明 1。</p>
+<p>我们首先证明 <span class="math inline">\(\sum_{k=1}^n
+\frac{Y_k-\mathbb{E}Y_k}{n}\)</span> 是个收敛的序列，然后用下一讲介绍的
+Kronecker 引理来得出 <span class="math inline">\(\frac{\sum_{k=1}^n
+(Y_k-\mathbb{E}Y_k)}{n}\to 0\)</span>。</p>
+<blockquote>
+<p><strong>Kolmogrov 收敛判定</strong>：若 <span class="math inline">\(\mathrm{i.i.d}\)</span> 序列 <span class="math inline">\(Z_n\)</span> 满足 <span class="math inline">\(\sum\mathrm{Var}(Z_n)&lt;\infty\)</span> 则 <span class="math inline">\(\sum(Z_n-\mathbb{E}Z_n)\)</span>
+几乎处处收敛。</p>
+</blockquote>
+<p><strong>证明概要</strong>：我们可以不妨假设 <span class="math inline">\(\mathbb{E}Z_n=0\)</span>，则问题变为若 <span class="math inline">\(\mathrm{i.i.d}\)</span> 序列 <span class="math inline">\(\sum\mathbb{E}|Z_n|^2\)</span> 收敛，则 <span class="math inline">\(\sum Z_n\)</span> 几乎处处收敛。</p>
+<p>记 <span class="math inline">\(S_n=\sum_{k=1}^nZ_k\)</span>，利用
+Markov 不等式不难有 <span class="math display">\[\mathbb{P}(|S_n|\geq\epsilon)\leq
+\frac{1}{\epsilon^2}\mathbb{E}[S_n^2].\]</span>
+有意思的是，上面的不等式中在左边把 <span class="math inline">\(S_n\)</span> 换成 <span class="math inline">\(S_n^\ast=\max_{1\leq i\leq n}|S_n|\)</span>
+仍然成立：</p>
+<blockquote>
+<p><strong>Kolmogrov 极大不等式</strong>：对任何正数 <span class="math inline">\(\epsilon&gt;0\)</span> 有 <span class="math display">\[\mathbb{P}(S_n^\ast\geq\epsilon)\leq
+\frac{1}{\epsilon^2}\mathbb{E}[S_n]^2.\]</span></p>
+</blockquote>
+<p>证明：记 <span class="math inline">\(\tau=\inf\{j\in\mathbb{Z}_{\geq1}:\
+|S_j|\geq\epsilon\}\)</span>。则 <span class="math inline">\(\mathbb{P}(S_n^\ast\geq\epsilon)=\mathbb{P}(\tau\leq
+n)\)</span>。 <span class="math display">\[\mathbb{E}[S_n^2:\
+S_n^\ast\geq\epsilon]=\mathbb{E}[S_n^2:\ \tau\leq
+n]=\sum_{k=1}^n\mathbb{E}[S_n^2:\ \tau=k].\]</span> 使用技巧 <span class="math inline">\(S_n^2=(S_k + S_n - S_k)^2\)</span> 我们有 <span class="math display">\[\mathbb{E}[S_n^2:\ \tau=k] = \mathbb{E}[S_k^2 +
+(S_n-S_k)^2:\ \tau=k] + \mathbb{E}[2S_k(S_n-S_k):\ \tau=k].\]</span>
+注意到第二项 <span class="math display">\[\mathbb{E}[2S_k(S_n-S_k):\
+\tau=k] =
+\mathbb{E}[2S_k\mathbb{1}_{\{\tau=k\}}(S_n-S_k)]=2\mathbb{E}[S_k\mathbb{1}_{\{\tau=k\}}]\cdot\mathbb{E}[S_n-S_k]=0.\]</span>
+所以 <span class="math display">\[\mathbb{E}[S_n^2]\geq\sum_{k=1}^n\mathbb{E}[S_n^2:\
+\tau=k] \geq \sum_{k=1}^n\mathbb{E}[S_k^2:\
+\tau=k]\geq\epsilon^2\sum_{k=1}^n\mathbb{E}\mathbb{1}_{\{\tau=k\}}=\epsilon^2\mathbb{P}(\tau\leq
+n)=\epsilon^2 \mathbb{P}(S_n^\ast\geq\epsilon).\]</span></p>
+<p>回到 Kolmogrov 收敛定理的证明。</p>
+<p>Kolmogrov 极大不等式告诉我们</p>
+<p><span class="math display">\[\mathbb{P}(\max_{n\leq k \leq m}|S_k -
+S_n|\geq\epsilon)\leq
+\frac{1}{\epsilon^2}\mathbb{E}|S_m-S_n|^2=\frac{1}{\epsilon^2}\sum_{k=n}^m
+\mathbb{E}Z_k^2.\]</span> 令 <span class="math inline">\(m\to\infty\)</span> 我们有 <span class="math display">\[\mathbb{P}(\sup_{k\geq n}|S_k -
+S_n|\geq\epsilon)\leq\frac{1}{\epsilon^2}\sum_{k=n}^\infty
+\mathbb{E}Z_k^2.\]</span> 于是 <span class="math display">\[\mathbb{P}(\sup_{k,j\geq n}|S_k -
+S_j|\geq\epsilon)\leq\frac{2}{\epsilon^2}\sum_{k=n}^\infty
+\mathbb{E}Z_k^2.\]</span> 所以随机变量序列 <span class="math inline">\(\delta_n = \sup_{k,j\geq n}|S_k - S_j|\)</span>
+依测度收敛到 0。但是 <span class="math inline">\(\delta_n\)</span>
+是一个单调下降的非负序列，它必然有一个几乎处处收敛的极限 <span class="math inline">\(\delta\)</span>，<span class="math inline">\(\delta\)</span> 也非负。<span class="math inline">\(\delta\)</span> 依测度收敛到 0，又几乎处处收敛到
+<span class="math inline">\(\delta\)</span>，那必须 <span class="math inline">\(\delta\)</span> 几乎处处为 0，即 <span class="math inline">\(\{S_n\}\)</span> 是 Cauchy 序列。</p>
+<h1 id="strong-law-of-large-numbers-part-2">19.1 Strong Law of Large
+Numbers, Part 2</h1>
+<p>介绍了证明强大数定理的第二个工具：Kronecker 引理。</p>
+<blockquote>
+<p><strong>Kronecker 引理</strong>：若 <span class="math inline">\(\{b_k\}\uparrow\infty\)</span> 且 <span class="math inline">\(\lim\limits_{n\to\infty}\sum\limits_{k=1}^n\dfrac{x_k}{b_k}\)</span>
+存在，则 <span class="math inline">\(\lim\limits_{n\to\infty}\dfrac{1}{b_n}\sum\limits_{k=1}^n
+x_k=0\)</span>。</p>
+</blockquote>
+<p><strong>证明概要</strong>：记 <span class="math inline">\(u_n=\sum\limits_{k=1}^n\dfrac{x_k}{b_k},\,u_0=0\)</span>，则
+<span class="math inline">\(\lim\limits_{n\to\infty}u_n=s\)</span>
+存在。 <span class="math display">\[\begin{align*}\frac{1}{b_n}\sum_{k=1}^n
+x_k&amp;=\frac{1}{b_n}\sum_{k=1}^n(u_k-u_{k-1})b_k=\frac{1}{b_n}\sum_{k=1}^nu_kb_k-\frac{1}{b_n}\sum_{k=0}^{n-1}u_kb_{k+1}\\&amp;=u_n-\frac{b_n-b_1}{b_n}s-\sum_{k=1}^{n-1}\frac{b_{k+1}-b_k}{b_n}(u_k-s).\end{align*}\]</span>
+而最后一个余项的绝对值小于等于 <span class="math display">\[\begin{align*}\sum_{k=1}^{n-1}\frac{b_{k+1}-b_k}{b_n}|u_k-s|=\left(\sum_{k=1}^{N}+\sum_{k=N+1}^{n-1}\right)\frac{b_{k+1}-b_k}{b_n}|u_k-s|\end{align*}\]</span>
+这里对 <span class="math inline">\(n&gt;N\)</span> 有 <span class="math inline">\(|u_n-s|&lt;\epsilon\)</span> 成立。</p>
+<p>当 <span class="math inline">\(n\to\infty\)</span>
+时第一个和项是一个有界的值除以 <span class="math inline">\(b_n\)</span>
+从而趋于 0。第二个和项显然不大于 <span class="math inline">\(\dfrac{b_n}{b_n}\epsilon\)</span>，所以这个余项可以任意小。</p>
+<blockquote>
+<p><strong>引理</strong>：<span class="math inline">\(Y_n' =
+Y_n/n\)</span> 满足 Kolmogrov 收敛判定。</p>
+</blockquote>
+<p><strong>证明概要</strong>： <span class="math display">\[\begin{align*}\sum_{n=1}^\infty\mathrm{Var}(Y_n')&amp;=\sum_{n=1}^\infty\frac{\mathbb{E}Y_n^2
+- (\mathbb{E}Y_n)^2}{n^2}\leq
+\sum_{n=1}^\infty\frac{\mathbb{E}Y_n^2}{n^2}\\&amp;=\sum_{n=1}^\infty\frac{\mathbb{E}X_n^2\mathbb{1}_{\{|X_n|\leq
+n\}}}{n^2}\\&amp;=\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\mathbb{1}_{\{|X_1|\leq
+n\}}\right]\\&amp;\leq\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2},\
+|X_1|\leq 2\right] +
+\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\mathbb{1}_{\{|X_1|\leq
+n\}},\
+|X_1|&gt;2\right]\\&amp;\leq4\sum_{n=1}^\infty\frac{1}{n^2}+\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\mathbb{1}_{\{|X_1|\leq
+n\}},\ |X_1|&gt;2\right] .\end{align*}\]</span> 为什么要用 <span class="math inline">\(|X_1|\)</span> 是否大于 2
+把它分成两部分？这里其实可以用任何大于等于 2 的数，不过 2
+已经足够了，这样做的原因下面就会看到。</p>
+<p>现在第一项是有限的，我们只要说明第二项也有限即可。你可能想把 <span class="math inline">\(\mathbb{1}_{\{|X_1|\leq n\}}\)</span>
+扔掉，但是注意强大数定律中 <span class="math inline">\(|X_1|\)</span> 是
+<span class="math inline">\(L^1\)</span> 可积的，未必是 <span class="math inline">\(L^2\)</span> 可积的，所以扔掉是不行的。我们得把
+<span class="math inline">\(\sum_{n=1}^\infty\frac{1}{n^2}\mathbb{1}_{\{|X_1|\leq
+n\}}\)</span> 这个东西估计一下。注意到对任何正整数 <span class="math inline">\(k\)</span>，<span class="math inline">\(\sum_{n=k}^\infty\frac{1}{n^2}\)</span> 就是 <span class="math inline">\(\frac{1}{\lfloor t\rfloor^2}\)</span> 在 <span class="math inline">\([k,\infty)\)</span> 上的积分， 所以当 <span class="math inline">\(x&gt;2\)</span> 时 <span class="math display">\[\begin{align*}
+\sum_{n=1}^\infty\frac{1}{n^2}\mathbb{1}_{\{x\leq n\}}&amp;=\sum_{n\geq
+x}^\infty\frac{1}{n^2}=\sum_{n= \lceil
+x\rceil}^\infty\frac{1}{n^2}\\&amp;=\int_{\lceil
+x\rceil}^\infty\frac{1}{\lfloor t\rfloor^2}\,\mathrm{d}t\\&amp;\leq
+\int_{\lceil
+x\rceil}^\infty\frac{1}{(t-1)^2}\,\mathrm{d}t\\&amp;=\frac{1}{\lceil
+x\rceil -
+1}\\&amp;\leq\frac{1}{x-1}&lt;\frac{2}{x}.\end{align*}\]</span> 所以取
+<span class="math inline">\(x&gt;2\)</span> 主要是为了最后一步的 <span class="math inline">\(\frac{1}{x-1}&lt;\frac{2}{x}\)</span>。</p>
+<p>于是我们就证明了在 <span class="math inline">\(|X_1|&gt;2\)</span>
+上有 <span class="math display">\[\sum_{n=1}^\infty\frac{1}{n^2}\mathbb{1}_{\{|X_1|\leq
+n\}}&lt;\frac{2}{|X_1|}.\]</span> 两边乘以 <span class="math inline">\(|X_1|^2\)</span> 并积分，则 <span class="math display">\[\mathbb{E}\left[|X_1|^2\sum_{n=1}^\infty\frac{1}{n^2}\mathbb{1}_{\{|X_1|\leq
+n\}},\ |X_1|&gt;2\right] &lt; 2\mathbb{E}|X_1|.\]</span>
+这就证明了结论。</p>
+<h1 id="renewal-theory">19.2 Renewal Theory</h1>
+<p>本讲以灯泡寿命为例子，介绍了强大数定理在更新理论中的应用。</p>
+<p>设灯泡的寿命互相独立，且服从某个共同的非负随机变量 <span class="math inline">\(X,\ \mathbb{E}X&lt;\infty\)</span>。设长度为 <span class="math inline">\(t\)</span> 的时刻内需要报废的灯泡数最多为 <span class="math inline">\(N_t\)</span>，即 <span class="math inline">\(S_{N_t}\leq t &lt; S_{N_t+1}\)</span>。则 <span class="math display">\[\lim_{t\to\infty}\frac{N_t}{t}\to\frac{1}{\mathbb{E}X},\quad
+\mathrm{a.e.}\]</span> 实际上由定义有 <span class="math display">\[\frac{S_{N_t}}{N_t}\leq \frac{t}{N_t} &lt;
+\frac{S_{N_t+1}}{N_t}.\]</span> 如果我们能证明 <span class="math inline">\(t\to\infty\)</span> 时同样有 <span class="math inline">\(N_t\to\infty,\mathrm{a.e.}\)</span>，则利用强大数定理就有
+<span class="math inline">\(S_{N_t}/N_t\to\mathbb{E}X\)</span>，从而结论得证。</p>
+<p>我们考虑 <span class="math inline">\(\Omega_1=\{\omega\in\Omega\mid
+S_n(\omega)&lt;\infty,\ \forall n\geq1\}\)</span>。<span class="math inline">\(\Omega_1\)</span> 作为一列递减的测度均为 1
+的集合列的极限，测度显然也是 1。我们只要证明在 <span class="math inline">\(\Omega_1\)</span> 上有 <span class="math inline">\(S_{N_t}/N_t\to\mathbb{E}X\)</span> 成立。</p>
+<p>首先 <span class="math inline">\(N_t\)</span> 随着 <span class="math inline">\(t\)</span> 递增是没有问题的，如果它对某个 <span class="math inline">\(\omega\)</span> 是有界的，则 <span class="math inline">\(N_t(\omega)\leq M\)</span> 对所有 <span class="math inline">\(t\)</span> 成立。即不管 <span class="math inline">\(t\)</span> 是多少都有 <span class="math inline">\(S_M\leq t &lt; S_{M+1}\)</span>，这只能要求 <span class="math inline">\(S_{M+1}(\omega)=\infty\)</span>，从而 <span class="math inline">\(\omega\)</span> 不属于 <span class="math inline">\(\Omega_1\)</span>。</p>
+<p>一个有意思的引理：</p>
+<blockquote>
+<p><strong>引理</strong>：设 <span class="math inline">\(X\in
+L^1\)</span>，如果 <span class="math inline">\(\{X_n\}\)</span> 是一列
+<span class="math inline">\(\mathrm{i.i.d}\)</span> 且服从和 <span class="math inline">\(X\)</span> 同样的分布，则 <span class="math inline">\(\dfrac{X_n}{n}\to0,\mathrm{a.e.}\)</span>。</p>
+</blockquote>
+<p>老技巧，只要证明 <span class="math inline">\(\mathbb{P}(\{|X_n|\geq
+n\epsilon,\ \mathrm{i.o.}\})=0\)</span> 即可。根据 Borel-Cantelli
+引理，只要证明 <span class="math inline">\(\sum_{n=1}^\infty\mathbb{P}(|X_n|\geq
+n\epsilon)&lt;\infty\)</span> 即可，而这在 18.1 中已经证明过了。</p>
+<h1 id="complex-integration-and-dynkins-theorem">24.1 Complex
+Integration and Dynkin’s Theorem</h1>
+<p>无要点</p>
+<h1 id="characteristic-function">24.2 Characteristic Function</h1>
+<p>本讲介绍了随机变量的特征函数及其基本性质。整体内容比较基础。</p>
+<h1 id="the-continuity-theorem">25.3 The Continuity Theorem</h1>
+<p>本讲介绍了测度弱收敛的连续性定理。</p>
+<blockquote>
+<p><strong>定理</strong>：如果 <span class="math inline">\(\{\mu_n\}_{n=1}^\infty\)</span> 是一列 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
+上的概率测度。假设极限 <span class="math inline">\(\varphi(t) =
+\lim\limits_{n\to\infty}\hat{\mu_n}\)</span> 存在，并且 <span class="math inline">\(\varphi(t)\)</span> 在 <span class="math inline">\(t=0\)</span> 处连续，则存在概率测度 <span class="math inline">\(\mu\)</span> 使得 <span class="math inline">\(\hat{\mu}=\varphi\)</span>，并且 <span class="math inline">\(\mu_n\rightarrow_{w}\mu\)</span>。</p>
+</blockquote>
+<blockquote>
+<p><strong>引理</strong>：对两个概率测度 <span class="math inline">\(\mu,\nu\)</span> 有 <span class="math display">\[\int_{\mathbb{R}^d}\hat{\mu}(x)\vdx{x}=\int_{\mathbb{R}^d}\hat{\nu}(y)\udx{y}.\]</span></p>
+</blockquote>
+<p>直接 Fubini 即可。</p>
+<blockquote>
+<p><strong>引理</strong>： <span class="math display">\[\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vdx{x}=\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\udx{x}.\]</span></p>
+</blockquote>
+<p>在前一个引理中两边取实部，然后被 1 减去即可。</p>
+<blockquote>
+<p><strong>推论</strong>：假设 <span class="math inline">\(\rho\)</span>
+是一个 <span class="math inline">\(\mathbb{R}^d\)</span>
+上的概率测度，其支集位于闭的单位球 <span class="math inline">\(\bar{B}_1\)</span> 内。设 <span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|\hat{\rho}(t)|\leq1/2\)</span> 对任何 <span class="math inline">\(|t|\geq M\)</span> 成立，则对任何 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
+上的概率测度 <span class="math inline">\(\mu\)</span> 和正数 <span class="math inline">\(\alpha&gt;0\)</span> 有 <span class="math display">\[\mu\{x\in\mathbb{R}^d:\ |x|\geq\alpha\}\leq
+2\int_{\bar{B}_1}[1-\mathrm{Re}\,\hat{\mu}(\frac{M}{\alpha}x)]\rho(x)\,\mathrm{d}x.\]</span></p>
+</blockquote>
+<h1 id="orthogonal-projections">31.1 Orthogonal Projections</h1>
+<p>无要点</p>
+<h1 id="probability-kernels-part-1">33.1 Probability Kernels, Part
+1</h1>
+<p>本讲引入了概率核的概念。</p>
+<p>设 <span class="math inline">\((S_i,\mathcal{B}_i), i=1,2\)</span>
+是两个可测空间，一个概率核 <span class="math inline">\(Q(x,
+B):(S_1,\mathcal{B}_2)\to[0,1]\)</span> 是一个二元函数，满足：</p>
+<ol type="1">
+<li>对任何 <span class="math inline">\(x\in S_1\)</span>，<span class="math inline">\(Q(x,\cdot):\mathcal{B}_2\to[0,1]\)</span> 是 <span class="math inline">\((S_2,\mathcal{B}_2)\)</span> 上的概率测度。</li>
+<li>对任何 <span class="math inline">\(B\in
+\mathcal{B}_2\)</span>，<span class="math inline">\(Q(\cdot,
+B):S_1\to[0,1]\)</span> 是 <span class="math inline">\((S_1,\mathcal{B}_1)\)</span> 上的可测函数。</li>
+</ol>
+<blockquote>
+<p><strong>引理</strong>：假设 <span class="math inline">\(f(x,y)\in
+(S_1\times S_2, \mathcal{B}_1\otimes\mathcal{B}_2)\)</span>
+是乘积空间上的可测函数，并且是有界的或者非负的，则积分 <span class="math display">\[x\to\int_{S_2}f(x,y)Q(x,\pd{y})\]</span> 是关于
+<span class="math inline">\(x\)</span> 的可测函数。</p>
+</blockquote>
+<p>此引理不难从简单函数 <span class="math inline">\(\mathbb{1}_{B_1\times
+B_2}(x,y)=\mathbb{1}_{B_1}(x)\mathbb{1}_{B_2}(y)\)</span>
+出发，使用函数形式的 Dynkin 引理得到。</p>
+<p>由此对任何 <span class="math inline">\((S_1,\mathcal{B}_1)\)</span>
+上的测度 <span class="math inline">\(\mu\)</span>，我们可以定义乘积空间
+<span class="math inline">\((S_1\times S_2,
+\mathcal{B}_1\otimes\mathcal{B}_2)\)</span> 上的乘积测度 <span class="math inline">\(\mu\otimes Q\)</span>，这个乘积测度是随 <span class="math inline">\(x\)</span> 变化而变化的： <span class="math display">\[\mu\otimes
+Q(E)=\int_{S_1}\mu(\pd{x})\int_{S_2}\mathbb{1}_{C}(x,y)Q(x,\pd{y}).\]</span>
+不过这真的是一个概率测度吗？你可以用积分的线性性质立刻看出它是有限可加的，并且利用积分项有界和控制收敛定理立刻看出它是可数可加的，所以确实是个概率测度。</p>
+<p>有了概率核的乘积测度，我们自然要研究对这种测度的积分。由于这个测度本身就是通过对示性函数积分来定义的，所以其上的积分也具有类似的性质：</p>
+<blockquote>
+<p><strong>引理</strong>：假设 <span class="math inline">\(f(x,y)\)</span>
+是乘积空间的可测函数，并且是有界或者非负的，则 <span class="math display">\[\int_{S_1\times S_2}f\pd{(\mu\otimes Q)} =
+\int_{S_1}\mu(\pd{x})\int_{S_2}f(x,y)Q(x,\pd{y}).\]</span></p>
+</blockquote>
+<p>后面花了很大力气证明当 <span class="math inline">\(Q(x,
+\cdot)=\widetilde{Q}(x,\cdot)\)</span> 对几乎处处的 <span class="math inline">\(x\)</span> 成立时有 <span class="math inline">\(\mu\otimes
+Q=\mu\otimes\widetilde{Q}\)</span>。没仔细看。</p>
+<h1 id="regular-conditional-distributions">33.2 Regular Conditional
+Distributions</h1>
+<p>本讲使用概率核给出了 <span class="math inline">\(\mathbb{E}[f(X,
+Y)\mid X=x]\)</span> 这种条件期望的严格定义。</p>
+<blockquote>
+<p><strong>定理</strong>：设 <span class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>
+是一个概率空间，<span class="math inline">\((S_i,\mathcal{B}_i),\,i=1,2\)</span>
+是两个可测空间，<span class="math inline">\(X:(\Omega,\mathcal{F})\to(S_1,\mathcal{B}_1),\,Y:(\Omega,\mathcal{F})\to(S_2,\mathcal{B}_2)\)</span>
+是两个随机变量。于是 <span class="math inline">\((X,Y):(\Omega,\mathcal{F})\to(S_1\times
+S_2,\,\mathcal{B}1\otimes\mathcal{B}_2)\)</span> 是随机向量。记 <span class="math inline">\(\mu_{X,Y}\)</span> 为此随机向量在 <span class="math inline">\((S_1\times
+S_2,\,\mathcal{B}1\otimes\mathcal{B}_2)\)</span> 上 push forward
+给出的测度，<span class="math inline">\(\mu_X\)</span> 是 <span class="math inline">\(X\)</span> 在 <span class="math inline">\((S_1,\mathcal{B}_1)\)</span> 上 push forward
+给出的测度。如果存在概率核 <span class="math inline">\(Q(x,B)\)</span>
+使得 <span class="math display">\[\mu_{X,Y}=\mu_X\otimes Q.\]</span></p>
+<p>则对任何 <span class="math inline">\(f\in L^1(S_1\times
+S_2,\mathcal{B}1\otimes\mathcal{B}_2)\)</span> 有 <span class="math display">\[\mathbb{E}[f(X,Y)\mid X = x] =
+\int_{S_2}f(x,y)Q(x, \pd{y}).\]</span></p>
+</blockquote>
+<p>这里需要解释 <span class="math inline">\(\mathbb{E}[f(X,Y)\mid X =
+x]\)</span> 这个记号的含义。这里其实引用了条件期望 (后面才会讲到)
+的性质：<span class="math inline">\(\mathbb{E}[f(X,Y)\mid X]\)</span>
+是一个关于 <span class="math inline">\(\sigma(X)\)</span>
+可测的随机变量，从而由 Doob-Dynkin 表示定理，存在可测函数 <span class="math inline">\(g\)</span> 使得 <span class="math inline">\(\mathbb{E}[f(X,Y)\mid X] = g(X)\)</span>，所以
+<span class="math inline">\(\mathbb{E}[f(X,Y)\mid X = x] =
+g(x)\)</span>。这个定理说的就是 <span class="math display">\[\mathbb{E}[f(X,Y)\mid X = x] = g(x) =
+\int_{S_2}f(x,y)Q(x, \pd{y}).\]</span></p>
+<p><strong>证明</strong>：怎么证明两个关于 <span class="math inline">\(\sigma(X)\)</span> 可测的函数 (几乎处处)
+相等呢？我们可以给它们同时乘以 <span class="math inline">\(h(x)\)</span>，这里 <span class="math inline">\(h(x)\)</span> 是任何一个关于 <span class="math inline">\(\sigma(X)\)</span> 可测的有界函数，然后证明它们对
+<span class="math inline">\(\mu_X\)</span>
+积分以后的值相等，则这两个可测函数必相等。</p>
+<p><span class="math inline">\(g(x)h(x)\)</span> 这个函数对 <span class="math inline">\(\mu_X\)</span> 积分，根据积分变量替换定理，正是
+<span class="math inline">\(\mathbb{E}[g(X)h(X)]\)</span>。而根据 <span class="math inline">\(g(x)\)</span> 的定义和条件期望的性质， <span class="math display">\[\mathbb{E}[g(X)h(X)]=\mathbb{E}[\mathbb{E}[f(X,Y)|X]h(X)]
+= \mathbb{E}[\mathbb{E}[f(X,Y)h(X)|X]] = \mathbb{E}[f(X,
+Y)h(X)].\]</span> 注意右边的期望悄悄地变成了关于 <span class="math inline">\(\mu_X\otimes Q\)</span>
+的积分。这是因为上式最后的等号使用了条件期望的 telescoping 性质，而
+<span class="math inline">\(f(X,Y)g(X)\)</span> 是关于 <span class="math inline">\(\mathcal{B}_1\otimes\mathcal{B}_2\)</span>
+可测的函数。</p>
+<p>另一方面，<span class="math inline">\(h(x)\int_{S_2}f(x,y)Q(x,\pd{y})\)</span>
+这个函数对 <span class="math inline">\(\mu_X\)</span> 积分，正是 <span class="math display">\[\int_{S_1}\mu(\pd{x})\int_{S_2}f(x,y)h(x)Q(x,\pd{y}).\]</span>
+所以 <span class="math display">\[\begin{align*}
+\mathbb{E}[f(X,Y)h(X)] &amp;= \int_{S_1\times
+S_2}f(x,y)h(x)\mu_{X,Y}(\pd{x}\pd{y}) \\
+&amp;= \int_{S_1\times S_2}f(x,y)h(x)\mu_X\otimes Q \\
+&amp;= \int_{S_1}\mu_X \int_{S_2}f(x,y)h(x)Q(x,\pd{y}) \\
+&amp;= \int_{S_1}\mu_X h(x)\int_{S_2}f(x,y)Q(x,\pd{y}).
+\end{align*}\]</span> 正是所要证明的。</p>
+<p>不过在上面的证明中我们都假定了所有的可积性的前提，我们实际上需要假定
+<span class="math inline">\(f(x,y)\)</span>
+有界才能确保推导成立。对一般的 <span class="math inline">\(f(x,y)\in
+L^1(S_1\times S_2,\mathcal{B}_1\otimes
+\mathcal{B}_2)\)</span>，我们需要用有界函数列 <span class="math inline">\(f_n\to f\)</span> 且此收敛是在 <span class="math inline">\(L^1(\mu_{X,Y})\)</span> 意义下的。由于条件期望是
+contraction，所以 <span class="math display">\[\mathbb{E}[f_n(X, Y)| X]
+\xrightarrow{L^1} \mathbb{E}[f(X,Y)|X].\]</span> 此外我们已经证明了
+<span class="math display">\[\mathbb{E}[f_n(X, Y)| X] =
+\left.\int_{S_2}f_n(x,y)Q(x,\pd{y})\right|_{x=X}.\]</span> 所以只要证明
+<span class="math display">\[\left.\int_{S_2}f_n(x,y)Q(x,\pd{y})\right|_{x=X}
+\xrightarrow{L^1}
+\left.\int_{S_2}f(x,y)Q(x,\pd{y})\right|_{x=X}.\]</span> 即可。这个
+<span class="math inline">\(L^1\)</span> 收敛的意思是对 <span class="math inline">\(\mu_X\)</span> 取积分，因此我们要估计 <span class="math display">\[\int_{S_1}\mu(\pd{x})\int_{S_2}|f_n(x,y)-f(x,y)|Q(x,\pd{y}).\]</span>
+这不正是 <span class="math inline">\(|fn-f|\)</span>
+对乘积测度的积分嘛，而我们已经知道了它是 <span class="math inline">\(L^1\)</span> 收敛的了。</p>
+<p>所以如果我们能把一个联合分布分解为边际分布和一个概率核的乘积，则我们就得到了条件概率的一个表示。</p>
+<blockquote>
+<p><strong>问题</strong>：<span class="math inline">\(\mu_{X,Y}\)</span>
+总可以表示为 <span class="math inline">\(\mu_X\otimes Q\)</span>
+的形式吗？</p>
+</blockquote>
+<blockquote>
+<p><strong>定理</strong>：如果概率核 <span class="math inline">\(Q(x,
+B)\)</span> 满足 <span class="math display">\[\mathbb{P}(Y\in B | X=x) =
+Q(x, B)\]</span> (这个条件等价于 <span class="math display">\[\mathbb{E}[h(Y) | X] = \left.\int h(y)
+Q(x,\pd{y})\right|_{x=X}.\]</span> 对任何有界的可测函数 <span class="math inline">\(h(y)\)</span> 成立) 则对 <span class="math inline">\(f(x,y)\)</span> 同样有 <span class="math display">\[\mathbb{E}[f(X,Y) | X] = \left.\int f(x,y)
+Q(x,\pd{y})\right|_{x=X}.\]</span> 成立。</p>
+</blockquote>
+<p>这个定理可以先从 <span class="math inline">\(f(x,y)=f(x)\otimes
+g(y)\)</span> 形式的函数出发，然后用 Dynkin 函数系引理得到。</p>
+<p>总结一下，至此我们讨论了：</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(\mu_{X,Y}=\mu_X\otimes
+Q\)</span>，那我们就有了 <span class="math inline">\(\mathbb{E}[f(X,Y)|X]\)</span> 的计算方法：积分
+<span class="math inline">\(\int_{S_2}f(X,y)Q(X,\pd{y})\)</span>。特别地我们可以算条件概率了。</li>
+<li>反之如果我们有一个概率核给出条件概率：<span class="math inline">\(\mathbb{P}(Y\in B | X=x) = Q(x,
+B)\)</span>，那么它就给出 <span class="math inline">\(\mu_{X,Y}\)</span>
+的一个分解：<span class="math inline">\(\mu_{X,Y}=\mu_X\otimes
+Q\)</span>。</li>
+</ol>
+<p>本讲后面讨论了离散和连续情形概率核是什么样子的。</p>
+<h1 id="probability-kernels-part-2">34.1 Probability Kernels, Part
+2</h1>
+<p>本讲介绍了概率核的本质是 Markov
+生成元，即可测函数空间上的非负线性泛函。</p>
+<p>当有一个概率核 <span class="math inline">\(Q: S_1\times
+\mathcal{B}_2\to[0, 1]\)</span> 时， <span class="math display">\[f\to
+\int_{S_2}f(y)Q(x,\pd{y}),\quad
+f\in\mathbb{B}(S_2,\mathcal{B}_2)\]</span> 给出了从 <span class="math inline">\(L^\infty(S_2,\mathcal{B}_2)\)</span> 到 <span class="math inline">\(L^\infty(S_1,\mathcal{B}_1)\)</span> 的线性映射
+<span class="math inline">\(L_Q\)</span>，<span class="math inline">\(L_Q\)</span> 满足</p>
+<ol type="1">
+<li><span class="math inline">\(L_Q(1)=1\)</span>。</li>
+<li>若 <span class="math inline">\(f\geq 0\)</span> 非负可测，则 <span class="math inline">\(L_Q(f)\geq 0\)</span> 也非负可测。</li>
+<li>若 <span class="math inline">\(f_n\uparrow f\)</span> 则 <span class="math inline">\(L_Q(f_n)\uparrow L_Q(f)\)</span>。</li>
+<li><span class="math inline">\(\|L_Q(f)\|_{\infty} \leq
+\|f\|_{\infty}\)</span>。</li>
+</ol>
+<p>所以 <span class="math inline">\(L_Q\)</span>
+是一个连续的正线性泛函？</p>
+<p>反过来，如果有这样的一个泛函 <span class="math inline">\(L\)</span>，<span class="math inline">\(L\)</span>
+是否给出一个概率核 <span class="math inline">\(Q\)</span> 呢？</p>
+<p>答案是否定的，一般来说这不成立。但是在 <span class="math inline">\((S_1,\mathcal{B}_1)=(S_2,\mathcal{B}_2)\)</span>
+的情形，这确实是对的。</p>
+<blockquote>
+<p><strong>定理</strong>：如果 <span class="math inline">\(L:\mathbb{B}(S,\mathcal{B})\to\mathbb{B}(S,B)\)</span>
+满足以上四个条件，则 <span class="math display">\[Q(x, B) =
+L(\mathbb{1}_B)(x)\]</span> 给出一个概率核。并且 <span class="math inline">\(L_Q=L\)</span>，即此概率核给出的线性泛函正是 <span class="math inline">\(L\)</span>。</p>
+</blockquote>
+<p>证明：由于 <span class="math inline">\(0\leq \mathbb{1}_B\leq
+1\)</span> 总是成立的，所以 <span class="math inline">\(L(0)\leq
+L(\mathbb{1}_B)\leq L(1)=1\)</span>，即 <span class="math inline">\(L(\mathbb{1}_B)(x)\)</span> 对任何 <span class="math inline">\(x\)</span> 都在 <span class="math inline">\([0,1]\)</span> 中，这符合概率的定义约束。</p>
+<p>固定 <span class="math inline">\(x\)</span>，我们需要证明 <span class="math inline">\(L(\mathbb{1}_B)(x) = \sum_{k=1}^\infty
+L(\mathbb{1}_{B_k})(x)\)</span> 对可数不交并 <span class="math inline">\(B = \uplus_{k=1}^\infty B_k\)</span> 成立。记
+<span class="math inline">\(f_n=\sum_{k=1}^n B_k\)</span>，则 <span class="math inline">\(f_n\uparrow \mathbb{1}_B\)</span>，于是 <span class="math inline">\(L(f_n)\uparrow L(f)=L(\mathbb{1}_B)\)</span>，即
+<span class="math inline">\(\sum_{k=1}^\infty
+L(\mathbb{1}_{B_k})\uparrow L(\mathbb{1}_B)\)</span>，成立！</p>
+<p>要证明 <span class="math inline">\(L = L_Q\)</span>，即对任何 <span class="math inline">\(f\in\mathbb{B}(S,\mathcal{B})\)</span> 有 <span class="math display">\[L(f) = \int_S f(y)Q(x,\pd{y})\]</span>
+成立。这个很容易从示性函数出发取极限得到。</p>
+<p>如果 <span class="math inline">\(Q_1,Q_2\)</span> 是两个 <span class="math inline">\((S,\mathcal{B})\)</span> 到自身的概率核，则 <span class="math inline">\(L_{Q_1}L_{Q_2}\)</span> 也满足性质
+1-4，因而也是由一个概率核给出：存在概率核 <span class="math inline">\(Q\)</span> 使得 <span class="math inline">\(L_Q =
+L_{Q_1}L_{Q_2}\)</span>。我们可以把 <span class="math inline">\(Q\)</span> 明确的写出来： <span class="math display">\[L_Q(f) =
+L_{Q_1}L_{Q_2}(f)=\int_{S}Q_1(x,\pd{y})\left(\int_Sf(z)Q_2(y,\pd{z})\right).\]</span>
+这看起来很像乘积测度，实际上我们后面会讨论 <span class="math display">\[Q_1(x,dy)Q_2(d, dz)= Q_1\otimes Q_2(x,
+dz)\]</span> 的具体含义。</p>
+<h1 id="random-dynamics">34.2 Random Dynamics</h1>
+<p>什么是随机动力系统：</p>
+<p>有一个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>，一个可测空间
+<span class="math inline">\((R,\mathcal{G})\)</span>，以及一些 i.i.d
+随机变量 <span class="math inline">\(\xi_n:(\Omega,\mathcal{F},\mathbb{P})\to
+(R,\mathcal{G})\)</span>。此外设 <span class="math inline">\((S,\mathbb{R})\)</span> 是一个可测空间。</p>
+<p>如果 <span class="math inline">\(f\)</span> 是一个 <span class="math inline">\((S, R)\to S\)</span> 的可测函数映射满足</p>
+<p><span class="math display">\[X_{n+1} = f(X_n, \xi_{n+1}) =
+F_n(X_0,\xi_1,\xi_2,\ldots,\xi_n),\quad F_n:S\times R^n\to S.\]</span>
+即 <span class="math inline">\(f(\cdot,\xi_n)\)</span> 是一个由随机序列
+<span class="math inline">\(\{\xi_n\}\)</span>
+驱动的映射，则我们就称这是一个随机动力系统。</p>
+<p>注意 <span class="math inline">\(X_n\)</span> 由 <span class="math inline">\(\xi_1\sim\xi_n\)</span> 决定，所以 <span class="math inline">\(\mathcal{F}_n=\sigma(X_0,X_1,\ldots,X_n)
+=\sigma(X_0,\xi_1,\ldots,\xi_n)\)</span>。</p>
+<p>记 <span class="math inline">\(Q_n(x,\cdot)=\mathrm{Law}f(x,
+\xi_n)\)</span>，则 <span class="math inline">\(Q_n\)</span>
+是一个概率核。设 <span class="math inline">\(L_n\)</span> 是其 Markov
+生成元。则</p>
+<p><span class="math display">\[\begin{align*}\mathbb{E}[g(X_{n+1})|\mathcal{F}_n]
+&amp;= \mathbb{E}[g(f(X_n,\xi_{n+1}))|\mathcal{F}_n]\\
+&amp;=\left.\mathbb{E}[g\circ f(x,\xi_{n+1})]\right|_{x=X_n} \\
+&amp;=\left.\int g(y)Q_{n+1}(x,\pd{y})\right|_{x=X_n}\\
+&amp;=L_{n+1}(g)(X_n).\end{align*}\]</span> 但是 <span class="math inline">\(L_{n+1}(g)(X_n)\)</span> 是 <span class="math inline">\(X_n\)</span> 的函数，所以它关于 <span class="math inline">\(\sigma(X_n)\)</span>
+是可测的，而且是有界可测，从而两边对 <span class="math inline">\(\sigma(X_n)\)</span> 这个子 <span class="math inline">\(\sigma\)</span>- 域取条件期望，并注意到 <span class="math inline">\(\sigma(X_n)\subset\mathcal{F}_n\)</span> 有 <span class="math display">\[\mathbb{E}[g(X_{n+1})|\mathcal{F}_n] =
+\mathbb{E}[g(X_{n+1})|X_n].\]</span> 这正是 Markov 性质。</p>
+<h1 id="stochastic-processes">35.1 Stochastic Processes</h1>
+<p>本讲介绍了随机过程的定义，以及它们的有限维分布、滤过
+(filtration)、适应 (adapted) 等概念。</p>
+<h1 id="the-markov-property">36.1 The Markov property</h1>
+<p>我们称随机过程 <span class="math inline">\(X_t:(\Omega,\mathcal{F}_t)\to(S_,\mathcal{B})\)</span>
+Markov 性质，如果对任何有界可测函数 <span class="math inline">\(f\in\mathbb{B}(S,\mathcal{B})\)</span> 有</p>
+<p><span class="math display">\[\mathbb{E}[f(X_t)|\mathcal{F}_s] =
+\mathbb{E}[f(X_t)|X_s],\quad \mathrm{a.e.},\ \forall s &lt;
+t.\]</span></p>
+<p>Markov
+过程貌似是关于过去和当前的，但实际上它也告诉了我们关于未来的信息：</p>
+<blockquote>
+<p><strong>推论</strong>：<span class="math inline">\(\mathbb{E}[Y|\mathcal{F}_s] = E[Y|X_s],\quad
+\forall Y\in\mathbb{B}(\Omega, \mathcal{F}_{\geq s})\)</span>。</p>
+</blockquote>
+<p>这个推论的证明很有意思，要用到 Dynkin multiplicative system。</p>
+<p>考虑形如 <span class="math inline">\(Y =
+g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})\)</span> 的函数，这里 <span class="math inline">\(s =t_0&lt;t_1&lt;\cdots &lt;t_n\)</span>，且每个
+<span class="math inline">\(g_i\)</span> 都是有界可测的，从而 <span class="math inline">\(Y\)</span> 也是有界可测的，并且 <span class="math inline">\(Y\in\mathcal{F}_{\geq s}\)</span>。</p>
+<blockquote>
+<p><strong>引理</strong>：设 <span class="math display">\[\mathcal{M} =
+\{g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n}): n\in\mathbb{Z}_{\geq0},
+s=t_0&lt;t_1&lt;\cdots&lt;t_n,
+g_j\in\mathbb{B}(S,\mathcal{B})\},\]</span> 则 <span class="math inline">\(\mathcal{M}\)</span> 是乘法系，且 <span class="math inline">\(\sigma(M) = \mathcal{F}_{\geq s}\)</span>。</p>
+</blockquote>
+<p>回到推论的证明。</p>
+<p>设 <span class="math inline">\(\mathcal{H}\)</span>
+是所有满足推论要求的函数构成的空间。我们只要证明 <span class="math inline">\(\mathcal{H} \supset\mathcal{M}\)</span>。这样由于
+<span class="math inline">\(\mathcal{H}\)</span> 是向量空间，包含常数
+1，在有界收敛下封闭，并且包含乘法系 <span class="math inline">\(\mathcal{M}\)</span>，从而根据 Dynkin
+函数系引理包含所有关于 <span class="math inline">\(\sigma(\mathcal{M})=\mathcal{F}_{\geq s}\)</span>
+可测的有界可测函数，这正是所要证明的。</p>
+<p><span class="math display">\[\begin{align*}\mathbb{E}_{\mathcal{F}_s}[Y]&amp;=\mathbb{E}_{\mathcal{F}_s}[E_{\mathcal{F}_{t_{n-1}}}[Y]]\\
+&amp;=\mathbb{E}_{\mathcal{F}_s}[g_0(X_{t_0})\cdots
+g_{n-1}(X_{t_{n-1}})h(X_{t_{n-1}})]\\
+&amp;=\mathbb{E}_{\mathcal{F}_s}[g_0(X_{t_0})\cdots
+\widetilde{g_{n-1}}(X_{t_{n-1}})]\\
+&amp;=\cdots\\
+&amp;=\mathbb{E}_{\mathcal{F}_s}[F(X_{s})]\\
+&amp;=F(X_s)
+\end{align*}\]</span> 再利用 <span class="math inline">\(\mathbb{E}_{X_s}[Y]=\mathbb{E}_{X_s}[\mathbb{E}_{\mathcal{F}_s}[Y]]=\mathbb{E}_{X_s}[F(X_s)]=F(X_s)\)</span>
+即得所证。</p>
+<p>上面是 Markov
+性质的第一种刻画：将对未来可测的函数对当前和过去取条件期望，相当于只对当前取条件期望。</p>
+<p>本讲接下来用条件独立给出了 Markov 性质的第二种刻画：</p>
+<blockquote>
+<p><strong>定理</strong>：随机过程 <span class="math inline">\(\{X_t\}\)</span> 满足 Markov 性质当且仅当 <span class="math inline">\(\mathcal{F}_s\)</span> 和 <span class="math inline">\(\mathcal{F}_{\geq s}\)</span> 关于 <span class="math inline">\(\sigma(X_s)\)</span>
+是条件独立的，即对任何有界可测函数 <span class="math inline">\(Z\in\mathbb{B}(\Omega,\mathcal{F}_s)\)</span>，<span class="math inline">\(Y\in\mathbb{B}(\Omega,\mathcal{F}_{\geq
+s})\)</span> 有 <span class="math display">\[\mathbb{E}[ZY|X_s] =
+\mathbb{E}[Z|X_s]\cdot \mathbb{E}[Y|X_s].\]</span></p>
+</blockquote>
+<p>注意到 <span class="math inline">\(\mathcal{F}_s=\sigma(X_t: t\leq
+s)\)</span> 以及 <span class="math inline">\(\mathcal{F}_{\geq
+s}=\sigma(X_T:t\geq s)\)</span>，所以这个结论可以概括为：对 Markov
+过程，给定当下，过去与未来独立。</p>
+<p>这个结论的证明主要使用了 Tower 性质，不算困难。</p>
+<h1 id="probability-kernels-revisited">36.2 Probability Kernels
+Revisited</h1>
+<p>回顾了之前概率核的概念。没啥新的。</p>
+<h1 id="kolmogorovs-extended-extension-theorem">37.2 Kolmogorov’s
+(Extended) Extension Theorem</h1>
+<p>本讲介绍了连续情形的 Kolmogrov
+扩张定理：可以构造一般的有限维分布，只要它们满足相容性条件。</p>
+<h1 id="walds-identity">46.3 Wald’s Identity</h1>
+<p>本讲介绍了 Wald 引理。</p>
+<blockquote>
+<p><strong>Wald 引理</strong>：设 <span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(\mathrm{i.i.d}\)</span> 的随机变量序列，<span class="math inline">\(\tau\)</span> 是一个停时，则在 <span class="math inline">\(\mathbb{E}|X_1|&lt;\infty\)</span> 且 <span class="math inline">\(\mathbb{E}\tau&lt;\infty\)</span> 的条件下有 <span class="math inline">\(\mathbb{E}\sum\limits_{n=1}^\tau
+X_n=\mathbb{E}X_1\cdot \mathbb{E}\tau\)</span>。</p>
+</blockquote>
+<p>这里的关键在于将上面的求和变成一个二重级数求和，然后交换求和次序。</p>
+<p><span class="math display">\[\begin{align*}\sum_{n=1}^\tau\mathbb{E}X_n&amp;=\sum_{n=1}^\infty\mathbb{E}X_n\cdot
+\mathbb{1}_{\tau\geq
+n}=\sum_{n=1}^\infty\mathbb{E}X_n\cdot\sum_{k=n}^\infty\mathbb{1}_{\tau=k}\\&amp;=\sum_{k=1}^\infty\mathbb{1}_{\tau=k}\sum_{n=1}^k\mathbb{E}X_n\\&amp;=\mathbb{E}X_1\sum_{k=1}^\infty
+k\cdot\mathbb{1}_{\tau=k}\\&amp;=\mathbb{E}X_1\cdot
+\mathbb{E}\tau.\end{align*}\]</span></p>
+<p>我们为什么可以在第一行的第二个等号处交换求和次序？这是因为上面的推导对
+<span class="math inline">\(|X_n|\)</span> 是成立的，并且离散积分值
+<span class="math inline">\(\mathbb{E}|X_1|\cdot\mathbb{E}\tau&lt;\infty\)</span>，所以由控制收敛定理对原序列
+<span class="math inline">\(X_n\)</span> 交换求和也是 OK 的。</p>
+
+
+
+                                                    
+
+    
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

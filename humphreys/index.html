@@ -1,0 +1,1443 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Humphreys《反射群与 Coxeter 群》笔记 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="本文是我学习 Humphreys (1990) 时的一些笔记。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Humphreys《反射群与 Coxeter 群》笔记"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/undefined">undefined</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Humphreys《反射群与 Coxeter 群》笔记</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2023-12-09T16:00:00.000Z"><a href="/humphreys/index.html">2023-12-10</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generation-by-simple-reflections"><span class="section table-of-contents-text">1.5 Generation by simple
+reflections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-length-function"><span class="section table-of-contents-text">1.6 The length function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#deletion-and-exchange-conditions"><span class="section table-of-contents-text">1.7 Deletion and Exchange
+Conditions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#generators-and-relations"><span class="section table-of-contents-text">1.9 Generators and relations</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#subgraphs"><span class="section table-of-contents-text">2.6 Subgraphs</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniqueness-of-the-degrees"><span class="section table-of-contents-text">3.7 Uniqueness of the degrees</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coxeter-elements"><span class="section table-of-contents-text">3.16 Coxeter elements</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#acting-on-a-plane"><span class="section table-of-contents-text">3.17 Acting on a plane</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-coxeter-number"><span class="section table-of-contents-text">3.18 The Coxeter number</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#eigenvalues-of-coxeter-elements"><span class="section table-of-contents-text">3.19 Eigenvalues of Coxeter
+elements</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#counting-hyperplanes"><span class="section table-of-contents-text">4.4 Counting hyperplanes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#a-formula-for-the-order-of-w"><span class="section table-of-contents-text">4.9 A formula for the order of
+\(W\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bruhat-ordering"><span class="section table-of-contents-text">5.9 Bruhat ordering</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#subexpressions"><span class="section table-of-contents-text">5.10 Subexpressions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#more-on-the-geometric-representation"><span class="section table-of-contents-text">6.2 More on the geometric
+representation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#and-6.4-radical-of-the-bilinear-form-finite-coxeter-groups"><span class="section table-of-contents-text">6.3
+and 6.4 Radical of the bilinear form &#x2F; Finite Coxeter groups</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#affine-coxeter-groups"><span class="section table-of-contents-text">6.5 Affine Coxeter groups</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#hecke-algebras-and-inverses"><span class="section table-of-contents-text">7.4 Hecke algebras and
+inverses</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#further-properties-of-r-polynomials"><span class="section table-of-contents-text">7.8 Further properties of
+\(R\)-polynomials</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>本文是我学习 <span class="citation" data-cites="Humphreys90">Humphreys (<a href="#ref-Humphreys90" role="doc-biblioref">1990</a>)</span> 时的一些笔记。</p>
+<span id="more"></span>
+<h1 id="generation-by-simple-reflections">1.5 Generation by simple
+reflections</h1>
+<p>这一节证明了整个反射群 <span class="math inline">\(W\)</span>
+可以由单反射 <span class="math inline">\(\{s_\alpha\mid\alpha\in\Delta\}\)</span>
+生成。</p>
+<div id="thm-1.5" class="statement sta____1_5 plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">定理
+1.5</span>.</span><span class="statement-spah"> </span><span class="math inline">\(W\)</span> 可以由 <span class="math inline">\(\{s_\alpha\mid\alpha\in\Delta\}\)</span>
+生成。</p>
+</div>
+<p><strong>证明概要</strong>：设 <span class="math inline">\(W'\)</span> 是 <span class="math inline">\(\{s_\alpha\mid\alpha\in\Delta\}\)</span>
+生成的群。目标是证明 <span class="math inline">\(W'=W\)</span>。我们来一步步推理：</p>
+<ol type="1">
+<li>由于 <span class="math inline">\(W\)</span>
+是由关于整个根系的镜面反射 <span class="math inline">\(\{s_\beta\mid
+\beta\in\Phi\}\)</span> 生成的，所以只要证明任何 <span class="math inline">\(s_\beta\in W'\)</span> 即可。</li>
+<li>要证明 1，只要证明任何 <span class="math inline">\(\beta\in\Phi\)</span> 可以写成 <span class="math inline">\(\beta=w'\alpha\)</span> 的形式，其中 <span class="math inline">\(w'\in W',\,\alpha\in\Pi\)</span>。这样
+<span class="math inline">\(s_\beta=w's_\alpha w'^{-1}\in
+W'\)</span>。</li>
+<li>要证明 2，只需要分析 <span class="math inline">\(\beta\)</span>
+是正根且不是单根的情形，因为 <span class="math inline">\(-\beta =
+w's_\alpha\alpha\)</span>。</li>
+<li>如果 <span class="math inline">\(\beta&gt;0\)</span> 但不是单根，设
+<span class="math inline">\(\beta=\sum c_s\alpha_s\)</span>，那么 <span class="math inline">\(0&lt;(\beta,\beta)=\sum c_s(\beta,
+\alpha_s)\)</span>，这说明一定存在单根 <span class="math inline">\(\alpha_s\)</span> 满足 <span class="math inline">\((\beta,\alpha_s)&gt;0\)</span>。考察 <span class="math inline">\(\gamma=s\beta\)</span>。</li>
+<li><span class="math inline">\(\gamma\)</span> 仍然是正根，并且 <span class="math inline">\(\mathrm{ht}(\gamma) &lt;
+\mathrm{ht}(\beta)\)</span>。如果 <span class="math inline">\(\gamma\)</span> 不是单根，那就一直重复此步骤直到
+<span class="math inline">\(\gamma\)</span>
+变成单根为止。这个操作一定会在有限次后终止，否则我们会得到一个无穷的、高度严格降低、从而互不相同的正根序列，这与根系是有限集矛盾。</li>
+<li>设 <span class="math inline">\(\gamma=s_1\cdots
+s_r\beta\in\Delta\)</span> 是最终得到的单根，则 <span class="math inline">\(\beta\in W'\Delta\)</span>，结论成立。<span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+<h1 id="the-length-function">1.6 The length function</h1>
+<p>这一节证明了函数 <span class="math inline">\(n(w)\)</span>
+满足的递推关系。</p>
+<p>设 <span class="math inline">\(\mathrm{Neg}(w)\)</span> 是那些被
+<span class="math inline">\(w\)</span> 变成负根的正根的集合： <span class="math display">\[\mathrm{Neg}(w)=\{\lambda&gt;0,\lambda\in\Phi\mid
+w\lambda&lt;0\}.\]</span> 并记 <span class="math inline">\(n(w)=|\mathrm{Neg}(w)|\)</span>。</p>
+<div id="lem-1.6" class="statement sta____1_6 plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">引理
+1.6</span>.</span><span class="statement-spah"> </span> 函数 <span class="math inline">\(n(w)\)</span> 满足如下的递推关系： <span class="math display">\[
+n(ws_\alpha)=\begin{cases}n(w)+1 &amp; w\alpha&gt;0,\\
+n(w)-1 &amp; w\alpha&lt;0.\end{cases}
+\]</span></p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>在后面 5.4 节中，针对一般的 Coxeter 群证明了长度函数 <span class="math inline">\(l(w)\)</span> 也满足同样的递推关系，从而 <span class="math inline">\(l(w)=n(w)\)</span>。但是那里的证明要复杂一些。</p>
+</div>
+<p><strong>证明</strong>：首先注意到任何单根 <span class="math inline">\(\alpha\in\Delta\)</span> 必然恰好属于 <span class="math inline">\(\mathrm{Neg}(w)\)</span> 或者 <span class="math inline">\(\mathrm{Neg}(ws_\alpha)\)</span> 之一，这取决于
+<span class="math inline">\(w\alpha\)</span> 是正根还是负根：</p>
+<ul>
+<li><span class="math inline">\(w\alpha&lt;0\Rightarrow
+\alpha\in\mathrm{Neg}(w)\)</span>。</li>
+<li><span class="math inline">\(w\alpha&gt;0\Rightarrow
+ws_\alpha\alpha&lt;0\Rightarrow \alpha\in
+\mathrm{Neg}(ws_\alpha)\)</span>。</li>
+</ul>
+<p>另一方面对任何正根 <span class="math inline">\(\gamma\ne\alpha\)</span>，<span class="math inline">\(s_\alpha\gamma\)</span> 仍然是正根。从恒等式 <span class="math display">\[(ws_\alpha)\gamma &lt; 0\Longleftrightarrow
+w(s_\alpha\gamma)&lt;0\]</span> 可见 <span class="math inline">\(\gamma\in\mathrm{Neg}(ws_\alpha)\)</span> 当且仅当
+<span class="math inline">\(\gamma\in\mathrm{Neg}(w)\)</span>，所 <span class="math inline">\(\gamma\leftrightarrow s_\alpha\gamma\)</span>
+给出了 <span class="math inline">\(\mathrm{Neg}(ws_\alpha)\)</span> 和
+<span class="math inline">\(\mathrm{Neg}(w)\)</span> 中除 <span class="math inline">\(\alpha\)</span> 之外的正根的一一对应，所以</p>
+<p><span class="math display">\[
+n(ws_\alpha)=\begin{cases}n(w)+1 &amp; \alpha\in
+\mathrm{Neg}(ws_\alpha),\\
+n(w)-1 &amp; \alpha\in \mathrm{Neg}(w).\end{cases}
+\]</span></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="deletion-and-exchange-conditions">1.7 Deletion and Exchange
+Conditions</h1>
+<p>这一节证明了有限反射群必然满足 deletion 和 exchange
+条件。开头的定理乍看起来非常不直观，包含了一大堆下标。我来解释下背后的几何直观。</p>
+<p>设 <span class="math inline">\(w=s_1\cdots s_r\)</span> 是 <span class="math inline">\(W\)</span> 的任一元素。从基本区域 <span class="math inline">\(C\)</span> 出发，我们有一个
+gallery，即一列两两相邻的房间</p>
+<p><span class="math display">\[C,\, s_1C,\, s_1s_2C,\, \ldots,\,
+s_1\cdots s_rC.\]</span></p>
+<p>可以这样理解：记 <span class="math inline">\(w_i=s_1\cdots
+s_i\)</span>，则 <span class="math inline">\(w_{i-1}\)</span>
+将相邻的两个房间 <span class="math inline">\(C\)</span> 和 <span class="math inline">\(s_iC\)</span> 映射为另外两个相邻的房间 <span class="math inline">\(w_{i-1}C\)</span> 和 <span class="math inline">\(w_iC\)</span>。</p>
+<p>不仅如此，由于 <span class="math inline">\(C\)</span> 和 <span class="math inline">\(s_iC\)</span> 之间的墙壁是超平面 <span class="math inline">\(H_i = H_{s_i}\)</span>，它在 <span class="math inline">\(w_{i-1}\)</span> 作用下被映射为超平面 <span class="math inline">\(w_{i-1}H_i\)</span>，所以 <span class="math inline">\(w_{i-1}C\)</span> 和 <span class="math inline">\(w_iC\)</span> 之间的墙壁是 <span class="math inline">\(w_{i-1} H_i\)</span>。即</p>
+<p><span class="math display">\[C\stackrel{H_1}{\bigl\lvert} s_1C
+\stackrel{s_1H_2}{\bigl\lvert}
+s_1s_2C\stackrel{\quad}{\bigl\lvert}\cdots\stackrel{w_{r-1}H_r}{\bigl\lvert}
+w_{r}C.\]</span></p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>表达式 <span class="math inline">\(w=s_1s_2\cdots s_r\)</span>
+是既约的，当且仅当上述镜面集合 <span class="math display">\[\{H_1,s_1H_2,\ldots,s_1\cdots
+s_{r-1}H_r\}\]</span> 互不相同。</p>
+</div>
+<p>这个引理的含义是，任何既约单词对应的 gallery
+不能两次跨越同一个超平面。</p>
+<p>这个引理的证明见 4.5 小节 simple
+transitivity。那里仿射的情形和这里的证明是一样的。</p>
+<p>我们来问问自己，如果一个镜子在上面的集合中出现两次会发生什么？设
+<span class="math inline">\(1\leq i&lt;j\leq r\)</span> 使得 <span class="math display">\[s_1\cdots s_{i-1}H_i = s_1\cdots
+s_{j-1}H_j.\]</span> 两边消去 <span class="math inline">\(s_1\cdots
+s_{i-1}\)</span> 得到 <span class="math display">\[H_i = s_i\cdots
+s_{j-1}H_j.\]</span> 即 <span class="math display">\[s_i = (s_i\cdots
+s_{j-1})s_j(s_{j-1}\cdots s_i)=(s_i\cdots s_{j})(s_{j-1}\cdots
+s_i).\]</span> 把右边的 <span class="math inline">\(s_{j-1}\cdots
+s_i\)</span> 挪到左边来得到 <span class="math display">\[s_{i+1}\cdots
+s_{j-1} = s_i\cdots s_j.\]</span> 这意味着 <span class="math inline">\(s_i\cdots s_j\)</span> 这一段可以用更短的 <span class="math inline">\(s_{i+1}\cdots s_{j-1}\)</span>
+来代替，这就是书中定理 1.7 中的 (c)。</p>
+<h1 id="generators-and-relations">1.9 Generators and relations</h1>
+<p>这是比较难读的一节。这一节证明了满足 deletion 条件的有限反射群一定是
+Coxeter 群。</p>
+<div id="thm-1.9" class="unnumbered statement sta____1_9 plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+1.9</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\Delta\)</span> 是某 Euclidean 的一组基，<span class="math inline">\(S=\{s_\alpha\mid \alpha\in\Delta\}\)</span>
+是一组单反射，<span class="math inline">\(W\)</span> 是 <span class="math inline">\(S\)</span> 生成的群，并且 <span class="math inline">\(W\)</span> 满足 deletion 条件。则 <span class="math inline">\(W\)</span> 具有表现 <span class="math display">\[(s_\alpha s_\beta)^{m_{\alpha,\beta}}=1.\]</span>
+其中 <span class="math inline">\(m_{\alpha,\beta}\geq1\in\mathbb{Z}\)</span>。</p>
+</div>
+<p>注意 <span class="math inline">\(m_{\alpha,\alpha}=1\)</span>。</p>
+<p><strong>证明</strong>：我们要说明生成元之间的任何关系 <span class="math display">\[s_1s_2\cdots s_r=1\]</span> 都可以通过形如 <span class="math inline">\((s_\alpha s_\beta)^{m_{\alpha,\beta}}=1\)</span>
+这样的关系推导出来。</p>
+<p>若不然，设 <span class="math display">\[s_1s_2\cdots s_r=1,\quad
+r=2q\]</span> 是一个长度最短的反例。这里 <span class="math inline">\(r\)</span> 必须是偶数，因为每个 <span class="math inline">\(\det s_i=-1\)</span>。</p>
+<p>我们将证明有 <span class="math inline">\(s_1=s_3=\cdots\)</span> 以及
+<span class="math inline">\(s_2=s_4=\cdots\)</span>
+成立，从而上述关系可以写成 <span class="math inline">\((s_1s_2)^q=1\)</span>，得出矛盾。</p>
+<ul>
+<li><p>我们只要证明 <span class="math inline">\(s_1=s_3\)</span>
+即可。然后将结论用在 <span class="math inline">\(s_2s_3\cdots
+s_rs_1=1\)</span> 上得到 <span class="math inline">\(s_2=s_4\)</span>；再进一步用在 <span class="math inline">\(s_3s_4\cdots s_rs_2s_1=1\)</span> 上得到 <span class="math inline">\(s_3=s_5\)</span>，等等。</p></li>
+<li><p>为此我们只要证明如下两个等式：</p>
+<p>(I). <span class="math inline">\(s_1s_2\cdots s_q=s_2s_3\cdots
+s_{q+1}\)</span>.</p>
+<p>(II). <span class="math inline">\(s_3s_2\cdots s_q=s_2s_3\cdots
+s_{q+1}\)</span>.</p>
+<p>这两个式子几乎是一样的，第一个最左边是 <span class="math inline">\(s_1\)</span>，第二个最左边是 <span class="math inline">\(s_3\)</span>，所以如果它们都成立的话就有 <span class="math inline">\(s_1=s_3\)</span>。</p></li>
+<li><p>为了证明 I，我们把 <span class="math inline">\(s_1\cdots
+s_r=1\)</span> 改写为 <span class="math display">\[s_1\cdots s_{q+1} =
+s_r\cdots s_{q+2}.\]</span> 左边是 <span class="math inline">\(q+1\)</span> 项的乘积，右边是 <span class="math inline">\(q-1\)</span> 项的乘积，所以 <span class="math inline">\(l(s_1\cdots s_{q+1})\leq q-1\)</span>。根据
+deletion 条件，存在 <span class="math inline">\(1\leq i&lt;j\leq
+q+1\)</span> 使得有 <span class="math display">\[s_i\cdots s_j =
+s_{i+1}\cdots s_{j-1}. \tag{$\ast$}\]</span> 我们来论证 <span class="math inline">\(i=1,j=q+1\)</span>，也就是 I 成立。若不然，<span class="math inline">\((\ast)\)</span> 式至多包含 <span class="math inline">\(2q-2=r-2\)</span> 项，从而由假设可以由 Coxeter
+关系 <span class="math inline">\(\{(s_\alpha
+s_\beta)^{m_{\alpha,\beta}}=1\mid \alpha,\beta\in\Delta\}\)</span>
+推导出来。然而 <span class="math inline">\((\ast)\)</span> 式等价于
+<span class="math display">\[s_1\cdots s_r =
+s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots s_r.\]</span> 此外我们已知 <span class="math inline">\(s_1\cdots s_r=1\)</span>，所以 <span class="math display">\[s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots
+s_r=1.\]</span> 根据 <span class="math inline">\(r\)</span>
+的选取，<span class="math inline">\(s_1\cdots\hat{s_i}\cdots\hat{s_j}\cdots
+s_r=1\)</span> 可以由 Coxeter 关系推导得到，从而 <span class="math inline">\(s_1\cdots s_r=1\)</span>
+也可以，这导致了矛盾，于是 I 得证。</p></li>
+<li><p>为了证明 II，将 <span class="math inline">\(s_1\cdots s_r
+=1\)</span> 改写为 <span class="math inline">\(s_2\cdots
+s_rs_1=1\)</span>，仿照 I 的证明，我们可以得到 <span class="math display">\[s_2\cdots s_{q+1} = s_3(s_4\cdots
+s_{q+2}).\]</span> 把 <span class="math inline">\(s_3\)</span>
+挪到左边的前面，把 <span class="math inline">\(s_4\cdots
+s_{q+2}\)</span> 挪到左边的后面，得到 <span class="math display">\[s_3s_2\cdots s_{q+1}s_{q+2}\cdots s_4 =
+1.\]</span> 仍然和 I 的证明同理，我们可以得到 <span class="math display">\[s_3s_2\cdots s_q = s_2\cdots s_{q+1}.\]</span>
+这就是 II 中的等式。</p></li>
+</ul>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="subgraphs">2.6 Subgraphs</h1>
+<p>在本节中，<span class="math inline">\(\Gamma\)</span> 是一个不可约
+Coxeter 图，内积 <span class="math inline">\((\alpha_s,\alpha_t)=-\cos\frac{\pi}{m_{s,t}}\)</span>
+是半正定的，但不是正定的。</p>
+<p>记 <span class="math inline">\(N=\{v\in V\mid (v,v)=0\}\)</span> 以及
+<span class="math display">\[\mathrm{rad}(V)=\{v\in V\mid (v, u)=0
+\text{ for all } u \in V\}.\]</span> 显然 <span class="math inline">\(\mathrm{rad}(V)\)</span> 总是 <span class="math inline">\(V\)</span> 的子空间并且 <span class="math inline">\(\mathrm{rad}(V)\subset N\)</span>，但是一般来说
+<span class="math inline">\(N\)</span> 并不是 <span class="math inline">\(V\)</span> 的子空间。</p>
+<p>但是在内积半正定时，我们有如下的结论：</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>若内积半正定，则 <span class="math inline">\(N=\mathrm{rad}(V)\)</span>。</p>
+</div>
+<p>证明：只要证明 <span class="math inline">\(N\subset\mathrm{rad}(V)\)</span> 即可，即若 <span class="math inline">\(u\in V\)</span> 满足 <span class="math inline">\((u,u)=0\)</span>，则对任何 <span class="math inline">\(v\in V\)</span> 都有 <span class="math inline">\((u,v)=0\)</span>。若不然，设 <span class="math inline">\(v\)</span> 满足 <span class="math inline">\((u,v)\ne0\)</span>，我们给 <span class="math inline">\(v\)</span> 乘以适当实数使得 <span class="math inline">\((u,v)=1\)</span>。设 <span class="math inline">\(k\)</span> 是实数，考虑向量 <span class="math inline">\(z=ku +v\)</span>： <span class="math display">\[(z,z)=(ku+v,ku+v) = (v,v) + 2k.\]</span>
+所以只要选择 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(2k &lt; -(v,v)\)</span> 就有 <span class="math inline">\((z,z)&lt;0\)</span>，这与内积的半正定性矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+<p>这一节的主要结论是：</p>
+<div id="-------2-6" class="unnumbered statement sta____2_6 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+2.6</span>.</span></p>
+<ol type="1">
+<li><span class="math inline">\(\mathrm{rad}(V)\)</span>
+是一维的，由一个向量 <span class="math inline">\(\delta=\sum_{s\in
+S}c_s\alpha_s\)</span> 生成，并且每个系数 <span class="math inline">\(c_s\)</span> 都大于 0。</li>
+<li><span class="math inline">\(\Gamma\)</span>
+删去任意多个顶点后得到的子图是正定的。</li>
+</ol>
+</div>
+<p>这里给出一个不同于 Humphreys 书上的证明。</p>
+<p>1 的证明：</p>
+<p>设 <span class="math inline">\(u=\sum_{s\in
+S}c_s\alpha_s\in\mathrm{rad}(V)\)</span> 是一个非零向量，记 <span class="math display">\[I_+=\{s\in S\mid c_s&gt;0\},\quad I_-=\{s\in
+S\mid c_s&lt;0\},\quad I_0=\{s\in S\mid c_s=0\}.\]</span> <span class="math display">\[u_+=\sum_{s\in I_+}c_s\alpha_s,\quad
+u_-=\sum_{s\in I_-}c_s\alpha_s.\]</span> 则 <span class="math inline">\(u=u_++u_-\)</span>，并且 <span class="math display">\[(u_+,u_-)=\sum_{c\in I_+}\sum_{t\in
+I_-}\underbrace{c_sc_t}_{&lt;0}\,\underbrace{\alpha_s\alpha_t}_{\leq0}\geq0.\]</span></p>
+<p>由于 <span class="math inline">\(u\in\mathrm{rad}(V)\)</span> 所以
+<span class="math inline">\((u,u)=0\)</span>，即 <span class="math display">\[(u,u)=(u_+,u_+)+(u_-,u_-)+2(u_+,u_-)=0.\]</span>
+根据半正定性和上面的分析，上式的三项都是非负的，所以只能是 <span class="math display">\[(u_+,u_+)=(u_-,u_-)=(u_+,u_-)=0.\]</span></p>
+<p>此外 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 中至少有一个非空，不妨设 <span class="math inline">\(I_+\ne\emptyset\)</span>，我们来证明 <span class="math inline">\(I_-\)</span> 和 <span class="math inline">\(I_0\)</span> 必须都是空集。</p>
+<p>若不然，<span class="math inline">\(I_-\cup I_0\)</span> 非空，任取
+<span class="math inline">\(t\in I_-\cup I_0\)</span>，设 <span class="math inline">\(\delta\)</span> 是正数，考虑向量 <span class="math inline">\(z=u_+ +\delta\alpha_t\)</span>。我们有</p>
+<p><span class="math display">\[(z,z)=\delta^2+2\delta(u_+,\alpha_t)=\delta^2+2\delta\sum_{s\in
+I_+}\underbrace{c_s}_{&gt;0}\underbrace{(\alpha_s,\alpha_t)}_{\leq0}.\]</span>
+注意到每一项 <span class="math inline">\(c_s(\alpha_s,\alpha_t)\leq0\)</span>，所以 <span class="math inline">\(\sum_{s\in
+I_+}c_s(\alpha_s,\alpha_t)\leq0\)</span>，并且如果存在 <span class="math inline">\(s\in I_+\)</span> 使得 <span class="math inline">\(s\)</span> 与 <span class="math inline">\(t\)</span> 之间有边相连的话则 <span class="math inline">\(\sum_{s\in I_+}c_s(\alpha_s,\alpha_t)\)</span>
+严格小于 0。这时取 <span class="math inline">\(\delta\)</span>
+足够小可以使得 <span class="math inline">\((z,z)&lt;0\)</span>，这与内积
+<span class="math inline">\((,)\)</span>
+是半正定的矛盾。所以必须是对每个 <span class="math inline">\(s\in
+I_+\)</span> 有 <span class="math inline">\((\alpha_s,\alpha_t)=0\)</span>。由 <span class="math inline">\(t\)</span> 的任意性可得 <span class="math inline">\(I_-\cup I_0\)</span> 与 <span class="math inline">\(I_+\)</span> 互不连通，但这又与 <span class="math inline">\(\Gamma\)</span> 不可约矛盾。</p>
+<p>总之我们证明了 <span class="math inline">\(\mathrm{rad}(V)\)</span>
+中非零向量的系数必须同时为正或者同时为负。</p>
+<p>如果 <span class="math inline">\(\mathrm{rad}(V)\)</span>
+包含两个线性无关的向量 <span class="math inline">\(u,v\)</span>，根据上面的证明，我们可以不妨设 <span class="math inline">\(u,v\)</span>
+的各项系数都是正数。适当缩放以后我们可以让 <span class="math inline">\(u,v\)</span> 的 <span class="math inline">\(\alpha_1\)</span> 项系数都是 1。于是 <span class="math inline">\(u-v\)</span> 也在 <span class="math inline">\(\mathrm{rad}(V)\)</span> 中，并且其 <span class="math inline">\(\alpha_1\)</span> 项系数是 0，这就导致了矛盾。</p>
+<p>2 的证明：</p>
+<p>我们只要证明若 <span class="math inline">\(I\subsetneqq
+\Gamma\)</span> 是真子集，则对任何非零向量 <span class="math inline">\(u=\sum_{s\in I}c_s\alpha_s\)</span> 都有 <span class="math inline">\((u,u)&gt;0\)</span>。若不然，<span class="math inline">\(u=\sum_{s\in I}c_s\alpha_s+\sum_{t\notin
+I}0\cdot\alpha_t\)</span> 并且 <span class="math inline">\((u,u)=0\)</span>，这与 <span class="math inline">\(u\)</span> 的系数必须全部非零矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="uniqueness-of-the-degrees">3.7 Uniqueness of the degrees</h1>
+<p>这一节介绍了不变多项式环 <span class="math inline">\(S^G\)</span>
+的任何一组齐次生成元的次数 <span class="math inline">\(d_1,d_2,\ldots,d_n\)</span>
+是唯一确定的。证明不难，但是采用的方法很典型，以后会反复用到。</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(f_1,\ldots,f_n\in
+K[x_1,\ldots,x_n]\)</span> 是一组齐次、代数无关的多项式；其次数分别为
+<span class="math inline">\(d_1,\ldots,d_n\)</span>；<span class="math inline">\(g_1,\ldots,g_n\)</span>
+是另一组齐次、代数无关的多项式，次数分别为 <span class="math inline">\(e_1,\ldots,e_n\)</span>，并且每个 <span class="math inline">\(g_i\)</span> 可以写成 <span class="math inline">\(f_1,\ldots,f_n\)</span> 的多项式，则适当重排以后有
+<span class="math inline">\(e_i\geq d_i\)</span>。</p>
+</div>
+<p>证明：利用链式法则对导可得 <span class="math display">\[\frac{\partial g_i}{\partial x_k} = \sum_{j=1}^n
+\frac{\partial g_i}{\partial f_j}\frac{\partial f_j}{\partial
+x_k}.\]</span></p>
+<p>由于 <span class="math inline">\(g_1,\ldots,g_n\)</span>
+代数无关，根据 Jacobian 判定左边的矩阵 <span class="math inline">\(\left(\frac{\partial g_i}{\partial
+x_k}\right)\)</span> 可逆，从而右边的矩阵 <span class="math inline">\(\left(\frac{\partial g_i}{\partial
+f_j}\right)\)</span> 也可逆，其行列式非零，于是存在置换 <span class="math inline">\(\pi\)</span> 使得 <span class="math display">\[\prod_{i=1}^n\frac{\partial g_i}{\partial
+f_{\pi(i)}}\ne0.\]</span> 适当重排 <span class="math inline">\(g_1,\ldots,g_n\)</span> 以后可以不妨设 <span class="math inline">\(\pi\)</span> 是恒等置换，即 <span class="math display">\[\prod_{i=1}^n\frac{\partial g_i}{\partial
+f_{i}}\ne0.\]</span> 这说明每个 <span class="math inline">\(\frac{\partial g_i}{\partial
+f_i}\ne0\)</span>，即当把 <span class="math inline">\(g_i\)</span> 写成
+<span class="math inline">\(f_1,\ldots, f_n\)</span> 的多项式时，<span class="math inline">\(f_i\)</span> 一定出现在其中。于是至少存在一个形如
+<span class="math display">\[f_1^{k_1}\cdots f_n^{k_n},\quad k_i\geq
+1\]</span> 的单项式，它出现在 <span class="math inline">\(g_i\)</span>
+的表达式中，并且不会被抵消掉。从而 <span class="math inline">\(e_i=\sum
+k_id_i\geq d_i\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="unique-degrees" class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(S^G\)</span>
+的任何一组齐次、代数无关生成元的次数是唯一却定的。</p>
+</div>
+<h1 id="coxeter-elements">3.16 Coxeter elements</h1>
+<p>我们来证明任何两个 Coxeter 元都是共轭的。我们只要取一个特殊的 Coxeter
+元，并证明其它 Coxeter 元都和这个特殊元共轭即可。</p>
+<p>首先，取 Coxeter 图 <span class="math inline">\(\Gamma\)</span>
+的一个叶节点，将其记作 <span class="math inline">\(s_n\)</span>。从
+<span class="math inline">\(\Gamma\)</span> 中移走 <span class="math inline">\(s_n\)</span> 以后，剩下的部分 <span class="math inline">\(\Gamma_1=\Gamma-\{s_n\}\)</span>
+仍然是一个树，于是我们又可以取其叶节点，记作 <span class="math inline">\(s_{n-1}\)</span>。<span class="math inline">\(\Gamma_1-\{s_{n-1}\}\)</span>
+仍然是树，又可以取其一个叶节点 <span class="math inline">\(s_{n-2}\)</span>，以此类推。即我们将生成元排列为
+<span class="math inline">\(s_1,\ldots,s_n\)</span>，使得对每个 <span class="math inline">\(1\leq i\leq n\)</span>，<span class="math inline">\(s_1,\ldots,s_i\)</span> 构成 <span class="math inline">\(\Gamma\)</span> 的一个子树，并且 <span class="math inline">\(s_i\)</span> 是这个树的叶节点。</p>
+<p>首先我们注意到任何 Coxeter 元都可以通过循环移位共轭于某个以 <span class="math inline">\(s_n\)</span> 结尾的 Coxeter 元 <span class="math inline">\(s_{i_1}\cdots
+s_{i_{n-1}}s_n\)</span>，我们来证明这样的元素都共轭于 <span class="math inline">\(s_1s_2\cdots s_n\)</span>。</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>任何形如 <span class="math inline">\(s_{i_1}\cdots
+s_{i_{n-2}}{\color{blue}s_{i_{n-1}}}s_n\)</span> 的 Coxeter 元共轭于
+<span class="math display">\[{\color{blue}s_{i_{n-1}}}s_{i_1}\cdots
+s_{i_{n-2}}s_n.\]</span></p>
+</div>
+<p><strong>证明</strong>：如果 <span class="math inline">\(s_{i_{n-1}}\)</span> 与 <span class="math inline">\(s_n\)</span> 交换，那么 <span class="math display">\[s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}s_n\to s_{i_1}\cdots
+s_{i_{n-2}}s_n\textcolor{blue}{s_{i_{n-1}}}\to
+\textcolor{blue}{s_{i_{n-1}}}s_{i_1}\cdots s_{i_{n-2}}s_n.\]</span>
+结论成立。否则 <span class="math inline">\(s_n\)</span> 唯一的边是与
+<span class="math inline">\(s_{i_{n-1}}\)</span> 连接，从而 <span class="math inline">\(s_n\)</span> 与 <span class="math inline">\(\{s_{i_1},\ldots,s_{i_{n-2}}\}\)</span>
+都交换，所以 <span class="math display">\[\begin{aligned}
+s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}\textcolor{red}{s_n}&amp;\to\textcolor{red}{s_n}s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}
+\to s_{i_1}\textcolor{red}{s_n}\cdots
+s_{i_{n-2}}\textcolor{blue}{s_{i_{n-1}}}\\
+&amp;\to s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{red}{s_n}\textcolor{blue}{s_{i_{n-1}}}\\
+&amp;\to\textcolor{blue}{s_{i_{n-1}}}s_{i_1}\cdots
+s_{i_{n-2}}\textcolor{red}{s_n}.
+\end{aligned}\]</span> 结论同样成立。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(k\geq1\)</span>，任何形如 <span class="math inline">\(s_{i_1}\cdots\textcolor{blue}{s_{i_{n-k}}}
+s_{n-k+1}\cdots s_n\)</span> 的 Coxeter 元都共轭于 <span class="math display">\[\textcolor{blue}{s_{i_{n-k}}} s_{i_1}\cdots
+s_{i_{n-k-1}}s_{n-k+1}\cdots s_n.\]</span></p>
+</div>
+<p><strong>证明</strong>：<span class="math inline">\(k=1\)</span>
+的情形在前一个的引理中已经证明了。对 <span class="math inline">\(k\geq2\)</span> 用归纳法，假设结论对小于 <span class="math inline">\(k\)</span> 的情形成立。</p>
+<p>如果 <span class="math inline">\(s_{i_{n-k}}\)</span> 和 <span class="math inline">\(s_{n-k+1}\)</span> 交换，那么 <span class="math display">\[s_{i_1}\cdots \textcolor{blue}{s_{i_{n-k}}}
+s_{n-k+1}\cdots s_n\to s_{i_1}\cdots
+s_{n-k+1}\textcolor{blue}{s_{i_{n-k}}}\cdots s_n.\]</span></p>
+<p>然而对 <span class="math inline">\(k-1\)</span>
+的情形应用归纳假设，上面右边共轭于 <span class="math display">\[\textcolor{blue}{s_{i_{n-k}}} s_{i_1}\cdots
+s_{n-k+1}\cdots s_n.\]</span> 于是结论成立。</p>
+<p>如果 <span class="math inline">\(s_{i_{n-k}}\)</span> 和 <span class="math inline">\(s_{n-k+1}\)</span> 不交换，那么 <span class="math inline">\(s_{n-k+1}\)</span> 和所有 <span class="math inline">\(s_{i_1}\sim s_{i_{n-k-1}}\)</span>
+都交换，于是直接用归纳假设有 <span class="math display">\[s_{i_1}\cdots\textcolor{blue}{s_{i_{n-k}}}\textcolor{red}{s_{n-k+1}}\cdots
+s_n\to
+\textcolor{red}{s_{n-k+1}}s_{i_1}\cdots\textcolor{blue}{s_{i_{n-k}}}\cdots
+s_n\to
+s_{i_1}\cdots\textcolor{red}{s_{n-k+1}}\textcolor{blue}{s_{i_{n-k}}}\cdots
+s_n.\]</span> 再一次应用归纳假设，上面右边共轭于 <span class="math display">\[\textcolor{blue}{s_{i_{n-k}}}s_{i_1}\cdots\textcolor{red}{s_{n-k+1}}\cdots
+s_n.\]</span> 结论同样成立。<span class="math inline">\(\blacksquare\)</span></p>
+<p>这样一来，下面的结论就是显然的了：</p>
+<div class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span>任何 Coxeter 元都共轭于 <span class="math inline">\(s_1\cdots
+s_n\)</span>。</p>
+</div>
+<h1 id="acting-on-a-plane">3.17 Acting on a plane</h1>
+<p>设 <span class="math inline">\(A=(a_{ij})_{1\leq i,j\leq
+n}=((\alpha_i,\alpha_j))\)</span> 是 Cartan 矩阵，<span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span> 是关于 <span class="math inline">\(\Delta=\{\alpha_i\}_{i=1}^n\)</span>
+的对偶基。<span class="math inline">\(A\)</span> 正是 <span class="math inline">\(V\)</span> 上线性变换 <span class="math inline">\(\bf A\)</span> 在基 <span class="math inline">\(\{\omega_i\}\)</span> 下的矩阵： <span class="math display">\[a_{ij}=(\alpha_i,\alpha_j)=({\bf
+A}\omega_i,\alpha_j).\]</span> 我们知道矩阵 <span class="math inline">\(A\)</span> 有一个特征值 <span class="math inline">\(c\)</span>，它对应的特征向量 <span class="math inline">\((c_1,\ldots, c_n)\)</span> 的分量 <span class="math inline">\(c_i\)</span> 都是大于 0 的，于是 <span class="math inline">\(\sum_{i=1}^nc_i\omega_i\)</span> 是变换 <span class="math inline">\({\bf A}\)</span> 的特征向量： <span class="math display">\[{\bf A}\sum_{i=1}^nc_i\omega_i =
+\sum_{i=1}^ncc_i\omega_i.\]</span> 另一方面 <span class="math inline">\({\bf
+A}\sum_{i=1}^nc_i\omega_i=\sum_{i=1}^nc_i\alpha_i\)</span>，所以 <span class="math display">\[\sum_{i=1}^nc_i\alpha_i =
+\sum_{i=1}^ncc_i\omega_i.\]</span> 两边用某个 <span class="math inline">\(\alpha_j,\,(j\in J)\)</span> 作内积，并注意到
+<span class="math inline">\(\alpha_j\)</span> 与 <span class="math inline">\(J\)</span> 中除自己之外其它 <span class="math inline">\(J\)</span> 中的 <span class="math inline">\(\alpha_i\)</span> 正交，得到 <span class="math display">\[cc_j=\sum_{i=1}^nc_i(\alpha_i,\alpha_j)=c_j +
+\sum_{i\in I}c_ia_{ij}.\]</span> 即 <span class="math display">\[(c-1)c_j = \sum_{i\in I}c_ia_{ij}.\]</span>
+两边乘以 <span class="math inline">\(\omega_j\)</span> 并对 <span class="math inline">\(j\in J\)</span> 求和，然后交换和号得到 <span class="math display">\[\begin{aligned}
+(c-1)\sum_{j\in J}c_j\omega_j &amp;= \sum_{j\in J}\left(\sum_{i\in
+I}c_ia_{ij}\right)\omega_j\\
+&amp;=\sum_{i\in I}c_i\left(\sum_{j\in J}a_{ij}\omega_j\right)\\
+&amp;=\sum_{i\in I}c_i\left(\sum_{j=1}^n a_{ij}\omega_j- \sum_{j\in
+I}a_{ij}\omega_j\right)\\
+&amp;=\sum_{i\in I}c_i\left(\alpha_i- \sum_{j\in
+I}a_{ij}\omega_j\right)\\
+&amp;=\sum_{i\in I}c_i\left(\alpha_i- \omega_i-\sum_{j\in I,\,j\ne
+i}\underbrace{a_{ij}}_{=0}\omega_j\right)\\
+&amp;=\sum_{i\in I}c_i\left(\alpha_i- \omega_i\right)\\
+&amp;=\sum_{i\in I}c_i\alpha_i- \mu.\\
+\end{aligned}\]</span> 即 <span class="math inline">\((c-1)\nu + \mu =
+\sum_{i\in I}c_i\alpha_i\)</span>。注意到 <span class="math inline">\(\sum_{i\in I}c_i\alpha_i\)</span> 被 <span class="math inline">\(x=\prod_{i\in I}s_i\)</span> 映射为它的负 <span class="math inline">\(-\sum_{i\in I}c_i\alpha_i\)</span>。此外 <span class="math inline">\(x\)</span> 保持 <span class="math inline">\(\nu\)</span> 不动，所以 <span class="math inline">\(x\)</span> 保持 <span class="math inline">\(\mu,\nu\)</span> 生成的二维子空间 <span class="math inline">\(P\)</span> 不变。<span class="math inline">\(x\)</span> 作为 <span class="math inline">\(P\)</span> 上的正交变换保持直线 <span class="math inline">\(\nu\)</span> 上的点不动，所以 <span class="math inline">\(x\)</span> 限制在 <span class="math inline">\(P\)</span> 上是一个反射。同理 <span class="math inline">\(y\)</span> 也是如此。所以 <span class="math inline">\(w^t=xy\)</span> 在 <span class="math inline">\(P\)</span> 上的作用是一个旋转。设这个旋转角度是
+<span class="math inline">\(2\pi/h\)</span>，则 <span class="math inline">\(w^t\)</span> 在 <span class="math inline">\(P\)</span> 上的阶是 <span class="math inline">\(h\)</span>。</p>
+<p>又因为 <span class="math inline">\(\mu+\nu\)</span> 严格属于 <span class="math inline">\(C\cap P\)</span>，所以它在 <span class="math inline">\(w^t\)</span> 作用下一定在 <span class="math inline">\(V\)</span> 中有 <span class="math inline">\(k\)</span> 个不同的像，即 <span class="math inline">\(P\)</span> 上的阶等于它在 <span class="math inline">\(V\)</span> 上的阶。</p>
+<h1 id="the-coxeter-number">3.18 The Coxeter number</h1>
+<p>这一节证明了如下结论：对一个有限 Coxeter 群，正根的个数 <span class="math inline">\(N=|\Phi^+|\)</span>，Coxeter 数 <span class="math inline">\(h\)</span>，单根的个数 <span class="math inline">\(n=|\Delta|\)</span> 满足 <span class="math display">\[N = \frac{nh}{2}.\]</span></p>
+<p>回忆 <span class="math inline">\(y=s_1\cdots s_r,z=s_{r+1}\cdots
+s_n\)</span> 在 <span class="math inline">\(P\)</span>
+上的作用都是反射，它们在 <span class="math inline">\(P\)</span>
+上生成的群是二面体群 <span class="math inline">\(I_2(h)\)</span>，这个群包含 <span class="math inline">\(h\)</span> 个反射和 <span class="math inline">\(h\)</span> 个旋转。记 <span class="math inline">\(I_2(h)\)</span> 中的 <span class="math inline">\(h\)</span> 个反射对应的超平面在 <span class="math inline">\(P\)</span> 上的截线分别是 <span class="math inline">\(L_1,\ldots,L_h\)</span>，这些 <span class="math inline">\(L_i\)</span> 是 <span class="math inline">\(I_2(h)\)</span> 作用在直线 <span class="math inline">\(L=\mathbb{R}\lambda\)</span> 和 <span class="math inline">\(M=\mathbb{R}\mu\)</span> 上得到的。设 <span class="math inline">\(\beta\in\Phi\)</span>，我们来分析 <span class="math inline">\(\beta\)</span> 对应的超平面 <span class="math inline">\(H_\beta\)</span> 在 <span class="math inline">\(P\)</span> 上的截线是什么。</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>对任何 <span class="math inline">\(\beta\in\Phi\)</span>，<span class="math inline">\(H_\beta\cap P\in \{L_1,\ldots,L_h\}\)</span>。</p>
+</div>
+<p>证明：首先注意到 <span class="math inline">\(P\)</span> 不可能包含在
+<span class="math inline">\(H_\beta\)</span> 中。因为 <span class="math inline">\(P\)</span> 和基本区域 <span class="math display">\[C=\{v\in V\mid (\alpha, v)&gt;0 \text { for all
+}\alpha\in\Delta\}\]</span> 的交是 <span class="math display">\[P\cap
+C=\{a\lambda + b\mu\mid a&gt;0,b&gt;0\}.\]</span> 它当然是非空的，而
+<span class="math inline">\(H_\beta\)</span> 不可能包含 <span class="math inline">\(C\)</span> 中的点，所以 <span class="math inline">\(H_\beta\cap P\)</span> 是 <span class="math inline">\(P\)</span> 的一条截线。</p>
+<p>其次如果这条截线不是上述 <span class="math inline">\(\{L_i\}\)</span>
+任何之一，那么我们可以用 <span class="math inline">\(y,z\)</span>
+的某个组合将其变换到 <span class="math inline">\(P\cap C\)</span>
+中，这相当于用某个 <span class="math inline">\(w\in I_2(h)\)</span> 使得
+<span class="math inline">\(\gamma=w\beta\)</span> 的超平面 <span class="math inline">\(H_\gamma\)</span> 与 <span class="math inline">\(P\)</span> 的交线穿过 <span class="math inline">\(P\cap C\)</span>，这与任何根的镜面与 <span class="math inline">\(C\)</span> 之交为空集矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+<p>我们只要讨论哪些 <span class="math inline">\(H_\beta\)</span> 满足
+<span class="math inline">\(H_\beta\cap P =L\)</span> 或者 <span class="math inline">\(H_\beta\cap P =M\)</span> 即可。其它的 <span class="math inline">\(L_i\)</span> 由于形如 <span class="math inline">\(L_i=wL\)</span> 或者 <span class="math inline">\(L_i=wM\)</span>，这里 <span class="math inline">\(w\in I_2(h)\)</span>，所以对应的是 <span class="math inline">\(wH_\beta\)</span>。</p>
+<p>如果 <span class="math inline">\(H_\beta\cap P = L\)</span>，则反射
+<span class="math inline">\(s_\beta\)</span> 保持 <span class="math inline">\(L\)</span> 不动。这时 <span class="math inline">\((\beta,\lambda=0)\)</span>。设 <span class="math inline">\(\beta=\sum\limits_{i=1}^n a_i\alpha_i (a_i\geq
+0)\)</span>，由于 <span class="math inline">\(\lambda=\sum_{i\in
+I}c_i\omega_i\)</span>，所以 <span class="math display">\[(\beta,\lambda) = \sum_{i\in I} a_ic_i=
+0.\]</span> 由于 <span class="math inline">\(c_i(1\leq i\leq n)\)</span>
+都是正的，所以必须对每个 <span class="math inline">\(i\in I\)</span> 有
+<span class="math inline">\(a_i=0\)</span>，即 <span class="math inline">\(\beta\)</span> 是 <span class="math inline">\(\{\alpha_j,j\in J\}\)</span> 的线性组合，从而
+<span class="math inline">\(\beta\)</span> 属于标准椭圆子群 <span class="math inline">\(J\)</span> 的根系 <span class="math inline">\(\Phi_J\)</span>。但是 <span class="math inline">\(J\)</span> 中的生成元两两交换，<span class="math inline">\(\Phi_J\)</span> 中的正根只有 <span class="math inline">\(\{\alpha_j,j\in J\}\)</span>，所以满足 <span class="math inline">\(H_\beta\cap P=L\)</span> 的正根 <span class="math inline">\(\beta\)</span> 有 <span class="math inline">\(|J|=n-r\)</span> 个。</p>
+<p>同样的分析可得满足 <span class="math inline">\(H_\beta\cap
+P=M\)</span> 的正根 <span class="math inline">\(\beta\)</span> 有 <span class="math inline">\(|I|=r\)</span> 个。</p>
+<p>当 <span class="math inline">\(h\)</span> 是偶数时，<span class="math inline">\(I_2(h)\)</span> 在 <span class="math inline">\(\{L_1,\ldots,L_h\}\)</span>
+上的作用分成两个长度同为 <span class="math inline">\(h/2\)</span>
+的轨道，分别由 <span class="math inline">\(L\)</span> 和 <span class="math inline">\(M\)</span> 生成，<span class="math inline">\(L\)</span> 所在的轨道每个超平面来自 <span class="math inline">\(n-r\)</span> 个正根，<span class="math inline">\(M\)</span> 所在的轨道每个超平面来自 <span class="math inline">\(r\)</span> 个正根，所以一共是 <span class="math inline">\(h(n-r)/2 + hr/2 = nh/2=N\)</span> 个正根。</p>
+<p>当 <span class="math inline">\(h\)</span> 是奇数时，<span class="math inline">\(I_2(h)\)</span> 传递地作用在 <span class="math inline">\(\{L_1,\ldots,L_h\}\)</span> 上，所以 <span class="math inline">\(L\)</span> 和 <span class="math inline">\(M\)</span> 来自同样数目的正根，即 <span class="math inline">\(r=n-r\)</span>，所以 <span class="math inline">\(r=n/2\)</span>。同样地 <span class="math inline">\(N=nh/2\)</span>。</p>
+<p>这里需要对 <span class="math inline">\(h\)</span>
+的奇偶性分别讨论是因为在二面体群中，奇数时两个生成元是共轭的，偶数时则不共轭。</p>
+<h1 id="eigenvalues-of-coxeter-elements">3.19 Eigenvalues of Coxeter
+elements</h1>
+<p>设 <span class="math inline">\(u,v\)</span> 是 Coxeter 平面 <span class="math inline">\(P\)</span> 的一组正交基，则 <span class="math inline">\(z=u+iv\)</span> 是 <span class="math inline">\(w\)</span> 在 <span class="math inline">\(V_{\mathbb{C}}\)</span> 上的特征向量，特征值为
+<span class="math inline">\(e^{2\pi i/h}\)</span>。对任何 <span class="math inline">\(\beta\in\Phi^+\)</span>，<span class="math inline">\((\beta,z)=(\beta,u) + (\beta,v)i\ne
+0\)</span>，否则会导致 <span class="math inline">\(P\in
+H_\beta\)</span>，与 <span class="math inline">\(P\cap C\)</span>
+非空矛盾。</p>
+<p>设 <span class="math inline">\(\{v_i\}\)</span> 是 <span class="math inline">\(V\)</span> 的一组基，<span class="math inline">\(\{x_i\}\in V^\ast\)</span> 是对偶基：<span class="math inline">\(x_i(v_j)=\delta_{ij}\)</span>。<span class="math inline">\(x_1,\cdots,x_n\)</span>
+是坐标函数，它们是代数无关的：<span class="math inline">\(\mathbb{C}[x_1,\cdots,x_n]\)</span>
+是一个多项式环。我们把 <span class="math inline">\(\mathbb{C}[x_1,\cdots,x_n]\)</span> 称作 <span class="math inline">\(V\)</span> 上的坐标环，简记作 <span class="math inline">\(\mathbb{C}[V]\)</span>。设 <span class="math inline">\(G\subset GL(V)\)</span>
+是一个有限的可逆线性变换群，则 <span class="math inline">\(G\)</span>
+也作用在 <span class="math inline">\(\mathbb{C}[V]\)</span>
+上：对任何多项式 <span class="math inline">\(f\in
+\mathbb{C}[V]\)</span>，定义 <span class="math inline">\(g\)</span> 在
+<span class="math inline">\(f\)</span> 上作用的结果 <span class="math inline">\(g\cdot f\)</span> 为</p>
+<p><span class="math display">\[g\cdot f(v)=f(g^{-1}v).\]</span> 对
+<span class="math inline">\(f=\sum a_{i_1\cdots i_n}x_1^{i_1}\cdots
+x_n^{i_n}\in\mathbb{C}[V]\)</span>，<span class="math inline">\(f\)</span> 在 <span class="math inline">\(v=\sum_{i}c_iv_i\)</span> 处的值为 <span class="math display">\[f(v)=\sum a_{i_1\cdots i_n}x_1(v)^{i_1}\cdots
+x_n(v)^{i_n} = \sum a_{i_1\cdots i_n}c_1^{i_1}\cdots c_n^{i_n}.\]</span>
+于是如果不含常数项的多项式 <span class="math inline">\(f\in\mathbb{C}[V]\)</span> 满足 <span class="math inline">\(f(v_1)\ne 0\)</span>，则若 <span class="math inline">\(f=\sum a_{i_1\cdots i_n}x_1^{i_1}\cdots
+x_n^{i_n}\)</span>，我们有 <span class="math display">\[0\ne f(v_1)=\sum
+a_{i_1\cdots i_n}x_1^{i_1}\cdots
+x_n^{i_n}\mid_{x_1=1,x_2=\cdots=x_n=0}.\]</span> 即 <span class="math inline">\(f\)</span> 的单项式里面必有一项只含有 <span class="math inline">\(x_1\)</span>。</p>
+<p>进一步，如果 <span class="math inline">\(\frac{\partial f}{\partial
+x_i}\)</span> 满足 <span class="math inline">\(\frac{\partial
+f}{\partial x_i}(v_1)\ne0\)</span>，那就说明 <span class="math inline">\(f\)</span> 的单项式里面必有一项形如 <span class="math inline">\(ax_1^{m}x_i\)</span>，即 <span class="math inline">\(f\)</span> 形如 <span class="math inline">\(f=ax_1^mx_i + \cdots\)</span>。</p>
+<p>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上可对角化的线性变换，<span class="math inline">\(Tv_i=\lambda_i v_i\)</span>，则 <span class="math inline">\(Tx_i=\lambda_i^{-1}x_i\)</span>。并且设 <span class="math inline">\(f\)</span> 是 <span class="math inline">\(T\)</span>- 不变的多项式，则 <span class="math display">\[f=T\cdot f =
+a\lambda_1^{-m}x_1^m\lambda_i^{-1}x_i + \cdots.\]</span> 比较即得 <span class="math display">\[ax_1^mx_i =
+a\lambda_1^{-m}x_1^m\lambda_i^{-1}x_i.\]</span> 即 <span class="math inline">\(1 = \lambda_1^{-m}\lambda_i^{-1}\)</span>，从而
+<span class="math inline">\(\lambda_i = \lambda_1^{-m}\)</span>。</p>
+<p>对 Coxeter 元 <span class="math inline">\(w\)</span>，它的特征值是
+<span class="math inline">\(\{\zeta^{m_i},\,1\leq i\leq
+n\}\)</span>，并且 <span class="math inline">\(m_1=1,m_{n-1}=h-1\)</span>。<span class="math inline">\(m_1=1\)</span> 对应的是 <span class="math inline">\(w\)</span> 的重数为 1 的特征值 <span class="math inline">\(\zeta\)</span>。</p>
+<p>以 <span class="math inline">\(w\)</span> 的特征向量为基，由于 <span class="math inline">\(\zeta\)</span> 对应的特征向量 <span class="math inline">\(v_1\)</span> 在 <span class="math inline">\(C\)</span> 内，它不在任何根平面 <span class="math inline">\(H_\alpha\)</span> 上，所以 Jacobian <span class="math inline">\(J=\det\left(\frac{\partial f_i}{\partial
+x_j}\right)\)</span> 在 <span class="math inline">\(v_1\)</span> 处不为
+0，于是某个 <span class="math inline">\(\prod_{i=1}^n \frac{\partial
+f_i}{\partial x_{\pi(j)}}\)</span> 在 <span class="math inline">\(v_1\)</span> 处不为 0，适当重排 <span class="math inline">\(f_i\)</span> 以后可以不妨设每个 <span class="math inline">\(\frac{\partial f_i}{\partial
+x_i}(v_1)\ne0\)</span>。根据上面的讨论，<span class="math inline">\(f_i\)</span> 形如 <span class="math display">\[f_i=ax_1^{d_i-1}x_i+\cdots.\]</span> 并且 <span class="math inline">\(\lambda_i=\zeta^{m_i}=\zeta^{1-d_i}\)</span>。
+从而 <span class="math inline">\(h-m_i\equiv d_i-1\pmod
+h\)</span>。我们知道对每个 <span class="math inline">\(i\)</span> 有
+<span class="math inline">\(0&lt;h-m_i&lt;h\)</span>，所以对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(d_i-1\geq h-m_i\)</span>。另一方面，集合 <span class="math inline">\(\{h-m_i\}\)</span> 不过是集合 <span class="math inline">\(\{m_i\}\)</span> 的一个置换，所以 <span class="math display">\[\sum (h-m_i) = \sum m_i = \sum(d_i-1).\]</span>
+这只能是对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(h-m_i=d_i-1\)</span>，即集合相等 <span class="math inline">\(\{d_i-1\}=\{m_i\}\)</span>。</p>
+<h1 id="counting-hyperplanes">4.4 Counting hyperplanes</h1>
+<p>回忆 <span class="math inline">\(\mathcal{H}\)</span> 是所有超平面
+<span class="math inline">\(\{H_{\alpha,k}\mid
+\alpha\in\Phi,k\in\mathbb{Z}\}\)</span> 组成的集合。其中 <span class="math display">\[H_{\alpha,k}=\{v\in V\mid
+(\alpha,v)=k\}.\]</span></p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(H_s\)</span> 是 <span class="math inline">\(\mathcal{H}\)</span> 中唯一分隔 <span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 的超平面，即 <span class="math inline">\(\mathcal{L}(s)=\{H_s\}\)</span>。</p>
+</div>
+<p>证明：我们先说明对任何正根 <span class="math inline">\(\beta\ne\alpha_s\)</span>，以及任何 <span class="math inline">\(k\in\mathbb{Z}\)</span>，<span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 都在超平面 <span class="math inline">\(H_{\beta,k}\)</span> 的同一侧。</p>
+<p>首先根据 <span class="math inline">\(A_o\)</span>
+的刻画，它满足对任何正根 <span class="math inline">\(\gamma\)</span>
+都有 <span class="math inline">\(0&lt;(A_o,\gamma)&lt;1\)</span>，特别地
+<span class="math inline">\(0&lt;(A_o,\beta)&lt;1\)</span>。由于 <span class="math inline">\(\beta\ne\alpha_s\)</span> 所以 <span class="math inline">\(s\beta\)</span> 仍然是正根，因此 <span class="math display">\[0&lt;(A_o,s\beta)&lt;1\Longrightarrow
+0&lt;(sA_o,\beta)&lt;1.\]</span> 这说明 <span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 在 <span class="math inline">\(H_\beta\)</span> 和 <span class="math inline">\(H_{\beta,1}\)</span>
+围成的带状区域中间。所以对任何 <span class="math inline">\(k\)</span>
+它们都在 <span class="math inline">\(H_{\beta,k}\)</span> 的同一侧。</p>
+<p>另一方面不难看出 <span class="math inline">\(-1 &lt;
+(sA_o,\alpha_s)&lt;0\)</span>，也就是说 <span class="math inline">\(sA_o\)</span> 和 <span class="math inline">\(A_o\)</span> 位于 <span class="math inline">\(H_{\alpha_s,0}\)</span> 的两侧，但是对任何 <span class="math inline">\(k\ne0\)</span>，它们位于 <span class="math inline">\(H_{\alpha_s,k}\)</span> 的同侧。</p>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>固定 <span class="math inline">\(s\in S_a\)</span>。对任何 <span class="math inline">\(w\in\widehat{W_a}\)</span>，有如下结论成立：</p>
+<ul>
+<li><span class="math inline">\(H_s\)</span> 恰好属于 <span class="math inline">\(\mathcal{L}(w)\)</span> 和 <span class="math inline">\(\mathcal{L}(sw)\)</span> 之一。</li>
+<li><span class="math inline">\(s(\mathcal{L}(w)\setminus\{H_s\}) =
+\mathcal{L}(sw)\setminus\{H_s\}\)</span>。</li>
+</ul>
+</div>
+<p>证明：第一点是显然的，因为 <span class="math inline">\(wA_o\)</span>
+和 <span class="math inline">\(swA_o\)</span> 位于 <span class="math inline">\(H_s\)</span> 的两侧，它俩有且恰有一个和 <span class="math inline">\(A_o\)</span> 位于 <span class="math inline">\(H_s\)</span> 的同一侧。</p>
+<p>对于第二点，我们要证明的是 <span class="math inline">\(H\leftrightarrow sH\)</span> 给出了 <span class="math inline">\(\mathcal{L}(w)\)</span> 和 <span class="math inline">\(\mathcal{L}(sw)\)</span> 中除 <span class="math inline">\(H_s\)</span> 之外的超平面的一一对应。然而若 <span class="math inline">\(H\ne H_s\)</span>，根据上面的引理，<span class="math inline">\(A_o\)</span> 和 <span class="math inline">\(sA_o\)</span> 位于 <span class="math inline">\(H\)</span> 的同一侧，所以</p>
+<p><span class="math display">\[H\in\mathcal{L}(w)\Longleftrightarrow
+\begin{matrix}A_o\\ sA_o\end{matrix}\stackrel{H=0}{\biggl\lvert} wA_o
+\Longleftrightarrow \begin{matrix}sA_o\\
+A_o\end{matrix}\stackrel{sH=0}{\biggl\lvert} swA_o.\]</span> 可见 <span class="math inline">\(sH\in \mathcal{L}(sw)\)</span> 并且显然 <span class="math inline">\(sH\ne H_s\)</span>。此即为所证。</p>
+<h1 id="a-formula-for-the-order-of-w">4.9 A formula for the order of
+<span class="math inline">\(W\)</span></h1>
+<p>从前面的学习中我们知道，一个仿射 Weyl 群 <span class="math inline">\(W_a\)</span> 总是可以写成一个有限 Weyl 群 <span class="math inline">\(W\)</span> 和一个格点群 <span class="math inline">\(L\)</span> 的半直积：<span class="math inline">\(W_a=W\ltimes L\)</span>。这里的 <span class="math inline">\(L\)</span> 实际上是 <span class="math inline">\(W\)</span> 的余根格点：<span class="math inline">\(L=L(\Phi^\vee)\)</span>。这一节介绍了怎样计算
+<span class="math inline">\(W\)</span> 的阶 <span class="math inline">\(|W|\)</span>。</p>
+<p>我们以 <span class="math inline">\(\widetilde{B}_2\)</span>
+为例来说明。<span class="math inline">\(\Delta\)</span> 包含两个单根
+<span class="math inline">\(\alpha_1=e_1-e_2,\,\alpha_2=e_2\)</span>。最高根
+<span class="math inline">\(\widetilde{\alpha}=\alpha_1+2\alpha_2\)</span>，于是
+<span class="math inline">\(c_1=1,c_2=2\)</span>。</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/humphreys/b2.svg"></p>
+<ul>
+<li>图中<strong>黄色</strong>区域是由所有的房间 <span class="math inline">\(\{wA_o\mid w\in W\}\)</span> 组成。即 <span class="math inline">\(\Pi=\bigcup_{w\in
+W}wA_o\)</span>。另一个等价的描述是 <span class="math display">\[ \Pi =
+\{x\in V\mid -1 &lt; (x,\alpha) &lt; 1 \text{ for all }
+\alpha\in\Phi^+\}.\]</span> 所以 <span class="math inline">\(\mathrm{Vol}(\Pi)=
+|W|\cdot\mathrm{Vol}(A_o)\)</span>。<span class="math inline">\(\Pi\)</span> 是余根格点 <span class="math inline">\(L(\Phi^\vee)\)</span>
+的基本区域，因为书中已经证明了 <span class="math inline">\(W_a=W\ltimes
+L\)</span>，并且 <span class="math inline">\(A_o\)</span> 是 <span class="math inline">\(W_a\)</span> 作用下的基本区域，所以 <span class="math inline">\(\Pi\)</span> 在 <span class="math inline">\(L\)</span>
+的作用下互不相交，并且密铺了整个平面。</li>
+<li>图中<strong>绿色</strong>区域是余权格点 <span class="math inline">\(\hat{L}(\Phi^\vee)\)</span> 的基本区域 <span class="math inline">\(\hat{\Pi}\)</span>，它是一个平行多面体，由基本余权
+<span class="math inline">\(\{\omega_1,\ldots,\omega_n\}\)</span>
+张成，并且 <span class="math inline">\(\dfrac{
+\mathrm{Vol}(\Pi)}{\mathrm{Vol}(\hat{\Pi}) } = f\)</span>。</li>
+<li>基本区域 <span class="math inline">\(A_o\)</span> 是由 <span class="math inline">\(\left\{0,\dfrac{\omega_1}{c_1},\ldots,\dfrac{\omega_n}{c_n}\right\}\)</span>
+生成的单纯形，它和 <span class="math inline">\(\{\omega_1,\ldots,\omega_n\}\)</span>
+生成的平行多面体 <span class="math inline">\(\hat{\Pi}\)</span>
+的体积关系为 <span class="math display">\[\mathrm{Vol}(\hat{\Pi}) =
+n!c_1\cdots c_n\cdot\mathrm{Vol}(A_o).\]</span></li>
+<li>综上可得 <span class="math display">\[\dfrac{
+\mathrm{Vol}(\Pi)}{\mathrm{Vol}(\hat{\Pi}) } =
+\frac{|W|\mathrm{Vol}(A_o)}{n!c_1\cdots
+c_n\cdot\mathrm{Vol}(A_o)}=f.\]</span> 即 <span class="math inline">\(|W| = n!c_1\cdots c_n f\)</span>。</li>
+</ul>
+<h1 id="bruhat-ordering">5.9 Bruhat ordering</h1>
+<p>这一节介绍了 Bruhat 序，以及重要的 lifting property。Humphreys
+书中是先介绍的 lifting
+property，然后在下一小节证明子表达式定理。实际上，如果我们采用 Bjorner
+and Brenti 教材的处理方式，先证明子表达式定理的话，那么 lifting property
+更好证。</p>
+<div id="lifting" class="unnumbered statement sta_lifting_property plain">
+<p><span class="statement-heading"><span class="statement-label">Lifting
+property</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(u&lt; w\)</span>，<span class="math inline">\(s\in
+S\)</span> 满足 <span class="math inline">\(sw&lt;w\)</span> 和 <span class="math inline">\(su&gt;u\)</span>，则 <span class="math inline">\(u\leq sw\)</span> 并且 <span class="math inline">\(su\leq w\)</span>。</p>
+</div>
+<p>证明：用 <span class="math inline">\(\alpha\prec\beta\)</span> 表示
+word <span class="math inline">\(\alpha\)</span> 是 word <span class="math inline">\(\beta\)</span> 的子表达式。设 <span class="math inline">\(sw=s_1\cdots s_q\)</span> 是 <span class="math inline">\(sw\)</span> 的一个既约表示。由于 <span class="math inline">\(sw&lt;w\)</span>，所以 <span class="math inline">\(w=ss_1\cdots s_q\)</span> 也是既约表示。又因为已知
+<span class="math inline">\(u&lt;w\)</span>，所以根据子表达式定理，存在
+<span class="math inline">\(u=s_{i_1}\cdots s_{i_k}\)</span>
+的某个既约表示满足 <span class="math display">\[s_{i_1}\cdots
+s_{i_k}\prec ss_1\cdots s_q.\]</span> 又已知 <span class="math inline">\(su&gt;u\)</span>，所以 <span class="math inline">\(s\ne s_{i_1}\)</span>，从而 <span class="math display">\[u=s_{i_1}\cdots s_{i_k}\prec s_1\cdots
+s_q=sw.\]</span> 这意味着 <span class="math display">\[su=ss_{i_1}\cdots
+s_{i_k}\prec ss_1\cdots s_q=w,\]</span> 从而 <span class="math inline">\(u\leq sw\)</span> 且 <span class="math inline">\(su\leq w\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(u\ne w\)</span>，则存在 <span class="math inline">\(x\)</span> 满足 <span class="math inline">\(u&lt;x\)</span> 且 <span class="math inline">\(w&lt;x\)</span>。</p>
+</div>
+<p><strong>证明</strong>：对 <span class="math inline">\(l(u)+l(w)\)</span> 归纳。<span class="math inline">\(l(u)+l(w)=0\)</span>
+时结论是显然的。假设结论对小于 <span class="math inline">\(l(u)+l(w)\)</span> 的情形已经成立。取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(su&lt;u\)</span>，则根据归纳假设，存在 <span class="math inline">\(y\)</span> 使得 <span class="math inline">\(su&lt;y\)</span> 且 <span class="math inline">\(w&lt;y\)</span>。</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(sy&lt;y\)</span>，那么由提升引理，<span class="math inline">\(u&lt;y\)</span>，从而 <span class="math inline">\(y\)</span> 就是所求的 <span class="math inline">\(x\)</span>。</li>
+<li>如果 <span class="math inline">\(sy&gt;y\)</span>，那么 <span class="math inline">\(sy\)</span> 就是所求的 <span class="math inline">\(x\)</span>。</li>
+</ol>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<p>这个推论的一个直接结论是，任何有限 Coxeter 群中必有 Bruhat
+序下唯一的极大元 <span class="math inline">\(w_0\)</span>。<span class="math inline">\(w_0\)</span> 必然满足 <span class="math inline">\(w_0^2=1\)</span>，因为如果 <span class="math inline">\(w_0\ne w_0^{-1}\)</span>
+的话，它们就会还有一个更大的覆盖元。</p>
+<div class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span>如果 <span class="math inline">\(w\in W\)</span> 满足对任何 <span class="math inline">\(s\in S\)</span> 都有 <span class="math inline">\(sw&lt;w\)</span>，则 <span class="math inline">\(W\)</span> 必然是有限群，并且 <span class="math inline">\(w=w_0\)</span> 是极大元。</p>
+</div>
+<p><strong>证明</strong>：我们对 <span class="math inline">\(l(x)\)</span> 归纳证明对任何 <span class="math inline">\(x\in W\)</span> 有 <span class="math inline">\(x\leq w\)</span>。设结论对长度小于 <span class="math inline">\(l(x)\)</span> 的元素都成立，取 <span class="math inline">\(s\)</span> 使得 <span class="math inline">\(l(sx)&lt;l(x)\)</span>，根据归纳假设 <span class="math inline">\(sx\leq w\)</span>。但是 <span class="math inline">\(sx\)</span> 不可能等于 <span class="math inline">\(w\)</span>，因为 <span class="math inline">\(l(s\cdot
+sx)=l(x)&gt;l(sx)\)</span>。所以根据提升性质可得 <span class="math inline">\(x\leq w\)</span>。于是 <span class="math inline">\(W\)</span> 中任何元素都在区间 <span class="math inline">\([1,x]\)</span>
+中，这样的元素显然只有有限多个。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(W\)</span> 是有限群，则对任何
+<span class="math inline">\(w\in W\)</span> 有 <span class="math inline">\(l(ww_0)=l(w_0)-l(w)\)</span>。</p>
+</div>
+<p><strong>证明</strong>：只要证明 <span class="math inline">\(l(ww_0)\leq l(w_0)-l(w)\)</span> 即可。对 <span class="math inline">\(l(w_0)-l(w)\)</span> 归纳，等于 0 的情况对应 <span class="math inline">\(w=w_0\)</span>，结论显然成立。设 <span class="math inline">\(w&lt;w_0\)</span> 并且结论对任何 <span class="math inline">\(x&gt;w\)</span> 成立。根据上一个推论，必然存在
+<span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(sw&gt;w\)</span>。对 <span class="math inline">\(sw\)</span> 应用归纳假设可得</p>
+<p><span class="math display">\[l(ww_0)\leq l(sww_0)+1 \leq l(w_0) -
+l(sw) + 1 = l(w_0) - l(w).\]</span> <span class="math inline">\(\blacksquare\)</span></p>
+<p>对任何 <span class="math inline">\(l(w)\)</span>，记 <span class="math inline">\(T_L(w)=\{t\in T\mid l(tw) &lt;
+l(w)\}\)</span>。</p>
+<div class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(W\)</span> 是有限群，则对任何
+<span class="math inline">\(w\in W\)</span> 有 <span class="math inline">\(T_L(ww_0)=T\setminus T_L(w)\)</span>。</p>
+</div>
+<p><strong>证明</strong>：根据上一个推论，<span class="math inline">\(l(tww_0)=l(w_0)-l(tw)\)</span>。所以 <span class="math inline">\(l(tww_0)&gt;l(ww_0)\)</span> 当且仅当 <span class="math inline">\(l(tw)&lt;l(w)\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(l(w_0)=|T|\)</span>.</p>
+</div>
+<p><strong>证明</strong>：在上一个推论中取 <span class="math inline">\(w=1\)</span> 有 <span class="math inline">\(T_L(w_0)=T\)</span>，结合 <span class="math inline">\(l(w)=|T_L(w)|\)</span> 对任何 <span class="math inline">\(w\in W\)</span> 成立即得。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="subexpressions">5.10 Subexpressions</h1>
+<div id="thm-5.10" class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(w=s_1\cdots s_q\)</span>
+是一个既约表达式，<span class="math inline">\(u\ne w\)</span> 并且 <span class="math inline">\(u\)</span> 的某个既约表达式恰好是 <span class="math inline">\(s_1\cdots s_q\)</span> 的子表达式。则存在 <span class="math inline">\(v\in W\)</span> 满足以下三点：</p>
+<ol type="1">
+<li><span class="math inline">\(v &gt; u\)</span>。</li>
+<li><span class="math inline">\(l(v) = l(u)+1\)</span>。</li>
+<li><span class="math inline">\(v\)</span> 的某个既约表达式是 <span class="math inline">\(s_1\cdots s_q\)</span> 的子表达式。</li>
+</ol>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(u\)</span>
+的既约表达式是从 <span class="math inline">\(s_1\cdots s_q\)</span>
+中删去 <span class="math inline">\(i_1,\ldots,i_k\)</span> 位置得到的：
+<span class="math display">\[u = s_1\cdots\hat{s_{i_1}}\cdots
+\hat{s_{i_k}}\cdots s_q.\]</span> 这样的既约表达式可能不唯一，选择使得
+<span class="math inline">\(i_k\)</span> 最小的那一个。令 <span class="math display">\[t=s_qs_{q-1}\cdots s_{i_k}\cdots
+s_{q-1}s_q.\]</span> 则 <span class="math inline">\(ut\)</span> 就是把
+<span class="math inline">\(s_{i_k}\)</span> 补回 <span class="math inline">\(u\)</span> 的表达式中： <span class="math display">\[ut= s_1\cdots\hat{s_{i_1}}\cdots
+\hat{s_{i_{k-1}}}\cdots s_{i_k}\cdots s_q.\]</span> 这个 <span class="math inline">\(ut\)</span> 的表达式未必是既约的，但是无论如何
+<span class="math inline">\(l(ut)\)</span> 不会超过这个表达式的长度，即
+<span class="math inline">\(l(ut)\leq
+l(u)+1\)</span>。我们来证明等号是成立的。如果确实如此，那么取 <span class="math inline">\(v=ut\)</span> 即可满足要求。</p>
+<p>若不然，<span class="math inline">\(l(ut)&lt;l(u)\)</span>，则根据
+strong exchange 条件，<span class="math inline">\(ut\)</span> 等于在
+<span class="math inline">\(u\)</span> 的表达式再删掉一个 <span class="math inline">\(s_p\)</span>。这个 <span class="math inline">\(p\)</span> 出现的位置有两种可能：</p>
+<p>第一种可能是 <span class="math inline">\(p&gt;i_k\)</span>，即 <span class="math display">\[ut=
+s_1\cdots\hat{s_{i_1}}\cdots\hat{s_{i_k}}\cdots \hat{s_p}\cdots
+s_q.\]</span> 这种情况下 <span class="math inline">\(t\)</span> 还等于
+<span class="math inline">\(t=s_qs_{q-1}\cdots s_p\cdots
+s_{q-1}s_q\)</span>。于是 <span class="math display">\[w=wt^2=w(s_qs_{q-1}\cdots s_{i_k}\cdots
+s_{q-1}s_q)(s_qs_{q-1}\cdots s_p\cdots
+s_{q-1}s_q)=s_1\cdots\hat{s_{i_k}}\cdots\hat{s_p}\cdots s_q.\]</span>
+这与 <span class="math inline">\(s_1\cdots s_q\)</span> 是 <span class="math inline">\(w\)</span> 的既约表达式矛盾。</p>
+<p>第二种可能是 <span class="math inline">\(p&lt;i_k\)</span> 出现在
+<span class="math inline">\(i_k\)</span> 之前的某个位置，当然 <span class="math inline">\(p\notin\{i_1,\ldots,i_k\}\)</span>。这种情况下
+<span class="math display">\[u=ut\cdot
+t=s_1\cdots\hat{s_{i_1}}\cdots\hat{s_p}\cdots\hat{s_{i_k}}\cdots
+s_q\cdot(s_qs_{q-1}\cdots s_{i_k}\cdots
+s_{q-1}s_q)=s_1\cdots\hat{s_{i_1}}\cdots\hat{s_p}\cdots s_{i_k}\cdots
+s_q.\]</span> 这与 <span class="math inline">\(i_k\)</span>
+的极小性矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+<p>在上面的例子中我把 <span class="math inline">\(p\)</span> 写在了
+<span class="math inline">\(i_1\)</span> 和 <span class="math inline">\(i_k\)</span> 中间的某个位置上，实际上 <span class="math inline">\(p\)</span> 当然可以小于 <span class="math inline">\(i_1\)</span>，但这不影响论证。</p>
+<div id="thm-5.10-1" class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(w=s_1\cdots s_q\)</span>
+是一个既约表达式，则 <span class="math inline">\(u\leq w\)</span>
+当且仅当 <span class="math inline">\(u\)</span> 的某个既约表达式是 <span class="math inline">\(s_1\cdots s_q\)</span> 的子表达式。</p>
+</div>
+<p><strong>证明</strong>：</p>
+<p><span class="math inline">\(\Rightarrow\)</span>: 设 <span class="math inline">\(u=x_0\xrightarrow{t_1}x_1\xrightarrow{t_2}\cdots\xrightarrow{t_m}x_m=w\)</span>，则根据
+strong exchange 条件，<span class="math inline">\(x_{m-1}=wt_m\)</span>
+是 <span class="math inline">\(w\)</span> 的子表达式，进一步 <span class="math inline">\(x_{m-2}=x_{m-1}t_{m-1}\)</span> 是 <span class="math inline">\(x_{m-1}\)</span>
+的子表达式，这样一直下去，得到一个 <span class="math inline">\(u=x_0\)</span> 的表达式，它是 <span class="math inline">\(s_1\cdots s_q\)</span> 的子表达式。最后根据
+deletion condition，这个子表达式又包含一个 <span class="math inline">\(u\)</span> 的既约子表达式。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>: 如果 <span class="math inline">\(u\)</span> 的某个既约表达式是 <span class="math inline">\(s_1\cdots s_q\)</span>
+的子表达式，根据上面的引理，只要 <span class="math inline">\(u\ne
+w\)</span>，那么就存在反射 <span class="math inline">\(t\)</span> 使得
+<span class="math inline">\(u&lt;ut\)</span>，并且 <span class="math inline">\(ut\)</span> 仍然是 <span class="math inline">\(w\)</span> 的子表达式。对 <span class="math inline">\(ut\)</span> 继续此步骤直到结果 <span class="math inline">\(w\)</span> 为止即可。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="more-on-the-geometric-representation">6.2 More on the geometric
+representation</h1>
+<p>这一节证明了如果几何实现中的二次型 <span class="math inline">\(B(\alpha_s,\alpha_t)=-\cos\frac{\pi}{m_{s,t}}\)</span>
+是正定的，则 <span class="math inline">\(W\)</span>
+是有限群。这一点是两个结论合起来的结果：</p>
+<div id="discrete-action" class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(W\)</span> 是 <span class="math inline">\(O(n,\mathbb{R})\)</span> 的离散子集，即对任何
+<span class="math inline">\(w\in W\)</span>，存在 <span class="math inline">\(w\)</span> 的开邻域 <span class="math inline">\(w\in U\)</span> 使得 <span class="math inline">\(U\)</span> 不包含 <span class="math inline">\(W\)</span> 中除 <span class="math inline">\(w\)</span> 外的任何元素。</p>
+</div>
+<p>证明：固定一个基本区域中的点 <span class="math inline">\(x\in
+C\)</span>，考虑从 <span class="math inline">\(\mathrm{GL}(V^\ast)\)</span> 到 <span class="math inline">\(V^\ast\)</span> 的连续映射 <span class="math display">\[g\to g\cdot x,\quad
+g\in\mathrm{GL}(V^\ast).\]</span> <span class="math inline">\(C\)</span>
+在此映射下的逆像是 <span class="math inline">\(\mathrm{GL}(V^\ast)\)</span> 中的某个开集 <span class="math inline">\(U\)</span>，并且 <span class="math inline">\(U\)</span> 显然包含恒等元 1，因为 <span class="math inline">\(1\cdot x=x\in C\)</span>，即 <span class="math inline">\(U\)</span> 是 1 的一个开邻域。<span class="math inline">\(U\)</span> 不包含其它任何 <span class="math inline">\(w\ne 1\in W\)</span>，否则 <span class="math inline">\(w\cdot x\in C\)</span>，这与 <span class="math inline">\(C\)</span> 是基本区域矛盾。同理任何 <span class="math inline">\(w\in W\)</span> 都有一个开邻域不包含其它 <span class="math inline">\(W\)</span> 中的点。</p>
+<div id="discrete-subgroup" class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>紧 Hausdorff 拓扑群 <span class="math inline">\(G\)</span>
+的离散子群 <span class="math inline">\(H\)</span> 必然是有限群。</p>
+</div>
+<p>证明：</p>
+<p>第一步：设 <span class="math inline">\(U\)</span> 是单位元 <span class="math inline">\(e\)</span> 的邻域且满足 <span class="math inline">\(U \cap H = \{e\}\)</span>，我们来说明存在一个邻域
+<span class="math inline">\(e\in V\subset U\)</span> 满足 <span class="math inline">\(VV^{-1}\subset U\)</span>。</p>
+<p>令 <span class="math inline">\(\sigma:U\times U\to G\)</span> 为映射
+<span class="math inline">\(\sigma(x, y) =
+xy^{-1}\)</span>。由连续性，存在一个邻域 <span class="math inline">\(N\subset U\times U\)</span> 包含 <span class="math inline">\((e,e)\)</span> 使得 <span class="math inline">\(\sigma(N)\subset U\)</span>。那么 <span class="math inline">\(N\)</span> 包含一个形如 <span class="math inline">\(V_1\times V_2\)</span> 的开集，其中 <span class="math inline">\(V_1, V_2 \subset U\)</span> 是开集且 <span class="math inline">\(e\in V_1\cap V_2\)</span>。取 <span class="math inline">\(V=V_1 \cap V_2\)</span>，于是 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(e\)</span> 的一个邻域，并且 <span class="math inline">\(V\times V\subset V_1\times V_2\)</span>，因此
+<span class="math inline">\(VV^{-1}=\sigma(V \times
+V)\subset\sigma(V_1\times V_2) \subset U\)</span>。</p>
+<p>第二步：我们来论证 <span class="math inline">\(G\backslash H\)</span>
+是开集。为此只要说明对任意 <span class="math inline">\(x\in G\backslash
+H\)</span>，存在 <span class="math inline">\(x\)</span> 的邻域 <span class="math inline">\(U\)</span> 使得 <span class="math inline">\(U\cap
+H=\emptyset\)</span>。设 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(e\)</span> 的邻域且 <span class="math inline">\(U\cap H=\{e\}\)</span>。令 <span class="math inline">\(V\subset U\)</span> 为具有上面第一步中性质的 <span class="math inline">\(e\)</span> 的邻域，则 <span class="math inline">\(N=Vx\)</span> 是 <span class="math inline">\(x\)</span> 的邻域。假设 <span class="math inline">\(h_1, h_2\in N\cap H\)</span>，那么存在 <span class="math inline">\(v_1,v_2\in V\)</span> 满足 <span class="math inline">\(h_1 = v_1x\)</span> 且 <span class="math inline">\(h_2=v_2x\)</span>。于是 <span class="math display">\[v_1^{-1}h_1=x=v_2^{-1}h_2\implies h_1h_2^{-1} =
+v_1v_2^{-1}\in VV^{-1} \subset U.\]</span> 因此 <span class="math inline">\(v_1v_2^{-1}\in H\cap U\)</span>，所以 <span class="math inline">\(h_1h_2^{-1}=e\)</span>，因此 <span class="math inline">\(h_1=h_2\)</span>。这意味着 <span class="math inline">\(N\)</span> 至多包含 <span class="math inline">\(H\)</span> 的一个元素。如果 <span class="math inline">\(N\)</span> 不包含 <span class="math inline">\(H\)</span> 的任何元素，则 <span class="math inline">\(N\)</span> 即为所求。否则若 <span class="math inline">\(N\cap H=\{h\}\)</span>，由于 <span class="math inline">\(G\)</span> 是 Hausdorff 空间，我们可以取开邻域
+<span class="math inline">\(U_x, U_h\subset N\)</span> 将 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(h\)</span> 分开，那么 <span class="math inline">\(U_x\)</span> 是所求的邻域。</p>
+<p>第三步：<span class="math inline">\(H\)</span>
+是有限的。这是因为对每个 <span class="math inline">\(x\in
+H\)</span>，取其邻域 <span class="math inline">\(U_x\)</span> 使得 <span class="math inline">\(U_x\cap H=\{x\}\)</span>，这些开集加上 <span class="math inline">\(G\backslash H\)</span> 构成 <span class="math inline">\(G\)</span> 的一个开覆盖，由 <span class="math inline">\(G\)</span> 的紧性可得存在 <span class="math inline">\(G\)</span> 的有限子覆盖。于是有限多个 <span class="math inline">\(\{U_{x_i}\}_{i=1}^n\)</span> 覆盖了 <span class="math inline">\(H\)</span>。然而每个 <span class="math inline">\(U_{x_i}\)</span> 只包含一个 <span class="math inline">\(H\)</span> 中的元素 <span class="math inline">\(x_i\)</span>，所以 <span class="math inline">\(H\)</span> 是有限的。<span class="math inline">\(\blacksquare\)</span></p>
+<p>现在 <span class="math inline">\(W\)</span> 保持 Euclidean 内积 <span class="math inline">\(B\)</span> 不变，从而是正交群 <span class="math inline">\(O(n,\mathbb{R})\)</span> 的子群。而 <span class="math inline">\(O(n,\mathbb{R})\)</span> 是紧群，<span class="math inline">\(W\)</span> 是离散子群，所以 <span class="math inline">\(W\)</span> 是有限群。</p>
+<h1 id="and-6.4-radical-of-the-bilinear-form-finite-coxeter-groups">6.3
+and 6.4 Radical of the bilinear form / Finite Coxeter groups</h1>
+<p>这两节合起来证明了 6.2 的逆命题：如果 <span class="math inline">\(W\)</span> 是有限群，则 <span class="math inline">\(B\)</span>
+必然是正定的。这个结论是如下几个命题合起来得到的：</p>
+<div id="-------1" class="unnumbered statement sta____1 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(V\)</span> 的一个真 <span class="math inline">\(W-\)</span> 子模，则 <span class="math inline">\(U\subset V^\bot\)</span>。</p>
+</div>
+<p>这个命题背后的关键是任何单根 <span class="math inline">\(\alpha_s\)</span> 必须属于 <span class="math inline">\(U\)</span> 或者 <span class="math inline">\(U^\bot\)</span> 之一。由于 <span class="math inline">\(W\)</span> 是不可约 Coxeter 群，<span class="math inline">\(\Delta\)</span>
+不能分成两个互相正交的子集，所以要么 <span class="math inline">\(\Delta\in U\)</span>，这与 <span class="math inline">\(U\)</span> 是真子模矛盾；要么 <span class="math inline">\(\Delta\in U^\bot\)</span>，从而 <span class="math inline">\(U\subset V^\bot\)</span>。</p>
+<div id="-------2" class="unnumbered statement sta____2 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span> 上的作用是完全可约的。</p>
+</div>
+<p>这是群表示论里面的 Maschke 定理。证明技巧就是取平均构造 <span class="math inline">\(W-\)</span> 不变的正定内积。</p>
+<div id="-------3" class="unnumbered statement sta____3 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B\)</span> 是非退化的。</p>
+</div>
+<p>若不然 <span class="math inline">\(V^\bot\ne(0)\)</span>，完全可约性说明 <span class="math inline">\(V^\bot\)</span> 有直和补 <span class="math inline">\(U\)</span>，但是 <span class="math inline">\(U\)</span> 也在 <span class="math inline">\(V^\bot\)</span> 中，矛盾。</p>
+<div id="-------4" class="unnumbered statement sta____4 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(W\)</span> 在 <span class="math inline">\(V\)</span> 上是不可约的。</p>
+</div>
+<p>这是命题 3 的直接结论，因为有非平凡的真子模意味着 <span class="math inline">\(V^\bot\)</span> 也非平凡，与 <span class="math inline">\(B\)</span> 非退化矛盾。</p>
+<div id="-------5" class="unnumbered statement sta____5 plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+5</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B\)</span> 是正定的。</p>
+</div>
+<p>实际上 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(W\)</span> 的不可约表示说明 <span class="math inline">\(V\)</span> 上的 <span class="math inline">\(W-\)</span>
+不变双线性函数构成的向量空间是一维的。而我们已经有一个 <span class="math inline">\(W-\)</span> 不变的正定内积，所以 <span class="math inline">\(B\)</span>
+必然是它的一个倍数，从而也是正定的。</p>
+<h1 id="affine-coxeter-groups">6.5 Affine Coxeter groups</h1>
+<p>之前第 4 章介绍的仿射 Coxeter
+群是通过关于超平面的反射构造的，这种反射未必是线性的；而 Coxeter
+群的几何实现中，<span class="math inline">\(W\)</span>
+是由线性反射生成的。这一节将这两种方式统一起来。</p>
+<p>设 <span class="math inline">\((W,S)\)</span> 是不可约 Coxeter
+群，<span class="math inline">\(|S|=n+1\)</span>。根据第 5
+章几何实现的讨论，我们知道 <span class="math inline">\((W,S)\)</span>
+可以实现为 <span class="math inline">\(n+1\)</span> 维实向量空间 <span class="math inline">\(V\)</span> 上的反射群。设 <span class="math inline">\(V\)</span> 的一组基为 <span class="math inline">\(\Delta=\{\alpha_i\}\)</span>，每个 <span class="math inline">\(s_i\in S\)</span> 对应于 <span class="math inline">\(V\)</span> 上的反射 <span class="math inline">\(s_{\alpha_i}\)</span>。</p>
+<p>此外设 <span class="math inline">\(V^\ast\)</span> 是 <span class="math inline">\(V\)</span> 的对偶空间，<span class="math inline">\(\langle \cdot,\cdot \rangle\)</span> 是 <span class="math inline">\(V\times V^\ast\to\mathbb{R}\)</span>
+的自然配对。</p>
+<p>我们来分析当 Cartan 矩阵是半正定，但不是正定时 <span class="math inline">\((W,S)\)</span> 的结构。</p>
+<p>根据 2.6 小节的结论，<span class="math inline">\(\mathrm{rad}{(V)}=\mathbb{R}\delta\)</span>
+可以由一个向量 <span class="math inline">\(\delta\)</span> 生成，并且
+<span class="math inline">\(W\)</span> 保持子空间 <span class="math inline">\(\mathbb{R}\delta\)</span> 不变。在 <span class="math inline">\(V/\mathbb{R}\delta\)</span>
+上诱导的内积是正定的。</p>
+<p>我们知道，<span class="math inline">\(W\)</span> 也作用在 <span class="math inline">\(V^\ast\)</span> 上，这个作用的定义是规定 <span class="math inline">\(W\)</span> 保持双线性对 <span class="math inline">\(\langle \cdot,\cdot \rangle\)</span> 不变： <span class="math display">\[\langle wv,wx \rangle = \langle v, x
+\rangle.\quad w\in W,v\in V, x\in V^\ast.\]</span> 记 <span class="math display">\[\begin{aligned}
+H_0&amp;=\{x\in V^\ast\mid \langle\delta,x\rangle=0\},\\
+H_1&amp;=\{x\in V^\ast\mid \langle\delta,x\rangle=1\}.
+\end{aligned}\]</span> 则 <span class="math inline">\(H_0\)</span>
+是线性子空间，<span class="math inline">\(H_1\)</span>
+是仿射超平面。<span class="math inline">\(W\)</span> 保持 <span class="math inline">\(H_0,H_1\)</span> 不变：因为对任何 <span class="math inline">\(x\in V^\ast\)</span> 都有 <span class="math display">\[\langle\delta,wx\rangle=\langle
+w^{-1}\delta,x\rangle=\langle\delta,x\rangle.\]</span></p>
+<p>注意到 <span class="math inline">\(H_0\)</span> 与 <span class="math inline">\(V/\mathbb{R}\delta\)</span> 是对偶的，所以它是一个
+Euclidean
+空间（通过指定一组对偶基，你可以把一个空间上的度量挪到它的对偶空间上）；<span class="math inline">\(H_1\)</span> 作为 <span class="math inline">\(H_0\)</span> 平移得到的超平面也具有 Euclidean
+度量。<span class="math inline">\(W\)</span> 同样保持 <span class="math inline">\(H_0\)</span> 和 <span class="math inline">\(H_1\)</span> 上的度量不变。</p>
+<p>所以我们只要在 <span class="math inline">\(V^\ast\)</span>
+中考虑问题即可。现在的问题变成，已知 <span class="math inline">\(W\leqslant {\rm GL}(V^\ast)\)</span> 保持 <span class="math inline">\(H_0,H_1\)</span> 不变，分析 <span class="math inline">\(W\)</span> 在 <span class="math inline">\(H_1\)</span> 上的作用。</p>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(f: H_1\to H_1\)</span>
+是映射，如果存在 <span class="math inline">\(T\in {\rm
+GL}(V^\ast)\)</span> 满足 <span class="math inline">\(f(x + y) - f(x) =
+T(y)\)</span> 对任何 <span class="math inline">\(x\in H_1,y\in
+H_0\)</span> 成立，就称 <span class="math inline">\(f\)</span> 是 <span class="math inline">\(H_1\)</span> 上的仿射变换。记 <span class="math inline">\({\bf Aff}(H_1)\)</span> 是 <span class="math inline">\(H_1\)</span> 上所有仿射变换构成的集合，不难验证
+<span class="math inline">\({\bf Aff}(H_1)\)</span>
+在映射的复合下构成一个群。</p>
+</div>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(W\)</span> 在 <span class="math inline">\(H_1\)</span> 上的作用诱导了群同态 <span class="math inline">\(W\to {\bf Aff}(H_1)\)</span>。</p>
+</div>
+<p><strong>证明</strong>：由于 <span class="math inline">\(w\)</span> 在
+<span class="math inline">\(V^\ast\)</span> 上的作用是线性的，<span class="math inline">\(w(x+y)-w(x)=w(y)\)</span>，所以结论是显然的。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="hecke-algebras-and-inverses">7.4 Hecke algebras and
+inverses</h1>
+<p>这一节引入了 <span class="math inline">\(R\)</span>
+多项式，并给出了它们满足的递推关系。这部分用对合来处理会比较方便。</p>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>对任何 <span class="math inline">\(w\in W\)</span>， <span class="math display">\[q^{l(w)}\,\overline{T_w}=\sum_{x\leq
+w}(-1)^{l(x)+l(w)}R_{x,w}(q)T_x.\]</span> 其中 <span class="math inline">\(R_{x,w}(q)\in\mathbb{Z}[q]\)</span> 是关于 <span class="math inline">\(q\)</span> 的多项式，满足 <span class="math inline">\(R_{w,w}(q)=1\)</span>。</p>
+</div>
+<p><strong>证明</strong>：由 <span class="math inline">\(q^{l(e)}\,\overline{T_e}=q^0\,\overline{T_e}=T_e\)</span>，结论对
+<span class="math inline">\(w=e\)</span> 成立。当 <span class="math inline">\(l(w)&gt;0\)</span> 时，设 <span class="math inline">\(w=s_1\cdots s_r\)</span> 是一个既约表示，则 <span class="math display">\[\begin{align}
+q^{l(w)}\,\overline{T_w}&amp;=q^r\,\overline{T_{s_1\cdots s_r}}\\
+&amp;=q^r\,\overline{T_{s_1}}\cdots\overline{T_{s_r}}\\
+&amp;=(qT_{s_1}^{-1})\cdots (qT_{s_r}^{-1})\\
+&amp;=(T_{s_1}+1-q)\cdots (T_{s_r}+1-q)\\
+&amp;=\sum_{k=1}^r\sum_{1\leq i_1\leq\cdots\leq i_k\leq
+r}(1-q)^{r-k}T_{s_{i_1}}\cdots T_{s_{i_k}} + (1-q)^r.
+\end{align}\]</span> 注意到每个 <span class="math inline">\(T_{s_{i_1}}\cdots T_{s_{i_k}}=T_{s_1\cdots
+s_k}=T_x\)</span>，<span class="math inline">\(x\)</span> 是 <span class="math inline">\(w\)</span> 的子表达式，所以 <span class="math inline">\(x\leq w\)</span>。合并相同的 <span class="math inline">\(x\)</span> 的系数以后，显然 <span class="math inline">\(T_x\)</span> 的系数在 <span class="math inline">\(\mathbb{Z}[q]\)</span> 中，所以存在 <span class="math inline">\(R_{x,w}\in\mathbb{Z}[q]\)</span> 满足 <span class="math display">\[\sum_{k=1}^r\sum_{1\leq i_1\leq\cdots\leq i_k\leq
+r}(1-q)^{r-k}T_{s_{i_1}}\cdots T_{s_{i_k}} +(1-q)^r=\sum_{x\leq
+w}(-1)^{l(x)+l(w)}R_{x,w}(q)T_x.\]</span> 由于 <span class="math inline">\(s_{i_1}\cdots s_{i_k}=w\)</span>
+只有一种可能，就是 <span class="math inline">\(k=r\)</span> 并且 <span class="math inline">\((i_1,\ldots,i_r)=(1,\ldots,r)\)</span>，所以 <span class="math inline">\(R_{w,w}(q)=1\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(s\in S\)</span>，<span class="math inline">\(w\in W\)</span> 满足 <span class="math inline">\(sw&lt;w\)</span>，则 <span class="math display">\[
+R_{x,w}(q) = \begin{cases}R_{sx,sw}(q) &amp; \text{if } sx&lt;x,\\
+qR_{sx,sw}(q)+(q-1)R_{x,sw}(q) &amp; \text{if } x&lt;sx.\end{cases}
+\]</span></p>
+</div>
+<p><strong>证明</strong>： <span class="math display">\[\begin{aligned}
+&amp;\qquad\sum_{w\in W}(-1)^{l(x)+l(w)}R_{x,w}(q)T_x =
+q^{l(w)}\,\overline{T_w}=q^{l(s)+l(sw)}\overline{T_s}\,\overline{T_{sw}}=q\,\overline{T_s}\,
+q^{l(sw)}\,\overline{T_{sw}}\\
+&amp;=(T_s +1-q)\sum_{w\in W}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_x\\
+&amp;=\sum_{w\in W}(-1)^{l(sw)+l(x)}R_{x,sw}(q)(T_sT_x+(1-q)T_x)\\
+&amp;=(1-q)\sum_{w\in W}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_x + \sum_{w\in
+W}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_sT_x\\
+&amp;=(1-q)\sum_{w\in W}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_x +\sum_{w\in
+W,\,x&lt;sx}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_{sx}\\&amp;\quad +\sum_{w\in
+W,\,x&gt;sx}(-1)^{l(sw)+l(x)}R_{x,sw}(q)(qT_{sx}+(q-1)T_x)\\
+&amp;=(1-q)\sum_{w\in
+W,\,x&lt;sx}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_x+\sum_{w\in
+W,\,x&lt;sx}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_{sx}\\&amp;\quad
++\,q\sum_{w\in W,\,x&gt;sx}(-1)^{l(sw)+l(x)}R_{x,sw}(q)T_{sx}\\
+&amp;\overset{y=sx}=(q-1)\sum_{w\in
+W,\,x&lt;sx}(-1)^{l(w)+l(x)}R_{x,sw}(q)T_x+\sum_{w\in W,
+\,sy&lt;y}(-1)^{l(sw)+l(sy)}R_{sy,sw}(q)T_y\\&amp;\quad +q\sum_{w\in
+W,\,sy&gt;y}(-1)^{l(sw)+l(sy)}R_{sy,sw}(q)T_y\\
+&amp;\overset{y=x}=\sum_{w\in
+W,\,sx&lt;x}(-1)^{l(w)+l(x)}R_{sx,sw}(q)T_x+\sum_{w\in
+W,\,sx&gt;x}(-1)^{l(w)+l(x)}\left(qR_{sx,sw}+(q-1)R_{x,sw}\right)T_x.
+\end{aligned}\]</span> 比较两边 <span class="math inline">\(T_x\)</span>
+的系数即可得到结论。</p>
+<h1 id="further-properties-of-r-polynomials">7.8 Further properties of
+<span class="math inline">\(R\)</span>-polynomials</h1>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(R\)</span>-多项式满足如下性质：</p>
+<ol type="1">
+<li><span class="math inline">\((-q)^{l(w)-l(x)}\overline{R_{x,w}(q)}=R_{x,w}\)</span>。</li>
+<li><span class="math inline">\(\sum_{x\leq y\leq
+w}(-1)^{l(x)+l(y)}R_{x,y}(q) R_{y,w}(q)=\delta_{x,w}\)</span>。</li>
+</ol>
+</div>
+<p>1 的证明：对 <span class="math inline">\(w\)</span> 的长度归纳。如果
+<span class="math inline">\(l(w)=0\)</span> 则 <span class="math inline">\(w=x=e\)</span>，<span class="math inline">\(R_{e,e}=1\)</span>，结论成立。</p>
+<p>设结论对所有长度 <span class="math inline">\(&lt;l(w)\)</span>
+的元素成立，取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(l(sw)&lt;l(w)\)</span>。考虑两种情况：</p>
+<ul>
+<li><span class="math inline">\(sx &lt; x\)</span>。这时 <span class="math inline">\(R_{x,w}=R_{sx,sw}\)</span>，对 <span class="math inline">\(sw\)</span> 应用归纳假设 <span class="math display">\[(-q)^{l(sw)-l(sx)}\overline{R_{sx,sw}}=R_{sx,sw}=R_{x,w}.\]</span>
+由于 <span class="math inline">\(l(sw)-l(sx)=l(w)-l(x)\)</span>
+所以结论对 <span class="math inline">\(w\)</span> 也成立。</li>
+<li><span class="math inline">\(sx&gt;x\)</span>。 <span class="math display">\[\begin{align}
+(-q)^{l(w) - l(x)} R_{x,w}(q) &amp;= (-1)^{l(w) + l(x)} q^{l(w) - l(x)}
+R_{x,w}(q^{-1}) \\
+&amp;= (-1)^{l(w) + l(x)} q^{l(w) - l(x)} \left( q^{-1}
+R_{sx,sw}(q^{-1}) + (q^{-1} - 1) R_{x,sw}(q^{-1}) \right) \\
+&amp;= (-1)^{l(w) + l(x)} q^{l(sw) - l(sx)} q^2\left( q^{-1}
+R_{sx,sw}(q^{-1}) + (q^{-1} - 1) R_{x,sw}(q^{-1}) \right) \\
+&amp;= q (-1)^{l(sw) + l(sx)} q^{l(sw) - l(sx)} R_{sx,sw}(q^{-1}) \\
+&amp;\quad - (-1)^{l(sw) + l(x)} q^{l(sw) - l(x)} (1 - q)
+R_{x,sw}(q^{-1}) \\
+&amp;= q (-q)^{l(sw) - l(sx)} R_{sx,sw}(q) + (q - 1)(-q)^{l(sw) - l(x)}
+R_{x,sw}(q) \\
+&amp;= q R_{sx,sw}(q) + (q - 1) R_{x,sw}(q) \\
+&amp;= R_{x,w}(q).
+\end{align}\]</span></li>
+</ul>
+<p>2 的证明：根据 <span class="math inline">\(R\)</span>-多项式的定义，
+<span class="math display">\[\overline{T_w}=q^{-l(w)}\sum_{y\in
+W}(-1)^{l(y)+l(w)}R_{y,w}T_y.\]</span> 两边取对合得到 <span class="math display">\[\begin{aligned}
+T_w&amp;=\overline{q^{-l(w)}\sum_{y\in W}(-1)^{l(y)+l(w)}R_{y,w}T_y}\\
+&amp;=q^{l(w)}\sum_{y\in
+W}(-1)^{l(y)+l(w)}\overline{R_{y,w}}\,\overline{T_y}\\
+&amp;=q^{l(w)}\sum_{y\in W}(-1)^{l(y)+l(w)}q^{l(y)-l(w)}R_{y,w}\cdot
+q^{-l(y)}\sum_{x\in W}(-1)^{l(x)+l(y)}R_{x,y}T_y\\
+&amp;=\sum_{x\in W}\left(\sum_{x\leq y\leq
+w}(-1)^{l(y)+l(x)}R_{x,y}R_{y,w}\right)T_x
+\end{aligned}\]</span> 比较两边关于 <span class="math inline">\(T_w\)</span> 项的系数即可。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Humphreys90" class="csl-entry" role="listitem">
+Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
+Cambridge Studies in Advanced Mathematics. Cambridge University Press.
+<a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
+</div>
+</div>
+
+
+
+                                                    
+
+    
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

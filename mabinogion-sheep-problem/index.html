@@ -1,0 +1,755 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            洛奇绵羊问题 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="今天的问题源自中世纪威尔士人的故事集《Mabinogion》中的一段：
+
+一个男孩来到了一个美丽的山谷，有一条小河在谷中流淌。他看到河一边的草地上有一群黑绵羊，另一边的草地上有一群白绵羊。羊群被施以一种魔法：每个时刻都恰有一只绵羊发出咩咩的叫声。如果发出叫声的是白绵羊，就会有一只黑绵羊趟过小河跑过来并且变成白绵羊；如果发出叫声的是黑绵羊，则会有一只白绵羊趟过小河跑过去并且变成黑绵羊。每个时刻发出叫声的绵羊是完全随机的，整个过程没有绵羊出生或者死亡，一直持续到所有绵羊都变成同一种颜色为止。
+
+问题是这样的：
+
+问题： 如果男孩可以选择在初始时刻 \(0\)，或者是每个魔法时刻 \(1,2,\ldots\)
+结束后将任意数量的白绵羊赶出山谷，那么为了最终得到尽可能多的黑绵羊，他应该采取怎样的策略？">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="洛奇绵羊问题"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Williams-概率和鞅/">Williams 概率和鞅</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>洛奇绵羊问题</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2011-04-08T00:00:00.000Z"><a href="/mabinogion-sheep-problem/">2011-04-08</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%84%E5%BD%95"><span class="section table-of-contents-text">附录</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p><img src="/images/midjourney/mabinogion.png" class="fig" width="350"></p>
+<p>今天的问题源自中世纪威尔士人的故事集《Mabinogion》中的一段：</p>
+<blockquote>
+<p>一个男孩来到了一个美丽的山谷，有一条小河在谷中流淌。他看到河一边的草地上有一群黑绵羊，另一边的草地上有一群白绵羊。羊群被施以一种魔法：每个时刻都恰有一只绵羊发出咩咩的叫声。如果发出叫声的是白绵羊，就会有一只黑绵羊趟过小河跑过来并且变成白绵羊；如果发出叫声的是黑绵羊，则会有一只白绵羊趟过小河跑过去并且变成黑绵羊。每个时刻发出叫声的绵羊是完全随机的，整个过程没有绵羊出生或者死亡，一直持续到所有绵羊都变成同一种颜色为止。</p>
+</blockquote>
+<p>问题是这样的：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>如果男孩可以选择在初始时刻 <span class="math inline">\(0\)</span>，或者是每个魔法时刻 <span class="math inline">\(1,2,\ldots\)</span>
+结束后将任意数量的白绵羊赶出山谷，那么为了最终得到尽可能多的黑绵羊，他应该采取怎样的策略？</p>
+</div>
+<span id="more"></span>
+<p>洛奇绵羊问题出自 <span class="citation" data-cites="Williams1991">(<a href="#ref-Williams1991" role="doc-biblioref">Williams
+1991</a>)</span>，是一个很有趣的问题。这种在随机的环境中施加一个控制的力，以最大化期望收益的问题属于随机控制的范畴。</p>
+<p>我们首先说明不论男孩采取怎样的策略，最终羊群都会以概率 1
+全部变成同一种颜色。</p>
+<p>设 <span class="math inline">\(\Omega=\{
+(w,b)\in\mathbb{Z}_{\geq0}\times\mathbb{Z}_{\geq0}\}\)</span>
+是羊群所有可能的状态组成的集合，其中 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span>
+分别表示白绵羊和黑绵羊的数目。男孩采取的一个策略 <span class="math inline">\(S\)</span> 就是从一个状态 <span class="math inline">\((w,b)\)</span> 移动到另一个状态 <span class="math inline">\((w',b')\)</span> 的规则：根据当前 <span class="math inline">\((w,b)\)</span> 的值，男孩决定到底是按兵不动
+（不做任何干预），还是赶走 <span class="math inline">\(c\)</span>
+只白绵羊，把状态 <span class="math inline">\((w,b)\)</span> 变成状态
+<span class="math inline">\((w-c,b)\)</span>，这里 <span class="math inline">\(0&lt;c\leq w\)</span>
+是一个正整数。如果男孩始终不做任何干预的话，那么羊群状态将始终保持在线段
+<span class="math display">\[\{ (x,y)\mid x\geq0, y\geq0,
+x+y=w+b\}\]</span> 上，这是一个互通的 Markov 链，因此以概率 1
+撞到吸收状态 <span class="math inline">\((0,w+b)\)</span> 或 <span class="math inline">\((w+b,0)\)</span>，即最终变成同一种颜色。如果男孩在某个时刻移走了
+<span class="math inline">\(c\)</span>
+只白绵羊，那么系统将会被强制转移到线段 <span class="math display">\[\{
+(x,y)\mid x\geq0, y\geq0, x+y=w+b-c\}\]</span>
+上，如此下去。由于男孩只能进行有限次移走绵羊的操作，可见不论男孩策略如何，羊群总是会最终变成同色的。</p>
+<p>对任何策略 <span class="math inline">\(S\)</span>，我们用 <span class="math inline">\(V_S(w,b)\)</span> 表示从 <span class="math inline">\((w,b)\)</span> 状态出发，在策略 <span class="math inline">\(S\)</span> 下最终得到的黑绵羊数量的期望值。这里
+<span class="math inline">\(V_S\)</span> 是一个由 <span class="math inline">\(S\)</span> 决定的确定的函数，它不包含随机性。<span class="math inline">\(V_S\)</span> 叫做策略 <span class="math inline">\(S\)</span> 的值函数。显然 <span class="math inline">\(V_S\)</span> 总是满足边界条件 <span class="math display">\[V_S(0,b)=b,\quad
+V_S(w,0)=0\label{eq:boundary}\tag{$\ast$}.\]</span></p>
+<p>假设我们能够找到这样一个策略 <span class="math inline">\(A\)</span>，它的值函数 <span class="math inline">\(V_A\)</span> 有如下性质，那么它就是最佳策略：</p>
+<blockquote>
+<p><strong>最优策略的充分条件</strong>：如果策略 <span class="math inline">\(A\)</span> 的值函数 <span class="math inline">\(V_A\)</span> 满足如下条件：对任何初始状态 <span class="math inline">\((w,b)\)</span> 和任何的策略 <span class="math inline">\(S\)</span>，设羊群在策略 <span class="math inline">\(S\)</span> 下第 <span class="math inline">\(n\)</span> 个魔法时刻结束后的状态为 <span class="math inline">\((W_n,B_n)\)</span>，序列 <span class="math inline">\(\{V_A(W_n,B_n),n=0,1,\ldots\}\)</span>
+是上鞅，则策略 <span class="math inline">\(A\)</span> 就是最优的。</p>
+</blockquote>
+<p>注意这里是把任一策略 <span class="math inline">\(S\)</span>
+下的状态序列 <span class="math inline">\((W_n, B_n)\)</span> 代入策略
+<span class="math inline">\(A\)</span> 的值函数中。</p>
+<p>其中的道理非常简单：对任何策略 <span class="math inline">\(S\)</span>，由于其吸收状态 <span class="math inline">\((W_\infty,B_\infty)\)</span> 中必有一个分量是
+0，从而由值函数边界条件 <span class="math inline">\((\ref{eq:boundary})\)</span> 有 <span class="math inline">\(B_\infty=V_A(W_\infty,B_\infty)\)</span>，所以
+<span class="math display">\[\mathbb{E}[B_\infty]=\mathbb{E}[V_A(W_\infty,B_\infty)]\leq
+\mathbb{E}[V_A(w,b)]=V_A(w,b).\]</span> 其中最后一个等号是因为 <span class="math inline">\(V_A(w,b)\)</span>
+是一个常数，常数的期望等于自身。</p>
+<p>在教材中，Williams 直接「猜出」了策略 <span class="math inline">\(A\)</span>：</p>
+<blockquote>
+<p><strong>策略 <span class="math inline">\(A\)</span></strong>：如果当前黑绵羊的数量多于白绵羊，则什么也不做；否则就把白绵羊的数量变为黑绵羊的数量减
+1。</p>
+</blockquote>
+<p>显然 <span class="math inline">\(V_A\)</span> 有如下性质：</p>
+<div id="recurrence" class="statement sta_v_a______ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label"><span class="math inline">\(V_A\)</span> 的递推关系</span>.</span></p>
+<ol type="1">
+<li>边界条件 <span class="math inline">\(V_A(0,b)=b\)</span>，<span class="math inline">\(V_A(w,0)=0\)</span>。</li>
+<li><span class="math inline">\(V_A(w,b)=V_A(w-1,b), w\geq
+b&gt;0\)</span>。</li>
+<li><span class="math inline">\(V_A(w,b)=\frac{w}{w+b}V_A(w+1,b-1)+\frac{b}{w+b}V_A(w-1,b+1)\)</span>,
+<span class="math inline">\(b&gt;w&gt;0\)</span>。</li>
+</ol>
+</div>
+<p><span class="math inline">\(V_A\)</span> 由边界条件 1 和递推关系 2, 3
+完全决定。</p>
+<p>从定义上看，关系 2 只在一半的区域上成立，而关系 3
+则在另一半的区域上成立。但是花费一番功夫，我们其实可以证明它们各自的「弱形式」在整个区域上都是对的：</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>在区域 <span class="math inline">\(\Omega\)</span> 上，<span class="math inline">\(V_A\)</span> 函数满足如下的不等式：</p>
+<ol start="4" type="1">
+<li><span class="math inline">\(V_A(w,b)\geq V_A(w-1,b),
+w&gt;0\)</span>。</li>
+<li><span class="math inline">\(V_A(w,b)\geq
+\frac{w}{w+b}V_A(w+1,b-1)+\frac{b}{w+b}V_A(w-1,b+1),w&gt;0,
+b&gt;0\)</span>。</li>
+</ol>
+</div>
+<p>4, 5 合起来说的就是无论男孩策略如何，<span class="math inline">\(\{
+V_A(W_n,B_n)\}\)</span> 总是一个上鞅！因此策略 <span class="math inline">\(A\)</span> 确实是最优的。</p>
+<p>引理的证明是纯粹的分析，过程比较繁琐，我把它留给 Williams 的教材第
+15.3 节。写出 <span class="math inline">\(V(w,b)\)</span>
+的显式表达式来是很难的，Williams 证明了 <span class="math display">\[\lim_{k\to\infty}V(k,k)-(2k+\frac{\pi}{4}-\sqrt{\pi
+k})=0.\label{eq:vkk}\tag{$\ast\ast$}\]</span> 因此如果开始有黑、白绵羊各
+10000 只，则策略 <span class="math inline">\(A\)</span>
+下黑绵羊的期望数目大约是 19824 只。</p>
+<p>我对 Williams
+给出的估计不太放心，于是用书中给出的递推关系写了一段代码验证了一下：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> *<br><br>pi = <span class="hljs-number">3.14159265358979</span><br>getcontext().prec = <span class="hljs-number">20</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">solve_sheep</span>(<span class="hljs-params">n</span>):</span><br>    p = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]<br>    v = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]<br>    v[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span><br>    p[<span class="hljs-number">1</span>] = Decimal(<span class="hljs-number">0.5</span>)<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n + <span class="hljs-number">1</span>):<br>        p[k] = (<span class="hljs-number">1</span> - <span class="hljs-number">1</span> / Decimal(<span class="hljs-number">2</span> * k)) * p[k - <span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>        w = (<span class="hljs-number">1</span> - p[k]) / (<span class="hljs-number">1</span> + p[k])<br>        v[k + <span class="hljs-number">1</span>] = w * v[k] + (<span class="hljs-number">1</span> - w) * (<span class="hljs-number">2</span> * k + <span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">return</span> v[n]<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">estimate_sheep</span>(<span class="hljs-params">n</span>):</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * n + pi / <span class="hljs-number">4</span> - (pi * n)**<span class="hljs-number">0.5</span><br><br>print(solve_sheep(<span class="hljs-number">10000</span>))<br>print(estimate_sheep(<span class="hljs-number">10000</span>))<br></code></pre></td></tr></tbody></table></figure>
+<p>递推公式给出的真实值结果是 19823.5422285701，渐进公式给出的结果是
+19823.540013，准确的有点离谱啊！这真的有点刷新我对 Stirling
+公式的认知。</p>
+<p>猜出最优策略、证明弱化的不等式、给出渐进公式，每一步都是神操作啊。</p>
+<h1 id="附录">附录</h1>
+<p>Williams 书中对渐进公式 <span class="math inline">\((\ref{eq:vkk})\)</span>
+的证明比较难读，我这里解释下其中的想法。关键是用对角线上的值 <span class="math inline">\(v_k=V(k,k)\)</span> 来表示出所有的 <span class="math inline">\(V(w, b),b&gt;w&gt;0\)</span>：</p>
+<p><span class="math display">\[\begin{cases}V(k-c,
+k+c)=v_k+(2k-v_k)a_c,\\ V(k+1-c,
+k+c)=v_k+(2k+1-v_k)b_c.\end{cases}\]</span></p>
+<p>其中</p>
+<p><span class="math display">\[\begin{cases}a_c=2^{-(2k-2)}\sum\limits_{j=k}^{k+c-1}\dbinom{2k-1}{j},\\b_c=\left(2^{2k-1}+\frac{1}{2}\dbinom{2k}{k}\right)^{-1}\sum\limits_{j=k}^{k+c-1}\dbinom{2k}{j}.\end{cases}\]</span></p>
+<p>Williams
+没有解释这组公式是怎么求出来的，它看起来很吓人，其实道理不复杂。我们用
+<span class="math inline">\(V(k-c,k+c)\)</span> 为例子来说明：</p>
+<p>记 <span class="math inline">\(g(c) = V(k-c, k+c),0\leq c\leq
+k\)</span>，则 <span class="math inline">\(g(0)=v_k,\,g(k)=2k\)</span>，由前面 <a href="#recurrence" title="V_A 的递推关系"><span class="math inline">\(V_A\)</span> 的递推关系</a> 中的 3
+知其满足递推关系</p>
+<p><span class="math display">\[g(c) = \frac{k-c}{2k}g(c-1) +
+\frac{k+c}{2k}g(c+1),\quad 1\leq c \leq k-1.\]</span> 这是一个 <span class="math inline">\([0,k]\)</span> 上的递推序列，并且已知边界条件
+<span class="math inline">\(g(0)\)</span> 和 <span class="math inline">\(g(k)\)</span>，我们来求解这个序列。</p>
+<p>记</p>
+<p><span class="math display">\[h(c) = \frac{g(c) - g(0)}{g(k)-g(0)} =
+\frac{g(c) - v_k}{g(k)-v_k}.\label{eq:hc}\tag{1}\]</span></p>
+<p>则 <span class="math inline">\(h(c)\)</span>
+同样满足上述递推关系，但是边界条件为 <span class="math inline">\(h(0)=0\)</span>，<span class="math inline">\(h(k)=1\)</span>。于是</p>
+<p><span class="math display">\[\begin{align}h(c+1)-h(c)
+&amp;=\frac{k-c}{k+c}(h(c)-h(c-1))\\&amp;=\cdots\\&amp;=\frac{(k-c)\cdots(k-1)}{(k+c)\cdots(k+1)}(h(1)-h(0))\\&amp;=\frac{\dbinom{2k-1}{k+c}}{\dbinom{2k-1}{k}}h(1).\label{eq:hrec}\tag{2}\end{align}\]</span></p>
+<p>利用 <span class="math inline">\((\ref{eq:hrec})\)</span>
+我们可以解出 <span class="math inline">\(h(1)\)</span> 来：</p>
+<p><span class="math display">\[1=h(k)=\sum_{c=0}^{k-1}\big(h(c+1)-h(c)\big)=h(1)\frac{\sum_{c=0}^{k-1}\dbinom{2k-1}{k+c}}{\dbinom{2k-1}{k}}=h(1)\dfrac{2^{2k-2}}{\dbinom{2k-1}{k}}.\]</span></p>
+<p>即 <span class="math inline">\(h(1)=2^{-(2k-2)}\binom{2k-1}{k}\)</span>。再次利用
+<span class="math inline">\((\ref{eq:hrec})\)</span> 可得</p>
+<p><span class="math display">\[h(c)=\sum_{j=0}^{c-1}\big(h(j)-h(j-1)\big)=\sum_{j=0}^{c-1}\frac{\dbinom{2k-1}{k+j}}{\dbinom{2k-1}{k}}h(1)=2^{-(2k-2)}\sum_{j=k}^{k+c-1}\dbinom{2k-1}{j}.\]</span></p>
+<p>将上式代入 <span class="math inline">\((\ref{eq:hc})\)</span>
+即得结论。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Williams1991" class="csl-entry" role="listitem">
+Williams, David. 1991. <em>Probability with Martingales</em>. Cambridge
+University Press.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/pattern-occurrence/" rel="next" title="模式的等待时间与反直觉概率">
+      上一篇：模式的等待时间与反直觉概率
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/spaceship-jump/" rel="next" title="飞船空间跳跃问题">
+          下一篇：飞船空间跳跃问题
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

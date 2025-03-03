@@ -1,0 +1,796 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Birkhoff 遍历定理 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="我念研究生时的高等概率论课用的是 Durrett 的教材 “Probability: Theory
+and
+Examples”。这本书的好处我就不再介绍了，院长陈大岳老师在世图影印版的前言中已经夸了一遍。我个人的体会是，Durrett
+的书在讲解证明的时候非常简练，很少写为什么要这样证，我有时候读了半天也没搞明白思路。Birkhoff
+遍历定理算是其中一个，于是我重新整理了一下书中的证明，作此文留念。
+Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 50
+页。随后在 1939 年 K.Yosida （吉田耕作） 和 S.Kakutani （角谷）
+利用极大遍历定理给出了一个 10
+页的简洁证明，不过他们关于极大遍历定理的证明还是啰嗦了点，后来 Garsia
+给出了极大遍历定理的一个仅有寥寥数行的惊人证明，这也是当前大多数教材采用的途径，本文就来介绍这一证明。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Birkhoff 遍历定理"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Durrett-概率论批判/">Durrett 概率论批判</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Birkhoff 遍历定理</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2013-04-20T16:00:00.000Z"><a href="/Birkhoff-ergodic-theorem/">2013-04-21</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="section table-of-contents-text">准备工作</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#birkhoff-%E9%81%8D%E5%8E%86%E5%AE%9A%E7%90%86"><span class="section table-of-contents-text">Birkhoff 遍历定理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#birkhoff-%E9%81%8D%E5%8E%86%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">Birkhoff 遍历定理的证明</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9E%81%E5%A4%A7%E9%81%8D%E5%8E%86%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">极大遍历定理的证明</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>我念研究生时的高等概率论课用的是 Durrett 的教材 “Probability: Theory
+and
+Examples”。这本书的好处我就不再介绍了，院长陈大岳老师在世图影印版的前言中已经夸了一遍。我个人的体会是，Durrett
+的书在讲解证明的时候非常简练，很少写为什么要这样证，我有时候读了半天也没搞明白思路。Birkhoff
+遍历定理算是其中一个，于是我重新整理了一下书中的证明，作此文留念。</p>
+<p>Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 50
+页。随后在 1939 年 K.Yosida （吉田耕作） 和 S.Kakutani （角谷）
+利用极大遍历定理给出了一个 10
+页的简洁证明，不过他们关于极大遍历定理的证明还是啰嗦了点，后来 Garsia
+给出了极大遍历定理的一个仅有寥寥数行的惊人证明，这也是当前大多数教材采用的途径，本文就来介绍这一证明。</p>
+<span id="more"></span>
+<h1 id="准备工作">准备工作</h1>
+<p>给定一个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>，我们称两个可测集
+<span class="math inline">\(A,B\in F\)</span>
+几乎处处相等，是指它们的示性函数 <span class="math inline">\(\mathbb{1}_A,\mathbb{1}_B\)</span>
+几乎处处相等，记作 <span class="math inline">\(A\stackrel{\mathrm{a.e.}}{=}B\)</span>。等价的说法是
+<span class="math inline">\(A,B\)</span> 只差一个零测集，或者差集 <span class="math inline">\(A\Delta B\)</span> 是零测集。</p>
+<p>设 <span class="math inline">\(T:\Omega\rightarrow \Omega\)</span>
+是一个可测变换，即对任何 <span class="math inline">\(E\in\mathcal{F}\)</span> 有 <span class="math inline">\(T^{-1}E\in\mathcal{F}\)</span>。</p>
+<div id="def-1" class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+1.1</span>.</span><span class="statement-spah"> </span>如果可测集 <span class="math inline">\(E\)</span> 满足 <span class="math inline">\(T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\)</span>，就称
+<span class="math inline">\(E\)</span> 是一个 <span class="math inline">\(T-\)</span> 不变集合。不难验证所有的 <span class="math inline">\(T-\)</span> 不变集合 <span class="math display">\[\mathcal{I}=\{E\in\mathcal{F}\ |\
+T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\}\]</span> 构成 <span class="math inline">\(\mathcal{F}\)</span> 的一个子 <span class="math inline">\(\sigma-\)</span> 代数。</p>
+</div>
+<div id="def-2" class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+1.2</span>.</span><span class="statement-spah"> </span>如果对任何可测集
+<span class="math inline">\(E\in\mathcal{F}\)</span> 有 <span class="math inline">\(\mu(T^{-1}E)=\mu(E)\)</span>，就称 <span class="math inline">\(T\)</span> 是一个保测变换。</p>
+</div>
+<p>在本文中，<span class="math inline">\(T\)</span>
+始终代表一个保测变换。</p>
+<p>保测变换有如下性质：</p>
+<div id="lemma-1" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+1.3</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(f\in L^1(\Omega)\)</span>
+是一个可积的随机变量，<span class="math inline">\(T\)</span>
+是保测变换，则 <span class="math display">\[\int_\Omega
+f\,\mathrm{d}\mu=\int_\Omega f\circ T\,\mathrm{d}\mu.\]</span></p>
+</div>
+<p><strong>证明</strong>：若 <span class="math inline">\(E\in\mathcal{F}\)</span> 是可测集，由于 <span class="math display">\[\omega\in T^{-1}E\Leftrightarrow T(\omega)\in
+E\Leftrightarrow(\mathbb{1}_E\circ T) (\omega)=1.\]</span> 所以 <span class="math inline">\(\mathbb{1}_{E}\circ
+T=\mathbb{1}_{\{T^{-1}E\}}\)</span>，因此 <span class="math display">\[\int_\Omega
+\mathbb{1}_E\,\mathrm{d}\mu=\mu(E)=\mu(T^{-1}E)=\int_\Omega
+\mathbb{1}_{\{T^{-1}E\}}\,\mathrm{d}\mu=\int_\Omega \mathbb{1}_E\circ
+T\,\mathrm{d}\mu.\]</span>
+从而结论对集合的示性函数成立，进一步由积分的线性性质对任何简单函数也成立，再取极限即得对一般的可积函数结论成立。</p>
+<div id="lemma-2" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+1.4</span>.</span><span class="statement-spah"> </span>一个 <span class="math inline">\(\Omega\)</span> 上的随机变量 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，当且仅当有 <span class="math display">\[X\circ T=X\quad \text{a.e.}\]</span>
+成立。这时我们称 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(T-\)</span> 不变的随机变量。</p>
+</div>
+<p>这是 Durrett
+书中的一道习题，我一直觉得它很平凡，其实之前文章中的处理有问题，这个结论还是需要论证一番的。</p>
+<p><strong>证明</strong>：</p>
+<p><span class="math inline">\(\Rightarrow\)</span>：如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 Borel 集 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B)\stackrel{\mathrm{a.e.}}{=}X^{-1}B\)</span>，这说明
+<span class="math inline">\(\{X\circ T\in
+B\}\stackrel{\mathrm{a.e.}}{=}\{X\in B\}\)</span>。特别地取 <span class="math inline">\(B=(-\infty, t)\)</span> 我们得到 <span class="math inline">\(\{X\circ
+T&lt;t\}\stackrel{\mathrm{a.e.}}{=}\{X&lt;t\}\)</span>。我们来证明如果
+<span class="math inline">\(\xi,\,\eta\)</span>
+是两个可测函数且对任何实数 <span class="math inline">\(t\)</span> 有
+<span class="math inline">\(\{\xi&lt;t\}\stackrel{\mathrm{a.e.}}{=}\{\eta&lt;t\}\)</span>，则
+<span class="math inline">\(\xi=\eta,\,\mathrm{a.e.}\)</span>。然后对
+<span class="math inline">\(\xi=X\circ T,\,\eta=T\)</span>
+应用此结论即可。若不然，不妨设 <span class="math inline">\(\{\xi&gt;\eta\}\)</span> 具有正测度，则存在有理数
+<span class="math inline">\(c\)</span> 使得集合 <span class="math inline">\(\{\xi&gt;c&gt;\eta\}\)</span>
+具有正测度，这个集合在 <span class="math inline">\(\{\eta&lt;c\}\)</span> 中，但是不在 <span class="math inline">\(\{\xi&lt;c\}\)</span> 中，这与 <span class="math inline">\(\{\eta&lt;c\}\)</span> 和 <span class="math inline">\(\{\xi&lt;c\}\)</span> 只差一个零测集矛盾。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：如果 <span class="math inline">\(X\circ T=X\)</span> 几乎处处成立，则对任何 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\stackrel{\mathrm{a.e.}}{=}T^{-1}X^{-1}B\)</span>，这说明
+<span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测。</p>
+<h1 id="birkhoff-遍历定理">Birkhoff 遍历定理</h1>
+<p>设 <span class="math inline">\(f\)</span> 是 <span class="math inline">\(\Omega\)</span> 上的随机变量，对每个整数 <span class="math inline">\(n\geq 1\)</span>，令 <span class="math display">\[S_n(\omega)= \sum_{k=0}^{n-1}
+f(T^k(\omega)).\]</span> 我们有如下的定理：</p>
+<div id="birkhoff" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span>.</span><span class="statement-spah"> </span>（Birkhoff
+遍历定理）</p>
+<p>设 <span class="math inline">\(T\)</span> 是概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>
+上的保测变换，则对任何 <span class="math inline">\(f\in
+L^1(\Omega)\)</span> 有 <span class="math display">\[\lim_{n\to\infty}\frac{S_n}{n}\rightarrow
+\mathbb{E}[f\,|\,\mathcal{I}]\quad\text{a.e.}\]</span></p>
+</div>
+<p>证明 Birkhoff
+遍历定理定理的关键是证明如下的极大遍历定理：（极大遍历定理这个名字来源于分析中的
+Hardy-Littlewood 极大函数，这一类的不等式统称为极大不等式）</p>
+<div id="max-ergodic" class="statement sta_______ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">极大遍历定理</span>.</span><span class="statement-spah"> </span>定义极大算子 <span class="math display">\[M_f(\omega)=\sup_{n\geq
+1}\frac{1}{n}S_n(\omega),\]</span> 则对 <span class="math inline">\(f\in
+L^1(\Omega)\)</span> 和任一 <span class="math inline">\(a\in\mathbb{R}\)</span>，有 <span class="math display">\[\int_{\{M_f&gt;a\}} f\,\mathrm{d}\mu\geq
+a\mu(\{M_f&gt;a\}).\]</span></p>
+</div>
+<p>极大遍历定理是整个 Birkhoff
+遍历定理的证明中最不直观的部分，而且我也确实不知道怎么解释引入它的动机。我第一次看到这个式子的时候是很懵的。一个直观的理解是，观察下面这个显然成立的不等式：
+<span class="math display">\[\int_{\{M_f&gt;a\}} M_f\,\mathrm{d}\mu\geq
+a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换成 <span class="math inline">\(f\)</span>，积分范围保持不变的话，不等式仍然成立。</p>
+<p>我把极大遍历定理的证明放在最后，先用它来证明 Birkhoff 遍历定理。</p>
+<h1 id="birkhoff-遍历定理的证明">Birkhoff 遍历定理的证明</h1>
+<p>首先可以假定条件期望 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，否则我们可以用
+<span class="math inline">\(f-\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
+代替 <span class="math inline">\(f\)</span>，注意到 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span> 是 <span class="math inline">\(T-\)</span> 不变的，所以根据上面的 <a href="#lemma-2" title="引理 1.4">引理 1.4</a> 有 <span class="math display">\[\mathbb{E}[f\,|\,\mathcal{I}]\circ T^k =
+\mathbb{E}[f\,|\,\mathcal{I}],\quad \mathrm{a.e.}\]</span>
+对所有的正整数 <span class="math inline">\(k\)</span> 都成立，这时 <a href="#birkhoff" title="定理 2.1">定理 2.1</a> 的左边 <span class="math inline">\(S_n\)</span> 中每一项都会多出来一个 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>，除以 <span class="math inline">\(n\)</span> 正好和右边的 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
+抵消掉。</p>
+<p>这样问题变成在 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>
+的前提下证明 <span class="math display">\[\lim\limits_{n\to\infty}\frac{S_n}{n}=0.\quad
+\text{a.e.}\]</span> 设 <span class="math inline">\(a\)</span>
+是任一正数，考虑集合 <span class="math display">\[A= \left\{\omega \mid
+\varlimsup_{n\to\infty}\frac{S_n}{n}&gt;a\right\}.\]</span> 我们想证明
+<span class="math inline">\(\mu(A)=0\)</span>。若真如此，则有 <span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\leq a\)</span>
+几乎处处成立，根据 <span class="math inline">\(a\)</span> 的任意性就得到
+<span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\leq
+0\)</span> 几乎处处成立。再把这个结果用在 <span class="math inline">\(-f\)</span> 上就得到 <span class="math inline">\(\varliminf\limits_{n\to\infty}S_n/n\geq 0\)</span>
+也几乎处处成立，这样就证明了 <span class="math inline">\(\lim\limits_{n\to\infty}S_n/n=0\)</span>
+几乎处处成立。（拗口）</p>
+<p>为了证明 <span class="math inline">\(\mu(A)=0\)</span>，我们希望对函数 <span class="math inline">\(f\)</span> 和集合 <span class="math inline">\(A\)</span> 应用极大不等式： <span class="math display">\[\int_A f\,\mathrm{d}\mu\geq a\mu(A).\]</span>
+这是因为，<span class="math inline">\(A\)</span> 其实是一个 <span class="math inline">\(T-\)</span> 不变的集合，即 <span class="math inline">\(A\in\mathcal{I}\)</span>，我们会在证明末尾再验证这一点。于是根据条件期望的性质，
+<span class="math display">\[\int_A f\,\mathrm{d}\mu = \int_A
+\mathbb{E}[f\,|\,\mathcal{I}]\,\mathrm{d}\mu =0.\]</span> 即 <span class="math inline">\(0\geq a\mu(A)\)</span>，结合 <span class="math inline">\(a&gt;0\)</span> 即得 <span class="math inline">\(\mu(A)=0\)</span>。</p>
+<p>但是，我们能对 <span class="math inline">\(A\)</span>
+使用极大不等式吗？请注意 <span class="math inline">\(\varlimsup\limits_{n\to\infty}\)</span> 和 <span class="math inline">\(\sup\limits_{n\geq 1}\)</span>
+的区别，它们定义的是两个不同的随机变量。<span class="math inline">\(A\)</span> 是用 <span class="math inline">\(\varlimsup\limits_{n\to\infty}\)</span>
+定义的，而极大遍历定理中说的是 <span class="math inline">\(\sup\limits_{n\geq 1}\)</span>。注意到 <span class="math display">\[A=\left\{\varlimsup_{n\to\infty}\frac{S_n}{n}&gt;a\right\}\subseteq
+\left\{\sup_{n\geq 1}\frac{S_n}{n}&gt;a\right\}=
+\left\{M_f&gt;a\right\},\]</span>
+所以我们只需要证明下面的结论就好了：</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\subseteq \{M_f&gt;a\}\)</span> 而且 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(T-\)</span> 不变集合，那么极大遍历定理仍然成立：
+<span class="math display">\[\int_A f\,\mathrm{d}\mu\geq
+a\mu(A).\]</span></p>
+</div>
+<p><strong>引理的证明</strong>：对函数 <span class="math inline">\(g=f\cdot\mathbb{1}_A\)</span> 应用极大遍历定理：
+<span class="math display">\[\int_{\{M_g&gt;a\}}
+f\cdot\mathbb{1}_A\,\mathrm{d}\mu\geq a\mu(\{M_g&gt;a\}).\]</span> 但是
+<span class="math inline">\(M_g=M_f\cdot\mathbb{1}_A\)</span>，这一点要用到
+<span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变集合这个条件，因此 <span class="math display">\[\{M_g&gt;a\}=\{M_f&gt;a\}\cap A
+=A.\]</span>因此确实有 <span class="math display">\[\int_A
+f\,\mathrm{d}\mu\geq a \mu(A).\]</span> 这样就证明了 Birkhoff
+遍历定理。</p>
+<p>实际上定理中的收敛也是一个依 <span class="math inline">\(L^1\)</span>
+范数的收敛，这点的证明相比几乎处处收敛就容易多了，这里不再赘述。</p>
+<p>最后我们来补上证明中遗漏的部分，即验证集合 <span class="math inline">\(A=\left\{\varlimsup\limits_{n\to\infty}S_n/n&gt;a\right\}\)</span>
+确实是 <span class="math inline">\(T-\)</span> 不变的：</p>
+<p>利用 <span class="math inline">\(S_{n+1} = f + S_n\circ T\)</span>
+可得 <span class="math display">\[\frac{S_{n+1}}{n+1} = \frac{f}{n+1} +
+\frac{S_n\circ T}{n}\cdot \frac{n}{n+1}.\]</span>
+对两边同时取上极限，注意由于 <span class="math inline">\(f\in
+L^1(\Omega)\)</span> 所以 <span class="math inline">\(f\)</span>
+几乎处处有限，从而 <span class="math inline">\(\lim\limits_{n\to\infty}f/(n+1)=0,\,\text{a.e.}\)</span>。所以
+<span class="math display">\[\varlimsup_{n\to\infty} \frac{S_{n+1}}{n+1}
+= \varlimsup_{n\to\infty}\frac{S_{n}\circ T}{n}.\]</span> 这正说的是
+<span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\)</span>
+是 <span class="math inline">\(T-\)</span> 不变的随机变量，从而 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变的集合。</p>
+<p>最后来证明极大遍历定理。</p>
+<h1 id="极大遍历定理的证明">极大遍历定理的证明</h1>
+<p>只要证明 <span class="math inline">\(a=0\)</span>
+的情形，然后对一般的 <span class="math inline">\(a\)</span>，将结论应用在函数 <span class="math inline">\(f-a\)</span> 上即可。定义 <span class="math inline">\(S_0=0\)</span> 以及 <span class="math inline">\(M_n =\max\{S_0,S_1,\cdots,S_n\}\)</span>。对每个
+<span class="math inline">\(k=1,\ldots,n\)</span> 有 <span class="math display">\[S_k=f+S_{k-1}\circ T\leq f+M_n \circ T.\]</span>
+从而 <span class="math display">\[\max_{1\leq k\leq n}S_k\leq f+M_n
+\circ T.\]</span></p>
+<p>但是在集合 <span class="math inline">\(\{M_n&gt;0\}\)</span>
+上，<span class="math inline">\(M_n\)</span> 作为 <span class="math inline">\(S_0,S_1,\ldots,S_n\)</span> 中的最大者肯定不能来自
+<span class="math inline">\(S_0=0\)</span>，所以 <span class="math inline">\(M_n=\max\limits_{1\leq k\leq n}S_k\)</span>，因此
+<span class="math display">\[M_n\leq f+M_n \circ T,\quad \omega\in
+\{M_n&gt;0\}.\]</span> 注意 <span class="math inline">\(M_n\)</span>
+总是非负的随机变量，从而 <span class="math display">\[\begin{align*}\int_{\{M_n&gt;0\}} f &amp;\geq
+\int_{\{M_n&gt;0\}}M_n -\int_{\{M_n&gt;0\}}M_n\circ T\\ &amp; =
+\int_\Omega M_n- \int_{\{M_n&gt;0\}}M_n\circ T\\&amp;\geq \int_\Omega
+M_n-\int_\Omega M_n\circ T\\&amp;=0.\end{align*}\]</span> 最后由于 <span class="math inline">\(\{M_n&gt;0\}\uparrow
+\{M_f&gt;0\}\)</span>，所以由控制收敛定理即可得到 <span class="math display">\[\int_{\{M_f&gt;0\}}f\geq 0.\]</span>
+极大遍历定理得证。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/coxeter-element/" rel="next" title="Coxeter element">
+      上一篇：Coxeter element
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/real-and-complex-representations/" rel="next" title="实表示和复表示">
+          下一篇：实表示和复表示
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

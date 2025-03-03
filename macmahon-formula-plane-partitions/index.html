@@ -1,0 +1,873 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            平面分拆的 Macmahon 公式 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="问题： 一个边长为 \(a\times b\times c\) 的平行六边形（\(a,b,c\) 都是正整数），每个内角都是 120
+度。用边长为 1 的菱形密铺，有多少种不同的方法？
+
+
+\(a\times
+b\times c\) 的六边形
+
+
+下图是一种密铺的示例：
+
+
+一个密铺的例子，顶部的数字表示高度，解释见下文">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="平面分拆的 Macmahon 公式"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/计数组合学/">计数组合学</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>平面分拆的 Macmahon 公式</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2009-03-10T00:00:00.000Z"><a href="/macmahon-formula-plane-partitions/">2009-03-10</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%B8%8D%E7%9B%B8%E4%BA%A4%E7%9A%84%E8%B7%AF%E5%BE%84%E7%BB%84"><span class="section table-of-contents-text">不相交的路径组</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#gessel-viennot-%E7%9A%84%E5%B7%A7%E5%A6%99%E6%96%B9%E6%B3%95"><span class="section table-of-contents-text">Gessel-Viennot 的巧妙方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#dodgsons-condensation-method"><span class="section table-of-contents-text">Dodgson’s condensation method</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%95%AA%E5%A4%96%E8%AF%9D"><span class="section table-of-contents-text">番外话</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>一个边长为 <span class="math inline">\(a\times b\times c\)</span> 的平行六边形（<span class="math inline">\(a,b,c\)</span> 都是正整数），每个内角都是 120
+度。用边长为 1 的菱形密铺，有多少种不同的方法？</p>
+<figure>
+<img src="/images/macmahon/hexagon.svg" width="400" alt="a\times b\times c 的六边形">
+<figcaption aria-hidden="true"><span class="math inline">\(a\times
+b\times c\)</span> 的六边形</figcaption>
+</figure>
+</div>
+<p>下图是一种密铺的示例：</p>
+<figure>
+<img src="/images/macmahon/planepartition.svg" width="400" alt="一个密铺的例子，顶部的数字表示高度，解释见下文">
+<figcaption aria-hidden="true">一个密铺的例子，顶部的数字表示高度，解释见下文</figcaption>
+</figure>
+<span id="more"></span>
+<p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足规律：从墙角开始，沿着两侧墙壁的方向，箱子的高度是递减的。我们把地面上第
+<span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列位置箱子的高度 <span class="math inline">\(a_{ij}\)</span> 填写在一个 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列的矩阵 <span class="math inline">\(A\)</span> 中（习惯上空白位置的 0 不写出来）：</p>
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(A\)</span> 有如下特点：</p>
+<blockquote>
+<ul>
+<li><span class="math inline">\(A\)</span>
+的每一行从左到右，每一列从上到下都是递减的。</li>
+<li><span class="math inline">\(a_{ij}\)</span> 都是介于 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(c\)</span>
+之间的整数（箱子的高度不能超过天花板的高度 <span class="math inline">\(c\)</span>）。</li>
+</ul>
+</blockquote>
+<p>我们把矩阵 <span class="math inline">\(A\)</span> 叫做一个参数为
+<span class="math inline">\((a,b,c)\)</span>
+的受限制的<strong>平面分拆</strong>。</p>
+<p>每个受限制的平面分拆都对应一种堆箱子的方式，从而对应六边形的一个菱形密铺。这个对应是一一的。较真的读者可能会说：“且慢，你这只是从视觉直观上看出来菱形密铺和堆箱子是一一对应的，这不够严格吧？”
+没错，严格的证明是可以有的，但是这里我们的目的是欣赏一处数学奇趣，不必搞得那么学究。</p>
+<p>总之，我们把开头的密铺问题转化为平面分拆的计数问题：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>满足如下两个条件的 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列矩阵有多少个？</p>
+<ol type="1">
+<li>元素都是 <span class="math inline">\([0,c]\)</span>
+之间的非负整数；</li>
+<li>每一行从左到右，每一列从上到下都是递减的。</li>
+</ol>
+</div>
+<p>设答案为 <span class="math inline">\(M(a,b,c)\)</span>，则我们有一个非常令人吃惊的表达式：</p>
+<div class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span>（<strong>Macmahon 公式</strong>）</p>
+<p><span class="math display">\[M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
+</div>
+<p>虽然问题看起来很初等，但是答案的复杂暗示我们它并不像看起来那么容易。接下来你会看到，用一个巧妙的方法可以把问题转化为求一个行列式的值。</p>
+<h1 id="不相交的路径组">不相交的路径组</h1>
+<p>我们知道在平面上从原点 <span class="math inline">\((0,0)\)</span>
+出发，每次向右或者向上移动一个单位的距离，到达点 <span class="math inline">\((b,a)\)</span> 的路径个数是组合数 <span class="math inline">\(\binom{a+b}{b}\)</span>，这样的一条路径叫做 Gauss
+路径。</p>
+<p>每个平面分拆的矩阵 <span class="math inline">\(A\)</span> 都对应
+<span class="math inline">\(c\)</span> 条这样的路径，其中第 <span class="math inline">\(k\)</span> 条路径是高度为 <span class="math inline">\(k\,(1\leq k\leq c)\)</span>
+的那一层的「等高线」：</p>
+<figure>
+<img src="/images/macmahon/paths-on-cubes.svg" width="400" alt="等高线示意图">
+<figcaption aria-hidden="true">等高线示意图</figcaption>
+</figure>
+<p>我们把这些路径投影到 2D，和矩阵 <span class="math inline">\(A\)</span> 画在一起。从最下方的路径开始，第 <span class="math inline">\(i\)</span> 条路径对应的是矩阵中 <span class="math inline">\(\geq i\)</span> 的那些方格构成的区域的边界：</p>
+<figure>
+<img src="/images/macmahon/gauss_path.svg" width="500" alt="等高线投影到 xy 平面上的效果图">
+<figcaption aria-hidden="true">等高线投影到 <span class="math inline">\(xy\)</span> 平面上的效果图</figcaption>
+</figure>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>在上图中，我稍微移动了各个路径的位置，使得它们容易在视觉中区分，所以导致看起来它们的起点和终点是不同的。实际上它们都是从
+<span class="math inline">\((0,0)\)</span> 到 <span class="math inline">\((b,a)\)</span> 的 Gauss 路径。</p>
+</div>
+<p>注意 <span class="math inline">\(A\)</span>
+的行和列满足递降关系，这个递降关系反映在这 <span class="math inline">\(c\)</span>
+条路径上就是，对任何两条路径，它们可以有接触点或者重合的边，但彼此不能穿过对方。</p>
+<p>接下来是关键的一步：如果把这 <span class="math inline">\(c\)</span>
+条路径沿着 <span class="math inline">\((-1,1)\)</span> 方向，分别平移
+<span class="math inline">\(0,1,\ldots,c-1\)</span> 个单位，则平移后的
+<span class="math inline">\(c\)</span>
+条路径两两之间将没有任何公共点。我们称之为一个不相交的路径组。如下图所示：</p>
+<p><img src="/images/macmahon/nonintersecting_paths.gif" class="fig" width="550"></p>
+<p>这里 <span class="math inline">\(A_i=(1-i,i-1)\)</span>，<span class="math inline">\(B_j=(b+1-j,a-1+j)\)</span>，<span class="math inline">\(\{p_i:A_i\rightarrow B_i,1\leq i\leq c\}\)</span>
+是一个不相交的路径组。反过来对每一个这样的不相交的路径组，我们也很容易还原出对应的平面分拆来。</p>
+<p>于是我们的问题又进一步转化为</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>设 <span class="math display">\[\{A_i=(1-i,i-1) ,\, 1\leq i\leq c\}\]</span> 和
+<span class="math display">\[\{B_j=(b+1-j,a-1+j),\, 1\leq j\leq
+c\}\]</span> 是平面上两组顶点集，求出所有不相交的路径组 <span class="math inline">\(\mathcal{P}=\{p_i,1\leq i\leq c\}\)</span>
+的数目，其中 <span class="math inline">\(p_i\)</span> 是从 <span class="math inline">\(A_i\)</span> 出发到 <span class="math inline">\(B_i\)</span> 的 Gauss 路径。</p>
+</div>
+<h1 id="gessel-viennot-的巧妙方法">Gessel-Viennot 的巧妙方法</h1>
+<p>考虑这样一个 <span class="math inline">\(c\times c\)</span> 的矩阵
+<span class="math inline">\(M\)</span>，其元素 <span class="math inline">\(m_{ij}\)</span> 是从点 <span class="math inline">\(A_i\)</span> 出发到达点 <span class="math inline">\(B_j\)</span> 的所有 Gauss 路径的数目。由于点 <span class="math inline">\(A_i\)</span> 坐标为 <span class="math inline">\((1-i,i-1)\)</span>，点 <span class="math inline">\(B_j\)</span> 坐标为 <span class="math inline">\((b+1-j,a-1+j)\)</span>，所以 <span class="math display">\[m_{ij}=\binom{a+b}{b+i-j}.\]</span> 这里如果
+<span class="math inline">\(b+i-j&lt;0\)</span> 则规定 <span class="math inline">\(m_{ij}=0\)</span>。Gessel-Viennot
+引理非常意外地告诉我们：</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>（<strong>Gessel-Viennot 引理</strong>）</p>
+<p>记 <span class="math inline">\(\mathcal{A}=\{A_i,1\leq i\leq
+c\}\)</span> 和 <span class="math inline">\(\mathcal{B}=\{B_j,1\leq
+j\leq c\}\)</span> 是如上所述的两个顶点集合，对 <span class="math inline">\(c\)</span> 元组上的任一置换 <span class="math inline">\(\sigma\)</span>，记 <span class="math inline">\(\mathcal{P}_\sigma=\{p_i:A_i\to
+B_{\sigma(i)}\}\)</span> 为一个路径组。则所有不相交路径组的个数为 <span class="math display">\[\det M=\det_{1\leq i,j\leq
+c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right).\]</span></p>
+</div>
+<p>Gessel-Viennot
+引理对更一般的带权的图也成立，它在许多组合问题中都有精彩的应用。关于这方面可以参看
+<span class="citation" data-cites="thebook">(<a href="#ref-thebook" role="doc-biblioref">Aigner and Ziegler 2018</a>)</span>。</p>
+<p><strong>证明</strong>：把 <span class="math inline">\(\det M\)</span>
+按照行列式的定义展开：</p>
+<p><span class="math display">\[\begin{aligned}\det
+M&amp;=\sum_{\sigma}\text{sgn}(\sigma)m_{1\sigma(1)}\cdots
+m_{c\sigma(c)}\\&amp;=\sum_{\sigma}\text{sgn}(\sigma)\left(\sum_{p_1:A_1\to
+B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to
+B_{\sigma(c)}}1\right).\end{aligned}\]</span></p>
+<p>其中 <span class="math inline">\(\sigma\)</span> 跑遍对称群 <span class="math inline">\(S_c\)</span> 的所有置换。取出其中的一项</p>
+<p><span class="math display">\[\left(\sum_{p_1:A_1\to
+B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to
+B_{\sigma(c)}}1\right),\]</span></p>
+<p>把它展开得到很多个 1，每个 1 对应一个路径组 <span class="math inline">\(\mathcal{P}_\sigma=\{p_i:A_i\rightarrow
+B_{\sigma(i)},1\leq i\leq c\}\)</span>，因此</p>
+<p><span class="math display">\[\det
+M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).
+\tag{$\ast$}\label{eq:det}\]</span></p>
+<p>这个求和是对每个置换 <span class="math inline">\(\sigma\)</span>，跑遍所有可能的路径组 <span class="math inline">\(P_\sigma\)</span>。</p>
+<p>我们来证明在上面的求和中，相交的路径组对应的项可以两两抵消，剩下的只有不相交的路径组。</p>
+<p>设 <span class="math inline">\(\mathcal{P}\)</span>
+是一个相交的路径组，我们构造与之抵消的路径组 <span class="math inline">\(\mathcal{P}'\)</span> 如下：</p>
+<ol type="1">
+<li>在 <span class="math inline">\(\mathcal{P}\)</span>
+的所有交点中，首先选择横坐标最大的那个，如果这样的交点有多个，就选择纵坐标最大的那个，将其记作
+<span class="math inline">\(C\)</span>。</li>
+<li>在经过 <span class="math inline">\(C\)</span>
+的所有路径中，首先选择最大的 <span class="math inline">\(i\)</span> 使得
+<span class="math inline">\(p_i:A_i\rightarrow B_{\sigma(i)}\)</span>
+经过 <span class="math inline">\(C\)</span>，再选择最大的 <span class="math inline">\(j\ne i\)</span> 使得 <span class="math inline">\(p_j\)</span> 也经过 <span class="math inline">\(C\)</span>。</li>
+<li>交换 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 在 <span class="math inline">\(C\)</span>
+点之后的部分，保持路径组其它部分不动。记得到的新路径组为 <span class="math inline">\(\mathcal{P}'\)</span>。</li>
+</ol>
+<p>直观上，你可以想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们到达 <span class="math inline">\(C\)</span>
+时改变路线，沿着对方剩下的路径前往对方的目的地。</p>
+<p><img src="/images/macmahon/gessel_viennot.svg" class="fig" width="550"></p>
+<p>于是 <span class="math inline">\(\mathcal{P}'\)</span> 对应的置换
+<span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\mathcal{P}\)</span> 对应的置换 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此 <span class="math inline">\(\text{sgn}(\sigma')=-\text{sgn}(\sigma)\)</span>。更重要的是，如果对
+<span class="math inline">\(\mathcal{P}'\)</span>
+也进行上述操作的话，又会回到 <span class="math inline">\(\mathcal{P}\)</span>，因此相交的路径组确实可以两两配对抵消。</p>
+<p>于是我们可以把 <span class="math inline">\((\ref{eq:det})\)</span>
+改写为 <span class="math display">\[\det
+M=\sum_{\sigma,\mathcal{P}_\sigma \text{
+non-intersecting}}\text{sgn}(\sigma).\]</span></p>
+<p>但是注意，不相交的路径组只有在 <span class="math inline">\(\sigma=1\)</span> 时才可能发生，即每个 <span class="math inline">\(A_i\)</span> 的目的地必须是 <span class="math inline">\(B_i\)</span>。所以我们进一步得到 <span class="math display">\[
+\det M=\sum_{\sigma=1\text{ and } \mathcal{P}_\sigma \text{
+non-intersecting}}1.\]</span> 这正是所有不相交路径组的个数。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="dodgsons-condensation-method">Dodgson’s condensation method</h1>
+<p>为了求出行列式的值，我们介绍一个古老的方法：Dodgson’s
+condensation。这是一个递归求解行列式的方法：设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(n\times n\)</span> 矩阵，用 <span class="math inline">\(A_i^j\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 <span class="math inline">\(i\)</span> 行和第 <span class="math inline">\(j\)</span> 列后剩下的 <span class="math inline">\(n-1\)</span> 阶矩阵，用 <span class="math inline">\(A_{1,n}^{1,n}\)</span> 表示删去 <span class="math inline">\(A\)</span> 的第 1 行第 1 列和第 <span class="math inline">\(n\)</span> 行第 <span class="math inline">\(n\)</span> 列后剩下的 <span class="math inline">\(n-2\)</span> 阶矩阵，则我们有恒等式</p>
+<p><span class="math display">\[\det A\cdot \det A_{1,n}^{1,n}=\det
+A_1^1\det A_n^n-\det A_1^n\det A_n^1.\]</span></p>
+<p>用一个形象的图片描述：</p>
+<p><img src="/../images/macmahon/dodgson.svg" class="fig" width="450"></p>
+<p>这个结论的证明不难，可以见 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Dodgson_condensation">维基百科</a>，这里就不再写了。</p>
+<p>我们对 <span class="math inline">\(c\)</span> 归纳来证明</p>
+<div class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span>（<strong>Macmahon 公式</strong>）</p>
+<p><span class="math display">\[\det_{1\leq i,j\leq
+c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
+</div>
+<p>首先你需要对 <span class="math inline">\(c=1\)</span> 和 <span class="math inline">\(c=2\)</span> 的情形手算验证（略繁琐，不过只是一个
+2 阶矩阵），设 <span class="math inline">\(M_c(a, b)\)</span>
+为所求的行列式，注意到</p>
+<p><span class="math display">\[\begin{cases}(M_c(a,b))_1^1=M_{c-1}(a,b),\\(M_c(a,b))_n^n=M_{c-1}(a,b),\\(M_c(a,b))_1^n=M_{c-1}(a-1,b+1),\\(M_c(a,b))_n^1=M_{c-1}(a+1,b-1),\\(M_c(a,b))^{1,n}_{1,n}=M_{c-2}(a,b).\end{cases}\]</span></p>
+<p>然后应用归纳假设即可。</p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>问题的 <span class="math inline">\(q-\)</span> 计数版本也可以用
+Gessel-Viennot 引理来做，只是行列式的求值略复杂。其实也可以用 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/math/9902004">Krattenthaler 公式</a>
+来计算，不过那个方法不是我们要讲的。</p>
+</div>
+<h1 id="番外话">番外话</h1>
+<p>说点八卦的东西。Dodgson 是 19
+世纪的英国数学家，细心点的读者可能注意到这位老兄的名字实在让人不敢恭维：Dodgson，dog
+..
+son？大概他也知道自己的名字难登大雅之堂，所以他给自己取了一个很好听的笔名：Lewis
+Carroll（路易斯·卡罗尔）。</p>
+<p>你对这个名字没有反应么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学的数学教授，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。他曾经专门为邻居家的女儿写了一部童话来哄她开心，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把
+Dodgson
+的全部著作都搜集呈上来，于是大臣献上了一本厚厚的《符号逻辑》，当然结果你猜得到的
+…</p>
+<p>时光一转到了 20 世纪 80 年代，三位数学家 William Mills，David Robbins
+和 Howard Rumsey 在研究计算行列式的快速数值算法时，受 Dodgson
+算法的启发，发现了交错符号矩阵猜想。这是计数组合学里面最精彩的猜想之一。我向你推荐
+Bressoud 的书 <span class="citation" data-cites="Bressoud1999">(<a href="#ref-Bressoud1999" role="doc-biblioref">Bressoud
+1999</a>)</span>，我保证里面的故事和《爱丽丝漫游奇境记》一样奇妙 …</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-thebook" class="csl-entry" role="listitem">
+Aigner, Martin, and Gnter M. Ziegler. 2018. <em>Proofs from THE
+BOOK</em>. 6th ed. Springer Publishing Company, Incorporated.
+</div>
+<div id="ref-Bressoud1999" class="csl-entry" role="listitem">
+Bressoud, David M. 1999. <em>Proofs and Confirmations: The Story of the
+Alternating-Sign Matrix Conjecture</em>. Spectrum. Cambridge University
+Press.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/Pfaffian-and-chessboard-tiling/" rel="next" title="国际象棋棋盘的多米诺骨牌密铺">
+      上一篇：国际象棋棋盘的多米诺骨牌密铺
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/domino-shuffling/" rel="next" title="Aztec 钻石图的完美匹配与多米诺洗牌算法">
+          下一篇：Aztec 钻石图的完美匹配与多米诺洗牌算法
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

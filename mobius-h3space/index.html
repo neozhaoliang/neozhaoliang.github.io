@@ -1,0 +1,927 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Möbius 变换的分类与上半双曲空间的等距 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="本文的想法源自 Roice Nelson 的 shadertoy
+项目，我觉得他的创意很棒，就是效果有点糙，于是 动手改进了一番。乍一看，这个动画的场景很简单，其实它背后的数学并不平凡。
+这个动画从三个角度了演示 Möbius 变换，这三个角度是密切相关的：
+
+Möbius 变换作为扩充复平面 \(\hat{\mathbb{C}}\) 到自身的全纯函数。
+Möbius 变换作为 Riemann 球面 \(S^2\) 到自身的全纯函数。
+Möbius 变换作为上半双曲空间中的等距变换。
+
+本文只作概括性的介绍，并不展开详细的数学证明。读者可以参考下面的资料：
+
+
+维基百科.
+Needham (1997) .
+Mumford, Series, and
+Wright (2002),
+chapter 3.
+Palka (1991), chapter IX,
+section 2.
+
+
+本文的动画应该可以帮助你更好地理解这些资料中的内容。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Möbius 变换的分类与上半双曲空间的等距"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/可视化复分析/">可视化复分析</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Möbius 变换的分类与上半双曲空间的等距</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2018-05-08T16:00:00.000Z"><a href="/mobius-h3space/">2018-05-09</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E4%B9%8B%E6%AD%A3%E4%BA%A4%E5%9C%86%E6%97%8F"><span class="section table-of-contents-text">预备知识之正交圆族</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E7%9A%84%E5%85%B1%E8%BD%AD%E5%88%86%E7%B1%BB"><span class="section table-of-contents-text">Möbius 变换的共轭分类</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%8A%9B%E7%89%A9%E5%9E%8B"><span class="section table-of-contents-text">1. 抛物型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%A4%AD%E5%9C%86%E5%9E%8B"><span class="section table-of-contents-text">2. 椭圆型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%8F%8C%E6%9B%B2%E5%9E%8B"><span class="section table-of-contents-text">3. 双曲型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%96%9C%E8%88%AA%E5%9E%8B"><span class="section table-of-contents-text">4. 斜航型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%96%9C%E8%88%AA-loxodromic-%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="section table-of-contents-text">斜航 (loxodromic) 是什么意思？</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E4%BD%9C%E7%94%A8%E5%9C%A8-riemann-%E7%90%83%E9%9D%A2%E4%B8%8A"><span class="section table-of-contents-text">Möbius 变换作用在 Riemann
+球面上</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#m%C3%B6bius-%E5%8F%98%E6%8D%A2%E4%BD%9C%E4%B8%BA%E4%B8%8A%E5%8D%8A%E5%8F%8C%E6%9B%B2%E7%A9%BA%E9%97%B4%E7%9A%84%E7%AD%89%E8%B7%9D"><span class="section table-of-contents-text">Möbius
+变换作为上半双曲空间的等距</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%99%E4%BA%9B%E5%8A%A8%E7%94%BB%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%9F%E6%88%90%E7%9A%84"><span class="section table-of-contents-text">这些动画是怎么生成的？</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>本文的想法源自 Roice Nelson 的 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/MstcWr">shadertoy
+项目</a>，我觉得他的创意很棒，就是效果有点糙，于是 <a target="_blank" rel="noopener" href="https://www.shadertoy.com/view/4scfR2">动手改进了一番</a>。乍一看，这个动画的场景很简单，其实它背后的数学并不平凡。</p>
+<p>这个动画从三个角度了演示 Möbius 变换，这三个角度是密切相关的：</p>
+<ol type="1">
+<li>Möbius 变换作为扩充复平面 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 到自身的全纯函数。</li>
+<li>Möbius 变换作为 Riemann 球面 <span class="math inline">\(S^2\)</span> 到自身的全纯函数。</li>
+<li>Möbius 变换作为上半双曲空间中的等距变换。</li>
+</ol>
+<p>本文只作概括性的介绍，并不展开详细的数学证明。读者可以参考下面的资料：</p>
+<blockquote>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/M%C3%B6bius_transformation">维基百科</a>.</li>
+<li><span class="citation" data-cites="Needham1997">Needham (<a href="#ref-Needham1997" role="doc-biblioref">1997</a>)</span> .</li>
+<li><span class="citation" data-cites="indra">Mumford, Series, and
+Wright (<a href="#ref-indra" role="doc-biblioref">2002</a>)</span>,
+chapter 3.</li>
+<li><span class="citation" data-cites="palka1991">Palka (<a href="#ref-palka1991" role="doc-biblioref">1991</a>)</span>, chapter IX,
+section 2.</li>
+</ol>
+</blockquote>
+<p>本文的动画应该可以帮助你更好地理解这些资料中的内容。</p>
+<span id="more"></span>
+<h1 id="预备知识之正交圆族">预备知识之正交圆族</h1>
+<p>设 <span class="math inline">\(z_1,z_2\)</span>
+是复平面上的两点，我们考虑两个不同的圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span>：</p>
+<ol type="1">
+<li><span class="math inline">\(\mathcal{C}_1\)</span> 由所有同时过
+<span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 的圆组成（包含过 <span class="math inline">\(z_1,z_2\)</span> 的直线）。</li>
+<li><span class="math inline">\(\mathcal{C}_2\)</span> 由所有使得 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 关于 <span class="math inline">\(C\)</span> 互为反演点的圆 <span class="math inline">\(C\)</span> 组成（包含线段 <span class="math inline">\([z_1,z_2]\)</span> 的垂直平分线）。</li>
+</ol>
+<p>则圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的任何圆
+<span class="math inline">\(C_1\)</span> 与 <span class="math inline">\(\mathcal{C}_2\)</span> 中的任何圆 <span class="math inline">\(C_2\)</span> 正交（交点处的切线互相垂直）。</p>
+<p>我们将考察当 <span class="math inline">\(z_1,z_2\)</span> 是一个
+Möbius 变换 <span class="math inline">\(M\)</span> 的两个不动点时，<span class="math inline">\(M\)</span> 作用在 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 上的效果。</p>
+<h1 id="möbius-变换的共轭分类">Möbius 变换的共轭分类</h1>
+<p>一个 Möbius 变换 <span class="math inline">\(M\)</span>
+是一个分式线性变换，它将扩充复平面 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 一对一地映射为自身：
+<span class="math display">\[M(z) = \frac{az+b}{cz+d},\quad
+a,b,c,d\in\mathbb{C},ad-bc\ne0, z\in \hat{\mathbb{C}}.\]</span> 所有的
+Möbius 变换构成一个群 <span class="math inline">\({\rm
+PSL}_2(\mathbb{C})\)</span>。</p>
+<p>我们称两个 Möbius 变换 <span class="math inline">\(M_1,M_2\)</span>
+是共轭的，当且仅当存在 <span class="math inline">\(g\in{\rm
+PSL}_2(\mathbb{C})\)</span> 使得 <span class="math display">\[M_1=gM_2
+g^{-1}.\]</span></p>
+<p>可以证明，在共轭的意义下，任何非恒等元的 Möbius
+变换都属于下面四种类型之一：</p>
+<ol type="1">
+<li><span class="math inline">\(M\)</span> 称作是抛物型的
+(parabolic)，如果它共轭于平移：<span class="math inline">\(z\to
+z+1\)</span>。这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上仅有一个不动点。</li>
+<li><span class="math inline">\(M\)</span> 称作是椭圆型的
+(elliptic)，如果它共轭于旋转：<span class="math inline">\(z\to
+e^{i\theta}z\)</span>，其中 <span class="math inline">\(\theta\in\mathbb{R}\)</span> 且 <span class="math inline">\(\theta\ne0\)</span>。这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
+<li><span class="math inline">\(M\)</span> 称作是双曲型的
+(hyperbolic)，如果它共轭于缩放：<span class="math inline">\(z\to\lambda
+z\)</span>，其中 <span class="math inline">\(\lambda&gt;0\)</span>
+是实数且不为 1。这时 <span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
+<li><span class="math inline">\(M\)</span> 称作是斜航型的
+(loxodromic)，如果它共轭于一个缩放和一个旋转的复合：<span class="math inline">\(z\to cz\)</span>，其中 <span class="math inline">\(c\in\mathbb{C}\setminus \mathbb{R}\)</span>。这时
+<span class="math inline">\(M\)</span> 在 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 上有两个不动点。</li>
+</ol>
+<p>我们把形如 <span class="math inline">\(z\to z+a\)</span> 和 <span class="math inline">\(z\to\lambda z\)</span>
+的变换称作<strong>特殊位置</strong>的变换，前者是抛物型的，以 <span class="math inline">\(\infty\)</span>
+为唯一不动点，后者包含了所有非抛物型的变换，它的两个不动点是 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span>。这两种 Möbius
+变换具有简单的表现形式，并且它们在两个圆族上的作用也很容易分析，所以在研究每种类型的变换时，我们都先考虑这种简单的形式，然后再通过取共轭扩展到一般的情形。</p>
+<h2 id="抛物型">1. 抛物型</h2>
+<p>我们先考察最简单的抛物型变换 <span class="math inline">\(z\to
+z+1\)</span>。</p>
+<p>这时唯一的不动点是 <span class="math inline">\(\infty\)</span>，<span class="math inline">\(\mathcal{C}_1\)</span> 是直线族 <span class="math inline">\(\{y=k\mid k\in\mathbb{R}\}\)</span>，<span class="math inline">\(\mathcal{C}_2\)</span> 是直线族 <span class="math inline">\(\{x=l\mid l\in\mathbb{R}\}\)</span>。<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_1\)</span> 中的每条直线不变，把 <span class="math inline">\(\mathcal{C}_2\)</span>
+中的每条直线变成同族中的另一条直线：</p>
+<object data="/images/mobius/parabolic-plane.svg">
+</object>
+<p>由动画可见所有点都向着不动点 <span class="math inline">\(\infty\)</span> 的方向「前进」。</p>
+<p>对一般的抛物型变换 <span class="math inline">\(M\)</span> 且 <span class="math inline">\(M\)</span> 的唯一不动点 <span class="math inline">\(z_0\)</span> 有限的情形，结论仍然类似：圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 中的圆都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_1\)</span>，圆族 <span class="math inline">\(\mathcal{C}_2\)</span> 也都在 <span class="math inline">\(z_0\)</span> 处相切且共用同一条切线 <span class="math inline">\(\ell_2\)</span>，<span class="math inline">\(\ell_1\)</span> 和 <span class="math inline">\(\ell_2\)</span> 互相垂直：</p>
+<object data="/images/mobius/parabolic-plane2.svg">
+</object>
+<p>由动画可见左右两侧的圆在旋转，但是圆本身保持不变，它们是圆族 <span class="math inline">\(\mathcal{C}_1\)</span>；上下两侧的圆在「扩散」，它们是圆族
+<span class="math inline">\(\mathcal{C}_2\)</span>。可以证明对任何 <span class="math inline">\(z\in\mathbb{C}\)</span> 都有 <span class="math inline">\(\lim\limits_{n\to\infty}M^n(z)=z_0\)</span>，即任何点在
+<span class="math inline">\(M\)</span> 反复作用下的轨迹都朝着 <span class="math inline">\(z_0\)</span> 的位置移动。</p>
+<p>在 <a target="_blank" rel="noopener" href="http://klein.math.okstate.edu/IndrasPearls/">Indra’s
+pearls</a> 一书中，把 <span class="math inline">\(\mathcal{C}_1\)</span>
+和 <span class="math inline">\(\mathcal{C_2}\)</span>
+形象地比喻为两组「扇贝壳」：</p>
+<figure>
+<img src="/images/mobius/seashell.jpeg" width="200" alt="我从网上找了一张扇贝壳的图片">
+<figcaption aria-hidden="true">我从网上找了一张扇贝壳的图片</figcaption>
+</figure>
+<h2 id="椭圆型">2. 椭圆型</h2>
+<p>我们先考察最简单的椭圆型变换 <span class="math inline">\(z\to
+e^{i\theta}z\)</span>。</p>
+<p>这时两个不动点是 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span>。圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 由所有过 <span class="math inline">\(0\)</span> 的直线组成，<span class="math inline">\(\mathcal{C}_2\)</span> 由所有以 <span class="math inline">\(0\)</span> 为中心的同心圆组成。<span class="math inline">\(M\)</span> 是个旋转，所以会把 <span class="math inline">\(\mathcal{C}_1\)</span>
+中的直线变成同族的另一条直线，同时保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变：</p>
+<object data="/images/mobius/elliptic-plane.svg">
+</object>
+<p>对两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的情形，结论同样成立，<span class="math inline">\(M\)</span> 保持 <span class="math inline">\(\mathcal{C}_2\)</span> 中的每个圆不变，把 <span class="math inline">\(\mathcal{C}_1\)</span>
+中的每个圆变为同族中的另一个圆：</p>
+<object data="/images/mobius/elliptic-plane2.svg">
+</object>
+<h2 id="双曲型">3. 双曲型</h2>
+<p>与椭圆变换 <span class="math inline">\(z\to e^{i\theta}z\)</span>
+的情形类似，<span class="math inline">\(z\to\lambda z\)</span> 也以
+<span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span> 为不动点，但是圆族 <span class="math inline">\(\mathcal{C}_1\)</span> 和 <span class="math inline">\(\mathcal{C}_2\)</span> 的运动方式发生了互换：这次
+<span class="math inline">\(\mathcal{C}_1\)</span>
+中的每条直线在放缩下保持不变，<span class="math inline">\(\mathcal{C}_2\)</span>
+中的每个圆在放缩下变成同族的另一个圆：</p>
+<object data="/images/mobius/hyperbolic-plane.svg">
+</object>
+<p>对两个不动点 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span> 都有限的双曲变换，结论仍然成立，圆族
+<span class="math inline">\(\mathcal{C}_1\)</span>
+中的每个圆保持不变，<span class="math inline">\(\mathcal{C}_2\)</span>
+中的每个圆被变成同族的另一个：</p>
+<object data="/images/mobius/hyperbolic-plane2.svg">
+</object>
+<p>这时在 <span class="math inline">\(M\)</span> 的作用下 <span class="math inline">\(z_1\)</span> 和 <span class="math inline">\(z_2\)</span>
+一个是「源点」，另一个是「汇点」，轨迹从源点源源不竭地发出，汇聚到汇点中。</p>
+<h2 id="斜航型">4. 斜航型</h2>
+<p>仍然先看 <span class="math inline">\(z\to cz\)</span> 的情形。</p>
+<p>这时不动点是 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(\infty\)</span>，<span class="math inline">\(M\)</span> 把圆族 <span class="math inline">\(\mathcal{C}_1\)</span>
+中的每个圆变为同族中的另一个圆，同样地也把圆族 <span class="math inline">\(\mathcal{C}_2\)</span>
+中的每个圆变为同族中的另一个圆，<strong>所以斜航型的变换没有不变圆</strong>：</p>
+<object data="/images/mobius/loxodromic-plane.svg">
+</object>
+<p>这时平面上一点 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span>
+的反复作用下的轨迹是一条形如「旋臂」的曲线，方程为 <span class="math inline">\(\gamma(t)=c^tz\)</span>，这是一条对数螺线
+(spiral)，其与 <span class="math inline">\(\mathcal{C}_1\)</span> 和
+<span class="math inline">\(\mathcal{C}_2\)</span> 的夹角都是常数。</p>
+<p>这个结论对一般的斜航型变换也成立：</p>
+<object data="/images/mobius/loxodromic-plane2.svg">
+</object>
+<p>由于斜航型变换包含双曲变换作为组成成分，因此看起来它也有一个源点和一个汇点。这时任意一点
+<span class="math inline">\(z\)</span> 在 <span class="math inline">\(M\)</span> 的反复作用下的轨迹是一条双螺线 (double
+spiral)，其与 <span class="math inline">\(\mathcal{C}_1\)</span> 和
+<span class="math inline">\(\mathcal{C}_2\)</span> 的夹角仍然都是常数
+（Möbius 变换是保角的）。</p>
+<p>判断 Möbius 变换 <span class="math inline">\(M\)</span>
+具体属于哪一类可以根据其迹的平方 <span class="math inline">\(\mu=(a+d)^2\)</span> 来判断（当然，需要把 <span class="math inline">\(M\)</span> 归一化使得 <span class="math inline">\(ad-bc=1\)</span>）：</p>
+<ol type="1">
+<li><span class="math inline">\(M\)</span> 是抛物型的当且仅当 <span class="math inline">\(\mu=4\)</span>。</li>
+<li><span class="math inline">\(M\)</span> 是椭圆型的当且仅当 <span class="math inline">\(0\leq\mu&lt;4\)</span>。</li>
+<li><span class="math inline">\(M\)</span> 是双曲型的当且仅当 <span class="math inline">\(\mu&gt;4\)</span>。</li>
+<li><span class="math inline">\(M\)</span> 是斜航型的当且仅当 <span class="math inline">\(\mu&lt;0\)</span> 或者 <span class="math inline">\(\mu\notin\mathbb{R}\)</span>。</li>
+</ol>
+<h2 id="斜航-loxodromic-是什么意思">斜航 (loxodromic) 是什么意思？</h2>
+<p>斜航这个词听起来好像和船的航行有关，怎么就用来给 Möbius
+变换分类了呢？这里面肯定有故事，值得扒一扒。</p>
+<p>斜航线 (loxodrome)
+指的是地球上的一条航行路径，其在每个点处的切线与过该点的经线的夹角为定值。比如说，如果船始终朝着东北方向
+30 度行驶，走过的轨迹就是一条斜航线。Loxodrome 最初是一个希腊词，loxos
+的意思是 oblique，即倾斜的，dromos 意为
+bearing，方位的意思，后来拉丁化以后成为现在的样子。葡萄牙数学家 Pedro
+Nunes (1492-1577)
+第一个认识到斜航线并非两点之间最短路径，而且它无限接近但永不可能到达极点。</p>
+<p><img style="margin:0px auto;display:block" width="300" src="/images/mobius/loxodrome.png"></p>
+<p>在大航海的时代，没有卫星导航，只能靠罗盘或者星座来标识船的航向，而星座的方法在遇到恶劣天气的时候又不能使用，只有罗盘是最可靠的方法。理论上地球表面两点之间的最短路径是过球心的大圆，但罗盘只能定出经线的方向
+（原理是地球的磁极和南北极近似重合），这二者的夹角不是固定的，要保持沿着大圆的弧走就必须不停调整船的航向，但现实中的船不可能一直有人守在船舵处调整方向，一般是事先定好航向以后接下来的若干天都沿着这个方向走，所以在一定路程内船实际上走的是斜航线。</p>
+<p>荷兰地图学家墨卡托 (Mercator) 据此于 1569
+年提出了墨卡托地图，将地球投影至墨卡托地图是一个保角变换，即曲线的夹角保持不变。不仅如此，球面上的斜航线在墨卡托地图中成为一条直线：</p>
+<figure>
+<img src="/images/mobius/mercator.jpg" width="500" alt="网上找了一张墨卡托地图">
+<figcaption aria-hidden="true">网上找了一张墨卡托地图</figcaption>
+</figure>
+<p>所以要从地球上的 <span class="math inline">\(A\)</span> 点航向到
+<span class="math inline">\(B\)</span>
+点，只要找到它们在墨卡托地图上的对应点 <span class="math inline">\(A',B'\)</span>，算出地图上的直线 <span class="math inline">\(A'B'\)</span> 与经线的夹角 <span class="math inline">\(\theta\)</span>，航行时只要让罗盘与经线一直保持角度为
+<span class="math inline">\(\theta\)</span> 就可以按照斜航线从 <span class="math inline">\(A\)</span> 航行到 <span class="math inline">\(B\)</span>
+了。这个路径虽不是最短，但是好在不容易迷失航向。</p>
+<p>那这和 Möbius 变换有什么关系呢？</p>
+<h1 id="möbius-变换作用在-riemann-球面上">Möbius 变换作用在 Riemann
+球面上</h1>
+<p>由于 Möbius 变换都是扩充复平面 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 到 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 的自同构，而 <span class="math inline">\(\hat{\mathbb{C}}\)</span> 在球极投影下等同于
+Riemann 球面 <span class="math inline">\(S^2\)</span>，所以 Möbius
+变换也都是 Riemann 球面的自同构。我们来看看 Möbius 变换作用在 Riemann
+球面上是什么样子的。</p>
+<p>这是一个作用在 Riemann 球上的斜航型变换：</p>
+<object data="/images/mobius/loxodromic-sphere.svg">
+</object>
+<p>我来解释一下这个动画的含义：从动画可见 Riemann
+球面上有一对源点和汇点，这对源点和汇点可以理解为球面的「北极」和「南极」，它们在球极投影下对应于
+<span class="math inline">\(M\)</span>
+在扩充复平面上的两个不动点。当这两个不动点分别是原点和无穷远点时，这两个极点就是通常意义下的北极和南极。这时球面上的「经线」是所有过两个极点的大圆，在球极投影下它们对应于同时过两个不动点的圆族
+<span class="math inline">\(\mathcal{C}_1\)</span>；球面上的「纬线」是所有与经线正交的圆，在球极投影下它们对应于反演圆族
+<span class="math inline">\(\mathcal{C}_2\)</span>，球面上每个点的轨迹是对数螺线轨迹在逆球极投影下在球面上的对应曲线，这条曲线与经线纬线的夹角都是常数（因为球极投影是保角的），从而是一条斜航线！</p>
+<div class="unnumbered statement exercise-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">练习</span>：</span><span class="statement-spah"> </span>解释下面这个动画的含义：</p>
+<object data="/images/mobius/parabolic-sphere.svg">
+</object>
+</div>
+<p>提示：这个动画有两种解释，它既可以看作是一个抛物型变换在 Riemann
+球面上作用的效果，也可以看作是一个上半双曲空间中的 horosphere
+在抛物型变换下作用的效果。horosphere 是指上半双曲空间中与无穷远平面
+<span class="math inline">\(z=0\)</span>
+相切的球，其半径为无穷大。Möbius
+变换在上半双曲空间上的作用见下一节。</p>
+<h1 id="möbius-变换作为上半双曲空间的等距">Möbius
+变换作为上半双曲空间的等距</h1>
+<p>上半双曲空间 <span class="math inline">\(\mathbb{H}_3\)</span>
+的定义为 <span class="math display">\[\mathbb{H}_3 =
+\{(x,y,t)\in\mathbb{R}^3\ |\ t&gt;0\}.\]</span>
+这个空间中的度量是双曲度量：</p>
+<p><span class="math display">\[\mathrm{d}s=\frac{(\mathrm{d}x)^2+(\mathrm{d}y)^2+(\mathrm{d}t)^2}{t}.\]</span></p>
+<p>注意 <span class="math inline">\(xy\)</span> 平面，即复平面不属于
+<span class="math inline">\(\mathbb{H}_3\)</span>，它是 <span class="math inline">\(\mathbb{H}_3\)</span> 的无穷远边界，<span class="math inline">\(\mathbb{H}_3\)</span> 中任何一点到 <span class="math inline">\(xy\)</span> 平面的距离是无穷大。</p>
+<p>一个复分析教材中不太常讲到的事实是：<strong>任何 Möbius
+变换都可以唯一地扩展为 <span class="math inline">\(\mathbb{H}_3\)</span>
+的一个等距变换 <span class="math inline">\(\overline{M}\)</span></strong>，此即所谓的
+Poincaré Extension。这个扩展用四元数来描述的话很简单：设 <span class="math display">\[M\colon\ z\to\frac{az+b}{cz+d},\quad
+ad-bc=1.\]</span> 是任一 Möbius 变换。注意我们这里要求 <span class="math inline">\(ad-bc\)</span> 的值是
+1，其实任何非零实数都可以。这是可以做到的，因为给 Möbius 变换中的 <span class="math inline">\(a,b,c,d\)</span>
+同时乘以一个非零复数并不改变这个变换，所以同时乘以 <span class="math inline">\(1/\sqrt{ad-bc}\)</span> 就可以使得 <span class="math inline">\(ad-bc=1\)</span>。</p>
+<p>对 <span class="math inline">\(p=(x,y,t)\in\mathbb{H}^3\)</span>，令
+<span class="math inline">\(q=x+yi+tj\)</span> 为与 <span class="math inline">\(p\)</span> 对应的四元数，定义 <span class="math display">\[\overline{M}(p) = (aq+b)(cq+d)^{-1}.\]</span>
+这里的运算都是在四元数体中进行。则 <span class="math inline">\(\overline{M}(p)\)</span> 是 <span class="math inline">\(\mathbb{H}_3\)</span> 到自身的等距，并且它限制在
+<span class="math inline">\(xy\)</span> 平面上与 <span class="math inline">\(M\)</span> 的作用一致。</p>
+<p>关于 Poincaré Extension 读者可以参考 <span class="citation" data-cites="Bea95">(<a href="#ref-Bea95" role="doc-biblioref">Beardon
+1995, vol. 91, secs. 3.3, 4.1</a>)</span>。</p>
+<p>我们还能像上面那样用动画演示 Möbius 变换 <span class="math inline">\(\overline{M}\)</span> 在 <span class="math inline">\(\mathbb{H}_3\)</span>
+上的作用吗？可以！比如下图是一个形如 <span class="math inline">\(z\to
+cz\)</span> 的斜航型变换扩展到 <span class="math inline">\(\mathbb{H}_3\)</span>
+后作用在一个<strong>圆柱</strong>体上的效果：</p>
+<object data="/images/mobius/loxodromic-cone.svg">
+</object>
+<p>你可能要问了：这明明是个圆锥体，你怎么说它是圆柱体呢？是不是笔误了啊？</p>
+<p>其实是因为我们现在是在双曲空间里看待它，在双曲度量下，锥面上所有点到
+<span class="math inline">\(t\)</span>
+轴的距离都是一样的，实际上如果设锥的顶角为 <span class="math inline">\(2\alpha\)</span>，则锥面上任何一点到 <span class="math inline">\(t\)</span> 轴的双曲距离 <span class="math inline">\(d\)</span> 满足（见 <span class="citation" data-cites="Bea95">(<a href="#ref-Bea95" role="doc-biblioref">Beardon
+1995, vol. 91, sec. 7.9.1</a>)</span>） <span class="math display">\[\sinh d\cdot \cot\alpha = 1.\]</span> 即 <span class="math inline">\(d\)</span> 是定值。所以虽然在 <span class="math inline">\(\mathbb{R}^3\)</span> 中它是一个锥体，但是在 <span class="math inline">\(\mathbb{H}_3\)</span> 中它其实是圆柱体。</p>
+<p>你可以看到这时 <span class="math inline">\(\overline{M}\)</span>
+有两个不动点，都位于无穷远边界上，这样的点叫做「理想点」。两个不动点之间的连线构成圆柱的轴。两个不动点一个是源点，一个是汇点，空间中的点在变换的作用下远离源点，趋向汇点。</p>
+<p>对于一般的斜航型变换 <span class="math inline">\(M\)</span>，且其两个不动点都是扩充复平面上的有限点时，<span class="math inline">\(M\)</span> 在 <span class="math inline">\(\mathbb{H}_3\)</span> 上的扩展 <span class="math inline">\(\overline{M}\)</span> 仍然保持一个 <span class="math inline">\(\mathbb{H}_3\)</span> 中的圆柱体不变：</p>
+<object data="/images/mobius/loxodromic-dupin.svg">
+</object>
+<p>这个曲面叫做 <a target="_blank" rel="noopener" href="https://www.maths.ox.ac.uk/about-us/departmental-art/dupin-cyclides">Dupin
+cyclide</a>，它的两个端点恰好是 <span class="math inline">\(M\)</span>
+的两个不动点。但在双曲空间中它其实是一个圆柱体，由于其两端落在无穷远平面上，因此也是无限长的。圆柱体的轴是连接两个端点的测地线。如果
+<span class="math inline">\(M\)</span> 是椭圆型的话，那么 <span class="math inline">\(\overline{M}\)</span> 将该圆柱绕着轴旋转：</p>
+<object data="/images/mobius/elliptic-dupin.svg">
+</object>
+<h1 id="这些动画是怎么生成的">这些动画是怎么生成的？</h1>
+<p>我以 Dupin cyclide 的动画为例子来说明动画的绘制过程。</p>
+<p>一个非抛物型的变换 <span class="math inline">\(M\)</span>
+总是可以表示为 <span class="math inline">\(M = gM_\lambda
+g^{-1}\)</span> 的形式，其中 <span class="math inline">\(M_\lambda=z\to\lambda z\)</span>。我这里的 <span class="math inline">\(g\)</span> 取的是 <span class="math display">\[g^{-1}(z)=\frac{z-1}{z+1}.\]</span>
+注意我这里写的是 <span class="math inline">\(g^{-1}\)</span>，原因是我们不需要 <span class="math inline">\(g\)</span> 的显式表达式，相反我们只需要 <span class="math inline">\(g^{-1}\)</span>。</p>
+<p>不难验证 <span class="math inline">\(g^{-1}(1)=0\)</span> 和 <span class="math inline">\(g^{-1}(-1)=\infty\)</span>，从而 <span class="math inline">\(g(0)=1\)</span> 和 <span class="math inline">\(g(\infty)=-1\)</span>，即 <span class="math inline">\(g\)</span> 将 <span class="math inline">\(M_\lambda\)</span> 的不动点 <span class="math inline">\(\{0,\infty\}\)</span> 分别映射为 <span class="math inline">\(M\)</span> 的不动点 <span class="math inline">\(\{1,-1\}\)</span>。<span class="math inline">\(g\)</span> 同时将 <span class="math inline">\(M_\lambda\)</span> 对应的圆族 <span class="math inline">\(\{\mathcal{C}_i,i=1,2\}\)</span> 映射为 <span class="math inline">\(M\)</span> 的圆族 <span class="math inline">\(\{g(\mathcal{C}_i),i=1,2\}\)</span>。</p>
+<p><span class="math inline">\(g\)</span> 当然也可以扩展为 <span class="math inline">\(\mathbb{H}_3\)</span> 的等距，我们把扩展以后的
+<span class="math inline">\(g\)</span> 仍然记作 <span class="math inline">\(g\)</span>。</p>
+<p>由 <span class="math inline">\(M = gM_\lambda g^{-1}\)</span> 可得
+<span class="math display">\[Mg(\mathcal{C}_i) = gM_\lambda
+(\mathcal{C}_i),\quad i=1,2.\]</span> 左边的 <span class="math inline">\(Mg(\mathcal{C}_i)\)</span> 是我们真正想绘制的
+<span class="math inline">\(M\)</span> 在其自己的圆族 <span class="math inline">\(g(\mathcal{C}_i)\)</span>
+上的作用，这等价于绘制右边的 <span class="math inline">\(gM_\lambda(\mathcal{C})_i\)</span>。<span class="math inline">\(M_\lambda(\mathcal{C}_i)\)</span>
+很好画，就是把一些同心圆和过原点的直线旋转或者放缩一下；但是它前面加了一个畸变
+<span class="math inline">\(g\)</span>。为此我们只要用 <span class="math inline">\(g^{-1}\)</span>
+作用在当前场景的物体上，把它们「去畸变」即可。所以在动画中，我其实根本没有计算
+Dupin cyclide 的任何显式或者隐式的曲面方程，而是直接用 <span class="math inline">\(g^{-1}\)</span> 作用在场景上。由于 <span class="math inline">\(g^{-1}\)</span> 是 <span class="math inline">\(\mathbb{H}_3\)</span> 上的等距，它一定会把连接
+<span class="math inline">\(\{\pm1\}\)</span> 的测地线映射为连接 <span class="math inline">\(\{0,\infty\}\)</span>
+的测地线，即锥面。换言之，判断场景中的一个点 <span class="math inline">\(p\)</span> 是不是落在 Dupin cyclide 上，只要判断
+<span class="math inline">\(g^{-1}(p)\)</span>
+是不是落在锥面上。这就好办了。</p>
+<p>抛物的情形更简单一些，可以用 <span class="math inline">\(g(z)=1/z\)</span>
+把位于无穷远的不动点变到原点。</p>
+<p>动画使用的是 GLSL 语言和 raymarching 的技术。我在 Roice
+的代码基础上作了许多优化，但肯定还可以更精炼。限于我写 shader
+的能力不足，做出更美轮美奂的效果就不指望了 …</p>
+<p>严格讲，这些动画其实还是尝试在 Euclidean
+空间中去观察双曲空间中的对象，因为 raymarching
+技术假定的是光走直线，但在双曲空间中光一般不走直线，所以我们这里看到的效果与真实的生活在双曲空间中的“外星人”所看到的还是有差别的。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Bea95" class="csl-entry" role="listitem">
+Beardon, Alan F. 1995. <em>The Geometry of Discrete Groups</em>. Vol.
+91. Graduate Texts in Mathematics. Springer-Verlag, New York.
+</div>
+<div id="ref-indra" class="csl-entry" role="listitem">
+Mumford, David, Caroline Series, and David J. Wright. 2002. <em>Indra’s
+Pearls: An Atlas of Kleinian Groups</em>. Cambridge University Press.
+</div>
+<div id="ref-Needham1997" class="csl-entry" role="listitem">
+Needham, Tristan. 1997. <em>Visual Complex Analysis</em>. The Clarendon
+Press, Oxford University Press, New York.
+</div>
+<div id="ref-palka1991" class="csl-entry" role="listitem">
+Palka, B. P. 1991. <em>An Introduction to Complex Function Theory</em>.
+An Introduction to Complex Function Theory. World Publishing
+Corporation.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/Todd-Coxeter-and-uniform-polytopes/" rel="next" title="Todd-Coxeter 算法和 3D/4D 均匀多胞体">
+      上一篇：Todd-Coxeter 算法和 3D/4D 均匀多胞体
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/gifmaze-cn/" rel="next" title="碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画">
+          下一篇：碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

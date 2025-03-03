@@ -1,0 +1,861 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Wilson 均匀生成树算法 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="问题： 给定一个有限、无向的连通图 \(G= ( V,E )\)，设 \(\mathcal{T}\) 是 \(G\) 的所有生成树组成的集合，怎样在 \(\mathcal{T}\)
+中按照均匀分布进行采样？即设计一个算法，能够随机地给出 \(G\) 的一个生成树，并且 \(\mathcal{T}\)
+中每个生成树被取到的概率是相等的。
+
+常见的生成树算法如 DFS/BFS 算法、Prim 算法、Kruskal
+算法等给出的生成树都不是完全随机的。例如，取 \(G\) 为 \(\mathbb{Z}^2\) 中 \(m\times n\) 的网格图，\(G\)
+的任何生成树都是一个迷宫，把背景平面涂黑，把生成树的边涂白，就可以清楚地看到迷宫的结构。迷宫的任何两个房间
+( 即顶点 ) 可以通过生成树中唯一的路径相连，这样的迷宫叫做完美迷宫。
+DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
+倾向于尽可能深地探索整个图，因此得到的迷宫往往包含长且蜿蜒的路径，死角 (
+即叶节点 ) 是很少的：">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Wilson 均匀生成树算法"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/完美采样/">完美采样</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Wilson 均匀生成树算法</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2014-04-03T16:00:00.000Z"><a href="/wilson-algorithm/">2014-04-04</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%AF%81%E6%98%8E%E6%80%9D%E8%B7%AF"><span class="section table-of-contents-text">证明思路</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#wilson-%E7%AE%97%E6%B3%95%E4%BD%9C%E4%B8%BA%E6%B8%B8%E6%88%8F%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">Wilson 算法作为游戏策略</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9E%9C%E4%B8%8E%E7%AD%96%E7%95%A5%E6%97%A0%E5%85%B3"><span class="section table-of-contents-text">游戏结果与策略无关</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>给定一个有限、无向的连通图 <span class="math inline">\(G= ( V,E )\)</span>，设 <span class="math inline">\(\mathcal{T}\)</span> 是 <span class="math inline">\(G\)</span> 的所有生成树组成的集合，怎样在 <span class="math inline">\(\mathcal{T}\)</span>
+中按照均匀分布进行采样？即设计一个算法，能够随机地给出 <span class="math inline">\(G\)</span> 的一个生成树，并且 <span class="math inline">\(\mathcal{T}\)</span>
+中每个生成树被取到的概率是相等的。</p>
+</div>
+<p>常见的生成树算法如 DFS/BFS 算法、Prim 算法、Kruskal
+算法等给出的生成树都不是完全随机的。例如，取 <span class="math inline">\(G\)</span> 为 <span class="math inline">\(\mathbb{Z}^2\)</span> 中 <span class="math inline">\(m\times n\)</span> 的网格图，<span class="math inline">\(G\)</span>
+的任何生成树都是一个迷宫，把背景平面涂黑，把生成树的边涂白，就可以清楚地看到迷宫的结构。迷宫的任何两个房间
+( 即顶点 ) 可以通过生成树中唯一的路径相连，这样的迷宫叫做完美迷宫。</p>
+<p>DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
+倾向于尽可能深地探索整个图，因此得到的迷宫往往包含长且蜿蜒的路径，死角 (
+即叶节点 ) 是很少的：</p>
+<p><img style="margin:0px auto;display: block" width="500" src="/images/gifmaze/random_dfs.gif"></p>
+<span id="more"></span>
+<p>与之相反，Prim
+算法由于每次是在当前树上随机添加一个叶节点，因此得到的迷宫往往包含很多死角：</p>
+<p><img style="margin:0px auto;display: block" width="500" src="/images/gifmaze/prim.gif"></p>
+<p>总之从直观上就可以看出这两个算法得到的生成树都不是完全随机的。</p>
+<p>目前最快的生成均匀生成树的算法是 Wilson
+算法，它借助于擦圈的随机游动来实现。</p>
+<div id="wilson-algo" class="statement sta_wilson___ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">Wilson
+算法</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(G\)</span> 是一个有限简单连通图。</p>
+<ol type="1">
+<li>任取一个顶点 <span class="math inline">\(r\)</span>，维护一个树
+<span class="math inline">\(T\)</span>，初始时 <span class="math inline">\(T=\{r\}\)</span>。</li>
+<li>任取一个不属于 <span class="math inline">\(T\)</span> 的顶点 <span class="math inline">\(v\)</span>，从 <span class="math inline">\(v\)</span>
+出发作图上的随机游动，一边走一边随时擦掉路径中出现的圈 ( 此谓之 loop
+erased random walk ) ，即每当走到一个以前访问过的顶点 <span class="math inline">\(x\)</span>，则两次访问 <span class="math inline">\(x\)</span>
+之间的路径都被擦掉。按此规则持续行走直到与 <span class="math inline">\(T\)</span> 相遇为止，这时得到一条从 <span class="math inline">\(v\)</span> 到 <span class="math inline">\(T\)</span> 的不含圈的路径 <span class="math inline">\(p\)</span>，把 <span class="math inline">\(p\)</span> 加入到 <span class="math inline">\(T\)</span> 中，将 <span class="math inline">\(T\)</span> 更新为 <span class="math inline">\(T=T\cup p\)</span>。</li>
+<li>重复步骤 2 直到 <span class="math inline">\(T\)</span> 包含 <span class="math inline">\(G\)</span> 的所有顶点，这时 <span class="math inline">\(T\)</span> 是一个服从均匀分布的生成树。</li>
+</ol>
+</div>
+<p>下面是 Wilson 算法的 Javascript
+演示，你可以随时单击鼠标来重启动画。</p>
+<script type="text/javascript" src="/code/wilson.js"></script>
+<canvas id="wilson" width="600" height="600">
+</canvas>
+<div id="two-arbitrary">
+<p>注意 Wilson 算法的描述中有两个<strong>任意</strong>：</p>
+<ol type="1">
+<li>初始时可以任选一个初始根节点 <span class="math inline">\(r\)</span>。</li>
+<li>每次可以任选一个不属于 <span class="math inline">\(T\)</span>
+的顶点出发作随机游动。</li>
+</ol>
+</div>
+<p>Wilson 的 <a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/237814.237880">论文</a>
+中给出的证明相当有技巧性，而且有一些晦涩的部分，我是花了很久才真正理解。本文就来介绍这个证明。</p>
+<h1 id="证明思路">证明思路</h1>
+<p>先不管均匀分布的事情，我们来说明 Wilson 算法以概率 1
+会在有限时间内结束。</p>
+<div id="algo-success" class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+1.1</span>.</span><span class="statement-spah"> </span>Wilson 算法以概率
+1 在有限时间内返回一个生成树。</p>
+</div>
+<p><strong>证明</strong>：由于 <span class="math inline">\(G\)</span>
+有限且连通，所以其上的随机游动是常返的，在算法第 2
+步中，每次从一个新顶点 <span class="math inline">\(v\)</span>
+出发的随机游动以概率 1 在有限时间内撞到 <span class="math inline">\(T\)</span>。这样的循环只能执行有限多次 ( 次数以
+<span class="math inline">\(|V|\)</span> 为上界 ) ，所以算法以概率 1
+在有限时间内结束。<span class="math inline">\(\blacksquare\)</span></p>
+<p>所以真正有挑战性的地方在于论证得到的生成树服从均匀分布。</p>
+<p>证明的大致想法是这样的：我们构造概率空间 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span> 和映射 <span class="math inline">\(\phi:
+\Omega\to\mathcal{T}\)</span>，使得它们满足如下的条件：</p>
+<div id="requirements" class="statement simple plain unnumbered">
+<ol type="1">
+<li><span class="math inline">\(\phi\)</span> 对几乎处处的 <span class="math inline">\(\omega\in\Omega\)</span> 有定义 ( 不是所有的 <span class="math inline">\(\omega\)</span>
+都对应一个生成树，但这种例外发生的概率是 0 ) 。</li>
+<li><span class="math inline">\(\phi\)</span> 是满射。 ( 不能漏掉任何树
+)</li>
+<li>对任何树 <span class="math inline">\(T\in\mathcal{T}\)</span>，其在
+<span class="math inline">\(\Omega\)</span> 中的原像 <span class="math inline">\(\phi^{-1} ( T )\)</span> 的测度是一个与 <span class="math inline">\(T\)</span> 无关的常数。</li>
+</ol>
+</div>
+<p>一旦找到了这样的概率空间 <span class="math inline">\((
+\Omega,\mathbb{P} )\)</span> 和映射 <span class="math inline">\(\phi\)</span>，则 <span class="math inline">\(\phi
+( \omega )\)</span> 以概率 1 是一个生成树，且服从 <span class="math inline">\(\mathcal{T}\)</span> 上的均匀分布。</p>
+<p>构造 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span> 和
+<span class="math inline">\(\phi\)</span> 的关键，是把 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span>
+看作一个游戏的系统随机性，Wilson
+算法看作玩家的一种操作策略，但是这个策略对结果没有影响，即实际上任何游戏策略都会得到相同的结果，从而游戏结果完全由系统随机性
+<span class="math inline">\(\omega\in\Omega\)</span> 决定，这就是映射
+<span class="math inline">\(\phi\)</span>！</p>
+<p>直接介绍 Wilson
+算法背后的游戏可能有点难以理解。作为热身，我们先来看看大家都熟悉的
+Tetris
+游戏（俄罗斯方块）。我希望你能从中理解「系统随机性」与「玩家策略」的区别。</p>
+<p>经典的 Tetris 游戏是这样的，系统每次会随机从屏幕顶端落下 <span class="math inline">\(\{I,L,J,O,S,T,Z\}\)</span> 七种四方块 ( tetromino
+)
+中的一个。玩家可以在方块下落的过程中移动或者旋转它，尽可能地形成完整的水平行。每当出现完整的水平行时，这些行会被立刻消掉，同时玩家获得一定的分数。玩家的目的是获得尽可能高的分数。</p>
+<p><img style="margin:0px auto;display: block" width="500" src="/images/wilson/tetris.gif"></p>
+<p>Tetris
+游戏的结果由两个因素决定：系统的随机性和玩家的操作。这里系统的随机性是指每次落下的方块的随机性。</p>
+<p>系统的随机性可以用一个概率空间 <span class="math inline">\((
+\Omega,\mathbb{P} )\)</span> 来描述：任何样本点 <span class="math inline">\(\omega\in\Omega\)</span> 是一个无穷序列 <span class="math inline">\(\omega=\{X_i\}_{i=1}^\infty\)</span>，其中 <span class="math inline">\(X_i\)</span> 表示第 <span class="math inline">\(i\)</span> 个落下的方块的类型，它来自对集合 <span class="math inline">\(\{I,L,J,O,S,T,Z\}\)</span>
+的独立且服从均匀分布的采样。<span class="math inline">\(\Omega\)</span>
+上的概率测度 <span class="math inline">\(\mathbb{P}\)</span>
+是无穷乘积测度。</p>
+<p>例如，一个样本点 <span class="math inline">\(\omega\)</span>
+可能是这样的 <span class="math display">\[\omega=\{J, S, I, O, J, I, T,
+T, S, Z, Z, Z,\ldots\}.\]</span> 即第一个落下的方块是 <span class="math inline">\(J\)</span>，第二个是 <span class="math inline">\(S\)</span>，第三个是 <span class="math inline">\(I\)</span>，等等。</p>
+<p>一旦给定了 <span class="math inline">\(\omega\)</span>，游戏的结果将只依赖于玩家的操作。</p>
+<p>现在我要告诉你，Wilson 算法背后是一个类似 Tetris 的游戏，但又和
+Tetris 游戏有一个关键不同：Wilson
+算法的结果只依赖于系统的随机性，不依赖于玩家的操作。换句话说：对给定的
+<span class="math inline">\(\omega\)</span>，要么玩家的任何操作都会得到同一个生成树；要么任何操作都不能。即
+<span class="math inline">\(T\)</span> 是由 <span class="math inline">\(\omega\)</span>
+完全决定的。于是我们有一个确定的映射 <span class="math inline">\(\phi (
+\omega ) =T\)</span>！并且根据 <a href="#algo-success" title="命题 1.1">命题 1.1</a>, Wilson 算法以概率 1
+成功得到一个生成树，所以 <span class="math inline">\(\phi\)</span>
+对几乎处处的 <span class="math inline">\(\omega\)</span>
+是有定义的！</p>
+<p>下面来具体介绍这个游戏。</p>
+<h1 id="wilson-算法作为游戏策略">Wilson 算法作为游戏策略</h1>
+<p>我们来玩一个叫做回路弹出 ( cycle popping )
+的游戏。我先介绍这个游戏背后的系统随机性 <span class="math inline">\((
+\Omega,\mathbb{P} )\)</span>。</p>
+<div id="----------------omega--mathbb-p-------------" class="statement sta_________omega__mathbb_p_______ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">概率空间 <span class="math inline">\((
+\Omega,\mathbb{P} )\)</span> 的构造</span>.</span></p>
+<ol type="1">
+<li>固定一个顶点 <span class="math inline">\(r\)</span>。对每个 <span class="math inline">\(v\ne r\)</span>，定义栈 <span class="math inline">\(S_v=\{S_{v,1},S_{v,2},\ldots\}\)</span>。<span class="math inline">\(S_v\)</span> 的长度是无穷，其元素 <span class="math inline">\(S_{v,i}\)</span> 都是来自 <span class="math inline">\(v\)</span>
+的邻居的均匀采样。所有栈元素都是独立的。顶点 <span class="math inline">\(r\)</span> 的栈是空栈：<span class="math inline">\(S_r=\emptyset\)</span>。</li>
+<li>概率空间 <span class="math inline">\(\Omega\)</span> 是所有栈 <span class="math inline">\(\{S_v\mid v\ne r\}\)</span>
+的所有可能的状态组成的集合。这是一个无穷离散的概率空间，其上的测度 <span class="math inline">\(\mathbb{P}\)</span> 为乘积测度。</li>
+</ol>
+</div>
+<p>为了方便，我们称 <span class="math inline">\(S_v\)</span> 的第 <span class="math inline">\(i\)</span> 个元素 <span class="math inline">\(S_{v,i}\)</span> 的颜色是 <span class="math inline">\(i\)</span>。</p>
+<p>在任何时刻，这些栈 <span class="math inline">\(\{S_v,v\ne
+r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline">\(\overrightarrow{G}_S\)</span>：在 <span class="math inline">\(\overrightarrow{G}_S\)</span> 中 <span class="math inline">\(v\rightarrow u\)</span> 当且仅当 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(S_v\)</span> 的栈顶元素。每个 <span class="math inline">\(v\ne r\)</span> 的出度都恰好是 1，顶点 <span class="math inline">\(r\)</span> 的出度是 0。于是若 <span class="math inline">\(\overrightarrow{G}_S\)</span>
+不含回路的话它就是一个以 <span class="math inline">\(r\)</span>
+为根的生成树。</p>
+<div id="------------------" class="statement sta_______ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">回路弹出游戏</span>.</span><span class="statement-spah"> </span>给定栈的一个状态 <span class="math inline">\(\omega\in\Omega\)</span>，<span class="math inline">\(\overrightarrow{G}_S\)</span> 是 <span class="math inline">\(\omega\)</span> 对应的栈顶图，若 <span class="math inline">\(\overrightarrow{G}_S\)</span>
+不含回路的话则它已经是一个生成树，游戏结束；否则设 <span class="math inline">\(C\)</span> 是 <span class="math inline">\(\overrightarrow{G}_S\)</span>
+中的一个回路，我们可以将其「弹出」：对每个 <span class="math inline">\(v\in C\)</span>，弹出 <span class="math inline">\(S_v\)</span> 的栈顶元素 ( 于是若当前 <span class="math inline">\(S_v\)</span> 的栈顶元素为 <span class="math inline">\(S_{v,i}\)</span>，则弹出 <span class="math inline">\(S_{v,i}\)</span> 以后栈顶元素变为 <span class="math inline">\(S_{v,i+1}\)</span> ) ，这样得到更新的 <span class="math inline">\(\overrightarrow{G}_S\)</span>。玩家每次可以任选
+<span class="math inline">\(\overrightarrow{G}_S\)</span>
+中的一个回路并将其弹出。如果玩家能够经过有限多次弹出操作后使得 <span class="math inline">\(\overrightarrow{G}_S\)</span> 中不含任何回路，即
+<span class="math inline">\(\overrightarrow{G}_S\)</span>
+是一个生成树，则玩家获胜。</p>
+</div>
+<p>在回路弹出游戏中，玩家能做的就是每次选择一个需要弹出的回路，别的什么也做不了。游戏开始之前，<span class="math inline">\(\overrightarrow{G}_S\)</span> 中所有顶点的颜色都是
+1，但是随着游戏的进行，<span class="math inline">\(\overrightarrow{G}_S\)</span>
+会变得「五颜六色」。一个回路中可以包含不同颜色的顶点。</p>
+<div id="wilson-------------------------" class="statement sta_wilson_________ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">Wilson
+算法作为游戏策略</span>.</span><span class="statement-spah">
+</span>每次任选一个不属于 <span class="math inline">\(T\)</span> 的顶点
+<span class="math inline">\(v\)</span>，从 <span class="math inline">\(v\)</span> 出发按照 <span class="math inline">\(\overrightarrow{G}_S\)</span>
+的边的指引来搜索下一个要弹出的回路。</p>
+</div>
+<p>树 <span class="math inline">\(T\)</span>
+的作用是维护那些已经完全确定下来、必然属于最终生成树的那些边。这是因为，<span class="math inline">\(T\subset\overrightarrow{G}_S\)</span> 始终是一个以
+<span class="math inline">\(r\)</span> 为根节点的有向树，从 <span class="math inline">\(T\)</span> 中的任何顶点出发沿着 <span class="math inline">\(\overrightarrow{G}_S\)</span>
+的有向边都会走到根节点 <span class="math inline">\(r\)</span>。而 <span class="math inline">\(r\)</span> 是个死胡同 ( <span class="math inline">\(r\)</span> 的出度是 0 ) ，所以 <span class="math inline">\(T\)</span> 中的顶点不可能属于任何回路。</p>
+<p>我们前面剧透过，回路弹出游戏的结果不依赖于玩家的操作。我们把这个事实的证明放在后面，先承认它是正确的，于是我们可以定义映射
+<span class="math inline">\(\phi\)</span>：</p>
+<div id="-phi----------" class="statement sta__phi____ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label"><span class="math inline">\(\phi\)</span> 的构造</span>.</span><span class="statement-spah"> </span>设使用 Wilson 算法对 <span class="math inline">\(\omega\)</span> 执行操作以后得到的生成树为 <span class="math inline">\(T\)</span>，定义 <span class="math inline">\(\phi
+( \omega ) =T\)</span>。</p>
+</div>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(T\)</span> 服从所有生成树组成的集合 <span class="math inline">\(\mathcal{T}\)</span> 上的均匀分布。</p>
+</div>
+<p>这个结论解释了为什么 Wilson 算法中的 <a href="#two-arbitrary">两个任意</a> 对最终结果是没有影响的。</p>
+<p><strong>证明</strong>：我们来计算如下事件的概率：依次弹出回路 <span class="math inline">\(\mathcal{C}= ( C_1,\ldots,C_n )\)</span>
+后得到的生成树是 <span class="math inline">\(T\)</span>。注意 <span class="math inline">\(\mathcal{C}\)</span> 和 <span class="math inline">\(T\)</span>
+的顶点必然<strong>无缝隙</strong>地填满栈 <span class="math inline">\(\{S_v\}\)</span> 的上面的部分，所以这个概率就是
+<span class="math inline">\(\mathcal C\)</span> 和 <span class="math inline">\(T\)</span> 中的边各自指向正确位置的概率： <span class="math display">\[\mathbb{P} ( \mathcal{C},T ) =
+\prod_{e\in\mathcal{C}\cup T} p_e=\Phi ( T ) \cdot \Phi ( \mathcal{C} )
+.\]</span> 这里 <span class="math inline">\(\Phi ( \bullet )\)</span>
+返回集合 <span class="math inline">\(\bullet\)</span>
+中所有边的概率的乘积。</p>
+<p>设 <span class="math inline">\(\mathcal{C}_T\)</span> 是所有可能得到
+<span class="math inline">\(T\)</span> 的那些 <span class="math inline">\(\mathcal{C}\)</span> 组成的集合，在上式两边对
+<span class="math inline">\(\mathcal{C}_T\)</span> 求和，则 <span class="math display">\[\mathbb{P} ( T ) =\left (
+\sum_{\mathcal{C}\in\mathcal{C}_T}\Phi ( \mathcal C ) \right ) \cdot\Phi
+( T ) .\]</span> 然而 <span class="math inline">\(\mathcal{C}_T\)</span>
+是一个与 <span class="math inline">\(T\)</span>
+无关的集合，这是因为在给定 <span class="math inline">\(\mathcal{C}\)</span> 后，任何生成树 <span class="math inline">\(T\)</span> 都有可能出现 ( 解释见后面 ) ，因此
+<span class="math display">\[\mathbb{P} ( T ) ={\rm const}\cdot \Phi ( T
+) .\]</span> 而 <span class="math inline">\(\Phi ( T ) =
+\prod\limits_{v\ne r} ( 1/d_v )\)</span> 是与 <span class="math inline">\(T\)</span> 无关的量，从而 <span class="math inline">\(\mathbb{P} ( T )\)</span> 是常数，这就证明了 <span class="math inline">\(\phi\)</span> 满足 <a href="#requirements" title="条件 3">条件 3</a> 。</p>
+<p>为什么给定 <span class="math inline">\(\mathcal{C}\)</span> 以后任何
+<span class="math inline">\(T\)</span>
+都可能出现？打个比方，想象一个向弹夹里面压子弹的过程：把树 <span class="math inline">\(T\)</span> 放在栈顶，然后依次用 <span class="math inline">\(C_n,\ldots,C_1\)</span> 将 <span class="math inline">\(T\)</span> 往下压，得到一个栈的状态 <span class="math inline">\(\{S_v\}\)</span>，对这个状态执行回路弹出，显然依次弹出的就是
+<span class="math inline">\(C_1,\ldots,C_n\)</span>，最终得到的树是
+<span class="math inline">\(T\)</span>。这顺便也说明了 <span class="math inline">\(\phi\)</span> 是满射的。</p>
+<p>现在 <span class="math inline">\(\phi\)</span> 满足前面提到的全部 <a href="#requirements" title="三个条件">三个条件</a> ，这就证明了 Wilson
+算法的正确性。</p>
+<h1 id="游戏结果与策略无关">游戏结果与策略无关</h1>
+<p>最后我们证明最关键的部分：Wilson
+算法的结果与每次选择弹出的回路无关。</p>
+<p>假设有若干玩家分别玩回路弹出的游戏，每个人采取的策略是不同的。我们想知道，对给定的系统随机性
+<span class="math inline">\(\omega\)</span>，这些玩家都能获胜吗？他们最终得到的生成树一样吗？需要的操作次数相同吗？</p>
+<p>答案是：不管这些玩家采取怎样的策略，只有两种可能的结果出现：</p>
+<ol type="1">
+<li>所有人都不能获胜。</li>
+<li>所有人都能获胜，而且每个人使用的操作次数也相同，最终得到的栈顶图
+<span class="math inline">\(\overrightarrow{G}_S\)</span>
+也相同。不仅如此，每个人弹出的回路组成的集合 <span class="math inline">\(\{C_1,\ldots,C_n\}\)</span>
+也都是相同的。注意这里的回路 <span class="math inline">\(C_i\)</span>
+是带有颜色标记的，两个回路相同不仅要求包含的顶点相同，也要求对应顶点的颜色相同。仅仅弹出的顺序可能不同。</li>
+</ol>
+<p>我们只要证明如下的结论即可：</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>对任一栈状态 <span class="math inline">\(\omega\in\Omega\)</span>，若玩家 <span class="math inline">\(A\)</span> 可以经过 <span class="math inline">\(n\)</span> 次操作后获胜，其弹出的回路依次为 <span class="math inline">\(C_1,\ldots,C_n\)</span>，则不论玩家 <span class="math inline">\(B\)</span> 的策略如何，其必然也经过 <span class="math inline">\(n\)</span> 次操作后获胜，其弹出的回路集合 <span class="math inline">\(\{D_1,\ldots,D_n\}\)</span> 与 <span class="math inline">\(\{C_1,\ldots,C_n\}\)</span> 是相同的，即适当重排
+<span class="math inline">\(\{D_1,\ldots,D_n\}\)</span> 后有 <span class="math inline">\(D_i=C_i\)</span>。</p>
+</div>
+<p><strong>证明</strong>：对玩家 <span class="math inline">\(A\)</span>
+的操作次数 <span class="math inline">\(n\)</span> 归纳。<span class="math inline">\(n=0\)</span> 时结论显然成立 ( 双方均无任何操作 )
+，下面设 <span class="math inline">\(n\geq1\)</span> 且结论对所有小于
+<span class="math inline">\(n\)</span> 的情形成立。</p>
+<p>设 <span class="math inline">\(B\)</span> 第一次弹出的回路是 <span class="math inline">\(D_1\)</span>，如果 <span class="math inline">\(C_1=D_1\)</span> 则这一步操作后 <span class="math inline">\(A,B\)</span> 到达了相同的状态，而 <span class="math inline">\(A\)</span> 可以继续经过 <span class="math inline">\(n-1\)</span> 次操作后获胜，于是根据归纳假设 <span class="math inline">\(B\)</span> 也一定经过 <span class="math inline">\(n-1\)</span> 次操作获胜且后续操作 <span class="math inline">\(\{D_2,\ldots,D_n\}=\{C_2,\ldots,C_n\}\)</span>。</p>
+<p>如果 <span class="math inline">\(C_1\ne D_1\)</span>，我们断言 <span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(D_1\)</span> 没有公共的顶点。否则若 <span class="math inline">\(v\in C_1\cap D_1\)</span>，由于第一次操作时 <span class="math inline">\(C_1,D_1\)</span> 属于同一个栈顶图中，以及 <span class="math inline">\(v\)</span> 的出度是 1，所以 <span class="math inline">\(v\)</span> 在 <span class="math inline">\(G_S\)</span> 中的后继 <span class="math inline">\(v_1\)</span> 也同时属于 <span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(D_1\)</span>，进而 <span class="math inline">\(v_1\)</span> 的后继 <span class="math inline">\(v_2\)</span> 也是如此，这样一直下去回到 <span class="math inline">\(v\)</span> 就会有 <span class="math inline">\(C_1=D_1\)</span>，矛盾。</p>
+<p>既然 <span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(D_1\)</span> 没有相同顶点，那说明不论先弹 <span class="math inline">\(C_1\)</span> 后弹<span class="math inline">\(D_1\)</span>，或是先弹 <span class="math inline">\(D_1\)</span> 后弹 <span class="math inline">\(C_1\)</span>，得到的栈顶图是一样的。</p>
+<p>接下来的论述是钻石引理 ( diamond lemma )
+的典型操作：我们引入两个新玩家 <span class="math inline">\(A'\)</span> 和 <span class="math inline">\(B'\)</span>：<span class="math inline">\(A'\)</span> 的前两步操作是先弹出 <span class="math inline">\(C_1\)</span> 后弹出 <span class="math inline">\(D_1\)</span>，<span class="math inline">\(B'\)</span> 的前两步操作是先弹出 <span class="math inline">\(D_1\)</span> 后弹出 <span class="math inline">\(C_1\)</span>。</p>
+<ol type="1">
+<li><span class="math inline">\(A\)</span> 和 <span class="math inline">\(A'\)</span> 第一步操作相同，因此由归纳假设
+<span class="math inline">\(A'\)</span> 可以经过 <span class="math inline">\(n-2\)</span> 步后获胜；</li>
+<li><span class="math inline">\(A'\)</span> 和 <span class="math inline">\(B'\)</span> 前两步操作后到达相同的状态，而已知
+<span class="math inline">\(A'\)</span> 可以在 <span class="math inline">\(n-2\)</span> 步后获胜，所以由归纳假设 <span class="math inline">\(B'\)</span> 也可以在 <span class="math inline">\(n-2\)</span> 步后获胜；</li>
+<li><span class="math inline">\(B'\)</span> 和 <span class="math inline">\(B\)</span> 第一步操作相同，而已知 <span class="math inline">\(B'\)</span> 可以在 <span class="math inline">\(n-1\)</span> 步后获胜，所以由归纳假设 <span class="math inline">\(B\)</span> 也可以在 <span class="math inline">\(n-1\)</span> 步后获胜。</li>
+</ol>
+<p><span class="math inline">\(A,B,A',B'\)</span>
+弹出的回路集合相同是显然的。</p>
+<p>至此我们就说明了 <span class="math inline">\(\phi\)</span>
+的定义是合理的，它是一个确定的映射。</p>
+<p>对没有接触过钻石引理的读者，我这个论述比 Wilson
+的原证明的论述要繁琐，但是这个角度更本质地揭示了为什么游戏的结果不依赖于具体的策略。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/coupling-from-the-past/" rel="next" title="Coupling from the past">
+      上一篇：Coupling from the past
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/coxeter-element/" rel="next" title="Coxeter element">
+          下一篇：Coxeter element
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

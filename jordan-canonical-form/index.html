@@ -1,0 +1,892 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Jordan 标准形 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="Jordan
+标准形定理是线性代数中的基本定理，专门为它写一篇长文好像有点多余：这方面的教材讲义实在是太多了！一个陈旧的定理还能写出什么新意来呢？
+理由有两个。第一个原因是我曾经在做助教给学生讲这个定理的时候，突然发现不知道该怎么启发他们为好。虽然我知道
+Jordan
+标准形定理的很多种证法，照念几个不在话下，但是感觉有点疙疙瘩瘩的：怎么才能说清定理背后的想法，让学生觉得定理的成立是顺理成章的呢？于是我知道我对这个定理的理解还有模糊的地方。
+第二个原因是 Jordan
+块有一个重要的代数性质是通常教材中不讲的，而这个性质是代数学中一类重要而常见的性质的雏形，这就是不可分解性。与之对应的是可对角化的线性变换的完全可约性。从一开始就让学生接触这些现象是有好处的。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Jordan 标准形"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/线性代数/">线性代数</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Jordan 标准形</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2009-07-12T00:00:00.000Z"><a href="/jordan-canonical-form/">2009-07-12</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-jordan-%E6%A0%87%E5%87%86%E5%BD%A2"><span class="section table-of-contents-text">什么是 Jordan 标准形</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#jordan-%E6%A0%87%E5%87%86%E5%BD%A2%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">Jordan 标准形定理的证明</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%88%86%E8%A7%A3%E5%AD%98%E5%9C%A8%E6%80%A7-1%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%B9%82%E9%9B%B6%E7%9A%84%E6%83%85%E5%BD%A2"><span class="section table-of-contents-text">分解存在性
+1：转化为幂零的情形</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%88%86%E8%A7%A3%E5%AD%98%E5%9C%A8%E6%80%A7-2%E8%AF%81%E6%98%8E%E5%B9%82%E9%9B%B6%E7%9A%84%E6%83%85%E5%BD%A2"><span class="section table-of-contents-text">分解存在性 2：证明幂零的情形</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%88%86%E8%A7%A3%E5%94%AF%E4%B8%80%E6%80%A7%E7%9A%84%E8%AF%81%E6%98%8E"><span class="section table-of-contents-text">分解唯一性的证明</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%9A%84%E6%80%9D%E8%80%83"><span class="section table-of-contents-text">进一步的思考</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>Jordan
+标准形定理是线性代数中的基本定理，专门为它写一篇长文好像有点多余：这方面的教材讲义实在是太多了！一个陈旧的定理还能写出什么新意来呢？</p>
+<p>理由有两个。第一个原因是我曾经在做助教给学生讲这个定理的时候，突然发现不知道该怎么启发他们为好。虽然我知道
+Jordan
+标准形定理的很多种证法，照念几个不在话下，但是感觉有点疙疙瘩瘩的：怎么才能说清定理背后的想法，让学生觉得定理的成立是顺理成章的呢？于是我知道我对这个定理的理解还有模糊的地方。</p>
+<p>第二个原因是 Jordan
+块有一个重要的代数性质是通常教材中不讲的，而这个性质是代数学中一类重要而常见的性质的雏形，这就是不可分解性。与之对应的是可对角化的线性变换的完全可约性。从一开始就让学生接触这些现象是有好处的。</p>
+<span id="more"></span>
+<h1 id="什么是-jordan-标准形">什么是 Jordan 标准形</h1>
+<p>我们从中学就知道整数环和多项式环有唯一因子分解定理：每个整数可以唯一地分解为素数的乘积，每个域上的多项式可以唯一地分解为不可约多项式的乘积。数学里面有很多这样的唯一分解定理，现在我们想知道：有没有所谓的“线性变换的唯一分解定理”
+呢？可以猜测如果有这样的定理存在，那么大概可以表述为如下的样子：</p>
+<div id="unique-1" class="statement sta____________ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">线性变换的唯一分解定理</span>.</span><span class="statement-spah"> </span>（粗糙的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(T\)</span>
+可以唯一地分解为若干个「简单的」线性变换，而这些「简单的」线性变换本身不能再分解。</p>
+</div>
+<p>这个表述很不清楚，整数和多项式的分解就是表示为素因子的乘积，那什么是线性变换的分解呢？什么又是不可分解的线性变换呢？正确的概念是直和：</p>
+<div class="statement simple plain unnumbered">
+<p>设 <span class="math inline">\(T\)</span> 是向量空间 <span class="math inline">\(V\)</span> 上的线性变换，如果 <span class="math inline">\(V\)</span> 可以分解为一些非平凡的子空间的直和
+<span class="math inline">\(V=V_1\oplus\cdots\oplus
+V_k\)</span>，使得每一个 <span class="math inline">\(V_i\)</span> 都是
+<span class="math inline">\(T\)</span>- 不变的子空间，则称 <span class="math inline">\(T\)</span> 是可以分解的； 如果 <span class="math inline">\(V\)</span> 不存在这样的分解，则称 <span class="math inline">\(T\)</span> 是不可分解的线性变换。</p>
+</div>
+<p>这样我们就可以比较准确的表述线性变换的唯一分解定理了：</p>
+<div id="unique-2" class="statement sta____________-1 plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">线性变换的唯一分解定理</span>.</span><span class="statement-spah"> </span>（修正的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 可以分解为若干个 <span class="math inline">\(T\)</span>- 不变子空间的直和 <span class="math inline">\(V=V_1\oplus\cdots\oplus V_k\)</span>，<span class="math inline">\(T\)</span> 限制在每个 <span class="math inline">\(V_i\)</span>
+上是不可分解的线性变换。这个分解还是唯一的，即如果 <span class="math inline">\(V=W_1\oplus\cdots\oplus W_l\)</span>
+是另一种分解，则 <span class="math inline">\(k=l\)</span>
+且适当重排以后，对每个 <span class="math inline">\(i\)</span>，<span class="math inline">\(T\)</span> 在 <span class="math inline">\(V_i\)</span> 上的限制与 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(W_i\)</span> 上的限制是相似的。</p>
+</div>
+<p>这里有一个重要的问题需要说明：在一般的域上研究不可分解的线性变换是一个棘手的多的问题，这个问题的解决要用到
+Frobenius 有理标准形，而在复数域上问题就简单很多，这就是 Jordan
+标准形做的事情。在本文中我们都在复数域上讨论。</p>
+<p>那么什么样的线性变换算是不可分解的线性变换呢？</p>
+<p>最简单也是最重要的例子就是移位算子：假设 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(V\)</span> 的一组基 <span class="math inline">\(\{v_1,\cdots,v_n\}\)</span>
+的作用是一个向右的移位： <span class="math display">\[T:\quad
+v_n\rightarrow v_{n-1}\rightarrow\cdots\rightarrow
+v_1\rightarrow0.\]</span> 则称 <span class="math inline">\(T\)</span>
+是一个移位算子。<span class="math inline">\(T\)</span>
+在这组基下的矩阵为 <span class="math inline">\(J_0\)</span>: <span class="math display">\[(v_1, v_2, \ldots, v_n)J_0 = (0, v_1, \ldots,
+v_{n-1}),\quad J_0=\begin{pmatrix}0&amp;1&amp;&amp;\\ &amp;\ddots
+&amp;\ddots &amp;\\ &amp;&amp;0&amp;1\\
+&amp;&amp;&amp;0\end{pmatrix}.\]</span></p>
+<p><span class="math inline">\(J_0\)</span> 叫做特征值为 0 的 Jordan
+块。注意 <span class="math inline">\(T\)</span> 是一个幂零算子：<span class="math inline">\(T^n=0\)</span>，它仅有唯一的特征值 0。</p>
+<p>为什么 <span class="math inline">\(T\)</span> 是不可分解的？假设
+<span class="math inline">\(V=U\oplus W\)</span> 是两个非平凡 <span class="math inline">\(T\)</span>- 不变子空间的直和，则 <span class="math inline">\(T\)</span> 作为 <span class="math inline">\(U\)</span> 和 <span class="math inline">\(W\)</span> 上的幂零线性变换必然各有一个特征值为 0
+的特征向量，因此齐次线性方程组 <span class="math inline">\(TX=0\)</span>
+的解空间至少包含两个线性无关的向量。但是 <span class="math inline">\(T\)</span> 的秩是 <span class="math inline">\(n-1\)</span>，所以 <span class="math inline">\(TX=0\)</span> 的解空间是 1
+维的，这就导致了矛盾。</p>
+<p>用同样的方法可以说明给移位算子 <span class="math inline">\(T\)</span>
+加上一个数乘变换以后得到的仍然是不可分解的线性变换：设 <span class="math inline">\(\lambda\in\mathbb{C}\)</span>，<span class="math inline">\(S=T+\lambda I\)</span>，则 <span class="math inline">\(S\)</span> 也是不可分解线性变换，其对应的矩阵
+<span class="math display">\[J_\lambda=\begin{pmatrix}\lambda&amp;1&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\\&amp;&amp;\lambda&amp;1\\&amp;&amp;&amp;\lambda\end{pmatrix}\]</span>
+叫做特征值为 <span class="math inline">\(\lambda\)</span> 的 Jordan
+块。</p>
+<p>现在我们已经找到了一族不可分解的线性变换，那么它们是否就构成了全部的线性变换呢？答案是肯定的，这就是
+Jordan 标准形定理：</p>
+<div id="jordan-canonical" class="unnumbered statement sta_jordan______ plain">
+<p><span class="statement-heading"><span class="statement-label">Jordan
+标准形定理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上有限维向量空间 <span class="math inline">\(V\)</span> 上的线性变换，则存在 <span class="math inline">\(V\)</span> 的一组基使得 <span class="math inline">\(T\)</span> 在这组基下的矩阵为 Jordan 块的直和：
+<span class="math display">\[T=J_{\lambda_1}\oplus\cdots\oplus
+J_{\lambda_r}.\]</span> 这种分解是唯一的，意思是如果存在 <span class="math inline">\(V\)</span> 的另一组基使得 <span class="math inline">\(T\)</span> 的矩阵也是 Jordan 块的直和 <span class="math display">\[T=J_{\mu_1}\oplus\cdots\oplus J_{\mu_s},\]</span>
+则 <span class="math inline">\(r=s\)</span> 且适当重排后有 <span class="math inline">\(J_{\lambda_i}=J_{\mu_i}\)</span>。</p>
+</div>
+<h1 id="jordan-标准形定理的证明">Jordan 标准形定理的证明</h1>
+<p>定理的结论包含存在性和唯一性两部分，我们先来处理存在性的证明。</p>
+<h2 id="分解存在性-1转化为幂零的情形">分解存在性
+1：转化为幂零的情形</h2>
+<p>首先我们需要另一个重要的定理：准素分解定理。准素分解定理是一个初步的分解，它把
+<span class="math inline">\(V\)</span> 分解为若干 <span class="math inline">\(T\)</span>- 不变子空间 <span class="math inline">\(V_i\)</span> 的直和，使得 <span class="math inline">\(T\)</span> 在每个 <span class="math inline">\(V_i\)</span> 上的作用是一个数乘变换 <span class="math inline">\(\lambda_iI\)</span> 加上一个幂零线性变换 <span class="math inline">\(N\)</span>。借助准素分解定理，我们把 Jordan
+标准形的存在性转化为论证任何幂零线性变换可以分解为一些零特征值的 Jordan
+块的直和。</p>
+<div id="primary-decomposition" class="unnumbered statement sta_______ plain">
+<p><span class="statement-heading"><span class="statement-label">准素分解定理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(T\)</span>
+的特征多项式为 <span class="math inline">\(f(x)\)</span>，且 <span class="math inline">\(f(x)\)</span> 在复数域上分解为一次因式的乘积 <span class="math display">\[f(x)=(x-\lambda_1)^{n_1}\cdots(x-\lambda_k)^{n_k},\]</span>
+这里的 <span class="math inline">\(\lambda_i\)</span> 互不相同。令 <span class="math inline">\(V_i=\mathrm{Ker}(T-\lambda_i I)^{n_i}\)</span>，
+则每个 <span class="math inline">\(V_i\)</span> 都是 <span class="math inline">\(T\)</span>- 不变子空间而且 <span class="math display">\[V=V_1\oplus\cdots\oplus V_m.\]</span></p>
+</div>
+<p><strong>证明</strong>：我们从一个简单的引理出发：</p>
+<div id="coprime" class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(T\)</span> 是域 <span class="math inline">\(F\)</span> 上有限维向量空间 <span class="math inline">\(V\)</span> 上的线性变换，<span class="math inline">\(p(x),q(x)\in F[x]\)</span>
+是两个互素的多项式，且有 <span class="math inline">\(p(T)\cdot
+q(T)=0\)</span>。则 <span class="math inline">\(V=\mathrm{Ker}p(T)\oplus
+\mathrm{Ker}q(T)\)</span>。</p>
+</div>
+<p>引理的证明：由于 <span class="math inline">\(p(x),q(x)\)</span>
+是互素的多项式，所以存在多项式 <span class="math inline">\(s(x),t(x)\)</span> 满足 <span class="math display">\[s(x)p(x)+t(x)q(x)=1.\]</span> 即 <span class="math display">\[s(T)p(T)+t(T)q(T)=I.\]</span> 于是对任何 <span class="math inline">\(v\in V\)</span> 有 <span class="math display">\[v
+= \underbrace{s(T)p(T)v}_{\in\mathrm{Ker}q(T)} +
+\underbrace{t(T)q(T)v}_{\in\mathrm{Ker}p(T)}.\]</span> 这说明 <span class="math inline">\(V = \mathrm{Ker}p(T) +
+\mathrm{Ker}q(T)\)</span>。要验证这是直和，不妨设 <span class="math inline">\(v\in\mathrm{Ker}p(T)\cap\mathrm{Ker}q(T)\)</span>，则
+<span class="math inline">\(p(T)v=q(T)v=0\)</span>，于是 <span class="math display">\[v =s(T)p(T)v+t(T)q(T)v = 0.\]</span></p>
+<p>把引理的结论反复应用在 <span class="math inline">\(f(x)\)</span>
+上即可得出准素分解定理。<span class="math inline">\(\blacksquare\)</span></p>
+<h2 id="分解存在性-2证明幂零的情形">分解存在性 2：证明幂零的情形</h2>
+<p>借助 <a href="#primary-decomposition" title="准素分解定理">准素分解定理</a>，我们把分解存在性转化为论证若
+<span class="math inline">\(N\)</span> 是某个向量空间 <span class="math inline">\(V\)</span> 上的幂零线性变换，则存在 <span class="math inline">\(V\)</span> 的一组基，使得 <span class="math inline">\(N\)</span> 在这组基下的矩阵是若干零特征值 Jordan
+块 <span class="math inline">\(J_0\)</span> 的和。注意一个 Jordan
+块对应的是一个链 <span class="math display">\[v\rightarrow Nv\rightarrow
+\cdots \rightarrow N^kv\rightarrow 0.\]</span>
+我们要证明存在若干条这样的互不相交的链，这些链所包含的全部非零向量构成
+<span class="math inline">\(V\)</span> 的一组基。</p>
+<p>这一步的证明方法很多，但是相差不是很大，具体喜欢那种要看个人主观，这里介绍的是最简单也是最容易被初学者接受的一种。</p>
+<p>对 <span class="math inline">\(V\)</span> 的维数 <span class="math inline">\(\dim V\)</span> 归纳，<span class="math inline">\(\dim V=1\)</span> 时显然结论成立。</p>
+<p>现假设结论对所有维数小于 <span class="math inline">\(\dim V\)</span>
+的向量空间成立，考虑 <span class="math inline">\(V\)</span> 的像空间
+<span class="math inline">\(\mathrm{Im}(V)\)</span>。这是一个 <span class="math inline">\(N\)</span>- 不变子空间，且由于 <span class="math inline">\(N\)</span> 是幂零线性变换所以 <span class="math inline">\(\dim \mathrm{Im}(V)&lt;\dim V\)</span>，所以可以对
+<span class="math inline">\(\mathrm{Im}(V)\)</span> 使用归纳假设：存在
+<span class="math inline">\(\mathrm{Im}(V)\)</span>
+的一组基如下，它们构成 <span class="math inline">\(q\)</span>
+条不相交的链 <span class="math inline">\(\mathcal{O}_1,\cdots,\mathcal{O}_q\)</span>：</p>
+<p><span class="math display">\[\begin{array}{l}&amp;v_{1,1}\rightarrow
+v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow
+0.\\&amp;v_{2,1}\rightarrow v_{2,2}\rightarrow\cdots\rightarrow
+v_{2,n_2}\rightarrow 0.\\&amp;\cdots\\&amp; v_{q,1}\rightarrow
+v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
+0.\end{array}\]</span></p>
+<p>由于 <span class="math inline">\(v_{i,1}\in \mathrm{Im}(V)\)</span>
+因此可以设 <span class="math inline">\(v_{i,1}=Nw_i\)</span>，从而我们得到一组更长的链（就是在前面加上一项）</p>
+<p><span class="math display">\[\begin{array}{l}&amp;w_1\rightarrow
+v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow
+v_{1,n_1}\rightarrow 0.\\&amp;w_2\rightarrow v_{2,1}\rightarrow
+v_{2,2}\rightarrow\cdots\rightarrow v_{2,n_2}\rightarrow
+0.\\&amp;\cdots\cdots\cdots\\&amp;w_q\rightarrow v_{q,1}\rightarrow
+v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
+0.\end{array}\]</span></p>
+<p>那么这些新链包含的向量是否构成 <span class="math inline">\(V\)</span>
+的一组基？答案是我们还要补上一些在 <span class="math inline">\(V\)</span> 中长度是 1，但是在 <span class="math inline">\(\mathrm{Im}(V)\)</span> 中“消失”了的链：注意 <span class="math inline">\(\{v_{1,n_1},\cdots,v_{q,n_q}\}\)</span> 是 <span class="math inline">\(\mathrm{Ker}N\)</span> 中的线性无关元，但是 <span class="math inline">\(\mathrm{Ker}N\)</span>
+还可能有其它的基向量。将它们扩充为 <span class="math inline">\(\mathrm{Ker}N\)</span> 的一组基</p>
+<p><span class="math display">\[\{ v_{1,n_1},\cdots,v_{q,n_1}\}\cup \{
+w_{q+1},\cdots,w_{K}\},\quad K=\dim\mathrm{Ker}N.\]</span></p>
+<p>从而我们最终得到下面的链图：</p>
+<p><span class="math display">\[\begin{array}{r}\mathbf{w_1}\rightarrow
+v_{1,1}\rightarrow v_{1,2}\rightarrow\cdots\rightarrow
+v_{1,n_1}\rightarrow 0.&amp;\\\mathbf{w_2}\rightarrow v_{2,1}\rightarrow
+v_{2,2}\rightarrow\cdots\rightarrow v_{2,n_2}\rightarrow
+0.&amp;\\\cdots\cdots\cdots&amp;\\\mathbf{w_q}\rightarrow
+v_{q,1}\rightarrow v_{q,2}\rightarrow\cdots\rightarrow
+v_{q,n_q}\rightarrow 0.&amp;\\\mathbf{w_{q+1}}\rightarrow
+0.&amp;\\\cdots\cdots&amp;\\\mathbf{w_K}\rightarrow0.\end{array}\]</span></p>
+<p>你可以看到 <span class="math inline">\(w_{q+1},\ldots,w_K\)</span>
+正是那些在 <span class="math inline">\(V\)</span> 中长度为 1，但是在
+<span class="math inline">\(\mathrm{Im}(V)\)</span>
+中「消失」了的链。</p>
+<p>最后只剩下验证这些向量确实构成 <span class="math inline">\(V\)</span>
+的一组基。显然这些向量一共有 <span class="math display">\[\dim
+\mathrm{Im}(V)+\dim\mathrm{Ker}N=\dim V\]</span>
+个，所以只要再说明它们是线性无关的。</p>
+<p>假设有线性关系</p>
+<p><span class="math display">\[\cdots+(c_0w_i+c_1v_{i,1}+\cdots+c_{n_i}v_{i,n_i})+\cdots+\sum_{j=q+1}^K
+d_jw_j=0,\]</span></p>
+<p>我们要说明出现在上式中的所有系数 <span class="math inline">\(c_i,d_j\)</span> 都是 0。左边用 <span class="math inline">\(N\)</span> 作用得到</p>
+<p><span class="math display">\[\cdots+(c_0v_{i,1}+c_1v_{i,2}+\cdots+c_{n_i-1}v_{i,n_i})+\cdots=0.\]</span></p>
+<p>这是一个关于 <span class="math inline">\(\mathrm{Im}(V)\)</span>
+的一组基的一个线性关系，于是 <span class="math inline">\(c_0=\cdots=c_{n_i-1}=0\)</span>，从而剩下的线性关系为</p>
+<p><span class="math display">\[\cdots+c_{n_i}v_{i,n_i}+\cdots+\sum_{j=q+1}^K
+d_jw_j=0.\]</span></p>
+<p>而这是一个关于 <span class="math inline">\(\mathrm{Ker}N\)</span>
+的一组基的一个线性关系，于是 <span class="math inline">\(c_{n_i}=d_{q+1}=\cdots=d_K=0\)</span>，从而所有的系数都是
+0，这就完成了 Jordan 标准形存在性的证明。</p>
+<h2 id="分解唯一性的证明">分解唯一性的证明</h2>
+<p>要证明分解的唯一性，我们只要证明对任一特征值 <span class="math inline">\(\lambda_i\)</span>，<span class="math inline">\(T\)</span> 限制在 <span class="math inline">\(U=\mathrm{Ker}(T-\lambda_i)^{n_i}\)</span>
+上分解为 Jordan 块的方式是唯一的。我们可以不妨假设 <span class="math inline">\(\lambda_i=0\)</span>。记 <span class="math inline">\(N=T\mid_U\)</span>，则 <span class="math inline">\(N\)</span> 是 <span class="math inline">\(U\)</span> 上的幂零线性变换。根据存在性的证明，在
+<span class="math inline">\(U\)</span> 上我们有如下的链图： <span class="math display">\[\begin{array}{r}v_{1,1}\rightarrow
+v_{1,2}\rightarrow\cdots\rightarrow v_{1,n_1}\rightarrow
+0.&amp;\\v_{2,1}\rightarrow v_{2,2}\rightarrow\cdots\rightarrow
+v_{2,n_2}\rightarrow 0.&amp;\\\cdots\cdots&amp;\\ v_{q,1}\rightarrow
+v_{q,2}\rightarrow\cdots\rightarrow v_{q,n_q}\rightarrow
+0.\end{array}\]</span> 这里每个链代表一个 Jordan 块，按照 <span class="math inline">\(n_1\geq\cdots\geq n_q\)</span>
+的顺序排列。我们要证明链图中行数 <span class="math inline">\(q\)</span>
+和行的长度 <span class="math inline">\((n_1,\ldots,n_q)\)</span>
+都是唯一确定的，不依赖于基的选择。</p>
+<p>我用一个具体的例子来说明：</p>
+<p><span class="math display">\[\begin{array}{r}
+\bullet\rightarrow {\color{blue}{\bullet}}
+\rightarrow{\color{green}{\bullet}}\rightarrow
+{\color{red}{\bullet}}\rightarrow 0.\\
+{\color{blue}{\bullet}}
+\rightarrow{\color{green}{\bullet}}\rightarrow{\color{red}{\bullet}}\rightarrow
+0.&amp;\\
+{\color{green}{\bullet}}\rightarrow{\color{red}{\bullet}}\rightarrow
+0.&amp;\\
+{\color{red}{\bullet}}\rightarrow 0.\\
+{\color{red}{\bullet}}\rightarrow 0.
+\end{array}\]</span></p>
+<p>注意到在链图中，从右边数起，从第 <span class="math inline">\(1\)</span> 到第 <span class="math inline">\(i\)</span> 列，都会被 <span class="math inline">\(N^i\)</span> 变成零向量。这些向量构成了 <span class="math inline">\(\mathrm{Ker}N^i\)</span>
+的一组基。例如在上面例子中，<span class="math inline">\(\{
+{\color{red}{\bullet}} \}\)</span> 的列构成了 <span class="math inline">\(\mathrm{Ker}N\)</span> 的一组基，<span class="math inline">\(\{ {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}\)</span> 的列构成了 <span class="math inline">\(\mathrm{Ker}N^2\)</span> 的一组基，等等。</p>
+<p>于是我们有子空间的升链： <span class="math display">\[(0)\subset
+\underbrace{\mathrm{Ker}N}_{\{ {\color{red}{\bullet}} \}}\subset
+\underbrace{\mathrm{Ker}N^2}_{\{ {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}} \subset \underbrace{\mathrm{Ker}N^3}_{\{
+{\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}} \subset \underbrace{\mathrm{Ker}N^4}_{\{
+\bullet\mid {\color{blue}{\bullet}}\mid {\color{green}{\bullet}}\mid
+{\color{red}{\bullet}}\}}=U.\]</span> 不难看到右边的第 <span class="math inline">\(i\)</span> 列正好构成商空间 <span class="math inline">\(\mathrm{Ker}N^{i}/\mathrm{Ker}N^{i-1}\)</span>
+的一组基。 <span class="math display">\[\begin{aligned}
+\mathrm{Ker}N: \quad &amp;  \{ {\color{red}{\bullet}} \}\\
+\mathrm{Ker}N^2/\mathrm{Ker}N: \quad &amp; \{ {\color{green}{\bullet}}
+\}\\
+\mathrm{Ker}N^3/\mathrm{Ker}N^2: \quad &amp; \{ {\color{blue}{\bullet}}
+\}\\
+\mathrm{Ker}N^4/\mathrm{Ker}N^3=U/\mathrm{Ker}N^3: \quad &amp; \{
+\bullet \}\\
+\end{aligned}
+\]</span> 所以右边第 <span class="math inline">\(i\)</span> 列的长度等于
+<span class="math inline">\(\dim\mathrm{Ker}N^i -
+\dim\mathrm{Ker}N^{i-1}\)</span>。</p>
+<p>另一方面右边第 <span class="math inline">\(i\)</span>
+列的长度还等于「长度 <span class="math inline">\(\geq i\)</span>
+的链的个数」。所以长度恰好等于 <span class="math inline">\(k\)</span>
+的链，即大小恰好为 <span class="math inline">\(k\)</span> 的 Jordan
+块的个数，等于 <span class="math display">\[\begin{aligned}
+&amp;(\dim\mathrm{Ker}N^k -
+\dim\mathrm{Ker}N^{k-1})-(\dim\mathrm{Ker}N^{k+1} -
+\dim\mathrm{Ker}N^k)\\
+&amp;=2\dim\mathrm{Ker}N^k -
+\dim\mathrm{Ker}N^{k-1}-\dim\mathrm{Ker}N^{k+1}.\end{aligned}\]</span>
+这是一个由 <span class="math inline">\(N\)</span>
+完全确定的值。这就证明了分解的唯一性。</p>
+<h1 id="进一步的思考">进一步的思考</h1>
+<p>一个很有意思的问题是，给定</p>
+<p><span class="math display">\[J_\lambda=\begin{pmatrix}\lambda&amp;1&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\\&amp;&amp;\lambda&amp;1\\&amp;&amp;&amp;\lambda\end{pmatrix}_{n\times
+n}\]</span></p>
+<p>为一个特征值 <span class="math inline">\(\lambda\)</span> 的 Jordan
+块，计算其 <span class="math inline">\(k\)</span> 次幂 <span class="math inline">\(J_\lambda^k\)</span> 的 Jordan 标准形。</p>
+<p>当 <span class="math inline">\(\lambda\ne0\)</span> 时，</p>
+<p><span class="math display">\[J_\lambda^k = \begin{pmatrix}\lambda^k
+&amp;k\lambda^{k-1}&amp;\ddots
+&amp;\\&amp;\lambda^k&amp;\ddots&amp;\ddots\\&amp;&amp;\ddots&amp;k\lambda^{k-1}\\&amp;&amp;&amp;\lambda^k\end{pmatrix}.\]</span></p>
+<p>你知道怎样计算 <span class="math inline">\(J_\lambda^k\)</span>
+吗？记住这个技巧：把多项式 <span class="math inline">\(x^k\)</span> 在
+<span class="math inline">\(\lambda\)</span> 处 Taloy 展开：</p>
+<p><span class="math display">\[x^k=(x-\lambda)^k+a_{k-1}(x-\lambda)^{k-1}+a_1(x-\lambda)+a_0,\]</span></p>
+<p>然后代入即可。</p>
+<p>和 Jordan 块不可分解性的证明完全一样，我们发现 <span class="math inline">\(J_\lambda^k-\lambda^k I\)</span> 的秩是 <span class="math inline">\(n-1\)</span>，因此方程组 <span class="math inline">\(J_\lambda^kX=\lambda^k X\)</span> 的解空间是 1
+维的，从而 <span class="math inline">\(J_\lambda^k\)</span>
+是不可分解的，因此其 Jordan 标准形只有一块，就是</p>
+<p><span class="math display">\[\begin{pmatrix}\lambda^k&amp;1&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\\&amp;&amp;\lambda^k&amp;1\\&amp;&amp;&amp;\lambda^k\end{pmatrix}_{n\times
+n}.\]</span></p>
+<p>最有意思的情形发生在 <span class="math inline">\(\lambda=0\)</span>
+时，这个时候 Jordan 会均匀的碎裂为一些小的 Jordan 块的和。</p>
+<p>这时 <span class="math inline">\(J_0\)</span> 是一个移位算子：</p>
+<p><span class="math display">\[J_0:\quad v_n\rightarrow
+v_{n-1}\rightarrow \cdots \rightarrow v_1\rightarrow 0.\]</span></p>
+<p>整个链只有一条。但是 <span class="math inline">\(J_0^k\)</span> 则是
+<span class="math inline">\(k\)</span> 步 <span class="math inline">\(k\)</span> 步地「跳」：</p>
+<p><span class="math display">\[J_0^k:\quad \left\{\begin{array}{l}
+v_n\rightarrow v_{n-k}\rightarrow \cdots
+\rightarrow0,\\v_{n-1}\rightarrow v_{n-1-k}\rightarrow \cdots\rightarrow
+0,\\\cdots\\v_{n-k+1}\rightarrow v_{n-2k+1}\rightarrow \cdots
+\rightarrow 0.\end{array}\right.\]</span></p>
+<p>所以 <span class="math inline">\(J_0^k\)</span> 有 <span class="math inline">\(k\)</span> 条链，每个链都是一个 Jordan 块，即
+<span class="math inline">\(J_0^k\)</span> 的标准形中有 <span class="math inline">\(k\)</span> 个 Jordan 块。设 <span class="math inline">\(n=qk+r\)</span>，这里 <span class="math inline">\(0\leq r&lt; k\)</span>，则这 <span class="math inline">\(k\)</span> 个 Jordan 块中有 <span class="math inline">\(r\)</span> 个是 <span class="math inline">\(q+1\)</span> 阶的，<span class="math inline">\(k-r\)</span> 个是 <span class="math inline">\(q\)</span> 阶的。</p>
+<p>举个例子就明白了，一个 8 阶的 0 特征值 Jordan 块 <span class="math inline">\(J_0\)</span>，<span class="math inline">\(J_0^3\)</span> 的 Jordan
+标准形是什么样子的？这个时候 <span class="math inline">\(J_0^3\)</span>
+有 3 个链 <span class="math inline">\(\{v_8,v_5,v_2\}\)</span>, <span class="math inline">\(\{v_7,v_4,v_1 \}\)</span>, <span class="math inline">\(\{v_6,v_3\}\)</span>，所以 <span class="math inline">\(J_0^3\)</span> 的 Jordan 标准形有 2 个 3 阶的
+Jordan 块和 1 个 2 阶的 Jordan 块。</p>
+<p>总结一下：零特征值的 Jordan
+块的高次幂一定会分裂，而且是尽可能均匀的分裂；非零特征值的 Jordan
+块的任意次幂都不会分裂。</p>
+<p>一个不可约的代数结构，在某种限制或者扩张的意义下却能均匀的「碎裂」，这是代数学中一个常见而重要的现象。比如设
+<span class="math inline">\(f\)</span> 是一个有理数域 <span class="math inline">\(\mathbb{Q}\)</span> 上的不可约多项式，<span class="math inline">\(F\)</span> 是 <span class="math inline">\(\mathbb{Q}\)</span> 的一个正规扩域，则如果 <span class="math inline">\(f\)</span> 在 <span class="math inline">\(F\)</span> 上是可约的，那么 <span class="math inline">\(f\)</span>
+必然分解成一些次数相同的多项式的乘积：</p>
+<p><span class="math display">\[f=f_1f_2\cdots f_r,\quad \deg
+f_1=\cdots=\deg f_r.\]</span></p>
+<p>类似的现象还有代数数论中素理想的分解，群表示论中不可约表示
+（在诱导和限制下） 的分解，代数几何中不可约代数簇的分解等等。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/hurwitz-square-sum-theorem/" rel="next" title="Hurwitz 平方和定理">
+      上一篇：Hurwitz 平方和定理
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/space-of-matrices/" rel="next" title="矩阵空间的子空间">
+          下一篇：矩阵空间的子空间
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

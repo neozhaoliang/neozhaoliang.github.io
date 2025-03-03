@@ -1,0 +1,1644 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Todd-Coxeter 算法和 3D/4D 均匀多胞体 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="本文介绍我写的一个高颜值的、脱离了低级趣味的小程序：用 Python 和
+POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
+上。
+以下是用这个程序渲染的一些例子，其中不同颜色的顶点/边/面表示它们在对称群的作用下位于不同的轨道中，具体解释见后。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Todd-Coxeter 算法和 3D/4D 均匀多胞体"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/pywonderland-项目/">pywonderland 项目</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Todd-Coxeter 算法和 3D/4D 均匀多胞体</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2018-05-21T00:00:00.000Z"><a href="/Todd-Coxeter-and-uniform-polytopes/">2018-05-21</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BE%8B%E5%AD%90"><span class="section table-of-contents-text">例子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%99%E4%BA%9B%E5%9B%BE%E7%94%BB%E7%9A%84%E9%83%BD%E6%98%AF%E4%BB%80%E4%B9%88"><span class="section table-of-contents-text">这些图画的都是什么？</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%99%E4%BA%9B%E5%9B%BE%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%BB%E5%87%BA%E6%9D%A5%E7%9A%84"><span class="section table-of-contents-text">这些图是怎么画出来的？</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%89%E9%99%90%E8%A1%A8%E7%8E%B0%E7%BE%A4%E5%92%8C-todd-coxeter-%E7%AE%97%E6%B3%95"><span class="section table-of-contents-text">有限表现群和 Todd-Coxeter
+算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%98%9F%E7%8A%B6%E5%A4%9A%E8%83%9E%E4%BD%93%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="section table-of-contents-text">星状多胞体的计算</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#snub-cube-%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="section table-of-contents-text">Snub cube 的计算</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%A4%9A%E9%9D%A2%E4%BD%93%E7%9A%84%E9%A1%B6%E7%82%B9%E6%8A%95%E5%BD%B1%E5%88%B0-coxeter-%E5%B9%B3%E9%9D%A2"><span class="section table-of-contents-text">多面体的顶点投影到 Coxeter
+平面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%84%E5%BD%95%E6%89%8B%E7%AE%97-todd-coxeter"><span class="section table-of-contents-text">附录：手算 Todd-Coxeter</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>本文介绍我写的一个高颜值的、脱离了低级趣味的小程序：用 Python 和
+POV-Ray 绘制各种三维多面体和四维多胞体，代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/polytopes">Github</a>
+上。</p>
+<p>以下是用这个程序渲染的一些例子，其中不同颜色的顶点/边/面表示它们在对称群的作用下位于不同的轨道中，具体解释见后。</p>
+<span id="more"></span>
+<h1 id="例子">例子</h1>
+<ul>
+<li><p>所有的 Platonic 多面体，Archimedean 多面体，比如 snub
+dodecahedron:</p>
+<p><video src="/images/polytopes/snub-dodecahedron.mp4" controls=""></video></p></li>
+<li><p>所有的 Kepler-Poinsot 多面体，比如 great icosahedron:</p>
+<p><video src="/images/polytopes/great-icosahedron.mp4" controls=""></video></p></li>
+<li><p>所有的四维均匀多胞体 （除去一个特例 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Grand_antiprism">The grand
+antiprism</a>），比如我的 Github 头像 (runcinated 120-cell)：</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/polytopes/github-favicon.png"></p></li>
+<li><p>截断的四维正方体 truncated tesseract:</p>
+<p><video src="/images/polytopes/truncated-tesseract.mp4" controls=""></video></p></li>
+<li><p>4d cube:</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/polytopes/4-cube.png"></p></li>
+<li><p>也可以是非凸的，比如星状正多胞体中的 grand stellated
+120-cell:</p>
+<p><video src="/images/polytopes/grand-stellated-120-cell.mp4" controls=""></video></p></li>
+<li><p>甚至是 5 维欧氏空间中的均匀多胞体，如 5-cube:</p>
+<p><video src="/images/polytopes/5-cube.mp4" controls=""></video></p></li>
+</ul>
+<p>等等，可玩的效果是非常多的。</p>
+<p>以上这些都是在 Python 中做好计算以后，将多胞体的数据导出到 POV-Ray
+中渲染得到的。你完全可以通过改写代码中的 POV-Ray
+的部分来渲染得出不同的效果，当然前提是需要掌握 POV-Ray
+的场景描述语言，不过这属于另一段故事，就不在本文的讨论范围内了。</p>
+<p>下面介绍程序背后的数学原理。</p>
+<h1 id="这些图画的都是什么">这些图画的都是什么？</h1>
+<p>这些图都是三维或者四维<strong>欧氏空间</strong>中<strong>凸/非凸</strong>的<strong>均匀</strong>多胞体
+(polytope)，三维的情形更常用的称呼是多面体。这里有几个关键词需要注意：凸/非凸、均匀。</p>
+<p>凸比较好理解，就是指多胞体上任意两点间的连线仍然属于此多胞体，否则就是非凸。上面的例子中
+Platonic 多面体、Archimedean 多面体都是凸的，Kepler-Poinsot
+多面体、星状正多胞体都是非凸的。</p>
+<p>均匀这个词就不太好理解了。简单说就是：多胞体的所有顶点都一样，且每个面都是正多边形，每个胞腔都是三维的均匀多面体（这是个递归的定义）。</p>
+<p>要准确解释什么叫所有顶点都一样，就要用到群论的语言：一个多胞体 <span class="math inline">\(P\)</span> 的对称群 <span class="math inline">\(G\)</span>
+是欧氏空间中一组正交变换构成的有限群，<span class="math inline">\(G\)</span> 作用在 <span class="math inline">\(P\)</span> 上保持 <span class="math inline">\(P\)</span> 不变。所有顶点都一样的严格说法是 <span class="math inline">\(G\)</span> 传递地作用在 <span class="math inline">\(P\)</span> 的顶点集上，即对 <span class="math inline">\(P\)</span> 的任何两个顶点 <span class="math inline">\(u,v\)</span>，都存在 <span class="math inline">\(g\in G\)</span>，<span class="math inline">\(g\)</span> 把 <span class="math inline">\(u\)</span> 映射为 <span class="math inline">\(v\)</span>。</p>
+<h1 id="这些图是怎么画出来的">这些图是怎么画出来的？</h1>
+<p>这些多胞体看起来样子大不相同，但它们都可以用同一种方法计算出来，叫做
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythoff
+构造法</a>，也称万花筒构造法。它的原理跟我们小时候玩的万花筒的原理是一样的：在空间中放置若干过原点的反射平面
+（镜子），镜面之间的夹角是精心设计好的，都形如 <span class="math inline">\(\pi-\pi/p\)</span>，其中 <span class="math inline">\(p\)</span> 为有理数。在空间中选定一个初始顶点
+<span class="math inline">\(v_0\)</span>，将 <span class="math inline">\(v_0\)</span>
+关于这些镜子反复作反射变换，得到的全部镜像就是多胞体的顶点。如果 <span class="math inline">\(v_0\)</span> 关于第 <span class="math inline">\(i\)</span> 面镜子反射后得到的镜像是 <span class="math inline">\(v_1\)</span>，则 <span class="math inline">\((v_0,v_1)\)</span> 构成一条类型为 <span class="math inline">\(i\)</span>
+的边，我们把它以及在对称群作用下同轨道的所有边都染成 <span class="math inline">\(i\)</span> 号色。如果 <span class="math inline">\(v_0\)</span> 先关于镜面 <span class="math inline">\(i\)</span> 作反射，再关于镜面 <span class="math inline">\(j\)</span>
+作反射，则由于两个反射变换的复合是一个旋转变换，<span class="math inline">\(v_0\)</span>
+实际上是绕着某个面的中心和原点的连线作了一次旋转，旋转的角度为 <span class="math inline">\(2\pi/m\)</span> （假设镜面 <span class="math inline">\(i\)</span> 和镜面 <span class="math inline">\(j\)</span> 的法向量夹角是 <span class="math inline">\(\pi-\pi/m\)</span>），重复此旋转 <span class="math inline">\(m\)</span> 次即可得到多胞体的一个类型为 <span class="math inline">\((i,j)\)</span>
+的面，我们把它在对称群作用下同轨道的所有面都染成同一颜色。</p>
+<p>这里的关键问题有两个：</p>
+<ol type="1">
+<li>对于不同的均匀多胞体，应该如何放置这些镜面，并选择初始顶点？</li>
+<li>摆好镜面和初始顶点以后，怎样不重复不遗漏地计算初始顶点的所有镜像？</li>
+</ol>
+<p>第一个问题的答案叫做 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coxeter%E2%80%93Dynkin_diagram">Coxeter-Dynkin
+图</a>，Coxeter-Dynkin
+图是一个带标记信息的无向图，它编码了多胞体的全部信息，即只要知道了多胞体对应的
+Coxeter-Dynkin 图，就可以求出该多胞体的所有数据
+（仅缩放大小和在空间中的摆放位置除外）。每个均匀多胞体都有一个
+Coxeter-Dynkin 图与之对应，但是不同的 Coxeter-Dynkin
+图可能描述的是相同的多胞体。</p>
+<p>比如正方体的 Coxeter-Dynkin 图为：</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/cube43.svg" width="200"></p>
+<p>我们来解释这个图的含义：</p>
+<p>在一个 Coxeter-Dynkin
+图中，每个顶点代表一面镜子，在上图中有三个顶点，所以有三面镜子。将这三面镜子从左到右依次记作
+<span class="math inline">\(m_0, m_1,
+m_2\)</span>，顶点之间的边记录了镜子间的夹角：</p>
+<ol type="1">
+<li>若两个镜面之间的夹角为 <span class="math inline">\(\pi/2\)</span>
+则它们之间没有边相连。</li>
+<li>若两个镜面之间的夹角为 <span class="math inline">\(\pi-\pi/3\)</span>
+则它们之间用一条无标记的边相连。</li>
+<li>若两个镜面之间的夹角为 <span class="math inline">\(\pi-\pi/m\)</span> (<span class="math inline">\(m\)</span> 为有理数且 <span class="math inline">\(m&gt;2, m\ne3\)</span>)，则它们之间用一条标号为
+<span class="math inline">\(m\)</span> 的边相连。</li>
+</ol>
+<p>此外用圈出的镜面来标记初始顶点的位置，<strong>一个镜面被圈出当且仅当初始顶点不在这个镜面上</strong>。</p>
+<p>从而在正方形的情形 <span class="math inline">\(\langle
+m_0,m_1\rangle=\pi-\pi/4\)</span>，<span class="math inline">\(\langle
+m_1,m_2\rangle=\pi-\pi/3\)</span>，<span class="math inline">\(\langle
+m_0,m_2\rangle=\pi/2\)</span>。初始顶点落在 <span class="math inline">\(m_1\)</span> 和 <span class="math inline">\(m_2\)</span> 上但是不属于 <span class="math inline">\(m_0\)</span>。</p>
+<p>于是这三面镜子可以这样摆放：</p>
+<ol type="1">
+<li>镜子 <span class="math inline">\(m_0\)</span> 的法向量可以随意，比如
+<span class="math inline">\(n_0=(1, 0, 0)\)</span>。</li>
+<li>镜子 <span class="math inline">\(m_1\)</span> 的法向量 <span class="math inline">\(n_1\)</span> 与 <span class="math inline">\(n_0\)</span> 夹角为 <span class="math inline">\(3\pi/4\)</span>，于是 <span class="math inline">\(n_1\)</span> 可以取为 <span class="math inline">\((\cos\dfrac{3\pi}{4}, \sin\dfrac{3\pi}{4},
+0)\)</span>。</li>
+<li>镜子 <span class="math inline">\(m_2\)</span> 的法向量 <span class="math inline">\(n_2\)</span> 与 <span class="math inline">\(n_0\)</span> 垂直，所以 <span class="math inline">\(n_2\)</span> 形如 <span class="math inline">\((0,y_3,z_3)\)</span>，它与 <span class="math inline">\(n_1\)</span> 夹角是 <span class="math inline">\(2\pi/3\)</span>，所以 <span class="math inline">\(y_3
+\sin\dfrac{3\pi}{4}=\cos\dfrac{2\pi}{3}\)</span>，再结合 <span class="math inline">\(n_2\)</span> 是单位向量，<span class="math inline">\(z_3=\sqrt{1-y_3^2}\)</span>，解出 <span class="math inline">\(y_3, z_3\)</span> 即可。</li>
+</ol>
+<p>要选择一个落在 <span class="math inline">\(m_1\)</span> 和 <span class="math inline">\(m_2\)</span> 上但是不落在 <span class="math inline">\(m_0\)</span> 上的初始点 <span class="math inline">\(v_0\)</span>，我们可以让 <span class="math inline">\(v_0\)</span> 到平面 <span class="math inline">\(m_1\)</span> 和 <span class="math inline">\(m_2\)</span> 的距离为 0，到平面 <span class="math inline">\(m_0\)</span> 的距离为 1，即</p>
+<p><span class="math display">\[\langle v_0, n_0\rangle=1,\quad \langle
+v_0, n_1\rangle=0,\quad\langle v_0, n_2\rangle=0.\]</span></p>
+<p>求解这个线性方程组即可。</p>
+<p>我们前面提到过，要使得初始顶点的所有镜像恰好构成一个均匀多胞体，镜子之间的夹角必须精心设置，这实际上只有有限种可能。换句话说，只有有限个
+Coxeter-Dynkin 图可以给出 3D/4D 的均匀多胞体。在 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_polytope">维基百科</a>
+上完整的列出了每种均匀多胞体对应的 Coxeter-Dynkin
+图，这里就不再专门列举了，但是特别指出两点：</p>
+<ol type="1">
+<li>Coxeter-Dynkin
+图的标号完全决定了多胞体的对称性，而初始顶点的位置则决定了多胞体的截断类型。</li>
+<li>对偶的多胞体具有相同的 Coxeter-Dynkin
+图，只不过要把边的标号从右到左反过来。比如正八面体和正方体的
+Coxeter-Dynkin 图是一样的，但是边的标号是 (3, 4)。</li>
+</ol>
+<p>第二个问题的答案叫做 Todd-Coxeter
+算法，展开讲的话比较复杂，我们单列一节专门谈谈。</p>
+<h1 id="有限表现群和-todd-coxeter-算法">有限表现群和 Todd-Coxeter
+算法</h1>
+<p>怎样求出初始顶点在所有镜子中的镜像？有个简单的办法：只要反复地将初始顶点关于每个镜面作反射，算出得到的镜像点的坐标，并与之前得到的点的坐标相比较（浮点数比较需要在一定的误差范围内考虑），直到不再有新的镜像点出现为止，不就得到全部顶点集吗？这个方法确实可行，但是既笨又丑陋：它完全没有用到多胞体具有对称性这一事实！</p>
+<p>这个程序采用的是基于符号计算的途径，这个方法可以精准地得出所有顶点/边/面的信息，代价就是涉及的数学略复杂。我们先回忆一下群在集合上的作用的轨道—稳定化子定理：</p>
+<div id="-----------------------------" class="unnumbered statement sta____________ plain">
+<p><span class="statement-heading"><span class="statement-label">轨道 —
+稳定化子定理</span>.</span><span class="statement-spah"> </span>设群
+<span class="math inline">\(G\)</span> 传递地作用在集合 <span class="math inline">\(S\)</span> 上，设 <span class="math inline">\(x\in
+S\)</span> 的稳定化子群是 <span class="math inline">\(H\)</span>，则集合
+<span class="math inline">\(S\)</span> 与 <span class="math inline">\(G/H\)</span> 中的右陪集之间有一一对应：<span class="math inline">\(x\cdot g\leftrightarrow Hg\)</span>。</p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>和一般的约定不同，这里群在集合上的作用为作用在右边，主要是为了编程方便，实际上左边右边都一样。</p>
+</div>
+<p>这个定理告诉我们，如果群 <span class="math inline">\(G\)</span>
+传递地作用在一个集合 <span class="math inline">\(S\)</span> 上，而且对
+<span class="math inline">\(S\)</span> 中某个元素 <span class="math inline">\(x\)</span> 我们知道了它的稳定化子群 <span class="math inline">\(H\)</span>，则只要对 <span class="math inline">\(G/H\)</span> 的每个陪集代表元 <span class="math inline">\(g\)</span>，将 <span class="math inline">\(g\)</span> 作用在 <span class="math inline">\(x\)</span> 上就可以得到整个 <span class="math inline">\(S\)</span>。</p>
+<p>于是给定一个均匀多胞体 <span class="math inline">\(P\)</span>，要求出其全部顶点集合，我们只要：</p>
+<ol type="1">
+<li>根据 <span class="math inline">\(P\)</span> 的 Coxeter-Dynkin
+图确定其对称群 <span class="math inline">\(G\)</span> 和初始顶点 <span class="math inline">\(v_0\)</span>。</li>
+<li>定出 <span class="math inline">\(v_0\)</span> 的稳定化子群 <span class="math inline">\(H\)</span> 并求出 <span class="math inline">\(G/H\)</span> 的一组陪集代表元。</li>
+<li>将 <span class="math inline">\(G/H\)</span> 中的每个陪集代表元作用在
+<span class="math inline">\(v_0\)</span> 上即得 <span class="math inline">\(P\)</span> 的全部顶点。</li>
+</ol>
+<p>我们仍然以正方体为例来讲解：正方体的 Coxeter-Dynkin 图是</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/cube43.svg" width="200"></p>
+<p>仍然记三个镜面为 <span class="math inline">\(m_0,m_1,m_2\)</span>，其法向量分别为 <span class="math inline">\(n_0,n_1,n_2\)</span>，设 <span class="math inline">\(\rho_0,\rho_1,\rho_2\)</span>
+分别是关于它们的反射变换，<span class="math inline">\(\rho_i\)</span>
+对应的矩阵为 <span class="math inline">\(M_i=I-2n_in_i^T\)</span>（见 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Householder_transformation">Householder
+变换</a>）。</p>
+<p>正方体的对称群 <span class="math inline">\(G\)</span> 由 <span class="math inline">\(\rho_0,\rho_1,\rho_2\)</span>
+这三个基本反射生成，其表现为： <span class="math display">\[G =
+\langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^4=(\rho_1\rho_2)^3=(\rho_0\rho_2)^2=1\rangle.\]</span>
+这是因为反射的平方总是恒等变换，所以 <span class="math inline">\(\rho_i^2=1\)</span>。<span class="math inline">\(\rho_0,\rho_1\)</span> 是两个夹角为 <span class="math inline">\(3\pi/4\)</span> 的反射，所以 <span class="math inline">\(\rho_0\rho_1\)</span> 是一个角度为 <span class="math inline">\(3\pi/2\)</span> 的旋转，旋转轴为 <span class="math inline">\(m_0\)</span> 和 <span class="math inline">\(m_1\)</span> 的交线，从而 <span class="math inline">\((\rho_0\rho_1)^4=1\)</span>。<span class="math inline">\(\rho_1\rho_2,\rho_0\rho_2\)</span>
+的情形是类似的。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>利用 Todd-Coxeter 算法 （后面有解释） 不难求出这个群包含 48
+个元素，罗列如下： <span class="math display">\[\begin{array}{lll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}\\
+\rho_{0}\rho_{1}\rho_{0}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{1}\rho_{0}\rho_{1}\\\rho_{1}\rho_{0}&amp;\rho_{1}&amp;\rho_{0}\rho_{2}\\\rho_{2}&amp;\rho_{1}\rho_{2}&amp;\rho_{1}\rho_{2}\rho_{1}\\\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\\\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\\\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\\\rho_{0}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\\\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{1}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\\\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\\\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\end{array}
+\]</span> 由于在正方形的 Coxeter-Dynkin 图中只有镜面 <span class="math inline">\(m_0\)</span> 是被圈出的，即初始顶点 <span class="math inline">\(v_0\)</span> 落在 <span class="math inline">\(m_1\)</span> 和 <span class="math inline">\(m_2\)</span> 上，但不属于 <span class="math inline">\(m_0\)</span>，所以反射 <span class="math inline">\(\rho_1,\rho_2\)</span> 保持 <span class="math inline">\(v_0\)</span> 不动，<span class="math inline">\(\rho_0\)</span> 将 <span class="math inline">\(v_0\)</span> 映射为其关于 <span class="math inline">\(m_0\)</span> 的镜像，于是 <span class="math inline">\(v_0\)</span> 的稳定化子群是 <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
+<span class="math display">\[H=\langle \rho_1, \rho_2\ |\
+\rho_1^2=\rho_2^2=(\rho_1\rho_2)^3=e\rangle.\]</span> 显然 <span class="math inline">\(H\)</span> 就是二面体群 <span class="math inline">\(D_3\)</span>，所以 <span class="math inline">\(|H|=6\)</span>，从而 <span class="math inline">\(|G/H|=8\)</span>。利用 Todd-Coxeter
+算法可得其一组右陪集代表元为 <span class="math display">\[\begin{array}{llll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\end{array}
+\]</span> 将它们作用在 <span class="math inline">\(v_0\)</span>
+上即可得到正方体的 8 个顶点。例如 <span class="math inline">\(\rho_0\rho_1\)</span> 作用在 <span class="math inline">\(v_0\)</span> 上为 <span class="math display">\[v_0(\rho_0\rho_1)=(v_0\rho_0)\rho_1=(v_0M_0)\rho_1=v_0M_0M_1.\]</span>
+其中 <span class="math inline">\(v_0\)</span> 写成行向量的形式，每个
+<span class="math inline">\(M_i\)</span> 是对称矩阵。</p>
+<p>计算边/面/胞腔的原理是类似的，但考虑的细节要多一些。比如我们想求出所有关于第
+<span class="math inline">\(i\,(i=0,1,2)\)</span> 个镜面 <span class="math inline">\(m_i\)</span> 反射生成的类型为 <span class="math inline">\(i\)</span> 的边，可以这样做：</p>
+<ol type="1">
+<li>检查初始顶点 <span class="math inline">\(v_0\)</span> 是否落在 <span class="math inline">\(m_i\)</span>
+上。如果答案为是，那么关于此镜面的反射保持 <span class="math inline">\(v_0\)</span> 不变，此多面体不含类型 <span class="math inline">\(i\)</span> 的边。否则设 <span class="math inline">\(v_0\)</span> 关于 <span class="math inline">\(m_i\)</span> 的镜像为 <span class="math inline">\(v_1\)</span>，则 <span class="math inline">\((v_0,
+v_1)\)</span> 构成一条类型为 <span class="math inline">\(i\)</span> 的边
+<span class="math inline">\(e\)</span>。</li>
+<li>关于 <span class="math inline">\(m_i\)</span> 的反射 <span class="math inline">\(\rho_i\)</span> 把 <span class="math inline">\(v_0\)</span> 和 <span class="math inline">\(v_1\)</span> 互换，从而保持 <span class="math inline">\(e\)</span> 不变。<strong>注意其它任何与 <span class="math inline">\(m_i\)</span> 垂直并且包含初始点 <span class="math inline">\(v_0\)</span> 的镜面反射也会保持 <span class="math inline">\(e\)</span> 不变</strong>。在正方形的情形中，反射
+<span class="math inline">\(\rho_0\)</span> 互换 <span class="math inline">\(e\)</span> 的两端因而保持 <span class="math inline">\(e\)</span> 不变，此外镜面 <span class="math inline">\(m_0\)</span> 和 <span class="math inline">\(m_2\)</span> 是垂直的，且 <span class="math inline">\(v_0\)</span> 包含在 <span class="math inline">\(m_2\)</span> 中，所以反射 <span class="math inline">\(\rho_2\)</span> 保持 <span class="math inline">\(e\)</span> 上的每个点不变，于是 <span class="math inline">\(e\)</span> 的稳定化子群为 <span class="math inline">\(H=\langle \rho_0,\rho_2 \rangle\)</span>。显然
+<span class="math inline">\(H\)</span> 同构于 <span class="math inline">\(\mathbb{Z}_2\times\mathbb{Z}_2\)</span>，所以
+<span class="math inline">\(|H|=4\)</span>，从而 <span class="math inline">\(|G/H|=12\)</span>，即正方体有 12 条边 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</li>
+<li>求出 <span class="math inline">\(G/H\)</span>
+的一组陪集代表元并作用在 <span class="math inline">\(e\)</span>
+上得出全部类型为 <span class="math inline">\(i\)</span> 的边。</li>
+</ol>
+<p>求面的情形复杂一些，基本原理是这样的：</p>
+<ol type="1">
+<li>对 <span class="math inline">\(i\ne j\)</span>，如果初始顶点 <span class="math inline">\(v_0\)</span> 不同时属于镜面 <span class="math inline">\(i\)</span> 和镜面 <span class="math inline">\(j\)</span>，则旋转 <span class="math inline">\(\rho_i\rho_j\)</span> 就可以生成一个面 <span class="math inline">\(f\)</span>。需要注意的是，如果这两个镜面恰好垂直，则必须二者均不包含
+<span class="math inline">\(v_0\)</span>
+才能得到一个非退化的面，这个面是个正方形。在正方体的情形，<span class="math inline">\(\rho_0\rho_1\)</span> 可以生成一个面，<span class="math inline">\(\rho_0\rho_2\)</span>（两镜面垂直但只有一个镜面包含
+<span class="math inline">\(v_0\)</span>）和 <span class="math inline">\(\rho_1\rho_2\)</span>（两镜面均包含 <span class="math inline">\(v_0\)</span>）都不能给出面。</li>
+<li><span class="math inline">\(f\)</span> 的稳定化子群是由 <span class="math inline">\(\rho_i,\rho_j\)</span> 和那些包含 <span class="math inline">\(v_0\)</span> 且与 <span class="math inline">\(m_i,m_j\)</span>
+均垂直的镜面反射生成。在正方形的情形是 <span class="math inline">\(H=\langle \rho_0,\rho_1 \rangle\)</span> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，显然 <span class="math inline">\(H\)</span> 同构于二面体群 <span class="math inline">\(D_8\)</span>，因此 <span class="math inline">\(|H|=8\)</span>，<span class="math inline">\(|G/H|=6\)</span>，即正方体有 6 个面。</li>
+</ol>
+<p>总之关键的步骤都是给定群 <span class="math inline">\(G\)</span>
+和某个子群 <span class="math inline">\(H\)</span>，求 <span class="math inline">\(G/H\)</span> 的一组陪集代表元。</p>
+<p>这里用到的算法叫做 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Todd%E2%80%93Coxeter_algorithm">Todd-Coxeter
+算法</a>。</p>
+<p>Todd-Coxeter
+算法在许多抽象代数或者群论的教材都有，用到的数学知识并不复杂。但完整描述并证明一份程序实现的细节还是很费功夫的，恐怕要好几页纸才能说清楚。限于篇幅，我这里仅用正方体的情形为例说明算法的步骤，具体的证明和更多的细节读者请参考</p>
+<blockquote>
+<p>Handbook of Computational Group Theory, Holt, D., Eick, B., O’Brien,
+E.</p>
+</blockquote>
+<p>中的 coset enumeration 一章。我个人认为这是讲解 Todd-Coxeter
+算法最棒的文献。</p>
+<p>Todd-Coxeter 算法非常类似玩数独游戏，这里要填的表是一个变化的二维数组
+<span class="math inline">\(T\)</span>，<span class="math inline">\(T\)</span> 的行 <span class="math inline">\(i\)</span> 代表第 <span class="math inline">\(i\)</span> 个右陪集，<span class="math inline">\(T\)</span> 的列 <span class="math inline">\(j\)</span> 代表第 <span class="math inline">\(j\)</span> 个生成元 <span class="math inline">\(\rho_j\)</span>，<span class="math inline">\(T[i][j]\)</span> 的值等于 <span class="math inline">\(\rho_j\)</span> 右乘以第 <span class="math inline">\(i\)</span>
+个陪集后得到的陪集。初始时，我们知道肯定有一个陪集，就是 <span class="math inline">\(H\)</span>
+自身，还有没有其它的陪集我们不清楚。算法的主要流程就是根据 <span class="math inline">\(G\)</span> 和 <span class="math inline">\(H\)</span>
+的表现中包含的关系来发现新的陪集并填入表中，直到无法找到新的陪集为止。最终得到的
+<span class="math inline">\(T\)</span> 实际上是 <span class="math inline">\(G/H\)</span> 的 schreier 图的邻接矩阵，它记录了
+<span class="math inline">\(G/H\)</span> 的陪集间的乘法关系，由 <span class="math inline">\(T\)</span> 出发我们很容易求出这些陪集的 word
+表示。</p>
+<div class="unnumbered statement example definition">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>设 <span class="math inline">\(G\)</span>
+是正方体的对称群，其表现为 <span class="math display">\[G =
+\langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^4=(\rho_1\rho_2)^3=(\rho_0\rho_2)^2=1\rangle.\]</span>
+子群 <span class="math inline">\(H=\langle \rho_1,
+\rho_2\rangle\)</span> 是初始顶点的稳定化子群，求 <span class="math inline">\(G/H\)</span> 的一组右陪集代表元。</p>
+</div>
+<p>我们先罗列一下这个数独游戏已知的关系：</p>
+<p><strong>已知关系</strong>：</p>
+<ol type="1">
+<li>对 <span class="math inline">\(H\)</span> 的任何生成字 <span class="math inline">\(w\)</span> 有 <span class="math inline">\(H\cdot
+w=H\)</span>，即 <span class="math inline">\(H\rho_1=H\rho_2=H\)</span>。注意此关系仅要求对
+<span class="math inline">\(H\)</span> 成立。</li>
+<li>对任何陪集 <span class="math inline">\(K\)</span> 和 <span class="math inline">\(G\)</span> 的任何生成关系 <span class="math inline">\(r\)</span> 有 <span class="math inline">\(K\cdot
+r=K\)</span>，即 <span class="math inline">\(K\rho_i^2=K,
+i=0,1,2\)</span> 以及 <span class="math inline">\(K(\rho_0\rho_1)^4=K(\rho_1\rho_2)^3=K(\rho_0\rho_2)^2=K\)</span>。注意此关系要求对所有陪集成立。</li>
+</ol>
+<p>这些关系可以存储在两个列表里面，每个关系用一个数组表示。</p>
+<p>第一个列表存储的是 <span class="math inline">\(H\)</span>
+的生成字，即</p>
+<blockquote>
+<p><strong><span class="math inline">\(H\)</span>
+的生成字列表</strong>：</p>
+<ol start="0" type="1">
+<li>(1,)</li>
+<li>(2,)</li>
+</ol>
+</blockquote>
+<p>第二个列表存储的是 <span class="math inline">\(G\)</span>
+的生成关系，即</p>
+<blockquote>
+<p><strong><span class="math inline">\(G\)</span>
+的生成关系列表</strong>：</p>
+<ol start="2" type="1">
+<li>(0, 0)</li>
+<li>(1, 1)</li>
+<li>(2, 2)</li>
+<li>(0, 1, 0, 1, 0, 1, 0, 1)</li>
+<li>(1, 2, 1, 2, 1, 2)</li>
+<li>(0, 2, 0, 2)</li>
+</ol>
+</blockquote>
+<p>其中每条关系前面的数字是我们加上的编号以便于称呼。</p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>在非 Coxeter 群的情形还要把每个生成元的逆也作为生成元加入，其在
+<span class="math inline">\(T\)</span> 中也占据一列，所以实际上 <span class="math inline">\(T\)</span> 的列的个数要 <span class="math inline">\(\times2\)</span>。但是在 Coxeter
+群的情形每个生成元是 2
+阶的，其逆元素等于自身，所以不需要额外考虑逆元素。</p>
+</div>
+<p>初始时刻表格 <span class="math inline">\(T\)</span> 是这样的：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>其中 <span class="math inline">\(H_0\)</span> 代表 <span class="math inline">\(H\)</span> 对应的陪集。程序首先验证 <span class="math inline">\(H_0\)</span> 所在的行满足第一个关系列表 （<span class="math inline">\(H\)</span>
+的生成字列表，随后此列表可以被丢弃），然后依次从上到下扫描 <span class="math inline">\(T\)</span> 的每一行，假设当前扫描的是第 <span class="math inline">\(i\)</span> 行，对应的陪集为 <span class="math inline">\(H_i\)</span>，程序验证确保对第二个列表 （<span class="math inline">\(G\)</span> 的生成关系列表） 中的每条关系 <span class="math inline">\(w\)</span>，<span class="math inline">\(H_i\)</span> 满足 <span class="math inline">\(H_iw=H_i\)</span>，这个过程中可能发现新的陪集，也可能发现已有的某些陪集是重复的，也有可能需要强行定义新的陪集来使得这个验证能够完成。</p>
+<hr>
+<p>我们来开始扫描 <span class="math inline">\(H_0\)</span>
+所在的行：首先检查第一个列表中的关系，<strong>这个列表仅在扫描 <span class="math inline">\(H_0\)</span>
+时使用一次，扫描完就可以丢弃</strong>。</p>
+<p>(1). 对第 0 条关系 <span class="math inline">\(H_0\rho_1=H_0\)</span>，即 <span class="math inline">\(T[0][1]=0\)</span>。对第 1 条关系 <span class="math inline">\(H_0\rho_2=H_0\)</span>，即 <span class="math inline">\(T[0][2]=0\)</span>，这时 <span class="math inline">\(T\)</span> 变成了</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p>第一个列表扫描完毕，接下来扫描第二个列表。</p>
+<p>(2). 对第 2 条关系 <span class="math inline">\(H_0\rho_0^2=H_0\)</span>，由于 <span class="math inline">\(H_0\rho_0\)</span> 还不知道，我们将其定义为新陪集
+<span class="math inline">\(H_1\)</span> 并将 1 填入 <span class="math inline">\(T[0][0]\)</span> 位置，此外还要为 <span class="math inline">\(H_1\)</span> 开辟新的一行：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>每次定义新陪集时，比如定义 <span class="math inline">\(H_i\rho_j=H_k\)</span>，我们同时自动得到了与之对称的关系
+<span class="math inline">\(H_k\rho_j=H_i\rho_j^2=H_i\)</span>，因此每次填表时我们都填写一对数字而不是一个，这样可以保证表格
+<span class="math inline">\(T\)</span> 的 “对称性”。</p>
+</div>
+<p>(3). 第 3 条和第 4 条关系已经满足，继续。</p>
+<p>(4). 第 5 条关系，<span class="math inline">\(H_0\rho_0\rho_1\rho_0\rho_1\rho_0\rho_1\rho_0\rho_1=H_0\)</span>，我们已经知道
+<span class="math inline">\(H_0\rho_0=H_1\)</span> 但是 <span class="math inline">\(H_1\rho_1\)</span> 还不知道，将其定义为 <span class="math inline">\(H_2\)</span>，于是 <span class="math inline">\(T\)</span> 中又添两项，并开辟新的一行给 <span class="math inline">\(H_2\)</span>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>但是 <span class="math inline">\(H_2\rho_0\)</span>
+还是不知道，所以继续定义 <span class="math inline">\(H_2\rho_0=H_3\)</span>，于是 <span class="math inline">\(T\)</span> 变成</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>于是现在关系变成了</p>
+<p><span class="math display">\[\underbrace{\overbrace{\underbrace{H_0\rho_0}_{=H_1}\,\rho_1}^{=H_2}\,\rho_0}_{=H_3}\,\rho_1\rho_0\rho_1\rho_0\rho_1=H_0.\]</span></p>
+<p>但是 <span class="math inline">\(H_3\rho_1\)</span>
+还是不知道，你可能会想把它继续定义为新的陪集 <span class="math inline">\(H_4\)</span>，然后继续扫描。<strong>这样做不是不可以，但是每次都定义新陪集会生成大量重复的陪集，导致
+<span class="math inline">\(T\)</span>
+增长的非常快，对更复杂的群非常耗费计算资源</strong>。我们采用更聪明的办法：倒着扫描整个关系，即从右到左扫描
+<span class="math inline">\(H_0\rho_0\rho_1\rho_0\rho_1\rho_0\rho_1\rho_0\rho_1=H_0\)</span>
+这条关系。记住我们现在已经正向 （从左到右） 扫描到了下面的位置： <span class="math display">\[\underbrace{H_0\rho_0\rho_1\rho_0}_{=H_3}\,\rho_1|\rho_0\rho_1\rho_0\rho_1=H_0.\]</span>
+反向扫描意味着我们把上式左边末尾的 <span class="math inline">\(\rho_0\rho_1\rho_0\rho_1\)</span>
+挪到右边去，变形为 <span class="math display">\[\underbrace{H_0\rho_0\rho_1\rho_0}_{=H_3}\,\rho_1=\underbrace{H_0\rho_1}_{=H_0}\rho_0\rho_1\rho_0=H_0\rho_0\rho_1\rho_0=
+H_3.\]</span> 从而 <span class="math inline">\(H_3\rho_1=H_3\)</span>。这样通过反向扫描我们就推断出了
+<span class="math inline">\(H_3\rho_1\)</span>
+的值，避免了定义冗余的陪集。按照 Holt 书中的说法这叫做一个
+deduction。这时 <span class="math inline">\(T\)</span> 为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>在实际的程序实现中，我们总是从关系的两头同时开始扫描，直到它们相遇为止。</p>
+</div>
+<p>(5). 关系 6 已经满足，继续。</p>
+<p>(6). 对关系 7 <span class="math inline">\(H_0\rho_0\rho_2\rho_0\rho_2=H_0\)</span>，从两头扫描我们得到
+<span class="math display">\[\underbrace{H_0\rho_0}_{=H_1}\,\rho_2=\underbrace{\overbrace{H_0\rho_2}^{=H_0}\rho_0}_{=H_1}.\]</span>
+即 <span class="math inline">\(H_1\rho_2=H_1\)</span>，我们又得到了一个
+deduction，从而 <span class="math inline">\(T\)</span> 变成</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>至此对 <span class="math inline">\(H_0\)</span>
+的扫描全部完成，我们转入扫描 <span class="math inline">\(H_1\)</span>
+所在的行。</p>
+<hr>
+<p><strong>注意：从现在起至程序结束，我们不再使用第一个列表</strong>。</p>
+<p>下面开始扫描 <span class="math inline">\(H_1\)</span> 所在的行。</p>
+<p>(1). 经检查关系 2, 3, 4, 5 已经满足，继续。</p>
+<p>(2). 对关系 6 有 <span class="math inline">\(H_1\rho_1\rho_2\rho_1\rho_2\rho_1\rho_2=H_1\)</span>，其中
+<span class="math inline">\(H_1\rho_1=H_2\)</span> 已知但 <span class="math inline">\(H_2\rho_2\)</span> 未知。反向的扫描也会卡在这里：
+<span class="math display">\[\underbrace{H_1\rho_1}_{=H_2}\rho_2\rho_1=H_1\rho_2\rho_1\rho_2=H_2\rho_2.\]</span>
+所以我们定义新陪集 <span class="math inline">\(H_2\rho_2=H_4\)</span>，于是 <span class="math inline">\(H_4\rho_1=H_4\)</span>，从而此时 <span class="math inline">\(T\)</span> 为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+</tbody>
+</table>
+<p>(3). 关系 7 已经满足，从而 <span class="math inline">\(H_1\)</span>
+检查完毕，接下来开始扫描 <span class="math inline">\(H_2\)</span>
+的行。</p>
+<hr>
+<p>下面开始扫描 <span class="math inline">\(H_2\)</span> 的行。</p>
+<p>(1). 经检查关系 2, 3, 4, 5, 6 都已经满足，继续。</p>
+<p>(2). 对关系 7 有 <span class="math inline">\(H_2\rho_0\rho_2\rho_0\rho_2=H_2\)</span>，两边同时扫描的结果为：
+<span class="math display">\[\underbrace{H_2\rho_0}_{=H_3}\rho_2\rho_0=H_2\rho_2=H_4.\]</span>
+即 <span class="math inline">\(H_3\rho_2\rho_0=H_4\)</span>，但是继续正向扫描
+<span class="math inline">\(H_3\rho_2\)</span> 不知道，继续反向扫描
+<span class="math inline">\(H_4\rho_0\)</span> 不知道。定义新陪集 <span class="math inline">\(H_3\rho_2=H_5\)</span>，于是 <span class="math inline">\(H_5\rho_0=H_4\)</span>，我们又可以填入两对 4
+个数字，此时 <span class="math inline">\(T\)</span> 为：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(H_2\)</span> 扫描完毕，下面扫描 <span class="math inline">\(H_3\)</span> 的行。</p>
+<hr>
+<p>我把 <span class="math inline">\(H_3, H_4, H_5\)</span>
+的扫描过程留给你作为练习，<span class="math inline">\(H_3\)</span>
+扫描结束后你得到的 <span class="math inline">\(T\)</span>
+应该如下图：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(H_4\)</span> 扫描结束后你得到的 <span class="math inline">\(T\)</span> 应该如下图：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_6\)</span></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_7\)</span></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(H_5\)</span> 的扫描给不出新的信息。</p>
+<p>扫描 <span class="math inline">\(H_6\)</span> 时，关系 2, 3, 4, 5, 6
+都已经满足，由关系 7 <span class="math inline">\(H_6\rho_0\rho_2\rho_0\rho_2=H_6\)</span> 可得
+deduction <span class="math inline">\(H_7\rho_2=H_7\)</span>，于是 <span class="math inline">\(T\)</span> 可以补全为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_6\)</span></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_7\)</span></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+</tr>
+</tbody>
+</table>
+<p>扫描 <span class="math inline">\(H_7\)</span>
+发现所有关系都已经满足。</p>
+<p>至此 <span class="math inline">\(T\)</span>
+的空白位置都已经填满，没有新的陪集可以发现，数独游戏结束，这时得到的
+<span class="math inline">\(T\)</span> 就是 <span class="math inline">\(G/H\)</span> 的最终乘法表。</p>
+<p>由此利用宽度优先搜索不难得出陪集间的关系为： <span class="math display">\[\begin{array}{l}H_0 = H_0\cdot e,\\
+H_1=H_0\cdot\rho_0,\\H_2=H_1\cdot\rho_1=H_0\cdot\rho_0\rho_1,\\H_3=H_2\cdot\rho_0=H_0\cdot\rho_0\rho_1\rho_0,\\
+H_4=H_2\cdot\rho_2=H_0\cdot\rho_0\rho_1\rho_2,\\
+H_5=H_3\cdot\rho_2=H_0\cdot \rho_0\rho_1\rho_0\rho_2,\\
+H_6=H_5\cdot\rho_1=H_0\cdot \rho_0\rho_1\rho_0\rho_2\rho_1,\\
+H_7=H_6\cdot\rho_0=H_0\cdot
+\rho_0\rho_1\rho_0\rho_2\rho_1\rho_0.\end{array}\]</span></p>
+<p>从而其一组陪集代表元可以选为 <span class="math display">\[\begin{array}{llll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\end{array}\]</span></p>
+<p>这正是我们前面看到过的。</p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>这个例子看似有点长，但还是一个比较简单的例子，其中并没有出现已知陪集重复的情形（Holt
+的书中称之为
+coincidence）。这种情形的处理麻烦一些，因为一旦出现重复的陪集，就有可能顺藤摸瓜找到更多重复的陪集。这时就要立刻暂停扫描，流程跳转到处理
+coincidence：开辟一个栈来存放已知的
+coincidence，每次弹出一对，将它们合并，然后把新发现的 coincidence
+压入栈中。</p>
+</div>
+<h1 id="星状多胞体的计算">星状多胞体的计算</h1>
+<p>星状多胞体也可以使用 Wythoff
+构造法来生成，但是直接套用上面的方法一般是行不通的，我们需要在生成元中加入额外的生成关系。</p>
+<p>这里以 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Great_dodecahedron">Great
+dodecahedron</a> 为例来说明：其 Coxeter-Dynkin 图为</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/coxeter552.svg" width="200"></p>
+<p>于是三面镜子的法向量夹角分别为 <span class="math inline">\(\pi-2\pi/5, \pi/2,
+\pi-\pi/5\)</span>。如果我们仍然沿用以前的分析，会得出其对称群的表现为
+<span class="math display">\[K=\langle\tau_0,\tau_1,\tau_2 \
+|\  \tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=(\tau_0\tau_2)^2=1\rangle.\]</span></p>
+<p>这是一个无限群，而且顶点的稳定化子的商群也是无限的，所以还想按以前的方法计算就行不通了。</p>
+<p>实际上我们只要在生成关系中再加上一条 <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^3=1\)</span>
+即可，即对称群的表现为</p>
+<p><span class="math display">\[\begin{align*}
+K = \langle\tau_0,\tau_1,\tau_2 \
+|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=\\&amp;(\tau_0\tau_2)^2=(\tau_0\tau_1\tau_2\tau_1)^3=1\rangle.
+\end{align*}\]</span></p>
+<p>注意到我使用了字母 <span class="math inline">\(\tau\)</span>
+来表示反射，<span class="math inline">\(K\)</span> 表示 Great
+dodecahedron
+的对称群，这个记号选择是有意的。这是怎么回事呢？先看视频：</p>
+<video src="/images/polytopes/great-dodecahedron.mp4" width="480" controls="">
+</video>
+<p>（请忽略左边错误的 Coxeter 图，这个 ui 界面我改不动）</p>
+<p>由视频可见，Great dodecahedron 与正二十面体 (icosahedron)
+共用相同的顶点，并且看起来 Great dodecahedron 可以通过在 icosahedron
+表面挖一些三角形的洞得到。这个结论也可以推广：一般地如果星状多面体的洞是一个有
+<span class="math inline">\(h\)</span>
+条边的多边形，则对应的额外生成关系就是 <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^h=1\)</span>。</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/star.png" width="600"></p>
+<p>在上图中，<span class="math inline">\(\Delta ABC\)</span>
+是正二十面体的基本区域，三个内角分别是 <span class="math inline">\(\angle CAB=\pi/5\)</span>，<span class="math inline">\(\angle CBA=\pi/2\)</span>，<span class="math inline">\(\angle ACB=\pi/3\)</span>，<span class="math inline">\(\rho_0,\rho_1,\rho_2\)</span> 分别是关于弧 <span class="math inline">\(BC, AC, AB\)</span>
+的反射。正二十面体的对称群的表现为 <span class="math display">\[G =
+\langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^3=(\rho_1\rho_2)^5=(\rho_0\rho_2)^2=1\rangle.\]</span></p>
+<p>Great dodecahedron 可以这样得到：沿着正二十面体的边从顶点 <span class="math inline">\(Q\)</span> 走到 <span class="math inline">\(A\)</span>，右手边的面是三角形 <span class="math inline">\(\Delta OAQ\)</span>，接下来的第一条边应该是 <span class="math inline">\(AO\)</span>，我们跳过这条边，选择第二条边 <span class="math inline">\(AK\)</span>，到达 <span class="math inline">\(K\)</span> 后继续选择右手边的第二条边，这样绕着
+<span class="math inline">\(O\)</span> 一圈下来共经过 5
+条边，它们正好围成 Great dodecahedron
+的一个面。对正二十面体的其它边也如此操作会得到 Great dodecahedron
+其它的面。</p>
+<p>像这样对一个多面体，保持它的顶点和边的集合不变，但是每次选择右手边的第
+<span class="math inline">\(k\)</span>
+个边走下去绕一圈获得一个面，这样构造新多面体的方法叫做 <strong>Facetting
+手术</strong>。在我们这个项目中 <span class="math inline">\(k\)</span>
+总是等于 2。</p>
+<p>我们来导出正二十面体的对称群 <span class="math inline">\(G\)</span>
+和 Great dodecahedron 的对称群 <span class="math inline">\(K\)</span>
+之间的关系。</p>
+<p>来看三角形 <span class="math inline">\(\Delta
+OAB\)</span>，它的三个内角分别是 <span class="math inline">\(\angle
+OAB=2\pi/5\)</span>，<span class="math inline">\(\angle
+OBA=\pi/2\)</span>，<span class="math inline">\(\angle
+AOB=\pi/5\)</span>，它包含三个与 <span class="math inline">\(\Delta
+ABC\)</span> 全等的三角形，关于其三条边 <span class="math inline">\(OA,OB,AB\)</span> 的反射分别是 <span class="math inline">\(\tau_1=\rho_1\rho_2\rho_1,\tau_0=\rho_0,\tau_2=\rho_2\)</span>
+<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。</p>
+<p>Facetting 操作 <span class="math inline">\(\varphi_k\)</span>
+用群的语言来描述就是（记住 <span class="math inline">\(k=2\)</span>）
+<span class="math display">\[G=\langle
+\rho_0,\rho_1,\rho_2\rangle\xrightarrow{\ \varphi_k\
+}\langle\rho_0,\rho_1(\rho_2\rho_1)^{k-1},\rho_2\rangle=\langle\tau_0,\tau_1,\tau_2\rangle=K.\]</span>
+一般来说 <span class="math inline">\(K\)</span> 是 <span class="math inline">\(G\)</span> 的子群，但在这里 <span class="math inline">\(G\)</span> 和 <span class="math inline">\(K\)</span> 就是同一个群。我们不解释为什么 <span class="math inline">\(G=K\)</span>，这里只承认这一点，然后借助这个事实来说明
+<span class="math inline">\(K\)</span> 就是 Great dodecahedron
+的对称群。</p>
+<p>首先 <span class="math inline">\(\langle \tau_1,\tau_2\rangle=\langle
+\rho_1,\rho_2\rangle\)</span> 是顶点 <span class="math inline">\(A\)</span> 的稳定化子群，所以 Great dodecahedron
+和正二十面体的顶点集是一样的。但 <span class="math inline">\(\tau_1\tau_2\)</span> 是一个角度为 144
+度的旋转，这一点和 <span class="math inline">\(\rho_1\rho_2\)</span>
+是一个 72 度的旋转不同，所以 Great dodecahedron 的 vertex configure
+是一个五角星，而不像正二十面体那样是一个五边形。</p>
+<p>其次 <span class="math inline">\(\langle\tau_0,\tau_2\rangle=\langle\rho_0,\rho_2\rangle\)</span>
+为边 <span class="math inline">\(AQ\)</span> 的稳定化子群，所以 Great
+dodecahedron 的边集和正二十面体也是一样的。</p>
+<p>它俩的区别在于边组成面的方式不一样。<span class="math inline">\(\langle\tau_0,\tau_1\rangle\)</span> 是 Great
+dodecahedron 面的稳定化子群，注意到 <span class="math inline">\(\tau_1\)</span> 是关于 <span class="math inline">\(AO\)</span> 的反射，它会把 <span class="math inline">\(AQ\)</span> 映射为 <span class="math inline">\(AK\)</span>，这正对应选择第 <span class="math inline">\(k\)</span> 条边的操作。<span class="math inline">\(\tau_0\tau_1\)</span> 是一个绕着顶点 <span class="math inline">\(O\)</span> 的角度为 <span class="math inline">\(2\pi/5\)</span> 的旋转，所以 <span class="math inline">\(AQ\)</span> 在子群 <span class="math inline">\(\langle \tau_0,\tau_1\rangle\)</span> 作用下会绕
+<span class="math inline">\(O\)</span> 转一圈，正对应 Facetting
+操作得到的一个面。</p>
+<p>我们来找出 <span class="math inline">\(\tau_0,\tau_1,\tau_2\)</span>
+之间隐藏的一条生成关系：</p>
+<p>注意到 <span class="math inline">\(\tau_1\tau_2\tau_1=\tau_1\rho_2\tau_1\)</span>
+是关于 <span class="math inline">\(AP\)</span> 的反射，它和 <span class="math inline">\(\tau_0=\rho_0\)</span> 的复合是绕着 <span class="math inline">\(P\)</span> 点角度为 <span class="math inline">\(2\pi/3\)</span> 的旋转，所以 <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^3=1\)</span>。加入这个额外的生成关系得到的就是
+<span class="math inline">\(K\)</span> 的正确的表现： <span class="math display">\[\begin{align*}
+K = \langle\tau_0,\tau_1,\tau_2 \
+|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=\\&amp;(\tau_0\tau_2)^2=(\tau_0\tau_1\tau_2\tau_1)^3=1\rangle.
+\end{align*}\]</span></p>
+<p>所以我们就可以对 <span class="math inline">\(K\)</span>
+照搬之前的绘制步骤了。</p>
+<p>这个额外的生成关系其实也有背后的解释：对 Faceting
+手术得到的新多面体再进行一次 Faceting 手术是可以回到原来的多面体的。对
+great dodecahedron
+每次沿着它的边，选择当前离开的边的右手第二个边走下去，即从 <span class="math inline">\(Q\)</span> 走到 <span class="math inline">\(A\)</span> 时，不是选择 <span class="math inline">\(AK\)</span> 继续走下去，而是选择 <span class="math inline">\(AO\)</span>，这样走下去又会得到正二十面体的三角形的面，这对应的就是额外的生成关系中的指数
+3。</p>
+<p>这一点从群上也可以得到验证。</p>
+<p><span class="math display">\[K=\langle
+\tau_0,\tau_1,\tau_2\rangle\xrightarrow{\ \varphi_2\
+}\langle\tau_0,\tau_1\tau_2\tau_1,\tau_2\rangle=\langle\rho_0,\rho_2\rho_1\rho_2,\rho_2\rangle=G.\]</span></p>
+<blockquote>
+<p>关于 Faceting 手术可以在 McMullen 和 Schulte 所著的 <a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511546686">Abstract Regular
+Polytopes</a> 一书中找到。</p>
+</blockquote>
+<h1 id="snub-cube-的计算">Snub cube 的计算</h1>
+<p>如果你理解了上面的内容，snub 多面体的情形也是不难理解的。我以 snub
+cube 来说明：</p>
+<p>Snub cube 和 cube 的区别在于它的对称群只包含旋转，我们已经看到 cube
+的对称群 <span class="math inline">\(G\)</span> 的表现为 <span class="math display">\[G = \langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^4=(\rho_1\rho_2)^3=(\rho_0\rho_2)^2=1\rangle.\]</span>
+它有 48 个元素，其中 24 个是旋转。这些旋转可以由 <span class="math inline">\(r_0=\rho_0\rho_1,
+r_1=\rho_1\rho_2,r_2=\rho_0\rho_2\)</span> 生成 （由于 <span class="math inline">\(r_0r_1=r_2\)</span> 因此实际上可以由 <span class="math inline">\(r_0\)</span> 和 <span class="math inline">\(r_1\)</span> 生成）。这 24 个旋转就构成了 Snub
+cube 的对称群 <span class="math inline">\(\widetilde{G}\)</span>。</p>
+<p>不难写出 <span class="math inline">\(\widetilde{G}\)</span> 的表现为
+<span class="math display">\[\widetilde{G}=\langle r_0,r_1\ |\
+r_0^4=r_1^3=(r_0r_1)^2=1\rangle.\]</span></p>
+<p>利用 Todd-Coxeter 算法不难求出这个群的所有 24 个元素：</p>
+<p><span class="math display">\[\begin{array}{lll}e&amp;r_{0}&amp;r_{0}r_{0}\\r_{0}r_{0}r_{0}&amp;r_{1}&amp;r_{1}r_{1}\\r_{0}r_{1}&amp;r_{0}r_{1}r_{1}&amp;r_{0}r_{0}r_{1}\\r_{0}r_{0}r_{1}r_{1}&amp;r_{0}r_{0}r_{0}r_{1}&amp;r_{1}r_{0}\\r_{1}r_{0}r_{0}&amp;r_{1}r_{0}r_{0}r_{0}&amp;r_{1}r_{1}r_{0}\\r_{1}r_{1}r_{0}r_{0}&amp;r_{0}r_{1}r_{1}r_{0}&amp;r_{0}r_{1}r_{1}r_{0}r_{0}\\r_{0}r_{0}r_{1}r_{1}r_{0}&amp;r_{1}r_{0}r_{0}r_{1}&amp;r_{1}r_{0}r_{0}r_{1}r_{1}\\r_{1}r_{0}r_{0}r_{0}r_{1}&amp;r_{1}r_{1}r_{0}r_{0}r_{1}&amp;r_{0}r_{1}r_{1}r_{0}r_{0}r_{1}\end{array}
+\]</span></p>
+<p>注意在 snub 的情形初始顶点 <span class="math inline">\(v_0\)</span>
+不属于任何镜面，所以其稳定化子群只有单位元 1，即每个 <span class="math inline">\(g\in\widetilde{G}\)</span> 把 <span class="math inline">\(v_0\)</span> 变换为不同的顶点。将它们作用在 <span class="math inline">\(v_0\)</span> 上即得 snub cube 的所有顶点。</p>
+<p>我们现在利用轨道—稳定化子的理论来求 snub cube 的边。snub cube
+的边也是分类型的，每个 <span class="math inline">\(r_i(i=0,1,2)\)</span>
+作用在 <span class="math inline">\(v_0\)</span> 上可得一个类型为 <span class="math inline">\(i\)</span> 的边 <span class="math inline">\(e_i=(v_0, v_0\cdot r_i)\)</span> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>，我们来定出 <span class="math inline">\(e_i\)</span> 的稳定化子群 <span class="math inline">\(H\)</span>。</p>
+<p>首先注意到任何 <span class="math inline">\(g\in G\)</span> 如果保持
+<span class="math inline">\(e_i\)</span>
+不变，则只有两种可能，要么它保持 <span class="math inline">\(e_i\)</span> 上每个点不变，要么它将 <span class="math inline">\(e_i\)</span> 关于其中点进行翻转。这一点对 <span class="math inline">\(g\in\widetilde{G}\)</span> 自然也成立。所以若
+<span class="math inline">\(g\in\widetilde{G}\)</span> 保持 <span class="math inline">\(e_i\)</span> 不变，则要么 <span class="math inline">\(v_0g = v_0, v_0r_i=v_0r_ig\)</span>，要么 <span class="math inline">\(v_0g = v_0r_i,v_0r_ig=v_0\)</span>。前一种情形说明
+<span class="math inline">\(g\)</span> 属于 <span class="math inline">\(v_0\)</span>
+的稳定化子群从而只能是单位元；后一种情形说明 <span class="math inline">\(r_ig\)</span> 和 <span class="math inline">\(r_ig^{-1}\)</span> 都属于 <span class="math inline">\(v_0\)</span> 的稳定化子群从而 <span class="math inline">\(r_ig=r_ig^{-1}=1\)</span>，即 <span class="math inline">\(g=r_i\)</span> 且 <span class="math inline">\(r_i^2=1\)</span>。总之我们证明了只有在 <span class="math inline">\(r_i^2=1\)</span> 时 <span class="math inline">\(e_i\)</span>
+才有非平凡的稳定化子群，这时稳定化子群是二阶循环群 <span class="math inline">\(\langle r_i\rangle\)</span>。</p>
+<p>于是 snub cube 的类型为 <span class="math inline">\(r_0\)</span> 和
+<span class="math inline">\(r_1\)</span> 的边的个数都是 24/1=24
+个；类型为 <span class="math inline">\(r_2\)</span> 的边的个数为 24/2=12
+个，从而 snub cube 总共有 24+24+12=60 条边。</p>
+<p>snub cube 的面可以这样求：由于 <span class="math inline">\(r_0^4=1\)</span> 所以 <span class="math inline">\(r_0\)</span> 可以生成一个正四边形的面，类似地由于
+<span class="math inline">\(r_1^3=1\)</span> 所以 <span class="math inline">\(r_1\)</span> 可以生成一个正三角形的面，而由于
+<span class="math inline">\(r_2^2=1\)</span> 所以 <span class="math inline">\(r_2\)</span>
+生成的面是退化的。这种由单个旋转生成的面的稳定化子群是很好求的：若 <span class="math inline">\(g\)</span> 保持 <span class="math inline">\(r_i\)</span> 生成的面不变，则其必然把某个形如
+<span class="math inline">\(v_0r_i^k\)</span> 的顶点变换为 <span class="math inline">\(v_0\)</span>，即 <span class="math inline">\(g=r_i^{-k}\)</span> 是 <span class="math inline">\(r_i\)</span> 的某次幂，反之易见 <span class="math inline">\(r_i\)</span>
+的任何幂都保持此面不变，所以其稳定化子群即为循环群 <span class="math inline">\(\langle r_i\rangle\)</span>。</p>
+<p>于是 <span class="math inline">\(r_0\)</span> 生成的面的个数为
+24/4=6，<span class="math inline">\(r_1\)</span> 生成的面的个数为
+24/3=8，<span class="math inline">\(r_2\)</span>
+生成的面都退化因而个数是 0，总计 14 个面。</p>
+<p>小心！我们还漏掉了一种三角面，它源自 <span class="math inline">\(r_0r_1=r_2\)</span> 这个关系。考虑 <span class="math inline">\(\{v_0, v_0r_1, v_0r_2\}\)</span>
+这三个顶点，这三个顶点中 <span class="math inline">\((v_0,v_0r_1)\)</span> 构成一条类型为 <span class="math inline">\(r_1\)</span> 的边， <span class="math inline">\((v_0,v_0r_2)\)</span> 构成一条类型为 <span class="math inline">\(r_2\)</span> 的边，而 <span class="math inline">\(r_0r_1=r_2\)</span> 这个关系告诉我们 <span class="math display">\[(v_0, v_0r_0)\xrightarrow{\ r_1\ }(v_0r_1,
+v_0r_0r_1) = (v_0r_1, v_0r_2).\]</span> 即 <span class="math inline">\((v_0r_1, v_0r_2)\)</span> 是一条类型为 <span class="math inline">\(r_0\)</span> 的边，它是由将 <span class="math inline">\(r_1\)</span> 作用在类型为 <span class="math inline">\(r_0\)</span> 的初始边 <span class="math inline">\((v_0, v_0r_0)\)</span> 上得到的，于是 <span class="math inline">\(\{v_0, v_0r_1, v_0r_2\}\)</span>
+构成一个三角形的三个顶点，其三条边在对称群作用下属于不同的轨道，所以这个三角形的稳定化子必然保持每条边不变，从而只能是恒等元，从而这样的面有
+24/1=24 个。</p>
+<p>于是 snub cube 一共有 14+24=38 个不同的面。</p>
+<p>这里介绍的方法也适用于其它的 snub 多面体以及 snub 24-cell。</p>
+<h1 id="多面体的顶点投影到-coxeter-平面">多面体的顶点投影到 Coxeter
+平面</h1>
+<p>项目中还实现了一个
+<code>draw_on_coxeter_plane(*args, **kwargs)</code>
+方法，用于绘制将多面体的顶点投影到其 Coxeter
+平面上后得到的图案，例如下图显示的是将 600-cell 的 120 个顶点投影到其
+Coxeter 平面上的结果：</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/600-cell.svg" width="350"></p>
+<p>你可以和 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/600-cell#2D_projections">wikipedia
+上的效果</a> 比较一下。</p>
+<h1 id="附录手算-todd-coxeter">附录：手算 Todd-Coxeter</h1>
+<p>对简单的群，Todd-Coxeter 算法完全可以用手算快速得出结果。我非常推荐
+Borcherds 的视频，他的演示非常精彩：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BHezLvEH1DU?si=fw7X2z37wZEYcIG-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+</iframe>
+<p>仿照 Borcherds 的方法，前面正方形的例子可以很快写出来：</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/todd-coxeter.svg" width="600"></p>
+<p>我来解释一下步骤：我们将画出一个有限图，图的每个顶点代表 <span class="math inline">\(H=\langle s_0,s_1\rangle\)</span>
+的一个陪集，每个顶点有三条不同颜色的边，表示此陪集在生成元 <span class="math inline">\(s_i\)</span> 作用下的结果。</p>
+<ol type="1">
+<li>首先我们在空白纸上画出第一个顶点，它对应的陪集是 <span class="math inline">\(H=H_0\)</span> 自身。<span class="math inline">\(H\)</span> 包含 <span class="math inline">\(s_0,s_1\)</span>，所以红、绿边是自边。<span class="math inline">\(s_2\)</span>，即蓝色的边，会把它映射为一个新顶点
+<span class="math inline">\(H_1\)</span>。</li>
+<li>从 <span class="math inline">\(H_0\)</span>
+出发，利用红蓝交换，可得红色保持 <span class="math inline">\(H_1\)</span> 不动。但是绿蓝不交换，所以绿色将
+<span class="math inline">\(H_1\)</span> 映射为新顶点 <span class="math inline">\(H_2\)</span>。</li>
+<li><span class="math inline">\((\text{绿蓝})^3=1\)</span>，即 <span class="math inline">\(H_2\xrightarrow{(\text{绿蓝})^3}H_2\)</span>，所以
+<span class="math display">\[H_2\xrightarrow{\text{绿}}
+H_1\xrightarrow{\text{蓝}} H_0\xrightarrow{\text{绿}}
+H_0\xrightarrow{\text{蓝}} H_1\xrightarrow{\text{绿}}
+H_2\xrightarrow{\text{蓝}} H_2.\]</span> 所以蓝色保持 <span class="math inline">\(H_2\)</span> 不动。红绿不交换，所以红色将 <span class="math inline">\(H_2\)</span> 映射为新顶点 <span class="math inline">\(H_3\)</span>。</li>
+<li>仿照上面的分析继续下去，可以发现到 <span class="math inline">\(H_5\)</span> 时，三种颜色的边不会给出新顶点。所以
+<span class="math inline">\(\{H_0,\ldots,H_5\}\)</span> 就是 <span class="math inline">\(G/H\)</span> 的全部陪集。</li>
+</ol>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>你可能要问了，你怎么就敢肯定这个群的表现恰好就包含这些生成关系，而不会包含其它什么隐藏的生成关系呢？这是个好问题，回答起来并不容易，答案是对凸的多胞体而言这些生成关系确实给出了其对称群的一个表现，但是对星状多面体而言则未必。事实上星状多面体都和某个凸多面体有相同的对称群，但是群表现是不一样的
+（需要补上额外的生成关系）。这其中的根本原因是凸多面体的镜面法向量之间的夹角都形如
+<span class="math inline">\(\pi-\pi/m\)</span>，这里 <span class="math inline">\(m\)</span>
+是整数，这保证了所有镜面围成的凸锥构成一个基本区域。而星状多面体的镜面所夹的二面角至少有一个形如
+<span class="math inline">\(\pi-\pi/p\)</span>，其中 <span class="math inline">\(p\)</span>
+是一个非整数的有理数，这时所有镜面围成的凸锥并不是基本区域，在对称群的作用下这个凸锥会被覆盖若干次。见
+Vinberg 的文章 “Discrete linear groups generated by reflections” 和
+Coxeter 的著作 “The beauty of geometry: twelve essays”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>以本文介绍的知识，这里似乎应该说 <span class="math inline">\(H\)</span> 保持 <span class="math inline">\(v_0\)</span> 不变，从而 <span class="math inline">\(v_0\)</span> 的稳定化子群包含 <span class="math inline">\(H\)</span>，怎么能断言 <span class="math inline">\(v_0\)</span> 的稳定化子群就等于 <span class="math inline">\(H\)</span> 呢？这实际上是 Coxeter 群的一个性质：在
+Coxeter 群 <span class="math inline">\(W\)</span>
+的标准几何实现中，对其基本区域闭包中的任何一点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
+的稳定化子群是一个标准椭圆子群，其生成元恰好由超平面包含 <span class="math inline">\(v\)</span> 的那些单反射组成。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>道理与注解 2 类似。易见边 <span class="math inline">\(e\)</span> 的稳定化子群 <span class="math inline">\(H\)</span> 就是 <span class="math inline">\(e\)</span>
+的中点的稳定化子群，这也是一个标准椭圆子群，由那些包含 <span class="math inline">\(e\)</span>
+的中点的镜面对应的单反射生成。这样的镜面只能是 <span class="math inline">\(\rho_i\)</span> 和那些与 <span class="math inline">\(m_i\)</span> 垂直且包含 <span class="math inline">\(v_0\)</span> 的镜面。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>解释与注解 2, 3 类似。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>有这么一个结论：如果 <span class="math inline">\(s_\alpha\)</span> 是关于镜面 <span class="math inline">\(\alpha\)</span> 的反射，镜面 <span class="math inline">\(\beta=g\alpha\)</span>，这里 <span class="math inline">\(g\)</span> 是空间中的可逆线性变换，则关于 <span class="math inline">\(\beta\)</span> 的反射 <span class="math inline">\(s_\beta=gs_\alpha g^{-1}\)</span>。令 <span class="math inline">\(\alpha=AB\)</span>，<span class="math inline">\(g=\rho_1\)</span>，<span class="math inline">\(\beta=AD\)</span> 即为结论。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>注意本文没有解释为什么这些边确实是不同类型的，即它们在对称群的作用下处于不同的轨道。严格说明这一点也要用到
+Coxeter 群的几何实现。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/Marden-theorem/" rel="next" title="静电场与 Marden 定理">
+      上一篇：静电场与 Marden 定理
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/mobius-h3space/" rel="next" title="Möbius 变换的分类与上半双曲空间的等距">
+          下一篇：Möbius 变换的分类与上半双曲空间的等距
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

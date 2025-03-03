@@ -1,0 +1,832 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            模式的等待时间与反直觉概率 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="著名概率学家 Feller 在他的名著 “An introduction to probability and
+its applications” 中提到了这样一个实验：
+
+问题： 重复抛掷一枚均匀的硬币，用 H
+代表正面向上，T 代表背面向上，一直到连续出现 6 次
+H 为止。这里连续 6 个 Ｈ 组成的模式记作
+HHHHHH，所需要抛掷硬币的次数叫做等待时间。等待时间是一个随机变量，最小值是
+6，最大值可以是无限。Feller 问：等待时间的均值是多少？
+
+这个问题可以用 Markov
+链来解，但是非常繁琐。香港中文大学李硕彦教授在他的论文 (Li 1980)
+中用离散鞅的知识给出了一个简洁而巧妙的解法，本文就来介绍他的方法。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="模式的等待时间与反直觉概率"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Williams-概率和鞅/">Williams 概率和鞅</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>模式的等待时间与反直觉概率</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2011-06-02T16:00:00.000Z"><a href="/pattern-occurrence/">2011-06-03</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%9E%85%E5%92%8C%E8%B5%8C%E5%8D%9A%E5%BA%8F%E5%88%97"><span class="section table-of-contents-text">鞅和赌博序列</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%A4%9A%E4%B8%AA%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%AD%89%E5%BE%85%E6%97%B6%E9%97%B4%E4%B8%8E%E8%8E%B7%E8%83%9C%E6%A6%82%E7%8E%87"><span class="section table-of-contents-text">多个模式的等待时间与获胜概率</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#penney-%E6%B8%B8%E6%88%8F"><span class="section table-of-contents-text">Penney 游戏</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%BF%98%E6%9C%89%E6%9B%B4%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%E7%9A%84%E4%BA%8B%E6%83%85"><span class="section table-of-contents-text">还有更不可思议的事情</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>著名概率学家 Feller 在他的名著 “An introduction to probability and
+its applications” 中提到了这样一个实验：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>重复抛掷一枚均匀的硬币，用 <code>H</code>
+代表正面向上，<code>T</code> 代表背面向上，一直到连续出现 6 次
+<code>H</code> 为止。这里连续 6 个 <code>Ｈ</code> 组成的模式记作
+<code>HHHHHH</code>，所需要抛掷硬币的次数叫做等待时间。等待时间是一个随机变量，最小值是
+6，最大值可以是无限。Feller 问：等待时间的均值是多少？</p>
+</div>
+<p>这个问题可以用 Markov
+链来解，但是非常繁琐。香港中文大学李硕彦教授在他的论文 <span class="citation" data-cites="Li1980">(<a href="#ref-Li1980" role="doc-biblioref">Li 1980</a>)</span>
+中用离散鞅的知识给出了一个简洁而巧妙的解法，本文就来介绍他的方法。</p>
+<span id="more"></span>
+<h1 id="鞅和赌博序列">鞅和赌博序列</h1>
+<p>我们用 <code>HTHT</code>
+这个模式为例子，来演示如何求出它的平均等待时间。</p>
+<p>假设有一个赌徒，怀里揣着 1 元钱来到一家赌场，他的目标是赌中
+<code>HTHT</code> 这个序列。</p>
+<ul>
+<li><p>第一天，他押上这 1 元钱，赌第一次掷硬币的结果是
+<code>H</code>。如果他赌错了就得空手走人，而赌对的话则可以赢得 2 元
+（资金翻番） 并留在赌场。</p></li>
+<li><p>第二天，他押上全部的 2 元，赌第二次掷硬币的结果是
+<code>Ｔ</code>。跟以前一样，赌错了空手走人，赌对了的话则资金翻番变成 4
+元并留在赌场。</p></li>
+<li><p>第三天，他押上全部的 4 元，赌第三次掷硬币的结果是
+<code>H</code>。赌错了空手走人，赌对了的话则资金翻番变成 8
+元并留在赌场。</p></li>
+<li><p>第四天，他押上全部的 8 元，赌第四次掷硬币的结果是
+<code>T</code>。赌错了空手走人，赌对了资金翻番变成 16
+元，赌局结束。</p></li>
+</ul>
+<p>这个赌局很像电视节目里的闯关游戏，赌局一共有 4
+关，赌徒要一关一关的闯，中间任何一关输了都要空手走人。</p>
+<p>赌局对赌徒和庄家来讲都是公平的：大家在期望的意义下都是不赔不赚。每一天，赌徒都以
+1/2 的概率输光赌本，也以 1/2 的概率将赌本翻番。</p>
+<p>现在假设有一个赌博团伙，他们每天都派一个人到赌场赌博，每个赌徒的赌局与上面的描述相同，不同的赌徒的赌局互相独立。我们用
+<span class="math inline">\(\{X_n,n=0,1,2,\ldots\}\)</span> 表示第 <span class="math inline">\(n\)</span> 天结束以后这个团伙的「净收益」，其中
+<span class="math inline">\(X_0=0\)</span>。由于赌局是公平的，因此 <span class="math inline">\(\{X_n\}\)</span> 是一个鞅。</p>
+<p>设 <span class="math inline">\(\tau\)</span> 是模式 <code>HTHT</code>
+的等待时间，则 <span class="math inline">\(\tau\)</span>
+是一个停时。不难验证 <span class="math inline">\(\{X_n\}\)</span> 和
+<span class="math inline">\(\tau\)</span> 满足 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Optional_stopping_theorem">Doob
+可料停时定理</a> 的条件</p>
+<div id="doob-------------------" class="statement sta_doob_______ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">Doob
+可料停时定理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\{X_n, n=0,1,2,\ldots\}\)</span> 是一个鞅，<span class="math inline">\(\tau\)</span> 是停时且满足</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbb{E}\tau &lt;
+\infty\)</span>，</li>
+<li>存在常数 <span class="math inline">\(M\)</span> 使得 <span class="math inline">\(|X_{n+1}-X_{n}|\leq M\)</span> 对任何 <span class="math inline">\(n\)</span> 都几乎处处成立。</li>
+</ol>
+<p>则 <span class="math inline">\(\mathbb{E}X_\tau =
+\mathbb{E}X_0\)</span>。</p>
+</div>
+<p>因此在我们的问题中 <span class="math inline">\(\mathbb{E}X_\tau =
+\mathbb{E}X_0 = 0\)</span>。</p>
+<p>显然 <span class="math inline">\(X_\tau=W-\tau\)</span>，这里 <span class="math inline">\(W\)</span> 表示第 <span class="math inline">\(\tau\)</span>
+天结束时留在赌场内的赌徒的资金之和，<span class="math inline">\(\tau\)</span> 表示第 <span class="math inline">\(\tau\)</span> 天结束时赌博团伙总共派出了 <span class="math inline">\(\tau\)</span> 个赌徒，他们带入赌场的赌本总共是
+<span class="math inline">\(\tau\)</span> 元。根据上面的讨论，有 <span class="math inline">\(\mathbb{E}W=\mathbb{E}\tau\)</span>
+成立。这里的关键在于 <span class="math inline">\(W\)</span>
+不是一个随机变量，而是一个可以算出来的常数！</p>
+<p>我们仔细分析一下当第 <span class="math inline">\(\tau\)</span>
+天结束的时候，哪些赌徒还在赌场内，他们各自有多少钱。由于 <span class="math inline">\(\tau\)</span>
+是首次有某个赌徒闯关成功的时刻，所以只有第 <span class="math inline">\(\tau-3\)</span> 到第 <span class="math inline">\(\tau\)</span> 天来赌场的这 4
+个赌徒还有可能留在赌场，更早的赌徒都输光走人了。其中第 <span class="math inline">\(\tau-3\)</span>
+天来的赌徒最幸运，赌对了全部的序列，他还有 16 元；第 <span class="math inline">\(\tau-1\)</span> 天来的赌徒也不错，他赌对了
+<code>HT</code>，他还有 4 元，因此赌徒们总共有 <span class="math inline">\(W=16+4=20\)</span> 元，即 <span class="math inline">\(\mathbb{E}\tau=20\)</span>。</p>
+<p>这里第 <span class="math inline">\(\tau-1\)</span>
+天来的赌徒最有趣：他赌的明明是 <code>HTHT</code> 的前缀
+<code>HT</code>，但是由于 <code>HT</code> 恰好也是 <code>HTHT</code>
+的后缀，因此他也能赢到钱！</p>
+<p>这个推理完全适用于一般的情形：设 <span class="math inline">\(P=(a_1,a_2,\cdots,a_m)\)</span> 是一个给定的由
+<code>T</code> 和 <code>H</code>
+组成的模式，我们计算它的全部既是前缀又是后缀的子序列的长度，设为 <span class="math inline">\(l_1,\cdots,l_r\)</span>，则 <span class="math inline">\(P\)</span> 的等待时间 <span class="math inline">\(\tau\)</span> 的期望为 <span class="math display">\[\mathbb{E}\tau =
+2^{l_1}+\cdots+2^{l_r}.\]</span></p>
+<p>回到开头的例子：<code>HHHHHH</code>
+的每一个前缀都同时是它的后缀，因此它的平均等待时间为 <span class="math display">\[2^6+2^5+2^4+2^3+2^2+2^1 = 126.\]</span>
+所以一个模式的平均等待时间完全由它的自匹配的程度决定。</p>
+<p>把上面的方法稍作修改，还可以用来计算 <span class="math inline">\(\tau\)</span> 的生成函数 <span class="math display">\[ \mathbb{E}[s^\tau] =\sum_{n=1}^\infty
+\mathbb{P}(\tau=n)s^n.\]</span> 为此只要假设第 <span class="math inline">\(n\)</span> 天来的赌徒怀里揣的钱是 <span class="math inline">\(s^n(0&lt;s&lt;1)\)</span> 即可，这里不再赘述。</p>
+<h1 id="多个模式的等待时间与获胜概率">多个模式的等待时间与获胜概率</h1>
+<p>假设同时有多个模式 <span class="math inline">\(A_1,\ldots,A_m\)</span>
+加入「赛跑」，我们想计算它们各自胜出的概率。用数学公式表示，就是设 <span class="math inline">\(A_i\)</span> 的等待时间为 <span class="math inline">\(\tau_i\)</span>，令 <span class="math display">\[\tau=\min\{\tau_1,\ldots,\tau_m\},\]</span> 则
+<span class="math inline">\(\tau\)</span>
+表示赛跑过程中冠军「撞线」的时刻，又令 <span class="math inline">\(p_i=\mathbb{P}(\tau=\tau_i)\)</span>，则 <span class="math inline">\(p_i\)</span> 表示模式 <span class="math inline">\(A_i\)</span> 「夺冠」 的概率。我们想计算出每个
+<span class="math inline">\(p_i\)</span> 的值来。</p>
+<p>为此先给一个定义：</p>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 是两个给定的模式，且 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span>
+都不是对方的连续子序列。我们计算所有既是 <span class="math inline">\(A\)</span> 的后缀又是 <span class="math inline">\(B\)</span> 的前缀的全部子序列，设它们的长度为
+<span class="math inline">\(l_1,\cdots,l_r\)</span>，定义 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 的匹配指数为 <span class="math display">\[A\ast B = 2^{l_1}+\cdots+2^{l_r}.\]</span> 如果
+<span class="math inline">\(A\)</span> 的任何后缀都不是 <span class="math inline">\(B\)</span> 的前缀则 <span class="math inline">\(A\ast B\)</span> 定义为 0。特别当 <span class="math inline">\(A=B\)</span> 时，<span class="math inline">\(A\ast
+A\)</span> 就是前面计算的 <span class="math inline">\(A\)</span>
+的平均等待时间，这个值又叫做 <span class="math inline">\(A\)</span>
+的自匹配指数。</p>
+</div>
+<p>我们要证明这样一个引理 ：</p>
+<div class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>如果已知掷硬币的结果是以模式 <span class="math inline">\(A\)</span> 开头的，那么距离模式 <span class="math inline">\(B\)</span> 出现还需要等待的时间的期望为 <span class="math display">\[\mathbb{E}\tau_{AB} = B\ast B -A\ast
+B.\]</span></p>
+</div>
+<p>引理的证明：仍然是采用赌博序列的方法，每天来的赌徒赌的是模式 <span class="math inline">\(B\)</span>，只不过这个时候我们已经知道了前 <span class="math inline">\(k\)</span> 次赌博的结果是模式 <span class="math inline">\(A\)</span>（假设序列 <span class="math inline">\(A\)</span> 的长度为 <span class="math inline">\(k\)</span>），所以不难算出前 <span class="math inline">\(k\)</span> 天赌博团伙的总资金为 <span class="math inline">\(A\ast B\)</span> 元。由于赌局始终是公平的，所以从
+<span class="math inline">\(k+1\)</span> 天起，直到模式 <span class="math inline">\(B\)</span> 出现的这 <span class="math inline">\(\tau_{AB}\)</span> 天里，赌徒们的净收益期望应该是
+0。到模式 <span class="math inline">\(B\)</span>
+出现时，赌徒们的资金将变成 <span class="math inline">\(B\ast B\)</span>
+元，所以这 <span class="math inline">\(\tau_{AB}\)</span>
+天中赌徒们的资金增加了 <span class="math inline">\(B\ast B-A\ast
+B\)</span> 元，扣除他们的投入 <span class="math inline">\(\tau_{AB}\)</span>
+元，就是这段时间的净收益，其期望为 0： <span class="math display">\[\mathbb{E} [B\ast B-A\ast B
+-\tau_{AB}]=0.\]</span> 引理证毕。</p>
+<p>接下来叙述并证明一个一般的结论：</p>
+<div class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span>, <span class="math inline">\(\cdots\)</span>, <span class="math inline">\(A_m\)</span> 是 <span class="math inline">\(m\)</span>
+个事先给定的且两两互不嵌套的模式，记矩阵 <span class="math display">\[M=\begin{pmatrix} A_1\ast A_1 &amp; A_1\ast
+A_2&amp;\cdots&amp; A_1\ast A_m\\ A_2\ast A_1&amp;A_2\ast
+A_2&amp;\cdots&amp; A_2\ast A_m\\
+\cdots&amp;\cdots&amp;\cdots&amp;\cdots\\ A_m\ast A_1&amp;A_m\ast
+A_2&amp;\cdots&amp;A_m\ast A_m\end{pmatrix},\]</span> <span class="math display">\[\pi = (p_1,p_2,\cdots,p_m)^T,\quad
+\mathbf{1}=(1,1,\cdots,1)^T,\]</span> 则 <span class="math inline">\(M\)</span> 是可逆矩阵，并且 <span class="math display">\[M\pi =\mathbb{E}[\tau]\mathbf{1}.\]</span></p>
+</div>
+<p>在证明定理之前，先说说怎样根据定理的结论来计算 <span class="math inline">\(\mathbb{E}[\tau]\)</span> 和概率分布向量 <span class="math inline">\(\pi\)</span>。首先解出 <span class="math inline">\(MY=\mathbf{1}\)</span> 的解 <span class="math inline">\(Y=(y_1,y_2,\cdots,y_m)^T\)</span>
+来。根据可逆矩阵解的唯一性，必然有 <span class="math inline">\(\pi=\mathbb{E}[\tau]Y\)</span>。但是 <span class="math inline">\(\pi\)</span> 是一个概率分布，它的所有分量之和为
+1，因此 <span class="math display">\[\mathbb{E}[\tau]
+=\frac{1}{y_1+y_2+\cdots+y_m}.\]</span></p>
+<p><span class="math inline">\(M\)</span>
+是可逆矩阵这一点是需要证明的，本文就省略了。事实上 <span class="math inline">\(A_i\)</span> 之间两两互不嵌套这个条件就可以保证
+<span class="math inline">\(M\)</span> 是可逆的。</p>
+<p>有了 <span class="math inline">\(Y\)</span> 和 <span class="math inline">\(\mathbb{E}[\tau]\)</span> 自然立刻就得到了 <span class="math inline">\(\pi\)</span>。</p>
+<p>定理的证明：我们有 <span class="math display">\[\mathbb{E}[\tau_i] =
+\mathbb{E}[\tau] + \mathbb{E}[\tau_i-\tau] =\mathbb{E}[\tau]
++\sum_{j=1}^m p_j\mathbb{E}[\tau_i-\tau|\tau=\tau_j].\]</span>
+根据引理， <span class="math display">\[\mathbb{E}[\tau_i-\tau|\tau=\tau_j] = A_i\ast
+A_i-A_j\ast A_i,\]</span> 因此 <span class="math display">\[A_i\ast
+A_i=\mathbb{E}[\tau]+A_i\ast A_i-\sum_{j=1}^np_j A_j\ast A_i.\]</span>
+这就证明了定理。</p>
+<h1 id="penney-游戏">Penney 游戏</h1>
+<p>Penney 游戏是两个玩家 Bob 和 Alice
+的博弈游戏，它以掷硬币为工具：游戏开始前，两人各自选择一个长度为 3 的由
+<code>H</code> 和 <code>T</code> 组成的模式，比如说 Bob 选择
+<code>HHH</code>，Alice 选择
+<code>THH</code>，然后掷硬币直到其中一人选择的模式首先出现，先出现的一方获胜。</p>
+<p>Penney 游戏有一个独特之处：</p>
+<blockquote>
+<p>假设 Bob 先选择他的序列，则不论 Bob 怎样选，Alice
+总可以「针锋相对」地选一个合适的序列，使得自己的获胜概率更高。总而言之，Penney
+游戏是所谓的「后发制人，先发者制于人」。</p>
+</blockquote>
+<p>这个有点类似于我们都熟悉的「剪子，石头，布」游戏。在 Penney
+游戏中，各种策略循环相克，<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Penney's_game">维基百科</a>
+中给出了各种情形下二人的获胜概率之比。在这个例子中，Alice 的获胜概率为
+7/8。</p>
+<p>Penney 游戏是非传递博弈的典型例子：策略 <span class="math inline">\(A\)</span> 优于 <span class="math inline">\(B\)</span>，<span class="math inline">\(B\)</span>
+优于 <span class="math inline">\(C\)</span> 并不能推出 <span class="math inline">\(A\)</span> 优于 <span class="math inline">\(C\)</span>。</p>
+<p>在只有两个模式 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span>
+的情形，二者各自获胜的概率有一个很简单的表达式：</p>
+<div class="unnumbered statement corollary-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(A,B\)</span>
+是两个给定的序列，它们互不为对方的连续子序列，则序列 <span class="math inline">\(B\)</span> 和序列 <span class="math inline">\(A\)</span> 的获胜概率之比为 <span class="math inline">\(p_B:p_A = (A\ast A-A\ast B):(B\ast B-B\ast
+A)\)</span>。</p>
+</div>
+<h1 id="还有更不可思议的事情">还有更不可思议的事情</h1>
+<p>我们已经介绍了怎样计算一个模式的平均等待时间，以及多个模式同时「赛跑」时各自的获胜概率。我们现在来看看
+<code>THTH</code> 和 <code>HTHH</code> 比赛的结果如何。</p>
+<p>首先不难算出 <code>THTH</code> 的平均等待时间是 20，<code>HTHH</code>
+的平均等待时间是 18，也就是说 <code>THTH</code>
+跑的慢一些，<code>HTHH</code>
+跑的快一些，那这是不是意味着让它俩赛跑的话，<code>HTHH</code>
+获胜的概率更大啊？</p>
+<p>答案是否定的，这其实是一个一面倒的竞赛：</p>
+<blockquote>
+<p>看起来慢一些的模式 <code>THTH</code>，其与 <code>HTHH</code>
+的胜算之比为 9 比 5，即平均每 14 场赛跑，<code>THTH</code> 会赢 9
+场，而貌似快一些的 <code>HTHH</code> 倒只赢 5 场。</p>
+</blockquote>
+<p>为什么会出现这种反直觉的现象呢？其实「跑得慢」和「赢得多」并不矛盾。我们随便看一个由
+<code>H</code> 和 <code>T</code> 组成的随机序列：</p>
+<p>HHTHT<font color="red">H</font><font color="green">H</font>THT<font color="red">H</font><font color="green">H</font>TTTHHTH<font color="green">H</font>HHTTHHTTHTTHT<font color="red">H</font><font color="green">H</font>TH<font color="green">H</font>TH<font color="green">H</font>TH<font color="green">H</font>HHTTHTTTTTTHTTHT<font color="red">H</font>TTHHTH<font color="green">H</font>HHHHTTHT<font color="red">H</font><font color="green">H</font>THT<font color="red">H</font><font color="green">H</font>TTTTTHTTHHHHHHTH<font color="green">H</font>HTTTHTTTHTTTHHHTH<font color="green">H</font>THT<font color="red">H</font>TTTHTTHTTHT<font color="red">H</font><font color="green">H</font>TH<font color="green">H</font>TTHT<font color="red">H</font><font color="green">H</font>HTTHH
+…</p>
+<p>其中分别用红色和绿色标记了模式 <code>THTH</code> 和 <code>HTHH</code>
+的出现的位置。注意到任何绿色 <code>H</code>
+后面连续的三个字符中绝对不会出现红色 <code>H</code>，而大约一半的红色的
+<code>H</code> 后面紧跟一个绿色的
+<code>H</code>。所以从一个随机序列中任选一点作为起点开始比赛，那么在红色
+<code>H</code> 先撞线的比赛中，第二个撞线的绿色 <code>H</code>
+往往会只落后一个身位，但是在绿色 <code>H</code> 先撞线的比赛中，红色的
+<code>H</code> 至少要落后四个身位以上。</p>
+<p>用足球来类比，领先一个身位就好比取得一个净胜球。净胜球少和积分领先并不矛盾。<code>THTH</code>
+击败 <code>HTHH</code> 的方法类似「一比零主义」：虽然平均下来
+<code>THTH</code>
+耗时长一些（每场净胜球少），但积分是领先的（赢的场数多）。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Li1980" class="csl-entry" role="listitem">
+Li, Shuo-Yen Robert. 1980. <span>“<span class="nocase">A Martingale
+Approach to the Study of Occurrence of Sequence Patterns in Repeated
+Experiments</span>.”</span> <em>The Annals of Probability</em> 8 (6):
+1171–76. <a target="_blank" rel="noopener" href="https://doi.org/10.1214/aop/1176994578">https://doi.org/10.1214/aop/1176994578</a>.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/three-mass-spring-system/" rel="next" title="三质点弹簧系统的简正模式">
+      上一篇：三质点弹簧系统的简正模式
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/mabinogion-sheep-problem/" rel="next" title="洛奇绵羊问题">
+          下一篇：洛奇绵羊问题
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

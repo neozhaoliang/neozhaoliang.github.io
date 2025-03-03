@@ -1,0 +1,943 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            国际象棋棋盘的多米诺骨牌密铺 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="下面的问题与统计物理中的 Dimer 格点模型有关：
+
+问题： 用 \(1\times2\) 的多米诺骨牌密铺一张 \(8\times8\)
+的国际象棋棋盘，有多少种不同的方法？
+
+下图是其中一种：
+
+答案是 12988816，非常大的一个数字，显然不可能是逐个枚举数出来的。1961
+年德国物理学家 Kasteleyn
+借助线性代数的工具首先解决了这个问题，本文就来介绍他的方法。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="国际象棋棋盘的多米诺骨牌密铺"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/计数组合学/">计数组合学</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>国际象棋棋盘的多米诺骨牌密铺</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2009-05-07T16:00:00.000Z"><a href="/Pfaffian-and-chessboard-tiling/">2009-05-08</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8D%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84-pfaffian"><span class="section table-of-contents-text">反对称矩阵的 Pfaffian</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%B9%B3%E9%9D%A2%E5%9B%BE%E7%9A%84-pfaffian-%E5%AE%9A%E5%90%91"><span class="section table-of-contents-text">平面图的 Pfaffian 定向</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%A3%8B%E7%9B%98%E7%9A%84%E5%A4%9A%E7%B1%B3%E8%AF%BA%E9%AA%A8%E7%89%8C%E5%AF%86%E9%93%BA%E7%9A%84%E8%AE%A1%E6%95%B0"><span class="section table-of-contents-text">棋盘的多米诺骨牌密铺的计数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%AA%E5%B0%BD%E7%9A%84%E8%AE%A8%E8%AE%BA"><span class="section table-of-contents-text">未尽的讨论</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%84%E5%BD%95"><span class="section table-of-contents-text">附录</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%B1%82%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5-lmn-%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="section table-of-contents-text">求邻接矩阵 \(L(m,n)\) 的具体步骤</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%B1%82-b_n-%E5%92%8C-c_m-%E7%9A%84%E7%89%B9%E5%BE%81%E5%80%BC"><span class="section table-of-contents-text">求 \(B_n\) 和 \(C_m\) 的特征值</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>下面的问题与统计物理中的 Dimer 格点模型有关：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>用 <span class="math inline">\(1\times2\)</span> 的多米诺骨牌密铺一张 <span class="math inline">\(8\times8\)</span>
+的国际象棋棋盘，有多少种不同的方法？</p>
+</div>
+<p>下图是其中一种：</p>
+<p><img src="/images/pfaff/chessboard.svg" class="fig"></p>
+<p>答案是 12988816，非常大的一个数字，显然不可能是逐个枚举数出来的。1961
+年德国物理学家 Kasteleyn
+借助线性代数的工具首先解决了这个问题，本文就来介绍他的方法。</p>
+<span id="more"></span>
+<h1 id="反对称矩阵的-pfaffian">反对称矩阵的 Pfaffian</h1>
+<p>我们从一个线性代数的结论说起，先来看一个 4 阶反对称矩阵的行列式：</p>
+<p><span class="math display">\[\det\begin{pmatrix}0&amp;a_{12}&amp;a_{13}&amp;a_{14}\\-a_{12}&amp;0&amp;a_{23}&amp;a_{24}\\-a_{13}&amp;-a_{23}&amp;0&amp;a_{34}\\-a_{14}&amp;-a_{24}&amp;-a_{34}&amp;0\end{pmatrix}=(a_{12}a_{34}-a_{13}a_{24}+a_{14}a_{23})^2.\]</span>
+你发现了什么？这个反对称矩阵的行列式是一个多项式的平方，而且观察右边每个单项式的下标你发现，它们分别是
+<span class="math inline">\(\{(12),(34)\}\)</span>，<span class="math inline">\(\{(14),(23)\}\)</span>，<span class="math inline">\(\{(13),(24)\}\)</span>，恰好跑遍集合 <span class="math inline">\(\{1,2,3,4\}\)</span> 的所有匹配！</p>
+<p>这个结论不是偶然的，实际上对任何 <span class="math inline">\(2n\)</span> 阶反对称矩阵 <span class="math inline">\(A\)</span>，<span class="math inline">\(A\)</span>
+的行列式都可以表示为一个多项式的平方，这个多项式叫做 Pfaffian
+多项式，记作 <span class="math inline">\(\mathrm{pf}(A)\)</span>。<span class="math inline">\(\mathrm{pf}(A)\)</span> 中的单项式与集合 <span class="math inline">\([2n]=\{1,2,\ldots,2n\}\)</span>
+的匹配一一对应。</p>
+<p>那么奇数阶反对称矩阵呢？它们的行列式都是 0，所以不考虑它们。</p>
+<p>我们来给出 <span class="math inline">\(\mathrm{pf}(A)\)</span>
+的定义：考虑一种把 <span class="math inline">\([2n]\)</span>
+两两配对（从而分成 <span class="math inline">\(n\)</span> 对）的方式：
+<span class="math display">\[\pi =
+(i_1,j_1)(i_2,j_2)\cdots(i_n,j_n).\]</span> <span class="math inline">\(\pi\)</span> 叫做集合 <span class="math inline">\([2n]\)</span>
+的一个匹配，它可以用一个置换来表示，仍然记作 <span class="math inline">\(\pi\)</span>： <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;\cdots&amp;2n-1&amp;2n\\i_1&amp;j_1&amp;i_2&amp;j_2&amp;\cdots&amp;i_n&amp;j_n\end{pmatrix}.\]</span>
+定义 <span class="math inline">\(\pi\)</span> 的权为 <span class="math display">\[\mathrm{wt}(\pi)=\text{sgn}(\pi)\cdot
+a_\pi.\]</span> 其中 <span class="math inline">\(\text{sgn}(\pi)\)</span> 就是置换 <span class="math inline">\(\pi\)</span> 的符号，偶置换时为 <span class="math inline">\(+1\)</span>，奇置换时为 <span class="math inline">\(-1\)</span>， <span class="math display">\[a_\pi=a_{i_1j_1}a_{i_2j_2}\cdots
+a_{i_nj_n}.\]</span> 于是 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 是一个次数为 <span class="math inline">\(n\)</span> 的单项式。</p>
+<p><span class="math inline">\(\mathrm{wt}(\pi)\)</span>
+的定义是合理无歧义的吗？注意一个匹配 <span class="math inline">\(\pi\)</span>
+可以有多种不同的置换表示：你可以按任意的顺序排列这些 <span class="math inline">\((i_k,j_k)\)</span> 对，比如 <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;\cdots&amp;2n-1&amp;2n\\i_2&amp;j_2&amp;i_3&amp;j_3&amp;\cdots&amp;i_1&amp;j_1\end{pmatrix}.\]</span>
+或是交换某一对中 <span class="math inline">\(i_k\)</span> 和 <span class="math inline">\(j_k\)</span> 的位置： <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;\cdots&amp;2k-1&amp;2k&amp;\cdots&amp;2n-1&amp;2n\\i_1&amp;j_1&amp;\cdots&amp;j_k&amp;i_k&amp;\cdots&amp;i_n&amp;j_n\end{pmatrix}.\]</span>
+不难验证，虽然不同的置换表示给出的 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 的值可能不同，但是二者的乘积 <span class="math inline">\(\mathrm{wt}(\pi)\)</span>
+的值总是一样的。比如把某个 <span class="math inline">\((i_k,j_k)\)</span> 改写成 <span class="math inline">\((j_k,i_k)\)</span>，那么 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 都同时变号，乘积保持不变。总之
+<span class="math inline">\(\mathrm{wt}(\pi)\)</span> 的定义只与匹配
+<span class="math inline">\(\pi\)</span>
+有关，并不依赖于具体置换的选择。</p>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(\mathcal{M}_{2n}\)</span> 为 <span class="math inline">\([2n]\)</span> 的所有匹配组成的集合，矩阵 <span class="math inline">\(A\)</span> 的 Pfaffian 多项式 <span class="math inline">\(\text{pf}(A)\)</span> 定义为 <span class="math display">\[\text{pf}(A) =\sum_{\pi\in\mathcal{M}_{2n}}
+\mathrm{wt}(\pi).\]</span></p>
+</div>
+<p>现在我们可以叙述本节的主要结论了：</p>
+<div id="pfaff" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+1.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(2n\)</span> 阶反对称矩阵，则 <span class="math inline">\(\det A=[\text{pf}(A)]^2\)</span>。</p>
+</div>
+<p><strong>证明</strong>：根据行列式的定义， <span class="math display">\[\det A=\sum_{\sigma\in
+S_{2n}}\text{sgn}(\sigma)a_{\sigma}=\sum_{\sigma\in
+S_{2n}}\text{sgn}(\sigma) a_{1\sigma(1)}a_{2\sigma(2)}\cdots
+.\]</span></p>
+<p>回忆任何置换 <span class="math inline">\(\sigma\)</span>
+都可以表示为若干不相交的轮换的乘积： <span class="math display">\[\sigma
+= (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.\]</span> 其中 <span class="math inline">\(k,l,\ldots\)</span> 是各个轮换的长度。设 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
+为轮换长度都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，<span class="math inline">\(\sigma\)</span> 只跑遍 <span class="math inline">\(\mathcal{E}_{2n}\)</span>，不属于 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
+的那些置换整体对行列式的贡献为 0。</p>
+<p>分两种情况：</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(\sigma\)</span>
+包含一个不动点：<span class="math inline">\(\sigma(i)=i\)</span>，则由于
+<span class="math inline">\(a_{i\sigma(i)}=0\)</span> 从而 <span class="math inline">\(\sigma\)</span> 对行列式的贡献为 0。</li>
+<li>如果 <span class="math inline">\(\sigma\)</span>
+没有不动点，但是包含长度为奇数的轮换，选择其中含有最小元素的那个，设为
+<span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span>，这里 <span class="math inline">\(k\)</span> 为奇数且大于等于 3。定义置换 <span class="math inline">\(\sigma'\)</span> 如下：<span class="math inline">\(\sigma'\)</span> 的其它轮换与 <span class="math inline">\(\sigma\)</span> 完全相同，只是把 <span class="math inline">\(C\)</span> 整个倒过来变成 <span class="math inline">\((i_k\cdots i_2i_1)\)</span>。显然 <span class="math inline">\(\sigma'\)</span> 对应的和项与 <span class="math inline">\(\sigma\)</span> 抵消，而且如果对 <span class="math inline">\(\sigma'\)</span> 执行此操作又会回到 <span class="math inline">\(\sigma\)</span>。于是所有没有不动点，而且包含长度是奇数的轮换的置换可以两两配对抵消。</li>
+</ol>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span><span class="math inline">\(\sigma=(1\,3)(2\,4\,6)(5\,7\,8)(9\,10)\)</span> 有
+2 个长度为奇数的轮换 <span class="math inline">\((246)\)</span> 和 <span class="math inline">\((578)\)</span>，这两个轮换中最小的元素是 <span class="math inline">\(2\)</span>，它出现在 <span class="math inline">\((2\,4\,6)\)</span> 中，所以 <span class="math inline">\(\sigma'=(1\,3)(6\,4\,2)(5\,7\,8)(9\,10)\)</span>。</p>
+</div>
+<p>这就证明了在行列式的求和中，我们只需要考虑那些轮换分解长度都是偶数的置换。</p>
+<p>于是为了证明 <span class="math inline">\(\det A=[{\rm
+pf}(A)]^2\)</span>，只要证明 <span class="math display">\[\sum_{\pi\in\mathcal{M}_{2n}}\sum_{\pi'\in\mathcal{M}_{2n}}{\rm
+wt}(\pi){\rm wt}(\pi')=\sum_{\sigma\in\mathcal{E}_{2n}}{\rm
+sgn}(\sigma) a_\sigma.\]</span></p>
+<p>为此我们来建立一个双射 <span class="math display">\[\mathcal{M}_{2n}\times
+\mathcal{M}_{2n}\rightarrow \mathcal{E}_{2n}:\quad
+(\pi,\pi')\rightarrow \sigma.\]</span>
+而且这个双射还保持权的相等，即 <span class="math display">\[\mathrm{wt}(\pi)\cdot
+\mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.\]</span>
+这样就证明了定理。</p>
+<p>对任何两个匹配 <span class="math inline">\((\pi,\pi')\in\mathcal{M}_{2n}\times\mathcal{M}_{2n}\)</span>，我们把它俩画在同一张图上，图的顶点集合就是
+<span class="math inline">\([2n]\)</span>，两个顶点 <span class="math inline">\(i,j\)</span> 如果在 <span class="math inline">\(\pi\)</span>
+中配成一对就在它们之间连一条红色边，或者如果 <span class="math inline">\(i,j\)</span> 在 <span class="math inline">\(\pi'\)</span>
+中配成一对就在它们之间连一条蓝色边。这样我们得到的是一个每个顶点恰好有一条红边和一条蓝边的图，即每个顶点度数都是
+2 的正则图。这个图一定可以表示为若干条不相交的回路的并 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，在一个回路中，红边和蓝边是交错出现的，因此每个回路的长度都是偶数。</p>
+<p>设 <span class="math inline">\(C\)</span> 是这样的一条回路，<span class="math inline">\(i_1\)</span> 是 <span class="math inline">\(C\)</span> 中最小的元素，从 <span class="math inline">\(i_1\)</span> 出发，沿着红色的边，即 <span class="math inline">\(\pi\)</span> 的方向绕 <span class="math inline">\(C\)</span> 一圈： <span class="math display">\[i_1\,{\color{red}{\xrightarrow{\pi}}}\,i_2\,{\color{blue}{\xrightarrow{\pi'}}}\,i_3\,{\color{red}{\xrightarrow{\pi}}}\,\cdots\,{\color{blue}{\xrightarrow{\pi'}}}\,i_1.\]</span>
+这样得到了一个轮换 <span class="math inline">\((i_1i_2\cdots
+i_k)\)</span>。对每个回路都这样做，我们就得到了一组轮换，与 <span class="math inline">\((\pi,\pi')\)</span> 对应的置换 <span class="math inline">\(\sigma\)</span>
+就定义为所有这些轮换的乘积。由于这些回路互不相交，这些轮换两两交换，所以我们不必关心它们相乘的顺序，任何顺序都给出同样的
+<span class="math inline">\(\sigma\)</span>。</p>
+<p>逆映射也很显然，对任何 <span class="math inline">\(\sigma\in\mathcal{E}_{2n}\)</span>，在 <span class="math inline">\(\sigma\)</span> 的每个轮换 <span class="math inline">\(C\)</span> 中，找到最小的 <span class="math inline">\(i_1\in C\)</span>，设 <span class="math inline">\(C=(i_1i_2\cdots i_k)\)</span>，那么依次规定 <span class="math display">\[i_1\,{\color{red}{\xrightarrow{\pi}}}\,i_2\,{\color{blue}{\xrightarrow{\pi'}}}\,i_3\,{\color{red}{\xrightarrow{\pi}}}\,\cdots\,{\color{blue}{\xrightarrow{\pi'}}}\,i_1.\]</span>
+即可。</p>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>下面是将 <span class="math inline">\(2n=12\)</span>，<span class="math inline">\(\sigma=(1\,3\,4\,5\,7\,10)(2\,6\,9\,8)(11\,12)\)</span>
+对应到两个匹配 <span class="math inline">\(\pi,\pi'\)</span>
+的示意图：</p>
+<p><img src="/images/pfaff/matching.svg" class="fig" width="500"></p>
+</div>
+<p>最后我们来验证这个对应保持权的相等：设 <span class="math inline">\(\sigma\)</span> 的轮换分解式为 <span class="math display">\[\sigma=(i_1i_2\cdots i_{2k-1}i_{2k})(j_1j_2\cdots
+j_{2l-1}j_{2l})\cdots.\]</span> 其中 <span class="math inline">\(i_1,j_1,\ldots\)</span>
+是每个轮换中最小的元素。于是 <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;\cdots&amp;2k-1&amp;2k&amp;2k+1&amp;2k+2&amp;\cdots\\i_1&amp;i_2&amp;\cdots&amp;i_{2k-1}&amp;i_{2k}&amp;j_1&amp;j_2&amp;\cdots\end{pmatrix}.\]</span>
+<span class="math display">\[\pi'=\begin{pmatrix}1&amp;2&amp;\cdots&amp;2k-1&amp;2k&amp;2k+1&amp;2k+2&amp;\cdots\\i_2&amp;i_3&amp;\cdots&amp;i_{2k}&amp;i_1&amp;j_2&amp;j_3&amp;\cdots\end{pmatrix}.\]</span></p>
+<p>容易验证 <span class="math inline">\(a_\pi
+a_{\pi'}=a_\sigma\)</span> 以及 <span class="math inline">\(\pi'=\sigma\cdot\pi\)</span>，从而 <a href="#pfaff" title="定理 1.1">定理 1.1</a> 得证。</p>
+<h1 id="平面图的-pfaffian-定向">平面图的 Pfaffian 定向</h1>
+<p>Pfaffian 多项式的结论启发我们可以用它来计算一个图 <span class="math inline">\(G\)</span> 的所有匹配的个数。</p>
+<p>设 <span class="math inline">\(G\)</span> 有 <span class="math inline">\(2n\)</span> 个顶点。首先给 <span class="math inline">\(G\)</span> 的边任意定向，得到一个简单有向图 <span class="math inline">\(\overrightarrow{G}\)</span>。写出 <span class="math inline">\(\overrightarrow{G}\)</span> 的邻接矩阵 <span class="math inline">\(A=(a_{ij})\)</span>：</p>
+<p><span class="math display">\[a_{ij}=\begin{cases}1&amp; i\rightarrow
+j,\\-1&amp; j\rightarrow i,\\ 0&amp;\text{else}.\end{cases}\]</span></p>
+<p>则 <span class="math inline">\(A\)</span> 是一个反对称矩阵且</p>
+<p><span class="math display">\[\det
+A=\left(\sum_{\pi\in\mathcal{M}_{2n}}\mathrm{wt}(\pi)\right)^2=\left(\sum_{\pi\in\mathcal{M}_{2n}}\text{sgn}(\pi)a_{i_1j_1}a_{i_2j_2}\cdots
+a_{i_nj_n}\right)^2.\]</span></p>
+<p>这里 <span class="math inline">\(\pi=(i_1,j_1)(i_2,j_2)\cdots(i_n,j_n)\)</span>
+跑遍集合 <span class="math inline">\([2n]\)</span> 的所有匹配。由于每个
+<span class="math inline">\(a_{ij}\)</span> 的取值是 <span class="math inline">\(\pm1\)</span> 或者 <span class="math inline">\(0\)</span>，所以 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 的值也是 <span class="math inline">\(\pm1\)</span> 或者 <span class="math inline">\(0\)</span>，并且 <span class="math inline">\(\mathrm{wt}(\pi)\ne0\)</span> 当且仅当对每个 <span class="math inline">\(1\leq k\leq n\)</span>，<span class="math inline">\(i_k\)</span> 和 <span class="math inline">\(j_k\)</span> 在 <span class="math inline">\(G\)</span> 中是相邻的，即 <span class="math inline">\(\pi\)</span> 给出 <span class="math inline">\(G\)</span> 的一个匹配。于是 <span class="math inline">\(G\)</span> 的所有匹配与 <span class="math inline">\(\mathrm{pf}(A)\)</span>
+中的非零项一一对应。不幸的是，这些非零项有 +1 有
+-1，把它们直接加起来得到的可不是 <span class="math inline">\(G\)</span>
+的所有匹配的个数。但是我们可以这样想： 能否通过适当的定向 <span class="math inline">\(G\)</span>，即适当给 <span class="math inline">\(a_{ij}\)</span> 赋以 +1 或者 -1，使得每一个非零的
+<span class="math inline">\(\mathrm{wt}(\pi)\)</span> 都同为 +1 或者同为
+-1？如果可以，那么<span class="math inline">\(\sqrt{|\det A|}\)</span>
+就是要求的匹配的个数。</p>
+<p>回忆在证明 <a href="#pfaff" title="定理 1.1">定理 1.1</a>
+时，我们有结论 <span class="math display">\[\mathrm{wt}(\pi)\cdot
+\mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.\]</span>
+要使得所有非零的 <span class="math inline">\(\mathrm{wt}(\pi)\)</span>
+都同为 +1 或者同为 -1，只要让每个非零的 <span class="math inline">\(\text{sgn}(\sigma)a_{\sigma}\)</span> 都等于 1
+即可。设 <span class="math inline">\(\sigma\)</span> 是一个使得 <span class="math inline">\(a_\sigma\ne0\)</span> 的置换且 <span class="math inline">\(\sigma\)</span> 的轮换分解为 <span class="math inline">\(\sigma=C_1\cdots C_l\)</span>，则 <span class="math inline">\(\text{sgn}(\sigma)=(-1)^l\)</span>，<span class="math inline">\(a_\sigma=a_{C_1}\cdots a_{C_l}\)</span>。这里记号
+<span class="math inline">\(a_{C_i}\)</span> 的含义是，如果 <span class="math inline">\(C_i=(i_1i_2\cdots i_k)\)</span>，则 <span class="math inline">\(a_{C_i}=a_{i_1i_2}\cdots
+a_{i_ki_1}\)</span>。如果我们能够使得每个 <span class="math inline">\(a_{C_i}=-1\)</span>，那么就有 <span class="math display">\[\text{sgn}(\sigma)\cdot a_\sigma = (-1)^l\cdot
+(-1)^l=1.\]</span> 怎么才能让 <span class="math inline">\(a_{C_i}\)</span> 都等于 -1 呢？注意 <span class="math inline">\(a_{C_i}\)</span> 不等于 0 说明 <span class="math inline">\(i_1\to i_2\to\cdots\to i_k\to i_1\)</span> 是
+<span class="math inline">\(\overrightarrow{G}\)</span>
+中的一个回路。又注意 <span class="math inline">\(\sigma\)</span>
+的每个轮换的长度都是偶数，所以 <span class="math inline">\(k\)</span>
+是偶数，即回路的长度是偶数。要使得 <span class="math inline">\(a_{C_i}\)</span> 等于 -1，我们需要 <span class="math inline">\(\{a_{i_1i_2},\ldots,a_{i_ki_1}\}\)</span> 中 -1
+出现的次数是奇数。换句话说，当在 <span class="math inline">\(\overrightarrow{G}\)</span> 中沿着回路 <span class="math display">\[i_1\rightarrow i_2\rightarrow \cdots \rightarrow
+i_k\rightarrow i_1\]</span> 绕 <span class="math inline">\(C_i\)</span>
+一圈时，有奇数条边在 <span class="math inline">\(\overrightarrow{G}\)</span>
+中的定向与行走方向一致，当然也就有奇数条边的定向与行走方向相反。</p>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(G\)</span> 是有限图。如果 <span class="math inline">\(G\)</span> 的一个回路 <span class="math inline">\(C\)</span> 的长度是偶数，且删除 <span class="math inline">\(C\)</span> 后剩下的部分仍然存在匹配，就称 <span class="math inline">\(C\)</span> 是一个好的回路。如果 <span class="math inline">\(G\)</span> 的一个定向 <span class="math inline">\(\overrightarrow{G}\)</span> 使得 <span class="math inline">\(G\)</span>
+的所有好的回路都是奇定向的，即沿着回路的任一方向行走都有奇数条边的定向与行走方向一致，就称
+<span class="math inline">\(\overrightarrow{G}\)</span> 是一个 Pfaffian
+定向。</p>
+</div>
+<p>对一般的图，找到其 Pfaffian
+定向是困难的事，但是对平面图却很简单。这就是下面的定理：</p>
+<div id="Kasteleyn" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span> <span class="statement-info">(Kasteleyn)</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(G\)</span>
+是一个简单平面图，则可以给 <span class="math inline">\(G\)</span>
+的边适当定向，使得当逆时针沿着 <span class="math inline">\(G\)</span>
+的每个面行走时（外部的无穷区域不算），都有奇数条边与行走方向一致，这种定向就是
+<span class="math inline">\(G\)</span> 的 Pfaffian 定向。</p>
+</div>
+<p><strong>证明</strong>：我们首先说明存在这样的定向，使得 <span class="math inline">\(G\)</span>
+的每个面都是奇定向的。对面的个数归纳：<span class="math inline">\(f=0\)</span>，则 <span class="math inline">\(G\)</span> 是一个树，任何定向都是 Pfaffian
+定向。设结论对有 <span class="math inline">\(f-1\)</span>
+个面的简单有向图成立，对有 <span class="math inline">\(f&gt;1\)</span>
+个面的图 <span class="math inline">\(G\)</span>，找到一条内部面与外部区域相邻的边 <span class="math inline">\(e\)</span>，删去 <span class="math inline">\(e\)</span> 得到的是一个有 <span class="math inline">\(f-1\)</span>
+个面的有向图，由归纳假设，可以让每个面都是奇定向，然后把 <span class="math inline">\(e\)</span> 补回去，并适当在 <span class="math inline">\(e\)</span>
+的两种可能的定向中选择一个使得最后这个面也是奇定向的即可。</p>
+<p>其次我们要说明这样的定向是 Pfaffian 定向，即对 <span class="math inline">\(G\)</span> 中任意好的回路 <span class="math inline">\(C\)</span>，当绕着 <span class="math inline">\(C\)</span>
+的内部逆时针行走一圈时，有奇数条边的定向与行走方向一致。</p>
+<p>设 <span class="math inline">\(C\)</span> 长度为 <span class="math inline">\(l\)</span>，<span class="math inline">\(C\)</span>
+内部有 <span class="math inline">\(p\)</span> 个顶点，<span class="math inline">\(q\)</span> 条边，<span class="math inline">\(r\)</span> 个面，<span class="math inline">\(C\)</span> 上逆时针定向的边的个数为 <span class="math inline">\(c\)</span>，内部的第 <span class="math inline">\(i\)</span> 个面 (<span class="math inline">\(1\leq
+i\leq r\)</span>) 上逆时针定向的边的个数为 <span class="math inline">\(c_i\)</span>。</p>
+<p>绕着所有面都逆时针走一圈，遇到的与行走方向定向相同的边的个数是 <span class="math inline">\(\sum\limits_{i=1}^rc_i=c+q\)</span>，这是因为
+<span class="math inline">\(C\)</span> 内部的 <span class="math inline">\(q\)</span>
+条边都被走了两次，一次逆时针，一次顺时针，因此都被计算了一次；而 <span class="math inline">\(C\)</span> 上的边只有逆时针定向的那些边（一共有
+<span class="math inline">\(c\)</span> 条）被计算了一次。</p>
+<p>由于每个 <span class="math inline">\(c_i\)</span> 都是奇数，因此
+<span class="math display">\[r\equiv c+q\ (\text{mod}\ 2).\]</span></p>
+<p>另一方面对 <span class="math inline">\(C\)</span> 包含的区域用 Euler
+定理，得到 <span class="math display">\[(p+l)-(q+l)+r=1.\]</span> 从而
+<span class="math inline">\(p\)</span> 与 <span class="math inline">\(c\)</span> 奇偶性相反，但是 <span class="math inline">\(p\)</span> 是偶数，这是因为删去 <span class="math inline">\(C\)</span> 以后仍然存在匹配说明 <span class="math inline">\(C\)</span> 的内部和外部各有偶数个顶点，因此 <span class="math inline">\(c\)</span> 是奇数，这就证明了定理。</p>
+<h1 id="棋盘的多米诺骨牌密铺的计数">棋盘的多米诺骨牌密铺的计数</h1>
+<p>回到文章开始的问题。</p>
+<p>设棋盘的大小为 <span class="math inline">\(m\times n\)</span>，<span class="math inline">\(m\)</span> 是行数。这里 <span class="math inline">\(m,n\)</span>
+必须至少有一个是偶数，我们这里假定列数 <span class="math inline">\(n\)</span> 是偶数。</p>
+<p>把棋盘的每个方格看作图 <span class="math inline">\(G\)</span>
+的顶点，两个方格对应的顶点 <span class="math inline">\(u,v\)</span> 在
+<span class="math inline">\(G\)</span>
+中相邻当且仅当它们有公共的边，这样就得到一个有 <span class="math inline">\(mn\)</span> 个顶点的平面图。棋盘的多米诺密铺与
+<span class="math inline">\(G\)</span>
+的完美匹配是一一对应的：密铺中的每个骨牌恰好盖住两个相邻的方格，这两个方格匹配在了一起。</p>
+<p>为了求出 <span class="math inline">\(G\)</span>
+的完美匹配个数，只要标记出 <span class="math inline">\(G\)</span> 的一个
+Pfaffian 定向，写出对应的邻接矩阵，然后求出行列式，再开平方即可。</p>
+<p>Pfaffian 定向是很容易找的，如下图所示：</p>
+<figure>
+<img src="/images/pfaff/pfaff.svg" width="300" alt="m\times n 网格图的 Pfaffian 定向">
+<figcaption aria-hidden="true"><span class="math inline">\(m\times
+n\)</span> 网格图的 Pfaffian 定向</figcaption>
+</figure>
+<p>下一步是写出这个定向图的邻接矩阵。我们按照从第一行开始，每一行从左到右的顺序给顶点排序。设
+<span class="math display">\[B_n=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{n\times
+n}.\]</span> 则邻接矩阵为 <span class="math display">\[L(m,n)=\begin{pmatrix}B_n&amp;I_n&amp;&amp;&amp;\\-I_n&amp;-B_n&amp;I_n&amp;&amp;\\&amp;-I_n&amp;B_n&amp;&amp;\\&amp;&amp;&amp;\ddots&amp;I_n\\&amp;&amp;&amp;-I_n&amp;(-1)^{m-1}B_n\end{pmatrix}_{m\times
+m}.\]</span></p>
+<p>我把求邻接矩阵的详细过程放在后面的附录中。下面先来求 <span class="math inline">\(L(m,n)\)</span> 的行列式。</p>
+<p>适当给 <span class="math inline">\(L(m,n)\)</span>
+的行列变号，可以得到 <span class="math display">\[
+\det L(m,n)=\det(B_n\otimes I_m-I_n\otimes C_m).\]</span> 其中 <span class="math display">\[C_m=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\1&amp;0&amp;1&amp;&amp;\\&amp;1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;1&amp;0\end{pmatrix}_{m\times
+m}.\]</span> 这个变号步骤并不显然，我们需要选择 <span class="math inline">\(L(m,n)\)</span> 的一些行列变号，使得对角线上的每个
+<span class="math inline">\(-B_n\)</span> 所在的行列恰好有一次变号，每个
+<span class="math inline">\(B_n\)</span>
+所在的行列要变号两次，要么不变。具体规则是这样的：由于 <span class="math inline">\(-B_n\)</span> 出现在 <span class="math inline">\(L(m,n)\)</span> 对角线上的 <span class="math inline">\(2,4,6,\ldots,\)</span> 位置上，我们选择：</p>
+<ol type="1">
+<li>将所有形如 <span class="math inline">\(4k+2\)</span>
+的<strong>列</strong>变号；</li>
+<li>将所有形如 <span class="math inline">\(4k\)</span>
+的<strong>行</strong>变号；</li>
+<li>将所有形如 <span class="math inline">\(4k+3\)</span>
+的<strong>行和列</strong>同时变号；</li>
+</ol>
+<p>这样显然可以把对角线上都变成 <span class="math inline">\(B_n\)</span>。对每个位于次对角线上 <span class="math inline">\((i-1, i)\)</span> 位置的 <span class="math inline">\(I_n\)</span>，</p>
+<ul>
+<li>如果 <span class="math inline">\(i=4k+2\)</span>，则 <span class="math inline">\((i-1,i)=(4k+1, 4k+2)\)</span>，根据 1
+它改变了一次符号；</li>
+<li>如果 <span class="math inline">\(i=4k\)</span>，则 <span class="math inline">\((i-1,i)=(4k-1, 4k)\)</span>，根据 2, 3
+它改变了三次符号；</li>
+<li>如果 <span class="math inline">\(i=4k+1\)</span>，则 <span class="math inline">\((i-1,i)=(4k, 4k+1)\)</span>，根据 2
+它改变了一次符号；</li>
+<li>如果 <span class="math inline">\(i=4k+3\)</span>，则 <span class="math inline">\((i-1,i)=(4k+2, 4k+3)\)</span>，根据 1, 3
+它改变了三次符号。</li>
+</ul>
+<p>总之 <span class="math inline">\(I_n\)</span> 都会变成 <span class="math inline">\(-I_n\)</span>。类似地所有 <span class="math inline">\(-I_n\)</span> 均保持不变。</p>
+<p>剩下的就是线性代数中求特征值的部分，需要一些关于矩阵张量积的知识，这里就不展开写了，大致逻辑是这样的：设
+<span class="math inline">\(B_n\)</span> 的特征值为 <span class="math inline">\(\lambda_1,\ldots,\lambda_n\)</span>，<span class="math inline">\(C_m\)</span> 的特征值为 <span class="math inline">\(\mu_1,\ldots,\mu_m\)</span>，则 <span class="math inline">\(B_n\otimes I_m- I_n\otimes C_m\)</span> 的 <span class="math inline">\(mn\)</span> 个特征值为 <span class="math inline">\(\{\lambda_i-\mu_j, 1\leq i\leq n, 1\leq j\leq
+m\}\)</span>，所以 <span class="math display">\[\det(B_n\otimes I_m-
+I_n\otimes C_m) = \prod_{i=1}^n\prod_{j=1}^m(\lambda_i-\mu_j).\]</span>
+<span class="math inline">\(B_n\)</span> 和 <span class="math inline">\(C_m\)</span>
+的特征值的计算应该是线性代数课程中行列式部分的常见的习题，我把具体的计算步骤放在附录中，最终结果是
+<span class="math display">\[\sqrt{|\det L(m,n)|}
+=\prod_{k=1}^m\prod_{l=1}^n(4\cos^2\frac{k\pi}{m+1}+4\cos^2\frac{l\pi}{n+1})^{\frac{1}{4}}.\]</span>
+此即为要求的完美匹配的个数。</p>
+<h1 id="未尽的讨论">未尽的讨论</h1>
+<p>我们已经得到了一个关于 <span class="math inline">\(m\times n\)</span>
+棋盘的多米诺骨牌密铺的漂亮的表达式，事情可以结束了吗？其实还没有，这个表达式虽然很漂亮，但是我们没法用它来具体计算匹配个数的值（一堆三角函数的乘积怎么算？）。那应该怎么办呢？我把后面的故事留给
+<span class="citation" data-cites="aigner07">(<a href="#ref-aigner07" role="doc-biblioref">Aigner 2007, sec. 10.1</a>)</span>。</p>
+<h1 id="附录">附录</h1>
+<h2 id="求邻接矩阵-lmn-的具体步骤">求邻接矩阵 <span class="math inline">\(L(m,n)\)</span> 的具体步骤</h2>
+<p>将 <span class="math inline">\(L(m,n)\)</span> 简写为 <span class="math inline">\(L=L(m,n)\)</span>。把网格图 <span class="math inline">\(G\)</span> 的顶点标记如下：</p>
+<p><span class="math display">\[\begin{matrix}(1,1)&amp;(1,2)&amp;\cdots&amp;(1,
+n)\\(2,1)&amp;(2,2)&amp;\cdots&amp;(2,n)\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\(m,
+1)&amp;(m,2)&amp;\cdots&amp;(m, n)\end{matrix}\]</span></p>
+<p>对这些顶点排序，首先是第一行从左到右，然后是第二行从左到右，等等：
+<span class="math display">\[(1,1)&lt;(1,2)&lt;\cdots&lt;(1,n)&lt;(2,1)&lt;\cdots&lt;(2,n)&lt;\cdots&lt;(m,1)&lt;\cdots&lt;(m,n).\]</span></p>
+<p><span class="math inline">\(L\)</span> 是 <span class="math inline">\(mn\times mn\)</span> 阶矩阵，它的行和列分别由
+<span class="math inline">\((i,j)_{\begin{smallmatrix}1\leq i\leq
+m\\1\leq j\leq n\end{smallmatrix}}\)</span> 和 <span class="math inline">\((i',j')_{\begin{smallmatrix}1\leq
+i'\leq m\\1\leq j'\leq n\end{smallmatrix}}\)</span> 标记。<span class="math inline">\(L\)</span> 可以划分成 <span class="math inline">\(m\times m\)</span> 个子块，每个子块是 <span class="math inline">\(n\times n\)</span> 阶的，其中位于 <span class="math inline">\((i,i')\)</span> 处的子块对应的矩阵是 <span class="math inline">\((L_{(i,j)(i',j')})_{1\leq j,j'\leq
+n}\)</span>： <span class="math display">\[\begin{array}{c|c|c}&amp;(i',1), \cdots,
+(i',j'),\cdots, (i',n)&amp;\\ &amp;\hline&amp;\qquad\\(i,
+1)&amp;&amp;\\\vdots&amp;&amp;\\(i,j)&amp;\ast&amp;\\\vdots&amp;&amp;\\(i,n)&amp;&amp;\\
+&amp;\hline&amp;\qquad\\ &amp;&amp;\end{array}\]</span></p>
+<p>注意到 <span class="math inline">\((i,j)\)</span> 和 <span class="math inline">\((i',j')\)</span>
+之间有边相连当且仅当：</p>
+<ol type="1">
+<li><span class="math inline">\(i=i'\)</span> 且 <span class="math inline">\(j'=j\pm1\)</span>；</li>
+<li><span class="math inline">\(i'=i\pm1\)</span> 且 <span class="math inline">\(j=j'\)</span>。</li>
+</ol>
+<p>这说明 <span class="math inline">\(L\)</span>
+在除去对角线以及两侧的次对角线以外的位置都是 0。</p>
+<p>在情形 1 中，由于水平的边（红色和绿色）是交替改变方向的，所以 <span class="math display">\[L_{(i,j)(i,j+1)} = (-1)^{i-1} \text{ for } 1\leq
+i\leq m \text{ and } 1\leq j\leq n-1.\]</span> 这说明 <span class="math inline">\(L\)</span> 对角线上的第 <span class="math inline">\(i\)</span> 个子块是 <span class="math inline">\((-1)^{i-1}B_n\)</span>，其中 <span class="math display">\[B_n=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\-1&amp;0&amp;1&amp;&amp;\\&amp;-1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;-1&amp;0\end{pmatrix}_{n\times
+n}.\]</span> 即 <span class="math inline">\(L\)</span> 形如 <span class="math display">\[\begin{pmatrix}
+B_n &amp;\ast&amp;&amp;&amp;\\
+\ast&amp; -B_n &amp;\ast&amp;&amp;\\
+&amp;\ast&amp;\ddots&amp;\ddots&amp;\\
+&amp;&amp;\ddots&amp;\ddots&amp; \ast\\
+&amp;&amp;&amp;\ast&amp;(-1)^{m-1}B_n
+\end{pmatrix}.\]</span> 在情形 2
+中，由于竖直的边（蓝色）是恒定向下的，所以 <span class="math display">\[L_{(i,j),(i+1,j)}  = 1  \text{ for } 1\leq i\leq
+m-1 \text{ and } 1\leq j\leq n.\]</span> 这说明 <span class="math inline">\(L\)</span> 右上方次对角线上的 <span class="math inline">\((i,i+1)\)</span> 位置的子块都是 <span class="math inline">\(I_n\)</span>。再结合 <span class="math inline">\(L\)</span> 是反对称的，下方次对角线上都是 <span class="math inline">\(-I_n\)</span>，所以 <span class="math inline">\(L\)</span> 形如 <span class="math display">\[\begin{pmatrix}
+B_n &amp;I_n&amp;&amp;&amp;\\
+-I_n&amp; -B_n &amp;I_n&amp;&amp;\\
+&amp;-I_n&amp;\ddots&amp;\ddots&amp;\\
+&amp;&amp;\ddots&amp;\ddots&amp; I_n\\
+&amp;&amp;&amp;-I_n&amp;(-1)^{m-1}B_n
+\end{pmatrix}.\]</span></p>
+<p>此即为 <span class="math inline">\(G\)</span> 的邻接矩阵。</p>
+<h2 id="求-b_n-和-c_m-的特征值">求 <span class="math inline">\(B_n\)</span> 和 <span class="math inline">\(C_m\)</span> 的特征值</h2>
+<p>我们以 <span class="math display">\[C_m=\begin{pmatrix}0&amp;1&amp;0&amp;&amp;\\1&amp;0&amp;1&amp;&amp;\\&amp;1&amp;0&amp;1&amp;\\&amp;&amp;&amp;\ddots&amp;1\\&amp;&amp;&amp;1&amp;0\end{pmatrix}.\]</span>
+为例来说明怎样求它的特征值，<span class="math inline">\(B_n\)</span>
+的求解是类似的。</p>
+<p>我们需要求出其特征多项式</p>
+<p><span class="math display">\[f_m(\lambda) =
+\det\begin{pmatrix}\lambda&amp;-1&amp;0&amp;&amp;\\-1&amp;\lambda&amp;-1&amp;&amp;\\&amp;-1&amp;\lambda&amp;-1&amp;\\&amp;&amp;&amp;\ddots&amp;-1\\&amp;&amp;&amp;-1&amp;\lambda\end{pmatrix}.\]</span></p>
+<p>按第一行展开可得递推关系</p>
+<p><span class="math display">\[f_m = \lambda f_{m-1} -
+f_{m-2},\]</span></p>
+<p>结合初始条件 <span class="math inline">\(f_0=1, f_1=\lambda\)</span>
+（初始条件可以从 <span class="math inline">\(m=2\)</span>
+的情形展开确定） 可得</p>
+<p><span class="math display">\[f_m(\lambda) =
+\frac{1}{\sqrt{\lambda^2-4}}\left[\left(\frac{\lambda+\sqrt{\lambda^2-4}}{2}\right)^{m+1}-\left(\frac{\lambda-\sqrt{\lambda^2-4}}{2}\right)^{m+1}\right].\]</span></p>
+<p>由此不难确定 <span class="math inline">\(C_m\)</span> 的 <span class="math inline">\(m\)</span> 个特征值为 <span class="math inline">\(2\cos\dfrac{k\pi}{m+1},k=1,\ldots,m.\)</span></p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-aigner07" class="csl-entry" role="listitem">
+Aigner, M. 2007. <em>A Course in Enumeration</em>. Graduate Texts in
+Mathematics. Springer Berlin Heidelberg.
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>提示：从任一顶点 <span class="math inline">\(x\)</span>
+出发沿着红边到达顶点 <span class="math inline">\(y\)</span>，再从 <span class="math inline">\(y\)</span> 出发沿着蓝边到达顶点 <span class="math inline">\(z\)</span>，再从 <span class="math inline">\(z\)</span> 出发沿着红边到达顶点 <span class="math inline">\(w\)</span>，这样一直继续下去肯定会回到某个访问过的点，从而形成一个回路。拿掉这个回路以后剩下的图每个顶点的度数仍然是偶数，所以可以继续重复这个过程。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/space-of-matrices/" rel="next" title="矩阵空间的子空间">
+      上一篇：矩阵空间的子空间
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/macmahon-formula-plane-partitions/" rel="next" title="平面分拆的 Macmahon 公式">
+          下一篇：平面分拆的 Macmahon 公式
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

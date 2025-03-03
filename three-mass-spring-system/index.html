@@ -1,0 +1,826 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            三质点弹簧系统的简正模式 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="今天的问题是群表示论在物理中的一个小应用：
+
+问题： 平面上有三个质量均为 \(m\) 的质点 \(A,B,C\)，它们位于正三角形的三个顶点。质点之间两两由弹簧相连，三个弹簧完全一样。弹簧质量忽略不计。
+
+初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力，那么这个系统的简正模式
+(normal mode) 是什么？
+
+这里 简正模式
+的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="三质点弹簧系统的简正模式"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/有限群表示与结合代数/">有限群表示与结合代数</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>三质点弹簧系统的简正模式</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2011-08-21T16:00:00.000Z"><a href="/three-mass-spring-system/">2011-08-22</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>今天的问题是群表示论在物理中的一个小应用：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于正三角形的三个顶点。质点之间两两由弹簧相连，三个弹簧完全一样。弹簧质量忽略不计。</p>
+<p><img src="/images/mass-spring/abc.png" class="fig" width="250"></p>
+<p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力，那么这个系统的简正模式
+(normal mode) 是什么？</p>
+</div>
+<p>这里 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Normal_mode">简正模式</a>
+的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
+<span id="more"></span>
+<p>比较容易发现的简正模式有：</p>
+<ol type="1">
+<li><p>平移。初始时给所有质点以同样的速度，它们会继续以相同的速度移动。</p>
+<p><img src="/images/mass-spring/trans.gif" class="fig" width="250"></p></li>
+<li><p>旋转。初始时给所有质点以相同的切向速度，它们会继续绕中心旋转。</p>
+<p><img src="/images/mass-spring/rot.gif" class="fig" width="250"></p></li>
+<li><p>呼吸。初始时给每个质点相同的径向速度，系统会重复膨胀 —
+收缩的过程。</p>
+<p><img src="/images/mass-spring/breath.gif" class="fig" width="250"></p></li>
+</ol>
+<p>但是要找出其它的简正模式，并保证没有遗漏，就不能只靠想象了。</p>
+<p>我们把这个物理问题转换为一个线性代数问题，然后用一些群表示论的知识解决它。</p>
+<p>这个质点弹簧系统有 6 个自由度 <span class="math inline">\(\{q_1,\ldots,q_6\}\)</span>，其中 <span class="math inline">\((q_1,q_2)\)</span>，<span class="math inline">\((q_3,q_4)\)</span>，<span class="math inline">\((q_5,q_6)\)</span> 分别是质点 <span class="math inline">\(A,B,C\)</span> 在 <span class="math inline">\(x,y\)</span>
+方向上相对于其平衡位置的位移，如下图所示：</p>
+<figure>
+<img src="/images/mass-spring/coords.svg" width="300" alt="建立坐标系，水平向右为 x 轴，竖直向上为 y 轴">
+<figcaption aria-hidden="true">建立坐标系，水平向右为 <span class="math inline">\(x\)</span> 轴，竖直向上为 <span class="math inline">\(y\)</span> 轴</figcaption>
+</figure>
+<p>设弹簧的弹性系数为 <span class="math inline">\(k\)</span>，原点在三角形中心，<span class="math inline">\(x\)</span>
+轴水平向右，于是三个弹簧所含的弹性势能为 （将形变投影到弹簧所在的方向）
+<span class="math display">\[
+\begin{align*}
+V=&amp;\frac{1}{2}k(q_3-q_1)^2+\frac{1}{2}k\left[\frac{-1}{2}(q_5-q_3) +
+\frac{\sqrt{3}}{2}(q_6-q_4)\right]^2+\\&amp;\frac{1}{2}k\left[\frac{1}{2}(q_1-q_5)
++ \frac{\sqrt{3}}{2}(q_2-q_6)\right]^2.
+\end{align*}
+\]</span> 这是一个关于 <span class="math inline">\(\mathbf{q}=(q_1,q_2,\ldots,q_6)^T\)</span>
+的二次型： <span class="math display">\[V
+=\frac{1}{2}k\,\mathbf{q}^TU\mathbf{q}.\]</span> 其中 <span class="math display">\[U=\frac{1}{4}\begin{pmatrix}5&amp;\sqrt{3}&amp;-4&amp;0&amp;-1&amp;-\sqrt{3}\\
+\sqrt{3}&amp;3&amp;0&amp;0&amp;-\sqrt{3}&amp;3\\
+-4&amp;0&amp;5&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}\\
+0&amp;0&amp;-\sqrt{3}&amp;3&amp;\sqrt{3}&amp;-3\\
+-1&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}&amp;2&amp;0\\
+-\sqrt{3}&amp;-3&amp;\sqrt{3}&amp;-3&amp;0&amp;6
+\end{pmatrix}.\]</span></p>
+<p>由牛顿第二定律我们有 <span class="math display">\[m\frac{\mathrm{d}^2q_i}{\mathrm{d}t^2}=-\frac{\partial
+V}{\partial q_i}=-k\sum_{j=1}^6U_{ij}q_j.\]</span>
+系统的简正模式就是所有 <span class="math inline">\(q_i\)</span>
+按照同一个频率 <span class="math inline">\(\omega\)</span>
+作简谐振动，但振幅可以不同，故而可以设 <span class="math inline">\(q_i=\overline{q}_i\mathrm{e}^{i\omega
+t}\)</span>，其中 <span class="math inline">\(\overline{q}_i\)</span>
+是振幅，与时间 <span class="math inline">\(t\)</span> 无关。代入上式得到
+<span class="math display">\[\frac{m\omega^2}{k}\overline{q}_i =
+\sum_{j=1}^6U_{ij}\overline{q}_j.\]</span> 即 <span class="math inline">\(U\overline{\mathbf{q}}=\lambda\overline{\mathbf{q}}\)</span>，<span class="math inline">\(\lambda=m\omega^2/k\)</span>，于是简正模式的振幅
+<span class="math inline">\(\overline{\mathbf{q}}=(\overline{q}_1,\overline{q}_2,\ldots,\overline{q}_6)\)</span>
+是 <span class="math inline">\(U\)</span> 的特征向量，频率可以从特征值
+<span class="math inline">\(\lambda\)</span> 得出，从而问题转化为求矩阵
+<span class="math inline">\(U\)</span> 的特征值和特征向量。由于 <span class="math inline">\(U\)</span> 是一个实对称矩阵，所以一定存在 6
+个线性无关的特征向量。</p>
+<p>你当然可以直接硬算，但是手动求一个 6
+阶矩阵的特征值还是一件挺麻烦的事情，鉴于搞数学的人一般比较懒，我们可以换个思路想一想。</p>
+<p>注意到这个系统具有对称性，其对称群是 <span class="math inline">\(S_3\)</span>。<span class="math inline">\(S_3\)</span> 这个群是集合 <span class="math inline">\(\{1,2,3\}\)</span>
+的置换群，同时也是平面上正三角形的对称群，在后者的情形通常称为二面体群
+<span class="math inline">\(D_3\)</span>。</p>
+<p>回忆 <span class="math inline">\(S_3\)</span> 的一个表现为 <span class="math display">\[S_3=\{a,b\mid a^2=b^3=(ab)^2=1\}.\]</span>
+当作为置换群时，<span class="math inline">\(a=(12),\,b=(123)\)</span>。当作为二面体群时，<span class="math inline">\(a=\left(\begin{smallmatrix}-1&amp;0\\0&amp;1\end{smallmatrix}\right)\)</span>
+是关于 <span class="math inline">\(y\)</span> 轴的反射，<span class="math inline">\(b=\left(\begin{smallmatrix}\cos2\pi/3&amp;-\sin2\pi/3\\\sin2\pi/3&amp;\cos2\pi/3\end{smallmatrix}\right)\)</span>
+是关于原点角度为 <span class="math inline">\(2\pi/3\)</span>
+的旋转。</p>
+<p>系统状态 <span class="math inline">\(\mathbf{q}\)</span> 所在的空间
+<span class="math inline">\(\mathbb{R}^6\)</span> 是三个 <span class="math inline">\(\mathbb{R}^2\)</span> 的直和：<span class="math inline">\(\mathbb{R}^6=\mathbb{R}^2_A\oplus\mathbb{R}^2_B\oplus\mathbb{R}^2_C\)</span>。其中
+<span class="math inline">\(\mathbb{R}^2_A,\mathbb{R}^2_B,\mathbb{R}^2_C\)</span>
+分别是 <span class="math inline">\(A,B,C\)</span> 的坐标空间。<span class="math inline">\(S_3\)</span> 在置换这三个直和项的同时，又以 <span class="math inline">\(D_3\)</span>
+的方式作用在每个直和项上，所以这个表示是 <span class="math inline">\(S_3\)</span> 的置换表示和在 <span class="math inline">\(\mathbb{R}^2\)</span> 上二维表示的张量积。</p>
+<p>例如，对换 <span class="math inline">\((12)\)</span> 交换 <span class="math inline">\(A,B\)</span>，同时将它们的坐标关于 <span class="math inline">\(y\)</span> 轴作反射： <span class="math display">\[\begin{aligned}
+A\otimes (q_1,q_2) &amp;\xrightarrow{(12)} B\otimes(-q_1,q_2),\\
+B\otimes (q_3,q_4) &amp;\xrightarrow{(12)} A\otimes(-q_3,q_4).
+\end{aligned}\]</span></p>
+<p>我们把这个张量积表示记作 <span class="math inline">\(\rho\)</span>，并记 <span class="math display">\[R=\begin{pmatrix}\cos\frac{2\pi}{3}&amp;-\sin\frac{2\pi}{3}\\\sin\frac{2\pi}{3}&amp;\cos\frac{\pi}{3}\end{pmatrix},\quad
+S=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}.\]</span></p>
+<p>我们可以明确写出 <span class="math inline">\(a=(12)\)</span>
+在这个张量积表示下的矩阵：<span class="math inline">\(a\)</span>
+作为置换对应的矩阵是 <span class="math display">\[A=\begin{pmatrix}0&amp;1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}.\]</span>
+在二面体群 <span class="math inline">\(D_3\)</span> 中，<span class="math inline">\(a\)</span> 是关于 <span class="math inline">\(y\)</span> 轴的反射，其矩阵为 <span class="math inline">\(S\)</span>，所以 <span class="math inline">\(a\)</span> 在 <span class="math inline">\(\mathbb{R}^3\otimes\mathbb{R}^2\)</span>
+上的作用对应的矩阵是 Kronecker 乘积 <span class="math inline">\(A\otimes
+S\)</span>。</p>
+<p>下面列出了 <span class="math inline">\(S_3\)</span> 的各个元素在
+<span class="math inline">\(\rho\)</span> 下对应的矩阵：</p>
+<p><span class="math display">\[
+\begin{align*}
+\rho(e)&amp;=I_3\otimes
+I_2=\begin{pmatrix}I_2&amp;0&amp;0\\0&amp;I_2&amp;0\\0&amp;0&amp;I_2\end{pmatrix},\\
+\rho(a)&amp;=\begin{pmatrix}0&amp;1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}\otimes
+S=\begin{pmatrix}0&amp;S&amp;0\\S&amp;0&amp;0\\0&amp;0&amp;S\end{pmatrix},\\
+\rho(b)&amp;=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;0&amp;0\end{pmatrix}\otimes
+R=\begin{pmatrix}0&amp;R&amp;0\\0&amp;0&amp;R\\R&amp;0&amp;0\end{pmatrix},\\
+\rho(b^2)&amp;=\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}\otimes
+R^2=\begin{pmatrix}0&amp;0&amp;R^2\\R^2&amp;0&amp;0\\0&amp;R^2&amp;0\end{pmatrix},\\
+\rho(ab)&amp;=\begin{pmatrix}0&amp;0&amp;1\\0&amp;1&amp;0\\1&amp;0&amp;0\end{pmatrix}\otimes
+SR=\begin{pmatrix}0&amp;0&amp;SR\\0&amp;SR&amp;0\\SR&amp;0&amp;0\end{pmatrix},\\
+\rho(ab^2)&amp;=\begin{pmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\\0&amp;1&amp;0\end{pmatrix}\otimes
+SR^2=\begin{pmatrix}SR^2&amp;0&amp;0\\0&amp;0&amp;SR^2\\0&amp;SR^2&amp;0\end{pmatrix}.
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(S_3\)</span> 在表示 <span class="math inline">\(\rho(g)\)</span>
+下显然都是正交矩阵，而且保持系统的势能不变，所以对任何状态 <span class="math inline">\(\mathbf{q}\)</span> 有 <span class="math display">\[V(\rho(g)\mathbf{q})=V(\mathbf{q}),\]</span> 即
+<span class="math display">\[{\bf q^T}\rho(g)^TU\rho(g){\bf
+q}=U.\]</span> 由于 <span class="math inline">\(\rho(g)\)</span>
+正交所以 <span class="math inline">\(\rho(g)U=U\rho(g)\)</span>，从而
+<span class="math inline">\(U\)</span> 是表示 <span class="math inline">\(\rho\)</span> 的一个自同态。</p>
+<p>在数学上，我们非常喜欢这种与一个表示 <span class="math inline">\(\rho\)</span>
+交换的矩阵，因为这种矩阵的任何特征子空间都是 <span class="math inline">\(\rho\)</span> 的不变子空间，即 <span class="math inline">\(\rho\)</span> 的子表示，从而可以帮助我们将 <span class="math inline">\(\rho\)</span>
+分解为一些更简单表示的直和。不过在这个问题中，我们要反过来借助 <span class="math inline">\(\rho\)</span> 的分解来分析 <span class="math inline">\(U\)</span> 的特征子空间的结构。</p>
+<p>我们来确定表示 <span class="math inline">\(\rho\)</span>
+的结构。注意到 <span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\{1,2,3\}\)</span>
+上的置换表示，其特征只有在单位元 <span class="math inline">\(e\)</span>
+处不为 0（值是 3），在任何非单位元 <span class="math inline">\(g\in
+S_3\)</span> 处都是 0。这个表示是张量积表示 <span class="math inline">\(\rho\)</span> 的分量，所以 <span class="math inline">\(\rho\)</span> 的特征 <span class="math inline">\(\chi\)</span> 也具有此性质。显然 <span class="math inline">\(\chi(e)=6\)</span>，于是 <span class="math inline">\(\chi\)</span> 与 <span class="math inline">\(S_3\)</span>
+的正则表示的特征完全相同，从而同构于正则表示，从而 <span class="math inline">\(\chi\)</span>
+可以分解为两个一次表示和两个二次不可约表示的和： <span class="math display">\[\chi = \chi_1 + \chi_2 + \chi_3+\chi_4.\]</span>
+其中 <span class="math inline">\(\chi_1\)</span> 是平凡表示的特征，<span class="math inline">\(\chi_2\)</span> 是符号表示的特征（偶置换为
++1，奇置换为 -1），这两个特征都是一次的。<span class="math inline">\(\chi_3=\chi_4\)</span> 是 <span class="math inline">\(S_3\)</span>
+作为二面体群的二维不可约表示的特征。</p>
+<p>记 <span class="math inline">\(\chi_i\)</span> 对应的不可约模是 <span class="math inline">\(V_i\)</span>，则 <span class="math inline">\(\dim
+V_1=\dim V_2=1\)</span>，<span class="math inline">\(\dim V_3=\dim
+V_4=2\)</span> 并且 <span class="math display">\[\mathbb{R}^6=V_1\oplus
+V_2\oplus V_3\oplus V_4.\]</span></p>
+<p><span class="math inline">\(\mathbb{R}^6\)</span> 是 <span class="math inline">\(U\)</span> 的特征子空间的直和，而 <span class="math inline">\(U\)</span> 的特征子空间都是 <span class="math inline">\(\rho\)</span> 的不变子空间，从而可以分解为 <span class="math inline">\(\rho\)</span> 的不可约模的直和。这说明每个 <span class="math inline">\(V_i\)</span> 都包含在 <span class="math inline">\(U\)</span> 的某个特征值 <span class="math inline">\(\lambda_i\)</span> 的特征子空间中。即 <span class="math inline">\(U\)</span> 在 <span class="math inline">\(V_i\)</span> 上的作用是数乘 <span class="math inline">\(\lambda_i\)</span>。</p>
+<p>从 <span class="math inline">\(V_1,\ldots,V_4\)</span>
+中分别选择一组基，它们合起来构成 <span class="math inline">\(\mathbb{R}^6\)</span> 的一组基。在这组基下 <span class="math inline">\(U\)</span> 是对角矩阵，形如 <span class="math display">\[U=\begin{pmatrix}\lambda_1&amp;0&amp;0&amp;0\\0&amp;\lambda_2&amp;0&amp;0\\0&amp;0&amp;\lambda_3I_2&amp;0\\0&amp;0&amp;0&amp;\lambda_4I_2\end{pmatrix}.\]</span>
+同时 <span class="math inline">\(\rho(g)\)</span> 形如 <span class="math display">\[\rho(g)=\begin{pmatrix}D_1&amp;0&amp;0&amp;0\\0&amp;D_2&amp;0&amp;0\\0&amp;0&amp;D_3&amp;0\\0&amp;0&amp;0&amp;D_4\end{pmatrix}.\]</span></p>
+<p>我们来计算 <span class="math inline">\(\rho(g)U\)</span> 对不同 <span class="math inline">\(g\in S_3\)</span> 的迹。首先注意到 <span class="math display">\[\mathop{\mathrm{tr}}{\rho(g)U}=\mathop{\mathrm{tr}}{\begin{pmatrix}\lambda_1D_1&amp;0&amp;0&amp;0\\0&amp;\lambda_2D_2&amp;0&amp;0\\0&amp;0&amp;\lambda_3D_3&amp;0\\0&amp;0&amp;0&amp;\lambda_4D_4\end{pmatrix}}=\sum_{i=1}^4\lambda_i\chi_i(g).
+\]</span></p>
+<p>另一方面，我们对 <span class="math inline">\(S_3\)</span> 中的 <span class="math inline">\(e,a,b\)</span> 这三个元素，根据前面列出的 <span class="math inline">\(\rho(g)\)</span> 矩阵，计算其与 <span class="math inline">\(U\)</span>
+的乘积，再求迹得到（这是本文计算量最大的部分！） <span class="math display">\[
+\begin{align*}
+\mathop{\mathrm{tr}}{\rho(e)U}&amp;=\mathop{\mathrm{tr}}{U}=\frac{1}{4}(5+3+5+3+2+6)=6,\\
+\mathop{\mathrm{tr}}{\rho(a)U}&amp;=\mathop{\mathrm{tr}}{\begin{pmatrix}0&amp;S&amp;0\\S&amp;0&amp;0\\0&amp;0&amp;S\end{pmatrix}\frac{1}{4}\begin{pmatrix}5&amp;\sqrt{3}&amp;-4&amp;0&amp;-1&amp;-\sqrt{3}\\
+\sqrt{3}&amp;3&amp;0&amp;0&amp;-\sqrt{3}&amp;3\\
+-4&amp;0&amp;5&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}\\
+0&amp;0&amp;-\sqrt{3}&amp;3&amp;\sqrt{3}&amp;-3\\
+-1&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}&amp;2&amp;0\\
+-\sqrt{3}&amp;-3&amp;\sqrt{3}&amp;-3&amp;0&amp;6
+\end{pmatrix}}\\
+&amp;=\frac{1}{4}(4+0+4+0-2+6)=3,\\
+\mathop{\mathrm{tr}}{\rho(b)U}&amp;=\mathop{\mathrm{tr}}{\begin{pmatrix}0&amp;R&amp;0\\0&amp;0&amp;R\\R&amp;0&amp;0\end{pmatrix}\frac{1}{4}\begin{pmatrix}5&amp;\sqrt{3}&amp;-4&amp;0&amp;-1&amp;-\sqrt{3}\\
+\sqrt{3}&amp;3&amp;0&amp;0&amp;-\sqrt{3}&amp;3\\
+-4&amp;0&amp;5&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}\\
+0&amp;0&amp;-\sqrt{3}&amp;3&amp;\sqrt{3}&amp;-3\\
+-1&amp;-\sqrt{3}&amp;-1&amp;\sqrt{3}&amp;2&amp;0\\
+-\sqrt{3}&amp;-3&amp;\sqrt{3}&amp;-3&amp;0&amp;6
+\end{pmatrix}}\\
+&amp;=\frac{1}{4}(2+0-1+3+2+0)=\frac{3}{2}.
+\end{align*}
+\]</span> 于是我们得到三个方程 <span class="math display">\[
+\begin{align*}
+6&amp;=\lambda_1+\lambda_2+2(\lambda_3+\lambda_4),\\
+3&amp;=\lambda_1-\lambda_2,\\
+3/2&amp;=\lambda_1+\lambda_2-(\lambda_3+\lambda_4).
+\end{align*}
+\]</span> 于是 <span class="math inline">\(\lambda_1=3\)</span>，<span class="math inline">\(\lambda_2=0\)</span>，<span class="math inline">\(\lambda_3+\lambda_4=3/2\)</span>。</p>
+<p>我们还缺一个方程！可以用 <span class="math inline">\(\mathop{\mathrm{tr}}{U^2}=\lambda_1^2+\lambda_2^2+2(\lambda_3^2+\lambda_4^2)\)</span>
+来做，但手算 <span class="math inline">\(U^2\)</span>
+的话计算量还是不小的。更简单的办法是用物理直观：我们已经看到平移和旋转是两种简正模式，这两种模式下质点的振动频率是
+0，而平移包含了 <span class="math inline">\(x\)</span> 轴和 <span class="math inline">\(y\)</span> 轴两个线性无关的方向上的平移，所以
+<strong>0 作为 <span class="math inline">\(U\)</span>
+的特征值至少是三重的</strong>。我们已经解得 <span class="math inline">\(\lambda_2=0\)</span> 是一个，所以 <span class="math inline">\(\lambda_3\)</span> 和 <span class="math inline">\(\lambda_4\)</span> 中必然还有一个是 0，不妨设
+<span class="math inline">\(\lambda_3=0\)</span>，则 <span class="math inline">\(\lambda_4=3/2\)</span>。</p>
+<p>得到了 <span class="math inline">\(\lambda_1,\lambda_2,\lambda_3,\lambda_4\)</span>，对应的频率就可以用
+<span class="math inline">\(\omega_i=\sqrt{\lambda_ik/m}\)</span>
+算出来。</p>
+<p>总结一下，系统总共有 4 种简正模式：</p>
+<ol type="1">
+<li><p>平凡表示 (<span class="math inline">\(\lambda_1=3\)</span>)
+对应的简正模式是呼吸，其频率为 <span class="math inline">\(\omega=\sqrt{3k/m}\)</span>：</p>
+<figure>
+<img src="/images/mass-spring/breath.gif" width="250" alt="呼吸　\omega=\sqrt{3k/m}">
+<figcaption aria-hidden="true">呼吸　<span class="math inline">\(\omega=\sqrt{3k/m}\)</span></figcaption>
+</figure></li>
+<li><p>符号表示 (<span class="math inline">\(\lambda_2=0\)</span>)
+对应的简正模式是旋转，其频率 <span class="math inline">\(\omega=0\)</span>：</p>
+<figure>
+<img src="/images/mass-spring/rot.gif" width="250" alt="旋转　\omega=0">
+<figcaption aria-hidden="true">旋转　<span class="math inline">\(\omega=0\)</span></figcaption>
+</figure></li>
+<li><p>第一个二维不可约表示 (<span class="math inline">\(\lambda_3=0\)</span>)
+包含了两种简正模式，它们分别是沿着 <span class="math inline">\(x\)</span> 方向和 <span class="math inline">\(y\)</span> 方向的平移，其频率 <span class="math inline">\(\omega=0\)</span>。</p>
+<figure>
+<img src="/images/mass-spring/trans.gif" width="250" alt="平移　\omega=0">
+<figcaption aria-hidden="true">平移　<span class="math inline">\(\omega=0\)</span></figcaption>
+</figure></li>
+<li><p>第二个二维不可约表示 (<span class="math inline">\(\lambda_4=3/2\)</span>)
+也包含了两种简正模式，它们分别是两个不同方向上的“鼓掌”：</p>
+<figure>
+<img src="/images/mass-spring/clap.gif" width="250" alt="鼓掌　\omega=\sqrt{\frac{3k}{2m}}">
+<figcaption aria-hidden="true">鼓掌　<span class="math inline">\(\omega=\sqrt{\frac{3k}{2m}}\)</span></figcaption>
+</figure>
+<p>另一种可以由上面的旋转 <span class="math inline">\(2\pi/3\)</span>
+后得到。这两个简正模式的频率都是 <span class="math inline">\(\omega=\sqrt{\frac{3k}{2m}}\)</span>。</p></li>
+</ol>
+<p>至此我们就求出了系统的全部简正模式。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/optimal-stopping-and-backward-induction/" rel="next" title="相亲问题与倒向归纳法">
+      上一篇：相亲问题与倒向归纳法
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/pattern-occurrence/" rel="next" title="模式的等待时间与反直觉概率">
+          下一篇：模式的等待时间与反直觉概率
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

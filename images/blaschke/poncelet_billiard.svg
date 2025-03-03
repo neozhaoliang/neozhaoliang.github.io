@@ -1,0 +1,340 @@
+<svg id="container" xmlns="http://www.w3.org/2000/svg" width="600" height="360" style="background: white;">
+<style>
+    text {
+        user-select: none;
+        -webkit-user-select: none; /* lol */
+    }
+</style>
+
+<foreignObject x="0" y="0" width="100%" height="100%">
+    <span xmlns="http://www.w3.org/1999/xhtml">
+        <canvas id="output" width="600" height="360"></canvas>
+    </span>
+</foreignObject>
+  
+<script>
+const fO = document.querySelector('foreignObject');
+const canvas = fO.querySelector('#output');
+const gl = canvas.getContext('webgl2', {preserveDrawingBuffer: true});
+
+if(!gl) {
+    console.error("WebGL 2 not available");
+    document.body.innerHTML = "This example requires WebGL 2 which is unavailable on this system.";
+}
+
+var v = `#version 300 es
+
+in vec2 position;
+
+void main() {
+    gl_Position = vec4(position, 0.0, 1.0);
+}
+`;
+
+var f = <![CDATA[`#version 300 es
+
+precision highp float;
+
+uniform vec3 iResolution;
+uniform float iTime;
+
+out vec4 fragColor;
+
+/*
+    Poncelet's triangle and degree 3 Blaschke product.
+
+A Blaschke product B(z) of degree n is an mapping of the unit disc D to itself and has the form
+
+B(z) = \prod_{i=1}^n (z - a_i) / (1 - conjugate(a_i)*z) where a_i, i=1,2,...,n are all in D.
+
+B(z) preserves ∂D. Further more, for each point P on ∂D, there are n preimages z1, ..., zn on ∂D such
+that B(z1) = ... = B(zn) = P.
+
+Now fix n=3, and let a, b be complex numbers in D. For simplicity we choose a, b both are reals and a is always
+the origin. Let
+
+B(z) = z * (z-a)/(1-a*z) * (z-b)/(1-b*z)
+
+So B(z) is a Blaschke product of degree 3 and it has zeros at 0, a, b.
+
+Then for each point P on ∂D, the preimages z1, z2, z3 form an inscribed triagle ABC of D, interestingly,
+ABC is also the circumscribe triangle of an ellipse with foci at a and b:
+
+|z - a| + |z - b| = |1 - conjugate(a)*b|.
+
+In the animtion P is colored yellow, z1, z2, z3 are colored pink.
+
+To show that I'm not cheating, I choosed a, b and draw the ellipse using the expression as above,
+then solve the cubic equation B(z) = P for P moving along the circle and draw the triangle ABC.
+You can see the triangle does circumscribe the ellipse!
+
+This result generalizes to Blaschke product of degree n, the curve that the n-gon circumscribes is a Poncelet
+curve.
+
+*/
+#define PI 3.141592653
+
+vec3 rotHue(vec3 p, float a) {
+    vec2 cs = sin(vec2(1.570796, 0) + a);
+
+    mat3 hr = mat3(0.299,  0.587,  0.114,  0.299,  0.587,  0.114,  0.299,  0.587,  0.114) +
+              mat3(0.701, -0.587, -0.114, -0.299,  0.413, -0.114, -0.300, -0.588,  0.886) * cs.x +
+              mat3(0.168,  0.330, -0.497, -0.328,  0.035,  0.292,  1.250, -1.050, -0.203) * cs.y;
+
+    return clamp(p*hr, 0., 1.);
+}
+
+
+vec2 cmul(vec2 p, vec2 q) {
+    return vec2(p.x*q.x-p.y*q.y, p.x*q.y+p.y*q.x);
+}
+
+
+vec2 cdiv(vec2 z, vec2 w) {
+    return vec2(z.x * w.x + z.y * w.y, -z.x * w.y + z.y * w.x) / dot(w, w);
+}
+
+vec2 csqrt(vec2 p) {
+    float a = atan(p.y, p.x) / 2.;
+    return vec2(cos(a), sin(a)) * sqrt(length(p));
+}
+
+vec2 ccubrt(vec2 z) {
+    float r = length(z);
+    r = pow(r, 1./3.);
+    float angle = atan(z.y, z.x);
+    return r * vec2(cos(angle / 3.0), sin(angle / 3.0));
+}
+
+vec2 cpow2(vec2 z) {
+    return cmul(z, z);
+}
+
+vec2 cpow3(vec2 z) {
+    return cmul(z, cmul(z, z));
+}
+
+void solveCubic(float b, vec2 k, inout vec2 z1, inout vec2 z2, inout vec2 z3) {
+    vec2 t1 = vec2(2.*b*b*b, 0) - 9.*b*b*k;
+    vec2 t2 = cpow2(t1 + 27.*k);
+    vec2 t3 = 3.*b*k - vec2(b*b, 0);
+    vec2 t4 = 4.*cpow3(t3);
+    vec2 s1 = ccubrt(csqrt(t4 + t2) + 27.*k + t1);
+    vec2 s2 = cdiv(t3, s1);
+    z1 = 0.264566842 * s1 - 0.41997368 * s2 + vec2(b/3.,0.);
+    z2 = cmul(vec2(-0.132283421, 0.2291216), s1) + cmul(vec2(0.209998684, 0.36371), s2) + vec2(b/3., 0);
+    z3 = cmul(vec2(-0.132283421, -0.2291216), s1) + cmul(vec2(0.209998684, -0.36371), s2) + vec2(b/3., 0);
+}
+
+// distance from a 2d point p to a 2d segment (a, b)
+float dseg(vec2 p, vec2 a, vec2 b) {
+    vec2 v = b - a;
+    p -= a;
+    float t = clamp(dot(p, v)/dot(v, v), 0., 1.);
+    return length(p - t * v);
+}
+
+vec3 cubehelix(vec3 c) {
+    vec2 sc = vec2(sin(c.x), cos(c.x));
+    return c.z * (1.0 + c.y * (1.0 - c.z) * (
+        sc.x * vec3(0.14861, 0.29227, -1.97294) +
+        sc.y * vec3(1.78277, -0.90649, 0.0)
+        ));
+}
+
+vec3 rainbow(float t) {
+    return cubehelix(vec3(
+        2. * PI * t - 1.74533,
+        (0.25 * cos(2. * PI * t) + 0.25) * vec2(-1.5, -0.9) + vec2(1.5, 0.8)
+        ));
+}
+
+// iq's triangle signed distance function
+float sdTriangle( in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2 ) {
+    vec2 e0 = p1 - p0;
+    vec2 e1 = p2 - p1;
+    vec2 e2 = p0 - p2;
+
+    vec2 v0 = p - p0;
+    vec2 v1 = p - p1;
+    vec2 v2 = p - p2;
+
+    vec2 pq0 = v0 - e0*clamp( dot(v0,e0)/dot(e0,e0), 0.0, 1.0 );
+    vec2 pq1 = v1 - e1*clamp( dot(v1,e1)/dot(e1,e1), 0.0, 1.0 );
+    vec2 pq2 = v2 - e2*clamp( dot(v2,e2)/dot(e2,e2), 0.0, 1.0 );
+
+    float s = e0.x*e2.y - e0.y*e2.x;
+    vec2 d = min( min( vec2( dot( pq0, pq0 ), s*(v0.x*e0.y-v0.y*e0.x) ),
+                       vec2( dot( pq1, pq1 ), s*(v1.x*e1.y-v1.y*e1.x) )),
+                       vec2( dot( pq2, pq2 ), s*(v2.x*e2.y-v2.y*e2.x) ));
+
+    return -sqrt(d.x)*sign(d.y);
+}
+
+// ellipse signed distance function
+float sdEllipse( vec2 p, vec2 cen, in vec2 ab ) {
+    p -= cen;
+    vec2 pab = p / (ab * ab);
+    return (0.5 * dot(pab, p) - 0.5) / length(pab);
+}
+
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    vec2 uv = (2.0*fragCoord - iResolution.xy) / iResolution.y;
+    float sf = 2. / iResolution.y;
+    vec2 p = uv * 1.1;
+    mat2 foci;
+    float b = 0.6;
+    foci[0] = vec2(0);
+    foci[1] = vec2(b, 0);
+
+    vec2 k = vec2(1, 0);
+    vec2 A, B, C;
+    solveCubic(b, k, A, B, C);
+
+    // distance to the triangle
+    float dtri = sdTriangle(p, A, B, C);
+    float dcirc = length(p) - 1.;
+
+    vec2 cen = vec2(b*0.5, 0);
+    vec2 ab = vec2(0.5, sqrt(1.-b*b)/2.);
+    float dellipse = sdEllipse(p, cen, ab);
+    float dfoci = min(length(p), length(p - foci[1])) - 0.04;
+
+    float sgn = dellipse < 0. ? -2. : 1.;
+
+    vec3 col = vec3(0.4, 0.7, 0.4) - sgn*vec3(0.2, 0., 0.2);
+    col = rotHue(col, sgn + 5.);
+    const float numlines = 30.;
+
+    float t = mod(iTime, 4.);
+    float tt = fract(t);
+    vec2 pos = t < 1. ? mix(A, B, tt) : 
+              (t < 2. ? mix(B, C, tt) :
+              (t < 3. ? mix(C, A, tt) : A));
+    
+    float dAB = dseg(p, A, B);
+    float dBC = dseg(p, B, C);
+    float dCA = dseg(p, C, A);
+    if (t < 1.)
+        col *= smoothstep(0.005, 0.005+2.0*sf, abs(dseg(p, A, pos))-0.01);
+    else if (t < 2.) {
+        col *= smoothstep(0.005, 0.005+2.0*sf, abs(dAB)-0.01);
+        col *= smoothstep(0.005, 0.005+2.0*sf, abs(dseg(p, B, pos))-0.01);
+    }
+    else if (t < 3.){
+        col *= smoothstep(0.005, 0.005+2.0*sf, abs(dAB)-0.01);
+        col *= smoothstep(0.005, 0.005+2.0*sf, abs(dBC)-0.01);
+        col *= smoothstep(0.005, 0.005+2.0*sf, abs(dseg(p, C, pos))-0.01);
+    }
+    else {
+        col *= smoothstep(0.005, 0.005+2.0*sf, abs(dtri)-0.01);
+    }
+    col *= smoothstep(0.005, 0.005+2.0*sf, abs(dcirc)-0.01);
+    col *= smoothstep(0.005, 0.005+2.0*sf, abs(dellipse)-0.005);
+    col = mix(col, vec3(0.91, 0.1, 0.1), 1.-smoothstep(0., 0.005+2.*sf, dseg(p, foci[0], foci[1])-0.01));
+
+    // decorate the vertices and foci
+    mat4x2 verts; verts[0] = A; verts[1] = B; verts[2] = C, verts[3] = pos;
+    float lw = 0.02;
+    for (int i=0; i<4; i++) {
+        float dv = length(p - verts[i]) - .08;
+        col = mix(col, vec3(0), (1. - smoothstep(0., sf*8., dv))*.5);
+        col = mix(col, vec3(0), 1. - smoothstep(0., sf, dv));
+        if (i < 3)
+            col = mix(col, vec3(1, float(i)/4., .8-float(i)/3.), 1. - smoothstep(0., sf, dv + lw*1.6));
+        else
+            col = mix(col, vec3(1, 1., .2), 1. - smoothstep(0., sf, dv + lw*1.6));
+        col = mix(col, vec3(0), 1. - smoothstep(0., sf, dv + .08 - lw));
+    }
+    for (int i=0; i<2; i++) {
+        float dv = length(p - foci[i]) - .06;
+        col = mix(col, vec3(0), (1. - smoothstep(0., sf*8., dv))*.5);
+        col = mix(col, vec3(0), 1. - smoothstep(0., sf, dv));
+        col = mix(col, vec3(.4, .6, 1.), 1. - smoothstep(0., sf, dv + lw*1.2));
+        col = mix(col, vec3(0), 1. - smoothstep(0., sf, dv + .065 - lw));
+    }
+
+    col *= 1.25 - 0.4*length(p);
+
+    fragColor = vec4(sqrt(max(col, 0.)), 1.0);
+}
+
+
+
+void main()
+{
+    mainImage(fragColor, gl_FragCoord.xy);
+}`]]>;
+
+function compileShader(vSource, fSource)
+{
+    var vs = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vs, vSource);
+    gl.compileShader(vs);
+
+    if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS)) {
+        console.error(gl.getShaderInfoLog(vs));
+    }
+
+    var fs = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fs, fSource);
+    gl.compileShader(fs);
+
+    if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) {
+        console.error(gl.getShaderInfoLog(fs));
+    }
+
+    program = gl.createProgram();
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.error(gl.getProgramInfoLog(program));
+    }
+
+    gl.useProgram(program);
+    return program;
+}
+
+function setVAO(program)
+{
+    var vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+    var positionAttributeLocation = gl.getAttribLocation(program, "position");
+    var positionBuffer = gl.createBuffer();
+    var vao = gl.createVertexArray();
+    gl.bindVertexArray(vao);
+    gl.enableVertexAttribArray(positionAttributeLocation);
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+}
+
+var program = compileShader(v, f);
+setVAO(program);
+
+
+var resolutionUniformLocation = gl.getUniformLocation(program, "iResolution");
+gl.uniform3fv(resolutionUniformLocation, [canvas.width, canvas.height, 0.0]);
+
+var timeLocation = gl.getUniformLocation(program, "iTime");
+
+async function render()
+{
+
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clearColor(1, 1, 1, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    gl.uniform1f(timeLocation, performance.now()*0.001);
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+};
+
+render();
+
+</script>
+</svg>

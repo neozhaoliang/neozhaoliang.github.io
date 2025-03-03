@@ -1,0 +1,947 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Coupling from the past | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the
+past
+(CFTP)。这个算法看似简单，实则充满玄机。我相信你可以在五分钟内理解算法的步骤，然后再花五分钟左右看懂算法的证明，但是我打赌你需要几个星期甚至更久的时间来细细回味其中奥妙。
+作为启发，我们从一个计数问题开始：
+
+问题： 下图是一个边长分别为 \(a,b,c\) 的平行六边形，其中 \(a,b,c\) 都是正整数，内角均为 120 度：
+
+请问：用边长为 1 的菱形密铺它，有多少种不同的方法？">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Coupling from the past"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/完美采样/">完美采样</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Coupling from the past</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2016-07-01T16:00:00.000Z"><a href="/coupling-from-the-past/">2016-07-02</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#markov-%E9%93%BE%E7%9A%84%E9%9A%8F%E6%9C%BA%E5%8F%96%E6%A0%B7"><span class="section table-of-contents-text">Markov 链的随机取样</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#markov-%E9%93%BE%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%98%A0%E5%B0%84%E8%A1%A8%E7%A4%BA"><span class="section table-of-contents-text">Markov 链的随机映射表示</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#coupling-from-the-past-%E7%AE%97%E6%B3%95"><span class="section table-of-contents-text">Coupling from the past 算法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%AE%97%E6%B3%95%E4%B8%AD%E7%9A%84%E8%8B%A5%E5%B9%B2%E9%99%B7%E9%98%B1"><span class="section table-of-contents-text">算法中的若干陷阱</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9B%B4%E6%96%B0%E5%87%BD%E6%95%B0%E4%B8%8D%E8%83%BD%E6%98%AF%E4%BB%BB%E6%84%8F%E7%9A%84"><span class="section table-of-contents-text">为什么更新函数不能是任意的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-coupling-into-the-future-%E4%B8%8D%E8%A1%8C"><span class="section table-of-contents-text">为什么 Coupling into the
+future 不行</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%8F%E6%AC%A1%E4%B8%8D%E8%83%BD%E9%87%8D%E6%96%B0%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="section table-of-contents-text">为什么每次不能重新生成随机数</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#monotone-coupling-from-the-past"><span class="section table-of-contents-text">Monotone coupling from the
+past</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="section table-of-contents-text">参考文献</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the
+past
+(CFTP)。这个算法看似简单，实则充满玄机。我相信你可以在五分钟内理解算法的步骤，然后再花五分钟左右看懂算法的证明，但是我打赌你需要几个星期甚至更久的时间来细细回味其中奥妙。</p>
+<p>作为启发，我们从一个计数问题开始：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>下图是一个边长分别为 <span class="math inline">\(a,b,c\)</span> 的平行六边形，其中 <span class="math inline">\(a,b,c\)</span> 都是正整数，内角均为 120 度：</p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/cftp/hexagon.svg"></p>
+<p>请问：用边长为 1 的菱形密铺它，有多少种不同的方法？</p>
+</div>
+<span id="more"></span>
+<p>比如下图就是一种密铺的示例：</p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/cftp/random_lozenge_tiling.svg"></p>
+<p>图中三种不同摆放角度的菱形被染成了不同的颜色。</p>
+<p>这个问题的答案很不容易猜到，叫做 Macmahon 公式：</p>
+<div id="macmahon-------" class="unnumbered statement sta_macmahon___ plain">
+<p><span class="statement-heading"><span class="statement-label">Macmahon 公式</span>.</span><span class="statement-spah"> </span>记 <span class="math inline">\(H(a,b,c)\)</span>
+为所求的六边形的不同菱形密铺的个数，则 <span class="math display">\[H(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
+</div>
+<p>关于 Macmahon 公式，以及它背后的 plane partition
+理论是另一段精彩的故事，这里不作介绍。需要注意的是，<span class="math inline">\(H(a,b,c)\)</span> 的值是指数级增长的，比如对 <span class="math inline">\(a=b=c=10\)</span> 这种比较小的情形 <span class="math inline">\(H(a,b,c)\approx
+9.265\times10^{33}\)</span>，已经是一个天文数字了。</p>
+<p>真正的问题来了：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>怎样在全部 <span class="math inline">\(H(a,b,c)\)</span>
+种不同的密铺中完全随机地任选一种？（即按照均匀分布采样）</p>
+</div>
+<p>由于 <span class="math inline">\(H(a,b,c)\)</span>
+太太太大了，我们不可能先把所有密铺都列出来然后再挑选，那样的话全世界的计算机内存加起来也装不下。所以得设计一个聪明点的方法，这就是
+CFTP 要做的。</p>
+<h1 id="markov-链的随机取样">Markov 链的随机取样</h1>
+<p>设 <span class="math inline">\(M\)</span> 是一个有限遍历的 Markov
+链，其状态空间为 <span class="math inline">\(S\)</span>，平稳分布为
+<span class="math inline">\(\pi\)</span>，我们希望以分布 <span class="math inline">\(\pi\)</span> 从 <span class="math inline">\(S\)</span> 中随机地取样，即对任何 <span class="math inline">\(s\in S\)</span>，取样抽到 <span class="math inline">\(s\)</span> 的概率为 <span class="math inline">\(\pi(s)\)</span>。这在许多实际应用中都有重要意义。通常的方法是任选一个初始状态
+<span class="math inline">\(s_0\)</span> 然后从 <span class="math inline">\(s_0\)</span> 出发跑这个 Markov
+链。可以证明只要运行的时间 <span class="math inline">\(n\)</span>
+足够大，其 <span class="math inline">\(n\)</span> 时刻的状态 <span class="math inline">\(s_n\)</span> 服从的分布就可以任意逼近平稳分布：
+<span class="math display">\[|\mathbb{P}(s_n=s) - \pi(s)| &lt;
+\epsilon,\quad\forall s\in S,\ \forall\epsilon&gt;0.\]</span>
+这个方法非常简单易行，但是它有两个缺陷：首先它只是一个近似算法，不管
+<span class="math inline">\(n\)</span> 取得多么大，返回的 <span class="math inline">\(s_n\)</span> 的分布只是近似而非严格等于平稳分布
+<span class="math inline">\(\pi\)</span>；其次为了获得足够的精度采样所需的时间
+<span class="math inline">\(n\)</span> （叫做 mixing
+time）也不总是那么容易估计的。那么有没有什么办法可以获得精确地服从 <span class="math inline">\(\pi\)</span> 的采样呢？</p>
+<p>Propp 和 Wilson 提出了如下的想法：既然从初始状态出发向未来 （<span class="math inline">\(+\infty\)</span> 方向） 跑 Markov
+链得不到真正的平稳分布，我们何不从无穷远的过去 （<span class="math inline">\(-\infty\)</span> 方向） 向现在 （时刻 0）
+跑呢？可以想象当这个链经过了无穷次迭代后，其 0 时刻的状态 <span class="math inline">\(s^\ast\)</span> 服从的分布就是 <span class="math inline">\(\pi\)</span>。当然，一个可行的算法必须在有限时间内输出结果，我们不可能做到真的从无穷远的过去出发。我们能做的只是选择一个足够大的
+<span class="math inline">\(n\)</span> 然后从 <span class="math inline">\(-n\)</span> 时刻出发向时刻 0 跑，但是这种做法和从
+0 时刻向时刻 <span class="math inline">\(n\)</span>
+跑没有什么区别。Propp 和 Wilson
+的观察的关键之处在于，只跑一个链是不行的，我们需要从每个 <span class="math inline">\(s\in S\)</span> 出发，同时跑 <span class="math inline">\(M\)</span> 的 <span class="math inline">\(|S|\)</span> 个不同的版本，并且观察它们是否在时刻
+0 时耦合在一起 (coupled together)，即相遇到了相同的状态 <span class="math inline">\(s^\ast\)</span>。一旦这件事情发生的话，那么假设我们还有一个额外的从无穷远出发、初始分布是
+<span class="math inline">\(\pi\)</span> 的链，由于它来到 0
+时刻必然也处于状态 <span class="math inline">\(s^\ast\)</span>，所以
+<span class="math inline">\(s^\ast\)</span> 就服从分布 <span class="math inline">\(\pi\)</span>。如果没有相遇呢？那就从某个更久远的位置开始再来一遍，直到耦合出现为止，这就是
+coupling from the past 的由来。</p>
+<p>用不太准确的话说，我们是在时间 <span class="math inline">\(-n\)</span> 处设置了 <span class="math inline">\(|S|\)</span>
+个不同的链，封死了从无穷远过去出发的链在 <span class="math inline">\(-n\)</span>
+处的所有可能状态，然后通过将所有链在时刻 0
+“坍缩”为单个状态来获得采样。</p>
+<p>其实我上面的描述仍然遗漏了 CFTP 的一些关键细节。为了准确的描述
+CFTP，我们首先引入 Markov 链的随机映射表示 (random mapping
+representation)。</p>
+<h1 id="markov-链的随机映射表示">Markov 链的随机映射表示</h1>
+<p>随机映射表示能够让我们用计算机程序来模拟 Markov
+链，它是一个由随机数流驱动的更新函数 <span class="math inline">\(f:
+S\times [0, 1]\to S\)</span>。<span class="math inline">\(f\)</span>
+本身是确定的，对任何状态 <span class="math inline">\(s\in S\)</span> 和
+<span class="math inline">\(u\in [0,1]\)</span>，<span class="math inline">\(s'=f(s,u)\)</span> 给出 Markov
+链更新后的状态。我们要求 <span class="math inline">\(f\)</span> 满足当
+<span class="math inline">\(U\)</span> 是服从 <span class="math inline">\([0, 1]\)</span> 上的均匀分布的随机变量时，<span class="math inline">\(\mathbb{P}(f(s,
+U)=s')=P_{s,s'}\)</span>。这里 <span class="math inline">\(P_{s,s'}\)</span> 是 Markov 链从 <span class="math inline">\(s\)</span> 到 <span class="math inline">\(s'\)</span> 的转移概率。任何有限 Markov
+链都存在随机映射表示，而且表示方法不是唯一的。最简单的构造方式是用一个阶梯函数：
+<span class="math display">\[f(s_i, u) =
+\begin{cases}\begin{array}{ll}s_1, &amp;\text{for } u\in[0,
+P_{i,1}),\\s_2, &amp;\text{for } u\in[P_{i,1}, P_{i,1}+P_{i,2}),\\\vdots
+&amp;\vdots\\s_j, &amp;\text{for } u\in\left[\sum_{k=1}^{j-1}P_{i,k},
+\sum_{k=1}^jP_{i,k}\right),\\\vdots &amp;\vdots\\s_n, &amp;\text{for }
+u\in\left[\sum_{k=1}^{n-1}P_{i,k},
+1\right].\end{array}\end{cases}\]</span></p>
+<p>假设有一个随机数发生器可以产生独立且服从 <span class="math inline">\([0,1]\)</span> 上均匀分布的随机变量序列 <span class="math inline">\(U_0,U_{-1},U_{-2},\ldots\)</span>，则我们可以由此来驱动
+Markov 链 <span class="math inline">\(M\)</span>
+从过去的某个时刻向现在运行： <span class="math display">\[s_{-n}\xrightarrow{f(s_{-n+1},\,U_{-n+1})}s_{-n+1}\xrightarrow{f(s_{-n+2},\,U_{-n+2})}\cdots\xrightarrow{f(s_0,\,U_0)}s_0.\]</span></p>
+<h1 id="coupling-from-the-past-算法">Coupling from the past 算法</h1>
+<p>现在我们可以来表述 coupling from the past 算法了。</p>
+<p>设 <span class="math inline">\(M\)</span> 是一个有限遍历的 Markov
+链，状态空间为 <span class="math inline">\(S\)</span>，<span class="math inline">\(f: S\times [0, 1]\to S\)</span>
+是其随机映射表示。<span class="math inline">\(U_0,U_{-1},\ldots\)</span>
+是一列随机数，它们分别来自一列独立且服从 <span class="math inline">\([0,
+1]\)</span> 上均匀分布的随机变量。记 <span class="math inline">\((N_1,N_2,\ldots)=(1,2,4,8,\ldots)\)</span>，<span class="math inline">\(-N_{m}\)</span> 将作为我们第 <span class="math inline">\(m\)</span> 次重启的出发时间。</p>
+<blockquote>
+<p><strong>Coupling from the past 算法</strong>：</p>
+<ol type="1">
+<li>令 <span class="math inline">\(m=1\)</span>。</li>
+<li>对每个 <span class="math inline">\(s\in S\)</span>，以 <span class="math inline">\(s\)</span> 为初始状态，以 <span class="math inline">\(-N_m\)</span> 为初始时刻向时刻 0 的方向运行 Markov
+链 <span class="math inline">\(M\)</span>，所有 <span class="math inline">\(|S|\)</span> 个链使用的随机数流是一样的，都是
+<span class="math inline">\((U_{-N_m+1},\ldots,U_{-1},U_0)\)</span>。</li>
+<li>如果步骤 2 中的 <span class="math inline">\(|S|\)</span> 个链在时刻
+0 给出的状态相同，记此状态为 <span class="math inline">\(s^\ast\)</span>，则输出 <span class="math inline">\(s^\ast\)</span> 并退出程序。否则将 <span class="math inline">\(m\)</span> 的值加 1 并重复步骤 2。</li>
+</ol>
+<p>下图显示了算法的每个重启时刻，相同颜色的随机数是在同一批中生成的。</p>
+<p><img style="margin:0px auto;display:block" src="/images/cftp/random_numbers.svg"></p>
+<p><strong>断言</strong>：如果上述步骤以概率 1
+在有限时间内结束，则其返回值 <span class="math inline">\(s^\ast\)</span>
+服从平稳分布 <span class="math inline">\(\pi\)</span>: <span class="math display">\[\mathbb{P}(s^\ast = s) = \pi(s),\quad \forall
+s\in S.\]</span></p>
+</blockquote>
+<p>注意这里的两个细节：</p>
+<ol type="1">
+<li>我们强调了前提<strong>如果算法以概率 1
+在有限时间内结束，则返回值服从平稳分布</strong>。为了保证这个前提成立更新函数
+<span class="math inline">\(f\)</span>
+的选择就不能是任意的，特别地在后面的 monotone CFTP 中更新函数还要与
+<span class="math inline">\(S\)</span>
+上的偏序相容，更不能是任意的。</li>
+<li>当第 <span class="math inline">\(m\)</span> 次执行步骤 2
+时，使用的随机数为 <span class="math inline">\((U_{-N_m+1},U_{-N_m+2},\ldots,U_{-1},U_0)\)</span>，其中的后半部分
+<span class="math inline">\((U_{-N_{m-1}+1},U_{-N_{m-1}+2},\ldots,U_{-1},U_0)\)</span>
+需要与上一次使用的相同，<strong>即每一次都重复使用上一次的随机数作为后半段的随机源</strong>，否则每次都重新生成一列新的随机数的话得到的最终状态未必服从平稳分布。</li>
+</ol>
+<p><strong>证明</strong>：任取 <span class="math inline">\(s_i\in
+S\)</span>，只要证明对任何 <span class="math inline">\(\epsilon&gt;0\)</span> 都有 <span class="math display">\[|\mathbb{P}(s^\ast=s_i) -
+\pi(s_i)|&lt;\epsilon.\]</span> 设 <span class="math inline">\(\Omega=\{(U_{-1},U_{-2},\ldots)\mid U_i \text{
+i.i.d on } [0,1]\}\)</span> 是所有随机数流组成的样本空间， <span class="math display">\[A=\{\text{the algorithm terminates in finite
+time}\}.\]</span> 即 <span class="math inline">\(A\)</span>
+为那些可以使得算法在有限时间内结束的序列组成的集合，则 <span class="math inline">\(\mathbb{P}(A)=1\)</span>。</p>
+<p>又记 <span class="math display">\[A_i = \{ \text{the algorithm does
+not need to try starting times earlier than} -N_i\}.\]</span> 即 <span class="math inline">\(A_i\)</span> 为事件「算法从 <span class="math inline">\(-N_i\)</span> 或者更早的时间出发可以结束」。</p>
+<p>显然我们有 <span class="math inline">\(A_i\uparrow A\)</span>，<span class="math inline">\(\mathbb{P}(A_i)\uparrow\mathbb{P}(A)=1\)</span>。因此对充分大的
+<span class="math inline">\(K\)</span> 有 <span class="math inline">\(\mathbb{P}(A_K) \geq
+1-\epsilon\)</span>。取定这样的 <span class="math inline">\(K\)</span>，则在事件 <span class="math inline">\(A_K\)</span> 上，所有的链在时刻 0 耦合到相同的状态
+<span class="math inline">\(s^\ast\)</span>。</p>
+<p>除了以上 <span class="math inline">\(|S|\)</span>
+条链之外，我们再额外跑一条单独的链 <span class="math inline">\(Y\)</span>，这条链的初始状态选自平稳分布 <span class="math inline">\(\pi\)</span>，也从时刻 <span class="math inline">\(-N_K\)</span> 出发，也使用相同的随机数 <span class="math inline">\((U_{-N_K+1},\ldots,U_0)\)</span> 运行至时刻
+0，并设这个链在时刻 0 的状态为 <span class="math inline">\(Y_0\)</span>，则 <span class="math inline">\(Y_0\)</span> 服从平稳分布。</p>
+<p>在事件 <span class="math inline">\(A_K\)</span>
+上，不管这条单独的链初始状态是什么，由于它使用了同样的随机数序列，所以它最后一定会和其余
+<span class="math inline">\(|S|\)</span> 条链一起耦合，所以 <span class="math display">\[\mathbb{P}(s^\ast=Y_0) \geq \mathbb{P}(A_K)\geq 1
+- \epsilon.\]</span> 从而对任何 <span class="math inline">\(s_i\in
+S\)</span>， <span class="math display">\[\begin{aligned}\mathbb{P}(s^\ast =
+s_i)-\pi(s_i)&amp;= \mathbb{P}(s^\ast = s_i)-\mathbb{P}(Y_0 =
+s_i)\\&amp;\leq\mathbb{P}(s^\ast=s_i, Y_0\ne s_i)\\
+&amp;\leq\mathbb{P}(Y_0\ne
+s^\ast)\\&amp;\leq\epsilon.\end{aligned}\]</span> 类似地 <span class="math display">\[\begin{aligned}\pi(s_i)-\mathbb{P}(s^\ast =
+s_i)&amp;=\mathbb{P}(Y_0 = s_i)-\mathbb{P}(s^\ast =
+s_i)\\&amp;\leq\mathbb{P}(Y_0=s_i, s^\ast\ne s_i)\\
+&amp;\leq\mathbb{P}(Y_0\ne
+s^\ast)\\&amp;\leq\epsilon.\end{aligned}\]</span> 从而 <span class="math display">\[|\mathbb{P}(s^\ast = s_i)-\pi(s_i)| \leq
+\epsilon.\]</span> 令 <span class="math inline">\(K\to\infty\)</span>，则 <span class="math inline">\(\epsilon\downarrow0\)</span>。注意到对任何样本点
+<span class="math inline">\(\omega\in A_K\)</span>，如果 <span class="math inline">\(\omega\)</span> 给出的所有链的耦合状态是 <span class="math inline">\(s^\ast=s_i\)</span>，则从更久远的时刻出发，<span class="math inline">\(\omega\)</span> 给出的耦合状态仍然是 <span class="math inline">\(s_i\)</span>，即 <span class="math inline">\(\omega\)</span> 输出的采样结果 <span class="math inline">\(s^\ast\)</span> 是不会随着 <span class="math inline">\(K\)</span> 增大而改变的，所以由 <span class="math inline">\(\epsilon\)</span> 的任意性即得 <span class="math inline">\(s^\ast\)</span> 服从平稳分布。</p>
+<h1 id="算法中的若干陷阱">算法中的若干陷阱</h1>
+<p>CFTP
+算法的证明看似不难，但其实微妙之处不少，值得细细品味。最主要的地方有三个：</p>
+<blockquote>
+<p><strong>问题 1</strong>：为什么说更新函数 <span class="math inline">\(f\)</span> 的选择不能是任意的？</p>
+<p><strong>问题 2</strong>：既然 「coupling from the past」 可以，那
+「coupling to the future」 可不可以？从时刻 0 开始从每个 <span class="math inline">\(s\in S\)</span> 出发跑 <span class="math inline">\(|S|\)</span> 个不同的链，直到它们在未来某个时刻
+<span class="math inline">\(n\)</span>
+耦合为止，然后输出第一次耦合时的状态不行吗？</p>
+<p><strong>问题 3</strong>：每次重启步骤 2
+时需要复用之前的随机数，这一点在证明中哪里用到了？使用一列新的随机数为什么不可以？</p>
+</blockquote>
+<p>我们用几个例子来说明这三个问题。</p>
+<h2 id="为什么更新函数不能是任意的">为什么更新函数不能是任意的</h2>
+<p>考虑含有两个状态 <span class="math inline">\(S=\{s_1, s_2\}\)</span>
+的 Markov 链，其转移矩阵为 <span class="math inline">\(P=\begin{bmatrix}0.5 &amp; 0.5\\0.5 &amp;
+0.5\end{bmatrix}\)</span>，更新函数为 <span class="math display">\[f(s_1, u) =\begin{cases}\begin{array}{ll}s_1
+&amp; \text{for } u \in [0, 0.5)\\s_2 &amp; \text{for } u \in [0.5,
+1]\end{array}\end{cases}\]</span> 和 <span class="math display">\[f(s_2,
+u) =\begin{cases}\begin{array}{ll}s_2 &amp; \text{for } u \in [0,
+0.5)\\s_1 &amp; \text{for } u \in [0.5,
+1]\end{array}\end{cases}\]</span> 于是若从 <span class="math inline">\(s_1,s_2\)</span>
+分别出发跑两个不同的链，但是每次使用相同的随机数，则它们要么保持不动，要么交换状态，永不耦合。</p>
+<h2 id="为什么-coupling-into-the-future-不行">为什么 Coupling into the
+future 不行</h2>
+<p>我打赌任何看到 CFTP
+算法的人都会想到同样的问题：为什么不能向未来耦合呢？</p>
+<blockquote>
+<p><strong>Coupling into the future</strong>: 从时刻 0 出发同时跑 <span class="math inline">\(|S|\)</span> 个不同的链，其中链 <span class="math inline">\(i\)</span> 的初始状态是 <span class="math inline">\(s_i\)</span>。当所有链首次耦合到同一状态 <span class="math inline">\(s^\ast\)</span> 时，终止算法并输出 <span class="math inline">\(s^\ast\)</span> 作为采样状态。</p>
+</blockquote>
+<p>向未来耦合与 CFTP
+有一个根本不同：向未来耦合的结束时间是一个随机时间，而在 CFTP
+中，我们总是在固定的时刻 0 观察所有链是否耦合。</p>
+<p>我们来试试把上面 CFTP 的证明照抄在这里：设 <span class="math inline">\(\tau\)</span> 是所有 <span class="math inline">\(|S|\)</span> 条链首次耦合的时间，<span class="math inline">\(Y\)</span> 是额外的从时刻 0
+出发的、初始分布为平稳分布的链，并且使用相同的随机数流，则对任何时刻
+<span class="math inline">\(n\ge0\)</span>，<span class="math inline">\(Y_n\)</span>
+都服从平稳分布。但是当把下标换成随机时间 <span class="math inline">\(\tau\)</span> 时，<span class="math inline">\(Y_\tau\)</span>
+未必仍然服从平稳分布，所以之前的证明不再可用。</p>
+<p>我们用一个反例来说明：仍然考虑两个状态 <span class="math inline">\(S=\{s_1, s_2\}\)</span> 的 Markov 链，其转移矩阵为
+<span class="math inline">\(P=\begin{bmatrix}0.5 &amp; 0.5\\1 &amp;
+0\end{bmatrix}\)</span>，即从 <span class="math inline">\(s_1\)</span>
+出发的话以 0.5 的概率待在原地，以 0.5 的概率跳到 <span class="math inline">\(s_2\)</span>，从 <span class="math inline">\(s_2\)</span> 出发的话则总是跳到 <span class="math inline">\(s_1\)</span>。</p>
+<p><img style="margin:0px auto;display:block" width="250" src="/images/cftp/counter_example.svg"></p>
+<p>这个链的平稳分布为 <span class="math inline">\(\pi=(\frac{2}{3},\frac{1}{3})\)</span>。现在假设从
+<span class="math inline">\(s_1,s_2\)</span> 分别出发，从时刻 0 开始向
+<span class="math inline">\(+\infty\)</span> 方向跑两个不同的链，<span class="math inline">\(\tau\)</span> 是它们首次耦合的时间，则 <span class="math inline">\(\tau-1\)</span> 时刻它俩必然一个位于 <span class="math inline">\(s_1\)</span>，一个位于 <span class="math inline">\(s_2\)</span>。但是位于 <span class="math inline">\(s_2\)</span> 的状态只能转移到 <span class="math inline">\(s_1\)</span>，所以 <span class="math inline">\(\tau\)</span> 时刻的输出永远是 <span class="math inline">\(s_1\)</span>，从而得到的采样 <span class="math inline">\(Y_\tau\)</span> 不满足平稳分布。</p>
+<h2 id="为什么每次不能重新生成随机数">为什么每次不能重新生成随机数</h2>
+<p>思考一下，在算法的证明当中，如果在每次迭代中都使用全新的随机数序列的话，那么事件
+<span class="math inline">\(A\)</span> 的定义会变成什么？难道是 <span class="math inline">\(\Omega\)</span>
+的某个有限子集，使得其包含一个可以耦合的序列？Hmm，这就不太对劲了。直观上看，在第
+<span class="math inline">\(m\)</span>
+次迭代时，由于生成的序列是全新的，有可能它实际上对某个 <span class="math inline">\(i&lt;m\)</span>，从 <span class="math inline">\(-N_i\)</span>
+出发就可以耦合，这会导致算法过度采样那些很快就可以耦合的短链，从而使得最终的分布不服从平稳分布。</p>
+<p>我们继续用上一小节中的例子来说明。我们指定其更新函数 <span class="math inline">\(f\)</span>
+为随机映射表示一节中给出的阶梯函数形式。假设算法每次都使用一列新的随机数，其最终输出为
+<span class="math inline">\(s^\ast\)</span>。定义随机变量 <span class="math inline">\(\tau\)</span> 为正整数 <span class="math inline">\(m\)</span> 使得算法中使用的最早的出发时间为 <span class="math inline">\(-N_m\)</span>，则 <span class="math display">\[\begin{aligned}\mathbb{P}(s^\ast=s_1)&amp;=\sum_{m=1}^\infty\mathbb{P}(s^\ast=s_1,\tau=m)\\&amp;\geq\mathbb{P}(s^\ast=s_1,\tau=1)+\mathbb{P}(s^\ast=s_1,\tau=2)\\&amp;=\mathbb{P}(\tau=1)\mathbb{P}(s^\ast=s_1|\tau=1)+\mathbb{P}(\tau=2)\mathbb{P}(s^\ast=s_1|\tau=2)
+\end{aligned}\]</span> 注意事件 <span class="math inline">\(\{\tau=1\}\)</span> 包含两种不同的演化路径： <span class="math display">\[\begin{aligned}(1)\quad &amp; s_1\to s_1,\quad
+s_2\to s_1.\\
+(2)\quad &amp; s_1\to s_2,\quad s_2\to s_1.\end{aligned}\]</span>
+其中只有前者能成功耦合，所以 <span class="math inline">\(\mathbb{P}(\tau=1)=\frac{1}{2}\)</span>，这时输出的状态只能是
+<span class="math inline">\(s_1\)</span>，所以<span class="math inline">\(\mathbb{P}(s^\ast=s_1|\tau=1)=1\)</span>。</p>
+<p>可以看到这个长度是 1 的短链的耦合只发生在状态 <span class="math inline">\(s_1\)</span> 上，它非常偏爱 <span class="math inline">\(s_1\)</span>。</p>
+<p>事件 <span class="math inline">\(\{\tau=2\}\)</span>
+包含四种不同的演化路径： <span class="math display">\[\begin{align*}(1)\quad &amp; s_1\to s_1\to
+s_1,\quad s_2\to s_1 \to s_1.\\
+(2)\quad &amp; s_1\to s_2\to s_1,\quad s_2\to s_1 \to s_1.\\
+(3)\quad &amp; s_1\to s_1\to s_2,\quad s_2\to s_1 \to s_2.\\
+(4)\quad &amp; s_1\to s_2\to s_1,\quad s_2\to s_1 \to
+s_2.\end{align*}\]</span>
+注意以下两种演化路径是非法的，因为每个时刻两个链使用的随机数一样，不可能在某个时刻同时出现一个链
+<span class="math inline">\(s_1\to s_2\)</span>，另一个 <span class="math inline">\(s_1\to s_1\)</span> 的情况： <span class="math display">\[\begin{array}{ll}
+(*)\quad &amp; s_1\to s_1\to s_2,\quad &amp;s_2\to s_1 \to s_1.\\
+(**)\quad &amp; s_1\to s_1\to s_1,\quad &amp;s_2\to s_1 \to s_2.\\
+\end{array}\]</span></p>
+<p>在我们现在这个错误的版本中，由于使用了全新的随机数流，四种路径都是合法的。这四个路径中前三种都成功耦合，两个耦合于
+<span class="math inline">\(s_1\)</span> 一个耦合于 <span class="math inline">\(s_2\)</span>，所以 <span class="math inline">\(\mathbb{P}(s^\ast=s_1|\tau=2)=\frac{2}{3}\)</span>。</p>
+<p>注意到其中第二条路径 <span class="math display">\[(2)\quad  s_1\to
+s_2\to s_1,\quad s_2\to s_1 \to s_1.\]</span> 从时刻 <span class="math inline">\(-1\)</span> 出发就可以耦合，它不应该属于事件 <span class="math inline">\(\{\tau=2\}\)</span>。每次使用全新的随机数流会导致偏爱
+<span class="math inline">\(s_1\)</span> 的短链被过度采样。</p>
+<p>我们来具体验证一下： <span class="math display">\[\mathbb{P}(\tau=2)=\mathbb{P}(\tau\ne1)\cdot\mathbb{P}(\tau=2\
+\text{时耦合})=\frac{1}{2}\cdot\frac{3}{4}=\frac{3}{8}.\]</span></p>
+<p>所以 <span class="math display">\[\begin{align*}\mathbb{P}(s^\ast=s_1)&amp;\geq\mathbb{P}(\tau=1)\mathbb{P}(s^\ast=s_1|\tau=1)+\mathbb{P}(\tau=2)\mathbb{P}(s^\ast=s_1|\tau=2)\\&amp;=\frac{1}{2}\cdot1
++ \frac{3}{8}\cdot\frac{2}{3}\\&amp;=\frac{3}{4}&gt;
+\pi(s_1).\end{align*}\]</span></p>
+<p>确实如我们的预言，<span class="math inline">\(s_1\)</span>
+被过度采样了。</p>
+<h1 id="monotone-coupling-from-the-past">Monotone coupling from the
+past</h1>
+<p>在 CFTP 算法中，我们需要同时跑 <span class="math inline">\(|S|\)</span> 个不同的链并要求它们在时刻 0
+处耦合，当 <span class="math inline">\(|S|\)</span>
+很大时所耗的时间和计算量都很不划算，所以这个算法在应用中是有限制的。但是有一种情形它是非常好用的：如果
+<span class="math inline">\(S\)</span> 是一个偏序集 <span class="math inline">\((S, \preceq)\)</span>，有最大最小元 <span class="math inline">\(s_\max, s_\min\)</span>，并且更新函数 <span class="math inline">\(f\)</span> 与偏序 <span class="math inline">\(\preceq\)</span> 相容，即对任何 <span class="math inline">\(s,s'\in S\)</span>，<span class="math inline">\(u\in[0,1]\)</span>， <span class="math display">\[s\preceq s' \Rightarrow f(s, u) \preceq
+f(s', u),\]</span> 则我们只要对 <span class="math inline">\(s_\max,
+s_\min\)</span>
+这两个状态跑两个不同的链即可，当它俩耦合时，所有其它的链也会被“挤压”到相同的状态。这就是前面六边形的菱形密铺取样所采取的方法。</p>
+<p>我们在所有菱形密铺组成的集合 <span class="math inline">\(S\)</span>
+上定义一个偏序 <span class="math inline">\(\preceq\)</span>，这个偏序的定义颇有技巧性，它需要将任一密铺对应到一个不相交的格点路径组，如下图所示：</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/non-intersecting_paths_lozenge.svg"></p>
+<p>图中一共出现了 <span class="math inline">\(c+2\)</span>
+条不相交的路径，其中最上方和最下方两条路径对任何密铺都是固定的
+（它俩是用来约束中间的 <span class="math inline">\(c\)</span>
+条路径，让它们在翻转的过程不要越界），中间的 <span class="math inline">\(c\)</span>
+条路径，每条路径的起点和终点也是固定的，它们从菱形最左边的边的每个单位线段中点出发，每一步分别向右上或者右下走一步，经过
+<span class="math inline">\(a+b\)</span>
+步后到达最右边的边的对应位置。</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/two_paths.svg"></p>
+<p>上图中从菱形的最左边到最右边共有 <span class="math inline">\(a+b+1\)</span>
+条竖直的网格线，每一步向右上或者右下走一步会向右移动到下一个网格线，所以总共需要
+<span class="math inline">\(a + b\)</span>
+次到达最右边。不同的路径互不相交，所以它们的终点必须互不相同，因此这些终点必然分别依次是菱形最右边的单位线段的中点。</p>
+<p>不难说明所有的菱形密铺和所有不相交路径组之间的一一对应关系：当密铺给定时，从左边每个起点出发开始，根据当前菱形的倾斜方向依次描出路径即可；反之当路径组给定时，可以沿着每条路径铺砖，这样确定所有的“斜”菱形的位置，余下的空白位置只有唯一的方式可以被水平的菱形填充。</p>
+<p>我们在所有不相交的路径组之间定义一个偏序：两个路径组 <span class="math inline">\(\mathcal{P}\preceq\mathcal{P}'\)</span>
+当且仅当对任何 <span class="math inline">\(1\leq i\leq
+c+2\)</span>，<span class="math inline">\(\mathcal{P}\)</span> 中的第
+<span class="math inline">\(i\)</span> 条路径 <span class="math inline">\(p_i\)</span> 整体地位于 <span class="math inline">\(\mathcal{P}'\)</span> 中第 <span class="math inline">\(i\)</span> 条路径 <span class="math inline">\(p_i'\)</span>
+的下方。在这个偏序下的最大元就是所有路径尽可能地「向上拱」：</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/max_state.svg"></p>
+<p>而最小元则是所有路径尽可能地「向下走」：</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/cftp/min_state.svg"></p>
+<p>有了偏序，我们还要定义一个与之相容的更新函数 <span class="math inline">\(f\)</span>。<span class="math inline">\(f\)</span>
+的定义是这样的：对一个不相交路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们每次在 <span class="math inline">\(\mathcal{P}\)</span> 的中间 <span class="math inline">\(c\)</span> 条路径中，在路径内部 （两头端点除外）
+任选一个顶点 <span class="math inline">\(v\)</span>：</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(v\)</span> 是一个「山峰」，即形如
+<span class="math inline">\(\wedge\)</span>，则我们以 1/2 的概率保持
+<span class="math inline">\(\mathcal{P}\)</span> 不变，以 1/2
+的概率尝试将 <span class="math inline">\(\mathcal{P}\)</span> 在 <span class="math inline">\(v\)</span> 处翻转为一个「山谷」 <span class="math inline">\(\vee\)</span>，如果翻转之后得到的路径组 <span class="math inline">\(\mathcal{P}'\)</span>
+仍然满足路径之间不相交的约束，则规定 <span class="math inline">\(\mathcal{P}'=f(\mathcal{P})\)</span>，否则仍然保持
+<span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
+<li>如果 <span class="math inline">\(v\)</span> 是一个「山谷」，即形如
+<span class="math inline">\(\vee\)</span>，则与上面的情形类似，我们以
+1/2 的概率保持 <span class="math inline">\(\mathcal{P}\)</span> 不变，以
+1/2 的概率尝试将 <span class="math inline">\(\mathcal{P}\)</span> 在
+<span class="math inline">\(v\)</span> 处翻转为一个「山峰」 <span class="math inline">\(\wedge\)</span>，如果翻转之后得到的路径组满足不相交的约束，则规定
+<span class="math inline">\(\mathcal{P}'=f(\mathcal{P})\)</span>，否则仍然保持
+<span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
+<li>如果 <span class="math inline">\(v\)</span>
+既不是「山峰」也不是「山谷」，则保持 <span class="math inline">\(\mathcal{P}\)</span> 不变。</li>
+</ol>
+<p>菱形密铺在三维空间中看起来像是「堆箱子」，这个翻转路径的操作就相当于从中添加/移除一个箱子，并且必须保证这个箱子有三个面可见：</p>
+<p><img style="margin:0px auto;display:block" width="400" src="/images/cftp/flip_lozenge.svg"></p>
+<p>我们来验证 <span class="math inline">\(f\)</span>
+是和路径组之间的偏序 <span class="math inline">\(\preceq\)</span>
+相容的：设 <span class="math inline">\(\mathcal{P}\preceq\mathcal{P}'\)</span>
+是两个不相交路径组，对给定的随机操作 <span class="math inline">\(u\)</span>，<span class="math inline">\(f(\mathcal{P}, u)\)</span> 和 <span class="math inline">\(f(\mathcal{P}', u)\)</span> 就是对 <span class="math inline">\(\mathcal{P}\)</span> 和 <span class="math inline">\(\mathcal{P}'\)</span> 的同一个位置 <span class="math inline">\((k, j)\)</span>（即第 <span class="math inline">\(k\)</span> 条路径中的第 <span class="math inline">\(j\)</span> 个顶点）同时尝试进行一个 <span class="math inline">\(\vee\to\wedge\)</span> 或者 <span class="math inline">\(\wedge\to\vee\)</span> 的操作。不妨假设这个操作是
+<span class="math inline">\(\vee\to\wedge\)</span>，则有四种可能的结果：<span class="math inline">\(\mathcal{P}\)</span> 和 <span class="math inline">\(\mathcal{P}'\)</span>
+都操作成功，都保持不变或者一个操作成功另一个保持不变。不难验证这四种情况下都有
+<span class="math inline">\(f(\mathcal{P},u)\preceq f(\mathcal{P}',
+u)\)</span>。</p>
+<p>由于每个不相交的路径组都可以通过适当操作变为最大元或者最小元，所以这个链是个互通的
+Markov 链。并且由于 <span class="math inline">\(\mathcal{P}\)</span>
+以至少 1/2 的概率在 <span class="math inline">\(f\)</span>
+下保持不变，这个链还是非周期的，因此是一个遍历的 Markov
+链，所以有唯一的平稳分布。但是不难看到这个链还是对称的，所以这个唯一的平稳分布是均匀分布。即从最大元和最小元出发跑
+CFTP，最终得到的样本服从全体菱形密铺上的均匀分布。</p>
+<p>Monotone CFTP 也可以应用在其它许多密铺问题的均匀采样中，例如下图是在
+<span class="math inline">\(20\times 20\)</span>
+的矩形区域的所有多米诺骨牌密铺中均匀采样，同样可以把密铺一一对应到不相交的路径组：</p>
+<p><img style="margin:0px auto;display:block" width="600" src="/images/cftp/domino_tiling_example.svg"></p>
+<h1 id="参考文献">参考文献</h1>
+<ol type="1">
+<li>Finite Markov chains and algorithmic applications, Olle
+Häggström.</li>
+<li><a target="_blank" rel="noopener" href="https://pages.uoregon.edu/dlevin/MARKOV/mcmt2e.pdf">Markov
+chains and mixing times</a>, Yuval Peres, Elizabeth L. Wilmer, David A.
+Levin.</li>
+<li><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/2455641_Markov_Chain_Algorithms_for_Planar_Lattice_Structures">Markov
+Chain Algorithms for Planar Lattice Structures</a>, Michael Luby, Dana
+Randall, Alistair Sinclair.</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/math/0102193">Mixing times of lozenge
+tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
+</ol>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/reducible-mod-p/" rel="next" title="模任何素数都可约的整系数不可约多项式">
+      上一篇：模任何素数都可约的整系数不可约多项式
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/wilson-algorithm/" rel="next" title="Wilson 均匀生成树算法">
+          下一篇：Wilson 均匀生成树算法
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

@@ -1,0 +1,768 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            实化与复化 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="实化
+设 \(V\) 是 \(\mathbb{C}\) 上的 \(n\) 维向量空间，我们可以「忘掉」 \(V\) 的复向量空间结构，把 \(V\) 看作实向量空间，记作 \(V_{\mathbb{R}}\) 以区别于 \(V\)。即 \(V_\mathbb{R}\) 与 \(V\)
+作为加法群是一">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="实化与复化"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/线性代数/">线性代数</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>实化与复化</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2010-02-09T16:00:00.000Z"><a href="/real-complex/">2010-02-10</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AE%9E%E5%8C%96"><span class="section table-of-contents-text">实化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8D%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84"><span class="section table-of-contents-text">反线性映射</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%A4%8D%E5%8C%96"><span class="section table-of-contents-text">复化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%85%88%E5%AE%9E%E5%8C%96%E5%90%8E%E5%A4%8D%E5%8C%96"><span class="section table-of-contents-text">先实化后复化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E7%9A%84%E5%A4%8D%E5%8C%96"><span class="section table-of-contents-text">线性变换的复化</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<h1 id="实化">实化</h1>
+<p>设 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上的 <span class="math inline">\(n\)</span> 维向量空间，我们可以「忘掉」 <span class="math inline">\(V\)</span> 的复向量空间结构，把 <span class="math inline">\(V\)</span> 看作实向量空间，记作 <span class="math inline">\(V_{\mathbb{R}}\)</span> 以区别于 <span class="math inline">\(V\)</span>。即 <span class="math inline">\(V_\mathbb{R}\)</span> 与 <span class="math inline">\(V\)</span>
+作为加法群是一样的，但是数和向量的乘法限制在 <span class="math inline">\(\mathbb{R}\)</span> 上。<span class="math inline">\(V_{\mathbb{R}}\)</span> 是 <span class="math inline">\(2n\)</span> 维的。如果 <span class="math inline">\(\{e_i\}_{i=1}^n\)</span> 是 <span class="math inline">\(V\)</span> 的一组 <span class="math inline">\(\mathbb{C}\)</span>- 基，则 <span class="math inline">\(\{e_i,ie_i\}_{i=1}^n\)</span> 是 <span class="math inline">\(V_\mathbb{R}\)</span> 的一组 <span class="math inline">\(\mathbb{R}\)</span>- 基。<span class="math inline">\(V_{\mathbb{R}}\)</span> 叫做 <span class="math inline">\(V\)</span> 的<strong>实化</strong>。</p>
+<p>但是 <span class="math inline">\(V_{\mathbb{R}}\)</span> 比一般的
+<span class="math inline">\(2n\)</span>
+维实向量空间还要多出一个结构，这个结构来自 <span class="math inline">\(V\)</span> 上虚数 <span class="math inline">\(i\)</span> 的乘法，它诱导了 <span class="math inline">\(V_\mathbb{R}\)</span> 上的 <span class="math inline">\(\mathbb{R}\)</span>- 线性变换 <span class="math inline">\(J\colon\ v\mapsto iv\)</span>。<span class="math inline">\(J\)</span> 满足 <span class="math inline">\(J^2=-1\)</span>。<span class="math inline">\(J\)</span> 叫做 <span class="math inline">\(V_{\mathbb{R}}\)</span>
+上的<strong>复结构</strong>。</p>
+<p>反过来，给定一个偶数维的实向量空间 <span class="math inline">\(W\)</span> 以及 <span class="math inline">\(W\)</span> 上的一个复结构 <span class="math inline">\(J\)</span>，<span class="math inline">\(W\)</span>
+上可以自然地定义复向量空间结构：因为 <span class="math inline">\(J\)</span> 本质就是虚数 <span class="math inline">\(i\)</span> 的乘法，我们只要规定 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(W\)</span> 中向量的乘法为 <span class="math inline">\(iw=J ( w )\)</span>，然后扩展到 <span class="math inline">\(\mathbb{C}\)</span> 上即可： <span class="math display">\[( a+ib ) w = aw+bJ ( w ) ,\quad
+a,b\in\mathbb{R},w\in W.\]</span> 我们用 <span class="math inline">\((
+W,J )\)</span> 表示这样得到的复向量空间。</p>
+<p>总之任何任何复向量空间 <span class="math inline">\(V\)</span>
+可以等同于一个 <span class="math inline">\(2n\)</span> 维实向量空间
+<span class="math inline">\(V_{\mathbb{R}}\)</span> 加上一个复结构 <span class="math inline">\(J\)</span>。</p>
+<h1 id="反线性映射">反线性映射</h1>
+<p>设 <span class="math inline">\(V\)</span> 是复向量空间，记 <span class="math inline">\(\overline{V}\)</span> 是如下的向量空间：<span class="math inline">\(\overline{V}\)</span> 作为加法群和 <span class="math inline">\(V\)</span> 完全相同，但是复数与向量的乘法 <span class="math inline">\(\bullet\)</span> 定义为 <span class="math inline">\(c\bullet z=\overline{c}z\)</span>，其中右边的
+<span class="math inline">\(\overline{c}z\)</span> 是 <span class="math inline">\(V\)</span> 中的原始数乘。我们称 <span class="math inline">\(\overline{V}\)</span> 是 <span class="math inline">\(V\)</span> 的共轭空间。</p>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(V,U\)</span>
+是复向量空间。如果映射 <span class="math inline">\(f\colon\ V\to
+U\)</span> 满足下面两个条件，就称 <span class="math inline">\(f\)</span>
+是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Antilinear_map">反线性</a>
+映射：</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> 是从 <span class="math inline">\(V\)</span> 到 <span class="math inline">\(U\)</span> 的加法群同态：<span class="math inline">\(f(v_1+v_2)=f(v_1)+f(v_2)\)</span> 对任何 <span class="math inline">\(v_1,v_2\in V\)</span> 成立。</li>
+<li><span class="math inline">\(f(cv)=\overline{c}v\)</span> 对任何
+<span class="math inline">\(c\in\mathbb{C}\)</span> 和 <span class="math inline">\(v\in V\)</span> 成立。</li>
+</ol>
+</div>
+<p>反线性映射是 <span class="math inline">\(\mathbb{R}\)</span>-
+线性的，但不是 <span class="math inline">\(\mathbb{C}\)</span>-
+线性的。</p>
+<p><span class="math inline">\(V\to U\)</span> 的反线性映射和 <span class="math inline">\(V\to\overline{U}\)</span> 的 <span class="math inline">\(\mathbb{C}\)</span>- 线性映射是一回事。</p>
+<h1 id="复化">复化</h1>
+<p>与实化相对应的操作是<strong>复化</strong>，即给定一个 <span class="math inline">\(n\)</span> 维实向量空间 <span class="math inline">\(W\)</span>，把域和向量的乘法扩展到 <span class="math inline">\(\mathbb{C}\)</span> 上，使 <span class="math inline">\(W\)</span> 成为一个复向量空间。我们记作 <span class="math inline">\(W^\mathbb{C}\)</span> 以区别于 <span class="math inline">\(W\)</span>。</p>
+<p>构造 <span class="math inline">\(W^\mathbb{C}\)</span>
+的标准方法是使用张量积，令 <span class="math inline">\(W^\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}W\)</span>，则
+<span class="math inline">\(W^\mathbb{C}\)</span> 是 <span class="math inline">\(n\)</span> 维复向量空间，复数与向量的乘法定义为
+<span class="math display">\[c ( z\otimes w ) = cz\otimes w.\]</span>
+<span class="math inline">\(W\)</span> 可以通过 <span class="math inline">\(w\to 1\otimes w\)</span> 等同于 <span class="math inline">\(W^\mathbb{C}\)</span> 的 <span class="math inline">\(\mathbb{R}\)</span>- 子空间 <span class="math inline">\(1\otimes W\)</span>。在这个等同下，<span class="math inline">\(W^\mathbb{C}\)</span> 中的向量都是 <span class="math inline">\(W\)</span> 中向量的 <span class="math inline">\(\mathbb{C}\)</span>- 线性组合： <span class="math display">\[\sum c_i\otimes w_i = \sum c_i(1\otimes w_i)
+\leftrightarrow \sum c_iw_i.\]</span> 这一点与我们关于「 将 <span class="math inline">\(W\)</span> 的数乘扩张到 <span class="math inline">\(\mathbb{C}\)</span> 」的直觉完全一致。于是 <span class="math inline">\(W\)</span> 的任何一组 <span class="math inline">\(\mathbb{R}\)</span>- 基同时也是 <span class="math inline">\(W^\mathbb{C}\)</span> 的一组 <span class="math inline">\(\mathbb{C}\)</span>- 基。特别地，<span class="math inline">\(W\)</span> 作为实向量空间的维数与 <span class="math inline">\(W^\mathbb{C}\)</span>
+作为复向量空间的维数相等。</p>
+<p><span class="math inline">\(W^\mathbb{C}\)</span>
+可以分解为两个实子空间的直和 <span class="math display">\[W^\mathbb{C}=1\otimes W \oplus i\otimes W
+=1\otimes W \oplus i(1\otimes W)  .\]</span> 由于 <span class="math inline">\(W\)</span> 可以等同于 <span class="math inline">\(1\otimes W\)</span>，上式可以简写成 <span class="math inline">\(W^\mathbb{C}=W\oplus iW\)</span>。</p>
+<p><span class="math inline">\(W^\mathbb{C}\)</span> 与一般的 <span class="math inline">\(n\)</span>
+维复向量空间相比也多出一个结构，叫做共轭。</p>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>如果 <span class="math inline">\(\tau\colon\ V\to V\)</span>
+是反线性映射并且 <span class="math inline">\(\tau^2=1\)</span>，就称
+<span class="math inline">\(\tau\)</span>
+是一个<strong>共轭</strong>。</p>
+</div>
+<p>复数的共轭诱导了 <span class="math inline">\(\mathbb{C}\otimes_\mathbb{R}W\)</span> 上的共轭：
+<span class="math display">\[\tau ( c\otimes w ) =\overline{c}\otimes
+w,\quad c\in\mathbb{C}, w\in W.\]</span> <span class="math inline">\(\tau\)</span> 保持实子空间 <span class="math inline">\(1\otimes W\cong W\)</span> 不变。<span class="math inline">\(W\)</span> 可以理解为 <span class="math inline">\(V\)</span> 在共轭 <span class="math inline">\(\tau\)</span> 下的实部。</p>
+<p>反过来，给定复向量空间 <span class="math inline">\(V\)</span>
+以及共轭 <span class="math inline">\(\tau\)</span>，我们可以还原出使得
+<span class="math inline">\(V=W^\mathbb{C}\)</span> 成立的实向量空间
+<span class="math inline">\(W\)</span> 来。<span class="math inline">\(W\)</span> 正是 <span class="math inline">\(\tau\)</span> 的不动点子空间 <span class="math inline">\(W=\{v\in V\mid \tau ( v ) =v\}\)</span>，即 <span class="math inline">\(\tau\)</span> 的 +1 特征子空间。相应地 <span class="math inline">\(iW\)</span> 是 <span class="math inline">\(\tau\)</span> 的 -1 特征子空间并且 <span class="math inline">\(V=W\oplus iW\)</span>。根据下面的命题，<span class="math inline">\(W\)</span> 的复化就是 <span class="math inline">\(V\)</span>。</p>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(V\)</span>
+是有限维复向量空间，<span class="math inline">\(W\)</span> 是 <span class="math inline">\(V\)</span> 的 <span class="math inline">\(\mathbb{R}\)</span>- 子空间。若有 <span class="math inline">\(V=W\oplus iW\)</span> 成立，则 <span class="math inline">\(V\cong
+\mathbb{C}\otimes_\mathbb{R}W\)</span>。</p>
+</div>
+<p><strong>证明</strong>：考察如下定义的映射 <span class="math display">\[
+\begin{aligned}
+f\colon\  \mathbb{C}\otimes_\mathbb{R}W &amp; \to V\\
+c\otimes w &amp;\mapsto cw.
+\end{aligned}
+\]</span> 显然 <span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的。我们来验证 <span class="math inline">\(f\)</span> 是双射。</p>
+<p>由于 <span class="math inline">\(V=W\oplus iW\)</span> 所以任何 <span class="math inline">\(v\in V\)</span> 可以写成 <span class="math inline">\(v=w_1+iw_2,\,w_1,w_2\in W\)</span>
+的形式。不难验证 <span class="math inline">\(f ( 1\otimes w_1 + i\otimes
+w_2 ) = w_1+iw_2\)</span> 所以 <span class="math inline">\(f\)</span>
+是满射。并且 <span class="math inline">\(f ( 1\otimes w_1 + i\otimes w_2
+) =0\)</span> 当且仅当 <span class="math inline">\(w_1+iw_2=0\)</span>，即 <span class="math inline">\(w_1=-iw_2\in W\cap iW= ( 0 )\)</span>，从而 <span class="math inline">\(w_1=w_2=0\)</span>，这说明 <span class="math inline">\(f\)</span> 也是单射。于是 <span class="math inline">\(f\)</span> 是同构。 <span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="先实化后复化">先实化后复化</h1>
+<p>有了上面的准备，我们来分析将一个 <span class="math inline">\(n\)</span> 维复向量空间 <span class="math inline">\(V\)</span>，先实化再复化得到的 <span class="math display">\[(
+V_\mathbb{R})^\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}\]</span>
+的结构。我其实可以直接写出结论来：</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.1</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(V\)</span> 是复向量空间，则我们有复向量空间的同构
+<span class="math display">\[
+\begin{aligned}
+(V_\mathbb{R})^\mathbb{C}&amp; \to V\oplus \overline{V}\\
+c\otimes v &amp;\mapsto (cv, \overline{c}v).
+\end{aligned}
+\]</span></p>
+</div>
+<p><strong>证明 1</strong>：不难验证所给的映射是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的，并且把 <span class="math inline">\(1\otimes x + i\otimes y\)</span> 映射为 <span class="math inline">\((x+iy,x-iy)\)</span>。我们可以从 <span class="math inline">\((x+iy,x-iy)\)</span> 唯一地反解出 <span class="math inline">\(x,y\)</span> 来，所以这是一个线性同构。<span class="math inline">\(\blacksquare\)</span></p>
+<p>上面的证明虽然简明了然，但是似乎没有揭示这个同构是怎么想出来的。特别是
+<span class="math inline">\(\overline{V}\)</span>
+的出现显得有些突兀。我们换一种方法来分析：找到合适的线性变换并分析它在
+<span class="math inline">\((V_\mathbb{R})^\mathbb{C}\)</span>
+上的作用。</p>
+<p><strong>证明 2</strong>：记 <span class="math inline">\(J\)</span> 是
+<span class="math inline">\(V_\mathbb{R}\)</span> 的复结构，则 <span class="math inline">\(J^\mathbb{C}=1\otimes J\)</span> 是 <span class="math inline">\(\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}\)</span>
+上的 <span class="math inline">\(\mathbb{C}\)</span>- 线性变换并且 <span class="math inline">\(( J^\mathbb{C})^2 = -1\)</span>。<span class="math inline">\(( V_\mathbb{R})^\mathbb{C}\)</span> 可以分解为
+<span class="math inline">\(J^\mathbb{C}\)</span> 的 <span class="math inline">\(\pm i\)</span> 特征子空间的直和： <span class="math display">\[( V_\mathbb{R})^\mathbb{C}= V_+\oplus
+V_-.\]</span> 具体写出来，就是 <span class="math display">\[\begin{aligned}
+V_+ &amp;= \frac{1\otimes V_\mathbb{R}- i\otimes J(V_\mathbb{R})}{2}, \\
+V_- &amp;= \frac{1\otimes V_\mathbb{R}+ i\otimes J(V_\mathbb{R})}{2}.
+\end{aligned}\]</span></p>
+<p>容易验证 <span class="math inline">\(\tau\)</span> 交换 <span class="math inline">\(V_+\)</span> 和 <span class="math inline">\(V_-\)</span>，但 <span class="math inline">\(\tau\)</span> 是反线性的，所以 <span class="math inline">\(V_+\cong
+\overline{V_-}\)</span>，即二者互为共轭空间。</p>
+<p>进一步我们断言有复向量空间的同构 <span class="math inline">\(V_+
+\cong V\)</span>。考虑映射 <span class="math display">\[
+\begin{aligned}
+f\colon \ V_+  &amp; \to (V_\mathbb{R}, J)\\
+c\otimes v &amp;\mapsto cv.
+\end{aligned}
+\]</span> 这里右边的乘法 <span class="math inline">\(cv\)</span>
+理解为对 <span class="math inline">\(c=a+ib\)</span> 有 <span class="math inline">\(cv=av+bJ(v)\)</span>。</p>
+<p><span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的，确实把 <span class="math inline">\(V_+\)</span> 映射到 <span class="math inline">\(V_\mathbb{R}\)</span>： <span class="math display">\[f\left(\frac{1\otimes v- i\otimes J(v)}{2}\right)
+= \frac{v-J^2(v)}{2}=v.\]</span> <span class="math inline">\(f\)</span>
+有逆映射 <span class="math display">\[\begin{aligned}
+f^{-1}\colon \ V_\mathbb{R}&amp; \to V_+\\
+v &amp;\mapsto \frac{1\otimes v- i\otimes J(v)}{2}.
+\end{aligned}\]</span> 所以 <span class="math inline">\(V_+\cong
+(V_\mathbb{R},J)\cong V\)</span>。至此我们就证明了 <span class="math display">\[(V_\mathbb{R})^\mathbb{C}\cong V\oplus
+\overline{V}.\]</span></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<p>这个同构也可以用下面的交换图来表示：</p>
+<p><span class="math display">\[\require{amsCd}
+\begin{CD}
+\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}@&gt;{c\otimes v\,\to\,
+(cv,\,\overline{c}v)}&gt;&gt; (V,\overline{V})\\
+@V{\tau}VV  @VV{(u,\,v)\leftrightarrow (v,\,u)}V \\
+\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}@&gt;{c\otimes v\,\to\,
+(cv,\,\overline{c}v)}&gt;&gt; (V,\overline{V})
+\end{CD}\]</span> 其中 <span class="math inline">\((u,v)\leftrightarrow(v,u)\)</span> 是 <span class="math inline">\(\tau\)</span> 在 <span class="math inline">\(V\oplus\overline{V}\)</span>
+上诱导的共轭结构，它交换两个直和分量。</p>
+<h1 id="线性变换的复化">线性变换的复化</h1>
+<p>设 <span class="math inline">\(W\)</span> 是实向量空间，<span class="math inline">\(W^\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}W\)</span>
+是复化，则任何 <span class="math inline">\(f\in\mathrm{Hom}_\mathbb{R}(W,W)\)</span>
+可以自然地扩展为 <span class="math display">\[f^\mathbb{C}=1\otimes
+f\in\mathrm{Hom}_\mathbb{C}(W^\mathbb{C},W^\mathbb{C}).\]</span> <span class="math inline">\(f^\mathbb{C}\)</span> 与 <span class="math inline">\(f\)</span> 有相同的矩阵。注意 <span class="math inline">\(f^\mathbb{C}\)</span> 与共轭 <span class="math inline">\(\tau\)</span>
+交换，因为它们作用在张量积的不同分量上。</p>
+<p>反过来，我们想知道何时 <span class="math inline">\(g\in\mathrm{Hom}_\mathbb{C}(W^\mathbb{C},W^\mathbb{C})\)</span>
+是某个 <span class="math inline">\(f\in\mathrm{Hom}_\mathbb{R}(W,W)\)</span>
+的复化：<span class="math inline">\(g=f^\mathbb{C}\)</span>。一个必要条件当然是 <span class="math inline">\(g\)</span> 与共轭 <span class="math inline">\(\tau\)</span>
+交换。这个条件也是充分的。这是因为，我们有自然同构 <span class="math display">\[\mathrm{Hom}_\mathbb{C}(W^\mathbb{C},
+W^\mathbb{C})\cong
+\mathbb{C}\otimes\mathrm{Hom}_\mathbb{R}(W,W).\]</span> 所以 <span class="math inline">\(g\)</span> 可以写成如下的形式： <span class="math display">\[g=1\otimes f_1+i\otimes f_2,\quad
+f_1,f_2\in\mathrm{Hom}_\mathbb{R}(W,W).\]</span> <span class="math inline">\(g\)</span> 与 <span class="math inline">\(\tau\)</span> 交换说明 <span class="math inline">\(f_2\)</span> 作用在 <span class="math inline">\(W\)</span> 上是零变换，从而 <span class="math inline">\(g=1\otimes f_1\)</span>。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/central-simple-algebra/" rel="next" title="中心单代数的三个基本结论">
+      上一篇：中心单代数的三个基本结论
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/hurwitz-square-sum-theorem/" rel="next" title="Hurwitz 平方和定理">
+          下一篇：Hurwitz 平方和定理
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

@@ -1,0 +1,1772 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Todd-Coxeter algorithm and uniform polytopes | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="This project uses Python and POV-Ray to render 3D/4D uniform
+polytopes. The code is hosted on GitHub
+and requires the numpy library and the free raytr">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Todd-Coxeter algorithm and uniform polytopes"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Todd-Coxeter algorithm and uniform polytopes</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2018-05-20T16:00:00.000Z"><a href="/polytopes/index.html">2018-05-21</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#examples"><span class="section table-of-contents-text">Examples</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#what-are-these-examples-about"><span class="section table-of-contents-text">What are these examples
+about?</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#how-to-compute-the-data-of-a-uniform-polytope"><span class="section table-of-contents-text">How to compute
+the data of a uniform polytope</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#finitely-presented-groups-and-todd-coxeter-algorithm"><span class="section table-of-contents-text">Finitely
+presented groups and Todd-Coxeter algorithm</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#snub-polytopes"><span class="section table-of-contents-text">Snub polytopes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-polytopes"><span class="section table-of-contents-text">Star polytopes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#appendix"><span class="section table-of-contents-text">Appendix</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>This project uses Python and POV-Ray to render 3D/4D uniform
+polytopes. The code is hosted on <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/polytopes">GitHub</a>
+and requires the <code>numpy</code> library and the free raytracer,
+<code>POV-Ray</code>.</p>
+<h1 id="examples">Examples</h1>
+<p>All the images and videos displayed below are created using this
+program. The polytope data is computed in Python and then exported to
+POV-Ray for rendering.</p>
+<ul>
+<li><p>All Platonic solids and Archimedean solids, prims and antiprisms,
+for example the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Snub_dodecahedron">snub
+dodecahedron</a>:</p>
+<p><video src="/images/polytopes/snub-dodecahedron.mp4" controls=""></video></p></li>
+<li><p>All Kepler-Poinsot solids, for example the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Great_icosahedron">great
+icosahedron</a>:</p>
+<p><video src="/images/polytopes/great-icosahedron.mp4" controls=""></video></p></li>
+<li><p>All uniform 4d polytopes (except the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Grand_antiprism">grand
+antiprism</a>, which is non-Wythoffian), for example my github favicon,
+the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Runcinated_120-cells">runcinated
+120-cell</a>:</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/polytopes/github-favicon.png"></p></li>
+<li><p>5-cell:</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/polytopes/5-cell.png"></p></li>
+<li><p>4d cube:</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/polytopes/4-cube.png"></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Truncated_tesseract">Truncated
+tesseract</a>:</p>
+<p><video src="/images/polytopes/truncated-tesseract.mp4" controls=""></video></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/600-cell">600-cell</a>:
+(you can render the bubble faces and choose which of them are shown)</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/polytopes/600-cell.png"></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/16-cell">runcinated
+16-cell</a>:</p>
+<p><img style="margin:0px auto;display:block" width="500" src="/images/polytopes/runcinated-16-cell.png"></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Snub_24-cell">snub
+24-cell</a>:</p>
+<p><video src="/images/polytopes/snub24-cell.mp4" controls=""></video></p></li>
+<li><p>You can also render uniform star 4d polytopes, for example the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Grand_stellated_120-cell">grand
+stellated 120-cell</a>:</p>
+<p><video src="/images/polytopes/grand-stellated-120-cell.mp4" controls=""></video></p>
+<p>and its rectified version (rendered in a curved fashion):</p>
+<p><video src="/images/polytopes/rectified-grand-stellated-120-cell.mp4" controls=""></video></p></li>
+<li><p>And finally, uniform 5D polytopes like 5-cube:</p>
+<p><video src="/images/polytopes/5-cube.mp4" controls=""></video></p></li>
+</ul>
+<h1 id="what-are-these-examples-about">What are these examples
+about?</h1>
+<p>The polytopes showcased above are convex and non-convex uniform
+polytopes in 3D or 4D Euclidean spaces. Key terms to note include
+“convex/non-convex”, “Euclidean”, and “uniform”.</p>
+<p>The term “convex” refers to the property of a polytope such that any
+line segment joining two points on the polytope lies entirely within the
+enclosure of the polytope. Examples of convex polytopes include Platonic
+solids, Archimedean solids, and Catalan solids, while non-convex ones
+include Kepler-Poinsot solids and star polychora.</p>
+<p>In 3D Euclidean space, there are 18 different convex uniform
+polytopes (excluding the two infinite classes of prisms and antiprisms)
+and 57 different non-convex uniform polytopes. Currently, my program can
+only render the convex ones and a few non-convex ones, but I’m working
+on figuring out how to make it work for all of them in the future.</p>
+<p>The term “Euclidean” is emphasized here because we also have uniform
+polytopes in other metric spaces, such as the hyperbolic metric, which
+bends the space and makes the polytopes look “deformed”. A famous
+example of this is the logo “Spikey” of Mathematica, which is based on
+the dodecahedron in hyperbolic 3-space.</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/spikey.png"></p>
+<p>The term “uniform” requires some mathematical subtleties. Roughly
+speaking, it means that</p>
+<ol type="1">
+<li>All vertices are the same.</li>
+<li>All faces are regular polygons.</li>
+<li>All cells are uniform polyhedra (a polyhedron that satisfies
+conditions 1 and 2).</li>
+</ol>
+<p>To explain what “the same” means, we need to use terms from group
+theory: it means that the symmetry group <span class="math inline">\(G\)</span> of the polytope acts transitively on
+the set of vertices, such that for any pair of vertices <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>, there is some <span class="math inline">\(g\in G\)</span> that transforms <span class="math inline">\(u\)</span> to <span class="math inline">\(v\)</span>: <span class="math inline">\(g \cdot u
+= v\)</span>.</p>
+<p>In the above examples, the polytopes are colored such that all
+vertices, edges, and faces that are in the same orbit under the action
+of the symmetry group have the same color.</p>
+<h1 id="how-to-compute-the-data-of-a-uniform-polytope">How to compute
+the data of a uniform polytope</h1>
+<p>Though these polytopes appear quite different from each other, they
+can all be constructed using a uniform approach called the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythonff
+construction</a> (also known as the kaleidoscope construction). In
+principle, this construction works in the same way as a kaleidoscope: we
+place reflection planes (mirrors) in space, passing through the origin
+and with carefully chosen angles between them (which must be of the form
+<span class="math inline">\(\pi-\pi/p\)</span> for some rational <span class="math inline">\(p\)</span>). These mirrors partition space into
+“rooms”. We choose any room (called the fundamental domain) and an
+initial vertex <span class="math inline">\(v_0\)</span> in it, and then
+repeatedly reflect <span class="math inline">\(v_0\)</span> about the
+mirrors to obtain a set of virtual images. All virtual images together
+with <span class="math inline">\(v_0\)</span> form the vertices of our
+polytope. If <span class="math inline">\(v_1\)</span> is the virtual
+image of <span class="math inline">\(v_0\)</span> about the <span class="math inline">\(i\)</span>-th mirror, then <span class="math inline">\((v_0,v_1)\)</span> form an edge of type <span class="math inline">\(i\)</span>. We can use the symmetry group to
+transform it to other edges in the same orbit. Also, if <span class="math inline">\(v_0\)</span> is firstly reflected about mirror
+<span class="math inline">\(i\)</span> and then reflected about mirror
+<span class="math inline">\(j\)</span>, then since the composition of
+two reflections is a rotation, <span class="math inline">\(v_0\)</span>
+is rotated about the center of some face <span class="math inline">\(f\)</span> by an angle of <span class="math inline">\(2\pi/m\)</span> (assuming the angle between mirror
+<span class="math inline">\(i\)</span> and mirror <span class="math inline">\(j\)</span> is <span class="math inline">\(\pi-\pi/m\)</span>). We can recover <span class="math inline">\(f\)</span> by applying this rotation <span class="math inline">\(m\)</span> times and using the symmetry group to
+obtain other faces.</p>
+<p>To implement the above strategy in a practical program, we need to
+address two main issues:</p>
+<ol type="1">
+<li>How to position the mirrors and select the initial vertex <span class="math inline">\(v_0\)</span> for a given convex uniform
+polytope?</li>
+<li>Once the mirrors and <span class="math inline">\(v_0\)</span> are
+determined, how do we compute all the virtual images of <span class="math inline">\(v_0\)</span>?</li>
+</ol>
+<p>The solution to the first problem is known as the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coxeter%E2%80%93Dynkin_diagram">Coxeter-Dynkin
+diagram</a>, which is a labeled undirected graph that encodes all the
+necessary information. Each uniform polytope has a corresponding
+Coxeter-Dynkin diagram that represents it, although different diagrams
+may represent the same polytope.</p>
+<p>For example, the Coxeter-Dynkin diagram of the cube is:</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/cube43.svg" width="250"></p>
+<p>Let’s delve deeper into the Coxeter-Dynkin diagram. Each node in the
+diagram represents a mirror in the kaleidoscope. In the diagram above,
+there are three nodes, and therefore three mirrors, which we label from
+left to right as <span class="math inline">\(m_0\)</span>, <span class="math inline">\(m_1\)</span>, and <span class="math inline">\(m_2\)</span>. The labelled edge between two nodes
+encodes the angle between their corresponding mirrors, as follows:</p>
+<ol type="1">
+<li>Two nodes are connected if and only if the angle between their
+mirrors is not equal to <span class="math inline">\(\pi/2\)</span>.</li>
+<li>Two nodes are connected by an unlabelled edge if and only if the
+angle between their mirrors equals <span class="math inline">\(\pi-\pi/3\)</span>.</li>
+<li>Two nodes are connected by an edge labelled with a rational number
+<span class="math inline">\(m&gt;2\)</span> and <span class="math inline">\(m\ne3\)</span> if and only if the angle between
+their mirrors equals <span class="math inline">\(\pi-\pi/m\)</span>.</li>
+</ol>
+<p>Moreover, we use “circled” nodes to indicate which mirrors are
+“active”, i.e., those that do not contain the initial vertex <span class="math inline">\(v_0\)</span>. In this case, reflecting <span class="math inline">\(v_0\)</span> about an active mirror produces a
+virtual image.</p>
+<p>In the above example we have <span class="math inline">\(\langle
+m_0,m_1\rangle=\pi-\pi/4\)</span>, <span class="math inline">\(\langle
+m_1,m_2\rangle=\pi-\pi/3\)</span>, <span class="math inline">\(\langle
+m_0,m_2\rangle=\pi/2\)</span>. <span class="math inline">\(m_0\)</span>
+is active, but <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> are not.</p>
+<p>Therefore, we can place the three mirrors as follows: (<span class="math inline">\(n_i\)</span> is the normalized normal vector of
+mirror <span class="math inline">\(m_i\)</span>)</p>
+<ol type="1">
+<li>The normal of <span class="math inline">\(m_0\)</span> can be chosen
+arbitrarily, for example <span class="math inline">\(n_0=(1,0,0)\)</span>.</li>
+<li>The angle between <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_0\)</span> is <span class="math inline">\(3\pi/4\)</span>, so we can choose <span class="math inline">\(n_1\)</span> to be <span class="math inline">\(n_1=(\cos\dfrac{3\pi}{4}, \sin\dfrac{3\pi}{4},
+0)\)</span>.</li>
+<li>The normal of <span class="math inline">\(m_2\)</span> is
+perpendicular to <span class="math inline">\(n_0\)</span>, so <span class="math inline">\(n_2\)</span> has the form <span class="math inline">\((0,y_3,z_3)\)</span>. Using <span class="math inline">\(\langle n_1,n_2\rangle=2\pi/3\)</span>, we have
+<span class="math inline">\(y_3\sin\dfrac{3\pi}{4}=\cos\dfrac{2\pi}{3}\)</span>,
+and since <span class="math inline">\(z_3\)</span> is a unit vector,
+<span class="math inline">\(z_3=\sqrt{1−y_3^2}\)</span>. We can solve
+these two equations to obtain <span class="math inline">\(y_3,z_3\)</span>.</li>
+</ol>
+<p>To choose an initial vertex <span class="math inline">\(v_0\)</span>
+that lies on both <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> but not on <span class="math inline">\(m_0\)</span>, we can choose <span class="math inline">\(v_0\)</span> so that its distance to <span class="math inline">\(m_0\)</span> is 1 and its distance to <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> are both 0:</p>
+<p><span class="math display">\[\begin{align*}\langle v_0,
+n_0\rangle=1,\\\langle v_0, n_1\rangle=0,\\\langle v_0,
+n_2\rangle=0.\\\end{align*}\]</span></p>
+<p>Then solve this linear system to get <span class="math inline">\(v_0\)</span>.</p>
+<p>As mentioned before the angles between the mirrors must be chosen
+carefully to ensure <span class="math inline">\(v_0\)</span> and its
+virtual images form the vertices of an uniform polytope, this restricts
+us to only finitely many choices of Coxeter diagrams, you can refer to
+this <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_polytope">wiki
+page</a> for the complete list.</p>
+<p>The answer to the second question is called the Todd-Coxeter
+algorithm, I’ll discuss it in the next section.</p>
+<h1 id="finitely-presented-groups-and-todd-coxeter-algorithm">Finitely
+presented groups and Todd-Coxeter algorithm</h1>
+<p>How can we obtain all the virtual images of the initial vertex <span class="math inline">\(v_0\)</span> with respect to all mirrors? An
+obvious but crude method is to repeatedly reflect <span class="math inline">\(v_0\)</span> about the mirrors and compare the
+resulting images with the set of virtual images obtained so far (within
+a predefined rounding error bound) until no new virtual images emerge.
+This approach is easy to program but it’s unappealing from a
+mathematician’s perspective, as it fails to utilize the abundant
+symmetries inherent in the polytope.</p>
+<p>This program takes a “symbolic computation” approach by solving the
+<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coset_enumeration">coset
+enumeration problem</a> in the symmetry group. It offers the advantage
+of providing exact information about the polytope without resorting to
+rounding errors or approximation procedures. However, the price we pay
+is that the math involved is somewhat complex (and hence so is the
+code), and readers should have some basic knowledge of group theory to
+understand it.</p>
+<p>Firstly, let’s recall the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Group_action_(mathematics)#Orbit-stabilizer_theorem">orbit-stabilizer
+theorem</a> from group theory:</p>
+<blockquote>
+<p><strong>Theorem</strong>: Suppose a group <span class="math inline">\(G\)</span> acts transitively on a set <span class="math inline">\(S\)</span>, and let <span class="math inline">\(x
+\in S\)</span> have stabilizer subgroup <span class="math inline">\(H
+\leq G\)</span>. Then there exists a one-to-one correspondence between
+<span class="math inline">\(S\)</span> and the right cosets of <span class="math inline">\(G/H\)</span>: <span class="math inline">\(x \cdot
+g \mapsto Hg\)</span>.</p>
+</blockquote>
+<p>Note that the action of <span class="math inline">\(G\)</span> on
+<span class="math inline">\(S\)</span> is written as “applying on the
+right”, this is mainly for programming convenience and has no
+significant difference from applying on the left.</p>
+<p>The theorem mentioned above tells us that if a group <span class="math inline">\(G\)</span> acts transitively on a set <span class="math inline">\(S\)</span> and we know the stabilizing subgroup of
+some <span class="math inline">\(x\in S\)</span> in <span class="math inline">\(G\)</span> is <span class="math inline">\(H\)</span>, then we can recover the entire orbit
+<span class="math inline">\(S\)</span> by applying a set of coset
+representatives of <span class="math inline">\(G/H\)</span> to <span class="math inline">\(x\)</span>.</p>
+<p>Therefore, to compute all vertices of a given uniform polytope <span class="math inline">\(P\)</span>, we can follow these steps:</p>
+<ol type="1">
+<li>Obtain a presentation of the symmetry group <span class="math inline">\(G\)</span> and the coordinates of an initial
+vertex <span class="math inline">\(v_0\)</span> from the Coxeter-Dynkin
+diagram.</li>
+<li>Obtain a presentation of the stabilizing subgroup <span class="math inline">\(H\)</span> of <span class="math inline">\(v_0\)</span> in <span class="math inline">\(G\)</span> and calculate a set of right coset
+representatives of <span class="math inline">\(G/H\)</span>.</li>
+<li>Apply these representatives to <span class="math inline">\(v_0\)</span> to obtain all vertices of <span class="math inline">\(P\)</span>.</li>
+</ol>
+<p>Again we use the cube as an example to show this procedure: recall
+the Coxeter-Dynkin diagram of the cube is</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/cube43.svg" width="250"></p>
+<p>The mirrors of the cube are <span class="math inline">\(m_0,
+m_1,\)</span> and <span class="math inline">\(m_2\)</span>, with normals
+<span class="math inline">\(n_0, n_1,\)</span> and <span class="math inline">\(n_2\)</span>, respectively, all of which are unit
+vectors. The reflections about these mirrors are denoted as <span class="math inline">\(\rho_0, \rho_1,\)</span> and <span class="math inline">\(\rho_2\)</span>, and the matrix of <span class="math inline">\(\rho_i\)</span> is <span class="math inline">\(M_i
+= I - 2n_in_i^T\)</span> (see <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Householder_transformation">Householder
+transformation</a>).</p>
+<p>The symmetry group <span class="math inline">\(G\)</span> of the cube
+is generated by the three aforementioned “generator reflections”: <span class="math inline">\(\rho_0, \rho_1,\)</span> and <span class="math inline">\(\rho_2\)</span>. A presentation of the group
+is:</p>
+<p><span class="math display">\[G = \langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^4=(\rho_1\rho_2)^3=(\rho_0\rho_2)^2=1\rangle.\]</span></p>
+<p>This is because a reflection always has order 2 and since <span class="math inline">\(\rho_0\)</span> and <span class="math inline">\(\rho_1\)</span> are two reflections with an angle
+of <span class="math inline">\(3\pi/4\)</span> between their mirrors,
+<span class="math inline">\(\rho_0\rho_1\)</span> is a rotation about
+the line of intersection of their mirrors with an angle of <span class="math inline">\(3\pi/2\)</span>. Therefore, <span class="math inline">\((\rho_0\rho_1)^4=1\)</span>. Similarly, we have
+the relations for <span class="math inline">\(\rho_1\rho_2\)</span> and
+<span class="math inline">\(\rho_0\rho_2\)</span>.</p>
+<blockquote>
+<p><strong>Note</strong>: It is natural to wonder if we might be missing
+some “hidden” relations. For convex polytopes, the answer is no, but for
+certain star polytopes, the answer is yes. In these cases, we need to
+add extra relations to ensure the procedure works correctly. A
+significant difference is that, in convex cases, the symmetry group
+always maps the interior of the fundamental domain to another disjoint
+one, whereas in star polytopes, the fundamental domain may be covered
+multiple times by other domains. For more information, refer to
+Vinberg’s paper “Discrete linear groups generated by reflections”.</p>
+</blockquote>
+<p>One can employ the Todd-Coxeter algorithm (which will be explained
+later) to calculate a comprehensive list of all 48 elements in <span class="math inline">\(G\)</span>.</p>
+<p><span class="math display">\[\begin{array}{lll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}\\\rho_{0}\rho_{1}\rho_{0}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{1}\rho_{0}\rho_{1}\\\rho_{1}\rho_{0}&amp;\rho_{1}&amp;\rho_{0}\rho_{2}\\\rho_{2}&amp;\rho_{1}\rho_{2}&amp;\rho_{1}\rho_{2}\rho_{1}\\\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\\\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\\\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\\\rho_{0}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\\\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{1}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\\\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\\\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}&amp;\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\\\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\rho_{1}\rho_{0}\rho_{1}\rho_{2}\end{array}\]</span></p>
+<p>Since the initial vertex <span class="math inline">\(v_0\)</span> is
+on <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> but not on <span class="math inline">\(m_0\)</span> in the Coxeter-Dynkin diagram, only
+the mirror <span class="math inline">\(m_0\)</span> is active. Thus,
+both <span class="math inline">\(\rho_1\)</span> and <span class="math inline">\(\rho_2\)</span> map <span class="math inline">\(v_0\)</span> to itself, while <span class="math inline">\(\rho_0\)</span> maps <span class="math inline">\(v_0\)</span> to its virtual image about <span class="math inline">\(m_0\)</span>. Therefore, the stabilizing subgroup
+of <span class="math inline">\(v_0\)</span> is given by:</p>
+<p><span class="math display">\[H=\langle \rho_1, \rho_2\ |\
+\rho_1^2=\rho_2^2=(\rho_1\rho_2)^3=e\rangle.\]</span></p>
+<blockquote>
+<p><strong>Note</strong>: You may wonder if we can only claim that the
+subgroup generated by <span class="math inline">\({\rho_0,\rho_1}\)</span> is contained in the
+stabilizing subgroup of <span class="math inline">\(v_0\)</span> but may
+not be exactly equal to it. Indeed, this is a possibility. However, for
+Coxeter groups, it is a property that in the geometric realization of a
+Coxeter group <span class="math inline">\(W\)</span> (that is,
+representing <span class="math inline">\(W\)</span> as a set of
+reflections about hyperplanes in <span class="math inline">\(\mathbb{R}^n\)</span>), the stabilizing subgroup
+of any point <span class="math inline">\(v\)</span> in the fundamental
+domain is a standard parabolic subgroup generated by those simple
+reflections whose hyperplanes contain <span class="math inline">\(v\)</span>. This may seem like an obvious
+geometric intuition, but it requires a quite non-trivial proof, which
+can be found in Humphreys’s book “Reflection Groups and Coxeter Groups”,
+chapter 1.</p>
+</blockquote>
+<p>It is clear that <span class="math inline">\(H\)</span> is the
+dihedral group <span class="math inline">\(D_3\)</span>, thus <span class="math inline">\(|H|=6\)</span> and <span class="math inline">\(|G/H|=8\)</span>. Using the Todd-Coxeter
+algorithm, we can obtain a complete list of coset representatives for
+<span class="math inline">\(G/H\)</span>:</p>
+<p><span class="math display">\[\begin{array}{llll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\end{array}\]</span></p>
+<p>Applying these coset representatives to <span class="math inline">\(v_0\)</span> gives us the 8 vertices of the cube.
+For example, the action of <span class="math inline">\(\rho_0\rho_1\)</span> on <span class="math inline">\(v_0\)</span> is as follows:</p>
+<p><span class="math display">\[v_0(\rho_0\rho_1)=(v_0\rho_0)\rho_1=(v_0M_0)\rho_1=v_0M_0M_1.\]</span></p>
+<p>Here, <span class="math inline">\(v_0\)</span> is represented as a
+row vector since all <span class="math inline">\(M_i\)</span>’s are
+symmetric matrices.</p>
+<p>We can also use the same procedure to find all edges and faces of the
+cube. To find all edges of type <span class="math inline">\(i\)</span>,
+we proceed as follows:</p>
+<ol type="1">
+<li>Check if the initial vertex <span class="math inline">\(v_0\)</span>
+lies on the mirror <span class="math inline">\(m_i\)</span>. If it does,
+then the reflection <span class="math inline">\(\rho_i\)</span> fixes
+<span class="math inline">\(v_0\)</span>, and there are no edges of type
+<span class="math inline">\(i\)</span>. Otherwise, let <span class="math inline">\(v_1=\rho_i(v_0)\)</span>. Then, the segment <span class="math inline">\((v_0,v_1)\)</span> forms an edge <span class="math inline">\(e\)</span> of type <span class="math inline">\(i\)</span></li>
+<li>To find the stabilizing subgroup of <span class="math inline">\(e\)</span>, we note that a symmetry fixes <span class="math inline">\(e\)</span> if and only if it fixes the midpoint
+<span class="math inline">\(p\)</span> of <span class="math inline">\(e\)</span>. Thus, the stabilizing subgroup of
+<span class="math inline">\(e\)</span> is the same as the stabilizing
+subgroup of <span class="math inline">\(p\)</span>. From the previous
+comment, we know that this subgroup is generated by those simple
+reflections whose mirrors contain <span class="math inline">\(p\)</span>. These mirrors are either <span class="math inline">\(m_i\)</span> (bisects <span class="math inline">\(e\)</span>), or those containing <span class="math inline">\(v_0\)</span> and orthogonal to <span class="math inline">\(m_i\)</span> (contain <span class="math inline">\(e\)</span>), so the stabilizing subgroup of <span class="math inline">\(e\)</span> is generated by <span class="math inline">\(\rho_i\)</span> and those simple reflections that
+fix <span class="math inline">\(v_0\)</span> and commute with <span class="math inline">\(\rho_i\)</span>. In the case of the cube, we have
+<span class="math inline">\(H=\langle \rho_0,\rho_2\rangle\)</span>, so
+<span class="math inline">\(|H|=4\)</span> and <span class="math inline">\(|G/H|=12\)</span>, confirming that the cube has 12
+edges.</li>
+<li>We then find a set of coset representatives of <span class="math inline">\(G/H\)</span> and apply them to <span class="math inline">\(e\)</span> to obtain all edges of type <span class="math inline">\(i\)</span>.</li>
+</ol>
+<p>To find all faces of type <span class="math inline">\((i,j)\)</span>,
+where <span class="math inline">\(i\neq j\)</span>, we use the same
+procedure. If at least one of <span class="math inline">\(m_i,m_j\)</span> is active, then the rotation
+<span class="math inline">\(r_{ij}=\rho_i\rho_j\)</span> generates a
+face <span class="math inline">\(f\)</span> of type <span class="math inline">\((i,j)\)</span>, which is invariant under <span class="math inline">\(\rho_i\)</span> and <span class="math inline">\(\rho_j\)</span>. However, if <span class="math inline">\(v_0\)</span> lies on exactly one of the two
+mirrors and they are perpendicular, we need to be careful. In this case,
+the stabilizing subgroup of <span class="math inline">\(f\)</span> is
+generated by <span class="math inline">\(\rho_i\)</span>, <span class="math inline">\(\rho_j\)</span>, and those generators that fix
+<span class="math inline">\(v_0\)</span> and commute with both <span class="math inline">\(\rho_i\)</span> and <span class="math inline">\(\rho_j\)</span>. We then find a set of coset
+representatives of <span class="math inline">\(G/H\)</span> and apply
+them to <span class="math inline">\(f\)</span> to obtain all faces of
+type <span class="math inline">\((i,j)\)</span>.</p>
+<p>Now the key step is to compute a set of coset representatives of
+<span class="math inline">\(G/H\)</span> for a finitely presented group
+<span class="math inline">\(G\)</span> and its subgroup <span class="math inline">\(H\)</span>, which is exactly what the Todd-Coxeter
+algorithm does.</p>
+<p>The Todd-Coxeter algorithm can be thought of as a Sudoku game where
+the table to complete is a dynamically growing 2D array <span class="math inline">\(T\)</span>. The rows of <span class="math inline">\(T\)</span> are labeled by the right cosets in
+<span class="math inline">\(G/H\)</span>, and the columns of <span class="math inline">\(T\)</span> are labeled by the generators of <span class="math inline">\(G\)</span>. Each entry <span class="math inline">\(T[i][j]\)</span> records the right coset obtained
+by multiplying the <span class="math inline">\(j\)</span>-th generator
+on the right of the <span class="math inline">\(i\)</span>-th coset. The
+algorithm uses the defining relations in the presentation of <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span> as guidelines to find new cosets and
+fill their corresponding entries in <span class="math inline">\(T\)</span>. The game ends when all entries in
+<span class="math inline">\(T\)</span> are filled, and the coset in each
+entry has a row in <span class="math inline">\(T\)</span> and satisfies
+all relations. The resulting <span class="math inline">\(T\)</span> is
+the adjacency matrix of the Schreier graph of <span class="math inline">\(G/H\)</span>, and one can easily obtain a complete
+list of word representations for all cosets in <span class="math inline">\(G/H\)</span>.</p>
+<p>For a more detailed treatment of the Todd-Coxeter algorithm, please
+refer to the Handbook of Computational Group Theory (HCGT) or other
+related literature.</p>
+<blockquote>
+<p>Chapter 5, Handbook of Computational Group Theory, Holt, D., Eick,
+B., O’Brien, E.</p>
+</blockquote>
+<p>I will demonstrate below how the algorithm works using the cube as an
+example:</p>
+<blockquote>
+<p><strong>Example</strong>: let <span class="math inline">\(G\)</span>
+be the symmetric group of the cube: <span class="math display">\[\begin{align*}G = \langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2&amp;=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^4=(\rho_1\rho_2)^3\\&amp;=(\rho_0\rho_2)^2=1\rangle.\end{align*}\]</span>
+and subgroup <span class="math inline">\(H=\langle \rho_1,
+\rho_2\rangle\)</span>. Find a set of coset representatives of <span class="math inline">\(G/H\)</span>.</p>
+</blockquote>
+<p><strong>Our known relations</strong>:</p>
+<ol type="1">
+<li>For each generator word <span class="math inline">\(w\)</span> of
+<span class="math inline">\(H\)</span>, it holds <span class="math inline">\(Hw=H\)</span>, i.e.&nbsp;<span class="math inline">\(H\rho_1=H\)</span> and <span class="math inline">\(H\rho_2=H\)</span>.</li>
+<li>For any coset <span class="math inline">\(K\)</span> and any
+generator relation <span class="math inline">\(r\)</span> of <span class="math inline">\(G\)</span> it holds <span class="math inline">\(Kr=K\)</span>, i.e.&nbsp;<span class="math inline">\(K\rho_i^2=K,i=0,1,2\)</span>, and <span class="math inline">\(K(\rho_0\rho_1)^4=K(\rho_1\rho_2)^3=K(\rho_0\rho_2)^2=K.\)</span></li>
+</ol>
+<p>These relations can be stored in two lists, one for the relations in
+<span class="math inline">\(H\)</span> and one for the relations in
+<span class="math inline">\(G\)</span>, each relation can be further
+stored as an array of int type.</p>
+<p>The first list stores the generator words of <span class="math inline">\(H\)</span>:</p>
+<blockquote>
+<ol start="0" type="1">
+<li>(1,) // <span class="math inline">\(\rho_1\)</span></li>
+<li>(2,) // <span class="math inline">\(\rho_2\)</span></li>
+</ol>
+</blockquote>
+<p>The second list stores the defining relations of <span class="math inline">\(G\)</span>:</p>
+<blockquote>
+<ol start="2" type="1">
+<li>(0, 0) // <span class="math inline">\(\rho_0^2=1\)</span></li>
+<li>(1, 1) // <span class="math inline">\(\rho_1^2=1\)</span></li>
+<li>(2, 2) // <span class="math inline">\(\rho_2^2=1\)</span></li>
+<li>(0, 1, 0, 1, 0, 1, 0, 1) // (<span class="math inline">\(\rho_0\rho_1)^4=1\)</span></li>
+<li>(1, 2, 1, 2, 1, 2) // (<span class="math inline">\(\rho_1\rho_2)^3=1\)</span></li>
+<li>(0, 2, 0, 2) // (<span class="math inline">\(\rho_0\rho_2)^2=1\)</span></li>
+</ol>
+</blockquote>
+<p>The relations are numbered from 0 to 7 for easy reference in the
+following steps.</p>
+<blockquote>
+<p><strong>Note</strong>: When <span class="math inline">\(G\)</span> is
+not represented as a Coxeter group, for example in the case of snub
+polytopes, we need to consider the inverse of the generators as well,
+and they also occupy their own columns in <span class="math inline">\(T\)</span>. Therefore, the actual number of
+columns in <span class="math inline">\(T\)</span> is twice the number of
+generators. However, for Coxeter groups, all generators are involutions,
+so there is no need to insert columns for their inverses.</p>
+</blockquote>
+<p>Initially, the table <span class="math inline">\(T\)</span> has only
+one row, corresponding to the coset <span class="math inline">\(H\)</span> (which is the only coset we know at
+this point).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Here, the algorithm initializes <span class="math inline">\(H_0\)</span> to be the subgroup <span class="math inline">\(H\)</span> and checks if it satisfies all
+relations in the first list. Once this check is done, the first list can
+be discarded. Then, the algorithm scans all cosets of <span class="math inline">\(T\)</span> from top to bottom and verifies if the
+current coset satisfies all relations in the second list. During this
+process, new cosets may be defined and their rows are appended at the
+end of <span class="math inline">\(T\)</span>. However, it is important
+to note that some cosets in the table may actually represent the same
+coset, so care must be taken.</p>
+<hr>
+<p>Let’s start by scanning <span class="math inline">\(H_0\)</span> and
+checking whether the relations in the first list are satisfied by
+it:</p>
+<ol type="1">
+<li>For relation 0, we have <span class="math inline">\(H_0\rho_1=H_0\)</span>, i.e., <span class="math inline">\(T[0][1]=0\)</span>.</li>
+<li>For relation 1, we have <span class="math inline">\(H_0\rho_2=H_0\)</span>, i.e., <span class="math inline">\(T[0][2]=0\)</span>.</li>
+</ol>
+<p><span class="math inline">\(T\)</span> is now updated as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Now that <span class="math inline">\(H_0\)</span> satisfies
+all relations in the first list, we can discard it and focus on checking
+the relations in the second list</strong>.</p>
+<p>We move on to check the relations in the second list for <span class="math inline">\(H_0\)</span>:</p>
+<p>(2). Relation 2 says <span class="math inline">\(H_0\rho_0^2=H_0\)</span>. Since we do not know
+<span class="math inline">\(H_0\rho_0\)</span> yet, we define it to be
+<span class="math inline">\(H_1\)</span>, fill in 1 in its entry <span class="math inline">\(T[0][0]\)</span>, and append a new row for <span class="math inline">\(H_1\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note that each time we define or find <span class="math inline">\(H_i\rho_j=H_k\)</span> for some <span class="math inline">\(i,j,k\)</span>, we automatically get the “dual”
+relation <span class="math inline">\(H_k\rho_j=H_i\)</span>. Therefore,
+we always fill in a pair of entries <span class="math inline">\(T[i][j]=k\)</span> and <span class="math inline">\(T[k][j]=i\)</span> at a time</strong>.</p>
+<p>(3). Relations 3 and 4 are already satisfied, so we continue.</p>
+<p>(4). Relation 5 says <span class="math inline">\(H_0\rho_0\rho_1\rho_0\rho_1\rho_0\rho_1\rho_0\rho_1=H_0\)</span>.
+We already know <span class="math inline">\(H_0\rho_0=H_1\)</span>, but
+<span class="math inline">\(H_1\rho_1\)</span> is unknown, so we define
+it to be <span class="math inline">\(H_2\)</span>. We fill in the two
+entries <span class="math inline">\(T[1][3]=2\)</span> and <span class="math inline">\(T[2][3]=1\)</span> and append a new row for <span class="math inline">\(H_2\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(H_2\rho_0\)</span> is not yet defined, so
+we set <span class="math inline">\(H_2\rho_0=H_3\)</span> and update the
+corresponding entries in <span class="math inline">\(T\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Continuing with the scan, we notice that <span class="math inline">\(H_3\rho_1\)</span> is unknown, and we might be
+tempted to define it as a new coset <span class="math inline">\(H_4\)</span> and continue. However, this strategy
+can create many redundant cosets, leading to a rapid growth of <span class="math inline">\(T\)</span>. Instead, we scan the relation in
+reverse order, trying to fill the gaps without introducing new cosets.
+Recall that we scanned from left to right, and we arrived at the
+following position: <span class="math display">\[H_0\rho_0\rho_1\rho_0(=H_3)\rho_1\rho_0\rho_1\rho_0\rho_1=H_0.\]</span>
+Now, scanning from right to left, we get <span class="math inline">\(H_0\rho_1\rho_0\rho_1\rho_0=H_3\)</span>, which
+means that <span class="math display">\[H_0\rho_0\rho_1\rho_0(=H_3)\rho_1
+=H_0\rho_1\rho_0\rho_1\rho_0=H_3.\]</span> Thus, we have deduced that
+<span class="math inline">\(H_3\rho_1=H_3\)</span>, instead of defining
+it as a new coset. This technique is called a
+<strong>deduction</strong>, as described in the book HCGT. Therefore, we
+update <span class="math inline">\(T\)</span> accordingly:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>So in the actual program we always scan a relation from both
+ends and define new cosets if necessary until they meet</strong>.</p>
+<p>(5). Relation 6 is already satisfied, continue.</p>
+<p>(6). Relation 7 says <span class="math inline">\(H_0\rho_0\rho_2\rho_0\rho_2=H_0\)</span>, scanning
+from both ends gives <span class="math display">\[H_0\rho_0(=H_1)\rho_2=H_0\rho_2\rho_0=H_1,\]</span>
+hence <span class="math inline">\(H_1\rho_2=H_1\)</span> and we make
+another deduction. <span class="math inline">\(T\)</span> now
+becomes</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Now, <span class="math inline">\(H_0\)</span> satisfies all relations
+in the two lists and the scanning of the first row is completed. We can
+move on to begin scanning of the row for <span class="math inline">\(H_1\)</span>. Note the first list is now
+discarded, and we will only check relations 2-7.</p>
+<p>(1). Relations 2, 3, 4, and 5 are already satisfied. We can continue
+to the next relation. (2). Relation 6 says <span class="math inline">\(H_1\rho_1\rho_2\rho_1\rho_2\rho_1\rho_2=H_1\)</span>.
+We know that <span class="math inline">\(H_1\rho_1=H_2\)</span>, but
+<span class="math inline">\(H_2\rho_2\)</span> is unknown. Backward
+scanning also gets stuck here: <span class="math display">\[H_1\rho_1(=H_2)\rho_2\rho_1=H_1\rho_2\rho_1\rho_2=H_2\rho_2.\]</span>
+So we define <span class="math inline">\(H_2\rho_2=H_4\)</span>. Then we
+have <span class="math inline">\(H_4\rho_1=H_4\)</span>, and <span class="math inline">\(T\)</span> becomes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li>Relation 7 is already satisfied for <span class="math inline">\(H_1\)</span>, so we can move on to scan the row
+for <span class="math inline">\(H_2\)</span>.</li>
+</ol>
+<hr>
+<p>I’ll leave it as an exercise for you to complete the scanning of
+<span class="math inline">\(H_2\)</span>, <span class="math inline">\(H_3\)</span>, <span class="math inline">\(H_4\)</span>, and <span class="math inline">\(H_5\)</span>. These are relatively easy tasks.
+Once <span class="math inline">\(H_2\)</span> has been scanned, your
+<span class="math inline">\(T\)</span> should look like this:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+<p>After completing the scanning of <span class="math inline">\(H_3\)</span>, your <span class="math inline">\(T\)</span> should be:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>After completing the scanning for <span class="math inline">\(H_4\)</span>, your <span class="math inline">\(T\)</span> should be:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_6\)</span></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_7\)</span></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>And when we scan <span class="math inline">\(H_6\)</span>, we find
+that relations 2-6 are already satisfied. From relation 7, <span class="math inline">\(H_6\rho_0\rho_2\rho_0\rho_2=H_6\)</span>, we get a
+deduction <span class="math inline">\(H_7\rho_2=H_7\)</span>, and <span class="math inline">\(T\)</span> is updated as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\rho_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_0\)</span></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_2\)</span></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_3\)</span></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_4\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_5\)</span></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_6\)</span></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(H_7\)</span></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">7</td>
+</tr>
+</tbody>
+</table>
+<p>One can check that <span class="math inline">\(H_7\)</span> satisfies
+all relations in the second list, so no more cosets can be found and the
+game is over.</p>
+<p>The multiplication relations between these cosets can be obtained
+using breadth-first search:</p>
+<p><span class="math display">\[\begin{array}{l}H_0 = H_0\cdot e,\\
+H_1=H_0\cdot\rho_0,\\H_2=H_1\cdot\rho_1=H_0\cdot\rho_0\rho_1,\\H_3=H_2\cdot\rho_0=H_0\cdot\rho_0\rho_1\rho_0,\\
+H_4=H_2\cdot\rho_2=H_0\cdot\rho_0\rho_1\rho_2,\\
+H_5=H_3\cdot\rho_2=H_0\cdot \rho_0\rho_1\rho_0\rho_2,\\
+H_6=H_5\cdot\rho_1=H_0\cdot \rho_0\rho_1\rho_0\rho_2\rho_1,\\
+H_7=H_6\cdot\rho_0=H_0\cdot
+\rho_0\rho_1\rho_0\rho_2\rho_1\rho_0.\end{array}\]</span></p>
+<p>So a set of representatives can be chosen as</p>
+<p><span class="math display">\[\begin{array}{llll}e&amp;\rho_{0}&amp;\rho_{0}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\\\rho_{0}\rho_{1}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}&amp;\rho_{0}\rho_{1}\rho_{0}\rho_{2}\rho_{1}\rho_{0}\end{array}
+\]</span> This is exactly what we have seen before.</p>
+<blockquote>
+<p><strong>Note</strong>: This example is a bit tedious, but it is still
+a simple one because we did not encounter the case where two cosets in
+the table are found to be the same (in the book HCGT, this is called a
+<strong>coincidence</strong>). When this occurs, the scanning must be
+paused, and the control flow is jumped to handle this coincidence: a new
+stack <span class="math inline">\(q\)</span> is opened, and this pair of
+coincidences is pushed into <span class="math inline">\(q\)</span>.
+Then, one pair of coincidences is popped from <span class="math inline">\(q\)</span> at a time, their rows are merged, and
+new coincidences that occur in the merging process are pushed into <span class="math inline">\(q\)</span>.</p>
+</blockquote>
+<h1 id="snub-polytopes">Snub polytopes</h1>
+<p>Snub polytopes can be constructed by applying rotations in the full
+symmetry group to the initial vertex <span class="math inline">\(v_0\)</span>. In the case of the cube, we have
+seen the full symmetry group <span class="math inline">\(G\)</span>
+is</p>
+<p><span class="math display">\[G = \langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^4=(\rho_1\rho_2)^3=(\rho_0\rho_2)^2=1\rangle.\]</span></p>
+<p><span class="math inline">\(G\)</span> consists of 48 elements, half
+of which are rotations, so totaling 24 rotations. These rotations
+constitute the symmetry group <span class="math inline">\(\widetilde{G}\)</span> of the snub cube, which can
+be generated by three fundamental rotations: <span class="math inline">\(r_0=\rho_0\rho_1\)</span>, <span class="math inline">\(r_1=\rho_1\rho_2\)</span>, and <span class="math inline">\(r_2=\rho_0\rho_2\)</span>. Since <span class="math inline">\(r_0r_1=r_2\)</span>, it follows that <span class="math inline">\(\widetilde{G}\)</span> can be generated by only
+<span class="math inline">\(r_0\)</span> and <span class="math inline">\(r_1\)</span>.</p>
+<p>A presentation of <span class="math inline">\(\widetilde{G}\)</span>
+is <span class="math display">\[\widetilde{G}=\langle r_0,r_1\ |\
+r_0^4=r_1^3=(r_0r_1)^2=1\rangle.\]</span> Using the Todd-Coxeter
+algorithm, we can obtain a complete list of word representations of
+<span class="math inline">\(\widetilde{G}\)</span>:</p>
+<p><span class="math display">\[\begin{array}{lll}e&amp;r_{0}&amp;r_{0}r_{0}\\r_{0}r_{0}r_{0}&amp;r_{1}&amp;r_{1}r_{1}\\r_{0}r_{1}&amp;r_{0}r_{1}r_{1}&amp;r_{0}r_{0}r_{1}\\r_{0}r_{0}r_{1}r_{1}&amp;r_{0}r_{0}r_{0}r_{1}&amp;r_{1}r_{0}\\r_{1}r_{0}r_{0}&amp;r_{1}r_{0}r_{0}r_{0}&amp;r_{1}r_{1}r_{0}\\r_{1}r_{1}r_{0}r_{0}&amp;r_{0}r_{1}r_{1}r_{0}&amp;r_{0}r_{1}r_{1}r_{0}r_{0}\\r_{0}r_{0}r_{1}r_{1}r_{0}&amp;r_{1}r_{0}r_{0}r_{1}&amp;r_{1}r_{0}r_{0}r_{1}r_{1}\\r_{1}r_{0}r_{0}r_{0}r_{1}&amp;r_{1}r_{1}r_{0}r_{0}r_{1}&amp;r_{0}r_{1}r_{1}r_{0}r_{0}r_{1}\end{array}
+\]</span></p>
+<p>We choose the initial vertex <span class="math inline">\(v_0\)</span>
+so that it’s not on any of the three mirrors, and apply the above word
+representations of <span class="math inline">\(\widetilde{G}\)</span> to
+<span class="math inline">\(v_0\)</span>. This gives the 24 vertices of
+the snub cube.</p>
+<p>To obtain the edges of the snub cube, the following steps can be
+taken:</p>
+<ol type="1">
+<li>Each rotation <span class="math inline">\(r_i\,(i=0,1,2)\)</span>
+generates a base edge <span class="math inline">\(e\)</span>. These base
+edges are in different orbits under the action of <span class="math inline">\(\widetilde{G}\)</span>.</li>
+<li>The stabilizing subgroup of <span class="math inline">\(e\)</span>
+is <span class="math inline">\(H=\langle 1\rangle\)</span> if the order
+of <span class="math inline">\(r_i\)</span> is greater than 2, or the
+cyclic group <span class="math inline">\(H=\langle r_i\rangle\)</span>
+if the order of <span class="math inline">\(r_i\)</span> is 2. The coset
+representatives of <span class="math inline">\(G/H\)</span> can be
+computed, and applied to <span class="math inline">\(e\)</span> to
+obtain all other edges of type <span class="math inline">\(i\)</span>.</li>
+</ol>
+<p>The case of faces is slightly more involved:</p>
+<ol type="1">
+<li><p>Each rotation <span class="math inline">\(r_i\,(i=0,1)\)</span>
+generates a base face <span class="math inline">\(f={v_0,
+r_i(v_0),\ldots, r_i^{m-1}(v_0)}\)</span> for <span class="math inline">\(m&gt;2\)</span>, where <span class="math inline">\(m\)</span> is the order of <span class="math inline">\(r_i\)</span>. For <span class="math inline">\(i=2\)</span>, <span class="math inline">\(m=2\)</span>, and <span class="math inline">\(f\)</span> is degenerated to an edge. The
+stabilizing subgroup of <span class="math inline">\(f\)</span> is the
+cyclic group <span class="math inline">\(H=\langle r_i\rangle\)</span>.
+The coset representatives of <span class="math inline">\(G/H\)</span>
+can be computed, and applied to <span class="math inline">\(f\)</span>
+to obtain all other faces of type <span class="math inline">\(i\)</span>. For the snub cube, there are <span class="math inline">\(6\)</span> square faces generated by <span class="math inline">\(r_0\)</span> (since <span class="math inline">\(24/|\langle r_0\rangle|=24/4=6\)</span>), and
+<span class="math inline">\(8\)</span> triangle faces generated by <span class="math inline">\(r_1\)</span> (since <span class="math inline">\(24/|\langle r_1\rangle|=24/3=8\)</span>).</p></li>
+<li><p>There is another type of triangle faces which comes from the
+relation <span class="math inline">\(r_0r_1=r_2\)</span>. Let’s consider
+the three vertices <span class="math inline">\({v_0,v_0r_1,v_0r_2}\)</span>. We see that <span class="math inline">\((v_0, v_0r_1)\)</span> is an edge of type 1 and
+<span class="math inline">\((v_0, v_0r_2)\)</span> is an edge of type 2.
+But we also have <span class="math display">\[(v_0,
+v_0r_0)\xrightarrow{\ r_1\ }(v_0r_1, v_0r_0r_1) = (v_0r_1,
+v_0r_2).\]</span> That is, <span class="math inline">\((v_0r_1,
+v_0r_2)\)</span> is an edge of type 0 obtained by applying <span class="math inline">\(r_1\)</span> to the base edge <span class="math inline">\((v_0, v_0r_0)\)</span>. The stabilizing subgroup
+of this triangle must be <span class="math inline">\(\langle1\rangle\)</span> since all its three edges
+are in different orbits. Thereforre, we have <span class="math inline">\(|\widetilde{G}|/1=24\)</span> triangle faces of
+this “mixed type”, which are not generated by any of the “fundamental
+rotations”.</p></li>
+</ol>
+<p>So the snub cube has <span class="math inline">\(6+8+24=38\)</span>
+faces in total.</p>
+<h1 id="star-polytopes">Star polytopes</h1>
+<p>Most star polytopes can be generated using the Wythoff construction,
+but generally, it is not enough to use the method described above
+directly. You also need to add an additional generating relation into
+the group’s presentation.</p>
+<p>To illustrate, let’s take the great dodecahedron as an example. Its
+Coxeter-Dynkin diagram is shown below:</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/coxeter552.svg" width="250"></p>
+<p>Therefore, the angles between the mirrors are <span class="math inline">\(\pi-2\pi/5, \pi/2, \pi-\pi/5\)</span>. If we
+continue with the previous analysis, we obtain the presentation of the
+symmetry group as:</p>
+<p><span class="math display">\[K = \langle\tau_0,\tau_1,\tau_2 \
+|\  \tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=(\tau_0\tau_2)^2=1\rangle.
+\]</span></p>
+<p>This group is infinite, and since the quotient group of the
+stabilizer subgroup of <span class="math inline">\(v_0\)</span> is also
+infinite, the Todd-Coxeter algorithm will not work here.</p>
+<p>In fact, we just need to add another generating relation to the
+presentation, namely <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^3=1\)</span>. With this
+addition, the presentation of the symmetry group becomes:</p>
+<p><span class="math display">\[\begin{align*}
+K = \langle\tau_0,\tau_1,\tau_2 \
+|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=\\&amp;(\tau_0\tau_2)^2=(\tau_0\tau_1\tau_2\tau_1)^3=1\rangle.
+\end{align*}\]</span></p>
+<p>Note that I intentionally used <span class="math inline">\(\tau\)</span> to represent reflections and <span class="math inline">\(K\)</span> to denote the symmetry group of the
+great dodecahedron. What’s happening here? Let’s take a look at the
+video:</p>
+<video src="/images/polytopes/great-dodecahedron.mp4" controls="">
+</video>
+<p>From the video, we can observe that the great dodecahedron and the
+icosahedron share the exact same set of vertices. However, it seems that
+the great dodecahedron can be obtained by digging some triangular holes
+on the surface of the icosahedron. In general, if the hole of a
+star-shaped polyhedron is a polygon with <span class="math inline">\(h\)</span> sides, the corresponding extra relation
+is given by <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^h=1\)</span>.</p>
+<p>Let’s take a closer look at the fundamental region of the great
+dodecahedron:</p>
+<p><img style="margin:0px auto;display:block" src="/images/polytopes/star.png" width="600"></p>
+<p>The figure above shows <span class="math inline">\(\Delta
+ABC\)</span> as the fundamental domain of the icosahedron. Its internal
+angles are <span class="math inline">\(\angle CAB=\pi/5\)</span>，<span class="math inline">\(\angle CBA=\pi/2\)</span>，<span class="math inline">\(\angle ACB=\pi/3\)</span>. Reflections about the
+arcs <span class="math inline">\(BC\)</span>, <span class="math inline">\(AC\)</span>, and <span class="math inline">\(AB\)</span> are denoted by <span class="math inline">\(\rho_0\)</span>, <span class="math inline">\(\rho_1\)</span>, and <span class="math inline">\(\rho_2\)</span>, respectively. The presentation of
+the symmetry group of icosahedron, <span class="math inline">\(G\)</span>, can be expressed as follows: <span class="math display">\[G = \langle\rho_0,\rho_1,\rho_2\ |\
+\rho_0^2=\rho_1^2=\rho_2^2=(\rho_0\rho_1)^3=(\rho_1\rho_2)^5=(\rho_0\rho_2)^2=1\rangle.\]</span></p>
+<p>The great dodecahedron can be constructed as follows: we keep the
+vertices and edges of the icosahedron untouched, but change its faces.
+To do this we start a walk from vertex <span class="math inline">\(Q\)</span> and move along edge <span class="math inline">\(QA\)</span> to reach the next vertex <span class="math inline">\(A\)</span>. At <span class="math inline">\(A\)</span>, we skip the first edge on the right
+(<span class="math inline">\(AO\)</span>) and choose the second one,
+which is <span class="math inline">\(AK\)</span>, to follow and move to
+vertex <span class="math inline">\(K\)</span> (sorry for abusing the
+notation <span class="math inline">\(K\)</span> here). We continue
+moving in this way by always choosing the second edge to the right. It
+takes five steps to return to <span class="math inline">\(Q\)</span>,
+forming a pentagonal face of the great dodecahedron. By performing this
+operation for all edges of the icosahedron, we can generate all the
+faces of the great dodecahedron.</p>
+<p>This operaion is called <strong>faceting</strong>, it changes the
+faces of a given polyhedron while preserving its vertices and edges.
+This is achieved by walking along the edges of the original polyhedron
+and choosing the <span class="math inline">\(k\)</span>-th edge to the
+right of the current path, where <span class="math inline">\(k\geq
+2\)</span> is a fixed integer. By repeating this process until a closed
+loop is formed, a new face is created. In our project, we use <span class="math inline">\(k=2\)</span>.</p>
+<p>Let’s derive the relations between the symmetry groups <span class="math inline">\(G\)</span> and <span class="math inline">\(K\)</span>:</p>
+<p>Consider the triangle <span class="math inline">\(\Delta
+OAB\)</span>, which has internal angles <span class="math inline">\(\angle OAB=2\pi/5\)</span>, <span class="math inline">\(\angle OBA=\pi/2\)</span>, and <span class="math inline">\(\angle AOB=\pi/5\)</span>, and contains three
+congruent triangles with the triangle <span class="math inline">\(\Delta
+ABC\)</span>. The reflections about its three edges <span class="math inline">\(OA\)</span>, <span class="math inline">\(OB\)</span>, and <span class="math inline">\(AB\)</span> are denoted by <span class="math inline">\(\tau_1=\rho_1\rho_2\rho_1\)</span>, <span class="math inline">\(\tau_0=\rho_0\)</span>, and <span class="math inline">\(\tau_2=\rho_2\)</span>.</p>
+<p>In the language of group theory, the faceting operation <span class="math inline">\(\varphi_k\)</span> can be described as
+transforming the group <span class="math inline">\(G\)</span> into
+another group <span class="math inline">\(K\)</span>:</p>
+<p><span class="math display">\[G=\langle
+\rho_0,\rho_1,\rho_2\rangle\xrightarrow{\ \varphi_k\
+}\langle\rho_0,\rho_1(\rho_2\rho_1)^{k-1},\rho_2\rangle=\langle\tau_0,\tau_1,\tau_2\rangle=K.\]</span></p>
+<p>Usually, <span class="math inline">\(K\)</span> is a subgroup of
+<span class="math inline">\(G\)</span>, but in many cases, including the
+great dodecahedron here, <span class="math inline">\(G\)</span> and
+<span class="math inline">\(K\)</span> are the same group.</p>
+<p>To see that <span class="math inline">\(K\)</span> is indeed the
+symmetry group of the great dodecaheron, we can argue as follows:</p>
+<p>Firstly, <span class="math inline">\(\langle
+\tau_1,\tau_2\rangle=\langle \rho_1,\rho_2\rangle\)</span> is the
+stabilizer subgroup of the vertex <span class="math inline">\(A\)</span>, so the great dodecahedron has the same
+set of vertices as that of the icosahedron. However, <span class="math inline">\(\tau_1\tau_2\)</span> gives a rotation of <span class="math inline">\(4\pi/5\)</span>, which differs from <span class="math inline">\(\rho_1\rho_2\)</span> that gives a rotation of
+<span class="math inline">\(2\pi/5\)</span>. Consequently, the vertex
+configuration of the great dodecahedron forms a pentagram, whereas that
+of the icosahedron forms a pentagon.</p>
+<p>Secondly, the subgroup <span class="math inline">\(\langle
+\tau_0,\tau_2\rangle=\langle \rho_0,\rho_2\rangle\)</span> is the
+stabilizer of the edge <span class="math inline">\(AQ\)</span>. Thus,
+the great dodecahedron shares its edges with those of the
+icosahedron.</p>
+<p>Thirdly, <span class="math inline">\(\langle\tau_0,\tau_1\rangle\)</span> is the
+stabilizer subgroup of one of the faces of the great dodecahedron. Note
+that <span class="math inline">\(\tau_0\tau_1\)</span> is a rotation of
+<span class="math inline">\(2\pi/5\)</span> arounds <span class="math inline">\(O\)</span>. It maps the edge <span class="math inline">\(QA\)</span> to the edge <span class="math inline">\(AK\)</span>, corresponding to the operation of
+selecting the <span class="math inline">\(k\)</span>-th edge to walk on.
+Repeatedly applying <span class="math inline">\(\tau_0\tau_1\)</span> to
+<span class="math inline">\(QA\)</span> will give the five edges of one
+face of the great dodecahedron.</p>
+<p>Let’s find out a hidden relation among <span class="math inline">\(\tau_0,\tau_1\)</span> and <span class="math inline">\(\tau_2\)</span>:</p>
+<p>Note that <span class="math inline">\(\tau_1\tau_2\tau_1=\tau_1\rho_2\tau_1\)</span> is
+a reflection about <span class="math inline">\(AP\)</span>, and its
+composition with <span class="math inline">\(\tau_0=\rho_0\)</span> is a
+rotation around the vertex <span class="math inline">\(P\)</span> by an
+angle of <span class="math inline">\(2\pi/3\)</span>, so <span class="math inline">\((\tau_0\tau_1\tau_2\tau_1)^3=1\)</span>. Adding
+this additional generating relation to the presentation of gives the
+correct presentation of <span class="math inline">\(K\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+K = \langle\tau_0,\tau_1,\tau_2 \
+|\  &amp;\tau_0^2=\tau_1^2=\tau_2^2=(\tau_0\tau_1)^5=(\tau_1\tau_2)^5=\\&amp;(\tau_0\tau_2)^2=(\tau_0\tau_1\tau_2\tau_1)^3=1\rangle.
+\end{align*}\]</span></p>
+<p>The remaining steps of the construction are identical to the previous
+ones.</p>
+<p>This extra relation has a geometric explanation: By applying the
+faceting operation to the great dodecahedron again, we can restore our
+icosahedron. We simply walk from <span class="math inline">\(Q\)</span>
+to <span class="math inline">\(A\)</span>, and when we reach <span class="math inline">\(A\)</span>, instead of selecting the edge <span class="math inline">\(AK\)</span> to continue moveing, we choose its
+previous one clockwise, which is <span class="math inline">\(AO\)</span>. Continuing to walk gives us back the
+triangle face <span class="math inline">\(\Delta OAB\)</span> of the
+icosahedron. This correspondes to the exponent 3 in the extra
+relation.</p>
+<p>In terms of group theory, this can be expressed as <span class="math display">\[K=\langle
+\tau_0,\tau_1,\tau_2\rangle\xrightarrow{\ \varphi_2\
+}\langle\tau_0,\tau_1\tau_2\tau_1,\tau_2\rangle=\langle\rho_0,\rho_2\rho_1\rho_2,\rho_2\rangle=G.\]</span></p>
+<p>One might wonder if there are more such relationships we have
+overlooked. However, since we know that <span class="math inline">\(K\)</span> is isomorphic to <span class="math inline">\(G\)</span> (though not proved in this article),
+there’s no cause for concern.</p>
+<h1 id="appendix">Appendix</h1>
+<p>I also added a script <code>run_coset_enumeration.py</code> for
+showing how to compute the coset table of <span class="math inline">\(G/H\)</span> for a given finitely presented group
+<span class="math inline">\(G\)</span> and its subgroup <span class="math inline">\(H\)</span> (necessarily <span class="math inline">\(|G/H|&lt;\infty\)</span>). It assumes a
+<code>yaml</code> file as input which describes the presentation of
+<span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span>. An example format is</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">G8723</span><br><span class="hljs-attr">relators:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">a^8</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">b^7</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">(ab)^2</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">(Ab)^3</span><br><span class="hljs-attr">subgroup-generators:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">aa</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Ab</span><br></code></pre></td></tr></tbody></table></figure>
+<p>Here we use the convention that uppercase means the inverse of
+lowercase, i.e.&nbsp;<span class="math inline">\(A=a^{-1},B=b^{-1}\)</span>.</p>
+<p>So the presentation of this group is <span class="math display">\[G =
+\langle a, b\ |\ a^8=b^7=(ab)^2=(a^{-1}b)^3=1\rangle\]</span> and <span class="math inline">\(H=\langle a^2, a^{-1}b\rangle\)</span>.</p>
+<p>Save this file as <code>G8723.yaml</code> and run </p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python run_coset_enumeration.py G8723.yaml<br></code></pre></td></tr></tbody></table></figure> The
+output should be (with some output omitted)<p></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plain">           a    A    b    B<br>------------------------------<br>    1:     2    2    3    2<br>    2:     1    1    1    4<br>    3:     4    5    6    1<br>    4:     7    3    2    8<br>  ...    ...  ...  ...  ...<br>  ...    ...  ...  ...  ...<br>  ...    ...  ...  ...  ...<br>  446:   444  444  441  430<br>  447:   438  433  432  443<br>  448:   445  445  440  445<br></code></pre></td></tr></tbody></table></figure>
+<p>so <span class="math inline">\(G/H\)</span> has 448 cosets.</p>
+
+
+
+                                                    
+
+    
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

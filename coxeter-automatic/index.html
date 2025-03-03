@@ -1,0 +1,944 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Coxeter 群语言正则的证明 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="命题
+0.1. 若 \(\alpha,\beta\in\Phi\) 满足 \(|(\alpha,\beta)|&amp;lt;1\)，则必然有 \((\alpha,\beta)=\cos(p\pi/q)\)，其中 \(p,q\) 是互素的正整数，而且反射 \(r_\alpha,r_\beta\) 生成的子群">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Coxeter 群语言正则的证明"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Coxeter 群语言正则的证明</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2025-02-19T03:17:25.067Z"><a href="/coxeter-automatic/index.html">2025-02-19</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+0.1</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha,\beta\in\Phi\)</span> 满足 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span>，则必然有 <span class="math inline">\((\alpha,\beta)=\cos(p\pi/q)\)</span>，其中 <span class="math inline">\(p,q\)</span> 是互素的正整数，而且反射 <span class="math inline">\(r_\alpha,r_\beta\)</span> 生成的子群是有限群。</p>
+</div>
+<p><strong>证明</strong>：若 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span>，则内积 <span class="math inline">\((\,,)\)</span> 限制在 <span class="math inline">\(\alpha,\beta\)</span> 张成的二维子空间 <span class="math inline">\(U=\mathop{\mathrm{span}}{\{\alpha,\beta\}}\)</span>
+上是正定的。</p>
+<p>我们可以不妨假定 <span class="math inline">\(\alpha\)</span>
+是正根，以及 <span class="math inline">\(\beta=\alpha_s\)</span>
+是单根。设 <span class="math display">\[\alpha = c_s\alpha_s +
+\sum_{t\ne s }c_t\alpha_t.\]</span> 由于 <span class="math inline">\(\alpha\)</span> 不可能是 <span class="math inline">\(\alpha_s\)</span> 的正倍数，所以 <span class="math inline">\(\gamma=\alpha - c_s\alpha_s\ne0\)</span>。</p>
+<p>注意到如果 <span class="math inline">\(a,b\in\mathbb{R}\)</span> 使得
+<span class="math inline">\(a\gamma+b\alpha_s\in\Phi\)</span>，则 <span class="math inline">\(a,b\)</span> 必须同时非负，或者同时非正。如果
+<span class="math inline">\(\alpha,\beta\)</span> 所夹的角度是 <span class="math inline">\(\pi\)</span> 的无理数倍，那么 <span class="math inline">\((r_\alpha s)\)</span> 是 <span class="math inline">\(U\)</span> 上角度为 <span class="math inline">\(\pi\)</span> 的无理数倍的旋转，它的各次幂 <span class="math inline">\(\{(r_\alpha s)^n,n=0,1,\ldots,\}\)</span> 会将
+<span class="math inline">\(\alpha\)</span> 映射为 <span class="math inline">\(U\)</span>
+中单位圆周上稠密的集合，特别地必然有某个 <span class="math inline">\(k\)</span> 使得 <span class="math inline">\((r_\alpha s)^k\alpha\)</span> 位于区域 <span class="math inline">\(\{a\gamma+b\alpha_s\mid a &gt; 0,
+b&lt;0\}\)</span> 中，这与此区域不包含任何根矛盾。所以 <span class="math inline">\(\alpha,\beta\)</span> 所夹的角度必须是 <span class="math inline">\(\pi\)</span> 的有理数倍，形如 <span class="math inline">\(p\pi/q\)</span>，从而 <span class="math inline">\(r_\alpha,r_\beta\)</span> 生成的子群 <span class="math inline">\(D\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是一个二面体群。另一方面 <span class="math inline">\((\,,)\)</span> 限制在 <span class="math inline">\(U\)</span> 上是正定的，所以 <span class="math inline">\(V=U\oplus U^\bot\)</span>。而 <span class="math inline">\(D\)</span> 作用在 <span class="math inline">\(U^\bot\)</span> 上是平凡的，所以 <span class="math inline">\(D\)</span> 在全空间上的作用也是二面体群。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+0.2</span>.</span><span class="statement-spah"> </span>对任何正根 <span class="math inline">\(\alpha\in\Phi^+\)</span>，定义其深度为 <span class="math display">\[\mathrm{dp}(\alpha)=\min\{\,l(w) \mid
+w\alpha\in\Phi^-\,\}.\]</span> 对两个正根 <span class="math inline">\(\alpha,\beta\)</span>，定义 <span class="math inline">\(\alpha\preceq\beta\)</span> 当且仅当存在 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(\beta=w\alpha\)</span> 并且 <span class="math display">\[\mathrm{dp}(\beta)=\mathrm{dp}(\alpha)+l(w).\]</span>
+如果 <span class="math inline">\(\alpha\preceq\beta\)</span> 且 <span class="math inline">\(\alpha\ne\beta\)</span> 我们记为 <span class="math inline">\(\alpha\prec\beta\)</span>。</p>
+</div>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+0.3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\preceq\)</span> 是 <span class="math inline">\(\Phi^+\)</span> 上的偏序。</p>
+</div>
+<p><strong>证明</strong>：若 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 使得 <span class="math inline">\(\alpha\prec\beta\)</span>，则必然有 <span class="math inline">\(\mathrm{dp}(\beta)&gt;\mathrm{dp}(\alpha)\)</span>，即
+<span class="math inline">\(\preceq\)</span> 是反对称的。我们只要再证明
+<span class="math inline">\(\preceq\)</span> 是传递的。</p>
+<p>设 <span class="math inline">\(\alpha,\beta,\gamma\in\Phi^+\)</span>
+满足 <span class="math inline">\(\alpha\preceq\beta\)</span> 和 <span class="math inline">\(\beta\preceq\gamma\)</span>，我们来证明 <span class="math inline">\(\alpha\preceq\gamma\)</span>。为此我们设 <span class="math display">\[\begin{aligned}
+\beta &amp;= u\alpha, &amp;\mathrm{dp}(\beta) - \mathrm{dp}(\alpha) =
+l(u).\\
+\gamma &amp;= v\beta, &amp;\mathrm{dp}(\gamma) - \mathrm{dp}(\beta) =
+l(v).\\
+\end{aligned}
+\]</span> 显然 <span class="math inline">\(\gamma=vu\alpha\)</span> 且
+<span class="math inline">\(\mathrm{dp}(\gamma)-\mathrm{dp}(\alpha)=
+l(u)+l(v)\)</span>。只要再证明 <span class="math inline">\(l(uv)=l(u)+l(v)\)</span> 即可。</p>
+<p>设 <span class="math inline">\(w\in W\)</span> 满足 <span class="math inline">\(w\alpha\in\Phi^-\)</span> 且 <span class="math inline">\(l(w)=\mathrm{dp}(\alpha)\)</span>。于是 <span class="math display">\[\gamma=vu\alpha\Rightarrow
+u^{-1}v^{-1}\gamma=\alpha \Rightarrow
+wu^{-1}v^{-1}\gamma\in\Phi^-.\]</span> 从而 <span class="math inline">\(l(wu^{-1}v^{-1})\geq\mathrm{dp}(\gamma)\)</span>。</p>
+<p>另一方面 <span class="math display">\[l(wu^{-1}v^{-1})\leq
+l(w)+(l(u)+l(v))=\mathrm{dp}(\alpha)+(\mathrm{dp}(\gamma)-\mathrm{dp}(\alpha))=\mathrm{dp}(\gamma).\]</span>
+所以 <span class="math inline">\(l(wu^{-1}v^{-1})=\mathrm{dp}(\gamma)\)</span>，特别地上式中所有的不等号都是等号，于是
+<span class="math inline">\(l(wu^{-1}v^{-1})=
+l(w)+l(u)+l(v)\)</span>，从而必然有 <span class="math inline">\(l(uv)=l(u)+l(v)\)</span>。<span class="math inline">\(\blacksquare\)</span>。</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+0.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha_s\)</span> 是单根，<span class="math inline">\(\alpha\ne\alpha_s\)</span> 是正根，则 <span class="math display">\[\mathrm{dp}(s\alpha)=\begin{cases}\mathrm{dp}(\alpha)-1
+&amp; \text{if } (\alpha,\alpha_s)&gt;0,\\\mathrm{dp}(\alpha) &amp;
+\text{if } (\alpha,\alpha_s)=0.\\\mathrm{dp}(\alpha)+1 &amp; \text{if }
+(\alpha,\alpha_s)&lt;0.\end{cases}\]</span></p>
+</div>
+<p>第二条是显然的，而第三条可以由第一条得出：只要对 <span class="math inline">\(s\alpha\)</span>
+应用第一条的结论即可。所以我们只需要证明第一条。</p>
+<p>首先取 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(l(w)=\mathrm{dp}(\alpha)\)</span> 且 <span class="math inline">\(w\alpha\in\Phi^-\)</span>。</p>
+<ol type="1">
+<li><p>如果 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，则
+<span class="math inline">\(l(ws)&lt;l(w)\)</span>，并且 <span class="math inline">\(ws\)</span> 满足 <span class="math inline">\((ws)(s\alpha)&lt;0\)</span>，所以 <span class="math inline">\(\mathrm{dp}(s\alpha)\leq
+l(ws)=l(w)-1\)</span>，从而 <span class="math inline">\(\mathrm{dp}(s\alpha)=l(w)-1\)</span>。</p></li>
+<li><p>如果 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>，则
+<span class="math inline">\(w(s\alpha)\)</span> 是负根，并且 <span class="math display">\[\begin{align*}
+w(s\alpha)&amp;=w(\alpha - 2(\alpha,\alpha_s)\alpha_s)\\
+&amp;=w\alpha-cw\alpha_s (c&gt;0)
+\end{align*}\]</span> 由于 <span class="math inline">\(\alpha\ne\alpha_s\)</span>
+是不同的正根，所以它们不共线，从而 <span class="math inline">\(w\alpha\)</span> 和 <span class="math inline">\(w\alpha_s\)</span>
+也不共线，于是上式是两个不共线的负根的和，所以任何单反射不能将 <span class="math inline">\(w(s\alpha)\)</span> 变成正根。取 <span class="math inline">\(t\in S\)</span> 使得 <span class="math inline">\(l(tw)&lt;l(w)\)</span>，则 <span class="math inline">\((tw)(s\alpha)\)</span> 仍然是负根，所以 <span class="math inline">\(\mathrm{dp}(s\alpha)\leq
+l(tw)=l(w)-1\)</span>，结论仍然得证。</p></li>
+</ol>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+0.5</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha\preceq\beta\)</span>，则存在序列 <span class="math display">\[\alpha=\alpha_0\preceq\alpha_1\preceq\cdots\preceq\alpha_k=\beta\]</span>
+使得对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(\mathrm{dp}(\alpha_{i+1})=\mathrm{dp}(\alpha_i)+1\)</span>。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(w=s_k\cdots
+s_1\)</span> 满足 <span class="math inline">\(\beta=w\alpha\)</span> 且
+<span class="math inline">\(l(w)=\mathrm{dp}(\beta)-\mathrm{dp}(\alpha)\)</span>，考虑
+<span class="math inline">\(\alpha_i=s_i\cdots s_1\alpha\)</span>，其中
+<span class="math inline">\(\alpha_0=\alpha\)</span>，<span class="math inline">\(\alpha_k=\beta\)</span>。从 <span class="math inline">\(\alpha_0\)</span> 到 <span class="math inline">\(\alpha_k\)</span> 经过了 <span class="math inline">\(k=l(w)\)</span> 次单反射，depth 增加了 <span class="math inline">\(l(w)\)</span>，但上面的引理告诉我们每次单反射
+depth 至多增加 1，所以只能是每一项的 depth 都比前一项增加了
+1，即得结论。</p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+0.6</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha\preceq\beta\)</span>，且 <span class="math inline">\(\alpha=\sum c_s\alpha_s,\, \beta=\sum
+d_s\alpha_s\)</span>，则对每个 <span class="math inline">\(s\)</span> 有
+<span class="math inline">\(c_s\leq d_s\)</span>。</p>
+</div>
+<p><strong>证明</strong>：若 <span class="math inline">\(\beta=s\alpha\)</span> 则 <span class="math inline">\(\alpha,\beta\)</span> 只有在 <span class="math inline">\(\alpha_s\)</span> 项的系数不同。又 <span class="math inline">\((\alpha,\alpha_s)&lt;0\)</span> 所以 <span class="math inline">\(d_s&gt;c_s\)</span> 得证。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+0.7</span>.</span><span class="statement-spah"> </span>对 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span>，如果对任何 <span class="math inline">\(w\in W\)</span> 都有 <span class="math inline">\(w\alpha\in\Phi^-\Rightarrow
+w\beta\in\Phi^-\)</span>，我们就称 <span class="math inline">\(\alpha\)</span> 支配 <span class="math inline">\(\beta\)</span>，记作 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>。</p>
+</div>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+0.8</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 且 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>，则：</p>
+<ol type="1">
+<li><span class="math inline">\((\alpha,\beta)&gt;0\)</span>。</li>
+<li>若 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w\beta\)</span> 是正根，则 <span class="math inline">\(w\alpha\,\mathrm{dom}\,w\beta\)</span>。</li>
+<li>若 <span class="math inline">\(\alpha\prec\alpha'\)</span> 则
+<span class="math inline">\(\alpha'\)</span>
+不是极小根。换句话说，若一个根是极小根，则在偏序 <span class="math inline">\(\preceq\)</span> 下小于它的根也都是极小根。</li>
+<li><span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(\beta)\)</span>，等号当且仅当
+<span class="math inline">\(\alpha=\beta\)</span> 时成立。</li>
+</ol>
+</div>
+<p><strong>证明</strong>：</p>
+<ol type="1">
+<li><p><span class="math inline">\(r_\alpha\)</span> 满足 <span class="math inline">\(r_\alpha\alpha=-\alpha\in\Phi^-\)</span>，所以
+<span class="math inline">\(r_\alpha\beta=\beta-2(\alpha,\beta)\alpha&lt;0\)</span>，这必须
+<span class="math inline">\((\alpha,\beta)&gt;0\)</span> 才行。</p></li>
+<li><p>显然。</p></li>
+<li><p>只要对 <span class="math inline">\(\mathrm{dp}(\alpha')=\mathrm{dp}(\alpha)+1\)</span>
+进行证明即可。这时存在单反射 <span class="math inline">\(s\)</span> 使得
+<span class="math inline">\(\alpha'=s\alpha\)</span>，并且 <span class="math inline">\((\alpha_s,\alpha)&lt;0\)</span>。根据 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 和 <span class="math inline">\((\alpha,\beta)&gt;0\)</span> 说明 <span class="math inline">\(\beta\ne\alpha_s\)</span>，从而 <span class="math inline">\(s\beta\)</span> 是正根，从而 <span class="math inline">\(\alpha'=s\alpha\,\mathrm{dom}\,s\beta\)</span>
+不是极小根。</p></li>
+<li><p><span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>
+显然意味着 <span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(\beta)\)</span>。设
+<span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w\alpha=-\alpha_s\)</span> 是某个负的单根，则
+<span class="math inline">\(w\beta\in\Phi^-\)</span>。注意这时 <span class="math inline">\(w^{-1}\alpha_s=-\alpha&lt;0\)</span>，所以 <span class="math inline">\(l(sw)&lt;l(w)\)</span>。</p>
+<ul>
+<li><p>若 <span class="math inline">\(sw\beta\in\Phi^+\)</span>，则由
+<span class="math inline">\(w\beta&lt;0\)</span> 可知 <span class="math inline">\(w\beta=-\alpha_s\)</span>，再结合 <span class="math inline">\(w\alpha=-\alpha_s\)</span> 可得 <span class="math inline">\(\alpha=\beta\)</span>。</p></li>
+<li><p>若 <span class="math inline">\(sw\beta\in\Phi^-\)</span>，则
+<span class="math inline">\(\mathrm{dp}(\beta)\leq
+l(sw)&lt;\mathrm{dp}(\alpha)\)</span>。</p></li>
+</ul></li>
+</ol>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+0.9</span>.</span><span class="statement-spah"> </span>在有限 Coxeter
+群中，所有根都是极小根。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(w_0\)</span>
+是最长元，则 <span class="math inline">\(\alpha\to -w_0(\alpha)\)</span>
+置换 <span class="math inline">\(\Phi^+\)</span>。我们来验证这个置换保持每个正根的深度不变：若
+<span class="math inline">\(w\alpha&lt;0\)</span>，则 <span class="math inline">\(w_0w\alpha&gt;0\)</span>，从而 <span class="math inline">\((w_0ww_0)-w_0\alpha&lt;0\)</span>，这说明 <span class="math inline">\(\mathrm{dp}(-w_0\alpha)\geq
+l(w_0ww_0)=l(w)\)</span>。对 <span class="math inline">\(-w_0\alpha\)</span> 应用此结论可得 <span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(-w_0\alpha)\)</span>。从而二者相等。</p>
+<p>另一方面我们来验证它翻转 <span class="math inline">\(\,\mathrm{dom}\,\)</span> 这个偏序：若 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>，则 <span class="math display">\[\begin{align*}
+w\alpha&lt;0&amp;\Rightarrow w\beta&lt;0\\
+&amp;\Downarrow\\
+w\beta &gt; 0&amp;\Rightarrow w\alpha&gt;0\\
+&amp;\Downarrow\\
+ww_0\beta &gt; 0&amp;\Rightarrow ww_0\alpha&gt;0\\
+&amp;\Downarrow\\
+w(-w_0\beta) &lt; 0&amp;\Rightarrow w(-w_0\alpha)&lt;0\\
+\end{align*}\]</span> 即确实有 <span class="math inline">\(-w_0\beta\,\mathrm{dom}\,-w_0\alpha\)</span>。</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+0.10</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 的充要条件是
+<span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(\beta)\)</span>
+且 <span class="math inline">\((\alpha,\beta)\geq1\)</span>。</p>
+</div>
+<p><strong>证明</strong>：我们只考虑 <span class="math inline">\(\alpha\ne\beta\)</span> 的情形即可。</p>
+<p><span class="math inline">\(\Rightarrow\)</span>：只要再证明 <span class="math inline">\((\alpha,\beta)\geq1\)</span>。用反证法，若不然，则
+<span class="math inline">\(0&lt;(\alpha,\beta)&lt;1\)</span>，从而
+<span class="math inline">\(r_\alpha,r_\beta\)</span>
+生成一个有限二面体群 <span class="math inline">\(D\)</span>。由于在有限群中没有支配关系，所以存在
+<span class="math inline">\(w\in D\)</span> 使得 <span class="math inline">\(w\alpha\in\Phi^-,\,w\beta\in\Phi^+\)</span>。这与
+<span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>
+矛盾。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：我们先考虑 <span class="math inline">\(\beta=\alpha_s\)</span> 是一个单根的情形。由于
+<span class="math inline">\(\alpha\ne\beta\)</span> 所以 <span class="math inline">\(s\alpha\)</span> 仍然是正根。我们发现 <span class="math display">\[(\alpha,s\alpha)=(\alpha,\alpha-2(\alpha,\alpha_s)\alpha_s)=1-2(\alpha,\alpha_s)^2\leq
+-1.\]</span> 所以有无穷多个形如 <span class="math inline">\(a\alpha+b\alpha_s\)</span> 的正根，其中 <span class="math inline">\(a,b&gt;0\)</span>。</p>
+<p>用反证法，如果 <span class="math inline">\(\alpha\)</span> 不支配
+<span class="math inline">\(\beta=\alpha_s\)</span>，则存在 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w\alpha\in\Phi^-\)</span> 但 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>。由于 <span class="math display">\[w(s\alpha)=w\alpha -
+2(\alpha,\alpha_s)w\alpha_s\]</span> 是负根 <span class="math inline">\(w\alpha\)</span> 减去正根 <span class="math inline">\(w\alpha_s\)</span>
+的一个正倍数，必然仍然是负根。于是 <span class="math inline">\(\{\alpha,s\alpha\}\subset
+N(w)\)</span>，从而所有形如 <span class="math inline">\(\{a\alpha+bs\alpha\mid a,b&gt;0\}\)</span>
+的根都在 <span class="math inline">\(N(w)\)</span> 中，这与 <span class="math inline">\(|N(w)|=l(w)&lt;\infty\)</span> 矛盾。</p>
+<p>对 <span class="math inline">\(\beta\)</span> 是一般正根的情形，取
+<span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w\beta\in\Delta\)</span>，<span class="math inline">\(l(w)=\mathrm{dp}(\beta)-1\)</span>。由于 <span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(\beta)\)</span>
+所以 <span class="math inline">\(w\alpha\)</span> 仍然是正根，当然就有
+<span class="math inline">\(\mathrm{dp}(w\alpha)\geq\mathrm{dp}(w\beta)=1\)</span>
+和 <span class="math inline">\((w\alpha,w\beta)=(\alpha,\beta)\geq1\)</span>。根据上面的证明，<span class="math inline">\(w\alpha\,\mathrm{dom}\,w\beta\)</span>，所以 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>。</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+0.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\lambda,\mu\)</span> 是正根，且 <span class="math inline">\(s_\lambda,s_\mu\)</span>
+生成一个无限群，则下面三种情况必居其一：</p>
+<ol type="1">
+<li><span class="math inline">\(\lambda\,\mathrm{dom}\,\mu\)</span>.</li>
+<li><span class="math inline">\(\mu\,\mathrm{dom}\,\lambda\)</span>.</li>
+<li><span class="math inline">\(s_\mu\lambda\,\mathrm{dom}\,\mu\)</span>
+且 <span class="math inline">\(s_\lambda\mu\,\mathrm{dom}\,\lambda\)</span>.</li>
+</ol>
+</div>
+<p><strong>证明</strong>：<span class="math inline">\(s_\lambda,s_\mu\)</span> 生成一个无限群说明 <span class="math inline">\(|(\lambda,\mu)|\geq1\)</span>。如果 <span class="math inline">\((\lambda,\mu)\geq1\)</span> 那么 <span class="math inline">\(\lambda,\mu\)</span> 中 depth
+更大的那一个支配另一个。</p>
+<p>如果 <span class="math inline">\((\lambda,\mu)\leq-1\)</span>
+我们来证明 <span class="math inline">\(s_\mu\lambda\,\mathrm{dom}\,\mu\)</span>，<span class="math inline">\(s_\lambda\mu\,\mathrm{dom}\,\lambda\)</span>
+的论证是一样的。注意到这时 <span class="math inline">\((s_\mu\lambda,
+\mu)=-(\lambda,\mu)\geq1\)</span>，所以只要再证明 <span class="math inline">\(\mathrm{dp}(s_\mu\lambda)\geq
+\mathrm{dp}(\mu)\)</span> 即可。</p>
+<p>设 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w(s_\mu\lambda)&lt;0\)</span> 且 <span class="math inline">\(l(w)=\mathrm{dp}(s_\mu\lambda)\)</span>，我们来证明必有一个长度
+<span class="math inline">\(l(w')\leq l(w)\)</span> 的元素 <span class="math inline">\(w'\)</span> 使得 <span class="math inline">\(w'\mu&lt;0\)</span>，从而 <span class="math inline">\(\mathrm{dp}(s_\mu\lambda)\geq
+\mathrm{dp}(\mu)\)</span>。</p>
+<p>首先若 <span class="math inline">\(w\mu&lt;0\)</span> 则可以取 <span class="math inline">\(w'=w\)</span>。否则若 <span class="math inline">\(w\mu&gt;0\)</span>，我们来计算 <span class="math display">\[w(s_\mu\lambda)=w\lambda-2(\mu,\lambda)w\mu.\]</span>
+我们知道这是一个负根，而且它是 <span class="math inline">\(w\lambda\)</span> 加上正根 <span class="math inline">\(w\mu\)</span> 的正倍数，所以必须 <span class="math inline">\(w\lambda&lt;0\)</span>，从而 <span class="math inline">\(l(ws_\lambda)&lt;l(w)\)</span>。</p>
+<p>进一步我们计算 <span class="math display">\[(ws_\lambda)\mu=w\mu-2(\mu,\lambda)w\lambda.\]</span>
+我们来证明 <span class="math inline">\((ws_\lambda)\mu\)</span>
+是一个负根，从而 <span class="math inline">\(\mathrm{dp}(\mu)\leq
+l(ws_\lambda)&lt;l(w)=\mathrm{dp}(s_\mu\lambda)\)</span>。</p>
+<p>若不然，记 <span class="math inline">\(c=-2(\mu,\lambda)\geq2\)</span>，若 <span class="math inline">\((ws_\lambda)\mu=w\mu+cw\lambda&gt;0\)</span>，乘以
+<span class="math inline">\(c\)</span> 得到 <span class="math inline">\(cw\mu+c^2w\lambda\)</span>
+是正根的非负线性组合（未必还是根），根据上面 <span class="math inline">\(w\lambda+cw\mu&lt;0\)</span>，减去后者得到 <span class="math inline">\((c^2-1)w\lambda\)</span> 是正根的非负线性组合，但
+<span class="math inline">\(c^2-1\geq 3\)</span>，这与 <span class="math inline">\(w\lambda&lt;0\)</span> 矛盾。</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+0.12</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 满足 <span class="math inline">\(\beta\preceq\alpha\)</span>，并且 <span class="math inline">\(\alpha\)</span> 是极小根。进一步设 <span class="math inline">\(\alpha_s\in\Delta\)</span> 满足 <span class="math inline">\((\beta,\alpha_s)\leq-1\)</span>，则 <span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(\beta\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项的系数相等。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(\beta\preceq\gamma\preceq\alpha\)</span> 使得
+<span class="math inline">\(\gamma\)</span> 是偏序 <span class="math inline">\(\preceq\)</span> 下最大的与 <span class="math inline">\(\beta\)</span> 有相同的 <span class="math inline">\(\alpha_s\)</span> 项系数。如果 <span class="math inline">\(\gamma\ne\alpha\)</span>，则存在 <span class="math inline">\(t\)</span> 使得 <span class="math inline">\(\gamma\prec t\gamma\preceq\alpha\)</span>。由
+<span class="math inline">\(\gamma\)</span> 的极大性可得 <span class="math inline">\(s=t\)</span>。</p>
+<p>但是 <span class="math inline">\(\gamma-\beta=\sum_{t\ne
+s}c_t\alpha_t\)</span>，且每个 <span class="math inline">\(c_t\geq0\)</span>。因此 <span class="math display">\[(s\gamma,
+\alpha_s)=(\gamma,-\alpha_s)=-(\beta,\alpha_s)-\sum_{t\ne
+r}c_t(\alpha_t,\alpha_s)\geq1.\]</span> 于是 <span class="math inline">\(s\gamma\,\mathrm{dom}\,\alpha_s\)</span>
+不是极小根，从而 <span class="math inline">\(\alpha\succeq
+s\gamma\)</span> 也不是极小根。矛盾！所以 <span class="math inline">\(\gamma=\alpha\)</span>，从而命题得证。</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+0.13</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi\)</span> 满足 <span class="math inline">\(|(\alpha,\beta)|\leq 1\)</span>，则这样的 <span class="math inline">\((\alpha,\beta)\)</span> 只有有限多个值。</p>
+</div>
+<p><strong>证明</strong>：若 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span> 则 <span class="math inline">\(r_\alpha,r_\beta\)</span> 生成的子群 <span class="math inline">\(D\)</span> 是有限的，所以存在 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(wDw^{-1}\)</span> 属于某个有限的标准椭圆子群 <span class="math inline">\(W_J\)</span>，特别地，<span class="math inline">\(r_\alpha r_\beta\)</span> 的阶 <span class="math inline">\(m\)</span> 应该整除 <span class="math inline">\(W_J\)</span> 的阶，从而 <span class="math inline">\((\alpha,\beta)\)</span> 形如 <span class="math inline">\(\cos(a\pi/m)\)</span>，其中 <span class="math inline">\(0\leq a\leq 2m\)</span> 而且 <span class="math inline">\(m\)</span>
+是某个有限标准椭圆子群的阶的因子。由于这样的子群是有限的，所以这样的
+<span class="math inline">\(\cos\)</span> 值也是有限的。</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+0.14</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha=\sum a_s\alpha_s\)</span> 和 <span class="math inline">\(\beta=\sum b_s\alpha_s\)</span> 都是正根。进一步设
+<span class="math inline">\(S=I\cup J\)</span> 使得</p>
+<ol type="1">
+<li>对任何 <span class="math inline">\(t\in I\)</span> 有 <span class="math inline">\((\alpha,\alpha_t)=(\beta,\beta_t)\)</span>。</li>
+<li><span class="math inline">\(c_t=b_t\)</span> 对任何 <span class="math inline">\(t\in J\)</span> 成立。</li>
+</ol>
+<p>则 <span class="math inline">\((\alpha,\beta)=1\)</span>。</p>
+</div>
+<p>注意这里 <span class="math inline">\(I\)</span> 或者 <span class="math inline">\(J\)</span> 允许有一个是空集。</p>
+<p><strong>证明</strong>：我们有 <span class="math inline">\(\alpha-\beta=\sum_{s\in
+I}(a_s-b_s)\alpha_s\)</span>，所以 <span class="math display">\[(\alpha,\alpha-\beta)=\sum_{s\in
+I}(a_s-b_s)(\alpha,\alpha_s)=\sum_{s\in
+I}(a_s-b_s)(\beta,\alpha_s)=(\beta,\alpha-\beta).\]</span> 即 <span class="math inline">\((\alpha,\beta)=1\)</span>。</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+0.15</span>.</span><span class="statement-spah">
+</span>极小根集合是有限的。</p>
+</div>
+<p><strong>证明</strong>：我们来证明极小根的深度是有上界的。设 <span class="math inline">\(\beta\)</span> 是一个深度为 <span class="math inline">\(d\)</span> 的极小根，<span class="math inline">\(\beta_1\prec\cdots\prec\beta_d=\beta\)</span>
+是一个序列满足 <span class="math inline">\(\mathrm{dp}(\beta_i)=i\)</span>，则每个 <span class="math inline">\(\beta_i\)</span> 都是极小根。</p>
+<p>记 <span class="math inline">\(J_i=\{\gamma\in\Delta \mid (\gamma,
+\beta_i)\geq-1\}\)</span>。我们来证明 <span class="math inline">\(\{J_i,1\leq i\leq d\}\)</span>
+是递降的，并且最终会降为空集。</p>
+<p>对 <span class="math inline">\(1\leq i\leq d\)</span>，若 <span class="math inline">\(\gamma\notin J_i\)</span>，则 <span class="math inline">\(\gamma\)</span> 在所有 <span class="math inline">\(\beta_j(j\geq i)\)</span> 中的系数都相同。</p>
+<p>设 <span class="math inline">\(\beta_i=\sum c_s\alpha_s,\,
+\beta_j=\sum d_s\alpha_s\)</span>，则 <span class="math inline">\(0\leq
+c_s\leq d_s\)</span> 且 <span class="math inline">\(c_\gamma=d_\gamma\)</span>。注意到 <span class="math inline">\((\beta_j,\gamma)=\sum_{s\in\Delta}d_s(\alpha_s,
+\gamma)\leq \sum_{s\in\Delta}c_s(\alpha_s, \gamma)=(\beta_i,
+\gamma)&lt;-1\)</span>。所以 <span class="math inline">\(\gamma\not\in
+J_j\)</span>。即 <span class="math inline">\(\{J_i\}\)</span>
+确实是递降的。</p>
+<p>设 <span class="math inline">\(J_i=\cdots=J_i=J\)</span> 对某个 <span class="math inline">\(i&lt;j\)</span> 成立。对任何 <span class="math inline">\(\gamma\in J\)</span> 和 <span class="math inline">\(i\leq k\leq j\)</span>，由于 <span class="math inline">\(\beta_k\)</span> 不能支配 <span class="math inline">\(\gamma\)</span>，所以 <span class="math inline">\(-1\leq (\beta,\gamma)\leq 1\)</span>，等于 1
+当且仅当 <span class="math inline">\(\beta=\gamma\)</span>。于是 <span class="math inline">\((\beta_k,\gamma)\in\mathcal{C}(S)\)</span>。于是如果
+<span class="math inline">\(j-i&gt;|\mathcal{C}(S)|^{|S|}\)</span>
+那么必然存在 <span class="math inline">\(i\leq m &lt; n\leq j\)</span>
+使得 <span class="math inline">\((\beta_m, J)=(\beta_n,
+J)\)</span>。（鸽笼原理，<span class="math inline">\(\beta\)</span>
+和一个单根的内积有 <span class="math inline">\(|c|\)</span>
+种不同的可能值，和所有单根的内积共有 <span class="math inline">\(c^{|S|}\)</span> 种不同的可能值）。</p>
+<p>但是如果 <span class="math inline">\(\gamma\not\in J\)</span>，则
+<span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(\beta_m,\beta_n\)</span>
+中的系数相同，所以根据前面的引理 <span class="math inline">\((\beta_m,\beta_n)=1\)</span>，但这导致 <span class="math inline">\(\beta_n \,\mathrm{dom}\,\beta_m\)</span>，所以如果
+<span class="math inline">\(j-i&gt;c^{|S|}\)</span> 时 <span class="math inline">\(J_j\)</span> 必须比 <span class="math inline">\(J_i\)</span> 严格地小，所以整个链的长度有限，即
+<span class="math inline">\(d\)</span> 有限。</p>
+<blockquote>
+<p><strong>引理</strong>：设 <span class="math inline">\(\gamma\)</span>
+不是极小根，<span class="math inline">\(u,v\in W\)</span> 使得 <span class="math inline">\(u\gamma, v^{-1}\gamma\)</span> 都是单根，则 <span class="math inline">\(l(uv)\ne l(u)+l(v)\)</span>。</p>
+</blockquote>
+<p>证明：设 <span class="math inline">\(u\gamma=\alpha_s,v^{-1}\gamma=\alpha_t\)</span>，则
+<span class="math inline">\(\gamma\in N(su)\cap
+N(tv^{-1})\)</span>。又设 <span class="math inline">\(\gamma\,\mathrm{dom}\,\beta\)</span>，则 <span class="math inline">\(\beta\in N(su)\cap N(tv^{-1})\)</span>。但是 <span class="math inline">\(u\beta\ne u\gamma=\alpha_s\)</span>，所以 <span class="math inline">\(su\beta\in\Phi^-\)</span> 说明 <span class="math inline">\(u\beta\in\Phi^-\)</span>。同理 <span class="math inline">\(v^{-1}\beta\in\Phi^-\)</span>，所以 <span class="math inline">\(N(u)\cap N(v^{-1})\)</span>
+非空，所以引理得证。</p>
+<hr>
+<p>设 <span class="math inline">\(\Sigma\)</span>
+是所有极小根组成的集合，则 <span class="math inline">\(|\Sigma|&lt;\infty\)</span> 是有限集。</p>
+<p>定义状态机如下：</p>
+<p>一个状态 <span class="math inline">\(S_i\subset\Sigma\)</span>
+是极小根的子集。转移 <span class="math inline">\(S_i\xrightarrow{s}S_{i+1}\)</span> 为：</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(s\in S_i\)</span> 则 <span class="math inline">\(S_i\xrightarrow{s}\mathrm{NO}\)</span>。</li>
+<li>如果 <span class="math inline">\(s\notin S_i\)</span> 则 <span class="math inline">\(S_i\xrightarrow{s} (sS_i\cup \{\alpha_s\}\cup
+\{s\alpha_t,t&lt;s\})\cap\Sigma\)</span>。</li>
+</ol>
+<p>我们来证明这个状态机识别语言 <span class="math inline">\(\mathcal{L}\)</span>。</p>
+<p>为方便我们记 <span class="math inline">\(\mathcal{R}_i=\{\alpha_s\in\Delta,
+s&lt;i\}\)</span> 是那些字典序下小于 <span class="math inline">\(\alpha_i\)</span> 的单根组成的集合。</p>
+<p>假设 <span class="math inline">\(s_1\cdots s_l\in
+\mathcal{L}\)</span>，但是 <span class="math inline">\(s_1\cdots
+s_{l+1}\notin \mathcal{L}\)</span> 当且仅当 <span class="math inline">\(\alpha_{l+1}\in S_l\)</span>。其中 <span class="math inline">\(S_i\subset\Sigma\)</span> 是状态机读入 <span class="math inline">\(s_i\)</span> 以后的状态。</p>
+<p>我们来证明对任何 <span class="math inline">\(k\leq l\)</span> 有
+<span class="math display">\[S_k\subset\{(s_k\cdots s_{i+1})\alpha_i\mid
+1\leq i\leq l\}\cup\cup_{i=1}^{k}(s_k\cdots
+s_i)\cdot\mathcal{R}_i.\]</span> 首先 <span class="math inline">\(k=1\)</span> 时 <span class="math inline">\(S_1=\{\alpha_1\}\)</span>，</p>
+<p>由于下一步读入 <span class="math inline">\(s_{l+1}\)</span>
+的时候是拒绝态，所以 <span class="math inline">\(\alpha_{l+1}\)</span>
+也属于上面的集合。</p>
+<ul>
+<li><p>如果 <span class="math inline">\(\alpha_{l+1}\in \{(s_l\cdots
+s_{i+1})\alpha_i\mid 1\leq i\leq l\}\)</span>，则 <span class="math inline">\(s_1\cdots s_ls_{l+1}\)</span> 不是既约的，所以不在
+<span class="math inline">\(\mathcal{L}\)</span> 中。</p></li>
+<li><p>如果 <span class="math inline">\(\alpha_{l+1}\notin \{(s_l\cdots
+s_{i+1})\alpha_i\mid 1\leq i\leq l\}\)</span>，则 <span class="math inline">\(s_1\cdots s_ls_{l+1}\)</span> 是既约的，但是 <span class="math inline">\(\alpha_{l+1}\)</span> 形如 <span class="math inline">\(s_l\cdots s_{i}\alpha_r(r&lt;i)\)</span>，所以
+<span class="math inline">\(s_1\cdots
+s_{l+1}\notin\mathcal{L}\)</span>。</p></li>
+</ul>
+<p>反之，我们要证明如果 <span class="math inline">\(\mathcal{L}\)</span>
+拒绝一个字 <span class="math inline">\(w=s_1\cdots s_n\)</span>，设
+<span class="math inline">\(l\)</span> 是使得 <span class="math inline">\(\mathcal{L}\)</span> 接受 <span class="math inline">\(w\)</span> 的最大位置，则必有 <span class="math inline">\(\alpha_{l+1}\in S_l\)</span>。用反证法，设 <span class="math inline">\(\alpha_{l+1}\notin S_l\)</span>。</p>
+<ul>
+<li><p>如果 <span class="math inline">\(s_1\cdots s_{l+1}\)</span>
+不是既约的，则存在 <span class="math inline">\(1\leq i\leq l\)</span>
+使得 <span class="math inline">\(\alpha_{l+1}=s_l\cdots
+s_{i+1}\alpha_i\)</span>。于是 <span class="math inline">\(l\)</span>
+在集合 <span class="math inline">\(\{i\leq k\leq l \mid (s_k\cdots
+s_{i+1})\alpha_i\notin S_k\}\)</span> 中。设 <span class="math inline">\(j\)</span> 是此集合的最小元素，<span class="math inline">\(\beta=s_j\cdots s_{i+1}\alpha_i\)</span>。由于
+<span class="math inline">\(\alpha_i\in S_i\)</span>，所以 <span class="math inline">\(j&gt;i\)</span>。于是 <span class="math inline">\(s_{j-1}\cdots s_{i+1}\alpha_i\in
+S_{j-1}\)</span>，<span class="math inline">\(\beta\in
+s_jS_{j-1}\)</span>。由于 <span class="math inline">\(s_j\cdot
+S_{j-1}\cap\Sigma\subset S_j\)</span> 这说明 <span class="math inline">\(\beta\)</span> 不是极小根。注意到 <span class="math inline">\((s_{i+1}\cdots s_j)\beta=\alpha_i\)</span> 和
+<span class="math inline">\((s_{j+1}\cdots
+s_l)^{-1}\beta=\alpha_{l+1}\)</span>，根据上面的引理 <span class="math inline">\(l(s_{r+1}\cdots s_l)\ne l-i\)</span>，这与 <span class="math inline">\(s_1\cdots s_l\in\mathcal{L}\)</span> 矛盾，所以
+<span class="math inline">\(\alpha_{l+1}\in S_l\)</span>。</p></li>
+<li><p>如果 <span class="math inline">\(s_1\cdots s_{l+1}\)</span>
+既约但不属于 <span class="math inline">\(\mathcal{L}\)</span>，则 <span class="math inline">\(\alpha_{l+1}=(s_l\cdots
+s_{i+1})\alpha_s(s&lt;i)\)</span>。设 <span class="math inline">\(i\leq
+j\leq l\)</span> 使得 <span class="math inline">\(\beta=(s_js_{j-1}\cdots s_i)\alpha_s\notin
+S_j\)</span>。如果 <span class="math inline">\(j\ne i\)</span>，则由于
+<span class="math inline">\(\{s_i\alpha_r\mid r&lt;i\}\cap\Sigma\subset
+S_i\)</span> 这说明 <span class="math inline">\(\beta\)</span>
+不是极小根。若 <span class="math inline">\(j&gt;i\)</span> 同样可得
+<span class="math inline">\(\beta\)</span>
+不是极小根。于是根据上面同样的论证得出矛盾。</p></li>
+</ul>
+
+
+
+                                                    
+
+    
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

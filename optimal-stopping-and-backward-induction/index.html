@@ -1,0 +1,814 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            相亲问题与倒向归纳法 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="问题： 假设你是一位大龄男士，准备参加 100 场相亲
+（别介意具体数字）。你打算依次与每个女士 \(i\) 约会，然后根据印象给她打一个分数 \(X_i\)，\(X_i\) 的值介于 \([0,1]\) 之间。如果你对女士 \(i\)
+很满意，那么就和她结婚，否则就放弃她，参加下一场相亲，当然拒绝了人家可就没有回头的机会了。如果你拒绝了前
+99 位女士，那么不论第 100
+次相亲结果如何你都只能和最后这位女士结婚。在相亲之前，你对这些女士的情况一无所知，所以姑且假定她们的分数
+\(X_i\) 都是 \([0,1]\)
+上均匀分布的独立的随机变量。问题是：应该采取怎样的相亲策略，才能娶到你最中意的女士？">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="相亲问题与倒向归纳法"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Williams-概率和鞅/">Williams 概率和鞅</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>相亲问题与倒向归纳法</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2012-07-08T16:00:00.000Z"><a href="/optimal-stopping-and-backward-induction/">2012-07-09</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%80%92%E5%90%91%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="section table-of-contents-text">倒向归纳法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BF%BB%E8%AF%91%E4%B8%BA%E9%9E%85%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="section table-of-contents-text">翻译为鞅的语言</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>假设你是一位大龄男士，准备参加 100 场相亲
+（别介意具体数字）。你打算依次与每个女士 <span class="math inline">\(i\)</span> 约会，然后根据印象给她打一个分数 <span class="math inline">\(X_i\)</span>，<span class="math inline">\(X_i\)</span> 的值介于 <span class="math inline">\([0,1]\)</span> 之间。如果你对女士 <span class="math inline">\(i\)</span>
+很满意，那么就和她结婚，否则就放弃她，参加下一场相亲，当然拒绝了人家可就没有回头的机会了。如果你拒绝了前
+99 位女士，那么不论第 100
+次相亲结果如何你都只能和最后这位女士结婚。在相亲之前，你对这些女士的情况一无所知，所以姑且假定她们的分数
+<span class="math inline">\(X_i\)</span> 都是 <span class="math inline">\([0,1]\)</span>
+上均匀分布的独立的随机变量。问题是：应该采取怎样的相亲策略，才能娶到你最中意的女士？</p>
+</div>
+<span id="more"></span>
+<p>再费点笔墨解释下。每次相亲结束以后，你可以选择和当前的女士结婚，或者继续见下一位女士，这依赖于你已经相亲的结果：如果你挑挑拣拣到了
+90
+号女士还拿不定主意，最后发现「糟了，我快要变剩男了！」，那很可能接下来你就会放低择偶标准，遇到一个还凑合的就结婚了，即使她比你前面拒绝过的很多女士都有不如。当然也不排除你对第一位女士就一见钟情的可能，因此你最终选择的女士的编号
+<span class="math inline">\(\tau\)</span>
+是一个随机变量，你要做的就是让你的未来太太的期望分数 <span class="math inline">\(\mathbb{E}X_\tau\)</span> 尽可能的高。</p>
+<p>那么应该采取怎样的策略为好呢？就像买东西讨价还价时总有一个心理价位一样，似乎可以先设定一个心理的期望值，如果遇到的女士的分数大于等于这个值，那就和她结婚；否则就继续下一位女士。这个思路很合理，但是问题是，期望值应该设定为多少呢？</p>
+<p>在概率论里面我们学过如下关于顺序统计量的经典结论：设 <span class="math inline">\(X_1,\cdots,X_N\)</span> 是 <span class="math inline">\([0,1]\)</span> 上独立同分布的均匀随机变量，则
+<span class="math inline">\(Y=\max_{1\leq i\leq N}X_i\)</span> 的期望是
+<span class="math inline">\(\frac{N}{N+1}\)</span>。所以如果你把 100
+次相亲全部进行完，得分最高的女士的期望值理论上应该是 <span class="math inline">\(\frac{100}{101}\)</span>，于是你应该把心理门槛设置在
+<span class="math inline">\(\frac{100}{101}\)</span>，是这样吗？</p>
+<p>答案是
+NO！首先门槛值应该是一个随着相亲的进行而逐渐降低的数列，这才符合实际的情形：如果前面太挑剔，为了不当剩男你后面的标准就会放低。其次我们会用倒向归纳法计算出最优策略下初始的门槛值并不是最中意的女士的期望值
+<span class="math inline">\(\frac{100}{101}\)</span>，实际上它更接近于得分第二高的女士的期望值
+<span class="math inline">\(\frac{99}{101}\)</span>。正如梅艳芳在《似是故人来》中唱的那样：「但凡未得到，但凡是过去，总是最登对」
+— 得不到的才是最好的。</p>
+<h1 id="倒向归纳法">倒向归纳法</h1>
+<p>相亲问题是应用倒向归纳法的一个典型例子。</p>
+<p>我们从最后的情形开始分析，假设只剩一位女士可选，那么你只能去和她结婚，而她的期望值是
+1/2，我们记作 <span class="math inline">\(a_1=1/2\)</span>。</p>
+<p>假设还剩两位女士可选呢？这种情况下应该先和其中一个相亲，如果她的分数大于等于
+1/2，那就应该和她结婚 （后者的期望只有 1/2，很可能不如她），而小于 1/2
+的话则去和第二位女士相亲 （后者的期望是
+1/2，所以我没道理现在娶一个分数小于 1/2 的）。而第一位女士分数大于等于
+1/2 的概率是 1/2，在大于等于 1/2 的条件下她的分数服从 <span class="math inline">\([1/2,1]\)</span> 上的均匀分布，期望值是
+3/4；第二位女士的期望分数就是 1/2。所以你以 1/2 的概率娶到一个期望值为
+3/4 的女士，以 1/2 的概率娶到一个期望值为 1/2
+的女士。因此有两位女士可选时这个策略的期望分数为 <span class="math display">\[a_2=\frac{1}{2}\cdot\frac{3}{4}+\frac{1}{2}\cdot\frac{1}{2}=\frac{5}{8}.\]</span></p>
+<p>一般地，假设还剩下 <span class="math inline">\(i\)</span>
+位女士的时候你的心理期望值是 <span class="math inline">\(a_i\)</span>，
+我们来导出 <span class="math inline">\(a_i\)</span> 和 <span class="math inline">\(a_{i+1}\)</span>
+之间的递推关系：首先和其中一位女士相亲，如果她的分数大于等于 <span class="math inline">\(a_i\)</span> 那么就和她结婚，否则就拒绝她
+（因为后面 <span class="math inline">\(i\)</span> 个人的心理期望是 <span class="math inline">\(a_i\)</span>，我没道理现在娶一个分数小于 <span class="math inline">\(a_i\)</span> 的）。前一种情形的期望是 <span class="math inline">\(\frac{1+a_i}{2}\)</span> 但是发生的概率是 <span class="math inline">\(1-a_i\)</span>，后一种情形的期望是 <span class="math inline">\(a_i\)</span> 发生的概率也是 <span class="math inline">\(a_i\)</span>，因此 <span class="math display">\[a_{i+1}=(1-a_i)\left(\frac{1+a_i}{2}\right)+a_i\cdot
+a_i=\frac{1+a_i^2}{2}.\]</span> 结合初值 <span class="math inline">\(a_1=\frac{1}{2}\)</span>
+就可以算出整个序列来，因此我们的相亲策略应该是：</p>
+<blockquote>
+<p>假设当前还剩 <span class="math inline">\(i\)</span>
+位女士。就把心里期望设定在 <span class="math inline">\(a_i\)</span>，然后进行一次相亲。如果相亲结果大于等于
+<span class="math inline">\(a_i\)</span>，那就和这位女士结婚；否则就把心里期望降低为
+<span class="math inline">\(a_{i-1}\)</span>，然后继续去见下一位女士。这里序列
+<span class="math inline">\(\{a_i\}\)</span> 由 <span class="math inline">\(a_1=1/2\)</span>，<span class="math inline">\(a_{i+1}=\frac{1+a_i^2}{2}\)</span> 给出。</p>
+</blockquote>
+<p>在这个策略下，你最终娶到的女士得分期望是 <span class="math inline">\(a_{100}\)</span>。</p>
+<p>序列 <span class="math inline">\((a_n)_{n\geq1}\)</span> 是所谓的
+Quadratic
+Map，它的通项公式是求不出来的，只能用计算机来算。不过可以用归纳法证明
+<span class="math inline">\(\frac{N-1}{N+1}&lt;a_{N}&lt;\frac{N-0.5}{N+1}\)</span>，即
+<span class="math inline">\(a_N\)</span> 的值更接近于次优女士的期望值
+<span class="math inline">\(\frac{N-1}{N+1}\)</span>。当 <span class="math inline">\(N=100\)</span> 时，<span class="math inline">\(a_{100}\approx0.981\)</span>，<span class="math inline">\(\frac{N-1}{N+1}\approx 0.98\)</span> 而 <span class="math inline">\(\frac{N}{N+1}=100/101\approx 0.99\)</span>，可见
+<span class="math inline">\(a_{100}\)</span> 与 <span class="math inline">\(\frac{N-1}{N+1}\)</span>
+更接近。这印证了之前说过的：和你结婚的往往不是你最中意的那个。</p>
+<p>请注意，虽然我们已经设计出了一个不错的策略，但这个策略到底是不是最优的呢？我们还没有严格证明。而且就算这个策略是最优的，是否只有这一种最优策略呢？没准还有其它最优策略能让你更省时省心地娶到好太太呢！要严格的解释这些，就要用到鞅的理论。</p>
+<h1 id="翻译为鞅的语言">翻译为鞅的语言</h1>
+<p>用鞅的语言重新表述上面的问题，会给人一种画风突变的感觉，看起来非常晦涩，不像是在说人话：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(N\)</span>
+是一个给定的正整数，<span class="math inline">\(\{\mathcal{F}_n\}_{n=0}^N\)</span>
+是某概率空间上的递增的 <span class="math inline">\(\sigma\)</span>-
+域流，<span class="math inline">\(\{X_n\}_{n=0}^N\)</span>
+是一列可积的随机变量且 <span class="math inline">\(X_k\in\mathcal{F}_k\)</span>。设 <span class="math inline">\(\mathcal{M}\)</span> 是所有满足 <span class="math inline">\(0\leq\tau\leq N\)</span> 的停时 <span class="math inline">\(\tau\)</span> 组成的集合。我们想求出值函数 <span class="math display">\[V= \sup_{\tau\in\mathcal{M}}
+\mathbb{E}X_\tau\]</span> 以及使得这个最大值取到的停时 <span class="math inline">\(\tau\)</span>。</p>
+</div>
+<p>这里我把下标改成了 从 0 开始到 <span class="math inline">\(N\)</span>，以符合大多数文献的习惯。<span class="math inline">\(\mathcal{F}_n=\{X_0,\ldots,X_n\}\)</span> 是前
+<span class="math inline">\(n+1\)</span> 位女士得分生成的 <span class="math inline">\(\sigma\)</span>- 域，它包含了所有你第 <span class="math inline">\(n+1\)</span> 次相亲后可能知道的信息。<span class="math inline">\(\mathcal{F}_n\)</span>
+显然是递增的。你的一个相亲策略对应一个停时 <span class="math inline">\(\tau\)</span>，所有停时构成的集合 <span class="math inline">\(\mathcal{M}\)</span> 就是你所有可能的策略。</p>
+<p>定义 <span class="math inline">\(\{X_n\}\)</span> 的 <strong>Snell
+包络</strong>为 <span class="math display">\[S_n=\begin{cases}X_N&amp;n=N,\\\max\{X_n,\,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}&amp;
+n=N-1,\ldots,0.\end{cases}\]</span> 这里的 <span class="math inline">\(S_n\)</span> 是从 <span class="math inline">\(N\)</span> 开始倒向递归定义的。注意 <span class="math inline">\(S_n\)</span> 关于 <span class="math inline">\(\mathcal{F}_n\)</span> 可测。</p>
+<p><span class="math inline">\(S_n\)</span>
+的直观意义很好理解，它就是在时刻 <span class="math inline">\(n\)</span>
+对当下女士的分数和后面所有女士期望分数的比较：如果和当前的女士 <span class="math inline">\(n\)</span> 结婚，那么分数就是 <span class="math inline">\(X_n\)</span>；否则继续前进到下一个时刻 <span class="math inline">\(n+1\)</span>，未来太太的期望分数就是 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>，二者取最大值
+<span class="math inline">\(\max\{X_n,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}\)</span>
+即为 <span class="math inline">\(n\)</span>
+时刻对最佳分数的估计。注意这里 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>
+要取条件期望，因为一般情况下 <span class="math inline">\(\{X_n\}\)</span>
+之间不是独立的，从而对未来最佳收益的估计依赖于历史信息。</p>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>在相亲问题中，<span class="math inline">\(\{X_n\}\)</span> 是
+<span class="math inline">\(\mathrm{i.i.d}\)</span> 序列，<span class="math inline">\(S_{n+1}\)</span> 与 <span class="math inline">\(\mathcal{F}_n\)</span> 独立（你可以倒着从 <span class="math inline">\(S_N\)</span> 开始验证 <span class="math inline">\(S_{n+1}\)</span> 完全由 <span class="math inline">\(X_{n+1},\ldots,X_N\)</span> 决定），从而 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]=\mathbb{E}S_{n+1}\)</span>，所以</p>
+<p><span class="math display">\[S_n=\begin{cases}X_N&amp;n=N,\\\max\{X_n,\,\mathbb{E}S_{n+1}\}&amp;
+n=N-1,\ldots,0.\end{cases}\]</span></p>
+<p>记事件 <span class="math inline">\(A_n=\{X_n&gt;\mathbb{E}S_{n+1}\}\)</span>，于是序列
+<span class="math inline">\(\{\mathbb{E}S_n\}\)</span> 满足倒向递推关系
+<span class="math display">\[\mathbb{E}S_n=\mathbb{E}\max\{X_n,\,\mathbb{E}S_{n+1}\}=\mathbb{E}[X_n\mathrm{1}_{A_n}]
++ \mathbb{E}S_{n+1}\cdot(1-\mathbb{P}(A_n)).\]</span>
+这正是我们前一节中看到的递推关系。</p>
+</div>
+<p>设 <span class="math inline">\(\tau=\inf\,\{n:\,
+S_n=X_n\}\)</span>，则 <span class="math inline">\(\tau\)</span>
+是停时。由于 <span class="math inline">\(S_N=X_N\)</span>，因此 <span class="math inline">\(0\leq\tau\leq N\)</span>。<span class="math inline">\(\tau\)</span> 就是我们采取的相亲策略：在 <span class="math inline">\(\tau\)</span> 时刻，由于这时 <span class="math inline">\(\max\{X_n,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}=X_n\)</span>，即
+<span class="math inline">\(n\)</span> 号女士的分数 <span class="math inline">\(X_n\)</span>
+大于等于后面继续相亲所能获得的最佳收益 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>，剩下的相亲就不必再进行了。</p>
+<p>到目前为止，我们已经把相亲问题完整地翻译成了鞅的语言。我们来证明
+<span class="math inline">\(\tau\)</span>
+确实是最优策略。为此我们需要做一些准备：</p>
+<div id="super" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\{S_n\}\)</span> 是控制 <span class="math inline">\(\{X_n\}\)</span> 的最小上鞅。</p>
+</div>
+<p><strong>证明</strong>：由 <span class="math inline">\(S_n=\max\{X_n,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}\)</span>
+直接可见 <span class="math inline">\(S_n\geq X_n\)</span> 并且 <span class="math inline">\(\{S_n\}\)</span> 是上鞅。设 <span class="math inline">\(\{Y_n\}\)</span> 是任意满足 <span class="math inline">\(Y_n\geq X_n\)</span> 的上鞅序列，我们要证明必有
+<span class="math inline">\(Y_n\geq S_n\)</span>。这只要从最后一项 <span class="math inline">\(n=N\)</span> 开始逐项验证即可。由定义 <span class="math inline">\(Y_N\geq X_N=S_N\)</span>，这一项没问题。假设 <span class="math inline">\(Y_n\geq S_n\)</span>，两边对 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 取条件期望可得 <span class="math display">\[Y_{n-1}\geq \mathbb{E}[Y_n|\mathcal{F}_{n-1}]
+\geq \mathbb{E}[S_n|\mathcal{F}_{n-1}].\]</span>
+其中第一个不等号是根据上鞅的定义，第二个不等号是根据条件期望的单调性。再结合
+<span class="math inline">\(Y_{n-1}\geq X_{n-1}\)</span> 可得 <span class="math inline">\(Y_{n-1}\geq
+\max\{X_{n-1},\mathbb{E}[S_n|\mathcal{F}_{n-1}]\}=S_{n-1}\)</span>，所以
+<span class="math inline">\(n-1\)</span>
+项也没有问题。这样倒着向前递推即得结论成立。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="martingale" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\{S_{n\wedge\tau}\}\)</span> 是一个鞅。</p>
+</div>
+<p><strong>证明</strong>：<span class="math display">\[S_{(n+1)\wedge\tau}-S_{n\wedge\tau}=1_{\{\tau&gt;n\}}(S_{n+1}-S_n).\]</span></p>
+<p>对上式右边求条件期望： <span class="math display">\[\mathbb{E}[1_{\{\tau&gt;n\}}(S_{n+1}-S_n)|\mathcal{F}_n]=1_{\{\tau&gt;n\}}\mathbb{E}[(S_{n+1}-S_n)|\mathcal{F}_n]=0.\]</span></p>
+<p>这是因为如果 <span class="math inline">\(\tau&gt;n\)</span>
+的话那么由 <span class="math inline">\(\tau\)</span> 的定义 <span class="math inline">\(S_n=\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="expectation-tau" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+2.3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\mathbb{E}X_\tau=\mathbb{E}S_0\)</span>。</p>
+</div>
+<p><strong>证明</strong>：注意 <span class="math inline">\(X_\tau=S_\tau\)</span>，利用 <span class="math inline">\(0\leq\tau\leq N\)</span> 和鞅性质即可： <span class="math display">\[\mathbb{E}X_\tau=\mathbb{E}S_\tau=\mathbb{E}S_{\tau\wedge
+N}=\mathbb{E}S_{\tau\wedge0}=\mathbb{E}S_0.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
+<div id="optimal" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{M}\)</span> 是所有满足 <span class="math inline">\(0\leq T\leq N\)</span> 的停时 <span class="math inline">\(T\)</span> 组成的集合，则 <span class="math inline">\(\tau\)</span> 是其中最优的： <span class="math display">\[\mathbb{E}S_0=\mathbb{E}X_\tau=\sup_{T\in\mathcal{M}}\mathbb{E}X_T.\]</span></p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(T\)</span>
+是任意停时，我们要证明 <span class="math inline">\(\mathbb{E}X_\tau\geq
+\mathbb{E}X_T\)</span>。为此只要注意到 <span class="math display">\[
+\mathbb{E}X_\tau =\mathbb{E}S_0\geq \mathbb{E}S_T\geq
+\mathbb{E}X_T.\]</span> 第一个等号是根据 <a href="#expectation-tau" title="推论 2.3">推论 2.3</a>，中间的不等号是因为 <span class="math inline">\(\{S_n\}\)</span> 是上鞅，所以对任何停时 <span class="math inline">\(T\)</span> 都有 <span class="math inline">\(\mathbb{E}S_T\leq
+\mathbb{E}S_0\)</span>。最后的不等号是因为 <span class="math inline">\(S_n\)</span> 控制 <span class="math inline">\(X_n\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<p>至此我们就从数学上严格论证了前面的相亲策略确实是最优的。</p>
+<p>回顾上面的分析，可以发现我们实际上使用了 <span class="math inline">\(\tau\)</span> 的两个性质：<span class="math inline">\(S_\tau=X_\tau\)</span> 和 <span class="math inline">\(\{S_{n\wedge\tau}\}\)</span>
+是鞅。这两个性质保证了 <span class="math inline">\(\tau\)</span>
+是最优策略。那这是不是说明还有其它最优的策略呢？</p>
+<div id="suff-nece" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.5</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\nu\in\mathcal{M}\)</span>
+是最优停时的充要条件是：</p>
+<ol type="1">
+<li><span class="math inline">\(S_\nu=X_\nu\)</span>。</li>
+<li><span class="math inline">\(\{S_{n\wedge\nu}\}\)</span> 是鞅。</li>
+</ol>
+</div>
+<p><a href="#suff-nece" title="定理 2.5">定理 2.5</a>
+告诉我们，前面采用的相亲策略是所有最优策略中时间成本最低的：即若 <span class="math inline">\(\nu\)</span> 是任意最优停时，则 <span class="math inline">\(\tau\leq\nu\)</span> （回顾一下 <span class="math inline">\(\tau\)</span> 的定义）。</p>
+<p>我们还可以给出最优策略中最大的一个来：</p>
+<div id="largest" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.6</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(S_n=M_n-A_n\)</span> 是 Snell 包络 <span class="math inline">\(\{S_n\}\)</span> 的 Doob-Meyer 分解，其中 <span class="math inline">\(\{M_n\}\)</span> 是鞅，<span class="math inline">\(A_n\)</span> 是可料递增过程，由 <span class="math display">\[A_n=\sum_{k=1}^n
+(S_{k-1}-\mathbb{E}[S_k|\mathcal{F}_{k-1}]) \]</span> 给出。定义</p>
+<p><span class="math display">\[
+\tau_\max = \begin{cases}
+N &amp; A_N=0,\\
+\min\{n\geq0 \mid A_{n+1}&gt;0\} &amp; A_N&gt;0.
+\end{cases}
+\]</span></p>
+<p>则 <span class="math inline">\(\tau_\max\)</span>
+是所有最优停时中最大的。</p>
+</div>
+<p>这个策略在现实很有用，它是以最优方式行使美式期权的最大停时。</p>
+<p><a href="#suff-nece" title="定理 2.5">定理 2.5</a> 和 <a href="#largest" title="定理 2.6">定理 2.6</a>
+的证明都不难，这里就省略了。读者可以参考 <span class="citation" data-cites="RiskNeutralValuation">(<a href="#ref-RiskNeutralValuation" role="doc-biblioref">Bingham and Kiesel 2004, sec. 3.6</a>)</span>。</p>
+<p>我猜某些读者可能会对 <span class="math inline">\(\tau_\max\)</span>
+对应的相亲策略感兴趣，因为这个策略有点渣男：它会在保证娶到最优女士的前提下和尽可能多的女士相亲。不过在
+<span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(\mathrm{i.i.d}\)</span>
+的情形，你还是死了这份心吧。因为这时 <span class="math display">\[A_n=\sum_{k=1}^n
+(S_{k-1}-\mathbb{E}S_k)=\sum_{k=1}^n\max\{X_{k-1}-\mathbb{E}S_k,0\}.\]</span>
+所以使得 <span class="math inline">\(A_{n+1}&gt;0\)</span> 成立的最小
+<span class="math inline">\(n\)</span> 正是使得 <span class="math inline">\(X_n&gt;\mathbb{E}S_{n+1}\)</span> 成立的最小 <span class="math inline">\(n\)</span>，即使得 <span class="math inline">\(X_n=S_n\)</span> 成立的最小 <span class="math inline">\(n\)</span>。这不就是前面见好就收的策略 <span class="math inline">\(\tau\)</span> 嘛！换句话说，在 <span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(\mathrm{i.i.d}\)</span>
+的情形，只有一种最优相亲策略！</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-RiskNeutralValuation" class="csl-entry" role="listitem">
+Bingham, N. H., and Rüdiger Kiesel. 2004. <em>Risk-Neutral Valuation :
+Pricing and Hedging of Financial Derivatives / n.h. Bingham and r.
+Kiesel.</em> Second edition. Springer Finance. London: Springer.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/real-and-complex-representations/" rel="next" title="实表示和复表示">
+      上一篇：实表示和复表示
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/three-mass-spring-system/" rel="next" title="三质点弹簧系统的简正模式">
+          下一篇：三质点弹簧系统的简正模式
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

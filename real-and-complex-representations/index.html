@@ -1,0 +1,885 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            实表示和复表示 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="在数学中有许多「三分天下」的例子，比如：
+
+常曲率空间只有 Euclidean、球面、双曲三种。
+三类典型的偏微分方程：热方程 （抛物）、Laplace 方程 （椭圆）、波方程
+（双曲）。
+复平面上全纯等价下只有三种单连通区域：单位圆 \(\mathbb{D}\)、复平面 \(\mathbb{C}\)、扩充复平面 \(\overline{\mathbb{C}}\)。
+不可约代数簇 （素理想） 在扩张下的三种行为：分解、惯性、分歧。
+随机游动可以分为零常返、正常返、暂态。
+实数域 \(\mathbb{R}\)
+上的有限维结合可除代数只有三种：\(\mathbb{R}\)、复数域 \(\mathbb{C}\)、四元数 \(\mathbb{H}\)。
+
+本文要介绍的是另外两个三分天下的例子，它们来自群表示论，即有限群的不可约实表示在复数域上的分解，和不可约复表示在实数域上的实现。这两个例子是紧密相关的。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="实表示和复表示"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/有限群表示与结合代数/">有限群表示与结合代数</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>实表示和复表示</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2012-10-20T16:00:00.000Z"><a href="/real-and-complex-representations/">2012-10-21</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%B8%8D%E5%8F%AF%E7%BA%A6%E5%AE%9E%E8%A1%A8%E7%A4%BA%E5%9C%A8%E5%A4%8D%E6%95%B0%E5%9F%9F%E4%B8%8A%E7%9A%84%E5%88%86%E8%A7%A3"><span class="section table-of-contents-text">不可约实表示在复数域上的分解</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%B8%8D%E5%8F%AF%E7%BA%A6%E5%A4%8D%E8%A1%A8%E7%A4%BA%E5%9C%A8%E5%AE%9E%E6%95%B0%E5%9F%9F%E4%B8%8A%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="section table-of-contents-text">不可约复表示在实数域上的实现</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>在数学中有许多「三分天下」的例子，比如：</p>
+<ol type="1">
+<li>常曲率空间只有 Euclidean、球面、双曲三种。</li>
+<li>三类典型的偏微分方程：热方程 （抛物）、Laplace 方程 （椭圆）、波方程
+（双曲）。</li>
+<li>复平面上全纯等价下只有三种单连通区域：单位圆 <span class="math inline">\(\mathbb{D}\)</span>、复平面 <span class="math inline">\(\mathbb{C}\)</span>、扩充复平面 <span class="math inline">\(\overline{\mathbb{C}}\)</span>。</li>
+<li>不可约代数簇 （素理想） 在扩张下的三种行为：分解、惯性、分歧。</li>
+<li>随机游动可以分为零常返、正常返、暂态。</li>
+<li>实数域 <span class="math inline">\(\mathbb{R}\)</span>
+上的有限维结合可除代数只有三种：<span class="math inline">\(\mathbb{R}\)</span>、复数域 <span class="math inline">\(\mathbb{C}\)</span>、四元数 <span class="math inline">\(\mathbb{H}\)</span>。</li>
+</ol>
+<p>本文要介绍的是另外两个三分天下的例子，它们来自群表示论，即有限群的不可约实表示在复数域上的分解，和不可约复表示在实数域上的实现。这两个例子是紧密相关的。</p>
+<span id="more"></span>
+<h1 id="不可约实表示在复数域上的分解">不可约实表示在复数域上的分解</h1>
+<p>在有限群的表示论中，第一个遇到的重要结论大概非 Schur 引理莫属：</p>
+<div id="schur-------" class="statement sta_schur___ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">Schur
+引理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(G\)</span> 是一个有限群，<span class="math inline">\(k\)</span> 是一个特征为 0 的域，<span class="math inline">\(V\)</span> 是一个不可约左 <span class="math inline">\(kG\)</span>- 模。则 <span class="math inline">\(D=\mathrm{Hom}_{kG}(V,V)\)</span> 是 <span class="math inline">\(k\)</span> 上的有限维结合可除代数。</p>
+</div>
+<p>我记得还是本科生的时候，在自学到这个结论时就曾经想过这个问题： 如果
+<span class="math inline">\(k=\mathbb{R}\)</span> 是实数域的话，那么
+<span class="math inline">\(D\)</span> 作为 <span class="math inline">\(\mathbb{R}\)</span>
+上的有限维结合可除代数只有三种：实数域 <span class="math inline">\(\mathbb{R}\)</span>，复数域 <span class="math inline">\(\mathbb{C}\)</span>，四元数体 <span class="math inline">\(\mathbb{H}\)</span>。这三种可能性分别对应 <span class="math inline">\(\mathbb{R}G\)</span>- 模 <span class="math inline">\(V\)</span> 的什么性质呢？</p>
+<p>答案是，<span class="math inline">\(D\)</span> 决定了 <span class="math inline">\(V\)</span>
+作为复表示时分解为不可约表示的方式。等等，把 <span class="math inline">\(V\)</span> 看作复表示是什么意思来着？</p>
+<p>有两种途径可以解释怎样把 <span class="math inline">\(V\)</span>
+看作复表示，第一种方式使用纯矩阵的语言，第二种则使用张量积的语言。它们本质是一回事。</p>
+<p>使用矩阵的语言最为直观。让我们回忆，<span class="math inline">\(V\)</span> 是 <span class="math inline">\(G\)</span> 的实表示意味着有群同态 <span class="math display">\[G\overset{\rho}{\longrightarrow} {\rm
+GL}(n,\mathbb{R}),\quad n=\dim V.\]</span> 但实矩阵也是复矩阵，所以
+<span class="math inline">\(\rho\)</span> 也是 <span class="math inline">\(G\to {\rm GL}(n,\mathbb{C})\)</span> 的同态。所以
+<span class="math inline">\(\rho\)</span> 自然也是 <span class="math inline">\(G\)</span> 的复表示。</p>
+<p>使用张量积的语言就很不直观了，但是我更偏好这种方式，因为这可以让我们在更高的抽象层次上进行计算。为了把
+<span class="math inline">\(V\)</span> 看作 <span class="math inline">\(\mathbb{C}G\)</span>- 模，我们需要把 <span class="math inline">\(V\)</span> 中数和向量的乘法扩展到 <span class="math inline">\(\mathbb{C}\)</span> 上。所以我们考虑 <span class="math inline">\(V\)</span> 的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Complexification">复化</a> <span class="math inline">\(V_\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}V\)</span>。<span class="math inline">\(V_\mathbb{C}\)</span> 中复数与向量的乘法由 <span class="math display">\[z(c\otimes v)=zc\otimes v,\quad
+z,c\in\mathbb{C},v\in V.\]</span> 给出。<span class="math inline">\(V\)</span> 可以等同于 <span class="math inline">\(V_\mathbb{C}\)</span> 的实子空间 <span class="math inline">\(1\otimes V\)</span>。在这个等同下，<span class="math inline">\(V\)</span> 的一组 <span class="math inline">\(\mathbb{R}\)</span>- 基也是 <span class="math inline">\(V_\mathbb{C}\)</span> 的一组 <span class="math inline">\(\mathbb{C}\)</span>- 基。任何 <span class="math inline">\(T\in\mathrm{End}_\mathbb{R}(V)\)</span> 通过 <span class="math inline">\(T\to 1_\mathbb{C}\otimes T\)</span> 变成 <span class="math inline">\(V_\mathbb{C}\)</span> 上的 <span class="math inline">\(\mathbb{C}\)</span>- 线性变换。<span class="math inline">\(T\)</span> 和 <span class="math inline">\(1_\mathbb{C}\otimes T\)</span>
+在同一组基下具有相同的矩阵。</p>
+<p>特别地，<span class="math inline">\(G\)</span> 在 <span class="math inline">\(V_\mathbb{C}\)</span> 上的作用定义为 <span class="math inline">\(1_\mathbb{C}\otimes g\)</span> 在 <span class="math inline">\(V_\mathbb{C}\)</span> 上的作用： <span class="math display">\[g(c\otimes v) = c\otimes gv.\]</span> 这个作用是
+<span class="math inline">\(\mathbb{C}\)</span>- 线性的，在此作用下
+<span class="math inline">\(V_\mathbb{C}\)</span> 成为一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模。</p>
+<p>怎么计算 <span class="math inline">\(V_\mathbb{C}\)</span>
+的分解呢？这就要用到群表示论中关于半单代数结构的一个基本结论：</p>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+1.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(W\)</span> 是一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模，<span class="math inline">\(W = n_1W_1\oplus n_2W_2\oplus\cdots\oplus
+n_rW_r\)</span>，其中 <span class="math inline">\(W_i\)</span>
+是互不同构的 <span class="math inline">\(\mathbb{C}G\)</span>- 模，<span class="math inline">\(n_i\)</span> 是 <span class="math inline">\(W_i\)</span> 出现在 <span class="math inline">\(W\)</span> 中的重数，则有 <span class="math inline">\(\mathbb{C}\)</span>- 代数同构 <span class="math display">\[\mathrm{End}_{\mathbb{C}G}(W) \cong
+\mathrm{Mat}_{n_1}(\mathbb{C})\times\mathrm{Mat}_{n_2}(\mathbb{C})\times\cdots\times\mathrm{Mat}_{n_r}(\mathbb{C}).\]</span></p>
+</div>
+<p>用 <span class="math inline">\(V_\mathbb{C}\)</span> 代替 <span class="math inline">\(W\)</span>，上面的结论告诉我们可以通过将 <span class="math inline">\(\mathrm{End}_{\mathbb{C}G}(V_\mathbb{C})\)</span>
+表示为矩阵代数的直积来获得 <span class="math inline">\(V_\mathbb{C}\)</span> 的分解。根据自然同构 <span class="math display">\[\mathrm{End}_{\mathbb{C}G}(V_\mathbb{C})\cong
+\mathbb{C}\otimes_{\mathbb{R}}\mathrm{End}_{\mathbb{R}G}(V)=\mathbb{C}\otimes_\mathbb{R}D.\]</span>
+问题最终归结为将 <span class="math inline">\(\mathbb{C}\otimes_{\mathbb{R}}D\)</span>
+表示为矩阵代数的直积。</p>
+<p>我们来论证 <span class="math inline">\(V_\mathbb{C}\)</span>
+的分解具有如下的「三分性质」：</p>
+<ol type="1">
+<li><span class="math inline">\(D=\mathbb{R}\)</span>：由 <span class="math inline">\(\mathbb{R}\otimes_\mathbb{R}\mathbb{C}\cong\mathbb{C}\)</span>，因此
+<span class="math inline">\(V_\mathbb{C}\)</span> 仍然是不可约的。</li>
+<li><span class="math inline">\(D=\mathbb{C}\)</span>：根据 <span class="math inline">\(\mathbb{C}\)</span>- 代数同构 <span class="math inline">\(\mathbb{C}\otimes_\mathbb{R}\mathbb{C}\cong\mathbb{C}\times\mathbb{C}\)</span>
+<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，因此 <span class="math inline">\(V_\mathbb{C}\)</span> 的分解为 <span class="math inline">\(V_\mathbb{C}=V_1\oplus V_2\)</span>，即 <span class="math inline">\(V_\mathbb{C}\)</span>
+是两个不同构的复表示的直和。注意 <span class="math inline">\(V_\mathbb{C}\)</span> 的特征与 <span class="math inline">\(V\)</span> 相同，是个实特征，所以 <span class="math inline">\(V_1\)</span> 和 <span class="math inline">\(V_2\)</span> 是共轭的，即 <span class="math inline">\(V_2=V_1^\ast\)</span>。</li>
+<li><span class="math inline">\(D=\mathbb{H}\)</span>：根据 <span class="math inline">\(\mathbb{C}\)</span>- 代数同构 <span class="math inline">\(\mathbb{H}\otimes_\mathbb{R}\mathbb{C}\cong\mathrm{Mat}_2(\mathbb{C})\)</span>
+<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>，因此 <span class="math inline">\(V_\mathbb{C}\)</span> 的分解为 <span class="math inline">\(V_\mathbb{C}=2V_1\)</span>，即 <span class="math inline">\(V_\mathbb{C}\)</span>
+是某个不可约模的二重和。</li>
+</ol>
+<h1 id="不可约复表示在实数域上的实现">不可约复表示在实数域上的实现</h1>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(G\)</span>
+是一个有限群，<span class="math inline">\(V\)</span> 是一个不可约的
+<span class="math inline">\(\mathbb{C}G-\)</span> 模，其特征为 <span class="math inline">\(\chi\)</span>。我们想知道这个表示是否能在实数域上实现？即是否存在一个
+<span class="math inline">\(\mathbb{R}G\)</span>- 模 <span class="math inline">\(W\)</span>，使得 <span class="math inline">\(W\)</span> 的特征也是 <span class="math inline">\(\chi\)</span>？</p>
+</div>
+<p>显然 <span class="math inline">\(V\)</span>
+可以在实数域上可以实现的一个必要条件是 <span class="math inline">\(\chi\)</span> 是实特征，即对任何 <span class="math inline">\(g\in G\)</span>，<span class="math inline">\(\chi(g)\)</span>
+都是实数，但这个条件是否也是充分的呢？</p>
+<p>答案是否定的。</p>
+<div id="------" class="statement sta___ definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">反例</span>：</span><span class="statement-spah"> </span>四元数群 <span class="math inline">\(Q_8=\{\bf \pm1, \pm i,\pm j, \pm k\}\)</span>
+是一个 8 阶群，它只有一个次数大于 1 的不可约复表示，其次数为
+2，但是它没有次数为 2
+的不可约实表示，所以这个复表示肯定不能在实数域上实现。</p>
+<p>具体讲，<span class="math inline">\(Q_8\)</span>
+有四个不可约一维复表示，这四个复表示同时也是实表示。此外 <span class="math inline">\(Q_8\)</span> 在四元数体 <span class="math inline">\(\mathbb{H}\)</span> 上的左乘给出其一个不可约 4
+维实表示（除环作为自己的左正则模必然是不可约的），因此我们有群代数分解
+<span class="math display">\[\mathbb{R}Q_8 \cong
+4\mathbb{R}\oplus\mathbb{H}.\]</span> 另一方面 <span class="math inline">\(Q_8\)</span> 有一个不可约的二维复表示，这个表示由
+Pauli 矩阵给出： <span class="math display">\[{\bf
+i}\to\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix},\quad {\bf
+j}\to\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\quad {\bf
+k}\to\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix}.\]</span>
+这三个矩阵和恒等矩阵一起构成 <span class="math inline">\(\mathrm{Mat}_2(\mathbb{C})\)</span>
+的一组基，因此有群代数分解 <span class="math display">\[\mathbb{C}Q_8\cong4\mathbb{C}\oplus\mathrm{Mat}_2(\mathbb{C}).\]</span>
+由于 <span class="math inline">\(Q_8\)</span>
+没有二维不可约实表示，因此这个二维不可约复表示不能在实数域上实现。</p>
+</div>
+<p>那要使得一个不可约复表示可以在实数域上实现，它应该满足怎样的条件？假定你对实向量空间的复化有足够的了解
+<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>，那就可以直接看到本质：这等价于存在一个与
+<span class="math inline">\(G\)</span> 交换的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Complex_conjugate">复共轭</a> <span class="math inline">\(J\colon\ V\to V\)</span>。即 <span class="math inline">\(J\)</span> 是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Antilinear_map">共轭线性</a>
+的，满足 <span class="math inline">\(J^2=1\)</span> 并且对任何 <span class="math inline">\(g\in G\)</span> 有 <span class="math inline">\(gJ=Jg\)</span>。我们会看到，存在三种互斥的情形：</p>
+<ol type="1">
+<li>不存在与 <span class="math inline">\(G\)</span> 交换的共轭线性变换
+<span class="math inline">\(J\)</span></li>
+<li>或者如果存在的话，这样的 <span class="math inline">\(J\)</span>
+在只差一个常数的意义下是唯一确定的，在适当缩放以后有两种可能：<span class="math inline">\(J^2=\pm1\)</span>。</li>
+</ol>
+<p>1 和 2 互斥是显然的，但是 2
+中的两种情形为什么互斥就不那么显然了。注意不要以为 <span class="math inline">\(J^2= 1\)</span> 的话会有 <span class="math inline">\((iJ)^2=-1\)</span>。实际上由于 <span class="math inline">\(iJ=\overline{i}J\)</span>，所以 <span class="math inline">\((iJ)^2=iJiJ=J^2\)</span>。</p>
+<p>记 <span class="math inline">\(V^\ast\)</span> 为 <span class="math inline">\(V\)</span> 的对偶表示。<span class="math inline">\(V^\ast\)</span> 的特征是 <span class="math inline">\(\overline{\chi}\)</span>。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+2.1</span>.</span></p>
+<ol type="1">
+<li>如果 <span class="math inline">\(V\ncong V^\ast\)</span>，就称 <span class="math inline">\(V\)</span> 是复的 (complex type)；</li>
+<li>如果 <span class="math inline">\(V\cong V^\ast\)</span> 且 <span class="math inline">\(V\)</span> 是某个不可约 <span class="math inline">\(\mathbb{R}G\)</span>- 模 <span class="math inline">\(W\)</span> 的复化：<span class="math inline">\(V\cong
+W\otimes_{\mathbb{R}}\mathbb{C}\)</span>，就称 <span class="math inline">\(V\)</span> 是实的 (real type)；</li>
+<li>如果 <span class="math inline">\(V\cong V^\ast\)</span> 且 <span class="math inline">\(V\)</span> 是某个不可约 <span class="math inline">\(\mathbb{H}G\)</span>- 模在复数域上的限制，就称
+<span class="math inline">\(V\)</span> 是四元数的 (quaternion
+type)。</li>
+</ol>
+</div>
+<p>我们将论证 <span class="math inline">\(V\)</span>
+具有如下的「三分性质」：</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(V\)</span>
+必然恰好属于复、实、四元数三种类型之一，即这三种类型是互斥的。</p>
+</div>
+<p>复类型显然与后面两种类型是互斥的。所以我们只需要讨论 <span class="math inline">\(V\cong V^\ast\)</span> 时会发生什么。</p>
+<p>根据 Schur 引理，<span class="math inline">\(\mathrm{Hom}_G(V,V^\ast)\cong\mathbb{C}\)</span>
+是一维的。但是我们有 <span class="math inline">\(G\)</span>- 模同构
+<span class="math display">\[\mathrm{Hom}_G(V,V^\ast)\cong
+\mathrm{Bil}(V) \cong V^\ast\otimes V^\ast.\]</span></p>
+<p>所以 <span class="math inline">\(V^\ast\otimes V^\ast\)</span> 作为
+<span class="math inline">\(\mathbb{C}G\)</span>- 模也是一维的。但是
+<span class="math inline">\(V^\ast\otimes V^\ast\)</span>
+总是可以分解为两个 <span class="math inline">\(G\)</span>-
+不变子空间的直和，即对称和反对称的双线性形式：</p>
+<p><span class="math display">\[V^\ast\otimes
+V^\ast=S^2V^\ast\oplus\Lambda^2V^\ast.\]</span> 其中 <span class="math inline">\(S^2V^\ast\)</span> 是二阶对称张量组成的空间，<span class="math inline">\(\Lambda^2V^\ast\)</span>
+是二阶反对称张量组成的空间。</p>
+<p>于是 <span class="math inline">\(V\)</span> 上的任何 <span class="math inline">\(G\)</span>- 不变双线性型 <span class="math inline">\(B\)</span> 要么是对称的： <span class="math display">\[B(v,w)=B(w,v).\]</span> 要么是反对称的： <span class="math display">\[B(v,w)=-B(w,v).\]</span> 二者必居其一。</p>
+<p>取 <span class="math inline">\(\langle\,,\,\rangle\)</span> 为 <span class="math inline">\(V\)</span> 上的任一 <span class="math inline">\(G\)</span>- 不变的正定 Hermite 内积。其中 <span class="math inline">\(\langle\,,\,\rangle\)</span>
+关于第一个分量是共轭线性的，关于第二个分量是线性的。从而在一组标准正交基
+<span class="math inline">\(\{e_i\}_{i=1}^n\)</span>下 <span class="math inline">\(\langle\,,\,\rangle\)</span> 形如 <span class="math display">\[\langle\sum_{i=1}^n x_ie_i,\,\sum_{i=1}^n
+y_ie_i\rangle=\sum_{i=1}^n\overline{x}_i y_i.\]</span></p>
+<p>由于 <span class="math inline">\(\langle\,,\,\rangle\)</span>
+是正定的当然非退化，从而对任何 <span class="math inline">\(V\)</span>
+上的 <span class="math inline">\(\mathbb{C}\)</span>- 线性泛函 <span class="math inline">\(f\)</span>，都存在唯一的 <span class="math inline">\(z\in V\)</span> 使得 <span class="math inline">\(f=\langle z,\,\cdot\rangle\)</span>。特别地，固定
+<span class="math inline">\(v\in V\)</span>，对线性泛函 <span class="math inline">\(\phi_v\colon\ w\mapsto B(v,w)\)</span>，存在唯一的
+<span class="math inline">\(z\in V\)</span> 使得 <span class="math display">\[\langle z,\, w\rangle = \phi_v(w) =
+B(v,w).\]</span> 这里 <span class="math inline">\(z\)</span> 依赖于
+<span class="math inline">\(v\)</span>。我们记这个从 <span class="math inline">\(v\)</span> 到 <span class="math inline">\(z\)</span> 的映射为 <span class="math inline">\(J\colon\ v\mapsto z\)</span>。从而 <span class="math display">\[B(v, w) = \langle Jv, w\rangle.\]</span> 由于
+<span class="math inline">\(B\)</span> 和 <span class="math inline">\(\langle\,,\,\rangle\)</span> 都是 <span class="math inline">\(G\)</span>- 不变的，因此 <span class="math inline">\(J\)</span> 必然与 <span class="math inline">\(G\)</span> 的作用交换 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。</p>
+<p>注意到 <span class="math inline">\(B\)</span>
+关于第一个分量是线性的，但是 <span class="math inline">\(\langle\,,\,\rangle\)</span>
+关于第一个分量是共轭线性的，所以 <span class="math inline">\(J\)</span>
+必然也是共轭线性的，即对任何 <span class="math inline">\(c\in\mathbb{C}\)</span> 有 <span class="math display">\[J(cv) = \overline{c}z.\]</span></p>
+<p>由于共轭线性变换的平方是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的，所以 <span class="math inline">\(J^2\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的且与 <span class="math inline">\(G\)</span> 的作用交换。由 Schur 引理存在 <span class="math inline">\(c\in\mathbb{C}\)</span> 使得 <span class="math inline">\(J^2=cI\)</span>，<span class="math inline">\(c\ne0\)</span>。我们来说明必有 <span class="math inline">\(c&gt;0\)</span> 或者 <span class="math inline">\(c&lt;0\)</span>。这两种情形分别取决于 <span class="math inline">\(B\)</span> 是对称的或者反对称的。</p>
+<ol type="1">
+<li><p>如果 <span class="math inline">\(B\)</span> 是对称的，则 <span class="math display">\[\langle Jv, w\rangle= \langle Jw,
+v\rangle.\]</span> 取 <span class="math inline">\(v=Jw\)</span>
+带入上式得到 <span class="math display">\[\langle J^2w, w\rangle=\langle
+Jw, Jw\rangle\geq0.\]</span> 由于 <span class="math inline">\(J^2=cI\)</span>，所以必然有 <span class="math inline">\(c&gt;0\)</span>。</p></li>
+<li><p>类似地当 <span class="math inline">\(B\)</span> 反对称时可得
+<span class="math inline">\(c&lt;0\)</span>。</p></li>
+</ol>
+<p>于是通过给 <span class="math inline">\(J\)</span> 除以 <span class="math inline">\(\sqrt{|c|}\)</span>，我们就得到了一个新的共轭线性变换，把它仍然记作
+<span class="math inline">\(J\)</span>，则 <span class="math inline">\(J\)</span> 满足 <span class="math inline">\(J^2=\pm1\)</span>。我们来说明这两种情形分别对应
+<span class="math inline">\(V\)</span> 是实类型或者四元数类型。</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(J^2=1\)</span>，由于 <span class="math inline">\(J\)</span> 是共轭线性的，<span class="math inline">\(J\)</span> 实际上给出了 <span class="math inline">\(V\)</span> 上的一个共轭结构。记 <span class="math inline">\(W=\{w\in V\mid J(w)=w\}\)</span> 是 <span class="math inline">\(J\)</span> 的不动点，则 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(W\)</span> 的复化：<span class="math inline">\(V\cong
+\mathbb{C}\otimes_{\mathbb{R}}W\)</span>。由于 <span class="math inline">\(G\)</span> 的作用与 <span class="math inline">\(J\)</span> 交换，所以 <span class="math inline">\(G\)</span> 在 <span class="math inline">\(V\)</span> 上的作用 <span class="math inline">\(\rho(g)\)</span> 都形如 <span class="math inline">\(\rho(g)=1\otimes\rho_W(g)\)</span>，其中 <span class="math inline">\(\rho_W(g)\)</span> 是 <span class="math inline">\(W\)</span> 上的 <span class="math inline">\(\mathbb{R}\)</span>- 线性变换。即表示 <span class="math inline">\(\rho\)</span> 是表示 <span class="math inline">\(\rho_W\)</span> 的复化。所以 <span class="math inline">\(V\)</span> 是实的。</li>
+<li>如果 <span class="math inline">\(J^2=-1\)</span>，那么 <span class="math inline">\(1,\, I=i,\,J,\, K=IJ\)</span>
+满足通常的四元数乘法，它们都和 <span class="math inline">\(G\)</span>
+的作用交换，所以 <span class="math inline">\(V\)</span> 可以变成一个左
+<span class="math inline">\(\mathbb{H}G\)</span>-
+模，将此模限制在复数域上即为表示 <span class="math inline">\(V\)</span>，从而表示 <span class="math inline">\(V\)</span> 是四元数的。</li>
+</ol>
+<p>实类型和四元数类型是互斥的，否则 <span class="math inline">\(V\)</span>
+上将同时存在一个对称双线性型和一个反对称双线性型，与 <span class="math inline">\(\dim_\mathbb{C}(V^\ast\otimes V^\ast)=1\)</span>
+矛盾。</p>
+<p>总之我们证明了表示 <span class="math inline">\(V\)</span>
+必然恰好属于实、复、四元数三种类型之一，其中只有实类型可以在实数域上实现。而且由上面的分析不难得出下面的推论：</p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+2.3</span>.</span></p>
+<ol type="1">
+<li><span class="math inline">\(V\)</span> 是复的当且仅当 <span class="math inline">\(V\)</span> 上不存在任何非零的 <span class="math inline">\(G\)</span>- 不变双线性型。</li>
+<li><span class="math inline">\(V\)</span> 是实的当且仅当 <span class="math inline">\(V\)</span> 上存在一个非零的 <span class="math inline">\(G\)</span>- 不变对称双线性型。</li>
+<li><span class="math inline">\(V\)</span> 是四元数的当且仅当 <span class="math inline">\(V\)</span> 上存在一个非零的 <span class="math inline">\(G\)</span>- 不变反对称双线性型。</li>
+</ol>
+</div>
+<p>这三种情形分别对应 <span class="math inline">\(\dim_{\mathbb{C}}(S^2V^\ast)-\dim_{\mathbb{C}}(\Lambda^2V^\ast)\)</span>
+的值是 0, +1 和 -1。通过一些简单的计算不难得到 <span class="math display">\[\dim_{\mathbb{C}}(S^2V^\ast)-\dim_{\mathbb{C}}(\Lambda^2V^\ast)=\frac{1}{|G|}\sum_{g\in
+G}\chi(g^2).\]</span></p>
+<p><span class="math inline">\(F(\chi)=\dfrac{1}{|G|}\sum\limits_{g\in
+G}\chi(g^2)\)</span> 叫做 <span class="math inline">\(\chi\)</span> 的
+Frobenius-Schur 指标，于是我们有</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.4</span>.</span><span class="statement-spah"> </span>（Frobenius-Schur
+指标）</p>
+<ol type="1">
+<li><span class="math inline">\(V\)</span> 是复的当且仅当 <span class="math inline">\(F(\chi)=0\)</span>。</li>
+<li><span class="math inline">\(V\)</span> 是实的当且仅当 <span class="math inline">\(F(\chi)=1\)</span>。</li>
+<li><span class="math inline">\(V\)</span> 是四元数的当且仅当 <span class="math inline">\(F(\chi)=-1\)</span>。</li>
+</ol>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>一个同构由 <span class="math inline">\(z_1\otimes z_2\to
+(z_1z_2, z_1\overline{z}_2)\)</span> 给出。首先此映射是一个 <span class="math inline">\(\mathbb{C}\)</span>- 代数同态。此同态是满射，因为
+<span class="math inline">\(\frac{1}{2}(1\otimes1+ i\otimes i)\)</span>
+被映射为 <span class="math inline">\((1,0)\)</span>，<span class="math inline">\(\frac{1}{2}(1\otimes1 - i\otimes i)\)</span>
+被映射为 <span class="math inline">\((0, 1)\)</span>。此外由于两边作为
+<span class="math inline">\(\mathbb{C}\)</span>- 代数的维数相同，都是
+2，所以是一个同构。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>有个一般性的结论：设 <span class="math inline">\(D\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维可除代数且 <span class="math inline">\(D\)</span> 的中心为 <span class="math inline">\(F\)</span>，<span class="math inline">\(K\)</span>
+是 <span class="math inline">\(D\)</span> 的极大子域，<span class="math inline">\(n=[D:K]\)</span>。则有 <span class="math inline">\(K\)</span>- 代数同构 <span class="math inline">\(K\otimes_F
+D\cong\mathrm{Mat}_n(K)\)</span>。将此结论应用于 <span class="math inline">\(D=\mathbb{H}\)</span>，<span class="math inline">\(F=\mathbb{R}\)</span>，<span class="math inline">\(K=\mathbb{C}\)</span> 即可。</p>
+<p>不过针对四元数 <span class="math inline">\(\mathbb{H}\)</span>
+我们可以给一个直接的证明：把 <span class="math inline">\(\mathbb{H}\)</span> 看作 <span class="math inline">\(\mathbb{C}\)</span>
+上的<strong>二维右向量空间</strong>（即 <span class="math inline">\(\mathbb{C}\)</span> 的数乘写在右边），则 <span class="math inline">\(\mathbb{H}=1\mathbb{C}\oplus
+j\mathbb{C}\)</span>。任何 <span class="math inline">\(a\in\mathbb{H}\)</span> 在自身上的左乘给出了一个
+<span class="math inline">\(\mathbb{C}\)</span>- 线性变换：<span class="math display">\[a(xc) = (ax)c\quad
+a,x\in\mathbb{H},\,c\in\mathbb{C}.\]</span> 这是因为 <span class="math inline">\(\mathbb{H}\)</span> 是结合的，所以 <span class="math inline">\(a\)</span> 在 <span class="math inline">\(\mathbb{H}\)</span> 上的左乘与 <span class="math inline">\(\mathbb{C}\)</span> 在 <span class="math inline">\(\mathbb{H}\)</span> 上的右乘交换。于是这给出了一个
+<span class="math inline">\(\mathbb{H}\to\mathrm{Mat}_2(\mathbb{C})\)</span>
+的嵌入。</p>
+<p>设 <span class="math inline">\(a=z+jw\in\mathbb{H}\)</span>，我们来计算 <span class="math inline">\(a\)</span> 的左乘在 <span class="math inline">\(\{1,j\}\)</span> 这组基下的矩阵： <span class="math display">\[\begin{aligned}(z+jw)\cdot 1 &amp;= z+jw,\\
+(z+jw)\cdot j&amp;= zj+jwj=-\overline{w}+
+j\overline{z}.\end{aligned}\]</span> 所以 <span class="math inline">\(z+jw\)</span> 在 <span class="math inline">\(\mathrm{Mat}_2(\mathbb{C})\)</span> 中对应的矩阵为
+<span class="math inline">\(\begin{pmatrix}z&amp;-\overline{w} \\ w
+&amp; \overline{z}\end{pmatrix}\)</span>。由于 <span class="math inline">\(\mathbb{H}\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上的二维右向量空间，所以它嵌入
+<span class="math inline">\(\mathrm{Mat}_2(\mathbb{C})\)</span>
+以后的像也是二维的，并不构成整个 <span class="math inline">\(\mathrm{Mat}_2(\mathbb{C})\)</span>。</p>
+<p>但是对 <span class="math inline">\(D=\mathbb{H}\otimes_\mathbb{R}\mathbb{C}\)</span>，事情就不一样了：<span class="math inline">\(D\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上的 4
+维右向量空间，并且它也作用在二维的右 <span class="math inline">\(\mathbb{C}\)</span>- 向量空间 <span class="math inline">\(\mathbb{H}\)</span> 上：对任何 <span class="math inline">\(a,x\in\mathbb{H}\)</span> 和 <span class="math inline">\(c\in\mathbb{C}\)</span> 我们定义 <span class="math inline">\(a\otimes c\)</span> 在 <span class="math inline">\(\mathbb{H}\)</span> 上的作用为 <span class="math display">\[(a\otimes c)x=axc,\quad
+a,x\in\mathbb{H},c\in\mathbb{C}.\]</span> 这个作用是右 <span class="math inline">\(\mathbb{C}\)</span>- 线性的，从而给出了 <span class="math inline">\(D\)</span> 到 <span class="math inline">\(\mathrm{Mat}_2(\mathbb{C})\)</span>
+的同态。你可以用 <span class="math inline">\(D\)</span>
+是单代数来说明这是一个单射，然后再比较维数来说明它是同构，但这需要一些关于中心单代数的知识；也可以换一种方法来验证：<span class="math inline">\(D\)</span> 在 <span class="math inline">\(\mathbb{H}\)</span> 上的作用，相比前面 <span class="math inline">\(\mathbb{H}\)</span> 在自身上的左乘，还额外包含了
+<span class="math inline">\(i\)</span> 的右乘。这个右乘在 <span class="math inline">\(\{1,j\}\)</span> 这组基下的矩阵是对角矩阵 <span class="math inline">\(\begin{pmatrix}i&amp;\\ &amp;
+i\end{pmatrix}\)</span>。所以 <span class="math inline">\(D\)</span> 在
+<span class="math inline">\(\mathbb{H}\)</span>
+上的作用包含了所有如下形式的矩阵： <span class="math display">\[\begin{pmatrix}z&amp;-\overline{w} \\ w &amp;
+\overline{z}\end{pmatrix}\quad\text{and}\quad\begin{pmatrix}z&amp;-\overline{w}
+\\ w &amp; \overline{z}\end{pmatrix}\cdot\begin{pmatrix}i&amp;\\ &amp;
+i\end{pmatrix}.\]</span> 不难验证这两种矩阵的线性组合生成了整个 <span class="math inline">\(\mathrm{Mat}_2(\mathbb{C})\)</span>，从而这是一个
+<span class="math inline">\(D\to\mathrm{Mat}_2(\mathbb{C})\)</span>
+的满同态，再比较维数即可。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>如果你对复化不够熟悉的话，可以参考我的一篇 <a href="/real-complex">旧文</a>。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>对任何 <span class="math inline">\(g\in
+G\)</span>，我们有 <span class="math display">\[\langle Jv,
+w\rangle=B(v,w)=B(gv,gw)=  \langle Jgv, gw\rangle =  \langle g^{-1}Jgv,
+w\rangle.\]</span> 即 <span class="math inline">\(g^{-1}Jg =
+J\)</span>，从而 <span class="math inline">\(J\)</span> 与 <span class="math inline">\(G\)</span> 的作用交换。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/Birkhoff-ergodic-theorem/" rel="next" title="Birkhoff 遍历定理">
+      上一篇：Birkhoff 遍历定理
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/optimal-stopping-and-backward-induction/" rel="next" title="相亲问题与倒向归纳法">
+          下一篇：相亲问题与倒向归纳法
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>
