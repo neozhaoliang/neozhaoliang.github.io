@@ -30,7 +30,8 @@
 level 的定义
 
 定义
-1.1 (Maxwell (1982)). \((W,S)\) 的 level 定">
+1.1 (Maxwell (1982)). \((W,S)\) 的 level 定义为最小的非负整数 \(l\)，使得在 \(\Gamma\) 中删去任何 \(l\)
+个顶点后，剩下的部分每个连通分支都是仿射或者有限的。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -336,6 +337,7 @@ level 的定义
 1.1</span> <span class="statement-info">(<span class="citation" data-cites="Maxwell82">Maxwell (<a href="#ref-Maxwell82" role="doc-biblioref">1982</a>)</span>)</span>.</span><span class="statement-spah"> </span><span class="math inline">\((W,S)\)</span> 的 level 定义为最小的非负整数 <span class="math inline">\(l\)</span>，使得在 <span class="math inline">\(\Gamma\)</span> 中删去任何 <span class="math inline">\(l\)</span>
 个顶点后，剩下的部分每个连通分支都是仿射或者有限的。</p>
 </div>
+<span id="more"></span>
 <p>根据定义有限和仿射 Coxeter 群的 level 都是
 0（因为不需要删去任何顶点）。</p>
 <p>我们来看几个 level 大于 0 的例子：</p>
@@ -665,7 +667,7 @@ A</span>：</span><span class="statement-spah"> </span>取 <span class="math inl
 &amp;(\alpha_s',\alpha_s')=1-\frac{1}{(\omega_s,\omega_s)}\leq0,\\
 &amp;(-\alpha_s',\omega_t)=\frac{(\omega_s,\omega_t)}{(\omega_s,\omega_s)}\leq0
 \text{ for all }t\in I.
-\end{aligned}\]</span> 从而有 <span class="math inline">\(0&lt;(\omega_s,\omega_s)\leq1\)</span>，以及 <span class="math inline">\((\omega_s,\omega_t)\leq0\)</span> 对任何 <span class="math inline">\(t\in I\)</span> 成立。</p>
+\end{aligned}\]</span> 整理即得 <span class="math inline">\(0&lt;(\omega_s,\omega_s)\leq1\)</span>，以及 <span class="math inline">\((\omega_s,\omega_t)\leq0\)</span> 对任何 <span class="math inline">\(t\in I\)</span> 成立。</p>
 </div>
 <p>真不错！我们轻松得到了一个关于 level 2 情形实的基本权 <span class="math inline">\(\omega_s\)</span> 的重要结论。</p>
 <div id="observeB" class="statement sta____b definition unnumbered">
@@ -895,8 +897,7 @@ u_+)&lt;0\)</span>。如果 <span class="math inline">\(I_-\cup
 I_0\ne\emptyset\)</span>，那么 <span class="math inline">\(I_+\)</span>
 作为从 <span class="math inline">\(\Gamma\)</span> 中删去 <span class="math inline">\(I_-\cup I_0\)</span> 后得到的真子图包含 time-like
 的向量 <span class="math inline">\(u_+\)</span>，这与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 1 矛盾。所以 <span class="math inline">\(I=I_+\)</span>，即所有系数 <span class="math inline">\(u_s\)</span> 都大于 0。相应地如果是 <span class="math inline">\((u_-,u_-)&lt;0\)</span> 的话则所有 <span class="math inline">\(u_s\)</span> 都小于 0。</p>
-<p>对断言 2 我们仍然采用类似的记号，记 <span class="math display">\[I_+=\{s\in S\mid v_s&gt;0\},\quad I_-=\{s\in
-S\mid v_s&lt;0\},\quad I_0=\{s\in S\mid v_s=0\}.\]</span> 并记 <span class="math inline">\(v_+=\sum_{s\in I_+}v_s\alpha_s\)</span>，<span class="math inline">\(v_-=\sum_{t\in I_-}v_t\alpha_t\)</span>，则同样有
+<p>对断言 2 我们仍然采用类似的记号，记 <span class="math inline">\(v_+=\sum_{s\in I_+}v_s\alpha_s\)</span>，<span class="math inline">\(v_-=\sum_{t\in I_-}v_t\alpha_t\)</span>，则同样有
 <span class="math inline">\((v_+,v_-)\geq0\)</span>。</p>
 <p>我们想证明 <span class="math inline">\(|I_0|\leq1\)</span>，并且
 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 中必有一个是空集。</p>
