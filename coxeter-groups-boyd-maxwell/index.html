@@ -326,7 +326,7 @@ light-like 的向量，\(u\) 和 \(-u\) 属于不同的分支。这个错误导�
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%B0%84%E5%BD%B1%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">射影模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%90%83%E9%9D%A2"><span class="section table-of-contents-text">球面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%90%83%E9%9D%A2%E7%9A%84-seperation"><span class="section table-of-contents-text">球面的 seperation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%90%83%E9%9D%A2%E7%9A%84%E5%8F%8D%E6%BC%94"><span class="section table-of-contents-text">球面的反演</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8C%E6%9B%B2%E7%90%83%E5%A0%86"><span class="section table-of-contents-text">双曲球堆</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%B0%84%E5%BD%B1%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">射影模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%90%83%E9%9D%A2"><span class="section table-of-contents-text">球面</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%90%83%E9%9D%A2%E7%9A%84-seperation"><span class="section table-of-contents-text">球面的 seperation</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%90%83%E9%9D%A2%E7%9A%84%E5%8F%8D%E6%BC%94"><span class="section table-of-contents-text">球面的反演</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8C%E6%9B%B2%E7%90%83%E5%A0%86"><span class="section table-of-contents-text">双曲球堆</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%AE%A1%E7%AE%97%E4%BE%8B%E5%AD%90"><span class="section table-of-contents-text">计算例子</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
@@ -349,16 +349,18 @@ light-like 的向量，<span class="math inline">\(u\)</span> 和 <span class="m
 <span id="more"></span>
 <h1 id="射影模型">射影模型</h1>
 <p>在这一节中，我们约定 <span class="math inline">\(V=\mathbb{R}^{n+1,1}\)</span> 是 <span class="math inline">\(n+2\)</span> 维的 Lorentzian 空间，<span class="math inline">\(\{e_1,e_2,\ldots,e_{n+2}\}\)</span> 是 <span class="math inline">\(V\)</span> 的一组标准正交基，即在这组基下内积的
-Gram 矩阵为 <span class="math display">\[\begin{pmatrix}I_{n+1} &amp;\\
-&amp; -1\end{pmatrix}.\]</span> 令 <span class="math display">\[e_0=\frac{e_{n+2}-e_{n+1}}{2},\quad
+Gram 矩阵为 <span class="math inline">\(\left(\begin{smallmatrix}I_{n+1}
+&amp;\\ &amp; -1\end{smallmatrix}\right)\)</span>。令 <span class="math display">\[e_0=\frac{e_{n+2}-e_{n+1}}{2},\quad
 e_\infty=\frac{e_{n+2}+e_{n+1}}{2}.\]</span> 则 <span class="math inline">\(\{e_0,e_1,\ldots,e_n,e_\infty\}\)</span> 也构成
 <span class="math inline">\(V\)</span> 的一组基，内积在这组基下的 Gram
 矩阵为 <span class="math display">\[\begin{pmatrix}0&amp;&amp;&amp;-\frac{1}{2}\\&amp;I_n&amp;&amp;\\-\frac{1}{2}&amp;&amp;&amp;0\end{pmatrix}.\]</span>
-设 <span class="math display">\[\begin{aligned}
+任何两个向量 <span class="math inline">\(v,w\in V\)</span>
+可以写成如下的形式： <span class="math display">\[\begin{aligned}
 v&amp;=ae_0 + \mathbf{x}+ be_\infty,\\
 w&amp;=ce_0 + \mathbf{y}+ de_\infty.
-\end{aligned}\]</span> 是两个向量，其中 <span class="math inline">\(\mathbf{x},\mathbf{y}\in\mathrm{span}\{e_1,\ldots,e_n\}\)</span>，<span class="math inline">\(a,b\in\mathbb{R}\)</span>，则 <span class="math inline">\(v,w\)</span> 的内积为 <span class="math display">\[(v,w) = (\mathbf{x}, \mathbf{y}) -
-\frac{ad+bc}{2}.\]</span> <span class="math inline">\(\{e_0,e_1,\ldots,e_n,e_\infty\}\)</span>
+\end{aligned}\]</span> 其中 <span class="math inline">\(\mathbf{x},\mathbf{y}\in\mathrm{span}\{e_1,\ldots,e_n\},\,a,b\in\mathbb{R}\)</span>。则
+<span class="math inline">\(v,w\)</span> 之间的内积为 <span class="math display">\[(v,w) = (\mathbf{x}, \mathbf{y}) -
+\frac{ad+bc}{2}.\]</span> 使用 <span class="math inline">\(\{e_0,e_1,\ldots,e_n,e_\infty\}\)</span>
 这组基在处理 <span class="math inline">\(\mathbb{R}^n\)</span>
 中的球时更方便一些。</p>
 <p>设 <span class="math inline">\(v\in\mathbb{R}^{n+1,1}\)</span>，我们约定用 <span class="math inline">\([v]\)</span> 表示 <span class="math inline">\(v\)</span> 在射影空间 <span class="math inline">\(\mathrm{P}(\mathbb{R}^{n+1,1})\)</span>
@@ -374,7 +376,14 @@ v\in\mathbb{L}^{n+1}\setminus\{0\}\}.\]</span> <span class="math inline">\(\math
 <p>熟知 <span class="math inline">\(\overline{\mathbb{R}^n}=\mathbb{R}^n\cup\{\infty\}\)</span>
 和 <span class="math inline">\(\mathbb{R}^{n+1}\)</span> 中的单位球
 <span class="math inline">\(S^n=\{x_1^2+x_2^2+\cdots+x_{n+1}^2=1\}\)</span>
-在球极投影下是一一对应的（北极点为 <span class="math inline">\(e_{n+1}\)</span>）。我们来说明它们分别和 <span class="math inline">\(\mathrm{P}(\mathbb{L}^{n+1})\)</span>
+在球极投影下是一一对应的（北极点为 <span class="math inline">\(e_{n+1}\)</span>）。</p>
+<figure>
+<img src="/images/coxeter/stereo-projection.svg" width="400" alt="S^2 到 \overline{\mathbb{R}^2} 的球极投影，by Keenan Crane">
+<figcaption aria-hidden="true"><span class="math inline">\(S^2\)</span>
+到 <span class="math inline">\(\overline{\mathbb{R}^2}\)</span>
+的球极投影，by Keenan Crane</figcaption>
+</figure>
+<p>我们来说明它们分别和 <span class="math inline">\(\mathrm{P}(\mathbb{L}^{n+1})\)</span>
 是一一对应的，并且当 <span class="math inline">\(\mathbf{x}\in\overline{\mathbb{R}^n}\)</span> 和
 <span class="math inline">\(\mathbf{y}\in S^n\)</span>
 在球极投影下对应时，它们在 <span class="math inline">\(\mathrm{P}(\mathbb{L}^{n+1})\)</span>
@@ -426,13 +435,16 @@ S^n\to\mathrm{P}(\mathbb{L}^{n+1}): \mathbf{y}\to
 \]</span> 此即为 <span class="math inline">\(\mathrm{P}(\mathbb{L}^{n+1})\)</span>
 的第二种参数化表示。</p>
 </div>
-<p>我们来验证当 <span class="math inline">\(\mathbf{x}\in\overline{\mathbb{R}^n}\)</span> 和
-<span class="math inline">\(\mathbf{y}\in S^n\)</span> 是以 <span class="math inline">\(e_{n+1}\)</span>
-为北极的球极投影下的对应点时，<span class="math inline">\(\mathbf{x},\mathbf{y}\)</span>
-在这两种参数化表示下给出 <span class="math inline">\(\mathrm{P}(\mathbb{L}^{n+1})\)</span>
-的同一个点。</p>
+<figure>
+<img src="/images/coxeter/Horosphere.svg" width="500" alt="红色的圆是超平面 (\cdot, e_{n+2})=1 与光锥的截线，可以通过将 S^n 沿着 e_{n+2} 平移一个单位得到；\overline{\mathbb{R}^n} 对应蓝色的 horosphere，它是超平面 (\cdot, e_0)=\frac{1}{2} 与光锥的截线。e_\infty 不在 horosphere 上">
+<figcaption aria-hidden="true">红色的圆是超平面 <span class="math inline">\((\cdot, e_{n+2})=1\)</span>
+与光锥的截线，可以通过将 <span class="math inline">\(S^n\)</span> 沿着
+<span class="math inline">\(e_{n+2}\)</span> 平移一个单位得到；<span class="math inline">\(\overline{\mathbb{R}^n}\)</span> 对应蓝色的
+horosphere，它是超平面 <span class="math inline">\((\cdot,
+e_0)=\frac{1}{2}\)</span> 与光锥的截线。<span class="math inline">\(e_\infty\)</span> 不在 horosphere 上</figcaption>
+</figure>
 <p>设 <span class="math inline">\(\mathbf{y}=y_1e_1+\cdots+y_{n+1}e_{n+1}\in
-S^n\)</span>，<span class="math inline">\(\mathbf{y}\)</span> 在以 <span class="math inline">\(e_{n+1}\)</span> 为北极的球极投影下对应的 <span class="math inline">\(\mathbf{x}\in\overline{\mathbb{R}^n}\)</span> 是
+S^n\)</span>，<span class="math inline">\(\mathbf{y}\)</span> 在以 <span class="math inline">\(e_{n+1}\)</span> 为北极的球极投影下对应的点是
 <span class="math display">\[\mathbf{x}=\begin{cases}
 \sum\limits_{i=1}^n\dfrac{y_i}{1-y_{n+1}}e_i &amp; y_{n+1}\ne1,\\
 \infty &amp; y_{n+1}=1.
@@ -448,46 +460,38 @@ e_{n+1}+e_{n+2}=2e_\infty\)</span>，显然与 <span class="math inline">\(e_\in
 <li><p><span class="math inline">\(y_{n+1}\ne 1\)</span> 时，由 <span class="math inline">\(\mathbf{y}\in S^n\)</span> 可得 <span class="math inline">\(\sum_{i=1}^ny_i^2=1-y_{n+1}^2\)</span>，从而 <span class="math display">\[|\mathbf{x}|^2=\frac{\sum_{i=1}^n
 y_i^2}{(1-y_{n+1})^2}= \frac{1+y_{n+1}}{1-y_{n+1}}.\]</span> 把 <span class="math inline">\(\mathbf{y}+e_{n+2}\)</span> 转化为 <span class="math inline">\(\{e_0,e_1,\ldots,e_n,e_\infty\}\)</span>
 这组基下的表示： <span class="math display">\[\mathbf{y}+e_{n+2} =
-\sum_{i=1}^ny_ie_i + (1-y_{n+1})e_0+(1+y_{n+1})e_\infty.\]</span> 从而
+(1-y_{n+1})e_0+\sum_{i=1}^ny_ie_i + (1+y_{n+1})e_\infty.\]</span> 从而
 <span class="math display">\[[\mathbf{y}+e_{n+2}] =
 \left[e_0+\sum_{i=1}^n\frac{y_i}{1-y_{n+1}}e_i
 +\frac{1+y_{n+1}}{1-y_{n+1}}e_\infty\right] = [e_0 + \mathbf{x}+
 |\mathbf{x}|^2e_\infty].\]</span></p></li>
 </ul>
 <h1 id="球面">球面</h1>
-<div id="------" class="statement sta___ plain unnumbered">
-<p><span class="statement-heading"><span class="statement-label">记号</span>.</span><span class="statement-spah">
-</span>令 <span class="math inline">\(\mathcal{S}=\{v\in\mathbb{R}^{n+1,1}\mid(
-v,v)=1\}\)</span> 是所有 space-like 单位向量组成的集合。</p>
-</div>
-<p>这一小节我们来建立 <span class="math inline">\(\mathbb{R}^n\)</span>
-中的球/超平面和 <span class="math inline">\(\mathcal{S}\)</span>
-之间的一一对应。</p>
+<p>记 <span class="math inline">\(\mathcal{S}=\{v\in\mathbb{R}^{n+1,1}\mid(
+v,v)=1\}\)</span> 是所有 space-like 单位向量组成的集合。我们来建立 <span class="math inline">\(\mathbb{R}^n\)</span> 中的球（包括超平面）和 <span class="math inline">\(\mathcal{S}\)</span> 之间的一一对应。</p>
 <p>设 <span class="math inline">\(B(\mathbf{a},r)=\{\mathbf{x}\in\mathbb{R}^n\mid
-|x-\mathbf{a}|=|r|\}\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中以 <span class="math inline">\(\mathbf{a}\)</span> 为中心，半径为 <span class="math inline">\(r\ne 0\)</span> 的球，我们允许 <span class="math inline">\(r\)</span> 是负数以区分 <span class="math inline">\(B\)</span> 的内部和外部：<span class="math inline">\(r&gt;0\)</span> 时 <span class="math inline">\(B\)</span> 的内部就是通常意义下满足 <span class="math inline">\(|\mathbf{x}-\mathbf{a}|&lt; r\)</span>
-的有界集合；<span class="math inline">\(r&lt;0\)</span> 时 <span class="math inline">\(B\)</span> 的内部是满足 <span class="math inline">\(|\mathbf{x}-\mathbf{a}|&gt;|r|\)</span>
-的无界集合。如果用球极投影转移到 <span class="math inline">\(S^n\)</span> 中来看的话，<span class="math inline">\(\mathbb{R}^n\)</span> 中的球的内/外之分在 <span class="math inline">\(S^n\)</span> 上其实没有意义，它们不过是 <span class="math inline">\(S^n\)</span>
-中某个圆两侧的球帽。所以把球的内部和外部统一处理是很自然的。</p>
-<p>我们把 <span class="math inline">\(\mathbf{a}\)</span> 看作 <span class="math inline">\(\mathrm{span}\{e_1,\ldots,e_n\}\cong\mathbb{R}^n\)</span>
-中的点，记 <span class="math display">\[k_B = \frac{e_0 + \mathbf{a}+
-(|\mathbf{a}|^2 - r^2)e_\infty}{r}.\]</span> 不难验证 <span class="math inline">\(k_B\)</span> 满足 <span class="math inline">\((k_B,k_B)=1\)</span>，所以 <span class="math inline">\(k_B\in\mathcal{S}\)</span>。</p>
+|x-\mathbf{a}|=|r|\}\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中以 <span class="math inline">\(\mathbf{a}\)</span> 为中心，半径为 <span class="math inline">\(r\ne 0\)</span> 的球，它将 <span class="math inline">\(\mathbb{R}^n\)</span>
+分成两个连通分支，一个有界，另一个无界。我们允许 <span class="math inline">\(r\)</span> 是负数以区分 <span class="math inline">\(B\)</span> 的内部和外部：<span class="math inline">\(r&gt;0\)</span> 时 <span class="math inline">\(B\)</span> 的内部是满足 <span class="math inline">\(|\mathbf{x}-\mathbf{a}|&lt; r\)</span>
+的有界分支；<span class="math inline">\(r&lt;0\)</span> 时 <span class="math inline">\(B\)</span> 的内部是满足 <span class="math inline">\(|\mathbf{x}-\mathbf{a}|&gt;|r|\)</span>
+的无界分支。</p>
+<p>把 <span class="math inline">\(\mathbf{a}\)</span> 看作 <span class="math inline">\(\mathrm{span}\{e_1,\ldots,e_n\}\cong\mathbb{R}^n\)</span>
+中的点，记 <span class="math display">\[k = \frac{e_0 + \mathbf{a}+
+(|\mathbf{a}|^2 - r^2)e_\infty}{r}.\]</span> 不难验证 <span class="math inline">\((k,k)=1\)</span>，所以 <span class="math inline">\(k\in\mathcal{S}\)</span>。</p>
 <p>对 <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span>，<span class="math inline">\(\imath(\mathbf{x})=e_0+\mathbf{x}+|\mathbf{x}|^2e_\infty\in\mathbb{L}^{n+1}\)</span>，则
-<span class="math display">\[(\imath(\mathbf{x}),k_B)=\frac{r^2-|\mathbf{x}-\mathbf{a}|^2}{2r}.\]</span></p>
+<span class="math display">\[(\imath(\mathbf{x}),k)=\frac{r^2-|\mathbf{x}-\mathbf{a}|^2}{2r}.\]</span></p>
 <p>于是 <span class="math inline">\(\mathbf{x}\in B\)</span> 当且仅当
-<span class="math inline">\((\imath(\mathbf{x}),k_B)=0\)</span>，以及
-<span class="math inline">\(\mathbf{x}\)</span> 落在 <span class="math inline">\(B\)</span> 的内部当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k_B)&gt;0\)</span>。鉴于此，我们也把
-<span class="math inline">\(B\)</span> 的内部叫做 <span class="math inline">\(B\)</span> 的<strong>正半空间</strong>，<span class="math inline">\(k_B\)</span> 是指向 <span class="math inline">\(B\)</span> 的正半空间的单位法向量。</p>
+<span class="math inline">\((\imath(\mathbf{x}),k)=0\)</span>，以及
+<span class="math inline">\(\mathbf{x}\)</span> 落在 <span class="math inline">\(B\)</span> 的内部当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k)&gt;0\)</span>。鉴于此，我们也把
+<span class="math inline">\(B\)</span> 的内部叫做 <span class="math inline">\(B\)</span> 的<strong>正半空间</strong>，<span class="math inline">\(k\)</span> 是指向 <span class="math inline">\(B\)</span> 的正半空间的单位法向量。</p>
 <p>注意到 <span class="math inline">\(\imath(\mathbf{x})\)</span> 和
 <span class="math inline">\(\jmath(\mathbf{x})\)</span>
 只差一个正的倍数，所以 <span class="math inline">\(\mathbf{x}\in
-B\)</span> 等价于 <span class="math inline">\((\jmath(\mathbf{x}),k_B)=0\)</span>。<span class="math inline">\(V\)</span> 中所有形如 <span class="math inline">\((\jmath(\mathbf{x}),k_B)=0\,(\mathbf{x}\in\mathbb{R}^n)\)</span>
-的点构成 <span class="math inline">\(S^n_1\)</span> 与超平面 <span class="math inline">\(k_B^\bot\)</span> 的截线。</p>
-<p>当 <span class="math inline">\(B\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中的超平面时，设其方程为
-<span class="math inline">\((\mathbf{x},\mathbf{n})=d\,(d\in\mathbb{R})\)</span>，其中
-<span class="math inline">\(\mathbf{n}\)</span> 是 <span class="math inline">\(B\)</span> 的单位法向量。我们将 <span class="math inline">\(B\)</span> 对应到 <span class="math display">\[k_B=\mathbf{n}+ 2d e_\infty.\]</span> 不难验证
-<span class="math inline">\((k_B,k_B)=1\)</span>，从而 <span class="math inline">\(k_B\in\mathcal{S}\)</span>，并且对 <span class="math inline">\(\imath(\mathbf{x})=e_0+\mathbf{x}+|\mathbf{x}|^2e_\infty\)</span>
-有 <span class="math display">\[(\imath(\mathbf{x}),k_B)=(\mathbf{x},\mathbf{n})-d.\]</span>
-于是 <span class="math inline">\(\mathbf{x}\in B\)</span> 当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k_B)=0\)</span>，<span class="math inline">\(\mathbf{x}\)</span> 属于 <span class="math inline">\(B\)</span> 的正半空间当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k_B)&gt;0\)</span>。</p>
+B\)</span> 等价于 <span class="math inline">\((\jmath(\mathbf{x}),k)=0\)</span>。<span class="math inline">\(V\)</span> 中所有形如 <span class="math inline">\((\jmath(\mathbf{x}),k)=0\,(\mathbf{x}\in\mathbb{R}^n)\)</span>
+的点构成 <span class="math inline">\(S^n_1\)</span> 与超平面 <span class="math inline">\(k^\bot\)</span> 的截线。</p>
+<p>设 <span class="math inline">\(H(\mathbf{n},d)=\{\mathbf{x}\in\mathbb{R}^n\mid
+(\mathbf{x},\mathbf{n})=d\}\)</span> 是超平面，<span class="math inline">\(\mathbf{n}\)</span> 是 <span class="math inline">\(B\)</span> 的单位法向量。我们将 <span class="math inline">\(H(\mathbf{n},d)\)</span> 对应到 <span class="math display">\[k=\mathbf{n}+ 2d e_\infty.\]</span>
+不难验证同样有 <span class="math inline">\(k\in\mathcal{S}\)</span>，并且对 <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> 有 <span class="math display">\[(\imath(\mathbf{x}),k)=(\mathbf{x},\mathbf{n})-d.\]</span>
+于是 <span class="math inline">\(\mathbf{x}\in B\)</span> 当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k)=0\)</span>，<span class="math inline">\(\mathbf{x}\)</span> 属于 <span class="math inline">\(B\)</span> 的正半空间当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k)&gt;0\)</span>。</p>
 <p>反之任何 <span class="math inline">\(k\in\mathcal{S}\)</span>
 也都唯一确定了 <span class="math inline">\(\mathbb{R}^n\)</span>
 中的某个球或者超平面。为此只要将 <span class="math inline">\(k\)</span>
@@ -495,21 +499,19 @@ B\)</span> 等价于 <span class="math inline">\((\jmath(\mathbf{x}),k_B)=0\)</s
 b,c\in\mathbb{R}.\]</span> 并根据 <span class="math inline">\(b\)</span>
 是否等于 0 将 <span class="math inline">\(k\)</span> 对应为球 <span class="math inline">\(B(\mathbf{a}/b ,1/b)\)</span> 或者超平面 <span class="math inline">\(H(\mathbf{a}, c/2)\)</span> 即可。</p>
 <h1 id="球面的-seperation">球面的 seperation</h1>
-<p>设 <span class="math inline">\(B_1(\mathbf{a}_1,r_1),B_2(\mathbf{a}_2,r_2)\)</span>
-是 <span class="math inline">\(\mathbb{R}^n\)</span>
-中的两个球，它们对应的 <span class="math inline">\(\mathcal{S}\)</span>
-向量分别是 <span class="math display">\[\begin{aligned}
+<p>设 <span class="math inline">\(B_1(\mathbf{a}_1,r_1),\,B_2(\mathbf{a}_2,r_2)\)</span>
+是两个球，它们对应的 <span class="math inline">\(\mathcal{S}\)</span>
+中向量分别是 <span class="math display">\[\begin{aligned}
 k_1&amp;=\frac{1}{r_1}e_0 + \frac{\mathbf{a}_1}{r_1} +
 \frac{|\mathbf{a}_1|^2-r_1^2}{r_1}e_\infty,\\
-k_1&amp;=\frac{1}{r_2}e_0 + \frac{\mathbf{a}_2}{r_2} +
+k_2&amp;=\frac{1}{r_2}e_0 + \frac{\mathbf{a}_2}{r_2} +
 \frac{|\mathbf{a}_2|^2-r_2^2}{r_2}e_\infty.\\
 \end{aligned}.\]</span> 不难验证有 <span class="math display">\[(k_1,k_2)=\frac{r_1^2+r_2^2 -
 |\mathbf{a}_1-\mathbf{a}_2|^2}{2r_1r_2}.\]</span> 我们称内积 <span class="math inline">\((k_1,k_2)\)</span> 为 <span class="math inline">\(B_1\)</span> 和 <span class="math inline">\(B_2\)</span> 的 <strong>seperation</strong>。</p>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span> <span class="statement-info">(<span class="citation" data-cites="ratcliffe">(见 <a href="#ref-ratcliffe" role="doc-biblioref">Ratcliffe 2006, vol. 149, sec.
 3.2</a>)</span>)</span>：</span><span class="statement-spah"> </span>在
-Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inline">\(k_1,k_2\)</span> 之间的 seperation
-有两种含义：</p>
+Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inline">\(k_1,k_2\)</span> 之间的内积有两种含义：</p>
 <ol type="1">
 <li>如果 <span class="math inline">\(|(k_1,k_2)|\leq1\)</span>，则 <span class="math inline">\((k_1,k_2)=\cos\theta\)</span>，<span class="math inline">\(\theta\)</span> 是分别以 <span class="math inline">\(x,y\)</span> 为切向量的两条测地线之间的夹角；</li>
 <li>如果 <span class="math inline">\(|(k_1,k_2)|&gt;1\)</span>，则 <span class="math inline">\((k_1,k_2)=\pm\cosh\eta\)</span>，<span class="math inline">\(\eta\)</span> 是分别以 <span class="math inline">\(x,y\)</span>
@@ -518,7 +520,7 @@ Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inl
 </div>
 <ol type="1">
 <li><span class="math inline">\(B_1\)</span> 和 <span class="math inline">\(B_2\)</span> 相交或者相切当且仅当 <span class="math inline">\(|(k_1,k_2)|\leq1\)</span>，这时 <span class="math inline">\((k_1,k_2)=\cos\theta\)</span>，<span class="math inline">\(\theta\)</span>
-是它们球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。当
+是两个球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。当
 <span class="math inline">\((k_1,k_2)=-1\)</span> 时两球外切，<span class="math inline">\((k_1,k_2)=1\)</span> 时两球内切。</li>
 <li><span class="math inline">\(B_1\)</span> 和 <span class="math inline">\(B_2\)</span> 不相交也不相切当且仅当 <span class="math inline">\(|(k_1,k_2)|&gt;1\)</span>，这时 <span class="math inline">\(|(k_1,k_2)|=\cosh\eta\)</span>，<span class="math inline">\(\eta\)</span> 是 <span class="math inline">\(k_1,k_2\)</span>
 对应的双曲空间中测地线的双曲距离。两球在 <span class="math inline">\((k_1,k_2)&lt;-1\)</span> 时没有公共的内部，在
@@ -550,14 +552,15 @@ Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inl
 </tbody>
 </table>
 <p>上面的结论同样适用于 <span class="math inline">\(B_1\)</span> 和
-<span class="math inline">\(B_2\)</span> 中有平面的情形。例如设 <span class="math inline">\(B_1,B_2\)</span> 相交，并且 <span class="math inline">\(B_1\)</span> 是球面，<span class="math inline">\(B_2\)</span> 是超平面，<span class="math inline">\(k_2=\mathbf{n}+2de_\infty\)</span>，则 <span class="math display">\[(k_1,k_2)=\frac{(\mathbf{a}_1,\mathbf{n})-d}{r_1}.\]</span>
-这时 <span class="math inline">\((k_1,k_2)\)</span> 等于 <span class="math inline">\(B_1\)</span> 在球面交点处的内法向量和 <span class="math inline">\(B_2\)</span> 的法向量 <span class="math inline">\(\mathbf{n}\)</span> 夹角的余弦。</p>
-<p>类似地，当 <span class="math inline">\(B_1,B_2\)</span>
+<span class="math inline">\(B_2\)</span>
+一个是球面，另一个是超平面的情形。例如设 <span class="math inline">\(B_1\)</span> 是球面，<span class="math inline">\(B_2\)</span> 是超平面，<span class="math inline">\(k_2=\mathbf{n}+2de_\infty\)</span>，则 <span class="math display">\[(k_1,k_2)=\frac{(\mathbf{a}_1,\mathbf{n})-d}{r_1}.\]</span>
+如果 <span class="math inline">\(B_1,B_2\)</span> 相交，则 <span class="math inline">\((k_1,k_2)\)</span> 等于 <span class="math inline">\(B_1\)</span> 在交点处的内法向量和 <span class="math inline">\(B_2\)</span> 的法向量 <span class="math inline">\(\mathbf{n}\)</span> 夹角的余弦；否则它是 <span class="math inline">\(B_1\)</span> 的球心到 <span class="math inline">\(B_2\)</span> 的有向距离除以 <span class="math inline">\(r_1\)</span>。</p>
+<p>类似地当 <span class="math inline">\(B_1,B_2\)</span>
 都是超平面时，<span class="math inline">\((k_1,k_2)=(\mathbf{n}_1,\mathbf{n}_2)\)</span>
 是它们法向量夹角的余弦。</p>
 <div id="suff-for-disjoint" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(B_1,B_2\)</span> 是两个球，且 <span class="math inline">\(B_1,B_2\)</span> 的内部不相交。设 <span class="math inline">\((k_1,k_2)\)</span> 分别是它们对应的 space-like
+3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(B_1,B_2\)</span> 是两个球，且 <span class="math inline">\(B_1,B_2\)</span> 的内部不相交。设 <span class="math inline">\(k_1,k_2\)</span> 分别是它们对应的 space-like
 的单位向量，则 <span class="math inline">\((k_1,k_2)\leq-1\)</span>。</p>
 </div>
 <div class="statement note definition unnumbered">
@@ -590,18 +593,21 @@ Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inl
 <p><span class="math inline">\(\tau\)</span> 是 <span class="math inline">\(\overline{\mathbb{R}^n}\)</span> 中关于球面镜
 <span class="math inline">\(B\)</span> 的反射，它保持 <span class="math inline">\(B\)</span> 的表面不动，将 <span class="math inline">\(B\)</span> 的内部映射为外部（反之亦然），并且
 <span class="math inline">\(\tau^2=1\)</span>。</p>
-<p><img src="/images/coxeter/cartoon_mirror.png" class="fig" width="400"></p>
+<p><img src="/images/coxeter/sphere-inversion.svg" class="fig" width="400"></p>
 <p>我们来说明 <span class="math inline">\(\tau\)</span> 可以实现为 <span class="math inline">\(\mathrm{P}(\mathbb{R}^{n+1,1})\)</span>
 中的射影正交变换。</p>
-<p>考察以 <span class="math inline">\(k_B\)</span> 为法向量的镜面反射
-<span class="math display">\[\begin{aligned}
-\rho_B\colon\ \mathbb{R}^{n+1,1}&amp;\mapsto\mathbb{R}^{n+1,1}\\
-\rho_B(v) &amp;= v - 2(v,k_B)k_B.
-\end{aligned}\]</span> 我们来计算 <span class="math inline">\(\rho_B\)</span> 作用在 <span class="math inline">\(\imath(\mathbf{x})\,(\mathbf{x}\in\mathbb{R}^n)\)</span>
-上的效果：（注意 <span class="math inline">\((\imath(\mathbf{x}),k_B)=\frac{r^2-|\mathbf{x}-\mathbf{a}|^2}{r}\)</span>）
+<p>设 <span class="math inline">\(B(\mathbf{a},r)\)</span> 对应 <span class="math inline">\(k\in\mathcal{S}\)</span>，考察以 <span class="math inline">\(k\)</span> 为法向量的镜面反射 <span class="math display">\[\begin{aligned}
+\rho\colon\ \mathbb{R}^{n+1,1}&amp;\mapsto\mathbb{R}^{n+1,1}\\
+\rho(v) &amp;= v - 2(v,k)k.
+\end{aligned}\]</span> 则 <span class="math inline">\(\rho\)</span> 是
+<span class="math inline">\(\mathbb{R}^{n+1,1}\)</span>
+上的正交变换，从而也给出 <span class="math inline">\(\mathrm{P}(\mathbb{R}^{n+1,1})\)</span>
+上的射影变换。</p>
+<p>我们来计算 <span class="math inline">\(\rho\)</span> 作用在 <span class="math inline">\(\imath(\mathbf{x})\,(\mathbf{x}\in\mathbb{R}^n)\)</span>
+上的效果：（注意 <span class="math inline">\((\imath(\mathbf{x}),k)=\frac{r^2-|\mathbf{x}-\mathbf{a}|^2}{r}\)</span>）
 <span class="math display">\[\begin{align*}
 \begin{pmatrix}1\\\mathbf{x}\\ |\mathbf{x}|^2\end{pmatrix}
-&amp;\xrightarrow{\rho_B}
+&amp;\xrightarrow{\rho}
 \begin{pmatrix}1\\\mathbf{x}\\ |\mathbf{x}|^2\end{pmatrix}
 -\frac{r^2-|\mathbf{x}-\mathbf{a}|^2}{r}\begin{pmatrix}\frac{1}{r}\\\frac{\mathbf{a}}{r}\\
 \frac{|\mathbf{a}|-r^2}{r}\end{pmatrix}\\
@@ -613,44 +619,38 @@ Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inl
 &amp;=\begin{pmatrix}1\\\tau(\mathbf{x})\\ |\tau(\mathbf{x})|^2
 \end{pmatrix}.
 \end{align*}\]</span> 这里我们不用关心 <span class="math inline">\(\ast\)</span> 是什么，中间的 <span class="math inline">\(\sim\)</span>
-表示两个向量是射影等价的。实际上我们是对所有分量同时除以了 <span class="math inline">\(\frac{|\mathbf{x}-\mathbf{a}|^2}{r^2}\)</span>，所以
-<span class="math inline">\(\sim\)</span> 还是正射影等价。</p>
-<p>即我们有如下的交换图：</p>
+表示两个向量射影等价。即我们有如下的交换图：</p>
 <p><span class="math display">\[\require{amsCd}
 \begin{CD}
 \overline{\mathbb{R}^n}@&gt;{\imath}&gt;&gt;
 \mathrm{P}(\mathbb{L}^{n+1})\\
-@V{\tau}VV  @VV{\rho_B}V \\
+@V{\tau}VV  @VV{\rho}V \\
 \overline{\mathbb{R}^n}@&gt;{\imath}&gt;&gt;
 \mathrm{P}(\mathbb{L}^{n+1})
 \end{CD}\]</span></p>
-<p>更进一步，将一个球关于另一个球作反演也可以通过 <span class="math inline">\(\rho_B\)</span> 来计算。设 <span class="math inline">\(k'\)</span> 是球 <span class="math inline">\(B'\)</span> 对应的 space-like 的单位向量，则
-<span class="math inline">\(\rho_B(k')\)</span> 也是 space-like
-的单位向量，从而对应另一个球 <span class="math inline">\(B''\)</span>。对 <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span>，根据上面的交换图有
-<span class="math inline">\(\rho_B\imath=\imath\tau\)</span>，从而 <span class="math display">\[\mathbf{x}\in B'\Leftrightarrow
+<p>进一步，将任意球 <span class="math inline">\(B'\)</span> 关于
+<span class="math inline">\(B\)</span> 作反演也可以通过 <span class="math inline">\(\rho\)</span> 来计算。设 <span class="math inline">\(k'\)</span> 是 <span class="math inline">\(B'\)</span> 对应的 space-like 的单位向量，则
+<span class="math inline">\(\rho(k')\)</span> 也是 space-like
+的单位向量，从而 <span class="math inline">\(\rho(k')\)</span>
+对应某个球 <span class="math inline">\(B''\)</span>。根据上面的交换图有 <span class="math inline">\(\rho\imath=\imath\tau\)</span>，于是 <span class="math display">\[\mathbf{x}\in B'\Leftrightarrow
 (\imath(\mathbf{x}), k')=0
-\Leftrightarrow(\rho_B(\imath(\mathbf{x})), \rho_B(k'))=0
-\Leftrightarrow(\imath(\tau(\mathbf{x})), \rho_B(k'))=0
+\Leftrightarrow(\rho\imath(\mathbf{x}), \rho(k'))=0
+\Leftrightarrow(\imath\tau(\mathbf{x}), \rho(k'))=0
 \Leftrightarrow \tau(\mathbf{x})\in B''.
 \]</span> 即关于 <span class="math inline">\(B\)</span> 的反演 <span class="math inline">\(\tau\)</span> 将 <span class="math inline">\(B'\)</span> 映射为 <span class="math inline">\(B''\)</span>。</p>
 <h1 id="双曲球堆">双曲球堆</h1>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
-5.1</span>.</span><span class="statement-spah"> </span>如果一个非空集合
-<span class="math inline">\(\mathcal{P}\subset V\)</span>
-满足下列条件，我们就称 <span class="math inline">\(\mathcal{P}\)</span>
-是一个<strong>球堆</strong>：</p>
-<ol type="1">
-<li>对任何 <span class="math inline">\(k\in\mathcal{P}\)</span> 有 <span class="math inline">\((k,k)=1\)</span>。</li>
-<li>对 <span class="math inline">\(\mathcal{P}\)</span> 中任何 <span class="math inline">\(k\ne k'\)</span> 有 <span class="math inline">\((k,k')\leq -1\)</span>。</li>
-</ol>
+5.1</span>.</span><span class="statement-spah"> </span>如果非空集合
+<span class="math inline">\(\mathcal{P}\subset \mathcal{S}\)</span>
+满足对 <span class="math inline">\(\mathcal{P}\)</span> 中任何 <span class="math inline">\(k\ne k'\)</span> 有 <span class="math inline">\((k,k')\leq -1\)</span>，我们就称 <span class="math inline">\(\mathcal{P}\)</span>
+是一个<strong>球堆</strong></p>
 </div>
-<p>我们称形如 <span class="math inline">\(\mathcal{P}=\{k,-k\}\)</span>
-的球堆是平凡的，因为它由一个球的内部和外部组成。否则就称 <span class="math inline">\(\mathcal{P}\)</span>
-是非平凡的。非平凡的球堆中的点必然两两互不共线。如果 <span class="math inline">\(\mathcal{P}\)</span> 是非平凡的球堆，则 <span class="math inline">\(-\mathcal{P}=\{-k\mid k\in\mathcal{P}\}\)</span>
-也是非平凡的，它是通过翻转 <span class="math inline">\(\mathcal{P}\)</span>
+<p>形如 <span class="math inline">\(\mathcal{P}=\{k,-k\}\)</span>
+的球堆是平凡的，因为它由一个球的内部和外部组成。否则就称 <span class="math inline">\(\mathcal{P}\)</span> 是非平凡的。<span class="math inline">\(-\mathcal{P}=\{-k\mid k\in\mathcal{P}\}\)</span>
+也是球堆，它是通过翻转 <span class="math inline">\(\mathcal{P}\)</span>
 中每个球的内部和外部得到的。</p>
-<p>记 <span class="math inline">\(\mathcal{H}\)</span> 是超平面 <span class="math inline">\(\{v_{n+2}=1\}\)</span> 与 <span class="math inline">\(\mathcal{Q}_+\)</span> 的截面，对任何满足 <span class="math inline">\((k,k)=1\)</span> 的点 <span class="math inline">\(k\)</span>，定义球帽 <span class="math display">\[C_k = \{v\in\mathcal{H}\mid
+<p>记 <span class="math inline">\(\mathcal{H}\)</span> 是超平面 <span class="math inline">\((\cdot, e_{n+2})=1\)</span> 与 <span class="math inline">\(\mathcal{Q}_+\)</span> 的截面，对给定的 <span class="math inline">\(k\in S\)</span>，定义球帽 <span class="math display">\[C_k = \{v\in\mathcal{H}\mid
 (v,k)\geq0\}.\]</span></p>
 <div id="disjoint-pair" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
@@ -661,13 +661,14 @@ Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inl
 <p><strong>证明</strong>：设 <span class="math inline">\(u\in
 C_{k_1}\cap C_{k_2}\)</span>，<span class="math inline">\(v\in
 C_{-k_1}\cap C_{-k_2}\)</span>，则 <span class="math display">\[(u,
-k_1+k_2)\geq0\quad\text{and}\quad(v,k_1+k_2)\leq0.\]</span> 由于 <span class="math inline">\((k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0\)</span>，所以
-<span class="math inline">\(k_1+k_2\)</span> 是 time-like 或者
-light-like 的。如果 <span class="math inline">\(k_1+k_2\)</span> 是
-time-like 的，则 <span class="math inline">\(u\not\sim k_1+k_2\)</span>
-且 <span class="math inline">\(v\sim k_1+k_2\)</span>，这与 <span class="math inline">\(u\sim v\)</span> 矛盾。所以 <span class="math inline">\(k_1+k_2\)</span> 必须是 light-like 的，从而 <span class="math inline">\((k_1,k_2)=-1\)</span>。</p>
-<p>进一步如果 <span class="math inline">\((u,k_1+k_2)&gt;0\)</span> 且
-<span class="math inline">\((v,k_1+k_2)&lt;0\)</span>，则 <span class="math inline">\(v\sim k_1+k_2\)</span> 但是 <span class="math inline">\(u\not\sim k_1+k_2\)</span>，这与 <span class="math inline">\(u\sim v\)</span> 矛盾。所以 <span class="math inline">\((u,k_1+k_2)\)</span> 和 <span class="math inline">\((v,k_1+k_2)\)</span> 中必然有一个是 0，即 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(v\)</span> 中必有一个是 <span class="math inline">\(k_1+k_2\)</span> 的倍数，然而 <span class="math inline">\(\mathcal{H}\)</span> 中与 <span class="math inline">\(k_1+k_2\)</span> 共线的点是唯一确定的，所以 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span> 和 <span class="math inline">\(C_{-k_1}\cap C_{-k_2}\)</span>
+k_1+k_2)\geq0\text{ and }(v,k_1+k_2)\leq0.\]</span> 由于 <span class="math inline">\((k_1+k_2,k_1+k_2)=2+2(k_1,k_2)\leq0\)</span>，所以
+<span class="math inline">\(k_1+k_2\)</span> 是 time/light-like 的。
+如果上面两个不等号都是严格成立的，则 <span class="math inline">\(v\sim
+k_1+k_2\)</span> 且 <span class="math inline">\(u\not\sim
+k_1+k_2\)</span>，这与 <span class="math inline">\(u\sim v\)</span>
+矛盾。所以两个不等式至少有一个等号是成立的，即 <span class="math inline">\(u,v\)</span> 之中必有一个与 <span class="math inline">\(k_1+k_2\)</span> 共线，并且 <span class="math inline">\(k_1+k_2\)</span> 是 light-like 的向量，由此可得
+<span class="math inline">\((k_1,k_2)=-1\)</span>。</p>
+<p>然而 <span class="math inline">\(\mathcal{H}\)</span> 中与 <span class="math inline">\(k_1+k_2\)</span> 共线的点是唯一确定的，所以 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span> 和 <span class="math inline">\(C_{-k_1}\cap C_{-k_2}\)</span>
 中必有一个至多包含一个点，且此点与 <span class="math inline">\(k_1+k_2\)</span> 共线。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="contain-time-like" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
@@ -678,9 +679,8 @@ time-like 的向量。</p>
 C_{k_1}\cap C_{k_2}\)</span> 是两个不同点，则 <span class="math inline">\(u\sim v\)</span> 且 <span class="math inline">\(u,v\)</span> 线性无关，从而 <span class="math inline">\((u,v)&lt;0\)</span>。<span class="math inline">\(z=u+v\)</span> 满足 <span class="math inline">\(z\sim u\)</span> 和 <span class="math inline">\((z,z)&lt;0\)</span>，从而 <span class="math inline">\(z\)</span> 的某个正倍数 <span class="math inline">\(z'\)</span> 属于 <span class="math inline">\(\mathcal{H}\)</span>。<span class="math inline">\(z'\)</span> 即为所求。 <span class="math inline">\(\blacksquare\)</span></p>
 <div id="intersect-pair" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-5.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆且 <span class="math inline">\(k_1\ne k_2\in\mathcal{P}\)</span>。如果 <span class="math inline">\(v\in\mathcal{H}\)</span> 满足 <span class="math display">\[(v,k_1)\geq0\quad \text{and}\quad
-(v,k_2)&gt;0.\]</span> 则 <span class="math inline">\(|C_{k_1}\cap
-C_{k_2}|&gt;1\)</span>。</p>
+5.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆且 <span class="math inline">\(k_1\ne k_2\in\mathcal{P}\)</span>。如果 <span class="math inline">\(v\in\mathcal{H}\)</span> 满足 <span class="math display">\[(v,k_1)\geq0\text{ and } (v,k_2)&gt;0.\]</span>
+则 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|&gt;1\)</span>。</p>
 </div>
 <p><strong>证明</strong>：记 <span class="math inline">\(a=(v,k_2)&gt;0\)</span>，考虑向量 <span class="math inline">\(u=v-tk_2\)</span>，其中 <span class="math inline">\(t\in(0, a)\)</span> 是实数。</p>
 <p>由于 <span class="math inline">\((u,u)=(v,v)+t^2-2at&lt;0\)</span> 是
@@ -694,8 +694,8 @@ time-like 的，以及 <span class="math inline">\((u,v)=(v,v)-at&lt;0\)</span>�
 有无穷多个取值，并且不难验证不同的 <span class="math inline">\(t\)</span> 给出的 <span class="math inline">\(u'\)</span> 互不相同，所以 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|=\infty&gt;1\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="thm-sphere-packing" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-5.5</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是 <span class="math inline">\(V\)</span>
-的一个非空子集，则下面两点是等价的：</p>
+5.5</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span>
+是非空集合，则下面两点是等价的：</p>
 <ol type="1">
 <li><span class="math inline">\(\mathcal{P}\)</span>
 是一个非平凡的球堆。</li>
@@ -740,10 +740,7 @@ k_2)k_2\)</span>，则目标变为证明 <span class="math inline">\((u,k_1)\leq
 <p><span class="statement-heading"><span class="statement-label">定义
 5.6</span>.</span><span class="statement-spah"> </span>记 <span class="math inline">\(\Omega_r=\{\omega\in\Omega\mid
 (\omega,\omega)&gt;0\}\)</span> 是所有实权组成的集合，<span class="math inline">\(\mathcal{C}_r=\mathrm{cone}(\Omega_r)\)</span>
-是由所有实权生成的凸锥，以及 <span class="math display">\[\hat{\Omega}_r=\{\hat{\omega}\mid
-\omega\in\Omega_r\}.\]</span> 其中 <span class="math inline">\(\hat{\omega}=\omega/\sqrt{(\omega,\omega)}\)</span>
-是将 <span class="math inline">\(\omega\)</span>
-归一化得到的单位向量。</p>
+是由所有实权生成的凸锥。</p>
 </div>
 <div id="real-cone-closure" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
@@ -768,11 +765,13 @@ time-like 的，其正交补 <span class="math inline">\(V_I=\mathrm{span}\{\alp
 显然 <span class="math inline">\(v\in\overline{\mathcal{C}_r}\)</span>，并且 <span class="math inline">\(W_I\)</span> 保持 <span class="math inline">\(v\)</span> 不动。特别地对任何 <span class="math inline">\(t\in I\)</span> 都有 <span class="math inline">\(t(v)=v\)</span>。这是 <span class="math inline">\(n-1\)</span>
 个独立的线性约束，其解空间是一维的，所以 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(\omega_s\)</span> 共线：存在 <span class="math inline">\(a\in\mathbb{R}\)</span> 使得 <span class="math inline">\(v=a\omega_k\)</span>。两边同时与 <span class="math inline">\(\alpha_s\)</span> 作内积得到 <span class="math display">\[a = (\alpha_s,v)=\sum_{w\in
 W_I}(\alpha_s,w(\omega_t))=\sum_{w\in W_I}(w^{-1}(\alpha_s),
-\omega_t)=\sum_{w\in W_I}(w(\alpha_s), \omega_t).\]</span> 对任何 <span class="math inline">\(w\in W_I\)</span>，<span class="math inline">\(w\alpha_s\)</span> 形如 <span class="math inline">\(w\alpha_s=\alpha_s+\sum_{i\in
-I}c_i\alpha_i\)</span>，所以 <span class="math inline">\(w\alpha_s\)</span> 仍然是正根，所有的系数 <span class="math inline">\(c_i\)</span> 都非负。所以上式右边的每一项 <span class="math display">\[(w(\alpha_s), \omega_t)=\sum_{i\in
-I}c_i(\alpha_i, w_t) = c_t\geq0.\]</span> 我们来选择一个特殊的 <span class="math inline">\(w\in W_I\)</span> 使得 <span class="math inline">\(c_t&gt;0\)</span>：由于 <span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(\Gamma\)</span> 中存在一条从 <span class="math inline">\(s\)</span> 到 <span class="math inline">\(t\)</span> 的路径 <span class="math inline">\(s=s_0\sim s_1\sim\cdots\sim
-s_m=t\)</span>，其中每个 <span class="math inline">\(s_i\,(i\geq1)\in
-I\)</span> 且互不相同。不难验证对 <span class="math inline">\(w=s_m\cdots s_1\in W_I\)</span>，<span class="math inline">\(w\alpha_s\)</span> 的系数 <span class="math inline">\(c_t&gt;0\)</span>，所以 <span class="math inline">\(a\)</span> 严格大于 0，所以 <span class="math inline">\(\omega_s=v/a\in\overline{\mathcal{C}_r}\)</span>。</p>
+\omega_t)=\sum_{w\in W_I}(w(\alpha_s), \omega_t).\]</span> 对任何 <span class="math inline">\(w\in W_I\)</span>，<span class="math inline">\(w\alpha_s=\alpha_s+\sum_{i\in
+I}c_i\alpha_i\)</span> 仍然是正根，所有的系数 <span class="math inline">\(c_i\)</span> 都非负。所以上式右边的每一项 <span class="math display">\[(w(\alpha_s), \omega_t)=\sum_{i\in
+I}c_i(\alpha_i, w_t) = c_t\geq0.\]</span> 我们来选择一个特殊的 <span class="math inline">\(w\in W_I\)</span> 使得 <span class="math inline">\(c_t&gt;0\)</span>：由于 <span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(\Gamma\)</span> 中存在一条从 <span class="math inline">\(s\)</span> 到 <span class="math inline">\(t\)</span> 的路径 <span class="math inline">\(s\sim s_1\sim\cdots\sim s_m=t\)</span>，其中每个
+<span class="math inline">\(s_i\,(i\geq1)\in I\)</span>
+且互不相同。不难验证对 <span class="math inline">\(w=s_m\cdots s_1\in
+W_I\)</span>，<span class="math inline">\(w\alpha_s\)</span> 的系数
+<span class="math inline">\(c_t&gt;0\)</span>，所以 <span class="math inline">\(a\)</span> 严格大于 0，所以 <span class="math inline">\(\omega_s=v/a\in\overline{\mathcal{C}_r}\)</span>。</p>
 <p><span class="math inline">\((\omega_s, \omega_s)=0\)</span>
 的情形稍微麻烦一些：这时 <span class="math inline">\(\omega_s\)</span>
 的正交补 <span class="math inline">\(\omega_s^\bot\)</span> 是
@@ -807,17 +806,27 @@ Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.\]</span> 这里 <span class="math inline
 }\subset\overline{\mathcal{C}_r}.\]</span></p></li>
 </ol>
 <p><span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+5.8</span>.</span><span class="statement-spah"> </span>规定 <span class="math inline">\(\hat{\Omega}_r=\{\hat{\omega}\mid
+\omega\in\Omega_r\}\)</span>，其中 <span class="math inline">\(\hat{\omega}=\omega/\sqrt{(\omega,\omega)}\)</span>
+是将 <span class="math inline">\(\omega\)</span>
+归一化得到的单位向量。</p>
+</div>
 <div id="max-packing" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-5.8</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(W\)</span> 是双曲的，则 <span class="math inline">\(\hat{\Omega}_r\)</span> 是非平凡的球堆当且仅当
+5.9</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(W\)</span> 是双曲的，则 <span class="math inline">\(\hat{\Omega}_r\)</span> 是非平凡的球堆当且仅当
 <span class="math inline">\(\Gamma\)</span> 的 level 是 2，这时 <span class="math inline">\(\hat{\Omega}_r\)</span> 还是极大球堆。</p>
 </div>
 <p><strong>证明</strong>：若 <span class="math inline">\(\Gamma\)</span>
 的 level 是 2，则 <a href="/coxeter-groups-level#level-12"><span class="math inline">\(\Omega_r\)</span>
-中的元素两两分离</a>，将其归一化后得到的 <span class="math inline">\(\hat{\Omega}_r\)</span> 仍然两两分离，所以 <span class="math inline">\(\hat{\Omega}_r\)</span> 的元素两两之间的内积 <span class="math inline">\(\leq -1\)</span>，从而 <span class="math inline">\(\hat{\Omega}_r\)</span> 给出一个球堆。如果存在某个
-space-like 的向量 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\((k,k)=1\)</span> 且 <span class="math inline">\(k\)</span> 对应的球与 <span class="math inline">\(\hat{\Omega}_r\)</span>
-中的任何球都没有公共内部的话，有 <span class="math inline">\((k,\hat{\omega})\leq -1\)</span> 对任何 <span class="math inline">\(\hat{\omega}\in\hat{\Omega}_r\)</span> 成立，从而
-<span class="math inline">\((k,\omega)&lt;0\)</span> 对任何 <span class="math inline">\(\omega\in\Omega_r\)</span> 成立，从而 <span class="math inline">\((k,y)\leq0\)</span> 对任何 <span class="math inline">\(y\in\overline{\mathcal{C}_r}=\mathrm{cone}(\Omega_r)\)</span>
+中的元素两两分离</a>，将其归一化后得到的 <span class="math inline">\(\hat{\Omega}_r\)</span> 仍然两两分离，所以 <span class="math inline">\(\hat{\Omega}_r\)</span> 的元素两两之间的内积 <span class="math inline">\(\leq -1\)</span>，从而 <span class="math inline">\(\hat{\Omega}_r\)</span>
+给出一个球堆。由于基本权是线性无关的，<span class="math inline">\(\hat{\Omega}_r\)</span>
+显然是非平凡的球堆。如果存在某个 space-like 的向量 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\((k,k)=1\)</span> 且 <span class="math inline">\(k\)</span> 对应的 <span class="math inline">\(C_k\)</span> 与 <span class="math inline">\(\hat{\Omega}_r\)</span>
+中的任何球都没有公共内部的话，则有 <span class="math inline">\((k,\hat{\omega})\leq -1\)</span> 对任何 <span class="math inline">\(\hat{\omega}\in\hat{\Omega}_r\)</span>
+成立，自然就有 <span class="math inline">\((k,\omega)&lt;0\)</span>
+对任何 <span class="math inline">\(\omega\in\Omega_r\)</span> 成立，从而
+<span class="math inline">\((k,y)\leq0\)</span> 对任何 <span class="math inline">\(y\in\overline{\mathcal{C}_r}=\mathrm{cone}(\Omega_r)\)</span>
 成立。根据 <a href="#real-cone-closure" title="定理 5.7">定理
 5.7</a>，<span class="math inline">\(\overline{\mathcal{C}_r}=\overline{
 \mathcal{C} }\)</span>，这意味着 <span class="math inline">\((k,y)\leq0\)</span> 对任何 <span class="math inline">\(y\in\mathcal{C}\)</span> 成立，即 <span class="math inline">\(-k\in\mathcal{C}^\ast\)</span>。由于 <a href="/coxeter-groups-tits-cone/#dual-cone-nonspace">对偶锥 <span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量范数 <span class="math inline">\(\leq0\)</span></a>，<span class="math inline">\((k,k)=(-k,-k)\leq0\)</span>，矛盾。这就证明了
@@ -830,6 +839,82 @@ level 2 时 <span class="math inline">\(\Omega_r\)</span>
 都是 time-like 或者 light-like 的。又由于 <span class="math inline">\(W\)</span> 是双曲的，从而 <span class="math inline">\(\Gamma\setminus\{i,j\}\)</span> 是 space-like 或者
 light-like 的，所以 <span class="math inline">\(\Gamma\)</span> 的 level
 只能是 2。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="计算例子">计算例子</h1>
+<p>本节我们来介绍怎样用程序绘制一个二维的极大球堆。</p>
+<p>以 <span class="math inline">\(K_4\)</span>
+完全图为例，每条边的标号是 4，即 Coxeter 矩阵为 <span class="math display">\[
+M=\begin{pmatrix}
+1 &amp; 4 &amp; 4 &amp; 4\\
+4 &amp; 1 &amp; 4 &amp; 4\\
+4 &amp; 4 &amp; 1 &amp; 4\\
+4 &amp; 4 &amp; 4 &amp; 1\\
+\end{pmatrix}
+\]</span></p>
+<p>这个群的 rank 是 4，level 是 2，所以给出的是 <span class="math inline">\(\mathbb{R}^2\)</span> 上的二维极大球堆。</p>
+<ol type="1">
+<li><span class="math inline">\(\Delta=\{\alpha_i\}_{i=1}^4\)</span>
+满足 <span class="math inline">\((\alpha_i,\alpha_i)=1\)</span>，它们对应 4
+个（虚的）球面镜 <span class="math inline">\(\{B_i\}_{i=1}^4\)</span>。关于它们的反演变换生成了
+<span class="math inline">\((W,S)\)</span>。</li>
+<li>由于删掉 <span class="math inline">\(K_4\)</span>
+的任何顶点后，剩下的是三角形的边标号都是 4，仍然是双曲的，所以 <span class="math inline">\(K_4\)</span> 的每个顶点都是实的，即基本权 <span class="math inline">\(\Delta^\ast = \{\omega_i\}_{i=1}^4\)</span>
+中每一个都是实的。将 <span class="math inline">\(\Delta^\ast\)</span>
+归一化以后得到的 <span class="math inline">\(\{\hat{\omega_i}\mid
+\omega_i\in\Delta^\ast\}\)</span> 给出 4 个互相分离的（实的）球 <span class="math inline">\(\{C_i\}_{i=1}^4\)</span>。</li>
+<li>由于 <span class="math inline">\(i\ne j\)</span> 时 <span class="math inline">\((\alpha_i, \omega_j)=0\)</span>，所以球 <span class="math inline">\(B_i\)</span> 和 <span class="math inline">\(C_j\)</span> 正交。</li>
+<li>又 <span class="math inline">\((\alpha_i,\omega_i)=1\)</span>，以及实权 <span class="math inline">\(\omega_i\)</span> 满足 <span class="math inline">\(0&lt;(\omega_i,\omega_i)\leq1\)</span>，所以归一化以后
+<span class="math inline">\((\alpha_i,\hat{\omega_i})&gt;1\)</span>，所以球
+<span class="math inline">\(B_i\)</span> 和 <span class="math inline">\(C_i\)</span> 是不相交的。</li>
+<li>将 <span class="math inline">\(W\)</span> 作用在 <span class="math inline">\(\{C_i\}\)</span> 上，得到的所有球即为球堆 <span class="math inline">\(\mathcal{P}=\bigcup_{w\in W,\,1\leq i\leq
+4}w(\hat{\omega_i})\)</span>。</li>
+</ol>
+<p>我们按照如下步骤来分别计算 <span class="math inline">\(\{B_i\}\)</span> 和 <span class="math inline">\(\{C_j\}\)</span>：</p>
+<ol type="1">
+<li><span class="math inline">\(C_1\)</span> 总是可以取为单位球 <span class="math inline">\(B(\mathbf{0},1)\)</span>。<strong>并且 <span class="math inline">\(C_1\)</span>
+是无界球</strong>。由于实球之间互不相交，所以 <span class="math inline">\(C_2,C_3,C_4\)</span> 都落在 <span class="math inline">\(C_1\)</span> 的有界一侧。</li>
+<li><span class="math inline">\(B_3,B_4\)</span>
+可以取为过原点的两条直线，法向量分别为 <span class="math display">\[\begin{aligned}
+\mathbf{n}_3&amp;=(1, 0),\\
+\mathbf{n}_4&amp;=(-\cos\frac{\pi}{m_{3,4}},\sin\frac{\pi}{m_{3,4}})=(-\cos\frac{\pi}{4},\sin\frac{\pi}{4}).
+\end{aligned}\]</span></li>
+<li><strong><span class="math inline">\(B_2(\mathbf{a}_2,r_2)\)</span>
+是一个无界球</strong>，即 <span class="math inline">\(r_2&lt;0\)</span>。我们可以认为 <span class="math inline">\(r_2&gt;0\)</span>，但是在列方程时将 <span class="math inline">\(B_2\)</span> 与其它球的内积取负：
+<ul>
+<li>由 <span class="math inline">\(B_2\)</span> 与 <span class="math inline">\(C_1\)</span> 正交可得 <span class="math inline">\(|\mathbf{a}_2|^2=r_2^2+1\)</span>；</li>
+<li>计算 <span class="math inline">\(B_2\)</span> 与 <span class="math inline">\(B_3,B_4\)</span> 的夹角可得（注意 <span class="math inline">\(\cos\)</span> 前面没有负号了） <span class="math display">\[\begin{aligned}
+\frac{(\mathbf{a}_2,\mathbf{n}_3)}{r_2}&amp;=\cos\frac{\pi}{m_{23}}=\cos\frac{\pi}{4},\\
+\frac{(\mathbf{a}_2,\mathbf{n}_4)}{r_2}&amp;=\cos\frac{\pi}{m_{24}}=\cos\frac{\pi}{4}.
+\end{aligned}\]</span></li>
+</ul>
+由这三个方程可以解出 <span class="math inline">\(\mathbf{a}_2\)</span>
+和 <span class="math inline">\(r_2\)</span>。</li>
+<li><strong><span class="math inline">\(B_1(\mathbf{a}_1,r_1)\)</span>
+也是一个无界球</strong>，即 <span class="math inline">\(r_1&lt;0\)</span>。我们同样认为 <span class="math inline">\(r_1&gt;0\)</span>，并在列方程时将 <span class="math inline">\(B_2\)</span> 与其它球的内积取负：
+<ul>
+<li>计算 <span class="math inline">\(B_1\)</span> 与 <span class="math inline">\(B_3,B_4\)</span> 夹角可得 <span class="math display">\[\begin{aligned}
+\frac{(\mathbf{a}_1,\mathbf{n}_3)}{r_1}&amp;=\cos\frac{\pi}{m_{13}}=\cos\frac{\pi}{4},\\
+\frac{(\mathbf{a}_1,\mathbf{n}_4)}{r_1}&amp;=\cos\frac{\pi}{m_{14}}=\cos\frac{\pi}{4}.
+\end{aligned}\]</span></li>
+<li>计算 <span class="math inline">\(B_1\)</span> 与 <span class="math inline">\(B_2\)</span> 夹角可得 <span class="math display">\[\frac{r_1^2+r_2^2-|\mathbf{a}_1-\mathbf{a}_2|^2}{2r_1r_2}=-\cos\frac{\pi}{m_{12}}=-\cos\frac{\pi}{4}.\]</span>
+注意由于我们同时翻转了 <span class="math inline">\(B_1,B_2\)</span>，所以负号又回来了。</li>
+</ul>
+由这三个方程可以得到一个二次方程，解出的 <span class="math inline">\(r_1\)</span>
+有两个值，我们取较小的那一个。（原因在后面解释）</li>
+<li>我们还剩下三个实球 <span class="math inline">\(C_2,C_3,C_4\)</span>
+需要解出。<span class="math inline">\(C_2\)</span> 需要和 <span class="math inline">\(B_3,B_4\)</span>
+正交，所以它是一个以原点为中心的球，而它又要和 <span class="math inline">\(B_1\)</span> 正交，所以 <span class="math inline">\(C_2\)</span> 的半径为 <span class="math inline">\(\sqrt{|\mathbf{a}_1|^2-r_1^2}\)</span>。</li>
+<li><span class="math inline">\(C_3\)</span> 与 <span class="math inline">\(B_1,B_2,B_4\)</span>
+正交，这可以得到三个方程。联立解出 <span class="math inline">\(C_3\)</span>。</li>
+<li><span class="math inline">\(C_4\)</span> 与 <span class="math inline">\(B_1,B_2,B_3\)</span>
+正交，也可以得到三个方程，联立解出 <span class="math inline">\(C_4\)</span>。</li>
+</ol>
+<p>结果如下图所示，单根 <span class="math inline">\(\alpha_i\)</span>
+对应的镜面 <span class="math inline">\(B_i\)</span>
+用虚线绘制，归一化的实权 <span class="math inline">\(\hat{\omega_i}\)</span> 对应的球 <span class="math inline">\(C_i\)</span> 用实线绘制，<span class="math inline">\(B_i\)</span> 和 <span class="math inline">\(C_i\)</span> 使用同样的颜色。<span class="math inline">\({\rm inv}\)</span>
+表示该圆被翻转，以无界区域为内部。注意到每个 <span class="math inline">\(C_i\)</span> 都位于 <span class="math inline">\(B_i\)</span> 的内部，这是因为 <span class="math inline">\((\alpha_i,\hat{\omega_i})\geq1\)</span>，所以它们一定是一个包含另一个。这就是为什么求解
+<span class="math inline">\(B_1\)</span>
+时要用较小的那个解：另一个解会与 <span class="math inline">\(C_1\)</span> 相交，不满足包含关系。</p>
+<p><img src="/images/coxeter/compute_example.svg" class="fig" width="400"></p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Maxwell82" class="csl-entry" role="listitem">
