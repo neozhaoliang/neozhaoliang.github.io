@@ -854,8 +854,7 @@ M=\begin{pmatrix}
 <ol type="1">
 <li><span class="math inline">\(\Delta=\{\alpha_i\}_{i=1}^4\)</span>
 满足 <span class="math inline">\((\alpha_i,\alpha_i)=1\)</span>，它们对应 4
-个（虚的）球面镜 <span class="math inline">\(\{B_i\}_{i=1}^4\)</span>。关于它们的反演变换生成了
-<span class="math inline">\((W,S)\)</span>。</li>
+个（虚的）球面镜 <span class="math inline">\(\{B_i\}_{i=1}^4\)</span>。单反射 <span class="math inline">\(s_i\)</span> 对应关于 <span class="math inline">\(B_i\)</span> 的反演变换，它们生成了 <span class="math inline">\((W,S)\)</span>。</li>
 <li>由于删掉 <span class="math inline">\(K_4\)</span>
 的任何顶点后，剩下的是三角形的边标号都是 4，仍然是双曲的，所以 <span class="math inline">\(K_4\)</span> 的每个顶点都是实的，即基本权 <span class="math inline">\(\Delta^\ast = \{\omega_i\}_{i=1}^4\)</span>
 中每一个都是实的。将 <span class="math inline">\(\Delta^\ast\)</span>
@@ -863,10 +862,11 @@ M=\begin{pmatrix}
 \omega_i\in\Delta^\ast\}\)</span> 给出 4 个互相分离的（实的）球 <span class="math inline">\(\{C_i\}_{i=1}^4\)</span>。</li>
 <li>由于 <span class="math inline">\(i\ne j\)</span> 时 <span class="math inline">\((\alpha_i, \omega_j)=0\)</span>，所以球 <span class="math inline">\(B_i\)</span> 和 <span class="math inline">\(C_j\)</span> 正交。</li>
 <li>又 <span class="math inline">\((\alpha_i,\omega_i)=1\)</span>，以及实权 <span class="math inline">\(\omega_i\)</span> 满足 <span class="math inline">\(0&lt;(\omega_i,\omega_i)\leq1\)</span>，所以归一化以后
-<span class="math inline">\((\alpha_i,\hat{\omega_i})&gt;1\)</span>，所以球
+<span class="math inline">\((\alpha_i,\hat{\omega}_i)&gt;1\)</span>，所以球
 <span class="math inline">\(B_i\)</span> 和 <span class="math inline">\(C_i\)</span> 是不相交的。</li>
-<li>将 <span class="math inline">\(W\)</span> 作用在 <span class="math inline">\(\{C_i\}\)</span> 上，得到的所有球即为球堆 <span class="math inline">\(\mathcal{P}=\bigcup_{w\in W,\,1\leq i\leq
-4}w(\hat{\omega_i})\)</span>。</li>
+<li>将 <span class="math inline">\(W\)</span> 作用在 <span class="math inline">\(\{C_i\}\)</span>
+上，得到的所有球（即所有归一化的实权 <span class="math inline">\(\hat{\Omega}_r\)</span>）即为球堆 <span class="math inline">\(\mathcal{P}=\bigcup_{w\in W,\,1\leq i\leq
+4}w(\hat{\omega}_i)\)</span>。</li>
 </ol>
 <p>我们按照如下步骤来分别计算 <span class="math inline">\(\{B_i\}\)</span> 和 <span class="math inline">\(\{C_j\}\)</span>：</p>
 <ol type="1">
@@ -910,11 +910,11 @@ M=\begin{pmatrix}
 </ol>
 <p>结果如下图所示，单根 <span class="math inline">\(\alpha_i\)</span>
 对应的镜面 <span class="math inline">\(B_i\)</span>
-用虚线绘制，归一化的实权 <span class="math inline">\(\hat{\omega_i}\)</span> 对应的球 <span class="math inline">\(C_i\)</span> 用实线绘制，<span class="math inline">\(B_i\)</span> 和 <span class="math inline">\(C_i\)</span> 使用同样的颜色。<span class="math inline">\({\rm inv}\)</span>
-表示该圆被翻转，以无界区域为内部。注意到每个 <span class="math inline">\(C_i\)</span> 都位于 <span class="math inline">\(B_i\)</span> 的内部，这是因为 <span class="math inline">\((\alpha_i,\hat{\omega_i})\geq1\)</span>，所以它们一定是一个包含另一个。这就是为什么求解
+用虚线绘制，归一化的实权 <span class="math inline">\(\hat{\omega}_i\)</span> 对应的球 <span class="math inline">\(C_i\)</span> 用实线绘制，<span class="math inline">\(B_i\)</span> 和 <span class="math inline">\(C_i\)</span> 使用同样的颜色。上标 <span class="math inline">\(\ast\)</span>
+表示该圆被翻转，以无界区域为内部。注意到每个 <span class="math inline">\(C_i\)</span> 都位于 <span class="math inline">\(B_i\)</span> 的内部，这是因为 <span class="math inline">\((\alpha_i,\hat{\omega}_i)\geq1\)</span>，所以它们一定是一个包含另一个。这就是为什么求解
 <span class="math inline">\(B_1\)</span>
 时要用较小的那个解：另一个解会与 <span class="math inline">\(C_1\)</span> 相交，不满足包含关系。</p>
-<p><img src="/images/coxeter/compute_example.svg" class="fig" width="400"></p>
+<p><img src="/images/coxeter/compute_example.svg" class="fig" width="600"></p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Maxwell82" class="csl-entry" role="listitem">
