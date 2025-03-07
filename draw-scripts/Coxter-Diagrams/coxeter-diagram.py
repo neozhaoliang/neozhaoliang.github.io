@@ -374,7 +374,7 @@ def comb534():
     init("337.eps", 180, 50)
     center()
     scale(50)
-    rad = 0.08
+    rad = 0.07
     a = 1.0
 
     newpath()
@@ -547,3 +547,4 @@ def shadertoy():
 
 
 # shadertoy()
+comb534()
