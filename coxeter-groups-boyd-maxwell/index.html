@@ -842,14 +842,8 @@ light-like 的，所以 <span class="math inline">\(\Gamma\)</span> 的 level
 <h1 id="计算例子">计算例子</h1>
 <p>本节我们来介绍怎样用程序实际绘制一个二维的 Boyd-Maxwell 球堆。</p>
 <p>以 <span class="math inline">\(K_4\)</span>
-完全图为例，每条边的标号是 4，即 Coxeter 矩阵为 <span class="math display">\[
-M=\begin{pmatrix}
-1 &amp; 4 &amp; 4 &amp; 4\\
-4 &amp; 1 &amp; 4 &amp; 4\\
-4 &amp; 4 &amp; 1 &amp; 4\\
-4 &amp; 4 &amp; 4 &amp; 1\\
-\end{pmatrix}
-\]</span></p>
+完全图为例，每条边的标号是 4：</p>
+<p><img src="/images/coxeter/K4.svg" class="fig" width="150"></p>
 <p>这个群的 rank 是 4，level 是 2，所以给出的是 <span class="math inline">\(\mathbb{R}^2\)</span> 上的二维极大球堆。</p>
 <p>单根系 <span class="math inline">\(\Delta=\{\alpha_i\}_{i=1}^4\)</span> 满足 <span class="math inline">\((\alpha_i,\alpha_i)=1\)</span>，它们对应 4
 个虚球。前面已经介绍了，以 <span class="math inline">\(\alpha_i\)</span>
@@ -917,7 +911,7 @@ M=\begin{pmatrix}
 对应的实球用实线绘制，同样的 <span class="math inline">\(i\)</span>
 使用同样的颜色。上标 <span class="math inline">\(\ast\)</span>
 表示该球以无界区域为内部。所以我们有三个无界的球 <span class="math inline">\(\alpha_1,\alpha_2,\omega_1\)</span>。</p>
-<p><img src="/images/coxeter/compute_example.svg" class="fig" width="600"></p>
+<p><img src="/images/coxeter/compute_example_K4.svg" class="fig" width="500"></p>
 <p>注意到关于 <span class="math inline">\(\hat{\omega}_1\)</span>
 的反演保持虚球 <span class="math inline">\(\alpha_2,\alpha_3,\alpha_4\)</span>
 不变，因为它们都与 <span class="math inline">\(\hat{\omega}_1\)</span>
@@ -927,6 +921,10 @@ M=\begin{pmatrix}
 也是一组夹角符合要求的镜面球，但是包含关系发生了改变，变成了 <span class="math inline">\(\gamma_1\)</span> 包含在 <span class="math inline">\(\hat{\omega}_1\)</span>
 的内部。这是错误的。这就是为什么前面求解 <span class="math inline">\(\alpha_1\)</span>
 的半径时我们要取那个较小的解（这两个解给出的球心形如 <span class="math inline">\(r_1\mathbf{x}\)</span> 和 <span class="math inline">\(r_2\mathbf{x}\,(\mathbf{x}\in\mathbb{R}^2)\)</span>，所以半径较小者一定在单位球内部）。</p>
+<p>我们再举一个只有一个实权的例子：</p>
+<p><img src="/images/coxeter/337.svg" class="fig" width="250"></p>
+<p>这个群只有第一个顶点是实的，所以整个球堆完全由一个实球 <span class="math inline">\(\hat{\omega}_1\)</span> 生成：</p>
+<p><img src="/images/coxeter/compute_example_337.svg" class="fig" width="500"></p>
 <p>具体的计算步骤可以参考下面的 shadertoy 项目代码中的注释：</p>
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&amp;t=0&amp;paused=true&amp;muted=false" allowfullscreen="">
 </iframe>

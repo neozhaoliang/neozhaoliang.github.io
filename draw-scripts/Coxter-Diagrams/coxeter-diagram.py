@@ -371,7 +371,7 @@ def noncompact():
 
 
 def comb534():
-    init("534.eps", 180, 50)
+    init("337.eps", 180, 50)
     center()
     scale(50)
     rad = 0.08
@@ -387,14 +387,14 @@ def comb534():
     circ(a / 2, 0, rad)
     circ(-a / 2, 0, rad)
     circ(a * 1.5, 0, rad)
-    circ(-a * 1.5, 0, rad)
+    circ(-a * 1.5, 0, rad, fc=(1, 0, 0))
 
     t = texinsert(r"${\bf 5}$")
     t.scale(1.5)
     t.translate(-t.width / 2, t.height)
-    place(t, -a, 0)
+    # place(t, -a, 0)
 
-    t = texinsert(r"${\bf 4}$")
+    t = texinsert(r"${\bf 7}$")
     t.scale(1.5)
     t.translate(-t.width / 2, t.height)
     place(t, a, 0)
@@ -430,11 +430,11 @@ def comb363():
 
 
 def rank4_level3():
-    init("rank4-level3.eps", 100, 100)
+    init("K4.eps", 100, 100)
     center()
     scale(60)
 
-    rad = 0.08
+    rad = 0.05
     a = 0.5
 
     newpath()
@@ -445,21 +445,50 @@ def rank4_level3():
     closepath()
     stroke()
 
-    circ(-a, a, rad)
-    circ(a, a, rad)
+    newpath()
+    moveto(a, a)
+    lineto(-a, -a)
+    stroke()
+
+    newpath()
+    moveto(a, -a)
+    lineto(-a, a)
+    stroke()
+
+    circ(-a, a, rad, fc=(1, 0, 0))
+    circ(a, a, rad, fc=(1, 0, 0))
     circ(a, -a, rad, fc=(1, 0, 0))
     circ(-a, -a, rad, fc=(1, 0, 0))
 
-    t = texinsert(r"${\bf -1.1}$")
+    t = texinsert(r"${\bf 4}$")
     t.scale(1.2)
-    t.translate(-t.width / 2, t.height)
-    place(t, -0.05, a)
+    t.translate(-t.width / 2, t.height / 2)
+    place(t, 0, a)
 
-    t = texinsert(r"${\bf 7}$")
+    t = texinsert(r"${\bf 4}$")
+    t.scale(1.2)
+    t.translate(-t.width / 2, -t.height * 1.5)
+    place(t, 0, -a)
+
+    t = texinsert(r"${\bf 4}$")
     t.scale(1.2)
     t.translate(t.width / 2, -t.height / 2)
     place(t, a, 0)
 
+    t = texinsert(r"${\bf 4}$")
+    t.scale(1.2)
+    t.translate(-t.width * 1.75, -t.height / 2)
+    place(t, -a, 0)
+
+    t = texinsert(r"${\bf 4}$")
+    t.scale(1.2)
+    t.translate(-t.width, -t.height / 2)
+    place(t, a / 2, a / 2)
+
+    t = texinsert(r"${\bf 4}$")
+    t.scale(1.2)
+    t.translate(-t.width, -t.height / 2)
+    place(t, a / 2, -a / 2)
     finish()
 
 
@@ -471,13 +500,13 @@ def rank4_level3():
 # affine_B3()
 # affine_C3()
 # rank2_finite()
-cube43()
+# cube43()
 # tetra33()
 # icosa53()
 # prism()
 # paracompact()
 # noncompact()
-comb534()
+# comb534()
 # comb363()
 rank4_level3()
 
@@ -517,4 +546,4 @@ def shadertoy():
     finish()
 
 
-shadertoy()
+# shadertoy()

@@ -1,16 +1,13 @@
 import numpy as np
 from numpy import sin, cos, pi, sqrt
-import matplotlib.pyplot as plt
-import matplotlib as mpl
+from piscript.PiModule import *
 
-plt.rcParams.update({"text.usetex": True, "font.family": "Courier", "font.size": 12})
-
-inf = -1.0
+inf = 1.0
 
 
 def dihedral(x):
     if x == inf:
-        return 1
+        return inf
     return cos(pi / x)
 
 
@@ -103,56 +100,96 @@ def solveBall(B1, B2, B3):
     return np.array([cen[0], cen[1], r])
 
 
-def draw_circle(ax, cen, rad, col, type, ls="-"):
+def draw_circle(cen, rad, col, type):
+    newpath()
     if type == "C":
-        ax.add_patch(plt.Circle(cen, rad, ec=col, fc="none", ls=ls))
+        circle(cen[0], cen[1], rad)
     else:
         n = complex(*cen)
         x = rad * n
         v = n * 1j
         start = x - 10 * v
         end = x + 10 * v
-        ax.plot([start.real, end.real], [start.imag, end.imag], color=col, ls=ls)
+        moveto(start.real, start.imag)
+        lineto(end.real, end.imag)
+    stroke(*col)
 
 
-def main():
-    fig = plt.figure(figsize=(6, 6), dpi=100)
-    ax = fig.add_axes([0, 0, 1, 1], aspect=1)
-    ax.axis([-1.2, 1.6, -1.2, 2])
-    ax.axis("off")
-
-    B0, B1, B2, B3 = get_circles(4, (4, 4, 4, 4), 4)
-
-    C0 = np.array([0, 0, 1])  # 第一个实球是单位圆
-    C1 = np.array([0, 0, sqrt(np.dot(B0[:2], B0[:2]) - B0[2] * B0[2])])
-    C2 = solveBall(B0, B1, B3)
-    C3 = solveBall(B0, B1, B2)
-
-    draw_circle(ax, C0[:2], C0[2], "b", "C")
-    draw_circle(ax, B0[:2], B0[2], "b", "C", ls="--")
-
-    draw_circle(ax, B1[:2], B1[2], "g", "C", ls="--")
-    draw_circle(ax, C1[:2], C1[2], "g", "C")
-
-    draw_circle(ax, B2, 0, "r", "L", ls="--")
-    draw_circle(ax, C2[:2], C2[2], "r", "C")
-
-    draw_circle(ax, B3, 0, "y", "L", ls="--")
-    draw_circle(ax, C3[:2], C3[2], "y", "C")
-
-    ax.text(-0.15, 1.7, r"$B_3=\alpha_3$", fontsize="large", color="r")
-    ax.text(1.3, 1.5, r"$B_4=\alpha_4$", fontsize="large", color="y")
-    ax.text(0.5, 1.6, r"$B_2^{\rm inv}=\alpha_2$", fontsize="large", color="g")
-    ax.text(-0.3, 0.35, r"$B_1^{\rm inv}=\alpha_1$", fontsize="large", color="b")
-
-    ax.text(0.4, 0.68, r"$C_3=\hat{\omega_3}$", fontsize="large", color="r")
-    ax.text(0.05, 0.82, r"$C_4=\hat{\omega_4}$", fontsize="large", color="y")
-    ax.text(-0.5, 0.0, r"$C_2=\hat{\omega_3}$", fontsize="large", color="g")
-    ax.text(-0.9, 0.7, r"$C_1^{\rm inv}=\hat{\omega_1}$", fontsize="large", color="b")
-    P = getIntersection(B0, B1, B2)
-
-    fig.savefig("compute_example.svg")
+init("compute_example.eps", 400, 400)
+center()
+scale(120, 120)
+translate(-0.2, -0.2)
 
 
-if __name__ == "__main__":
-    main()
+B0, B1, B2, B3 = get_circles(4, (4, 4, 4, 4), 4)
+
+C0 = np.array([0, 0, 1])
+C1 = np.array([0, 0, sqrt(np.dot(B0[:2], B0[:2]) - B0[2] * B0[2])])
+C2 = solveBall(B0, B1, B3)
+C3 = solveBall(B0, B1, B2)
+
+blue = (0, 0, 1)
+green = (0, 0.6, 0.2)
+red = (1, 0, 0)
+yellow = (0.7, 0.7, 0)
+
+
+draw_circle(C0[:2], C0[2], blue, "C")
+draw_circle(C1[:2], C1[2], green, "C")
+draw_circle(C2[:2], C2[2], red, "C")
+draw_circle(C3[:2], C3[2], yellow, "C")
+
+setdash([4, 4])
+scalelinewidth(0.5)
+draw_circle(B0[:2], B0[2], blue, "C")
+draw_circle(B1[:2], B1[2], green, "C")
+draw_circle(B2, 0, red, "L")
+draw_circle(B3, 0, yellow, "L")
+
+inv = "\\ast"
+
+fc = 1.5
+setcolor(red)
+t = texinsert(r"$\alpha_3$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, 0, 1.7)
+
+t = texinsert(r"$\hat{\omega}_3$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, C2[0], C2[1])
+
+setcolor(yellow)
+t = texinsert(r"$\alpha_4$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, 1.35, 1.4)
+
+t = texinsert(r"$\hat{\omega}_4$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, C3[0] - 0.1, C3[1])
+
+setcolor(green)
+t = texinsert(r"$\alpha_2^{\ast}$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, B1[0], B1[1])
+
+t = texinsert(r"$\hat{\omega}_2$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, C1[0], C1[1])
+
+setcolor(blue)
+t = texinsert(r"$\alpha_1^{\ast}$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, B0[0] - 0.025, B0[1])
+
+t = texinsert(r"$\hat{\omega}_1^{\ast}$")
+t.scale(fc)
+t.translate(-t.width / 2, -t.height / 2)
+place(t, -1.15, 0)
+finish()
