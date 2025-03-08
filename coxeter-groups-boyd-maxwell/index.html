@@ -843,7 +843,7 @@ light-like 的，所以 <span class="math inline">\(\Gamma\)</span> 的 level
 <p>本节我们来介绍怎样用程序实际绘制一个二维的 Boyd-Maxwell 球堆。</p>
 <p>以 <span class="math inline">\(K_4\)</span>
 完全图为例，每条边的标号是 4：</p>
-<p><img src="/images/coxeter/K4.svg" class="fig" width="150"></p>
+<p><img src="/images/coxeter/K4.svg" id="K4" class="fig" width="150"></p>
 <p>这个群的 rank 是 4，level 是 2，所以给出的是 <span class="math inline">\(\mathbb{R}^2\)</span> 上的二维极大球堆。</p>
 <p>单根系 <span class="math inline">\(\Delta=\{\alpha_i\}_{i=1}^4\)</span> 满足 <span class="math inline">\((\alpha_i,\alpha_i)=1\)</span>，它们对应 4
 个虚球。前面已经介绍了，以 <span class="math inline">\(\alpha_i\)</span>
@@ -922,12 +922,21 @@ light-like 的，所以 <span class="math inline">\(\Gamma\)</span> 的 level
 的内部。这是错误的。这就是为什么前面求解 <span class="math inline">\(\alpha_1\)</span>
 的半径时我们要取那个较小的解（这两个解给出的球心形如 <span class="math inline">\(r_1\mathbf{x}\)</span> 和 <span class="math inline">\(r_2\mathbf{x}\,(\mathbf{x}\in\mathbb{R}^2)\)</span>，所以半径较小者一定在单位球内部）。</p>
 <p>我们再举一个只有一个实权的例子：</p>
-<p><img src="/images/coxeter/337.svg" class="fig" width="250"></p>
+<p><img src="/images/coxeter/337.svg" id="337" class="fig" width="250"></p>
 <p>这个群只有第一个顶点是实的，所以整个球堆完全由一个实球 <span class="math inline">\(\hat{\omega}_1\)</span> 生成：</p>
 <p><img src="/images/coxeter/compute_example_337.svg" class="fig" width="500"></p>
-<p>具体的计算步骤可以参考下面的 shadertoy 项目代码中的注释：</p>
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&amp;t=0&amp;paused=true&amp;muted=false" allowfullscreen="">
+<p>具体的计算步骤可以参考 shadertoy 动画代码中的注释：</p>
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
 </iframe>
+<p>可以看到，每个实球本身都是一个二维的 Poincaré
+双曲空间。这很好理解，因为如果 <span class="math inline">\(\omega_i\)</span> 是实权，记 <span class="math inline">\(I=S\setminus\{i\}\)</span>，则实球 <span class="math inline">\(\hat{\omega}_i\)</span> 与虚球 <span class="math inline">\(\{\alpha_j\mid j\in I \}\)</span>
+都正交，这些虚球在 <span class="math inline">\(\hat{\omega}_1\)</span>
+中围成一个测地三角形，关于这个三角形三条边的反射生成的群是标准椭圆子群
+<span class="math inline">\(W_I\)</span>。在 <span class="math inline">\(W_I\)</span>
+的作用下，这个测地三角形的像密铺了整个实球 <span class="math inline">\(\hat{\omega}_i\)</span>。在前面 <a href="#K4"><span class="math inline">\(K_4\)</span> 的例子</a>
+中，有四个不同的初始实球，它们每一个内部都是 <span class="math inline">\(\Delta(4,4,4)\)</span> 的双曲密铺；在 <a href="#337"><span class="math inline">\({\rm\color{red}o\color{red}}-{\rm o}-{\rm
+o}\overset{7}{-}{\rm o}\)</span> 的例子</a>
+中，只有一个初始实球，它的内部是 <span class="math inline">\(\Delta(2,3,7)\)</span> 的双曲密铺。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Maxwell82" class="csl-entry" role="listitem">
