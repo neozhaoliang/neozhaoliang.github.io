@@ -26,14 +26,7 @@
 度。用边长为 1 的菱形密铺，有多少种不同的方法？
 
 
-\(a\times
-b\times c\) 的六边形
-
-
-下图是一种密铺的示例：
-
-
-一个密铺的例子，顶部的数字表示高度，解释见下文">
+下图是一种密铺的示例：">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -195,14 +188,6 @@ b\times c\) 的六边形
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -211,8 +196,8 @@ b\times c\) 的六边形
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -220,7 +205,15 @@ b\times c\) 的六边形
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -251,16 +244,16 @@ b\times c\) 的六边形
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -331,17 +324,10 @@ b\times c\) 的六边形
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>一个边长为 <span class="math inline">\(a\times b\times c\)</span> 的平行六边形（<span class="math inline">\(a,b,c\)</span> 都是正整数），每个内角都是 120
 度。用边长为 1 的菱形密铺，有多少种不同的方法？</p>
-<figure>
-<img src="/images/macmahon/hexagon.svg" width="400" alt="a\times b\times c 的六边形">
-<figcaption aria-hidden="true"><span class="math inline">\(a\times
-b\times c\)</span> 的六边形</figcaption>
-</figure>
+<p><img src="/images/macmahon/hexagon.svg" class="fig" width="400"></p>
 </div>
 <p>下图是一种密铺的示例：</p>
-<figure>
-<img src="/images/macmahon/planepartition.svg" width="400" alt="一个密铺的例子，顶部的数字表示高度，解释见下文">
-<figcaption aria-hidden="true">一个密铺的例子，顶部的数字表示高度，解释见下文</figcaption>
-</figure>
+<p><img src="/images/macmahon/planepartition.svg" class="fig" width="400"></p>
 <span id="more"></span>
 <p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足规律：从墙角开始，沿着两侧墙壁的方向，箱子的高度是递减的。我们把地面上第
 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列位置箱子的高度 <span class="math inline">\(a_{ij}\)</span> 填写在一个 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列的矩阵 <span class="math inline">\(A\)</span> 中（习惯上空白位置的 0 不写出来）：</p>
@@ -426,15 +412,9 @@ b\times c\)</span> 的六边形</figcaption>
 <p>每个平面分拆的矩阵 <span class="math inline">\(A\)</span> 都对应
 <span class="math inline">\(c\)</span> 条这样的路径，其中第 <span class="math inline">\(k\)</span> 条路径是高度为 <span class="math inline">\(k\,(1\leq k\leq c)\)</span>
 的那一层的「等高线」：</p>
-<figure>
-<img src="/images/macmahon/paths-on-cubes.svg" width="400" alt="等高线示意图">
-<figcaption aria-hidden="true">等高线示意图</figcaption>
-</figure>
+<p><img src="/images/macmahon/paths-on-cubes.svg" class="fig" width="400"></p>
 <p>我们把这些路径投影到 2D，和矩阵 <span class="math inline">\(A\)</span> 画在一起。从最下方的路径开始，第 <span class="math inline">\(i\)</span> 条路径对应的是矩阵中 <span class="math inline">\(\geq i\)</span> 的那些方格构成的区域的边界：</p>
-<figure>
-<img src="/images/macmahon/gauss_path.svg" width="500" alt="等高线投影到 xy 平面上的效果图">
-<figcaption aria-hidden="true">等高线投影到 <span class="math inline">\(xy\)</span> 平面上的效果图</figcaption>
-</figure>
+<p><img src="/images/macmahon/gauss_path.svg" class="fig" width="500"></p>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>在上图中，我稍微移动了各个路径的位置，使得它们容易在视觉中区分，所以导致看起来它们的起点和终点是不同的。实际上它们都是从

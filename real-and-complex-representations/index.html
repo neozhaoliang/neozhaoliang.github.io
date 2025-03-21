@@ -195,14 +195,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -211,8 +203,8 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -220,7 +212,15 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -251,16 +251,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -342,15 +342,14 @@
 <p>本文要介绍的是另外两个三分天下的例子，它们来自群表示论，即有限群的不可约实表示在复数域上的分解，和不可约复表示在实数域上的实现。这两个例子是紧密相关的。</p>
 <span id="more"></span>
 <h1 id="不可约实表示在复数域上的分解">不可约实表示在复数域上的分解</h1>
-<p>在有限群的表示论中，第一个遇到的重要结论大概非 Schur 引理莫属：</p>
+<p>在有限群的表示论中，遇到的第一个重要结论大概非 Schur 引理莫属：</p>
 <div id="schur-------" class="statement sta_schur___ plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">Schur
 引理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(G\)</span> 是一个有限群，<span class="math inline">\(k\)</span> 是一个特征为 0 的域，<span class="math inline">\(V\)</span> 是一个不可约左 <span class="math inline">\(kG\)</span>- 模。则 <span class="math inline">\(D=\mathrm{Hom}_{kG}(V,V)\)</span> 是 <span class="math inline">\(k\)</span> 上的有限维结合可除代数。</p>
 </div>
-<p>我记得还是本科生的时候，在自学到这个结论时就曾经想过这个问题： 如果
-<span class="math inline">\(k=\mathbb{R}\)</span> 是实数域的话，那么
-<span class="math inline">\(D\)</span> 作为 <span class="math inline">\(\mathbb{R}\)</span>
-上的有限维结合可除代数只有三种：实数域 <span class="math inline">\(\mathbb{R}\)</span>，复数域 <span class="math inline">\(\mathbb{C}\)</span>，四元数体 <span class="math inline">\(\mathbb{H}\)</span>。这三种可能性分别对应 <span class="math inline">\(\mathbb{R}G\)</span>- 模 <span class="math inline">\(V\)</span> 的什么性质呢？</p>
+<p>我记得还是本科生的时候，在念到这个结论时就曾经想过这个问题：假设
+<span class="math inline">\(k=\mathbb{R}\)</span> 是实数域，那么 <span class="math inline">\(D\)</span> 作为 <span class="math inline">\(\mathbb{R}\)</span>
+上的有限维结合可除代数，只有三种可能：实数域 <span class="math inline">\(\mathbb{R}\)</span>，复数域 <span class="math inline">\(\mathbb{C}\)</span>，四元数体 <span class="math inline">\(\mathbb{H}\)</span>。这三种可能性分别对应 <span class="math inline">\(\mathbb{R}G\)</span>- 模 <span class="math inline">\(V\)</span> 的什么性质呢？</p>
 <p>答案是，<span class="math inline">\(D\)</span> 决定了 <span class="math inline">\(V\)</span>
 作为复表示时分解为不可约表示的方式。等等，把 <span class="math inline">\(V\)</span> 看作复表示是什么意思来着？</p>
 <p>有两种途径可以解释怎样把 <span class="math inline">\(V\)</span>
@@ -360,9 +359,11 @@ GL}(n,\mathbb{R}),\quad n=\dim V.\]</span> 但实矩阵也是复矩阵，所以
 <span class="math inline">\(\rho\)</span> 也是 <span class="math inline">\(G\to {\rm GL}(n,\mathbb{C})\)</span> 的同态。所以
 <span class="math inline">\(\rho\)</span> 自然也是 <span class="math inline">\(G\)</span> 的复表示。</p>
 <p>使用张量积的语言就很不直观了，但是我更偏好这种方式，因为这可以让我们在更高的抽象层次上进行计算。为了把
-<span class="math inline">\(V\)</span> 看作 <span class="math inline">\(\mathbb{C}G\)</span>- 模，我们需要把 <span class="math inline">\(V\)</span> 中数和向量的乘法扩展到 <span class="math inline">\(\mathbb{C}\)</span> 上。所以我们考虑 <span class="math inline">\(V\)</span> 的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Complexification">复化</a> <span class="math inline">\(V_\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}V\)</span>。<span class="math inline">\(V_\mathbb{C}\)</span> 中复数与向量的乘法由 <span class="math display">\[z(c\otimes v)=zc\otimes v,\quad
-z,c\in\mathbb{C},v\in V.\]</span> 给出。<span class="math inline">\(V\)</span> 可以等同于 <span class="math inline">\(V_\mathbb{C}\)</span> 的实子空间 <span class="math inline">\(1\otimes V\)</span>。在这个等同下，<span class="math inline">\(V\)</span> 的一组 <span class="math inline">\(\mathbb{R}\)</span>- 基也是 <span class="math inline">\(V_\mathbb{C}\)</span> 的一组 <span class="math inline">\(\mathbb{C}\)</span>- 基。任何 <span class="math inline">\(T\in\mathrm{End}_\mathbb{R}(V)\)</span> 通过 <span class="math inline">\(T\to 1_\mathbb{C}\otimes T\)</span> 变成 <span class="math inline">\(V_\mathbb{C}\)</span> 上的 <span class="math inline">\(\mathbb{C}\)</span>- 线性变换。<span class="math inline">\(T\)</span> 和 <span class="math inline">\(1_\mathbb{C}\otimes T\)</span>
-在同一组基下具有相同的矩阵。</p>
+<span class="math inline">\(V\)</span> 看作 <span class="math inline">\(\mathbb{C}G\)</span>- 模，我们需要把 <span class="math inline">\(V\)</span> 中数和向量的乘法扩展到 <span class="math inline">\(\mathbb{C}\)</span> 上。所以我们考虑 <span class="math inline">\(V\)</span> 的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Complexification">复化</a> <span class="math inline">\(V_\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}V\)</span>。<span class="math inline">\(V_\mathbb{C}\)</span>
+中复数与向量的乘法由如下规则给出： <span class="math display">\[z(c\otimes v)=zc\otimes v,\quad
+z,c\in\mathbb{C},v\in V.\]</span> <span class="math inline">\(V\)</span>
+可以等同于 <span class="math inline">\(V_\mathbb{C}\)</span> 的实子空间
+<span class="math inline">\(1\otimes V\)</span>。在这个等同下，<span class="math inline">\(V\)</span> 的一组 <span class="math inline">\(\mathbb{R}\)</span>- 基也是 <span class="math inline">\(V_\mathbb{C}\)</span> 的一组 <span class="math inline">\(\mathbb{C}\)</span>- 基。任何 <span class="math inline">\(T\in\mathrm{End}_\mathbb{R}(V)\)</span> 通过 <span class="math inline">\(T\to 1_\mathbb{C}\otimes T\)</span> 变成 <span class="math inline">\(V_\mathbb{C}\)</span> 上的 <span class="math inline">\(\mathbb{C}\)</span>- 线性变换。</p>
 <p>特别地，<span class="math inline">\(G\)</span> 在 <span class="math inline">\(V_\mathbb{C}\)</span> 上的作用定义为 <span class="math inline">\(1_\mathbb{C}\otimes g\)</span> 在 <span class="math inline">\(V_\mathbb{C}\)</span> 上的作用： <span class="math display">\[g(c\otimes v) = c\otimes gv.\]</span> 这个作用是
 <span class="math inline">\(\mathbb{C}\)</span>- 线性的，在此作用下
 <span class="math inline">\(V_\mathbb{C}\)</span> 成为一个 <span class="math inline">\(\mathbb{C}G\)</span>- 模。</p>
@@ -433,7 +434,7 @@ k}\to\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix}.\]</span>
 在只差一个常数的意义下是唯一确定的，在适当缩放以后有两种可能：<span class="math inline">\(J^2=\pm1\)</span>。</li>
 </ol>
 <p>1 和 2 互斥是显然的，但是 2
-中的两种情形为什么互斥就不那么显然了。注意不要以为 <span class="math inline">\(J^2= 1\)</span> 的话会有 <span class="math inline">\((iJ)^2=-1\)</span>。实际上由于 <span class="math inline">\(iJ=\overline{i}J\)</span>，所以 <span class="math inline">\((iJ)^2=iJiJ=J^2\)</span>。</p>
+中的两种情形为什么互斥就不那么显然了。注意不要以为 <span class="math inline">\(J^2= 1\)</span> 的话会有 <span class="math inline">\((iJ)^2=-1\)</span>。因为 <span class="math inline">\(J\)</span> 是共轭线性的，<span class="math inline">\(iJ=J\overline{i}\)</span>，所以 <span class="math inline">\((iJ)^2=J^2\)</span>。</p>
 <p>记 <span class="math inline">\(V^\ast\)</span> 为 <span class="math inline">\(V\)</span> 的对偶表示。<span class="math inline">\(V^\ast\)</span> 的特征是 <span class="math inline">\(\overline{\chi}\)</span>。</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义

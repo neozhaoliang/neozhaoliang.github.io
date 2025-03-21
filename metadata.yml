@@ -31,6 +31,9 @@ statement-kinds:
     label: 注
     counter: none
     style: definition
+  marnote:
+    label: 旁注
+    counter: none
   example:
     label: 例
     counter: none

@@ -194,14 +194,6 @@ DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -210,8 +202,8 @@ DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -219,7 +211,15 @@ DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -250,16 +250,16 @@ DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -411,8 +411,8 @@ erased random walk ) ，即每当走到一个以前访问过的顶点 <span clas
 算法看作玩家的一种操作策略，但是这个策略对结果没有影响，即实际上任何游戏策略都会得到相同的结果，从而游戏结果完全由系统随机性
 <span class="math inline">\(\omega\in\Omega\)</span> 决定，这就是映射
 <span class="math inline">\(\phi\)</span>！</p>
-<p>直接介绍 Wilson
-算法背后的游戏可能有点难以理解。作为热身，我们先来看看大家都熟悉的
+<p>如果我接下来立刻介绍 Wilson
+算法背后的游戏，可能会让人难以理解。作为热身，我们先来看看大家都熟悉的
 Tetris
 游戏（俄罗斯方块）。我希望你能从中理解「系统随机性」与「玩家策略」的区别。</p>
 <p>经典的 Tetris 游戏是这样的，系统每次会随机从屏幕顶端落下 <span class="math inline">\(\{I,L,J,O,S,T,Z\}\)</span> 七种四方块 ( tetromino
@@ -430,16 +430,14 @@ Tetris
 可能是这样的 <span class="math display">\[\omega=\{J, S, I, O, J, I, T,
 T, S, Z, Z, Z,\ldots\}.\]</span> 即第一个落下的方块是 <span class="math inline">\(J\)</span>，第二个是 <span class="math inline">\(S\)</span>，第三个是 <span class="math inline">\(I\)</span>，等等。</p>
 <p>一旦给定了 <span class="math inline">\(\omega\)</span>，游戏的结果将只依赖于玩家的操作。</p>
-<p>现在我要告诉你，Wilson 算法背后是一个类似 Tetris 的游戏，但又和
-Tetris 游戏有一个关键不同：Wilson
-算法的结果只依赖于系统的随机性，不依赖于玩家的操作。换句话说：对给定的
-<span class="math inline">\(\omega\)</span>，要么玩家的任何操作都会得到同一个生成树；要么任何操作都不能。即
+<p>现在我要告诉你，Wilson 算法背后是一个类似 Tetris
+的游戏，游戏的目标是获得一个生成树 <span class="math inline">\(T\)</span>。但这个游戏和 Tetris
+游戏有一个关键不同：它得到的 <span class="math inline">\(T\)</span>
+只依赖于系统的随机性，不依赖于玩家的操作。换句话说：对给定的 <span class="math inline">\(\omega\)</span>，要么玩家的任何操作都会得到同一个生成树；要么任何操作都不能。即
 <span class="math inline">\(T\)</span> 是由 <span class="math inline">\(\omega\)</span>
 完全决定的。于是我们有一个确定的映射 <span class="math inline">\(\phi (
-\omega ) =T\)</span>！并且根据 <a href="#algo-success" title="命题 1.1">命题 1.1</a>, Wilson 算法以概率 1
-成功得到一个生成树，所以 <span class="math inline">\(\phi\)</span>
-对几乎处处的 <span class="math inline">\(\omega\)</span>
-是有定义的！</p>
+\omega ) =T\)</span>！根据 <a href="#algo-success" title="命题 1.1">命题
+1.1</a>, Wilson 算法以概率 1 成功得到一个生成树，所以 <span class="math inline">\(\phi\)</span> 对几乎处处的 <span class="math inline">\(\omega\)</span> 是有定义的！</p>
 <p>下面来具体介绍这个游戏。</p>
 <h1 id="wilson-算法作为游戏策略">Wilson 算法作为游戏策略</h1>
 <p>我们来玩一个叫做回路弹出 ( cycle popping )

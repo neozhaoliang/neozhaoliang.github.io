@@ -22,16 +22,16 @@
             飞船空间跳跃问题 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="本文的问题出自 Williams 的教材 Probability
-with
-Martingales，虽然不算很难但是综合使用了许多知识，展示了抽象的鞅理论其实有着丰富多彩的应用。
-
-问题：
+    <meta name="description" content="问题：
 一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
 \(r\)，发生故障时飞船与太阳的距离为
 \(R&amp;gt;r\)。好消息是在每个时刻，飞船能够知道自身与太阳系的距离。
 求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 \(r/R\)；但是对任何 \(\epsilon&amp;gt;0\)，可以采取适当的策略，使得飞船返回太阳系的概率大于
-\((r-\epsilon)/R\)，即 \(r/R\) 是最优概率。这个最优策略是什么？">
+\((r-\epsilon)/R\)，即 \(r/R\) 是最优概率。这个最优策略是什么？
+
+这个问题是 Williams 的教材 Probability
+with Martingales
+中的一道习题，书中没有给出答案。下面是我的解答。我尽可能使论证严格，所以有些啰嗦，可能并不是最简洁的做法。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -193,14 +193,6 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -209,8 +201,8 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -218,7 +210,15 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -249,16 +249,16 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -321,14 +321,11 @@ Martingales，虽然不算很难但是综合使用了许多知识，展示了抽
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">预备知识</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E6%9D%A1%E4%BB%B6%E6%9C%9F%E6%9C%9B%E7%9A%84%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">条件期望的预备知识</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%88%86%E6%9E%90%E7%9A%84%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">分析的预备知识</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">建立模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AF%B9%E7%AD%96%E7%95%A5%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90"><span class="section table-of-contents-text">对策略的进一步分析</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">最优策略</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">预备知识</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%86%BB%E7%BB%93%E5%BC%95%E7%90%86"><span class="section table-of-contents-text">“冻结”引理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#newton-%E5%8A%BF"><span class="section table-of-contents-text">Newton 势</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">建立模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AF%B9%E7%AD%96%E7%95%A5%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90"><span class="section table-of-contents-text">对策略的进一步分析</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">最优策略</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
                                                 
-<p>本文的问题出自 Williams 的教材 <a target="_blank" rel="noopener" href="https://www.cambridge.org/highereducation/books/probability-with-martingales/B4CFCE0D08930FB46C6E93E775503926#overview">Probability
-with
-Martingales</a>，虽然不算很难但是综合使用了许多知识，展示了抽象的鞅理论其实有着丰富多彩的应用。</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
 </span>一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
@@ -337,19 +334,20 @@ Martingales</a>，虽然不算很难但是综合使用了许多知识，展示�
 <p>求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 <span class="math inline">\(r/R\)</span>；但是对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，可以采取适当的策略，使得飞船返回太阳系的概率大于
 <span class="math inline">\((r-\epsilon)/R\)</span>，即 <span class="math inline">\(r/R\)</span> 是最优概率。这个最优策略是什么？</p>
 </div>
+<p>这个问题是 Williams 的教材 <a target="_blank" rel="noopener" href="https://www.cambridge.org/highereducation/books/probability-with-martingales/B4CFCE0D08930FB46C6E93E775503926#overview">Probability
+with Martingales</a>
+中的一道习题，书中没有给出答案。下面是我的解答。我尽可能使论证严格，所以有些啰嗦，可能并不是最简洁的做法。</p>
 <span id="more"></span>
 <h1 id="预备知识">预备知识</h1>
-<h2 id="条件期望的预备知识">条件期望的预备知识</h2>
-<p>设 <span class="math inline">\(X,Y\)</span> 是两个随机变量，<span class="math inline">\(\varphi\)</span> 是可测函数。我们考虑条件期望
-<span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X]\)</span>，这是一个关于
-<span class="math inline">\(\sigma(X)\)</span> 可测的随机变量，根据
-Doob-Dynkin 引理，它可以写成 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X]=g(X)\]</span>
+<h2 id="冻结引理">“冻结”引理</h2>
+<p>设 <span class="math inline">\(X,Y\)</span> 是两个随机变量，<span class="math inline">\(\varphi\)</span> 是可测函数。条件期望 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X]\)</span>
+是一个关于 <span class="math inline">\(\sigma(X)\)</span>
+可测的随机变量，根据 Doob-Dynkin 引理，它可以写成 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X]=g(X)\]</span>
 的形式，其中 <span class="math inline">\(g\)</span> 是一个 Borel
 可测函数。但是这个 <span class="math inline">\(g\)</span>
 具体是什么呢？下面的 freezing lemma <span class="citation" data-cites="Williams1991">(<a href="#ref-Williams1991" role="doc-biblioref">Williams 1991, sec. 9.10</a>)</span> or <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019, sec. 4.1</a>)</span>
-告诉我们，在一定条件下我们可以先将 <span class="math inline">\(X\)</span> 冻结为一个实数值 <span class="math inline">\(x\)</span>，上式的右边变成 <span class="math inline">\(g(x)\)</span>，左边变成 <span class="math inline">\(\{X=x\}\)</span> 条件下的期望 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X=x]=\mathop{\mathrm{\mathbb{E}}}\varphi(x,Y).\]</span>
-即 <span class="math inline">\(g(x)=\mathop{\mathrm{\mathbb{E}}}\varphi(x,Y)\)</span>。这就找到了
-<span class="math inline">\(g\)</span> 的表达式。</p>
+告诉我们，在一定条件下，我们可以这样计算 <span class="math inline">\(g\)</span>：先将 <span class="math inline">\(X\)</span> 冻结为一个实数值 <span class="math inline">\(x\)</span>，上式的右边变成 <span class="math inline">\(g(x)\)</span>，左边变成 <span class="math inline">\(\{X=x\}\)</span> 条件下的期望 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X=x]=\mathop{\mathrm{\mathbb{E}}}\varphi(x,Y).\]</span>
+即 <span class="math inline">\(g(x)=\mathop{\mathrm{\mathbb{E}}}\varphi(x,Y)\)</span>。</p>
 <div id="freeze" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
 1.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>
@@ -392,9 +390,9 @@ C)\cdot\mathbb{P}(\{Y\in
 B\})\\&amp;=\int_C\mathbb{1}_A(X)\mathrm{d}\mu\cdot\mathbb{P}(\{Y\in
 B\})\\&amp;=\int_C g(X)\mathrm{d}\mu.\end{align*}\]</span></p>
 <p>于是结论对所有形如 <span class="math inline">\(A\times B\)</span>
-的集合的示性函数成立。这些函数构成一个 <span class="math inline">\(\pi-\)</span> 系。根据可测函数的单调类定理
+的集合的示性函数成立。这样的示性函数构成一个 <span class="math inline">\(\pi\)</span>- 系。根据可测函数的单调类定理
 (monotone class theorem)，结论对所有非负或者可积函数都成立。<span class="math inline">\(\blacksquare\)</span></p>
-<h2 id="分析的预备知识">分析的预备知识</h2>
+<h2 id="newton-势">Newton 势</h2>
 <div id="newton-potential" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
 1.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B=B(A,R)\)</span> 是 <span class="math inline">\(\mathbb{R}^3\)</span> 中以点 <span class="math inline">\(A\)</span> 为中心，半径为 <span class="math inline">\(R\)</span> 的球，<span class="math inline">\(X\)</span> 是球面上均匀分布的随机点，则 <span class="math inline">\(X\)</span> 与原点 <span class="math inline">\(O\)</span> 之间距离倒数的期望为 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}\frac{1}{|X|}=\begin{cases}1/a
@@ -429,45 +427,44 @@ n\mid X_n\in B(0,r)\},\]</span>则 <span class="math inline">\(T\)</span>
 的概率，这正是飞船能够在有限时间内回到太阳系的概率。</p></li>
 </ol>
 <p>现在我们着手研究一下飞船的运动规律。</p>
-<p>设 <span class="math inline">\(R_n\)</span> 为第 <span class="math inline">\(n\)</span> 次跳跃以后飞船与太阳系的距离，<span class="math inline">\(R_0=R\)</span>，我们想知道 <span class="math inline">\(R_n\)</span> 和 <span class="math inline">\(R_{n+1}\)</span> 之间的关系。</p>
+<p>记 <span class="math inline">\(|X_n|\)</span> 为第 <span class="math inline">\(n\)</span>
+次跳跃以后飞船与太阳系的距离，我们来推导 <span class="math inline">\(|X_n|\)</span> 和 <span class="math inline">\(|X_{n+1}|\)</span> 之间的关系。</p>
 <p>对 <span class="math inline">\(\mathcal{F}=\mathcal{F}_n,\,\mathcal{G}=\mathcal{F}_{n-1},\,X=(X_{n-1},l_n),\,Y=U_n,\,\varphi(X,
-Y)=1/|X_{n-1}+l_nY|\)</span> 应用前面的关于条件期望的 <a href="#freeze" title="引理 1.1">引理 1.1</a> 和 <a href="#newton-potential" title="引理 1.2">引理 1.2</a> 得到</p>
+Y)=1/|X_{n-1}+l_nY|\)</span> 应用 <a href="#freeze" title="引理 1.1">引理 1.1</a> 和 <a href="#newton-potential" title="引理 1.2">引理 1.2</a> 得到</p>
 <p><span class="math display">\[
-\mathop{\mathrm{\mathbb{E}}}\left[\left.\frac{1}{R_n}\right|\mathcal{F}_{n-1}\right]
+\mathop{\mathrm{\mathbb{E}}}\left[\left.\frac{1}{|X_n|}\right|\mathcal{F}_{n-1}\right]
 =\mathop{\mathrm{\mathbb{E}}}\left.\frac{1}{\left|X_{n-1}+
-l_nU_n\right|}\right|_{X_{n-1}=A}\leq\frac{1}{|A|}=\frac{1}{R_{n-1}}.
+l_nU_n\right|}\right|_{X_{n-1}=A}\leq\frac{1}{|A|}=\frac{1}{|X_{n-1}|}.
 \]</span></p>
-<p>这里由于 <span class="math inline">\(X_{n-1}\)</span> 和 <span class="math inline">\(l_n\)</span> 都是关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测的，而 <span class="math inline">\(U_n\)</span> 和 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 是独立的，所以应用 <a href="#freeze" title="引理 1.1">引理 1.1</a> 的条件是满足的。</p>
+<p>这里由于 <span class="math inline">\(X_{n-1}\)</span> 和 <span class="math inline">\(l_n\)</span> 都是关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测的，而 <span class="math inline">\(U_n\)</span> 和 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 是独立的，所以 <a href="#freeze" title="引理 1.1">引理 1.1</a> 的条件是满足的。</p>
 <p>总结一下：</p>
 <div id="supermartingale" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-2.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\{1/R_n\}\)</span> 关于 <span class="math inline">\(\{\mathcal{F}_n\}\)</span> 构成一个上鞅
-（与策略无关）。特别地如果跳跃距离总是不超过当前飞船与太阳系的距离，即对任何
-<span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(l_n\leq R_{n-1}\)</span>，则 <span class="math inline">\(\{1/R_n\}\)</span> 还是一个鞅。</p>
+2.1</span>.</span><span class="statement-spah">
+</span>无论采取何种策略，<span class="math inline">\(\left\{\dfrac{1}{|X_n|}\right\}_{n\geq0}\)</span>
+总是一个上鞅。如果跳跃距离 <span class="math inline">\(l_n\)</span>
+满足对任何 <span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(l_n\leq |X_{n-1}|\)</span>，则 <span class="math inline">\(\left\{\dfrac{1}{|X_n|}\right\}_{n\geq0}\)</span>
+还是一个鞅。</p>
 </div>
-<p><strong>证明</strong>：只要再说明每个 <span class="math inline">\(1/R_n\)</span> 是可积的随机变量即可。由于 <span class="math inline">\(1/R_n\)</span> 是非负的随机变量因此 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[1/R_n|\mathcal{F}_{n-1}]\)</span>
-是有定义的且已经证明其小于等于 <span class="math inline">\(1/R_{n-1}\)</span>，于是 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[1/R_n]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[1/R_n|\mathcal{F}_{n-1}]]\leq\mathop{\mathrm{\mathbb{E}}}[1/R_{n-1}].\]</span>
+<p><strong>证明</strong>：只要再说明 <span class="math inline">\(\dfrac{1}{|X_n|}\)</span> 可积即可。由于 <span class="math inline">\(\dfrac{1}{|X_n|}\)</span> 非负，因此条件期望 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\bigg|\mathcal{F}_{n-1}\right]\)</span>
+有定义，并且上面已经证明了它小于等于 <span class="math inline">\(\dfrac{1}{|X_{n-1}|}\)</span>，于是 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\right]=\mathop{\mathrm{\mathbb{E}}}\left[\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\bigg|\mathcal{F}_{n-1}\right]\right]\leq\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_{n-1}|}\right].\]</span>
 对 <span class="math inline">\(n\)</span> 归纳即可。<span class="math inline">\(\blacksquare\)</span></p>
 <p><a href="#supermartingale" title="定理 2.1">定理 2.1</a>
-是解决整个问题最关键的一步，有了它就海阔天空，没有它就寸步难行。由它我们立刻可以导出一个有趣的观察：由于非负上鞅一定是几乎处处收敛的，因此
-<a href="#supermartingale" title="定理 2.1">定理 2.1</a> 的结论蕴含
-<span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)\)</span>
-几乎处处存在。这有两种可能：<span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)=+\infty\)</span>
-或者 <span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)=a&lt;+\infty\)</span>。所以飞船要么飞向无穷远，即迷失在宇宙的深处，要么被吸引到某个有限的位置。</p>
+是解决整个问题最关键的一步，有了它就海阔天空，没有它就寸步难行。由它我们立刻可以导出一个有趣的观察：由于非负上鞅
+<span class="math inline">\(\left\{\dfrac{1}{|X_n|}\right\}_{n\geq0}\)</span>
+必然几乎处处收敛，因此 <span class="math inline">\(\lim\limits_{n\to\infty}|X_n|\)</span>
+几乎处处存在。这有两种可能：<span class="math inline">\(\lim\limits_{n\to\infty}|X_n|=+\infty\)</span>
+或者 <span class="math inline">\(\lim\limits_{n\to\infty}|X_n|&lt;+\infty\)</span>。所以飞船要么飞向无穷远，即迷失在宇宙的深处，要么被吸引到某个有限的位置。</p>
 <p>现在我们可以证明：</p>
 <div id="lessthan" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
 2.2</span>.</span><span class="statement-spah">
 </span>不论飞船采取怎样的策略，返回太阳系的概率都严格小于 <span class="math inline">\(r/R\)</span>。</p>
 </div>
-<p>证明只用到非常基础的鞅的知识：</p>
-<p>设 <span class="math inline">\(Z_n=1/R_n\)</span>，则 <span class="math inline">\(\{Z_n\}\)</span> 是一个非负上鞅，所以 <span class="math inline">\(Z_\infty=\lim\limits_{n\to\infty}Z_n\)</span>
-是几乎处处存在的。考虑由停时 <span class="math inline">\(T\)</span>
-截断得到的非负上鞅序列 <span class="math inline">\(\{Z_{T\wedge
-n}\}\)</span>，这个上鞅序列也是几乎处处收敛的，其中 <span class="math display">\[\lim_{n\to\infty}Z_{T\wedge n} =
-\begin{cases}\lim_{n\to\infty}Z_n&amp; T=\infty,\\ Z_T&amp;
-T&lt;\infty.\end{cases}\]</span> 一方面根据非负可积函数列的 Fatou 引理有
-<span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_{T\wedge
+<p><strong>证明</strong>：记 <span class="math inline">\(Z_n=\dfrac{1}{|X_n|}\)</span>，根据 <a href="#supermartingale" title="定理 2.1">定理 2.1</a> <span class="math inline">\(\{Z_n\}_{n\geq0}\)</span> 是非负上鞅，所以 <span class="math inline">\(Z_\infty=\lim\limits_{n\to\infty}Z_n\)</span>
+几乎处处存在。考虑停时 <span class="math inline">\(T\)</span>
+截断的非负上鞅序列 <span class="math inline">\(\{Z_{T\wedge
+n}\}\)</span>。由非负可积函数列的 Fatou 引理有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_{T\wedge
 n}]\leq\varliminf_{n\to\infty}\mathop{\mathrm{\mathbb{E}}}[Z_{T\wedge
 n}]\leq \mathop{\mathrm{\mathbb{E}}}[Z_0]=\frac{1}{R}.\]</span>
 另一方面</p>
@@ -478,19 +475,19 @@ n}]&amp;=\mathop{\mathrm{\mathbb{E}}}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]+\mathop{\
 \\&amp;\geq \mathop{\mathrm{\mathbb{E}}}[Z_T
 \mathbb{1}_{\{T&lt;\infty\}}]\geq\frac{\mathbb{P}(T&lt;\infty)}{r}.\end{align*}
 \]</span></p>
-<p>其中最后一个不等号是因为 <span class="math inline">\(Z_T\geq
-1/r\)</span>。综合这两个不等式就得到了 <span class="math inline">\(\mathbb{P}(T&lt;\infty)\leq
+<p>其中最后一个不等号是因为在 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上有 <span class="math inline">\(Z_T\geq 1/r\)</span>。综合这两个不等式就得到了
+<span class="math inline">\(\mathbb{P}(T&lt;\infty)\leq
 r/R\)</span>，即任何策略下飞船最终返回太阳系的概率不大于 <span class="math inline">\(r/R\)</span>。</p>
 <p>要证明这个概率是严格小于 <span class="math inline">\(r/R\)</span>
-的，我们只要证明上面式子的最后一个不等号是严格成立的： <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[Z_T
+的，只要证明上面式子中，最后的不等号是严格成立的： <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[Z_T
 \mathbb{1}_{\{T&lt;\infty\}}]&gt;\frac{\mathbb{P}(T&lt;\infty)}{r}.\]</span></p>
-<p>当然需要假定这里的 <span class="math inline">\(\{T&lt;\infty\}\)</span> 有正概率 （返回概率是 0
-的话当然小于 <span class="math inline">\(r/R\)</span>，没什么好证的）。为此只要证明在事件
-<span class="math inline">\(\{T&lt;\infty\}\)</span> 上几乎处处有 <span class="math inline">\(Z_T&gt;1/r\)</span>，即 <span class="math inline">\(R_T&lt;r\)</span> 即可。</p>
-<p>我们来证明对每个 <span class="math inline">\(n\geq0\)</span>，事件
-<span class="math inline">\(A_n=\{R_n=0 \text{ or } R_n=r\}\)</span>
+<p>为此只要证明在事件 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上几乎处处有 <span class="math inline">\(Z_T&gt;1/r\)</span>，即 <span class="math inline">\(|X_T|&lt;r\)</span> 即可。由于在 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上 <span class="math inline">\(|X_T|\leq r\)</span>，所以我们只要证明在 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上 事件 <span class="math inline">\(\{|X_T|=r\}\)</span> 具有零测度。进一步，由于
+<span class="math display">\[\{|X_T|=r,\,T&lt;\infty\}=\bigcup_{n=0}^\infty\{|X_n|=r,\,T=n\}\subset\bigcup_{n=0}^\infty\{|X_n|=r\}.\]</span>
+所以我们只要证明对每个 <span class="math inline">\(n\geq0\)</span>，事件
+<span class="math inline">\(\{|X_n|=r\}\)</span> 具有零测度即可。</p>
+<p>我们来证明一个稍微加强的结论：对每个 <span class="math inline">\(n\geq0\)</span>，事件 <span class="math display">\[A_n=\{|X_n|=0\}\cup\{|X_n|=r\}\]</span>
 都是零概率事件。</p>
-<p>对 <span class="math inline">\(n\)</span> 归纳：<span class="math inline">\(n=0\)</span> 时 <span class="math inline">\(R_0=R&gt;r\)</span>，结论成立。设结论在小于 <span class="math inline">\(n\)</span> 时都成立，来看 <span class="math inline">\(n\)</span> 的情形。</p>
+<p>对 <span class="math inline">\(n\)</span> 归纳：<span class="math inline">\(n=0\)</span> 时 <span class="math inline">\(R_0=R&gt;r\)</span>，结论成立。设结论在小于 <span class="math inline">\(n\)</span> 时都成立。</p>
 <p>由于 <span class="math inline">\(\mathbb{P}(A_n)
 =\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]]\)</span>，我们只要证明
 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]\)</span>
@@ -498,27 +495,26 @@ r/R\)</span>，即任何策略下飞船最终返回太阳系的概率不大于 <
 <p>在 <a href="#freeze" title="引理 1.1">引理 1.1</a> 中取 <span class="math inline">\(X=(X_{n-1},l_n),\,Y=U_n,\,\mathcal{G}=\mathcal{F}_{n-1}\)</span>，我们得到
 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{\{0,r\}}\circ
 |X_{n-1}+l_nU_n|\bigg|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\right].\]</span>
-其中上式最右边的期望是对单位球面上均匀分布的 <span class="math inline">\(U_n\)</span> 进行积分，结果是一个关于 <span class="math inline">\((X_{n-1},l_n)\)</span>
-的函数。显然无论如何上式右边作为一个只取 <span class="math inline">\(\{0,1\}\)</span> 两个值的函数的积分，结果必然在
-<span class="math inline">\([0,1]\)</span> 中。</p>
-<ul>
-<li>如果 <span class="math inline">\(|X_{n-1}|\in\{0,r\}\)</span>，我们已经知道结果在
-<span class="math inline">\([0,1]\)</span> 中。</li>
-<li>如果 <span class="math inline">\(|X_{n-1}|\notin\{0,r\}\)</span>，这时以 <span class="math inline">\(X_{n-1}\)</span> 为中心，<span class="math inline">\(l_n\)</span> 为半径的球面上，与原点之间的距离为
+|X_{n-1}+l_nU_n|\right].\]</span> 其中上式最右边的期望是冻结 <span class="math inline">\((X_{n-1},l_n)\)</span>，对单位球面上均匀分布的
+<span class="math inline">\(U_n\)</span> 进行积分，结果是一个关于 <span class="math inline">\((X_{n-1},l_n)\)</span>
+的函数。显然，上式右边作为一个只取 <span class="math inline">\(\{0,1\}\)</span>
+两个值的函数的概率积分，结果必然在区间 <span class="math inline">\([0,1]\)</span> 中。即 <span class="math display">\[0\leq\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
+|X_{n-1}+l_nU_n|\right]\leq1.\]</span></p>
+<p>注意到如果 <span class="math inline">\(|X_{n-1}|\ne 0\)</span> 且
+<span class="math inline">\(|X_{n-1}|\ne r\)</span>，这时以 <span class="math inline">\(X_{n-1}\)</span> 为中心，<span class="math inline">\(l_n\)</span> 为半径的球面上，与原点之间的距离为
 <span class="math inline">\(0\)</span> 或者 <span class="math inline">\(r\)</span> 的点的测度为 0，即积分项 <span class="math inline">\(\mathbb{1}_{\{0,r\}}\circ
 |X_{n-1}+l_nU_n|\)</span> 对几乎处处的 <span class="math inline">\(U_n\)</span> 都是 0，当然积分值 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\right]=0\)</span>。</li>
-</ul>
+|X_{n-1}+l_nU_n|\right]=0\)</span>。</p>
 <p>于是我们有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
 |X_{n-1}+l_nU_n|\right]=
 \begin{cases}
-\in[0,1], &amp; |X_{n-1}|\in\{0,r\}\\
-0,        &amp; |X_{n-1}|\notin\{0,r\}
+\in[0,1], &amp; |X_{n-1}|=0 \text{ or } |X_{n-1}|=r\\
+0,        &amp; |X_{n-1}|\ne 0 \text { and } |X_{n-1}|\ne r
 \end{cases}\]</span></p>
-<p>根据归纳假设，<span class="math inline">\(|X_{n-1}|\in\{0,r\}\)</span> 的概率是 0，即 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
+<p>根据归纳假设，<span class="math inline">\(|X_{n-1}|=0 \text{ or }
+|X_{n-1}|=r\)</span> 的概率是 0，即 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
 |X_{n-1}+l_nU_n|\right]\)</span> 是一个几乎处处为 0 的函数，从而 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]\)</span>
-也几乎处处为 0，即得所证。</p>
+也几乎处处为 0，即得所证。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="对策略的进一步分析">对策略的进一步分析</h1>
 <p>现在我们把注意力转移到飞船不能返回太阳系这个事件上来。前面已经说过，飞船的运动只有两种可能，迷失在无穷远处或者被禁锢在一个有限的区域内，所以如果飞船不能返回太阳系，则飞船要么飞向无穷远，要么在太阳系之外的一个有限区域内打转。我们想知道，怎么判断这两种情形哪一种会发生呢？</p>
 <p>举个例子，考虑这样一个明显不合理的策略：第 <span class="math inline">\(n\)</span> 次的跳跃距离总是设定为 <span class="math inline">\(1/2^n\)</span>，在这个策略下飞船永远飞不出一个半径为
@@ -531,44 +527,43 @@ r/R\)</span>，即任何策略下飞船最终返回太阳系的概率不大于 <
 3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\epsilon\)</span> 是任一正数 <span class="math display">\[E:=\{\omega:\
 T(\omega)=\infty,\  l_n(\omega)\geq\epsilon,\ \forall n\geq1\},\]</span>
 则我们有 <span class="math display">\[\lim_{n\to\infty}
-R_n=+\infty,\quad \text{for a.e.}\ \omega\in E.\]</span></p>
+|X_n|=+\infty,\quad \text{for a.e.}\ \omega\in E.\]</span></p>
 </div>
-<p><strong>证明</strong>：设 <span class="math inline">\(\theta_n\)</span> 为 <span class="math inline">\(X_{n-1}\)</span> 与 <span class="math inline">\(U_n\)</span> 之间的夹角，利用关系 <span class="math inline">\(X_n=X_{n-1}+l_nU_n\)</span>
-以及三角形的余弦公式可得 <span class="math display">\[R_n^2=R_{n-1}^2+l_n^2+2R_{n-1}l_n\cos\theta_n.\]</span>
+<p><strong>证明</strong>：记 <span class="math inline">\(\theta_n\)</span> 是 <span class="math inline">\(X_{n-1}\)</span> 和 <span class="math inline">\(U_n\)</span> 的夹角，即 <span class="math inline">\(\cos\theta_n=\dfrac{X_{n-1}}{|X_{n-1}|}\cdot
+U_n\)</span>。由 <span class="math inline">\(X_n=X_{n-1}+l_nU_n\)</span>
+可得 <span class="math display">\[|X_n|^2=|X_{n-1}|^2+2l_n|X_{n-1}|\cos\theta_n+l_n^2.\]</span>
 令 <span class="math inline">\(B_n=\{\cos\theta_n\geq
 1/2\}\)</span>，则在事件 <span class="math inline">\(B_n\)</span>
-上我们有</p>
-<p><span class="math display">\[R_n^2\geq
-R_{n-1}^2+l_n^2+R_{n-1}l_n\geq(R_{n-1}+l_n/2)^2.\]</span> 结合在事件
-<span class="math inline">\(E\)</span> 上有 <span class="math inline">\(l_n\geq\epsilon\)</span>，于是在事件 <span class="math inline">\(B_n\cap E\)</span> 上有 <span class="math display">\[R_n\geq R_{n-1}+l_n/2\geq
-R_{n-1}+\epsilon/2,\quad\omega\in B_n\cap E.\]</span> 如果我们能证明
-<span class="math inline">\(\mathbb{P}(\{B_n\
-\text{i.o.}\})=1\)</span>，再排除掉使得 <span class="math inline">\(R_n(\omega)\)</span>
-不收敛的零测集，则对几乎处处的 <span class="math inline">\(\omega\in
-E\)</span> 都有 <span class="math inline">\(R_n\geq
-R_{n-1}+\epsilon/2\)</span> 对无穷多个 <span class="math inline">\(n\)</span> 成立。对这些 <span class="math inline">\(\omega\)</span>，<span class="math inline">\(R_n\)</span> 是不可能收敛到一个有限的点的，只能是
-<span class="math inline">\(\lim\limits_{n\to\infty}R_n(\omega)=\infty\)</span>，这就说明飞船在
+上我们有 <span class="math display">\[|X_n|^2\geq
+|X_{n-1}|^2+l_n|X_{n-1}|+l_n^2\geq(|X_{n-1}|+l_n/2)^2.\]</span>
+又已知在事件 <span class="math inline">\(E\)</span> 上有 <span class="math inline">\(l_n\geq\epsilon\)</span>，所以在事件 <span class="math inline">\(B_n\cap E\)</span> 上有 <span class="math display">\[|X_n|\geq |X_{n-1}|+\epsilon/2,\quad\omega\in
+B_n\cap E.\]</span> 如果我们能证明 <span class="math inline">\(\mathbb{P}(\{B_n\
+\text{i.o.}\})=1\)</span>，则对几乎处处的 <span class="math inline">\(\omega\in E\)</span>，<span class="math inline">\(|X_n|\geq |X_{n-1}|+\epsilon/2\)</span> 对无穷多个
+<span class="math inline">\(n\)</span> 成立。对这些 <span class="math inline">\(\omega\)</span>，<span class="math inline">\(\lim\limits_{n\to\infty}|X_n|\)</span>
+不可能是一个有限点，所以必然是 <span class="math inline">\(\lim\limits_{n\to\infty}|X_n|=\infty\)</span>，这就说明飞船在
 <span class="math inline">\(E\)</span> 上几乎处处飞向无穷远。</p>
-<p>为了证明 <span class="math inline">\(\mathbb{P}(\{B_n\
-\text{i.o.}\})=1\)</span>，我们只要证明 <span class="math inline">\(\{B_n\}\)</span> 是独立的事件列，且对每个 <span class="math inline">\(n\)</span> 有 <span class="math inline">\(\mathbb{P}(B_n)=\frac{1}{4}\)</span>，这样由
-Borel-Cantelli 第二引理就得到了结论。</p>
-<p>注意到（又用到 <a href="#freeze" title="引理 1.1">引理 1.1</a>
-啦）</p>
+<p>为此我们只要证明有 <span class="math inline">\(\sum_{n=1}^\infty\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{B_n}\big|\mathcal{F}_{n-1}]=\infty\)</span>
+成立，这样由鞅版本的 second Borel-Cantelli lemma <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019</a>, thm 4.3.4)</span> 即得 <span class="math inline">\(\mathbb{P}(\{B_n\ \text{i.o.}\})=1\)</span>。</p>
+<p>在 <a href="#freeze" title="引理 1.1">引理 1.1</a> 中令 <span class="math inline">\(X=X_{n-1},Y=U_n,\mathcal{G}=\mathcal{F}_{n-1},\varphi(X,Y)=\mathbb{1}_{[1/2,1]}\circ\cos\theta_n\)</span>，有</p>
 <p><span class="math display">\[
-\begin{align*}
-\mathbb{P}[B_n| \mathcal{F}_{n-1}] &amp;= \mathbb{P}[\cos(U_n, v)\geq
-1/2] \bigg|_{v=X_{n-1}} \\&amp;= \mathbb{P}[U_n\in
-\{(x,y,z)\in\mathbb{R}^3:\ z\geq 1/2\}]\\&amp;=\frac{1}{4}.\end{align*}
+\begin{aligned}
+\mathbb{E}[\mathbb{1}_{B_n}|\mathcal{F}_{n-1}] &amp;=
+\mathbb{E}[\mathbb{1}_{[1/2,1]}\circ\cos\theta_n\,\bigg|\,\mathcal{F}_{n-1}]\\
+&amp;\overset{(1)}{=}\mathbb{P}[(v\cdot U_n)\geq
+1/2]\,\bigg|_{v=\frac{X_{n-1}}{|X_{n-1}|}}\\
+&amp;\overset{(2)}{=}\mathbb{P}[U_n\in \{(x,y,z)\in\mathbb{R}^3:\ z\geq
+1/2\}]\\
+&amp;=\frac{1}{4}.
+\end{aligned}
 \]</span></p>
-<p>于是对任何一组下标 <span class="math inline">\(n_1&lt;n_2&lt;\cdots&lt;n_k\)</span>，记 <span class="math inline">\(A=B_{n_1}\cap\cdots\cap{B_{n_{k-1}}}\)</span> 以及
-<span class="math inline">\(B=B_{n_k}\)</span>，并注意到由于 <span class="math inline">\(n_{k-1}\leq n_k-1\)</span> 因此 <span class="math inline">\(A\in\mathcal{F}_{n_k-1}\)</span>，所以</p>
-<p><span class="math display">\[\begin{align*}\mathbb{P}[B_{n_1}\cap\cdots\cap
-B_{n_k}] &amp;= \mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_A\mathbb{1}_B] =
-\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_A\mathbb{1}_B|\mathcal{F}_{n_k-1}]]\\&amp;=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_A\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_B|\mathcal{F}_{n_k-1}]]\\&amp;=\frac{1}{4}\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_A]\\&amp;=\frac{1}{4}\mathbb{P}(B_{n_1}\cap\cdots\cap
-B_{n_{k-1}}).\end{align*}\]</span></p>
-<p>从而由递推可见对每个 <span class="math inline">\(n\)</span> 都有
-<span class="math inline">\(\mathbb{P}(B_n) =\frac{1}{4}\)</span>
-且它们是互相独立的。</p>
+<ul>
+<li>在 (1) 中，我们将 <span class="math inline">\(\dfrac{X_{n-1}}{|X_{n-1}|}\)</span>
+冻结为一个固定的单位向量 <span class="math inline">\(v\)</span>，转为计算 <span class="math inline">\(U_n\)</span> 和 <span class="math inline">\(v\)</span> 的内积大于等于 1/2 的概率；</li>
+<li>在 (2) 中，由于 <span class="math inline">\(U_n\)</span>
+是在单位球面上均匀分布的，所以无妨设 <span class="math inline">\(v=(0,0,1)\)</span> 是 <span class="math inline">\(z\)</span> 轴正向，从而使得 <span class="math inline">\(v\cdot U_n\geq1/2\)</span> 的 <span class="math inline">\(U_n\)</span> 正是球面上满足 <span class="math inline">\(z\geq1/2\)</span> 的点构成的球冠。根据 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Spherical_cap">球冠面积公式</a>
+这些点占整个球面的 1/4。</li>
+</ul>
+<p>从而确实有 <span class="math inline">\(\sum_{n=1}^\infty\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{B_n}\big|\mathcal{F}_{n-1}]=\sum_{n=1}^\infty1/4=\infty\)</span>。<a href="#goinf" title="定理 3.1">定理 3.1</a> 得证。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="最优策略">最优策略</h1>
 <p>现在我们已经知道飞船返回太阳系的概率总是小于 <span class="math inline">\(r/R\)</span>，也知道只要策略得当，就可以避免飞船在原地打转的糟糕情况。接下来的问题是：最好的策略到底是什么？</p>
 <div class="statement theorem plain">

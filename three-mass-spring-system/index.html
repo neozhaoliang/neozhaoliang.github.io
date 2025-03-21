@@ -192,14 +192,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -208,8 +200,8 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -217,7 +209,15 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -248,16 +248,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -356,11 +356,11 @@
 <p>设弹簧的弹性系数为 <span class="math inline">\(k\)</span>，原点在三角形中心，<span class="math inline">\(x\)</span>
 轴水平向右，于是三个弹簧所含的弹性势能为 （将形变投影到弹簧所在的方向）
 <span class="math display">\[
-\begin{align*}
+\begin{aligned}
 V=&amp;\frac{1}{2}k(q_3-q_1)^2+\frac{1}{2}k\left[\frac{-1}{2}(q_5-q_3) +
 \frac{\sqrt{3}}{2}(q_6-q_4)\right]^2+\\&amp;\frac{1}{2}k\left[\frac{1}{2}(q_1-q_5)
 + \frac{\sqrt{3}}{2}(q_2-q_6)\right]^2.
-\end{align*}
+\end{aligned}
 \]</span> 这是一个关于 <span class="math inline">\(\mathbf{q}=(q_1,q_2,\ldots,q_6)^T\)</span>
 的二次型： <span class="math display">\[V
 =\frac{1}{2}k\,\mathbf{q}^TU\mathbf{q}.\]</span> 其中 <span class="math display">\[U=\frac{1}{4}\begin{pmatrix}5&amp;\sqrt{3}&amp;-4&amp;0&amp;-1&amp;-\sqrt{3}\\
@@ -380,9 +380,8 @@ t}\)</span>，其中 <span class="math inline">\(\overline{q}_i\)</span>
 <span class="math display">\[\frac{m\omega^2}{k}\overline{q}_i =
 \sum_{j=1}^6U_{ij}\overline{q}_j.\]</span> 即 <span class="math inline">\(U\overline{\mathbf{q}}=\lambda\overline{\mathbf{q}}\)</span>，<span class="math inline">\(\lambda=m\omega^2/k\)</span>，于是简正模式的振幅
 <span class="math inline">\(\overline{\mathbf{q}}=(\overline{q}_1,\overline{q}_2,\ldots,\overline{q}_6)\)</span>
-是 <span class="math inline">\(U\)</span> 的特征向量，频率可以从特征值
-<span class="math inline">\(\lambda\)</span> 得出，从而问题转化为求矩阵
-<span class="math inline">\(U\)</span> 的特征值和特征向量。由于 <span class="math inline">\(U\)</span> 是一个实对称矩阵，所以一定存在 6
+是 <span class="math inline">\(U\)</span> 的特征向量，频率 <span class="math inline">\(\omega\)</span> 与特征值 <span class="math inline">\(\lambda\)</span> 之间的关系为 <span class="math inline">\(\omega=\sqrt{\lambda
+k/m}\)</span>，从而问题转化为求矩阵 <span class="math inline">\(U\)</span> 的特征值和特征向量。由于 <span class="math inline">\(U\)</span> 是一个实对称矩阵，所以一定存在 6
 个线性无关的特征向量。</p>
 <p>你当然可以直接硬算，但是手动求一个 6
 阶矩阵的特征值还是一件挺麻烦的事情，鉴于搞数学的人一般比较懒，我们可以换个思路想一想。</p>
@@ -399,18 +398,12 @@ t}\)</span>，其中 <span class="math inline">\(\overline{q}_i\)</span>
 <span class="math inline">\(\mathbb{R}^2_A,\mathbb{R}^2_B,\mathbb{R}^2_C\)</span>
 分别是 <span class="math inline">\(A,B,C\)</span> 的坐标空间。<span class="math inline">\(S_3\)</span> 在置换这三个直和项的同时，又以 <span class="math inline">\(D_3\)</span>
 的方式作用在每个直和项上，所以这个表示是 <span class="math inline">\(S_3\)</span> 的置换表示和在 <span class="math inline">\(\mathbb{R}^2\)</span> 上二维表示的张量积。</p>
-<p>例如，对换 <span class="math inline">\((12)\)</span> 交换 <span class="math inline">\(A,B\)</span>，同时将它们的坐标关于 <span class="math inline">\(y\)</span> 轴作反射： <span class="math display">\[\begin{aligned}
+<p>例如，对换 <span class="math inline">\((12)\)</span> 是关于 <span class="math inline">\(y\)</span> 轴的反射，它交换 <span class="math inline">\(A,B\)</span> 的同时，改变 <span class="math inline">\(x\)</span> 坐标的符号： <span class="math display">\[\begin{aligned}
 A\otimes (q_1,q_2) &amp;\xrightarrow{(12)} B\otimes(-q_1,q_2),\\
 B\otimes (q_3,q_4) &amp;\xrightarrow{(12)} A\otimes(-q_3,q_4).
 \end{aligned}\]</span></p>
 <p>我们把这个张量积表示记作 <span class="math inline">\(\rho\)</span>，并记 <span class="math display">\[R=\begin{pmatrix}\cos\frac{2\pi}{3}&amp;-\sin\frac{2\pi}{3}\\\sin\frac{2\pi}{3}&amp;\cos\frac{\pi}{3}\end{pmatrix},\quad
 S=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}.\]</span></p>
-<p>我们可以明确写出 <span class="math inline">\(a=(12)\)</span>
-在这个张量积表示下的矩阵：<span class="math inline">\(a\)</span>
-作为置换对应的矩阵是 <span class="math display">\[A=\begin{pmatrix}0&amp;1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}.\]</span>
-在二面体群 <span class="math inline">\(D_3\)</span> 中，<span class="math inline">\(a\)</span> 是关于 <span class="math inline">\(y\)</span> 轴的反射，其矩阵为 <span class="math inline">\(S\)</span>，所以 <span class="math inline">\(a\)</span> 在 <span class="math inline">\(\mathbb{R}^3\otimes\mathbb{R}^2\)</span>
-上的作用对应的矩阵是 Kronecker 乘积 <span class="math inline">\(A\otimes
-S\)</span>。</p>
 <p>下面列出了 <span class="math inline">\(S_3\)</span> 的各个元素在
 <span class="math inline">\(\rho\)</span> 下对应的矩阵：</p>
 <p><span class="math display">\[
@@ -433,13 +426,12 @@ SR^2=\begin{pmatrix}SR^2&amp;0&amp;0\\0&amp;0&amp;SR^2\\0&amp;SR^2&amp;0\end{pma
 下显然都是正交矩阵，而且保持系统的势能不变，所以对任何状态 <span class="math inline">\(\mathbf{q}\)</span> 有 <span class="math display">\[V(\rho(g)\mathbf{q})=V(\mathbf{q}),\]</span> 即
 <span class="math display">\[{\bf q^T}\rho(g)^TU\rho(g){\bf
 q}=U.\]</span> 由于 <span class="math inline">\(\rho(g)\)</span>
-正交所以 <span class="math inline">\(\rho(g)U=U\rho(g)\)</span>，从而
-<span class="math inline">\(U\)</span> 是表示 <span class="math inline">\(\rho\)</span> 的一个自同态。</p>
-<p>在数学上，我们非常喜欢这种与一个表示 <span class="math inline">\(\rho\)</span>
-交换的矩阵，因为这种矩阵的任何特征子空间都是 <span class="math inline">\(\rho\)</span> 的不变子空间，即 <span class="math inline">\(\rho\)</span> 的子表示，从而可以帮助我们将 <span class="math inline">\(\rho\)</span>
-分解为一些更简单表示的直和。不过在这个问题中，我们要反过来借助 <span class="math inline">\(\rho\)</span> 的分解来分析 <span class="math inline">\(U\)</span> 的特征子空间的结构。</p>
-<p>我们来确定表示 <span class="math inline">\(\rho\)</span>
-的结构。注意到 <span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\{1,2,3\}\)</span>
+正交所以 <span class="math inline">\(\rho(g)U=U\rho(g)\)</span>，即
+<span class="math inline">\(U\)</span> 与表示 <span class="math inline">\(\rho\)</span> 交换。</p>
+<p>在表示论中，我们非常喜欢这种与一个表示 <span class="math inline">\(\rho\)</span>
+交换的矩阵，因为这种矩阵的任何特征子空间都是 <span class="math inline">\(\rho\)</span> 的子表示，从而可以帮助我们将 <span class="math inline">\(\rho\)</span>
+分解为一些更简单表示的直和。不过在这里，我们要反过来借助 <span class="math inline">\(\rho\)</span> 的分解来分析 <span class="math inline">\(U\)</span> 的特征子空间的结构。</p>
+<p>注意到 <span class="math inline">\(S_3\)</span> 在 <span class="math inline">\(\{1,2,3\}\)</span>
 上的置换表示，其特征只有在单位元 <span class="math inline">\(e\)</span>
 处不为 0（值是 3），在任何非单位元 <span class="math inline">\(g\in
 S_3\)</span> 处都是 0。这个表示是张量积表示 <span class="math inline">\(\rho\)</span> 的分量，所以 <span class="math inline">\(\rho\)</span> 的特征 <span class="math inline">\(\chi\)</span> 也具有此性质。显然 <span class="math inline">\(\chi(e)=6\)</span>，于是 <span class="math inline">\(\chi\)</span> 与 <span class="math inline">\(S_3\)</span>
@@ -452,7 +444,7 @@ S_3\)</span> 处都是 0。这个表示是张量积表示 <span class="math inli
 V_1=\dim V_2=1\)</span>，<span class="math inline">\(\dim V_3=\dim
 V_4=2\)</span> 并且 <span class="math display">\[\mathbb{R}^6=V_1\oplus
 V_2\oplus V_3\oplus V_4.\]</span></p>
-<p><span class="math inline">\(\mathbb{R}^6\)</span> 是 <span class="math inline">\(U\)</span> 的特征子空间的直和，而 <span class="math inline">\(U\)</span> 的特征子空间都是 <span class="math inline">\(\rho\)</span> 的不变子空间，从而可以分解为 <span class="math inline">\(\rho\)</span> 的不可约模的直和。这说明每个 <span class="math inline">\(V_i\)</span> 都包含在 <span class="math inline">\(U\)</span> 的某个特征值 <span class="math inline">\(\lambda_i\)</span> 的特征子空间中。即 <span class="math inline">\(U\)</span> 在 <span class="math inline">\(V_i\)</span> 上的作用是数乘 <span class="math inline">\(\lambda_i\)</span>。</p>
+<p><span class="math inline">\(U\)</span> 是可对角化的变换，并且 <span class="math inline">\(U\)</span> 的特征子空间都是 <span class="math inline">\(\rho\)</span> 的不变子空间，从而可以分解为 <span class="math inline">\(V_i\)</span> 的直和。这说明 <span class="math inline">\(U\)</span> 在每个 <span class="math inline">\(V_i\)</span> 上的作用是数乘 <span class="math inline">\(\lambda_i\)</span>。</p>
 <p>从 <span class="math inline">\(V_1,\ldots,V_4\)</span>
 中分别选择一组基，它们合起来构成 <span class="math inline">\(\mathbb{R}^6\)</span> 的一组基。在这组基下 <span class="math inline">\(U\)</span> 是对角矩阵，形如 <span class="math display">\[U=\begin{pmatrix}\lambda_1&amp;0&amp;0&amp;0\\0&amp;\lambda_2&amp;0&amp;0\\0&amp;0&amp;\lambda_3I_2&amp;0\\0&amp;0&amp;0&amp;\lambda_4I_2\end{pmatrix}.\]</span>
 同时 <span class="math inline">\(\rho(g)\)</span> 形如 <span class="math display">\[\rho(g)=\begin{pmatrix}D_1&amp;0&amp;0&amp;0\\0&amp;D_2&amp;0&amp;0\\0&amp;0&amp;D_3&amp;0\\0&amp;0&amp;0&amp;D_4\end{pmatrix}.\]</span></p>
@@ -485,7 +477,7 @@ V_2\oplus V_3\oplus V_4.\]</span></p>
 3&amp;=\lambda_1-\lambda_2,\\
 3/2&amp;=\lambda_1+\lambda_2-(\lambda_3+\lambda_4).
 \end{align*}
-\]</span> 于是 <span class="math inline">\(\lambda_1=3\)</span>，<span class="math inline">\(\lambda_2=0\)</span>，<span class="math inline">\(\lambda_3+\lambda_4=3/2\)</span>。</p>
+\]</span> 可以解出 <span class="math inline">\(\lambda_1=3\)</span>，<span class="math inline">\(\lambda_2=0\)</span>，<span class="math inline">\(\lambda_3+\lambda_4=3/2\)</span>。</p>
 <p>我们还缺一个方程！可以用 <span class="math inline">\(\mathop{\mathrm{tr}}{U^2}=\lambda_1^2+\lambda_2^2+2(\lambda_3^2+\lambda_4^2)\)</span>
 来做，但手算 <span class="math inline">\(U^2\)</span>
 的话计算量还是不小的。更简单的办法是用物理直观：我们已经看到平移和旋转是两种简正模式，这两种模式下质点的振动频率是
@@ -493,9 +485,6 @@ V_2\oplus V_3\oplus V_4.\]</span></p>
 <strong>0 作为 <span class="math inline">\(U\)</span>
 的特征值至少是三重的</strong>。我们已经解得 <span class="math inline">\(\lambda_2=0\)</span> 是一个，所以 <span class="math inline">\(\lambda_3\)</span> 和 <span class="math inline">\(\lambda_4\)</span> 中必然还有一个是 0，不妨设
 <span class="math inline">\(\lambda_3=0\)</span>，则 <span class="math inline">\(\lambda_4=3/2\)</span>。</p>
-<p>得到了 <span class="math inline">\(\lambda_1,\lambda_2,\lambda_3,\lambda_4\)</span>，对应的频率就可以用
-<span class="math inline">\(\omega_i=\sqrt{\lambda_ik/m}\)</span>
-算出来。</p>
 <p>总结一下，系统总共有 4 种简正模式：</p>
 <ol type="1">
 <li><p>平凡表示 (<span class="math inline">\(\lambda_1=3\)</span>)

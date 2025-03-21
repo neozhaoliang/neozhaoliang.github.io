@@ -1,0 +1,844 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            刺客 vs 保镖 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="Maryam Mirzakhani 在 2014 年的报告中提出了如下的问题（视频的 25 分 50
+秒处）：
+
+
+
+问题：
+假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子。子弹在碰到墙壁时会遵循入射角等于出射角的规律无限反射下去。房间中有一位政要和一个刺客，他们的位置是固定的，但可能是房间中任何两点。能否在房间中放置有限数量的保镖，使得这些保镖可以封锁刺客的所有射击角度，从而确保政要不被子弹击中？
+
+根据 这篇论文
+的考据，这个问题曾经在 1989 年列宁格勒的数学竞赛中出现过。最近，通过 PBS 和 math3ma
+的博客
+的科普推广，这个问题又引起了不少人的兴趣。我强烈建议读者在深入阅读本文之前，先观看这些视频和博客。它们的讲解通俗易懂，即便对于普通读者来说也非常友好。
+Greg Egan 在 他的博客中
+进一步讨论了房间是正三角形和正六边形的情况。虽然他给出的答案是正确的，但是他对正六边形情形的解释有点让人难以理解（Greg
+Egan 的一贯风格）。
+正三角形、正方形和正六边形房间是仅有的三种可以用有限多个保镖保护目标的情形，对其它正
+\(N\) 边形房间（\(N\notin\{3,4,6\}\)），有限数量的保镖是不行的。
+本文是对 math3ma 和 Greg Egan
+博客文章的补充，我将主要针对正六边形的情况进行详细解释。我觉得从仿射
+Weyl
+群的角度来看这个问题会更清晰，不过这一概念可能对大多数读者来说较为陌生。本文将假定读者已具备群的相关基础知识，并尽可能结合直观图形加以说明。如果读者希望进一步了解仿射
+Weyl 群，可以参考 (Humphreys 1990, chap.
+4)。
+本文的代码在 Github
+上。这个项目包含了一个交互式脚本，你可以在窗口中点击并拖拽鼠标来查看刺客射击的轨迹以及保镖的位置：
+
+
+
+
+
+
+
+
+正方形
+正三角形
+正六边形">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="刺客 vs 保镖"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/pywonderland-项目/">pywonderland 项目</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>刺客 vs 保镖</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2019-07-18T16:00:00.000Z"><a href="/assassin-vs-bodyguards/">2019-07-19</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8D%E5%B0%84%E5%92%8C%E5%B9%B3%E7%A7%BB"><span class="section table-of-contents-text">反射和平移</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%AD%A3%E6%96%B9%E5%BD%A2-%E6%AD%A3%E4%B8%89%E8%A7%92%E5%BD%A2-%E6%AD%A3%E5%85%AD%E8%BE%B9%E5%BD%A2"><span class="section table-of-contents-text">正方形 | 正三角形 | 正六边形</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BB%BF%E5%B0%84-weyl-%E7%BE%A4"><span class="section table-of-contents-text">仿射 Weyl 群</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>Maryam Mirzakhani 在 2014 年的报告中提出了如下的问题（视频的 25 分 50
+秒处）：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tprlQMClSYQ?si=WTY5EAbK2GTigsrv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>假设平面上有一个正方形的房间，房间的四面墙壁都是光滑的反射镜子。子弹在碰到墙壁时会遵循入射角等于出射角的规律无限反射下去。房间中有一位政要和一个刺客，他们的位置是固定的，但可能是房间中任何两点。能否在房间中放置有限数量的保镖，使得这些保镖可以封锁刺客的所有射击角度，从而确保政要不被子弹击中？</p>
+</div>
+<p>根据 <a target="_blank" rel="noopener" href="http://www.numdam.org/item/10.5802/aif.2124.pdf">这篇论文</a>
+的考据，这个问题曾经在 1989 年列宁格勒的数学竞赛中出现过。最近，通过 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=a7gp9c2p0UQ">PBS</a> 和 <a target="_blank" rel="noopener" href="https://www.math3ma.com/blog/is-the-square-a-secure-polygon">math3ma
+的博客</a>
+的科普推广，这个问题又引起了不少人的兴趣。我强烈建议读者在深入阅读本文之前，先观看这些视频和博客。它们的讲解通俗易懂，即便对于普通读者来说也非常友好。</p>
+<p>Greg Egan 在 <a target="_blank" rel="noopener" href="https://gregegan.net/SCIENCE/Lattices/Lattices.html">他的博客中</a>
+进一步讨论了房间是正三角形和正六边形的情况。虽然他给出的答案是正确的，但是他对正六边形情形的解释有点让人难以理解（Greg
+Egan 的一贯风格）。</p>
+<p>正三角形、正方形和正六边形房间是仅有的三种可以用有限多个保镖保护目标的情形，对其它正
+<span class="math inline">\(N\)</span> 边形房间（<span class="math inline">\(N\notin\{3,4,6\}\)</span>），有限数量的保镖是不行的。</p>
+<p>本文是对 math3ma 和 Greg Egan
+博客文章的补充，我将主要针对正六边形的情况进行详细解释。我觉得从仿射
+Weyl
+群的角度来看这个问题会更清晰，不过这一概念可能对大多数读者来说较为陌生。本文将假定读者已具备群的相关基础知识，并尽可能结合直观图形加以说明。如果读者希望进一步了解仿射
+Weyl 群，可以参考 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, chap.
+4</a>)</span>。</p>
+<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/assassin_vs_bodyguards">Github
+上</a>。这个项目包含了一个交互式脚本，你可以在窗口中点击并拖拽鼠标来查看刺客射击的轨迹以及保镖的位置：</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;">正方形</td>
+<td style="text-align: center;">正三角形</td>
+<td style="text-align: center;">正六边形</td>
+</tr>
+<tr>
+<td style="text-align: center;"><img src="/images/polygon-billiard/square_guards.svg" height="200"></td>
+<td style="text-align: center;"><img src="/images/polygon-billiard/triangle_guards.svg" height="200"></td>
+<td style="text-align: center;"><img src="/images/polygon-billiard/hexagon_guards.svg" height="200"></td>
+</tr>
+</tbody>
+</table>
+<span id="more"></span>
+<h1 id="反射和平移">反射和平移</h1>
+<p>在照镜子的时候，你和自己在镜子中的像的左右是相反的，即镜面反射会改变“手性”。因此无论怎么平移或者旋转，你都无法与自己在镜子中的像完全重合。</p>
+<p><img src="/images/polygon-billiard/inception.jpg" class="fig" width="500"></p>
+<p>但是如果把镜子中的虚像通过另一面镜子再作一次反射，得到一个二次虚像，那么通过适当的平移或者旋转，你是可以和这个二次虚像完全重合的。这是因为两个反射变换的复合是一个平移或者旋转。具体取决于两个镜子的夹角：</p>
+<ol type="1">
+<li>两个相交且夹角为 <span class="math inline">\(\theta\)</span>
+的镜面反射的复合是一个角度为 <span class="math inline">\(2\theta\)</span> 的旋转。</li>
+<li>两个平行且距离为 <span class="math inline">\(d\)</span>
+的镜面反射的复合是一个距离为 <span class="math inline">\(2d\)</span>
+的平移。</li>
+</ol>
+<p>所以偶数次反射等同于若干次旋转和平移的叠加，手性不变；奇数次反射等同于若干次旋转和平移后再附加一次反射，手性相反。</p>
+<p>观察上面盗梦空间的剧照，小李子位于两个平行的镜子中间，他有无穷多个虚像。这些虚像是交错出现的：那些面对他的虚像是经过奇数次反射得到的，这些虚像的手性和他相反，它们构成了集合
+<span class="math inline">\(L_1\)</span>；那些背对他的虚像是经过偶数次反射得到的（小李子本人看作
+<span class="math inline">\(0\)</span>
+次反射的像），这些虚像可以经过平移以后和他重合，它们构成了集合 <span class="math inline">\(L_2\)</span>。假设两个镜子的距离为 <span class="math inline">\(d\)</span>，则每个 <span class="math inline">\(L_i\)</span> 中的虚像以 <span class="math inline">\(2d\)</span> 为间隔均匀分布在一条直线上。</p>
+<p>如果我们想在两个镜子中间放置若干保镖，以防止摄影师从任何角度拍摄到小李子，则我们恰好需要
+4
+名保镖。他们需要分别挡住小李子本人、小李子关于两个镜子第一次反射生成的两个虚像，以及任意一个二次反射生成的虚像。保镖们的位置是摄影师和小李子这四个虚像连线的中点。</p>
+<figure>
+<img src="/images/polygon-billiard/parallel.svg" width="400" alt="红色圆点表示刺客，绿色圆点表示目标，它们之间有四个保镖">
+<figcaption aria-hidden="true">红色圆点表示刺客，绿色圆点表示目标，它们之间有四个保镖</figcaption>
+</figure>
+<p>为什么需要 4 名保镖呢？假设一个保镖 <span class="math inline">\(G\)</span> 挡住了小李子的某个虚像 <span class="math inline">\(A\in L_1\)</span>（<span class="math inline">\(A\in L_2\)</span> 的分析是类似的）。<span class="math inline">\(G\)</span>
+的虚像也由两个格点组成，每个格点也都是间隔 <span class="math inline">\(2d\)</span>
+均匀排列的。根据三角形的相似原理，<span class="math inline">\(G\)</span>
+的奇数次反射构成的格点在 <span class="math inline">\(L_1\)</span>
+上的投影间隔是 <span class="math inline">\(4d\)</span>，这些投影覆盖了
+<span class="math inline">\(L_1\)</span> 中一半的格点。另一方面 <span class="math inline">\(G\)</span>
+的偶数次反射构成的格点一般来说是无用的（除非狗仔和明星恰好位于某些特殊位置）。所以保镖
+<span class="math inline">\(G\)</span> 只能挡住小李子的所有虚像的
+1/4。</p>
+<h1 id="正方形-正三角形-正六边形">正方形 | 正三角形 | 正六边形</h1>
+<p>理解正多边形房间情形的第一个关键，是要知道刺客的任何射击轨迹都可以展开为平面上的一条射线。刺客可以击中目标当且仅当这条射线经过目标的某个虚像。这个操作叫做展开
+(unfolding)。</p>
+<p>与展开相对的操作是折叠 (folding)
+，我们可以用折叠操作将刺客发出的任何射线折叠回房间变成一条射击轨迹。具体做法如下：假设刺客位于点
+<span class="math inline">\(p\)</span>，虚像位于点 <span class="math inline">\(q\)</span>，则线段 <span class="math inline">\(\overline{pq}\)</span> 连接 <span class="math inline">\(p\)</span> 所在的真实房间和 <span class="math inline">\(q\)</span>
+所在的虚像房间，并且穿过若干房间的墙壁。记 <span class="math inline">\(\overline{pq}\)</span> 穿过的墙壁依次为 <span class="math inline">\(l_1,\ldots,l_m\)</span>，则将 <span class="math inline">\(q\)</span> 依次沿着墙壁 <span class="math inline">\(l_m,\ldots,l_1\)</span> 反射就可以将 <span class="math inline">\(q\)</span> 映射回真实房间。</p>
+<p>当房间是正方形时，目标的所有虚像由 4
+个不同的二维格点组成，如下图所示：</p>
+<figure>
+<img src="/images/polygon-billiard/square_lattice.svg" width="350" alt="假设左下角的单位正方形是真实房间，如果我们在房间中摆放一个 L 形的记号，那么平面上每个单位正方形中都会出现一个 L 的虚像，这些虚像有四种不同的定向，具有相同定向的那些 L 之间互相只差一个平移，因而构成一个二维格点">
+<figcaption aria-hidden="true">假设左下角的单位正方形是真实房间，如果我们在房间中摆放一个
+L 形的记号，那么平面上每个单位正方形中都会出现一个 L
+的虚像，这些虚像有四种不同的定向，具有相同定向的那些 L
+之间互相只差一个平移，因而构成一个二维格点</figcaption>
+</figure>
+<p>刺客只要朝着目标的任何一个虚像开枪就能击中目标，因为他和任何虚像之间的连线都可以通过折叠操作变成一条子弹的反射路径：</p>
+<figure>
+<img src="/images/polygon-billiard/square_lattice_with_targets.svg" width="350" alt="左下角是真实房间，红色圆点是刺客，空心圆圈是目标，灰色圆点是保镖。目标在每个房间中都有一个虚像，刺客和任何一个虚像之间的连线都对应一条可以击中目标的反射路径">
+<figcaption aria-hidden="true">左下角是真实房间，红色圆点是刺客，空心圆圈是目标，灰色圆点是保镖。目标在每个房间中都有一个虚像，刺客和任何一个虚像之间的连线都对应一条可以击中目标的反射路径</figcaption>
+</figure>
+<p>在 math3ma 的博客中已经证明了封锁一个二维格点需要 4
+名保镖，所以一共需要 4 x 4=16 名保镖。</p>
+<p>当房间是正三角形时，目标的所有虚像由 6 个不同的二维格点组成：</p>
+<p><img src="/images/polygon-billiard/triangle_lattice.svg" class="fig" width="350"></p>
+<p>同样刺客与目标的任何虚像之间的连线都对应一条房间内的射击路径：</p>
+<p><img src="/images/polygon-billiard/triangle_lattice_with_targets.svg" class="fig" width="350"></p>
+<p>封锁每个二维格点需要 4 个保镖，所以正三角形的情形总共需要 4 x 6 = 24
+名保镖。</p>
+<p>正六边形是一个容易产生迷惑的情形。这时目标的虚像仍然由 6
+个不同的二维格点构成：</p>
+<p><img src="/images/polygon-billiard/hexagon_lattice.svg" class="fig" width="350"></p>
+<p>但是，如果你仍然猜测需要 4 x 6 = 24
+名保镖，那对不起，事情不是这样的。</p>
+<p>注意在正六边形房间的情形，出现了一个不同的现象：沿着不同的路径反射，目标的虚像可以出现在另一个房间中不同的位置：</p>
+<p><img src="/images/polygon-billiard/chirality-2.svg" class="fig" width="350"></p>
+<p>由于光路的可逆性，这个话也可以反过来说，即虚像房间中的一点，它的原像可能来自真实房间中若干个不同的位置。我们后面会说明这样的位置最多有
+6
+种不同的可能。具体是哪个位置和反射路径有关，即和刺客与保镖虚像的连线有关。沿着每一个这样的连线把保镖的虚折叠回真实房间，保镖最终的位置可能是这
+6 个位置中的任何一个。所以保镖数目要乘以 6，即总共需要 4 x 6 x 6 = 144
+名保镖。</p>
+<p>下图也验证了这一点：</p>
+<p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/24_guards_each_lattice.svg" height="350"></p>
+<p>我选择了明星的 6
+个虚像格点中的一个，用黄色的点标记；刺客与每个虚像连线的中点有一个保镖的虚像，这个虚像来自房间中某个真实的保镖（用青色的点标记）。把射线折叠回房间我们可以得到真实保镖的位置。然而即便对同一个保镖，随着他的虚像变化，这个位置也可能不同，有
+6 种可能，所以封锁一个格点就需要 4 x 6 = 24 个保镖，封锁全部 6
+个格点需要 144 个保镖！</p>
+<h1 id="仿射-weyl-群">仿射 Weyl 群</h1>
+<p>从群论的角度可以更好的解释上面的现象。</p>
+<p>首先介绍一个记号：设 <span class="math inline">\(\alpha\in\mathbb{R}^2\)</span>
+是一个单位向量，我们用 <span class="math inline">\(H_{\alpha,k}\)</span>
+表示仿射直线 <span class="math display">\[H_{\alpha,k}=
+\{x\in\mathbb{R}^2\mid (x,\alpha)=k\},\quad k\in\mathbb{Z}.\]</span>
+并用 <span class="math inline">\(s_{\alpha,k}\)</span> 表示关于 <span class="math inline">\(H_{\alpha,k}\)</span> 的反射。当 <span class="math inline">\(k=0\)</span> 时我们把 <span class="math inline">\(H_{\alpha,0}\)</span> 简写为 <span class="math inline">\(H_\alpha\)</span>，把 <span class="math inline">\(s_{\alpha,0}\)</span> 简写为 <span class="math inline">\(s_{\alpha}\)</span>。</p>
+<p>正三角形、正方形、正六边形房间的共同之处，是房间的所有虚像可以密铺整个二维平面。而且它们是仅有的具有此性质的正多边形。这背后的原因是，这三种情形下，关于房间墙壁的反射生成的群
+<span class="math inline">\(W\)</span> 都是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coxeter_group#Affine_Coxeter_groups">仿射
+Weyl 群</a>。仿射 Weyl
+群总是无限群，每个虚像房间都是通过将群元素作用在真实房间上得到的。</p>
+<ol type="1">
+<li>在正方形的情形，<span class="math inline">\(W=\widetilde{A}_1\times\widetilde{A}_1\)</span>。</li>
+<li>在正三角形和正六边形的情形，<span class="math inline">\(W=\widetilde{A}_2\)</span>。</li>
+</ol>
+<p>实际上在两个平行镜面的情形，尽管房间不是封闭多边形，<span class="math inline">\(W\)</span> 也是仿射 Weyl 群 <span class="math inline">\(\widetilde{A}_1\)</span>。</p>
+<p>仿射 Weyl 群总可以分解为一个有限 Weyl 群 <span class="math inline">\(W_{\rm fin}\)</span> 和一个格点群 <span class="math inline">\(L\)</span> 的半直积： <span class="math display">\[W = W_{\rm fin}\ltimes L.\]</span> <span class="math inline">\(W_{\rm fin}\)</span> 的根系 <span class="math inline">\(\Phi\)</span> 是有限的；<span class="math inline">\(L\)</span> 是 <span class="math inline">\(\Phi\)</span> 的余根格点。</p>
+<p>我们分别来考察它们：</p>
+<p>在正方形的情形，假设房间 <span class="math inline">\(C=[0,1]\times[0,1]\)</span>
+是单位正方形。它的四面墙由两组平行的镜面组成，每组平行镜面生成的反射群是无穷二面体群
+<span class="math inline">\(\widetilde{A}_1\)</span>。由于这两组镜面互相垂直，所以它们合起来生成的反射群是两个
+<span class="math inline">\(\widetilde{A}_1\)</span> 的直积，即 <span class="math inline">\(W=\widetilde{A}_1\times\widetilde{A}_1\)</span>。</p>
+<p><img src="/images/polygon-billiard/a1xa1.svg" class="fig" height="500"></p>
+<p>我们来看看怎样把 <span class="math inline">\(W\)</span> 拆成 <span class="math inline">\(W=W_{\rm fin}\ltimes L\)</span> 的形式。</p>
+<p>设 <span class="math inline">\(\alpha_1=(1,0),\alpha_2=(0,1)\)</span>
+是过原点的两个墙壁的法向量，记 <span class="math inline">\(\alpha_1^\vee=2\alpha_1\)</span> 和 <span class="math inline">\(\alpha_2^\vee=2\alpha_2\)</span>。在数学术语中，<span class="math inline">\(\alpha_1^\vee\)</span> 和 <span class="math inline">\(\alpha_2^\vee\)</span> 被称为 <span class="math inline">\(\alpha_1\)</span> 和 <span class="math inline">\(\alpha_2\)</span> 的余根 (coroot)。</p>
+<p>记 <span class="math inline">\(s=s_{\alpha_1},t=s_{\alpha_2}\)</span>，则反射
+<span class="math inline">\(s,t\)</span> 生成的群是 Klein 群 <span class="math inline">\(K_4=\{1,s,t,st\}\)</span>。它就是上面直积分解中的
+<span class="math inline">\(W_{\rm fin}\)</span>。</p>
+<p>设 <span class="math inline">\(L=\mathbb{Z}\alpha_1^\vee +
+\mathbb{Z}\alpha_2^\vee=2\mathbb{Z}\)</span> 是由余根 <span class="math inline">\(\alpha_1^\vee\)</span> 和 <span class="math inline">\(\alpha_2^\vee\)</span> 生成的二维格点群。则 <span class="math display">\[\widetilde{A}_1\times\widetilde{A}_1 = K_4\ltimes
+2\mathbb{Z}.\]</span></p>
+<p>记真实房间为 <span class="math inline">\(C\)</span>，<span class="math inline">\(W\)</span> 在 <span class="math inline">\(C\)</span> 上的作用可以分成两步：首先将 <span class="math inline">\(K_4\)</span> 中的某个元素作用在 <span class="math inline">\(C\)</span> 上，得到 <span class="math inline">\(\{C,sC,tC,stC\}\)</span> 之一，然后分别在 <span class="math inline">\(x,y\)</span> 方向上平移偶数的距离。由于 <span class="math inline">\(K_4\)</span> 是 4 阶群，这解释了为什么目标虚像由 4
+个格点组成。</p>
+<p><img src="/images/polygon-billiard/a2.svg" class="fig" height="500"></p>
+<p>正三角形房间的情形是类似的。仍然记真实房间为 <span class="math inline">\(C\)</span>，并假设 <span class="math inline">\(C\)</span>
+的一个顶点位于原点。设经过原点的两面墙的法向量是 <span class="math inline">\(\alpha_1\)</span> 和 <span class="math inline">\(\alpha_2\)</span>，它们的夹角是 <span class="math inline">\(-\pi/3\)</span>。设 <span class="math inline">\(s=s_{\alpha_1},t=s_{\alpha_2}\)</span>
+是它们给出的反射，<span class="math inline">\(\alpha_1^\vee=2\alpha_1\)</span> 和 <span class="math inline">\(\alpha_2^\vee=2\alpha_2\)</span> 分别是 <span class="math inline">\(\alpha_1\)</span> 和 <span class="math inline">\(\alpha_2\)</span> 的余根。则 <span class="math inline">\(W\)</span> 可以表示为 <span class="math inline">\(s,t\)</span> 生成的有限二面体群 <span class="math inline">\(D_3\)</span> 和余根格点 <span class="math inline">\(L=\mathbb{Z}\alpha_1^\vee +
+\mathbb{Z}\alpha_2^\vee\)</span> 的半直积 <span class="math display">\[W=\widetilde{A}_2=D_3\ltimes L.\]</span> <span class="math inline">\(W\)</span> 在 <span class="math inline">\(C\)</span> 上的作用可以分成两步，首先用 <span class="math inline">\(D_3\)</span> 中的某个元素作用在 <span class="math inline">\(C\)</span> 上，得到环绕原点的 6 个房间 <span class="math inline">\(\{C,sC,tC,stC,tsC,stsC\}\)</span>
+之一，然后再将其沿着 <span class="math inline">\(L\)</span>
+中的一个格点进行平移。由于 <span class="math inline">\(D_3\)</span> 是 6
+阶群，所以目标虚像由 6 个不同的格点组成。</p>
+<p>我们已经讨论了正方形和正三角形房间的情形，这两种情形中，群元素和房间都是一一对应的：对任何虚像房间
+<span class="math inline">\(C'\)</span>，有且仅有唯一的群元素 <span class="math inline">\(w\in W\)</span> 将真实房间 <span class="math inline">\(C\)</span> 映射为 <span class="math inline">\(C'\)</span>。但是在正六边形的情形，情况变得非常不同，群元素和房间是
+6 对 1 的关系！</p>
+<p>我们可以继续使用上图来分析。注意到正六边形房间给出的反射群和正三角形的情形一样，都是
+<span class="math inline">\(\widetilde{A}_2\)</span>，因为它们都是由关于所有网格线的反射生成的。所以目标虚像也由
+6 个不同的格点组成。任何虚像房间也可以分两步得到：先用 <span class="math inline">\(D_3\)</span>
+中的某个元素作用在真实房间上，再沿着余根格点中的一个向量平移过去。但是
+<span class="math inline">\(D_3\)</span>
+保持正六边形不变，只是置换其内部的 6 个正三角形，所以最终的房间是由
+<span class="math inline">\(L\)</span> 唯一决定的。</p>
+<p>这会导致什么后果呢？我们作如下分析：设 <span class="math inline">\(p\)</span> 是真实房间内的一点，<span class="math inline">\(q\)</span> 是 <span class="math inline">\(p\)</span> 的某个虚像，从而存在 <span class="math inline">\(x\in D_3\)</span> 和 <span class="math inline">\(t\in L\)</span> 使得 <span class="math inline">\(q=x\cdot p + t\)</span>。<span class="math inline">\(q\)</span> 所在的格点是 <span class="math display">\[q+L=q+\mathbb{Z}\alpha_1^\vee+\mathbb{Z}\alpha_2^\vee.\]</span>
+然而 <span class="math inline">\(p\)</span> 并不是真实房间中唯一可以生成
+<span class="math inline">\(q+L\)</span> 的点。考虑集合 <span class="math inline">\(S=\{y\cdot p\mid y\in D_3\}\)</span>，由于 <span class="math inline">\(D_3\)</span> 保持真实房间不变，所以 <span class="math inline">\(S\)</span> 都是真实房间中的点。对任何 <span class="math inline">\(y\cdot p\in S\)</span>，用 <span class="math inline">\(xy^{-1}\in D_3\)</span> 作用在 <span class="math inline">\(y\cdot p\)</span> 上，得到 <span class="math inline">\(x\cdot p\)</span>，然后按照 <span class="math inline">\(L\)</span> 进行平移，就可以得到格点 <span class="math inline">\(q+L\)</span>。这就证明了 <span class="math inline">\(p\)</span> 的一个虚像格点可以来自房间内 6
+个不同的位置。所以对一个保镖来说，假设 <span class="math inline">\(L\)</span>
+是他的某个虚像格点（由奇数或者偶数次反射生成），对他的任何虚像 <span class="math inline">\(q\in L\)</span>，刺客和 <span class="math inline">\(q\)</span> 的连线给出一个 <span class="math inline">\(\widetilde{A}_2\)</span> 中的元素 <span class="math inline">\(w\)</span>，<span class="math inline">\(w\)</span>
+将 <span class="math inline">\(q\)</span> 映射回真实房间的某个位置 <span class="math inline">\(p\)</span>。当 <span class="math inline">\(q\)</span> 跑遍 <span class="math inline">\(L\)</span> 时，<span class="math inline">\(p\)</span> 有 6
+个可能的位置。我们需要在每个位置上都放置一名保镖才能保证目标安全。这就是为什么保镖数目要乘以
+6。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Humphreys90" class="csl-entry" role="listitem">
+Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
+Cambridge Studies in Advanced Mathematics. Cambridge University Press.
+<a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511623646">https://doi.org/10.1017/CBO9780511623646</a>.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/Marden-theorem/" rel="next" title="静电场与 Marden 定理">
+      上一篇：静电场与 Marden 定理
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/Todd-Coxeter-and-uniform-polytopes/" rel="next" title="Todd-Coxeter 算法和 3D/4D 均匀多胞体">
+          下一篇：Todd-Coxeter 算法和 3D/4D 均匀多胞体
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

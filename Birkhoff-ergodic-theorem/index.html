@@ -193,14 +193,6 @@ Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -209,8 +201,8 @@ Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -218,7 +210,15 @@ Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -249,16 +249,16 @@ Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -338,18 +338,29 @@ Examples”。这本书的好处我就不再介绍了，院长陈大岳老师在
 给出了极大遍历定理的一个仅有寥寥数行的惊人证明，这也是当前大多数教材采用的途径，本文就来介绍这一证明。</p>
 <span id="more"></span>
 <h1 id="准备工作">准备工作</h1>
-<p>给定一个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>，我们称两个可测集
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+HEAD:source/_posts/已完成/Durrett/Birkhoff遍历定理.md 给定一个概率空间
+<span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>，我们称两个可测集
 <span class="math inline">\(A,B\in F\)</span>
 几乎处处相等，是指它们的示性函数 <span class="math inline">\(\mathbb{1}_A,\mathbb{1}_B\)</span>
 几乎处处相等，记作 <span class="math inline">\(A\stackrel{\mathrm{a.e.}}{=}B\)</span>。等价的说法是
-<span class="math inline">\(A,B\)</span> 只差一个零测集，或者差集 <span class="math inline">\(A\Delta B\)</span> 是零测集。</p>
+<span class="math inline">\(A,B\)</span> 只差一个零测集，又或者说差集
+<span class="math inline">\(A\Delta B\)</span> 是零测集。 =======
+给定一个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>，我们称两个可测集
+<span class="math inline">\(A,B\in F\)</span>
+几乎处处相等，是指它们的示性函数 <span class="math inline">\(\mathbb{1}_A,\mathbb{1}_B\)</span>
+几乎处处相等，记作 <span class="math inline">\(A\stackrel{\mathrm{a.e.}}{=}B\)</span>。等价的说法是
+<span class="math inline">\(A,B\)</span>
+只差一个零测集，或者再换一个说法，差集 <span class="math inline">\(A\Delta B\)</span> 是零测集。
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+9bbf6d0639da9aced569d3cb1447b46a1b443ec7:_drafts/挪走/Birkhoff遍历定理.md</p>
 <p>设 <span class="math inline">\(T:\Omega\rightarrow \Omega\)</span>
 是一个可测变换，即对任何 <span class="math inline">\(E\in\mathcal{F}\)</span> 有 <span class="math inline">\(T^{-1}E\in\mathcal{F}\)</span>。</p>
 <div id="def-1" class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 1.1</span>.</span><span class="statement-spah"> </span>如果可测集 <span class="math inline">\(E\)</span> 满足 <span class="math inline">\(T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\)</span>，就称
-<span class="math inline">\(E\)</span> 是一个 <span class="math inline">\(T-\)</span> 不变集合。不难验证所有的 <span class="math inline">\(T-\)</span> 不变集合 <span class="math display">\[\mathcal{I}=\{E\in\mathcal{F}\ |\
-T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\}\]</span> 构成 <span class="math inline">\(\mathcal{F}\)</span> 的一个子 <span class="math inline">\(\sigma-\)</span> 代数。</p>
+<span class="math inline">\(E\)</span> 是一个 <span class="math inline">\(T\)</span>- 不变集合。不难验证所有的 <span class="math inline">\(T\)</span>- 不变集合 <span class="math display">\[\mathcal{I}=\{E\in F\mid
+T^{-1}E\stackrel{\mathrm{a.e.}}{=}E\}\]</span> 构成 <span class="math inline">\(\mathcal{F}\)</span> 的一个子 <span class="math inline">\(\sigma\)</span>- 代数。</p>
 </div>
 <div id="def-2" class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
@@ -376,10 +387,10 @@ T\,\mathrm{d}\mu.\]</span>
 <div id="lemma-2" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
 1.4</span>.</span><span class="statement-spah"> </span>一个 <span class="math inline">\(\Omega\)</span> 上的随机变量 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，当且仅当有 <span class="math display">\[X\circ T=X\quad \text{a.e.}\]</span>
-成立。这时我们称 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(T-\)</span> 不变的随机变量。</p>
+成立。这时我们称 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(T\)</span>- 不变的随机变量。</p>
 </div>
 <p>这是 Durrett
-书中的一道习题，我一直觉得它很平凡，其实之前文章中的处理有问题，这个结论还是需要论证一番的。</p>
+书中的一道习题，我一直觉得它很平凡，其实这个结论还是需要论证一番的。</p>
 <p><strong>证明</strong>：</p>
 <p><span class="math inline">\(\Rightarrow\)</span>：如果 <span class="math inline">\(X\)</span> 关于 <span class="math inline">\(\mathcal{I}\)</span> 可测，则对任何 Borel 集 <span class="math inline">\(B\in\mathcal{B}(\mathbb{R}^1)\)</span> 有 <span class="math inline">\(X^{-1}B\in\mathcal{I}\)</span>，即 <span class="math inline">\(T^{-1}(X^{-1}B)\stackrel{\mathrm{a.e.}}{=}X^{-1}B\)</span>，这说明
 <span class="math inline">\(\{X\circ T\in
@@ -424,7 +435,7 @@ a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换
 <h1 id="birkhoff-遍历定理的证明">Birkhoff 遍历定理的证明</h1>
 <p>首先可以假定条件期望 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]=0\)</span>，否则我们可以用
 <span class="math inline">\(f-\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
-代替 <span class="math inline">\(f\)</span>，注意到 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span> 是 <span class="math inline">\(T-\)</span> 不变的，所以根据上面的 <a href="#lemma-2" title="引理 1.4">引理 1.4</a> 有 <span class="math display">\[\mathbb{E}[f\,|\,\mathcal{I}]\circ T^k =
+代替 <span class="math inline">\(f\)</span>，注意到 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span> 是 <span class="math inline">\(T\)</span>- 不变的，所以根据上面的 <a href="#lemma-2" title="引理 1.4">引理 1.4</a> 有 <span class="math display">\[\mathbb{E}[f\,|\,\mathcal{I}]\circ T^k =
 \mathbb{E}[f\,|\,\mathcal{I}],\quad \mathrm{a.e.}\]</span>
 对所有的正整数 <span class="math inline">\(k\)</span> 都成立，这时 <a href="#birkhoff" title="定理 2.1">定理 2.1</a> 的左边 <span class="math inline">\(S_n\)</span> 中每一项都会多出来一个 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>，除以 <span class="math inline">\(n\)</span> 正好和右边的 <span class="math inline">\(\mathbb{E}[f\,|\,\mathcal{I}]\)</span>
 抵消掉。</p>
@@ -440,7 +451,7 @@ a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换
 也几乎处处成立，这样就证明了 <span class="math inline">\(\lim\limits_{n\to\infty}S_n/n=0\)</span>
 几乎处处成立。（拗口）</p>
 <p>为了证明 <span class="math inline">\(\mu(A)=0\)</span>，我们希望对函数 <span class="math inline">\(f\)</span> 和集合 <span class="math inline">\(A\)</span> 应用极大不等式： <span class="math display">\[\int_A f\,\mathrm{d}\mu\geq a\mu(A).\]</span>
-这是因为，<span class="math inline">\(A\)</span> 其实是一个 <span class="math inline">\(T-\)</span> 不变的集合，即 <span class="math inline">\(A\in\mathcal{I}\)</span>，我们会在证明末尾再验证这一点。于是根据条件期望的性质，
+这是因为，<span class="math inline">\(A\)</span> 其实是一个 <span class="math inline">\(T\)</span>- 不变的集合，即 <span class="math inline">\(A\in\mathcal{I}\)</span>，我们会在证明末尾再验证这一点。于是根据条件期望的性质，
 <span class="math display">\[\int_A f\,\mathrm{d}\mu = \int_A
 \mathbb{E}[f\,|\,\mathcal{I}]\,\mathrm{d}\mu =0.\]</span> 即 <span class="math inline">\(0\geq a\mu(A)\)</span>，结合 <span class="math inline">\(a&gt;0\)</span> 即得 <span class="math inline">\(\mu(A)=0\)</span>。</p>
 <p>但是，我们能对 <span class="math inline">\(A\)</span>
@@ -452,7 +463,7 @@ a\mu(\{M_f&gt;a\}).\]</span> 极大遍历定理是说把其中的积分函数换
 所以我们只需要证明下面的结论就好了：</p>
 <div class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\subseteq \{M_f&gt;a\}\)</span> 而且 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(T-\)</span> 不变集合，那么极大遍历定理仍然成立：
+3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\subseteq \{M_f&gt;a\}\)</span> 而且 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(T\)</span>- 不变集合，那么极大遍历定理仍然成立：
 <span class="math display">\[\int_A f\,\mathrm{d}\mu\geq
 a\mu(A).\]</span></p>
 </div>
@@ -460,14 +471,14 @@ a\mu(A).\]</span></p>
 <span class="math display">\[\int_{\{M_g&gt;a\}}
 f\cdot\mathbb{1}_A\,\mathrm{d}\mu\geq a\mu(\{M_g&gt;a\}).\]</span> 但是
 <span class="math inline">\(M_g=M_f\cdot\mathbb{1}_A\)</span>，这一点要用到
-<span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变集合这个条件，因此 <span class="math display">\[\{M_g&gt;a\}=\{M_f&gt;a\}\cap A
+<span class="math inline">\(A\)</span> 是 <span class="math inline">\(T\)</span>- 不变集合这个条件，因此 <span class="math display">\[\{M_g&gt;a\}=\{M_f&gt;a\}\cap A
 =A.\]</span>因此确实有 <span class="math display">\[\int_A
 f\,\mathrm{d}\mu\geq a \mu(A).\]</span> 这样就证明了 Birkhoff
 遍历定理。</p>
 <p>实际上定理中的收敛也是一个依 <span class="math inline">\(L^1\)</span>
 范数的收敛，这点的证明相比几乎处处收敛就容易多了，这里不再赘述。</p>
 <p>最后我们来补上证明中遗漏的部分，即验证集合 <span class="math inline">\(A=\left\{\varlimsup\limits_{n\to\infty}S_n/n&gt;a\right\}\)</span>
-确实是 <span class="math inline">\(T-\)</span> 不变的：</p>
+确实是 <span class="math inline">\(T\)</span>- 不变的：</p>
 <p>利用 <span class="math inline">\(S_{n+1} = f + S_n\circ T\)</span>
 可得 <span class="math display">\[\frac{S_{n+1}}{n+1} = \frac{f}{n+1} +
 \frac{S_n\circ T}{n}\cdot \frac{n}{n+1}.\]</span>
@@ -477,7 +488,7 @@ L^1(\Omega)\)</span> 所以 <span class="math inline">\(f\)</span>
 <span class="math display">\[\varlimsup_{n\to\infty} \frac{S_{n+1}}{n+1}
 = \varlimsup_{n\to\infty}\frac{S_{n}\circ T}{n}.\]</span> 这正说的是
 <span class="math inline">\(\varlimsup\limits_{n\to\infty}S_n/n\)</span>
-是 <span class="math inline">\(T-\)</span> 不变的随机变量，从而 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(T-\)</span> 不变的集合。</p>
+是 <span class="math inline">\(T\)</span>- 不变的随机变量，从而 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(T\)</span>- 不变的集合。</p>
 <p>最后来证明极大遍历定理。</p>
 <h1 id="极大遍历定理的证明">极大遍历定理的证明</h1>
 <p>只要证明 <span class="math inline">\(a=0\)</span>

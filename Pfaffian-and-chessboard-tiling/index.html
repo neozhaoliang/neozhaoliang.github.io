@@ -193,14 +193,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -209,8 +201,8 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -218,7 +210,15 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -249,16 +249,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -356,12 +356,12 @@
 定义 <span class="math inline">\(\pi\)</span> 的权为 <span class="math display">\[\mathrm{wt}(\pi)=\text{sgn}(\pi)\cdot
 a_\pi.\]</span> 其中 <span class="math inline">\(\text{sgn}(\pi)\)</span> 就是置换 <span class="math inline">\(\pi\)</span> 的符号，偶置换时为 <span class="math inline">\(+1\)</span>，奇置换时为 <span class="math inline">\(-1\)</span>， <span class="math display">\[a_\pi=a_{i_1j_1}a_{i_2j_2}\cdots
 a_{i_nj_n}.\]</span> 于是 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 是一个次数为 <span class="math inline">\(n\)</span> 的单项式。</p>
-<p><span class="math inline">\(\mathrm{wt}(\pi)\)</span>
+<p>但是，<span class="math inline">\(\mathrm{wt}(\pi)\)</span>
 的定义是合理无歧义的吗？注意一个匹配 <span class="math inline">\(\pi\)</span>
 可以有多种不同的置换表示：你可以按任意的顺序排列这些 <span class="math inline">\((i_k,j_k)\)</span> 对，比如 <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;\cdots&amp;2n-1&amp;2n\\i_2&amp;j_2&amp;i_3&amp;j_3&amp;\cdots&amp;i_1&amp;j_1\end{pmatrix}.\]</span>
 或是交换某一对中 <span class="math inline">\(i_k\)</span> 和 <span class="math inline">\(j_k\)</span> 的位置： <span class="math display">\[\pi=\begin{pmatrix}1&amp;2&amp;\cdots&amp;2k-1&amp;2k&amp;\cdots&amp;2n-1&amp;2n\\i_1&amp;j_1&amp;\cdots&amp;j_k&amp;i_k&amp;\cdots&amp;i_n&amp;j_n\end{pmatrix}.\]</span>
-不难验证，虽然不同的置换表示给出的 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 的值可能不同，但是二者的乘积 <span class="math inline">\(\mathrm{wt}(\pi)\)</span>
-的值总是一样的。比如把某个 <span class="math inline">\((i_k,j_k)\)</span> 改写成 <span class="math inline">\((j_k,i_k)\)</span>，那么 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 都同时变号，乘积保持不变。总之
+不难验证，虽然不同的置换表示给出的 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 可能不同，但是二者的乘积 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 总是一样的。比如把某个
+<span class="math inline">\((i_k,j_k)\)</span> 改写成 <span class="math inline">\((j_k,i_k)\)</span>，那么 <span class="math inline">\(\text{sgn}(\pi)\)</span> 和 <span class="math inline">\(a_\pi\)</span> 都同时变号，乘积保持不变。总之
 <span class="math inline">\(\mathrm{wt}(\pi)\)</span> 的定义只与匹配
 <span class="math inline">\(\pi\)</span>
 有关，并不依赖于具体置换的选择。</p>
@@ -381,8 +381,8 @@ S_{2n}}\text{sgn}(\sigma) a_{1\sigma(1)}a_{2\sigma(2)}\cdots
 .\]</span></p>
 <p>回忆任何置换 <span class="math inline">\(\sigma\)</span>
 都可以表示为若干不相交的轮换的乘积： <span class="math display">\[\sigma
-= (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.\]</span> 其中 <span class="math inline">\(k,l,\ldots\)</span> 是各个轮换的长度。设 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
-为轮换长度都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，<span class="math inline">\(\sigma\)</span> 只跑遍 <span class="math inline">\(\mathcal{E}_{2n}\)</span>，不属于 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
+= (i_1i_2\cdots i_k)(j_1j_2\cdots j_l)\cdots.\]</span> 设 <span class="math inline">\(\mathcal{E}_{2n}\)</span> 为轮换长度 <span class="math inline">\(k,l,\cdots\)</span>
+都是偶数的那些置换组成的集合，我们要证明在上述行列式的求和中，<span class="math inline">\(\sigma\)</span> 只跑遍 <span class="math inline">\(\mathcal{E}_{2n}\)</span>，不属于 <span class="math inline">\(\mathcal{E}_{2n}\)</span>
 的那些置换整体对行列式的贡献为 0。</p>
 <p>分两种情况：</p>
 <ol type="1">
@@ -396,14 +396,15 @@ S_{2n}}\text{sgn}(\sigma) a_{1\sigma(1)}a_{2\sigma(2)}\cdots
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
 </span><span class="math inline">\(\sigma=(1\,3)(2\,4\,6)(5\,7\,8)(9\,10)\)</span> 有
-2 个长度为奇数的轮换 <span class="math inline">\((246)\)</span> 和 <span class="math inline">\((578)\)</span>，这两个轮换中最小的元素是 <span class="math inline">\(2\)</span>，它出现在 <span class="math inline">\((2\,4\,6)\)</span> 中，所以 <span class="math inline">\(\sigma'=(1\,3)(6\,4\,2)(5\,7\,8)(9\,10)\)</span>。</p>
+2 个长度为奇数的轮换 <span class="math inline">\((246)\)</span> 和 <span class="math inline">\((578)\)</span>，最小的元素 <span class="math inline">\(2\)</span> 出现在 <span class="math inline">\((2\,4\,6)\)</span> 中，所以 <span class="math inline">\(\sigma'=(1\,3)(6\,4\,2)(5\,7\,8)(9\,10)\)</span>。</p>
 </div>
-<p>这就证明了在行列式的求和中，我们只需要考虑那些轮换分解长度都是偶数的置换。</p>
+<p>这就证明了在行列式的求和中，<span class="math inline">\(\sigma\)</span>
+只跑遍那些轮换分解长度都是偶数的置换。</p>
 <p>于是为了证明 <span class="math inline">\(\det A=[{\rm
 pf}(A)]^2\)</span>，只要证明 <span class="math display">\[\sum_{\pi\in\mathcal{M}_{2n}}\sum_{\pi'\in\mathcal{M}_{2n}}{\rm
 wt}(\pi){\rm wt}(\pi')=\sum_{\sigma\in\mathcal{E}_{2n}}{\rm
 sgn}(\sigma) a_\sigma.\]</span></p>
-<p>为此我们来建立一个双射 <span class="math display">\[\mathcal{M}_{2n}\times
+<p>为此我们来证明存在双射 <span class="math display">\[\mathcal{M}_{2n}\times
 \mathcal{M}_{2n}\rightarrow \mathcal{E}_{2n}:\quad
 (\pi,\pi')\rightarrow \sigma.\]</span>
 而且这个双射还保持权的相等，即 <span class="math display">\[\mathrm{wt}(\pi)\cdot
@@ -457,18 +458,15 @@ a_{i_nj_n}\right)^2.\]</span></p>
 \mathrm{wt}(\pi')=\text{sgn}(\sigma)a_{\sigma}.\]</span>
 要使得所有非零的 <span class="math inline">\(\mathrm{wt}(\pi)\)</span>
 都同为 +1 或者同为 -1，只要让每个非零的 <span class="math inline">\(\text{sgn}(\sigma)a_{\sigma}\)</span> 都等于 1
-即可。设 <span class="math inline">\(\sigma\)</span> 是一个使得 <span class="math inline">\(a_\sigma\ne0\)</span> 的置换且 <span class="math inline">\(\sigma\)</span> 的轮换分解为 <span class="math inline">\(\sigma=C_1\cdots C_l\)</span>，则 <span class="math inline">\(\text{sgn}(\sigma)=(-1)^l\)</span>，<span class="math inline">\(a_\sigma=a_{C_1}\cdots a_{C_l}\)</span>。这里记号
-<span class="math inline">\(a_{C_i}\)</span> 的含义是，如果 <span class="math inline">\(C_i=(i_1i_2\cdots i_k)\)</span>，则 <span class="math inline">\(a_{C_i}=a_{i_1i_2}\cdots
+即可。设 <span class="math inline">\(\sigma\)</span> 是一个使得 <span class="math inline">\(a_\sigma\ne0\)</span> 的置换且 <span class="math inline">\(\sigma\)</span> 的轮换分解为 <span class="math inline">\(\sigma=C_1\cdots C_l\)</span>，这里每个 <span class="math inline">\(C_i\)</span> 的长度都是偶数，则 <span class="math display">\[\text{sgn}(\sigma)=(-1)^l,\quad
+a_\sigma=a_{C_1}\cdots a_{C_l}.\]</span> 这里规定 <span class="math inline">\(C_i=(i_1i_2\cdots i_k)\)</span> 时 <span class="math inline">\(a_{C_i}=a_{i_1i_2}\cdots
 a_{i_ki_1}\)</span>。如果我们能够使得每个 <span class="math inline">\(a_{C_i}=-1\)</span>，那么就有 <span class="math display">\[\text{sgn}(\sigma)\cdot a_\sigma = (-1)^l\cdot
-(-1)^l=1.\]</span> 怎么才能让 <span class="math inline">\(a_{C_i}\)</span> 都等于 -1 呢？注意 <span class="math inline">\(a_{C_i}\)</span> 不等于 0 说明 <span class="math inline">\(i_1\to i_2\to\cdots\to i_k\to i_1\)</span> 是
-<span class="math inline">\(\overrightarrow{G}\)</span>
-中的一个回路。又注意 <span class="math inline">\(\sigma\)</span>
-的每个轮换的长度都是偶数，所以 <span class="math inline">\(k\)</span>
-是偶数，即回路的长度是偶数。要使得 <span class="math inline">\(a_{C_i}\)</span> 等于 -1，我们需要 <span class="math inline">\(\{a_{i_1i_2},\ldots,a_{i_ki_1}\}\)</span> 中 -1
-出现的次数是奇数。换句话说，当在 <span class="math inline">\(\overrightarrow{G}\)</span> 中沿着回路 <span class="math display">\[i_1\rightarrow i_2\rightarrow \cdots \rightarrow
-i_k\rightarrow i_1\]</span> 绕 <span class="math inline">\(C_i\)</span>
-一圈时，有奇数条边在 <span class="math inline">\(\overrightarrow{G}\)</span>
-中的定向与行走方向一致，当然也就有奇数条边的定向与行走方向相反。</p>
+(-1)^l=1.\]</span> 而 <span class="math inline">\(a_{C_i}\)</span> 等于
+-1 意味着，当在 <span class="math inline">\(\overrightarrow{G}\)</span>
+中沿着回路 <span class="math display">\[i_1\rightarrow i_2\rightarrow
+\cdots \rightarrow i_k\rightarrow i_1\]</span> 绕 <span class="math inline">\(C_i\)</span> 一圈时，有奇数条边在与 <span class="math inline">\(\overrightarrow{G}\)</span>
+的定向一致（由于轮换长度 <span class="math inline">\(k\)</span>
+是偶数，这也等价于有奇数条边与 <span class="math inline">\(\overrightarrow{G}\)</span> 的定向相反）。</p>
 <div class="unnumbered statement definition-unnumbered plain">
 <p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
 </span>设 <span class="math inline">\(G\)</span> 是有限图。如果 <span class="math inline">\(G\)</span> 的一个回路 <span class="math inline">\(C\)</span> 的长度是偶数，且删除 <span class="math inline">\(C\)</span> 后剩下的部分仍然存在匹配，就称 <span class="math inline">\(C\)</span> 是一个好的回路。如果 <span class="math inline">\(G\)</span> 的一个定向 <span class="math inline">\(\overrightarrow{G}\)</span> 使得 <span class="math inline">\(G\)</span>

@@ -25,7 +25,7 @@
     <meta name="description" content="今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the
 past
 (CFTP)。这个算法看似简单，实则充满玄机。我相信你可以在五分钟内理解算法的步骤，然后再花五分钟左右看懂算法的证明，但是我打赌你需要几个星期甚至更久的时间来细细回味其中奥妙。
-作为启发，我们从一个计数问题开始：
+为了引出算法，我们从一个计数问题开始：
 
 问题： 下图是一个边长分别为 \(a,b,c\) 的平行六边形，其中 \(a,b,c\) 都是正整数，内角均为 120 度：
 
@@ -191,14 +191,6 @@ past
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -207,8 +199,8 @@ past
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -216,7 +208,15 @@ past
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -247,16 +247,16 @@ past
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -329,7 +329,7 @@ past</span></a></li><li class="section table-of-contents-item section table-of-c
 <p>今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the
 past
 (CFTP)。这个算法看似简单，实则充满玄机。我相信你可以在五分钟内理解算法的步骤，然后再花五分钟左右看懂算法的证明，但是我打赌你需要几个星期甚至更久的时间来细细回味其中奥妙。</p>
-<p>作为启发，我们从一个计数问题开始：</p>
+<p>为了引出算法，我们从一个计数问题开始：</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>下图是一个边长分别为 <span class="math inline">\(a,b,c\)</span> 的平行六边形，其中 <span class="math inline">\(a,b,c\)</span> 都是正整数，内角均为 120 度：</p>
 <p><img style="margin:0px auto;display:block" width="400" src="/images/cftp/hexagon.svg"></p>
@@ -366,9 +366,11 @@ CFTP 要做的。</p>
 \epsilon,\quad\forall s\in S,\ \forall\epsilon&gt;0.\]</span>
 这个方法非常简单易行，但是它有两个缺陷：首先它只是一个近似算法，不管
 <span class="math inline">\(n\)</span> 取得多么大，返回的 <span class="math inline">\(s_n\)</span> 的分布只是近似而非严格等于平稳分布
-<span class="math inline">\(\pi\)</span>；其次为了获得足够的精度采样所需的时间
-<span class="math inline">\(n\)</span> （叫做 mixing
-time）也不总是那么容易估计的。那么有没有什么办法可以获得精确地服从 <span class="math inline">\(\pi\)</span> 的采样呢？</p>
+<span class="math inline">\(\pi\)</span>；其次为了获得足够的精度所需的时间
+<span class="math inline">\(n\)</span>（叫做 mixing
+time）也不总是那么容易估计的，也就是说，你压根不知道需要跑多久才能让
+<span class="math inline">\(s_n\)</span> 的分布足够接近 <span class="math inline">\(\pi(s)\)</span>。那么有没有什么办法可以获得精确地服从
+<span class="math inline">\(\pi\)</span> 的采样呢？</p>
 <p>Propp 和 Wilson 提出了如下的想法：既然从初始状态出发向未来 （<span class="math inline">\(+\infty\)</span> 方向） 跑 Markov
 链得不到真正的平稳分布，我们何不从无穷远的过去 （<span class="math inline">\(-\infty\)</span> 方向） 向现在 （时刻 0）
 跑呢？可以想象当这个链经过了无穷次迭代后，其 0 时刻的状态 <span class="math inline">\(s^\ast\)</span> 服从的分布就是 <span class="math inline">\(\pi\)</span>。当然，一个可行的算法必须在有限时间内输出结果，我们不可能做到真的从无穷远的过去出发。我们能做的只是选择一个足够大的

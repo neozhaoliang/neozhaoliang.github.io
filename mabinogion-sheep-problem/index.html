@@ -191,14 +191,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -207,8 +199,8 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -216,7 +208,15 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -247,16 +247,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -365,12 +365,12 @@ V_S(w,0)=0\label{eq:boundary}\tag{$\ast$}.\]</span></p>
 <p>注意这里是把任一策略 <span class="math inline">\(S\)</span>
 下的状态序列 <span class="math inline">\((W_n, B_n)\)</span> 代入策略
 <span class="math inline">\(A\)</span> 的值函数中。</p>
-<p>其中的道理非常简单：对任何策略 <span class="math inline">\(S\)</span>，由于其吸收状态 <span class="math inline">\((W_\infty,B_\infty)\)</span> 中必有一个分量是
+<p>证明非常简单：对任何策略 <span class="math inline">\(S\)</span>，由于其吸收状态 <span class="math inline">\((W_\infty,B_\infty)\)</span> 中必有一个分量是
 0，从而由值函数边界条件 <span class="math inline">\((\ref{eq:boundary})\)</span> 有 <span class="math inline">\(B_\infty=V_A(W_\infty,B_\infty)\)</span>，所以
 <span class="math display">\[\mathbb{E}[B_\infty]=\mathbb{E}[V_A(W_\infty,B_\infty)]\leq
 \mathbb{E}[V_A(w,b)]=V_A(w,b).\]</span> 其中最后一个等号是因为 <span class="math inline">\(V_A(w,b)\)</span>
 是一个常数，常数的期望等于自身。</p>
-<p>在教材中，Williams 直接「猜出」了策略 <span class="math inline">\(A\)</span>：</p>
+<p>Williams 直接「猜出」了策略 <span class="math inline">\(A\)</span>：</p>
 <blockquote>
 <p><strong>策略 <span class="math inline">\(A\)</span></strong>：如果当前黑绵羊的数量多于白绵羊，则什么也不做；否则就把白绵羊的数量变为黑绵羊的数量减
 1。</p>
@@ -401,8 +401,9 @@ w&gt;0\)</span>。</li>
 b&gt;0\)</span>。</li>
 </ol>
 </div>
-<p>4, 5 合起来说的就是无论男孩策略如何，<span class="math inline">\(\{
-V_A(W_n,B_n)\}\)</span> 总是一个上鞅！因此策略 <span class="math inline">\(A\)</span> 确实是最优的。</p>
+<p>4 表明如果男孩执行移走白绵羊的操作，则他得到的黑绵羊的期望会下降； 5
+表明如果男孩不执行操作，而是让系统自发改变状态的话，最终得到的黑绵羊的期望仍然会下降。总之无论男孩策略如何，<span class="math inline">\(\{ V_A(W_n,B_n)\}\)</span> 总是一个上鞅！因此策略
+<span class="math inline">\(A\)</span> 确实是最优的。</p>
 <p>引理的证明是纯粹的分析，过程比较繁琐，我把它留给 Williams 的教材第
 15.3 节。写出 <span class="math inline">\(V(w,b)\)</span>
 的显式表达式来是很难的，Williams 证明了 <span class="math display">\[\lim_{k\to\infty}V(k,k)-(2k+\frac{\pi}{4}-\sqrt{\pi

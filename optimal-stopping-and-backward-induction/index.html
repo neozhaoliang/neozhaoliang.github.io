@@ -190,14 +190,6 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -206,8 +198,8 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -215,7 +207,15 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -246,16 +246,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -333,9 +333,9 @@
 上均匀分布的独立的随机变量。问题是：应该采取怎样的相亲策略，才能娶到你最中意的女士？</p>
 </div>
 <span id="more"></span>
-<p>再费点笔墨解释下。每次相亲结束以后，你可以选择和当前的女士结婚，或者继续见下一位女士，这依赖于你已经相亲的结果：如果你挑挑拣拣到了
+<p>再费点笔墨解释下。每次相亲结束以后，你都面临一个选择：要么和当前的女士结婚，要么继续见下一位女士，这依赖于你之前相亲的结果：如果你挑挑拣拣到了
 90
-号女士还拿不定主意，最后发现「糟了，我快要变剩男了！」，那很可能接下来你就会放低择偶标准，遇到一个还凑合的就结婚了，即使她比你前面拒绝过的很多女士都有不如。当然也不排除你对第一位女士就一见钟情的可能，因此你最终选择的女士的编号
+号女士还拿不定主意，最后发现「糟了，我快要变剩男了！」，那很可能接下来你就会放低择偶标准，遇到一个还凑合的就赶紧结婚了，哪怕她可能比你之前拒绝的许多女士分数还低。当然也不排除你对第一位女士就一见钟情的可能，因此你最终选择的女士的编号
 <span class="math inline">\(\tau\)</span>
 是一个随机变量，你要做的就是让你的未来太太的期望分数 <span class="math inline">\(\mathbb{E}X_\tau\)</span> 尽可能的高。</p>
 <p>那么应该采取怎样的策略为好呢？就像买东西讨价还价时总有一个心理价位一样，似乎可以先设定一个心理的期望值，如果遇到的女士的分数大于等于这个值，那就和她结婚；否则就继续下一位女士。这个思路很合理，但是问题是，期望值应该设定为多少呢？</p>
@@ -348,7 +348,7 @@
 NO！首先门槛值应该是一个随着相亲的进行而逐渐降低的数列，这才符合实际的情形：如果前面太挑剔，为了不当剩男你后面的标准就会放低。其次我们会用倒向归纳法计算出最优策略下初始的门槛值并不是最中意的女士的期望值
 <span class="math inline">\(\frac{100}{101}\)</span>，实际上它更接近于得分第二高的女士的期望值
 <span class="math inline">\(\frac{99}{101}\)</span>。正如梅艳芳在《似是故人来》中唱的那样：「但凡未得到，但凡是过去，总是最登对」
-— 得不到的才是最好的。</p>
+— 最好的那个永远是你得不到的那个。</p>
 <h1 id="倒向归纳法">倒向归纳法</h1>
 <p>相亲问题是应用倒向归纳法的一个典型例子。</p>
 <p>我们从最后的情形开始分析，假设只剩一位女士可选，那么你只能去和她结婚，而她的期望值是
@@ -363,18 +363,18 @@ NO！首先门槛值应该是一个随着相亲的进行而逐渐降低的数列
 的女士。因此有两位女士可选时这个策略的期望分数为 <span class="math display">\[a_2=\frac{1}{2}\cdot\frac{3}{4}+\frac{1}{2}\cdot\frac{1}{2}=\frac{5}{8}.\]</span></p>
 <p>一般地，假设还剩下 <span class="math inline">\(i\)</span>
 位女士的时候你的心理期望值是 <span class="math inline">\(a_i\)</span>，
-我们来导出 <span class="math inline">\(a_i\)</span> 和 <span class="math inline">\(a_{i+1}\)</span>
+我们来推导 <span class="math inline">\(a_i\)</span> 和 <span class="math inline">\(a_{i+1}\)</span>
 之间的递推关系：首先和其中一位女士相亲，如果她的分数大于等于 <span class="math inline">\(a_i\)</span> 那么就和她结婚，否则就拒绝她
 （因为后面 <span class="math inline">\(i\)</span> 个人的心理期望是 <span class="math inline">\(a_i\)</span>，我没道理现在娶一个分数小于 <span class="math inline">\(a_i\)</span> 的）。前一种情形的期望是 <span class="math inline">\(\frac{1+a_i}{2}\)</span> 但是发生的概率是 <span class="math inline">\(1-a_i\)</span>，后一种情形的期望是 <span class="math inline">\(a_i\)</span> 发生的概率也是 <span class="math inline">\(a_i\)</span>，因此 <span class="math display">\[a_{i+1}=(1-a_i)\left(\frac{1+a_i}{2}\right)+a_i\cdot
 a_i=\frac{1+a_i^2}{2}.\]</span> 结合初值 <span class="math inline">\(a_1=\frac{1}{2}\)</span>
 就可以算出整个序列来，因此我们的相亲策略应该是：</p>
-<blockquote>
+<div class="statement simple plain unnumbered">
 <p>假设当前还剩 <span class="math inline">\(i\)</span>
 位女士。就把心里期望设定在 <span class="math inline">\(a_i\)</span>，然后进行一次相亲。如果相亲结果大于等于
 <span class="math inline">\(a_i\)</span>，那就和这位女士结婚；否则就把心里期望降低为
 <span class="math inline">\(a_{i-1}\)</span>，然后继续去见下一位女士。这里序列
 <span class="math inline">\(\{a_i\}\)</span> 由 <span class="math inline">\(a_1=1/2\)</span>，<span class="math inline">\(a_{i+1}=\frac{1+a_i^2}{2}\)</span> 给出。</p>
-</blockquote>
+</div>
 <p>在这个策略下，你最终娶到的女士得分期望是 <span class="math inline">\(a_{100}\)</span>。</p>
 <p>序列 <span class="math inline">\((a_n)_{n\geq1}\)</span> 是所谓的
 Quadratic
@@ -395,31 +395,38 @@ Map，它的通项公式是求不出来的，只能用计算机来算。不过�
 是一列可积的随机变量且 <span class="math inline">\(X_k\in\mathcal{F}_k\)</span>。设 <span class="math inline">\(\mathcal{M}\)</span> 是所有满足 <span class="math inline">\(0\leq\tau\leq N\)</span> 的停时 <span class="math inline">\(\tau\)</span> 组成的集合。我们想求出值函数 <span class="math display">\[V= \sup_{\tau\in\mathcal{M}}
 \mathbb{E}X_\tau\]</span> 以及使得这个最大值取到的停时 <span class="math inline">\(\tau\)</span>。</p>
 </div>
-<p>这里我把下标改成了 从 0 开始到 <span class="math inline">\(N\)</span>，以符合大多数文献的习惯。<span class="math inline">\(\mathcal{F}_n=\{X_0,\ldots,X_n\}\)</span> 是前
-<span class="math inline">\(n+1\)</span> 位女士得分生成的 <span class="math inline">\(\sigma\)</span>- 域，它包含了所有你第 <span class="math inline">\(n+1\)</span> 次相亲后可能知道的信息。<span class="math inline">\(\mathcal{F}_n\)</span>
-显然是递增的。你的一个相亲策略对应一个停时 <span class="math inline">\(\tau\)</span>，所有停时构成的集合 <span class="math inline">\(\mathcal{M}\)</span> 就是你所有可能的策略。</p>
+<p>注意这里下标改成了 从 0 开始，以符合大多数文献的习惯。<span class="math inline">\(X_0=0\)</span>，<span class="math inline">\(\mathcal{F}_0=\{\emptyset,\Omega\}\)</span>
+是平凡的，表示在 0 时刻，即相亲开始之前，你对未来太太“一无所知”。<span class="math inline">\(\mathcal{F}_n=\sigma(X_0,\ldots,X_n)\)</span> 是前
+<span class="math inline">\(n\)</span> 位女士得分生成的 <span class="math inline">\(\sigma\)</span>- 域，它包含了所有前 <span class="math inline">\(n\)</span> 次相亲后可能知道的信息。<span class="math inline">\(\mathcal{F}_n\)</span>
+显然是递增的。你的一个相亲策略对应一个停时 <span class="math inline">\(\tau\)</span>，你所有可能的策略由集合 <span class="math inline">\(\mathcal{M}\)</span> 描述。</p>
 <p>定义 <span class="math inline">\(\{X_n\}\)</span> 的 <strong>Snell
 包络</strong>为 <span class="math display">\[S_n=\begin{cases}X_N&amp;n=N,\\\max\{X_n,\,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}&amp;
 n=N-1,\ldots,0.\end{cases}\]</span> 这里的 <span class="math inline">\(S_n\)</span> 是从 <span class="math inline">\(N\)</span> 开始倒向递归定义的。注意 <span class="math inline">\(S_n\)</span> 关于 <span class="math inline">\(\mathcal{F}_n\)</span> 可测。</p>
-<p><span class="math inline">\(S_n\)</span>
-的直观意义很好理解，它就是在时刻 <span class="math inline">\(n\)</span>
-对当下女士的分数和后面所有女士期望分数的比较：如果和当前的女士 <span class="math inline">\(n\)</span> 结婚，那么分数就是 <span class="math inline">\(X_n\)</span>；否则继续前进到下一个时刻 <span class="math inline">\(n+1\)</span>，未来太太的期望分数就是 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>，二者取最大值
+<p><span class="math inline">\(S_n\)</span> 的直观意义是：在时刻 <span class="math inline">\(n\)</span>，如果和当前女士结婚，那么分数就是 <span class="math inline">\(X_n\)</span>；否则继续前进到下一个时刻 <span class="math inline">\(n+1\)</span>，分数就是 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>，二者取最大值
 <span class="math inline">\(\max\{X_n,\mathbb{E}[S_{n+1}|\mathcal{F}_n]\}\)</span>
 即为 <span class="math inline">\(n\)</span>
-时刻对最佳分数的估计。注意这里 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>
+时刻对未来太太最佳分数的估计。注意这里 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]\)</span>
 要取条件期望，因为一般情况下 <span class="math inline">\(\{X_n\}\)</span>
 之间不是独立的，从而对未来最佳收益的估计依赖于历史信息。</p>
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
-</span>在相亲问题中，<span class="math inline">\(\{X_n\}\)</span> 是
-<span class="math inline">\(\mathrm{i.i.d}\)</span> 序列，<span class="math inline">\(S_{n+1}\)</span> 与 <span class="math inline">\(\mathcal{F}_n\)</span> 独立（你可以倒着从 <span class="math inline">\(S_N\)</span> 开始验证 <span class="math inline">\(S_{n+1}\)</span> 完全由 <span class="math inline">\(X_{n+1},\ldots,X_N\)</span> 决定），从而 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]=\mathbb{E}S_{n+1}\)</span>，所以</p>
+</span>在相亲问题中，<span class="math inline">\(\{X_n\}\)</span>
+是独立的随机变量序列，于是 <span class="math inline">\(S_{n+1}\)</span>
+与 <span class="math inline">\(\mathcal{F}_n\)</span> 独立（你可以倒着从
+<span class="math inline">\(S_N\)</span> 开始验证 <span class="math inline">\(S_{n+1}\)</span> 完全由 <span class="math inline">\(X_{n+1},\ldots,X_N\)</span> 决定），从而 <span class="math inline">\(\mathbb{E}[S_{n+1}|\mathcal{F}_n]=\mathbb{E}S_{n+1}\)</span>，所以</p>
 <p><span class="math display">\[S_n=\begin{cases}X_N&amp;n=N,\\\max\{X_n,\,\mathbb{E}S_{n+1}\}&amp;
 n=N-1,\ldots,0.\end{cases}\]</span></p>
-<p>记事件 <span class="math inline">\(A_n=\{X_n&gt;\mathbb{E}S_{n+1}\}\)</span>，于是序列
+<p>记事件 <span class="math inline">\(A_n=\{X_n&gt;\mathbb{E}S_{n+1}\}\)</span>，则
+<span class="math inline">\(\mathbb{P}(A_n)=1-\mathbb{E}S_{n+1}\)</span>。于是序列
 <span class="math inline">\(\{\mathbb{E}S_n\}\)</span> 满足倒向递推关系
-<span class="math display">\[\mathbb{E}S_n=\mathbb{E}\max\{X_n,\,\mathbb{E}S_{n+1}\}=\mathbb{E}[X_n\mathrm{1}_{A_n}]
-+ \mathbb{E}S_{n+1}\cdot(1-\mathbb{P}(A_n)).\]</span>
-这正是我们前一节中看到的递推关系。</p>
+<span class="math display">\[\begin{aligned}
+\mathbb{E}S_n&amp;=\mathbb{E}\max\{X_n,\,\mathbb{E}S_{n+1}\}\\
+&amp;=\mathbb{E}[X_n\mathrm{1}_{A_n}] +
+\mathbb{E}[\mathbb{E}S_{n+1}\mathrm{1}_{A_n^c}]\\
+&amp;=\mathbb{P}(A_n)\frac{1+\mathbb{E}S_{n+1}}{2} +
+\mathbb{E}S_{n+1}\cdot(1-\mathbb{P}(A_n))\\
+&amp;=\frac{1+(\mathbb{E}S_{n+1})^2}{2}.\\
+\end{aligned}\]</span> 这正是我们前一节中推导的序列 <span class="math inline">\((a_n)_{n\geq1}\)</span> 的递推关系。</p>
 </div>
 <p>设 <span class="math inline">\(\tau=\inf\,\{n:\,
 S_n=X_n\}\)</span>，则 <span class="math inline">\(\tau\)</span>
@@ -500,12 +507,12 @@ N &amp; A_N=0,\\
 的证明都不难，这里就省略了。读者可以参考 <span class="citation" data-cites="RiskNeutralValuation">(<a href="#ref-RiskNeutralValuation" role="doc-biblioref">Bingham and Kiesel 2004, sec. 3.6</a>)</span>。</p>
 <p>我猜某些读者可能会对 <span class="math inline">\(\tau_\max\)</span>
 对应的相亲策略感兴趣，因为这个策略有点渣男：它会在保证娶到最优女士的前提下和尽可能多的女士相亲。不过在
-<span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(\mathrm{i.i.d}\)</span>
-的情形，你还是死了这份心吧。因为这时 <span class="math display">\[A_n=\sum_{k=1}^n
+<span class="math inline">\(\{X_n\}\)</span>
+是独立随机变量序列的情形，你还是死了这份心吧。因为这时 <span class="math display">\[A_n=\sum_{k=1}^n
 (S_{k-1}-\mathbb{E}S_k)=\sum_{k=1}^n\max\{X_{k-1}-\mathbb{E}S_k,0\}.\]</span>
 所以使得 <span class="math inline">\(A_{n+1}&gt;0\)</span> 成立的最小
-<span class="math inline">\(n\)</span> 正是使得 <span class="math inline">\(X_n&gt;\mathbb{E}S_{n+1}\)</span> 成立的最小 <span class="math inline">\(n\)</span>，即使得 <span class="math inline">\(X_n=S_n\)</span> 成立的最小 <span class="math inline">\(n\)</span>。这不就是前面见好就收的策略 <span class="math inline">\(\tau\)</span> 嘛！换句话说，在 <span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(\mathrm{i.i.d}\)</span>
-的情形，只有一种最优相亲策略！</p>
+<span class="math inline">\(n\)</span> 正是使得 <span class="math inline">\(X_n&gt;\mathbb{E}S_{n+1}\)</span> 成立的最小 <span class="math inline">\(n\)</span>，即使得 <span class="math inline">\(X_n=S_n\)</span> 成立的最小 <span class="math inline">\(n\)</span>。这不就是前面见好就收的策略 <span class="math inline">\(\tau\)</span> 嘛！换句话说，在 <span class="math inline">\(\{X_n\}\)</span>
+是独立随机变量序列的情形，只有一种最优相亲策略！</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-RiskNeutralValuation" class="csl-entry" role="listitem">

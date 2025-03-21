@@ -187,14 +187,6 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -203,8 +195,8 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
                 </a>
             </li>
 
@@ -212,7 +204,15 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">4 篇</span></a>
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -243,16 +243,16 @@ POV-Ray 绘制各种三维多面体和四维多胞体，代码在 Github
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -357,11 +357,11 @@ antiprism</a>），比如我的 Github 头像 (runcinated 120-cell)：</p>
 <p>这些图都是三维或者四维<strong>欧氏空间</strong>中<strong>凸/非凸</strong>的<strong>均匀</strong>多胞体
 (polytope)，三维的情形更常用的称呼是多面体。这里有几个关键词需要注意：凸/非凸、均匀。</p>
 <p>凸比较好理解，就是指多胞体上任意两点间的连线仍然属于此多胞体，否则就是非凸。上面的例子中
-Platonic 多面体、Archimedean 多面体都是凸的，Kepler-Poinsot
+Platonic 多面体、Archimedean 多面体都是凸的；但 Kepler-Poinsot
 多面体、星状正多胞体都是非凸的。</p>
-<p>均匀这个词就不太好理解了。简单说就是：多胞体的所有顶点都一样，且每个面都是正多边形，每个胞腔都是三维的均匀多面体（这是个递归的定义）。</p>
+<p>均匀这个词就不太好理解了。简单说就是：多胞体的所有顶点都一样，且每个二维的面都是正多边形，每个三维的胞腔都是均匀多面体（这是个递归的定义）。</p>
 <p>要准确解释什么叫所有顶点都一样，就要用到群论的语言：一个多胞体 <span class="math inline">\(P\)</span> 的对称群 <span class="math inline">\(G\)</span>
-是欧氏空间中一组正交变换构成的有限群，<span class="math inline">\(G\)</span> 作用在 <span class="math inline">\(P\)</span> 上保持 <span class="math inline">\(P\)</span> 不变。所有顶点都一样的严格说法是 <span class="math inline">\(G\)</span> 传递地作用在 <span class="math inline">\(P\)</span> 的顶点集上，即对 <span class="math inline">\(P\)</span> 的任何两个顶点 <span class="math inline">\(u,v\)</span>，都存在 <span class="math inline">\(g\in G\)</span>，<span class="math inline">\(g\)</span> 把 <span class="math inline">\(u\)</span> 映射为 <span class="math inline">\(v\)</span>。</p>
+是欧氏空间中一组正交变换构成的有限群，<span class="math inline">\(G\)</span> 作用在 <span class="math inline">\(P\)</span> 上保持 <span class="math inline">\(P\)</span> 不变。所有顶点都一样的严格说法是 <span class="math inline">\(G\)</span> “传递地”作用在 <span class="math inline">\(P\)</span> 的顶点集上，即对 <span class="math inline">\(P\)</span> 的任何两个顶点 <span class="math inline">\(u,v\)</span>，都存在 <span class="math inline">\(g\in G\)</span>，<span class="math inline">\(g\)</span> 把 <span class="math inline">\(u\)</span> 映射为 <span class="math inline">\(v\)</span>。</p>
 <h1 id="这些图是怎么画出来的">这些图是怎么画出来的？</h1>
 <p>这些多胞体看起来样子大不相同，但它们都可以用同一种方法计算出来，叫做
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Wythoff_construction">Wythoff
@@ -1349,8 +1349,8 @@ Coxeter 群的几何实现。<a href="#fnref6" class="footnote-back" role="doc-b
 
                                                     
   <p class="pink-link-context">
-    <a href="/Marden-theorem/" rel="next" title="静电场与 Marden 定理">
-      上一篇：静电场与 Marden 定理
+    <a href="/assassin-vs-bodyguards/" rel="next" title="刺客 vs 保镖">
+      上一篇：刺客 vs 保镖
     </a>
   </p>
   
