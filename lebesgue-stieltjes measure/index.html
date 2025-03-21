@@ -1,0 +1,852 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            Lebesgue-Stieltjes 测度的构造 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="本文是针对 (Durrett 2019, sec.
+1.1) 的批判笔记，介绍 Lebesgue-Stieltjes
+测度的构造。我建议读者不妨先浏览一下 Durrett
+的教材，看看读起来是否费劲。如果你觉得确实如此，那就对了，继续阅读本文吧。
+我只针对 \(\mathbb{R}^1\)
+的情形作介绍，\(\mathbb{R}^n\)
+上的一般情形需要有一些啰嗦的条件保证半代数上的有限可加性，但本质是一样的。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Lebesgue-Stieltjes 测度的构造"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Coxeter-Groups/">
+                    Coxeter-Groups <span class="right">6 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Durrett-概率论批判/">Durrett 概率论批判</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>Lebesgue-Stieltjes 测度的构造</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2012-09-07T16:00:00.000Z"><a href="/lebesgue-stieltjes%20measure/">2012-09-08</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%9B%AE%E6%A0%87"><span class="section table-of-contents-text">目标</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%8D%8A%E5%BC%80%E5%8C%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E6%9C%89%E9%99%90%E5%8F%AF%E5%8A%A0%E6%B5%8B%E5%BA%A6"><span class="section table-of-contents-text">第一步：半开区间上的有限可加测度</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E4%BB%A3%E6%95%B0%E4%B8%8A%E7%9A%84%E6%9C%89%E9%99%90%E5%8F%AF%E5%8A%A0%E6%B5%8B%E5%BA%A6"><span class="section table-of-contents-text">第二步：代数上的有限可加测度</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E4%BB%A3%E6%95%B0%E4%B8%8A%E7%9A%84%E5%8F%AF%E6%95%B0%E5%8F%AF%E5%8A%A0%E6%B5%8B%E5%BA%A6"><span class="section table-of-contents-text">第三步：代数上的可数可加测度</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5sigma--%E4%BB%A3%E6%95%B0%E4%B8%8A%E7%9A%84%E5%8F%AF%E6%95%B0%E5%8F%AF%E5%8A%A0%E6%B5%8B%E5%BA%A6"><span class="section table-of-contents-text">第四步：\(\sigma\)- 代数上的可数可加测度</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>本文是针对 <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019, sec.
+1.1</a>)</span> 的批判笔记，介绍 Lebesgue-Stieltjes
+测度的构造。我建议读者不妨先浏览一下 Durrett
+的教材，看看读起来是否费劲。如果你觉得确实如此，那就对了，继续阅读本文吧。</p>
+<p>我只针对 <span class="math inline">\(\mathbb{R}^1\)</span>
+的情形作介绍，<span class="math inline">\(\mathbb{R}^n\)</span>
+上的一般情形需要有一些啰嗦的条件保证半代数上的有限可加性，但本质是一样的。</p>
+<span id="more"></span>
+<p>我们采用和 Durrett 教材相同的记号，用 <span class="math inline">\(A\sqcup B\)</span> 表示两个互不相交的集合 <span class="math inline">\(A,B\)</span> 的并集 (disjoint union)。</p>
+<h1 id="目标">目标</h1>
+<p>设 <span class="math inline">\(F\)</span> 是 <span class="math inline">\(\mathbb{R}^1\)</span>
+上的任一<strong>单调递增</strong>、<strong>右连续</strong>的函数，我们将在
+<span class="math inline">\(\mathbb{R}^1\)</span> 上构造
+Lebesgue-Stieltjes 测度 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>，其中 <span class="math inline">\(\Omega=\mathbb{R}^1\)</span>，<span class="math inline">\(\mathcal{F}\)</span> 是全体 Lebesgue 可测集，<span class="math inline">\(\mu\)</span> 满足对任何半开区间 <span class="math inline">\((a,b]\)</span> 有 <span class="math display">\[\mu((a,b])=F(b)-F(a),\quad -\infty \leq a \leq b
+\leq \infty.\]</span> Legesgue 可测集是 Borel 可测集 <span class="math inline">\(\mathcal{B}(\mathbb{R}^1)\)</span>
+的完备化，所以我们只要在 <span class="math inline">\(\mathcal{B}(\mathbb{R}^1)\)</span> 上构造 <span class="math inline">\(\mu\)</span> 即可。但 <span class="math inline">\(\mathcal{B}(\mathbb{R}^1)\)</span>
+中的可测集也可能很复杂，所以我们从一个简单得多的集合族出发，逐步构造
+<span class="math inline">\(\mathcal{B}(\mathbb{R}^1)\)</span>
+上的测度。</p>
+<h1 id="第一步半开区间上的有限可加测度">第一步：半开区间上的有限可加测度</h1>
+<p>记 <span class="math inline">\(\mathcal{S}\)</span>
+是所有左开右闭的区间构成的集合：</p>
+<p><span class="math display">\[\mathcal{S}= \{ (a,b] \mid -\infty\leq a
+\leq b \leq \infty\}.\]</span></p>
+<p>我们允许 <span class="math inline">\(a,b\)</span> 等于无穷，比如
+<span class="math inline">\(b=\infty\)</span> 表示区间 <span class="math inline">\((a,\infty)\)</span>，<span class="math inline">\(a=-\infty\)</span> 表示区间 <span class="math inline">\((-\infty,b]\)</span>。约定 <span class="math inline">\(a=b\)</span> 时 <span class="math inline">\((a,a]=\emptyset\)</span>。</p>
+<p><span class="math inline">\(\mathcal{S}\)</span> 可以生成 <span class="math inline">\(\mathcal{B}(\mathbb{R}^1)\)</span>，我们就从 <span class="math inline">\(\mathcal{S}\)</span> 开始构建测度 <span class="math inline">\(\mu\)</span>。</p>
+<p>集合族 <span class="math inline">\(\mathcal{S}\)</span>
+有如下的性质：</p>
+<div id="semi-algebra" class="statement simple plain unnumbered">
+<ol type="1">
+<li><span class="math inline">\(\emptyset\in \mathcal{S}\)</span>。</li>
+<li>对任何 <span class="math inline">\(A,B\in\mathcal{S}\)</span> 有
+<span class="math inline">\(A\cap B\in \mathcal{S}\)</span>，即 <span class="math inline">\(\mathcal{S}\)</span> 对交运算是封闭的。</li>
+<li>对任何 <span class="math inline">\(A\in \mathcal{S}\)</span>，<span class="math inline">\(A^c\)</span> 是 <span class="math inline">\(\mathcal{S}\)</span>
+中有限多个不相交的元素的并。</li>
+</ol>
+</div>
+<p>满足上述三个条件的集合族叫做 <strong>半代数</strong>
+(semi-algebra)。注意在条件 3 中，实际上 <span class="math inline">\(A^c\)</span> 是 <span class="math inline">\(\mathcal{S}\)</span>
+中至多两个不相交的区间的并，因为 <span class="math display">\[(a,b]^c=(-\infty,a]\sqcup(b,\infty).\]</span>
+但是更高维的 <span class="math inline">\(\mathbb{R}^n\)</span> 中的柱集
+(cylinder set) <span class="math display">\[(a_1,b_1]\times\cdots\times(a_k,b_k]\]</span>
+的补是有限多个不相交柱集的并。</p>
+<p>定义 <span class="math inline">\(\mathcal{S}\)</span> 上的测度 <span class="math inline">\(\overline{\mu}\)</span> 如下： <span class="math display">\[\overline{\mu}((a, b]) = F(b) - F(a),\quad
+(a,b]\in\mathcal{S}.\]</span> 目前 <span class="math inline">\(\overline{\mu}\)</span> 只是半代数 <span class="math inline">\(\mathcal{S}\)</span>
+上的集合函数，虽然我们用了测度这个称呼，但它还远不是最终要构造的测度
+<span class="math inline">\(\mu\)</span>，所以我们用记号 <span class="math inline">\(\overline{\mu}\)</span> 加以区别。</p>
+<p><span class="math inline">\(\overline{\mu}\)</span> 作为半代数 <span class="math inline">\(\mathcal{S}\)</span> 上的测度满足
+<strong>有限可加性质</strong>：若 <span class="math inline">\(\{A_i\}_{i=1}^m \in\mathcal{S}\)</span> 满足 <span class="math inline">\(\sqcup_{i=1}^m A_i = A\in \mathcal{S}\)</span>，则
+<span class="math display">\[\sum_{i=1}^m\overline{\mu}(A_i)=\overline{\mu}(A).\]</span></p>
+<p>这是显而易见的，因为对两个不相交的集合 <span class="math inline">\(A,B\in\mathcal{S}\)</span> 满足 <span class="math inline">\(A\sqcup B\in\mathcal{S}\)</span>，那只有可能是
+<span class="math display">\[A=(a,c],\ B=(c,b],\ A\sqcup B  = (a,
+b].\]</span> 所以 <span class="math display">\[\overline{\mu}(A\sqcup B)
+= F(b)-F(a)=F(b)-F(c) +
+F(c)-F(a)=\overline{\mu}(A)+\overline{\mu}(B)\]</span> 是成立的。既然
+<span class="math inline">\(\overline{\mu}\)</span>
+对两个不相交集合是可加的，那就对任何有限的不交并是可加的。</p>
+<p>至此，我们在半代数 <span class="math inline">\(\mathcal{S}\)</span>
+上构造了一个有限可加的测度 <span class="math inline">\(\overline{\mu}\)</span>。下一步是把 <span class="math inline">\(\overline{\mu}\)</span>
+扩张为代数上的有限可加测度。</p>
+<h1 id="第二步代数上的有限可加测度">第二步：代数上的有限可加测度</h1>
+<p>我们称一个集合族 <span class="math inline">\(\mathcal{A}\)</span> 是
+<strong>代数</strong>，如果它满足前面 <a href="#semi-algebra" title="半代数定义">半代数定义</a>
+中的前两个条件，但是把第三个条件换成</p>
+<blockquote>
+<ol start="3" type="1">
+<li>对任何 <span class="math inline">\(A\in \mathcal{A}\)</span> 有
+<span class="math inline">\(A^c\in\mathcal{A}\)</span>。</li>
+</ol>
+</blockquote>
+<p>我们用记号 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 表示包含半代数
+<span class="math inline">\(\mathcal{S}\)</span>
+的最小代数，或者等价地说，<span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 是 <span class="math inline">\(\mathcal{S}\)</span>
+生成的代数，则有如下结论：</p>
+<div class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span><span class="math display">\[\mathcal{A}(\mathcal{S})=
+\{\,\text{all finite disjoint unions of sets from }
+\mathcal{S}\,\}.\]</span></p>
+</div>
+<p>证明：见 <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019</a> Lemma
+1.1.7)</span>。</p>
+<p>我们可以将 <span class="math inline">\(\mathcal{S}\)</span>
+上的有限可加测度 <span class="math inline">\(\overline{\mu}\)</span>
+扩展为 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的有限可加测度。实际上这种扩展是唯一的。设 <span class="math inline">\(A\in\mathcal{A}(\mathcal{S})\)</span> 且 <span class="math inline">\(A=\sqcup_{i=1}^m
+A_i,\,A_i\in\mathcal{S}\)</span>，规定 <span class="math display">\[\overline{\mu}(A) =
+\sum_{i=1}^m\overline{\mu}(A_i).\]</span> 这个定义不依赖于 <span class="math inline">\(A\)</span> 的表示方式，证明见脚注 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
+<p>至此我们就得到了代数 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 上的有限可加测度
+<span class="math inline">\(\overline{\mu}\)</span>。</p>
+<h1 id="第三步代数上的可数可加测度">第三步：代数上的可数可加测度</h1>
+<p>我们已经看到，将 <span class="math inline">\(\mathcal{S}\)</span>
+上的有限可加测度扩展到 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上是轻而易举的，不需要任何限制条件。但是进一步扩展为 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的可数可加测度，就是相当不平凡的一步了。<strong>这一步在一般的测度空间中并不总是能够成功</strong>。在构造
+Lebesgue-Stieltjes 测度时，我们要用到 <span class="math inline">\(\mathbb{R}^1\)</span> 中紧集的性质。</p>
+<p>有意思的是，为了保证 <span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+是可数可加的，我们只需要验证一个更简单的条件：<span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{S}\)</span> 上是次可数可加的。</p>
+<div id="sub-additive" class="unnumbered statement lemma-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">引理</span>.</span><span class="statement-spah">
+</span>代数 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 上的有限可加测度
+<span class="math inline">\(\overline{\mu}\)</span> 是
+<strong>可数可加的</strong>，当且仅当 <span class="math inline">\(\overline{\mu}\)</span> 限制在半代数 <span class="math inline">\(\mathcal{S}\)</span> 上是
+<strong>次可数可加的</strong>。</p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span></p>
+<ol type="1">
+<li><p><span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上可数可加是指，如果 <span class="math inline">\(\{A_n\}_{n=1}^\infty\in\mathcal{A}(\mathcal{S})\)</span>
+互不相交，并且 <span class="math inline">\(\sqcup_{n=1}^\infty
+A_n\in\mathcal{A}(\mathcal{S})\)</span>，则 <span class="math display">\[\overline{\mu}(\sqcup_{n=1}^\infty
+A_n)=\sum_{n=1}^\infty\overline{\mu}(A_n).\]</span></p></li>
+<li><p><span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{S}\)</span> 上次可数可加是指，如果 <span class="math inline">\(\{A_n\}_{n=1}^\infty\in\mathcal{S}\)</span>
+互不相交，并且 <span class="math inline">\(\sqcup_{n=1}^\infty
+A_n\in\mathcal{S}\)</span>，则 <span class="math inline">\(\overline{\mu}(\sqcup_{n=1}^\infty
+A_n)\leq\sum_{n=1}^\infty\overline{\mu}(A_n)\)</span>。</p></li>
+</ol>
+</div>
+<p>我请你再次阅读这个引理，明确它的前提条件和重要意义。实际上，在代数
+<span class="math inline">\(\mathcal{A}\)</span>
+上，从有限可加性总是可以推出超可数可加性的；要验证次可数可加性，我们只要下降到更简单的半代数
+<span class="math inline">\(\mathcal{S}\)</span> 上验证即可。</p>
+<p><strong>证明</strong>：<span class="math inline">\(\Rightarrow\)</span>
+是显然的，可数可加必然蕴含次可数可加。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：要论证 <span class="math inline">\(\overline{\mu}\)</span> 是 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的可数可加测度，我们只要论证它同时是超可数可加的和次可数可加的。</p>
+<p>超可数可加：设 <span class="math inline">\(\{A_n\}_{n=1}^\infty \in
+\mathcal{A}(\mathcal{S})\)</span> 互不相交，并且 <span class="math inline">\(\sqcup_{n=1}^\infty A_n \in
+\mathcal{A}(\mathcal{S})\)</span>。由于对每个 <span class="math inline">\(n\)</span> 有 <span class="math inline">\(\sqcup_{i=1}^n A_i \subset \sqcup_{i=1}^\infty
+A_i\)</span>，以及 <span class="math inline">\(\overline{\mu}\)</span>
+作为 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的有限可加测度是单调的，所以 <span class="math display">\[\underbrace{\sum_{i=1}^n\overline{\mu}(A_i)=\overline{\mu}(\sqcup_{i=1}^n
+A_i)}_{\overline{\mu}\text{ finitely additive on }
+\mathcal{A}(\mathcal{S})} \leq \overline{\mu}(\sqcup_{i=1}^\infty
+A_i).\]</span> 即 <span class="math inline">\(\overline{\mu}(\sqcup_{i=1}^\infty A_i)\)</span>
+是所有部分和 <span class="math inline">\(\sum_{i=1}^n\overline{\mu}(A_i)\)</span>
+的上界。令 <span class="math inline">\(n\to\infty\)</span>
+即得超可数可加性。</p>
+<p>次可数可加：每个 <span class="math inline">\(A_n\)</span> 以及 <span class="math inline">\(\sqcup_{n=1}^\infty A_n\)</span> 作为 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 中的元素可以写成
+<span class="math inline">\(\mathcal{S}\)</span> 中元素的有限不交并。设
+<span class="math display">\[\sqcup_{n=1}^\infty A_n = \sqcup_{j=1}^N
+E_j,\quad A_n = \sqcup_{i=1}^{N_n} F_{n,i}.\]</span> 其中每个 <span class="math inline">\(E_j, F_{n,i}\in\mathcal{S}\)</span>。则 <span class="math display">\[E_j = \sqcup_{n=1}^\infty (A_n\cap
+E_j)=\sqcup_{n=1}^\infty\sqcup_{i=1}^{N_n}F_{n,i}\cap E_j.\]</span> 根据
+<span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{S}\)</span> 上的次可数可加性，有 <span class="math display">\[\overline{\mu}(E_j)\leq
+\sum_{n=1}^\infty\sum_{i=1}^{N_n}\overline{\mu}(F_{n,i}\cap
+E_j).\]</span> 由于 <span class="math inline">\(F_{n,i}\cap E_j\)</span>
+和它们的并 <span class="math inline">\(A_n\cap E_j\)</span> 都属于 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>，所以根据 <span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的有限可加性，有 <span class="math display">\[\sum_{i=1}^{N_n}\overline{\mu}(F_{n,i}\cap
+E_j)=\overline{\mu}(A_n\cap E_j).\]</span> 因此 <span class="math display">\[\overline{\mu}(E_j)\leq \sum_{n=1}^\infty
+\overline{\mu}(A_n\cap E_j).\]</span> 于是</p>
+<p><span class="math display">\[
+\begin{align*}\overline{\mu}(\sqcup_{n=1}^\infty
+A_n)&amp;=\overline{\mu}(\sqcup_{j=1}^N
+E_j)=\sum_{j=1}^N\overline{\mu}(E_j)\\&amp;\leq\sum_{j=1}^N\sum_{n=1}^\infty\overline{\mu}(A_n\cap
+E_j)\\&amp;=\sum_{n=1}^\infty\sum_{j=1}^N\overline{\mu}(A_n\cap
+E_j)\\&amp;=\sum_{n=1}^\infty\overline{\mu}(A_n).
+\end{align*}
+\]</span></p>
+<p>即为所证。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="unnumbered statement theorem-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
+</span><span class="math inline">\(\mathcal{S}\)</span> 上的测度 <span class="math inline">\(\overline{\mu}\)</span> 是次可数可加的，因而由
+前面的 <a href="#sub-additive" title="引理">引理</a> 它给出 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span>
+上的可数可加测度。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\((a,b]=\sqcup_{i=1}^\infty (a_i,
+b_i]\)</span>，我们要证明 <span class="math display">\[F(b)-F(a)=\overline{\mu}((a,
+b])\leq\sum_{i=1}^\infty\overline{\mu}((a_i,b_i])=\sum_{i=1}^\infty
+(F(b_i)-F(a_i)).\]</span> 我们可以先假设 <span class="math inline">\(a,b\)</span> 都是有限的。</p>
+<p><strong>不要幻想可以给区间 <span class="math inline">\((a_i,b_i]\)</span>
+之间按照大小排顺序，它们可能有无穷多个聚点</strong>。（想想 Cantor
+集的补集）</p>
+<p><strong>想法是把 <span class="math inline">\((a, b]\)</span>
+缩小一点变成 <span class="math inline">\([a+\delta,
+b]\)</span>，同时把每个 <span class="math inline">\((a_i,b_i]\)</span>
+放大一点变成 <span class="math inline">\((a_i,b_i+\delta_i)\)</span>，这样可以使用紧集的有限开覆盖性质</strong>。<span class="math inline">\(\delta,\delta_i\)</span>
+都是待定的正数，后面再明确它们。从而存在 <span class="math inline">\(N\)</span> 使得前 <span class="math inline">\(N\)</span> 个开区间就足以覆盖 <span class="math inline">\([a+\delta,b]\)</span>： <span class="math display">\[[a+\delta,b] \subseteq \cup_{j=1}^N (a_j,
+b_j+\delta_j).\]</span> 当然也就有 <span class="math display">\[(a+\delta,b] \subseteq \cup_{j=1}^N (a_j,
+b_j+\delta_j].\]</span> 现在 <span class="math inline">\(\overline{\mu}\)</span>
+作为一个有限可加测度具有单调性，所以 <span class="math display">\[\begin{align*}\overline{\mu}((a+\delta,
+b])&amp;\leq \sum_{j=1}^N \overline{\mu}((a_j,
+b_j+\delta_j])\\&amp;\leq\sum_{j=1}^\infty \mu((a_j,
+b_j+\delta_j])\\&amp;=\sum_{j=1}^\infty\overline{\mu}((a_j, b_j]) +
+\sum_{j=1}^\infty\overline{\mu}((b_j, b_j+\delta_j]).
+\end{align*}\]</span> 上式左边等于 <span class="math inline">\(F(b)-F(a+\delta)\)</span>，<span class="math inline">\(\delta\)</span> 是任意正数，令其趋于 0 并利用
+<span class="math inline">\(F\)</span> 的右连续有 <span class="math inline">\(F(a+\delta)\downarrow F(a)\)</span>，所以 <span class="math display">\[F(b)-F(a)=\overline{\mu}((a,
+b])\leq\sum_{j=1}^\infty\overline{\mu}((a_j, b_j]) +
+\sum_{j=1}^\infty\overline{\mu}((b_j, b_j+\delta_j]).\]</span> 另一方面
+<span class="math inline">\(\delta_j\)</span> 也是任意的，并且 <span class="math inline">\(F\)</span> 右连续，所以对任何 <span class="math inline">\(\epsilon&gt;0\)</span> 我们可以取 <span class="math inline">\(\delta_j\)</span> 足够小，使得 <span class="math inline">\(F(b_j+\delta_j)- F(b_j) &lt;
+\epsilon/2^j\)</span>，于是 <span class="math display">\[\mu((a,
+b])\leq\sum_{j=1}^\infty \mu((a_j, b_j]) + \epsilon.\]</span> 由 <span class="math inline">\(\epsilon\)</span> 的任意性即得 <span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{S}\)</span> 上的次可数可加性。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="第四步sigma--代数上的可数可加测度">第四步：<span class="math inline">\(\sigma\)</span>- 代数上的可数可加测度</h1>
+<p>设 <span class="math inline">\(\sigma(\mathcal{S})\)</span> 是 <span class="math inline">\(\mathcal{S}\)</span> 生成的 <span class="math inline">\(\sigma\)</span>- 代数。最后一步是把 <span class="math inline">\(\mathcal{A}(\mathcal{S})\)</span> 上的可数可加测度
+<span class="math inline">\(\overline{\mu}\)</span> 扩展为 <span class="math inline">\(\sigma(\mathcal{S})\)</span>
+上的可数可加测度。这就是 Carathéodory
+定理做的事情。本文就不再介绍了。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Durrett2019" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. 5th ed.
+Cambridge Series in Statistical and Probabilistic Mathematics. Cambridge
+University Press.
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>参考 <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019</a> Theorem
+A.1.1)</span>。我们来说明若 <span class="math inline">\(A=\sqcup_{i=1}^m
+A_i=\sqcup_{j=1}^n B_j\)</span>，则 <span class="math display">\[\overline{\mu}(A)=\sum_{i=1}^m\overline{\mu}(A_i)=\sum_{j=1}^n
+\overline{\mu}(B_j).\]</span> 注意到 <span class="math inline">\(A_i=A_i\cap A=\sqcup_{j=1}^n A_i\cap B_j\)</span>
+以及 <span class="math inline">\(\overline{\mu}\)</span> 在 <span class="math inline">\(\mathcal{S}\)</span> 上是有限可加的，所以 <span class="math display">\[\overline{\mu}(A_i) =
+\sum_{j=1}^n\overline{\mu}(A_i\cap B_j).\]</span> 从而 <span class="math display">\[\sum_{i=1}^m\overline{\mu}(A_i) =
+\sum_{i=1}^m\sum_{j=1}^n\overline{\mu}(A_i\cap B_j).\]</span> 同理也有
+<span class="math display">\[\sum_{j=1}^n \overline{\mu}(B_j)=
+\sum_{i=1}^m\sum_{j=1}^n\overline{\mu}(A_i\cap B_j).\]</span> 所以 <span class="math inline">\(\overline{\mu}(A)\)</span>
+的定义是合理无歧义的。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/real-and-complex-representations/" rel="next" title="实表示和复表示">
+      上一篇：实表示和复表示
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/optimal-stopping-and-backward-induction/" rel="next" title="相亲问题与倒向归纳法">
+          下一篇：相亲问题与倒向归纳法
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>
