@@ -255,7 +255,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
-                    随机游动 <span class="right">1 篇</span></a>
+                    随机游动 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -435,30 +435,6 @@
             <time class="pink-link-context" datetime="2020-10-05T16:00:00.000Z"><a href="/transfer-current-theorem/">2020-10-06</a></time>
 
             
-    <div class="tags-row">
-        
-            <a href="/tags/Electric-network/" class="chip pink lighten-1">Electric network</a>
-        
-            <a href="/tags/Uniform-spanning-tree/" class="chip pink lighten-1">Uniform spanning tree</a>
-        
-            <a href="/tags/Markov-chain/" class="chip pink lighten-1">Markov chain</a>
-        
-            <a href="/tags/Transfer-current-matrix/" class="chip pink lighten-1">Transfer current matrix</a>
-        
-            <a href="/tags/Kirchhoff-law/" class="chip pink lighten-1">Kirchhoff law</a>
-        
-            <a href="/tags/Ohm-law/" class="chip pink lighten-1">Ohm law</a>
-        
-            <a href="/tags/Harmonic-function/" class="chip pink lighten-1">Harmonic function</a>
-        
-            <a href="/tags/Graph-reduction/" class="chip pink lighten-1">Graph reduction</a>
-        
-            <a href="/tags/Cycle-space/" class="chip pink lighten-1">Cycle space</a>
-        
-            <a href="/tags/Star-space/" class="chip pink lighten-1">Star space</a>
-        
-    </div>
-
 
 
             
@@ -466,22 +442,20 @@
                     
 <p>和之前一样，我们还是通过一个有趣的问题来引入主题。</p>
 <div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>在 <span class="math inline">\(n\times
-n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
-的所有生成树中等概率地随机任选一个，记这个随机生成树为 <span class="math inline">\(T\)</span>，<span class="math inline">\(T\)</span>
-叫做 <span class="math inline">\(G_n\)</span> 的一个均匀生成树。对 <span class="math inline">\(G_n\)</span> 中任一顶点 <span class="math inline">\(v\)</span>，<span class="math inline">\(v\)</span>
-是 <span class="math inline">\(T\)</span> 的叶节点的概率是多少？</p>
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(G_n\)</span> 是 <span class="math inline">\(n
+\times n\)</span> 的正方形网格图，随机选择它的一个生成树 <span class="math inline">\(T\)</span>，并且每个生成树被选到的概率相等。称
+<span class="math inline">\(T\)</span> 为 <span class="math inline">\(G_n\)</span> 的一个均匀生成树。任取 <span class="math inline">\(T\)</span> 的一个顶点 <span class="math inline">\(v\)</span>，问 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(T\)</span> 的叶节点的概率是多少？</p>
 </div>
 <p>这个问题可以换一种更通俗的描述：</p>
 <div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>对一个完全随机的 <span class="math inline">\(n\times n\)</span>
-的完美迷宫，它包含的“死角”的比例是多少？</p>
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>在一个完全随机的 <span class="math inline">\(n \times n\)</span>
+的完美迷宫中，“死角”的比例是多少？</p>
 </div>
-<p>为什么这两个问题是一回事？</p>
-<p>一个迷宫称作是完美的，如果迷宫中的任何两个房间之间都有且仅有唯一的道路相连，这正是生成树的等价描述！迷宫中的一个房间称作是“死角”，当且仅当它只有一条道路与其它房间相通，没有其它出路，这正是叶节点的等价描述！</p>
+<p>为什么这两个问题是等价的呢？</p>
+<p>完美迷宫是指，迷宫中的每一对房间之间都有且仅有一条唯一的路径相连，而这恰恰是生成树的定义！迷宫中的一个房间被称为“死角”，当且仅当它与其他房间相连的路径只有一条，这正是叶节点的定义！</p>
 <p>下图显示了三个不同的均匀生成树，它们分别来自大小为 <span class="math inline">\(80\times 80\)</span>，<span class="math inline">\(120\times120\)</span> 和 <span class="math inline">\(200\times200\)</span>
 的三个网格图，这三个生成树的叶节点（用蓝色标出）占全体顶点的比例分别为
-<span class="math inline">\(1884/6400=0.294375\)</span>，<span class="math inline">\(4234/14400\approx0.294028\)</span>，<span class="math inline">\(11776/40000=0.2944\)</span>。咦？看起来好像是在围着一个固定的值波动喔？</p>
+<span class="math inline">\(1884/6400=0.294375\)</span>，<span class="math inline">\(4234/14400\approx0.294028\)</span>，<span class="math inline">\(11776/40000=0.2944\)</span>。咦？看起来好像是在围绕一个固定的值波动喔？</p>
                 </div>
             
         </div>
@@ -510,30 +484,6 @@ n\)</span> 的正方形网格图 <span class="math inline">\(G_n\)</span>
             <time class="pink-link-context" datetime="2019-12-14T16:00:00.000Z"><a href="/coxeter-groups-and-uniform-tilings/">2019-12-15</a></time>
 
             
-    <div class="tags-row">
-        
-            <a href="/tags/Coxeter-group/" class="chip pink lighten-1">Coxeter group</a>
-        
-            <a href="/tags/Uniform-tilings/" class="chip pink lighten-1">Uniform tilings</a>
-        
-            <a href="/tags/POV-Ray/" class="chip pink lighten-1">POV-Ray</a>
-        
-            <a href="/tags/Automata/" class="chip pink lighten-1">Automata</a>
-        
-            <a href="/tags/Minimal-roots/" class="chip pink lighten-1">Minimal roots</a>
-        
-            <a href="/tags/Regular-language/" class="chip pink lighten-1">Regular language</a>
-        
-            <a href="/tags/DFA-minimization/" class="chip pink lighten-1">DFA minimization</a>
-        
-            <a href="/tags/Hyperbolic-tilings/" class="chip pink lighten-1">Hyperbolic tilings</a>
-        
-            <a href="/tags/Spherical-tilings/" class="chip pink lighten-1">Spherical tilings</a>
-        
-            <a href="/tags/Euclidean-tilings/" class="chip pink lighten-1">Euclidean tilings</a>
-        
-    </div>
-
 
 
             
