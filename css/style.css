@@ -272,6 +272,16 @@ footer.page-footer {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+.statement.marnote.unnumbered {
+  position: absolute;
+  left: -320px;
+  font-size: 85%;
+  max-width: 300px;
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  padding: 10px;
+}
 .fig {
   margin: 0px auto;
   display: block;
@@ -424,16 +434,18 @@ object {
   display: block;
 }
 figure {
-  text-align: center; /* 使图片和标题居中 */
-  margin: 0 auto; /* 使整个 figure 居中 */
-  display: table; /* 让 figure 宽度适应内容 */
+  margin: 0 auto;
+  text-align: center;
 }
 figcaption {
-  display: block; /* 确保标题单独一行 */
-  margin-top: 0.1em; /* 调整标题与图片的间距 */
-  margin-bottom: 1em; /* 调整标题与下方内容的间距 */
+  display: inline-block; /* 确保标题单独一行 */
+  margin: 0.5em auto 2em; /* 调整标题与图片的间距 */
   font-size: 0.8em; /* 调整标题字体大小 */
   color: #666; /* 调整标题颜色 */
+  max-width: 75%;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: left;
 }
 .red-link-context a {
   color: #f44336 !important;
