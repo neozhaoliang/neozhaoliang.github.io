@@ -423,16 +423,18 @@ f_2(K)\cup f_3(K) =
 <p>你可以很容易看出来为什么初始紧集的选择是不重要的：因为在压缩的过程中，任何紧集都会逐渐缩小到一个单点，所以
 <span class="math inline">\(K_0\)</span> 甚至取成一个点也是可以的。</p>
 <p>压缩映射是无穷无尽的，所以 IFS
-分形也是无穷无尽的。为了避免选择困难，我们一般只使用平移、旋转、反射、缩放、球反演这几种变换，通过组合它们来实现空间压缩。</p>
+分形也是无穷无尽的。为了避免选择困难，我们一般只使用仿射和球反演这两种变换，通过组合它们来实现空间压缩。</p>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>这里的球反演变换是指将单位球的外部反演到内部，单位球内部保持不动的变换。虽然在单位球内部它并不压缩距离，但是只要和其它变换适当结合（必须有缩放），使得最终的复合变换是压缩的，就仍然可以得到分形。</p>
 </div>
-<p>你可能想问，那应该怎样具体选择 <span class="math inline">\(f_1,\ldots,f_N\)</span>？我们后面会介绍，在着色器中绘制
-IFS 是通过应用 <span class="math inline">\(F\)</span> 的逆映射 <span class="math inline">\(F^{-1}\)</span> 来实现的，<span class="math inline">\(F^{-1}\)</span> 就是本文开头提到的
+<p>然而，同时选择 <span class="math inline">\(N\)</span> 个不同的变换
+<span class="math inline">\(f_1,\ldots,f_N\)</span>，还要让它们互相协调合作，共同生成漂亮的图案，还是太难做到了。我们后面会介绍，在着色器中绘制
+IFS 是通过 <span class="math inline">\(F\)</span> 的逆映射 <span class="math inline">\(F^{-1}\)</span> 来实现的，<span class="math inline">\(F^{-1}\)</span> 就是本文开头提到的
 <code>fold</code>
-函数，它是一种「空间折叠」操作，可以通过组合若干“折叠”函数来实现，所以无需显示地单独指定每个
-<span class="math inline">\(f_i\)</span>！</p>
+函数，它是一种「空间折叠」操作，可以通过复合若干“折叠”函数来实现。就像古代的炼丹师会通过反复调整原料配方来寻找效果最佳的丹药一样，设计分形也可以通过调整
+<span class="math inline">\(F^{-1}\)</span>
+中的折叠函数，并观察屏幕上显示的效果来实现。所以你根本无需关心 <span class="math inline">\(f_i\)</span> 是什么！</p>
 <h1 id="轨道着色">轨道着色</h1>
 <p>我们希望给分形染上漂亮的颜色，这个染色应该满足如下的条件：</p>
 <ol type="1">
