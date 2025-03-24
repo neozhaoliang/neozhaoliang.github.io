@@ -211,6 +211,14 @@ Weyl 群，可以参考 (Humphreys 1990, chap.
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/完美采样/">
                     完美采样 <span class="right">2 篇</span></a>
                 </a>
@@ -236,7 +244,7 @@ Weyl 群，可以参考 (Humphreys 1990, chap.
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">1 篇</span></a>
+                    有限群表示与结合代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -244,7 +252,7 @@ Weyl 群，可以参考 (Humphreys 1990, chap.
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">1 篇</span></a>
+                    线性代数 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -384,7 +392,7 @@ Weyl 群，可以参考 <span class="citation" data-cites="Humphreys90">(<a href
 <h1 id="反射和平移">反射和平移</h1>
 <p>在照镜子的时候，你和自己在镜子中的像的左右是相反的，即镜面反射会改变“手性”。因此无论怎么平移或者旋转，你都无法与自己在镜子中的像完全重合。</p>
 <p><img src="/images/polygon-billiard/inception.jpg" class="fig" width="500"></p>
-<p>但是如果把镜子中的虚像通过另一面镜子再作一次反射，得到一个二次虚像，那么通过适当的平移或者旋转，你是可以和这个二次虚像完全重合的。这是因为两个反射变换的复合是一个平移或者旋转。具体取决于两个镜子的夹角：</p>
+<p>但是如果把镜子中的虚像通过另一面镜子再作一次反射，得到一个二次虚像，那么通过适当的平移或者旋转，你是可以和这个二次虚像完全重合的。这是因为两个反射变换的复合是一个平移或者旋转：</p>
 <ol type="1">
 <li>两个相交且夹角为 <span class="math inline">\(\theta\)</span>
 的镜面反射的复合是一个角度为 <span class="math inline">\(2\theta\)</span> 的旋转。</li>
@@ -392,42 +400,34 @@ Weyl 群，可以参考 <span class="citation" data-cites="Humphreys90">(<a href
 的镜面反射的复合是一个距离为 <span class="math inline">\(2d\)</span>
 的平移。</li>
 </ol>
-<p>所以偶数次反射等同于若干次旋转和平移的叠加，手性不变；奇数次反射等同于若干次旋转和平移后再附加一次反射，手性相反。</p>
-<p>观察上面盗梦空间的剧照，小李子位于两个平行的镜子中间，他有无穷多个虚像。这些虚像是交错出现的：那些面对他的虚像是经过奇数次反射得到的，这些虚像的手性和他相反，它们构成了集合
+<p>所以偶数次反射等同于若干次旋转和平移的叠加，手性不变；奇数次反射等同于若干次旋转和平移后再附加一次反射，手性改变。</p>
+<p>观察上面盗梦空间的剧照，小李子位于两个平行的镜子中间，他有无穷多个虚像。这些虚像是交错出现的：那些面对他的虚像是经过奇数次反射得到的，这些虚像的手性相反，构成集合
 <span class="math inline">\(L_1\)</span>；那些背对他的虚像是经过偶数次反射得到的（小李子本人看作
 <span class="math inline">\(0\)</span>
-次反射的像），这些虚像可以经过平移以后和他重合，它们构成了集合 <span class="math inline">\(L_2\)</span>。假设两个镜子的距离为 <span class="math inline">\(d\)</span>，则每个 <span class="math inline">\(L_i\)</span> 中的虚像以 <span class="math inline">\(2d\)</span> 为间隔均匀分布在一条直线上。</p>
+次反射的像），这些虚像手性相同，构成集合 <span class="math inline">\(L_2\)</span>。假设两个镜子的距离为 <span class="math inline">\(d\)</span>，则每个 <span class="math inline">\(L_i\)</span> 中的虚像以 <span class="math inline">\(2d\)</span> 为间隔均匀分布在一条直线上。</p>
 <p>如果我们想在两个镜子中间放置若干保镖，以防止摄影师从任何角度拍摄到小李子，则我们恰好需要
-4
-名保镖。他们需要分别挡住小李子本人、小李子关于两个镜子第一次反射生成的两个虚像，以及任意一个二次反射生成的虚像。保镖们的位置是摄影师和小李子这四个虚像连线的中点。</p>
+4 名保镖。他们的位置是摄影师和小李子的 4 个虚像的连线中点。这 4
+个虚像是：小李子本人、第一次反射生成的两个虚像，以及任意一个二次反射生成的虚像。</p>
 <figure>
 <img src="/images/polygon-billiard/parallel.svg" width="400" alt="红色圆点表示刺客，绿色圆点表示目标，它们之间有四个保镖">
 <figcaption aria-hidden="true">红色圆点表示刺客，绿色圆点表示目标，它们之间有四个保镖</figcaption>
 </figure>
-<p>为什么需要 4 名保镖呢？假设一个保镖 <span class="math inline">\(G\)</span> 挡住了小李子的某个虚像 <span class="math inline">\(A\in L_1\)</span>（<span class="math inline">\(A\in L_2\)</span> 的分析是类似的）。<span class="math inline">\(G\)</span>
-的虚像也由两个格点组成，每个格点也都是间隔 <span class="math inline">\(2d\)</span>
-均匀排列的。根据三角形的相似原理，<span class="math inline">\(G\)</span>
-的奇数次反射构成的格点在 <span class="math inline">\(L_1\)</span>
-上的投影间隔是 <span class="math inline">\(4d\)</span>，这些投影覆盖了
-<span class="math inline">\(L_1\)</span> 中一半的格点。另一方面 <span class="math inline">\(G\)</span>
-的偶数次反射构成的格点一般来说是无用的（除非狗仔和明星恰好位于某些特殊位置）。所以保镖
+<p>为什么需要 4 名保镖呢？假设某个保镖 <span class="math inline">\(G\)</span> 位于刺客和小李子本人的连线中点。<span class="math inline">\(G\)</span> 的偶数次虚像以 <span class="math inline">\(2d\)</span> 为间隔均匀排列，这些虚像在 <span class="math inline">\(L_2\)</span> 上的投影间隔是 <span class="math inline">\(4d\)</span>，所以这些投影覆盖了 <span class="math inline">\(L_2\)</span> 一半的格点。另一方面 <span class="math inline">\(G\)</span> 的奇数次虚像一般来说是无用的。所以保镖
 <span class="math inline">\(G\)</span> 只能挡住小李子的所有虚像的
 1/4。</p>
 <h1 id="正方形-正三角形-正六边形">正方形 | 正三角形 | 正六边形</h1>
 <p>理解正多边形房间情形的第一个关键，是要知道刺客的任何射击轨迹都可以展开为平面上的一条射线。刺客可以击中目标当且仅当这条射线经过目标的某个虚像。这个操作叫做展开
-(unfolding)。</p>
-<p>与展开相对的操作是折叠 (folding)
-，我们可以用折叠操作将刺客发出的任何射线折叠回房间变成一条射击轨迹。具体做法如下：假设刺客位于点
-<span class="math inline">\(p\)</span>，虚像位于点 <span class="math inline">\(q\)</span>，则线段 <span class="math inline">\(\overline{pq}\)</span> 连接 <span class="math inline">\(p\)</span> 所在的真实房间和 <span class="math inline">\(q\)</span>
-所在的虚像房间，并且穿过若干房间的墙壁。记 <span class="math inline">\(\overline{pq}\)</span> 穿过的墙壁依次为 <span class="math inline">\(l_1,\ldots,l_m\)</span>，则将 <span class="math inline">\(q\)</span> 依次沿着墙壁 <span class="math inline">\(l_m,\ldots,l_1\)</span> 反射就可以将 <span class="math inline">\(q\)</span> 映射回真实房间。</p>
+(unfolding)。与展开相对的操作是折叠 (folding)
+，我们可以将刺客发出的任何射线折叠回房间变成一条射击轨迹。</p>
 <p>当房间是正方形时，目标的所有虚像由 4
 个不同的二维格点组成，如下图所示：</p>
 <figure>
-<img src="/images/polygon-billiard/square_lattice.svg" width="350" alt="假设左下角的单位正方形是真实房间，如果我们在房间中摆放一个 L 形的记号，那么平面上每个单位正方形中都会出现一个 L 的虚像，这些虚像有四种不同的定向，具有相同定向的那些 L 之间互相只差一个平移，因而构成一个二维格点">
-<figcaption aria-hidden="true">假设左下角的单位正方形是真实房间，如果我们在房间中摆放一个
-L 形的记号，那么平面上每个单位正方形中都会出现一个 L
+<img src="/images/polygon-billiard/square_lattice.svg" width="350" alt="假设左下角的单位正方形是真实房间，在房间中摆放一个 L 形的记号，那么平面上每个正方形中都会出现一个 L 的虚像，这些虚像有四种不同的定向，具有相同定向的那些 L 之间互相只差一个平移，它们构成一个二维格点。总共有 4 个不同的格点。">
+<figcaption aria-hidden="true">假设左下角的单位正方形是真实房间，在房间中摆放一个 L
+形的记号，那么平面上每个正方形中都会出现一个 L
 的虚像，这些虚像有四种不同的定向，具有相同定向的那些 L
-之间互相只差一个平移，因而构成一个二维格点</figcaption>
+之间互相只差一个平移，它们构成一个二维格点。总共有 4
+个不同的格点。</figcaption>
 </figure>
 <p>刺客只要朝着目标的任何一个虚像开枪就能击中目标，因为他和任何虚像之间的连线都可以通过折叠操作变成一条子弹的反射路径：</p>
 <figure>
@@ -450,12 +450,12 @@ L 形的记号，那么平面上每个单位正方形中都会出现一个 L
 <p>注意在正六边形房间的情形，出现了一个不同的现象：沿着不同的路径反射，目标的虚像可以出现在另一个房间中不同的位置：</p>
 <p><img src="/images/polygon-billiard/chirality-2.svg" class="fig" width="350"></p>
 <p>由于光路的可逆性，这个话也可以反过来说，即虚像房间中的一点，它的原像可能来自真实房间中若干个不同的位置。我们后面会说明这样的位置最多有
-6
-种不同的可能。具体是哪个位置和反射路径有关，即和刺客与保镖虚像的连线有关。沿着每一个这样的连线把保镖的虚折叠回真实房间，保镖最终的位置可能是这
+6 种不同的可能。对一个给定的保镖，我们知道他只有 1/4
+的虚像是真正有效的；当借助刺客和这些虚像之间的连线将它们折叠回房间后，随着虚像不同，保镖最终的位置可能是这
 6 个位置中的任何一个。所以保镖数目要乘以 6，即总共需要 4 x 6 x 6 = 144
 名保镖。</p>
 <p>下图也验证了这一点：</p>
-<p><img style="margin:0px auto;display:block" src="/images/polygon-billiard/24_guards_each_lattice.svg" height="350"></p>
+<p><img src="/images/polygon-billiard/24_guards_each_lattice.svg" class="fig" height="350"></p>
 <p>我选择了明星的 6
 个虚像格点中的一个，用黄色的点标记；刺客与每个虚像连线的中点有一个保镖的虚像，这个虚像来自房间中某个真实的保镖（用青色的点标记）。把射线折叠回房间我们可以得到真实保镖的位置。然而即便对同一个保镖，随着他的虚像变化，这个位置也可能不同，有
 6 种可能，所以封锁一个格点就需要 4 x 6 = 24 个保镖，封锁全部 6
@@ -516,7 +516,7 @@ Weyl 群</a>。仿射 Weyl
 然而 <span class="math inline">\(p\)</span> 并不是真实房间中唯一可以生成
 <span class="math inline">\(q+L\)</span> 的点。考虑集合 <span class="math inline">\(S=\{y\cdot p\mid y\in D_3\}\)</span>，由于 <span class="math inline">\(D_3\)</span> 保持真实房间不变，所以 <span class="math inline">\(S\)</span> 都是真实房间中的点。对任何 <span class="math inline">\(y\cdot p\in S\)</span>，用 <span class="math inline">\(xy^{-1}\in D_3\)</span> 作用在 <span class="math inline">\(y\cdot p\)</span> 上，得到 <span class="math inline">\(x\cdot p\)</span>，然后按照 <span class="math inline">\(L\)</span> 进行平移，就可以得到格点 <span class="math inline">\(q+L\)</span>。这就证明了 <span class="math inline">\(p\)</span> 的一个虚像格点可以来自房间内 6
 个不同的位置。所以对一个保镖来说，假设 <span class="math inline">\(L\)</span>
-是他的某个虚像格点（由奇数或者偶数次反射生成），对他的任何虚像 <span class="math inline">\(q\in L\)</span>，刺客和 <span class="math inline">\(q\)</span> 的连线给出一个 <span class="math inline">\(\widetilde{A}_2\)</span> 中的元素 <span class="math inline">\(w\)</span>，<span class="math inline">\(w\)</span>
+是他的某个虚像格点（由奇数或者偶数次反射生成），对任何 <span class="math inline">\(q\in L\)</span>，刺客和 <span class="math inline">\(q\)</span> 的连线给出一个 <span class="math inline">\(\widetilde{A}_2\)</span> 中的元素 <span class="math inline">\(w\)</span>，<span class="math inline">\(w\)</span>
 将 <span class="math inline">\(q\)</span> 映射回真实房间的某个位置 <span class="math inline">\(p\)</span>。当 <span class="math inline">\(q\)</span> 跑遍 <span class="math inline">\(L\)</span> 时，<span class="math inline">\(p\)</span> 有 6
 个可能的位置。我们需要在每个位置上都放置一名保镖才能保证目标安全。这就是为什么保镖数目要乘以
 6。</p>
