@@ -207,7 +207,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">3 篇</span></a>
+                    有限群表示与结合代数 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -584,13 +584,13 @@ with Martingales</a>
             <div class="article-title">
                 
     
-        <h1 class="indigo-link-context"><a href="/central-simple-algebra/">中心单代数的三个基本结论</a></h1>
+        <h1 class="indigo-link-context"><a href="/wedderburn-artin-theorem/">Artinian 环与 Wedderburn-Artin 定理</a></h1>
     
 
 
             </div>
 
-            <time class="pink-link-context" datetime="2010-03-13T00:00:00.000Z"><a href="/central-simple-algebra/">2010-03-13</a></time>
+            <time class="pink-link-context" datetime="2010-10-22T00:00:00.000Z"><a href="/wedderburn-artin-theorem/">2010-10-22</a></time>
 
             
 
@@ -598,22 +598,45 @@ with Martingales</a>
             
                 <div class="entry pink-link-context">
                     
-<p>本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个基本结论：</p>
+<p>Wedderburn-Artin 定理最早源于 1907 年 Wedderburn
+研究域上有限维结合代数的分类定理。在 Wedderburn
+考虑这个问题的时候，Killing 和 Cartan 等人已经完成了有限维复半单 Lie
+代数的分类工作，如果读者对有限维 Lie
+代数有所了解的话，可能已经知道任何有限维复 Lie 代数 <span class="math inline">\(L\)</span> 有一个极大可解理想 <span class="math inline">\(\mathrm{rad}(L)\)</span>，叫做 <span class="math inline">\(L\)</span> 的根 (radical)，去掉这个根的商代数
+<span class="math inline">\(L/\mathrm{rad}(L)\)</span>
+是半单代数，其上的双线性型 Killing
+型是非退化的，从而可以通过反复取正交补的方式将 <span class="math inline">\(L/\mathrm{rad}(L)\)</span>
+分解为一些单代数的直和，然后对单 Lie 代数的结构进行讨论得出其共有 9
+种不同的类型。Wedderburn 的思路自然受到了 Killing
+等人工作的启发，他采取了类似的套路：</p>
+<p>对域 <span class="math inline">\(F\)</span> 上的有限维结合代数 <span class="math inline">\(A\)</span>：</p>
 <ol type="1">
-<li>中心单代数对张量积运算是封闭的。</li>
-<li>Noether-Skolem 定理。</li>
-<li>双重中心化子定理。</li>
+<li>定义根理想 <span class="math inline">\(\mathrm{rad}(A)\)</span>。</li>
+<li>转移到半单代数 <span class="math inline">\(A/\mathrm{rad}(A)\)</span>。</li>
+<li>将 <span class="math inline">\(A/\mathrm{rad}(A)\)</span>
+分解为单代数的直和。</li>
+<li>讨论单代数的结构。</li>
 </ol>
-<p>这部分内容比较经典，在很多教材上都有，但是采用的讲述方式却很不一样，找到一个完全符合自己口味的讲解不是件容易的事情。尤其是对初学者而言，有些名气很大的教材反而不见得适合。我当初念
-<span class="citation" data-cites="Jacobson_alg">Jacobson (<a href="#ref-Jacobson_alg" role="doc-biblioref">1980</a>)</span>
-就念的很抓狂。后来我查阅了不少教材后经过提炼整理得到了本文。我个人认为这是最直接清楚的证明方式。</p>
+<p>整个路线图如下所示：</p>
+<p><img src="/images/wedderburn-artin/steps.svg" class="fig"></p>
+<p>总之虽然有限维复李代数和结合代数结构相差很大，但它们的结构定理遵循了类似的套路：拿走可解/幂零的部分，剩下的部分是半单的，而半单是单的直和，于是最终归结为对单成分的结构进行讨论。</p>
+<p>Wedderburn-Artin
+定理的过程比较长，不过在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。</p>
+<p>本文将针对左 Artinian 环的情形证明 Wedderburn-Artin
+定理。我主要参考了 Curtis 和 Reiner 的经典 <span class="citation" data-cites="curtis-reiner">(<a href="#ref-curtis-reiner" role="doc-biblioref">Curtis and Reiner 1962</a>)</span>，Herstein
+的精彩小书 <span class="citation" data-cites="herstein-rings">(<a href="#ref-herstein-rings" role="doc-biblioref">Herstein
+1994</a>)</span>，以及林节玄的 <span class="citation" data-cites="Lam01">(<a href="#ref-Lam01" role="doc-biblioref">Lam
+2001</a>)</span>。C&amp;R
+的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
+的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
+Galois 上同调。林节玄的书风格则更为现代一些，我没有细读，不多评价。</p>
                 </div>
             
         </div>
 
         
         <div class="card-action pink-link-context">
-            <a href="/central-simple-algebra/">阅读全文</a>
+            <a href="/wedderburn-artin-theorem/">阅读全文</a>
         </ div>
         
     </div>
