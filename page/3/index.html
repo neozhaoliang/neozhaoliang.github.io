@@ -438,7 +438,7 @@ past
 <p>为了引出算法，我们从一个计数问题开始：</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>下图是一个边长分别为 <span class="math inline">\(a,b,c\)</span> 的平行六边形，其中 <span class="math inline">\(a,b,c\)</span> 都是正整数，内角均为 120 度：</p>
-<p><img style="margin:0px auto;display:block" width="400" src="/images/cftp/hexagon.svg"></p>
+<p><img src="/images/cftp/hexagon.svg" class="fig" width="400"></p>
 <p>请问：用边长为 1 的菱形密铺它，有多少种不同的方法？</p>
 </div>
                 </div>
@@ -482,11 +482,15 @@ past
 <p>常见的生成树算法如 DFS/BFS 算法、Prim 算法、Kruskal
 算法等给出的生成树都不是完全随机的。例如，取 <span class="math inline">\(G\)</span> 为 <span class="math inline">\(\mathbb{Z}^2\)</span> 中 <span class="math inline">\(m\times n\)</span> 的网格图，<span class="math inline">\(G\)</span>
 的任何生成树都是一个迷宫，把背景平面涂黑，把生成树的边涂白，就可以清楚地看到迷宫的结构。迷宫的任何两个房间
-( 即顶点 ) 可以通过生成树中唯一的路径相连，这样的迷宫叫做完美迷宫。</p>
+( 即树的顶点 )
+可以通过生成树中唯一的路径相连，这样的迷宫叫做完美迷宫。</p>
 <p>DFS 算法 ( 每次将新顶点的顺序打乱再入栈 )
 倾向于尽可能深地探索整个图，因此得到的迷宫往往包含长且蜿蜒的路径，死角 (
 即叶节点 ) 是很少的：</p>
-<p><img style="margin:0px auto;display: block" width="500" src="/images/gifmaze/random_dfs.gif"></p>
+<figure>
+<img src="/images/gifmaze/random_dfs.gif" class="fig" width="500" alt="DFS 算法动画">
+<figcaption aria-hidden="true">DFS 算法动画</figcaption>
+</figure>
                 </div>
             
         </div>
@@ -533,7 +537,7 @@ algebra 词条</a> )</p>
 <p>本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python
 中编写一个程序绘制上面的投影图案。我主要参考了 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990</a>)</span> 和 <span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman
 2017</a>)</span>。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。</p>
-<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/raw/master/src/misc/E8.py">Github
+<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py">Github
 上</a> 。David Madore 也有一个很棒的 <a target="_blank" rel="noopener" href="http://www.madore.org/~david/math/e8w.html">交互式网页</a>
 可以绘制 <span class="math inline">\(E_8\)</span>
 的多种不同风格的图案。</p>

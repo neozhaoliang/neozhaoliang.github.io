@@ -359,8 +359,9 @@ Xor</td>
 <ol type="1">
 <li>首先将像素的 2D 坐标映射为空间中的某个 3D 点 <code>p</code>；</li>
 <li>然后用一个 <code>fold</code> 函数，即所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Iterated_function_system">迭代函数系统</a>（iterated
-function system，简称 IFS）反复作用在
-<code>p</code>上。每次迭代结束后，生成一个颜色并将其添加到当前的颜色
+function system，简称 IFS）反复作用在 <code>p</code>上，将
+<code>p</code>
+变换到空间中另一个位置。每次迭代结束后，生成一个颜色并将其添加到当前的颜色
 <code>color</code> 上。</li>
 <li>当达到一定的迭代次数后，终止迭代，返回 <code>color</code>
 的值作为像素最终的颜色。</li>
@@ -389,8 +390,9 @@ f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^n).\]</span> 即
 <p>可以证明 <span class="math inline">\(F\)</span> 是空间 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 上的压缩映射，其压缩比例
 <span class="math inline">\(r=\max\{r_1,\ldots,r_N\}\)</span>。于是根据
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem">Banach
-不动点定理</a>，存在唯一的紧集 <span class="math inline">\(A\subset\mathbb{R}^n\)</span> 使得 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(F\)</span> 的不动点： <span class="math display">\[F(A) = A.\]</span> 不仅如此，对 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 中的任何一点（注意 <span class="math inline">\(K(\mathbb{R}^n)\)</span>
-是紧集组成的度量空间，里面的点都是紧集）<span class="math inline">\(B\subset\mathbb{R}^n\)</span>，都有 <span class="math display">\[\lim_{n\to\infty} F^n(B) =A.\]</span> 紧集 <span class="math inline">\(A\)</span> 叫做 <span class="math inline">\(F\)</span> 的极限集，<span class="math inline">\(A\)</span> 是一个分形，它具有自相似的特征。</p>
+不动点定理</a>，存在唯一的紧集 <span class="math inline">\(A\subset\mathbb{R}^n\)</span> 使得 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(F\)</span> 的不动点： <span class="math display">\[F(A) = A.\]</span> 紧集 <span class="math inline">\(A\)</span> 叫做 <span class="math inline">\(F\)</span> 的极限集。<span class="math inline">\(A\)</span> 是一个分形，它具有自相似的特征。</p>
+<p>不仅如此，对 <span class="math inline">\(K(\mathbb{R}^n)\)</span>
+中的任何一点 <span class="math inline">\(K\)</span>（<span class="math inline">\(K\)</span> 是紧集），都有 <span class="math display">\[\lim_{n\to\infty} F^n(K) =A.\]</span></p>
 <p>我们以著名的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpiński
 三角形</a> 为例来说明这个过程。我们选择的三个压缩映射分别是</p>
 <p><span class="math display">\[
@@ -413,8 +415,8 @@ f_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
 <p><span class="math display">\[K_3 = f_1(K_2)\cup f_2(K_2)\cup f_3(K_2)
 = \img{/images/ifs/dot3.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>当迭代次数趋于无穷，就得到了 Sierpiński 分形：</p>
-<p><span class="math display">\[\lim_{n\to\infty} K_n = K = f_1(K)\cup
-f_2(K)\cup f_3(K) =
+<p><span class="math display">\[\lim_{n\to\infty} K_n = A = f_1(A)\cup
+f_2(A)\cup f_3(A) =
 \img{/images/ifs/dot6.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>你可以很容易看出来为什么初始紧集的选择是不重要的：因为在压缩的过程中，任何紧集都会逐渐缩小到一个单点，所以
 <span class="math inline">\(K_0\)</span> 甚至取成一个点也是可以的。</p>
@@ -439,14 +441,13 @@ IFS 是通过 <span class="math inline">\(F\)</span> 的逆映射 <span class="m
 <span class="math inline">\(A^c\)</span>
 的边界上）颜色应该是不连续的，从而产生泾渭分明的效果。</li>
 </ol>
-<p>做到这一点并不难，但是需要在每一次迭代时考虑当前点的位置信息。</p>
+<p>做到这一点并不难，但是需要在每一次迭代时考虑当前点的位置信息，这就是所谓的轨道着色。绝大多数惊艳的分形作品都是通过轨道着色技巧来上色的。</p>
 <p>我们首先取一个底色，比如说
 <code>color=vec3(0)</code>，在每一次迭代中，根据当前位置 <code>p</code>
 生成一个颜色，并以一定的权重与 <code>color</code> 混合。理论上颜色的 rgb
 的取值范围应该是 <span class="math inline">\([0,1]\)</span>，但是多数情况下我们要放宽到 <span class="math inline">\([-1,1]\)</span>
 之间，即颜色可以增加也可以减少。否则如果颜色只增不减的话，那么多次迭代以后
-rgb
-值很可能会溢出，变成白色。此外，随着迭代次数的增加，后面加入的颜色的权重应该单调下降，以保证突出分形的细节。这也符合我们的生活直觉：想象一下，当一位画家作画时，在开始的时候他可以浓墨重彩地画一个轮廓，但是越到后面描绘更加精细的部分时，他就会换用更细的画笔，小心地蘸一点颜料。</p>
+rgb 值很可能会溢出，变成白色。此外，随着迭代次数 <span class="math inline">\(n\)</span> 的增加，<span class="math inline">\(F^n(K)\)</span> 越来越接近真实的分形 <span class="math inline">\(A\)</span>，后面加入的颜色的权重应该单调下降，以保证突出分形的细节。这也符合我们的生活直觉：想象一下，当一位画家作画时，在开始的时候他可以浓墨重彩地画一个轮廓，但是越到后面描绘更加精细的部分时，他就会换用更细的画笔，小心地蘸一点颜料。</p>
 <p>根据 <code>p</code>
 生成颜色的着色方案无穷无尽，请随便发挥你的创造力。一般来说你需要反复试验各种不同的方案才能找到最合适的。下面的例子使用了一种非常流行的染色方案，它以
 <code>cos(vec3(0,1,2))</code> 作为底色，并根据当前时间

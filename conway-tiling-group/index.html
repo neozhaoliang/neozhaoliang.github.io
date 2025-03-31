@@ -33,20 +33,18 @@
 求证对任何 \(n\)，\(T_n\) 都不可能用若干骨头恰好密铺。
 
 Conway
-等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然问题的表述很初等，但是很不幸，它的解法并不初等。
-论证不可能密铺的常见手段是染色法，染色法的基本思想是，用一个 Abel
-群（一般是有理数域 \(\mathbb{Q}\)）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是
-\(T_n\)
-中所有正六边形标记之和不是整数，这样来得出矛盾。
+等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它的基本思想是，用一个
+Abel 群（一般是有理数域 \(\mathbb{Q}\)）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是整个区域所有正六边形标记之和不是整数，这样来得出矛盾。
 然而，Conway
-等人在论文中借助“密铺的同调群”方法证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色证明存在的必要条件是
+等人在论文中借助“密铺的同调群”证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色方法可以成功的必要条件是
 \(T_n\)
 对应的群元素在骨头生成的同调群中不是恒等元，从而无法被密铺。而这个问题中，\(T_n\)
 对应的群元素在同调群中确实是恒等元（构造适当的 signed tiling
-即可）。Conway
-等人用“密铺的同伦群”方法给出了不可能密铺的证明。同伦群方法的基本思想是，用一个群（未必是
+即可）。所以染色法对这个问题无效！
+Conway
+等人用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
 Abel
-群）的元素给区域和瓷砖的边界作标记来获得密铺的某种不变量，并说明
+群）的元素作标记，但是这次是给区域和瓷砖的边界作标记，来获得密铺的某种不变量，并说明
 \(T_n\)
 的边界不满足这个不变量，从而导出矛盾。本文就来介绍这一证明。">
     
@@ -354,20 +352,18 @@ Abel
 <p>求证对任何 <span class="math inline">\(n\)</span>，<span class="math inline">\(T_n\)</span> 都不可能用若干骨头恰好密铺。</p>
 </div>
 <p>Conway
-等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然问题的表述很初等，但是很不幸，它的解法并不初等。</p>
-<p>论证不可能密铺的常见手段是染色法，染色法的基本思想是，用一个 Abel
-群（一般是有理数域 <span class="math inline">\(\mathbb{Q}\)</span>）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是
-<span class="math inline">\(T_n\)</span>
-中所有正六边形标记之和不是整数，这样来得出矛盾。</p>
+等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它的基本思想是，用一个
+Abel 群（一般是有理数域 <span class="math inline">\(\mathbb{Q}\)</span>）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是整个区域所有正六边形标记之和不是整数，这样来得出矛盾。</p>
 <p>然而，Conway
-等人在论文中借助“密铺的同调群”方法证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色证明存在的必要条件是
+等人在论文中借助“密铺的同调群”证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色方法可以成功的必要条件是
 <span class="math inline">\(T_n\)</span>
 对应的群元素在骨头生成的同调群中不是恒等元，从而无法被密铺。而这个问题中，<span class="math inline">\(T_n\)</span>
 对应的群元素在同调群中确实是恒等元（构造适当的 signed tiling
-即可）。Conway
-等人用“密铺的同伦群”方法给出了不可能密铺的证明。同伦群方法的基本思想是，用一个群（未必是
+即可）。所以染色法对这个问题无效！</p>
+<p>Conway
+等人用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
 Abel
-群）的元素给区域和瓷砖的<strong>边界</strong>作标记来获得密铺的某种不变量，并说明
+群）的元素作标记，但是这次是给区域和瓷砖的<strong>边界</strong>作标记，来获得密铺的某种不变量，并说明
 <span class="math inline">\(T_n\)</span>
 的<strong>边界</strong>不满足这个不变量，从而导出矛盾。本文就来介绍这一证明。</p>
 <span id="more"></span>
@@ -399,7 +395,7 @@ a^2=b^2=c^2=1\rangle\]</span></p>
 <p><img src="/images/tilinggroup/boundary.svg" class="fig" width="400"></p>
 <p>从不同起点出发得到的边界字是不同的，但它们在 <span class="math inline">\(F\)</span>
 中都是互相共轭的。例如在下图中，设从蓝色出发点得到的字为 <span class="math inline">\(\pi'\)</span>，从红色点出发到蓝色点之间的字为
-<span class="math inline">\(w\)</span>，则 <span class="math inline">\(\pi=w\pi'w^{-1}\)</span>，两种不同表示在 <span class="math inline">\(F\)</span> 中是共轭的。</p>
+<span class="math inline">\(w=(ac)^3\)</span>，则 <span class="math inline">\(\pi=w\pi'w^{-1}\)</span>，两种不同表示在 <span class="math inline">\(F\)</span> 中是共轭的。</p>
 <p><img src="/images/tilinggroup/boundary2.svg" class="fig" width="400"></p>
 <p>于是我们可以给出如下定义：</p>
 <div class="unnumbered statement definition-unnumbered plain">
@@ -428,16 +424,16 @@ T_n]=[\pi]\)</span>。所以任务归结为证明对任何 <span class="math inl
 <p>怎么证明群元素 <span class="math inline">\(\pi\)</span>
 不属于正规子群 <span class="math inline">\(T\)</span> 呢？Conway
 等人的思路是这样的：构造 <span class="math inline">\(F\)</span> 的子群
-<span class="math inline">\(J\)</span>，使得 <span class="math inline">\(T\subset J\)</span> 和 <span class="math inline">\(\pi\in J\)</span>，并构造 <span class="math inline">\(J\)</span> 到某个 Abel 群 <span class="math inline">\(K\)</span> 的群同态 <span class="math inline">\(\rho: J\to K\)</span>，使得 <span class="math inline">\(T\subset\ker\rho\)</span> 但 <span class="math inline">\(\pi\notin\ker\rho\)</span>，即同态 <span class="math inline">\(\rho\)</span> 可以区分 <span class="math inline">\(\pi\)</span> 和 <span class="math inline">\(T\)</span>，即得 <span class="math inline">\(\pi\notin T\)</span>。</p>
-<p>Conway 等人构造 <span class="math inline">\(J\)</span> 和同态 <span class="math inline">\(\rho\)</span> 的方法是非常巧妙的，他们构造的 <span class="math inline">\(J\)</span> 是 <span class="math inline">\(F\)</span> 的如下正规子群： <span class="math display">\[J=\mathcal{N}(\langle(cb)^3,(ac)^3,(ba)^3\rangle).\]</span></p>
+<span class="math inline">\(J\)</span>，使得 <span class="math inline">\(T\subset J\)</span> 和 <span class="math inline">\(\pi\in J\)</span>，并构造 <span class="math inline">\(J\)</span> 到某个群 <span class="math inline">\(K\)</span> 的同态 <span class="math inline">\(\rho: J\to K\)</span>，使得 <span class="math inline">\(T\subset\ker\rho\)</span> 但 <span class="math inline">\(\pi\notin\ker\rho\)</span>，即同态 <span class="math inline">\(\rho\)</span> 可以区分 <span class="math inline">\(\pi\)</span> 和 <span class="math inline">\(T\)</span>，即得 <span class="math inline">\(\pi\notin T\)</span>。</p>
+<p>Conway 等人构造的 <span class="math inline">\(J\)</span> 是 <span class="math inline">\(F\)</span> 的如下正规子群： <span class="math display">\[J=\mathcal{N}(\langle(cb)^3,(ac)^3,(ba)^3\rangle).\]</span></p>
 <p><span class="math inline">\(J\)</span> 有个很棒的性质：商群 <span class="math display">\[T_0 = F/J = \langle a,b,c\ |\
 a^2=b^2=c^2=(cb)^3=(ac)^3=(ba)^3=1\rangle\]</span> 的 Cayley 图 <span class="math inline">\(\mathcal{G}(T_0)\)</span> 是平面图，如下所示：</p>
 <figure>
-<img src="/images/tilinggroup/hexgrid2.svg" class="fig" width="300" alt="T_0=F/J 的 Cayley 图，其中的正六边形有三种不同的类型，在每个顶点处相遇的三个正六边形类型互不相同。注意这个 Cayley 图与前面 A 的 Cayley 图的区别。我们实际上用不到 A，A 仅仅拿来作为一个参照。">
+<img src="/images/tilinggroup/hexgrid2.svg" class="fig" width="300" alt="T_0=F/J 的 Cayley 图，其中的正六边形有三种不同的类型，在每个顶点处相遇的三个正六边形类型互不相同。注意这个 Cayley 图与前面 A 的 Cayley 图的区别。">
 <figcaption aria-hidden="true"><span class="math inline">\(T_0=F/J\)</span> 的 Cayley
 图，其中的正六边形有三种不同的类型，在每个顶点处相遇的三个正六边形类型互不相同。注意这个
 Cayley 图与前面 <span class="math inline">\(A\)</span> 的 Cayley
-图的区别。我们实际上用不到 <span class="math inline">\(A\)</span>，<span class="math inline">\(A\)</span> 仅仅拿来作为一个参照。</figcaption>
+图的区别。</figcaption>
 </figure>
 <p>可见 <span class="math inline">\(\mathcal{G}(T_0)\)</span>
 的形状与前面 <a href="#Cayley-A"><span class="math inline">\(A\)</span>
@@ -478,7 +474,7 @@ J\)</span> 都对应 Cayley 图 <span class="math inline">\(\mathcal{G}(T_0)\)</
 类型的正六边形分别逆时针和顺时针各转了一圈，合起来绕了 0
 圈；它没有环绕过 <span class="math inline">\(C_2\)</span> 和 <span class="math inline">\(C_3\)</span> 类型的正六边形，关于这俩的环绕数都是
 0，所以这块骨头对应的三元组是 <span class="math inline">\((0,0,0)\)</span>。对另外两种骨头也是如此。由于共轭的路径具有相同的环绕数，以及路径乘积（首尾相接）的环绕数等于各路径环绕数的和，所以
-<span class="math inline">\(T\)</span> 中每个元素对应的三元组都是 <span class="math inline">\((0,0,0)\)</span>。</p>
+<span class="math inline">\(T\)</span> 中任何元素对应的三元组都是 <span class="math inline">\((0,0,0)\)</span>。</p>
 <p>然而我们上面已经看到 <span class="math inline">\(T_n\)</span>
 的边界字对应的路径是绕着 <span class="math inline">\(C_1,C_2,C_3\)</span> 分别顺时针转 <span class="math inline">\(n/3\)</span> 圈，其环绕数是 <span class="math inline">\((-n/3,-n/3,-n/3)\ne(0, 0, 0)\)</span>，这就说明了
 <span class="math inline">\(\pi\notin T\)</span>。</p>
@@ -495,8 +491,8 @@ Theory, Series A</em> 53 (2): 183–208. https://doi.org/<a target="_blank" rel=
 
                                                     
   <p class="pink-link-context">
-    <a href="/wedderburn-artin-theorem/" rel="next" title="Artinian 环与 Wedderburn-Artin 定理">
-      上一篇：Artinian 环与 Wedderburn-Artin 定理
+    <a href="/wedderburn-artin-theorem/" rel="next" title="左 Artinian 环与 Wedderburn-Artin 定理">
+      上一篇：左 Artinian 环与 Wedderburn-Artin 定理
     </a>
   </p>
   
