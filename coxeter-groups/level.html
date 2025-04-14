@@ -102,6 +102,14 @@ level 的定义
                     </li>
                 
                     <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-link "></i>
+                            
+                            Sporadic
+                        </a>
+                    </li>
+                
+                    <li>
                         <a class="menu-search modal-trigger " href="#search" >
                             <i class="fa fa-search "></i>
                             
@@ -162,6 +170,14 @@ level 的定义
             </li>
         
             <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-link "></i>
+                    
+                    Sporadic
+                </a>
+            </li>
+        
+            <li class="no-padding">
                 <a class="waves-effect menu-search modal-trigger " href="#search" >
                     <i class="fa fa-search "></i>
                     
@@ -218,7 +234,7 @@ level 的定义
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">4 篇</span></a>
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -457,7 +473,7 @@ Lorentzian 内积时，<span class="math inline">\(v\)</span> 是实的等价于
 <span class="math inline">\((u, u)=-1\)</span> 和 <span class="math inline">\((v,v)=0\)</span>。情形 2 可以取 <span class="math inline">\(V\)</span> 的一组正交基包含三个向量 <span class="math inline">\(x,y,z\)</span> 满足 <span class="math inline">\((x,x)=1\)</span> 和 <span class="math inline">\((y, y)=(z,z)=-1\)</span>，然后取 <span class="math inline">\(u=z\)</span> 和 <span class="math inline">\(v=x+y\)</span>，则 <span class="math inline">\(u,v\)</span> 正交且 <span class="math inline">\((u,u)=-1,\,(v,v)=0\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="level-1" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-3.3</span> <span class="statement-info">(<span class="citation" data-cites="Maxwell82">Maxwell (<a href="#ref-Maxwell82" role="doc-biblioref">1982</a>)</span>)</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(\Gamma\)</span> 的 level 是 1，则 <span class="math inline">\(\Gamma\)</span> 是双曲的。所有的 <a href="/coxeter-groups-tits-cone#fundamental-weights">基本权</a>
+3.3</span> <span class="statement-info">(<span class="citation" data-cites="Maxwell82">Maxwell (<a href="#ref-Maxwell82" role="doc-biblioref">1982</a>)</span>)</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(\Gamma\)</span> 的 level 是 1，则 <span class="math inline">\(\Gamma\)</span> 是双曲的。所有的 <a href="/coxeter-groups/tits-cone#fundamental-weights">基本权</a>
 都不是实的并且两两分离。</p>
 </div>
 <div class="statement note definition unnumbered">
@@ -501,7 +517,7 @@ Coxeter 群给出了三维双曲空间中的<strong>紧</strong> (compact)
 <p>再来证明 2。</p>
 <p>由于 <span class="math inline">\(\Gamma\)</span> 的 level 是
 1，对任何 <span class="math inline">\(s\in S\)</span>，子空间 <span class="math inline">\(\omega_s^\bot=\mathrm{span}\{\alpha_t\mid t\ne
-s\}\)</span> 是有限或者仿射的，从而 <a href="/coxeter-groups-three-cases/#orth-complement-lorentzian"><span class="math inline">\(\omega_s\)</span> 不是 space-like 的</a>，即 <span class="math inline">\((\omega_s,\omega_s)\leq 0\)</span>。于是任何 <span class="math inline">\(\omega_s\,(s\in S)\)</span> 都不是实的。</p>
+s\}\)</span> 是有限或者仿射的，从而 <a href="/coxeter-groups/three-geometries/#orth-complement-lorentzian"><span class="math inline">\(\omega_s\)</span> 不是 space-like 的</a>，即 <span class="math inline">\((\omega_s,\omega_s)\leq 0\)</span>。于是任何 <span class="math inline">\(\omega_s\,(s\in S)\)</span> 都不是实的。</p>
 <p>再来证明 3。</p>
 <p>观察恒等式 <span class="math inline">\((\ref{eq:idII})\)</span>：
 <span class="math display">\[\omega_s = (\omega_s,\omega_s)\alpha_s +
@@ -533,12 +549,12 @@ s,t\}\)</span>，根据 <a href="#level-l" title="定理 1.2">定理 1.2</a>
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>这个结论告诉我们在 level 1 时空间的边界上没有球堆。</p>
 </div>
-<p><strong>证明</strong>：由于 level 1 的群是双曲的，根据 <a href="/coxeter-groups-three-cases#tits-closure">双曲情形 Tits
+<p><strong>证明</strong>：由于 level 1 是双曲的，根据 <a href="/coxeter-groups/three-geometries#tits-closure">双曲情形 Tits
 锥的结论</a>，<span class="math inline">\(\mathcal{C}\)</span> 包含
 <span class="math inline">\(\mathcal{N}_+,\mathcal{N}_-\)</span>
-之一，不妨设为 <span class="math inline">\(\mathcal{C}\supset\mathcal{N}_+\)</span>，则 <span class="math inline">\(\overline{ \mathcal{C} }\supset\overline{
-\mathcal{N}_+
-}=\mathcal{Q}_+\)</span>。还要再证明反向的包含关系。为此只要证明 <span class="math inline">\(\overline{ \mathcal{C}
+之一，不妨设 <span class="math inline">\(\mathcal{C}\supset\mathcal{N}_+\)</span>，则 <span class="math inline">\(\overline{ \mathcal{C} }\supset\overline{
+\mathcal{N}_+ }=\mathcal{Q}_+\)</span>。为了证明反向包含关系，只要证
+<span class="math inline">\(\overline{ \mathcal{C}
 }\subset\mathcal{Q}\)</span> 和 <span class="math inline">\(\overline{
 \mathcal{C} }\cap\mathcal{Q}_-=\{0\}\)</span>。</p>
 <p>根据 <a href="#level-1" title="定理 3.3">定理 3.3</a>，所有的基本权
@@ -550,17 +566,14 @@ S}c_sc_t\underbrace{(\omega_s,\omega_t)}_{\leq0}\leq0.\]</span> 即 <span class=
 W}w\overline{\mathcal{D}}\subset\mathcal{Q}\)</span>，从而 <span class="math inline">\(\overline{ \mathcal{C}
 }\subset\mathcal{Q}\)</span>。</p>
 <p>再来说明 <span class="math inline">\(\overline{ \mathcal{C}
-}\cap\mathcal{Q}_-=\{0\}\)</span>。我们知道 <a href="/coxeter-groups-three-cases/#dual-cone-non-trivial"><span class="math inline">\(\mathcal{C}^\ast\ne\{0\}\)</span></a>。我们断言
+}\cap\mathcal{Q}_-=\{0\}\)</span>。我们知道 <a href="/coxeter-groups/three-geometries/#dual-cone-non-trivial"><span class="math inline">\(\mathcal{C}^\ast\ne\{0\}\)</span></a>。我们断言
 <span class="math inline">\(\mathcal{C}^\ast\)</span> 必然包含某个
-time-like 的向量 <span class="math inline">\((z,z)&lt;0\)</span>。否则
-<a href="/coxeter-groups-tits-cone#dual-cone-nonspace"><span class="math inline">\(\mathcal{C}^\ast\)</span> 中的非零向量都是
+time-like 的向量 <span class="math inline">\((z,z)&lt;0\)</span>。若不然，<a href="/coxeter-groups/tits-cone#dual-cone-nonspace"><span class="math inline">\(\mathcal{C}^\ast\)</span> 中的非零向量都是
 light-like 的</a>。但是 <span class="math inline">\(\mathcal{C}^\ast\)</span> 不能包含两个线性无关的
-light-like 的向量（否则由于 <a href="/coxeter-groups-three-cases/#dual-cone-belongs-branch">它们属于
-<span class="math inline">\(\mathcal{Q}\)</span> 的同一个分支</a> 从而
-<a href="/coxeter-groups-three-cases/#connected-component-dot">内积小于
-0</a>，从而它们的任何正线性组合是属于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 的 time-like
-的向量），再结合 <span class="math inline">\(\mathcal{C}^\ast\)</span>
-是 <a href="/coxeter-groups-tits-cone/#tits-cone-dual-pointed">点锥</a>，所以
+light-like 的向量（否则由于 <a href="/coxeter-groups/three-geometries/#dual-cone-belongs-branch">它们属于
+<span class="math inline">\(\mathcal{Q}\)</span>
+的同一个分支</a>，从而其正线性组合是 <span class="math inline">\(\mathcal{C}^\ast\)</span> 中 time-like
+的向量，矛盾），再结合 <span class="math inline">\(\mathcal{C}^\ast\)</span> 是 <a href="/coxeter-groups/tits-cone/#tits-cone-dual-pointed">点锥</a>，所以
 <span class="math inline">\(\mathcal{C}^\ast=\mathbb{R}_{\geq0}\delta\)</span>，其中
 <span class="math inline">\(\delta\)</span> 是一个 light-like
 的向量。取对偶得到 <span class="math display">\[\overline{ \mathcal{C}
@@ -575,29 +588,30 @@ light-like 的向量（否则由于 <a href="/coxeter-groups-three-cases/#dual-c
 <div id="ideal-vertex" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
 3.5</span> <span class="statement-info">(<span class="citation" data-cites="Maxwell89">(<a href="#ref-Maxwell89" role="doc-biblioref">Maxwell 1989</a>, proposition
-5.15)</span>)</span>.</span><span class="statement-spah"> </span>设
-<span class="math inline">\(s\in S\)</span> 使得如下条件成立：</p>
+5.15)</span>)</span>.</span><span class="statement-spah"> </span><br>
+</p>
+<p>设 <span class="math inline">\(s\in S\)</span>，<span class="math inline">\(I=S\setminus\{s\}\)</span>，如果有如下条件成立：</p>
 <ol type="1">
 <li><span class="math inline">\((\omega_s,\omega_s)=0\)</span>。</li>
-<li>子图 <span class="math inline">\(\Gamma\setminus\{s\}\)</span>
+<li>标准椭圆子群 <span class="math inline">\(W_I\)</span>
 是不可约、仿射的。</li>
-<li>对任何 <span class="math inline">\(t\ne s\)</span> 有 <span class="math inline">\((\omega_s,\omega_t)&lt;0\)</span>。</li>
+<li>对任何 <span class="math inline">\(t\in I\)</span> 有 <span class="math inline">\((\omega_s,\omega_t)&lt;0\)</span>。</li>
 </ol>
-<p>记 <span class="math inline">\(I=S\setminus\{s\}\)</span>，则对任意点
-<span class="math inline">\(p\in\overline{\mathcal{D}}\)</span> 都有
-<span class="math inline">\(\omega_s\in\overline{
-\mathrm{cone}(\bigcup_{w\in W_I}wp) }\)</span>。</p>
+<p>则对任意 <span class="math inline">\(p\in\overline{\mathcal{D}}\)</span> 都有 <span class="math inline">\(\omega_s\in\overline{ \mathrm{cone}(\bigcup_{w\in
+W_I}wp) }\)</span>。</p>
 </div>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>这里没有限制 <span class="math inline">\(W\)</span> 的
 level。</p>
-<p>此外 <span class="math inline">\(\bigcup_{w\in W_I}wp\)</span>
+<p>由于 <span class="math inline">\(\bigcup_{w\in W_I}wp\)</span>
 是无限集，<span class="math inline">\(\mathrm{cone}(\bigcup_{w\in
 W_I})\)</span> 未必是闭集，因此闭包记号不可少。</p>
 <p>当 <span class="math inline">\(W\)</span> 的 level 是 1 时，若 <span class="math inline">\(\omega_s\)</span>
-是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时经过 <span class="math inline">\(\omega_s\)</span>
-的那些镜面生成的椭圆子群会把基本区域无限压缩到 <span class="math inline">\(\omega_s\)</span> 附近，如下图所示：</p>
+是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时 <span class="math inline">\(W_I\)</span> 是经过 <span class="math inline">\(\omega_s\)</span>
+的那些镜面生成的标准椭圆子群，<span class="math inline">\(W_I\)</span>
+会把基本区域无限压缩到 <span class="math inline">\(\omega_s\)</span>
+附近，如下图所示：</p>
 <p><img src="/images/coxeter/ideal-vertex.jpg" class="fig" width="350"></p>
 </div>
 <p><strong>证明</strong>：由已知子空间 <span class="math inline">\(V_I=\mathrm{span}\{\alpha_t\mid t\ne s\}\)</span>
@@ -987,12 +1001,10 @@ Groups.”</span> <em>Journal of Algebra</em> 79 (1): 78–97. <a target="_blank
 <hr>
 <ol>
 <li id="fn1"><p>这里解释下为什么在 <span class="math inline">\(K\)</span> 中一定可以找到一个非平凡的元素。由于
-<span class="math inline">\(\Gamma\setminus\{s\}\)</span>
-是不可约仿射的，<span class="math inline">\(\mathrm{rad}(V_I)=\mathbb{R}\omega_s\)</span>，所以
-<span class="math inline">\((\cdot,\cdot)\)</span> 在 <span class="math inline">\(V_I/\mathbb{R}\omega_s\)</span>
-上诱导了一个正定内积。商群 <span class="math inline">\(W_I/K\)</span> 是
+<span class="math inline">\(W_I\)</span> 是不可约仿射的，<span class="math inline">\(\mathrm{rad}(V_I)=\mathbb{R}\omega_s\)</span>，<span class="math inline">\((\cdot,\cdot)\)</span> 在 <span class="math inline">\(V_I/\mathbb{R}\omega_s\)</span>
+上诱导的内积是正定的。商群 <span class="math inline">\(W_I/K\)</span> 是
 <span class="math inline">\(V_I/\mathbb{R}\omega_s\)</span>
-中的反射群，并且保持这个正定内积不变，所以根据 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 6.4</a>)</span> 的结论，<span class="math inline">\(W_I/K\)</span> 是有限群。于是 <span class="math inline">\(W_I\)</span> 作为仿射 Coxeter 群是无限群，对 <span class="math inline">\(K\)</span> 取商群是有限群，所以 <span class="math inline">\(K\)</span> 必然是无限群。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+中的反射群，并且保持这个正定内积不变，所以根据 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec. 6.4</a>)</span> 的结论，<span class="math inline">\(W_I/K\)</span> 是有限群。由于 <span class="math inline">\(W_I\)</span> 是无限群，所以 <span class="math inline">\(K\)</span> 也是无限群。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
 
