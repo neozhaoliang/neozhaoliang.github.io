@@ -666,6 +666,7 @@ Lorentzinian 内积下，两个 space-like 的单位向量 <span class="math inl
 中每个球的内部和外部得到的。</p>
 <p>记 <span class="math inline">\(\mathcal{H}\)</span> 是超平面 <span class="math inline">\((\cdot, e_{n+2})=1\)</span> 与 <span class="math inline">\(\mathcal{Q}_+\)</span> 的截面，对给定的 <span class="math inline">\(k\in S\)</span>，定义球帽 <span class="math display">\[C_k = \{v\in\mathcal{H}\mid
 (v,k)\geq0\}.\]</span></p>
+<p>根据定义，<span class="math inline">\(C_k\)</span> 中的点都属于 <span class="math inline">\(\mathcal{Q}_+\)</span>，所以对任何 <span class="math inline">\(k,k'\in\mathcal{P}\)</span> 和 <span class="math inline">\(u\in C_k,v\in C_{k'}\)</span> 有 <span class="math inline">\(u\sim v\)</span>。</p>
 <div id="disjoint-pair" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
 5.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆且 <span class="math inline">\(k_1\ne k_2\in\mathcal{P}\)</span>，则集合 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span> 和 <span class="math inline">\(C_{-k_1}\cap C_{-k_2}\)</span>
@@ -775,7 +776,7 @@ W}w\overline{\mathcal{D}}=\mathcal{C}\)</span>，从而包含 <span class="math 
 time-like 的，其正交补 <span class="math inline">\(V_I=\mathrm{span}\{\alpha_t\mid t\ne s\}\)</span>
 是 space-like 的，从而 <span class="math inline">\(W_I\)</span>
 是有限群。任取一个实的基本权 <span class="math inline">\((\omega_t,\omega_t)&gt;0\,(t\in I)\)</span> 并考虑
-<span class="math display">\[v = \sum_{w\in W_I}w(\omega_t),\]</span>
+<span class="math display">\[v = \sum_{w\in W_I}w(\omega_t).\]</span>
 显然 <span class="math inline">\(v\in\overline{\mathcal{C}_r}\)</span>，并且 <span class="math inline">\(W_I\)</span> 保持 <span class="math inline">\(v\)</span> 不动。特别地对任何 <span class="math inline">\(t\in I\)</span> 都有 <span class="math inline">\(t(v)=v\)</span>。这是 <span class="math inline">\(n-1\)</span>
 个独立的线性约束，其解空间是一维的，所以 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(\omega_s\)</span> 共线：存在 <span class="math inline">\(a\in\mathbb{R}\)</span> 使得 <span class="math inline">\(v=a\omega_s\)</span>。两边同时与 <span class="math inline">\(\alpha_s\)</span> 作内积得到 <span class="math display">\[a = (\alpha_s,v)=\sum_{w\in
 W_I}(\alpha_s,w(\omega_t))=\sum_{w\in W_I}(w^{-1}(\alpha_s),
@@ -785,14 +786,13 @@ I}c_i(\alpha_i, w_t) = c_t\geq0.\]</span> 我们来选择一个特殊的 <span c
 <span class="math inline">\(s_i\,(i\geq1)\in I\)</span>
 且互不相同。不难验证对 <span class="math inline">\(w=s_m\cdots s_1\in
 W_I\)</span>，<span class="math inline">\(w\alpha_s\)</span> 的系数
-<span class="math inline">\(c_t&gt;0\)</span>，所以 <span class="math inline">\(a\)</span> 严格大于 0，所以 <span class="math inline">\(\omega_s=v/a\in\overline{\mathcal{C}_r}\)</span>。</p>
+<span class="math inline">\(c_t&gt;0\)</span>，所以 <span class="math inline">\(a\)</span> 严格大于 0，从而 <span class="math inline">\(\omega_s=v/a\in\overline{\mathcal{C}_r}\)</span>。</p>
 <p><span class="math inline">\((\omega_s, \omega_s)=0\)</span>
-的情形稍微麻烦一些：这时 <span class="math inline">\(\omega_s\)</span>
+的情形稍微麻烦一些。这时 <span class="math inline">\(\omega_s\)</span>
 的正交补 <span class="math inline">\(\omega_s^\bot\)</span> 是
-light-like 的，即子图 <span class="math inline">\(\Gamma\setminus\{s\}\)</span>
-是仿射的。特别地，<span class="math inline">\(\Gamma\setminus\{s\}\)</span>
-由一些仿射或者有限的连通成分组成，并且有且恰有一个连通成分是仿射的。任取一个实的基本权
-<span class="math inline">\((\omega_t,\omega_t)&gt;0\)</span>，我们需要讨论两种情况：</p>
+light-like 的，即子图 <span class="math inline">\(\Gamma\setminus\{s\}\)</span> 是仿射的。所以 <span class="math inline">\(\Gamma\setminus\{s\}\)</span>
+由一些仿射或者有限的连通成分组成，由于内积是双曲的，有且恰有一个连通成分是仿射的。任取一个实的基本权
+<span class="math inline">\((\omega_t,\omega_t)&gt;0\)</span>，分两种情况：</p>
 <ol type="1">
 <li><p>如果 <span class="math inline">\(\omega_t\)</span>
 属于某个有限型的连通成分 <span class="math inline">\(Y\)</span>，类似上面的讨论，<span class="math inline">\(v = \sum_{w\in
@@ -800,7 +800,7 @@ W_Y}w(\omega_t)\in\overline{\mathcal{C}_r}\)</span> 满足对任何 <span class=
 <li><p>如果 <span class="math inline">\(\omega_t\)</span>
 属于某个仿射型的连通成分 <span class="math inline">\(X\)</span>，设
 <span class="math inline">\(Y=\Gamma\setminus(X\cup\{s\})\)</span> 是
-<span class="math inline">\(\Gamma\setminus\{s\}\)</span> 除去 <span class="math inline">\(X\)</span> 以外其它连通成分的并，则 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 互不连通，从而 <span class="math display">\[\omega_s = \underbrace{(\omega_s,
+<span class="math inline">\(\Gamma\setminus\{s\}\)</span> 除去 <span class="math inline">\(X\)</span> 以外其它连通成分的并，则 <span class="math inline">\(Y\)</span> 是有限型，并且 <span class="math inline">\(X\)</span> 和 <span class="math inline">\(Y\)</span> 互不连通，从而 <span class="math display">\[\omega_s = \underbrace{(\omega_s,
 \omega_s)}_{=0}\alpha_s + \sum_{t\ne s} (\omega_s,
 \omega_t)\alpha_t=\sum_{t\in X} (\omega_s,\omega_t)\alpha_t + \sum_{t\in
 Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.\]</span> 这里 <span class="math inline">\(v_1\)</span> 和 <span class="math inline">\(v_2\)</span> 是正交的。于是 <span class="math display">\[(\omega_s, \omega_s)=0\Rightarrow
@@ -809,13 +809,13 @@ Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.\]</span> 这里 <span class="math inline
 <span class="math inline">\(v_2=0\)</span>，从而 <span class="math inline">\(\omega_s=v_1\)</span>。于是 <span class="math inline">\(\mathbb{R}\omega_s=\mathrm{rad}(V_X)\)</span>。从而
 <span class="math inline">\(\omega_s\)</span> 表示为 <span class="math inline">\(\{\alpha_i\mid i\in X\}\)</span>
 的线性组合时，所有的系数 <span class="math inline">\((\omega_s,\omega_i)\)</span>
-系数都是非零且同号的。我们断言它们都小于 0。实际上在 <span class="math display">\[\omega_s=\sum_{i\in X}
+系数都是非零且同号的。我们断言它们都小于 0。实际上在 <span class="math display">\[\omega_s=v_1=\sum_{i\in X}
 (\omega_s,\omega_i)\alpha_i\]</span> 两边同时用 <span class="math inline">\(\alpha_s\)</span> 作内积有 <span class="math display">\[1=(\omega_s,\alpha_s)=\sum_{i\in X} (\omega_s,
 \omega_i)\underbrace{(\alpha_s,\alpha_i)}_{\leq0}.\]</span> 所以必须所有
 <span class="math inline">\((\omega_s, \omega_i)&lt;0\)</span>。所以
 <span class="math inline">\(X\cup \{s\}\)</span> 构成的子图满足 <a href="/coxeter-groups/level/#ideal-vertex">这个结论</a>
 的条件，于是我们得到 <span class="math display">\[\omega_s\in\overline{
-\mathrm{cone}(\bigcup_{w\in W_I}w(\omega_t))
+\mathrm{cone}(\bigcup_{w\in W_X}w(\omega_t))
 }\subset\overline{\mathcal{C}_r}.\]</span></p></li>
 </ol>
 <p><span class="math inline">\(\blacksquare\)</span></p>
@@ -939,7 +939,7 @@ light-like 的，所以 <span class="math inline">\(\Gamma\)</span> 的 level
 <p>这个群只有第一个顶点是实的，所以整个球堆完全由一个实球 <span class="math inline">\(\hat{\omega}_1\)</span> 生成：</p>
 <p><img src="/images/coxeter/compute_example_337.svg" class="fig" width="500"></p>
 <p>具体的计算步骤可以参考 shadertoy 动画代码中的注释：</p>
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/WdGBz3?gui=true&amp;t=0&amp;paused=true&amp;muted=false" allowfullscreen="">
 </iframe>
 <p>可以看到，每个实球都呈现一个二维的 Poincaré
 密铺图案。这很好理解，因为如果 <span class="math inline">\(\omega_i\)</span> 是实权，记 <span class="math inline">\(I=S\setminus\{i\}\)</span>，则实球 <span class="math inline">\(\hat{\omega}_i\)</span> 与虚球 <span class="math inline">\(\{\alpha_j\mid j\in I \}\)</span>

@@ -32,13 +32,11 @@ Mill, Robins 和 Rumsey
 Proofs and Confirmations: The Story of the Alternating Sign Matrix
 Conjecture
 
-一书时的读书笔记。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的
-\(q-\)
-二项式定理作为工具。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud
-是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 \(q-\) 超几何级数一起解决的。Macdonald
-猜想的证明似乎无法避免使用超几何级数的理论，但 Andrews
-猜想是完全可以用初等的 \(q-\)
-多项式解决的。">
+一书时的读书笔记。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud
+是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 \(q\)- 超几何级数一起解决的。Macdonald
+猜想的证明似乎无法避免使用超几何级数的知识，但 Andrews
+猜想是完全可以仅使用初等的 \(q\)-
+多项式解决的。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 \(q\)- 二项式定理作为工具。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -360,13 +358,11 @@ Mill, Robins 和 Rumsey
 <p>Proofs and Confirmations: The Story of the Alternating Sign Matrix
 Conjecture</p>
 </blockquote>
-<p>一书时的读书笔记。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的
-<span class="math inline">\(q-\)</span>
-二项式定理作为工具。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud
-是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 <span class="math inline">\(q-\)</span> 超几何级数一起解决的。Macdonald
-猜想的证明似乎无法避免使用超几何级数的理论，但 Andrews
-猜想是完全可以用初等的 <span class="math inline">\(q-\)</span>
-多项式解决的。</p>
+<p>一书时的读书笔记。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud
+是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 <span class="math inline">\(q\)</span>- 超几何级数一起解决的。Macdonald
+猜想的证明似乎无法避免使用超几何级数的知识，但 Andrews
+猜想是完全可以仅使用初等的 <span class="math inline">\(q\)</span>-
+多项式解决的。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 <span class="math inline">\(q\)</span>- 二项式定理作为工具。</p>
 <span id="more"></span>
 <h1 id="问题描述">问题描述</h1>
 <div class="unnumbered statement definition-unnumbered plain">
@@ -411,7 +407,7 @@ DPP 分拆 <span class="math display">\[
 组成的集合，这样的 DPP 最多有 <span class="math inline">\(n-1\)</span>
 行，每一行长度最多是 <span class="math inline">\(n-1\)</span>，每个元素不大于 <span class="math inline">\(n\)</span>，所以必然能装进一个大小为 <span class="math inline">\(n\times n\times n\)</span> 的空间
 （当然不可能填满）。我们的目标是求出生成函数 <span class="math display">\[
-\sum_{\pi\in {\rm dpp}(n)} q^{|\pi|}.
+\sum_{\pi\in \mathrm{dpp}(n)} q^{|\pi|}.
 \]</span></p>
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
@@ -428,27 +424,32 @@ DPP 分拆 <span class="math display">\[
   &amp;\begin{matrix}3&amp;1\end{matrix}
   \end{array}
   \big\}.
-\]</span> 所以其 <span class="math inline">\(q-\)</span> 计数为 <span class="math display">\[
-\sum_{\pi\in {\rm dpp}(3)} q^{|\pi|}=1+q^2+q^3+q^4+q^5+q^6+q^8.
+\]</span> 所以其 <span class="math inline">\(q\)</span>- 计数为 <span class="math display">\[
+\sum_{\pi\in \mathrm{dpp}(3)} q^{|\pi|}=1+q^2+q^3+q^4+q^5+q^6+q^8.
 \]</span></p>
 </div>
 <p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/George_Andrews_(mathematician)">George
-Andrews</a> 发现，这个生成函数可以表示为一个 <span class="math inline">\(q-\)</span> 行列式： <span class="math display">\[
-\sum_{\pi\in {\rm dpp}(n)} q^{|\pi|}=
+Andrews</a> 发现，这个生成函数可以表示为一个 <span class="math inline">\(q\)</span>- 行列式： <span class="math display">\[
+\sum_{\pi\in \mathrm{dpp}(n)} q^{|\pi|}=
 \det\left(
   \delta_{ij}+q^{i+1}
     \binom{i+j}{j-1}_q
     \right)_{1\leq i,j\leq n-1}.
-\]</span> Andrews 会求 DPP 的计数序列，即 <span class="math inline">\(q=1\)</span> 的情形，但是不会算这个 <span class="math inline">\(q-\)</span> 行列式。事实上这个问题最难的地方就在求
-<span class="math inline">\(q-\)</span> 行列式这一步上！不过 Andrews
+\]</span> Andrews 会求 DPP 的计数序列，即 <span class="math inline">\(q=1\)</span> 的情形，但是不会算这个 <span class="math inline">\(q\)</span>- 行列式。事实上这个问题最难的地方就在求
+<span class="math inline">\(q\)</span>- 行列式这一步上！不过 Andrews
 猜出了这个行列式的表达式：</p>
-<div id="andrews-------" class="statement sta_andrews___ plain unnumbered">
+<div id="Andrews-conjecture" class="statement sta_andrews___ plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">Andrews
 猜想</span>.</span><span class="statement-spah"> </span><br>
 </p>
 <p><span class="math display">\[\det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq
-i,j\leq n-1}=\prod_{1\leq i,j\leq
+i,j\leq n-1}=\prod_{1\leq i\leq j\leq
 n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}}.\]</span></p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>注意上式右边下标 <span class="math inline">\(i,j\)</span>
+的范围是 <span class="math inline">\(1\leq i\leq j\leq n\)</span>！</p>
 </div>
 <p>这个猜想最终在 80 年代由 Mills, Robbins, Rumsey 三人解决 <span class="citation" data-cites="Mills1983">(<a href="#ref-Mills1983" role="doc-biblioref">Mills, Robbins, and Rumsey
 1983</a>)</span>，整个证明过程可谓一波三折，既需要缜密细心的推理，也不乏大胆的猜测，本文接下来就来介绍他们的证明。</p>
@@ -456,7 +457,7 @@ n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}}.\]</span></p>
 <p>了解 DPP
 背后的故事对理解证明是很有帮助的。对第一次接触递降平面分拆这个名词的读者来说，可能会纳闷：“数学家们为什么要考虑这种看起来很奇怪的计数问题呢？它似乎不像代数几何、数论中的问题那么有分量，而且还有一些不明所以的限制条件”。这是一种错觉，平面分拆简单的外表背后有许多深刻而有趣的理论。DPP
 最初是上世纪 70 年代 Andrews 在研究另一类平面分拆循环对称平面分拆 （简称
-CSPP） 时得到的副产品，我们之前提到 Andrews 会算 DPP 计数序列在 <span class="math inline">\(q=1\)</span> 的情形，也猜出了 <span class="math inline">\(q-\)</span>
+CSPP） 时得到的副产品，我们之前提到 Andrews 会算 DPP 计数序列在 <span class="math inline">\(q=1\)</span> 的情形，也猜出了 <span class="math inline">\(q\)</span>-
 计数的正确答案，但是没有给出证明，不过那时 DPP
 作为众多平面分拆猜想之一并不显得特别重要。</p>
 <p>差不多在与 Andrews 研究 DPP 同样的时期，数学家 Mills, Robbins, Rumsey
@@ -508,21 +509,22 @@ Macdonald 猜想，这不能不说是“失之东隅，收之桑榆”。</p>
   \begin{pmatrix}n+k-2\\k-1\end{pmatrix}
   \frac{(2n-k-1)!}{(n-k)!}
   \prod_{j=0}^{n-2}\frac{(3j+1)!}{(n+j)!}.
-\]</span> 既然 <span class="math inline">\({\rm dpp}(n)\)</span> 和
+\]</span> 既然 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 和
 <span class="math inline">\({\rm ASM}(n)\)</span>
 <strong>看起来</strong>是一样大小的，那是不是意味着它也应该有一个参数，将
-<span class="math inline">\({\rm dpp}(n)\)</span> 对应地分为 <span class="math inline">\(n\)</span> 个不同的子集呢？</p>
-<p>很自然地，Mills 等人猜测在一个 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span> 中数字 <span class="math inline">\(n\)</span>
-出现的次数就是对应的参数，而且他们猜测恰好含有 <span class="math inline">\(k-1(1\leq k\leq n)\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的个数等于 <span class="math inline">\(|A_{n,k}|\)</span>，这个猜测在他们的证明中起着关键的作用。注意在一个
-<span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span> 中 <span class="math inline">\(n\)</span> 出现的次数至多是 <span class="math inline">\(n-1\)</span>，否则由于这些 <span class="math inline">\(n\)</span> 必然都在第一行，不满足 DPP
-的行首严格大于该行长度的限制。</p>
+<span class="math inline">\(\mathrm{dpp}(n)\)</span> 对应地分为 <span class="math inline">\(n\)</span> 个不同的子集呢？</p>
+<p>注意在一个 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span>
+中 <span class="math inline">\(n\)</span> 出现的次数 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(0\leq
+k\leq n-1\)</span>，不可能大于等于 <span class="math inline">\(n\)</span>。否则由于这些 <span class="math inline">\(n\)</span> 必然都在第一行，不满足 DPP
+的行首严格大于该行长度的限制。很自然地，Mills 等人猜测在一个 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span> 中数字 <span class="math inline">\(n\)</span>
+出现的次数就是对应的参数，而且他们猜测恰好含有 <span class="math inline">\(k\,(0\leq k\leq n-1)\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的个数等于 <span class="math inline">\(|A_{n,k}|\)</span>，这个猜测在他们的证明中起着关键的作用。</p>
 <p>证明的第一步是把计数问题转化为行列式的求值，为此我们需要一些关于
 Gauss 二项式系数的结论。</p>
 <h1 id="一点预备知识">一点预备知识</h1>
 <p>本文需要的预备知识大致分为三点：</p>
 <ol type="1">
-<li><span class="math inline">\(q-\)</span> 二项式定理。</li>
-<li>Gauss 路径的 <span class="math inline">\(q-\)</span> 计数。</li>
+<li><span class="math inline">\(q\)</span>- 二项式定理。</li>
+<li>Gauss 路径的 <span class="math inline">\(q\)</span>- 计数。</li>
 <li>格点图上不相交路径组计数的 Gessel-Viennot 引理。</li>
 </ol>
 <p>其中 Gessel-Viennot
@@ -547,7 +549,7 @@ paths and determinants” 一节。</p>
 \]</span></p>
 </div>
 <p>Gauss 二项式系数有不少等价的描述方式，我们这里要用到的是它等于 Gauss
-路径的 <span class="math inline">\(q-\)</span> 计数。</p>
+路径的 <span class="math inline">\(q\)</span>- 计数。</p>
 <p>考虑格点图 <span class="math inline">\(\mathbb{Z}^2\)</span>，并设
 <span class="math inline">\(A=(0, m)\)</span>，<span class="math inline">\(B=(n,0)\)</span>。一条从 <span class="math inline">\(A\)</span> 到 <span class="math inline">\(B\)</span> 的 Gauss 路径 <span class="math inline">\(P\)</span> 是一个从 <span class="math inline">\(A\)</span>
 出发，每一步向右或者向下一个单位距离，经过 <span class="math inline">\(m+n\)</span> 步后到达 <span class="math inline">\(B\)</span> 的格点路径，如下图所示：</p>
@@ -555,7 +557,7 @@ paths and determinants” 一节。</p>
 <img src="/images/dpp/gausspath.svg" width="350" alt="图中的圆圈标注了 P 的权重方格">
 <figcaption aria-hidden="true">图中的圆圈标注了 <span class="math inline">\(P\)</span> 的权重方格</figcaption>
 </figure>
-<p>熟知这样的 Gauss 路径一共有 <span class="math inline">\(\binom{m+n}{n}\)</span> 条，它们组成的集合记作
+<p>这样的 Gauss 路径一共有 <span class="math inline">\(\binom{m+n}{n}\)</span> 条，它们组成的集合记作
 <span class="math inline">\(\mathcal{G}(m,n)\)</span>。</p>
 <p>我们规定路径 <span class="math inline">\(P\)</span> 的权重为 <span class="math inline">\(q^{|P|}\)</span>，其中 <span class="math inline">\(|P|\)</span> 等于 <span class="math inline">\(P\)</span>
 与坐标轴所围成的区域中包含的方格的个数，上图中用圆圈标出了这些方格，一共有
@@ -614,12 +616,11 @@ a_i)\)</span> 出发，每一步向右或者向下，到达 <span class="math in
 位置的元素为从 <span class="math inline">\(A_i=(0,a_i)\)</span> 到 <span class="math inline">\(B_j=(a_j-2,0)\)</span> 的 Gauss
 路径的个数，这当然是 <span class="math inline">\(\binom{a_i+a_j-2}{a_j-2}\)</span>。</p>
 <p>对所有的 <span class="math inline">\(2\leq a_1 &lt;\cdots &lt;
-a_m\leq n\)</span> 求和即为 <span class="math inline">\({\rm
-dpp}(n)\)</span> 的个数： <span class="math display">\[
-|{\rm dpp}(n)|=\sum_{2\leq a_1&lt;\cdots&lt; a_m\leq
+a_m\leq n\)</span> 求和即为 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的个数： <span class="math display">\[
+|\mathrm{dpp}(n)|=\sum_{2\leq a_1&lt;\cdots&lt; a_m\leq
 n}\det\left(\binom{a_i+a_j-2}{a_j-2}\right)_{1\leq i,j\leq m}.
 \]</span> 为了把这个表达式化简，我们用 <span class="math inline">\(a_i-1\)</span> 代替每个 <span class="math inline">\(a_i\)</span>，于是 <span class="math display">\[
-|{\rm dpp}(n)|=\sum_{1\leq a_1&lt;\cdots&lt; a_m\leq
+|\mathrm{dpp}(n)|=\sum_{1\leq a_1&lt;\cdots&lt; a_m\leq
 n-1}\det\left(\binom{a_i+a_j}{a_j-1}\right).
 \]</span> 现在我们只需要一个线性代数的引理：</p>
 <div id="linalg1" class="statement lemma plain">
@@ -630,15 +631,14 @@ r}\det A[a_1a_2\cdots a_m].
 是下标 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 决定的
 <span class="math inline">\(A\)</span> 的 <span class="math inline">\(m\)</span> 阶子矩阵。</p>
 </div>
-<p>由此我们得到 <span class="math display">\[|{\rm
-dpp}(n)|=\det\left(\delta_{ij}+\binom{i+j}{j-1}\right)_{1\leq i,j\leq
-n-1}.
+<p>由此我们得到 <span class="math display">\[|\mathrm{dpp}(n)|=\det\left(\delta_{ij}+\binom{i+j}{j-1}\right)_{1\leq
+i,j\leq n-1}.
 \]</span> 至此我们就得到了 <span class="math inline">\(q=1\)</span> 时
-<span class="math inline">\({\rm dpp}(n)\)</span>
+<span class="math inline">\(\mathrm{dpp}(n)\)</span>
 的计数序列的行列式形式。</p>
-<p>得到 <span class="math inline">\(q-\)</span>
+<p>得到 <span class="math inline">\(q\)</span>-
 计数的表达式需要多做一点微小的工作：我们不能简单地把上面的行列式直接替换为
-<span class="math inline">\(q-\)</span> 版本。我们需要说明在
+<span class="math inline">\(q\)</span>- 版本。我们需要说明在
 Gessel-Viennot
 引理中，在交换路径操作前后，路径组的权重是保持不变的，否则无法直接使用
 Gessel-Viennot 引理（Bressoud 的书插图 3.4
@@ -671,37 +671,32 @@ Gessel-Viennot 引理（Bressoud 的书插图 3.4
 因此路径权重之积 <span class="math inline">\(q^{|P|}\cdot
 q^{|Q|}=q^{|P'|}\cdot q^{|Q'|}\)</span> 保持不变，从而
 Gessel-Viennot 引理仍然可用。</p>
-<p>现在顶点集合 <span class="math inline">\(\{A_i=(0,a_i)\}\)</span>，<span class="math inline">\(\{B_j=(a_j-2,0)\}\)</span>，而从 <span class="math inline">\(A_i\)</span> 到 <span class="math inline">\(B_j\)</span> 的 Gauss 路径的 <span class="math inline">\(q-\)</span> 计数为 <span class="math inline">\(\binom{a_i+a_j-2}{a_j-2}_q\)</span>，于是行首分别为
-<span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 的 DPP 的 <span class="math inline">\(q-\)</span> 计数为 <span class="math display">\[
+<p>现在顶点集合 <span class="math inline">\(\{A_i=(0,a_i)\}\)</span>，<span class="math inline">\(\{B_j=(a_j-2,0)\}\)</span>，而从 <span class="math inline">\(A_i\)</span> 到 <span class="math inline">\(B_j\)</span> 的 Gauss 路径的 <span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\binom{a_i+a_j-2}{a_j-2}_q\)</span>，于是行首分别为
+<span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 的 DPP 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math display">\[
 q^{\sum_{i=1}^m
 a_i}\cdot\det\left(\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}=
 \det\left(q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}.
 \]</span> 通过用 <span class="math inline">\(a_i-1\)</span> 代替 <span class="math inline">\(a_i\)</span> 并使用 <a href="#linalg1" title="引理 4.1">引理 4.1</a>，我们得到</p>
 <div class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-4.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\({\rm dpp}(n)\)</span> 的 <span class="math inline">\(q-\)</span> 计数为 <span class="math display">\[
+4.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math display">\[
 \det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq i,j\leq
 n-1}.
 \]</span></p>
 </div>
-<p>（这里你需要小心 <span class="math inline">\({\rm dpp}(n)\)</span>
+<p>（这里你需要小心 <span class="math inline">\(\mathrm{dpp}(n)\)</span>
 对应的是一个 <span class="math inline">\(n-1\)</span>
 阶矩阵，这在记号上确实会带来一些困扰）</p>
 <p>现在剩下的任务就是求这个行列式的值了，而这才是整个故事中最困难的部分，到目前为止我们的路才走了一小半呢。</p>
 <h1 id="用关键参数将行列式分解">用关键参数将行列式分解</h1>
-<p>在上一节中我们已经把 <span class="math inline">\({\rm
-dpp}(n)\)</span> 的 <span class="math inline">\(q-\)</span>
-计数归结为计算行列式 <span class="math inline">\(\det(I_{n-1}+H_{n-1})\)</span>，其中 <span class="math display">\[H_{n-1}=\left(q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq
+<p>在上一节中我们已经把 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数归结为计算行列式 <span class="math inline">\(\det(I_{n-1}+H_{n-1})\)</span>，其中 <span class="math display">\[H_{n-1}=\left(q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq
 i,j\leq n-1}.\]</span></p>
-<p>Mills 等人认为，在一个 <span class="math inline">\(\pi\in{\rm
-dpp}(n)\)</span> 中，<span class="math inline">\(n\)</span>
-出现的次数是一个重要的参数，根据 <span class="math inline">\(n\)</span>
-出现的次数 <span class="math inline">\(k\)</span> 可以把 <span class="math inline">\({\rm dpp}(n)\)</span> 分成 <span class="math inline">\(n\)</span> 个子集 <span class="math inline">\(\{S_k\}_{0\leq k\leq
-n-1}\)</span>，解决问题的关键在于分别求出每个 <span class="math inline">\(S_k\)</span> 的 <span class="math inline">\(q-\)</span>
+<p>Mills 等人认为，在一个 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span> 中，<span class="math inline">\(n\)</span> 出现的次数是一个重要的参数，根据 <span class="math inline">\(n\)</span> 出现的次数 <span class="math inline">\(k\)</span> 可以把 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 分成 <span class="math inline">\(n\)</span> 个子集 <span class="math inline">\(\{S_k\}_{0\leq k\leq
+n-1}\)</span>，解决问题的关键在于分别求出每个 <span class="math inline">\(S_k\)</span> 的 <span class="math inline">\(q\)</span>-
 计数对应的行列式表示，并找到这些行列式满足的递推关系。</p>
 <div id="theorem-Hkn" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-5.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(S_k\)</span> 的 <span class="math inline">\(q-\)</span> 计数为 <span class="math inline">\(\det H_{k,n-1}\)</span>，其中 <span class="math inline">\(H_{k,n-1}\)</span> 在 <span class="math inline">\(k=0\)</span> 时是把 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的最后一行用 <span class="math inline">\((0,\ldots,0,1)\)</span> 替换得到的矩阵，而在 <span class="math inline">\(k&gt;0\)</span> 时则是把 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的最后一行用向量 <span class="math display">\[
+5.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(S_k\)</span> 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\det H_{k,n-1}\)</span>，其中 <span class="math inline">\(H_{k,n-1}\)</span> 在 <span class="math inline">\(k=0\)</span> 时是把 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的最后一行用 <span class="math inline">\((0,\ldots,0,1)\)</span> 替换得到的矩阵，而在 <span class="math inline">\(k&gt;0\)</span> 时则是把 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的最后一行用向量 <span class="math display">\[
 q^{kn}
 \left(\binom{n+0-k}{1-k}_q,\binom{n+1-k}{2-k}_q,\cdots,\binom{n+n-2-k}{n-1-k}_q\right)
 \]</span> 替换得到的矩阵。</p>
@@ -709,8 +704,8 @@ q^{kn}
 <p>和之前一样，我们规定当 <span class="math inline">\(m&lt;0\)</span>
 时有 <span class="math inline">\(\binom{a}{m}_q=0\)</span>。</p>
 <p><strong>证明</strong>：<span class="math inline">\(k=0\)</span>
-的情形其实就是 <span class="math inline">\({\rm dpp}(n-1)\)</span> 的
-<span class="math inline">\(q-\)</span> 计数，它等于 <span class="math inline">\(I_{n-2}+H_{n-2}\)</span>，正好是 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的左上角 <span class="math inline">\(n-2\)</span>
+的情形其实就是 <span class="math inline">\(\mathrm{dpp}(n-1)\)</span> 的
+<span class="math inline">\(q\)</span>- 计数，它等于 <span class="math inline">\(I_{n-2}+H_{n-2}\)</span>，正好是 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的左上角 <span class="math inline">\(n-2\)</span>
 阶子矩阵，所以这个情形很简单，下面考虑 <span class="math inline">\(k&gt;0\)</span> 的情形。</p>
 <p>我们还是先<strong>从下到上</strong>固定每一行的行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span>，求出行首固定时的生成函数，再对所有可能的行首相加。</p>
 <p>办法和以前一样：现在除了行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span>
@@ -726,13 +721,13 @@ q^{kn}
 <span class="math inline">\(x\)</span> 轴上因此 Gesssel-Viennot
 引理仍然可用，于是新顶点集 <span class="math inline">\(\{A_i\}\)</span>
 和 <span class="math inline">\(\{B_j\}\)</span> 之间的不相交的路径组的
-<span class="math inline">\(q-\)</span> 计数为 <span class="math inline">\(\det X=\det(x_{ij})\)</span>，其中 <span class="math display">\[x_{ij}=\left\{\begin{align*}
+<span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\det X=\det(x_{ij})\)</span>，其中 <span class="math display">\[x_{ij}=\left\{\begin{align*}
 &amp;\binom{a_i+a_j-2}{a_j-2}_q, \quad &amp; i &lt; m\\
 &amp;\binom{n+a_j-k-2}{a_j-k-1}_q, \quad &amp; i=m
 \end{align*}
 \right.
 \]</span> 把因子 <span class="math inline">\(q^{\sum_{i=1}^{m-1}a_i+kn}\)</span> 补回去，其中
-<span class="math inline">\(q^{a_i}\)</span> 补在 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(i\)</span> 行上，<span class="math inline">\(kn\)</span> 补在 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(m\)</span> 行，我们就得到行首为 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 且恰好含有 <span class="math inline">\(k\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的 <span class="math inline">\(q-\)</span> 计数为 <span class="math inline">\(\det Y=\det(y_{ij})\)</span>，其中 <span class="math display">\[y_{ij}=
+<span class="math inline">\(q^{a_i}\)</span> 补在 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(i\)</span> 行上，<span class="math inline">\(kn\)</span> 补在 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(m\)</span> 行，我们就得到行首为 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 且恰好含有 <span class="math inline">\(k\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\det Y=\det(y_{ij})\)</span>，其中 <span class="math display">\[y_{ij}=
 \left\{\begin{align*}
 &amp;q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q, \quad &amp; i&lt;m\\
 &amp;q^{kn}\binom{n+a_j-k-2}{a_j-k-1}_q, \quad &amp; i=m.
@@ -761,12 +756,17 @@ A[a_1\cdots a_{m-1}|n-1],
 的证明。</p>
 <h1 id="mills-robbins-rumsey-的巧妙想法">Mills, Robbins, Rumsey
 的巧妙想法</h1>
-<p>记 <span class="math inline">\(h_n=\det(I_n+H_n)\)</span> 为 <span class="math inline">\({\rm dpp}(n+1)\)</span> 的 <span class="math inline">\(q-\)</span> 计数，<span class="math inline">\(h_{kn}=\det H_{kn}\)</span> 是其中 <span class="math inline">\(n+1\)</span> 恰好出现 <span class="math inline">\(k(0\leq k\leq n)\)</span> 次的 <span class="math inline">\(q-\)</span> 计数，则 <span class="math inline">\(\sum_{k=0}^n h_{kn}=h_n\)</span>。特别地 <span class="math inline">\(h_{0n}\)</span> 是 <span class="math inline">\(n+1\)</span> 出现 0 次的 <span class="math inline">\(q-\)</span> 计数，因而等于 <span class="math inline">\({\rm dpp}(n)\)</span> 的 <span class="math inline">\(q-\)</span> 计数，即 <span class="math inline">\(h_{0n}=h_{n-1}\)</span>。总之我们有一个三角形的二维数组，其每一行的和等于下一行的首元素。</p>
+<p>记 <span class="math inline">\(h_n=\det(I_n+H_n)\)</span> 为 <span class="math inline">\(\mathrm{dpp}(n+1)\)</span> 的 <span class="math inline">\(q\)</span>- 计数，<span class="math inline">\(h_{kn}=\det H_{kn}\)</span> 是其中 <span class="math inline">\(n+1\)</span> 恰好出现 <span class="math inline">\(k(0\leq k\leq n)\)</span> 次的 <span class="math inline">\(q\)</span>- 计数，从上节的讨论我们知道， <span class="math display">\[h_n=\sum_{k=0}^n h_{kn}.\]</span></p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>注意 <span class="math inline">\(H_{kn}\)</span>，<span class="math inline">\(h_{kn}\)</span> 这些记号来自 <span class="math inline">\(n\)</span> 阶矩阵，但它们对应的都是 <span class="math inline">\(\mathrm{dpp}(n+1)\)</span> 中的分拆。</p>
+</div>
+<p><span class="math inline">\(h_{0n}\)</span> 是 <span class="math inline">\(n+1\)</span> 出现 0 次的 <span class="math inline">\(q\)</span>- 计数，因而等于 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数，即 <span class="math inline">\(h_{0n}=h_{n-1}\)</span>。<span class="math inline">\(\{h_{kn}\}\)</span>
+构成一个三角阵列，其每一行的和等于下一行的首元素。</p>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><span class="math inline">\({\rm
-dpp}(n+1)\)</span></th>
+<th style="text-align: center;"></th>
 <th style="text-align: center;"><span class="math inline">\(h_n\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(h_{0n}\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(h_{1n}\)</span></th>
@@ -797,86 +797,56 @@ dpp}(n+1)\)</span></th>
 </tr>
 </tbody>
 </table>
-<div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
-</span>注意 <span class="math inline">\(H_{kn}\)</span>，<span class="math inline">\(h_{kn}\)</span> 这些记号来自 <span class="math inline">\(n\)</span> 阶矩阵，但它们对应的都是 <span class="math inline">\({\rm dpp}(n+1)\)</span> 中的分拆。</p>
-</div>
+<p>由此我们可以得到 <span class="math inline">\(\mathrm{dpp}(n+1)\)</span> 与 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数之间的递推关系： <span class="math display">\[\frac{h_n}{h_{n-1}} = 1 +
+\sum_{k=1}^n\frac{h_{kn}}{h_{0n}}.\]</span></p>
+<p>另一方面，<a href="#Andrews-conjecture" title="Andrews 猜想">Andrews
+猜想</a> 给出的递推关系是 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[\prod_{1\leq i\leq j\leq
+n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\,\bigg/ \prod_{1\leq i\leq j\leq
+n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}} =
+\prod_{i=1}^n\frac{1-q^{2n+i+1}}{1-q^{n+i}}=\frac{\binom{3n+1}{n}_q}{\binom{2n}{n}_q}.\]</span>
+并且在 <a href="#Andrews-conjecture" title="Andrews 猜想">Andrews
+猜想</a> 中分别取 <span class="math inline">\(n=0\)</span> 和 <span class="math inline">\(n=1\)</span> 可得 <span class="math display">\[\left.\prod_{1\leq i\leq j\leq
+n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=0}=1=h_0,\quad
+\left.\prod_{1\leq i\leq j\leq
+n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=1}=1+q^2=h_1.\]</span>
+所以我们只要证明 <span class="math display">\[1 +
+\sum_{k=1}^n\frac{h_{kn}}{h_{0n}}=\frac{\binom{3n+1}{n}_q}{\binom{2n}{n}_q}.\]</span>
+即可验证 Andrews 猜想成立。</p>
+<p>我们已经设定好了目标，现在我们从一段“平平无奇”的线性代数操作开始，逐步触及证明的核心。</p>
 <p>由于 <span class="math inline">\(I_n+H_n\)</span> 和所有的 <span class="math inline">\(\{H_{kn}\}_{0\leq k\leq n}\)</span> 的前 <span class="math inline">\(n-1\)</span>
-行都相同，仅最后一行不同，所以它们最后一行有共同的代数余子式。设 <span class="math inline">\(R_k\)</span> 是 <span class="math inline">\(H_{kn}\)</span> 的最后一行，列向量 <span class="math inline">\(C=(c_1,\ldots,c_n)^{T}\)</span> 是 <span class="math inline">\(R_k\)</span> 对应的代数余子式，<span class="math inline">\(C\)</span> 对所有 <span class="math inline">\(0\leq k\leq n\)</span> 都是一样的。则 <span class="math display">\[R_k\cdot C=\det H_{kn}=h_{kn}.\]</span> 设 <span class="math inline">\(R\)</span> 是由 <span class="math inline">\(R_1,\ldots,R_n\)</span> 为行向量排成的 <span class="math inline">\(n\times n\)</span> 矩阵 （不含 <span class="math inline">\(k=0\)</span>），则 <span class="math display">\[
+行都相同，仅最后一行不同，所以它们最后一行有共同的代数余子式。设 <span class="math inline">\(R_k\)</span> 是 <span class="math inline">\(H_{kn}\)</span> 的最后一行，列向量 <span class="math inline">\(C=(c_1,\ldots,c_n)^{T}\)</span> 是 <span class="math inline">\(R_k\)</span> 对应的代数余子式，<span class="math inline">\(C\)</span> 对所有 <span class="math inline">\(0\leq k\leq n\)</span> 都是一样的。则 <span class="math display">\[R_k\cdot C=\det H_{kn}=h_{kn}.\]</span> 将 <span class="math inline">\(R_1,\ldots,R_n\)</span> 以行向量依次排成 <span class="math inline">\(n\times n\)</span> 矩阵，记作 <span class="math inline">\(R\)</span>，则 <span class="math display">\[
 RC = \begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
-\]</span> <strong>注意到 <span class="math inline">\(R\)</span>
-是一个对角线上都是 1 的上三角矩阵</strong> （在 <a href="#theorem-Hkn" title="定理 5.1">定理 5.1</a> 中对 <span class="math inline">\(n+1\)</span> 的情形依次令 <span class="math inline">\(k=1,\ldots,n\)</span>），所以 <span class="math inline">\(R\)</span> 是可逆的，从而 <span class="math display">\[
+\]</span> <strong>不难看出 <span class="math inline">\(R\)</span>
+是一个对角线上都是 1 的上三角矩阵</strong> （在 <a href="#theorem-Hkn" title="定理 5.1">定理 5.1</a> 中对 <span class="math inline">\(n+1\)</span> 的情形依次令 <span class="math inline">\(k=1,\ldots,n\)</span>），所以 <span class="math inline">\(R\)</span> 可逆，从而 <span class="math display">\[
 C = R^{-1}\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
-\]</span> 对矩阵 <span class="math inline">\(H_{0n}\)</span>，其最后一行
-<span class="math inline">\(R_0\)</span> 满足 <span class="math inline">\(R_0\cdot C=\det
-H_{0n}=h_{0n}\)</span>，它的其它行与 <span class="math inline">\(C\)</span> 的内积是 0，所以 <span class="math display">\[
+\]</span> 由于矩阵 <span class="math inline">\(H_{0n}\)</span>
+满足最后一行 <span class="math inline">\(R_0\cdot C=\det
+H_{0n}=h_{0n}\)</span>，并且其它行与 <span class="math inline">\(C\)</span> 的内积是 0，所以 <span class="math display">\[
 H_{0n}C=\begin{pmatrix}0\\0\\\vdots\\h_{0n}\end{pmatrix}=
 h_{0n}\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix}.
 \]</span> 于是 <span class="math display">\[
 RH_{0n}R^{-1}\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=
 RH_{0n}C=
 h_{0n}R\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix}.
-\]</span> 记 <span class="math inline">\(A_n=RH_{0n}R^{-1}\)</span>，
-<span class="math display">\[
+\]</span> 记 <span class="math inline">\(A_n=RH_{0n}R^{-1}\)</span>，并记 <span class="math display">\[
 V_n=R\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix},
 \]</span> 则我们有 <span class="math display">\[\begin{equation}
 A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
 \end{equation}
-\label{eq:recurrent}\tag{1}\]</span></p>
-<p>到目前为止这些都是寻常的线性代数操作，并无出彩之处。<span class="math inline">\(A_n\)</span> 和 <span class="math inline">\(V_n\)</span>
-都是可以计算出来的（你从右边目录栏里面可以看到这一点），而 <span class="math inline">\(\{h_{kn}\}\)</span> 是我们要求的序列。Mills
-等人的想法是：</p>
-<div id="------" class="statement sta___ plain unnumbered">
-<p><span class="statement-heading"><span class="statement-label">想法</span>.</span><span class="statement-spah">
-</span><br>
-</p>
-<p><span class="math inline">\((\ref{eq:recurrent})\)</span>
-中给出的递推关系，加上初始条件 <span class="math inline">\(h_1=1+q^2\)</span>，是否能够唯一确定序列 <span class="math inline">\(\{h_{kn}\}\)</span>？</p>
-</div>
-<p>答案是肯定的：</p>
-<div id="lemma-bn" class="statement lemma plain">
-<p><span class="statement-heading"><span class="statement-label">引理
-6.1</span>.</span><span class="statement-spah"> </span>如果序列 <span class="math inline">\(\{b_{kn},n\geq1,0\leq k\leq n\}\)</span> 满足</p>
-<ol type="1">
-<li>初始条件 <span class="math inline">\(b_1=h_1\)</span>。</li>
-<li>每一行的和等于下一行的首元素，即对任何 <span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(\sum_{k=0}^nb_{kn}=b_n=b_{0,n+1}\)</span>
-成立。</li>
-<li>设 <span class="math inline">\(A_n,V_n\)</span> 如前，且 <span class="math display">\[A_n\begin{pmatrix}b_{1n}\\b_{2n}\\\vdots\\b_{nn}\end{pmatrix}=b_{0n}V_n.\]</span></li>
-</ol>
-<p>则对任何 <span class="math inline">\(k,n\)</span> 都有 <span class="math inline">\(b_{kn}=h_{kn}\)</span> 成立。</p>
-</div>
-<p><strong>证明</strong>：对 <span class="math inline">\(n\)</span>
-归纳，<span class="math inline">\(b_1=h_1\)</span> 是已知的，设 <span class="math inline">\(b_i=h_i\)</span> 对所有 <span class="math inline">\(i&lt;n\)</span> 成立，则 <span class="math inline">\(b_{0n}=h_{0n}\)</span>，于是 <span class="math inline">\((b_{1n},\ldots,b_{nn})^T\)</span> 和 <span class="math inline">\((h_{1n},\ldots,h_{nn})^T\)</span> 都是线性方程组
-<span class="math inline">\(A_nX=h_{0n}V_n\)</span>的解，由于 <span class="math inline">\(A_n\)</span> 是可逆矩阵，此方程组有唯一解，从而
-<span class="math inline">\(b_{kn}=h_{kn}\)</span> 对任何 <span class="math inline">\(k,n\)</span> 成立。<span class="math inline">\(\blacksquare\)</span></p>
-<p>所以如果我们能构造出一个满足 <a href="#lemma-bn" title="引理 6.1">引理 6.1</a>
-中三个条件的序列来，那么它必然就是我们要求的 <span class="math inline">\(\{h_{kn}\}\)</span>。怎么构造好呢？我们观察 <span class="math inline">\((\ref{eq:recurrent})\)</span>： <span class="math display">\[\begin{equation}
-A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
-\end{equation}\]</span> 看起来 <span class="math inline">\(h_{0n}\)</span>
-孤零零地放在右边，这不美观啊？可不可以把它和 <span class="math inline">\(h_{1n},\ldots,h_{nn}\)</span> 放在一起呢？这就是
-Mills 等人接下来的精彩操作了：考虑 <span class="math display">\[
+\label{eq:hn}\tag{1}
+\]</span> 观察上式，看起来 <span class="math inline">\(h_{0n}\)</span>
+孤零零地在右边，这不美观啊？可不可以把它和 <span class="math inline">\(h_{1n},\ldots,h_{nn}\)</span> 放在一起呢？这就是
+Mills 等人的精彩操作了：考虑 <span class="math display">\[
 K_n=\begin{pmatrix}\ast&amp;\ast\\V_n&amp;I_n-A_n\end{pmatrix}.
 \]</span> <span class="math inline">\(K_n\)</span> 是一个 <span class="math inline">\(n+1\)</span> 阶的矩阵，<span class="math inline">\(\ast\)</span> 位置是 <span class="math inline">\(K_n\)</span> 的第一行，暂时不确定是什么，但是不管
 <span class="math inline">\(\ast\)</span> 是什么，<span class="math inline">\(K_n\)</span> 都满足 <span class="math display">\[K_n\begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}=
   \begin{pmatrix}\ast\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}.
 \]</span>
-上面右边向量的第一个分量不知道，但是它应该是什么是显而易见的，肯定是
+上面右边向量的第一个分量我们不知道，但它<strong>应该</strong>是什么是显而易见的，肯定是
 <span class="math inline">\(h_{0n}\)</span> 啊！这不就是一个特征值是 1
 的特征向量嘛？所以我们下面的任务肯定是构造合适的 <span class="math inline">\(K_n\)</span>，使得 <span class="math display">\[K_n\begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}=
   \begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}.
-\]</span> 成立啊！</p>
-<p>所以如果我们能在 <span class="math inline">\(K_n\)</span> 中适当填入
-<span class="math inline">\(\ast\)</span> 位置的元素，并找到 <span class="math inline">\(K_n\)</span> 的<strong>任何一个</strong>特征值是 1
-的特征向量 <span class="math inline">\(v_n=(v_{0n},\ldots,v_{nn})^T\)</span>，则 <span class="math display">\[
-\begin{pmatrix}v_{0n}\\v_{1n}\\\vdots\\v_{nn}\end{pmatrix}=
-K_n\begin{pmatrix}v_{0n}\\v_{1n}\\\vdots\\v_{nn}\end{pmatrix}=
-\begin{pmatrix}
-v_{0n}\\v_{0n}V_n+(I_n-A_n)\begin{pmatrix}v_{1n}\\\vdots\\v_{nn}\end{pmatrix}
-\end{pmatrix}.
-\]</span> 即 <span class="math display">\[
-A_n\begin{pmatrix}v_{1n}\\\vdots\\v_{nn}\end{pmatrix}=v_{0n}V_n.
-\]</span> 则 <span class="math inline">\(\{v_{kn}\}\)</span> 与 <span class="math inline">\(\{h_{kn}\}\)</span>
-满足同样的递推关系，仅初始条件不同。根据 <a href="#lemma-bn" title="引理 6.1">引理 6.1</a>，它们只会相差一个倍数。于是把 <span class="math inline">\(v_{kn}\)</span> 适当缩放以后就可以得到 <span class="math inline">\(h_{kn}\)</span>！</p>
+\]</span> 成立，然后求解它特征值为 1 的特征向量啊！</p>
 <p>Mills 等人算出了 <span class="math inline">\(I_n-A_n\)</span> 和
 <span class="math inline">\(V_n\)</span>： <span class="math display">\[
 \begin{align*}
@@ -893,35 +863,25 @@ i,j\leq n}.
 <p><strong>这一步即为 Mills 等人的“信仰一跃”</strong>。</p>
 <p>然而看到 <span class="math inline">\(K_n\)</span>
 的表达式还是不免让人倒吸一口凉气，这么复杂的矩阵，Mills
-等人是怎么得出它的特征值是 1 的特征向量来的呢？</p>
+等人是怎么得出它的特征值 1 对应的特征向量来的呢？</p>
 <p>我们之前说过，Mills 等人研究 DPP 的目的是为了解决 ASM
 的计数。他们正确的猜出了 <span class="math inline">\({\rm
 ASM}(n)\)</span> 中第一行的 1 恰好出现在第 <span class="math inline">\(1\leq k\leq n\)</span> 列的 ASM 个数为 <span class="math display">\[
 |A_{n,k}|=\binom{n+k-2}{k-1}\frac{(2n-k-1)!}{(n-k)!}\prod_{j=0}^{n-2}\frac{(3j+1)!}{(n+j)!}.
-\]</span> 而且他们直觉认为这就是 <span class="math inline">\({\rm
-dpp}(n)\)</span> 中恰好含有 <span class="math inline">\(k-1\)</span> 个
-<span class="math inline">\(n\)</span> 的 DPP 的个数，即 <span class="math inline">\(h_{k-1,n-1}\)</span>，所以他们猜测特征向量 <span class="math inline">\(v_n\)</span> 的第 <span class="math inline">\(k\)</span> 个分量 <span class="math inline">\(v_{kn}\)</span> 应该形如 <span class="math display">\[
+\]</span> 而且他们直觉认为这就是 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 中恰好含有 <span class="math inline">\(k-1\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的个数，即 <span class="math inline">\(h_{k-1,n-1}\)</span>。把下标换成 <span class="math inline">\(k+1\)</span> 和 <span class="math inline">\(n+1\)</span>，即他们猜测 <span class="math display">\[|A_{n+1,k+1}|=h_{kn}=\binom{n+k}{k}\frac{(2n-k)!}{(n-k)!}\prod_{j=0}^{n-1}\frac{(3j+1)!}{(n+j+1)!}.\]</span></p>
+<p>所以他们猜测特征向量 <span class="math inline">\(v_n\)</span> 的第
+<span class="math inline">\(k\)</span> 个分量 <span class="math inline">\(v_{kn}\)</span> 应该形如 <span class="math display">\[
 q^{\text{some power}}\times\binom{n+k}{k}_q\binom{2n-k}{n-k}_q.
 \]</span> 经过试验以后他们发现取 <span class="math display">\[
 v_{kn}=q^{k(n+1)}\binom{n+k}{k}_q\binom{2n-k}{n-k}_q
 \]</span> 即可。<strong>这一步即为 Mills 等人的“灵魂一猜”</strong>。</p>
 <p>记 <span class="math inline">\(v_n=\sum_{k=0}^{n}
 v_{kn}\)</span>。经过计算可以得到 <span class="math display">\[v_{0n}=\binom{2n}{n}_q,\quad
-v_n=\binom{3n+1}{n}_q.\]</span> 前面说过，<span class="math inline">\(\{v_{kn}\}_{0\leq k\leq n}\)</span> 与 <span class="math inline">\(\{h_{kn}\}_{0\leq k\leq n}\)</span>
-只差一个倍数，不妨设 <span class="math inline">\(h_{kn}=\lambda_n
-v_{kn}\)</span>。由于三角数组 <span class="math inline">\(\{h_{kn}\}\)</span>
-满足每一行的和等于下一行的首元素，所以 <span class="math display">\[\lambda_{n+1} v_{0,n+1} =
-h_{0,n+1}=\sum_{k=0}^{n}h_{k,n}=\lambda_{n}v_n.\]</span>
-从而我们有递推关系 <span class="math display">\[\lambda_{n+1} =
-\lambda_{n}\frac{v_n}{v_{0,n+1}}=\lambda_{n}\frac{\binom{3n+1}{n}_q}{\binom{2n+2}{n+1}_q}.\]</span>
-结合 <span class="math inline">\(\lambda_0=0\)</span>，<span class="math inline">\(\lambda_1 = v_{01} / h_{01} =
-\binom{2}{1}_q\)</span>，我们得到 <span class="math display">\[h_n=\lambda_n v_n = v_n\cdot \prod_{k=1}^n
-\frac{\lambda_k}{\lambda_{k-1}}=\prod_{k=1}^n\frac{\binom{3k+1}{k}_q}{\binom{2k}{k}_q}.\]</span>
-此即为 <span class="math inline">\({\rm dpp}(n+1)\)</span> 的 <span class="math inline">\(q-\)</span> 计数。</p>
-<p>不难验证连乘积 <span class="math inline">\(\prod\limits_{k=1}^n\dfrac{\binom{3k+1}{k}_q}{\binom{2k}{k}_q}\)</span>
-确实等于 Andrews 猜想中给出的表达式 <span class="math display">\[\prod\limits_{1\leq i\leq j\leq
-n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}.\]</span></p>
-<p>（检查它们满足同样的递推关系）</p>
+\sum_{k=0}^nv_{kn}=\binom{3n+1}{n}_q.\]</span> 我们断言向量 <span class="math inline">\((v_{0n},\ldots,v_{nn})\)</span> 和 <span class="math inline">\((h_{0n},\ldots,h_{nn})\)</span>
+必然是共线的。这是因为，如果适当缩放前者使得 <span class="math inline">\(v_{0n}=h_{0n}\)</span> 的话，那么 <span class="math inline">\((v_{1n},\ldots,v_{nn})\)</span> 也是 <span class="math inline">\((\ref{eq:hn})\)</span> 中关于 <span class="math inline">\(\{h_{kn}\}_{k\geq1}\)</span>
+的线性方程组的解，而由于 <span class="math inline">\(A_n\)</span>
+可逆，该方程组的解唯一，所以对 <span class="math inline">\(k\geq1\)</span> 同样有 <span class="math inline">\(v_{kn}=h_{kn}\)</span>。于是 <span class="math display">\[1+\sum_{k=1}^n\frac{h_{kn}}{h_{0n}}=\frac{\sum_{k=0}^nv_{kn}}{v_{0n}}=\frac{\binom{3n+1}{n}_q}{\binom{2n}{n}_q}.\]</span></p>
+<p>这就完成了 Andrews 猜想的证明。</p>
 <h1 id="详细计算步骤">详细计算步骤</h1>
 <p>下面进入“小心求证”的部分，这里主要的工具是前面的 Gauss 二项式 <a href="#binom-thm1" title="定理 3.1">定理 3.1</a> 和 <a href="#binom-thm2" title="定理 3.2">定理 3.2</a>。我们要计算 <span class="math inline">\(I_n-A_n=I_n-RH_{0n}R^{-1}\)</span>，为此需要先计算
 <span class="math inline">\(R^{-1}\)</span>。</p>
@@ -1036,7 +996,7 @@ k\leq n}\)</span> 是 <span class="math inline">\(K_n\)</span>
 \]</span> 只要比较 <span class="math display">\[
 \left(\prod_{l=0}^n\frac{1}{1-xq^l}\right)\left(\prod_{l=n+1}^{2n+1}\frac{1}{1-xq^l}\right)=\left(\prod_{l=0}^{2n+1}\frac{1}{1-xq^l}\right)
 \]</span> 两边 <span class="math inline">\(x^n\)</span>
-项的系数，取左边第一个因子的 <span class="math inline">\(x^k\)</span>
+的系数，取第一个因子的 <span class="math inline">\(x^k\)</span>
 项系数，第二个因子的 <span class="math inline">\(x^{n-k}\)</span>
 系数并对 <span class="math inline">\(k\)</span> 求和即得。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
@@ -1057,6 +1017,32 @@ Partitions.”</span> <em>Journal of Combinatorial Theory, Series A</em>
 34 (3): 340–59.
 </div>
 </div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>我们来验证这个递推关系。记 <span class="math display">\[
+\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}} =
+\frac{x_{n+1}}{y_{n+1}},
+\]</span> 对分母，分离 <span class="math inline">\(j=n+1\)</span>
+的部分有 <span class="math display">\[y_{n+1}=y_n\cdot
+\prod\limits_{i=1}^{n+1}(1-q^{2i+n}).\]</span> 对分子，分离 <span class="math inline">\(j=n+1\)</span> 的部分有 <span class="math display">\[
+\begin{aligned}
+x_{n+1}&amp;=\prod_{i=1}^n\prod_{j=i}^n(1-q^{n+i+j})\cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=1}^{n-1}\prod_{j=i}^n(1-q^{n+i+j})\cdot (1-q^{3n}) \cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=2}^n\prod_{j=i-1}^n(1-q^{n+i+j-1})\cdot (1-q^{3n}) \cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=2}^n\prod_{j=i}^n(1-q^{n+i+j-1})\cdot
+\prod_{i=2}^n(1-q^{n+2i-2})\cdot (1-q^{3n})\cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=2}^n\prod_{j=i}^n(1-q^{n+i+j-1})\cdot
+\prod_{i=1}^{n}(1-q^{n+2i})\cdot \prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=x_n\cdot\prod_{i=1}^{n}(1-q^{n+2i})\cdot\prod_{i=1}^{n+1}(1-q^{2n+i+1})\,\bigg/\prod_{j=1}^n(1-q^{n+j}).
+\end{aligned}
+\]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 
 
 
