@@ -22,15 +22,15 @@
             中心单代数的三个基本结论 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个基本结论：
+    <meta name="description" content="本文整理自我在讨论班上做的一次约两小时的报告，介绍中心单代数的三个基本结论：
 
 中心单代数对张量积运算是封闭的。
 Noether-Skolem 定理。
 双重中心化子定理。
 
-这部分内容比较经典，在很多教材上都有，但是采用的讲述方式却很不一样，找到一个完全符合自己口味的讲解不是件容易的事情。尤其是对初学者而言，有些名气很大的教材反而不见得适合。我当初念
-Jacobson (1980)
-就念的很抓狂。后来我查阅了不少教材后经过提炼整理得到了本文。我个人认为这是最直接清楚的证明方式。">
+这些内容虽然经典，但不同教材的讲解方式差异很大，找到一个完全符合自己口味的不是件容易的事情。对初学者而言，一些名气很大的教材反而不见得友好。我当初念
+(Jacobson 1980)
+就感觉很抓狂。后来我查阅了不少教材后经过提炼整理得到了本文。我个人认为这是最直接清楚的讲法。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -341,15 +341,15 @@ Jacobson (1980)
                                         
                                             <div class="entry pink-link-context">
                                                 
-<p>本文来自我在讨论班上的一个两小时左右的报告，目的是介绍中心单代数的三个基本结论：</p>
+<p>本文整理自我在讨论班上做的一次约两小时的报告，介绍中心单代数的三个基本结论：</p>
 <ol type="1">
 <li>中心单代数对张量积运算是封闭的。</li>
 <li>Noether-Skolem 定理。</li>
 <li>双重中心化子定理。</li>
 </ol>
-<p>这部分内容比较经典，在很多教材上都有，但是采用的讲述方式却很不一样，找到一个完全符合自己口味的讲解不是件容易的事情。尤其是对初学者而言，有些名气很大的教材反而不见得适合。我当初念
-<span class="citation" data-cites="Jacobson_alg">Jacobson (<a href="#ref-Jacobson_alg" role="doc-biblioref">1980</a>)</span>
-就念的很抓狂。后来我查阅了不少教材后经过提炼整理得到了本文。我个人认为这是最直接清楚的证明方式。</p>
+<p>这些内容虽然经典，但不同教材的讲解方式差异很大，找到一个完全符合自己口味的不是件容易的事情。对初学者而言，一些名气很大的教材反而不见得友好。我当初念
+<span class="citation" data-cites="Jacobson_alg">(<a href="#ref-Jacobson_alg" role="doc-biblioref">Jacobson 1980</a>)</span>
+就感觉很抓狂。后来我查阅了不少教材后经过提炼整理得到了本文。我个人认为这是最直接清楚的讲法。</p>
 <span id="more"></span>
 <h1 id="中心单代数对张量积运算是封闭的">中心单代数对张量积运算是封闭的</h1>
 <div class="statement definition plain">
@@ -359,23 +359,20 @@ Jacobson (1980)
 <span class="math inline">\(A\)</span> 是域 <span class="math inline">\(F\)</span> 上的<strong>单代数</strong>；进一步如果
 <span class="math inline">\(A\)</span> 的中心 <span class="math inline">\(Z(A)=F\cdot{\rm 1}\cong F\)</span>，就称 <span class="math inline">\(A\)</span> 是域 <span class="math inline">\(F\)</span> 上的<strong>中心单代数</strong>。</p>
 </div>
-<p>最基本也是最重要的中心单代数的例子就是矩阵代数 <span class="math inline">\({\rm
-Mat}_n(F)\)</span>。在研究中心单代数的时候，一个有效的手段就是建立它和
-<span class="math inline">\({\rm Mat}_n(F)\)</span> 之间的同态。</p>
-<p>中心单代数有个很好的性质，就是它们对张量积的运算是封闭的：</p>
+<p>中心单代数的典型例子是 <span class="math inline">\({\rm
+Mat}_n(F)\)</span>，研究一般中心单代数的常见手段是建立它们与 <span class="math inline">\({\rm Mat}_n(F)\)</span> 之间的同态。</p>
 <div id="A-otimes-B" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
 1.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A,B\)</span> 是域 <span class="math inline">\(F\)</span> 上的两个中心单代数，则 <span class="math inline">\(A\otimes_F B\)</span> 也是中心单代数。</p>
 </div>
-<p><strong>证明</strong>：虽然这个定理的证明有点长，但是思路并不复杂。我们将分三步处理。</p>
+<p><strong>证明</strong>：证明大致分三步：</p>
+<p><strong>第一步：<span class="math inline">\(I\)</span> 必然包含形如
+<span class="math inline">\(1\otimes b\)</span> 的元素</strong></p>
 <p>设 <span class="math inline">\(\dim B=m\)</span>，固定 <span class="math inline">\(B\)</span> 的一组基 <span class="math inline">\(\{b_1,\ldots,b_m\}\)</span>，则任何 <span class="math inline">\(x\in A\otimes B\)</span> 可以唯一地写成 <span class="math display">\[x= a_1\otimes b_1+a_2\otimes
 b_2+\cdots+a_m\otimes b_m,\quad a_i\in A.\]</span> 当然某些 <span class="math inline">\(a_i\)</span> 可以是 <span class="math inline">\(0\)</span>。我们称上面这个表达式中非零项的个数为
 <span class="math inline">\(x\)</span> 的长度。</p>
-<p>设 <span class="math inline">\(I\ne(0)\)</span> 是 <span class="math inline">\(A\otimes B\)</span> 的双边理想，我们要证明必有
-<span class="math inline">\(I=A\otimes B\)</span>。</p>
-<p><strong>第一步：<span class="math inline">\(I\)</span> 必然包含形如
-<span class="math inline">\(1\otimes b\)</span> 的元素</strong></p>
-<p>取 <span class="math inline">\(0\ne x\in I\)</span> 使得 <span class="math inline">\(x\)</span> 是 <span class="math inline">\(I\)</span> 中长度最小的非零元素，不妨假设 <span class="math display">\[x= a_1\otimes b_1+a_2\otimes
+<p>设 <span class="math inline">\(I\ne(0)\)</span> 是 <span class="math inline">\(A\otimes B\)</span>
+的双边理想，取其中长度最小的非零元素 <span class="math inline">\(x\)</span>，不妨假设 <span class="math display">\[x= a_1\otimes b_1+a_2\otimes
 b_2+\cdots+a_r\otimes b_r,\quad 0&lt;r\leq m.\]</span> 于是每个 <span class="math inline">\(a_i\)</span> 都不是 <span class="math inline">\(0\)</span>，特别 <span class="math inline">\(a_1\ne0\)</span>。由于 <span class="math inline">\(A\)</span> 是单代数因此 <span class="math inline">\(A=Aa_1A\)</span> （即 <span class="math inline">\(a_1\)</span> 在 <span class="math inline">\(A\)</span> 中生成的双边理想），所以存在一组 <span class="math inline">\(\{c_j, d_j\mid 1\leq j\leq p\}\)</span> 满足 <span class="math display">\[1=\sum_{j=1}^p c_ja_1d_j.\]</span> 由于 <span class="math inline">\(I\)</span> 是双边理想因此每个 <span class="math display">\[(c_j\otimes 1)x(d_j\otimes 1)=(c_ja_1d_j)\otimes
 b_1+\cdots+(c_ja_rd_j)\otimes b_r\]</span> 都在 <span class="math inline">\(I\)</span> 中，当然它们的和 <span class="math display">\[\begin{aligned}
 x'&amp;=\left(\sum_{j=1}^p c_ja_1d_j\right)\otimes b_1 + \cdots +
@@ -393,9 +390,8 @@ a_rb_r=1\otimes(b_1+a_2b_2+\cdots+a_rb_r)\in I.\]</span> 注意由于 <span clas
 的元素。</p>
 <p><strong>第二步：<span class="math inline">\(A\otimes B\)</span>
 是单代数</strong></p>
-<p>我们有 <span class="math display">\[I\supset (1\otimes B)1\otimes
-b(1\otimes B)=1\otimes BbB=1\otimes B.\]</span> 其中最后一个等号是因为
-<span class="math inline">\(B\)</span> 是单代数，从而 <span class="math inline">\(B\)</span> 等于元素 <span class="math inline">\(b\)</span> 生成的双边理想 <span class="math inline">\(BbB\)</span>。从而 <span class="math display">\[I\supset (A\otimes1)(1\otimes B)=A\otimes
+<p>由 <span class="math inline">\(1\otimes b\in I\)</span> 且 <span class="math inline">\(B= BbB\)</span>，我们得出 <span class="math display">\[I\supset (1\otimes B)1\otimes b(1\otimes
+B)=1\otimes BbB=1\otimes B.\]</span> 从而 <span class="math display">\[I\supset (A\otimes1)(1\otimes B)=A\otimes
 B.\]</span> 这就证明了 <span class="math inline">\(I=A\otimes
 B\)</span>，即 <span class="math inline">\(A\otimes B\)</span>
 是单代数。</p>
