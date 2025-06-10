@@ -102,6 +102,14 @@ with Martingales
                     </li>
                 
                     <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-link "></i>
+                            
+                            Sporadic
+                        </a>
+                    </li>
+                
+                    <li>
                         <a class="menu-search modal-trigger " href="#search" >
                             <i class="fa fa-search "></i>
                             
@@ -162,6 +170,14 @@ with Martingales
             </li>
         
             <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-link "></i>
+                    
+                    Sporadic
+                </a>
+            </li>
+        
+            <li class="no-padding">
                 <a class="waves-effect menu-search modal-trigger " href="#search" >
                     <i class="fa fa-search "></i>
                     
@@ -177,22 +193,6 @@ with Martingales
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -201,8 +201,16 @@ with Martingales
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -217,32 +225,8 @@ with Martingales
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/完美采样/">
-                    完美采样 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -257,8 +241,40 @@ with Martingales
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -450,9 +466,8 @@ l_nU_n\right|}\right|_{X_{n-1}=A}\leq\frac{1}{|A|}=\frac{1}{|X_{n-1}|}.
 有定义，并且上面已经证明了它小于等于 <span class="math inline">\(\dfrac{1}{|X_{n-1}|}\)</span>，于是 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\right]=\mathop{\mathrm{\mathbb{E}}}\left[\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\bigg|\mathcal{F}_{n-1}\right]\right]\leq\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_{n-1}|}\right].\]</span>
 对 <span class="math inline">\(n\)</span> 归纳即可。<span class="math inline">\(\blacksquare\)</span></p>
 <p><a href="#supermartingale" title="定理 2.1">定理 2.1</a>
-是解决整个问题最关键的一步，有了它就海阔天空，没有它就寸步难行。由它我们立刻可以导出一个有趣的观察：由于非负上鞅
-<span class="math inline">\(\left\{\dfrac{1}{|X_n|}\right\}_{n\geq0}\)</span>
-必然几乎处处收敛，因此 <span class="math inline">\(\lim\limits_{n\to\infty}|X_n|\)</span>
+是解决整个问题最关键的一步，有了它就海阔天空，没有它就寸步难行。由它我们立刻可以导出一个有趣的观察：由于非负上鞅必然几乎处处收敛，因此
+<span class="math inline">\(\lim\limits_{n\to\infty}|X_n|\)</span>
 几乎处处存在。这有两种可能：<span class="math inline">\(\lim\limits_{n\to\infty}|X_n|=+\infty\)</span>
 或者 <span class="math inline">\(\lim\limits_{n\to\infty}|X_n|&lt;+\infty\)</span>。所以飞船要么飞向无穷远，即迷失在宇宙的深处，要么被吸引到某个有限的位置。</p>
 <p>现在我们可以证明：</p>
@@ -487,10 +502,10 @@ r/R\)</span>，即任何策略下飞船最终返回太阳系的概率不大于 <
 <span class="math inline">\(\{|X_n|=r\}\)</span> 具有零测度即可。</p>
 <p>我们来证明一个稍微加强的结论：对每个 <span class="math inline">\(n\geq0\)</span>，事件 <span class="math display">\[A_n=\{|X_n|=0\}\cup\{|X_n|=r\}\]</span>
 都是零概率事件。</p>
-<p>对 <span class="math inline">\(n\)</span> 归纳：<span class="math inline">\(n=0\)</span> 时 <span class="math inline">\(R_0=R&gt;r\)</span>，结论成立。设结论在小于 <span class="math inline">\(n\)</span> 时都成立。</p>
-<p>由于 <span class="math inline">\(\mathbb{P}(A_n)
-=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]]\)</span>，我们只要证明
-<span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]\)</span>
+<p>对 <span class="math inline">\(n\)</span> 归纳：<span class="math inline">\(n=0\)</span> 时 <span class="math inline">\(|X_0|=R&gt;r\)</span>，结论成立。设结论在小于
+<span class="math inline">\(n\)</span> 时都成立。由于 <span class="math display">\[\mathbb{P}(A_n)
+=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]].\]</span>
+我们只要证明 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]\)</span>
 是几乎处处为 0 的随机变量即可。</p>
 <p>在 <a href="#freeze" title="引理 1.1">引理 1.1</a> 中取 <span class="math inline">\(X=(X_{n-1},l_n),\,Y=U_n,\,\mathcal{G}=\mathcal{F}_{n-1}\)</span>，我们得到
 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{\{0,r\}}\circ
@@ -619,8 +634,8 @@ University Press.
 
     
       <p class="pink-link-context">
-        <a href="/wedderburn-artin-theorem/" rel="next" title="Artinian 环与 Wedderburn-Artin 定理">
-          下一篇：Artinian 环与 Wedderburn-Artin 定理
+        <a href="/schur-polynomials-and-hook-length-formula/" rel="next" title="Schur 多项式与钩长公式">
+          下一篇：Schur 多项式与钩长公式
         </a>
       </p>
       

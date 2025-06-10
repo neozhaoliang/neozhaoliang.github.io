@@ -1,0 +1,1343 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            递降平面分拆的 Andrews 猜想 | 朝花夕拾</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="你可能经常听到这样一句话：“做数学要大胆假设，小心求证”。我们今天要介绍的故事主角平面分拆中的
+Andrews
+猜想就完美地符合这一点。两个看似风马牛不相及的计数对象，因为有着相同的计数序列，冥冥中被联系在了一起，启发三位数学家
+Mill, Robins 和 Rumsey
+解决了一个困难的组合学猜想。整个过程并无高深的内容，但是其中的“信仰一跃”和“灵魂一猜”构成了故事的高潮，而那些繁琐的计算过程不过是小心求证的注脚而已。
+本文来自我几年前读 David Bressoud 的 (Bressoud 1999)
+
+Proofs and Confirmations: The Story of the Alternating Sign Matrix
+Conjecture
+
+一书时的读书笔记。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud
+是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 \(q\)- 超几何级数一起解决的。Macdonald
+猜想的证明似乎无法避免使用超几何级数的知识，但 Andrews
+猜想是完全可以仅使用初等的 \(q\)-
+多项式解决的。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 \(q\)- 二项式定理作为工具。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="递降平面分拆的 Andrews 猜想"/>
+    <meta property="og:site_name" content="朝花夕拾"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-link "></i>
+                            
+                            Sporadic
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-link "></i>
+                    
+                    Sporadic
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/计数组合学/">计数组合学</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>递降平面分拆的 Andrews 猜想</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2015-08-29T16:00:00.000Z"><a href="/descending-plane-partitions/">2015-08-30</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="section table-of-contents-text">问题描述</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%95%85%E4%BA%8B%E7%9A%84%E5%BC%80%E5%A7%8B"><span class="section table-of-contents-text">故事的开始</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%B8%80%E7%82%B9%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">一点预备知识</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%B0%86%E9%97%AE%E9%A2%98%E8%BD%AC%E5%8C%96%E4%B8%BA%E8%A1%8C%E5%88%97%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="section table-of-contents-text">将问题转化为行列式求值</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%94%A8%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E5%B0%86%E8%A1%8C%E5%88%97%E5%BC%8F%E5%88%86%E8%A7%A3"><span class="section table-of-contents-text">用关键参数将行列式分解</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#mills-robbins-rumsey-%E7%9A%84%E5%B7%A7%E5%A6%99%E6%83%B3%E6%B3%95"><span class="section table-of-contents-text">Mills, Robbins, Rumsey
+的巧妙想法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%AF%A6%E7%BB%86%E8%AE%A1%E7%AE%97%E6%AD%A5%E9%AA%A4"><span class="section table-of-contents-text">详细计算步骤</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E8%AE%A1%E7%AE%97-r-1"><span class="section table-of-contents-text">计算 \(R^{-1}\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E8%AE%A1%E7%AE%97-rh_0nr-1"><span class="section table-of-contents-text">计算 \(RH_{0n}R^{-1}\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%BE%97%E5%88%B0-v_n"><span class="section table-of-contents-text">得到 \(V_n\)</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E9%AA%8C%E8%AF%81-v_n-%E6%98%AF-k_n-%E7%9A%84%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="section table-of-contents-text">验证 \(v_n\) 是 \(K_n\) 的特征向量</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E9%AA%8C%E8%AF%81-sumlimits_k0nv_knbinom3n1n_q"><span class="section table-of-contents-text">验证 \(\sum\limits_{k&#x3D;0}^nv_{kn}&#x3D;\binom{3n+1}{n}_q\)</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>你可能经常听到这样一句话：“做数学要大胆假设，小心求证”。我们今天要介绍的故事主角平面分拆中的
+Andrews
+猜想就完美地符合这一点。两个看似风马牛不相及的计数对象，因为有着相同的计数序列，冥冥中被联系在了一起，启发三位数学家
+Mill, Robins 和 Rumsey
+解决了一个困难的组合学猜想。整个过程并无高深的内容，但是其中的“信仰一跃”和“灵魂一猜”构成了故事的高潮，而那些繁琐的计算过程不过是小心求证的注脚而已。</p>
+<p>本文来自我几年前读 David Bressoud 的 <span class="citation" data-cites="Bressoud1999">(<a href="#ref-Bressoud1999" role="doc-biblioref">Bressoud 1999</a>)</span></p>
+<blockquote>
+<p>Proofs and Confirmations: The Story of the Alternating Sign Matrix
+Conjecture</p>
+</blockquote>
+<p>一书时的读书笔记。我这里采用的叙述方式与 Bressoud 的书不同：Bressoud
+是把 DPP 的 Andrews 猜想和 CSPP 的 Macdonald 猜想统一用 <span class="math inline">\(q\)</span>- 超几何级数一起解决的。Macdonald
+猜想的证明似乎无法避免使用超几何级数的知识，但 Andrews
+猜想是完全可以仅使用初等的 <span class="math inline">\(q\)</span>-
+多项式解决的。本文只介绍 DPP 的 Andrews 猜想，并仅使用初等的 <span class="math inline">\(q\)</span>- 二项式定理作为工具。</p>
+<span id="more"></span>
+<h1 id="问题描述">问题描述</h1>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>一个<strong>严格错位平面分拆</strong> (strict shifted plane
+partition) 是一个二维的正整数数组 <span class="math inline">\(\pi\)</span>，其形状如下： <span class="math display">\[
+\begin{matrix}
+a_{11}&amp;a_{12}&amp;\cdots&amp;\cdots&amp;\cdots&amp;a_{1,\lambda_1}\\
+      &amp;a_{22}&amp;\cdots&amp;\cdots&amp;\cdots&amp;a_{2,\lambda_2+1}\\
+      &amp;&amp;\ddots&amp;\cdots&amp;\cdots&amp;\cdots\\
+      &amp;&amp;&amp;a_{mm}&amp;\cdots&amp;a_{m,\lambda_m+m-1}
+\end{matrix}
+\]</span> 其中 <span class="math inline">\(\pi\)</span>
+满足如下限制条件：</p>
+<ol type="1">
+<li>每一行与上一行相比都缩进 1 个位置。第 <span class="math inline">\(i\)</span> 行的非零元个数为 <span class="math inline">\(\lambda_i\)</span>。</li>
+<li>每一行从左到右是弱递减的：<span class="math inline">\(a_{ij}\geq
+a_{i,j+1}\)</span>。</li>
+<li>每一列从上到下是严格递减的：<span class="math inline">\(a_{ij}&gt;a_{i+1,j}\)</span>。</li>
+</ol>
+<p>此外如果 <span class="math inline">\(\pi\)</span>
+满足任何一行的长度严格小于该行第一个元素，并且大于等于下一行的第一个元素，即
+<span class="math display">\[
+a_{11}&gt;\lambda_1\geq a_{22}&gt;\lambda_2\geq\cdots\geq
+a_{mm}&gt;\lambda_m,
+\]</span> 就称 <span class="math inline">\(\pi\)</span>
+是一个<strong>递降平面分拆</strong> (descending plane
+partition，本文以下简称为 DPP)。显然 DPP 是严格错位平面分拆的子集。</p>
+<p>记 <span class="math inline">\(|\pi|=\sum_{i,j}a_{ij}\)</span> 为
+<span class="math inline">\(\pi\)</span> 的所有元素之和。</p>
+</div>
+<p>OK，我知道在一个定义里面一下子塞进去这么多概念会让人很晕，所以下面是一张插图：任何类型的平面分拆从“空间鸟瞰图”的角度去看都是在房间中按照一定的规则“堆方块”。例如
+DPP 分拆 <span class="math display">\[
+\pi\ =\ \begin{matrix}
+7&amp;7&amp;6&amp;6&amp;3&amp;1\\&amp;6&amp;5&amp;4&amp;2\\&amp;&amp;3&amp;3\\&amp;&amp;&amp;2\end{matrix}
+\]</span> 对应的鸟瞰图如下图所示：</p>
+<p><img src="/images/dpp/dpp_example.png" class="fig" width="500"></p>
+<p>你可以看到数组的每一行与方块的每一层一一对应。由于 <span class="math inline">\(\pi\)</span>
+是严格错位平面分拆，所以每一层相对于下面一层在两个方向上分别缩进一个单位以后仍然可以被下面一层托住，从而不会出现“悬空”的方块。</p>
+<p>设 <span class="math inline">\(\mathrm{dpp}(n)\)</span>
+为所有数字均不超过 <span class="math inline">\(n\)</span> 的 DPP
+组成的集合，这样的 DPP 最多有 <span class="math inline">\(n-1\)</span>
+行，每一行长度最多是 <span class="math inline">\(n-1\)</span>，每个元素不大于 <span class="math inline">\(n\)</span>，所以必然能装进一个大小为 <span class="math inline">\(n\times n\times n\)</span> 的空间
+（当然不可能填满）。我们的目标是求出生成函数 <span class="math display">\[
+\sum_{\pi\in \mathrm{dpp}(n)} q^{|\pi|}.
+\]</span></p>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span><span class="math inline">\(\mathrm{dpp}(3)\)</span> 总共包含 7
+种不同的分拆 （空分拆也算一种）： <span class="math display">\[
+\mathrm{dpp}(3)=\big\{
+  \begin{array}{ccccccc}
+  \emptyset,
+  &amp;\begin{matrix}3&amp;3\\&amp;2\end{matrix},
+  &amp;2,
+  &amp;\begin{matrix}3&amp;3\end{matrix},
+  &amp;3,
+  &amp;\begin{matrix}3&amp;2\end{matrix},
+  &amp;\begin{matrix}3&amp;1\end{matrix}
+  \end{array}
+  \big\}.
+\]</span> 所以其 <span class="math inline">\(q\)</span>- 计数为 <span class="math display">\[
+\sum_{\pi\in \mathrm{dpp}(3)} q^{|\pi|}=1+q^2+q^3+q^4+q^5+q^6+q^8.
+\]</span></p>
+</div>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/George_Andrews_(mathematician)">George
+Andrews</a> 发现，这个生成函数可以表示为一个 <span class="math inline">\(q\)</span>- 行列式： <span class="math display">\[
+\sum_{\pi\in \mathrm{dpp}(n)} q^{|\pi|}=
+\det\left(
+  \delta_{ij}+q^{i+1}
+    \binom{i+j}{j-1}_q
+    \right)_{1\leq i,j\leq n-1}.
+\]</span> Andrews 会求 DPP 的计数序列，即 <span class="math inline">\(q=1\)</span> 的情形，但是不会算这个 <span class="math inline">\(q\)</span>- 行列式。事实上这个问题最难的地方就在求
+<span class="math inline">\(q\)</span>- 行列式这一步上！不过 Andrews
+猜出了这个行列式的表达式：</p>
+<div id="Andrews-conjecture" class="statement sta_andrews___ plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">Andrews
+猜想</span>.</span><span class="statement-spah"> </span><br>
+</p>
+<p><span class="math display">\[\det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq
+i,j\leq n-1}=\prod_{1\leq i\leq j\leq
+n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}}.\]</span></p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>注意上式右边下标 <span class="math inline">\(i,j\)</span>
+的范围是 <span class="math inline">\(1\leq i\leq j\leq n\)</span>！</p>
+</div>
+<p>这个猜想最终在 80 年代由 Mills, Robbins, Rumsey 三人解决 <span class="citation" data-cites="Mills1983">(<a href="#ref-Mills1983" role="doc-biblioref">Mills, Robbins, and Rumsey
+1983</a>)</span>，整个证明过程可谓一波三折，既需要缜密细心的推理，也不乏大胆的猜测，本文接下来就来介绍他们的证明。</p>
+<h1 id="故事的开始">故事的开始</h1>
+<p>了解 DPP
+背后的故事对理解证明是很有帮助的。对第一次接触递降平面分拆这个名词的读者来说，可能会纳闷：“数学家们为什么要考虑这种看起来很奇怪的计数问题呢？它似乎不像代数几何、数论中的问题那么有分量，而且还有一些不明所以的限制条件”。这是一种错觉，平面分拆简单的外表背后有许多深刻而有趣的理论。DPP
+最初是上世纪 70 年代 Andrews 在研究另一类平面分拆循环对称平面分拆 （简称
+CSPP） 时得到的副产品，我们之前提到 Andrews 会算 DPP 计数序列在 <span class="math inline">\(q=1\)</span> 的情形，也猜出了 <span class="math inline">\(q\)</span>-
+计数的正确答案，但是没有给出证明，不过那时 DPP
+作为众多平面分拆猜想之一并不显得特别重要。</p>
+<p>差不多在与 Andrews 研究 DPP 同样的时期，数学家 Mills, Robbins, Rumsey
+三人正在为 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Alternating_sign_matrix">交错符号矩阵</a>
+（Alternating Sign Matrix，以下简称 ASM） 猜想而苦苦挣扎，他们考虑的
+<span class="math inline">\(n\)</span>
+阶的交错符号矩阵是指满足如下条件的 <span class="math inline">\(n\times
+n\)</span> 矩阵：</p>
+<ol type="1">
+<li>每个元素取值为 <span class="math inline">\(1,-1,0\)</span>。</li>
+<li>矩阵的每一行和每一列的和都是 1。</li>
+<li>对每一行和每一列，其 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(-1\)</span> 交替出现。</li>
+</ol>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>3 阶的交错符合矩阵共有 7 个，其中 6 个是置换矩阵，只有一个含有
+-1： <span class="math display">\[
+\begin{align*}
+&amp;\mathrm{ASM}(3)=
+\Bigg\{
+  \begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix},
+  \begin{pmatrix}0&amp;0&amp;1\\0&amp;1&amp;0\\1&amp;0&amp;0\end{pmatrix},
+  \begin{pmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\\0&amp;1&amp;0\end{pmatrix},\\
+  &amp;\begin{pmatrix}0&amp;0&amp;1\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix},
+  \begin{pmatrix}0&amp;1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix},
+  \begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\1&amp;0&amp;0\end{pmatrix},
+  \begin{pmatrix}0&amp;1&amp;0\\1&amp;-1&amp;1\\0&amp;1&amp;0\end{pmatrix}
+  \Bigg\}.
+\end{align*}
+\]</span></p>
+</div>
+<p>Mills 等人通过直观的杨辉三角法猜出了 <span class="math inline">\({\rm
+ASM}(n)\)</span> 的计数序列，但是对怎样证明它毫无头绪，于是他们求助于
+MIT 的组合学大师 Stanley。Stanley 告诉他们自己也不知道答案，但是 Mills
+等人给出的 ASM 的计数序列<strong>看起来</strong>与 Andrews 得到的 DPP
+的计数序列是相同的： <span class="math display">\[
+|\mathrm{dpp}(n)|=|\mathrm{ASM}(n)|=\prod_{j=0}^{n-1}\frac{(3j+1)!}{(n+j+1)!}=1,2,7,42,429,\ldots
+\]</span> 于是 Mills 等人很自然地转而研究 DPP，希望从中找到解决 ASM
+猜想的办法。有趣的是他们没能解决 ASM 猜想 （1995/96 年由 Zeilberger 和
+Kuperberg 分别解决），倒是解决了 DPP 的 Andrews 猜想以及 CSPP 的
+Macdonald 猜想，这不能不说是“失之东隅，收之桑榆”。</p>
+<p>Mills 等人的证明受到了 DPP 与 ASM
+<strong>貌似</strong>有相同的计数序列这个事情的启发。在一个 <span class="math inline">\(n\)</span> 阶 ASM 中，第一行必然有且只有一个 +1
+（否则有 -1 的话这个 -1 所在的列不可能满足 +1 和 -1 交替出现且列和为
++1），这个 +1 所处的位置是一个重要的参数，根据这个 +1 所在的列 <span class="math inline">\(k\)</span> 可以把 <span class="math inline">\(\mathrm{ASM}(n)\)</span> 分成 <span class="math inline">\(n\)</span> 个子集 <span class="math inline">\(\{A_{n,k},k=1,\ldots,n\}\)</span>。Mills
+等人<strong>猜测</strong> <span class="math inline">\(A_{n,k}\)</span>
+的大小为 <span class="math display">\[
+\left|A_{n,k}\right|=
+  \begin{pmatrix}n+k-2\\k-1\end{pmatrix}
+  \frac{(2n-k-1)!}{(n-k)!}
+  \prod_{j=0}^{n-2}\frac{(3j+1)!}{(n+j)!}.
+\]</span> 既然 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 和
+<span class="math inline">\({\rm ASM}(n)\)</span>
+<strong>看起来</strong>是一样大小的，那是不是意味着它也应该有一个参数，将
+<span class="math inline">\(\mathrm{dpp}(n)\)</span> 对应地分为 <span class="math inline">\(n\)</span> 个不同的子集呢？</p>
+<p>注意在一个 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span>
+中 <span class="math inline">\(n\)</span> 出现的次数 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(0\leq
+k\leq n-1\)</span>，不可能大于等于 <span class="math inline">\(n\)</span>。否则由于这些 <span class="math inline">\(n\)</span> 必然都在第一行，不满足 DPP
+的行首严格大于该行长度的限制。很自然地，Mills 等人猜测在一个 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span> 中数字 <span class="math inline">\(n\)</span>
+出现的次数就是对应的参数，而且他们猜测恰好含有 <span class="math inline">\(k\,(0\leq k\leq n-1)\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的个数等于 <span class="math inline">\(|A_{n,k}|\)</span>，这个猜测在他们的证明中起着关键的作用。</p>
+<p>证明的第一步是把计数问题转化为行列式的求值，为此我们需要一些关于
+Gauss 二项式系数的结论。</p>
+<h1 id="一点预备知识">一点预备知识</h1>
+<p>本文需要的预备知识大致分为三点：</p>
+<ol type="1">
+<li><span class="math inline">\(q\)</span>- 二项式定理。</li>
+<li>Gauss 路径的 <span class="math inline">\(q\)</span>- 计数。</li>
+<li>格点图上不相交路径组计数的 Gessel-Viennot 引理。</li>
+</ol>
+<p>其中 Gessel-Viennot
+引理由于详细叙述起来比较占篇幅，这里就省略了，读者可以参考 <span class="citation" data-cites="thebook">(<a href="#ref-thebook" role="doc-biblioref">Aigner and Ziegler 2018</a>)</span> 的 “Lattice
+paths and determinants” 一节。</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Gaussian_binomial_coefficient">Gauss
+二项式系数</a> 的定义为 <span class="math display">\[
+\binom{n}{k}_q=\frac{(1-q^n)(1-q^{n-1})\cdots(1-q^{n-k+1})}{(1-q^k)(1-q^{k-1})\cdots(1-q)}.
+\]</span> 其中约定 <span class="math inline">\(\binom{n}{0}_q=1\)</span>
+以及 <span class="math inline">\(k&lt;0\)</span> 时 <span class="math inline">\(\binom{n}{k}_q=0\)</span>。</p>
+<p>关于 Gauss 二项式系数的两个基本结论是：</p>
+<div id="binom-thm1" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+3.1</span>.</span><span class="statement-spah"> </span><span class="math display">\[
+\prod_{k=0}^{n-1}(1+xq^k)=\sum_{k=0}^nq^{\binom{k}{2}}\binom{n}{k}_qx^k.
+\]</span></p>
+</div>
+<div id="binom-thm2" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+3.2</span>.</span><span class="statement-spah"> </span><span class="math display">\[
+\prod_{k=0}^{n}\frac{1}{1-xq^k}=\sum_{k=0}^\infty\binom{n+k}{k}_qx^k.
+\]</span></p>
+</div>
+<p>Gauss 二项式系数有不少等价的描述方式，我们这里要用到的是它等于 Gauss
+路径的 <span class="math inline">\(q\)</span>- 计数。</p>
+<p>考虑格点图 <span class="math inline">\(\mathbb{Z}^2\)</span>，并设
+<span class="math inline">\(A=(0, m)\)</span>，<span class="math inline">\(B=(n,0)\)</span>。一条从 <span class="math inline">\(A\)</span> 到 <span class="math inline">\(B\)</span> 的 Gauss 路径 <span class="math inline">\(P\)</span> 是一个从 <span class="math inline">\(A\)</span>
+出发，每一步向右或者向下一个单位距离，经过 <span class="math inline">\(m+n\)</span> 步后到达 <span class="math inline">\(B\)</span> 的格点路径，如下图所示：</p>
+<figure>
+<img src="/images/dpp/gausspath.svg" width="350" alt="图中的圆圈标注了 P 的权重方格">
+<figcaption aria-hidden="true">图中的圆圈标注了 <span class="math inline">\(P\)</span> 的权重方格</figcaption>
+</figure>
+<p>这样的 Gauss 路径一共有 <span class="math inline">\(\binom{m+n}{n}\)</span> 条，它们组成的集合记作
+<span class="math inline">\(\mathcal{G}(m,n)\)</span>。</p>
+<p>我们规定路径 <span class="math inline">\(P\)</span> 的权重为 <span class="math inline">\(q^{|P|}\)</span>，其中 <span class="math inline">\(|P|\)</span> 等于 <span class="math inline">\(P\)</span>
+与坐标轴所围成的区域中包含的方格的个数，上图中用圆圈标出了这些方格，一共有
+21 个，所以其权重为 <span class="math inline">\(q^{21}\)</span>。</p>
+<p>关于 Gauss 路径的一个基本结论是，所有 <span class="math inline">\(\mathcal{G}(m,n)\)</span> 中路径的权重之和等于
+Gauss 二项式系数 <span class="math inline">\(\binom{m+n}{n}_q\)</span>：
+<span class="math display">\[
+\sum_{P\in\mathcal{G}(m,n)}q^{|P|} = \binom{m+n}{n}_q.
+\]</span></p>
+<h1 id="将问题转化为行列式求值">将问题转化为行列式求值</h1>
+<p>设 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span>
+的行首<strong>从下到上</strong>分别为 <span class="math inline">\(2\leq
+a_1 &lt;\cdots &lt; a_m\leq n\)</span>，注意 <span class="math inline">\(a_1\)</span> 是必须大于 1
+的，因为每一行的第一个元素必须大于该行的长度。我们的策略是先固定行首
+<span class="math inline">\(\{a_1,\ldots,a_m\}\)</span>，求出行首恰好为集合
+<span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 的那些 DPP
+的生成函数，然后再对 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 的所有可能求和。</p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>我们这里对 <span class="math inline">\(a_1,\ldots,a_m\)</span>
+的标记顺序与前面 DPP 定义中的行的顺序是反着来的，<span class="math inline">\(a_1\)</span> 是第 <span class="math inline">\(m\)</span> 行的行首，<span class="math inline">\(a_2\)</span> 是第 <span class="math inline">\(m-1\)</span> 行的行首，以此类推，<span class="math inline">\(a_m\)</span>
+是第一行的行首。这样做看起来有些奇怪，其实是为了后面记号方便，下面很快就会看到原因。</p>
+</div>
+<p>既然这些行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span>
+已经固定，我们就可以把这 <span class="math inline">\(\sum_{i=1}^m
+a_i\)</span> 个箱子移走 （后面补上 <span class="math inline">\(q^{\sum_{i=1}^ma_i}\)</span>
+的因子即可）。由于递降平面分拆中每一行的行首严格大于该行的长度，所以在第
+<span class="math inline">\(i\)</span> 行中删去行首 <span class="math inline">\(a_i\)</span> 以后，该行剩下的部分是一个长度 <span class="math inline">\(\lambda_i-1\leq a_i-2\)</span>，最大元素 <span class="math inline">\(\leq a_i\)</span>
+的序列。任何这样的序列都对应一条从 <span class="math inline">\((0,
+a_i)\)</span> 出发，每一步向右或者向下，到达 <span class="math inline">\((a_i-2,0)\)</span> 的 Gauss 路径 <span class="math inline">\(P_i\)</span>。所有这些 <span class="math inline">\(\{P_i\}\)</span>
+构成一个<strong>不相交的格点路径组</strong> <span class="math inline">\(\mathcal{P}=\{P_1,\ldots,P_m\}\)</span>，其起点集合为
+<span class="math inline">\(\{A_i=(0, a_i)\}\)</span>，终点集合为 <span class="math inline">\(\{B_j=(a_j-2,
+0)\}\)</span>，如下面的动画所示：</p>
+<video src="/images/dpp/dpp-path.mp4" width="500" controls="">
+</video>
+<p>将这些路径投影到地面上就得到如下的示意图：</p>
+<figure>
+<img src="/images/dpp/dpp-path.svg" class="fig" width="400" alt="路径是从下向上编号的，最左下角的路径是 P_1，向上依次为 P_2,\ldots,P_m。路径 P_i 从 y 轴上的点 (0,a_i) 出发，到达 x 轴上的 (a_i-2,0)。每个数字 k 对应路径中高度为 y=k 的水平一步。P_i 水平向右走 \lambda_i-1 步以后高度降为 0。由于 \lambda_i-1\leq a_i-2，所以 P_i 一定经过 x 轴上的点 (\lambda_i-1,0)。">
+<figcaption aria-hidden="true">路径是从下向上编号的，最左下角的路径是
+<span class="math inline">\(P_1\)</span>，向上依次为 <span class="math inline">\(P_2,\ldots,P_m\)</span>。路径 <span class="math inline">\(P_i\)</span> 从 <span class="math inline">\(y\)</span> 轴上的点 <span class="math inline">\((0,a_i)\)</span> 出发，到达 <span class="math inline">\(x\)</span> 轴上的 <span class="math inline">\((a_i-2,0)\)</span>。每个数字 <span class="math inline">\(k\)</span> 对应路径中高度为 <span class="math inline">\(y=k\)</span> 的水平一步。<span class="math inline">\(P_i\)</span> 水平向右走 <span class="math inline">\(\lambda_i-1\)</span> 步以后高度降为 0。由于 <span class="math inline">\(\lambda_i-1\leq a_i-2\)</span>，所以 <span class="math inline">\(P_i\)</span> 一定经过 <span class="math inline">\(x\)</span> 轴上的点 <span class="math inline">\((\lambda_i-1,0)\)</span>。</figcaption>
+</figure>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>我们费点笔墨解释下为什么这些路径之间是没有交点的。注意我们现在对行的编号是从下向上。</p>
+<p>首先 <span class="math inline">\(P_i\)</span> 和 <span class="math inline">\(P_{i+1}\)</span> 在 <span class="math inline">\(y\)</span> 轴上不会有交点，若不然，这只能是 <span class="math inline">\(P_{i+1}\)</span> 的第一步就竖直向下，这说明 <span class="math inline">\(P_{i+1}\)</span> 对应的行是空行，这不可能。</p>
+<p>其次 <span class="math inline">\(P_i\)</span> 和 <span class="math inline">\(P_{i+1}\)</span> 在 <span class="math inline">\(x\)</span> 轴上也不会相交。这是因为 <span class="math inline">\(P_i\)</span> 在 <span class="math inline">\(x\)</span> 轴上的终点是 <span class="math inline">\((a_i-2,0)\)</span>，它上方的路径 <span class="math inline">\(P_{i+1}\)</span> 必然经过 <span class="math inline">\(x\)</span> 轴上的点 <span class="math inline">\((\lambda_{i+1}-1,0)\)</span>。由于 DPP 要求 <span class="math inline">\(i\)</span> 行的行首小于等于 <span class="math inline">\(i+1\)</span> 行的长度，<span class="math inline">\(\lambda_{i+1}\geq a_i\)</span>，即 <span class="math inline">\(\lambda_{i+1}-1&gt; a_i-2\)</span>，从而它们在
+<span class="math inline">\(x\)</span> 轴上无交点。</p>
+<p>最后 <span class="math inline">\(P_i\)</span> 和 <span class="math inline">\(P_{i+1}\)</span>
+不会在第一象限内部有交点。若不然，设 <span class="math inline">\(v\)</span> 是它们的第一个交点，则 <span class="math inline">\(v\)</span> 必然是 <span class="math inline">\(P_i\)</span> 向右一步到达的点，同时也是 <span class="math inline">\(P_{i+1}\)</span> 向下一步到达的点。设 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(y\)</span> 坐标为 <span class="math inline">\(h&gt;0\)</span>，则 <span class="math inline">\(P_{i+1}\)</span> 在 <span class="math inline">\(v\)</span> 之后的第一条水平边的高度 <span class="math inline">\(h'\leq h\)</span>。然而在 <span class="math inline">\(\pi\)</span> 中 <span class="math inline">\(h'\)</span> 恰好位于 <span class="math inline">\(h\)</span> 上方，这与 <span class="math inline">\(\pi\)</span> 的列是严格递降的矛盾。</p>
+</div>
+<p>反之给定这样的一个不相交路径组 <span class="math inline">\(\mathcal{P}\)</span>，我们也可以还原出对应的 DPP
+来，于是根据 Gessel-Viennot 引理，以 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 为行首的 DPP 的个数为
+<span class="math display">\[
+\det\left(\binom{a_i+a_j-2}{a_j-2}\right)_{1\leq i,j\leq m}.
+\]</span> 其中矩阵的 <span class="math inline">\((i,j)\)</span>
+位置的元素为从 <span class="math inline">\(A_i=(0,a_i)\)</span> 到 <span class="math inline">\(B_j=(a_j-2,0)\)</span> 的 Gauss
+路径的个数，这当然是 <span class="math inline">\(\binom{a_i+a_j-2}{a_j-2}\)</span>。</p>
+<p>对所有的 <span class="math inline">\(2\leq a_1 &lt;\cdots &lt;
+a_m\leq n\)</span> 求和即为 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的个数： <span class="math display">\[
+|\mathrm{dpp}(n)|=\sum_{2\leq a_1&lt;\cdots&lt; a_m\leq
+n}\det\left(\binom{a_i+a_j-2}{a_j-2}\right)_{1\leq i,j\leq m}.
+\]</span> 为了把这个表达式化简，我们用 <span class="math inline">\(a_i-1\)</span> 代替每个 <span class="math inline">\(a_i\)</span>，于是 <span class="math display">\[
+|\mathrm{dpp}(n)|=\sum_{1\leq a_1&lt;\cdots&lt; a_m\leq
+n-1}\det\left(\binom{a_i+a_j}{a_j-1}\right).
+\]</span> 现在我们只需要一个线性代数的引理：</p>
+<div id="linalg1" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+4.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(r\times r\)</span> 矩阵，则 <span class="math inline">\(\det(I_r+A)\)</span> 等于对 <span class="math inline">\(A\)</span> 的所有主子式求和，即 <span class="math display">\[\det(I_r+A)=\sum_{1\leq a_1&lt;\cdots&lt; a_m\leq
+r}\det A[a_1a_2\cdots a_m].
+\]</span> 其中 <span class="math inline">\(A[a_1a_2\cdots a_m]\)</span>
+是下标 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 决定的
+<span class="math inline">\(A\)</span> 的 <span class="math inline">\(m\)</span> 阶子矩阵。</p>
+</div>
+<p>由此我们得到 <span class="math display">\[|\mathrm{dpp}(n)|=\det\left(\delta_{ij}+\binom{i+j}{j-1}\right)_{1\leq
+i,j\leq n-1}.
+\]</span> 至此我们就得到了 <span class="math inline">\(q=1\)</span> 时
+<span class="math inline">\(\mathrm{dpp}(n)\)</span>
+的计数序列的行列式形式。</p>
+<p>得到 <span class="math inline">\(q\)</span>-
+计数的表达式需要多做一点微小的工作：我们不能简单地把上面的行列式直接替换为
+<span class="math inline">\(q\)</span>- 版本。我们需要说明在
+Gessel-Viennot
+引理中，在交换路径操作前后，路径组的权重是保持不变的，否则无法直接使用
+Gessel-Viennot 引理（Bressoud 的书插图 3.4
+给出了针对通常平面分拆的一个反例）。</p>
+<p>注意到一个长度为 <span class="math inline">\(l\)</span> 的 Gauss
+路径可以用一个长度为 <span class="math inline">\(l\)</span> 的 0-1 序列
+<span class="math inline">\(\sigma\)</span> 来表示，0
+表示垂直向下的一步，1
+表示水平向右的一步，路径的权重，即其下方的方格数目等于序列 <span class="math inline">\(\sigma\)</span> 的“逆序数” <span class="math inline">\(\mathrm{inv}(\sigma)\)</span>： <span class="math display">\[
+\mathrm{inv}(\sigma) = \#\{(i,j)\, |\, i &lt; j, 1=\sigma(i)
+&gt;\sigma(j)=0\}.
+\]</span> 这个方格个数与逆序对的对应很容易从下图看出来：</p>
+<figure>
+<img src="/images/dpp/path-weight.svg" width="350" alt="\sigma=1110011000">
+<figcaption aria-hidden="true"><span class="math inline">\(\sigma=1110011000\)</span></figcaption>
+</figure>
+<p>设 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 是两个 Gauss 路径，其对应的 0,1
+序列分别为 <span class="math inline">\(\sigma_1\)</span> 和 <span class="math inline">\(\sigma_2\)</span>，<span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 有一个公共的交点 <span class="math inline">\(v\)</span>。交换 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(Q\)</span> 在 <span class="math inline">\(v\)</span> 之后的部分，记得到的两个新路径为 <span class="math inline">\(P'\)</span> 和 <span class="math inline">\(Q'\)</span>，它们对应的 0,1 序列分别为 <span class="math inline">\(\sigma_1'\)</span> 和 <span class="math inline">\(\sigma_2'\)</span>，则不难验证有 <span class="math display">\[
+\begin{align*}
+|P'|+|Q'|-|P|-|Q|&amp;=\mathrm{inv}(\sigma_1')+\mathrm{inv}(\sigma_2')-\mathrm{inv}(\sigma_1)-\mathrm{inv}(\sigma_2)\\
+&amp;=(p_0-q_0)(p_1-q_1).
+\end{align*}
+\]</span> 这里 <span class="math inline">\(p_0,q_0\)</span> 分别表示
+<span class="math inline">\(P,Q\)</span> 在交点 <span class="math inline">\(v\)</span> <strong>之后</strong>的部分所含的 0
+的个数，<span class="math inline">\(p_1,q_1\)</span> 分别表示 <span class="math inline">\(P,Q\)</span> 在交点 <span class="math inline">\(v\)</span> <strong>之前</strong>的部分所含的 1
+的个数。</p>
+<p>在 DPP 的情形，由于每条路径的出发点都在 <span class="math inline">\(y\)</span> 轴上，终点都在 <span class="math inline">\(x\)</span> 轴上，因此 <span class="math inline">\(P,Q\)</span>
+在到达它们的交点处各自横向移动的步数相同，从交点到终点各自纵向移动的步数也相同，所以
+<span class="math inline">\(p_0=q_0\)</span>，<span class="math inline">\(p_1=q_1\)</span>，从而 <span class="math display">\[|P'|+|Q'|=|P|+|Q|.\]</span>
+因此路径权重之积 <span class="math inline">\(q^{|P|}\cdot
+q^{|Q|}=q^{|P'|}\cdot q^{|Q'|}\)</span> 保持不变，从而
+Gessel-Viennot 引理仍然可用。</p>
+<p>现在顶点集合 <span class="math inline">\(\{A_i=(0,a_i)\}\)</span>，<span class="math inline">\(\{B_j=(a_j-2,0)\}\)</span>，而从 <span class="math inline">\(A_i\)</span> 到 <span class="math inline">\(B_j\)</span> 的 Gauss 路径的 <span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\binom{a_i+a_j-2}{a_j-2}_q\)</span>，于是行首分别为
+<span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 的 DPP 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math display">\[
+q^{\sum_{i=1}^m
+a_i}\cdot\det\left(\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}=
+\det\left(q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q\right)_{1\leq i,j\leq m}.
+\]</span> 通过用 <span class="math inline">\(a_i-1\)</span> 代替 <span class="math inline">\(a_i\)</span> 并使用 <a href="#linalg1" title="引理 4.1">引理 4.1</a>，我们得到</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math display">\[
+\det\left(\delta_{ij}+q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq i,j\leq
+n-1}.
+\]</span></p>
+</div>
+<p>（这里你需要小心 <span class="math inline">\(\mathrm{dpp}(n)\)</span>
+对应的是一个 <span class="math inline">\(n-1\)</span>
+阶矩阵，这在记号上确实会带来一些困扰）</p>
+<p>现在剩下的任务就是求这个行列式的值了，而这才是整个故事中最困难的部分，到目前为止我们的路才走了一小半呢。</p>
+<h1 id="用关键参数将行列式分解">用关键参数将行列式分解</h1>
+<p>在上一节中我们已经把 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数归结为计算行列式 <span class="math inline">\(\det(I_{n-1}+H_{n-1})\)</span>，其中 <span class="math display">\[H_{n-1}=\left(q^{i+1}\binom{i+j}{j-1}_q\right)_{1\leq
+i,j\leq n-1}.\]</span></p>
+<p>Mills 等人认为，在一个 <span class="math inline">\(\pi\in\mathrm{dpp}(n)\)</span> 中，<span class="math inline">\(n\)</span> 出现的次数是一个重要的参数，根据 <span class="math inline">\(n\)</span> 出现的次数 <span class="math inline">\(k\)</span> 可以把 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 分成 <span class="math inline">\(n\)</span> 个子集 <span class="math inline">\(\{S_k\}_{0\leq k\leq
+n-1}\)</span>，解决问题的关键在于分别求出每个 <span class="math inline">\(S_k\)</span> 的 <span class="math inline">\(q\)</span>-
+计数对应的行列式表示，并找到这些行列式满足的递推关系。</p>
+<div id="theorem-Hkn" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+5.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(S_k\)</span> 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\det H_{k,n-1}\)</span>，其中 <span class="math inline">\(H_{k,n-1}\)</span> 在 <span class="math inline">\(k=0\)</span> 时是把 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的最后一行用 <span class="math inline">\((0,\ldots,0,1)\)</span> 替换得到的矩阵，而在 <span class="math inline">\(k&gt;0\)</span> 时则是把 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的最后一行用向量 <span class="math display">\[
+q^{kn}
+\left(\binom{n+0-k}{1-k}_q,\binom{n+1-k}{2-k}_q,\cdots,\binom{n+n-2-k}{n-1-k}_q\right)
+\]</span> 替换得到的矩阵。</p>
+</div>
+<p>和之前一样，我们规定当 <span class="math inline">\(m&lt;0\)</span>
+时有 <span class="math inline">\(\binom{a}{m}_q=0\)</span>。</p>
+<p><strong>证明</strong>：<span class="math inline">\(k=0\)</span>
+的情形其实就是 <span class="math inline">\(\mathrm{dpp}(n-1)\)</span> 的
+<span class="math inline">\(q\)</span>- 计数，它等于 <span class="math inline">\(I_{n-2}+H_{n-2}\)</span>，正好是 <span class="math inline">\(I_{n-1}+H_{n-1}\)</span> 的左上角 <span class="math inline">\(n-2\)</span>
+阶子矩阵，所以这个情形很简单，下面考虑 <span class="math inline">\(k&gt;0\)</span> 的情形。</p>
+<p>我们还是先<strong>从下到上</strong>固定每一行的行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span>，求出行首固定时的生成函数，再对所有可能的行首相加。</p>
+<p>办法和以前一样：现在除了行首 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span>
+是已知的，我们知道最上面一行，紧跟在行首的 <span class="math inline">\(n\)</span> 后面还有 <span class="math inline">\(k-1\)</span> 个 <span class="math inline">\(n\)</span>。我们把这些已知的 <span class="math inline">\(\sum_{i=1}^{m-1}a_i+kn\)</span>
+个箱子移走，将剩下的部分对应到一个不相交的路径组，用 Gessel-Viennot
+引理得出其生成函数，最后再补上因子 <span class="math inline">\(q^{\sum_{i=1}^{m-1}a_i+kn}\)</span> 即可。</p>
+<p>这个到路径组的对应方法和以前类似，区别是，这里我们要截掉 <span class="math inline">\(\pi\)</span>
+最上面路径中已知的部分，以之前的插图为例子并取 <span class="math inline">\(n=7\)</span>：</p>
+<p><img src="/images/dpp/dpp-path2.svg" class="fig" width="400"></p>
+<p>这里最上面的路径是从 <span class="math inline">\((0,n)\)</span>
+出发，向右走 <span class="math inline">\(k-1\)</span> 步到达 <span class="math inline">\((k-1,n)\)</span>，然后向下走到 <span class="math inline">\((k-1,n-1)\)</span>。我们把这部分截去，只保留剩下的部分，这相当于把起点
+<span class="math inline">\(A_m=(0, n)\)</span> 换成了 <span class="math inline">\((k-1,n-1)\)</span>，其余的起点和终点保持不变。注意由于终点都在
+<span class="math inline">\(x\)</span> 轴上因此 Gesssel-Viennot
+引理仍然可用，于是新顶点集 <span class="math inline">\(\{A_i\}\)</span>
+和 <span class="math inline">\(\{B_j\}\)</span> 之间的不相交的路径组的
+<span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\det X=\det(x_{ij})\)</span>，其中 <span class="math display">\[x_{ij}=\left\{\begin{align*}
+&amp;\binom{a_i+a_j-2}{a_j-2}_q, \quad &amp; i &lt; m\\
+&amp;\binom{n+a_j-k-2}{a_j-k-1}_q, \quad &amp; i=m
+\end{align*}
+\right.
+\]</span> 把因子 <span class="math inline">\(q^{\sum_{i=1}^{m-1}a_i+kn}\)</span> 补回去，其中
+<span class="math inline">\(q^{a_i}\)</span> 补在 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(i\)</span> 行上，<span class="math inline">\(kn\)</span> 补在 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(m\)</span> 行，我们就得到行首为 <span class="math inline">\(\{a_1,\ldots,a_m\}\)</span> 且恰好含有 <span class="math inline">\(k\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的 <span class="math inline">\(q\)</span>- 计数为 <span class="math inline">\(\det Y=\det(y_{ij})\)</span>，其中 <span class="math display">\[y_{ij}=
+\left\{\begin{align*}
+&amp;q^{a_i}\binom{a_i+a_j-2}{a_j-2}_q, \quad &amp; i&lt;m\\
+&amp;q^{kn}\binom{n+a_j-k-2}{a_j-k-1}_q, \quad &amp; i=m.
+\end{align*}
+\right.
+\]</span> 对每个 <span class="math inline">\(1\leq i\leq m\)</span> 用
+<span class="math inline">\(a_i-1\)</span> 代替 <span class="math inline">\(a_i\)</span>，可以将 <span class="math inline">\(Y\)</span> 改写为 <span class="math display">\[
+y_{ij}=
+\left\{\begin{align*}
+  &amp;q^{a_i+1}\binom{a_i+a_j}{a_j-1}_q, \quad &amp; i &lt; m\\
+  &amp;q^{kn}\binom{a_m+a_j-k}{a_j-k}_q, \quad &amp; i=m
+\end{align*}
+\right.
+\]</span> 这时 <span class="math inline">\(1\leq a_1&lt;\cdots&lt;
+a_{m-1}&lt; a_m=n-1\)</span>，从而 <span class="math inline">\(Y\)</span> 的左上角 <span class="math inline">\(m-1\)</span> 阶矩阵来自 <span class="math inline">\(H_{n-1}\)</span> 的左上角 <span class="math inline">\(n-2\)</span> 阶子矩阵的主子式，<span class="math inline">\(Y\)</span>
+的最后一行和最后一列分别来自固定的向量，因此要说明对所有 <span class="math inline">\(\det Y\)</span> 求和等于 <span class="math inline">\(\det
+H_{k,n-1}\)</span>，我们只需要一个与之前稍有不同的线性代数结论：</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+5.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(A\)</span> 是一个 <span class="math inline">\(n-1\)</span> 阶方阵，<span class="math inline">\(D_{n-1}\)</span> 是前 <span class="math inline">\(n-2\)</span> 个对角元为 1，其余元素均为 0 的 <span class="math inline">\(n\)</span> 阶对角矩阵，则 <span class="math display">\[
+\det(D_{n-1}+A)=\sum_{1\leq a_1&lt;\cdots&lt; a_{m-1}\leq n-2}\det
+A[a_1\cdots a_{m-1}|n-1],
+\]</span> 这里求和项跑遍由下标 <span class="math inline">\(\{a_1,\ldots,a_{m-1},n-1\}\)</span> 决定的 <span class="math inline">\(A\)</span> 的 <span class="math inline">\(m\)</span> 阶主子式。</p>
+</div>
+<p>这就完成了 <a href="#theorem-Hkn" title="定理 5.1">定理 5.1</a>
+的证明。</p>
+<h1 id="mills-robbins-rumsey-的巧妙想法">Mills, Robbins, Rumsey
+的巧妙想法</h1>
+<p>记 <span class="math inline">\(h_n=\det(I_n+H_n)\)</span> 为 <span class="math inline">\(\mathrm{dpp}(n+1)\)</span> 的 <span class="math inline">\(q\)</span>- 计数，<span class="math inline">\(h_{kn}=\det H_{kn}\)</span> 是其中 <span class="math inline">\(n+1\)</span> 恰好出现 <span class="math inline">\(k(0\leq k\leq n)\)</span> 次的 <span class="math inline">\(q\)</span>- 计数，从上节的讨论我们知道， <span class="math display">\[h_n=\sum_{k=0}^n h_{kn}.\]</span></p>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>注意 <span class="math inline">\(H_{kn}\)</span>，<span class="math inline">\(h_{kn}\)</span> 这些记号来自 <span class="math inline">\(n\)</span> 阶矩阵，但它们对应的都是 <span class="math inline">\(\mathrm{dpp}(n+1)\)</span> 中的分拆。</p>
+</div>
+<p><span class="math inline">\(h_{0n}\)</span> 是 <span class="math inline">\(n+1\)</span> 出现 0 次的 <span class="math inline">\(q\)</span>- 计数，因而等于 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数，即 <span class="math inline">\(h_{0n}=h_{n-1}\)</span>。<span class="math inline">\(\{h_{kn}\}\)</span>
+构成一个三角阵列，其每一行的和等于下一行的首元素。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(h_n\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(h_{0n}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(h_{1n}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(h_{2n}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(n=0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(h_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(n=1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(h_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(q^2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\phantom{}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="math inline">\(n=2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(h_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1+q^2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(q^3+q^4+q^5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(q^6+q^8\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>由此我们可以得到 <span class="math inline">\(\mathrm{dpp}(n+1)\)</span> 与 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 的 <span class="math inline">\(q\)</span>- 计数之间的递推关系： <span class="math display">\[\frac{h_n}{h_{n-1}} = 1 +
+\sum_{k=1}^n\frac{h_{kn}}{h_{0n}}.\]</span></p>
+<p>另一方面，<a href="#Andrews-conjecture" title="Andrews 猜想">Andrews
+猜想</a> 给出的递推关系是 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[\prod_{1\leq i\leq j\leq
+n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\,\bigg/ \prod_{1\leq i\leq j\leq
+n}\frac{1-q^{n+i+j-1}}{1-q^{2i+j-1}} =
+\prod_{i=1}^n\frac{1-q^{2n+i+1}}{1-q^{n+i}}=\frac{\binom{3n+1}{n}_q}{\binom{2n}{n}_q}.\]</span>
+并且在 <a href="#Andrews-conjecture" title="Andrews 猜想">Andrews
+猜想</a> 中分别取 <span class="math inline">\(n=0\)</span> 和 <span class="math inline">\(n=1\)</span> 可得 <span class="math display">\[\left.\prod_{1\leq i\leq j\leq
+n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=0}=1=h_0,\quad
+\left.\prod_{1\leq i\leq j\leq
+n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}}\right|_{n=1}=1+q^2=h_1.\]</span>
+所以我们只要证明 <span class="math display">\[1 +
+\sum_{k=1}^n\frac{h_{kn}}{h_{0n}}=\frac{\binom{3n+1}{n}_q}{\binom{2n}{n}_q}.\]</span>
+即可验证 Andrews 猜想成立。</p>
+<p>我们已经设定好了目标，现在我们从一段“平平无奇”的线性代数操作开始，逐步触及证明的核心。</p>
+<p>由于 <span class="math inline">\(I_n+H_n\)</span> 和所有的 <span class="math inline">\(\{H_{kn}\}_{0\leq k\leq n}\)</span> 的前 <span class="math inline">\(n-1\)</span>
+行都相同，仅最后一行不同，所以它们最后一行有共同的代数余子式。设 <span class="math inline">\(R_k\)</span> 是 <span class="math inline">\(H_{kn}\)</span> 的最后一行，列向量 <span class="math inline">\(C=(c_1,\ldots,c_n)^{T}\)</span> 是 <span class="math inline">\(R_k\)</span> 对应的代数余子式，<span class="math inline">\(C\)</span> 对所有 <span class="math inline">\(0\leq k\leq n\)</span> 都是一样的。则 <span class="math display">\[R_k\cdot C=\det H_{kn}=h_{kn}.\]</span> 将 <span class="math inline">\(R_1,\ldots,R_n\)</span> 以行向量依次排成 <span class="math inline">\(n\times n\)</span> 矩阵，记作 <span class="math inline">\(R\)</span>，则 <span class="math display">\[
+RC = \begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
+\]</span> <strong>不难看出 <span class="math inline">\(R\)</span>
+是一个对角线上都是 1 的上三角矩阵</strong> （在 <a href="#theorem-Hkn" title="定理 5.1">定理 5.1</a> 中对 <span class="math inline">\(n+1\)</span> 的情形依次令 <span class="math inline">\(k=1,\ldots,n\)</span>），所以 <span class="math inline">\(R\)</span> 可逆，从而 <span class="math display">\[
+C = R^{-1}\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}.
+\]</span> 由于矩阵 <span class="math inline">\(H_{0n}\)</span>
+满足最后一行 <span class="math inline">\(R_0\cdot C=\det
+H_{0n}=h_{0n}\)</span>，并且其它行与 <span class="math inline">\(C\)</span> 的内积是 0，所以 <span class="math display">\[
+H_{0n}C=\begin{pmatrix}0\\0\\\vdots\\h_{0n}\end{pmatrix}=
+h_{0n}\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix}.
+\]</span> 于是 <span class="math display">\[
+RH_{0n}R^{-1}\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=
+RH_{0n}C=
+h_{0n}R\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix}.
+\]</span> 记 <span class="math inline">\(A_n=RH_{0n}R^{-1}\)</span>，并记 <span class="math display">\[
+V_n=R\begin{pmatrix}0\\0\\\vdots\\1\end{pmatrix},
+\]</span> 则我们有 <span class="math display">\[\begin{equation}
+A_n\begin{pmatrix}h_{1n}\\h_{2n}\\\vdots\\h_{nn}\end{pmatrix}=h_{0n}V_n.
+\end{equation}
+\label{eq:hn}\tag{1}
+\]</span> 观察上式，看起来 <span class="math inline">\(h_{0n}\)</span>
+孤零零地在右边，这不美观啊？可不可以把它和 <span class="math inline">\(h_{1n},\ldots,h_{nn}\)</span> 放在一起呢？这就是
+Mills 等人的精彩操作了：考虑 <span class="math display">\[
+K_n=\begin{pmatrix}\ast&amp;\ast\\V_n&amp;I_n-A_n\end{pmatrix}.
+\]</span> <span class="math inline">\(K_n\)</span> 是一个 <span class="math inline">\(n+1\)</span> 阶的矩阵，<span class="math inline">\(\ast\)</span> 位置是 <span class="math inline">\(K_n\)</span> 的第一行，暂时不确定是什么，但是不管
+<span class="math inline">\(\ast\)</span> 是什么，<span class="math inline">\(K_n\)</span> 都满足 <span class="math display">\[K_n\begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}=
+  \begin{pmatrix}\ast\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}.
+\]</span>
+上面右边向量的第一个分量我们不知道，但它<strong>应该</strong>是什么是显而易见的，肯定是
+<span class="math inline">\(h_{0n}\)</span> 啊！这不就是一个特征值是 1
+的特征向量嘛？所以我们下面的任务肯定是构造合适的 <span class="math inline">\(K_n\)</span>，使得 <span class="math display">\[K_n\begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}=
+  \begin{pmatrix}h_{0n}\\h_{1n}\\\vdots\\h_{nn}\end{pmatrix}.
+\]</span> 成立，然后求解它特征值为 1 的特征向量啊！</p>
+<p>Mills 等人算出了 <span class="math inline">\(I_n-A_n\)</span> 和
+<span class="math inline">\(V_n\)</span>： <span class="math display">\[
+\begin{align*}
+I_n-A_n&amp;=\left((-1)^{j}q^{(i-j)(n+1)+ij}q^{\binom{j+1}{2}}\binom{2n-i}{n-i-j}_q\right)_{1\leq
+i,j\leq n},\\
+V_n&amp;=\left(q^{k(n+1)}\binom{2n-k}{n-k}_q\right)^T_{1\leq k\leq n}.
+\end{align*}
+\]</span> 把 <span class="math inline">\(V_n\)</span> 和 <span class="math inline">\(I_n-A_n\)</span> 分别填入 <span class="math inline">\(K_n\)</span> 的左下角和右下角，能帮助我们推断
+<span class="math inline">\(K_n\)</span> 的第一行吗？注意到如果在 <span class="math inline">\(I_n-A_n\)</span> 的表达式中令下标 <span class="math inline">\(j=0\)</span>，则得到的列向量正是 <span class="math inline">\(V_n\)</span>，那 <span class="math inline">\(K_n\)</span> 是什么已经呼之欲出了：它应该是把
+<span class="math inline">\(I_n-A_n\)</span> 中的 <span class="math inline">\(i,j\)</span> 下标各自扩展到 0 后得到的 <span class="math inline">\(n+1\)</span> 阶方阵！即 <span class="math display">\[
+K_n=\left((-1)^{j}q^{(i-j)(n+1)+ij}q^{\binom{j+1}{2}}\binom{2n-i}{n-i-j}_q\right)_{0\leq
+i,j\leq n}.
+\]</span></p>
+<p><strong>这一步即为 Mills 等人的“信仰一跃”</strong>。</p>
+<p>然而看到 <span class="math inline">\(K_n\)</span>
+的表达式还是不免让人倒吸一口凉气，这么复杂的矩阵，Mills
+等人是怎么得出它的特征值 1 对应的特征向量来的呢？</p>
+<p>我们之前说过，Mills 等人研究 DPP 的目的是为了解决 ASM
+的计数。他们正确的猜出了 <span class="math inline">\({\rm
+ASM}(n)\)</span> 中第一行的 1 恰好出现在第 <span class="math inline">\(1\leq k\leq n\)</span> 列的 ASM 个数为 <span class="math display">\[
+|A_{n,k}|=\binom{n+k-2}{k-1}\frac{(2n-k-1)!}{(n-k)!}\prod_{j=0}^{n-2}\frac{(3j+1)!}{(n+j)!}.
+\]</span> 而且他们直觉认为这就是 <span class="math inline">\(\mathrm{dpp}(n)\)</span> 中恰好含有 <span class="math inline">\(k-1\)</span> 个 <span class="math inline">\(n\)</span> 的 DPP 的个数，即 <span class="math inline">\(h_{k-1,n-1}\)</span>。把下标换成 <span class="math inline">\(k+1\)</span> 和 <span class="math inline">\(n+1\)</span>，即他们猜测 <span class="math display">\[|A_{n+1,k+1}|=h_{kn}=\binom{n+k}{k}\frac{(2n-k)!}{(n-k)!}\prod_{j=0}^{n-1}\frac{(3j+1)!}{(n+j+1)!}.\]</span></p>
+<p>所以他们猜测特征向量 <span class="math inline">\(v_n\)</span> 的第
+<span class="math inline">\(k\)</span> 个分量 <span class="math inline">\(v_{kn}\)</span> 应该形如 <span class="math display">\[
+q^{\text{some power}}\times\binom{n+k}{k}_q\binom{2n-k}{n-k}_q.
+\]</span> 经过试验以后他们发现取 <span class="math display">\[
+v_{kn}=q^{k(n+1)}\binom{n+k}{k}_q\binom{2n-k}{n-k}_q
+\]</span> 即可。<strong>这一步即为 Mills 等人的“灵魂一猜”</strong>。</p>
+<p>记 <span class="math inline">\(v_n=\sum_{k=0}^{n}
+v_{kn}\)</span>。经过计算可以得到 <span class="math display">\[v_{0n}=\binom{2n}{n}_q,\quad
+\sum_{k=0}^nv_{kn}=\binom{3n+1}{n}_q.\]</span> 我们断言向量 <span class="math inline">\((v_{0n},\ldots,v_{nn})\)</span> 和 <span class="math inline">\((h_{0n},\ldots,h_{nn})\)</span>
+必然是共线的。这是因为，如果适当缩放前者使得 <span class="math inline">\(v_{0n}=h_{0n}\)</span> 的话，那么 <span class="math inline">\((v_{1n},\ldots,v_{nn})\)</span> 也是 <span class="math inline">\((\ref{eq:hn})\)</span> 中关于 <span class="math inline">\(\{h_{kn}\}_{k\geq1}\)</span>
+的线性方程组的解，而由于 <span class="math inline">\(A_n\)</span>
+可逆，该方程组的解唯一，所以对 <span class="math inline">\(k\geq1\)</span> 同样有 <span class="math inline">\(v_{kn}=h_{kn}\)</span>。于是 <span class="math display">\[1+\sum_{k=1}^n\frac{h_{kn}}{h_{0n}}=\frac{\sum_{k=0}^nv_{kn}}{v_{0n}}=\frac{\binom{3n+1}{n}_q}{\binom{2n}{n}_q}.\]</span></p>
+<p>这就完成了 Andrews 猜想的证明。</p>
+<h1 id="详细计算步骤">详细计算步骤</h1>
+<p>下面进入“小心求证”的部分，这里主要的工具是前面的 Gauss 二项式 <a href="#binom-thm1" title="定理 3.1">定理 3.1</a> 和 <a href="#binom-thm2" title="定理 3.2">定理 3.2</a>。我们要计算 <span class="math inline">\(I_n-A_n=I_n-RH_{0n}R^{-1}\)</span>，为此需要先计算
+<span class="math inline">\(R^{-1}\)</span>。</p>
+<h2 id="计算-r-1">计算 <span class="math inline">\(R^{-1}\)</span></h2>
+<p>从 <a href="#theorem-Hkn" title="定理 5.1">定理 5.1</a> 可知 <span class="math display">\[
+R=\left(q^{i(n+1)}\binom{n+j-i}{j-i}_q\right)_{1\leq i,j\leq n}.
+\]</span> 利用 <span class="math inline">\(\prod_{k=0}^n(1-xq^k)\cdot\prod_{k=0}^n\dfrac{1}{(1-xq^k)}=1\)</span>
+得到 <span class="math display">\[
+\left(\sum_{k=0}^{n+1}(-1)^kq^{\binom{k}{2}}\binom{n+1}{k}_qx^k\right)
+\left(\sum_{l=0}^\infty\binom{n+l}{l}_qx^l\right)=1.
+\]</span> 对 <span class="math inline">\(1\leq i,j\leq
+n\)</span>，比较两边 <span class="math inline">\(x^{j-i}\)</span>
+项的系数，右边显然是 <span class="math inline">\(\delta_{ij}\)</span>，左边取第一个因子的 <span class="math inline">\(x^{k-i}\)</span> 项系数，取第二个因子的 <span class="math inline">\(x^{j-k}\)</span> 项系数并对 <span class="math inline">\(k\)</span> 求和，有 <span class="math display">\[
+\sum_{i\leq k\leq j}(-1)^{k-i}q^{\binom{k-i}{2}}\binom{n+1}{k-i}_q
+\binom{n+j-k}{j-k}_q =\delta_{ij}.
+\]</span> 采用我们之前的约定 <span class="math inline">\(\binom{a}{-m}_q=0\)</span>，上式可以写成 <span class="math display">\[
+\sum_{1\leq k\leq n}(-1)^{k-i}q^{\binom{k-i}{2}}\binom{n+1}{k-i}_q
+\binom{n+j-k}{j-k}_q=\delta_{ij}.
+\]</span> 这说明 <span class="math inline">\(\left((-1)^{j-i}q^{\binom{j-i}{2}}\binom{n+1}{j-i}_q\right)_{1\leq
+i,j\leq n}\)</span> 和 <span class="math inline">\(\left(\binom{n+j-i}{j-i}_q\right)_{1\leq i,j\leq
+n}\)</span> 互为逆矩阵。而后者与 <span class="math inline">\(R\)</span>
+的第 <span class="math inline">\(i\)</span> 行相差 <span class="math inline">\(q^{i(n+1)}\)</span> 的因子，所以给前者的第 <span class="math inline">\(j\)</span> 列补上 <span class="math inline">\(q^{-j(n+1)}\)</span> 的因子便可得到 <span class="math display">\[
+R^{-1}=\left((-1)^{j-i}q^{\binom{j-i}{2}}q^{-j(n+1)}\binom{n+1}{j-i}_q\right)_{1\leq
+i,j\leq n}.
+\]</span></p>
+<h2 id="计算-rh_0nr-1">计算 <span class="math inline">\(RH_{0n}R^{-1}\)</span></h2>
+<p>记 <span class="math inline">\(H_n^\ast\)</span> 是与 <span class="math inline">\(H_n\)</span> 的前 <span class="math inline">\(n-1\)</span> 行全相同，但是最后一行全是 0
+的矩阵，则 <span class="math inline">\(H_{0n}=I_n+H_n^\ast\)</span>，于是 <span class="math inline">\(RH_{0n}R^{-1}=I_n+RH_n^\ast
+R^{-1}\)</span>，所以只要计算 <span class="math inline">\(RH_n^\ast
+R^{-1}\)</span> 即可。</p>
+<p>首先由于 <span class="math inline">\(H_n^\ast\)</span> 的最后一行是
+0，所以 <span class="math inline">\(H_n^\ast R^{-1}\)</span>
+的最后一行也是 0，其它行的 <span class="math inline">\((i,j)\)</span>
+分量为当 <span class="math inline">\(i&lt;n\)</span> 时为 <span class="math display">\[
+\sum_{k=1}^n(H_n^*)_{ik}(R^{-1})_{kj}=
+q^{i+1-j(n+1)}\sum_{k=1}^n(-1)^{j-k}q^{\binom{j-k}{2}}\binom{i+k}{k-1}_q\binom{n+1}{j-k}_q.
+\]</span> 用 Gauss 二项式定理展开 <span class="math display">\[\prod_{l=0}^n(1-xq^l)\cdot\prod_{l=0}^{i+1}\frac{1}{1-xq^l}=\prod_{l=i+2}^n(1-xq^l)\]</span>
+左边第一个因子的 <span class="math inline">\(x^{j-k}\)</span> 项系数为
+<span class="math inline">\((-1)^{j-k}q^{\binom{j-k}{2}}\binom{n+1}{j-k}_q\)</span>，第二个因子中
+<span class="math inline">\(x^{k-1}\)</span> 项系数为 <span class="math inline">\(\binom{i+k}{k-1}_q\)</span>，相乘并对 <span class="math inline">\(k\)</span> 求和后是右边 <span class="math inline">\(x^{j-1}\)</span> 项系数，利用代换 <span class="math inline">\(z=xq^{i+2}\)</span> 不难得出此系数为 <span class="math display">\[
+(-1)^{j-1}q^{(i+2)(j-1)}q^{\binom{j-1}{2}}\binom{n-i-1}{j-1}_q.
+\]</span> 于是 <span class="math display">\[
+\begin{align*}
+\sum_{k=1}^n(H_n^*)_{ik}(R^{-1})_{kj}&amp;=q^{i+1-j(n+1)}q^{(i+2)(j-1)}(-1)^{j-1}q^{\binom{j-1}{2}}\binom{n-i-1}{j-1}_q\\
+&amp;=q^{ij-jn}(-1)^{j-1}q^{\binom{j}{2}}\binom{n-i-1}{j-1}_q.
+\end{align*}
+\]</span> 即 <span class="math display">\[
+H_n^*R^{-1}=\left(
+  q^{ij-jn}(-1)^{j-1}q^{\binom{j}{2}}\binom{n-i-1}{j-1}_q
+  \right)_{1\leq i,j\leq n}.
+\]</span> 如果约定 <span class="math inline">\(\binom{-a}{m}_q=0\)</span> 的话我们可以把 <span class="math inline">\(H_n^*R^{-1}\)</span> 最后一行都是 0
+也统一到上面的表达式中。</p>
+<p>继续 <span class="math display">\[\sum_{k=1}^n(R)_{ik}(H_n^*R^{-1})_{kj}=\sum_{k=1}^nq^{i(n+1)}
+\binom{n+k-i}{k-i}_qq^{kj-jn}(-1)^{j-1}q^{\binom{j}{2}}\binom{n-k-1}{j-1}_q.\]</span>
+把右边与 <span class="math inline">\(k\)</span>
+无关的项提出来，得到其等于 <span class="math display">\[(-1)^{j-1}q^{(i-j)(n+1)+ij}q^{\binom{j+1}{2}}\sum_{k=1}^n
+q^{(k-i)j}
+\binom{n+k-i}{k-i}_q\binom{n-k-1}{j-1}_q.
+\]</span> 把 <span class="math inline">\(\binom{n-k-1}{j-1}_q\)</span>
+改写为 <span class="math inline">\(\binom{j-1+(n-k-j)}{n-k-j}_q\)</span>，可以将其进一步化为
+<span class="math display">\[
+(-1)^{j-1}q^{(i-j)(n+1)+ij}q^{\binom{j+1}{2}}\sum_{k=1}^n q^{(k-i)j}
+\binom{n+k-i}{k-i}_q\binom{j-1+(n-k-j)}{n-k-j}_q.
+\]</span> 注意 <span class="math inline">\(\binom{j-1+(n-k-j)}{n-k-j}_q\)</span> 是 <span class="math inline">\(\prod\limits_{l=0}^{j-1}\frac{1}{1-xq^l}\)</span>
+中 <span class="math inline">\(x^{n-k-j}\)</span> 项的系数，<span class="math inline">\(q^{(k-i)j}\binom{n+k-i}{k-i}_q\)</span> 是 <span class="math inline">\(\prod\limits_{l=j}^{n+j}\frac{1}{1-xq^l}\)</span>
+中 <span class="math inline">\(x^{k-i}\)</span> 项的系数，二者相乘并对
+<span class="math inline">\(k\)</span> 求和得到的是 <span class="math inline">\(\prod\limits_{l=0}^{n+j}\frac{1}{1-xq^l}\)</span>
+中 <span class="math inline">\(x^{n-i-j}\)</span> 项的系数，即 <span class="math inline">\(\binom{2n-i}{n-i-j}_q\)</span>，于是 <span class="math display">\[
+RH_n^*R^{-1}=\left(
+  (-1)^{j-1}q^{(i-j)(n+1)+ij}q^{\binom{j+1}{2}}\binom{2n-i}{n-i-j}_q
+  \right)_{1\leq i,j\leq n}.
+\]</span> 从而 <span class="math display">\[
+I_n-A_n=-RH_n^*R^{-1}=\left(
+  (-1)^{j}q^{(i-j)(n+1)+ij}q^{\binom{j+1}{2}}\binom{2n-i}{n-i-j}_q
+  \right)_{1\leq i,j\leq n}.
+\]</span></p>
+<h2 id="得到-v_n">得到 <span class="math inline">\(V_n\)</span></h2>
+<p>列向量 <span class="math inline">\(V_n\)</span> 比较好求，它就是
+<span class="math inline">\(R\)</span> 的最后一列，也就是分别取出 <span class="math inline">\(H_{1n},\ldots,H_{nn}\)</span>
+最右下角元素后排成的列向量，即 <span class="math display">\[
+V_n=\left(q^{k(n+1)}\binom{2n-k}{n-k}_q\right)^T_{1\leq k\leq n}.
+\]</span></p>
+<h2 id="验证-v_n-是-k_n-的特征向量">验证 <span class="math inline">\(v_n\)</span> 是 <span class="math inline">\(K_n\)</span> 的特征向量</h2>
+<p>我们来验证 <span class="math inline">\(\left(q^{k(n+1)}\binom{n+k}{k}_q\binom{2n-k}{n-k}_q\right)_{0\leq
+k\leq n}\)</span> 是 <span class="math inline">\(K_n\)</span>
+的特征向量。 <span class="math display">\[
+\sum_{k=0}^n(K_n)_{ik}v_{kn}=\sum_{k=0}^n(-1)^{k}q^{i(n+1)+ik}q^{\binom{k+1}{2}}
+\binom{2n-i}{n-i-k}_q
+\binom{n+k}{k}_q
+\binom{2n-k}{n-k}_q.
+\]</span> 利用 Gauss 二项式的定义不难验证 <span class="math display">\[
+\binom{2n-i}{n-i-k}_q\binom{n+k}{k}_q=\binom{2n-i}{n-i}_q\binom{n-i}{k}_q.
+\]</span> 所以 <span class="math display">\[
+\sum_{k=0}^n(K_n)_{ik}v_{kn}=q^{i(n+1)}\binom{2n-i}{n-i}_q
+\sum_{k=0}^n(-1)^{k}q^{ik}q^{\binom{k+1}{2}}\binom{n-i}{k}_q\binom{2n-k}{n-k}_q.
+\]</span> 所以要证明 <span class="math inline">\(\sum_{k=0}^n(K_n)_{ik}v_{kn}=v_{in}\)</span>，只要再证明
+<span class="math display">\[
+\sum_{k=0}^n(-1)^{k}q^{ik}q^{\binom{k+1}{2}}\binom{n-i}{k}_q
+\binom{2n-k}{n-k}_q=\binom{n+i}{i}_q.
+\]</span> 实际上右边是 <span class="math inline">\(\prod\limits_{l=0}^i\dfrac{1}{1-xq^l}\)</span> 中
+<span class="math inline">\(x^n\)</span> 项的系数，而 <span class="math display">\[
+\prod\limits_{l=0}^i\dfrac{1}{1-xq^l} =\left(
+\prod\limits_{l=i+1}^n(1-xq^l)
+\right) \left(\prod\limits_{l=0}^n\dfrac{1}{1-xq^l}\right).
+\]</span> 取第一个因子的 <span class="math inline">\(x^k\)</span>
+项系数，第二个因子的 <span class="math inline">\(x^{n-k}\)</span>
+项系数相乘并对 <span class="math inline">\(k\)</span>
+求和即为所求等式。</p>
+<h2 id="验证-sumlimits_k0nv_knbinom3n1n_q">验证 <span class="math inline">\(\sum\limits_{k=0}^nv_{kn}=\binom{3n+1}{n}_q\)</span></h2>
+<p>最后我们来验证 <span class="math display">\[
+\sum\limits_{k=0}^nv_{kn}=\sum\limits_{k=0}^nq^{k(n+1)}\binom{n+k}{k}_q\binom{2n-k}{n-k}_q=\binom{3n+1}{n}_q.
+\]</span> 只要比较 <span class="math display">\[
+\left(\prod_{l=0}^n\frac{1}{1-xq^l}\right)\left(\prod_{l=n+1}^{2n+1}\frac{1}{1-xq^l}\right)=\left(\prod_{l=0}^{2n+1}\frac{1}{1-xq^l}\right)
+\]</span> 两边 <span class="math inline">\(x^n\)</span>
+的系数，取第一个因子的 <span class="math inline">\(x^k\)</span>
+项系数，第二个因子的 <span class="math inline">\(x^{n-k}\)</span>
+系数并对 <span class="math inline">\(k\)</span> 求和即得。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-thebook" class="csl-entry" role="listitem">
+Aigner, Martin, and Gnter M. Ziegler. 2018. <em>Proofs from THE
+BOOK</em>. 6th ed. Springer Publishing Company, Incorporated.
+</div>
+<div id="ref-Bressoud1999" class="csl-entry" role="listitem">
+Bressoud, David M. 1999. <em>Proofs and Confirmations: The Story of the
+Alternating-Sign Matrix Conjecture</em>. Spectrum. Cambridge University
+Press.
+</div>
+<div id="ref-Mills1983" class="csl-entry" role="listitem">
+Mills, W. H, David P Robbins, and Howard Rumsey. 1983.
+<span>“Alternating Sign Matrices and Descending Plane
+Partitions.”</span> <em>Journal of Combinatorial Theory, Series A</em>
+34 (3): 340–59.
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>我们来验证这个递推关系。记 <span class="math display">\[
+\prod_{1\leq i\leq j\leq n+1}\frac{1-q^{n+i+j}}{1-q^{2i+j-1}} =
+\frac{x_{n+1}}{y_{n+1}},
+\]</span> 对分母，分离 <span class="math inline">\(j=n+1\)</span>
+的部分有 <span class="math display">\[y_{n+1}=y_n\cdot
+\prod\limits_{i=1}^{n+1}(1-q^{2i+n}).\]</span> 对分子，分离 <span class="math inline">\(j=n+1\)</span> 的部分有 <span class="math display">\[
+\begin{aligned}
+x_{n+1}&amp;=\prod_{i=1}^n\prod_{j=i}^n(1-q^{n+i+j})\cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=1}^{n-1}\prod_{j=i}^n(1-q^{n+i+j})\cdot (1-q^{3n}) \cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=2}^n\prod_{j=i-1}^n(1-q^{n+i+j-1})\cdot (1-q^{3n}) \cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=2}^n\prod_{j=i}^n(1-q^{n+i+j-1})\cdot
+\prod_{i=2}^n(1-q^{n+2i-2})\cdot (1-q^{3n})\cdot
+\prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=\prod_{i=2}^n\prod_{j=i}^n(1-q^{n+i+j-1})\cdot
+\prod_{i=1}^{n}(1-q^{n+2i})\cdot \prod_{i=1}^{n+1}(1-q^{2n+i+1})\\
+&amp;=x_n\cdot\prod_{i=1}^{n}(1-q^{n+2i})\cdot\prod_{i=1}^{n+1}(1-q^{2n+i+1})\,\bigg/\prod_{j=1}^n(1-q^{n+j}).
+\end{aligned}
+\]</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/coupling-from-the-past/" rel="next" title="Coupling from the past">
+      上一篇：Coupling from the past
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/wilson-algorithm/" rel="next" title="Wilson 均匀生成树算法">
+          下一篇：Wilson 均匀生成树算法
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

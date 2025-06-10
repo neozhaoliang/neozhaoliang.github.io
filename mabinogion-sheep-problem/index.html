@@ -100,6 +100,14 @@
                     </li>
                 
                     <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-link "></i>
+                            
+                            Sporadic
+                        </a>
+                    </li>
+                
+                    <li>
                         <a class="menu-search modal-trigger " href="#search" >
                             <i class="fa fa-search "></i>
                             
@@ -160,6 +168,14 @@
             </li>
         
             <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-link "></i>
+                    
+                    Sporadic
+                </a>
+            </li>
+        
+            <li class="no-padding">
                 <a class="waves-effect menu-search modal-trigger " href="#search" >
                     <i class="fa fa-search "></i>
                     
@@ -175,22 +191,6 @@
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -199,8 +199,16 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -215,32 +223,8 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/完美采样/">
-                    完美采样 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -255,8 +239,40 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -412,7 +428,7 @@ k})=0.\label{eq:vkk}\tag{$\ast\ast$}\]</span> 因此如果开始有黑、白绵�
 下黑绵羊的期望数目大约是 19824 只。</p>
 <p>我对 Williams
 给出的估计不太放心，于是用书中给出的递推关系写了一段代码验证了一下：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> *<br><br>pi = <span class="hljs-number">3.14159265358979</span><br>getcontext().prec = <span class="hljs-number">20</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">solve_sheep</span>(<span class="hljs-params">n</span>):</span><br>    p = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]<br>    v = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]<br>    v[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span><br>    p[<span class="hljs-number">1</span>] = Decimal(<span class="hljs-number">0.5</span>)<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n + <span class="hljs-number">1</span>):<br>        p[k] = (<span class="hljs-number">1</span> - <span class="hljs-number">1</span> / Decimal(<span class="hljs-number">2</span> * k)) * p[k - <span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>        w = (<span class="hljs-number">1</span> - p[k]) / (<span class="hljs-number">1</span> + p[k])<br>        v[k + <span class="hljs-number">1</span>] = w * v[k] + (<span class="hljs-number">1</span> - w) * (<span class="hljs-number">2</span> * k + <span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">return</span> v[n]<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">estimate_sheep</span>(<span class="hljs-params">n</span>):</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * n + pi / <span class="hljs-number">4</span> - (pi * n)**<span class="hljs-number">0.5</span><br><br>print(solve_sheep(<span class="hljs-number">10000</span>))<br>print(estimate_sheep(<span class="hljs-number">10000</span>))<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> decimal <span class="hljs-keyword">import</span> *<br><br>pi = <span class="hljs-number">3.14159265358979</span><br>getcontext().prec = <span class="hljs-number">20</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_sheep</span>(<span class="hljs-params">n</span>):<br>    p = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]<br>    v = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]<br>    v[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span><br>    p[<span class="hljs-number">1</span>] = Decimal(<span class="hljs-number">0.5</span>)<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n + <span class="hljs-number">1</span>):<br>        p[k] = (<span class="hljs-number">1</span> - <span class="hljs-number">1</span> / Decimal(<span class="hljs-number">2</span> * k)) * p[k - <span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>        w = (<span class="hljs-number">1</span> - p[k]) / (<span class="hljs-number">1</span> + p[k])<br>        v[k + <span class="hljs-number">1</span>] = w * v[k] + (<span class="hljs-number">1</span> - w) * (<span class="hljs-number">2</span> * k + <span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">return</span> v[n]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">estimate_sheep</span>(<span class="hljs-params">n</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * n + pi / <span class="hljs-number">4</span> - (pi * n)**<span class="hljs-number">0.5</span><br><br><span class="hljs-built_in">print</span>(solve_sheep(<span class="hljs-number">10000</span>))<br><span class="hljs-built_in">print</span>(estimate_sheep(<span class="hljs-number">10000</span>))<br></code></pre></td></tr></tbody></table></figure>
 <p>递推公式给出的真实值结果是 19823.5422285701，渐进公式给出的结果是
 19823.540013，准确的有点离谱啊！这真的有点刷新我对 Stirling
 公式的认知。</p>

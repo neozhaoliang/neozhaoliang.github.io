@@ -830,8 +830,6 @@ a.social-link:hover {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
 }
 .side-nav .collapse-level-0 {
@@ -1181,11 +1179,13 @@ figure.highlight .gutter {
   transform: scale(1.05);
 }
 .book-item .card-content {
-  padding: 15px;
+  padding: 10px;
 }
 .book-item .card-content .card-title {
   line-height: initial;
-  font-size: 1.2em;
+  font-size: 0.9em;
+  white-space: normal;
+  overflow: visible;
 }
 .book-item .card.small .card-image {
   min-height: 70%;

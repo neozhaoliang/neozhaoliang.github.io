@@ -95,6 +95,14 @@ from the m">
                     </li>
                 
                     <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-link "></i>
+                            
+                            Sporadic
+                        </a>
+                    </li>
+                
+                    <li>
                         <a class="menu-search modal-trigger " href="#search" >
                             <i class="fa fa-search "></i>
                             
@@ -155,6 +163,14 @@ from the m">
             </li>
         
             <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-link "></i>
+                    
+                    Sporadic
+                </a>
+            </li>
+        
+            <li class="no-padding">
                 <a class="waves-effect menu-search modal-trigger " href="#search" >
                     <i class="fa fa-search "></i>
                     
@@ -170,22 +186,6 @@ from the m">
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -194,8 +194,16 @@ from the m">
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -210,32 +218,8 @@ from the m">
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/完美采样/">
-                    完美采样 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -250,8 +234,40 @@ from the m">
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -1148,7 +1164,7 @@ the automaton:</p>
 <p><img style="margin:0px auto;display:block" src="/images/coxeter/723_dfa_subsets.png" width="800"></p>
 <p>The code for computing the multiplication of a generator and a word
 is given below:</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">left_mul_invshortlex</span>(<span class="hljs-params">reftable, s, w</span>):</span><br>    w = <span class="hljs-built_in">tuple</span>(w)<br>    t = s<br>    k = -<span class="hljs-number">1</span><br>    mu = s<br>    <span class="hljs-keyword">for</span> i, s_i <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(w):<br>        <span class="hljs-keyword">if</span> mu <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-keyword">return</span> w[:k+<span class="hljs-number">1</span>] + (t,) + w[k+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> w[:i] + w[i+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; s_i:<br>            t = mu<br>            k = i<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">return</span> w[:k+<span class="hljs-number">1</span>] + (t,) + w[k+<span class="hljs-number">1</span>:]<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">left_mul_invshortlex</span>(<span class="hljs-params">reftable, s, w</span>):<br>    w = <span class="hljs-built_in">tuple</span>(w)<br>    t = s<br>    k = -<span class="hljs-number">1</span><br>    mu = s<br>    <span class="hljs-keyword">for</span> i, s_i <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(w):<br>        <span class="hljs-keyword">if</span> mu <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            <span class="hljs-keyword">return</span> w[:k+<span class="hljs-number">1</span>] + (t,) + w[k+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> w[:i] + w[i+<span class="hljs-number">1</span>:]<br>        <span class="hljs-keyword">elif</span> mu &lt; s_i:<br>            t = mu<br>            k = i<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">continue</span><br>    <span class="hljs-keyword">return</span> w[:k+<span class="hljs-number">1</span>] + (t,) + w[k+<span class="hljs-number">1</span>:]<br></code></pre></td></tr></tbody></table></figure>
 <p>Here <span class="math inline">\(s\)</span> is a generator and <span class="math inline">\(w\)</span> is a word in the normal form of the
 <em>inverse shortlex ordering</em> (invshortlex). The function returns
 the normal form of <span class="math inline">\(s\cdot w\)</span> also in
@@ -1164,7 +1180,7 @@ ordering is mainly for keeping consistent with Casselman’s paper.</p>
 parabolic subgroup is quite straight-forward: let <span class="math inline">\(T\)</span> be the set of generators of this
 standard parabolic subgroup, the pseudocode for the procedure is given
 below:</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">x := w<br>u := 1<br>while l(xt) &lt; l(x) for some t in T<br>    x := xt<br>    u := t<br>end<br><br>return x<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">x := w<br>u := 1<br>while l(xt) &lt; l(x) for some t in T<br>    x := xt<br>    u := t<br>end<br><br>return x<br></code></pre></td></tr></tbody></table></figure>
 <p>Where <span class="math inline">\(l(\cdot)\)</span> is the length
 function.</p>
 <p>For finite Coxeter groups all positive roots are minimal. For affine

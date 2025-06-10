@@ -19,7 +19,7 @@
     
 
         <title>
-            Artinian 环与 Wedderburn-Artin 定理 | 朝花夕拾</title>
+            左 Artinian 环与 Wedderburn-Artin 定理 | 朝花夕拾</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="Wedderburn-Artin 定理最早源于 1907 年 Wedderburn
@@ -47,10 +47,9 @@
 Wedderburn-Artin
 定理的过程比较长，不过在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。
 本文将针对左 Artinian 环的情形证明 Wedderburn-Artin
-定理。我主要参考了 Curtis 和 Reiner 的经典 (Curtis and Reiner 1962)，Herstein
-的精彩小书 (Herstein
-1994)，以及林节玄的 (Lam
-2001)。C&amp;amp;R
+定理。我将采用上面 Wedderburn 的证明途径，而不是现在教科书上普遍使用的
+Jacobson 根方法。我主要参考了 Curtis 和 Reiner 的经典 (Curtis and Reiner
+1962)，Herstein 的精彩小书 (Herstein 1994)，以及林节玄的 (Lam 2001)。C&amp;amp;R
 的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
 的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
 Galois 上同调。林节玄的书风格则更为现代一些，我没有细读，不多评价。">
@@ -58,7 +57,7 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Artinian 环与 Wedderburn-Artin 定理"/>
+    <meta property="og:title" content="左 Artinian 环与 Wedderburn-Artin 定理"/>
     <meta property="og:site_name" content="朝花夕拾"/>
 
     
@@ -124,6 +123,14 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
                     </li>
                 
                     <li>
+                        <a class="menu-reading " href="/reading" >
+                            <i class="fa fa-link "></i>
+                            
+                            Sporadic
+                        </a>
+                    </li>
+                
+                    <li>
                         <a class="menu-search modal-trigger " href="#search" >
                             <i class="fa fa-search "></i>
                             
@@ -184,6 +191,14 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
             </li>
         
             <li class="no-padding">
+                <a class="waves-effect menu-reading " href="/reading" >
+                    <i class="fa fa-link "></i>
+                    
+                    Sporadic
+                </a>
+            </li>
+        
+            <li class="no-padding">
                 <a class="waves-effect menu-search modal-trigger " href="#search" >
                     <i class="fa fa-search "></i>
                     
@@ -199,22 +214,6 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Durrett-概率论批判/">
                     Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
@@ -223,8 +222,16 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Coxeter-Groups/">
-                    Coxeter-Groups <span class="right">6 篇</span></a>
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
                 </a>
             </li>
 
@@ -239,32 +246,8 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/完美采样/">
-                    完美采样 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -279,8 +262,40 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
         
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">3 篇</span></a>
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -333,7 +348,7 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
                             <div class="article-title">
                                 
     
-        <h1>Artinian 环与 Wedderburn-Artin 定理</h1>
+        <h1>左 Artinian 环与 Wedderburn-Artin 定理</h1>
     
 
 
@@ -373,10 +388,9 @@ Galois 上同调。林节玄的书风格则更为现代一些，我没有细读�
 <p>Wedderburn-Artin
 定理的过程比较长，不过在头脑中事先明确这条主线，理解整个证明并不是一件困难的事情。</p>
 <p>本文将针对左 Artinian 环的情形证明 Wedderburn-Artin
-定理。我主要参考了 Curtis 和 Reiner 的经典 <span class="citation" data-cites="curtis-reiner">(<a href="#ref-curtis-reiner" role="doc-biblioref">Curtis and Reiner 1962</a>)</span>，Herstein
-的精彩小书 <span class="citation" data-cites="herstein-rings">(<a href="#ref-herstein-rings" role="doc-biblioref">Herstein
-1994</a>)</span>，以及林节玄的 <span class="citation" data-cites="Lam01">(<a href="#ref-Lam01" role="doc-biblioref">Lam
-2001</a>)</span>。C&amp;R
+定理。我将采用上面 Wedderburn 的证明途径，而不是现在教科书上普遍使用的
+Jacobson 根方法。我主要参考了 Curtis 和 Reiner 的经典 <span class="citation" data-cites="curtis-reiner">(<a href="#ref-curtis-reiner" role="doc-biblioref">Curtis and Reiner
+1962</a>)</span>，Herstein 的精彩小书 <span class="citation" data-cites="herstein-rings">(<a href="#ref-herstein-rings" role="doc-biblioref">Herstein 1994</a>)</span>，以及林节玄的 <span class="citation" data-cites="Lam01">(<a href="#ref-Lam01" role="doc-biblioref">Lam 2001</a>)</span>。C&amp;R
 的书是个大部头，但它总是从最基本的概念讲起，叙述清楚易懂，对新手非常友好。Herstein
 的书则是另一种风格，主线简单，节奏很快，短短几章就讲到了中心单代数和
 Galois 上同调。林节玄的书风格则更为现代一些，我没有细读，不多评价。</p>
@@ -411,10 +425,6 @@ I_n\supseteq\cdots\]</span> 都必然存在正整数 <span class="math inline">\
 是不可约左理想。非零的不可约左理想叫作<strong>极小左理想</strong>。</p></li>
 </ul>
 <h1 id="定义环-r-的根-mathrmradr">定义环 <span class="math inline">\(R\)</span> 的根 <span class="math inline">\(\mathrm{rad}(R)\)</span></h1>
-<p>前面提到，Wedderburn 的想法第一步是仿照 Lie 代数的情形定义环 <span class="math inline">\(R\)</span> 的根 <span class="math inline">\(\mathrm{rad}(R)\)</span>，它必须是一个双边理想，从而可以取商环
-<span class="math inline">\(R/\mathrm{rad}(R)\)</span>，<span class="math inline">\(R/\mathrm{rad}(R)\)</span> 的根是平凡的。</p>
-<p>Wedderburun 的想法是将 <span class="math inline">\(\mathrm{rad}(R)\)</span> 定义为 <span class="math inline">\(R\)</span> 的极大幂零理想，即 <span class="math inline">\(R\)</span>
-的所有<strong>幂零左理想</strong>的和。这个定义本身的合理性是存疑的，所有幂零左理想的和是否真的是双边理想？即便是双边理想，它是否仍然幂零？虽然这两点确实都成立，但是背后的原因并不直观。这一节的任务就是解决这个问题。</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 2.1</span>.</span><span class="statement-spah"> </span>我们称 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(I\)</span> 是幂零的，如果存在正整数 <span class="math inline">\(n\)</span> 使得 <span class="math inline">\(I^n=0\)</span>。</p>
@@ -422,17 +432,22 @@ I_n\supseteq\cdots\]</span> 都必然存在正整数 <span class="math inline">\
 <p>显然 <span class="math inline">\(I\)</span>
 幂零自动蕴含其元素都是幂零的：对任何 <span class="math inline">\(x\in
 I\)</span> 有 <span class="math inline">\(x^n=0\)</span>。但是反过来则未必对：<span class="math inline">\(I\)</span> 的每个元素都幂零并不能保证 <span class="math inline">\(I\)</span> 是幂零的。</p>
+<p>前面提到，Wedderburn 的想法第一步是仿照 Lie 代数的情形定义环 <span class="math inline">\(R\)</span> 的根 <span class="math inline">\(\mathrm{rad}(R)\)</span>，它必须是一个双边理想，从而可以取商环
+<span class="math inline">\(R/\mathrm{rad}(R)\)</span>，<span class="math inline">\(R/\mathrm{rad}(R)\)</span>
+的根是平凡的。Wedderburn 的想法是将 <span class="math inline">\(\mathrm{rad}(R)\)</span> 定义为 <span class="math inline">\(R\)</span> 的极大幂零理想，即 <span class="math inline">\(R\)</span>
+的所有<strong>幂零左理想</strong>的和：</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 2.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(R\)</span> 的所有幂零左理想的和记作 <span class="math inline">\(\mathrm{rad}(R)\)</span>。</p>
 </div>
-<p>我们要解决两个问题：</p>
+<p>然而对左 Artin 环来说，这个定义的合理性是需要澄清的：</p>
 <ol type="1">
-<li><p><span class="math inline">\(\mathrm{rad}(R)\)</span>
-还是幂零左理想的吗？不难证明有限多个幂零左理想的和仍然是幂零的，但是无穷多个幂零左理想的和还幂零吗？</p></li>
-<li><p><span class="math inline">\(\mathrm{rad}(R)\)</span>
-是双边理想吗？</p></li>
+<li><span class="math inline">\(\mathrm{rad}(R)\)</span>
+幂零吗？不难证明有限多个幂零左理想的和总是幂零的，但是无穷多个幂零左理想的和还幂零吗？</li>
+<li><span class="math inline">\(\mathrm{rad}(R)\)</span>
+是双边理想吗？</li>
 </ol>
+<p>虽然这两点确实都成立，但是背后的原因并不直观。</p>
 <p>这两个问题都可以用一个引理来解决，这个引理的证明颇有一点技巧性：</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
@@ -445,16 +460,20 @@ I\)</span> 有 <span class="math inline">\(x^n=0\)</span>。但是反过来则�
 </div>
 <p>我们把 <a href="#idempotent" title="引理 2.4">引理 2.4</a>
 的证明稍微放一放，先看看它是怎么解决上面的问题 1, 2 的。</p>
-<p>记 <span class="math inline">\(N\)</span> 为 <span class="math inline">\(R\)</span> 的所有幂零左理想 <span class="math inline">\(\{I_{\alpha}\}\)</span> 的和，则 <span class="math inline">\(N\)</span> 也是左理想，并且其中的元素都是 <span class="math inline">\(\{I_{\alpha}\}\)</span> 中元素的有限线性组合：
+<p>记 <span class="math inline">\(\{I_\alpha\}\)</span> 是 <span class="math inline">\(R\)</span> 的全体幂零左理想组成的集合，则 <span class="math inline">\(\mathrm{rad}(R)\)</span> 中的元素都是 <span class="math inline">\(\{I_{\alpha}\}\)</span> 中元素的有限线性组合：
 <span class="math display">\[x =
 x_{\alpha_1}+x_{\alpha_2}+\cdots+x_{\alpha_k},\quad x_{\alpha_i}\in
 I_{\alpha_i}.\]</span></p>
 <ol type="1">
-<li>如果 <span class="math inline">\(N\)</span> 不是幂零的，那么根据 <a href="#idempotent" title="引理 2.4">引理 2.4</a> 它包含一个幂等元 <span class="math inline">\(e\)</span>，于是 <span class="math inline">\(e\)</span>
+<li>如果 <span class="math inline">\(\mathrm{rad}(R)\)</span>
+不是幂零的，那么根据 <a href="#idempotent" title="引理 2.4">引理 2.4</a>
+它包含一个幂等元 <span class="math inline">\(e\)</span>，于是 <span class="math inline">\(e\)</span>
 可以表示为有限多个幂零元的和，从而也是幂零的，矛盾！</li>
-<li><span class="math inline">\(NR\)</span>
-是一个双边理想，而且它是幂零的：<span class="math display">\[(NR)^i=N(RN)^{i-1}R\subseteq
-N^iR.\]</span>特别它是一个幂零左理想，于是 <span class="math inline">\(NR\subseteq N\)</span>，从而 <span class="math inline">\(N\)</span> 是双边理想。</li>
+<li><span class="math inline">\(\mathrm{rad}(R)\cdot R\)</span>
+是一个双边理想，而且它是幂零的： <span class="math display">\[(\mathrm{rad}(R)\cdot R)^i=\mathrm{rad}(R)\cdot
+(R\cdot \mathrm{rad}(R))^{i-1}\cdot R\subseteq \mathrm{rad}(R)^i\cdot
+R.\]</span> 特别它是一个幂零左理想，于是 <span class="math inline">\(\mathrm{rad}(R)\cdot R\subseteq
+\mathrm{rad}(R)\)</span>，从而 <span class="math inline">\(\mathrm{rad}(R)\)</span> 是双边理想。</li>
 </ol>
 <p><strong><a href="#idempotent" title="引理 2.4">引理 2.4</a>
 的证明</strong>：</p>
@@ -462,10 +481,10 @@ N^iR.\]</span>特别它是一个幂零左理想，于是 <span class="math inlin
 <p>首先不妨假设 <span class="math inline">\(I\)</span>
 是「极小」非幂零的，即 <span class="math inline">\(I\)</span>
 本身不幂零，但 <span class="math inline">\(I\)</span>
-的任何非平凡左理想都是幂零的。否则考察所有包含在 <span class="math inline">\(I\)</span>
+的任何非平凡左理想都是幂零的。否则我们考察所有包含在 <span class="math inline">\(I\)</span>
 内的、非幂零的左理想组成的集合，此集合包含 <span class="math inline">\(I\)</span> 所以非空，于是根据 DCC
 条件它包含一个极小元 <span class="math inline">\(I_1\)</span>，<span class="math inline">\(I_1\)</span> 不是幂零的，但是任何真包含于 <span class="math inline">\(I_1\)</span> 内的左理想都是幂零的。用 <span class="math inline">\(I_1\)</span> 代替 <span class="math inline">\(I\)</span>，故而可以假设 <span class="math inline">\(I\)</span> 是极小非幂零的。</p>
-<p><span class="math inline">\(I^2\subseteq I\)</span>，<span class="math inline">\(I^2\)</span> 不可能是幂零的，否则 <span class="math inline">\(I\)</span> 就幂零了，所以 <span class="math inline">\(I^2=I\)</span>。我们考察所有满足如下条件的左理想
+<p>由于 <span class="math inline">\(I^2\subseteq I\)</span>，<span class="math inline">\(I^2\)</span> 不可能是幂零的，否则 <span class="math inline">\(I\)</span> 就幂零了，所以 <span class="math inline">\(I^2=I\)</span>。我们考察所有满足如下条件的左理想
 <span class="math inline">\(L\)</span> 组成的集合 <span class="math inline">\(S\)</span>：</p>
 <ol type="1">
 <li><span class="math inline">\(L\subseteq I\)</span>。</li>
@@ -514,17 +533,15 @@ L\)</span> 可知存在 <span class="math inline">\(a\in I\)</span> 满足
 3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(R\)</span> 是半单环，<span class="math inline">\(L\subset I\)</span> 都是 <span class="math inline">\(R\)</span> 的左理想并且 <span class="math inline">\(L\)</span> 还是极小左理想，则存在 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(J\)</span> 满足 <span class="math inline">\(I=L\oplus J\)</span>。</p>
 </div>
 <p><strong>证明</strong>： 根据 <a href="#L-proj" title="推论 2.6">推论
-2.6</a>，设幂等元 <span class="math inline">\(e\in L\)</span> 满足 <span class="math inline">\(I=Le\)</span>。考虑 <span class="math inline">\(J=I(1-e)\)</span>，这也是一个包含在 <span class="math inline">\(I\)</span> 中的左理想。显然 <span class="math display">\[I=Ie\oplus I(1-e)=L\oplus J.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
+2.6</a>，设幂等元 <span class="math inline">\(e\in L\)</span> 满足 <span class="math inline">\(I=Le\)</span>。考虑 <span class="math inline">\(J=I(1-e)\)</span>，这也是一个包含在 <span class="math inline">\(I\)</span> 中的左理想。显然 <span class="math inline">\(I=Ie\oplus I(1-e)=L\oplus J\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="decompose-minimal" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
 3.2</span>.</span><span class="statement-spah"> </span>半单环 <span class="math inline">\(R\)</span> 一定可以分解为有限个极小左理想的直和
 <span class="math inline">\(R=L_1\oplus\cdots\oplus L_n\)</span>。</p>
 </div>
 <p><strong>证明</strong>：设 <span class="math inline">\(L_1\)</span> 是
-<span class="math inline">\(R\)</span> 的任一极小左理想，在 <a href="#ideal-decomp" title="引理 3.1">引理 3.1</a> 中取 <span class="math inline">\(L=L_1,I=R\)</span> 可得存在 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(J\)</span> 使得 <span class="math inline">\(R=L_1\oplus J\)</span>。如果 <span class="math inline">\(J\)</span> 非零，则它包含 <span class="math inline">\(R\)</span> 的某个极小左理想 <span class="math inline">\(L_2\)</span>。根据 <a href="#ideal-decomp" title="引理 3.1">引理 3.1</a> <span class="math inline">\(J\)</span>
-可以进一步分解为 <span class="math inline">\(J=L_2\oplus
-K\)</span>。其中 <span class="math inline">\(K\)</span> 也是 <span class="math inline">\(R\)</span> 的左理想。这样继续分解下去，由于左
-Artinian 条件这样的分解只能进行有限多次，于是 <span class="math display">\[R=L_1\oplus J =L_1\oplus L_2\oplus K = \cdots =
+<span class="math inline">\(R\)</span> 的任一极小左理想，在 <a href="#ideal-decomp" title="引理 3.1">引理 3.1</a> 中取 <span class="math inline">\(L=L_1,I=R\)</span> 可得存在 <span class="math inline">\(R\)</span> 的左理想 <span class="math inline">\(J\)</span> 使得 <span class="math inline">\(R=L_1\oplus J\)</span>。如果 <span class="math inline">\(J\)</span> 非零，则它包含 <span class="math inline">\(R\)</span> 的某个极小左理想 <span class="math inline">\(L_2\)</span>。同样地 <span class="math inline">\(J\)</span> 可以进一步分解为 <span class="math inline">\(J=L_2\oplus K\)</span>。其中 <span class="math inline">\(K\)</span> 也是 <span class="math inline">\(R\)</span> 的左理想。这样继续分解下去，由于 <span class="math inline">\(R\)</span> 是左 Artinian
+环，这样的分解只能进行有限多次，所以 <span class="math display">\[R=L_1\oplus J =L_1\oplus L_2\oplus K = \cdots =
 L_1\oplus L_2\oplus\cdots\oplus L_n.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
 <p>我们接下来要把 <span class="math inline">\(R=\oplus_{i=1}^nL_i\)</span> 中所有同构于某个
 <span class="math inline">\(L_i\)</span>
@@ -807,16 +824,16 @@ Hom}_A(\oplus_{i=1}^nM,\oplus_{i=1}^nM)\)</span> 到 <span class="math inline">\
 
                                                     
   <p class="pink-link-context">
-    <a href="/spaceship-jump/" rel="next" title="飞船空间跳跃问题">
-      上一篇：飞船空间跳跃问题
+    <a href="/linear-algebra-problems/" rel="next" title="线性代数杂题若干">
+      上一篇：线性代数杂题若干
     </a>
   </p>
   
 
     
       <p class="pink-link-context">
-        <a href="/central-simple-algebra/" rel="next" title="中心单代数的三个基本结论">
-          下一篇：中心单代数的三个基本结论
+        <a href="/conway-tiling-group/" rel="next" title="不可能的密铺">
+          下一篇：不可能的密铺
         </a>
       </p>
       

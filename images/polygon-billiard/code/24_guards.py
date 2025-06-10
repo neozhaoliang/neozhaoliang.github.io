@@ -8,8 +8,8 @@ sq3 = np.sqrt(3)
 
 plt.figure(figsize=(10, 10))
 plt.clf()
-plt.xlim(-2.5, 3.5)
-plt.ylim(-2.2, 3.8)
+plt.xlim(-2.8, 3.7)
+plt.ylim(-2.5, 4)
 plt.axis("off")
 plt.gca().set_aspect("equal", adjustable="box")
 
@@ -26,11 +26,12 @@ assin = Vec2(0.1, 1.4)
 real_guards = []
 for i in range(-n, n):
     for j in range(-n, n):
-        if (i - j) % 3 != 0:
+        if i != -4 or j != 2:
             continue
         virtual_target = Vec2(0.55, 0.24) + transform.triangle_to_cartesian(i, j)
         virtal_guard = assin.midpoint(virtual_target)
         real_target, real_guard = room.draw_trajectory(assin, virtual_target)
+        plt.plot(*real_target, "yo", markeredgecolor="k", markersize=10)
         plt.plot(*virtual_target, "yo", markeredgecolor="k", markersize=10)
         plt.plot(
             *virtal_guard, "o", color="gray", markersize=6, markeredgecolor="k", lw=0.5
