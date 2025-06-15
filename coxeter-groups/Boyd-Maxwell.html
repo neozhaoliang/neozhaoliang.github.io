@@ -36,7 +36,7 @@ v\Leftrightarrow (u,v)\leq0.\]
 
 这显然是错误的，因为如果 \(u\) 是
 light-like 的向量，\(u\) 和 \(-u\) 属于不同的分支。这个错误导致后面 (Maxwell 1982, prop 3.1)
-的证明需要作一些修改。详情见下面的 定理 5.5。">
+的证明需要作一些修改。详情见下面的 定理 5.6。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -361,7 +361,7 @@ v\Leftrightarrow (u,v)\leq0.\]</span></p>
 </div>
 <p>这显然是错误的，因为如果 <span class="math inline">\(u\)</span> 是
 light-like 的向量，<span class="math inline">\(u\)</span> 和 <span class="math inline">\(-u\)</span> 属于不同的分支。这个错误导致后面 <span class="citation" data-cites="Maxwell82">(<a href="#ref-Maxwell82" role="doc-biblioref">Maxwell 1982</a>, prop 3.1)</span>
-的证明需要作一些修改。详情见下面的 <a href="#thm-sphere-packing" title="定理 5.5">定理 5.5</a>。</p>
+的证明需要作一些修改。详情见下面的 <a href="#thm-sphere-packing" title="定理 5.6">定理 5.6</a>。</p>
 <span id="more"></span>
 <h1 id="射影模型">射影模型</h1>
 <p>设 <span class="math inline">\(V=\mathbb{R}^{n+1,1}\)</span> 是 <span class="math inline">\(n+2\)</span> 维 Lorentzian 空间，<span class="math inline">\(\{e_1,e_2,\ldots,e_{n+2}\}\)</span>
@@ -693,9 +693,26 @@ S\)</span>，定义球帽 <span class="math display">\[C_k =
 \{v\in\mathcal{H}\mid (v,k)\geq0\}.\]</span></p>
 </div>
 <p>由于 <span class="math inline">\(C_k\subset\mathcal{Q}_+\)</span>，因此对任何 <span class="math inline">\(k,k'\in\mathcal{P}\)</span>，有 <span class="math inline">\(u\sim v\)</span> 对所有 <span class="math inline">\(u\in C_k,v\in C_{k'}\)</span> 成立。</p>
+<p>下面的引理告诉我们，如果 <span class="math inline">\(v\)</span>
+严格落在 <span class="math inline">\(C_k\)</span>
+的内部，则我们可以稍微“扰动” <span class="math inline">\(v\)</span>，得到无限多个落在 <span class="math inline">\(C_k\)</span> 中的 time-like 的向量。</p>
+<div id="perturb" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+5.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆，<span class="math inline">\(k\in\mathcal{P}\)</span>。设 <span class="math inline">\(v\in C_k\)</span> 满足 <span class="math inline">\((v,k)=a&gt;0\)</span>。则对任何 <span class="math inline">\(t\in(0,a]\)</span>，<span class="math inline">\(u=v-tk\)</span> 是 time-like 的并且 <span class="math inline">\(u\sim v\)</span>，以及 <span class="math inline">\((u,k)&gt;0\)</span>，从而 <span class="math inline">\(u\)</span> 的某个正倍数 <span class="math inline">\(u'\in C_k\)</span>。进一步，如果 <span class="math inline">\(k'\ne k\in\mathcal{P}\)</span> 满足 <span class="math inline">\(v\in C_k\cap C_{k'}\)</span>，则同样有 <span class="math inline">\(u'\in C_k\cap C_{k'}\)</span>。</p>
+</div>
+<p><strong>证明</strong>：直接计算可得：</p>
+<p><span class="math display">\[\begin{aligned}
+(u,u)&amp;=(v,v)-2at + t^2 \leq -2at+t^2 &lt; 0,\\
+(u,v)&amp;=(v,v)-at \leq at&lt;0.
+\end{aligned}\]</span> 从而 <span class="math inline">\(u\)</span> 是
+time-like 的并且 <span class="math inline">\(u\sim v\)</span>，从而
+<span class="math inline">\(u\)</span> 的某个正倍数 <span class="math inline">\(u'\in \mathcal{H}\)</span>。又因为 <span class="math inline">\((u,k)=a-t\geq0\)</span>，所以 <span class="math inline">\(u'\)</span> 也属于 <span class="math inline">\(C_k\)</span>。</p>
+<p>进一步，如果存在 <span class="math inline">\(k'\ne k\)</span>
+使得 <span class="math inline">\(v\in C_{k'}\)</span>，则由于 <span class="math display">\[(u,k')=a - t(k,k')\geq a+t&gt;0.\]</span>
+所以 <span class="math inline">\(u'\)</span> 也属于 <span class="math inline">\(C_{k'}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="contain-time-like" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-5.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆且 <span class="math inline">\(k_1\ne
+5.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆且 <span class="math inline">\(k_1\ne
 k_2\in\mathcal{P}\)</span>。则以下三点等价：</p>
 <ol type="1">
 <li><span class="math inline">\(|C_{k_1}\cap
@@ -713,34 +730,12 @@ C_{k_2}|&gt;1\)</span>；</li>
 的，则 <span class="math inline">\((v,k_1)\geq0,\,
 (v,k_2)\geq0\)</span>。我们断言这两个不等式至少有一个是严格的。若不然，则
 <span class="math inline">\((v,k_1+k_2)=0\)</span>。然而 <span class="math inline">\(k_1+k_2\)</span> 是 time/light-like 的，而 <span class="math inline">\(v\)</span> 是 time-like 的，这不可能。</p>
-<p><span class="math inline">\(3\Rightarrow 1\)</span>：不妨设 <span class="math inline">\(a=(v,k_1)&gt;0\)</span>。考虑 <span class="math inline">\(u=v-tk_1,\ t\in(0, a)\)</span>，直接计算验证可得
-<span class="math display">\[\begin{aligned}
-(u,u)&amp;=(v,v)-2at + t^2 \leq -2at+t^2 &lt; 0,\\
-(u,v)&amp;=(v,v)-at \leq at&lt;0.
-\end{aligned}\]</span> 从而 <span class="math inline">\(u\sim
-v\)</span>，于是 <span class="math inline">\(u\)</span> 的某个正倍数
-<span class="math inline">\(u'\in\mathcal{H}\)</span>。又因为 <span class="math display">\[\begin{aligned}
-(u,k_1)&amp;=a-t&gt;0,\\
-(u,k_2)&amp;=(v,k_2) - t\cdot (k_1,k_2)&gt;0.
-\end{aligned}\]</span> 所以 <span class="math inline">\(u'\in
-C_{k_1}\cap C_{k_2}\)</span>。显然不同的 <span class="math inline">\(t\)</span> 给出的 <span class="math inline">\(u\)</span> 互不共线，从而得到的 <span class="math inline">\(u'\)</span> 互不相同。于是 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|=\infty &gt; 1\)</span>。
+<p><span class="math inline">\(3\Rightarrow 1\)</span>：不妨设 <span class="math inline">\(a=(v,k_1)&gt;0\)</span>。根据 <a href="#perturb" title="引理 5.3">引理 5.3</a>，对任何 <span class="math inline">\(t\in(0,a]\)</span> 我们都可以得到对应的 <span class="math inline">\(u'\in C_k\cap
+C_{k'}\)</span>。不难看到不同的 <span class="math inline">\(t\)</span> 给出的 <span class="math inline">\(u'\)</span> 互不相同，于是 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|=\infty &gt; 1\)</span>。
 <span class="math inline">\(\blacksquare\)</span></p>
-<div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
-</span>给定 <span class="math inline">\(v\in C_{k_1}\cap
-C_{k_2}\)</span>，我们想寻找一个不同的 <span class="math inline">\(u'\ne v\)</span> 也满足 <span class="math inline">\(u'\in C_{k_1}\cap C_{k_2}\)</span>。<a href="#contain-time-like" title="引理 5.3">引理 5.3</a>
-采用的技巧可以概括如下：</p>
-<ol type="1">
-<li>考虑形如 <span class="math inline">\(u=v+tk_1\)</span> 的向量，其中
-<span class="math inline">\(t\ne0\)</span> 是实数。<span class="math inline">\(u\)</span> 显然与 <span class="math inline">\(v\)</span> 线性无关。</li>
-<li>验证 <span class="math inline">\((u,u)\leq 0\)</span> 和 <span class="math inline">\((u,v)&lt;0\)</span>，从而 <span class="math inline">\(u\sim v\)</span>。</li>
-<li>验证 <span class="math inline">\((u,k_1)\geq0\)</span> 和 <span class="math inline">\((u,k_2)\geq0\)</span>，从而 <span class="math inline">\(u\)</span> 的某个正倍数 <span class="math inline">\(u'\in C_{k_1}\cap C_{k_2}\)</span>。</li>
-</ol>
-<p>这个证明策略在下面会反复用到。</p>
-</div>
 <div id="disjoint-pair" class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-5.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆且 <span class="math inline">\(k_1\ne k_2\in\mathcal{P}\)</span>，则集合 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span> 和 <span class="math inline">\(C_{-k_1}\cap C_{-k_2}\)</span>
+5.5</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span> 是球堆且 <span class="math inline">\(k_1\ne k_2\in\mathcal{P}\)</span>，则集合 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span> 和 <span class="math inline">\(C_{-k_1}\cap C_{-k_2}\)</span>
 中必有一个至多只包含一个点。并且当这两个集合中的某个恰好只含一个点时，此点与
 <span class="math inline">\(k_1+k_2\)</span> 共线，并且有 <span class="math inline">\((k_1,k_2)=-1\)</span> 成立。</p>
 </div>
@@ -755,19 +750,10 @@ k_1+k_2)\geq0,\quad (v,k_1+k_2)\leq0.\]</span>
 <span class="math inline">\((k_1,k_2)=-1\)</span> 并且 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|\leq1\)</span> 和 <span class="math inline">\(|C_{-k_1}\cap C_{-k_2}|\leq1\)</span>
 中至少有一个成立。</p>
 <p>如果这两个集合，不妨设为 <span class="math inline">\(C_{k_1}\cap
-C_{k_2}\)</span>，恰好只有一个点。记这个点为 <span class="math inline">\(u\)</span>。如果 <span class="math inline">\(u\)</span> 与 <span class="math inline">\(k_1+k_2\)</span> 不共线的话，则必有 <span class="math inline">\((u,k_1+k_2)&gt;0\)</span>，从而 <span class="math inline">\((u,k_1)\)</span> 和 <span class="math inline">\((u,k_2)\)</span> 中至少有一个大于 0。不妨设 <span class="math inline">\(a=(u, k_1)&gt;0\)</span>，考虑 <span class="math inline">\(z=u-ak_1\)</span>。我们来验证： <span class="math display">\[\begin{aligned}
-(z,z)&amp;=(u,u)-a^2&lt;0,\\
-(z,u)&amp;=(u,u)-a^2&lt;0.
-\end{aligned}\]</span> 从而 <span class="math inline">\(z\)</span> 是
-time-like 的并且 <span class="math inline">\(z\sim u\)</span>。进一步
-<span class="math display">\[\begin{aligned}
-(z,k_1)&amp;=0,\\
-(z,k_2)&amp;=(u,k_2)-a(k_1,k_2)\geq a &gt;0.
-\end{aligned}\]</span> 从而 <span class="math inline">\(z\)</span>
-的某个正倍数 <span class="math inline">\(z'\)</span> 属于 <span class="math inline">\(\mathcal{H}\)</span>，即 <span class="math inline">\(z'\in C_{k_1}\cap C_{k_2}\)</span>。显然 <span class="math inline">\(z'\ne u\)</span>，这与 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|=1\)</span> 矛盾。所以 <span class="math inline">\(u\)</span> 必然与 <span class="math inline">\(k_1+k_2\)</span> 共线。<span class="math inline">\(\blacksquare\)</span></p>
+C_{k_2}\)</span>，恰好只有一个点。记这个点为 <span class="math inline">\(u\)</span>。如果 <span class="math inline">\(u\)</span> 与 <span class="math inline">\(k_1+k_2\)</span> 不共线的话，则必有 <span class="math inline">\((u,k_1+k_2)&gt;0\)</span>，从而 <span class="math inline">\((u,k_1)\)</span> 和 <span class="math inline">\((u,k_2)\)</span> 中至少有一个大于 0。不妨设 <span class="math inline">\(a=(u, k_1)&gt;0\)</span>，根据 <a href="#perturb" title="引理 5.3">引理 5.3</a>，我们可以构造无穷多个 <span class="math inline">\(u'\in C_{k_1}\cap C_{k_2}\)</span>，这与 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|=1\)</span> 矛盾。所以 <span class="math inline">\(u\)</span> 必然与 <span class="math inline">\(k_1+k_2\)</span> 共线。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="thm-sphere-packing" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-5.5</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span>
+5.6</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mathcal{P}\)</span>
 是非空集合，则下面两点是等价的：</p>
 <ol type="1">
 <li><span class="math inline">\(\mathcal{P}\)</span>
@@ -777,38 +763,38 @@ time-like 的并且 <span class="math inline">\(z\sim u\)</span>。进一步
 </ol>
 </div>
 <p><strong>证明</strong>：</p>
-<p>1 <span class="math inline">\(\Rightarrow\)</span> 2：根据 <a href="#disjoint-pair" title="引理 5.4">引理 5.4</a>，不妨设 <span class="math inline">\(k_1,k_2\in\mathcal{P}\)</span> 使得 <span class="math inline">\(|C_{k_1}\cap
+<p>1 <span class="math inline">\(\Rightarrow\)</span> 2：根据 <a href="#disjoint-pair" title="引理 5.5">引理 5.5</a>，不妨设 <span class="math inline">\(k_1,k_2\in\mathcal{P}\)</span> 使得 <span class="math inline">\(|C_{k_1}\cap
 C_{k_2}|\leq1\)</span>，我们要证明对任何 <span class="math inline">\(k\ne k'\in\mathcal{P}\)</span> 同样有 <span class="math inline">\(|C_k\cap C_{k'}|\leq1\)</span>。如果 <span class="math inline">\(\{k,k'\}=\{k_1,k_2\}\)</span>
-结论显然成立。所以不妨设 <span class="math inline">\(k\notin\{k_1,k_2\}\)</span>。用反证法，若 <span class="math inline">\(|C_k\cap C_{k'}|&gt;1\)</span>，根据 <a href="#contain-time-like" title="引理 5.3">引理 5.3</a>，存在 time-like
+结论显然成立。所以不妨设 <span class="math inline">\(k\notin\{k_1,k_2\}\)</span>。用反证法，若 <span class="math inline">\(|C_k\cap C_{k'}|&gt;1\)</span>，根据 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a>，存在 time-like
 的向量 <span class="math inline">\(v\in C_k\cap C_{k'}\)</span>。令
 <span class="math inline">\(w=k_1-(k_1,k_2)k_2\)</span>，则有 <span class="math display">\[(w,w)=1-(k_1,k_2)^2\leq0,\quad (w, k)&lt;0,\quad
-(w, k')\leq0.\]</span> 我们来证明有 <span class="math inline">\(v\sim w\)</span>。若如此，则 <span class="math inline">\(w\)</span> 的某个正倍数 <span class="math inline">\(w'\in\mathcal{H}\)</span>，从而由 <a href="#contain-time-like" title="引理 5.3">引理 5.3</a> 有 <span class="math inline">\(|C_{-k}\cap C_{-k'}|&gt;1\)</span>，与 <a href="#disjoint-pair" title="引理 5.4">引理 5.4</a>
+(w, k')\leq0.\]</span> 我们来证明有 <span class="math inline">\(v\sim w\)</span>。若如此，则 <span class="math inline">\(w\)</span> 的某个正倍数 <span class="math inline">\(w'\in\mathcal{H}\)</span>，从而由 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a> 有 <span class="math inline">\(|C_{-k}\cap C_{-k'}|&gt;1\)</span>，与 <a href="#disjoint-pair" title="引理 5.5">引理 5.5</a>
 矛盾。为此我们只要证明有 <span class="math inline">\((v,w)\leq0\)</span>
-成立即可。根据 <span class="math display">\[(v,w)=(v, k_1) -
-(v,k_2)(k_1,k_2) = (v-(v,k_2)k_2, k_1).\]</span> 记 <span class="math inline">\(u=v-(v, k_2)k_2\)</span>，则问题转化为证明 <span class="math inline">\((u,k_1)\leq0\)</span>。计算可得 <span class="math display">\[\begin{aligned}
+成立即可。利用 <span class="math display">\[(v,w)=(v, k_1) -
+(v,k_2)(k_1,k_2) = (v-(v,k_2)k_2, k_1).\]</span> 以及 <span class="math inline">\(u=v-(v, k_2)k_2\)</span>，问题转化为证明 <span class="math inline">\((u,k_1)\leq0\)</span>。计算可得 <span class="math display">\[\begin{aligned}
 (u,k_2) &amp;= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
 (u,v)&amp;=(u,u)=(v,v)-(v,k_2)^2 &lt;0.
 \end{aligned}
-\]</span> 即 <span class="math inline">\(u\sim v\)</span>。于是 <span class="math inline">\(u\)</span> 的某个正倍数 <span class="math inline">\(u'\)</span> 属于 <span class="math inline">\(\mathcal{H}\)</span>。如果 <span class="math inline">\((u,k_1)&gt;0\)</span> 的话则 <span class="math inline">\(u'\)</span> 是 time-like 的向量且满足 <span class="math inline">\((u',k_1)&gt;0\)</span> 和 <span class="math inline">\((u',k_2)=0\)</span>，从而 <span class="math inline">\(u'\in C_{k_1}\cap C_{k_2}\)</span>。但根据 <a href="#contain-time-like" title="引理 5.3">引理 5.3</a> 这会导致 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|&gt;1\)</span>，矛盾。因此
+\]</span> 即 <span class="math inline">\(u\sim v\)</span>。于是 <span class="math inline">\(u\)</span> 的某个正倍数 <span class="math inline">\(u'\)</span> 属于 <span class="math inline">\(\mathcal{H}\)</span>。如果 <span class="math inline">\((u,k_1)&gt;0\)</span> 的话则 <span class="math inline">\(u'\)</span> 是 time-like 的向量且满足 <span class="math inline">\((u',k_1)&gt;0\)</span> 和 <span class="math inline">\((u',k_2)=0\)</span>，从而 <span class="math inline">\(u'\in C_{k_1}\cap C_{k_2}\)</span>。但根据 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a> 这会导致 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|&gt;1\)</span>，矛盾。因此
 <span class="math inline">\((u,k_1)\leq0\)</span>。</p>
 <p>2 <span class="math inline">\(\Rightarrow\)</span> 1: 不妨设 <span class="math inline">\(\mathcal{P}\)</span>
 中任何两个球帽至多只有一个交点。对 <span class="math inline">\(k_1\ne
 k_2\in\mathcal{P}\)</span>，<span class="math inline">\(U=\mathrm{span}\{k_1,k_2\}\)</span> 肯定不是
 space-like 的，否则 <span class="math inline">\(U^\bot=k_1^\bot\cap
-k_2^\bot\)</span> 是 time-like 的，则存在 time-like 的向量 <span class="math inline">\(v\)</span> 满足 <span class="math inline">\((v,k_1)=(v,k_2)=0\)</span>。给 <span class="math inline">\(v\)</span> 乘以适当实数后可以使得 <span class="math inline">\(v\in\mathcal{H}\)</span>，从而 <span class="math inline">\(v\in C_{k_1}\cap C_{k_2}\)</span>，这与 <a href="#contain-time-like" title="引理 5.3">引理 5.3</a> 矛盾。所以 <span class="math inline">\(U\)</span> 不是 space-like 的，即 <span class="math inline">\(|(k_1,k_2)|\geq1\)</span>。如果 <span class="math inline">\((k_1,k_2)\geq1\)</span>，则 <span class="math inline">\(C_{k_1}\cap C_{-k_2}\)</span> 和 <span class="math inline">\(C_{-k_1}\cap C_{k_2}\)</span>
+k_2^\bot\)</span> 是 time-like 的，则存在 time-like 的向量 <span class="math inline">\(v\)</span> 满足 <span class="math inline">\((v,k_1)=(v,k_2)=0\)</span>。给 <span class="math inline">\(v\)</span> 乘以适当实数后可以使得 <span class="math inline">\(v\in\mathcal{H}\)</span>，从而 <span class="math inline">\(v\in C_{k_1}\cap C_{k_2}\)</span>，这与 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a> 矛盾。所以 <span class="math inline">\(U\)</span> 不是 space-like 的，即 <span class="math inline">\(|(k_1,k_2)|\geq1\)</span>。如果 <span class="math inline">\((k_1,k_2)\geq1\)</span>，则 <span class="math inline">\(C_{k_1}\cap C_{-k_2}\)</span> 和 <span class="math inline">\(C_{-k_1}\cap C_{k_2}\)</span>
 中必有一个至多只包含一个点，不妨设 <span class="math inline">\(|C_{k_1}\cap C_{-k_2}|\leq1\)</span>。但是根据已知
 <span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span>
 也至多只包含一个点，从而 <span class="math inline">\(C_{k_1}\)</span>
 作为二者的并至多只有一个点，矛盾。所以只能是 <span class="math inline">\((k_1,k_2)\leq-1\)</span>，从而 <span class="math inline">\(\mathcal{P}\)</span> 是球堆。 <span class="math inline">\(\blacksquare\)</span></p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
-5.6</span>.</span><span class="statement-spah"> </span>记 <span class="math inline">\(\Omega_r=\{\omega\in\Omega\mid
+5.7</span>.</span><span class="statement-spah"> </span>记 <span class="math inline">\(\Omega_r=\{\omega\in\Omega\mid
 (\omega,\omega)&gt;0\}\)</span> 是所有实权组成的集合，<span class="math inline">\(\mathcal{C}_r=\mathrm{cone}(\Omega_r)\)</span>
 是由所有实权生成的凸锥。</p>
 </div>
 <div id="real-cone-closure" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-5.7</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(W\)</span> 是不可约、双曲的，且 level 大于等于
+5.8</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(W\)</span> 是不可约、双曲的，且 level 大于等于
 2，则 <span class="math inline">\(\overline{\mathcal{C}_r}= \overline{
 \mathcal{C} }\)</span>。</p>
 </div>
@@ -870,14 +856,14 @@ Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.\]</span> 这里 <span class="math inline
 </ol>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
-5.8</span>.</span><span class="statement-spah"> </span>规定 <span class="math inline">\(\hat{\Omega}_r=\{\hat{\omega}\mid
+5.9</span>.</span><span class="statement-spah"> </span>规定 <span class="math inline">\(\hat{\Omega}_r=\{\hat{\omega}\mid
 \omega\in\Omega_r\}\)</span>，其中 <span class="math inline">\(\hat{\omega}=\omega/\sqrt{(\omega,\omega)}\)</span>
 是将 <span class="math inline">\(\omega\)</span>
 归一化得到的单位向量。</p>
 </div>
 <div id="max-packing" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-5.9</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(W\)</span> 是双曲的，则 <span class="math inline">\(\hat{\Omega}_r\)</span> 是非平凡的球堆当且仅当
+5.10</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(W\)</span> 是双曲的，则 <span class="math inline">\(\hat{\Omega}_r\)</span> 是非平凡的球堆当且仅当
 <span class="math inline">\(\Gamma\)</span> 的 level 是 2，这时 <span class="math inline">\(\hat{\Omega}_r\)</span> 还是极大球堆。</p>
 </div>
 <p><strong>证明</strong>：若 <span class="math inline">\(\Gamma\)</span>
@@ -889,8 +875,8 @@ Y} (\omega_s,\omega_t)\alpha_t=v_1+v_2.\]</span> 这里 <span class="math inline
 成立，自然就有 <span class="math inline">\((k,\omega)&lt;0\)</span>
 对任何 <span class="math inline">\(\omega\in\Omega_r\)</span> 成立，从而
 <span class="math inline">\((k,y)\leq0\)</span> 对任何 <span class="math inline">\(y\in\overline{\mathcal{C}_r}=\mathrm{cone}(\Omega_r)\)</span>
-成立。根据 <a href="#real-cone-closure" title="定理 5.7">定理
-5.7</a>，<span class="math inline">\(\overline{\mathcal{C}_r}=\overline{
+成立。根据 <a href="#real-cone-closure" title="定理 5.8">定理
+5.8</a>，<span class="math inline">\(\overline{\mathcal{C}_r}=\overline{
 \mathcal{C} }\)</span>，这意味着 <span class="math inline">\((k,y)\leq0\)</span> 对任何 <span class="math inline">\(y\in\mathcal{C}\)</span> 成立，即 <span class="math inline">\(-k\in\mathcal{C}^\ast\)</span>。由于 <a href="/coxeter-groups/tits-cone/#dual-cone-nonspace">对偶锥 <span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量范数 <span class="math inline">\(\leq0\)</span></a>，<span class="math inline">\((k,k)=(-k,-k)\leq0\)</span>，矛盾。这就证明了
 level 2 时 <span class="math inline">\(\Omega_r\)</span>
 是极大球堆。</p>
