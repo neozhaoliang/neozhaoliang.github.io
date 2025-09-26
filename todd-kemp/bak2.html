@@ -19,27 +19,26 @@
     
 
         <title>
-            Todd Kemp 概率论课程笔记 | 朝花夕拾</title>
+            Todd Kemp 概率论课程笔记 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="0 Banach Tarski
-不可测集的例子：记单位圆 \(S^1=\{e^{it},\,t\in\mathbb{R}\}\)，子群
-\(H=\{e^{iq},\,q\in\mathbb{Q}\}\)，在每个左陪集
-\(S^1/H\) 中选择一个代表元组成集合
-\(E\)，则 \(E\) 是不可测">
+    <meta name="description" content="6.2 Measurable Functions
+本讲介绍了测度空间上可测映射的概念。
+
+引理：设 \(f:\Omega\to\mathcal{S}\) 是一个映射，\(\mathcal{A}\subset2^\mathcal{S}\) 是 \(\mathcal{S}\) 中一个集合族，定义 \[f">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="Todd Kemp 概率论课程笔记"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -61,7 +60,7 @@
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -173,31 +172,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Durrett-概率论批判/">
-                    Durrett-概率论批判 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/完美采样/">
-                    完美采样 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">5 篇</span></a>
+                    计数组合学 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -205,15 +180,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                    Shadertoy <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -221,7 +188,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -229,15 +196,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">1 篇</span></a>
+                    可视化复分析 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -245,15 +204,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/几何群论/">
-                    几何群论 <span class="right">1 篇</span></a>
+                    Williams-概率和鞅 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -312,7 +263,7 @@
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#banach-tarski"><span class="section table-of-contents-text">0 Banach Tarski</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#measurable-functions"><span class="section table-of-contents-text">6.2 Measurable Functions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#robustness-of-measurability"><span class="section table-of-contents-text">7.1 Robustness of
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#measurable-functions"><span class="section table-of-contents-text">6.2 Measurable Functions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#robustness-of-measurability"><span class="section table-of-contents-text">7.1 Robustness of
 Measurability</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#monotone-convergence-theorem"><span class="section table-of-contents-text">8.2 Monotone convergence
 theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#integrals-and-null-sets"><span class="section table-of-contents-text">9.1 Integrals and Null Sets</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#l1-and-the-dct"><span class="section table-of-contents-text">9.2 L1 and the DCT</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-laws-revisited"><span class="section table-of-contents-text">11.2 Probability Laws Revisited</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#convergence-in-measure"><span class="section table-of-contents-text">13.1 Convergence in measure</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#lp-is-complete"><span class="section table-of-contents-text">13.2 \(L^p\) is
 Complete</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#independence"><span class="section table-of-contents-text">15.1 Independence</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#independent-random-variables"><span class="section table-of-contents-text">15.2 Independent Random
@@ -322,14 +273,6 @@ Theorem</span></a></li><li class="section table-of-contents-item section table-o
                                         
                                             <div class="entry pink-link-context">
                                                 
-<h1 id="banach-tarski">0 Banach Tarski</h1>
-<p><strong>不可测集的例子</strong>：记单位圆 <span class="math inline">\(S^1=\{e^{it},\,t\in\mathbb{R}\}\)</span>，子群
-<span class="math inline">\(H=\{e^{iq},\,q\in\mathbb{Q}\}\)</span>，在每个左陪集
-<span class="math inline">\(S^1/H\)</span> 中选择一个代表元组成集合
-<span class="math inline">\(E\)</span>，则 <span class="math inline">\(E\)</span> 是不可测集合。这是因为 <span class="math inline">\(S^1 = \bigcup_{q\in\mathbb{Q}}Ee^{iq}\)</span>
-是可数多个互不相交的集合的并，这些集合两两之间只差乘以一个单位复数，即差一个旋转，所以测度均相等，于是
-<span class="math display">\[1 = \sum_{q\in\mathbb{Q}}\mu(E) =
-\infty\cdot \mu(E)\Rightarrow E\text{\ is not measuabe.}\]</span></p>
 <h1 id="measurable-functions">6.2 Measurable Functions</h1>
 <p>本讲介绍了测度空间上可测映射的概念。</p>
 <blockquote>
