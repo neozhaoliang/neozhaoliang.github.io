@@ -1,0 +1,682 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画 | Why so serious?</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="本文要介绍的是我写的一个有趣的 Python
+小程序，一个脱离了低级趣味的程序，一个有益于广大人民了解算法的程序。代码在
+Github
+上。
+这个程序可以用来制作各种各样的算法动画，包含但不限于：">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画"/>
+    <meta property="og:site_name" content="Why so serious?"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/pywonderland-项目/">pywonderland 项目</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2017-10-01T16:00:00.000Z"><a href="/gifmaze-cn/">2017-10-02</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>本文要介绍的是我写的一个有趣的 Python
+小程序，一个脱离了低级趣味的程序，一个有益于广大人民了解算法的程序。代码在
+<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/gifmaze">Github</a>
+上。</p>
+<p>这个程序可以用来制作各种各样的算法动画，包含但不限于：</p>
+<span id="more"></span>
+<ul>
+<li><p>Wilson 均匀生成树算法：</p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/wilson-bfs.gif"></p></li>
+<li><p>Prim 算法：</p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/prim.gif"></p></li>
+<li><p>Kruskal 算法：</p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/kruskal.gif"></p></li>
+<li><p>Langton 蚂蚁：</p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/langton-ant.gif"></p></li>
+<li><p>Hilbert 曲线：</p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/hilbert.gif"></p></li>
+<li><p>Conway 的生命游戏 (gosper glider gun)：</p>
+<p><img style="margin:0px auto;display:block" src="/images/gifmaze/gosperglidergun.gif"></p></li>
+</ul>
+<p>以上这些动画有一个共同特点：它们都位于二维的网格图上，这也是这个程序的一个限制。</p>
+<p>这个程序有如下特点：</p>
+<ol type="1">
+<li><p>所有代码全部由纯 Python
+写成，没有用到任何第三方库或者外部软件，也不包含任何 <code>draw</code>,
+<code>fill</code> 之类的函数调用，仅使用了内置的 <code>struct</code>,
+<code>random</code> 模块和一些内置函数。后来的版本中为了显示进度条引入了
+<code>tqdm</code>；为了把整个动画嵌入一张背景图片引入了
+<code>pillow</code>，这些都属于特效，本质不需要。</p></li>
+<li><p>实现了一个小型但高效的 GIF
+编码器，<strong>通过直接将动画过程编码为字节流</strong>，可以在数秒之内生成高度优化的动态图。比如前面那张
+Langton ant 的动图，它包含 2300 帧，但是大小只有
+158KB，而且只需要一秒多一点就可以生成。这是这个程序最让人意外的一点：Python
+生成图像的慢是出了名的，它居然能在几秒内生成一张包含几千帧的 GIF
+动图？这是个大新闻啊！</p></li>
+<li><p>严格遵循 GIF89a 协议，生成的图片在 chrome, firefox, IE 和 Eog
+中都可以正常显示。</p></li>
+</ol>
+<p>程序运行的相当快，生成一副 600x400 像素，演示 Wilson
+算法的动图只要数秒，得到的文件包含 1000~3000 帧，但大小不超过 1M
+左右。没想到吧？<span class="emoji" data-alias="astonished" style="" data-fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f632.png?v8">😲</span></p>
+<p>这个程序是怎么来的呢？许多年前我在网上闲逛的时候，偶然发现了 d3.js <a target="_blank" rel="noopener" href="https://bl.ocks.org/mbostock">作者的网站</a>（原链接已重定向，作者现在已经创业搞
+<a target="_blank" rel="noopener" href="https://observablehq.com/">observablehq</a>
+去了），当时我对上面展示的各种丰富炫酷的动态效果惊羡不已，尤其是其中 <a target="_blank" rel="noopener" href="https://bl.ocks.org/mbostock/11357811">Wilson
+算法的演示</a>，让我对此算法有了更直观和深入的理解。我立刻萌发了用
+Python 制作一个 GIF
+版本动画演示的想法，但是思考了许久也不知道从何入手。这里困难的地方在于
+Wilson
+算法是一个随机算法，其运行时间是不确定的，一个动画里面可能包含数千帧，如果采用把每一帧保存为图像再合并到一起的话，最终得到的文件会非常庞大。而且这种纯暴力的做法逼格不高，我实在不屑于采用。限于能力不足，这个想法只好被暂时压在心底，但是一直念念不忘。过了几年后，一个偶然的机会我接触到了
+GIF
+图像的编码协议，豁然开朗：为什么不直接把动画过程编码为字节流呢？通过精确定位每一帧的位置，控制
+LZW
+压缩过程的编码长度，文件过大的问题是可以解决的！前后捣鼓了半个月，反复研究协议细节，debug
+了无数次后，这才作出了上面的效果。后来慢慢又加上了其它迷宫算法和元胞自动机的演示。</p>
+<p>关键的地方有这么几个：</p>
+<ol type="1">
+<li><p>由于 GIF
+图像的每一帧占据的是整个图像窗口的一个矩形子区域，在一个包含很多帧的动图中，相邻的两帧之间的变动可能很小，没有必要每次都将整个图像全部编码。我们只需要记录帧和帧之间的变化情况，得出每一帧所占的矩形子区域，每次编码时只针对这个子区域编码即可，这样就大大减小了生成的文件体积。</p></li>
+<li><p>采用变长的 LZW 压缩算法。GIF89a
+协议允许每个打包的数据块指明其所使用的最小码字的长度，如果你事先知道这一帧图像用到的颜色数目，比如
+4 种颜色，那么 2 个比特就足以表示这 4 种颜色，从而最小编码长度可以设置为
+2。这样根据具体情况采用不同的编码长度能有效减少文件体积。</p></li>
+<li><p>因为要频繁的进行字节流的操作，所以每次将编码后的数据先写入一个
+<code>BytesIO</code> 对象中，放在内存里，最后一次性输出到硬盘。</p></li>
+</ol>
+<p>代码的组织结构是简单的三层论：顶层是抽象的 <code>Maze</code>
+类，其本质就是一个 2D
+网格图，用来跑各种图算法，它不关心动图的任何细节。底层是
+<code>GIFSurface</code> 类，负责维护 GIF
+图片的全局信息，比如图片宽高，循环次数，背景颜色，全局调色板等。中间层是
+<code>Animation</code>
+类，用来控制帧的信息，在算法运行过程中它按照一定的频率将
+<code>Maze</code> 染色并编码写入 <code>GIFSurface</code>。</p>
+<p>目前程序的核心代码加起来大约在 1000
+行左右，但是如果牺牲一些可读性和功能的话，是可以压缩到 500
+行以内的。我曾经把这个项目投稿到 Github 上的 <a target="_blank" rel="noopener" href="https://github.com/aosabook/500lines">500lines</a>
+上，可惜未能入选。但是我始终觉得它的优雅、奇妙并不逊色于那些大神们的作品。</p>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/mobius-h3space/" rel="next" title="Möbius 变换的分类与上半双曲空间的等距">
+      上一篇：Möbius 变换的分类与上半双曲空间的等距
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/coupling-from-the-past/" rel="next" title="Coupling from the past">
+          下一篇：Coupling from the past
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>
