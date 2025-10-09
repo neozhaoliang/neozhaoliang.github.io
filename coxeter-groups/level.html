@@ -256,6 +256,14 @@ level 的定义
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
                 </a>
@@ -844,21 +852,14 @@ I_-}\underbrace{u_s}_{&gt;0}\underbrace{u_t}_{&lt;0}\underbrace{(\alpha_s,\alpha
 0.\]</span> 所以 <span class="math inline">\((u_+, u_+) &lt; 0\)</span>
 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span>
 至少有一个成立，不妨设 <span class="math inline">\((u_+,
-u_+)&lt;0\)</span>。如果 <span class="math inline">\(I_-\cup
-I_0\ne\emptyset\)</span>，那么 <span class="math inline">\(I_+\)</span>
-作为从 <span class="math inline">\(\Gamma\)</span> 中删去 <span class="math inline">\(I_-\cup I_0\)</span> 后得到的真子图包含 time-like
-的向量 <span class="math inline">\(u_+\)</span>，这与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 1 矛盾。所以 <span class="math inline">\(I=I_+\)</span>，即所有系数 <span class="math inline">\(u_s\)</span> 都大于 0。相应地如果是 <span class="math inline">\((u_-,u_-)&lt;0\)</span> 的话则所有 <span class="math inline">\(u_s\)</span> 都小于 0。</p>
+u_+)&lt;0\)</span>。如果 <span class="math inline">\(|I_-\cup
+I_0|\geq1\)</span>，那么 <span class="math inline">\(I_+\)</span>
+作为真子图包含 time-like 的向量 <span class="math inline">\(u_+\)</span>，这与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 1 矛盾。所以 <span class="math inline">\(I=I_+\)</span>，即所有系数 <span class="math inline">\(u_s\)</span> 都大于 0。相应地如果是 <span class="math inline">\((u_-,u_-)&lt;0\)</span> 的话则所有 <span class="math inline">\(u_s\)</span> 都小于 0。</p>
 <p>对断言 2 我们仍然采用类似的记号，记 <span class="math inline">\(v_+=\sum_{s\in I_+}v_s\alpha_s\)</span>，<span class="math inline">\(v_-=\sum_{t\in I_-}v_t\alpha_t\)</span>，则同样有
 <span class="math inline">\((v_+,v_-)\geq0\)</span>。</p>
-<p>我们想证明 <span class="math inline">\(|I_0|\leq1\)</span>，并且
-<span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 中必有一个是空集。</p>
 <p>如果 <span class="math inline">\(|I_0|\geq2\)</span>，那么 <span class="math inline">\((v, v)=0\)</span> 说明删除 <span class="math inline">\(I_0\)</span> 以后得到的子图不是有限的，这与 <span class="math inline">\(\Gamma\)</span> 的 level 是 1 和 <a href="#level-l" title="定理 1.2">定理 1.2</a> 矛盾。所以 <span class="math inline">\(|I_0|\leq 1\)</span>。</p>
 <p>如果 <span class="math inline">\(I_+,\,I_-\)</span>
-都不是空集的话，则 <span class="math inline">\(v_+,v_-\)</span>
-都非零，并且必然有 <span class="math inline">\((v_+, v_+)\geq0\)</span>
-和 <span class="math inline">\((v_-, v_-)\geq0\)</span> 成立，否则删掉
-<span class="math inline">\(I_+\)</span> 或者 <span class="math inline">\(I_-\)</span> 以后剩下的子图不是有限或者仿射的，与
-<span class="math inline">\(\Gamma\)</span> 的 level 是 1 矛盾。然而
+都非空，则它们作为真子图是仿射/有限的。于是 <span class="math inline">\((v_+, v_+)\geq0,(v_-, v_-)\geq0\)</span>。然而
 <span class="math display">\[0=(v, v) = (v_+,v_+) + (v_-,v_-) +
 2(v_+,v_-).\]</span> 三个非负数的和等于 0，只能是 <span class="math inline">\((v_+,v_+) = (v_-,v_-) =(v_+,
 v_-)=0\)</span>。现在分情况讨论：</p>
@@ -867,43 +868,25 @@ v_-)=0\)</span>。现在分情况讨论：</p>
 <li>如果 <span class="math inline">\(I_0=\emptyset\)</span>，则 <span class="math inline">\(S=I_+\cup I_-\)</span>。然而 <span class="math inline">\((v_+,v_-)=\sum_{s\in I_+,\,t\in
 I_-}v_sv_t(\alpha_s,\alpha_t)=0\)</span> 说明对任何 <span class="math inline">\(s\in I_+,\,t\in I_-\)</span> 有 <span class="math inline">\((\alpha_s,\alpha_t)=0\)</span>，从而 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 互不连通，这与 <span class="math inline">\(\Gamma\)</span> 连通矛盾。</li>
 </ol>
-<p>总之 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 必有一个是空集，断言 2 得证。</p>
+<p>总之 <span class="math inline">\(|I_0|\leq1\)</span>，并且 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 必有一个是空集，断言 2 得证。</p>
 <h2 id="appendixB">level 2 情形断言的证明</h2>
-<p>首先是断言 1 的证明。记 <span class="math inline">\(I_+,I_-,I_0\)</span> 如前，并记 <span class="math inline">\(u_+=\sum_{s\in I_+}u_s\alpha_s\)</span>，<span class="math inline">\(u_-=\sum_{t\in I_-}u_t\alpha_t\)</span>。则 <span class="math inline">\((u,u)&lt;0\)</span> 和 <span class="math inline">\((u_+,u_-)\geq0\)</span> 说明 <span class="math inline">\((u_+, u_+) &lt; 0\)</span> 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span> 中至少有一个成立。</p>
-<p>如果 <span class="math inline">\(|I_0|\geq2\)</span>，则 <span class="math inline">\((u,u)&lt;0\)</span> 与 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 矛盾。所以 <span class="math inline">\(|I_0|\leq 1\)</span>。</p>
-<ol type="1">
-<li>如果 <span class="math inline">\(I_+,I_-\)</span> 都不是空集，则
-<span class="math inline">\(u_+,\,u_-\)</span> 均不为 0。由于 <span class="math inline">\((u_+, u_+) &lt; 0\)</span> 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span> 中至少有一个成立，不妨设
-<span class="math inline">\((u_+,u_+)&lt;0\)</span>，结合 <span class="math inline">\(\Gamma\)</span> 的 level 是 2，这要求 <span class="math inline">\(|I_-\cup I_0|\leq 1\)</span>，从而只能是 <span class="math inline">\(|I_-|=1,\, I_0=\emptyset\)</span>。即系数全部非 0
-且恰好有一个异号。</li>
-<li>如果 <span class="math inline">\(I_+,I_-\)</span>
-中有一个是空集，不妨设 <span class="math inline">\(I_-=\emptyset\)</span>，我们仍然有 <span class="math inline">\(|I_-\cup
-I_0|=|I_0|\leq1\)</span>。即系数至多有一个为 0 且其它的均同号。</li>
-</ol>
-<p>总之我们证明了除去至多一个系数之外，其它的系数均非 0 且同号。断言 1
+<p><strong>断言 1 的证明</strong>。记 <span class="math inline">\(I_+,I_-,I_0\)</span> 如前。<span class="math inline">\((u,u)&lt;0\)</span> 和 <span class="math inline">\((u_+,u_-)\geq0\)</span> 说明 <span class="math inline">\((u_+, u_+) &lt; 0\)</span> 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span> 至少有一个成立。不妨设
+<span class="math inline">\((u_+,u_+)&lt;0\)</span>。由 level 2 可得
+<span class="math inline">\(|I_-\cup I_0|\leq
+1\)</span>。即除去至多一个系数之外，其它的系数均非 0 且同号。断言 1
 得证。</p>
-<p>对断言 2，类似地，我们记 <span class="math inline">\(v_+=\sum_{s\in
-I_+}v_s\alpha_s\)</span>，<span class="math inline">\(v_-=\sum_{t\in
-I_-}v_t\alpha_t\)</span>。</p>
-<p>首先 <span class="math inline">\(|I_0|\leq2\)</span> 是显然的，否则
-<span class="math inline">\((v,v)=0\)</span> 与 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 和 <a href="#level-l" title="定理 1.2">定理 1.2</a> 矛盾。</p>
-<ol type="1">
-<li>如果 <span class="math inline">\(I_0\ne\emptyset\)</span>，则 <span class="math inline">\(I_+,I_-\)</span> 中必有一个为空。否则 <span class="math inline">\(|I_+\cup I_0|\geq2,\,|I_-\cup
-I_0|\geq2\)</span>。level 2 要求 <span class="math inline">\((v_+,v_+)\geq0,\,(v_-,v_-)\geq0\)</span>，从而
-<span class="math inline">\((v,v)=0\)</span> 和 <span class="math inline">\((v_+,v_-)\geq0\)</span> 导致 <span class="math inline">\((v_+,v_+)=(v_-, v_-)=(v_+,v_-)=0\)</span>。由于
-<span class="math inline">\(\Gamma\)</span> 至少包含 4 个顶点，所以
-<span class="math inline">\(I_+,\,I_-\)</span>
-中必有一个包含两个或者更多的顶点。不妨设 <span class="math inline">\(|I_+|\geq2\)</span>，则删除 <span class="math inline">\(I_+\cup I_0\)</span> 会至少删掉 3
-个顶点，但得到的子图不是正定的，与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 2 矛盾。所以系数
-<span class="math inline">\(\{v_s\}\)</span> 中如果有 0
-的话，则至多只有两个 0，且剩下的都同号。</li>
-<li>如果 <span class="math inline">\(I_0=\emptyset\)</span>
-是空集，则要么 <span class="math inline">\(I_+,I_-\)</span>
-中有一个也是空集，从而所有的系数都非 0 且同号；要么 <span class="math inline">\(v_+,\,v_-\)</span> 均不为 0。这时 <span class="math inline">\(\Gamma\)</span> 连通说明 <span class="math inline">\((v_+,v_-)&gt;0\)</span>，结合 <span class="math inline">\((v,v)=0\)</span> 可以得出 <span class="math inline">\((v_+,v_+) &lt; 0\)</span> 和 <span class="math inline">\((v_-, v_-)&lt;0\)</span> 中至少有一个成立。不妨设
-<span class="math inline">\((v_+,v_+)&lt;0\)</span>，则 level 2 要求
-<span class="math inline">\(|I_-|\leq1\)</span>，即 <span class="math inline">\(\{v_s\}\)</span>
-均非零且恰有一个元素与其它元素异号。</li>
-</ol>
+<p><strong>断言 2 的证明</strong>。同样记 <span class="math inline">\(I_+,I_-,I_0\)</span> 如前。</p>
+<ul>
+<li><p><span class="math inline">\(I_0=\emptyset\)</span>。如果有 <span class="math inline">\(|I_+|\geq2\)</span> 和 <span class="math inline">\(|I_-|\geq2\)</span>，则 level 2 导致 <span class="math display">\[(v_+,v_+)\geq0,\quad (v_-,v_-)\geq0.\]</span>
+再结合 <span class="math inline">\((v,v)=0\)</span> 和 <span class="math inline">\((v_+,v_-)\geq0\)</span> 可得 <span class="math display">\[(v_+, v_+) = (v_-,v_-)=(v_+,v_-)=0.\]</span> 但
+<span class="math inline">\((v_+,v_-)=\sum_{s\in I_+}\sum_{t\in
+I_-}v_sv_t(\alpha_s,\alpha_t)=0\)</span> 说明 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 将 <span class="math inline">\(S\)</span> 分为两个互不联通的子集，与 <span class="math inline">\(\Gamma\)</span>
+不可约矛盾。所以如果系数均非零，则至多只能有一个与其它异号。</p></li>
+<li><p><span class="math inline">\(I_0\ne\emptyset\)</span>。<span class="math inline">\((v,v)=0\)</span> 和 <a href="#level-l" title="定理 1.2">定理 1.2</a> 说明 <span class="math inline">\(|I_0|\leq2\)</span>。我们来证明这时 <span class="math inline">\(I_+,I_-\)</span>
+之中必有一个是空集。即剩下的非零系数都同号。若不然，由于 <span class="math inline">\(|\Gamma|\geq4\)</span>，所以 <span class="math inline">\(|I_+|\geq2\)</span> 和 <span class="math inline">\(|I_-|\geq2\)</span> 至少有一个成立。不妨设 <span class="math inline">\(|I_+|\geq2\)</span>，则 <span class="math inline">\(I_-\)</span> 作为删除 <span class="math inline">\(|I_+\cup I_0|\geq3\)</span>
+个顶点得到的子图是有限型的，于是 <span class="math inline">\((v_-,v_-)&gt;0\)</span>。<span class="math inline">\(I_+\)</span> 作为删除 <span class="math inline">\(|I_-\cup I_0|\geq2\)</span>
+个顶点得到的子图是有限或者仿射的，于是 <span class="math inline">\((v_+,v_+)\geq0\)</span>。这同样与 <span class="math inline">\((v,v)=0\)</span> 和 <span class="math inline">\((v_+,v_-)\geq0\)</span> 矛盾。</p></li>
+</ul>
 <p>至此断言 2 得证，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
