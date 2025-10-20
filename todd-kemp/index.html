@@ -1457,20 +1457,21 @@ Markov 性质，如果对任何有界可测函数 <span class="math inline">\(f\
 t.\]</span></p>
 <p>Markov
 过程貌似是关于过去和当前的，但实际上它也告诉了我们关于未来的信息：</p>
-<blockquote>
-<p><strong>推论</strong>：<span class="math inline">\(\mathbb{E}[Y|\mathcal{F}_s] = E[Y|X_s],\quad
-\forall Y\in\mathbb{B}(\Omega, \mathcal{F}_{\geq s})\)</span>。</p>
-</blockquote>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+40.1</span>.</span><span class="statement-spah"> </span><span class="math display">\[\mathbb{E}[Y|\mathcal{F}_s] = E[Y|X_s],\quad
+\forall Y\in\mathbb{B}(\Omega, \mathcal{F}_{\geq s}).\]</span></p>
+</div>
 <p>这个推论的证明很有意思，要用到 Dynkin multiplicative system。</p>
-<p>考虑形如 <span class="math inline">\(Y =
-g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})\)</span> 的函数，这里 <span class="math inline">\(s =t_0&lt;t_1&lt;\cdots &lt;t_n\)</span>，且每个
+<p>考虑形如 <span class="math display">\[Y =
+g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})\]</span> 的函数，这里 <span class="math inline">\(s =t_0&lt;t_1&lt;\cdots &lt;t_n\)</span>，且每个
 <span class="math inline">\(g_i\)</span> 都是有界可测的，从而 <span class="math inline">\(Y\)</span> 也是有界可测的，并且 <span class="math inline">\(Y\in\mathcal{F}_{\geq s}\)</span>。</p>
-<blockquote>
-<p><strong>引理</strong>：设 <span class="math display">\[\mathcal{M} =
-\{g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n}): n\in\mathbb{Z}_{\geq0},
-s=t_0&lt;t_1&lt;\cdots&lt;t_n,
-g_j\in\mathbb{B}(S,\mathcal{B})\},\]</span> 则 <span class="math inline">\(\mathcal{M}\)</span> 是乘法系，且 <span class="math inline">\(\sigma(M) = \mathcal{F}_{\geq s}\)</span>。</p>
-</blockquote>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+40.2</span>.</span><span class="statement-spah"> </span>设 <span class="math display">\[\mathcal{M} = \{g_0(X_{t_0})g_1(X_{t_1})\cdots
+g_n(X_{t_n})\mid n\in\mathbb{Z}_{\geq0},\ s=t_0&lt;t_1&lt;\cdots&lt;t_n,
+g_j\in\mathbb{B}(S,\mathcal{B})\}.\]</span> 则 <span class="math inline">\(\mathcal{M}\)</span> 是乘法系，且 <span class="math inline">\(\sigma(M) = \mathcal{F}_{\geq s}\)</span>。</p>
+</div>
 <p>回到推论的证明。</p>
 <p>设 <span class="math inline">\(\mathcal{H}\)</span>
 是所有满足推论要求的函数构成的空间。我们只要证明 <span class="math inline">\(\mathcal{H} \supset\mathcal{M}\)</span>。这样由于
