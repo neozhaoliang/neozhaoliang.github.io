@@ -307,7 +307,7 @@ Kolmogorov
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
     <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-extension-theorem"><span class="section table-of-contents-text">16.1&#x2F;16.2 Kolmogorov’s Extension
-Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-0-1-law"><span class="section table-of-contents-text">17.1 Kolmogorov’s 0-1 Law</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniform-integrability"><span class="section table-of-contents-text">48.1 Uniform Integrability</span></a></li></ol>
+Theorem</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
@@ -350,132 +350,6 @@ K_n)&lt;\epsilon/2^n\)</span>，然后证明对任何 <span class="math inline">
 <blockquote>
 <p><strong>引理</strong>：<span class="math inline">\(K\)</span></p>
 </blockquote>
-<h1 id="kolmogorovs-0-1-law">17.1 Kolmogorov’s 0-1 Law</h1>
-<p>本讲介绍了独立随机变量序列的尾事件，以及 Kolmogrov 0-1 律。</p>
-<p>设 <span class="math inline">\(\{X_n\}\)</span> 是独立的随机变量序列
-(不是两两独立，而是任何有限多个都独立)称 <span class="math inline">\(\mathcal{T}=\cap_{n=1}^\infty\sigma(X_n,X_{n+1},\ldots)\)</span>
-为尾事件域。</p>
-<blockquote>
-<p><strong>Kolmogrov 0-1 律</strong>：对任何 <span class="math inline">\(A\in\mathcal{T}\)</span> 有 <span class="math inline">\(\mathbb{P}(A)\in\{0,1\}\)</span>。</p>
-</blockquote>
-<p><strong>证明概要</strong>：</p>
-<ul>
-<li><span class="math inline">\(\sigma(X_1,\ldots,X_n)\)</span> 和 <span class="math inline">\(\sigma(X_{n+1},X_{n+2},\ldots)\)</span>
-是独立的。因为考虑如下两个集合族： <span class="math display">\[\{\text{all finite intersections like }\cap A_i,
-A_i\in\sigma(X_i),i=1,2,\ldots,n\}.\]</span> <span class="math display">\[\{\text{all finite intersections like }\cap A_j,
-A_j\in\sigma(X_j),j=n+1,n+2,\ldots\}.\]</span> 这俩都是 <span class="math inline">\(\pi\)</span>- 系且互相独立，所以它们生成的 <span class="math inline">\(\sigma\)</span>- 域也独立。前者可以生成 <span class="math inline">\(\sigma(X_1,\ldots,X_n)\)</span>，后者可以生成
-<span class="math inline">\(\sigma(X_{n+1},X_{n+2},\ldots)\)</span>。</li>
-<li>于是 <span class="math inline">\(\sigma(X_1,\ldots,X_n)\)</span> 和
-<span class="math inline">\(\mathcal{T}\)</span> 是独立的。</li>
-<li>于是 <span class="math inline">\(\pi\)</span>- 系 <span class="math inline">\(\cup_{n=1}^\infty\sigma(X_1,\ldots,X_n)\)</span>
-和 <span class="math inline">\(\mathcal{T}\)</span> 是独立的。</li>
-<li>于是 <span class="math inline">\(\sigma\)</span>- 域 <span class="math inline">\(\sigma(X_1,\ldots,X_n,\ldots)\)</span> 和 <span class="math inline">\(\mathcal{T}\)</span> 独立，从而 <span class="math inline">\(\mathcal{T}\)</span> 和 <span class="math inline">\(\mathcal{T}\)</span> 独立，从而得证。</li>
-</ul>
-<h1 id="uniform-integrability">48.1 Uniform Integrability</h1>
-<p>这一讲介绍了随机变量集合的一致可积性，要点非常多。</p>
-<p>对任何 <span class="math inline">\(L^1\)</span> 的随机变量 <span class="math inline">\(X\)</span>，总是可以找一个紧集 <span class="math inline">\(K\)</span>，使得 <span class="math inline">\(|X|\)</span> 在 <span class="math inline">\(K^c\)</span> 上的积分任意小：对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，存在 <span class="math inline">\(a&gt;0\)</span> 使得 <span class="math inline">\(\mathbb{E}[|X|:\ |X|\geq
-a]&lt;\epsilon\)</span>。但是如果是一族可积的随机变量的话，这个统一的
-<span class="math inline">\(a\)</span> 就未必存在了。</p>
-<p>如果这样的 <span class="math inline">\(a\)</span>
-总是存在的话，我们就称这族随机变量是一致可积的。</p>
-<blockquote>
-<p><strong>定义</strong>：随机变量列 <span class="math inline">\(\{X_n\}\)</span> 称作是一致可积的 (UI)
-的，如果它们满足以下条件：</p>
-<ol type="1">
-<li>每个 <span class="math inline">\(X_i\)</span> 都是 <span class="math inline">\(L^1\)</span> 的。</li>
-<li>对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，存在
-<span class="math inline">\(a&gt;0\)</span> 使得 <span class="math inline">\(\sup_n\mathbb{E}[X_n:\ |X_n|\geq a]&lt;
-\epsilon\)</span>。</li>
-</ol>
-</blockquote>
-<p>不难验证如果 <span class="math inline">\(\{X_n\}\)</span>
-被一个可积随机变量控制，则它们是一致可积的：</p>
-<blockquote>
-<p><strong>例子 1</strong>：如果 <span class="math inline">\(|X_n|\leq
-Y,\ Y\in L^1\)</span>，则 <span class="math inline">\(\{X_n\}\)</span>
-是一致可积的。</p>
-</blockquote>
-<p>这是因为被积函数和积分区域都可以放大：<span class="math inline">\(\mathbb{E}[|X_n|:\ |X_n|\geq
-a]\leq\mathbb{E}[|Y|:\ |Y|\geq a]\)</span>。</p>
-<blockquote>
-<p><strong>例子 2</strong>：如果 <span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(L^p,\,p&gt;1\)</span> 一致有界的：<span class="math inline">\(\sup_n\mathbb{E}|X_n|^p&lt;\infty\)</span>，则
-<span class="math inline">\(\{X_n\}\)</span> 是一致可积的。</p>
-</blockquote>
-<p>这是因为被积函数可以放大： <span class="math display">\[\mathbb{E}[|X|: |X|\geq a]\leq
-\mathbb{E}[|X|\cdot\frac{|X|^{p-1}}{a^{p-1}}: |X|\geq a] =
-\frac{1}{a^{p-1}}\mathbb{E}[|X|^p: |X|\geq a]\leq
-\frac{M}{a^{p-1}}.\]</span></p>
-<p>这个例子中的 <span class="math inline">\(p&gt;1\)</span> 是不能减弱为
-<span class="math inline">\(p\geq1\)</span> 的。不过我们可以证明 UI
-的变量族必然是 <span class="math inline">\(L^1\)</span> 一致有界的：</p>
-<blockquote>
-<p><strong>定理</strong>：若 <span class="math inline">\(\{X_n\}\)</span> 一致可积，则 <span class="math inline">\(\sup_n E|X_n| &lt;\infty\)</span>。</p>
-</blockquote>
-<p>取 <span class="math inline">\(a\)</span> 使得 <span class="math inline">\(\sup_n \mathbb{E}[|X_n|: |X_n|\geq a] &lt;
-1\)</span>，则不难证明 <span class="math inline">\(\mathbb{E}|X_n| &lt;
-a+1\)</span>。</p>
-<p>现在我们来给出一致绝对连续的概念，并将说明<strong>一致可积 = <span class="math inline">\(L^1\)</span> 一致有界 +
-一致绝对连续</strong>。</p>
-<blockquote>
-<p><strong>定义</strong>：随机变量序列 <span class="math inline">\(\{X_n\}\)</span> 是一致绝对连续的，如果对任何
-<span class="math inline">\(\epsilon&gt;0\)</span>，都存在 <span class="math inline">\(\delta&gt;0\)</span>，使得只要集合 <span class="math inline">\(B\)</span> 满足 <span class="math inline">\(\mu(B)&lt;\delta\)</span>，就有 <span class="math inline">\(\sup_n\mathbb{E}[|X_n|:
-B]&lt;\epsilon\)</span>。</p>
-</blockquote>
-<blockquote>
-<p><strong>定理</strong>：<span class="math inline">\(\{X_n\}\)</span>
-一致可积当且仅当它们 <span class="math inline">\(L^1\)</span>
-一致有界且一致绝对连续。</p>
-</blockquote>
-<p><span class="math inline">\(\Rightarrow\)</span>: <span class="math inline">\(L^1\)</span>
-一致有界已经有了。下证一致绝对连续性质。对任何可测集 <span class="math inline">\(B\)</span>，我们考虑用一个待定的 <span class="math inline">\(a&gt;0\)</span> 把积分 <span class="math inline">\(\mathbb{E}[|X_n|: B]\)</span> 变成 <span class="math display">\[\mathbb{E}[|X_n|: B,\ |X_n|\geq a] +
-\mathbb{E}[|X_n|: B,\ |X_n|&lt;a].\]</span> 第一项小于等于 <span class="math inline">\(\mathbb{E}[|X_n|: |X_n|\geq
-a]\)</span>，由一致可积性我们可以取 <span class="math inline">\(a\)</span> 使得它小于 <span class="math inline">\(\epsilon/2\)</span>。第二项小于等于 <span class="math inline">\(a\mu(B)\)</span>。所以只要 <span class="math inline">\(\mu(B)&lt;\delta=\frac{\epsilon}{2a}\)</span>
-即可。</p>
-<p><span class="math inline">\(\Leftarrow\)</span>: 我们可以料想 <span class="math inline">\(\{|X_n|\geq a\}\)</span>
-的测度是会一致地越来越小的：</p>
-<p><span class="math display">\[\mathbb{P}(\{|X_n|\geq
-a\})=\mathbb{E}[1: |X_n|\geq a]\leq \mathbb{E}[\frac{|X_n|}{a}:
-|X_n|\geq a]\leq \frac{\mathbb{E}|X_n|}{a}=\frac{K}{a}.\]</span> 其中
-<span class="math inline">\(K\)</span> 是 <span class="math inline">\(\{X_n\}\)</span> 的 <span class="math inline">\(L^1\)</span> 上界。所以确实可以取 <span class="math inline">\(a\)</span> 适当大使得 <span class="math inline">\(\{|X_n|\geq a\}\)</span>
-的测度一致地小于一致绝对连续性中所需要的那个 <span class="math inline">\(\delta\)</span>。</p>
-<blockquote>
-<p><strong>定理</strong>：一致可积性是平移不变的： <span class="math inline">\(\{X_n\}\)</span> 一致可积且 <span class="math inline">\(Y\in L^1\)</span>，则 <span class="math inline">\(\{X_n+Y\}\)</span> 也是一致可积的。</p>
-</blockquote>
-<p>为此只要证明它们一致 <span class="math inline">\(L^1\)</span>
-有界且一致绝对连续。其中一致 <span class="math inline">\(L^1\)</span>
-有界是显然的。</p>
-<p>对于一致绝对连续，我们有 <span class="math display">\[\mathbb{E}[|X_n+Y|: B]\leq\mathbb{E}[|X_n|:B] +
-\mathbb{E}[|Y|: B].\]</span> 取 <span class="math inline">\(\delta_1\)</span> 使得只要 <span class="math inline">\(\mu(B)&lt;\delta_1\)</span> 就有 <span class="math inline">\(\mathbb{E}[|X_n|:B]&lt;\frac{\epsilon}{2}\)</span>，再取
-<span class="math inline">\(\delta_2\)</span> 使得只要 <span class="math inline">\(\mu(B)&lt;\delta_2\)</span> 就有 <span class="math inline">\(\mathbb{E}[|Y|:B]&lt;\frac{\epsilon}{2}\)</span>，则
-<span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>
-符合要求。</p>
-<p>最后一个重要定理是：<strong>依 <span class="math inline">\(L^1\)</span> 范数收敛 = 一致可积 +
-依测度收敛</strong>。</p>
-<blockquote>
-<p><strong>定理</strong>：随机变量序列 <span class="math inline">\(X_n\xrightarrow{L^1} X\)</span> 当且仅当 <span class="math inline">\(X_n\xrightarrow{\mathbb{P}}X\)</span> 且 <span class="math inline">\(\{X_n\}\)</span> 一致可积。</p>
-</blockquote>
-<p><span class="math inline">\(\Rightarrow\)</span>: <span class="math inline">\(L^1\)</span> 收敛当然可以得出依测度收敛 (Markov
-不等式一步即得)。要证明一致可积，我们只要根据平移不变性，证明 <span class="math inline">\(Y_n=X_n-X\)</span> 是一致可积的即可。</p>
-<p>考虑取一个待定的正整数 <span class="math inline">\(N\)</span>，则
-<span class="math display">\[\sup_n\mathbb{E}[|Y_n|: |Y_n|\geq a] \leq
-\sup_{n&lt; N}\mathbb{E}[|Y_n|: |Y_n|\geq a] \vee \sup_{n\geq
-N}\mathbb{E}[|Y_n|: |Y_n|\geq a]\]</span>
-上面右边第一项是有限多个可积随机变量组成的集合，是一致可积的，所以只要
-<span class="math inline">\(a\)</span>
-足够大第一项是可以任意小的。第二项小于等于 <span class="math inline">\(\mathbb{E}|Y_n|\)</span> 并且由于 <span class="math inline">\(\mathbb{E}|Y_n|\to 0\)</span> 所以只要 <span class="math inline">\(N\)</span> 足够大也是可以任意小的。所以我们先取
-<span class="math inline">\(N\)</span> 足够大使得 <span class="math inline">\(\mathbb{E}|Y_n|&lt;\epsilon/2\)</span>，再取 <span class="math inline">\(a\)</span> 足够大使得 <span class="math inline">\(n&lt;N\)</span> 时 <span class="math inline">\(\sup_{n&lt; N}\mathbb{E}[|Y_n|: |Y_n|\geq
-a]&lt;\epsilon/2\)</span>，就得到了一致可积性。</p>
-<p><span class="math inline">\(\Leftarrow\)</span>: 记 <span class="math inline">\(Y_n = X_n - X\)</span>，则 <span class="math inline">\(Y_n\mathbb{1}_{|Y_n|&lt;a}\)</span> 是一个不大于
-<span class="math inline">\(a\)</span> 的函数序列，且依测度收敛到
-0，从而由<strong>依测度的控制收敛定理</strong>有 <span class="math inline">\(Y_n\mathbb{1}_{|Y_n|&lt;a}\xrightarrow{L^1}0\)</span>。
-从而 <span class="math display">\[\|X_n-X\|_{L^1} =
-\mathbb{E}[Y_n\mathbb{1}_{\{|Y_n|&lt;a\}}] +
-\mathbb{E}[Y_n\mathbb{1}_{\{|Y_n|\geq a\}}].\]</span> 第一项取 <span class="math inline">\(n\)</span> 足够大就可以任意小，第二项取 <span class="math inline">\(a\)</span> 足够大也可以任意小，得证。</p>
-<blockquote>
-<p><strong>推论</strong>：正则鞅 <span class="math inline">\(X_n =
-\mathbb{E}[X|\mathcal{F}_n]\)</span> 是一致可积的。</p>
-</blockquote>
-<p>反过来也是对的：鞅序列如果是一致可积的，则一定是正则鞅。</p>
 
 
 

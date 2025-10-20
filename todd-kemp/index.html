@@ -323,7 +323,8 @@ Integration and Dynkin’s Theorem</span></a></li><li class="section table-of-co
 Distributions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-2"><span class="section table-of-contents-text">34.1 Probability Kernels, Part
 2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#random-dynamics"><span class="section table-of-contents-text">34.2 Random Dynamics</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#stochastic-processes"><span class="section table-of-contents-text">35.1 Stochastic Processes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-markov-property"><span class="section table-of-contents-text">36.1 The Markov property</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-revisited"><span class="section table-of-contents-text">36.2 Probability Kernels
 Revisited</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-extended-extension-theorem"><span class="section table-of-contents-text">37.2 Kolmogorov’s
-(Extended) Extension Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#walds-identity"><span class="section table-of-contents-text">46.3 Wald’s Identity</span></a></li></ol>
+(Extended) Extension Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#walds-identity"><span class="section table-of-contents-text">46.3 Wald’s Identity</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniform-integrability"><span class="section table-of-contents-text">48.1 Uniform Integrability</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#optional-stopping-and-sampling"><span class="section table-of-contents-text">49.1 Optional Stopping and
+Sampling</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#holders-inequality"><span class="section table-of-contents-text">49.2 Holder’s Inequality</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
@@ -1054,7 +1055,7 @@ A_j\in\sigma(X_j),j=n+1,n+2,\ldots\}.\]</span> 这俩都是 <span class="math in
 <p><span class="statement-heading"><span class="statement-label">定义
 26.1</span>.</span><span class="statement-spah"> </span>两个概率测度
 <span class="math inline">\(\mu,\nu\)</span> 之间的卷积定义为 <span class="math display">\[\mu\ast \nu(B) =
-\int_{\mathbb{R}^d\times\mathbb{R}^d}\mathbb{1}_B(x+y)\mu\otimes\nu(\,\mathrm{d}x\,\mathrm{d}y)=\int_{\mathbb{R}^d}\mu(B-y)\vdx{y}.\]</span></p>
+\int_{\mathbb{R}^d\times\mathbb{R}^d}\mathbb{1}_B(x+y)\mu\otimes\nu(\,\mathrm{d}x\,\mathrm{d}y)=\int_{\mathbb{R}^d}\mu(B-y)\nu(\mathrm{d}y).\]</span></p>
 </div>
 <h1 id="strong-law-of-large-numbers-part-1">18.1 Strong Law of Large
 Numbers, Part 1</h1>
@@ -1234,11 +1235,11 @@ Integration and Dynkin’s Theorem</h1>
 \lim\limits_{n\to\infty}\hat{\mu_n}\)</span> 存在，并且 <span class="math inline">\(\varphi(t)\)</span> 在 <span class="math inline">\(t=0\)</span> 处连续，则存在概率测度 <span class="math inline">\(\mu\)</span> 使得 <span class="math inline">\(\hat{\mu}=\varphi\)</span>，并且 <span class="math inline">\(\mu_n\rightarrow_{w}\mu\)</span>。</p>
 </blockquote>
 <blockquote>
-<p><strong>引理</strong>：对两个概率测度 <span class="math inline">\(\mu,\nu\)</span> 有 <span class="math display">\[\int_{\mathbb{R}^d}\hat{\mu}(x)\vdx{x}=\int_{\mathbb{R}^d}\hat{\nu}(y)\udx{y}.\]</span></p>
+<p><strong>引理</strong>：对两个概率测度 <span class="math inline">\(\mu,\nu\)</span> 有 <span class="math display">\[\int_{\mathbb{R}^d}\hat{\mu}(x)\nu(\mathrm{d}x)=\int_{\mathbb{R}^d}\hat{\nu}(y)\mu(\mathrm{d}y).\]</span></p>
 </blockquote>
 <p>直接 Fubini 即可。</p>
 <blockquote>
-<p><strong>引理</strong>： <span class="math display">\[\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\vdx{x}=\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\udx{x}.\]</span></p>
+<p><strong>引理</strong>： <span class="math display">\[\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\nu(\mathrm{d}x)=\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\mu(\mathrm{d}x).\]</span></p>
 </blockquote>
 <p>在前一个引理中两边取实部，然后被 1 减去即可。</p>
 <blockquote>
@@ -1265,8 +1266,8 @@ B):S_1\to[0,1]\)</span> 是 <span class="math inline">\((S_1,\mathcal{B}_1)\)</s
 <blockquote>
 <p><strong>引理</strong>：假设 <span class="math inline">\(f(x,y)\in
 (S_1\times S_2, \mathcal{B}_1\otimes\mathcal{B}_2)\)</span>
-是乘积空间上的可测函数，并且是有界的或者非负的，则积分 <span class="math display">\[x\to\int_{S_2}f(x,y)Q(x,\pd{y})\]</span> 是关于
-<span class="math inline">\(x\)</span> 的可测函数。</p>
+是乘积空间上的可测函数，并且是有界的或者非负的，则积分 <span class="math display">\[x\to\int_{S_2}f(x,y)Q(x,\,\mathrm{d}y)\]</span>
+是关于 <span class="math inline">\(x\)</span> 的可测函数。</p>
 </blockquote>
 <p>此引理不难从简单函数 <span class="math inline">\(\mathbb{1}_{B_1\times
 B_2}(x,y)=\mathbb{1}_{B_1}(x)\mathbb{1}_{B_2}(y)\)</span>
@@ -1275,14 +1276,15 @@ B_2}(x,y)=\mathbb{1}_{B_1}(x)\mathbb{1}_{B_2}(y)\)</span>
 上的测度 <span class="math inline">\(\mu\)</span>，我们可以定义乘积空间
 <span class="math inline">\((S_1\times S_2,
 \mathcal{B}_1\otimes\mathcal{B}_2)\)</span> 上的乘积测度 <span class="math inline">\(\mu\otimes Q\)</span>，这个乘积测度是随 <span class="math inline">\(x\)</span> 变化而变化的： <span class="math display">\[\mu\otimes
-Q(E)=\int_{S_1}\mu(\pd{x})\int_{S_2}\mathbb{1}_{C}(x,y)Q(x,\pd{y}).\]</span>
+Q(E)=\int_{S_1}\mu(\,\mathrm{d}x)\int_{S_2}\mathbb{1}_{C}(x,y)Q(x,\,\mathrm{d}y).\]</span>
 不过这真的是一个概率测度吗？你可以用积分的线性性质立刻看出它是有限可加的，并且利用积分项有界和控制收敛定理立刻看出它是可数可加的，所以确实是个概率测度。</p>
 <p>有了概率核的乘积测度，我们自然要研究对这种测度的积分。由于这个测度本身就是通过对示性函数积分来定义的，所以其上的积分也具有类似的性质：</p>
-<blockquote>
-<p><strong>引理</strong>：假设 <span class="math inline">\(f(x,y)\)</span>
-是乘积空间的可测函数，并且是有界或者非负的，则 <span class="math display">\[\int_{S_1\times S_2}f\pd{(\mu\otimes Q)} =
-\int_{S_1}\mu(\pd{x})\int_{S_2}f(x,y)Q(x,\pd{y}).\]</span></p>
-</blockquote>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+35.1</span>.</span><span class="statement-spah"> </span>假设 <span class="math inline">\(f(x,y)\)</span>
+是乘积空间的可测函数，并且是有界或者非负的，则 <span class="math display">\[\int_{S_1\times S_2}f\,\mathrm{d}(\mu\otimes Q) =
+\int_{S_1}\mu(\,\mathrm{d}x)\int_{S_2}f(x,y)Q(x,\,\mathrm{d}y).\]</span></p>
+</div>
 <p>后面花了很大力气证明当 <span class="math inline">\(Q(x,
 \cdot)=\widetilde{Q}(x,\cdot)\)</span> 对几乎处处的 <span class="math inline">\(x\)</span> 成立时有 <span class="math inline">\(\mu\otimes
 Q=\mu\otimes\widetilde{Q}\)</span>。没仔细看。</p>
@@ -1290,8 +1292,9 @@ Q=\mu\otimes\widetilde{Q}\)</span>。没仔细看。</p>
 Distributions</h1>
 <p>本讲使用概率核给出了 <span class="math inline">\(\mathbb{E}[f(X,
 Y)\mid X=x]\)</span> 这种条件期望的严格定义。</p>
-<blockquote>
-<p><strong>定理</strong>：设 <span class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+36.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>
 是一个概率空间，<span class="math inline">\((S_i,\mathcal{B}_i),\,i=1,2\)</span>
 是两个可测空间，<span class="math inline">\(X:(\Omega,\mathcal{F})\to(S_1,\mathcal{B}_1),\,Y:(\Omega,\mathcal{F})\to(S_2,\mathcal{B}_2)\)</span>
 是两个随机变量。于是 <span class="math inline">\((X,Y):(\Omega,\mathcal{F})\to(S_1\times
@@ -1302,8 +1305,8 @@ S_2,\,\mathcal{B}1\otimes\mathcal{B}_2)\)</span> 上 push forward
 使得 <span class="math display">\[\mu_{X,Y}=\mu_X\otimes Q.\]</span></p>
 <p>则对任何 <span class="math inline">\(f\in L^1(S_1\times
 S_2,\mathcal{B}1\otimes\mathcal{B}_2)\)</span> 有 <span class="math display">\[\mathbb{E}[f(X,Y)\mid X = x] =
-\int_{S_2}f(x,y)Q(x, \pd{y}).\]</span></p>
-</blockquote>
+\int_{S_2}f(x,y)Q(x, \,\mathrm{d}y).\]</span></p>
+</div>
 <p>这里需要解释 <span class="math inline">\(\mathbb{E}[f(X,Y)\mid X =
 x]\)</span> 这个记号的含义。这里其实引用了条件期望 (后面才会讲到)
 的性质：<span class="math inline">\(\mathbb{E}[f(X,Y)\mid X]\)</span>
@@ -1311,7 +1314,7 @@ x]\)</span> 这个记号的含义。这里其实引用了条件期望 (后面才
 可测的随机变量，从而由 Doob-Dynkin 表示定理，存在可测函数 <span class="math inline">\(g\)</span> 使得 <span class="math inline">\(\mathbb{E}[f(X,Y)\mid X] = g(X)\)</span>，所以
 <span class="math inline">\(\mathbb{E}[f(X,Y)\mid X = x] =
 g(x)\)</span>。这个定理说的就是 <span class="math display">\[\mathbb{E}[f(X,Y)\mid X = x] = g(x) =
-\int_{S_2}f(x,y)Q(x, \pd{y}).\]</span></p>
+\int_{S_2}f(x,y)Q(x, \,\mathrm{d}y).\]</span></p>
 <p><strong>证明</strong>：怎么证明两个关于 <span class="math inline">\(\sigma(X)\)</span> 可测的函数 (几乎处处)
 相等呢？我们可以给它们同时乘以 <span class="math inline">\(h(x)\)</span>，这里 <span class="math inline">\(h(x)\)</span> 是任何一个关于 <span class="math inline">\(\sigma(X)\)</span> 可测的有界函数，然后证明它们对
 <span class="math inline">\(\mu_X\)</span>
@@ -1323,14 +1326,14 @@ Y)h(X)].\]</span> 注意右边的期望悄悄地变成了关于 <span class="mat
 的积分。这是因为上式最后的等号使用了条件期望的 telescoping 性质，而
 <span class="math inline">\(f(X,Y)g(X)\)</span> 是关于 <span class="math inline">\(\mathcal{B}_1\otimes\mathcal{B}_2\)</span>
 可测的函数。</p>
-<p>另一方面，<span class="math inline">\(h(x)\int_{S_2}f(x,y)Q(x,\pd{y})\)</span>
-这个函数对 <span class="math inline">\(\mu_X\)</span> 积分，正是 <span class="math display">\[\int_{S_1}\mu(\pd{x})\int_{S_2}f(x,y)h(x)Q(x,\pd{y}).\]</span>
+<p>另一方面，<span class="math inline">\(h(x)\int_{S_2}f(x,y)Q(x,\,\mathrm{d}y)\)</span>
+这个函数对 <span class="math inline">\(\mu_X\)</span> 积分，正是 <span class="math display">\[\int_{S_1}\mu(\,\mathrm{d}x)\int_{S_2}f(x,y)h(x)Q(x,\,\mathrm{d}y).\]</span>
 所以 <span class="math display">\[\begin{align*}
 \mathbb{E}[f(X,Y)h(X)] &amp;= \int_{S_1\times
-S_2}f(x,y)h(x)\mu_{X,Y}(\pd{x}\pd{y}) \\
+S_2}f(x,y)h(x)\mu_{X,Y}(\,\mathrm{d}x\,\mathrm{d}y) \\
 &amp;= \int_{S_1\times S_2}f(x,y)h(x)\mu_X\otimes Q \\
-&amp;= \int_{S_1}\mu_X \int_{S_2}f(x,y)h(x)Q(x,\pd{y}) \\
-&amp;= \int_{S_1}\mu_X h(x)\int_{S_2}f(x,y)Q(x,\pd{y}).
+&amp;= \int_{S_1}\mu_X \int_{S_2}f(x,y)h(x)Q(x,\,\mathrm{d}y) \\
+&amp;= \int_{S_1}\mu_X h(x)\int_{S_2}f(x,y)Q(x,\,\mathrm{d}y).
 \end{align*}\]</span> 正是所要证明的。</p>
 <p>不过在上面的证明中我们都假定了所有的可积性的前提，我们实际上需要假定
 <span class="math inline">\(f(x,y)\)</span>
@@ -1340,11 +1343,11 @@ L^1(S_1\times S_2,\mathcal{B}_1\otimes
 contraction，所以 <span class="math display">\[\mathbb{E}[f_n(X, Y)| X]
 \xrightarrow{L^1} \mathbb{E}[f(X,Y)|X].\]</span> 此外我们已经证明了
 <span class="math display">\[\mathbb{E}[f_n(X, Y)| X] =
-\left.\int_{S_2}f_n(x,y)Q(x,\pd{y})\right|_{x=X}.\]</span> 所以只要证明
-<span class="math display">\[\left.\int_{S_2}f_n(x,y)Q(x,\pd{y})\right|_{x=X}
+\left.\int_{S_2}f_n(x,y)Q(x,\,\mathrm{d}y)\right|_{x=X}.\]</span>
+所以只要证明 <span class="math display">\[\left.\int_{S_2}f_n(x,y)Q(x,\,\mathrm{d}y)\right|_{x=X}
 \xrightarrow{L^1}
-\left.\int_{S_2}f(x,y)Q(x,\pd{y})\right|_{x=X}.\]</span> 即可。这个
-<span class="math inline">\(L^1\)</span> 收敛的意思是对 <span class="math inline">\(\mu_X\)</span> 取积分，因此我们要估计 <span class="math display">\[\int_{S_1}\mu(\pd{x})\int_{S_2}|f_n(x,y)-f(x,y)|Q(x,\pd{y}).\]</span>
+\left.\int_{S_2}f(x,y)Q(x,\,\mathrm{d}y)\right|_{x=X}.\]</span>
+即可。这个 <span class="math inline">\(L^1\)</span> 收敛的意思是对 <span class="math inline">\(\mu_X\)</span> 取积分，因此我们要估计 <span class="math display">\[\int_{S_1}\mu(\,\mathrm{d}x)\int_{S_2}|f_n(x,y)-f(x,y)|Q(x,\,\mathrm{d}y).\]</span>
 这不正是 <span class="math inline">\(|fn-f|\)</span>
 对乘积测度的积分嘛，而我们已经知道了它是 <span class="math inline">\(L^1\)</span> 收敛的了。</p>
 <p>所以如果我们能把一个联合分布分解为边际分布和一个概率核的乘积，则我们就得到了条件概率的一个表示。</p>
@@ -1353,20 +1356,22 @@ contraction，所以 <span class="math display">\[\mathbb{E}[f_n(X, Y)| X]
 总可以表示为 <span class="math inline">\(\mu_X\otimes Q\)</span>
 的形式吗？</p>
 </blockquote>
-<blockquote>
-<p><strong>定理</strong>：如果概率核 <span class="math inline">\(Q(x,
-B)\)</span> 满足 <span class="math display">\[\mathbb{P}(Y\in B | X=x) =
-Q(x, B)\]</span> (这个条件等价于 <span class="math display">\[\mathbb{E}[h(Y) | X] = \left.\int h(y)
-Q(x,\pd{y})\right|_{x=X}.\]</span> 对任何有界的可测函数 <span class="math inline">\(h(y)\)</span> 成立) 则对 <span class="math inline">\(f(x,y)\)</span> 同样有 <span class="math display">\[\mathbb{E}[f(X,Y) | X] = \left.\int f(x,y)
-Q(x,\pd{y})\right|_{x=X}.\]</span> 成立。</p>
-</blockquote>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+36.2</span>.</span><span class="statement-spah"> </span>如果概率核 <span class="math inline">\(Q(x, B)\)</span> 满足 <span class="math display">\[\mathbb{P}(Y\in B | X=x) = Q(x, B)\]</span>
+(这个条件等价于 <span class="math display">\[\mathbb{E}[h(Y) | X] =
+\left.\int h(y) Q(x,\,\mathrm{d}y)\right|_{x=X}.\]</span>
+对任何有界的可测函数 <span class="math inline">\(h(y)\)</span> 成立)</p>
+<p>则对 <span class="math inline">\(f(x,y)\)</span> 同样有 <span class="math display">\[\mathbb{E}[f(X,Y) | X] = \left.\int f(x,y)
+Q(x,\,\mathrm{d}y)\right|_{x=X}.\]</span> 成立。</p>
+</div>
 <p>这个定理可以先从 <span class="math inline">\(f(x,y)=f(x)\otimes
 g(y)\)</span> 形式的函数出发，然后用 Dynkin 函数系引理得到。</p>
 <p>总结一下，至此我们讨论了：</p>
 <ol type="1">
 <li>如果 <span class="math inline">\(\mu_{X,Y}=\mu_X\otimes
 Q\)</span>，那我们就有了 <span class="math inline">\(\mathbb{E}[f(X,Y)|X]\)</span> 的计算方法：积分
-<span class="math inline">\(\int_{S_2}f(X,y)Q(X,\pd{y})\)</span>。特别地我们可以算条件概率了。</li>
+<span class="math inline">\(\int_{S_2}f(X,y)Q(X,\,\mathrm{d}y)\)</span>。特别地我们可以算条件概率了。</li>
 <li>反之如果我们有一个概率核给出条件概率：<span class="math inline">\(\mathbb{P}(Y\in B | X=x) = Q(x,
 B)\)</span>，那么它就给出 <span class="math inline">\(\mu_{X,Y}\)</span>
 的一个分解：<span class="math inline">\(\mu_{X,Y}=\mu_X\otimes
@@ -1379,7 +1384,7 @@ Q\)</span>。</li>
 生成元，即可测函数空间上的非负线性泛函。</p>
 <p>当有一个概率核 <span class="math inline">\(Q: S_1\times
 \mathcal{B}_2\to[0, 1]\)</span> 时， <span class="math display">\[f\to
-\int_{S_2}f(y)Q(x,\pd{y}),\quad
+\int_{S_2}f(y)Q(x,\,\mathrm{d}y),\quad
 f\in\mathbb{B}(S_2,\mathcal{B}_2)\]</span> 给出了从 <span class="math inline">\(L^\infty(S_2,\mathcal{B}_2)\)</span> 到 <span class="math inline">\(L^\infty(S_1,\mathcal{B}_1)\)</span> 的线性映射
 <span class="math inline">\(L_Q\)</span>，<span class="math inline">\(L_Q\)</span> 满足</p>
 <ol type="1">
@@ -1408,12 +1413,12 @@ L(\mathbb{1}_{B_k})(x)\)</span> 对可数不交并 <span class="math inline">\(B
 <span class="math inline">\(f_n=\sum_{k=1}^n B_k\)</span>，则 <span class="math inline">\(f_n\uparrow \mathbb{1}_B\)</span>，于是 <span class="math inline">\(L(f_n)\uparrow L(f)=L(\mathbb{1}_B)\)</span>，即
 <span class="math inline">\(\sum_{k=1}^\infty
 L(\mathbb{1}_{B_k})\uparrow L(\mathbb{1}_B)\)</span>，成立！</p>
-<p>要证明 <span class="math inline">\(L = L_Q\)</span>，即对任何 <span class="math inline">\(f\in\mathbb{B}(S,\mathcal{B})\)</span> 有 <span class="math display">\[L(f) = \int_S f(y)Q(x,\pd{y})\]</span>
+<p>要证明 <span class="math inline">\(L = L_Q\)</span>，即对任何 <span class="math inline">\(f\in\mathbb{B}(S,\mathcal{B})\)</span> 有 <span class="math display">\[L(f) = \int_S f(y)Q(x,\,\mathrm{d}y)\]</span>
 成立。这个很容易从示性函数出发取极限得到。</p>
 <p>如果 <span class="math inline">\(Q_1,Q_2\)</span> 是两个 <span class="math inline">\((S,\mathcal{B})\)</span> 到自身的概率核，则 <span class="math inline">\(L_{Q_1}L_{Q_2}\)</span> 也满足性质
 1-4，因而也是由一个概率核给出：存在概率核 <span class="math inline">\(Q\)</span> 使得 <span class="math inline">\(L_Q =
 L_{Q_1}L_{Q_2}\)</span>。我们可以把 <span class="math inline">\(Q\)</span> 明确的写出来： <span class="math display">\[L_Q(f) =
-L_{Q_1}L_{Q_2}(f)=\int_{S}Q_1(x,\pd{y})\left(\int_Sf(z)Q_2(y,\pd{z})\right).\]</span>
+L_{Q_1}L_{Q_2}(f)=\int_{S}Q_1(x,\,\mathrm{d}y)\left(\int_Sf(z)Q_2(y,\,\mathrm{d}z)\right).\]</span>
 这看起来很像乘积测度，实际上我们后面会讨论 <span class="math display">\[Q_1(x,dy)Q_2(d, dz)= Q_1\otimes Q_2(x,
 dz)\]</span> 的具体含义。</p>
 <h1 id="random-dynamics">34.2 Random Dynamics</h1>
@@ -1437,7 +1442,7 @@ F_n(X_0,\xi_1,\xi_2,\ldots,\xi_n),\quad F_n:S\times R^n\to S.\]</span>
 <p><span class="math display">\[\begin{align*}\mathbb{E}[g(X_{n+1})|\mathcal{F}_n]
 &amp;= \mathbb{E}[g(f(X_n,\xi_{n+1}))|\mathcal{F}_n]\\
 &amp;=\left.\mathbb{E}[g\circ f(x,\xi_{n+1})]\right|_{x=X_n} \\
-&amp;=\left.\int g(y)Q_{n+1}(x,\pd{y})\right|_{x=X_n}\\
+&amp;=\left.\int g(y)Q_{n+1}(x,\,\mathrm{d}y)\right|_{x=X_n}\\
 &amp;=L_{n+1}(g)(X_n).\end{align*}\]</span> 但是 <span class="math inline">\(L_{n+1}(g)(X_n)\)</span> 是 <span class="math inline">\(X_n\)</span> 的函数，所以它关于 <span class="math inline">\(\sigma(X_n)\)</span>
 是可测的，而且是有界可测，从而两边对 <span class="math inline">\(\sigma(X_n)\)</span> 这个子 <span class="math inline">\(\sigma\)</span>- 域取条件期望，并注意到 <span class="math inline">\(\sigma(X_n)\subset\mathcal{F}_n\)</span> 有 <span class="math display">\[\mathbb{E}[g(X_{n+1})|\mathcal{F}_n] =
 \mathbb{E}[g(X_{n+1})|X_n].\]</span> 这正是 Markov 性质。</p>
@@ -1520,6 +1525,168 @@ k\cdot\mathbb{1}_{\tau=k}\\&amp;=\mathbb{E}X_1\cdot
 <span class="math inline">\(|X_n|\)</span> 是成立的，并且离散积分值
 <span class="math inline">\(\mathbb{E}|X_1|\cdot\mathbb{E}\tau&lt;\infty\)</span>，所以由控制收敛定理对原序列
 <span class="math inline">\(X_n\)</span> 交换求和也是 OK 的。</p>
+<h1 id="uniform-integrability">48.1 Uniform Integrability</h1>
+<p>这一讲介绍了随机变量集合的一致可积性，要点非常多。</p>
+<p>对任何 <span class="math inline">\(L^1\)</span> 的随机变量 <span class="math inline">\(X\)</span>，总是可以找一个紧集 <span class="math inline">\(K\)</span>，使得 <span class="math inline">\(|X|\)</span> 在 <span class="math inline">\(K^c\)</span> 上的积分任意小：对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，存在 <span class="math inline">\(a&gt;0\)</span> 使得 <span class="math inline">\(\mathbb{E}[|X|:\ |X|\geq
+a]&lt;\epsilon\)</span>。但是如果是一族可积的随机变量的话，这个统一的
+<span class="math inline">\(a\)</span> 就未必存在了。</p>
+<p>如果这样的 <span class="math inline">\(a\)</span>
+总是存在的话，我们就称这族随机变量是一致可积的。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+44.1</span>.</span><span class="statement-spah"> </span>随机变量列 <span class="math inline">\(\{X_n\}\)</span> 称作是一致可积的 (UI)
+的，如果它们满足以下条件：</p>
+<ol type="1">
+<li>每个 <span class="math inline">\(X_i\)</span> 都是 <span class="math inline">\(L^1\)</span> 的。</li>
+<li>对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，存在
+<span class="math inline">\(a&gt;0\)</span> 使得 <span class="math inline">\(\sup_n\mathbb{E}[X_n:\ |X_n|\geq a]&lt;
+\epsilon\)</span>。</li>
+</ol>
+</div>
+<p>不难验证如果 <span class="math inline">\(\{X_n\}\)</span>
+被一个可积随机变量控制，则它们是一致可积的：</p>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>如果 <span class="math inline">\(|X_n|\leq Y,\ Y\in
+L^1\)</span>，则 <span class="math inline">\(\{X_n\}\)</span>
+是一致可积的。</p>
+</div>
+<p>这是因为被积函数和积分区域都可以放大：<span class="math inline">\(\mathbb{E}[|X_n|:\ |X_n|\geq
+a]\leq\mathbb{E}[|Y|:\ |Y|\geq a]\)</span>。</p>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>如果 <span class="math inline">\(\{X_n\}\)</span> 是 <span class="math inline">\(L^p,\,p&gt;1\)</span> 一致有界的：<span class="math inline">\(\sup_n\mathbb{E}|X_n|^p&lt;\infty\)</span>，则
+<span class="math inline">\(\{X_n\}\)</span> 是一致可积的。</p>
+</div>
+<p>这是因为被积函数可以放大： <span class="math display">\[\mathbb{E}[|X|: |X|\geq a]\leq
+\mathbb{E}[|X|\cdot\frac{|X|^{p-1}}{a^{p-1}}: |X|\geq a] =
+\frac{1}{a^{p-1}}\mathbb{E}[|X|^p: |X|\geq a]\leq
+\frac{M}{a^{p-1}}.\]</span></p>
+<p>这个例子中的 <span class="math inline">\(p&gt;1\)</span> 是不能减弱为
+<span class="math inline">\(p\geq1\)</span> 的。不过我们可以证明 UI
+的变量族必然是 <span class="math inline">\(L^1\)</span> 一致有界的：</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+44.2</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\{X_n\}\)</span> 一致可积，则 <span class="math inline">\(\sup_n E|X_n| &lt;\infty\)</span>。</p>
+</div>
+<p>证明：取 <span class="math inline">\(a\)</span> 使得 <span class="math inline">\(\sup_n \mathbb{E}[|X_n|: |X_n|\geq a] &lt;
+1\)</span>，则不难证明 <span class="math inline">\(\mathbb{E}|X_n| &lt;
+a+1\)</span>。</p>
+<p>现在我们来给出一致绝对连续的概念，并将说明<strong>一致可积 = <span class="math inline">\(L^1\)</span> 一致有界 +
+一致绝对连续</strong>。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+44.3</span>.</span><span class="statement-spah"> </span>随机变量序列
+<span class="math inline">\(\{X_n\}\)</span>
+是一致绝对连续的，如果对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，都存在 <span class="math inline">\(\delta&gt;0\)</span>，使得只要集合 <span class="math inline">\(B\)</span> 满足 <span class="math inline">\(\mu(B)&lt;\delta\)</span>，就有 <span class="math inline">\(\sup_n\mathbb{E}[|X_n|:
+B]&lt;\epsilon\)</span>。</p>
+</div>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+44.4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\{X_n\}\)</span> 一致可积当且仅当它们 <span class="math inline">\(L^1\)</span> 一致有界且一致绝对连续。</p>
+</div>
+<p><strong>证明</strong>：</p>
+<p><span class="math inline">\(\Rightarrow\)</span>: <span class="math inline">\(L^1\)</span>
+一致有界已经有了。下证一致绝对连续性质。对任何可测集 <span class="math inline">\(B\)</span>，我们考虑用一个待定的 <span class="math inline">\(a&gt;0\)</span> 把积分 <span class="math inline">\(\mathbb{E}[|X_n|: B]\)</span> 变成 <span class="math display">\[\mathbb{E}[|X_n|: B,\ |X_n|\geq a] +
+\mathbb{E}[|X_n|: B,\ |X_n|&lt;a].\]</span> 第一项小于等于 <span class="math inline">\(\mathbb{E}[|X_n|: |X_n|\geq
+a]\)</span>，由一致可积性我们可以取 <span class="math inline">\(a\)</span> 使得它小于 <span class="math inline">\(\epsilon/2\)</span>。第二项小于等于 <span class="math inline">\(a\mu(B)\)</span>。所以只要 <span class="math inline">\(\mu(B)&lt;\delta=\frac{\epsilon}{2a}\)</span>
+即可。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>: 我们可以料想 <span class="math inline">\(\{|X_n|\geq a\}\)</span>
+的测度是会一致地越来越小的：</p>
+<p><span class="math display">\[\mathbb{P}(\{|X_n|\geq
+a\})=\mathbb{E}[1: |X_n|\geq a]\leq \mathbb{E}[\frac{|X_n|}{a}:
+|X_n|\geq a]\leq \frac{\mathbb{E}|X_n|}{a}=\frac{K}{a}.\]</span> 其中
+<span class="math inline">\(K\)</span> 是 <span class="math inline">\(\{X_n\}\)</span> 的 <span class="math inline">\(L^1\)</span> 上界。所以确实可以取 <span class="math inline">\(a\)</span> 适当大使得 <span class="math inline">\(\{|X_n|\geq a\}\)</span>
+的测度一致地小于一致绝对连续性中所需要的那个 <span class="math inline">\(\delta\)</span>。</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+44.5</span>.</span><span class="statement-spah">
+</span>一致可积性是平移不变的： <span class="math inline">\(\{X_n\}\)</span> 一致可积且 <span class="math inline">\(Y\in L^1\)</span>，则 <span class="math inline">\(\{X_n+Y\}\)</span> 也是一致可积的。</p>
+</div>
+<p>为此只要证明它们一致 <span class="math inline">\(L^1\)</span>
+有界且一致绝对连续。其中一致 <span class="math inline">\(L^1\)</span>
+有界是显然的。</p>
+<p>对于一致绝对连续，我们有 <span class="math display">\[\mathbb{E}[|X_n+Y|: B]\leq\mathbb{E}[|X_n|:B] +
+\mathbb{E}[|Y|: B].\]</span> 取 <span class="math inline">\(\delta_1\)</span> 使得只要 <span class="math inline">\(\mu(B)&lt;\delta_1\)</span> 就有 <span class="math inline">\(\mathbb{E}[|X_n|:B]&lt;\frac{\epsilon}{2}\)</span>，再取
+<span class="math inline">\(\delta_2\)</span> 使得只要 <span class="math inline">\(\mu(B)&lt;\delta_2\)</span> 就有 <span class="math inline">\(\mathbb{E}[|Y|:B]&lt;\frac{\epsilon}{2}\)</span>，则
+<span class="math inline">\(\delta=\min\{\delta_1,\delta_2\}\)</span>
+符合要求。</p>
+<p>最后一个重要定理是：<strong>依 <span class="math inline">\(L^1\)</span> 范数收敛 = 一致可积 +
+依测度收敛</strong>。</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+44.6</span>.</span><span class="statement-spah"> </span>随机变量序列
+<span class="math inline">\(X_n\xrightarrow{L^1} X\)</span> 当且仅当
+<span class="math inline">\(X_n\xrightarrow{\mathbb{P}}X\)</span> 且
+<span class="math inline">\(\{X_n\}\)</span> 一致可积。</p>
+</div>
+<p><strong>证明</strong>：</p>
+<p><span class="math inline">\(\Rightarrow\)</span>: <span class="math inline">\(L^1\)</span> 收敛当然可以得出依测度收敛 (Markov
+不等式一步即得)。要证明一致可积，我们只要根据平移不变性，证明 <span class="math inline">\(Y_n=X_n-X\)</span> 是一致可积的即可。</p>
+<p>考虑取一个待定的正整数 <span class="math inline">\(N\)</span>，则
+<span class="math display">\[\sup_n\mathbb{E}[|Y_n|: |Y_n|\geq a] \leq
+\sup_{n&lt; N}\mathbb{E}[|Y_n|: |Y_n|\geq a] \vee \sup_{n\geq
+N}\mathbb{E}[|Y_n|: |Y_n|\geq a]\]</span>
+上面右边第一项是有限多个可积随机变量组成的集合，是一致可积的，所以只要
+<span class="math inline">\(a\)</span>
+足够大第一项是可以任意小的。第二项小于等于 <span class="math inline">\(\mathbb{E}|Y_n|\)</span> 并且由于 <span class="math inline">\(\mathbb{E}|Y_n|\to 0\)</span> 所以只要 <span class="math inline">\(N\)</span> 足够大也是可以任意小的。所以我们先取
+<span class="math inline">\(N\)</span> 足够大使得 <span class="math inline">\(\mathbb{E}|Y_n|&lt;\epsilon/2\)</span>，再取 <span class="math inline">\(a\)</span> 足够大使得 <span class="math inline">\(n&lt;N\)</span> 时 <span class="math inline">\(\sup_{n&lt; N}\mathbb{E}[|Y_n|: |Y_n|\geq
+a]&lt;\epsilon/2\)</span>，就得到了一致可积性。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>: 记 <span class="math inline">\(Y_n = X_n - X\)</span>，则 <span class="math inline">\(Y_n\mathbb{1}_{|Y_n|&lt;a}\)</span> 是一个不大于
+<span class="math inline">\(a\)</span> 的函数序列，且依测度收敛到
+0，从而由<strong>依测度的控制收敛定理</strong>有 <span class="math inline">\(Y_n\mathbb{1}_{|Y_n|&lt;a}\xrightarrow{L^1}0\)</span>。
+从而 <span class="math display">\[\|X_n-X\|_{L^1} =
+\mathbb{E}[Y_n\mathbb{1}_{\{|Y_n|&lt;a\}}] +
+\mathbb{E}[Y_n\mathbb{1}_{\{|Y_n|\geq a\}}].\]</span> 第一项取 <span class="math inline">\(n\)</span> 足够大就可以任意小，第二项取 <span class="math inline">\(a\)</span> 足够大也可以任意小，得证。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+44.7</span>.</span><span class="statement-spah"> </span>正则鞅 <span class="math inline">\(X_n = \mathbb{E}[X|\mathcal{F}_n]\)</span>
+是一致可积的。</p>
+</div>
+<p>反过来也是对的：鞅序列如果是一致可积的，则一定是正则鞅。</p>
+<h1 id="optional-stopping-and-sampling">49.1 Optional Stopping and
+Sampling</h1>
+<p>这一节介绍了停时，以及停时鞅序列 <span class="math inline">\(\{X_{n\wedge \tau}\}\)</span> 的性质。</p>
+<p>一个简单的股票市场模型：设 <span class="math inline">\(\{X_n\}_{n=0}^\infty\)</span> 是股票价格，<span class="math inline">\(\{U_n\}_{n=1}^\infty\)</span>
+是你的投资策略，即在时刻 <span class="math inline">\(n-1\)</span> 买入
+<span class="math inline">\(U_n\)</span> 并在时刻 <span class="math inline">\(n\)</span> 抛出。或者说，<span class="math inline">\(U_n\)</span> 是你在 <span class="math inline">\((n-1,n]\)</span>
+这个时间区间内的股票交易数量，那么到时刻 <span class="math inline">\(n\)</span> 时，你的净收益为 <span class="math display">\[I_n(U,X) = \sum_{j=1}^n
+U_j(X_j-X_{j-1}).\]</span> 这里 <span class="math inline">\(U_n\)</span>
+必须是关于 <span class="math inline">\(\mathcal{F}_{n-1}=\sigma(X_0,X_1,\ldots,X_{n-1})\)</span>
+可测。</p>
+<p>第一个重要观察是：</p>
+<div id="martingale-discrete-integration" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+45.1</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(\{X_n\}\)</span> 是鞅/下鞅/上鞅，并且 <span class="math inline">\(U_n\geq0\)</span>，则 <span class="math inline">\(I_n(U,X)\)</span> 也是鞅/下鞅/上鞅。</p>
+</div>
+<p>证明：对下面的恒等式两边关于 <span class="math inline">\(\mathcal{F}_n\)</span> 取条件期望即可。 <span class="math display">\[I_{n+1}(U,X) =
+\underbrace{I_{n}(U,X)}_{\in\mathcal{F}_n} +
+\underbrace{U_{n+1}}_{\in\mathcal{F}_n}\underbrace{(X_{n+1}-X_{n})}_{\rm
+(sub/sup)martingale}.\]</span></p>
+<p>我们可以设定两个随机时间，比如 <span class="math inline">\(\sigma\)</span> 是股票首次低于 1 美元的时刻,
+这时立刻买入；<span class="math inline">\(\tau\)</span> 是股票首次高于
+10 美元的时刻，这时立刻抛出；在区间 <span class="math inline">\((\sigma,\tau]\)</span> 中保持持有股票，即 <span class="math inline">\(U_j=\mathbb{1}_{\sigma&lt;j\leq
+\tau}\)</span>。于是 <span class="math inline">\(U_j\mathbb{1}_{n\geq
+j}=\mathbb{1}_{(\sigma\wedge n, \tau\wedge n]}(j)\)</span>。</p>
+<p>那么净收益 <span class="math display">\[I_n(U,X) = \sum_{j=1}^n
+\mathbb{1}_{\sigma\wedge n&lt;j\leq \tau\wedge n}
+(X_j-X_{j-1})=X_{\tau\wedge n} - X_{\sigma\wedge n}.\]</span></p>
+<p>特别地，取 <span class="math inline">\(\sigma=0\)</span>，则 <span class="math inline">\(U_j=\mathbb{1}_{j\leq\tau}\)</span>，则我们有如下结论：</p>
+<div id="stopping-time-also-martingale" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+45.2</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(\{X_n\}\)</span> 是鞅，那么 <span class="math inline">\(\{X_{n\wedge \tau}\}\)</span> 也是鞅。</p>
+</div>
+<p>证明：首先每一项 <span class="math inline">\(X_{n\wedge
+\tau}\)</span> 可以看成是一个关于 <span class="math inline">\(X_1,\ldots,X_n\)</span> 的部分和：</p>
+<p><span class="math display">\[X_{n\wedge \tau} =
+\sum_{k=0}^n\mathbb{1}_{\tau=k}X_k.\]</span></p>
+<p>显然 <span class="math inline">\(X_{n\wedge \tau}\)</span>
+是可积的。</p>
+<p>另一方面在 <a href="#martingale-discrete-integration" title="定理 45.1">定理 45.1</a> 中取 <span class="math inline">\(U_n=\mathbb{1}_{n\leq\tau}\)</span>，则 <span class="math inline">\(X_{n\wedge \tau} - X_0 = I_n(U,X)\)</span>
+仍然是鞅，那么加上一个 <span class="math inline">\(X_0\)</span> 得到的
+<span class="math inline">\(X_{n\wedge\tau}\)</span> 当然还是鞅。</p>
+<h1 id="holders-inequality">49.2 Holder’s Inequality</h1>
+<p>无特别内容</p>
 
 
 
