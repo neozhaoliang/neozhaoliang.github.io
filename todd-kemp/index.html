@@ -321,7 +321,7 @@ Numbers, Part 2</span></a></li><li class="section table-of-contents-item section
 Integration and Dynkin’s Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#characteristic-function"><span class="section table-of-contents-text">24.2 Characteristic Function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-continuity-theorem"><span class="section table-of-contents-text">25.3 The Continuity Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#orthogonal-projections"><span class="section table-of-contents-text">31.1 Orthogonal Projections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-1"><span class="section table-of-contents-text">33.1 Probability Kernels, Part
 1</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#regular-conditional-distributions"><span class="section table-of-contents-text">33.2 Regular Conditional
 Distributions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-2"><span class="section table-of-contents-text">34.1 Probability Kernels, Part
-2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#random-dynamics"><span class="section table-of-contents-text">34.2 Random Dynamics</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#stochastic-processes"><span class="section table-of-contents-text">35.1 Stochastic Processes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-markov-property"><span class="section table-of-contents-text">36.1 The Markov property</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-revisited"><span class="section table-of-contents-text">36.2 Probability Kernels
+2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#random-dynamics"><span class="section table-of-contents-text">34.2 Random Dynamics</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#stochastic-processes"><span class="section table-of-contents-text">35.1 Stochastic Processes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-markov-property"><span class="section table-of-contents-text">✅ 36.1 The Markov property</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-revisited"><span class="section table-of-contents-text">36.2 Probability Kernels
 Revisited</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#kolmogorovs-extended-extension-theorem"><span class="section table-of-contents-text">37.2 Kolmogorov’s
 (Extended) Extension Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#walds-identity"><span class="section table-of-contents-text">46.3 Wald’s Identity</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniform-integrability"><span class="section table-of-contents-text">48.1 Uniform Integrability</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#optional-stopping-and-sampling"><span class="section table-of-contents-text">49.1 Optional Stopping and
 Sampling</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#holders-inequality"><span class="section table-of-contents-text">49.2 Holder’s Inequality</span></a></li></ol>
@@ -1449,37 +1449,54 @@ F_n(X_0,\xi_1,\xi_2,\ldots,\xi_n),\quad F_n:S\times R^n\to S.\]</span>
 <h1 id="stochastic-processes">35.1 Stochastic Processes</h1>
 <p>本讲介绍了随机过程的定义，以及它们的有限维分布、滤过
 (filtration)、适应 (adapted) 等概念。</p>
-<h1 id="the-markov-property">36.1 The Markov property</h1>
-<p>我们称随机过程 <span class="math inline">\(X_t:(\Omega,\mathcal{F}_t)\to(S_,\mathcal{B})\)</span>
-Markov 性质，如果对任何有界可测函数 <span class="math inline">\(f\in\mathbb{B}(S,\mathcal{B})\)</span> 有</p>
-<p><span class="math display">\[\mathbb{E}[f(X_t)|\mathcal{F}_s] =
-\mathbb{E}[f(X_t)|X_s],\quad \mathrm{a.e.},\ \forall s &lt;
+<h1 id="the-markov-property">✅ 36.1 The Markov property</h1>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+40.1</span>.</span><span class="statement-spah"> </span>我们称随机过程
+<span class="math inline">\(X_t:(\Omega,\mathcal{F}_t)\to(S_,\mathcal{B})\)</span>
+具有 Markov 性质，如果对任何有界可测函数 <span class="math inline">\(f\in\mathbb{B}(S,\mathcal{B})\)</span> 有 <span class="math display">\[\mathbb{E}[f(X_t)|\mathcal{F}_s] =
+\mathbb{E}[f(X_t)|X_s],\quad \mathrm{a.e.}\ \forall s &lt;
 t.\]</span></p>
-<p>Markov
-过程貌似是关于过去和当前的，但实际上它也告诉了我们关于未来的信息：</p>
+</div>
+<p>即对 <span class="math inline">\(s\)</span>
+时刻之前的所有历史取条件期望，等于只对 <span class="math inline">\(s\)</span> 时刻的历史取条件期望。</p>
+<p>根据 Doob-Dynkin 引理，不难验证这个定义等价于 <span class="math display">\[\mathbb{E}[f(X_t)|\mathcal{F}_s] = F(X_s),\quad
+\mathrm{a.e.}\text{ for some }
+F\in\mathbb{B}(S,\mathcal{B}).\]</span></p>
+<p>上面定义看起来是说，Markov
+过程是关于过去和当前的。但实际上它也告诉了我们关于未来的信息：</p>
 <div class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-40.1</span>.</span><span class="statement-spah"> </span><span class="math display">\[\mathbb{E}[Y|\mathcal{F}_s] = E[Y|X_s],\quad
-\forall Y\in\mathbb{B}(\Omega, \mathcal{F}_{\geq s}).\]</span></p>
+40.2</span>.</span><span class="statement-spah"> </span><span class="math display">\[\mathbb{E}[Y|\mathcal{F}_s] = E[Y|X_s],\quad
+\forall Y\in\mathbb{B}(\Omega, \mathcal{F}^X_{\geq s}).\]</span>
+注意，<span class="math inline">\(Y\)</span> 来自 <span class="math inline">\(\mathcal{F}^X_{\geq s}=\sigma(X_t:t\geq
+s)\)</span>，而不是 Filtration <span class="math inline">\(\mathcal{F}_{\geq s}\)</span>。</p>
 </div>
 <p>这个推论的证明很有意思，要用到 Dynkin multiplicative system。</p>
-<p>考虑形如 <span class="math display">\[Y =
+<p><strong>证明</strong>：考虑所有形如 <span class="math display">\[Y =
 g_0(X_{t_0})g_1(X_{t_1})\cdots g_n(X_{t_n})\]</span> 的函数，这里 <span class="math inline">\(s =t_0&lt;t_1&lt;\cdots &lt;t_n\)</span>，且每个
-<span class="math inline">\(g_i\)</span> 都是有界可测的，从而 <span class="math inline">\(Y\)</span> 也是有界可测的，并且 <span class="math inline">\(Y\in\mathcal{F}_{\geq s}\)</span>。</p>
+<span class="math inline">\(g_i\)</span> 都是有界可测的，从而 <span class="math inline">\(Y\)</span> 也是有界可测的，并且 <span class="math inline">\(Y\in\mathcal{F}^X_{\geq s}\)</span>。</p>
 <div class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-40.2</span>.</span><span class="statement-spah"> </span>设 <span class="math display">\[\mathcal{M} = \{g_0(X_{t_0})g_1(X_{t_1})\cdots
+40.3</span>.</span><span class="statement-spah"> </span>设 <span class="math display">\[\mathcal{M} = \{g_0(X_{t_0})g_1(X_{t_1})\cdots
 g_n(X_{t_n})\mid n\in\mathbb{Z}_{\geq0},\ s=t_0&lt;t_1&lt;\cdots&lt;t_n,
-g_j\in\mathbb{B}(S,\mathcal{B})\}.\]</span> 则 <span class="math inline">\(\mathcal{M}\)</span> 是乘法系，且 <span class="math inline">\(\sigma(M) = \mathcal{F}_{\geq s}\)</span>。</p>
+g_j\in\mathbb{B}(S,\mathcal{B})\}.\]</span> 则 <span class="math inline">\(\mathcal{M}\)</span> 是乘法系，且 <span class="math inline">\(\sigma(M) = \mathcal{F}^X_{\geq s}\)</span>。</p>
 </div>
+<p>引理的证明很简单，这里省略。</p>
 <p>回到推论的证明。</p>
 <p>设 <span class="math inline">\(\mathcal{H}\)</span>
-是所有满足推论要求的函数构成的空间。我们只要证明 <span class="math inline">\(\mathcal{H} \supset\mathcal{M}\)</span>。这样由于
-<span class="math inline">\(\mathcal{H}\)</span> 是向量空间，包含常数
-1，在有界收敛下封闭，并且包含乘法系 <span class="math inline">\(\mathcal{M}\)</span>，从而根据 Dynkin
-函数系引理包含所有关于 <span class="math inline">\(\sigma(\mathcal{M})=\mathcal{F}_{\geq s}\)</span>
-可测的有界可测函数，这正是所要证明的。</p>
-<p><span class="math display">\[\begin{align*}\mathbb{E}_{\mathcal{F}_s}[Y]&amp;=\mathbb{E}_{\mathcal{F}_s}[E_{\mathcal{F}_{t_{n-1}}}[Y]]\\
+是所有满足推论要求的函数构成的空间。显然 <span class="math inline">\(\mathcal{H}\)</span> 满足：</p>
+<ol type="1">
+<li>是向量空间；</li>
+<li>包含常函数 1；</li>
+<li>对有界收敛下封闭</li>
+</ol>
+<p>我们只要再证明 <span class="math inline">\(\mathcal{H}\)</span>
+包含乘法系 <span class="math inline">\(\mathcal{M}\)</span>，从而根据
+Dynkin 函数系引理它包含所有关于 <span class="math inline">\(\sigma(\mathcal{M})=\mathcal{F}^X_{\geq
+s}\)</span> 可测的有界可测函数，这正是所要证明的。</p>
+<p>根据 Markov 性质和 Doob-Dynkin 引理，我们可以记 <span class="math inline">\(\mathbb{E}_{\mathcal{F}_{t_{n-1}}}[g_n(X_{t_n})]=h(X_{t_{n-1}})\)</span>。于是</p>
+<p><span class="math display">\[\begin{aligned}\mathbb{E}_{\mathcal{F}_s}[Y]&amp;=\mathbb{E}_{\mathcal{F}_s}[E_{\mathcal{F}_{t_{n-1}}}[Y]]\\
 &amp;=\mathbb{E}_{\mathcal{F}_s}[g_0(X_{t_0})\cdots
 g_{n-1}(X_{t_{n-1}})h(X_{t_{n-1}})]\\
 &amp;=\mathbb{E}_{\mathcal{F}_s}[g_0(X_{t_0})\cdots
@@ -1487,22 +1504,44 @@ g_{n-1}(X_{t_{n-1}})h(X_{t_{n-1}})]\\
 &amp;=\cdots\\
 &amp;=\mathbb{E}_{\mathcal{F}_s}[F(X_{s})]\\
 &amp;=F(X_s)
-\end{align*}\]</span> 再利用 <span class="math inline">\(\mathbb{E}_{X_s}[Y]=\mathbb{E}_{X_s}[\mathbb{E}_{\mathcal{F}_s}[Y]]=\mathbb{E}_{X_s}[F(X_s)]=F(X_s)\)</span>
-即得所证。</p>
+\end{aligned}\]</span> 再利用 <span class="math inline">\(\mathbb{E}_{X_s}[Y]=\mathbb{E}_{X_s}[\mathbb{E}_{\mathcal{F}_s}[Y]]=\mathbb{E}_{X_s}[F(X_s)]=F(X_s)\)</span>
+即得所证。<span class="math inline">\(\blacksquare\)</span></p>
 <p>上面是 Markov
 性质的第一种刻画：将对未来可测的函数对当前和过去取条件期望，相当于只对当前取条件期望。</p>
 <p>本讲接下来用条件独立给出了 Markov 性质的第二种刻画：</p>
-<blockquote>
-<p><strong>定理</strong>：随机过程 <span class="math inline">\(\{X_t\}\)</span> 满足 Markov 性质当且仅当 <span class="math inline">\(\mathcal{F}_s\)</span> 和 <span class="math inline">\(\mathcal{F}_{\geq s}\)</span> 关于 <span class="math inline">\(\sigma(X_s)\)</span>
-是条件独立的，即对任何有界可测函数 <span class="math inline">\(Z\in\mathbb{B}(\Omega,\mathcal{F}_s)\)</span>，<span class="math inline">\(Y\in\mathbb{B}(\Omega,\mathcal{F}_{\geq
-s})\)</span> 有 <span class="math display">\[\mathbb{E}[ZY|X_s] =
-\mathbb{E}[Z|X_s]\cdot \mathbb{E}[Y|X_s].\]</span></p>
-</blockquote>
-<p>注意到 <span class="math inline">\(\mathcal{F}_s=\sigma(X_t: t\leq
-s)\)</span> 以及 <span class="math inline">\(\mathcal{F}_{\geq
-s}=\sigma(X_T:t\geq s)\)</span>，所以这个结论可以概括为：对 Markov
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+40.4</span>.</span><span class="statement-spah"> </span>随机过程 <span class="math inline">\(\{X_t\}\)</span> 满足 Markov 性质当且仅当 <span class="math inline">\(\mathcal{F}_s\)</span> 和 <span class="math inline">\(\mathcal{F}^X_{\geq s}\)</span> 关于 <span class="math inline">\(\sigma(X_s)\)</span>
+是条件独立的，即对任何有界可测函数 <span class="math inline">\(Z\in\mathbb{B}(\Omega,\mathcal{F}_s)\)</span>，<span class="math inline">\(Y\in\mathbb{B}(\Omega,\mathcal{F}^X_{\geq
+s})\)</span> 有 <span class="math display">\[\mathbb{E}[ZY\mid X_s] =
+\mathbb{E}[Z\mid X_s]\cdot \mathbb{E}[Y\mid X_s].\]</span></p>
+</div>
+<p>注意到 <span class="math inline">\(\mathcal{F}_s\supset\sigma(X_t:
+t\leq s)\)</span> 以及 <span class="math inline">\(\mathcal{F}^X_{\geq
+s}=\sigma(X_t:t\geq s)\)</span>，所以这个结论可以概括为：对 Markov
 过程，给定当下，过去与未来独立。</p>
-<p>这个结论的证明主要使用了 Tower 性质，不算困难。</p>
+<p><strong>证明</strong>：</p>
+<p><span class="math inline">\(\Rightarrow\)</span>：由于 <span class="math inline">\(Z\)</span> 关于 <span class="math inline">\(\mathcal{F}_s\)</span> 可测，以及 Markov 性质，有
+<span class="math display">\[\mathbb{E}[ZY\mid\mathcal{F}_s] =
+Z\mathbb{E}[Y\mid \mathcal{F}_s]=Z\cdot \mathbb{E}[Y\mid X_s].\]</span>
+两边同时对 <span class="math inline">\(\sigma(X_s)\)</span>
+取条件期望，并利用条件期望的 Tower 性质，得到 <span class="math display">\[\mathbb{E}[ZY\mid X_s] = \mathbb{E}[Z\mid
+X_s]\cdot \mathbb{E}[Y\mid\mathcal{F}_s].\]</span></p>
+<p><span class="math inline">\(\Leftarrow\)</span>：对任意 <span class="math inline">\(Z\in\mathbb{B}(\Omega,\sigma(X_s))\)</span>，考虑
+<span class="math inline">\(\mathbb{E}[Z
+f(X_t)]\)</span>。由条件独立得：</p>
+<p><span class="math display">\[\mathbb{E}[Z\cdot f(X_t)]=
+\mathbb{E}\big[\mathbb{E}[Z f(X_t)\mid X_s]\big]=
+\mathbb{E}\big[\mathbb{E}[Z\mid X_s]\cdot\mathbb{E}[f(X_t)\mid
+X_s]\big]=\mathbb{E}[Z\cdot h(X_s)].\]</span> 其中 <span class="math inline">\(h(X_s):=\mathbb{E}[f(X_t)\mid
+X_s]\)</span>。另一方面，根据条件期望定义， <span class="math display">\[\mathbb{E}[Z\cdot f(X_t)] = \mathbb{E}\big[Z
+\cdot\mathbb{E}[f(X_t)\mid \mathcal{F}_s]\big].\]</span>
+两个式子的右边相等，所以 <span class="math display">\[\mathbb{E}\big[Z\cdot\mathbb{E}[f(X_t)\mid
+\mathcal{F}_s]\big]
+= \mathbb{E}\big[Z\cdot h(X_s)\big].\]</span>
+而这正是条件期望的“投影特征”：由 <span class="math inline">\(Z\)</span>
+的任意性，必然有 <span class="math display">\[\mathbb{E}[f(X_t)\mid\mathcal{F}_s] = h(X_s) =
+\mathbb{E}[f(X_t)\mid X_s],\quad \mathrm{a.e.}\]</span> <span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="probability-kernels-revisited">36.2 Probability Kernels
 Revisited</h1>
 <p>回顾了之前概率核的概念。没啥新的。</p>
