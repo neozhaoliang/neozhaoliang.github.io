@@ -405,10 +405,9 @@ f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^n).\]</span>
 <p>可以证明 <span class="math inline">\(F\)</span> 是空间 <span class="math inline">\(K(\mathbb{R}^n)\)</span>
 上的压缩映射，其压缩比例不超过 <span class="math inline">\(r=\max\{r_1,\ldots,r_N\}\)</span>。于是根据 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem">Banach
 不动点定理</a>，存在唯一的紧集 <span class="math inline">\(A\subset\mathbb{R}^n\)</span> 使得 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(F\)</span> 的不动点： <span class="math display">\[F(A) = A.\]</span> 紧集 <span class="math inline">\(A\)</span> 叫做 <span class="math inline">\(F\)</span> 的极限集。<span class="math inline">\(A\)</span> 是一个分形，它具有自相似的特征。</p>
-<p>不仅如此，Banach 不动点定理还告诉我们，对 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 中的任何一点 <span class="math inline">\(K\)</span>（记住 <span class="math inline">\(K\)</span> 是紧集），都有 <span class="math display">\[\lim_{n\to\infty} F^n(K) =A.\]</span> 即紧集
+<p>不仅如此，Banach 不动点定理还告诉我们，对 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 中的任何一点 <span class="math inline">\(K\)</span>（记住 <span class="math inline">\(K\)</span> 是紧集），都有 <span class="math display">\[\lim_{n\to\infty} F^n(K) =A.\]</span> 即初始紧集
 <span class="math inline">\(K\)</span>
-的初始形状根本不重要——压缩的力量会抹去一切“个性”，只留下结构，那就是
-<span class="math inline">\(A\)</span>！</p>
+的形状根本不重要——压缩的力量会抹去一切“个性”，只留下结构，那就是 <span class="math inline">\(A\)</span>！</p>
 <p>以 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpiński
 三角形</a> 为例，只需三个压缩映射：</p>
 <p><span class="math display">\[
@@ -493,13 +492,11 @@ rgb 值很可能会溢出，变成白色。此外，随着迭代次数 <span cla
 <figure class="highlight glsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">void</span> mainImage(<span class="hljs-keyword">out</span> <span class="hljs-type">vec4</span> fragColor, <span class="hljs-keyword">in</span> <span class="hljs-type">vec2</span> fragCoord);<br></code></pre></td></tr></tbody></table></figure>
 <p>其中 <code>fragCoord</code> 是像素的位置，<code>fragColor</code>
 是需要设置的像素颜色。</p>
-<p>现实生活中有一个很形象的例子可以帮你理解着色器编程：假设你是一场方阵表演的导演，所有演员排成一个
-<span class="math inline">\(W\times H\)</span>
-的方阵，每个演员可以改变自己衣服的颜色。你的任务是发出合适的指令让每个演员根据自己的位置计算出正确的颜色，使得整个方阵呈现出漂亮的图案。</p>
+<p>现实生活中有一个很形象的例子可以帮你理解着色器编程：假设你是一场方阵表演的导演，所有演员排成一个方阵，每个演员可以改变自己衣服的颜色。你的任务是发出合适的指令让每个演员根据自己的位置计算出正确的颜色，使得整个方阵呈现出漂亮的图案。</p>
 <p><img src="/images/ifs/array.png" class="fig" width="600"></p>
-<p>如果你一个一个地对每个演员下指令，张三你应该显示红色，李四你应该显示蓝色，等等
+<p>如果你挨个对每个演员下指令，张三你应该显示红色，李四你应该显示蓝色，等等
 …
-对成千上万个演员，这么挨个下指令还不得把人累死？正确的做法是，你应该同时对所有演员发出相同的指令，比如：“每个人，计算自己和方阵中心的距离，小于
+对成千上万个演员，还不得把人累死？正确的做法是，你应该同时对所有演员发出相同的指令，比如：“每个人，计算自己和方阵中心的距离，小于
 10 米的显示红色，大于等于 10 米的显示黑色”。由于每个演员都是一个单独的
 GPU
 计算单元，他们可以根据你发出的同一条指令，在极短的时间内（毫秒级）分别计算出各自的颜色。计算完毕后，观众应该会看到一个红色的圆。这种基于相同指令并行计算的工作方式就是
