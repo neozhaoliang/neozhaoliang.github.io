@@ -319,7 +319,7 @@ Numbers, Part 1</span></a></li><li class="section table-of-contents-item section
 Criterion</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#strong-law-of-large-numbers-part-2"><span class="section table-of-contents-text">19.1 Strong Law of Large
 Numbers, Part 2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#renewal-theory"><span class="section table-of-contents-text">19.2 Renewal Theory</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#complex-integration-and-dynkins-theorem"><span class="section table-of-contents-text">24.1 Complex
 Integration and Dynkin’s Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#characteristic-function"><span class="section table-of-contents-text">✅ 24.2 Characteristic Function</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-riemann-lebesgue-lemma"><span class="section table-of-contents-text">✅ 25.1 The Riemann-Lebesgue
-lemma</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#fourier-inversion"><span class="section table-of-contents-text">25.2 Fourier inversion</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-continuity-theorem"><span class="section table-of-contents-text">25.3 The Continuity Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#orthogonal-projections"><span class="section table-of-contents-text">31.1 Orthogonal Projections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-1"><span class="section table-of-contents-text">33.1 Probability Kernels, Part
+lemma</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#fourier-inversion"><span class="section table-of-contents-text">✅ 25.2 Fourier inversion</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-continuity-theorem"><span class="section table-of-contents-text">25.3 The Continuity Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#orthogonal-projections"><span class="section table-of-contents-text">31.1 Orthogonal Projections</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-1"><span class="section table-of-contents-text">33.1 Probability Kernels, Part
 1</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#regular-conditional-distributions"><span class="section table-of-contents-text">33.2 Regular Conditional
 Distributions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-part-2"><span class="section table-of-contents-text">34.1 Probability Kernels, Part
 2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#random-dynamics"><span class="section table-of-contents-text">34.2 Random Dynamics</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#stochastic-processes"><span class="section table-of-contents-text">35.1 Stochastic Processes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-markov-property"><span class="section table-of-contents-text">✅ 36.1 The Markov property</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#probability-kernels-revisited"><span class="section table-of-contents-text">36.2 Probability Kernels
@@ -1255,15 +1255,15 @@ lemma</h1>
 <div class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
 33.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(f\in L^1(\mathbb{R}^n)\)</span>，则其特征函数
-<span class="math display">\[\varphi(t) = \int_{\mathbb{R}^n}e^{-it\cdot
+<span class="math display">\[\varphi(t) = \int_{\mathbb{R}^n}e^{it\cdot
 x}f(x)\,\,\mathrm{d}x.\]</span> 满足 <span class="math display">\[\lim_{t\to\infty}\varphi(t) = 0.\]</span></p>
 </div>
 <p><strong>证明</strong>：首先，我们假设 <span class="math inline">\(f\)</span>
 无穷次可微，并且具有紧支集。由分部积分，我们得到</p>
 <p><span class="math display">\[it_j\varphi(t) =
-\int_{\mathbb{R}^n}\underbrace{it_je^{-it\cdot x}}_{\frac{\partial
-x}{\partial x_j}e^{-it\cdot
-x}}f(x)\,\,\mathrm{d}x=-\int_{\mathbb{R}^n}e^{-it\cdot x}\frac{\partial
+\int_{\mathbb{R}^n}\underbrace{it_je^{it\cdot x}}_{\frac{\partial
+x}{\partial x_j}e^{it\cdot
+x}}f(x)\,\,\mathrm{d}x=-\int_{\mathbb{R}^n}e^{it\cdot x}\frac{\partial
 x}{\partial x_j}f(x)\,\,\mathrm{d}x.\]</span> 两边取绝对值，我们有 <span class="math display">\[|t_j\varphi(t)|\leq
 \int_{\mathbb{R}^n}\left|\frac{\partial x}{\partial
 x_j}f(x)\right|\,\,\mathrm{d}x=M_j&lt;\infty.\]</span> 于是 <span class="math display">\[|t|\cdot |\varphi(t)|\leq
@@ -1295,29 +1295,136 @@ h\)</span>，则根据控制收敛定理，<span class="math inline">\(|h_n-h|_1
 C^\infty_c(\mathbb{R}^n)\)</span> 满足 <span class="math inline">\(|f-g|_1&lt;\epsilon\)</span>。则 <span class="math display">\[|\varphi(t) - \hat{g}(t)|\leq |f-g|_1 &lt;
 \epsilon.\]</span> 而我们已经证明了 <span class="math inline">\(|\hat{g}|=O(1/t)\)</span>，所以我们可以取 <span class="math inline">\(R&gt;0\)</span> 使得 <span class="math inline">\(|t|&gt;R\)</span> 时有 <span class="math inline">\(|\hat{g}|&lt;\epsilon\)</span>。从而 <span class="math inline">\(|t|&gt;R\)</span> 时有 <span class="math display">\[|\varphi(t)| &lt; |\hat{g}(t)|+\epsilon &lt;
 2\epsilon.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
-<h1 id="fourier-inversion">25.2 Fourier inversion</h1>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>证明中，我们不加证明使用了两个结论：</p>
+<ol type="1">
+<li>光滑函数 <span class="math inline">\(g_n\)</span> 的存在性；</li>
+<li><span class="math inline">\(\sigma(\mathbb{M})=\mathcal{B}(\mathbb{R}^n)\)</span>。</li>
+</ol>
+<p>这两点原因如下：任意 <span class="math inline">\(\mathbb{R}^n\)</span>
+中的开球都能写成某个紧支撑光滑函数的开阈值原像。给定中心 <span class="math inline">\(a\in\mathbb{R}^n\)</span> 和半径 <span class="math inline">\(r&gt;0\)</span>，定义标准“钟形”函数 <span class="math display">\[\phi_{a,r}(x)=\begin{cases}
+\exp\Bigl(-\dfrac{1}{1-\frac{|x-a|^2}{r^2}}\Bigr), &amp; |x-a|&lt;r,\\
+0,&amp; |x-a|\ge r.
+\end{cases}\]</span> 则 <span class="math inline">\(\phi_{a,r}\in
+C_c^\infty(\mathbb{R}^n)\)</span>，并且 <span class="math display">\[\phi_{a,r}^{-1}((0,+\infty))=\{x\in\mathbb{R}^n\mid\phi_{a,r}(x)&gt;0\}=B(a,r)\]</span>。因此每个开球
+<span class="math inline">\(B(a,r)\)</span> 都属于 <span class="math inline">\(\sigma(\mathbb{M})\)</span>。</p>
+</div>
+<h1 id="fourier-inversion">✅ 25.2 Fourier inversion</h1>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+34.1</span>.</span><span class="statement-spah"> </span>对 <span class="math inline">\(\xi\geq0\)</span>，定义函数 <span class="math display">\[S(\xi) =
+\int_{-r}^r\frac{\sin\xi}{\xi}\,\mathrm{d}\xi.\]</span> 则 <span class="math inline">\(S(\xi)\)</span> 是 <span class="math inline">\([0,+\infty)\)</span> 上的连续函数，并且 <span class="math display">\[\lim_{\xi\to\infty}S(\xi) = \pi.\]</span></p>
+</div>
+<p><strong>证明</strong>：由于被积函数 <span class="math inline">\(\frac{\sin\xi}{\xi}\)</span> 在 <span class="math inline">\(\mathbb{R}\)</span>
+上连续。由微积分基本定理，连续函数的变上限积分是连续的，故 <span class="math inline">\(S\)</span> 在 <span class="math inline">\([0,\infty)\)</span> 上连续。</p>
+<p>对 <span class="math inline">\(a&gt;0\)</span> 定义 <span class="math display">\[F(a)=\int_0^\infty e^{-ax}\frac{\sin
+x}{x}\,\mathrm{d}x.\]</span></p>
+<p>可以在积分号下求导，得到 <span class="math display">\[F'(a)=-\int_0^\infty e^{-ax}\sin
+x\,\mathrm{d}x=-\frac{1}{1+a^2}.\]</span> 故 <span class="math display">\[F(a)=C-\arctan a.\]</span> 当 <span class="math inline">\(a\to+\infty\)</span> 时，<span class="math inline">\(e^{-ax}\)</span> 强衰减，<span class="math inline">\(F(a)\to 0\)</span>，而 <span class="math inline">\(\arctan a\to \frac{\pi}{2}\)</span>，故 <span class="math inline">\(C=\frac{\pi}{2}\)</span>。于是 <span class="math display">\[F(a)=\frac{\pi}{2}-\arctan
+a=\arctan\frac{1}{a}.\]</span> 令 <span class="math inline">\(a\downarrow 0\)</span> 即得结论。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+34.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mu\)</span> 是 <span class="math inline">\((\mathbb{R},\mathcal{B}(\mathbb{R}))\)</span>
+上的概率测度，则对任何 <span class="math inline">\(a&lt;b\in\mathbb{R}\)</span> 有 <span class="math display">\[\mu((a,b)) + \frac{1}{2}\mu(\{a,b\}) =
+\lim_{R\to\infty}\frac{1}{2\pi}\int_{-R}^R\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\hat{\mu}(\xi)\,\mathrm{d}\xi.\]</span></p>
+</div>
+<p><strong>证明</strong>： <span class="math display">\[\begin{aligned}
+I(R) &amp;=
+\frac{1}{2\pi}\int_{-R}^R\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\hat{\mu}(\xi)\,\mathrm{d}\xi\\
+&amp;=\frac{1}{2\pi}\int_{-R}^R \frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}
+\,\mathrm{d}\xi\int_\mathbb{R}e^{i\xi x}\mu(\mathrm{d}x) \\
+&amp;=\frac{1}{2\pi}\int_\mathbb{R}e^{i\xi x} \mu(\mathrm{d}x)
+\int_{-R}^R \frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi} \,\mathrm{d}\xi\\
+&amp;=\frac{1}{2\pi}\int_\mathbb{R}\mu(\mathrm{d}x) \int_{-R}^R
+\frac{e^{i\xi(x-a)}-e^{i\xi(x-b)}}{i\xi} \,\mathrm{d}\xi\\
+&amp;=\frac{1}{2\pi}\int_\mathbb{R}\mu(\mathrm{d}x) \int_{-R}^R
+\frac{\sin\xi(x-a)-\sin\xi(x-b)}{\xi} \,\mathrm{d}\xi.
+\end{aligned}\]</span> 这里我们可以使用 Fubini 定理交换关于 <span class="math inline">\(\xi\)</span> 和 <span class="math inline">\(x\)</span> 的积分顺序是因为 <span class="math display">\[F(x,\xi)=e^{i\xi
+x}\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\mathbb{1}_{[-R,R]}(\xi).\]</span>
+满足 <span class="math display">\[|F(x,\xi)|\le
+|a-b|\mathbb{1}_{[-R,R]}(\xi).\]</span> 从而 <span class="math display">\[\int_{\mathbb{R}}\int_{\mathbb{R}}|F(x,\xi)|\,\mathrm{d}\mu\,\mathrm{d}\xi\leq
+\int_{\mathbb{R}}\int_{\mathbb{R}}
+|a-b|\mathbb{1}_{[-R,R]}(\xi)\,\mathrm{d}\mu\,\mathrm{d}\xi
+=|a-b|\cdot \mu(\mathbb{R})\cdot (2R)&lt;\infty.\]</span></p>
+<p>然后注意到 <span class="math display">\[\begin{aligned}
+\int_{-R}^R\frac{\sin\xi(x-a)}{\xi}\,\mathrm{d}\xi&amp;=\int_{-R(x-a)}^{R(x-a)}\frac{\sin\eta}{\eta}\,\mathrm{d}\eta=\begin{cases}
+S(R(x-a)), &amp; x-a &gt; 0,\\
+-S(R(a-x)), &amp; x - a &lt; 0.
+\end{cases} \\
+&amp;= \mathrm{sgn}(x-a)S(R|x-a|).
+\end{aligned}\]</span> 所以 <span class="math display">\[I(R)=\frac{1}{2\pi}\int_\mathbb{R}\big[\mathrm{sgn}(x-a)S(R|x-a|)
+-\mathrm{sgn}(x-b)S(R|x-b|)\big]\mu(\mathrm{d}x).\]</span>
+现在，被积函数是有界的（不超过 <span class="math inline">\(S(r)\)</span>
+在 <span class="math inline">\([0,+\infty)\)</span> 上的上界 x
+2），所以可以用控制收敛定理得到 <span class="math display">\[\lim_{R\to\infty}I(R)=
+\frac{1}{2}\int_\mathbb{R}[\mathrm{sgn}(x-a)-\mathrm{sgn}(x-b)]\mu(\mathrm{d}x).\]</span>
+注意到现在的被积函数满足 <span class="math display">\[\mathrm{sgn}(x-a)-\mathrm{sgn}(x-b)=\begin{cases}
+0, &amp; x &gt; b \text{ or } x &lt; a,\\
+1, &amp; x = a \text{ or } x = b,\\
+2, &amp; a &lt; x &lt; b.
+\end{cases}.\]</span> 所以 <span class="math display">\[\lim_{R\to\infty}I(R) = \frac{1}{2}\mu(\{a,b\}) +
+\mu((a,b)).\]</span> <span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+34.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mu\)</span> 是 <span class="math inline">\((\mathbb{R},\mathcal{B}(\mathbb{R}))\)</span>
+上的概率测度，<span class="math inline">\(\hat{\mu}\)</span> 是关于
+Legesgue <span class="math inline">\(L^1\)</span> 的，则其有密度函数
+<span class="math inline">\(\rho\)</span>，满足 <span class="math display">\[\rho(x)=\frac{1}{2\pi}\int_\mathbb{R}e^{-itx}\hat{\mu}(t)\,\mathrm{d}t.\]</span></p>
+</div>
+<p><strong>证明</strong>：令 <span class="math inline">\(\rho\)</span>
+如上定义，则 <span class="math display">\[\begin{aligned}
+\int_a^b\rho(x)\,\mathrm{d}x&amp;=
+\frac{1}{2\pi}\int_a^b\,\mathrm{d}x\int_\mathbb{R}\hat{\mu}(\xi)e^{-i\xi
+x}\,\mathrm{d}\xi\\
+&amp;=\frac{1}{2\pi}\int_\mathbb{R}\hat{\mu}(\xi)\,\mathrm{d}\xi\int_a^b
+e^{-i\xi x}\,\mathrm{d}x\\
+&amp;=\frac{1}{2\pi}\int_\mathbb{R}\hat{\mu}(\xi)\frac{e^{-ia\xi}-e^{-ib\xi}}{i\xi}\,\mathrm{d}\xi\\
+&amp;=\lim_{R\to\infty} I(R)\\
+&amp;=\mu((a,b)) + \frac{\mu(\{a,b\})}{2}.
+\end{aligned}\]</span> <span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="the-continuity-theorem">25.3 The Continuity Theorem</h1>
 <p>本讲介绍了测度弱收敛的连续性定理。</p>
-<blockquote>
-<p><strong>定理</strong>：如果 <span class="math inline">\(\{\mu_n\}_{n=1}^\infty\)</span> 是一列 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+35.1</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(\{\mu_n\}_{n=1}^\infty\)</span> 是一列 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
 上的概率测度。假设极限 <span class="math inline">\(\varphi(t) =
 \lim\limits_{n\to\infty}\hat{\mu_n}\)</span> 存在，并且 <span class="math inline">\(\varphi(t)\)</span> 在 <span class="math inline">\(t=0\)</span> 处连续，则存在概率测度 <span class="math inline">\(\mu\)</span> 使得 <span class="math inline">\(\hat{\mu}=\varphi\)</span>，并且 <span class="math inline">\(\mu_n\rightarrow_{w}\mu\)</span>。</p>
-</blockquote>
-<blockquote>
-<p><strong>引理</strong>：对两个概率测度 <span class="math inline">\(\mu,\nu\)</span> 有 <span class="math display">\[\int_{\mathbb{R}^d}\hat{\mu}(x)\nu(\mathrm{d}x)=\int_{\mathbb{R}^d}\hat{\nu}(y)\mu(\mathrm{d}y).\]</span></p>
-</blockquote>
-<p>直接 Fubini 即可。</p>
-<blockquote>
-<p><strong>引理</strong>： <span class="math display">\[\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\mu}(x)]\nu(\mathrm{d}x)=\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\nu}(y)]\mu(\mathrm{d}x).\]</span></p>
-</blockquote>
-<p>在前一个引理中两边取实部，然后被 1 减去即可。</p>
-<blockquote>
-<p><strong>推论</strong>：假设 <span class="math inline">\(\rho\)</span>
-是一个 <span class="math inline">\(\mathbb{R}^d\)</span>
-上的概率测度，其支集位于闭的单位球 <span class="math inline">\(\bar{B}_1\)</span> 内。设 <span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|\hat{\rho}(t)|\leq1/2\)</span> 对任何 <span class="math inline">\(|t|\geq M\)</span> 成立，则对任何 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
+</div>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+35.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\mu,\nu\)</span> 是 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
+上的两个概率测度，<span class="math inline">\(K&gt;0\)</span>
+是任意正实数，则 <span class="math display">\[\int_{\mathbb{R}^d}\hat{\mu}(Kx)\nu(\mathrm{d}x)=\int_{\mathbb{R}^d}\hat{\nu}(Ky)\mu(\mathrm{d}y).\]</span></p>
+</div>
+<p><strong>证明</strong>：要证明的是 <span class="math display">\[\int_{\mathbb{R}^d}\nu(\mathrm{d}x)\int_{\mathbb{R}^d}e^{iKx\cdot
+\xi}\mu(\mathrm{d}\xi)=\int_{\mathbb{R}^d}\mu(\mathrm{d}y)\int_{\mathbb{R}^d}e^{iKy\cdot
+\xi}\nu(\mathrm{d}\xi).\]</span> 直接 Fubini 即可。</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+35.3</span>.</span><span class="statement-spah"> </span><span class="math display">\[\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\mu}(Kx)]\nu(\mathrm{d}x)=\int_{\mathbb{R}^d}[1-\mathrm{Re}\,\hat{\nu}(Ky)]\mu(\mathrm{d}x).\]</span></p>
+</div>
+<p><strong>证明</strong>：在前一个引理中两边取实部，然后被 1
+减去即可。</p>
+<div class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+35.4</span>.</span><span class="statement-spah"> </span>假设 <span class="math inline">\(\rho\)</span> 是一个 <span class="math inline">\(\mathbb{R}^d\)</span>
+上的概率密度，其支集位于闭的单位球 <span class="math inline">\(\bar{B}_1\)</span> 内。设 <span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|\hat{\rho}(t)|\leq1/2\)</span> 对任何 <span class="math inline">\(|t|\geq M\)</span> 成立，则对任何 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>
 上的概率测度 <span class="math inline">\(\mu\)</span> 和正数 <span class="math inline">\(\alpha&gt;0\)</span> 有 <span class="math display">\[\mu\{x\in\mathbb{R}^d:\ |x|\geq\alpha\}\leq
-2\int_{\bar{B}_1}[1-\mathrm{Re}\,\hat{\mu}(\frac{M}{\alpha}x)]\rho(x)\,\mathrm{d}x.\]</span></p>
-</blockquote>
+2\int_{\bar{B}_1}\left[1-\mathrm{Re}\,\hat{\mu}\left(\frac{M}{\alpha}x\right)\right]\rho(x)\,\mathrm{d}x.\]</span></p>
+</div>
+<p><strong>证明</strong>：设 <span class="math display">\[\hat{\mu}(t)=\int_{\mathbb{R}^d}e^{it\cdot
+x}\mu(\mathrm{d}x),\quad \hat{\rho}(t)=\int_{\mathbb{R}^d}e^{it\cdot
+x}\rho(x)\,\mathrm{d}x.\]</span> 令 <span class="math inline">\(K=\frac{M}{\alpha}\)</span>，由于 <span class="math inline">\(\rho\)</span> 的支集包含在 <span class="math inline">\(\bar B_1\)</span> 中，所以 <span class="math display">\[2\int_{\bar
+B_1}\bigl[1-\mathrm{Re}\,\hat{\mu}(Kx)\bigr]\rho(x)\,\mathrm{d}x=2\int_{\mathbb{R}^d}\bigl[1-\mathrm{Re}\,\hat{\rho}(Ky)\bigr]\mu(\mathrm{d}y).\]</span>
+由假设，当 <span class="math inline">\(|y|\ge\alpha\)</span> 时有 <span class="math inline">\(|K y|=\frac{M}{\alpha} |y|\ge M\)</span>，从而
+<span class="math display">\[1-\mathrm{Re}\hat{\rho}(K
+y)\ge1-|\hat{\rho}(K y)|\ge\frac{1}{2}.\]</span> 故 <span class="math inline">\(|y|\ge\alpha\)</span> 时有 <span class="math display">\[2\bigl(1-\mathrm{Re}\hat{\rho}(K y)\bigr)\ge
+\mathbb{1}_{\{|y|\ge\alpha\}}(y).\]</span> 这个式子对 <span class="math inline">\(|y|&lt;\alpha\)</span> 也成立，所以同时对 <span class="math inline">\(\mu\)</span> 积分得到 <span class="math display">\[2\int_{\mathbb{R}^d}\bigl[1-\mathrm{Re}\,\hat{\rho}(K
+y)\bigr]\mu(\mathrm{d}y)\ge\int_{\mathbb{R}^d}\mathbb{1}_{\{|y|\ge\alpha\}}\mu(\mathrm{d}y)=\mu(\{|y|\ge\alpha\}).\]</span>
+把左边换回原式即得 <span class="math display">\[\mu(\{|x|\ge\alpha\})\le2\int_{\bar
+B_1}\left[1-\mathrm{Re}\,\hat{\mu}\left(\tfrac M\alpha
+x\right)\right]\rho(x)\,\mathrm{d}x.\]</span> <span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="orthogonal-projections">31.1 Orthogonal Projections</h1>
 <p>无要点</p>
 <h1 id="probability-kernels-part-1">33.1 Probability Kernels, Part
