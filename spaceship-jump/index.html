@@ -312,7 +312,7 @@
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">预备知识</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%86%BB%E7%BB%93%E5%BC%95%E7%90%86"><span class="section table-of-contents-text">“冻结”引理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#newton-%E5%8A%BF"><span class="section table-of-contents-text">Newton 势</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">建立模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AF%B9%E7%AD%96%E7%95%A5%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90"><span class="section table-of-contents-text">对策略的进一步分析</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">最优策略</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-trek-3"><span class="section table-of-contents-text">Star Trek 3</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">预备知识</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%86%BB%E7%BB%93%E5%BC%95%E7%90%86"><span class="section table-of-contents-text">“冻结”引理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#newton-%E5%8A%BF"><span class="section table-of-contents-text">Newton 势</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F%E7%9A%84%E5%86%85%E7%A7%AF"><span class="section table-of-contents-text">随机向量的内积</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">建立模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AF%B9%E7%AD%96%E7%95%A5%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90"><span class="section table-of-contents-text">对策略的进一步分析</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">最优策略</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-trek-3"><span class="section table-of-contents-text">Star Trek 3</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-trek-2"><span class="section table-of-contents-text">Star Trek 2</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
@@ -394,6 +394,55 @@ B\})\\&amp;=\int_C g(X)\mathrm{d}\mu.\end{align*}\]</span></p>
 势函数的简单情形。由于这不是本文的重点，就不再展开讲了，读者可以参考
 <span class="citation" data-cites="Donoghue2014">(<a href="#ref-Donoghue2014" role="doc-biblioref">Donoghue 2014, chap.
 8</a>)</span>。</p>
+<h2 id="随机向量的内积">随机向量的内积</h2>
+<p>下面这个命题是冻结引理的一个直接应用，会在本文中反复用到，所以值得单独列在这里。</p>
+<div id="random-inn" class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+1.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(U\)</span> 是定义在某概率空间 <span class="math inline">\((\Omega,\mathcal F,\mathbb P)\)</span> 中，在
+<span class="math inline">\(\mathbb R^d\)</span>
+的单位球面上均匀分布的随机向量，<span class="math inline">\(\sigma\)</span>- 域 <span class="math inline">\(\mathcal G\subset \mathcal F\)</span> 与 <span class="math inline">\(U\)</span> 独立。<span class="math inline">\(V\)</span> 是 <span class="math inline">\(\mathcal
+G\)</span>- 可测的 <span class="math inline">\(\mathbb R^d\)</span>
+中的单位向量。记 <span class="math inline">\(Y=U\cdot
+V\)</span>，则对任何有界 Borel 可测函数 <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span> 都有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal
+G]=\mathop{\mathrm{\mathbb{E}}}[f(U^{x})] =
+\mathop{\mathrm{\mathbb{E}}}[f(Y)].\]</span> 其中 <span class="math inline">\(U^x\)</span> 表示 <span class="math inline">\(U\)</span> 的 <span class="math inline">\(x\)</span>-
+分量。由此，我们可以得到以下两个结论：</p>
+<ol type="1">
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(\mathcal G\)</span> 独立。</li>
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(U^x\)</span> 同分布。</li>
+</ol>
+</div>
+<p><strong>证明</strong>：根据冻结引理，我们有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal G]
+= \mathop{\mathrm{\mathbb{E}}}[f(U\cdot V)\mid\mathcal G]=g(V),\quad
+g(v)=\mathop{\mathrm{\mathbb{E}}}[f(U\cdot v)].\]</span>
+换句话说，在计算 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(U\cdot
+V)\mid\mathcal G]\)</span> 时，我们可以先将 <span class="math inline">\(V\)</span> 视作一个常数单位向量 <span class="math inline">\(v\)</span>，计算 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(U\cdot
+v)]\)</span>，然后再将 <span class="math inline">\(v\)</span>
+替换回随机变量 <span class="math inline">\(V\)</span>。</p>
+<p>由于 <span class="math inline">\(U\)</span> 服从 <span class="math inline">\(\mathbb R^d\)</span> 中单位球面上的均匀分布，所以
+<span class="math inline">\(U\cdot v\)</span>
+的分布是旋转不变的，即任何单位向量 <span class="math inline">\(v\)</span> 给出的 <span class="math inline">\(U\cdot v\)</span> 具有相同的分布。从而 <span class="math inline">\(f(U\cdot v)\)</span>
+的分布也相同。所以我们可以不妨取 <span class="math inline">\(v=e_1\)</span> 为 <span class="math inline">\(x\)</span> 轴的方向向量，得到 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(U\cdot
+v)]=\mathop{\mathrm{\mathbb{E}}}[f(U^x)].\]</span>
+右边是一个常数，它不依赖于 <span class="math inline">\(\omega\)</span>，所以它必然还等于 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal
+G]\)</span> 的期望 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(Y)]\)</span>。这就证明了命题的前半部分。</p>
+<ul>
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(\mathcal G\)</span> 独立是 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal
+G]=\mathop{\mathrm{\mathbb{E}}}[f(Y)]\)</span> 的直接结论：对任何 Borel
+可测集 <span class="math inline">\(A\subset\mathbb R\)</span> 和 <span class="math inline">\(B\in\mathcal{G}\)</span>，取 <span class="math inline">\(f=\mathbb{1}_A\)</span>，利用 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal{G}]=\mathop{\mathrm{\mathbb{E}}}[f(Y)]=\mathbb{P}(Y\in
+A).\]</span> 以及条件期望的塔式性质，可得 <span class="math display">\[\begin{aligned}
+\mathbb P(Y(\omega)\in A,\,\omega\in B)&amp;=\mathbb
+E[\mathbb{1}_B\mathbb{1}_{\{Y\in A\}}]
+=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_B\mathbb E[\mathbb{1}_{\{Y\in
+A\}}\mid \mathcal G]]\\
+&amp;=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_B\mathbb P(Y\in
+A)]=\mathbb P(Y\in A)\mathbb P(B).
+\end{aligned}\]</span> 这正是 <span class="math inline">\(Y\)</span> 与
+<span class="math inline">\(\mathcal G\)</span> 独立的定义。</li>
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(U^x\)</span> 同分布是 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(U^x)]=\mathop{\mathrm{\mathbb{E}}}[f(Y)]\)</span>
+的直接结论。这一点是显然的。</li>
+</ul>
+<p><span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="建立模型">建立模型</h1>
 <p>我们开始正式求解本文开头的问题。</p>
 <ol type="1">
@@ -584,37 +633,86 @@ n}]=\mathop{\mathrm{\mathbb{E}}}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]\leq\frac{1}{r-
 的习题 E12.3 提出了一个新问题：</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
-</span>如果每次飞船的跳跃距离总是等于当前飞船到太阳系的距离，即对任意
-<span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(R_n=l_{n-1}\)</span>，求证 <span class="math display">\[\sum_{n=1}^\infty\frac{1}{R_n^2}&lt;\infty,\quad
+</span>如果每次总是把飞船的跳跃距离设定为当前飞船到太阳系的距离，即对
+<span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(l_n=R_{n-1}\)</span>，求证 <span class="math display">\[\sum_{n=1}^\infty\frac{1}{R_n^2}&lt;\infty,\quad
 \mathrm{a.e.}\]</span></p>
 </div>
 <p><strong>证明</strong>：记 <span class="math inline">\(V_n=X_n/R_n\)</span> 是位置 <span class="math inline">\(X_n\)</span> 的单位方向向量。由 <span class="math inline">\(X_n=X_{n-1}+R_{n-1}U_n\)</span> 可得 <span class="math display">\[R_n^2 =
 |X_{n-1}+R_{n-1}U_n|^2=R_{n-1}^2|V_{n-1}+U_n|^2=R_{n-1}^2(2+2V_{n-1}\cdot
 U_n).\]</span> 记 <span class="math inline">\(Y_n=V_{n-1}\cdot
-U_n\)</span>。设 <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span>
+U_n\)</span>。我们来说明 <span class="math inline">\(\{Y_n\}\)</span>
+独立、且服从 <span class="math inline">\([-1,1]\)</span>
+上的均匀分布。实际上我们将证明一个更一般的结论：</p>
+<div id="project-u" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+5.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(V_{n-1}\in\mathbb{R}^3\)</span> 是单位向量，且
+<span class="math inline">\(V_{n-1}\)</span> 关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测，记 <span class="math inline">\(Y_n=V_{n-1}\cdot U_n\)</span>，则 <span class="math inline">\(\{Y_n\}\)</span> 独立、且服从 <span class="math inline">\([-1,1]\)</span> 上的均匀分布。</p>
+</div>
+<p><strong><a href="#project-u" title="引理 5.1">引理 5.1</a>
+的证明</strong>：设 <span class="math inline">\(\phi:\mathbb{R}\to\mathbb{R}\)</span>
 是任一有界可测函数。由于 <span class="math inline">\(V_{n-1}\)</span>
-关于 <span class="math inline">\(\mathcal{F_{n-1}}\)</span> 可测，<span class="math inline">\(U_n\)</span> 与 <span class="math inline">\(\mathcal{F_{n-1}}\)</span> 独立，所以我们可以使用
+关于 <span class="math inline">\(\mathcal{F_{n-1}}\)</span> 可测，<span class="math inline">\(U_n\)</span> 与 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 独立，所以我们可以使用
 <a href="#freeze" title="引理 1.1">引理 1.1</a>，得到</p>
-<p><span class="math display">\[\mathbb{E}\left[f(V_{n-1}\cdot
-U_n)\mid\mathcal F_{n-1}\right]
-= g(V_{n-1}),\quad
-g(v):=\mathbb E\big[f(v\cdot U_n)\big].\]</span> 由于 <span class="math inline">\(U_n\)</span> 均匀分布在单位球面上，而 <span class="math inline">\(v\)</span> 是固定的单位球面上的向量，因此 <span class="math inline">\(v\cdot U_n\)</span> 的分布是旋转不变的。我们可以取
+<p>注意在 <span class="math inline">\(\mathbb E\big[\phi(v\cdot
+U_n)\big]\)</span> 中，<span class="math inline">\(v\)</span>
+已经被冻结为单位球面上的固定向量。由于 <span class="math inline">\(U_n\)</span> 均匀分布在单位球面上，而 <span class="math inline">\(v\cdot U_n\)</span> 的分布是旋转不变的。我们可以取
 <span class="math inline">\(v=(0,0,1)\)</span>，于是 <span class="math inline">\(v\cdot U_n\)</span> 就是 <span class="math inline">\(U_n\)</span> 的 <span class="math inline">\(z\)</span> 分量，当 <span class="math inline">\(U_n\)</span> 是单位球面上均匀分布的向量时，其
-<span class="math inline">\(z\)</span> 分量服从 <span class="math inline">\([-1,1]\)</span> 上的均匀分布。从而 <span class="math display">\[g(z)=\frac{1}{2} \int_{-1}^{1}
-f(z)\,\mathrm{d}z.\]</span> 至此我们证明了对任何有界可测函数 <span class="math inline">\(f\)</span> 有 <span class="math display">\[\mathbb{E}[f(Y_n)\mid\mathcal{F}_{n-1}]=\frac{1}{2}
-\int_{-1}^{1} f(z)\,\mathrm{d}z.\]</span> 即 <span class="math inline">\(\mathbb{E}[f(Y_n\mid\mathcal{F}_{n-1})]\)</span>
+<span class="math inline">\(z\)</span> 分量服从 <span class="math inline">\([-1,1]\)</span> 上的均匀分布。从而 <span class="math display">\[g(v)=\frac{1}{2} \int_{-1}^{1}
+\phi(z)\,\mathrm{d}z.\]</span> 至此我们证明了对任何有界可测函数 <span class="math inline">\(\phi\)</span> 有 <span class="math display">\[\mathbb{E}[\phi(Y_n)\mid\mathcal{F}_{n-1}]=\frac{1}{2}
+\int_{-1}^{1} \phi(z)\,\mathrm{d}z.\]</span> 即 <span class="math inline">\(\mathbb{E}[\phi(Y_n)\mid\mathcal{F}_{n-1}]\)</span>
 是与 <span class="math inline">\(\omega\)</span>
-无关的常数（这个常数当然就是 <span class="math inline">\(\mathbb{E}[f(Y_n)]\)</span>）。这正说明了 <span class="math inline">\(Y_n\)</span> 与 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 独立。于是 <span class="math inline">\(\{Y_n\}\)</span> 是 i.i.d 的序列。</p>
-<p>取对数，并迭代可得 <span class="math display">\[\log R_n^2 = \log
-R_0^2 + \sum_{k=1}^n \log(2+2Y_n).\]</span> 根据强大数定律， <span class="math display">\[\frac{1}{n}\sum_{k=1}^n \log(2+2Y_n)
-\xrightarrow{\rm a.e.} \mathbb{E}[Y_1] = \frac{1}{2}
+无关的常数（这个常数当然就是 <span class="math inline">\(\mathbb{E}[\phi(Y_n)]\)</span>）。由 <span class="math inline">\(\phi\)</span> 的任意性，可得 <span class="math inline">\(Y_n\)</span> 与 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 独立。于是 <span class="math inline">\(\{Y_n\}\)</span> 是 i.i.d 的序列。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>回到原问题的证明。在 <span class="math inline">\(R_n^2 =
+R_{n-1}^2(2+2Y_n)\)</span> 两边取对数，并迭代可得 <span class="math display">\[\log R_n^2 = \log R_0^2 + \sum_{k=1}^n
+\log(2+2Y_k).\]</span> 根据强大数定律， <span class="math display">\[\frac{1}{n}\sum_{k=1}^n \log(2+2Y_k)
+\xrightarrow{\rm a.e.}\mu:=\mathbb{E}[\log(2+2Y_1)] = \frac{1}{2}
 \int_{-1}^{1}\log(2+2z)\,\mathrm{d}z = \log 4-1&gt;0.\]</span> 任取正数
 <span class="math inline">\(0&lt;\alpha&lt;\mu\)</span>，则对几乎处处的
-<span class="math inline">\(\omega\)</span>，存在随机变量 <span class="math inline">\(N(\omega)\)</span> 使得当 <span class="math inline">\(n\geq N(\omega)\)</span> 时， <span class="math display">\[\sum_{k=1}^n Y_k\geq \alpha n.\]</span>
-于是对几乎处处的 <span class="math inline">\(\omega\)</span>，当 <span class="math inline">\(n\geq N(\omega)\)</span> 时有 <span class="math display">\[R_n^2=R_0^2e^{\sum_{k=1}^n Y_k}\geq
-R_0^2e^{\alpha n}.\]</span> 从而 <span class="math display">\[\frac{1}{R_n^2}\leq \frac{1}{R_0^2}e^{-\alpha
-n},\quad n\geq N(\omega).\]</span> 因此几乎处处有 <span class="math inline">\(\sum_{n=1}^\infty1/R_n^2&lt;\infty\)</span>
+<span class="math inline">\(\omega\)</span>，存在随机变量 <span class="math inline">\(N(\omega)\)</span> 使得当 <span class="math inline">\(n\geq N(\omega)\)</span> 时， <span class="math display">\[\sum_{k=1}^n \log(2+2Y_k)\geq \alpha n.\]</span>
+于是对几乎处处的 <span class="math inline">\(\omega\)</span>，当 <span class="math inline">\(n\geq N(\omega)\)</span> 时有 <span class="math display">\[R_n^2\geq R_0^2e^{\alpha
+n}\Longrightarrow\frac{1}{R_n^2}\leq \frac{1}{R_0^2}e^{-\alpha n},\quad
+n\geq N(\omega).\]</span> 因此几乎处处有 <span class="math inline">\(\sum_{n=1}^\infty1/R_n^2&lt;\infty\)</span>
 成立。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="star-trek-2">Star Trek 2</h1>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>假设飞船只能在一个固定的二维平面内跳跃，并且和 Star Trek 3
+中一样，每次跳跃的距离都等于当前飞船到太阳系中心的距离。飞船还能在有限时间内返回太阳系吗？</p>
+</div>
+<p>和 <a href="#project-u" title="引理 5.1">引理 5.1</a>
+中一样的道理，我们可以得出 <span class="math display">\[R_n^2
+=R_{n-1}^2(2+2\cos\theta_n).\]</span> 其中 <span class="math inline">\(\{\theta_n\}\)</span> 是 i.i.d 序列，服从 <span class="math inline">\([0,2\pi)\)</span> 上的均匀分布。</p>
+<p>于是 <span class="math display">\[R_n =
+R_{n-1}\sqrt{2+2\cos\theta_n}=2R_{n-1}\left|\cos\frac{\theta_n}{2}\right|.\]</span>
+令 <span class="math inline">\(\phi_n=\theta_n/2\)</span>，则 <span class="math inline">\(\{\phi_n\}\)</span> 是 i.i.d 且服从 <span class="math inline">\([0,\pi)\)</span> 上的均匀分布，并且 <span class="math display">\[R_n = 2R_{n-1}|\cos\phi_n|.\]</span>
+两边取对数，得到 <span class="math display">\[\log R_n = \log R_{n-1} +
+\log 2|\cos\phi_n|.\]</span> 记 <span class="math inline">\(Y_k =\log
+2|\cos\phi_k|\)</span>，则有 <span class="math display">\[\log R_n =
+\log R_0 + \sum_{k=1}^n Y_k.\]</span> 利用换元 <span class="math inline">\(t=\frac{\pi}{2}-\phi_k\)</span> 可得 <span class="math display">\[\begin{aligned}
+&amp;\mathop{\mathrm{\mathbb{E}}}Y_k = \ln 2+
+\frac{2}{\pi}\int_0^{\pi/2}\ln \sin t\,\mathrm{d}t=0,\\
+&amp;\mathop{\mathrm{\mathbb{E}}}Y_k^2=\frac{2}{\pi}\int_0^{\pi/2}(\ln
+2\sin t)^2\,\mathrm{d}t.
+\end{aligned}\]</span> 在 <span class="math inline">\(0\)</span>
+附近的小区间 <span class="math inline">\([0,\delta]\)</span> 上，<span class="math inline">\(\sin t\sim t\)</span>，所以 <span class="math display">\[\frac{2}{\pi}\int_0^\delta(\ln 2\sin
+t)^2\,\mathrm{d}t\sim \frac{2}{\pi}\int_0^\delta(\ln
+2t)^2\,\mathrm{d}t=\frac{1}{\pi}\int_0^{2\delta}(\ln
+s)^2\,\mathrm{d}s.\]</span> 而后者收敛，所以 <span class="math inline">\(0\)</span> 不是积分的奇点，从而 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}Y_k^2 =
+\sigma^2&lt;\infty.\]</span> 记 <span class="math inline">\(S_n=\sum_{k=1}^n
+Y_k\)</span>，根据中心极限定理，我们有 <span class="math display">\[\frac{S_n}{\sigma\sqrt{n}} \xrightarrow{\ d\ }
+Z\sim N(0,1).\]</span> 于是对任意 <span class="math inline">\(M&gt;0\)</span>， <span class="math display">\[\lim_{n\to\infty}\mathbb{P}\left(\frac{S_n}{\sigma\sqrt{n}}&lt;-M\right)
+=\mathbb{P}(Z&lt;-M) = p_M &gt; 0.\]</span> 定义事件 <span class="math display">\[A_n = \left\{\frac{S_n}{\sigma\sqrt
+n}&lt;-M\right\}.\]</span> 根据 Fatou 引理， <span class="math display">\[\mathbb{P}(A_n​\ {\rm i.o.})\ge
+\varlimsup_{n\to\infty}\mathbb{​P}(A_n​)=p_M​&gt;0.\]</span> 另一方面 <span class="math inline">\(\{A_n​\ {\rm i.o.}\}\)</span> 属于尾事件，根据
+Kolmogorov 0-1 律，<span class="math inline">\(\mathbb{P}(A_n​\ {\rm
+i.o.})=1\)</span>。</p>
+<p>对 <span class="math inline">\(M=1, 2,\ldots\)</span> 求交，我们得到
+<span class="math display">\[\mathbb{P}\left(\varliminf_{n\to\infty}\frac{S_n}{n}=-\infty\right)=1.\]</span>
+使用同样的论证我们也可以得到 <span class="math display">\[\mathbb{P}\left(\varlimsup_{n\to\infty}\frac{S_n}{n}=+\infty\right)=1.\]</span>
+即 <span class="math inline">\(S_n\)</span> 以概率 1 在 <span class="math inline">\((-\infty, +\infty)\)</span> 之间振荡，从而 <span class="math inline">\(\exp S_n\)</span> 以概率 1 在 <span class="math inline">\((0, +\infty)\)</span> 之间振荡。</p>
+<p>现在回到等式 <span class="math display">\[R_n=R_0\exp S_n.\]</span>
+对几乎处处的 <span class="math inline">\(\omega\)</span>，<span class="math inline">\(\exp S_n\)</span> 可以任意接近
+0，而且这种事情会发生无穷多次，所以飞船以概率 1 回到原点。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Donoghue2014" class="csl-entry" role="listitem">
@@ -631,6 +729,12 @@ Williams, David. 1991. <em>Probability with Martingales</em>. Cambridge
 University Press.
 </div>
 </div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>实际上，<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 
 
 
