@@ -241,6 +241,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">1 篇</span></a>
                 </a>
@@ -251,6 +259,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -573,94 +589,33 @@ x)}{|\theta|^2}\,\mathrm{d}\theta=\frac{1}{\pi^2}\int_{\theta\in\mathbb{T},\,|\t
 &lt; \infty.
 \]</span> 所以 <span class="math inline">\(I_2(x)\)</span>
 有一个不依赖于 <span class="math inline">\(x\)</span> 方向的极限值。</p>
+<p>至此我们把 <span class="math inline">\(a(x)\)</span> 的积分表示为了
+<span class="math inline">\(I_1+I_2+J\)</span> 的形式，并且论证了 <span class="math inline">\(x\to\infty\)</span> 时后两者的值有限，所以 <span class="math inline">\(a(x)\)</span> 的渐进主项藏在 <span class="math inline">\(I_1(x)\)</span> 当中。</p>
 <p>而 <span class="math inline">\(I_1(x)\)</span> 从表达式明显可见它是与
 <span class="math inline">\(x\)</span> 方向无关的： <span class="math display">\[
 I_1(x)=\frac{1}{\pi^2}\int_{|\theta|\leq\pi}\frac{1-\cos(\theta\cdot
 x)}{|\theta|^2}\,\mathrm{d}\theta.
 \]</span> 事实上用一个旋转矩阵 <span class="math inline">\(A\)</span>
 乘以 <span class="math inline">\(x\)</span> 等同于对 <span class="math inline">\(\theta\)</span> 作变元代换 <span class="math inline">\(\theta'=A^{-1}\theta\)</span>，由于 <span class="math inline">\(A\)</span> 是正交矩阵所以 <span class="math inline">\(|\theta'|=|\theta|\)</span> 并且变换的
-Jacobian 值是 +1，所以积分不变。</p>
-<p>至此我们把 <span class="math inline">\(a(x)\)</span> 的积分表示为了
-<span class="math inline">\(I_1+I_2+J\)</span> 的形式，并且论证了 <span class="math inline">\(x\to\infty\)</span> 时后两者的值有限，所以 <span class="math inline">\(a(x)\)</span> 的渐进主项藏在 <span class="math inline">\(I_1(x)\)</span> 当中。</p>
-<p>由于 <span class="math inline">\(I_1(x)\)</span> 的值与 <span class="math inline">\(x\)</span> 方向无关，我们可以取 <span class="math inline">\(x\)</span> 为实轴正方向 <span class="math inline">\((|x|, 0)\)</span> 来计算积分的值。作极坐标代换
-<span class="math inline">\(\theta=(r,\alpha)\)</span> 得 <span class="math display">\[
-\begin{aligned}
-I_1(x)&amp;=
-\frac{1}{\pi^2}\int_{|\theta|\leq\pi}\frac{1-\cos(\theta\cdot
-x)}{|\theta|^2}\,\mathrm{d}\theta\\&amp;=
-\frac{1}{\pi^2}\int_0^{2\pi}\mathrm{d}\alpha\int_0^\pi\frac{1-\cos(|x|r\cos\alpha)}{r}\,\mathrm{d}r\\&amp;=
-\frac{4}{\pi^2}\int_0^{\frac{\pi}{2}}\mathrm{d}\alpha\int_0^{\pi}\frac{1-\cos(|x|r\sin\alpha)}{r}\,\mathrm{d}r\\&amp;=
-\frac{4}{\pi^2}\int_0^{\frac{\pi}{2}}\mathrm{d}\alpha\int_0^{\pi
-|x|\sin\alpha}\frac{1-\cos u}{u}\,\mathrm{d}u.
-\end{aligned}
-\]</span></p>
-<p>我们借助 <a target="_blank" rel="noopener" href="https://mathworld.wolfram.com/CosineIntegral.html">余弦积分</a>
-<span class="math display">\[\mathrm{Ci}(z) = -\int_{z}^\infty\frac{\cos
-t}{t}\,\mathrm{d}t,\quad z&gt;0.\]</span> 来估计 <span class="math inline">\(I_1\)</span> 的渐进极限。<span class="math inline">\(\mathrm{Ci}(z)\)</span> 满足如下的恒等式：</p>
-<p><span class="math display">\[\mathrm{Ci}(z)=\gamma +\ln z
-+\int_0^z\frac{\cos
-t-1}{t}\,\mathrm{d}t.\label{eq:ci-identity}\tag{3}\]</span></p>
-<p>此外我们还需要 <span class="math inline">\(\mathrm{Ci}(z)\)</span>
-的简单渐进性质：</p>
-<div id="ci" class="statement lemma plain">
-<p><span class="statement-heading"><span class="statement-label">引理
-4.2</span>.</span></p>
-<ol type="1">
-<li>对任何 <span class="math inline">\(z&gt;0\)</span> 有 <span class="math inline">\(|\mathrm{Ci}(z)|\leq \frac{2}{z}\)</span>。</li>
-<li>对任何 <span class="math inline">\(0\leq z\leq 1\)</span> 有 <span class="math inline">\(|\mathrm{Ci}(z)|\leq 1+|\ln z|\)</span>。</li>
-</ol>
-</div>
-<p><strong>证明</strong>：</p>
-<ol type="1">
-<li>分部积分 <span class="math display">\[\mathrm{Ci}(z) =
--\int_{z}^\infty\frac{\mathrm{d}\sin t}{t}=-\left.\frac{\sin
-t}{t}\right|_{z}^\infty-\int_z^\infty\frac{\sin
-t}{t^2}\,\mathrm{d}t=\frac{\sin t}{t}-\int_z^\infty\frac{\sin
-t}{t^2}\,\mathrm{d}t.\]</span> 从而 <span class="math display">\[|\mathrm{Ci}(z)|\leq\frac{1}{z}+\int_z^\infty\frac{1}{t^2}\,\mathrm{d}t\leq\frac{2}{z}.\]</span></li>
-<li>因为 <span class="math inline">\(1-\cos t\leq
-\frac{t^2}{2}\)</span>，所以 <span class="math display">\[\left|\int_0^z\frac{1-\cos
-t}{t}\,\mathrm{d}t\right|\leq\frac{z^2}{4},\]</span> 于是由恒等式 <span class="math inline">\((\ref{eq:ci-identity})\)</span> 有 <span class="math display">\[|\mathrm{Ci}(z)|\leq |\ln z| + \gamma
-+\frac{z^2}{4}\leq |\ln z| + \gamma +1/4&lt;|\ln z|+1,\quad 0\leq z\leq
-1.\]</span></li>
-</ol>
-<p><span class="math inline">\(\blacksquare\)</span></p>
-<p>回到 <span class="math inline">\(I_1(x)\)</span> 的估计。仍然由恒等式
-<span class="math inline">\((\ref{eq:ci-identity})\)</span> 有 <span class="math display">\[
-\begin{aligned}
-I_1(x)
-&amp;=\frac{4}{\pi^2}\int_{0}^{\pi/2}
-\bigl(\gamma+\ln(\pi |x|\sin\alpha)-\mathrm{Ci}(\pi
-|x|\sin\alpha)\bigr)\,\mathrm{d}\alpha\\
-&amp;=\frac{2}{\pi}(\gamma+\ln\pi+\ln|x|-\ln 2)
--\frac{4}{\pi^2}\int_{0}^{\pi/2}\mathrm{Ci}(\pi
-|x|\sin\alpha)\,\mathrm{d}\alpha.
-\end{aligned}
-\]</span></p>
-<p>接下来我们先证明 <span class="math display">\[\lim_{|x|\to\infty}\int_{0}^{\pi/2}\mathrm{Ci}(\pi
-|x|\sin\alpha)\,\mathrm{d}\alpha=0.\]</span> 即证明 <span class="math display">\[\lim_{y\to\infty}\int_{0}^{\pi/2}\mathrm{Ci}(y\sin\alpha)\,\mathrm{d}\alpha=0.\label{eq:ci-tail}\tag{4}\]</span>
-一旦如此，我们就确定了 <span class="math inline">\(I_1(x)\)</span>
-的渐进主项是 <span class="math inline">\(\frac{2}{\pi}\ln
-|x|\)</span>，从而 <span class="math inline">\(a(x)\)</span>
-的渐进主项也是 <span class="math inline">\(\frac{2}{\pi}\ln
-|x|\)</span>。</p>
-<p>首先固定一个小的正常数 <span class="math inline">\(\delta&gt;0\)</span>。并将上面的积分拆成 <span class="math display">\[\int_{0}^{\pi/2}\mathrm{Ci}(y\sin\alpha)\,\mathrm{d}\alpha=\int_{\delta}^{\pi/2}\mathrm{Ci}(y\sin\alpha)\,\mathrm{d}\alpha+\int_{0}^{\delta}\mathrm{Ci}(y\sin\alpha)\,\mathrm{d}\alpha=J_1(y)+J_2(y).\]</span>
-由 <a href="#ci" title="引理 4.2">引理 4.2</a> 的估计，当 <span class="math inline">\(z&gt;0\)</span> 时 <span class="math inline">\(|\mathrm{Ci}(z)|\leq 2/z\)</span>，再结合当 <span class="math inline">\(\alpha\in[\delta,\pi/2]\)</span> 时有 <span class="math inline">\(\sin\alpha\geq \sin\delta\)</span>，所以第一项
-<span class="math display">\[J_1(y)\leq\int_{\delta}^{\pi/2}\frac{2}{y\sin\alpha}\,\mathrm{d}\alpha\leq
-\int_{\delta}^{\pi/2}\frac{2}{y\sin\delta}\,\mathrm{d}\alpha=\frac{\pi-2\delta}{y\sin
-\delta}\xrightarrow{y\to\infty}0.\]</span> 对第二项 <span class="math inline">\(J_2\)</span>，作变元替换 <span class="math inline">\(t = y\sin\alpha\)</span>，并结合在 <span class="math inline">\([0,\delta]\)</span> 上有 <span class="math inline">\(\cos\alpha\geq\cos\delta\)</span>，我们有 <span class="math display">\[\mathrm{d}t =
-y\cos\alpha\,\mathrm{d}\alpha\Longrightarrow
-\mathrm{d}\alpha=\frac{\mathrm{d}t}{y\cos\alpha}\leq\frac{\mathrm{d}t}{y\cos\delta}.\]</span>
-从而 <span class="math display">\[J_2(y)\leq\frac{1}{y\cos\delta}\int_{0}^{y\sin\delta}|\mathrm{Ci}(t)|\,\mathrm{d}t.\]</span>
-把上面的 <span class="math inline">\(t\)</span>- 积分再分成 <span class="math inline">\([0,1]\)</span> 和 <span class="math inline">\([1,y\sin\delta]\)</span> 两个区间分别估计： <span class="math display">\[\frac{1}{y\cos\delta}\int_0^1|\mathrm{Ci}(t)|\,\mathrm{d}t\leq
-\frac{1}{y\cos\delta}\int_0^1(1+|\ln
-t|)\,\mathrm{d}t=\frac{2}{y\cos\delta}\xrightarrow{y\to\infty}0.\]</span></p>
-<p><span class="math display">\[\frac{1}{y\cos\delta}\int_1^{y\sin\delta}|\mathrm{Ci}(t)|\,\mathrm{d}t\leq
-\frac{1}{y\cos\delta}\int_1^{y\sin\delta}\frac{2}{t}\,\mathrm{d}t=\frac{2\ln
-y\sin\delta}{y\cos\delta}\xrightarrow{y\to\infty}0.\]</span> 合起来就是
-<span class="math inline">\(\lim_{y\to\infty}J_2(y)=0\)</span>。从而
-<span class="math inline">\((\ref{eq:ci-tail})\)</span> 成立，也就有
-<span class="math display">\[\lim_{|x|\to\infty}I_1(x)-\frac{2}{\pi}\ln|x| =
-\frac{2}{\pi}(\gamma+\ln\pi-\ln2).\]</span> 成立。</p>
+Jacobian 值是 +1，所以积分不变。于是我们可以取 <span class="math inline">\(x=(R,0)\)</span> 为实轴正向，则 <span class="math inline">\(\theta\cdot x = R\theta_1\)</span>。进一步作代换
+<span class="math inline">\(u=R\theta\)</span> 可得 <span class="math display">\[I_1 = \frac{1}{\pi^2}\int_{|u|\le
+R\pi}\frac{1-\cos u_1}{|u|^2}\,\mathrm{d}u.\]</span> 其中 <span class="math inline">\(u_1\)</span> 是 <span class="math inline">\(u\)</span> 的 <span class="math inline">\(x\)</span> 分量。</p>
+<p>将积分拆成 <span class="math inline">\(|u|\le 1\)</span> 和 <span class="math inline">\(1&lt;|u|\le R\pi\)</span> 两部分：</p>
+<ul>
+<li>在 <span class="math inline">\(|u|\le1\)</span> 时，由于在 0 附近，
+<span class="math display">\[\frac{1-\cos
+u_1}{|u|^2}\sim\frac{u_1^2/2}{|u|^2}\le\frac{1}{2}.\]</span>
+所以被积函数在单位圆内连续有界，这部分积分是个有限的常数，可以不用管。</li>
+<li><span class="math inline">\(1&lt;|u|\le R\pi\)</span> 对应的积分等于
+<span class="math display">\[\frac{1}{\pi^2}\int_{1&lt;|u|\le
+R\pi}\frac{1}{|u|^2}\,\mathrm{d}u - \int_{1&lt;|u|\le R\pi}\frac{\cos
+u_1}{|u|^2}\,\mathrm{d}u.\]</span> 极坐标代换以后第一项等于 <span class="math display">\[\frac{2}{\pi}\int_1^R\frac{1}{r}\,\mathrm{d}r =
+\frac{2}{\pi}\ln R + O(1).\]</span> 这一项贡献了 <span class="math inline">\(I_1\)</span> 的主项。<br>
+同样使用极坐标代换，第二项等于 <span class="math display">\[\frac{1}{\pi^2}\int_{1}^{\pi R} \frac{1}{r}
+\left( \int_{0}^{2\pi} \cos(r \cos\alpha)\, \mathrm{d}\alpha \right)
+\,\mathrm{d}r.\]</span> 括号里面等于 <span class="math inline">\(J_0(r)\)</span>，是零阶第一类贝塞尔函数。而熟知
+<span class="math inline">\(J_0(r)\)</span> 在 <span class="math inline">\(r\to\infty\)</span> 时的渐进阶是 <span class="math inline">\(O(r^{-1/2})\)</span>，所以这部分的积分收敛。</li>
+</ul>
 <p>至此我们证明了在分解 <span class="math display">\[a(x)=I(x)+J(x)=I_1(x)+I_2(x)+J(x)\]</span> 中，当
 <span class="math inline">\(|x|\to\infty\)</span> 时，<span class="math inline">\(I_1-\frac{2}{\pi}\ln|x|\)</span>，<span class="math inline">\(I_2\)</span> 和 <span class="math inline">\(J\)</span> 都趋近于有限的极限值，于是极限 <span class="math display">\[\lim_{|x|\to\infty}\left(a(x)-\frac{2}{\pi}\ln|x|\right)\]</span>
 也存在且有限。为了计算这个极限，我们选择对角线方向 <span class="math inline">\(x=(n,n)\)</span> 代入 <span class="math inline">\(a(x)\)</span> 的表达式中： <span class="math display">\[
@@ -717,14 +672,14 @@ n\right]+\frac{\ln8}{\pi}\\&amp;=
 <span class="math inline">\(O(|x|^{-2})\)</span> 量级的，即</p>
 <div class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-4.3</span>.</span><span class="statement-spah"> </span><span class="math display">\[a(x) = \frac{2}{\pi}\ln|x| +
+4.2</span>.</span><span class="statement-spah"> </span><span class="math display">\[a(x) = \frac{2}{\pi}\ln|x| +
 \frac{2\gamma+\ln8}{\pi} + O(|x|^{-2}).\]</span></p>
 </div>
 <p>证明见 <span class="citation" data-cites="lawler2010random">(<a href="#ref-lawler2010random" role="doc-biblioref">Lawler and Limic 2010,
 vol. 123, sec. 4.4</a>)</span>。下文要用到这个渐进估计的一个推论：</p>
 <div id="axorder" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-4.4</span>.</span><span class="statement-spah"> </span>对任何 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span> 和单位向量
+4.3</span>.</span><span class="statement-spah"> </span>对任何 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span> 和单位向量
 <span class="math inline">\(|e|=1\)</span> 有 <span class="math display">\[a(x + e) - a(x) = O(|x|^{-1}).\]</span>
 特别地存在常数 <span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|a(x+e)-a(x)|\leq M\)</span> 对任何 <span class="math inline">\(x\)</span> 恒成立。</p>
 </div>
@@ -755,7 +710,7 @@ B(r)}\}\)</span>，则 <span class="math inline">\(\tau_{0},\,\tau_{\partial B(r
 <p>注意到 <span class="math inline">\(\{S_{n\wedge\tau}\}\)</span>
 是一个限制在 <span class="math inline">\(B(r)\)</span>
 内的随机游动，它访问其中任何一点的期望步数都是有限的，所以 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{\tau}&lt;\infty\)</span>。其次根据
-<a href="#axorder" title="推论 4.4">推论 4.4</a>，<span class="math inline">\(|a(x+e)-a(x)|\)</span> 是一致有界的，所以停时
+<a href="#axorder" title="推论 4.3">推论 4.3</a>，<span class="math inline">\(|a(x+e)-a(x)|\)</span> 是一致有界的，所以停时
 <span class="math inline">\(\tau\)</span> 满足 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Optional_stopping_theorem">可料停时定理的条件</a>，从而</p>
 <p><span class="math display">\[\begin{aligned}
 a(x)&amp;=a(S_0)=\mathbb{E}_x\,a(S_{\tau})\\&amp;=
@@ -770,9 +725,9 @@ B(r)}})\mid\tau_{\partial B(r)}&lt;\tau_{0}\right]}.
 \]</span></p>
 <p>记上面的分母为 <span class="math inline">\(g=\mathbb{E}_x\left[a(S_{\tau_{\partial
 B(r)}})|\tau_{\partial B(r)}&lt;\tau_{0}\right]\)</span>，则 <span class="math inline">\(g\)</span> 是势核 <span class="math inline">\(a(\cdot)\)</span> 在圆周 <span class="math inline">\(\partial B(r)\)</span>
-上关于一个条件概率测度的积分，而我们已经看到势核 <span class="math inline">\(a(y)\)</span> 是近似球对称的，它只依赖于 <span class="math inline">\(|y|\)</span>。当随机游动刚好走到 <span class="math inline">\(\partial B(r)\)</span> 时，其位置 <span class="math inline">\(y\)</span> 未必正好落在圆周上，但是满足 <span class="math inline">\(r-1&lt; |y|\leq
-r\)</span>。我们滥用一点记号，对任意的实数 <span class="math inline">\(r&gt;0\)</span>，记 <span class="math display">\[a(r) = \frac{2}{\pi}\ln r +
-\frac{2\gamma+\ln8}{\pi},\]</span> 与 <a href="#axorder" title="推论 4.4">推论 4.4</a> 同样的道理，当 <span class="math inline">\(r-1&lt;|y|\leq r\)</span> 时有 <span class="math display">\[|a(y) - a(r)| = O(1/r).\]</span> 所以 <span class="math inline">\(g\)</span> 作为 <span class="math inline">\(a(\cdot)\)</span> 在 <span class="math inline">\(\partial B(r)\)</span> 附近的一些 <span class="math inline">\(y\)</span> 在一个条件概率下的加权组合，其值等于
+上关于一个条件概率测度的积分，而我们已经看到势核 <span class="math inline">\(a(y)\)</span> 是近似球对称的，它只依赖于 <span class="math inline">\(|y|\)</span>。当随机游动刚好走到 <span class="math inline">\(\partial B(r)\)</span> 时，其位置 <span class="math inline">\(y\)</span> 未必正好落在圆周上，但是满足 <span class="math inline">\(r\le |y|&lt;
+r+1\)</span>。我们滥用一点记号，对任意的实数 <span class="math inline">\(r&gt;0\)</span>，记 <span class="math display">\[a(r) = \frac{2}{\pi}\ln r +
+\frac{2\gamma+\ln8}{\pi},\]</span> 与 <a href="#axorder" title="推论 4.3">推论 4.3</a> 同样的道理，当 <span class="math inline">\(r\le |y|&lt; r+1\)</span> 时有 <span class="math display">\[|a(y) - a(r)| = O(1/r).\]</span> 所以 <span class="math inline">\(g\)</span> 作为 <span class="math inline">\(a(\cdot)\)</span> 在 <span class="math inline">\(\partial B(r)\)</span> 附近的一些 <span class="math inline">\(y\)</span> 在一个条件概率下的加权组合，其值等于
 <span class="math display">\[\frac{2}{\pi}\ln r +
 \frac{2\gamma+\ln8}{\pi} + O(r^{-1}).\]</span></p>
 <p>至此我们就证明了如下结论：</p>
@@ -840,8 +795,8 @@ York-Heidelberg.
 
                                                     
   <p class="pink-link-context">
-    <a href="/gifmaze-cn/" rel="next" title="碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画">
-      上一篇：碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画
+    <a href="/reducible-mod-p/" rel="next" title="模任何素数都可约的整系数不可约多项式">
+      上一篇：模任何素数都可约的整系数不可约多项式
     </a>
   </p>
   

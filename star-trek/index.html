@@ -29,6 +29,11 @@
 求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 \(r/R\)；但是对任何 \(\epsilon&amp;gt;0\)，可以采取适当的策略，使得飞船返回太阳系的概率大于
 \((r-\epsilon)/R\)，即 \(r/R\) 是最优概率。这个最优策略是什么？
 
+
+注：
+这里返回太阳系是指飞船落入开球 \(\{|x|
+&amp;lt; r\}\) 中。
+
 这个问题是教材 (Williams 1991)
 中的一道习题。这个问题的设定很有趣，但是给出一个基于测度论的严格解答却并不轻松。下面是我的解答。">
     
@@ -240,6 +245,14 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/随机游动/">
                     随机游动 <span class="right">1 篇</span></a>
                 </a>
@@ -250,6 +263,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -324,6 +345,11 @@
 <span class="math inline">\(R&gt;r\)</span>。好消息是在每个时刻，飞船能够知道自身与太阳系的距离。</p>
 <p>求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 <span class="math inline">\(r/R\)</span>；但是对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，可以采取适当的策略，使得飞船返回太阳系的概率大于
 <span class="math inline">\((r-\epsilon)/R\)</span>，即 <span class="math inline">\(r/R\)</span> 是最优概率。这个最优策略是什么？</p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>这里返回太阳系是指飞船落入开球 <span class="math inline">\(\{|x|
+&lt; r\}\)</span> 中。</p>
 </div>
 <p>这个问题是教材 <span class="citation" data-cites="Williams1991">(<a href="#ref-Williams1991" role="doc-biblioref">Williams 1991</a>)</span>
 中的一道习题。这个问题的设定很有趣，但是给出一个基于测度论的严格解答却并不轻松。下面是我的解答。</p>
@@ -521,40 +547,8 @@ r/R\)</span>，即任何策略下飞船最终返回太阳系的概率不大于 <
 <p>要证明这个概率是严格小于 <span class="math inline">\(r/R\)</span>
 的，只要证明上面式子中，最后的不等号是严格成立的： <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[Z_T
 \mathbb{1}_{\{T&lt;\infty\}}]&gt;\frac{\mathbb{P}(T&lt;\infty)}{r}.\]</span></p>
-<p>为此只要证明在事件 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上几乎处处有 <span class="math inline">\(Z_T&gt;1/r\)</span>，即 <span class="math inline">\(|X_T|&lt;r\)</span> 即可。由于在 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上 <span class="math inline">\(|X_T|\leq r\)</span>，所以我们只要证明在 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上 事件 <span class="math inline">\(\{|X_T|=r\}\)</span> 具有零测度。进一步，由于
-<span class="math display">\[\{|X_T|=r,\,T&lt;\infty\}=\bigcup_{n=0}^\infty\{|X_n|=r,\,T=n\}\subset\bigcup_{n=0}^\infty\{|X_n|=r\}.\]</span>
-所以我们只要证明对每个 <span class="math inline">\(n\geq0\)</span>，事件
-<span class="math inline">\(\{|X_n|=r\}\)</span> 具有零测度即可。</p>
-<p>我们来证明一个稍微加强的结论：对每个 <span class="math inline">\(n\geq0\)</span>，事件 <span class="math display">\[A_n=\{|X_n|=0\}\cup\{|X_n|=r\}\]</span>
-都是零概率事件。</p>
-<p>对 <span class="math inline">\(n\)</span> 归纳：<span class="math inline">\(n=0\)</span> 时 <span class="math inline">\(|X_0|=R&gt;r\)</span>，结论成立。设结论在小于
-<span class="math inline">\(n\)</span> 时都成立。由于 <span class="math display">\[\mathbb{P}(A_n)
-=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}]=\mathop{\mathrm{\mathbb{E}}}[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]].\]</span>
-我们只要证明 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]\)</span>
-是几乎处处为 0 的随机变量即可。</p>
-<p>在 <a href="#freeze" title="引理 1.1">引理 1.1</a> 中取 <span class="math inline">\(X=(X_{n-1},l_n),\,Y=U_n,\,\mathcal{G}=\mathcal{F}_{n-1}\)</span>，我们得到
-<span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\bigg|\mathcal{F}_{n-1}]=\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\right].\]</span> 其中上式最右边的期望是冻结 <span class="math inline">\((X_{n-1},l_n)\)</span>，对单位球面上均匀分布的
-<span class="math inline">\(U_n\)</span> 进行积分，结果是一个关于 <span class="math inline">\((X_{n-1},l_n)\)</span>
-的函数。显然，上式右边作为一个只取 <span class="math inline">\(\{0,1\}\)</span>
-两个值的函数的概率积分，结果必然在区间 <span class="math inline">\([0,1]\)</span> 中。即 <span class="math display">\[0\leq\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\right]\leq1.\]</span></p>
-<p>注意到如果 <span class="math inline">\(|X_{n-1}|\ne 0\)</span> 且
-<span class="math inline">\(|X_{n-1}|\ne r\)</span>，这时以 <span class="math inline">\(X_{n-1}\)</span> 为中心，<span class="math inline">\(l_n\)</span> 为半径的球面上，与原点之间的距离为
-<span class="math inline">\(0\)</span> 或者 <span class="math inline">\(r\)</span> 的点的测度为 0，即积分项 <span class="math inline">\(\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\)</span> 对几乎处处的 <span class="math inline">\(U_n\)</span> 都是 0，当然积分值 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\right]=0\)</span>。</p>
-<p>于是我们有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\right]=
-\begin{cases}
-\in[0,1], &amp; |X_{n-1}|=0 \text{ or } |X_{n-1}|=r\\
-0,        &amp; |X_{n-1}|\ne 0 \text { and } |X_{n-1}|\ne r
-\end{cases}\]</span></p>
-<p>根据归纳假设，<span class="math inline">\(|X_{n-1}|=0 \text{ or }
-|X_{n-1}|=r\)</span> 的概率是 0，即 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}\left[\mathbb{1}_{\{0,r\}}\circ
-|X_{n-1}+l_nU_n|\right]\)</span> 是一个几乎处处为 0 的函数，从而 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_{A_n}|\mathcal{F}_{n-1}]\)</span>
-也几乎处处为 0，即得所证。<span class="math inline">\(\blacksquare\)</span></p>
+<p>然而在事件 <span class="math inline">\(\{T&lt;\infty\}\)</span>
+上，由于 <span class="math inline">\(X_T&lt;r\)</span>，所以 <span class="math inline">\(Z_T&gt;1/r\)</span>，所以上面的不等式成立。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="对策略的进一步分析">对策略的进一步分析</h1>
 <p>现在我们把注意力转移到飞船不能返回太阳系这个事件上来。前面已经说过，飞船的运动只有两种可能，迷失在无穷远处或者被禁锢在一个有限的区域内，所以如果飞船不能返回太阳系，则飞船要么飞向无穷远，要么在太阳系之外的一个有限区域内打转。我们想知道，怎么判断这两种情形哪一种会发生呢？</p>
 <p>举个例子，考虑这样一个明显不合理的策略：第 <span class="math inline">\(n\)</span> 次的跳跃距离总是设定为 <span class="math inline">\(1/2^n\)</span>，在这个策略下飞船永远飞不出一个半径为
@@ -593,7 +587,7 @@ B_n\cap E.\]</span> 由于 <span class="math inline">\(\mathbb{P}(\{B_n\
 <span class="math inline">\(l_n=0\)</span>，否则令 <span class="math inline">\(l_n=|X_{n-1}|-r+\epsilon\)</span>，这里 <span class="math inline">\(0&lt;\epsilon&lt;r\)</span>。在这个跳跃策略下，飞船返回太阳系的概率大于
 <span class="math inline">\((r-\epsilon)/R\)</span>。</p>
 </div>
-<p>注意在这个策略中总是有 <span class="math inline">\(l_n&lt;|X_{n-1}|\)</span>，因此 <span class="math inline">\(\{Z_n=1/|X_n|\}\)</span>
+<p>注意在这个策略中总是有 <span class="math inline">\(l_n&lt;|X_{n-1}|\)</span>，根据 <a href="#supermartingale" title="定理 2.1">定理 2.1</a>，<span class="math inline">\(\{Z_n=1/|X_n|\}\)</span>
 实际上是一个鞅。此外由于总是有 <span class="math inline">\(|X_n|\geq
 r-\epsilon\)</span>，所以 <span class="math inline">\(Z_n\leq1/(r-\epsilon)\)</span>，即 <span class="math inline">\(\{Z_n\}\)</span> 被常数 <span class="math inline">\(1/(r-\epsilon)\)</span> 所控制。</p>
 <p>接下来的证明不过是 <a href="#lessthan" title="定理 2.2">定理 2.2</a>
