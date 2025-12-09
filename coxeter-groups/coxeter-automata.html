@@ -19,22 +19,17 @@
     
 
         <title>
-            Coxeter 群笔记 | Why so serious?</title>
+            Coxeter 群笔记（七）：极小根与正则语言性质 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="几何实现
-根系
-Tits 锥及其对偶
-有限、仿射、双曲三种情形的 Tits
-锥
-Coxeter 群的 level
-Boyd-Maxwell 球堆
-Coxeter 群的极小根与正则语言性质">
+    <meta name="description" content="命题
+0.1. 若 \(\alpha,\beta\in\Phi\) 满足 \(|(\alpha,\beta)|&amp;lt;1\)，则必然有 \((\alpha,\beta)=\cos(p\pi/q)\)，其中 \(p,q\) 是互素的正整数，而且反射 \(s_\alpha,s_\beta\)
+生成的二面">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Coxeter 群笔记"/>
+    <meta property="og:title" content="Coxeter 群笔记（七）：极小根与正则语言性质"/>
     <meta property="og:site_name" content="Why so serious?"/>
 
     
@@ -298,6 +293,10 @@ Coxeter 群的极小根与正则语言性质">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
             
+    
+    
+    <a class="breadcrumb" href="/undefined">undefined</a>
+
 
         
 
@@ -313,12 +312,12 @@ Coxeter 群的极小根与正则语言性质">
                             <div class="article-title">
                                 
     
-        <h1>Coxeter 群笔记</h1>
+        <h1>Coxeter 群笔记（七）：极小根与正则语言性质</h1>
     
 
 
                             </div>
-                            <time class="pink-link-context" datetime="2025-12-09T13:22:14.220Z"><a href="/coxeter-groups/index.html">2025-12-09</a></time>
+                            <time class="pink-link-context" datetime="2021-12-05T16:00:00.000Z"><a href="/coxeter-groups/coxeter-automata.html">2021-12-06</a></time>
 
                                 
 
@@ -328,16 +327,26 @@ Coxeter 群的极小根与正则语言性质">
                                         
                                             <div class="entry pink-link-context">
                                                 
-<ol type="1">
-<li><a href="geometric-realization">几何实现</a></li>
-<li><a href="root-system">根系</a></li>
-<li><a href="tits-cone">Tits 锥及其对偶</a></li>
-<li><a href="three-geometries">有限、仿射、双曲三种情形的 Tits
-锥</a></li>
-<li><a href="level">Coxeter 群的 level</a></li>
-<li><a href="Boyd-Maxwell">Boyd-Maxwell 球堆</a></li>
-<li><a href="coxeter-automata">Coxeter 群的极小根与正则语言性质</a></li>
-</ol>
+<div class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+0.1</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha,\beta\in\Phi\)</span> 满足 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span>，则必然有 <span class="math inline">\((\alpha,\beta)=\cos(p\pi/q)\)</span>，其中 <span class="math inline">\(p,q\)</span> 是互素的正整数，而且反射 <span class="math inline">\(s_\alpha,s_\beta\)</span>
+生成的二面体群是有限群。</p>
+</div>
+<p><strong>证明</strong>：由已知，内积限制在二维平面 <span class="math inline">\(U=\mathrm{span}{\{\alpha,\beta\}}\)</span>
+上是正定的。所以 <span class="math inline">\(V=U\oplus
+U^\bot\)</span>。</p>
+<p>我们可以不妨假定 <span class="math inline">\(\alpha\)</span>
+是正根，以及 <span class="math inline">\(\beta=\alpha_s\)</span>
+是单根。设 <span class="math display">\[\alpha = c_s\alpha_s +
+\sum_{t\ne s }c_t\alpha_t.\]</span> 由于 <span class="math inline">\(\alpha\)</span> 不可能与 <span class="math inline">\(\beta=\alpha_s\)</span> 共线，所以 <span class="math inline">\(\gamma=\alpha - c_s\alpha_s\in U\)</span> 且 <span class="math inline">\(\gamma\ne0\)</span>。</p>
+<p>注意到如果 <span class="math inline">\(a,b\in\mathbb{R}\)</span> 使得
+<span class="math inline">\(a\gamma+b\alpha_s\in\Phi\)</span>，则 <span class="math inline">\(a,b\)</span> 必须同时非负，或者同时非正。如果
+<span class="math inline">\(\alpha,\beta\)</span> 所夹的角度是 <span class="math inline">\(\pi\)</span> 的无理数倍，那么 <span class="math inline">\(s_\alpha s_\beta\)</span> 是 <span class="math inline">\(U\)</span> 上角度为 <span class="math inline">\(\pi\)</span> 的无理数倍的旋转，它的各次幂会将
+<span class="math inline">\(\alpha\)</span> 映射为 <span class="math inline">\(U\)</span>
+中单位圆周上稠密的集合，特别地必然有某个 <span class="math inline">\(k\)</span> 使得 <span class="math inline">\((s_\alpha s_\beta)^k\alpha\)</span> 位于扇形区域
+<span class="math inline">\(\{a\gamma+b\alpha_s\mid a &gt; 0,
+b&lt;0\}\)</span> 中，这与此区域不包含任何根矛盾。所以 <span class="math inline">\(\alpha,\beta\)</span> 所夹的角度必须是 <span class="math inline">\(\pi\)</span> 的有理数倍，形如 <span class="math inline">\(p\pi/q\)</span>，从而 <span class="math inline">\(s_\alpha,s_\beta\)</span> 生成一个有限二面体群
+<span class="math inline">\(D\)</span>。又因为 <span class="math inline">\(D\)</span> 作用在 <span class="math inline">\(U^\bot\)</span> 上是平凡的，所以 <span class="math inline">\(D\)</span> 在全空间上的作用也是有限二面体群。<span class="math inline">\(\blacksquare\)</span></p>
 
 
 
