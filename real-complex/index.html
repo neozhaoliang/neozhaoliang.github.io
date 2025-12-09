@@ -19,39 +19,17 @@
     
 
         <title>
-            不可能的密铺 | Why so serious?</title>
+            实化与复化 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="Conway 等人在论文 (Conway and Lagarias
-1990) 中提出了下面的问题：
-
-问题： 依次将 \(1,2,\ldots,n\)
-个全等的正六边形摞在一起，得到的图案记作 \(T_n\)，下图是 \(n=7\) 的例子：
-
-把三个连在一起、且对称中心在一条直线上的正六边形组成的图案叫做「骨头」，根据摆放的角度有三种不同的骨头：
-
-求证对任何 \(n\)，\(T_n\) 都不可能用若干骨头恰好密铺。
-
-Conway
-等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它的基本思想是，用一个
-Abel 群（一般是有理数域 \(\mathbb{Q}\)）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是整个区域所有正六边形标记之和不是整数，这样来得出矛盾。
-然而，Conway
-等人在论文中借助“密铺的同调群”证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色方法可以成功的必要条件是
-\(T_n\)
-对应的群元素在骨头生成的同调群中不是恒等元，从而无法被密铺。而这个问题中，\(T_n\)
-对应的群元素在同调群中确实是恒等元（构造适当的 signed tiling
-即可）。所以染色法对这个问题无效！
-Conway
-等人用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
-Abel
-群）的元素作标记，但是这次是给区域和瓷砖的边界作标记，来获得密铺的某种不变量，并说明
-\(T_n\)
-的边界不满足这个不变量，从而导出矛盾。本文就来介绍这一证明。">
+    <meta name="description" content="本文总结了一些关于向量空间的实化和复化的基础知识。
+实化
+设 \(V\) 是 \(\mathbb{C}\) 上的 \(n\) 维向量空间，我们可以「忘掉」 \(V\) 的复向量空间结构，把 \(V\) 看作实向量空间，记作 \(V_{\mathbb{R}}\) 以区别于 \(V\)。即 \(V_\m">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="不可能的密铺"/>
+    <meta property="og:title" content="实化与复化"/>
     <meta property="og:site_name" content="Why so serious?"/>
 
     
@@ -317,7 +295,7 @@ Abel
             
     
     
-    <a class="breadcrumb" href="/categories/几何群论/">几何群论</a>
+    <a class="breadcrumb" href="/categories/线性代数/">线性代数</a>
 
 
         
@@ -334,181 +312,199 @@ Abel
                             <div class="article-title">
                                 
     
-        <h1>不可能的密铺</h1>
+        <h1>实化与复化</h1>
     
 
 
                             </div>
-                            <time class="pink-link-context" datetime="2010-08-07T00:00:00.000Z"><a href="/conway-tiling-group/">2010-08-07</a></time>
+                            <time class="pink-link-context" datetime="2010-02-09T16:00:00.000Z"><a href="/real-complex/">2010-02-10</a></time>
 
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AE%9E%E5%8C%96"><span class="section table-of-contents-text">实化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8F%8D%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84"><span class="section table-of-contents-text">反线性映射</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%A4%8D%E5%8C%96"><span class="section table-of-contents-text">复化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%85%88%E5%AE%9E%E5%8C%96%E5%90%8E%E5%A4%8D%E5%8C%96"><span class="section table-of-contents-text">先实化后复化</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E7%9A%84%E5%A4%8D%E5%8C%96"><span class="section table-of-contents-text">线性变换的复化</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
                                                 
-<p>Conway 等人在论文 <span class="citation" data-cites="Conway1990">(<a href="#ref-Conway1990" role="doc-biblioref">Conway and Lagarias
-1990</a>)</span> 中提出了下面的问题：</p>
-<div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>依次将 <span class="math inline">\(1,2,\ldots,n\)</span>
-个全等的正六边形摞在一起，得到的图案记作 <span class="math inline">\(T_n\)</span>，下图是 <span class="math inline">\(n=7\)</span> 的例子：</p>
-<p><img src="/images/tilinggroup/region.svg" class="fig" width="300"></p>
-<p>把三个连在一起、且对称中心在一条直线上的正六边形组成的图案叫做「骨头」，根据摆放的角度有三种不同的骨头：</p>
-<p><img src="/images/tilinggroup/bones.svg" class="fig" width="480"></p>
-<p>求证对任何 <span class="math inline">\(n\)</span>，<span class="math inline">\(T_n\)</span> 都不可能用若干骨头恰好密铺。</p>
-</div>
-<p>Conway
-等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它的基本思想是，用一个
-Abel 群（一般是有理数域 <span class="math inline">\(\mathbb{Q}\)</span>）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是整个区域所有正六边形标记之和不是整数，这样来得出矛盾。</p>
-<p>然而，Conway
-等人在论文中借助“密铺的同调群”证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色方法可以成功的必要条件是
-<span class="math inline">\(T_n\)</span>
-对应的群元素在骨头生成的同调群中不是恒等元，从而无法被密铺。而这个问题中，<span class="math inline">\(T_n\)</span>
-对应的群元素在同调群中确实是恒等元（构造适当的 signed tiling
-即可）。所以染色法对这个问题无效！</p>
-<p>Conway
-等人用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
-Abel
-群）的元素作标记，但是这次是给区域和瓷砖的<strong>边界</strong>作标记，来获得密铺的某种不变量，并说明
-<span class="math inline">\(T_n\)</span>
-的<strong>边界</strong>不满足这个不变量，从而导出矛盾。本文就来介绍这一证明。</p>
-<span id="more"></span>
-<hr>
-<p>由于 <span class="math inline">\(T_n\)</span> 包含 <span class="math inline">\(n(n+1)/2\)</span> 个正六边形，因此 <span class="math inline">\(T_n\)</span> 可以被密铺的必要条件是 <span class="math inline">\(3\mid n(n+1)\)</span>，即 <span class="math inline">\(n\equiv0,2\pmod{3}\)</span>。如果对某个 <span class="math inline">\(n\equiv2\pmod{3}\)</span>，<span class="math inline">\(T_n\)</span> 可以被若干块骨头密铺，则 <span class="math inline">\(n+1\equiv0\pmod{3}\)</span>
-也可以：因为我们可以在下方补上 <span class="math inline">\((n+1)/3\)</span> 个水平方向的骨头，得到 <span class="math inline">\(T_{n+1}\)</span> 的一个密铺：</p>
-<p><img src="/images/tilinggroup/addrow.svg" class="fig" width="300"></p>
-<p>所以我们只要论证 <span class="math inline">\(n\equiv0\pmod{3}\)</span> 时 <span class="math inline">\(T_n\)</span> 无论如何都不可能被密铺即可。</p>
-<p>首先我们考虑平面上由正六边形组成的无穷网格，对每条边根据其方向标上
-<span class="math inline">\(a,b,c\)</span> 之一，如下图所示：</p>
-<figure id="Cayley-A">
-<img src="/images/tilinggroup/hexgrid.svg" class="fig" width="300" alt="A 的 Cayley 图 \mathcal{G}(A)">
-<figcaption aria-hidden="true"><span class="math inline">\(A\)</span> 的
-Cayley 图 <span class="math inline">\(\mathcal{G}(A)\)</span></figcaption>
-</figure>
-<p>这个图是群 <span class="math display">\[A=\langle a,b,c\mid
-a^2=b^2=c^2=(abc)^2=1\rangle\]</span> 的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cayley_graph">Cayley 图</a>，记作
-<span class="math inline">\(\mathcal{G}(A)\)</span>。由于 <span class="math inline">\(a,b,c\)</span> 都是 2 阶元，所以 <span class="math inline">\(\mathcal{G}(A)\)</span> 中的边都是无向的。</p>
-<p>但是，我们并不打算在 <span class="math inline">\(A\)</span>
-中处理问题。相反我们考虑更大的自由群</p>
-<p><span class="math display">\[F=\langle a,b,c\ |\
-a^2=b^2=c^2=1\rangle\]</span></p>
-<p><span class="math inline">\(F\)</span> 同构于 3 个 <span class="math inline">\(\mathbb{Z}_2\)</span> 的自由积：<span class="math inline">\(F\cong\mathbb{Z}_2\ast\mathbb{Z}_2\ast\mathbb{Z}_2\)</span>。</p>
-<p>设 <span class="math inline">\(D\)</span> 是 <span class="math inline">\(\mathcal{G}(A)\)</span> 中的单连通有限区域，边界为
-<span class="math inline">\(\partial D\)</span>，<span class="math inline">\(\partial D\)</span> 是一条简单闭路径。从 <span class="math inline">\(\partial D\)</span>
-上任一点出发，绕着边界逆时针一周可以得到此路径的对应的一个字 (word)
-<span class="math inline">\(\pi\in F\)</span>。</p>
-<p>例如，从下图中标注的红色点出发时，<span class="math inline">\(T_n\)</span> 的边界字为 <span class="math inline">\(\pi=(ac)^n(ba)^n(cb)^n\)</span>：</p>
-<p><img src="/images/tilinggroup/boundary.svg" class="fig" width="400"></p>
-<p>从不同起点出发得到的边界字是不同的，但它们在 <span class="math inline">\(F\)</span>
-中都是互相共轭的。例如在下图中，设从蓝色出发点得到的字为 <span class="math inline">\(\pi'\)</span>，从红色点出发到蓝色点之间的字为
-<span class="math inline">\(w=(ac)^3\)</span>，则 <span class="math inline">\(\pi=w\pi'w^{-1}\)</span>，两种不同表示在 <span class="math inline">\(F\)</span> 中是共轭的。</p>
-<p><img src="/images/tilinggroup/boundary2.svg" class="fig" width="400"></p>
-<p>于是我们可以给出如下定义：</p>
+<p>本文总结了一些关于向量空间的实化和复化的基础知识。</p>
+<h1 id="实化">实化</h1>
+<p>设 <span class="math inline">\(V\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上的 <span class="math inline">\(n\)</span> 维向量空间，我们可以「忘掉」 <span class="math inline">\(V\)</span> 的复向量空间结构，把 <span class="math inline">\(V\)</span> 看作实向量空间，记作 <span class="math inline">\(V_{\mathbb{R}}\)</span> 以区别于 <span class="math inline">\(V\)</span>。即 <span class="math inline">\(V_\mathbb{R}\)</span> 与 <span class="math inline">\(V\)</span>
+作为加法群是一样的，但是数和向量的乘法限制在 <span class="math inline">\(\mathbb{R}\)</span> 上。<span class="math inline">\(V_{\mathbb{R}}\)</span> 是 <span class="math inline">\(2n\)</span> 维的。如果 <span class="math inline">\(\{e_i\}_{i=1}^n\)</span> 是 <span class="math inline">\(V\)</span> 的一组 <span class="math inline">\(\mathbb{C}\)</span>- 基，则 <span class="math inline">\(\{e_i,ie_i\}_{i=1}^n\)</span> 是 <span class="math inline">\(V_\mathbb{R}\)</span> 的一组 <span class="math inline">\(\mathbb{R}\)</span>- 基。<span class="math inline">\(V_{\mathbb{R}}\)</span> 叫做 <span class="math inline">\(V\)</span> 的<strong>实化</strong>。</p>
+<p>但是 <span class="math inline">\(V_{\mathbb{R}}\)</span> 比一般的
+<span class="math inline">\(2n\)</span>
+维实向量空间还要多出一个结构，这个结构来自 <span class="math inline">\(V\)</span> 上虚数 <span class="math inline">\(i\)</span> 的乘法，它诱导了 <span class="math inline">\(V_\mathbb{R}\)</span> 上的 <span class="math inline">\(\mathbb{R}\)</span>- 线性变换 <span class="math inline">\(J\colon\ v\mapsto iv\)</span>。<span class="math inline">\(J\)</span> 满足 <span class="math inline">\(J^2=-1\)</span>。<span class="math inline">\(J\)</span> 叫做 <span class="math inline">\(V_{\mathbb{R}}\)</span>
+上的<strong>复结构</strong>。</p>
+<p>反过来，给定一个偶数维的实向量空间 <span class="math inline">\(W\)</span> 以及 <span class="math inline">\(W\)</span> 上的一个复结构 <span class="math inline">\(J\)</span>，<span class="math inline">\(W\)</span>
+上可以自然地定义复向量空间结构：因为 <span class="math inline">\(J\)</span> 本质就是虚数 <span class="math inline">\(i\)</span> 的乘法，我们只要规定 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(W\)</span> 中向量的乘法为 <span class="math inline">\(iw=J ( w )\)</span>，然后扩展到 <span class="math inline">\(\mathbb{C}\)</span> 上即可： <span class="math display">\[( a+ib ) w = aw+bJ ( w ) ,\quad
+a,b\in\mathbb{R},w\in W.\]</span> 我们用 <span class="math inline">\((
+W,J )\)</span> 表示这样得到的复向量空间。</p>
+<blockquote>
+<p><strong>总结</strong>：任何复向量空间 <span class="math inline">\(V\)</span> 可以等同于一个 <span class="math inline">\(2n\)</span> 维实向量空间 <span class="math inline">\(V_{\mathbb{R}}\)</span> 加上一个复结构 <span class="math inline">\(J\)</span>。</p>
+</blockquote>
+<h1 id="反线性映射">反线性映射</h1>
+<p>设 <span class="math inline">\(V\)</span> 是复向量空间，记 <span class="math inline">\(\overline{V}\)</span> 是如下的向量空间：<span class="math inline">\(\overline{V}\)</span> 作为加法群和 <span class="math inline">\(V\)</span> 完全相同，但是复数与向量的乘法 <span class="math inline">\(\bullet\)</span> 定义为 <span class="math inline">\(c\bullet z=\overline{c}z\)</span>，其中右边的
+<span class="math inline">\(\overline{c}z\)</span> 是 <span class="math inline">\(V\)</span> 中的原始数乘。我们称 <span class="math inline">\(\overline{V}\)</span> 是 <span class="math inline">\(V\)</span> 的共轭空间。</p>
 <div class="unnumbered statement definition-unnumbered plain">
 <p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
-</span>设 <span class="math inline">\(D\)</span> 是 <span class="math inline">\(\mathcal{G}(A)\)</span>
-中的单连通有限区域，定义其<strong>组合边界</strong> <span class="math inline">\([\partial D]\)</span> 为 <span class="math inline">\(F\)</span> 中的一个共轭类：<span class="math inline">\([\partial D]=\{ w\pi w^{-1} \mid w\in
-F\}\)</span>，其中 <span class="math inline">\(\pi\)</span> 是从 <span class="math inline">\(\partial D\)</span> 上任一点逆时针出发绕 <span class="math inline">\(D\)</span> 一圈得到的字。</p>
+</span>设 <span class="math inline">\(V,U\)</span>
+是复向量空间。如果映射 <span class="math inline">\(f\colon\ V\to
+U\)</span> 满足下面两个条件，就称 <span class="math inline">\(f\)</span>
+是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Antilinear_map">反线性</a>
+映射：</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> 是从 <span class="math inline">\(V\)</span> 到 <span class="math inline">\(U\)</span> 的加法群同态：<span class="math inline">\(f(v_1+v_2)=f(v_1)+f(v_2)\)</span> 对任何 <span class="math inline">\(v_1,v_2\in V\)</span> 成立。</li>
+<li><span class="math inline">\(f(cv)=\overline{c}v\)</span> 对任何
+<span class="math inline">\(c\in\mathbb{C}\)</span> 和 <span class="math inline">\(v\in V\)</span> 成立。</li>
+</ol>
 </div>
-<p>对于骨头，我们也可以用类似的方式定义它们的边界字，如下图所示：</p>
-<p><img src="/images/tilinggroup/label.svg" class="fig" width="600"></p>
-<p>从红色标注的起点出发，逆时针绕着骨头一圈，得到的边界字分别是： <span class="math display">\[\begin{array}{l}w_1=(cb)^3a(cb)^3a,\\w_2=(ac)^3b(ac)^3b,\\w_3=(ba)^3c(ba)^3c.\end{array}\]</span></p>
-<p>我们称 <span class="math inline">\(\{w_1,w_2,w_3\}\)</span> 在 <span class="math inline">\(F\)</span> 中生成的最小正规子群 <span class="math inline">\(T = \mathcal{N}(\langle
-w_1,w_2,w_3\rangle)\)</span>
-为这三种骨头的密铺群。由于正规子群包含其元素的所有共轭，所以无论怎样选取边界字，得到的结果都属于
-<span class="math inline">\(T\)</span>。</p>
-<div class="unnumbered statement theorem-unnumbered plain">
-<p><span class="statement-heading"><span class="statement-label">定理</span> <span class="statement-info">(<span class="citation" data-cites="Conway1990">(<a href="#ref-Conway1990" role="doc-biblioref">Conway and Lagarias 1990</a>, thm
-2.1)</span>)</span>.</span><span class="statement-spah"> </span><br>
-设 <span class="math inline">\(D\)</span>
-是平面上正六边形网格中的一个有限的、单连通的区域，则 <span class="math inline">\(D\)</span> 可以被若干骨头密铺的必要条件是 <span class="math inline">\([\partial D]\in T\)</span>。</p>
+<p>反线性映射是 <span class="math inline">\(\mathbb{R}\)</span>-
+线性的，但不是 <span class="math inline">\(\mathbb{C}\)</span>-
+线性的。</p>
+<blockquote>
+<p><strong>总结</strong>：<span class="math inline">\(V\to U\)</span>
+的反线性映射和 <span class="math inline">\(V\to\overline{U}\)</span> 的
+<span class="math inline">\(\mathbb{C}\)</span>- 线性映射是一回事。</p>
+</blockquote>
+<h1 id="复化">复化</h1>
+<p>与实化相对应的操作是<strong>复化</strong>，即对给定的 <span class="math inline">\(\mathbb{R}\)</span>- 向量空间 <span class="math inline">\(W\)</span>，将其数乘扩展到 <span class="math inline">\(\mathbb{C}\)</span>
+上，使之成为一个复向量空间。我们将得到的复向量空间记作 <span class="math inline">\(W^\mathbb{C}\)</span> 以区别于 <span class="math inline">\(W\)</span>。</p>
+<p>构造 <span class="math inline">\(W^\mathbb{C}\)</span>
+的标准方法是使用张量积，令 <span class="math inline">\(W^\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}W\)</span>，<span class="math inline">\(W^\mathbb{C}\)</span> 中复数与向量的乘法定义为
+<span class="math display">\[c ( z\otimes w ) = cz\otimes w.\]</span>
+<span class="math inline">\(W\)</span> 可以通过 <span class="math inline">\(w\to 1\otimes w\)</span> 等同于 <span class="math inline">\(W^\mathbb{C}\)</span> 的 <span class="math inline">\(\mathbb{R}\)</span>- 子空间 <span class="math inline">\(1\otimes W\)</span>。在这个等同下，<span class="math inline">\(W^\mathbb{C}\)</span> 中的向量都是 <span class="math inline">\(W\)</span> 中向量的 <span class="math inline">\(\mathbb{C}\)</span>- 线性组合： <span class="math display">\[\sum c_i\otimes w_i = \sum c_i(1\otimes w_i)
+\leftrightarrow \sum c_iw_i.\]</span> 这一点与我们关于「 将 <span class="math inline">\(W\)</span> 的数乘扩张到 <span class="math inline">\(\mathbb{C}\)</span> 」的直觉完全一致。于是 <span class="math inline">\(W\)</span> 的任何一组 <span class="math inline">\(\mathbb{R}\)</span>- 基同时也是 <span class="math inline">\(W^\mathbb{C}\)</span> 的一组 <span class="math inline">\(\mathbb{C}\)</span>- 基。特别地，<span class="math inline">\(W\)</span> 作为实向量空间的维数与 <span class="math inline">\(W^\mathbb{C}\)</span>
+作为复向量空间的维数相等。</p>
+<p><span class="math inline">\(W^\mathbb{C}\)</span>
+可以分解为两个实子空间的直和 <span class="math display">\[W^\mathbb{C}=1\otimes W \oplus i\otimes W
+=1\otimes W \oplus i(1\otimes W)  .\]</span> 由于 <span class="math inline">\(W\)</span> 可以等同于 <span class="math inline">\(1\otimes W\)</span>，上式可以简写成 <span class="math inline">\(W^\mathbb{C}=W\oplus iW\)</span>。</p>
+<p><span class="math inline">\(W^\mathbb{C}\)</span> 与一般的 <span class="math inline">\(n\)</span>
+维复向量空间相比也多出一个结构，叫做共轭。</p>
+<div class="unnumbered statement definition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
+</span>如果 <span class="math inline">\(\tau\colon\ V\to V\)</span>
+是反线性映射并且 <span class="math inline">\(\tau^2=1\)</span>，就称
+<span class="math inline">\(\tau\)</span>
+是一个<strong>共轭</strong>。</p>
 </div>
-<p>这个定理是很直观的，证明思路也很简单，对密铺使用的骨头个数归纳即可。如果只用一块骨头就能密铺，结论显然成立。否则一定可以把密铺分成两个单连通的子密铺，使得整个密铺的边界字是这两个子密铺边界字的乘积，然后对每个子密铺使用归纳假设即可。<span class="math inline">\(\blacksquare\)</span></p>
-<p>由于 <span class="math inline">\(T_n\)</span> 的边界字为 <span class="math inline">\(\pi=(ac)^n(ba)^n(cb)^n\)</span>，即 <span class="math inline">\(T_n\)</span> 的组合边界为 <span class="math inline">\([\partial
-T_n]=[\pi]\)</span>。所以任务归结为证明对任何 <span class="math inline">\(n\equiv0\pmod{3}\)</span> 有 <span class="math inline">\(\pi\notin T\)</span>。按 Conway
-的话说，这是把一个困难的问题翻译成了另一个困难的问题，证明最难的部分就在这里。</p>
-<p>怎么证明群元素 <span class="math inline">\(\pi\)</span>
-不属于正规子群 <span class="math inline">\(T\)</span> 呢？Conway
-等人的思路是这样的：构造 <span class="math inline">\(F\)</span> 的子群
-<span class="math inline">\(J\)</span>，使得 <span class="math inline">\(T\subset J\)</span> 和 <span class="math inline">\(\pi\in J\)</span>，并构造 <span class="math inline">\(J\)</span> 到某个群 <span class="math inline">\(K\)</span> 的同态 <span class="math inline">\(\rho: J\to K\)</span>，使得 <span class="math inline">\(T\subset\ker\rho\)</span> 但 <span class="math inline">\(\pi\notin\ker\rho\)</span>，即同态 <span class="math inline">\(\rho\)</span> 可以区分 <span class="math inline">\(\pi\)</span> 和 <span class="math inline">\(T\)</span>，即得 <span class="math inline">\(\pi\notin T\)</span>。</p>
-<p>Conway 等人构造的 <span class="math inline">\(J\)</span> 是 <span class="math inline">\(F\)</span> 的如下正规子群： <span class="math display">\[J=\mathcal{N}(\langle(cb)^3,(ac)^3,(ba)^3\rangle).\]</span></p>
-<p><span class="math inline">\(J\)</span> 有个很棒的性质：商群 <span class="math display">\[T_0 = F/J = \langle a,b,c\ |\
-a^2=b^2=c^2=(cb)^3=(ac)^3=(ba)^3=1\rangle\]</span> 的 Cayley 图 <span class="math inline">\(\mathcal{G}(T_0)\)</span> 是平面图，如下所示：</p>
-<figure>
-<img src="/images/tilinggroup/hexgrid2.svg" class="fig" width="300" alt="T_0=F/J 的 Cayley 图，其中的正六边形有三种不同的类型，在每个顶点处相遇的三个正六边形类型互不相同。注意这个 Cayley 图与前面 A 的 Cayley 图的区别。">
-<figcaption aria-hidden="true"><span class="math inline">\(T_0=F/J\)</span> 的 Cayley
-图，其中的正六边形有三种不同的类型，在每个顶点处相遇的三个正六边形类型互不相同。注意这个
-Cayley 图与前面 <span class="math inline">\(A\)</span> 的 Cayley
-图的区别。</figcaption>
-</figure>
-<p>可见 <span class="math inline">\(\mathcal{G}(T_0)\)</span>
-的形状与前面 <a href="#Cayley-A"><span class="math inline">\(A\)</span>
-的 Cayley 图 <span class="math inline">\(\mathcal{G}(A)\)</span></a>
-是一样的，但二者的标号方式不同。<span class="math inline">\(\mathcal{G}(T_0)\)</span> 包含三种不同的正六边形
-<span class="math inline">\(C_1,C_2,C_3\)</span>，它们的边界字分别是
-<span class="math inline">\((cb)^3,(ac)^3,(ba)^3\)</span>，而 <span class="math inline">\(\mathcal{G}(A)\)</span> 只包含一种六边形。</p>
-<p>我们来说明 <span class="math inline">\(\pi\)</span> 和 <span class="math inline">\(T\)</span> 都包含在 <span class="math inline">\(J\)</span> 中。为此只要验证它们在 <span class="math inline">\(T_0\)</span> 的 Cayley 图 <span class="math inline">\(\mathcal{G}(T_0)\)</span> 中都是闭路径即可。</p>
-<p>第一种骨头的边界字 <span class="math inline">\(w_1\)</span>
-对应的路径如下：</p>
-<p><img src="/images/tilinggroup/winding.svg" class="fig" width="300"></p>
-<p>这个路径是从图中红点出发，<strong>逆时针</strong>绕左下方的正六边形一圈，再沿着标记为
-<span class="math inline">\(a\)</span>
-的边到达右上方的正六边形，<strong>顺时针</strong>绕着这个正六边形一圈，再沿着标记为
-<span class="math inline">\(a\)</span>
-的边回到起点。这是一条闭路径，所以 <span class="math inline">\(w_1\in
-J\)</span>。同理 <span class="math inline">\(w_2,w_3\in J\)</span>，从而
-<span class="math inline">\(T\subset J\)</span>。</p>
-<p>另一方面 <span class="math inline">\(\pi=(ac)^n(ba)^n(cb)^n\)</span>
-不过是绕着 <span class="math inline">\(C_1,C_2,C_3\)</span> 各自转了
-<span class="math inline">\(n/3\)</span> 圈，如下图所示：</p>
-<p><img src="/images/tilinggroup/w_n.svg" class="fig" width="250"></p>
-<p>所以确实有 <span class="math inline">\(T\subset J\)</span> 和 <span class="math inline">\(\pi\in J\)</span>。</p>
-<p>现在我们来构造群同态 <span class="math inline">\(\rho:\
-J\to\mathbb{Z}^3\)</span>。任何 <span class="math inline">\(w\in
-J\)</span> 都对应 Cayley 图 <span class="math inline">\(\mathcal{G}(T_0)\)</span> 中的一条闭曲线 <span class="math inline">\(\gamma\)</span>，我们规定 <span class="math inline">\(\rho(w)=(n_1,n_2,n_3)\in\mathbb{Z}^3\)</span>，其中
-<span class="math inline">\(n_i\)</span> 是 <span class="math inline">\(\gamma\)</span> 关于所有类型为 <span class="math inline">\(C_i\)</span> 的六边形的环绕数之和： <span class="math display">\[n_i=\sum_{h\in C_i}n(\gamma, h),\quad \text{where
-}n(\gamma,h)=\frac{1}{2\pi i}\int_{z\in
-\gamma}\frac{1}{z-h}\,\mathrm{d}z.\]</span> <span class="math inline">\(h\)</span> 在 <span class="math inline">\(C_i\)</span> 内的位置对结果没有影响，因为环绕数在
-<span class="math inline">\(\mathbb{C}\setminus\gamma\)</span>
-的每个连通分支上是常数。</p>
-<p>由于 <span class="math inline">\(\gamma\)</span>
-的内部只包含有限多个六边形，<span class="math inline">\(\gamma\)</span>
-外部的六边形对上式的贡献都是 0，所以上面的求和只有有限多项。</p>
-<p>我们来计算下每种骨头的环绕数。以边界字为 <span class="math inline">\(w_1\)</span> 的骨头为例：</p>
-<p><img src="/images/tilinggroup/winding.svg" class="fig" width="300"></p>
-<p>它关于两个 <span class="math inline">\(C_1\)</span>
-类型的正六边形分别逆时针和顺时针各转了一圈，合起来绕了 0
-圈；它没有环绕过 <span class="math inline">\(C_2\)</span> 和 <span class="math inline">\(C_3\)</span> 类型的正六边形，关于这俩的环绕数都是
-0，所以这块骨头对应的三元组是 <span class="math inline">\((0,0,0)\)</span>。对另外两种骨头也是如此。由于共轭的路径具有相同的环绕数，以及路径乘积（首尾相接）的环绕数等于各路径环绕数的和，所以
-<span class="math inline">\(T\)</span> 中任何元素对应的三元组都是 <span class="math inline">\((0,0,0)\)</span>。</p>
-<p>然而我们上面已经看到 <span class="math inline">\(T_n\)</span>
-的边界字对应的路径是绕着 <span class="math inline">\(C_1,C_2,C_3\)</span> 分别顺时针转 <span class="math inline">\(n/3\)</span> 圈，其环绕数是 <span class="math inline">\((-n/3,-n/3,-n/3)\ne(0, 0, 0)\)</span>，这就说明了
-<span class="math inline">\(\pi\notin T\)</span>。</p>
-<h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Conway1990" class="csl-entry" role="listitem">
-Conway, J. H, and J. C Lagarias. 1990. <span>“Tiling with Polyominoes
-and Combinatorial Group Theory.”</span> <em>Journal of Combinatorial
-Theory, Series A</em> 53 (2): 183–208. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/0097-3165(90)90057-4">https://doi.org/10.1016/0097-3165(90)90057-4</a>.
+<p>复数的共轭诱导了 <span class="math inline">\(\mathbb{C}\otimes_\mathbb{R}W\)</span> 上的共轭：
+<span class="math display">\[\tau ( c\otimes w ) =\overline{c}\otimes
+w,\quad c\in\mathbb{C}, w\in W.\]</span> <span class="math inline">\(\tau\)</span> 保持实子空间 <span class="math inline">\(1\otimes W\cong W\)</span> 不变。<span class="math inline">\(W\)</span> 可以理解为 <span class="math inline">\(V\)</span> 在共轭 <span class="math inline">\(\tau\)</span> 下的实部。</p>
+<p>反过来，给定复向量空间 <span class="math inline">\(V\)</span>
+以及共轭 <span class="math inline">\(\tau\)</span>，我们可以还原出使得
+<span class="math inline">\(V=W^\mathbb{C}\)</span> 成立的实向量空间
+<span class="math inline">\(W\)</span> 来。<span class="math inline">\(W\)</span> 正是 <span class="math inline">\(\tau\)</span> 的不动点子空间 <span class="math inline">\(W=\{v\in V\mid \tau ( v ) =v\}\)</span>，即 <span class="math inline">\(\tau\)</span> 的 +1 特征子空间。相应地 <span class="math inline">\(iW\)</span> 是 <span class="math inline">\(\tau\)</span> 的 -1 特征子空间并且 <span class="math inline">\(V=W\oplus iW\)</span>。根据下面的命题，<span class="math inline">\(W\)</span> 的复化就是 <span class="math inline">\(V\)</span>。</p>
+<div class="unnumbered statement proposition-unnumbered plain">
+<p><span class="statement-heading"><span class="statement-label">命题</span>.</span><span class="statement-spah">
+</span>设 <span class="math inline">\(V\)</span>
+是有限维复向量空间，<span class="math inline">\(W\)</span> 是 <span class="math inline">\(V\)</span> 的 <span class="math inline">\(\mathbb{R}\)</span>- 子空间。若有 <span class="math inline">\(V=W\oplus iW\)</span> 成立，则 <span class="math inline">\(V\cong
+\mathbb{C}\otimes_\mathbb{R}W\)</span>。</p>
 </div>
+<p><strong>证明</strong>：考察如下的映射 <span class="math display">\[
+\begin{aligned}
+f\colon\  \mathbb{C}\otimes_\mathbb{R}W &amp; \to V\\
+c\otimes w &amp;\mapsto cw.
+\end{aligned}
+\]</span> 显然 <span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的。我们来验证 <span class="math inline">\(f\)</span> 是双射。</p>
+<p>由于 <span class="math inline">\(V=W\oplus iW\)</span> 所以任何 <span class="math inline">\(v\in V\)</span> 可以写成 <span class="math inline">\(v=w_1+iw_2,\,w_1,w_2\in W\)</span>
+的形式。不难验证 <span class="math inline">\(f ( 1\otimes w_1 + i\otimes
+w_2 ) = w_1+iw_2\)</span> 所以 <span class="math inline">\(f\)</span>
+是满射。并且 <span class="math inline">\(f ( 1\otimes w_1 + i\otimes w_2
+) =0\)</span> 当且仅当 <span class="math inline">\(w_1+iw_2=0\)</span>，即 <span class="math inline">\(w_1=-iw_2\in W\cap iW= ( 0 )\)</span>，从而 <span class="math inline">\(w_1=w_2=0\)</span>，这说明 <span class="math inline">\(f\)</span> 也是单射。于是 <span class="math inline">\(f\)</span> 是同构。 <span class="math inline">\(\blacksquare\)</span></p>
+<blockquote>
+<p><strong>总结</strong>：复向量空间 <span class="math inline">\(V\)</span> 上的任何共轭 <span class="math inline">\(\tau\)</span> 都对应 <span class="math inline">\(V\)</span> 的一个实子空间 <span class="math inline">\(W\)</span>，使得 <span class="math inline">\(V\cong \mathbb{C}\otimes_{\mathbb{R}}
+W\)</span>。</p>
+</blockquote>
+<h1 id="先实化后复化">先实化后复化</h1>
+<p>有了上面的准备，我们来分析将一个 <span class="math inline">\(n\)</span> 维复向量空间 <span class="math inline">\(V\)</span>，先实化再复化得到的 <span class="math display">\[(
+V_\mathbb{R})^\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}\]</span>
+的结构。我其实可以直接写出结论来：</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.1</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(V\)</span> 是复向量空间，则我们有复向量空间的同构
+<span class="math display">\[
+\begin{aligned}
+(V_\mathbb{R})^\mathbb{C}&amp; \to V\oplus \overline{V}\\
+c\otimes v &amp;\mapsto (cv, \overline{c}v).
+\end{aligned}
+\]</span></p>
 </div>
+<p><strong>证明 1</strong>：不难验证所给的映射是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的，并且把 <span class="math inline">\(1\otimes x + i\otimes y\)</span> 映射为 <span class="math inline">\((x+iy,x-iy)\)</span>。我们可以从 <span class="math inline">\((x+iy,x-iy)\)</span> 唯一地反解出 <span class="math inline">\(x,y\)</span> 来，所以这是一个线性同构。<span class="math inline">\(\blacksquare\)</span></p>
+<p>上面的证明虽然简明了然，但是似乎没有揭示这个同构是怎么想出来的。特别是
+<span class="math inline">\(\overline{V}\)</span>
+的出现显得有些突兀。我们换一种方法来分析：找到合适的线性变换并分析它在
+<span class="math inline">\((V_\mathbb{R})^\mathbb{C}\)</span>
+上的作用。</p>
+<p><strong>证明 2</strong>：记 <span class="math inline">\(J\)</span> 是
+<span class="math inline">\(V_\mathbb{R}\)</span> 的复结构，<span class="math inline">\(J\)</span> 不过是 <span class="math inline">\(i\)</span> 在 <span class="math inline">\(V\)</span> 上的乘法，但我们写成 <span class="math inline">\(J\)</span> 以区别与张量积 <span class="math inline">\(\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}\)</span>
+中左边的 <span class="math inline">\(\mathbb{C}\)</span>
+分量给出的乘法。<span class="math inline">\(J^\mathbb{C}=1\otimes
+J\)</span> 是 <span class="math inline">\(\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}\)</span>
+上的 <span class="math inline">\(\mathbb{C}\)</span>- 线性变换且 <span class="math inline">\(( J^\mathbb{C})^2 = -1\)</span>。作为复向量空间
+<span class="math inline">\(( V_\mathbb{R})^\mathbb{C}\)</span>
+可以分解为 <span class="math inline">\(J^\mathbb{C}\)</span> 的 <span class="math inline">\(\pm i\)</span> 特征子空间的直和： <span class="math display">\[( V_\mathbb{R})^\mathbb{C}= V_+\oplus
+V_-.\]</span> 具体写出来，就是 <span class="math display">\[\begin{aligned}
+V_+ &amp;= \frac{1\otimes V_\mathbb{R}- i\otimes J(V_\mathbb{R})}{2}, \\
+V_- &amp;= \frac{1\otimes V_\mathbb{R}+ i\otimes J(V_\mathbb{R})}{2}.
+\end{aligned}\]</span></p>
+<p>容易验证 <span class="math inline">\((
+V_\mathbb{R})^\mathbb{C}\)</span> 上的共轭 <span class="math inline">\(\tau\)</span> 交换 <span class="math inline">\(V_+\)</span> 和 <span class="math inline">\(V_-\)</span>，但 <span class="math inline">\(\tau\)</span> 是反线性的，所以 <span class="math inline">\(V_+\cong
+\overline{V_-}\)</span>，即二者互为共轭空间。</p>
+<p>进一步我们断言有复向量空间的同构 <span class="math inline">\(V_+
+\cong (V_\mathbb{R}, J)\)</span>。考虑映射 <span class="math display">\[
+\begin{aligned}
+f\colon \ V_+  &amp; \to (V_\mathbb{R}, J)\\
+c\otimes v &amp;\mapsto cv.
+\end{aligned}
+\]</span> 这里右边的乘法 <span class="math inline">\(cv\)</span>
+理解为对 <span class="math inline">\(c=a+ib\)</span> 有 <span class="math inline">\(cv=av+bJ(v)\)</span>。</p>
+<p><span class="math inline">\(f\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span>- 线性的，确实把 <span class="math inline">\(V_+\)</span> 映射到 <span class="math inline">\(V_\mathbb{R}\)</span>： <span class="math display">\[f\left(\frac{1\otimes v- i\otimes J(v)}{2}\right)
+= \frac{v-J^2(v)}{2}=v.\]</span> <span class="math inline">\(f\)</span>
+有逆映射 <span class="math display">\[\begin{aligned}
+f^{-1}\colon \ V_\mathbb{R}&amp; \to V_+\\
+v &amp;\mapsto \frac{1\otimes v- i\otimes J(v)}{2}.
+\end{aligned}\]</span> 所以 <span class="math inline">\(V_+\cong
+(V_\mathbb{R},J)\cong V\)</span>。至此我们就证明了 <span class="math display">\[(V_\mathbb{R})^\mathbb{C}\cong V\oplus
+\overline{V}.\]</span></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<p>这个同构也可以用下面的交换图来表示：</p>
+<p><span class="math display">\[\require{amsCd}
+\begin{CD}
+\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}@&gt;{c\otimes v\,\to\,
+(cv,\,\overline{c}v)}&gt;&gt; (V,\overline{V})\\
+@V{\tau}VV  @VV{(u,\,v)\leftrightarrow (v,\,u)}V \\
+\mathbb{C}\otimes_\mathbb{R}V_\mathbb{R}@&gt;{c\otimes v\,\to\,
+(cv,\,\overline{c}v)}&gt;&gt; (V,\overline{V})
+\end{CD}\]</span> 其中 <span class="math inline">\((u,v)\leftrightarrow(v,u)\)</span> 是 <span class="math inline">\(\tau\)</span> 在 <span class="math inline">\(V\oplus\overline{V}\)</span>
+上诱导的共轭结构，它交换两个直和分量。</p>
+<h1 id="线性变换的复化">线性变换的复化</h1>
+<p>设 <span class="math inline">\(W\)</span> 是实向量空间，<span class="math inline">\(W^\mathbb{C}=\mathbb{C}\otimes_\mathbb{R}W\)</span>
+是复化，则任何 <span class="math inline">\(f\in\mathrm{Hom}_\mathbb{R}(W,W)\)</span>
+可以自然地扩展为 <span class="math display">\[f^\mathbb{C}=1\otimes
+f\in\mathrm{Hom}_\mathbb{C}(W^\mathbb{C},W^\mathbb{C}).\]</span> <span class="math inline">\(f^\mathbb{C}\)</span> 与 <span class="math inline">\(f\)</span> 有相同的矩阵。注意 <span class="math inline">\(f^\mathbb{C}\)</span> 与共轭 <span class="math inline">\(\tau\)</span>
+交换，因为它们作用在张量积的不同分量上。</p>
+<p>反过来，我们想知道何时 <span class="math inline">\(g\in\mathrm{Hom}_\mathbb{C}(W^\mathbb{C},W^\mathbb{C})\)</span>
+是某个 <span class="math inline">\(f\in\mathrm{Hom}_\mathbb{R}(W,W)\)</span>
+的复化：<span class="math inline">\(g=f^\mathbb{C}\)</span>。一个必要条件当然是 <span class="math inline">\(g\)</span> 与共轭 <span class="math inline">\(\tau\)</span>
+交换。这个条件也是充分的。这是因为，我们有自然同构 <span class="math display">\[\mathrm{Hom}_\mathbb{C}(W^\mathbb{C},
+W^\mathbb{C})\cong
+\mathbb{C}\otimes\mathrm{Hom}_\mathbb{R}(W,W).\]</span> 所以 <span class="math inline">\(g\)</span> 可以写成如下的形式： <span class="math display">\[g=1\otimes f_1+i\otimes f_2,\quad
+f_1,f_2\in\mathrm{Hom}_\mathbb{R}(W,W).\]</span> <span class="math inline">\(g\)</span> 与 <span class="math inline">\(\tau\)</span> 交换说明 <span class="math inline">\(f_2\)</span> 作用在 <span class="math inline">\(W\)</span> 上是零变换，从而 <span class="math inline">\(g=1\otimes f_1\)</span>。</p>
 
 
 
                                                     
   <p class="pink-link-context">
-    <a href="/wedderburn-artin-theorem/" rel="next" title="左 Artinian 环与 Wedderburn-Artin 定理">
-      上一篇：左 Artinian 环与 Wedderburn-Artin 定理
+    <a href="/central-simple-algebra/" rel="next" title="中心单代数的三个基本结论">
+      上一篇：中心单代数的三个基本结论
     </a>
   </p>
   
 
     
       <p class="pink-link-context">
-        <a href="/central-simple-algebra/" rel="next" title="中心单代数的三个基本结论">
-          下一篇：中心单代数的三个基本结论
+        <a href="/hurwitz-square-sum-theorem/" rel="next" title="Hurwitz 平方和定理">
+          下一篇：Hurwitz 平方和定理
         </a>
       </p>
       
