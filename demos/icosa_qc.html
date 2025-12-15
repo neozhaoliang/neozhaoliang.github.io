@@ -1,31 +1,44 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Icosahedral Quasicrystal — Three.js (Single HTML, PBR, SSAA/FXAA)</title>
   <style>
-    :root{
+    :root {
       --bg: #0b0d12;
-      --panel: rgba(16,18,26,.74);
-      --stroke: rgba(255,255,255,.10);
-      --stroke2: rgba(255,255,255,.14);
+      --panel: rgba(16, 18, 26, .74);
+      --stroke: rgba(255, 255, 255, .10);
+      --stroke2: rgba(255, 255, 255, .14);
       --text: #e9eefb;
-      --muted: rgba(233,238,251,.72);
-      --muted2: rgba(233,238,251,.60);
+      --muted: rgba(233, 238, 251, .72);
+      --muted2: rgba(233, 238, 251, .60);
       --accent: #c9a85d;
-      --shadow: 0 16px 52px rgba(0,0,0,.46);
+      --shadow: 0 16px 52px rgba(0, 0, 0, .46);
       --radius: 18px;
     }
-    html, body {
-      margin: 0; height: 100%; overflow: hidden;
-      background: var(--bg); color: var(--text);
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
-    #app { position: fixed; inset: 0; }
+
+    #app {
+      position: fixed;
+      inset: 0;
+    }
 
     #ui {
-      position: fixed; left: 14px; top: 14px; width: 420px;
+      position: fixed;
+      left: 14px;
+      top: 14px;
+      width: 420px;
       background: var(--panel);
       border: 1px solid var(--stroke);
       backdrop-filter: blur(12px);
@@ -34,15 +47,27 @@
       box-shadow: var(--shadow);
       user-select: none;
     }
-    #ui header{
-      display:flex; align-items:baseline; justify-content:space-between;
-      gap: 10px; margin-bottom: 10px;
+
+    #ui header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
     }
-    #ui header .title{
-      font-size: 13px; letter-spacing: .4px; opacity: .96; font-weight: 650;
+
+    #ui header .title {
+      font-size: 13px;
+      letter-spacing: .4px;
+      opacity: .96;
+      font-weight: 650;
     }
-    #ui header .sub{
-      font-size: 12px; opacity: .70; font-weight: 520; white-space: nowrap;
+
+    #ui header .sub {
+      font-size: 12px;
+      opacity: .70;
+      font-weight: 520;
+      white-space: nowrap;
     }
 
     .grid {
@@ -52,89 +77,124 @@
       align-items: center;
       margin: 8px 0;
     }
-    .grid label { font-size: 12px; opacity: .92; }
+
+    .grid label {
+      font-size: 12px;
+      opacity: .92;
+    }
+
     .grid .val {
-      font-size: 12px; opacity: .76; text-align: right;
+      font-size: 12px;
+      opacity: .76;
+      text-align: right;
       font-variant-numeric: tabular-nums;
     }
 
-    input[type="range"], select { width: 100%; }
-    input[type="range"] { accent-color: var(--accent); }
-    select{
+    input[type="range"],
+    select {
+      width: 100%;
+    }
+
+    input[type="range"] {
+      accent-color: var(--accent);
+    }
+
+    select {
       padding: 7px 10px;
       border-radius: 12px;
       border: 1px solid var(--stroke2);
-      background: rgba(255,255,255,.06);
+      background: rgba(255, 255, 255, .06);
       color: var(--text);
       outline: none;
       appearance: none;
     }
 
     .toggles {
-      display:flex; flex-wrap:wrap;
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px 14px;
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .toggles label {
-      font-size: 12px;
-      opacity:.90;
-      display:flex;
-      gap: 7px;
-      align-items:center;
+      border-top: 1px solid rgba(255, 255, 255, .08);
     }
 
-    .btns { display:flex; gap: 10px; margin-top: 10px; }
+    .toggles label {
+      font-size: 12px;
+      opacity: .90;
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .btns {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     button {
       flex: 1;
       padding: 10px 10px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .12);
       color: var(--text);
       border-radius: 14px;
       cursor: pointer;
       transition: transform .05s ease, background .2s ease, border-color .2s ease;
     }
-    button:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.18); }
-    button:active { transform: translateY(1px); }
+
+    button:hover {
+      background: rgba(255, 255, 255, .12);
+      border-color: rgba(255, 255, 255, .18);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
 
     #status {
       margin-top: 8px;
       font-size: 12px;
-      opacity:.78;
+      opacity: .78;
       line-height: 1.35;
       white-space: pre-wrap;
       font-variant-numeric: tabular-nums;
     }
 
     #hint {
-      position: fixed; right: 14px; bottom: 14px;
-      font-size: 12px; opacity: .74;
-      background: rgba(16,18,26,.40);
-      border: 1px solid rgba(255,255,255,.08);
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      font-size: 12px;
+      opacity: .74;
+      background: rgba(16, 18, 26, .40);
+      border: 1px solid rgba(255, 255, 255, .08);
       padding: 8px 10px;
       border-radius: 999px;
       backdrop-filter: blur(10px);
     }
 
     #overlayError {
-      position: fixed; inset: 0;
-      display:none; place-items:center;
-      background: rgba(0,0,0,.72);
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0, 0, 0, .72);
       padding: 24px;
     }
-    #overlayError .card{
+
+    #overlayError .card {
       max-width: 920px;
-      background: rgba(16,18,26,.94);
-      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(16, 18, 26, .94);
+      border: 1px solid rgba(255, 255, 255, .12);
       border-radius: var(--radius);
       padding: 18px 16px;
-      box-shadow: 0 20px 70px rgba(0,0,0,.60);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, .60);
     }
-    #overlayError pre{
+
+    #overlayError pre {
       margin: 10px 0 0;
-      background: rgba(255,255,255,.06);
+      background: rgba(255, 255, 255, .06);
       padding: 12px;
       border-radius: 12px;
       overflow: auto;
@@ -142,7 +202,12 @@
       font-size: 12px;
       opacity: .92;
     }
-    code { background: rgba(255,255,255,.06); padding: 1px 6px; border-radius: 8px; }
+
+    code {
+      background: rgba(255, 255, 255, .06);
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 
@@ -197,8 +262,8 @@
 
     <div class="grid">
       <label for="faceOpacity">faceOpacity</label>
-      <input id="faceOpacity" type="range" min="0.02" max="1.0" step="0.01" value="0.32" />
-      <div class="val" id="faceOpacityVal">0.32</div>
+      <input id="faceOpacity" type="range" min="0.02" max="1.0" step="0.01" value="0.75" />
+      <div class="val" id="faceOpacityVal">0.75</div>
     </div>
 
     <div class="grid">
@@ -236,8 +301,8 @@
 
     <div class="grid">
       <label for="ssaaLevel">ssaaLevel</label>
-      <input id="ssaaLevel" type="range" min="0" max="4" step="1" value="2" />
-      <div class="val" id="ssaaLevelVal">2</div>
+      <input id="ssaaLevel" type="range" min="0" max="4" step="1" value="1" />
+      <div class="val" id="ssaaLevelVal">1</div>
     </div>
 
     <div class="toggles">
@@ -337,7 +402,7 @@
     // -----------------------------
     // Math helpers
     // -----------------------------
-    const vec3 = (x=0,y=0,z=0)=> new THREE.Vector3(x,y,z);
+    const vec3 = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
 
     function solve3x3(M, b) {
       const A = [
@@ -345,20 +410,20 @@
         [M[1][0], M[1][1], M[1][2], b[1]],
         [M[2][0], M[2][1], M[2][2], b[2]],
       ];
-      for (let col=0; col<3; col++) {
+      for (let col = 0; col < 3; col++) {
         let piv = col, best = Math.abs(A[col][col]);
-        for (let r=col+1; r<3; r++) {
+        for (let r = col + 1; r < 3; r++) {
           const v = Math.abs(A[r][col]);
           if (v > best) { best = v; piv = r; }
         }
         if (best < 1e-12) return null;
-        if (piv !== col) { const tmp=A[col]; A[col]=A[piv]; A[piv]=tmp; }
+        if (piv !== col) { const tmp = A[col]; A[col] = A[piv]; A[piv] = tmp; }
         const div = A[col][col];
-        for (let c=col; c<4; c++) A[col][c] /= div;
-        for (let r=0; r<3; r++) if (r !== col) {
+        for (let c = col; c < 4; c++) A[col][c] /= div;
+        for (let r = 0; r < 3; r++) if (r !== col) {
           const f = A[r][col];
           if (f === 0) continue;
-          for (let c=col; c<4; c++) A[r][c] -= f * A[col][c];
+          for (let c = col; c < 4; c++) A[r][c] -= f * A[col][c];
         }
       }
       return [A[0][3], A[1][3], A[2][3]];
@@ -366,32 +431,32 @@
 
     function combinations6Choose3() {
       const out = [];
-      for (let i=0;i<6;i++) for (let j=i+1;j<6;j++) for (let k=j+1;k<6;k++) out.push([i,j,k]);
+      for (let i = 0; i < 6; i++) for (let j = i + 1; j < 6; j++) for (let k = j + 1; k < 6; k++) out.push([i, j, k]);
       return out;
     }
 
-    function hsvToRgb(h,s,v) {
+    function hsvToRgb(h, s, v) {
       const i = Math.floor(h * 6) % 6;
       const f = h * 6 - Math.floor(h * 6);
       const p = v * (1 - s);
       const q = v * (1 - f * s);
       const t = v * (1 - (1 - f) * s);
-      let r=0,g=0,b=0;
-      if (i===0){ r=v; g=t; b=p; }
-      if (i===1){ r=q; g=v; b=p; }
-      if (i===2){ r=p; g=v; b=t; }
-      if (i===3){ r=p; g=q; b=v; }
-      if (i===4){ r=t; g=p; b=v; }
-      if (i===5){ r=v; g=p; b=q; }
-      return [r,g,b];
+      let r = 0, g = 0, b = 0;
+      if (i === 0) { r = v; g = t; b = p; }
+      if (i === 1) { r = q; g = v; b = p; }
+      if (i === 2) { r = p; g = v; b = t; }
+      if (i === 3) { r = p; g = q; b = v; }
+      if (i === 4) { r = t; g = p; b = v; }
+      if (i === 5) { r = v; g = p; b = q; }
+      return [r, g, b];
     }
 
     function niceVertexColor(p) {
-      const x=p.x, y=p.y, z=p.z;
-      const r = Math.sqrt(x*x+y*y+z*z);
-      const hue = (Math.atan2(y,x)/(2*Math.PI)+0.5) % 1.0;
-      const sat = Math.min(1, Math.max(0, 0.35 + 0.75*r));
-      const val = Math.min(1, Math.max(0, 0.55 + 0.45*(0.5+0.5*z)));
+      const x = p.x, y = p.y, z = p.z;
+      const r = Math.sqrt(x * x + y * y + z * z);
+      const hue = (Math.atan2(y, x) / (2 * Math.PI) + 0.5) % 1.0;
+      const sat = Math.min(1, Math.max(0, 0.35 + 0.75 * r));
+      const val = Math.min(1, Math.max(0, 0.55 + 0.45 * (0.5 + 0.5 * z)));
       return hsvToRgb(hue, sat, val);
     }
 
@@ -399,86 +464,86 @@
     // Quasicrystal generator (6D grid -> 3D projection)
     // -----------------------------
     const EDGE_INDICES = [
-      [0,1],[0,2],[0,4],[1,3],[1,5],[2,3],
-      [2,6],[3,7],[4,5],[4,6],[5,7],[6,7]
+      [0, 1], [0, 2], [0, 4], [1, 3], [1, 5], [2, 3],
+      [2, 6], [3, 7], [4, 5], [4, 6], [5, 7], [6, 7]
     ];
     const FACE_INDICES = [
-      [0,2,3,1],
-      [0,1,5,4],
-      [5,7,6,4],
-      [2,6,7,3],
-      [0,4,6,2],
-      [3,7,5,1]
+      [0, 2, 3, 1],
+      [0, 1, 5, 4],
+      [5, 7, 6, 4],
+      [2, 6, 7, 3],
+      [0, 4, 6, 2],
+      [3, 7, 5, 1]
     ];
 
     function icosahedralBasis() {
       const sqrt5 = Math.sqrt(5.0);
       const basis = [];
-      for (let t=0; t<5; t++) {
-        const theta = 2.0*Math.PI/5.0 * t;
+      for (let t = 0; t < 5; t++) {
+        const theta = 2.0 * Math.PI / 5.0 * t;
         const u = Math.cos(theta) * 2.0 / sqrt5;
         const v = Math.sin(theta) * 2.0 / sqrt5;
         const w = 1.0 / sqrt5;
-        basis.push([u,v,w]);
+        basis.push([u, v, w]);
       }
-      basis.push([0,0,1]);
+      basis.push([0, 0, 1]);
       return basis;
     }
 
     function dot6x3(v6, basis) {
-      let x=0,y=0,z=0;
-      for (let i=0;i<6;i++) {
+      let x = 0, y = 0, z = 0;
+      for (let i = 0; i < 6; i++) {
         const c = v6[i];
         x += c * basis[i][0];
         y += c * basis[i][1];
         z += c * basis[i][2];
       }
-      return vec3(x,y,z);
+      return vec3(x, y, z);
     }
 
     function canonicalQuadKey(q) {
       const rots = [];
-      for (let s=0;s<4;s++) rots.push([q[s],q[(s+1)%4],q[(s+2)%4],q[(s+3)%4]]);
-      const rq = [q[3],q[2],q[1],q[0]];
-      for (let s=0;s<4;s++) rots.push([rq[s],rq[(s+1)%4],rq[(s+2)%4],rq[(s+3)%4]]);
-      rots.sort((a,b)=>{
-        for (let i=0;i<4;i++) if (a[i]!==b[i]) return a[i]-b[i];
+      for (let s = 0; s < 4; s++) rots.push([q[s], q[(s + 1) % 4], q[(s + 2) % 4], q[(s + 3) % 4]]);
+      const rq = [q[3], q[2], q[1], q[0]];
+      for (let s = 0; s < 4; s++) rots.push([rq[s], rq[(s + 1) % 4], rq[(s + 2) % 4], rq[(s + 3) % 4]]);
+      rots.sort((a, b) => {
+        for (let i = 0; i < 4; i++) if (a[i] !== b[i]) return a[i] - b[i];
         return 0;
       });
       return rots[0].join(',');
     }
 
-    function mod1(x){ x = x % 1.0; return x < 0 ? x + 1.0 : x; }
+    function mod1(x) { x = x % 1.0; return x < 0 ? x + 1.0 : x; }
 
     function buildCluster(kRange, clusterSize, cutMode, vertexMargin, offsetEps) {
       const basis = icosahedralBasis();
-      const baseOffset = 1/6;
-      const jit = [0,1,2,3,5,8];
+      const baseOffset = 1 / 6;
+      const jit = [0, 1, 2, 3, 5, 8];
       const offsets = new Array(6);
-      for (let i=0;i<6;i++) offsets[i] = mod1(baseOffset + offsetEps * jit[i]);
+      for (let i = 0; i < 6; i++) offsets[i] = mod1(baseOffset + offsetEps * jit[i]);
 
       const rstCombos = combinations6Choose3();
       const cells = [];
 
       for (const rst of rstCombos) {
-        const M = [ basis[rst[0]].slice(), basis[rst[1]].slice(), basis[rst[2]].slice() ];
-        for (let k0=-kRange; k0<=kRange; k0++) {
-          for (let k1=-kRange; k1<=kRange; k1++) {
-            for (let k2=-kRange; k2<=kRange; k2++) {
-              const b = [ k0 - offsets[rst[0]], k1 - offsets[rst[1]], k2 - offsets[rst[2]] ];
+        const M = [basis[rst[0]].slice(), basis[rst[1]].slice(), basis[rst[2]].slice()];
+        for (let k0 = -kRange; k0 <= kRange; k0++) {
+          for (let k1 = -kRange; k1 <= kRange; k1++) {
+            for (let k2 = -kRange; k2 <= kRange; k2++) {
+              const b = [k0 - offsets[rst[0]], k1 - offsets[rst[1]], k2 - offsets[rst[2]]];
               const x = solve3x3(M, b);
               if (!x) continue;
 
               const idx6 = new Array(6);
-              for (let i=0;i<6;i++) {
-                const v = basis[i][0]*x[0] + basis[i][1]*x[1] + basis[i][2]*x[2] + offsets[i];
+              for (let i = 0; i < 6; i++) {
+                const v = basis[i][0] * x[0] + basis[i][1] * x[1] + basis[i][2] * x[2] + offsets[i];
                 idx6[i] = Math.ceil(v);
               }
               idx6[rst[0]] = k0; idx6[rst[1]] = k1; idx6[rst[2]] = k2;
 
               const verts6 = [];
               const pts3 = [];
-              for (let m=0;m<8;m++) {
+              for (let m = 0; m < 8; m++) {
                 const v6 = idx6.slice();
                 v6[rst[0]] += (m & 1) ? 1 : 0;
                 v6[rst[1]] += (m & 2) ? 1 : 0;
@@ -492,11 +557,11 @@
         }
       }
 
-      let coi = vec3(0,0,0);
+      let coi = vec3(0, 0, 0);
       for (const c of cells) {
-        const cen = vec3(0,0,0);
+        const cen = vec3(0, 0, 0);
         for (const p of c.pts3) cen.add(p);
-        cen.multiplyScalar(1/8);
+        cen.multiplyScalar(1 / 8);
         c.center = cen;
         coi.add(cen);
       }
@@ -525,7 +590,7 @@
       const verts6Unique = [];
       for (const c of kept) {
         c.idx8 = new Array(8);
-        for (let i=0;i<8;i++) {
+        for (let i = 0; i < 8; i++) {
           const key = c.verts6[i].join(',');
           let id = vMap.get(key);
           if (id === undefined) {
@@ -538,7 +603,7 @@
       }
 
       const pts = new Array(verts6Unique.length);
-      for (let i=0;i<verts6Unique.length;i++) pts[i] = dot6x3(verts6Unique[i], basis);
+      for (let i = 0; i < verts6Unique.length; i++) pts[i] = dot6x3(verts6Unique[i], basis);
 
       const edgeSet = new Set();
       const edges = [];
@@ -546,11 +611,11 @@
       const quads = [];
 
       for (const c of kept) {
-        for (const [a,b] of EDGE_INDICES) {
+        for (const [a, b] of EDGE_INDICES) {
           let i = c.idx8[a], j = c.idx8[b];
-          if (i > j) { const t=i; i=j; j=t; }
+          if (i > j) { const t = i; i = j; j = t; }
           const key = i + ',' + j;
-          if (!edgeSet.has(key)) { edgeSet.add(key); edges.push([i,j]); }
+          if (!edgeSet.has(key)) { edgeSet.add(key); edges.push([i, j]); }
         }
         for (const face of FACE_INDICES) {
           const q = [c.idx8[face[0]], c.idx8[face[1]], c.idx8[face[2]], c.idx8[face[3]]];
@@ -569,7 +634,7 @@
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0b0d12);
 
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.01, 200);
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 200);
     camera.position.set(2.8, 2.0, 1.7);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
@@ -596,7 +661,7 @@
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     const room = new RoomEnvironment();
-    room.traverse((o)=>{ if (o && o.isLight) o.intensity *= 0.33; });
+    room.traverse((o) => { if (o && o.isLight) o.intensity *= 0.33; });
     const envTex = pmrem.fromScene(room, 0.04).texture;
     scene.environment = envTex;
 
@@ -611,7 +676,7 @@
     // Composer
     const gl = renderer.getContext();
     const rt = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, { depthBuffer: true, stencilBuffer: false });
-    try { if (gl && gl instanceof WebGL2RenderingContext) rt.samples = 8; } catch (e) {}
+    try { if (gl && gl instanceof WebGL2RenderingContext) rt.samples = 8; } catch (e) { }
     const composer = new EffectComposer(renderer, rt);
 
     const renderPass = new RenderPass(scene, camera);
@@ -644,7 +709,7 @@
       if (!obj) return;
       if (obj.geometry) obj.geometry.dispose();
       if (obj.material) {
-        if (Array.isArray(obj.material)) obj.material.forEach(m=>m.dispose());
+        if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
         else obj.material.dispose();
       }
       scene.remove(obj);
@@ -667,7 +732,7 @@
       const baseN = pts.length;
       const positions = [];
       const colors = [];
-      for (let i=0;i<baseN;i++) {
+      for (let i = 0; i < baseN; i++) {
         const p = pts[i];
         positions.push(p.x, p.y, p.z);
         const c = vColors[i];
@@ -678,7 +743,7 @@
         const p0 = pts[q[0]], p1 = pts[q[1]], p2 = pts[q[2]], p3 = pts[q[3]];
         const c0 = vColors[q[0]], c1 = vColors[q[1]], c2 = vColors[q[2]], c3 = vColors[q[3]];
         const pc = p0.clone().add(p1).add(p2).add(p3).multiplyScalar(0.25);
-        const cc = [(c0[0]+c1[0]+c2[0]+c3[0])*0.25,(c0[1]+c1[1]+c2[1]+c3[1])*0.25,(c0[2]+c1[2]+c2[2]+c3[2])*0.25];
+        const cc = [(c0[0] + c1[0] + c2[0] + c3[0]) * 0.25, (c0[1] + c1[1] + c2[1] + c3[1]) * 0.25, (c0[2] + c1[2] + c2[2] + c3[2]) * 0.25];
         const cid = positions.length / 3;
         positions.push(pc.x, pc.y, pc.z);
         colors.push(cc[0], cc[1], cc[2]);
@@ -720,20 +785,20 @@
       const newEdgesMesh = new THREE.InstancedMesh(cylGeom, edgeMat, data.edges.length);
       newEdgesMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
 
-      const yAxis = new THREE.Vector3(0,1,0);
+      const yAxis = new THREE.Vector3(0, 1, 0);
       const tmpMat = new THREE.Matrix4();
       const tmpQuat = new THREE.Quaternion();
       const tmpPos = new THREE.Vector3();
       const tmpScale = new THREE.Vector3();
       const dir = new THREE.Vector3();
 
-      for (let e=0; e<data.edges.length; e++) {
-        const [i,j] = data.edges[e];
+      for (let e = 0; e < data.edges.length; e++) {
+        const [i, j] = data.edges[e];
         const a = pts[i], b = pts[j];
         dir.copy(b).sub(a);
         const len = dir.length();
         if (len < 1e-9) { tmpMat.identity(); newEdgesMesh.setMatrixAt(e, tmpMat); continue; }
-        dir.multiplyScalar(1/len);
+        dir.multiplyScalar(1 / len);
         tmpPos.copy(a).add(b).multiplyScalar(0.5);
         tmpQuat.setFromUnitVectors(yAxis, dir);
         tmpScale.set(params.edgeRadius, len, params.edgeRadius);
@@ -752,12 +817,12 @@
       scene.add(facesMesh);
       scene.add(edgesMesh);
 
-      controls.target.set(0,0,0);
+      controls.target.set(0, 0, 0);
       controls.update();
 
       const t1 = performance.now();
       statusEl.textContent =
-        `Vertices: ${baseN}\nQuads: ${data.quads.length}\nEdges: ${data.edges.length}\nBuild: ${(t1-t0).toFixed(0)} ms`;
+        `Vertices: ${baseN}\nQuads: ${data.quads.length}\nEdges: ${data.edges.length}\nBuild: ${(t1 - t0).toFixed(0)} ms`;
     }
 
     // -----------------------------
@@ -827,7 +892,7 @@
 
     function maybeAutoUpdate() { syncLabels(); if (ui.autoUpdate.checked) regenDebounced(); }
 
-    ['input','change'].forEach(ev=>{
+    ['input', 'change'].forEach(ev => {
       ui.kRange.addEventListener(ev, maybeAutoUpdate);
       ui.clusterSize.addEventListener(ev, maybeAutoUpdate);
       ui.cutMode.addEventListener(ev, maybeAutoUpdate);
@@ -835,52 +900,52 @@
       ui.offsetEps.addEventListener(ev, maybeAutoUpdate);
       ui.edgeRadius.addEventListener(ev, maybeAutoUpdate);
 
-      ui.faceOpacity.addEventListener(ev, ()=>{
+      ui.faceOpacity.addEventListener(ev, () => {
         syncLabels();
         if (facesMesh) { facesMesh.material.opacity = parseFloat(ui.faceOpacity.value); facesMesh.material.needsUpdate = true; }
       });
-      ui.faceTransmission.addEventListener(ev, ()=>{
+      ui.faceTransmission.addEventListener(ev, () => {
         syncLabels();
         if (facesMesh) { facesMesh.material.transmission = parseFloat(ui.faceTransmission.value); facesMesh.material.needsUpdate = true; }
       });
-      ui.faceRoughness.addEventListener(ev, ()=>{
+      ui.faceRoughness.addEventListener(ev, () => {
         syncLabels();
         if (facesMesh) { facesMesh.material.roughness = parseFloat(ui.faceRoughness.value); facesMesh.material.needsUpdate = true; }
       });
-      ui.edgeRoughness.addEventListener(ev, ()=>{
+      ui.edgeRoughness.addEventListener(ev, () => {
         syncLabels();
         if (edgesMesh) { edgesMesh.material.roughness = parseFloat(ui.edgeRoughness.value); edgesMesh.material.needsUpdate = true; }
       });
     });
 
-    ui.exposure.addEventListener('input', ()=>{
+    ui.exposure.addEventListener('input', () => {
       syncLabels();
       renderer.toneMappingExposure = parseFloat(ui.exposure.value);
     });
 
-    ui.enableSSAA.addEventListener('change', ()=>{
+    ui.enableSSAA.addEventListener('change', () => {
       syncLabels();
       rebuildComposer(ui.enableSSAA.value === '1');
     });
 
-    ui.ssaaLevel.addEventListener('input', ()=>{
+    ui.ssaaLevel.addEventListener('input', () => {
       syncLabels();
       ssaaPass.sampleLevel = parseInt(ui.ssaaLevel.value, 10);
     });
 
-    ui.showFaces.addEventListener('change', ()=>{ if (facesMesh) facesMesh.visible = ui.showFaces.checked; });
-    ui.showEdges.addEventListener('change', ()=>{ if (edgesMesh) edgesMesh.visible = ui.showEdges.checked; });
+    ui.showFaces.addEventListener('change', () => { if (facesMesh) facesMesh.visible = ui.showFaces.checked; });
+    ui.showEdges.addEventListener('change', () => { if (edgesMesh) edgesMesh.visible = ui.showEdges.checked; });
 
     ui.regenBtn.addEventListener('click', regen);
-    ui.shotBtn.addEventListener('click', ()=>{
+    ui.shotBtn.addEventListener('click', () => {
       const a = document.createElement('a');
       a.download = `quasicrystal_${Date.now()}.png`;
       a.href = renderer.domElement.toDataURL('image/png');
       a.click();
     });
 
-    window.addEventListener('resize', ()=>{
-      camera.aspect = window.innerWidth/window.innerHeight;
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
       composer.setSize(window.innerWidth, window.innerHeight);
@@ -893,7 +958,7 @@
     buildGeometryAndMeshes(readParams());
     overlay.style.display = "none";
 
-    function animate(){
+    function animate() {
       requestAnimationFrame(animate);
       controls.update();
       composer.render();
@@ -901,4 +966,5 @@
     animate();
   </script>
 </body>
+
 </html>
