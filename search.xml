@@ -99,6 +99,25 @@
     
     
     <entry>
+      <title>Escher 风格的非周期密铺</title>
+      <link href="/debruijn-rhombus-tiling/"/>
+      <url>/debruijn-rhombus-tiling/</url>
+      
+        <content type="html"><![CDATA[<p>周末刚完成了一个有点烧脑的 Shadertoy 项目，Escher 风格的 <a href="https://en.wikipedia.org/wiki/Aperiodic_tiling">非周期密铺</a>：</p><span id="more"></span><iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/wsKBW1?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen=""></iframe><p>你能看出这个动画的奥妙之处在哪里吗？</p><p>直观上看，这个动画由一些错落有致，但又无缝拼接在一起的房间（立方体）组成，每个房间的外面绘制了一些“窗户”，窗户的开闭、朝向是变化的。但是仔细一看，诶，好像一些房间的窗口的朝向是“矛盾”的哎？这种整体布局和谐但是局部细节与真实世界矛盾的艺术风格由<a href="https://en.wikipedia.org/wiki/M._C._Escher">Escher</a>(1898-1972) 所创立，所以这个作品也可以叫做 Escher 风格的不可能密铺。</p><p>这个动画里面使用的几何元素只有菱形，这些菱形分为两种：胖菱形和瘦菱形。在代码中我是对每一个像素，首先确定其所属的菱形，然后计算它到各个装饰元素（菱形边界、窗户、窗台） 的 signed distance field 函数 <span class="math inline">\(d\)</span>，根据 <span class="math inline">\(d\)</span> 的值来混合颜色。</p><p>计算菱形位置的算法非常奇妙，它来自 de Bruijn 1981年的论文，是构造准晶的网格法 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>；添加窗户的点缀是受到了Greg Egan 的 <a href="http://gregegan.net/APPLETS/02/02.html">Javascript动画</a> 启发。我很久之前就知道 de Bruijn 的方法，但是看到 Greg Egan的动画以后还是萌发了在 shader里面做一个更漂亮的效果的想法。这个念头憋了好久，终于前几天利用晚上业余时间动手折腾了一番，捣鼓出了上面的效果。我的动画与Greg Egan 不同的地方在于，Greg Egan 是用 Javascript 在 canvas上动画，可以直接计算出菱形的坐标然后绘制，思路比较直接；但是在 shader里面则需要对每一个像素，先计算它变换后的点，再搜索确定该点所在的菱形，所以实现起来要麻烦一些。此外Greg Egan是精心选择了每一个窗户的开口方向，使得所有的房间的窗户看起来都是矛盾的；我这里为了简单起见只随机设置了开口的方向，所以只有部分房间的窗户是矛盾的。</p><p>把代码中的 <code>N</code> 改成 4 可以得到 Ammann-Beenker密铺，读者不妨一试（改完记得按下 Alt + Enter 编译！）</p><p>代码中窗户的绘制方法参考了 Greg Egan 的代码和注释，特别致谢。</p><p>de Bruijn 的网格方法也可以用于绘制 3D 的准晶，例如 <a href="demos/icosa_qc.html">Icosahedral Quasicrystal</a>。</p><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr><ol><li id="fn1"><p>N.G. de Bruijn. Algebraic theory of Penrose’snon-periodic tilings of the plane.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li></ol></aside>]]></content>
+      
+      
+      <categories>
+          
+          <category> Shadertoy </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>刺客 vs 保镖</title>
       <link href="/assassin-vs-bodyguards/"/>
       <url>/assassin-vs-bodyguards/</url>
