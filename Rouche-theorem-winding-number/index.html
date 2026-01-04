@@ -19,7 +19,7 @@
     
 
         <title>
-            遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理 | 朝花夕拾</title>
+            遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="我写了一个 shadertoy
@@ -30,14 +30,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -46,11 +46,17 @@
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
 
+<meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -59,7 +65,7 @@
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -91,14 +97,6 @@
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -159,14 +157,6 @@
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -235,7 +225,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -243,7 +233,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -268,6 +258,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -341,28 +339,41 @@
 <span id="more"></span>
 <div class="statement simple plain unnumbered">
 <p>一个人和他的狗在公园里绕着一棵树散步，人和狗各自走的路径都是闭曲线，即经过一段时间后都会回到起点。如果人把狗绳抓的紧一些，使得整个过程中狗<strong>无法接触</strong>到树，则结束后人和狗绕着树走的圈数是一样的，这就是下面这个动画演示的：（树的位置是原点，用一个表盘标记）</p>
-<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fdK3RD?gui=true&amp;t=10&amp;paused=true&amp;muted=false" allowfullscreen="">
-</iframe>
+<div style="display:flex; justify-content:center;">
+<p><object data="/code/rouche.svg" type="image/svg+xml" style="width:90%; aspect-ratio: 600/360;"></object></p>
 </div>
-<p>对应的数学结论是：如果两条闭曲线 <span class="math inline">\(\gamma_1,\gamma_2\)</span> 都不经过原点，且 <span class="math inline">\(\gamma_1\)</span>
+</div>
+<p>对应的数学结论是：</p>
+<blockquote>
+<p>如果两条闭曲线 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
+都不经过原点，且 <span class="math inline">\(\gamma_1\)</span>
 可以在不碰触到原点的前提下通过连续的形变变为 <span class="math inline">\(\gamma_2\)</span>（同伦），则 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
 关于原点的环绕数相等。</p>
+</blockquote>
 <p>注意这个结论只要求 <span class="math inline">\(\gamma_1,\gamma_2\colon\
 [0,1]\to\mathbb{R}^2\)</span>
 是两条连续曲线，并不涉及解析性。因为环绕数和同伦都是拓扑概念，只涉及连续性。</p>
-<p>当 <span class="math inline">\(\gamma_1=f(S^1),\gamma_2=g(S^1)\)</span>
-分别是单位圆 <span class="math inline">\(S^1\colon\
-\{z\in\mathbb{C}:|z|=1\}\)</span> 在两个解析函数 <span class="math inline">\(f,g\)</span> 下的像时，<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Argument_principle">幅角原理</a>
-告诉我们 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
+<p>但如果我们进一步考虑“人和狗的路线”分别是单位圆 <span class="math inline">\(S^1\colon\ \{z\in\mathbb{C}:|z|=1\}\)</span>
+经由两个解析函数 <span class="math inline">\(f,g\)</span>
+映射后的路径，那事情就变得有趣多了。</p>
+<p>首先 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Argument_principle">幅角原理</a>
+给出了环绕数的另一种解释：</p>
+<blockquote>
+<p><span class="math inline">\(\gamma_1,\gamma_2\)</span>
 关于原点的环绕数分别等于 <span class="math inline">\(f,g\)</span> 在
-<span class="math inline">\(S^1\)</span> 内部的零点个数。进一步 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem">Rouché
-定理</a> 指出，如果对任何 <span class="math inline">\(z\in S^1\)</span>
-都有 <span class="math inline">\(|f(z)|&gt;|f(z)-g(z)|\)</span>
-成立，即可保证 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
-关于原点有相同的环绕数，从而 <span class="math inline">\(f,g\)</span> 在
-<span class="math inline">\(S^1\)</span>
-内部的零点个数也是相同的。Rouché 定理的几何直观是，假设人的位置是 <span class="math inline">\(f(z)\)</span>，狗的位置是 <span class="math inline">\(g(z)\)</span>，绳子 <span class="math inline">\(l(z)=f(z)-g(z)\)</span> 的长度 <span class="math inline">\(|l(z)|\)</span> 始终小于人到原点的距离 <span class="math inline">\(|f(z)|\)</span>，就可以保证狗始终够不到原点。</p>
-<p>动画中左下角的圆周是 <span class="math inline">\(S^1\)</span>，动画右边红、绿两条路径分别是 <span class="math inline">\(f(S^1)\)</span> 和 <span class="math inline">\(g(S^1)\)</span>。这里的 <span class="math inline">\(f\)</span> 我取的形如 <span class="math display">\[f(z)
+<span class="math inline">\(S^1\)</span> 内部的零点个数。</p>
+</blockquote>
+<p>进一步 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem">Rouché
+定理</a> 给出了 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
+关于原点有相同环绕数的充分条件：</p>
+<blockquote>
+<p>如果对任何 <span class="math inline">\(z\in S^1\)</span> 都有 <span class="math inline">\(|f(z)|&gt;|f(z)-g(z)|\)</span> 成立，则 <span class="math inline">\(\gamma_1,\gamma_2\)</span>
+关于原点有相同的环绕数。于是 <span class="math inline">\(f,g\)</span> 在
+<span class="math inline">\(S^1\)</span> 内部的零点个数也相等。</p>
+</blockquote>
+<p>想象人的位置是 <span class="math inline">\(f(z)\)</span>，狗的位置是
+<span class="math inline">\(g(z)\)</span>，由于绳子 <span class="math inline">\(l(z)=f(z)-g(z)\)</span> 的长度 <span class="math inline">\(|l(z)|\)</span> 始终小于人到原点的距离 <span class="math inline">\(|f(z)|\)</span>，所以狗始终够不到原点。</p>
+<p>在动画中，左下角的圆周是 <span class="math inline">\(S^1\)</span>，右边红、绿两条路径分别是 <span class="math inline">\(f(S^1)\)</span> 和 <span class="math inline">\(g(S^1)\)</span>。这里的 <span class="math inline">\(f\)</span> 我取的形如 <span class="math display">\[f(z)
 =\frac{z-a}{1-\overline{a}z}\frac{z-b}{1-\overline{b}z}\frac{z-c}{1-\overline{c}z}
 (z-2-2i),\quad |a|,|b|,|c|&lt;1.\]</span> <span class="math inline">\(f(z)\)</span> 在 <span class="math inline">\(S^1\)</span> 的内部有 3 个根
 （我用红点标出来了），在 <span class="math inline">\(S^1\)</span> 上不为
@@ -374,10 +385,12 @@ z\in S^1.\]</span> 所以只要绳子 <span class="math inline">\(l(z)\)</span> 
 就不可能接触到原点。我这里取了 <span class="math inline">\(l(z) =
 cz\)</span>，其中 <span class="math inline">\(c\)</span> 是一个小于
 <span class="math inline">\(2\sqrt{2}-1\)</span> 的正实数。</p>
-<p>Needham 的书中还介绍了 <span class="math inline">\(\gamma\)</span>
-的环绕数在 <span class="math inline">\(\mathbb{C}\setminus\gamma\)</span>
-的每个连通分支上都是常数。对不在 <span class="math inline">\(\gamma\)</span> 上的一点 <span class="math inline">\(z\)</span>，我们可以稍稍移动 <span class="math inline">\(z\)</span> 到另一个点 <span class="math inline">\(z'\)</span>，只要保持 <span class="math inline">\(z'\)</span> 仍然位于 <span class="math inline">\(z\)</span> 所在的连通分支内，<span class="math inline">\(\gamma\)</span> 关于 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(z'\)</span>
-的环绕数就一定相同。利用这个事实并结合幅角原理不难得出下面的结论：</p>
+<p>Needham 的书中还介绍了一个有意思的事实：</p>
+<blockquote>
+<p><span class="math inline">\(\gamma\)</span> 的环绕数在 <span class="math inline">\(\mathbb{C}\setminus\gamma\)</span>
+的每个连通分支上都是常数。也就是说，对不在 <span class="math inline">\(\gamma\)</span> 上的一点 <span class="math inline">\(z\)</span>，我们可以稍稍移动 <span class="math inline">\(z\)</span> 到另一个点 <span class="math inline">\(z'\)</span>，只要保持 <span class="math inline">\(z'\)</span> 仍然位于 <span class="math inline">\(z\)</span> 所在的连通分支内，<span class="math inline">\(\gamma\)</span> 关于 <span class="math inline">\(z\)</span> 和 <span class="math inline">\(z'\)</span> 的环绕数就一定相同。</p>
+</blockquote>
+<p>利用这个事实并结合幅角原理不难得出下面的结论：</p>
 <div id="connected-component" class="unnumbered statement sta___ plain">
 <p><span class="statement-heading"><span class="statement-label">推论</span>.</span><span class="statement-spah">
 </span>设 <span class="math inline">\(\gamma\)</span>
@@ -412,6 +425,7 @@ U\)</span>，记 <span class="math inline">\(w_0=f(z_0)\)</span>。由于
 <p><span class="math display">\[|f(z)- w_0| \geq e &gt; |w_1-w_0|,\quad
 z\in \gamma.\]</span></p>
 <p>所以 <span class="math inline">\(w_1\)</span> 在 <span class="math inline">\(\gamma\)</span> 内部至少有一个原像。由 <span class="math inline">\(w_1\)</span> 的任意性可得 <span class="math inline">\(V_e\subset f(U)\)</span> 是 <span class="math inline">\(w_0\)</span> 在 <span class="math inline">\(f(U)\)</span> 中的开邻域，从而 <span class="math inline">\(f(U)\)</span> 是开集。<span class="math inline">\(\blacksquare\)</span></p>
+<p>怎么样？一次简单的遛狗，帮助我们回顾了拓扑和复分析中几个核心的定理。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Needham1997" class="csl-entry" role="listitem">
@@ -432,8 +446,8 @@ Press, Oxford University Press, New York.
 
     
       <p class="pink-link-context">
-        <a href="/poncelet-blaschke/" rel="next" title="Poncelet 定理与 Blaschke 乘积">
-          下一篇：Poncelet 定理与 Blaschke 乘积
+        <a href="/Marden-theorem/" rel="next" title="静电场与 Marden 定理">
+          下一篇：静电场与 Marden 定理
         </a>
       </p>
       

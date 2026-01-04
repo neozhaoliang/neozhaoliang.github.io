@@ -1,0 +1,1096 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            二维随机游动 （一）：逃出太阳系可没有你想象的那么难！ | Why so serious?</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="这是一个关于二维随机游动的小系列，整理自我研究生时的读书笔记，每篇文章会从一个有趣直观的问题出发，介绍随机游动理论中的一个相关知识。这些问题是我精心挑选的，总体上都比较基础，并不涉及多么复杂的知识。但是请你也不要期待很快就可以看完问题的解答，因为它们不是那种用个什么巧办法三两下就能搞定的急转弯！
+
+问题：
+假设某醉汉以太阳系的中心为原点出发，在一个固定的平面内，以恒为 1
+米的步长作随机行走。每次醉汉等概率地在东、南、西、北四个方向中任选一个，然后向此方向移动
+1 米的距离。如果某个时刻醉汉回到了原点，或者离开了太阳系则过程结束。
+现在有 A, B 两个旁观者打赌哪一种情形先发生，A 认为醉汉会先回到原点，B
+认为醉汉会先离开太阳系。请问 A 和 B 获胜的概率分别是多少？
+作为参考，太阳系半径约为 45
+亿千米，看作一个中心在原点的圆形区域。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="二维随机游动 （一）：逃出太阳系可没有你想象的那么难！"/>
+    <meta property="og:site_name" content="Why so serious?"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/随机游动/">随机游动</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>二维随机游动 （一）：逃出太阳系可没有你想象的那么难！</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2016-09-30T16:00:00.000Z"><a href="/random-walk-potential-kernel/">2016-10-01</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0"><span class="section table-of-contents-text">二维随机游动的特征函数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E5%8A%BF%E6%A0%B8"><span class="section table-of-contents-text">二维随机游动的势核</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8A%BF%E6%A0%B8%E5%9C%A8%E9%99%A4%E5%8E%BB%E5%8E%9F%E7%82%B9%E4%B9%8B%E5%A4%96%E6%98%AF%E8%B0%83%E5%92%8C%E7%9A%84"><span class="section table-of-contents-text">势核在除去原点之外是调和的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8A%BF%E6%A0%B8%E7%9A%84%E6%B8%90%E8%BF%9B%E4%BC%B0%E8%AE%A1"><span class="section table-of-contents-text">势核的渐进估计</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E5%87%BB"><span class="section table-of-contents-text">最后一击</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BB%93%E8%AF%AD"><span class="section table-of-contents-text">结语</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<p>这是一个关于二维随机游动的小系列，整理自我研究生时的读书笔记，每篇文章会从一个有趣直观的问题出发，介绍随机游动理论中的一个相关知识。这些问题是我精心挑选的，总体上都比较基础，并不涉及多么复杂的知识。但是请你也不要期待很快就可以看完问题的解答，因为它们不是那种用个什么巧办法三两下就能搞定的急转弯！</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>假设某醉汉以太阳系的中心为原点出发，在一个固定的平面内，以恒为 1
+米的步长作随机行走。每次醉汉等概率地在东、南、西、北四个方向中任选一个，然后向此方向移动
+1 米的距离。如果某个时刻醉汉回到了原点，或者离开了太阳系则过程结束。</p>
+<p>现在有 A, B 两个旁观者打赌哪一种情形先发生，A 认为醉汉会先回到原点，B
+认为醉汉会先离开太阳系。请问 A 和 B 获胜的概率分别是多少？</p>
+<p>作为参考，太阳系半径约为 45
+亿千米，看作一个中心在原点的圆形区域。</p>
+</div>
+<span id="more"></span>
+<p>题目其实是在说，醉汉的行为是 <span class="math inline">\(\mathbb{Z}^2\)</span> 上的简单随机游动，而我们熟知
+<span class="math inline">\(\mathbb{Z}^d\)</span> 上的随机游动在 <span class="math inline">\(d=1,2\)</span> 时是常返的，所以醉汉以概率 1
+会走遍平面上的所有角落，即 A, B 这场赌局是以概率 1
+可以分出胜负的。从直观上，<span class="math inline">\(A\)</span>
+的获胜概率应该更大，因为醉汉回到原点显然是个更容易发生的事件：醉汉的路径可能是选择一个方向一步迈出去再一步迈回来，或者干脆绕一个圈子，而走出太阳系那么远的距离则困难得多。事实也是如此，实际上
+A, B 获胜概率的“分水岭”大约在 <span class="math inline">\(R\approx
+4.2\)</span> 米处 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，随着逃逸半径 <span class="math inline">\(R\)</span> 的增大，A
+获胜的概率也随之增大，常返性保证了当 <span class="math inline">\(R\to+\infty\)</span> 时 A 获胜的概率趋于
+1。这里有趣的地方在于，A 的获胜概率随逃逸半径 <span class="math inline">\(R\)</span>
+的增加而增长的速度相当缓慢，其近似值约为 <span class="math display">\[1-\left(\frac{2}{\pi}\ln R +
+1.0293737\right)^{-1},\]</span> 所以当 <span class="math inline">\(R\)</span> 取为太阳系半径时，B 的获胜概率大约为
+1/20，这不是个可以忽略的值。甚至当 <span class="math inline">\(R\)</span> 扩大为银河系的半径（5 万光年） 时，B
+仍然有大约 1/30 的概率获胜！是不是很反直觉呢？</p>
+<p>本文下面就来介绍怎样得出上面获胜概率的渐进公式。这里的讲述主要参考了
+<span class="citation" data-cites="spitzergtm">(<a href="#ref-spitzergtm" role="doc-biblioref">Spitzer
+1976</a>)</span>，好处是比较简单易懂，缺点是没有给出势核误差项的渐进估计。使用局部中心极限定理的话可以给出势核误差项的渐进估计
+<span class="citation" data-cites="lawler2010random">(<a href="#ref-lawler2010random" role="doc-biblioref">Lawler and Limic
+2010</a>)</span>，但是我想本文还是克制一点，尽量保持在初等的范围内比较好。</p>
+<p>我们把问题分解为以下步骤来解决：</p>
+<ol type="1">
+<li>构造一个叫做势核 (potential kernel) 的调和函数。</li>
+<li>通过估计积分获得势核的渐进阶。</li>
+<li>使用势核的调和性质构造对应的随机游动的鞅。</li>
+<li>使用鞅的可料停时定理给出逃逸概率的估计。</li>
+</ol>
+<h1 id="二维随机游动的特征函数">二维随机游动的特征函数</h1>
+<p>我们把醉汉在 <span class="math inline">\(n\)</span> 时刻的位置 <span class="math inline">\(S_n\)</span> 记作 <span class="math display">\[S_n=X_1+\cdots+X_n.\]</span> 其中 <span class="math inline">\(X_i\)</span>
+表示单步移动的随机向量，它们独立且与随机向量 <span class="math inline">\(X\)</span> 同分布： <span class="math display">\[\mathbb{P}(X=e_1)=\mathbb{P}(X=e_2)=\mathbb{P}(X=-e_1)=\mathbb{P}(X=-e_2)=\frac{1}{4}.\]</span>
+这里 <span class="math inline">\(e_1=(1, 0), e_2=(0, 1)\)</span>
+为平面上的正交单位向量。 记 <span class="math inline">\(\phi(\theta)=\mathop{\mathrm{\mathbb{E}}}{\mathrm{e}^{i\theta\cdot
+X}}\)</span> 为 <span class="math inline">\(X\)</span> 的特征函数，其中
+<span class="math inline">\(\theta=(\theta_1,\theta_2)\)</span>，则
+<span class="math display">\[
+\phi(\theta)=\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
+e_2\}}\mathrm{e}^{i(\theta_1x_1+\theta_2x_2)}=\frac{1}{2}(\cos\theta_1 +
+\cos\theta_2).
+\]</span> 于是 <span class="math inline">\(S_n\)</span> 的特征函数为
+<span class="math inline">\(\phi^n(\theta)\)</span>。</p>
+<p>用特征函数我们可以非常方便地表示 <span class="math inline">\(n\)</span> 步以后醉汉位于任意 <span class="math inline">\(y\in\mathbb{Z}^2\)</span> 的概率 <span class="math inline">\(\mathbb{P}(S_n=y)\)</span>： <span class="math display">\[
+\mathbb{P}(S_n=y) =
+\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\mathrm{e}^{-i\theta\cdot
+y}\phi^n(\theta)\,\mathrm{d}\theta.\label{eq:sn}\tag{1}
+\]</span> 其中 <span class="math inline">\(\mathbb{T}=[-\pi,\pi]\times[-\pi,
+\pi]\)</span>。这是因为根据特征函数定义有 <span class="math display">\[
+\phi^n(\theta)=\mathop{\mathrm{\mathbb{E}}}{\mathrm{e}^{i\theta\cdot
+S_n}}=\sum_{x\in\mathbb{Z}^2}\mathbb{P}(S_n=x)\mathrm{e}^{i\theta\cdot
+x}.
+\]</span> 两边同时乘以 <span class="math inline">\(\mathrm{e}^{-i\theta\cdot y}\)</span> 并在 <span class="math inline">\(\mathbb{T}\)</span> 上积分即得 <span class="math display">\[\begin{aligned}
+\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\mathrm{e}^{-i\theta\cdot
+y}\phi^n(\theta)\,\mathrm{d}\theta&amp;=
+\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\sum_{x\in\mathbb{Z}^2}\mathbb{P}(S_n=x)\mathrm{e}^{i\theta\cdot(x-y)}\,\mathrm{d}\theta\\&amp;=
+\sum_{x\in\mathbb{Z}^2}\mathbb{P}(S_n=x)\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\mathrm{e}^{i\theta\cdot(x-y)}\,\mathrm{d}\theta\\&amp;=
+\sum_{x\in\mathbb{Z}^2}\mathbb{P}(S_n=x)\cdot\delta_{x,y}\\&amp;=
+\mathbb{P}(S_n=y).
+\end{aligned}
+\]</span> 这里我们利用了级数 <span class="math inline">\(\sum_{x\in\mathbb{Z}^2}\mathbb{P}(S_n=x)\mathrm{e}^{i\theta\cdot(x-y)}\)</span>
+绝对收敛（从而可以交换求和顺序），以及对 <span class="math inline">\(z\in\mathbb{Z}^2\)</span> 的积分 <span class="math display">\[
+\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\mathrm{e}^{i\theta\cdot
+z}\,\mathrm{d}\theta
+\]</span> 在 <span class="math inline">\(z=(0, 0)\)</span> 处为
+1，在其它位置均为 0 的简单事实。</p>
+<blockquote>
+<p>上面的讨论对任意维数都适用，<span class="math inline">\(\mathbb{Z}^d\)</span> 上的简单随机游动其特征函数为
+<span class="math inline">\(\frac{1}{2}\sum_{i=1}^d\cos\theta_i\)</span>，关于
+<span class="math inline">\(\mathbb{P}(S_n=y)\)</span>
+的类似表达式仍然成立。</p>
+</blockquote>
+<h1 id="二维随机游动的势核">二维随机游动的势核</h1>
+<p>势核可以看作是 Green 函数在二维情形的替代物：在 <span class="math inline">\(d\geq3\)</span> 时，<span class="math inline">\(\mathbb{Z}^d\)</span> 上的简单随机游动的 Green
+函数 <span class="math inline">\(G(x,y)\)</span> 定义为从 <span class="math inline">\(x\)</span> 出发的随机游动访问 <span class="math inline">\(y\)</span> 的期望次数： <span class="math display">\[G(x, y) =
+\mathbb{E}_x\left(\sum_{k=1}^\infty\mathbb{1}_{\{S_k=y\}}\right)=\sum_{k=1}^\infty
+\mathbb{P}_x(S_k=y).\]</span> 由于二维随机游动是常返的，上面的级数在
+<span class="math inline">\(d=2\)</span> 时发散，所以上述 Green
+函数的定义失效，但是我们还是想定义一个类似 Green
+函数的调和函数，结果发现 Green
+函数的差对应的级数是收敛的，这就引出了下面势核的定义。</p>
+<p>记 <span class="math inline">\(\mathbb{P}_n(x, y)\)</span> 为从 <span class="math inline">\(x\)</span> 出发的简单随机游动经过 <span class="math inline">\(n\)</span> 步以后到达 <span class="math inline">\(y\)</span>
+的概率。显然此概率满足如下两条性质：</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbb{P}_n(x, y)=\mathbb{P}_n(0,
+y-x)=\mathbb{P}_n(x-y,0)\)</span>.</li>
+<li><span class="math inline">\(\lim_{n\to\infty}\mathbb{P}_n(x,y)=0\)</span>.</li>
+</ol>
+<p>定义二维随机游动的势核 (potential kernel) 为 <span class="math display">\[a(x)=\sum_{k=0}^\infty\left[\mathbb{P}_k(0,
+0)-\mathbb{P}_k(x, 0)\right].\]</span> 即 <span class="math inline">\(a(x)\)</span> 是极限 <span class="math display">\[
+a(x)=\lim_{n\to\infty}\sum_{k=0}^n\left[\mathbb{P}_k(0, 0) -
+\mathbb{P}_k(x, 0)\right]=\lim_{n\to\infty}a_n(x).
+\]</span> 由定义可见 <span class="math inline">\(a(0)=0\)</span>。我们还得说明这个级数对任何 <span class="math inline">\(x\in\mathbb{Z}^2\)</span> 确实是收敛的。为此注意到
+<span class="math display">\[
+\mathbb{P}_k(0,
+0)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\phi^k(\theta)\,\mathrm{d}\theta.
+\]</span> 以及根据 <span class="math inline">\((\ref{eq:sn})\)</span>
+<span class="math display">\[
+\mathbb{P}_k(x, 0)=\mathbb{P}_k(0,
+-x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\mathrm{e}^{i\theta\cdot
+x}\phi^k(\theta)\,\mathrm{d}\theta.
+\]</span> 于是 <span class="math display">\[
+a_n(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}(1-\phi^{n+1}(\theta))\,\mathrm{d}\theta.\label{eq:an}\tag{2}
+\]</span> 由于 <span class="math inline">\(|1-\phi^{n+1}(\theta)|\leq
+2\)</span> 对任何 <span class="math inline">\(n\geq0\)</span> 和 <span class="math inline">\(\theta\in\mathbb{T}\)</span>
+成立，所以如果我们能证明 <span class="math inline">\(\dfrac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span> 上可积，并且 <span class="math inline">\(\phi^{n+1}(\theta)\to0,\mathrm{a.e.}\)</span>
+的话，就可以使用控制收敛定理对 <span class="math inline">\((\ref{eq:an})\)</span> 两边取极限，即得 <span class="math display">\[
+a(x)=\lim_{n\to\infty}a_n(x) =
+\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\,\mathrm{d}\theta &lt;\infty.
+\]</span> 由于 <span class="math inline">\(\phi(\theta)=\frac{1}{2}(\cos\theta_1+\cos\theta_2)\)</span>
+只在 <span class="math inline">\(\mathbb{T}\)</span> 上有限个点处满足
+<span class="math inline">\(|\phi(\theta)|=1\)</span>，其余均为 <span class="math inline">\(|\phi(\theta)|&lt;1\)</span>，所以 <span class="math inline">\(\phi^n(\theta)\to0\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span> 上几乎处处成立。</p>
+<p>为了证明 <span class="math inline">\(\dfrac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span> 上可积，我们注意到不等式 <span class="math inline">\(|1-\mathrm{e}^{i\theta\cdot x}|\leq
+|x||\theta|\)</span> 总是成立的，并且存在正数 <span class="math inline">\(\lambda&gt;0\)</span> 使得 <span class="math display">\[
+1-\phi(\theta)=1-\frac{1}{2}(\cos\theta_1+\cos\theta_2)\geq\lambda(\theta_1^2+\theta_2^2)=\lambda|\theta|^2
+\]</span> 对任何 <span class="math inline">\(\theta\in\mathbb{T}\)</span> 成立 （函数 <span class="math inline">\((1-\cos t)/t^2\)</span> 在 <span class="math inline">\([-\pi, \pi]\)</span> 上具有正的最小值 <span class="math inline">\(c\)</span>，取 <span class="math inline">\(\lambda=c/2\)</span> 即可），所以 <span class="math display">\[
+\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\leq\frac{|x|}{\lambda|\theta|}.
+\]</span> 而 <span class="math inline">\(1/|\theta|\)</span>
+在二维的情形是 <span class="math inline">\(\mathbb{T}\)</span> 上
+Lebesgue 可积的：将积分区域 <span class="math inline">\(\mathbb{T}=[-\pi,\pi]\times[-\pi,\pi]\)</span>
+放大为圆形区域 <span class="math inline">\(|\theta|\leq\sqrt{2}\pi\)</span>，并用极坐标换元
+<span class="math inline">\(\theta\to(r,\alpha)\)</span> 得到 <span class="math display">\[\int_T\frac{1}{|\theta|}\,\mathrm{d}\theta  \leq
+\int_{|\theta|\leq\sqrt{2}\pi}\frac{1}{|\theta|}\,\mathrm{d}\theta=\int_0^{2\pi}
+\,\mathrm{d}\alpha \int_0^{\sqrt{2}\pi}\frac{1}{r}\cdot r\,\mathrm{d}r =
+2\sqrt{2}\pi^2&lt;\infty.\]</span></p>
+<p>所以 <span class="math inline">\(\dfrac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\)</span> 是 Lebesgue 可积的，这就证明了 <span class="math inline">\(a(x)\)</span> 对任何 <span class="math inline">\(x\in\mathbb{Z}^2\)</span> 都有定义。</p>
+<div id="potential-kernel-integ" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span>.</span><span class="statement-spah"> </span>势核 <span class="math inline">\(a(x)=\sum\limits_{k=0}^\infty\left[\mathbb{P}_k(0,
+0)-\mathbb{P}_k(x, 0)\right]\)</span> 几乎处处有限且等于 <span class="math display">\[a(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\,\mathrm{d}\theta.\]</span></p>
+</div>
+<h1 id="势核在除去原点之外是调和的">势核在除去原点之外是调和的</h1>
+<p>我们接下来证明势核 <span class="math inline">\(a(x)\)</span>
+在除去原点之外都是调和的： <span class="math display">\[
+a(x)=\frac{1}{4}\sum_{y\sim x}a(y),\quad \forall
+x\in\mathbb{Z}^2\setminus\{0\}.
+\]</span> 为此记 <span class="math inline">\(N_x^n\)</span> 为从 <span class="math inline">\(x\)</span> 出发的随机游动在前 <span class="math inline">\(n\)</span> 步到访原点的次数，即 <span class="math inline">\(N_x^{n}=\sum\limits_{k=0}^n\mathbb{1}_{\{S_k=0\}}\)</span>，则
+<span class="math display">\[
+a(x)=\lim_{n\to\infty}(\mathop{\mathrm{\mathbb{E}}}{N_0^n}-\mathop{\mathrm{\mathbb{E}}}{N_x^n}).
+\]</span> 对任何从 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span>
+出发的随机游动，使用单步转移概率，我们有 <span class="math display">\[N_x^n=\frac{1}{4}\sum_{y\sim
+x}N_y^{n-1}.\]</span> 此外 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}{N_0^n}=\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}+\mathop{\mathrm{\mathbb{E}}}{\mathbb{1}_{\{S_n=0\}}}=\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}+\mathbb{P}_0(S_n=0),\]</span>
+所以当 <span class="math inline">\(x\ne0\)</span> 时， <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{\mathbb{E}}}{N_0^n}-\mathop{\mathrm{\mathbb{E}}}{N_x^n}
+&amp;=
+\mathbb{P}_0(S_n=0)+\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}-\frac{1}{4}\sum_{y\sim
+x}\mathop{\mathrm{\mathbb{E}}}{N_y^{n-1}}\\&amp;=
+\mathbb{P}_0(S_n=0)+\frac{1}{4}\sum_{y\sim
+x}[\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}-\mathop{\mathrm{\mathbb{E}}}{N_y^{n-1}}].
+\end{aligned}
+\]</span> 两边令 <span class="math inline">\(n\to\infty\)</span> 并注意
+<span class="math inline">\(\mathbb{P}_0(S_n=0)\to 0\)</span> 即得 <span class="math display">\[
+a(x)=0+\frac{1}{4}\sum_{y\sim x}a(y)=\frac{1}{4}\sum_{y\sim x}a(y).
+\]</span> 即 <span class="math inline">\(a(x)\)</span> 在任何 <span class="math inline">\(x\ne 0\)</span> 处是调和的。</p>
+<p>由定义我们已经知道 <span class="math inline">\(a(0)=0\)</span>，其实稍微花点力气也不难得出 <span class="math inline">\(a(\pm e_i)=1\)</span> 来：根据对称性 <span class="math inline">\(a(x)\)</span> 在原点的四个邻居 <span class="math inline">\(\{\pm e_1,\pm e_2\}\)</span>
+处的值应该相等，这次我们对 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{N_0^n}\)</span>
+进行分解并注意初始时刻 <span class="math inline">\(S_0=0\)</span>
+也算一次，所以有 <span class="math display">\[
+\mathop{\mathrm{\mathbb{E}}}{N_0^n} = 1 + \frac{1}{4}\sum_{y\sim
+0}\mathop{\mathrm{\mathbb{E}}}{N_y^{n-1}} = 1 +
+\mathop{\mathrm{\mathbb{E}}}{N_{e_1}^{n-1}}.
+\]</span> 把 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{N_{e_1}^n}\)</span>
+拆成 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{N_{e_1}^{n-1}}+\mathbb{P}_{e_1}(S_n=0)\)</span>，得到
+<span class="math display">\[\mathop{\mathrm{\mathbb{E}}}{N_0^n}-\mathop{\mathrm{\mathbb{E}}}{N_{e_1}^n}=1-\mathbb{P}_{e_1}(S_n=0).\]</span>
+两边令 <span class="math inline">\(n\to\infty\)</span> 即得 <span class="math inline">\(a(e_1)=1\)</span>。</p>
+<p>采用下一节的方法，我们可以通过计算积分得出 <span class="math inline">\(a(e_1+e_2)=\frac{4}{\pi}\)</span>，<span class="math inline">\(a(2e_1)=4-\frac{8}{\pi}\)</span>，等等，其示意图如下：</p>
+<p><img src="/images/electric-network/greenfunction.svg" class="fig" width="400"></p>
+<h1 id="势核的渐进估计">势核的渐进估计</h1>
+<p>我们关心的是势核 <span class="math inline">\(a(x)\)</span> 当 <span class="math inline">\(|x|\to\infty\)</span>
+时的渐进大小，为此我们有如下定理：</p>
+<div id="ax-asy" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.1</span>.</span><span class="statement-spah"> </span><span class="math display">\[\lim_{|x|\to\infty} a(x) - \frac{2}{\pi}\ln |x| =
+\frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\approx 1.0293737.\]</span> 其中
+<span class="math inline">\(\gamma\approx 0.5772156649\)</span> 是 Euler
+常数。</p>
+</div>
+<p>当你看到这个定理的时候，是不是感觉已经快要接近证明文章开头的结论了呢？那可太抱歉了，真正麻烦的地方才刚开始。这个定理的证明非常棘手，我们需要首先论证
+<span class="math inline">\(a(x)\)</span> 的渐进行为只与 <span class="math inline">\(x\)</span> 的长度有关，与 <span class="math inline">\(x\)</span> 方向无关，然后用一个特殊的方向 <span class="math inline">\(x=(n, n)\)</span> 代入 <span class="math inline">\(a(x)\)</span> 的表达式计算积分值。</p>
+<p><strong>证明</strong>： 我们先来论证 <span class="math inline">\(a(x)\)</span> 的渐进行为不依赖于 <span class="math inline">\(x\)</span> 的方向。我们的思路是取一个函数 <span class="math inline">\(g(\theta)\)</span>，使得积分 <span class="math display">\[\begin{equation}
+0 &lt;
+\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\left[\frac{1}{1-\phi(\theta)}-\frac{1}{g(\theta)}\right]\,\mathrm{d}\theta=c
+&lt; \infty,
+\label{eq:decompose}
+\end{equation}
+\]</span> 然后把 <span class="math inline">\(a(x)\)</span> 的积分表示
+<span class="math display">\[a(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\,\mathrm{d}\theta\]</span> 拆成两项的和： <span class="math display">\[
+a(x)=\underbrace{\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{g(\theta)}\,\mathrm{d}\theta}_{I(x)}+\underbrace{\frac{1}{(2\pi)^2}\int_{\mathbb{T}}(1-\mathrm{e}^{i\theta\cdot
+x})\left[\frac{1}{1-\phi(\theta)}-\frac{1}{g(\theta)}\right]\,\mathrm{d}\theta}_{J(x)}.
+\]</span> 根据 <a href="en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma">Riemann-Lebesgue
+引理</a>，<span class="math inline">\(\lim\limits_{|x|\to\infty}J(x)=c\)</span>，即
+<span class="math inline">\(J(x)\)</span> 与 <span class="math inline">\(x\)</span> 的方向是无关的。</p>
+<p><span class="math inline">\(g(\theta)\)</span> 可以取为 <span class="math inline">\(|\theta|^2/4\)</span>，我们来验证这一点： <span class="math display">\[\frac{1}{1-\phi(\theta)}-\frac{1}{g(\theta)}=
+\frac{1}{1-\phi(\theta)}-\frac{4}{|\theta|^2} =
+\underbrace{\frac{4|\theta|^2}{1-\phi(\theta)}}_{\chi(\theta)}\cdot\underbrace{\frac{1}{|\theta|^4}\left[\phi(\theta)-1+\frac{|\theta|^2}{4}\right]}_{\psi(\theta)}.
+\]</span> 我们要证明乘积 <span class="math inline">\(\chi(\theta)\psi(\theta)\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span>
+上可积。注意到我们之前已经证明了存在 <span class="math inline">\(\lambda&gt;0\)</span> 使得在 <span class="math inline">\(\mathbb{T}\)</span> 上有 <span class="math inline">\(1-\phi(\theta)\geq
+\lambda|\theta|^2\)</span>，所以 <span class="math inline">\(\chi(\theta)\leq 4/\lambda\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span> 上是有界的，只要再证明 <span class="math inline">\(\psi(\theta)\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span> 上可积即可。而 <span class="math display">\[\begin{equation}
+\phi(\theta)-1+\frac{|\theta|^2}{4}=\mathop{\mathrm{\mathbb{E}}}{\left[\mathrm{e}^{i\theta\cdot
+X} - 1 - i\theta\cdot X - \frac{1}{2}(i\theta\cdot X)^2\right]}.
+\end{equation}
+\]</span> 这里我们利用了 <span class="math inline">\(\mathbb{T}\)</span>
+是关于原点对称的区域，以及 <span class="math inline">\(X^2\equiv(1,1)\)</span>，所以 <span class="math display">\[\begin{aligned}
+\mathop{\mathrm{\mathbb{E}}}{(\theta\cdot
+X)}&amp;=\mathop{\mathrm{\mathbb{E}}}{(x_1\theta_1 + x_2\theta)}=0,\\
+\mathop{\mathrm{\mathbb{E}}}{(\theta\cdot
+X)^2}&amp;=\mathop{\mathrm{\mathbb{E}}}{(x_1\theta_1+x_2\theta_2)^2}=\mathop{\mathrm{\mathbb{E}}}{(\theta_1^2+\theta_2^2)}=\mathop{\mathrm{\mathbb{E}}}{|\theta|^2}.
+\end{aligned}\]</span> 由于对任何实数 <span class="math inline">\(z\)</span> 都有不等式 <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019</a>, lemma. 3.3.19)</span> <span class="math display">\[
+\left|\mathrm{e}^{iz} - 1 - iz -
+\frac{(iz)^2}{2}\right|\leq\frac{|z|^3}{6},
+\]</span> 所以 <span class="math display">\[
+\phi(\theta)-1+\frac{|\theta|^2}{4}\leq\frac{1}{6}\mathop{\mathrm{\mathbb{E}}}{|\theta\cdot
+X|^3}\leq\frac{1}{6}\mathop{\mathrm{\mathbb{E}}}{|\theta|^3|X|^3}=\frac{|\theta|^3}{6}\mathop{\mathrm{\mathbb{E}}}{|X|^3},
+\]</span> 从而 <span class="math display">\[
+\psi(\theta)=|\theta|^{-4}\left[\phi(\theta)-1+\frac{|\theta|^2}{4}\right]\leq|\theta|^{-4}\cdot\frac{|\theta|^3}{6}\mathop{\mathrm{\mathbb{E}}}{|X|^3}=\frac{M}{|\theta|}.
+\]</span> 这里 <span class="math inline">\(0&lt;
+M=\frac{\mathop{\mathrm{\mathbb{E}}}{|X|^3}}{6} &lt;\infty\)</span>
+是正数。而前面已经看到 <span class="math inline">\(1/|\theta|\)</span>
+在 <span class="math inline">\(\mathbb{T}\)</span> 上是可积的，所以
+<span class="math inline">\(\psi(\theta)\)</span> 也是可积的，这就说明了
+<span class="math inline">\(\lim\limits_{|x|\to\infty}J(x)=c\)</span>
+确实成立。</p>
+<p>我们还需要说明 <span class="math inline">\(I(x)\)</span> 的极限也是与
+<span class="math inline">\(x\)</span> 的方向无关的。把 <span class="math inline">\(I(x)\)</span> 分解成两部分： <span class="math display">\[
+I(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{|\theta|^2/4}\,\mathrm{d}\theta =
+\frac{1}{\pi^2}\int_{\mathbb{T}}\frac{1-\cos(\theta\cdot
+x)}{|\theta|^2}\,\mathrm{d}\theta=I_1+I_2.
+\]</span> 其中 <span class="math inline">\(I_1\)</span> 为在圆形区域
+<span class="math inline">\(|\theta|\leq\pi\)</span> 上的积分，<span class="math inline">\(I_2\)</span> 为在剩下的 <span class="math inline">\(\{\theta\in\mathbb{T},\,
+|\theta|&gt;\pi\}\)</span> 区域上的积分。</p>
+<p><span class="math inline">\(I_2\)</span>
+是比较好处理的，这是因为在其区域上 <span class="math inline">\(1/|\theta|^2\)</span> 可积，所以根据
+Riemann-Lebesgue 引理， <span class="math display">\[
+\lim_{|x|\to\infty}\frac{1}{\pi^2}\int_{\theta\in\mathbb{T},\,|\theta|&gt;\pi}\frac{1-\cos(\theta\cdot
+x)}{|\theta|^2}\,\mathrm{d}\theta=\frac{1}{\pi^2}\int_{\theta\in\mathbb{T},\,|\theta|&gt;\pi}\frac{1}{|\theta|^2}\,\mathrm{d}\theta
+&lt; \infty.
+\]</span> 所以 <span class="math inline">\(I_2(x)\)</span>
+有一个不依赖于 <span class="math inline">\(x\)</span> 方向的极限值。</p>
+<p>至此我们把 <span class="math inline">\(a(x)\)</span> 的积分表示为了
+<span class="math inline">\(I_1+I_2+J\)</span> 的形式，并且论证了 <span class="math inline">\(x\to\infty\)</span> 时后两者的值有限，所以 <span class="math inline">\(a(x)\)</span> 的渐进主项藏在 <span class="math inline">\(I_1(x)\)</span> 当中。</p>
+<p>而 <span class="math inline">\(I_1(x)\)</span> 从表达式明显可见它是与
+<span class="math inline">\(x\)</span> 方向无关的： <span class="math display">\[
+I_1(x)=\frac{1}{\pi^2}\int_{|\theta|\leq\pi}\frac{1-\cos(\theta\cdot
+x)}{|\theta|^2}\,\mathrm{d}\theta.
+\]</span> 事实上用一个旋转矩阵 <span class="math inline">\(A\)</span>
+乘以 <span class="math inline">\(x\)</span> 等同于对 <span class="math inline">\(\theta\)</span> 作变元代换 <span class="math inline">\(\theta'=A^{-1}\theta\)</span>，由于 <span class="math inline">\(A\)</span> 是正交矩阵所以 <span class="math inline">\(|\theta'|=|\theta|\)</span> 并且变换的
+Jacobian 值是 +1，所以积分不变。于是我们可以取 <span class="math inline">\(x=(R,0)\)</span> 为实轴正向，则 <span class="math inline">\(\theta\cdot x = R\theta_1\)</span>。进一步作代换
+<span class="math inline">\(u=R\theta\)</span> 可得 <span class="math display">\[I_1 = \frac{1}{\pi^2}\int_{|u|\le
+R\pi}\frac{1-\cos u_1}{|u|^2}\,\mathrm{d}u.\]</span> 其中 <span class="math inline">\(u_1\)</span> 是 <span class="math inline">\(u\)</span> 的 <span class="math inline">\(x\)</span> 分量。</p>
+<p>将积分拆成 <span class="math inline">\(|u|\le 1\)</span> 和 <span class="math inline">\(1&lt;|u|\le R\pi\)</span> 两部分：</p>
+<ul>
+<li>在 <span class="math inline">\(|u|\le1\)</span> 时，由于在 0 附近，
+<span class="math display">\[\frac{1-\cos
+u_1}{|u|^2}\sim\frac{u_1^2/2}{|u|^2}\le\frac{1}{2}.\]</span>
+所以被积函数在单位圆内连续有界，这部分积分是个有限的常数，可以不用管。</li>
+<li><span class="math inline">\(1&lt;|u|\le R\pi\)</span> 对应的积分等于
+<span class="math display">\[\frac{1}{\pi^2}\int_{1&lt;|u|\le
+R\pi}\frac{1}{|u|^2}\,\mathrm{d}u - \int_{1&lt;|u|\le R\pi}\frac{\cos
+u_1}{|u|^2}\,\mathrm{d}u.\]</span> 极坐标代换以后第一项等于 <span class="math display">\[\frac{2}{\pi}\int_1^R\frac{1}{r}\,\mathrm{d}r =
+\frac{2}{\pi}\ln R + O(1).\]</span> 这一项贡献了 <span class="math inline">\(I_1\)</span> 的主项。<br>
+同样使用极坐标代换，第二项等于 <span class="math display">\[\frac{1}{\pi^2}\int_{1}^{\pi R} \frac{1}{r}
+\left( \int_{0}^{2\pi} \cos(r \cos\alpha)\, \mathrm{d}\alpha \right)
+\,\mathrm{d}r.\]</span> 括号里面等于 <span class="math inline">\(J_0(r)\)</span>，是零阶第一类贝塞尔函数。而熟知
+<span class="math inline">\(J_0(r)\)</span> 在 <span class="math inline">\(r\to\infty\)</span> 时的渐进阶是 <span class="math inline">\(O(r^{-1/2})\)</span>，所以这部分的积分收敛。</li>
+</ul>
+<p>至此我们证明了在分解 <span class="math display">\[a(x)=I(x)+J(x)=I_1(x)+I_2(x)+J(x)\]</span> 中，当
+<span class="math inline">\(|x|\to\infty\)</span> 时，<span class="math inline">\(I_1-\frac{2}{\pi}\ln|x|\)</span>，<span class="math inline">\(I_2\)</span> 和 <span class="math inline">\(J\)</span> 都趋近于有限的极限值，于是极限 <span class="math display">\[\lim_{|x|\to\infty}\left(a(x)-\frac{2}{\pi}\ln|x|\right)\]</span>
+也存在且有限。为了计算这个极限，我们选择对角线方向 <span class="math inline">\(x=(n,n)\)</span> 代入 <span class="math inline">\(a(x)\)</span> 的表达式中： <span class="math display">\[
+a(n,n)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\cos
+n(\theta_1+\theta_2)}{1-\frac{1}{2}(\cos\theta_1+\cos\theta_2)}\,\mathrm{d}\theta=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\cos
+n(\theta_1+\theta_2)}{1-\cos\frac{\theta_1+\theta_2}{2}\cos\frac{\theta_1-\theta_2}{2}}\,\mathrm{d}\theta.
+\]</span> 作变元代换 <span class="math inline">\(u=\frac{\theta_1+\theta_2}{2},v=\frac{\theta_1-\theta_2}{2}\)</span>，此变换的
+Jacobian 为 <span class="math inline">\(1/2\)</span>，于是 <span class="math display">\[
+a(n,n)=\frac{2}{(2\pi)^2}\int_{|u|+|v|\leq\pi}\frac{1-\cos(2nu)}{1-\cos
+u\cos v}\,\mathrm{d}u\mathrm{d}v.
+\]</span> 此积分的区域是 <span class="math inline">\(\mathbb{T}\)</span>
+中满足 <span class="math inline">\(|u|+|v|\leq \pi\)</span>
+的部分，它等于整个 <span class="math inline">\(\mathbb{T}\)</span>
+上积分的一半，如图所示：</p>
+<p><img src="/images/random-walk/region.svg" class="fig" width="300"></p>
+<p>所以 <span class="math display">\[
+a(n,n)=\frac{1}{4\pi^2}\int_{-\pi}^\pi\mathrm{d}u\int_{-\pi}^\pi\frac{1-\cos(2nu)}{1-\cos
+u\cos v}\,\mathrm{d}v.
+\]</span> 我们用留数来计算上面的积分。首先计算内层关于 <span class="math inline">\(v\)</span> 的积分。设 <span class="math inline">\(k=\cos u\)</span>，</p>
+<p><span class="math display">\[\begin{aligned}\int_{-\pi}^{\pi}\frac{1}{1-k\cos
+v}\,\mathrm{d}v&amp;=\oint_{|z|=1}
+\frac{1}{1-\frac{k}{2}\left(z+\frac{1}{z}\right)} \frac{\mathrm{d} z}{i
+z}\quad(z=e^{iv})\\ &amp;=\oint_{|z|=1} \frac{2i}{kz^2-2z+k}
+\mathrm{d}z\\ &amp;=\oint_{|z|=1} \frac{2i}{k(z-z_1)(z-z_2)}
+\mathrm{d}z\quad\left(z_{1,2}=\frac{1\pm\sqrt{1-k^2}}{k}\right)\\
+&amp;=2\pi i\cdot\frac{2
+i}{k}\;\mathrm{Res}_{z=z_2}\left(\frac{1}{(z-z_1)(z-z_2)}\right)\\
+&amp;=-\frac{4\pi}{k}\frac{1}{z_2-z_1}\\
+&amp;=\frac{2\pi}{\sqrt{1-k^2}}. \end{aligned}
+\]</span></p>
+<p>外层同样使用围道积分：</p>
+<p><span class="math display">\[\begin{aligned}&amp;\frac{1}{4\pi^2}\int_{-\pi}^{\pi}(1-\cos(2nu))\int_{-\pi}^{\pi}\frac{1}{1-\cos
+u\cos v}\,\mathrm{d}u\,\mathrm{d}v
+\\&amp;=\frac{1}{2\pi}\int_{-\pi}^{\pi}\frac{1-\cos(2nu)}{|\sin\left(u\right)|}\,\mathrm{d}u\\
+&amp;=\frac{1}{\pi}\mathrm{Re}\int_{0}^{\pi}\frac{1-e^{2inu}}{\sin
+u}\,\mathrm{d}u\quad(z=e^{iu})\\
+&amp;=\frac{1}{\pi}\mathrm{Re}\int_{C}\frac{1-z^{2n}}{\frac{1}{2i}\left(z-z^{-1}\right)}\,
+\frac{\mathrm{d} z}{i z}\qquad \qquad C \colon= \{ |z| = 1\mid \arg
+z\in[0,\pi]\}\\
+&amp;=\frac{2}{\pi}\mathrm{Re}\int_{1}^{-1}\frac{1-z^{2n}}{z^2-1}\,
+\mathrm{d} z\\ &amp;=\frac{2}{\pi}\int_{-1}^1\sum_{k=0}^{n-1}x^{2k}\,
+\mathrm{d}x\\ &amp;=\frac{4}{\pi}\sum_{k=1}^{n}\frac{1}{2k-1}.
+\end{aligned}\]</span> 从而 <span class="math display">\[
+\begin{aligned}&amp;\lim_{n\to\infty}\left[a(n,n)-\frac{2}{\pi}\ln\sqrt{2}n\right]=\lim_{n\to\infty}\left[\frac{4}{\pi}\sum_{k=1}^n\frac{1}{2k-1}-\frac{2}{\pi}\ln\sqrt{2}n\right]\\&amp;=
+\lim_{n\to\infty}\left[\frac{4}{\pi}\sum_{k=1}^{2n}\frac{1}{k}-\frac{4}{\pi}\ln
+2n\right]+\lim_{n\to\infty}\left[\frac{2}{\pi}\sum_{k=1}^{n}\frac{1}{k}-\frac{2}{\pi}\ln
+n\right]+\frac{\ln8}{\pi}\\&amp;=
+\frac{4}{\pi}\gamma-\frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\\&amp;=
+\frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\\&amp;\approx 1.0293737056545709.
+\end{aligned}\]</span> <a href="#ax-asy" title="定理 4.1">定理 4.1</a>
+得证。<span class="math inline">\(\blacksquare\)</span></p>
+<p>上面这些讨论基本上是我对 Spitzer
+著作中内容的重新表述，利用局部中心极限定理可以证明极限的误差项大约是
+<span class="math inline">\(O(|x|^{-2})\)</span> 量级的，即</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.2</span>.</span><span class="statement-spah"> </span><span class="math display">\[a(x) = \frac{2}{\pi}\ln|x| +
+\frac{2\gamma+\ln8}{\pi} + O(|x|^{-2}).\]</span></p>
+</div>
+<p>证明见 <span class="citation" data-cites="lawler2010random">(<a href="#ref-lawler2010random" role="doc-biblioref">Lawler and Limic 2010,
+vol. 123, sec. 4.4</a>)</span>。下文要用到这个渐进估计的一个推论：</p>
+<div id="axorder" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+4.3</span>.</span><span class="statement-spah"> </span>对任何 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span> 和单位向量
+<span class="math inline">\(|e|=1\)</span> 有 <span class="math display">\[a(x + e) - a(x) = O(|x|^{-1}).\]</span>
+特别地存在常数 <span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|a(x+e)-a(x)|\leq M\)</span> 对任何 <span class="math inline">\(x\)</span> 恒成立。</p>
+</div>
+<p><strong>证明</strong>：</p>
+<p><span class="math display">\[\begin{aligned}a(x+e)-a(x)&amp;=\frac{1}{\pi}\ln\frac{\langle
+x+e, x+e\rangle}{|x|^2}+O(|x|^{-2})\\
+&amp;=\frac{1}{\pi}\ln\left(1+\frac{2\langle
+x,e\rangle+1}{|x|^2}\right)+O(|x|^{-2})\\
+&amp;\leq\frac{1}{\pi}\ln\left(1+\frac{2}{|x|}+\frac{1}{|x|^2}\right)+O(|x|^{-2})\\&amp;=O(|x|^{-1}).\end{aligned}\]</span></p>
+<h1 id="最后一击">最后一击</h1>
+<p>到目前为止我们已经完成了所有的准备工作，只要再用一点点离散鞅的知识
+（可料停时定理） 就可以得出 A, B
+获胜概率的渐进表达式。虽然剩下的部分已经没有什么难点，但这个时候要更加耐心点。</p>
+<p>先做一些记号的约定。</p>
+<ol type="1">
+<li>记 <span class="math inline">\(B(r)\)</span> 是平面上半径为 <span class="math inline">\(r\)</span> 的圆盘，<span class="math inline">\(\partial B(r)\)</span> 是圆周 <span class="math inline">\(|x|=r\)</span>。</li>
+<li>设 <span class="math inline">\(x\)</span> 满足 <span class="math inline">\(0&lt;|x|&lt;r\)</span> 是<span class="math inline">\(B(r)\)</span> 内一点，<span class="math inline">\(S_n\)</span> 是从 <span class="math inline">\(x\)</span> 出发的随机游动在 <span class="math inline">\(n\)</span> 时刻的位置，<span class="math inline">\(S_0=x\)</span>。</li>
+<li>记 <span class="math inline">\(\tau_{0}=\min\{n\geq1:\,
+S_n=0\}\)</span>，<span class="math inline">\(\tau_{\partial
+B(r)}=\min\{n\geq1:\, |S_n|\geq r\}\)</span>。于是 <span class="math inline">\(\tau_{0}\)</span> 和 <span class="math inline">\(\tau_{\partial B(r)}\)</span> 分别是 <span class="math inline">\(S_n\)</span> 首次到达原点的时刻和首次走出 <span class="math inline">\(B(r)\)</span> 的时刻。记 <span class="math inline">\(\tau=\min\{\tau_{0},\tau_{\partial
+B(r)}\}\)</span>，则 <span class="math inline">\(\tau_{0},\,\tau_{\partial B(r)},\,\tau\)</span>
+都是停时。</li>
+</ol>
+<p>为了能够使用可料停时定理，我们首先需要说明 <span class="math inline">\(\{a(S_{n\wedge\tau})\}\)</span> 是一个鞅，且停时
+<span class="math inline">\(\tau\)</span> 满足可料停时定理的条件。由于
+<span class="math inline">\(a(x)\)</span> 在任何 <span class="math inline">\(x\ne 0\)</span> 处调和，所以 <span class="math inline">\(\{a(S_{n\wedge\tau})\}\)</span>
+是一个鞅是没有问题的。</p>
+<p>注意到 <span class="math inline">\(\{S_{n\wedge\tau}\}\)</span>
+是一个限制在 <span class="math inline">\(B(r)\)</span>
+内的随机游动，它访问其中任何一点的期望步数都是有限的，所以 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{\tau}&lt;\infty\)</span>。其次根据
+<a href="#axorder" title="推论 4.3">推论 4.3</a>，<span class="math inline">\(|a(x+e)-a(x)|\)</span> 是一致有界的，所以停时
+<span class="math inline">\(\tau\)</span> 满足 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Optional_stopping_theorem">可料停时定理的条件</a>，从而</p>
+<p><span class="math display">\[\begin{aligned}
+a(x)&amp;=a(S_0)=\mathbb{E}_x\,a(S_{\tau})\\&amp;=
+p\cdot\mathbb{E}_x\,\left[a(S_{\tau_{\partial B(r)}})\mid\tau_{\partial
+B(r)}&lt;\tau_{0}\right]+(1-p)\cdot\mathbb{E}_x\,\left[a(S_{\tau_{0}})\mid\tau_{0}&lt;\tau_{\partial
+B(r)}\right].
+\end{aligned}\]</span></p>
+<p>其中 <span class="math inline">\(p=\mathbb{P}(\tau_{\partial
+B(r)}&lt;\tau_{0})\)</span> 正是随机游动在回到原点之前逃出区域 <span class="math inline">\(B(r)\)</span> 的概率。但是又注意到 <span class="math inline">\(a(S_{\tau_{0}})=a(0)=0\)</span>，所以上面式子中第二项恒为
+0，即 <span class="math display">\[p=\frac{a(x)}{\mathbb{E}_x\left[a(S_{\tau_{\partial
+B(r)}})\mid\tau_{\partial B(r)}&lt;\tau_{0}\right]}.
+\]</span></p>
+<p>记上面的分母为 <span class="math inline">\(g=\mathbb{E}_x\left[a(S_{\tau_{\partial
+B(r)}})|\tau_{\partial B(r)}&lt;\tau_{0}\right]\)</span>，则 <span class="math inline">\(g\)</span> 是势核 <span class="math inline">\(a(\cdot)\)</span> 在圆周 <span class="math inline">\(\partial B(r)\)</span>
+上关于一个条件概率测度的积分，而我们已经看到势核 <span class="math inline">\(a(y)\)</span> 是近似球对称的，它只依赖于 <span class="math inline">\(|y|\)</span>。当随机游动刚好走到 <span class="math inline">\(\partial B(r)\)</span> 时，其位置 <span class="math inline">\(y\)</span> 未必正好落在圆周上，但是满足 <span class="math inline">\(r\le |y|&lt;
+r+1\)</span>。我们滥用一点记号，对任意的实数 <span class="math inline">\(r&gt;0\)</span>，记 <span class="math display">\[a(r) = \frac{2}{\pi}\ln r +
+\frac{2\gamma+\ln8}{\pi},\]</span> 与 <a href="#axorder" title="推论 4.3">推论 4.3</a> 同样的道理，当 <span class="math inline">\(r\le |y|&lt; r+1\)</span> 时有 <span class="math display">\[|a(y) - a(r)| = O(1/r).\]</span> 所以 <span class="math inline">\(g\)</span> 作为 <span class="math inline">\(a(\cdot)\)</span> 在 <span class="math inline">\(\partial B(r)\)</span> 附近的一些 <span class="math inline">\(y\)</span> 在一个条件概率下的加权组合，其值等于
+<span class="math display">\[\frac{2}{\pi}\ln r +
+\frac{2\gamma+\ln8}{\pi} + O(r^{-1}).\]</span></p>
+<p>至此我们就证明了如下结论：</p>
+<div id="-------4" class="statement sta____4 plain unnumbered">
+<p><span class="statement-heading"><span class="statement-label">定理
+4</span>.</span><span class="statement-spah"> </span>： 设 <span class="math inline">\(x\in B(r)\)</span> 且 <span class="math inline">\(x\ne 0\)</span>，考虑从 <span class="math inline">\(x\)</span> 出发的简单随机游动，则 <span class="math display">\[\mathbb{P}_x(\tau_{\partial B(r)} &lt; \tau_0) =
+\frac{a(x)}{\dfrac{2}{\pi}\ln r + \dfrac{2\gamma+\ln8}{\pi} +
+O(r^{-1})}.\]</span></p>
+</div>
+<p>本文开头的赌局的答案就蕴含在这个定理的结论中：由于从原点出发的随机游动第一步必然走到某个邻居
+<span class="math inline">\(x\in\{\pm e_1,\pm e_2\}\)</span>
+上，所以从原点出发的随机游动能够逃逸到 <span class="math inline">\(B(r)\)</span> 之外的概率是 <span class="math display">\[\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
+e_2\}}\mathbb{P}_x(\tau_{\partial
+B(r)}&lt;\tau_{0})=\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
+e_2\}}\frac{a(x)}{\dfrac{2}{\pi}\ln r +
+\dfrac{2\gamma+\ln8}{\pi}+O(r^{-1})}.\]</span> 而 <span class="math inline">\(a(x)\)</span> 在这四个点上的值都是
+1，所以这个概率值等于 <span class="math display">\[\dfrac{1}{\dfrac{2}{\pi}\ln r +
+\dfrac{2\gamma+\ln8}{\pi} + O(r^{-1})}\approx\left(\dfrac{2}{\pi}\ln r +
+1.0293737\right)^{-1},\quad r\to\infty,\]</span> 这也正是我们之前介绍的
+B 的获胜概率！</p>
+<blockquote>
+<p>我们需要根据第一步将概率进行分解是因为 <span class="math inline">\(a(x)\)</span> 在 <span class="math inline">\(x\ne
+0\)</span> 时才是调和的，从而 <span class="math inline">\(a(S_{n\wedge
+\tau})\)</span> 是鞅。</p>
+</blockquote>
+<h1 id="结语">结语</h1>
+<p>洋洋洒洒一大篇，总算回答了开头提出的一个小问题。你可能要问了：这只是二维的情形呀，如果是三维太阳系中的随机游动，A
+和 B 获胜的概率又该怎么算？这种情形方法其实是类似的，需要估计势核 Green
+函数的阶，然后仿照 <a href="#ax-asy" title="定理 4.1">定理 4.1</a>
+进行估计。可以证明在维数 <span class="math inline">\(d&gt;2\)</span>
+时，<span class="math inline">\(G(x)=G(0,x)\)</span> 的大小近似为 <span class="math display">\[
+G(x)=\frac{\gamma_d}{|x|^{d-2}} + O(|x|^{-d}).
+\]</span> 其中 <span class="math inline">\(\gamma_d\)</span> 是一个只与
+<span class="math inline">\(d\)</span> 相关的常数。详情可见 Lawler 的书
+4.3 节。</p>
+<p>本文选择 <span class="math inline">\(d=2\)</span>
+情形讨论是因为它更有趣，而且这里的结论在后面的文章中会用到。下篇文章见！</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Durrett2019" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. 5th ed.
+Cambridge Series in Statistical and Probabilistic Mathematics. Cambridge
+University Press.
+</div>
+<div id="ref-lawler2010random" class="csl-entry" role="listitem">
+Lawler, Gregory F, and Vlada Limic. 2010. <em>Random Walk: A Modern
+Introduction</em>. Vol. 123. Cambridge University Press.
+</div>
+<div id="ref-spitzergtm" class="csl-entry" role="listitem">
+Spitzer, Frank. 1976. <em>Principles of Random Walk</em>. Second. Vol.
+Vol. 34. Graduate Texts in Mathematics. Springer-Verlag, New
+York-Heidelberg.
+</div>
+</div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>这是程序仿真的结果，下面的渐进公式给出的值约为 4.59
+米，但渐进公式的误差是在 <span class="math inline">\(R\to\infty\)</span>
+时才趋于 0 的，仿真结果应当更准确。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/reducible-mod-p/" rel="next" title="模任何素数都可约的整系数不可约多项式">
+      上一篇：模任何素数都可约的整系数不可约多项式
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/coupling-from-the-past/" rel="next" title="Coupling from the past">
+          下一篇：Coupling from the past
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

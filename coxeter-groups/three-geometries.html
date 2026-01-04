@@ -19,7 +19,7 @@
     
 
         <title>
-            Coxeter 群笔记（四）：有限、仿射、双曲三种情形的 Tits 锥 | 朝花夕拾</title>
+            Coxeter 群笔记（四）：有限、仿射、双曲三种情形的 Tits 锥 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文主要参考了 (Howlett, Rowley, and Taylor
@@ -32,14 +32,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="Coxeter 群笔记（四）：有限、仿射、双曲三种情形的 Tits 锥"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -48,11 +48,17 @@
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+
 <meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -61,7 +67,7 @@
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -93,14 +99,6 @@
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -161,14 +159,6 @@
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -237,7 +227,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -245,7 +235,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -270,6 +260,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -351,11 +349,12 @@
 1.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\(W\)</span> 是有限群当且仅当 Tits 锥 <span class="math inline">\(\mathcal{C}=V^\ast\)</span>。</p>
 </div>
 <p><strong>证明</strong>：</p>
-<p><span class="math inline">\(\Rightarrow\)</span>: 由 <span class="math inline">\(\mathcal{C}=V^\ast\)</span> 可得 <span class="math inline">\(-\mathcal{D}\in\mathcal{C}\)</span>。对任何 <span class="math inline">\(x\in-\mathcal{D}\)</span>，我们都有 <span class="math inline">\(\Phi^+\subseteq \mathrm{Neg}(x)\)</span>，根据 <a href="/coxeter-groups/tits-cone/#tits-neg-finite">Tits
+<p><span class="math inline">\(\Rightarrow\)</span>: <span class="math inline">\(W\)</span> 是有限群说明 <span class="math inline">\(\Phi\)</span> 也是有限的，从而对任何 <span class="math inline">\(x\in V^\ast\)</span> 都有 <span class="math inline">\(|\mathrm{Neg}(x)|\leq
+|\Phi^+|&lt;\infty\)</span>，从而 <span class="math inline">\(x\in\mathcal{C}\)</span>。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>: 由 <span class="math inline">\(\mathcal{C}=V^\ast\)</span> 可得 <span class="math inline">\(-\mathcal{D}\in\mathcal{C}\)</span>。对任何 <span class="math inline">\(x\in-\mathcal{D}\)</span>，我们都有 <span class="math inline">\(\Phi^+\subseteq \mathrm{Neg}(x)\)</span>，根据 <a href="/coxeter-groups/tits-cone/#tits-neg-finite">Tits
 锥的刻画</a>，<span class="math inline">\(|\Phi^+|=|\mathrm{Neg}(x)|&lt;\infty\)</span>，<a href="/coxeter-groups/root-system/#w-phi-both-finite-infinite">从而
 <span class="math inline">\(W\)</span> 是有限群</a>。</p>
-<p><span class="math inline">\(\Leftarrow\)</span>: <span class="math inline">\(W\)</span> 是有限群说明 <span class="math inline">\(\Phi\)</span> 也是有限的，从而对任何 <span class="math inline">\(x\in V^\ast\)</span> 都有 <span class="math inline">\(|\mathrm{Neg}(x)|\leq
-|\Phi^+|&lt;\infty\)</span>，从而 <span class="math inline">\(x\in\mathcal{C}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
 </span>在下图中，<span class="math inline">\(W\)</span> 是正二十面体群
@@ -372,13 +371,10 @@ Coxeter 群 Tits 锥的一般结论。</p>
 </div>
 <p><strong>证明</strong>：由于 <span class="math inline">\(J\subsetneqq
 S\)</span>，所以可以设 <span class="math inline">\(S\setminus
-J=\{s_1,\ldots,s_r\}\,(r\geq1)\)</span>。由于 <span class="math inline">\(W\)</span> 不可约，<span class="math inline">\(W\)</span> 的 Coxeter 图 <span class="math inline">\(\Gamma\)</span> 是连通的，<span class="math inline">\(J\)</span> 中的任何顶点都可以通过某条路径与 <span class="math inline">\(S\setminus J\)</span> 中的顶点相连。记 <span class="math inline">\(d(s)\)</span> 是顶点 <span class="math inline">\(s\)</span> 与 <span class="math inline">\(S\setminus J\)</span> 之间的最短距离，将 <span class="math inline">\(S\)</span> 按如下方式重新排序为 <span class="math inline">\(S=\{s_1,\ldots,s_n\}\)</span>： <span class="math display">\[S =
+J=\{s_1,\ldots,s_r\}\,(r\geq1)\)</span>。由于 <span class="math inline">\(\Gamma\)</span> 是连通的，任何 <span class="math inline">\(s\in S\)</span> 都可以通过某条路径与 <span class="math inline">\(S\setminus J\)</span> 中的顶点相连。记 <span class="math inline">\(d(s)\)</span> 是顶点 <span class="math inline">\(s\)</span> 与 <span class="math inline">\(S\setminus J\)</span> 之间的最短距离，将 <span class="math inline">\(S\)</span> 按如下方式重新排序为 <span class="math inline">\(S=\{s_1,\ldots,s_n\}\)</span>： <span class="math display">\[S =
 \underbrace{\overbrace{\{s_1,\ldots,s_r\}}^{d(s)=0}}_{S\setminus
 J}\cup\underbrace{
 \overbrace{\{s_{r+1},\ldots,s_{r+k}\}}^{d(s)=1},\overbrace{\{s_{r+k+1},\ldots\}}^{d(s)=2},\cdots}_{J}\,.\]</span></p>
-<p>即 <span class="math inline">\(S\setminus J\)</span>
-中的顶点排在最前面，接下来是 <span class="math inline">\(J\)</span>
-中的顶点，按照距离从小到大排序。</p>
 <p>记 <span class="math inline">\(\Phi_i^+\)</span> 是所有可以由 <span class="math inline">\(\{\alpha_i,\ldots,\alpha_n\}\)</span> 张成，且
 <span class="math inline">\(\alpha_i\)</span> 项系数不为 0
 的正根组成的集合： <span class="math display">\[\Phi_i^+=\{\lambda\in\Phi^+\mid\lambda=\sum_{j=i}^nc_j\alpha_j,\

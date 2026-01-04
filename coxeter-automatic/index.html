@@ -19,24 +19,25 @@
     
 
         <title>
-            Coxeter 群语言正则的证明 | 朝花夕拾</title>
+            Coxeter 群语言正则的证明 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="命题
-0.1. 若 \(\alpha,\beta\in\Phi\) 满足 \(|(\alpha,\beta)|&amp;lt;1\)，则必然有 \((\alpha,\beta)=\cos(p\pi/q)\)，其中 \(p,q\) 是互素的正整数，而且反射 \(r_\alpha,r_\beta\) 生成的子群">
+    <meta name="description" content="定义
+0.1. 对任何正根 \(\alpha\in\Phi^+\)，定义其深度为 \[\mathrm{dp}(\alpha)=\min\{\,l(w) \mid
+w\alpha\in\Phi^-\,\}.\] 对两个正根 \(\alpha,\beta\)，定义 \(\alpha\preceq\bet">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="Coxeter 群语言正则的证明"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -45,11 +46,17 @@
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+
 <meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -58,7 +65,7 @@
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -90,14 +97,6 @@
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -158,14 +157,6 @@
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -234,7 +225,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -242,7 +233,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -267,6 +258,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -320,7 +319,7 @@
 
 
                             </div>
-                            <time class="pink-link-context" datetime="2025-04-16T02:38:10.790Z"><a href="/coxeter-automatic/index.html">2025-04-16</a></time>
+                            <time class="pink-link-context" datetime="2025-12-12T02:20:49.426Z"><a href="/coxeter-automatic/index.html">2025-12-12</a></time>
 
                                 
 
@@ -330,79 +329,38 @@
                                         
                                             <div class="entry pink-link-context">
                                                 
-<div class="statement proposition plain">
-<p><span class="statement-heading"><span class="statement-label">命题
-0.1</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha,\beta\in\Phi\)</span> 满足 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span>，则必然有 <span class="math inline">\((\alpha,\beta)=\cos(p\pi/q)\)</span>，其中 <span class="math inline">\(p,q\)</span> 是互素的正整数，而且反射 <span class="math inline">\(r_\alpha,r_\beta\)</span> 生成的子群是有限群。</p>
-</div>
-<p><strong>证明</strong>：若 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span>，则内积 <span class="math inline">\((\,,)\)</span> 限制在 <span class="math inline">\(\alpha,\beta\)</span> 张成的二维子空间 <span class="math inline">\(U=\mathop{\mathrm{span}}{\{\alpha,\beta\}}\)</span>
-上是正定的。</p>
-<p>我们可以不妨假定 <span class="math inline">\(\alpha\)</span>
-是正根，以及 <span class="math inline">\(\beta=\alpha_s\)</span>
-是单根。设 <span class="math display">\[\alpha = c_s\alpha_s +
-\sum_{t\ne s }c_t\alpha_t.\]</span> 由于 <span class="math inline">\(\alpha\)</span> 不可能是 <span class="math inline">\(\alpha_s\)</span> 的正倍数，所以 <span class="math inline">\(\gamma=\alpha - c_s\alpha_s\ne0\)</span>。</p>
-<p>注意到如果 <span class="math inline">\(a,b\in\mathbb{R}\)</span> 使得
-<span class="math inline">\(a\gamma+b\alpha_s\in\Phi\)</span>，则 <span class="math inline">\(a,b\)</span> 必须同时非负，或者同时非正。如果
-<span class="math inline">\(\alpha,\beta\)</span> 所夹的角度是 <span class="math inline">\(\pi\)</span> 的无理数倍，那么 <span class="math inline">\((r_\alpha s)\)</span> 是 <span class="math inline">\(U\)</span> 上角度为 <span class="math inline">\(\pi\)</span> 的无理数倍的旋转，它的各次幂 <span class="math inline">\(\{(r_\alpha s)^n,n=0,1,\ldots,\}\)</span> 会将
-<span class="math inline">\(\alpha\)</span> 映射为 <span class="math inline">\(U\)</span>
-中单位圆周上稠密的集合，特别地必然有某个 <span class="math inline">\(k\)</span> 使得 <span class="math inline">\((r_\alpha s)^k\alpha\)</span> 位于区域 <span class="math inline">\(\{a\gamma+b\alpha_s\mid a &gt; 0,
-b&lt;0\}\)</span> 中，这与此区域不包含任何根矛盾。所以 <span class="math inline">\(\alpha,\beta\)</span> 所夹的角度必须是 <span class="math inline">\(\pi\)</span> 的有理数倍，形如 <span class="math inline">\(p\pi/q\)</span>，从而 <span class="math inline">\(r_\alpha,r_\beta\)</span> 生成的子群 <span class="math inline">\(D\)</span> 在 <span class="math inline">\(U\)</span> 上的作用是一个二面体群。另一方面 <span class="math inline">\((\,,)\)</span> 限制在 <span class="math inline">\(U\)</span> 上是正定的，所以 <span class="math inline">\(V=U\oplus U^\bot\)</span>。而 <span class="math inline">\(D\)</span> 作用在 <span class="math inline">\(U^\bot\)</span> 上是平凡的，所以 <span class="math inline">\(D\)</span> 在全空间上的作用也是二面体群。</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
-0.2</span>.</span><span class="statement-spah"> </span>对任何正根 <span class="math inline">\(\alpha\in\Phi^+\)</span>，定义其深度为 <span class="math display">\[\mathrm{dp}(\alpha)=\min\{\,l(w) \mid
+0.1</span>.</span><span class="statement-spah"> </span>对任何正根 <span class="math inline">\(\alpha\in\Phi^+\)</span>，定义其深度为 <span class="math display">\[\mathrm{dp}(\alpha)=\min\{\,l(w) \mid
 w\alpha\in\Phi^-\,\}.\]</span> 对两个正根 <span class="math inline">\(\alpha,\beta\)</span>，定义 <span class="math inline">\(\alpha\preceq\beta\)</span> 当且仅当存在 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(\beta=w\alpha\)</span> 并且 <span class="math display">\[\mathrm{dp}(\beta)=\mathrm{dp}(\alpha)+l(w).\]</span>
 如果 <span class="math inline">\(\alpha\preceq\beta\)</span> 且 <span class="math inline">\(\alpha\ne\beta\)</span> 我们记为 <span class="math inline">\(\alpha\prec\beta\)</span>。</p>
 </div>
 <div class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-0.3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\preceq\)</span> 是 <span class="math inline">\(\Phi^+\)</span> 上的偏序。</p>
-</div>
-<p><strong>证明</strong>：若 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 使得 <span class="math inline">\(\alpha\prec\beta\)</span>，则必然有 <span class="math inline">\(\mathrm{dp}(\beta)&gt;\mathrm{dp}(\alpha)\)</span>，即
-<span class="math inline">\(\preceq\)</span> 是反对称的。我们只要再证明
-<span class="math inline">\(\preceq\)</span> 是传递的。</p>
-<p>设 <span class="math inline">\(\alpha,\beta,\gamma\in\Phi^+\)</span>
-满足 <span class="math inline">\(\alpha\preceq\beta\)</span> 和 <span class="math inline">\(\beta\preceq\gamma\)</span>，我们来证明 <span class="math inline">\(\alpha\preceq\gamma\)</span>。为此我们设 <span class="math display">\[\begin{aligned}
-\beta &amp;= u\alpha, &amp;\mathrm{dp}(\beta) - \mathrm{dp}(\alpha) =
-l(u).\\
-\gamma &amp;= v\beta, &amp;\mathrm{dp}(\gamma) - \mathrm{dp}(\beta) =
-l(v).\\
-\end{aligned}
-\]</span> 显然 <span class="math inline">\(\gamma=vu\alpha\)</span> 且
-<span class="math inline">\(\mathrm{dp}(\gamma)-\mathrm{dp}(\alpha)=
-l(u)+l(v)\)</span>。只要再证明 <span class="math inline">\(l(uv)=l(u)+l(v)\)</span> 即可。</p>
-<p>设 <span class="math inline">\(w\in W\)</span> 满足 <span class="math inline">\(w\alpha\in\Phi^-\)</span> 且 <span class="math inline">\(l(w)=\mathrm{dp}(\alpha)\)</span>。于是 <span class="math display">\[\gamma=vu\alpha\Rightarrow
-u^{-1}v^{-1}\gamma=\alpha \Rightarrow
-wu^{-1}v^{-1}\gamma\in\Phi^-.\]</span> 从而 <span class="math inline">\(l(wu^{-1}v^{-1})\geq\mathrm{dp}(\gamma)\)</span>。</p>
-<p>另一方面 <span class="math display">\[l(wu^{-1}v^{-1})\leq
-l(w)+(l(u)+l(v))=\mathrm{dp}(\alpha)+(\mathrm{dp}(\gamma)-\mathrm{dp}(\alpha))=\mathrm{dp}(\gamma).\]</span>
-所以 <span class="math inline">\(l(wu^{-1}v^{-1})=\mathrm{dp}(\gamma)\)</span>，特别地上式中所有的不等号都是等号，于是
-<span class="math inline">\(l(wu^{-1}v^{-1})=
-l(w)+l(u)+l(v)\)</span>，从而必然有 <span class="math inline">\(l(uv)=l(u)+l(v)\)</span>。<span class="math inline">\(\blacksquare\)</span>。</p>
-<div class="statement lemma plain">
-<p><span class="statement-heading"><span class="statement-label">引理
-0.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha_s\)</span> 是单根，<span class="math inline">\(\alpha\ne\alpha_s\)</span> 是正根，则 <span class="math display">\[\mathrm{dp}(s\alpha)=\begin{cases}\mathrm{dp}(\alpha)-1
-&amp; \text{if } (\alpha,\alpha_s)&gt;0,\\\mathrm{dp}(\alpha) &amp;
-\text{if } (\alpha,\alpha_s)=0.\\\mathrm{dp}(\alpha)+1 &amp; \text{if }
-(\alpha,\alpha_s)&lt;0.\end{cases}\]</span></p>
+0.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha_s\)</span> 是单根，<span class="math inline">\(\beta\ne\alpha_s\)</span> 是正根，则 <span class="math display">\[\mathrm{dp}(s\beta)=\begin{cases}
+\mathrm{dp}(\beta)-1 &amp; \text{if } (\beta,\alpha_s)&gt;0,\\
+\mathrm{dp}(\beta)   &amp; \text{if } (\beta,\alpha_s)=0.\\
+\mathrm{dp}(\beta)+1 &amp; \text{if } (\beta,\alpha_s)&lt;0.
+\end{cases}\]</span></p>
 </div>
 <p>第二条是显然的，而第三条可以由第一条得出：只要对 <span class="math inline">\(s\alpha\)</span>
 应用第一条的结论即可。所以我们只需要证明第一条。</p>
-<p>首先取 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(l(w)=\mathrm{dp}(\alpha)\)</span> 且 <span class="math inline">\(w\alpha\in\Phi^-\)</span>。</p>
+<p>首先取 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(l(w)=\mathrm{dp}(\beta)\)</span> 且 <span class="math inline">\(w\beta\in\Phi^-\)</span>。</p>
 <ol type="1">
 <li><p>如果 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，则
-<span class="math inline">\(l(ws)&lt;l(w)\)</span>，并且 <span class="math inline">\(ws\)</span> 满足 <span class="math inline">\((ws)(s\alpha)&lt;0\)</span>，所以 <span class="math inline">\(\mathrm{dp}(s\alpha)\leq
-l(ws)=l(w)-1\)</span>，从而 <span class="math inline">\(\mathrm{dp}(s\alpha)=l(w)-1\)</span>。</p></li>
+<span class="math inline">\(l(ws)=l(w)-1\)</span>。由于 <span class="math inline">\((ws)(s\beta)=w\beta&lt;0\)</span>，所以 <span class="math display">\[\mathrm{dp}(s\beta)\leq l(ws)=l(w)-1.\]</span>
+从而 <span class="math inline">\(\mathrm{dp}(s\beta)=l(w)-1=\mathrm{dp}(\beta)-1\)</span>。</p></li>
 <li><p>如果 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>，则
-<span class="math inline">\(w(s\alpha)\)</span> 是负根，并且 <span class="math display">\[\begin{align*}
-w(s\alpha)&amp;=w(\alpha - 2(\alpha,\alpha_s)\alpha_s)\\
-&amp;=w\alpha-cw\alpha_s (c&gt;0)
-\end{align*}\]</span> 由于 <span class="math inline">\(\alpha\ne\alpha_s\)</span>
-是不同的正根，所以它们不共线，从而 <span class="math inline">\(w\alpha\)</span> 和 <span class="math inline">\(w\alpha_s\)</span>
-也不共线，于是上式是两个不共线的负根的和，所以任何单反射不能将 <span class="math inline">\(w(s\alpha)\)</span> 变成正根。取 <span class="math inline">\(t\in S\)</span> 使得 <span class="math inline">\(l(tw)&lt;l(w)\)</span>，则 <span class="math inline">\((tw)(s\alpha)\)</span> 仍然是负根，所以 <span class="math inline">\(\mathrm{dp}(s\alpha)\leq
-l(tw)=l(w)-1\)</span>，结论仍然得证。</p></li>
+<span class="math display">\[w(s\beta)=w(\beta -
+2(\beta,\alpha_s)\alpha_s)=w\beta-cw\alpha_s (c&gt;0).\]</span> 可见
+<span class="math inline">\(w(s\beta)\)</span> 是负根。由于 <span class="math inline">\(\beta\ne\alpha_s\)</span>
+是不同的正根，所以它们不共线，从而 <span class="math inline">\(w\beta\)</span> 和 <span class="math inline">\(w\alpha_s\)</span>
+也不共线，于是上式是两个不共线的负根的和，所以任何单反射不能将 <span class="math inline">\(w(s\beta)\)</span> 变成正根。取 <span class="math inline">\(t\in S\)</span> 使得 <span class="math inline">\(l(tw)&lt;l(w)\)</span>，则 <span class="math inline">\(tw(s\beta)\)</span> 仍然是负根，所以 <span class="math display">\[\mathrm{dp}(s\beta)\leq
+l(tw)=l(w)-1=\mathrm{dp}(\beta)-1.\]</span> 结论仍然得证。<span class="math inline">\(\blacksquare\)</span></p></li>
 </ol>
 <div class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-0.5</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha\preceq\beta\)</span>，则存在序列 <span class="math display">\[\alpha=\alpha_0\preceq\alpha_1\preceq\cdots\preceq\alpha_k=\beta\]</span>
+0.3</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha\preceq\beta\)</span>，则存在序列 <span class="math display">\[\alpha=\alpha_0\preceq\alpha_1\preceq\cdots\preceq\alpha_k=\beta\]</span>
 使得对每个 <span class="math inline">\(i\)</span> 有 <span class="math inline">\(\mathrm{dp}(\alpha_{i+1})=\mathrm{dp}(\alpha_i)+1\)</span>。</p>
 </div>
 <p><strong>证明</strong>：设 <span class="math inline">\(w=s_k\cdots
@@ -414,19 +372,24 @@ depth 至多增加 1，所以只能是每一项的 depth 都比前一项增加�
 1，即得结论。</p>
 <div class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-0.6</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha\preceq\beta\)</span>，且 <span class="math inline">\(\alpha=\sum c_s\alpha_s,\, \beta=\sum
+0.4</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha\preceq\beta\)</span>，且 <span class="math inline">\(\alpha=\sum c_s\alpha_s,\, \beta=\sum
 d_s\alpha_s\)</span>，则对每个 <span class="math inline">\(s\)</span> 有
 <span class="math inline">\(c_s\leq d_s\)</span>。</p>
 </div>
 <p><strong>证明</strong>：若 <span class="math inline">\(\beta=s\alpha\)</span> 则 <span class="math inline">\(\alpha,\beta\)</span> 只有在 <span class="math inline">\(\alpha_s\)</span> 项的系数不同。又 <span class="math inline">\((\alpha,\alpha_s)&lt;0\)</span> 所以 <span class="math inline">\(d_s&gt;c_s\)</span> 得证。</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
-0.7</span>.</span><span class="statement-spah"> </span>对 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span>，如果对任何 <span class="math inline">\(w\in W\)</span> 都有 <span class="math inline">\(w\alpha\in\Phi^-\Rightarrow
+0.5</span>.</span><span class="statement-spah"> </span>对 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span>，如果对任何 <span class="math inline">\(w\in W\)</span> 都有 <span class="math inline">\(w\alpha\in\Phi^-\Rightarrow
 w\beta\in\Phi^-\)</span>，我们就称 <span class="math inline">\(\alpha\)</span> 支配 <span class="math inline">\(\beta\)</span>，记作 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>。</p>
 </div>
+<p>由于 <span class="math inline">\(w\alpha\in\Phi^-\)</span> 等价于
+<span class="math inline">\((w\alpha,\mathcal{D})=(\alpha,
+w^{-1}\mathcal{D})&lt;0\)</span>，所以这个定义也可以表述为： <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 当且仅当
+<span class="math inline">\((\alpha, w\mathcal{D})&lt;0\Rightarrow
+(\beta, w\mathcal{D})&lt;0\)</span> 对任何 <span class="math inline">\(w\in W\)</span> 成立。即任何落在镜子 <span class="math inline">\(\alpha\)</span> 背面的房间，也必然落在镜子 <span class="math inline">\(\beta\)</span> 的背面。这意味着镜子 <span class="math inline">\(\beta\)</span> 完全挡在镜子 <span class="math inline">\(\alpha\)</span> 和基本区域 <span class="math inline">\(\mathcal{D}\)</span> 之间，任何从 <span class="math inline">\(\mathcal{D}\)</span> 出发走到 <span class="math inline">\(\alpha\)</span> 背面的路径都必须先穿过 <span class="math inline">\(\beta\)</span>。</p>
 <div class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-0.8</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 且 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>，则：</p>
+0.6</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 且 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>，则：</p>
 <ol type="1">
 <li><span class="math inline">\((\alpha,\beta)&gt;0\)</span>。</li>
 <li>若 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w\beta\)</span> 是正根，则 <span class="math inline">\(w\alpha\,\mathrm{dom}\,w\beta\)</span>。</li>
@@ -445,7 +408,7 @@ w\beta\in\Phi^-\)</span>，我们就称 <span class="math inline">\(\alpha\)</sp
 <li><p>显然。</p></li>
 <li><p>只要对 <span class="math inline">\(\mathrm{dp}(\alpha')=\mathrm{dp}(\alpha)+1\)</span>
 进行证明即可。这时存在单反射 <span class="math inline">\(s\)</span> 使得
-<span class="math inline">\(\alpha'=s\alpha\)</span>，并且 <span class="math inline">\((\alpha_s,\alpha)&lt;0\)</span>。根据 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 和 <span class="math inline">\((\alpha,\beta)&gt;0\)</span> 说明 <span class="math inline">\(\beta\ne\alpha_s\)</span>，从而 <span class="math inline">\(s\beta\)</span> 是正根，从而 <span class="math inline">\(\alpha'=s\alpha\,\mathrm{dom}\,s\beta\)</span>
+<span class="math inline">\(\alpha'=s\alpha\)</span>，并且 <span class="math inline">\((\alpha_s,\alpha)&lt;0\)</span>。<span class="math inline">\((\alpha,\beta)&gt;0\)</span> 说明 <span class="math inline">\(\beta\ne\alpha_s\)</span>，从而 <span class="math inline">\(s\beta\)</span> 是正根，从而 <span class="math inline">\(\alpha'=s\alpha\,\mathrm{dom}\,s\beta\)</span>
 不是极小根。</p></li>
 <li><p><span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>
 显然意味着 <span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(\beta)\)</span>。设
@@ -461,15 +424,15 @@ l(sw)&lt;\mathrm{dp}(\alpha)\)</span>。</p></li>
 </ol>
 <div class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-0.9</span>.</span><span class="statement-spah"> </span>在有限 Coxeter
+0.7</span>.</span><span class="statement-spah"> </span>在有限 Coxeter
 群中，所有根都是极小根。</p>
 </div>
 <p><strong>证明</strong>：设 <span class="math inline">\(w_0\)</span>
 是最长元，则 <span class="math inline">\(\alpha\to -w_0(\alpha)\)</span>
 置换 <span class="math inline">\(\Phi^+\)</span>。我们来验证这个置换保持每个正根的深度不变：若
-<span class="math inline">\(w\alpha&lt;0\)</span>，则 <span class="math inline">\(w_0w\alpha&gt;0\)</span>，从而 <span class="math inline">\((w_0ww_0)-w_0\alpha&lt;0\)</span>，这说明 <span class="math inline">\(\mathrm{dp}(-w_0\alpha)\geq
-l(w_0ww_0)=l(w)\)</span>。对 <span class="math inline">\(-w_0\alpha\)</span> 应用此结论可得 <span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(-w_0\alpha)\)</span>。从而二者相等。</p>
-<p>另一方面我们来验证它翻转 <span class="math inline">\(\,\mathrm{dom}\,\)</span> 这个偏序：若 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>，则 <span class="math display">\[\begin{align*}
+<span class="math inline">\(w\alpha&lt;0\)</span>，则 <span class="math inline">\(w_0w\alpha&gt;0\)</span>，从而 <span class="math inline">\((w_0ww_0)(-w_0\alpha)&lt;0\)</span>，这说明 <span class="math inline">\(\mathrm{dp}(-w_0\alpha)\leq
+l(w_0ww_0)=l(w)\)</span>。对 <span class="math inline">\(-w_0\alpha\)</span> 应用此结论可得 <span class="math inline">\(\mathrm{dp}(\alpha)\leq\mathrm{dp}(-w_0\alpha)\)</span>。从而二者相等。</p>
+<p>另一方面我们来验证它翻转 <span class="math inline">\(\,\mathrm{dom}\,\)</span> 这个偏序：若 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>，则 <span class="math display">\[\begin{aligned}
 w\alpha&lt;0&amp;\Rightarrow w\beta&lt;0\\
 &amp;\Downarrow\\
 w\beta &gt; 0&amp;\Rightarrow w\alpha&gt;0\\
@@ -477,10 +440,10 @@ w\beta &gt; 0&amp;\Rightarrow w\alpha&gt;0\\
 ww_0\beta &gt; 0&amp;\Rightarrow ww_0\alpha&gt;0\\
 &amp;\Downarrow\\
 w(-w_0\beta) &lt; 0&amp;\Rightarrow w(-w_0\alpha)&lt;0\\
-\end{align*}\]</span> 即确实有 <span class="math inline">\(-w_0\beta\,\mathrm{dom}\,-w_0\alpha\)</span>。</p>
+\end{aligned}\]</span> 即确实有 <span class="math inline">\(-w_0\beta\,\mathrm{dom}\,-w_0\alpha\)</span>。</p>
 <div class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-0.10</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 的充要条件是
+0.8</span>.</span><span class="statement-spah"> </span><span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 的充要条件是
 <span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(\beta)\)</span>
 且 <span class="math inline">\((\alpha,\beta)\geq1\)</span>。</p>
 </div>
@@ -508,7 +471,7 @@ N(w)\)</span>，从而所有形如 <span class="math inline">\(\{a\alpha+bs\alph
 和 <span class="math inline">\((w\alpha,w\beta)=(\alpha,\beta)\geq1\)</span>。根据上面的证明，<span class="math inline">\(w\alpha\,\mathrm{dom}\,w\beta\)</span>，所以 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>。</p>
 <div class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-0.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\lambda,\mu\)</span> 是正根，且 <span class="math inline">\(s_\lambda,s_\mu\)</span>
+0.9</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\lambda,\mu\)</span> 是正根，且 <span class="math inline">\(s_\lambda,s_\mu\)</span>
 生成一个无限群，则下面三种情况必居其一：</p>
 <ol type="1">
 <li><span class="math inline">\(\lambda\,\mathrm{dom}\,\mu\)</span>.</li>
@@ -539,7 +502,7 @@ l(ws_\lambda)&lt;l(w)=\mathrm{dp}(s_\mu\lambda)\)</span>。</p>
 <span class="math inline">\(c^2-1\geq 3\)</span>，这与 <span class="math inline">\(w\lambda&lt;0\)</span> 矛盾。</p>
 <div class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-0.12</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 满足 <span class="math inline">\(\beta\preceq\alpha\)</span>，并且 <span class="math inline">\(\alpha\)</span> 是极小根。进一步设 <span class="math inline">\(\alpha_s\in\Delta\)</span> 满足 <span class="math inline">\((\beta,\alpha_s)\leq-1\)</span>，则 <span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(\beta\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项的系数相等。</p>
+0.10</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span> 满足 <span class="math inline">\(\beta\preceq\alpha\)</span>，并且 <span class="math inline">\(\alpha\)</span> 是极小根。进一步设 <span class="math inline">\(\alpha_s\in\Delta\)</span> 满足 <span class="math inline">\((\beta,\alpha_s)\leq-1\)</span>，则 <span class="math inline">\(\alpha\)</span> 和 <span class="math inline">\(\beta\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项的系数相等。</p>
 </div>
 <p><strong>证明</strong>：设 <span class="math inline">\(\beta\preceq\gamma\preceq\alpha\)</span> 使得
 <span class="math inline">\(\gamma\)</span> 是偏序 <span class="math inline">\(\preceq\)</span> 下最大的与 <span class="math inline">\(\beta\)</span> 有相同的 <span class="math inline">\(\alpha_s\)</span> 项系数。如果 <span class="math inline">\(\gamma\ne\alpha\)</span>，则存在 <span class="math inline">\(t\)</span> 使得 <span class="math inline">\(\gamma\prec t\gamma\preceq\alpha\)</span>。由
@@ -552,14 +515,14 @@ r}c_t(\alpha_t,\alpha_s)\geq1.\]</span> 于是 <span class="math inline">\(s\gam
 s\gamma\)</span> 也不是极小根。矛盾！所以 <span class="math inline">\(\gamma=\alpha\)</span>，从而命题得证。</p>
 <div class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-0.13</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi\)</span> 满足 <span class="math inline">\(|(\alpha,\beta)|\leq 1\)</span>，则这样的 <span class="math inline">\((\alpha,\beta)\)</span> 只有有限多个值。</p>
+0.11</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi\)</span> 满足 <span class="math inline">\(|(\alpha,\beta)|\leq 1\)</span>，则这样的 <span class="math inline">\((\alpha,\beta)\)</span> 只有有限多个值。</p>
 </div>
 <p><strong>证明</strong>：若 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span> 则 <span class="math inline">\(r_\alpha,r_\beta\)</span> 生成的子群 <span class="math inline">\(D\)</span> 是有限的，所以存在 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(wDw^{-1}\)</span> 属于某个有限的标准椭圆子群 <span class="math inline">\(W_J\)</span>，特别地，<span class="math inline">\(r_\alpha r_\beta\)</span> 的阶 <span class="math inline">\(m\)</span> 应该整除 <span class="math inline">\(W_J\)</span> 的阶，从而 <span class="math inline">\((\alpha,\beta)\)</span> 形如 <span class="math inline">\(\cos(a\pi/m)\)</span>，其中 <span class="math inline">\(0\leq a\leq 2m\)</span> 而且 <span class="math inline">\(m\)</span>
 是某个有限标准椭圆子群的阶的因子。由于这样的子群是有限的，所以这样的
 <span class="math inline">\(\cos\)</span> 值也是有限的。</p>
 <div class="statement lemma plain">
 <p><span class="statement-heading"><span class="statement-label">引理
-0.14</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha=\sum a_s\alpha_s\)</span> 和 <span class="math inline">\(\beta=\sum b_s\alpha_s\)</span> 都是正根。进一步设
+0.12</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha=\sum a_s\alpha_s\)</span> 和 <span class="math inline">\(\beta=\sum b_s\alpha_s\)</span> 都是正根。进一步设
 <span class="math inline">\(S=I\cup J\)</span> 使得</p>
 <ol type="1">
 <li>对任何 <span class="math inline">\(t\in I\)</span> 有 <span class="math inline">\((\alpha,\alpha_t)=(\beta,\beta_t)\)</span>。</li>
@@ -574,7 +537,7 @@ I}(a_s-b_s)(\alpha,\alpha_s)=\sum_{s\in
 I}(a_s-b_s)(\beta,\alpha_s)=(\beta,\alpha-\beta).\]</span> 即 <span class="math inline">\((\alpha,\beta)=1\)</span>。</p>
 <div class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-0.15</span>.</span><span class="statement-spah">
+0.13</span>.</span><span class="statement-spah">
 </span>极小根集合是有限的。</p>
 </div>
 <p><strong>证明</strong>：我们来证明极小根的深度是有上界的。设 <span class="math inline">\(\beta\)</span> 是一个深度为 <span class="math inline">\(d\)</span> 的极小根，<span class="math inline">\(\beta_1\prec\cdots\prec\beta_d=\beta\)</span>

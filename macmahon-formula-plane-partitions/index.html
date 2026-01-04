@@ -19,27 +19,29 @@
     
 
         <title>
-            平面分拆的 Macmahon 公式 | 朝花夕拾</title>
+            平面分拆的 Macmahon 公式 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="问题： 一个边长为 \(a\times b\times c\) 的平行六边形（\(a,b,c\) 都是正整数），每个内角都是 120
-度。用边长为 1 的菱形密铺，有多少种不同的方法？
+    <meta name="description" content="问题： 假设你家的浴室地面是一个边长为 \(a\times b\times c\) 的平行六边形（\(a,b,c\) 都是正整数），每个内角都是 120
+度。你订购了一批边长为 1
+的菱形瓷砖用来铺满整个浴室地面。问：有多少种不同的方法？
 
 
+你可以试着数一数。但你很快就会放弃，因为只要很小的 \(a,b,c\) 就可以数到让你怀疑人生。
 下图是一种密铺的示例：">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="平面分拆的 Macmahon 公式"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -48,11 +50,17 @@
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
 
+<meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -61,7 +69,7 @@
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -93,14 +101,6 @@
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -161,14 +161,6 @@
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -237,7 +229,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -245,7 +237,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -270,6 +262,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -338,15 +338,18 @@
                                             <div class="entry pink-link-context">
                                                 
 <div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>一个边长为 <span class="math inline">\(a\times b\times c\)</span> 的平行六边形（<span class="math inline">\(a,b,c\)</span> 都是正整数），每个内角都是 120
-度。用边长为 1 的菱形密铺，有多少种不同的方法？</p>
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>假设你家的浴室地面是一个边长为 <span class="math inline">\(a\times b\times c\)</span> 的平行六边形（<span class="math inline">\(a,b,c\)</span> 都是正整数），每个内角都是 120
+度。你订购了一批边长为 1
+的菱形瓷砖用来铺满整个浴室地面。问：有多少种不同的方法？</p>
 <p><img src="/images/macmahon/hexagon.svg" class="fig" width="400"></p>
 </div>
+<p>你可以试着数一数。但你很快就会放弃，因为只要很小的 <span class="math inline">\(a,b,c\)</span> 就可以数到让你怀疑人生。</p>
 <p>下图是一种密铺的示例：</p>
 <p><img src="/images/macmahon/planepartition.svg" class="fig" width="400"></p>
 <span id="more"></span>
-<p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足规律：从墙角开始，沿着两侧墙壁的方向，箱子的高度是递减的。我们把地面上第
-<span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列位置箱子的高度 <span class="math inline">\(a_{ij}\)</span> 填写在一个 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列的矩阵 <span class="math inline">\(A\)</span> 中（习惯上空白位置的 0 不写出来）：</p>
+<p>我们观察这张图，想象在空间中鸟瞰它，发现它很像是在墙角“堆箱子”。不仅如此，箱子的堆放方式还满足规律：从墙角开始，沿着两侧墙壁的方向，箱子的高度是递减的。</p>
+<p>我们把可以把这个堆箱子的方式对应到一个 <span class="math inline">\(a\)</span> 行 <span class="math inline">\(b\)</span> 列的矩阵，其中 <span class="math inline">\(a_{ij}\)</span> 表示地面上第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列位置箱子的高度（习惯上空白位置的 0
+不写出来）：</p>
 <table>
 <tbody>
 <tr>
@@ -415,11 +418,12 @@
 </ol>
 </div>
 <p>设答案为 <span class="math inline">\(M(a,b,c)\)</span>，则我们有一个非常令人吃惊的表达式：</p>
-<div id="macmahon-------" class="unnumbered statement sta_macmahon___ plain">
+<div id="macmahon" class="unnumbered statement sta_macmahon___ plain">
 <p><span class="statement-heading"><span class="statement-label">Macmahon 公式</span>.</span><span class="statement-spah"> </span><br>
 </p>
 <p><span class="math display">\[M(a,b,c)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
 </div>
+<p>这不是一个开玩笑的公式——它几乎像是出现在某本炼金术手册里的。居然是一个完美整洁的分数连乘积，给出一个三维堆箱子问题的答案！话说光看这个表达式，你可能根本不会觉得它是一个整数！</p>
 <p>虽然问题看起来很初等，但是答案的复杂暗示我们它并不像看起来那么容易。接下来你会看到，用一个巧妙的方法可以把问题转化为求一个行列式的值。</p>
 <h1 id="不相交的路径组">不相交的路径组</h1>
 <p>我们知道在平面上从原点 <span class="math inline">\((0,0)\)</span>
@@ -428,7 +432,10 @@
 <p>每个平面分拆的矩阵 <span class="math inline">\(A\)</span> 都对应
 <span class="math inline">\(c\)</span> 条这样的路径，其中第 <span class="math inline">\(k\)</span> 条路径是高度为 <span class="math inline">\(k\,(1\leq k\leq c)\)</span>
 的那一层的「等高线」：</p>
-<p><img src="/images/macmahon/paths-on-cubes.svg" class="fig" width="400"></p>
+<figure>
+<img src="/images/macmahon/paths-on-cubes.svg" class="fig" width="400" alt="我们把每一层都画出来（你也可以想象是洪水上涨时每一层的水痕）：">
+<figcaption aria-hidden="true">我们把每一层都画出来（你也可以想象是洪水上涨时每一层的水痕）：</figcaption>
+</figure>
 <p>我们把这些路径投影到 2D，和矩阵 <span class="math inline">\(A\)</span> 画在一起。从最下方的路径开始，第 <span class="math inline">\(i\)</span> 条路径对应的是矩阵中 <span class="math inline">\(\geq i\)</span> 的那些方格构成的区域的边界：</p>
 <p><img src="/images/macmahon/gauss_path.svg" class="fig" width="500"></p>
 <div class="statement note definition unnumbered">
@@ -439,24 +446,28 @@
 <p>注意 <span class="math inline">\(A\)</span>
 的行和列满足递降关系，这个递降关系反映在这 <span class="math inline">\(c\)</span>
 条路径上就是，对任何两条路径，它们可以有接触点或者重合的边，但彼此不能穿过对方。</p>
-<p>接下来是关键的一步：如果把这 <span class="math inline">\(c\)</span>
-条路径沿着 <span class="math inline">\((-1,1)\)</span> 方向，分别平移
-<span class="math inline">\(0,1,\ldots,c-1\)</span> 个单位，则平移后的
-<span class="math inline">\(c\)</span>
-条路径两两之间将没有任何公共点。我们称之为一个不相交的路径组。如下图所示：</p>
-<p><img src="/images/macmahon/nonintersecting_paths.gif" class="fig" width="550"></p>
-<p>这里 <span class="math inline">\(A_i=(1-i,i-1)\)</span>，<span class="math inline">\(B_j=(b+1-j,a-1+j)\)</span>，<span class="math inline">\(\{p_i:A_i\rightarrow B_i,1\leq i\leq c\}\)</span>
-是一个不相交的路径组。反过来对每一个这样的不相交的路径组，我们也很容易还原出对应的平面分拆来。</p>
+<p>接下来我们做一件小把戏：对每个 <span class="math inline">\(i\)</span>，把第 <span class="math inline">\(i\)</span> 条路径整体往 <span class="math inline">\((-1,1)\)</span> 方向平移 <span class="math inline">\(i-1\)</span>
+单位。这就让路径们完全不相交了。如下图所示：</p>
+<p><img src="/images/macmahon/nonintersecting_paths.gif" id="nonintersect-anim" class="fig" width="550"></p>
+<p>在平移后，第 <span class="math inline">\(i\)</span> 条路径的起点是
+<span class="math inline">\(A_i=(1-i,i-1)\)</span>，终点是 <span class="math inline">\(B_i=(b+1-i,a-1+i)\)</span>。我们把这样的 <span class="math inline">\(c\)</span>
+条路径组成的集合称之为一个不相交的路径组。</p>
+<p>我再强调一次，不相交的路径组是指任何两条路径之间没有公共点，避免一切交叉和接触。</p>
+<p>反过来对每一个这样的不相交的路径组，我们也很容易还原出对应的平面分拆来。</p>
 <p>于是我们的问题又进一步转化为</p>
 <div id="paths-problem" class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>设 <span class="math inline">\(\{A_i=(1-i,i-1)\}\)</span> 和 <span class="math inline">\(\{B_j=(b+1-j,a-1+j)\}\)</span>
 是平面上两组顶点集，计算所有不相交路径组 <span class="math inline">\(\mathcal{P}=\{p_i,1\leq i\leq c\}\)</span>
 的数目，其中 <span class="math inline">\(p_i\)</span> 是从 <span class="math inline">\(A_i\)</span> 出发到 <span class="math inline">\(B_i\)</span> 的 Gauss 路径。</p>
 </div>
+<p>这听起来像是某种城市道路或者管线设计问题。神奇的是，这个计数问题的答案，居然藏在一个行列式中。</p>
 <h1 id="gessel-viennot-的巧妙方法">Gessel-Viennot 的巧妙方法</h1>
-<p>考虑 <span class="math inline">\(c\times c\)</span> 的矩阵 <span class="math inline">\(M\)</span>，其元素 <span class="math inline">\(m_{ij}\)</span> 是从 <span class="math inline">\(A_i\)</span> 出发到达 <span class="math inline">\(B_j\)</span> 的所有 Gauss 路径的数目。由于 <span class="math inline">\(A_i\)</span> 坐标为 <span class="math inline">\((1-i,i-1)\)</span>，<span class="math inline">\(B_j\)</span> 坐标为 <span class="math inline">\((b+1-j,a-1+j)\)</span>，所以 <span class="math display">\[m_{ij}=\binom{a+b}{b+i-j}.\]</span> 这里如果
-<span class="math inline">\(b+i-j&lt;0\)</span> 则规定 <span class="math inline">\(m_{ij}=0\)</span>。Gessel-Viennot
-引理非常意外地告诉我们：</p>
+<p>考虑 <span class="math inline">\(c\times c\)</span> 的矩阵 <span class="math inline">\(M\)</span>，其元素 <span class="math inline">\(m_{ij}\)</span> 是从 <span class="math inline">\(A_i\)</span> 出发到达 <span class="math inline">\(B_j\)</span> 的所有 Gauss 路径的数目。注意，现在
+Gauss 路径不再必须是从 <span class="math inline">\(A_i\)</span> 走到
+<span class="math inline">\(B_i\)</span>，而是可以走到任何 <span class="math inline">\(B_j\)</span>。由于 <span class="math inline">\(A_i\)</span> 坐标为 <span class="math inline">\((1-i,i-1)\)</span>，<span class="math inline">\(B_j\)</span> 坐标为 <span class="math inline">\((b+1-j,a-1+j)\)</span>，所以 <span class="math display">\[m_{ij}=\binom{a+b}{b+i-j}.\]</span> 其中如果
+<span class="math inline">\(b+i-j&lt;0\)</span> 则规定 <span class="math inline">\(m_{ij}=0\)</span>。因为这时 <span class="math inline">\(B_j\)</span> 的横坐标在 <span class="math inline">\(A_i\)</span> 的左边，这种 Gauss
+路径根本不存在。</p>
+<p>现在，奇迹要发生了：</p>
 <div id="gessel-viennot-------" class="unnumbered statement sta_gessel_viennot___ plain">
 <p><span class="statement-heading"><span class="statement-label">Gessel-Viennot 引理</span>.</span><span class="statement-spah"> </span><br>
 </p>
@@ -466,32 +477,33 @@ j\leq c\}\)</span> 是 <a href="#paths-problem" title="问题中所述">问题�
 的两个顶点集，则所有不相交路径组的个数为 <span class="math display">\[\det M=\det_{1\leq i,j\leq
 c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right).\]</span></p>
 </div>
-<p>Gessel-Viennot
-引理对更一般的带权的图也成立，它在许多组合问题中都有精彩的应用。关于这方面可以参看
-<span class="citation" data-cites="thebook">(<a href="#ref-thebook" role="doc-biblioref">Aigner and Ziegler 2018</a>)</span>。</p>
+<p>这个结论乍一看可太不可思议了，行列式的几何意义不是平行多面体的有向体积吗？怎么突然成了计数工具？要揭示这个魔法背后的秘密，我们得先看看上面的行列式真正干了什么。</p>
 <p><strong>证明</strong>：对 <span class="math inline">\(c\)</span>
 元组上的任一置换 <span class="math inline">\(\sigma\in
 S_c\)</span>，记路径组 <span class="math inline">\(\mathcal{P}_\sigma=\{p_i:A_i\rightarrow
 B_{\sigma(i)},1\leq i\leq c\}\)</span>。</p>
 <p>把 <span class="math inline">\(\det M\)</span>
-按照行列式的定义展开：</p>
+按照行列式的定义展开。由于 <span class="math inline">\(m_{i\sigma(i)}\)</span> 是从 <span class="math inline">\(A_i\)</span> 到 <span class="math inline">\(B_{\sigma(i)}\)</span> 的 Gauss 路径的个数，所以
+<span class="math display">\[m_{i\sigma(i)} = \sum_{p_i:A_i\to
+B_{\sigma(i)}}1.\]</span> 于是</p>
 <p><span class="math display">\[\begin{aligned}\det
-M&amp;=\sum_{\sigma}\text{sgn}(\sigma)m_{1\sigma(1)}\cdots
-m_{c\sigma(c)}\\&amp;=\sum_{\sigma}\text{sgn}(\sigma)\left(\sum_{p_1:A_1\to
+M&amp;=\sum_{\sigma}\mathrm{sgn}(\sigma)m_{1\sigma(1)}\cdots
+m_{c\sigma(c)}\\&amp;=\sum_{\sigma}\mathrm{sgn}(\sigma)\left(\sum_{p_1:A_1\to
 B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to
 B_{\sigma(c)}}1\right).\end{aligned}\]</span></p>
-<p>其中 <span class="math inline">\(\sigma\)</span> 跑遍对称群 <span class="math inline">\(S_c\)</span>。取出其中的一个因子</p>
+<p>其中 <span class="math inline">\(\sigma\)</span> 跑遍对称群 <span class="math inline">\(S_c\)</span>。<span class="math inline">\(\mathrm{sgn}(\sigma)\)</span> 是置换 <span class="math inline">\(\sigma\)</span> 的符号，偶置换时为 <span class="math inline">\(+1\)</span>，奇置换时为 <span class="math inline">\(-1\)</span>。</p>
+<p>我们考虑如下的项：</p>
 <p><span class="math display">\[\left(\sum_{p_1:A_1\to
 B_{\sigma(1)}}1\right)\cdots\left(\sum_{p_c:A_c\to
-B_{\sigma(c)}}1\right),\]</span></p>
-<p>把它展开得到很多个 1，每个 1 对应一个路径组 <span class="math inline">\(\mathcal{P}_\sigma\)</span>，因此</p>
+B_{\sigma(c)}}1\right).\]</span></p>
+<p>把它展开会得到很多个 1，每个 1 对应一个路径组 <span class="math inline">\(\mathcal{P}_\sigma\)</span>，因此</p>
 <p><span class="math display">\[\det
 M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).
 \tag{$\ast$}\label{eq:det}\]</span></p>
-<p>这个求和是对每个置换 <span class="math inline">\(\sigma\)</span>，跑遍所有可能的路径组 <span class="math inline">\(P_\sigma\)</span>。</p>
-<p>我们来证明在 <span class="math inline">\((\ref{eq:det})\)</span>
-的求和中，相交路径组对应的项可以两两抵消，剩下的只有不相交的路径组。</p>
-<p>设 <span class="math inline">\(\mathcal{P}=\mathcal{P}_\sigma\)</span>
+<p>这个求和是对每个置换 <span class="math inline">\(\sigma\)</span>，跑遍所有可能的路径组 <span class="math inline">\(P_\sigma\)</span>。<span class="math inline">\(P_\sigma\)</span>
+可以是相交的路径组，也可以是不相交的路径组。</p>
+<p>奇妙的是，所有那些相交的路径组对应的项最后都会互相抵消，剩下的只有不相交的路径组！</p>
+<p>让我们看看这个抵消是怎么发生的。设 <span class="math inline">\(\mathcal{P}=\mathcal{P}_\sigma\)</span>
 是一个相交的路径组，我们构造与之抵消的路径组 <span class="math inline">\(\mathcal{P}'\)</span> 如下：</p>
 <ol type="1">
 <li>在 <span class="math inline">\(\mathcal{P}\)</span>
@@ -501,17 +513,18 @@ M=\sum_{\sigma,\mathcal{P}_\sigma}\text{sgn}(\sigma).
 点之后的部分，保持路径组其它部分不动。记得到的新路径组为 <span class="math inline">\(\mathcal{P}'\)</span>。</li>
 </ol>
 <p>直观上，你可以想象两个人分别从 <span class="math inline">\(A_i\)</span> 和 <span class="math inline">\(A_j\)</span> 出发沿着路径 <span class="math inline">\(p_i\)</span> 和 <span class="math inline">\(p_j\)</span> 前往目的地 <span class="math inline">\(B_{\sigma(i)}\)</span> 和 <span class="math inline">\(B_{\sigma(j)}\)</span>。当他们到达 <span class="math inline">\(C\)</span>
-时改变路线，沿着对方剩下的路径前往对方的目的地。</p>
+时同时调转路线，沿着对方剩下的路径前往对方的目的地。</p>
 <p><img src="/images/macmahon/gessel_viennot.svg" class="fig" width="550"></p>
-<p>于是 <span class="math inline">\(\mathcal{P}'\)</span> 对应的置换
-<span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\sigma\)</span> 只差一个对换 <span class="math inline">\((ij)\)</span>，因此 <span class="math inline">\(\text{sgn}(\sigma')=-\text{sgn}(\sigma)\)</span>。更重要的是，如果对
+<p>这个新路径组 <span class="math inline">\(\mathcal{P}'\)</span>
+对应的置换 <span class="math inline">\(\sigma'\)</span> 与 <span class="math inline">\(\sigma\)</span> 相差一个对换 <span class="math inline">\((ij)\)</span>，因此 <span class="math inline">\(\mathrm{sgn}(\sigma')=-\mathrm{sgn}(\sigma)\)</span>。不仅如此，如果对
 <span class="math inline">\(\mathcal{P}'\)</span>
-也进行上述操作的话，又会回到 <span class="math inline">\(\mathcal{P}\)</span>，因此相交的路径组确实可以两两配对抵消。</p>
+也按照上述规则寻找与之抵消的路径组的话，找到的路径仍然是 <span class="math inline">\(\mathcal{P}\)</span>，这就构成了一个漂亮的“湮灭配对”：相交的路径组成对出现，符号相反，相加为零。</p>
 <p>于是我们可以把 <span class="math inline">\((\ref{eq:det})\)</span>
 改写为 <span class="math display">\[\det
 M=\sum_{\sigma,\,\mathcal{P}_\sigma \text{
-non-intersecting}}\text{sgn}(\sigma).\]</span></p>
-<p>但是注意，不相交的路径组只有在 <span class="math inline">\(\sigma=1\)</span> 时才可能发生，即每个 <span class="math inline">\(A_i\)</span> 的目的地必须是 <span class="math inline">\(B_i\)</span>。所以我们进一步得到 <span class="math display">\[
+non-intersecting}}\mathrm{sgn}(\sigma).\]</span></p>
+<p>但是注意，不相交的路径组只有在 <span class="math inline">\(\sigma=1\)</span> 时才可能发生，即每个 <span class="math inline">\(A_i\)</span> 的目的地必须是 <span class="math inline">\(B_i\)</span>。你可以很容易从前面的图中看出来。所以我们进一步得到
+<span class="math display">\[
 \det M=\sum_{\sigma=1\text{ and } \mathcal{P}_\sigma \text{
 non-intersecting}}1.\]</span> 这正是所求的不相交路径组的个数。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="dodgsons-condensation-method">Dodgson’s condensation method</h1>
@@ -523,9 +536,9 @@ A_1^1\det A_n^n-\det A_1^n\det A_n^1.\]</span></p>
 <p><img src="/../images/macmahon/dodgson.svg" class="fig" width="450"></p>
 <p>这个结论的证明不难，可以见 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Dodgson_condensation">维基百科</a>，这里就不再写了。</p>
 <p>我们对 <span class="math inline">\(c\)</span> 归纳来证明</p>
-<div class="unnumbered statement theorem-unnumbered plain">
-<p><span class="statement-heading"><span class="statement-label">定理</span>.</span><span class="statement-spah">
-</span>（<strong>Macmahon 公式</strong>）</p>
+<div id="macmahon-thm" class="unnumbered statement sta_macmahon___-1 plain">
+<p><span class="statement-heading"><span class="statement-label">Macmahon 公式</span>.</span><span class="statement-spah"> </span><br>
+</p>
 <p><span class="math display">\[\det_{1\leq i,j\leq
 c}\left(\left(\begin{array}{c}a+b\\b+i-j\end{array}\right)\right)=\prod_{i=1}^a\prod_{j=1}^b\prod_{k=1}^c\frac{i+j+k-1}{i+j+k-2}.\]</span></p>
 </div>
@@ -542,11 +555,10 @@ Gessel-Viennot 引理来做，只是行列式的求值略复杂。其实也可�
 </div>
 <h1 id="番外话">番外话</h1>
 <p>说点八卦的东西。Dodgson 是 19
-世纪的英国数学家，细心点的读者可能注意到这位老兄的名字实在让人不敢恭维：Dodgson，dog
-..
-son？大概他也知道自己的名字难登大雅之堂，所以他给自己取了一个很好听的笔名：Lewis
+世纪的英国数学家，细心点的读者可能注意到这位老兄的名字实在让人不敢恭维：Dodgson,
+dog…son？大概他也知道自己的名字难登大雅之堂，所以他给自己取了一个很好听的笔名：Lewis
 Carroll（路易斯·卡罗尔）。</p>
-<p>你对这个名字没有反应么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学的数学教授，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。他曾经专门为邻居家的女儿写了一部童话来哄她开心，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把
+<p>你对这个名字没有印象么？那好，我们继续说说他的轶事。这位老兄虽然名字略俗，受过的教育可不含糊，是牛津大学的数学教授，也算上层社会体面人物，但是按照今天的话说，是个不折不扣的怪蜀黍，对萝莉有着特别的喜爱，尤其喜爱给她们拍裸照，所以后人基本认定他是一个恋童癖大叔。他曾经专门为邻居家的女儿写了一部童话来哄她开心，这就是大名鼎鼎的《爱丽斯漫游奇境记》。虽然创作动机不纯，但是这部童话非常精彩，以至于当时的英国女王都变成了他的粉丝。女王命令手下的大臣把
 Dodgson
 的全部著作都搜集呈上来，于是大臣献上了一本厚厚的《符号逻辑》，当然结果你猜得到的
 …</p>
@@ -557,10 +569,6 @@ Bressoud 的书 <span class="citation" data-cites="Bressoud1999">(<a href="#ref-
 1999</a>)</span>，我保证里面的故事和《爱丽丝漫游奇境记》一样奇妙 …</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-thebook" class="csl-entry" role="listitem">
-Aigner, Martin, and Gnter M. Ziegler. 2018. <em>Proofs from THE
-BOOK</em>. 6th ed. Springer Publishing Company, Incorporated.
-</div>
 <div id="ref-Bressoud1999" class="csl-entry" role="listitem">
 Bressoud, David M. 1999. <em>Proofs and Confirmations: The Story of the
 Alternating-Sign Matrix Conjecture</em>. Spectrum. Cambridge University

@@ -19,10 +19,26 @@
     
 
         <title>
-            Coupling from the past | 朝花夕拾</title>
+            Coupling from the past | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the
+    <meta name="description" content="2025/12/13 更新：我用 GPT 帮我把画图的 Python
+脚本改成了 Javascript 动画：
+
+
+
+
+(function () {
+  const f = document.getElementById(&#34;cftp-iframe&#34;);
+  window.addEventListener(&#34;message&#34;, (e) =&gt; {
+    // 如果同源部署，建议加：if (e.origin !== location.origin) return;
+    if (!e.data || e.data.type !== &#34;cftp:resize&#34;) return;
+    f.style.height = (e.data.height + 2) + &#34;px&#34;; // +2 防止边框裁切
+  });
+})();
+
+
+今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the
 past
 (CFTP)。这个算法看似简单，实则充满玄机。我相信你可以在五分钟内理解算法的步骤，然后再花五分钟左右看懂算法的证明，但是我打赌你需要几个星期甚至更久的时间来细细回味其中奥妙。
 为了引出算法，我们从一个计数问题开始：
@@ -35,14 +51,14 @@ past
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="Coupling from the past"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -51,11 +67,17 @@ past
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
 
+<meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -64,7 +86,7 @@ past
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -96,14 +118,6 @@ past
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -164,14 +178,6 @@ past
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -240,7 +246,7 @@ past
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -248,7 +254,7 @@ past
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -273,6 +279,14 @@ past
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -342,6 +356,22 @@ past</span></a></li><li class="section table-of-contents-item section table-of-c
                                         
                                             <div class="entry pink-link-context">
                                                 
+<p><strong>2025/12/13 更新</strong>：我用 GPT 帮我把画图的 Python
+脚本改成了 Javascript 动画：</p>
+<div style="width:100%; margin:1rem 0;">
+<p><iframe id="cftp-iframe" src="/demos/cftp.html" style="width:100%; border:0; border-radius:16px; overflow:hidden;" scrolling="no" title="CFTP demo"></iframe></p>
+</div>
+<script>
+(function () {
+  const f = document.getElementById("cftp-iframe");
+  window.addEventListener("message", (e) => {
+    // 如果同源部署，建议加：if (e.origin !== location.origin) return;
+    if (!e.data || e.data.type !== "cftp:resize") return;
+    f.style.height = (e.data.height + 2) + "px"; // +2 防止边框裁切
+  });
+})();
+</script>
+<hr>
 <p>今天我要介绍一个 Markov 链采样中的精彩算法，叫做 coupling from the
 past
 (CFTP)。这个算法看似简单，实则充满玄机。我相信你可以在五分钟内理解算法的步骤，然后再花五分钟左右看懂算法的证明，但是我打赌你需要几个星期甚至更久的时间来细细回味其中奥妙。</p>
@@ -366,7 +396,7 @@ past
 <p>真正的问题来了：</p>
 <div class="unnumbered statement question-unnumbered definition">
 <p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>怎样在全部 <span class="math inline">\(H(a,b,c)\)</span>
-种不同的密铺中完全随机地任选一种？（即按照均匀分布采样）</p>
+种不同的密铺中完全随机地任选一种？也就是说，每一种密铺都应该以同样的概率被选中。不能有偏向，也不能近似凑合，必须是完完全全的随机。</p>
 </div>
 <p>由于 <span class="math inline">\(H(a,b,c)\)</span>
 太太太大了，我们不可能先把所有密铺都列出来然后再挑选，那样的话全世界的计算机内存加起来也装不下。所以得设计一个聪明点的方法，这就是
@@ -668,8 +698,8 @@ tiling and card shuffling Markov chains</a>, David B. Wilson.</li>
 
                                                     
   <p class="pink-link-context">
-    <a href="/reducible-mod-p/" rel="next" title="模任何素数都可约的整系数不可约多项式">
-      上一篇：模任何素数都可约的整系数不可约多项式
+    <a href="/random-walk-potential-kernel/" rel="next" title="二维随机游动 （一）：逃出太阳系可没有你想象的那么难！">
+      上一篇：二维随机游动 （一）：逃出太阳系可没有你想象的那么难！
     </a>
   </p>
   

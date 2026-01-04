@@ -19,7 +19,7 @@
     
 
         <title>
-            Coxeter 群笔记（五）：Coxeter 群的 level | 朝花夕拾</title>
+            Coxeter 群笔记（五）：Coxeter 群的 level | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="本文主要改写自 (Maxwell 1982)
@@ -52,14 +52,14 @@ level 的定义
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="Coxeter 群笔记（五）：Coxeter 群的 level"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -68,11 +68,17 @@ level 的定义
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+
 <meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -81,7 +87,7 @@ level 的定义
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -113,14 +119,6 @@ level 的定义
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -181,14 +179,6 @@ level 的定义
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -257,7 +247,7 @@ level 的定义
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -265,7 +255,7 @@ level 的定义
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -290,6 +280,14 @@ level 的定义
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -429,19 +427,11 @@ level = 1。</li>
 归纳。当 <span class="math inline">\(l=0\)</span>
 时，由于在一个有限或者仿射的连通图中删去任何一个顶点后剩下的一定是有限子图
 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
-2.6</a>)</span>，所以结论成立。</p>
-<p>假设结论对所有小于 <span class="math inline">\(l\)</span>
-的正整数成立，考虑 <span class="math inline">\(l\)</span>
-的情形。用反证法。</p>
-<p>假设从 <span class="math inline">\(\Gamma\)</span> 中删去 <span class="math inline">\(\{i_1,\ldots,i_{l+1}\}\)</span> 这 <span class="math inline">\(l+1\)</span> 个顶点后，剩下的部分中，连通分支
-<span class="math inline">\(\Gamma'\)</span> 是仿射的。不妨设 <span class="math inline">\(\Gamma\setminus\{i_1,\ldots,i_{l+1}\}=\Gamma'\cup\Gamma''\)</span>，其中
-<span class="math inline">\(\Gamma''\)</span>（可能为空集）和
-<span class="math inline">\(\Gamma'\)</span> 之间没有边相连。</p>
-<p><img src="/images/coxeter/lemma.svg" class="fig" width="400"></p>
-<p>由于 <span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(\Gamma'\)</span> 必然和 <span class="math inline">\(\{i_1,\ldots,i_{l+1}\}\)</span>
-中某个顶点有边连接，不妨设为 <span class="math inline">\(i_{l+1}\)</span>。</p>
-<p><span class="math inline">\(\{i_{l+1}\}\cup\Gamma'\subseteq\Gamma\setminus\{i_1,\ldots,i_l\}\)</span>
-是一个仿射的连通子图，这个子图删除 <span class="math inline">\(i_{l+1}\)</span> 后得到的 <span class="math inline">\(\Gamma'\)</span> 仍然是仿射的，这与 <span class="math inline">\(l=0\)</span> 的情形矛盾，所以结论得证。<span class="math inline">\(\blacksquare\)</span></p>
+2.6</a>)</span>，所以结论成立。设结论对所有小于 <span class="math inline">\(l\)</span> 的正整数成立，考虑 <span class="math inline">\(l\)</span> 的情形。用反证法。</p>
+<p>假设从 <span class="math inline">\(\Gamma\)</span> 中删去 <span class="math inline">\(|U|=l+1\)</span>
+个顶点后，剩下的部分包含一个仿射的连通分支 <span class="math inline">\(Y\)</span>。由于 <span class="math inline">\(\Gamma\)</span> 是连通的，所以 <span class="math inline">\(Y\)</span> 必然和某个 <span class="math inline">\(u\in U\)</span> 有边相连。</p>
+<p>考虑从 <span class="math inline">\(\Gamma\)</span> 中，删去 <span class="math inline">\(U\setminus\{u\}\)</span> 这 <span class="math inline">\(l\)</span> 个顶点后得到的子图。由于 <span class="math inline">\(\Gamma\)</span> 的 level 是 <span class="math inline">\(l\)</span>，所以这个子图每个分支都是有限或者仿射的。令
+<span class="math inline">\(C\)</span> 是包含 <span class="math inline">\(Y\cup\{u\}\)</span> 的连通分支，则 <span class="math inline">\(C\)</span> 是不可约仿射的。但是从 <span class="math inline">\(C\)</span> 中删除 <span class="math inline">\(u\)</span> 后仍然包含仿射子图 <span class="math inline">\(Y\)</span>，这与 <span class="math inline">\(l=0\)</span> 的情形矛盾，所以结论得证。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="level-1-是双曲的">Level 1 是双曲的</h1>
 <p>本节来证明 level 等于 1 的群都是双曲的。</p>
 <p>首先是一个定义：</p>
@@ -527,12 +517,12 @@ Coxeter 群给出了三维双曲空间中的<strong>紧</strong> (compact)
 </div>
 <p>取 <span class="math inline">\(s\in S\)</span> 使得 <span class="math inline">\(v_s\ne 0\)</span>，则 <span class="math inline">\(u'=v_su-u_sv\)</span> 满足 <span class="math inline">\((u',u')=v_s^2(u,u)&lt;0\)</span>，且 <span class="math inline">\(u'\)</span> 的 <span class="math inline">\(\alpha_s\)</span> 项系数 <span class="math inline">\(u'_s=0\)</span>，这与断言 1 矛盾。所以 <span class="math inline">\(\Gamma\)</span> 是双曲的。</p>
 <p><strong>2. 证明 <span class="math inline">\((\omega_s,\omega_s)\leq0\)</span></strong></p>
-<p>由于 <span class="math inline">\(\Gamma\)</span> 的 level 是
-1，删除任意一个顶点 <span class="math inline">\(s\)</span> 后的子图
+<p>由 <span class="math inline">\(\Gamma\)</span> 的 level 是 1
+可得删除任意一个顶点 <span class="math inline">\(s\)</span> 后的子图
 <span class="math inline">\(\Gamma \setminus\{s\}\)</span>
-是有限或仿射型。因此子空间 <span class="math inline">\(\omega_s^\perp =
+是有限或仿射的，即子空间 <span class="math inline">\(\omega_s^\perp =
 \mathrm{span}\{\alpha_t \mid t \ne s\}\)</span>
-是正定或者半正定的。由于我们刚刚已经证明了 <span class="math inline">\((\cdot,\cdot)\)</span> 是双曲的，所以 <span class="math inline">\(\omega_s\)</span> 不是 space-like 的，即 <span class="math inline">\((\omega_s, \omega_s) \leq 0\)</span>。于是任何
+是正定或者半正定的。由于刚刚已经证明了 <span class="math inline">\((\cdot,\cdot)\)</span> 是双曲的，所以 <span class="math inline">\(\omega_s\)</span> 不是 space-like 的，即 <span class="math inline">\((\omega_s, \omega_s) \leq 0\)</span>。于是任何
 <span class="math inline">\(\omega_s\,(s\in S)\)</span> 都不是实的。</p>
 <p><strong>3. 证明 <span class="math inline">\((\omega_s,\omega_t)\leq0\)</span> 且 <span class="math inline">\(\mathrm{span}\{\omega_i,\omega_j\}\)</span>
 非正定</strong></p>
@@ -661,15 +651,15 @@ u)&lt;0,\,(v, v)=0\)</span>。</p>
 中有两个是 0，其余的非零且同号。</li>
 </ol>
 </div>
-<p>由于 <span class="math inline">\((u,u)&lt;0\)</span> 和 <span class="math inline">\((v,v)=0\)</span>，所以 <span class="math inline">\(\{u_s\}\)</span> 中至多一个是 0，<span class="math inline">\(\{v_s\}\)</span> 中至多两个是 0，而 <span class="math inline">\(|\Gamma|\geq4\)</span>，所以存在下标 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(u_i,\,v_i\)</span> 均不为 0。<span class="math inline">\(u'=v_iu-u_iv\)</span> 仍然满足 <span class="math inline">\(u'\perp v\)</span> 和 <span class="math inline">\((u',u')&lt;0\)</span>，但是系数 <span class="math inline">\(u'_i=0\)</span>，所以我们不妨一开始就取 <span class="math inline">\(u\)</span> 为 <span class="math inline">\(u'\)</span>，使得 <span class="math inline">\(u\)</span> 有一个系数 <span class="math inline">\(u_i=0\)</span>，其它 <span class="math inline">\(u_s\,(s\ne i)\)</span> 都非 0
-且同号，不妨假设它们都大于 0。</p>
-<p>由于 <span class="math inline">\(\{v_s\}\)</span> 中至多只有两个为
-0，而 <span class="math inline">\(|\Gamma|\geq4\)</span>，所以 <span class="math inline">\(\{v_j,\,j\ne i\}\)</span> 中至少还有一个非零。</p>
+<p>由于 <span class="math inline">\((u,u)&lt;0\)</span> 和 <span class="math inline">\((v,v)=0\)</span>，所以 <span class="math inline">\(\{u_s\}\)</span> 中至多一个是 0，<span class="math inline">\(\{v_s\}\)</span> 中至多两个是 0，而 <span class="math inline">\(|\Gamma|\geq4\)</span>，所以存在下标 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(u_i,\,v_i\)</span> 均不为 0。通过适当取 <span class="math inline">\(\pm v\)</span> 可以不妨设 <span class="math inline">\(v_i&lt;0\)</span>。<span class="math inline">\(u'=v_iu-u_iv\)</span> 仍然满足 <span class="math inline">\(u'\perp v\)</span> 和 <span class="math inline">\((u',u')&lt;0\)</span>，但是系数 <span class="math inline">\(u'_i=0\)</span>，用 <span class="math inline">\(u'\)</span> 作为 <span class="math inline">\(u\)</span> 可以不妨设 <span class="math inline">\(u\)</span> 的系数 <span class="math inline">\(u_i=0\)</span>。再进一步调整 <span class="math inline">\(\pm u\)</span> 可以使得其它 <span class="math inline">\(u_s&gt;0\,(s\ne i)\)</span>。</p>
+<p>记 <span class="math inline">\(J=\{j\in S\mid u_j\ne0 \text{ and
+}v_j\ne 0\}\)</span>。分情况讨论：</p>
 <ul>
-<li><p>如果 <span class="math inline">\(\{v_j,\,j\ne i\}\)</span>
-中仅有一个非零，这时必有 <span class="math inline">\(|\Gamma|=4\)</span>
-且 <span class="math inline">\(v\)</span> 形如 <span class="math inline">\(v=v_i\alpha_i + v_j\alpha_j\)</span>。根据 <a href="#level-l" title="定理 1.2">定理 1.2</a>，<span class="math inline">\(\mathrm{span}\{\alpha_i,\alpha_j\}\)</span>
-是仿射的（它包含 <span class="math inline">\(v\)</span>，不可能是有限的），从而 <span class="math inline">\((\alpha_i,\alpha_j)=-1\)</span> 且 <span class="math inline">\(v_i=v_j\)</span>。不妨将 <span class="math inline">\(v\)</span> 缩放为 <span class="math inline">\(v=\alpha_i+\alpha_j\)</span>。</p>
+<li><p><span class="math inline">\(|J|\geq 2\)</span>：</p>
+<p>这时必然存在 <span class="math inline">\(j,k\in J\)</span> 使得 <span class="math inline">\(a=v_j/u_j &lt; v_k/u_k\)</span>。<span class="math inline">\(u'=au-v\)</span> 是 time-like 的，其系数 <span class="math inline">\(u'_i=-v_i&gt;0\)</span>，<span class="math inline">\(u'_j=0\)</span>，<span class="math inline">\(u'_k\leq 0\)</span>，与断言 1 矛盾。</p></li>
+<li><p><span class="math inline">\(|J|\leq1\)</span>：</p>
+<p>这时必有 <span class="math inline">\(|\Gamma|=4\)</span> 且 <span class="math inline">\(v\)</span> 形如 <span class="math inline">\(v=v_i\alpha_i +
+v_j\alpha_j\)</span>。如下表所示：</p>
 <table>
 <thead>
 <tr>
@@ -683,20 +673,22 @@ u)&lt;0,\,(v, v)=0\)</span>。</p>
 <tbody>
 <tr>
 <td style="text-align: center;"><span class="math inline">\(u\)</span></td>
-<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(&gt;0\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(&gt;0\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(&gt;0\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;"><span class="math inline">\(v\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(&lt;0\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(\ne0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\ne0\)</span></td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 </tr>
 </tbody>
 </table>
+<p><span class="math inline">\(\mathrm{span}\{\alpha_i,\alpha_j\}\)</span>
+是仿射的（它包含 <span class="math inline">\(v\)</span>，不可能是有限的），从而 <span class="math inline">\((\alpha_i,\alpha_j)=-1\)</span> 且 <span class="math inline">\(v_i=v_j\)</span>。不妨将 <span class="math inline">\(v\)</span> 缩放为 <span class="math inline">\(v=\alpha_i+\alpha_j\)</span>。</p>
 <p>设 <span class="math inline">\(u=u_j\alpha_j+u_k\alpha_k+u_m\alpha_m\)</span>，由
 <span class="math inline">\((u,v)=0\)</span> 可得 <span class="math display">\[(u_j\alpha_j+u_k\alpha_k+u_m\alpha_m,
 v)=(u_k\alpha_k+u_m\alpha_m, \alpha_i+\alpha_j)=0,\]</span> 由于 <span class="math inline">\(\{\alpha_k,\alpha_m\}\)</span> 和 <span class="math inline">\(\{\alpha_i,\alpha_j\}\)</span>
@@ -707,38 +699,6 @@ v)=(u_k\alpha_k+u_m\alpha_m, \alpha_i+\alpha_j)=0,\]</span> 由于 <span class="
 j\}\)</span> 与 <span class="math inline">\(\{k,m\}\)</span>
 是不连通的，与 <span class="math inline">\(\Gamma\)</span>
 连通矛盾。</p></li>
-<li><p>如果 <span class="math inline">\(\{v_j,\,j\ne i\}\)</span>
-至少有两个非零，则可以取下标 <span class="math inline">\(j,k\)</span>
-使得 <span class="math inline">\(v_j/u_j\ne0,\,v_k/u_k\ne0\)</span>。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"></th>
-<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(j\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(k\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\cdots\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><span class="math inline">\(u\)</span></td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><span class="math inline">\(&gt;0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(&gt;0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(&gt;0\)</span></td>
-</tr>
-<tr>
-<td style="text-align: center;"><span class="math inline">\(v\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(&lt;0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\ne0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\ne0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\cdots\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>由于 <span class="math inline">\(v_i\ne0\)</span>，通过选择 <span class="math inline">\(v\)</span> 或者 <span class="math inline">\(-v\)</span> 可以不妨设 <span class="math inline">\(v_i&lt;0\)</span>，并不妨设 <span class="math inline">\(v_j/u_j\leq v_k/u_k\)</span>。记 <span class="math inline">\(a=v_j/u_j\)</span>，则 <span class="math inline">\(u'=au-v\)</span> 满足 <span class="math inline">\((u',u')&lt;0\)</span>，但是 <span class="math inline">\(u'_i=-v_i&gt;0\)</span>，<span class="math inline">\(u'_j=0\)</span>，<span class="math inline">\(u'_k\leq 0\)</span>，这与上面断言中 <span class="math inline">\(u'\)</span>
-的系数除去至多一个例外，剩下的均非零且同号矛盾。</p></li>
 </ul>
 <p>至此我们证明了当 <span class="math inline">\(\Gamma\)</span> 的 level
 等于 2 时是双曲的。</p>
@@ -816,8 +776,7 @@ s_i(\omega_i))\xrightarrow{\ s_i\
 level 等于 1 或 2。</p>
 <h1 id="一个技术性命题">一个技术性命题</h1>
 <p>下面这个命题仅会在后面 Boyd-Maxwell
-球堆的一个细分情形中使用一次，但是它的论证颇为不易，所以我把它放在这里。请读者注意，这个命题并不限制
-<span class="math inline">\(W\)</span> 的 level 或者内积 <span class="math inline">\((\cdot,\cdot)\)</span> 的符号。</p>
+球堆的一个细分情形中使用一次，但是它的论证颇为不易，所以我把它放在这里。</p>
 <div id="ideal-vertex" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
 6.1</span> <span class="statement-info">(<span class="citation" data-cites="Maxwell89">(<a href="#ref-Maxwell89" role="doc-biblioref">Maxwell 1989</a>, proposition
@@ -838,7 +797,7 @@ W_I}wp) }\)</span>。</p>
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
 </span>由于 <span class="math inline">\(\bigcup_{w\in W_I}wp\)</span>
 是无限集，<span class="math inline">\(\mathrm{cone}(\bigcup_{w\in
-W_I})\)</span> 未必是闭集，因此闭包记号不可少。</p>
+W_I}wp)\)</span> 未必是闭集，因此闭包记号不可少。</p>
 <p>当 <span class="math inline">\(W\)</span> 的 level 是 1 时，若 <span class="math inline">\(\omega_s\)</span>
 是一个位于双曲空间边界上的理想顶点，则命题的条件都满足。这时 <span class="math inline">\(W_I\)</span> 是经过 <span class="math inline">\(\omega_s\)</span>
 的那些镜面生成的标准椭圆子群，<span class="math inline">\(W_I\)</span>
@@ -846,13 +805,12 @@ W_I})\)</span> 未必是闭集，因此闭包记号不可少。</p>
 附近，如下图所示：</p>
 <p><img src="/images/coxeter/ideal-vertex.jpg" class="fig" width="350"></p>
 </div>
-<p><strong>证明</strong>：由已知子空间 <span class="math inline">\(V_I=\mathrm{span}\{\alpha_t\mid t\ne s\}\)</span>
+<p><strong>证明</strong>：由已知 <span class="math inline">\(V_I=\mathrm{span}\{\alpha_i\mid i\in I\}\)</span>
 是仿射的，并且 <span class="math inline">\(\mathrm{rad}(V_I)\)</span>
-是一维的。根据恒等式 <span class="math inline">\((\ref{eq:idI})\)</span>： <span class="math display">\[\omega_s =
-\underbrace{(\omega_s,\omega_s)}_{=0}\alpha_s +  \sum_{t\ne s}(\omega_s,
-\omega_t)\alpha_t = \sum_{t\ne s}(\omega_s, \omega_t)\alpha_t\in
-V_I.\]</span> 由此可得 <span class="math inline">\(\mathrm{rad}(V_I)=\mathbb{R}\omega_s\)</span>。于是
-<span class="math inline">\(W_I\)</span> 保持 <span class="math inline">\(\omega_s\)</span> 不动，即 <span class="math display">\[\mathbb{R}\omega_s\xrightarrow{\ W_I\, -\, 1\ }
+是一维的。由恒等式 <span class="math inline">\((\ref{eq:idI})\)</span>：
+<span class="math display">\[\omega_s = \sum_{i\in
+I}(\omega_s,\omega_i)\,\alpha_i\in V_I.\]</span> 因此 <span class="math inline">\(\mathrm{rad}(V_I)=\mathbb{R}\omega_s\)</span>。于是
+<span class="math inline">\(W_I\)</span> 固定 <span class="math inline">\(\omega_s\)</span>，即 <span class="math display">\[\mathbb{R}\omega_s\xrightarrow{\ W_I\, -\, 1\ }
 0.\]</span> <span class="math inline">\(W_I\)</span> 同样作用在商空间
 <span class="math inline">\(V_I/\mathbb{R}\omega_s\)</span>
 上，此作用给出了一个同态 <span class="math inline">\(W_I\to\mathrm{GL}(V_I/\mathbb{R}\omega_s)\)</span>。令
@@ -861,43 +819,47 @@ V_I.\]</span> 由此可得 <span class="math inline">\(\mathrm{rad}(V_I)=\mathbb
 即 <span class="math inline">\(wv-v\in\mathbb{R}\omega_s\)</span>，从而
 <span class="math display">\[V_I\xrightarrow{\ K - 1\
 }\mathbb{R}\omega_s\xrightarrow{\ W_I\, -\, 1\ } 0.\]</span> 由于 <span class="math inline">\(K\leqslant W_I\)</span>，所以 <span class="math display">\[V_I\xrightarrow{\ K - 1\
-}\mathbb{R}\omega_s\xrightarrow{\ K-1\ }0.\]</span> 即 <span class="math inline">\((K-1)^2\)</span> 在整个 <span class="math inline">\(V_I\)</span> 上恒为 0。</p>
-<p>更进一步，对任何 <span class="math inline">\(w\in K\)</span>，<span class="math inline">\(w\alpha_s\)</span> 形如 <span class="math inline">\(w\alpha_s=\alpha_s+\sum\limits_{t\ne
-s}c_t\alpha_t\)</span>，所以 <span class="math inline">\((w-1)\alpha_s\in V_I\)</span>，从而 <span class="math inline">\(w-1\)</span> 将整个 <span class="math inline">\(V\)</span> 也映入 <span class="math inline">\(V_I\)</span>，于是 <span class="math display">\[V\xrightarrow{\ K-1\ } V_I\xrightarrow{\ K - 1\
+}\mathbb{R}\omega_s\xrightarrow{\ K-1\ }0.\]</span> 即 <span class="math inline">\((K-1)^2V_I\equiv0\)</span>。</p>
+<p>进一步，对 <span class="math inline">\(w\in K\)</span>，<span class="math inline">\(w\)</span> 是一些 <span class="math inline">\(I\)</span> 中生成元的乘积，所以 <span class="math inline">\(w\alpha_s\)</span> 形如 <span class="math inline">\(w\alpha_s=\alpha_s+\sum\limits_{i\in
+I}c_i\alpha_i\)</span>，所以 <span class="math inline">\((w-1)\alpha_s\in V_I\)</span>，从而 <span class="math inline">\(w-1\)</span> 将整个 <span class="math inline">\(V\)</span> 也映入 <span class="math inline">\(V_I\)</span>，于是 <span class="math display">\[V\xrightarrow{\ K-1\ } V_I\xrightarrow{\ K - 1\
 }\mathbb{R}\omega_s\xrightarrow{\ K-1\ }0.\]</span> 即 <span class="math inline">\((K-1)^2V\subset\mathbb{R}\omega_s\)</span>，<span class="math inline">\((K-1)^3V\equiv0\)</span>。</p>
-<p>取 <span class="math inline">\(w\in K\)</span> 且 <span class="math inline">\(w\ne 1\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，由于 <span class="math inline">\(w\)</span> 在 <span class="math inline">\(V_I\)</span> 上不是恒等变换，所以存在 <span class="math inline">\(t\in I\)</span> 使得 <span class="math inline">\(w\alpha_t\ne\alpha_t\)</span>。设 <span class="math display">\[\beta = w\alpha_t=\alpha_t+a\omega_s\,(a\ne
-0).\]</span> 则 <span class="math inline">\(s_\beta=wtw^{-1}\)</span>，从而对任何 <span class="math inline">\(p\in V\)</span>， <span class="math display">\[\begin{align*}
-s_\beta(p)&amp;=p - 2(p,\beta)\beta\\
-&amp;=p-2(p,\alpha_t+a\omega_s)(\alpha_t+a\omega_s)\\
-&amp;=p-2(p,\alpha_t)\alpha_t- 2a(p, \omega_s)\alpha_t - c\omega_s\\
-&amp;=t(p) - 2a(p, \omega_s)\alpha_t - c\omega_s.
-\end{align*}\]</span> 其中 <span class="math inline">\(c=2(p,\alpha_t+a\omega_s)a\)</span> 是实数。<span class="math inline">\(c\)</span> 具体是多少不用关心。</p>
-<p>构造换位子 <span class="math inline">\(w_1=twtw^{-1}\in
-K\)</span>，则由 <span class="math inline">\((K-1)^2V\subset\mathbb{R}\omega_s\)</span> 有
-<span class="math inline">\((w_1-1)^2p=b\omega_s\,(b\in\mathbb{R})\)</span>。我们来计算
-<span class="math inline">\(b\)</span>。首先，</p>
-<p><span class="math display">\[(w_1-1)p=ts_\beta(p)-p=-2a(p,\omega_s)\alpha_t -
-c\omega_s.\label{eq:wp1}\tag{1}\]</span> 其中我们利用了 <span class="math inline">\(t(\alpha_t)=-\alpha_t\)</span> 和 <span class="math inline">\(t(\omega_s)=\omega_s\)</span>。</p>
-<p>到目前为止，我们的计算对任何 <span class="math inline">\(p\in
-V\)</span> 都是成立的。我们可以在 <span class="math inline">\((\ref{eq:wp1})\)</span> 式中取 <span class="math inline">\(p=\alpha_t\)</span>，得到 <span class="math display">\[(w_1-1)\alpha_t=2a\underbrace{(\alpha_t,\omega_s)}_{=0}\alpha_t
--c\omega_s=-c\omega_s=
--2(\alpha_t,\alpha_t+a\omega_s)a\omega_s=-2a\omega_s.\label{eq:wp2}\tag{2}\]</span></p>
-<p>继续，将 <span class="math inline">\(w_1-1\)</span> 作用在 <span class="math inline">\((\ref{eq:wp1})\)</span> 两端，由于 <span class="math inline">\((w_1-1)\omega_s=0\)</span>，所以 <span class="math display">\[(w_1-1)^2p =
-2a(p,\omega_s)(w_1-1)\alpha_t.\label{eq:wp3}\tag{3}\]</span></p>
-<p>将 <span class="math inline">\((\ref{eq:wp2})\)</span> 代入 <span class="math inline">\((\ref{eq:wp3})\)</span> 的右边，我们得到 <span class="math display">\[(w_1-1)^2p=-4a^2(p,\omega_s)\omega_s.\]</span> 即
-<span class="math inline">\(b=-4a^2(\omega_s,p)\)</span>。</p>
-<p>我们来判断 <span class="math inline">\(b\)</span> 的符号。这里要用到
-<span class="math inline">\(p\in\overline{\mathcal{D}}=\mathrm{cone}(\Delta^\ast)\)</span>
+<p>取 <span class="math inline">\(w\in K\)</span> 且 <span class="math inline">\(w\ne 1\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，并记 <span class="math inline">\(A=w-1\)</span>，由 <span class="math inline">\(V_I\xrightarrow{A}\mathbb{R}\omega_s\)</span> 可知
+<span class="math display">\[A\alpha_i = \lambda_i\omega_s,\quad i\in
+I,\,\lambda_i\in\mathbb{R}.\]</span> 由于 <span class="math inline">\(w\)</span> 不是 <span class="math inline">\(V_I\)</span> 上的恒等变换，所以至少对一个 <span class="math inline">\(i\in I\)</span> 有 <span class="math inline">\(\lambda_i\ne0\)</span>。</p>
+<p>对 <span class="math inline">\(p\in V\)</span>，设 <span class="math inline">\(Ap=u\in V_I\)</span>。利用 <span class="math display">\[(p,\alpha_i)=(wp,w\alpha_i)=(p+Ap,\alpha_i+A\alpha_i).\]</span>
+代入 <span class="math inline">\(Ap=u\)</span> 和 <span class="math inline">\(A\alpha_i=\lambda_i\omega_s\)</span>，化简可得
+<span class="math display">\[(u,\alpha_i)+\lambda_i(p,\omega_s)=0,\qquad
+\forall i\in I.\]</span> 记 <span class="math inline">\(u=\sum_{j\in I}
+x_j\alpha_j\,(x_j\in\mathbb{R})\)</span>，<span class="math inline">\(x=(x_i)_{i\in I}\)</span>，<span class="math inline">\(\lambda=(\lambda_i)_{i\in I}\)</span>，则 <span class="math display">\[G x = -(p,\omega_s)\lambda.\]</span> 其中 <span class="math inline">\(G=(\alpha_i,\alpha_j)_{i,j\in I}\)</span> 是 <span class="math inline">\(V_I\)</span> 上的 Gram 矩阵。这是一个关于 <span class="math inline">\(x\)</span> 的线性方程组，由于 <span class="math inline">\(G\)</span>
+是半正定但不是正定的，所以我们不能直接把 <span class="math inline">\(G\)</span> 的逆矩阵写在右边。但是我们可以用 <span class="math inline">\(G\)</span> 的 Moore-Penrose 将 <span class="math inline">\(x\)</span> 表示为： <span class="math display">\[x
+= -(p,\omega_s)G^+\lambda.\]</span> 于是 <span class="math display">\[A^2p=A(u)=\sum_{j\in I} x_jA(\alpha_j)=\sum_{j\in
+I}x_j\lambda_j\omega_s = -(p,\omega_s)\,\lambda^\top G^+\lambda\
+\omega_s.\]</span> 我们断言有 <span class="math inline">\(a=\lambda^\top
+G^+\lambda&gt; 0\)</span> 成立。不过这个断言的证明我们放在后面。</p>
+<p>至此我们证明了 <span class="math inline">\(A^2p = -a(p,\omega_s)
+\omega_s\)</span> 且 <span class="math inline">\(a&gt;0\)</span>。我们来确定 <span class="math inline">\((p,\omega_s)\)</span> 的符号。这里要用到 <span class="math inline">\(p\in\overline{\mathcal{D}}=\mathrm{cone}(\Delta^\ast)\)</span>
 的条件。如果 <span class="math inline">\(p\)</span> 是 <span class="math inline">\(\omega_s\)</span> 的正倍数，显然 <span class="math inline">\(\omega_s\in\overline{ \mathrm{cone}(\bigcup_{w\in
-W_I}wp) }\)</span>，命题自然成立。所以我们可以假设 <span class="math inline">\(p\)</span> 与 <span class="math inline">\(\omega_s\)</span> 不共线。</p>
-<p>设 <span class="math inline">\(p=\sum_{t\in S}
+W_I}wp) }\)</span>，命题自然成立。所以我们可以假设 <span class="math inline">\(p\)</span> 与 <span class="math inline">\(\omega_s\)</span> 不共线。设 <span class="math inline">\(p=\sum_{t\in S}
 c_t\omega_t\,(c_t\geq0)\)</span>，则至少有一个 <span class="math inline">\(t\ne s\)</span> 满足 <span class="math inline">\(c_t&gt;0\)</span>。于是 <span class="math display">\[(\omega_s,p)=\sum_{t\ne s}\underbrace{c_t}_{\geq0
 \text{ 且至少有一个 } &gt;0}\ \cdot\
 \underbrace{(\omega_s,\omega_t)}_{\text{已知 }&lt;0}&lt;0.\]</span> 从而
-<span class="math inline">\(b&gt;0\)</span>。</p>
-<p>最后利用 <span class="math inline">\((w_1-1)^3=0\)</span> 和 <span class="math inline">\((w_1-1)^2p=b\omega_s\)</span> 我们得到对任何 <span class="math inline">\(N\geq 1\)</span> 有 <span class="math display">\[w_1^N(p)=(1 + w_1-1)^N(p)= p +
-\binom{N}{1}(w_1-1)(p) + \binom{N}{2}b\omega_s,\]</span> 可见 <span class="math inline">\(\lim\limits_{N\to\infty}\dfrac{w_1^Np}{\binom{N}{2}b}
-= \omega_s\)</span>，即得所证。<span class="math inline">\(\blacksquare\)</span></p>
+<span class="math inline">\(b=-a(\omega_s,p)&gt;0\)</span>。由 <span class="math inline">\(A^3=0\)</span> 与二项式展开： <span class="math display">\[w^N p=(1+A)^N p=p+N Ap+\binom{N}{2}A^2p.\]</span>
+代入 <span class="math inline">\(A^2p = b\omega_s\)</span> 有 <span class="math display">\[\lim_{N\to\infty}\frac{w^Np}{\binom{N}{2}b}=\omega_s.\]</span>
+即得所证。</p>
+<p>最后我们来补上 <span class="math inline">\(\lambda^\top
+G^+\lambda&gt;0\)</span> 的证明。为此我们只要说明有 <span class="math inline">\(\lambda\in\mathrm{im}G\)</span> 即可。由于 <span class="math inline">\(\ker G\)</span> 是一维的。设 <span class="math inline">\(\omega_s = \sum_{i\in I}
+z_i\alpha_i\)</span>，则易见 <span class="math inline">\(\ker G\)</span>
+由单个向量 <span class="math inline">\(z=(z_i)_{i\in I}\)</span>
+生成。</p>
+<p>另一方面在 <span class="math inline">\(\omega_s = \sum_{i\in I}
+z_i\alpha_i\)</span> 两边用 <span class="math inline">\(A\)</span>
+作用，有 <span class="math display">\[0=A\omega_s = \sum_{i\in
+I}z_iA\alpha_i=\sum_{i\in I}z_i\lambda_i\omega_s=(\lambda^\top
+z)\omega_s.\]</span> 于是 <span class="math inline">\(\lambda^\top
+z=0\)</span>，即 <span class="math inline">\(\lambda\perp z = \ker
+G\)</span>，从而 <span class="math inline">\(\lambda\in{\rm
+im}(G)\)</span>。</p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="附录">附录</h1>
 <h2 id="appendixA">level 1 情形断言的证明</h2>
 <p>首先是断言 1 的证明。记</p>
@@ -912,21 +874,14 @@ I_-}\underbrace{u_s}_{&gt;0}\underbrace{u_t}_{&lt;0}\underbrace{(\alpha_s,\alpha
 0.\]</span> 所以 <span class="math inline">\((u_+, u_+) &lt; 0\)</span>
 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span>
 至少有一个成立，不妨设 <span class="math inline">\((u_+,
-u_+)&lt;0\)</span>。如果 <span class="math inline">\(I_-\cup
-I_0\ne\emptyset\)</span>，那么 <span class="math inline">\(I_+\)</span>
-作为从 <span class="math inline">\(\Gamma\)</span> 中删去 <span class="math inline">\(I_-\cup I_0\)</span> 后得到的真子图包含 time-like
-的向量 <span class="math inline">\(u_+\)</span>，这与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 1 矛盾。所以 <span class="math inline">\(I=I_+\)</span>，即所有系数 <span class="math inline">\(u_s\)</span> 都大于 0。相应地如果是 <span class="math inline">\((u_-,u_-)&lt;0\)</span> 的话则所有 <span class="math inline">\(u_s\)</span> 都小于 0。</p>
+u_+)&lt;0\)</span>。如果 <span class="math inline">\(|I_-\cup
+I_0|\geq1\)</span>，那么 <span class="math inline">\(I_+\)</span>
+作为真子图包含 time-like 的向量 <span class="math inline">\(u_+\)</span>，这与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 1 矛盾。所以 <span class="math inline">\(I=I_+\)</span>，即所有系数 <span class="math inline">\(u_s\)</span> 都大于 0。相应地如果是 <span class="math inline">\((u_-,u_-)&lt;0\)</span> 的话则所有 <span class="math inline">\(u_s\)</span> 都小于 0。</p>
 <p>对断言 2 我们仍然采用类似的记号，记 <span class="math inline">\(v_+=\sum_{s\in I_+}v_s\alpha_s\)</span>，<span class="math inline">\(v_-=\sum_{t\in I_-}v_t\alpha_t\)</span>，则同样有
 <span class="math inline">\((v_+,v_-)\geq0\)</span>。</p>
-<p>我们想证明 <span class="math inline">\(|I_0|\leq1\)</span>，并且
-<span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 中必有一个是空集。</p>
 <p>如果 <span class="math inline">\(|I_0|\geq2\)</span>，那么 <span class="math inline">\((v, v)=0\)</span> 说明删除 <span class="math inline">\(I_0\)</span> 以后得到的子图不是有限的，这与 <span class="math inline">\(\Gamma\)</span> 的 level 是 1 和 <a href="#level-l" title="定理 1.2">定理 1.2</a> 矛盾。所以 <span class="math inline">\(|I_0|\leq 1\)</span>。</p>
 <p>如果 <span class="math inline">\(I_+,\,I_-\)</span>
-都不是空集的话，则 <span class="math inline">\(v_+,v_-\)</span>
-都非零，并且必然有 <span class="math inline">\((v_+, v_+)\geq0\)</span>
-和 <span class="math inline">\((v_-, v_-)\geq0\)</span> 成立，否则删掉
-<span class="math inline">\(I_+\)</span> 或者 <span class="math inline">\(I_-\)</span> 以后剩下的子图不是有限或者仿射的，与
-<span class="math inline">\(\Gamma\)</span> 的 level 是 1 矛盾。然而
+都非空，则它们作为真子图是仿射/有限的。于是 <span class="math inline">\((v_+, v_+)\geq0,(v_-, v_-)\geq0\)</span>。然而
 <span class="math display">\[0=(v, v) = (v_+,v_+) + (v_-,v_-) +
 2(v_+,v_-).\]</span> 三个非负数的和等于 0，只能是 <span class="math inline">\((v_+,v_+) = (v_-,v_-) =(v_+,
 v_-)=0\)</span>。现在分情况讨论：</p>
@@ -935,43 +890,25 @@ v_-)=0\)</span>。现在分情况讨论：</p>
 <li>如果 <span class="math inline">\(I_0=\emptyset\)</span>，则 <span class="math inline">\(S=I_+\cup I_-\)</span>。然而 <span class="math inline">\((v_+,v_-)=\sum_{s\in I_+,\,t\in
 I_-}v_sv_t(\alpha_s,\alpha_t)=0\)</span> 说明对任何 <span class="math inline">\(s\in I_+,\,t\in I_-\)</span> 有 <span class="math inline">\((\alpha_s,\alpha_t)=0\)</span>，从而 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 互不连通，这与 <span class="math inline">\(\Gamma\)</span> 连通矛盾。</li>
 </ol>
-<p>总之 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 必有一个是空集，断言 2 得证。</p>
+<p>总之 <span class="math inline">\(|I_0|\leq1\)</span>，并且 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 必有一个是空集，断言 2 得证。</p>
 <h2 id="appendixB">level 2 情形断言的证明</h2>
-<p>首先是断言 1 的证明。记 <span class="math inline">\(I_+,I_-,I_0\)</span> 如前，并记 <span class="math inline">\(u_+=\sum_{s\in I_+}u_s\alpha_s\)</span>，<span class="math inline">\(u_-=\sum_{t\in I_-}u_t\alpha_t\)</span>。则 <span class="math inline">\((u,u)&lt;0\)</span> 和 <span class="math inline">\((u_+,u_-)\geq0\)</span> 说明 <span class="math inline">\((u_+, u_+) &lt; 0\)</span> 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span> 中至少有一个成立。</p>
-<p>如果 <span class="math inline">\(|I_0|\geq2\)</span>，则 <span class="math inline">\((u,u)&lt;0\)</span> 与 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 矛盾。所以 <span class="math inline">\(|I_0|\leq 1\)</span>。</p>
-<ol type="1">
-<li>如果 <span class="math inline">\(I_+,I_-\)</span> 都不是空集，则
-<span class="math inline">\(u_+,\,u_-\)</span> 均不为 0。由于 <span class="math inline">\((u_+, u_+) &lt; 0\)</span> 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span> 中至少有一个成立，不妨设
-<span class="math inline">\((u_+,u_+)&lt;0\)</span>，结合 <span class="math inline">\(\Gamma\)</span> 的 level 是 2，这要求 <span class="math inline">\(|I_-\cup I_0|\leq 1\)</span>，从而只能是 <span class="math inline">\(|I_-|=1,\, I_0=\emptyset\)</span>。即系数全部非 0
-且恰好有一个异号。</li>
-<li>如果 <span class="math inline">\(I_+,I_-\)</span>
-中有一个是空集，不妨设 <span class="math inline">\(I_-=\emptyset\)</span>，我们仍然有 <span class="math inline">\(|I_-\cup
-I_0|=|I_0|\leq1\)</span>。即系数至多有一个为 0 且其它的均同号。</li>
-</ol>
-<p>总之我们证明了除去至多一个系数之外，其它的系数均非 0 且同号。断言 1
+<p><strong>断言 1 的证明</strong>。记 <span class="math inline">\(I_+,I_-,I_0\)</span> 如前。<span class="math inline">\((u,u)&lt;0\)</span> 和 <span class="math inline">\((u_+,u_-)\geq0\)</span> 说明 <span class="math inline">\((u_+, u_+) &lt; 0\)</span> 和 <span class="math inline">\((u_-, u_-)&lt;0\)</span> 至少有一个成立。不妨设
+<span class="math inline">\((u_+,u_+)&lt;0\)</span>。由 level 2 可得
+<span class="math inline">\(|I_-\cup I_0|\leq
+1\)</span>。即除去至多一个系数之外，其它的系数均非 0 且同号。断言 1
 得证。</p>
-<p>对断言 2，类似地，我们记 <span class="math inline">\(v_+=\sum_{s\in
-I_+}v_s\alpha_s\)</span>，<span class="math inline">\(v_-=\sum_{t\in
-I_-}v_t\alpha_t\)</span>。</p>
-<p>首先 <span class="math inline">\(|I_0|\leq2\)</span> 是显然的，否则
-<span class="math inline">\((v,v)=0\)</span> 与 <span class="math inline">\(\Gamma\)</span> 的 level 是 2 和 <a href="#level-l" title="定理 1.2">定理 1.2</a> 矛盾。</p>
-<ol type="1">
-<li>如果 <span class="math inline">\(I_0\ne\emptyset\)</span>，则 <span class="math inline">\(I_+,I_-\)</span> 中必有一个为空。否则 <span class="math inline">\(|I_+\cup I_0|\geq2,\,|I_-\cup
-I_0|\geq2\)</span>。level 2 要求 <span class="math inline">\((v_+,v_+)\geq0,\,(v_-,v_-)\geq0\)</span>，从而
-<span class="math inline">\((v,v)=0\)</span> 和 <span class="math inline">\((v_+,v_-)\geq0\)</span> 导致 <span class="math inline">\((v_+,v_+)=(v_-, v_-)=(v_+,v_-)=0\)</span>。由于
-<span class="math inline">\(\Gamma\)</span> 至少包含 4 个顶点，所以
-<span class="math inline">\(I_+,\,I_-\)</span>
-中必有一个包含两个或者更多的顶点。不妨设 <span class="math inline">\(|I_+|\geq2\)</span>，则删除 <span class="math inline">\(I_+\cup I_0\)</span> 会至少删掉 3
-个顶点，但得到的子图不是正定的，与 <span class="math inline">\(\Gamma\)</span> 的 level 等于 2 矛盾。所以系数
-<span class="math inline">\(\{v_s\}\)</span> 中如果有 0
-的话，则至多只有两个 0，且剩下的都同号。</li>
-<li>如果 <span class="math inline">\(I_0=\emptyset\)</span>
-是空集，则要么 <span class="math inline">\(I_+,I_-\)</span>
-中有一个也是空集，从而所有的系数都非 0 且同号；要么 <span class="math inline">\(v_+,\,v_-\)</span> 均不为 0。这时 <span class="math inline">\(\Gamma\)</span> 连通说明 <span class="math inline">\((v_+,v_-)&gt;0\)</span>，结合 <span class="math inline">\((v,v)=0\)</span> 可以得出 <span class="math inline">\((v_+,v_+) &lt; 0\)</span> 和 <span class="math inline">\((v_-, v_-)&lt;0\)</span> 中至少有一个成立。不妨设
-<span class="math inline">\((v_+,v_+)&lt;0\)</span>，则 level 2 要求
-<span class="math inline">\(|I_-|\leq1\)</span>，即 <span class="math inline">\(\{v_s\}\)</span>
-均非零且恰有一个元素与其它元素异号。</li>
-</ol>
+<p><strong>断言 2 的证明</strong>。同样记 <span class="math inline">\(I_+,I_-,I_0\)</span> 如前。</p>
+<ul>
+<li><p><span class="math inline">\(I_0=\emptyset\)</span>。如果有 <span class="math inline">\(|I_+|\geq2\)</span> 和 <span class="math inline">\(|I_-|\geq2\)</span>，则 level 2 导致 <span class="math display">\[(v_+,v_+)\geq0,\quad (v_-,v_-)\geq0.\]</span>
+再结合 <span class="math inline">\((v,v)=0\)</span> 和 <span class="math inline">\((v_+,v_-)\geq0\)</span> 可得 <span class="math display">\[(v_+, v_+) = (v_-,v_-)=(v_+,v_-)=0.\]</span> 但
+<span class="math inline">\((v_+,v_-)=\sum_{s\in I_+}\sum_{t\in
+I_-}v_sv_t(\alpha_s,\alpha_t)=0\)</span> 说明 <span class="math inline">\(I_+\)</span> 和 <span class="math inline">\(I_-\)</span> 将 <span class="math inline">\(S\)</span> 分为两个互不联通的子集，与 <span class="math inline">\(\Gamma\)</span>
+不可约矛盾。所以如果系数均非零，则至多只能有一个与其它异号。</p></li>
+<li><p><span class="math inline">\(I_0\ne\emptyset\)</span>。<span class="math inline">\((v,v)=0\)</span> 和 <a href="#level-l" title="定理 1.2">定理 1.2</a> 说明 <span class="math inline">\(|I_0|\leq2\)</span>。我们来证明这时 <span class="math inline">\(I_+,I_-\)</span>
+之中必有一个是空集。即剩下的非零系数都同号。若不然，由于 <span class="math inline">\(|\Gamma|\geq4\)</span>，所以 <span class="math inline">\(|I_+|\geq2\)</span> 和 <span class="math inline">\(|I_-|\geq2\)</span> 至少有一个成立。不妨设 <span class="math inline">\(|I_+|\geq2\)</span>，则 <span class="math inline">\(I_-\)</span> 作为删除 <span class="math inline">\(|I_+\cup I_0|\geq3\)</span>
+个顶点得到的子图是有限型的，于是 <span class="math inline">\((v_-,v_-)&gt;0\)</span>。<span class="math inline">\(I_+\)</span> 作为删除 <span class="math inline">\(|I_-\cup I_0|\geq2\)</span>
+个顶点得到的子图是有限或者仿射的，于是 <span class="math inline">\((v_+,v_+)\geq0\)</span>。这同样与 <span class="math inline">\((v,v)=0\)</span> 和 <span class="math inline">\((v_+,v_-)\geq0\)</span> 矛盾。</p></li>
+</ul>
 <p>至此断言 2 得证，从而定理得证。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

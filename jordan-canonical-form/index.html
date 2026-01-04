@@ -19,14 +19,16 @@
     
 
         <title>
-            Jordan 标准形 | 朝花夕拾</title>
+            Jordan 标准形 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
     <meta name="description" content="Jordan
-标准形定理是线性代数中的基本定理，专门为它写一篇长文好像有点多余：这方面的教材讲义实在是太多了！一个陈旧的定理还能写出什么新意来呢？
-理由有两个。第一个原因是我曾经在做助教给学生讲这个定理的时候，突然发现不知道该怎么启发他们为好。虽然我知道
+标准形定理是线性代数中的基本定理，你可能会好奇，这么一个老掉牙的，在无数教材和讲义中都可以找到的定理，还能写出什么新意来呢？
+理由有两个。第一个是我曾经在做助教给学生讲这个定理的时候，突然发现不知道该怎么启发他们为好。虽然我知道
 Jordan
-标准形定理的很多种证法，照念几个不在话下，但是感觉有点疙疙瘩瘩的：怎么才能说清定理背后的想法，让学生觉得定理的成立是顺理成章的呢？于是我知道我对这个定理的理解还有模糊的地方。
+标准形定理的很多种证法，照念几个不在话下，但是感觉很不自然：为什么要引入
+Jordan
+块？这些块究竟代表了什么？怎么才能说清定理背后的想法，让学生觉得定理的成立是顺理成章的呢？于是我知道我对这个定理的理解还有模糊的地方。
 第二个原因是 Jordan
 块有一个重要的代数性质是通常教材中不讲的，而这个性质是代数学中一类重要而常见的性质的雏形，这就是不可分解性。与之对应的是可对角化的线性变换的完全可约性。从一开始就让学生接触这些现象是有好处的。">
     
@@ -34,14 +36,14 @@ Jordan
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="Jordan 标准形"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -50,11 +52,17 @@ Jordan
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
 
+<meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -63,7 +71,7 @@ Jordan
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -95,14 +103,6 @@ Jordan
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -163,14 +163,6 @@ Jordan
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -239,7 +231,7 @@ Jordan
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -247,7 +239,7 @@ Jordan
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -272,6 +264,14 @@ Jordan
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -341,28 +341,31 @@ Jordan
                                             <div class="entry pink-link-context">
                                                 
 <p>Jordan
-标准形定理是线性代数中的基本定理，专门为它写一篇长文好像有点多余：这方面的教材讲义实在是太多了！一个陈旧的定理还能写出什么新意来呢？</p>
-<p>理由有两个。第一个原因是我曾经在做助教给学生讲这个定理的时候，突然发现不知道该怎么启发他们为好。虽然我知道
+标准形定理是线性代数中的基本定理，你可能会好奇，这么一个老掉牙的，在无数教材和讲义中都可以找到的定理，还能写出什么新意来呢？</p>
+<p>理由有两个。第一个是我曾经在做助教给学生讲这个定理的时候，突然发现不知道该怎么启发他们为好。虽然我知道
 Jordan
-标准形定理的很多种证法，照念几个不在话下，但是感觉有点疙疙瘩瘩的：怎么才能说清定理背后的想法，让学生觉得定理的成立是顺理成章的呢？于是我知道我对这个定理的理解还有模糊的地方。</p>
+标准形定理的很多种证法，照念几个不在话下，但是感觉很不自然：为什么要引入
+Jordan
+块？这些块究竟代表了什么？怎么才能说清定理背后的想法，让学生觉得定理的成立是顺理成章的呢？于是我知道我对这个定理的理解还有模糊的地方。</p>
 <p>第二个原因是 Jordan
 块有一个重要的代数性质是通常教材中不讲的，而这个性质是代数学中一类重要而常见的性质的雏形，这就是不可分解性。与之对应的是可对角化的线性变换的完全可约性。从一开始就让学生接触这些现象是有好处的。</p>
 <span id="more"></span>
 <h1 id="什么是-jordan-标准形">什么是 Jordan 标准形</h1>
-<p>我们从中学就知道整数环和多项式环有唯一因子分解定理：每个整数可以唯一地分解为素数的乘积，每个域上的多项式可以唯一地分解为不可约多项式的乘积。数学里面有很多这样的唯一分解定理，现在我们想知道：有没有所谓的“线性变换的唯一分解定理”
+<p>你肯定知道，整数环和多项式环有唯一因子分解定理：每个整数可以唯一地分解为素数的乘积，每个域上的多项式可以唯一地分解为不可约多项式的乘积。数学里面有很多这样的唯一分解定理，现在我们想问：有没有所谓的“线性变换的唯一分解定理”
 呢？可以猜测如果有这样的定理存在，那么大概可以表述为如下的样子：</p>
 <div id="unique-1" class="statement sta____________ plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">线性变换的唯一分解定理</span>.</span><span class="statement-spah"> </span>（粗糙的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(T\)</span>
 可以唯一地分解为若干个「简单的」线性变换，而这些「简单的」线性变换本身不能再分解。</p>
 </div>
-<p>这个表述很不清楚，什么是线性变换的分解呢？什么又是不可分解的线性变换呢？要说清楚这些，我们需要借助直和的概念：</p>
+<p>虽然这个表述还很不清楚，但是已经抓住了 Jordan 标准形的核心思想。</p>
+<p>不过我们需要先说清楚，什么是线性变换的分解？什么是不可分解的线性变换？这就要借助直和的概念：</p>
 <div class="statement simple plain unnumbered">
 <p>设 <span class="math inline">\(T\)</span> 是向量空间 <span class="math inline">\(V\)</span> 上的线性变换，如果 <span class="math inline">\(V\)</span> 可以分解为一些非平凡的子空间的直和
 <span class="math inline">\(V=V_1\oplus\cdots\oplus
 V_k\)</span>，使得每一个 <span class="math inline">\(V_i\)</span> 都是
-<span class="math inline">\(T\)</span>- 不变的子空间，则称 <span class="math inline">\(T\)</span> 是可以分解的； 如果 <span class="math inline">\(V\)</span> 不存在这样的分解，则称 <span class="math inline">\(T\)</span> 是不可分解的线性变换。</p>
+<span class="math inline">\(T\)</span>- 不变的子空间，则称 <span class="math inline">\(T\)</span> 是可以分解的；如果 <span class="math inline">\(V\)</span> 不存在这样的分解，则称 <span class="math inline">\(T\)</span> 是不可分解的线性变换。</p>
 </div>
-<p>这样我们就可以比较准确的表述线性变换的唯一分解定理了：</p>
+<p>现在我们可以比较准确的表述线性变换的唯一分解定理了：</p>
 <div id="unique-2" class="statement sta____________-1 plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">线性变换的唯一分解定理</span>.</span><span class="statement-spah"> </span>（修正的版本）：设 <span class="math inline">\(V\)</span> 是域 <span class="math inline">\(F\)</span> 上的有限维向量空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的线性变换，则 <span class="math inline">\(V\)</span> 可以分解为若干个 <span class="math inline">\(T\)</span>- 不变子空间的直和 <span class="math inline">\(V=V_1\oplus\cdots\oplus V_k\)</span>，<span class="math inline">\(T\)</span> 限制在每个 <span class="math inline">\(V_i\)</span>
 上是不可分解的线性变换。这个分解还是唯一的，即如果 <span class="math inline">\(V=W_1\oplus\cdots\oplus W_l\)</span>
@@ -389,28 +392,32 @@ v_{n-1}),\quad J_0=\begin{pmatrix}0&amp;1&amp;&amp;\\ &amp;\ddots
 的特征向量，因此齐次线性方程组 <span class="math inline">\(TX=0\)</span>
 的解空间至少包含两个线性无关的向量。但是 <span class="math inline">\(T\)</span> 的秩是 <span class="math inline">\(n-1\)</span>，所以 <span class="math inline">\(TX=0\)</span> 的解空间是 1
 维的，这就导致了矛盾。</p>
-<p>用同样的方法可以说明给移位算子 <span class="math inline">\(T\)</span>
-加上一个数乘变换以后得到的仍然是不可分解的线性变换：设 <span class="math inline">\(\lambda\in\mathbb{C}\)</span>，<span class="math inline">\(S=T+\lambda I\)</span>，则 <span class="math inline">\(S\)</span> 也是不可分解线性变换，其对应的矩阵
-<span class="math display">\[J_\lambda=\begin{pmatrix}\lambda&amp;1&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\\&amp;&amp;\lambda&amp;1\\&amp;&amp;&amp;\lambda\end{pmatrix}\]</span>
+<p>现在我们做个小变化。把 <span class="math inline">\(T\)</span> 改成
+<span class="math inline">\(S=T+\lambda
+I\,(\lambda\in\mathbb{C})\)</span>，<span class="math inline">\(S\)</span> 对应的矩阵 <span class="math display">\[J_\lambda=\begin{pmatrix}\lambda&amp;1&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\\&amp;&amp;\lambda&amp;1\\&amp;&amp;&amp;\lambda\end{pmatrix}\]</span>
 叫做特征值为 <span class="math inline">\(\lambda\)</span> 的 Jordan
-块。</p>
-<p>现在我们已经找到了一族不可分解的线性变换，那么它们是否就构成了全部的线性变换呢？答案是肯定的，这就是
-Jordan 标准形定理：</p>
+块。<span class="math inline">\(S\)</span>
+也是不可分解的线性变换，道理完全相同，它的秩是 <span class="math inline">\(n-1\)</span>，只有唯一的特征值 <span class="math inline">\(\lambda\)</span>，所以 <span class="math inline">\(V\)</span> 不可能分解成两个非平凡 <span class="math inline">\(S\)</span>- 不变子空间的直和。　</p>
+<p>Jordan
+块是我们在线性变换的世界中找到的“原子”，是那些不能再分解的变换。那是不是每个线性变换都可以拆成若干个
+Jordan 块呢？答案是肯定的：</p>
 <div id="jordan-canonical" class="unnumbered statement sta_jordan______ plain">
 <p><span class="statement-heading"><span class="statement-label">Jordan
 标准形定理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(\mathbb{C}\)</span> 上有限维向量空间 <span class="math inline">\(V\)</span> 上的线性变换，则存在 <span class="math inline">\(V\)</span> 的一组基使得 <span class="math inline">\(T\)</span> 在这组基下的矩阵为 Jordan 块的直和：
 <span class="math display">\[T=J_{\lambda_1}\oplus\cdots\oplus
-J_{\lambda_r}.\]</span> 这种分解是唯一的，意思是如果存在 <span class="math inline">\(V\)</span> 的另一组基使得 <span class="math inline">\(T\)</span> 的矩阵也是 Jordan 块的直和 <span class="math display">\[T=J_{\mu_1}\oplus\cdots\oplus J_{\mu_s},\]</span>
+J_{\lambda_r}.\]</span>
+如果不在乎块的排列顺序，那么这种分解就是唯一的，即如果存在 <span class="math inline">\(V\)</span> 的另一组基使得 <span class="math inline">\(T\)</span> 的矩阵也是 Jordan 块的直和 <span class="math display">\[T=J_{\mu_1}\oplus\cdots\oplus J_{\mu_s},\]</span>
 则 <span class="math inline">\(r=s\)</span> 且适当重排后有 <span class="math inline">\(J_{\lambda_i}=J_{\mu_i}\)</span>。</p>
 </div>
 <h1 id="jordan-标准形定理的证明">Jordan 标准形定理的证明</h1>
 <p>定理的结论包含存在性和唯一性两部分，我们先来处理存在性的证明。</p>
 <h2 id="分解存在性-1转化为幂零的情形">分解存在性
 1：转化为幂零的情形</h2>
-<p>首先我们需要另一个重要的定理：准素分解定理。准素分解定理是一个初步的分解，它把
-<span class="math inline">\(V\)</span> 分解为若干 <span class="math inline">\(T\)</span>- 不变子空间 <span class="math inline">\(V_i\)</span> 的直和，使得 <span class="math inline">\(T\)</span> 在每个 <span class="math inline">\(V_i\)</span> 上只有单一的特征值 <span class="math inline">\(\lambda_i\)</span>。于是 <span class="math inline">\(N=T-\lambda_i I\)</span> 是 <span class="math inline">\(V_i\)</span>
-上的幂零线性变换。这样就把目标简化为论证任何幂零线性变换总是可以分解为一些零特征值的
-Jordan 块的直和。</p>
+<p>我们之前提到了幂零的 Jordan 标准形 <span class="math inline">\(J_0\)</span>，它是最简单的 Jordan 标准形，只有
+<span class="math inline">\(n-1\)</span> 个 <span class="math inline">\(1\)</span> 在对角线上方，其余位置都是 <span class="math inline">\(0\)</span>。但实际上，任何线性变换都可以通过一个叫做<strong>准素分解定理（Primary
+Decomposition）</strong>的东西，拆成若干“只有单一特征值”的部分，每个部分再减去那个特征值，就成了幂零算子。所以本质上，Jordan
+标准形定理等价于证明“任何幂零线性变换总是可以分解为一些零特征值的 Jordan
+块的直和”。</p>
 <div id="primary-decomposition" class="unnumbered statement sta_______ plain">
 <p><span class="statement-heading"><span class="statement-label">准素分解定理</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(T\)</span>
 的特征多项式为 <span class="math inline">\(f(x)\)</span>，且 <span class="math inline">\(f(x)\)</span> 在复数域上分解为一次因式的乘积 <span class="math display">\[f(x)=(x-\lambda_1)^{n_1}\cdots(x-\lambda_k)^{n_k},\]</span>

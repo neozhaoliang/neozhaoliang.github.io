@@ -19,30 +19,27 @@
     
 
         <title>
-            关于 | 朝花夕拾</title>
+            关于 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="欢迎来到 赵亮
-的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：
-
-从通俗有趣的问题出发介绍它们背后的数学。
-我写过的（自以为）有趣的开源项目。
-一些念书时的笔记（非常枯燥）。
-
-这些文字大都是我刚刚学到某个新知识的时候写就的，因为新鲜和愉悦感还没有过去，还有点热情把它">
+    <meta name="description" content="欢迎来到 赵亮 的个人网站。
+这个博客使用 hexo 搭建，Pandoc 渲染，statement
+生成自动编号的定理环境。主题修改自 raytaylorism。
+转载文章和图片注明出处即可。所有代码均采用 MIT LICENSE。
+隐私政策">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="关于"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -51,11 +48,17 @@
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+
 <meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -64,7 +67,7 @@
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -96,14 +99,6 @@
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -164,14 +159,6 @@
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -240,7 +227,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -248,7 +235,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -273,6 +260,14 @@
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -350,25 +345,11 @@
                             </h1>
                             <div class="entry pink-link-context">
                                 
-<p>欢迎来到 <strong>赵亮</strong>
-的个人网站。这里记录了我的一些关于数学和编程方面的文章，它们大致可以分为三类：</p>
-<ol type="1">
-<li>从通俗有趣的问题出发介绍它们背后的数学。</li>
-<li>我写过的（自以为）有趣的开源项目。</li>
-<li>一些念书时的笔记（非常枯燥）。</li>
-</ol>
-<p>这些文字大都是我刚刚学到某个新知识的时候写就的，因为新鲜和愉悦感还没有过去，还有点热情把它们写下来。当然不免絮絮叨叨，甚至夹杂一些幼稚和错误的见解。虽然后续有一些更新，但由于个人水平不足，难免仍然有错误之处，还请读者不吝指正。</p>
-<p>个人方面，以下信息也许对你了解我有帮助：</p>
-<ol type="1">
-<li>80 后，已婚，有娃一只。</li>
-<li>工作之余带娃、念数学、写代码。</li>
-<li>喜欢听罗大佑/邓丽君/Beyond，最喜欢的电影有《肖申克的救赎》，《真实的谎言》，《谍影重重》。</li>
-<li>郑渊洁和刘慈欣爱好者。</li>
-</ol>
-<p>博客使用 <a target="_blank" rel="noopener" href="https://hexo.io/">hexo</a> 搭建，主题为 <a target="_blank" rel="noopener" href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a>，我在其基础上做了一些修改，特此鸣谢作者。</p>
-<p>文章是在 markdown 中书写的，用 <a target="_blank" rel="noopener" href="https://pandoc.org/">Pandoc</a> 渲染，<a target="_blank" rel="noopener" href="https://github.com/dialoa/statement">statement</a>
-生成自动编号的定理环境。</p>
+<p>欢迎来到 <strong>赵亮</strong> 的个人网站。</p>
+<p>这个博客使用 <a target="_blank" rel="noopener" href="https://hexo.io/">hexo</a> 搭建，<a target="_blank" rel="noopener" href="https://pandoc.org/">Pandoc</a> 渲染，<a target="_blank" rel="noopener" href="https://github.com/dialoa/statement">statement</a>
+生成自动编号的定理环境。主题修改自 <a target="_blank" rel="noopener" href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a>。</p>
 <p>转载文章和图片注明出处即可。所有代码均采用 <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">MIT LICENSE</a>。</p>
+<p><a href="/privacy">隐私政策</a></p>
 
 
 

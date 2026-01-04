@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CFTP Animation – Lozenge Tiling (Canvas)</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    /* Scoped styles so this file can be embedded without fighting the theme */
+    .cftp-root {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .cftp-canvas {
+      display: block;
+      width: 100%;
+      /* adapt to parent width */
+      aspect-ratio: 16 / 10;
+      /* controls height; avoids taking the whole screen */
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(127, 127, 127, .25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .14);
+      background: rgba(127, 127, 127, .06);
+    }
+
+    .cftp-controls {
+      margin-top: 10px;
+      /* controls below the canvas */
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(127, 127, 127, .22);
+      background: rgba(127, 127, 127, .06);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+    }
+
+    .cftp-controls label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .cftp-controls input[type="number"] {
+      width: 64px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(127, 127, 127, .35);
+      background: transparent;
+    }
+
+    .cftp-controls input[type="range"] {
+      width: 170px;
+    }
+
+    .cftp-controls button {
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(127, 127, 127, .35);
+      background: rgba(127, 127, 127, .10);
+      cursor: pointer;
+    }
+
+    .cftp-controls button:hover {
+      background: rgba(127, 127, 127, .16);
+    }
+
+    .cftp-controls button[disabled] {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .cftp-sep {
+      width: 1px;
+      height: 22px;
+      background: rgba(127, 127, 127, .35);
+    }
+
+    .cftp-status {
+      opacity: .85;
+      flex: 1 1 auto;
+      min-width: 220px;
+      min-height: 2.6em;
+      /* avoid layout jump when the status wraps */
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .cftp-hint {
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: .72;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 520px) {
+      .cftp-controls {
+        gap: 8px 10px;
+      }
+
+      .cftp-controls input[type="range"] {
+        width: 140px;
+      }
+    }
+
+    .cftp-mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cftp-root" id="cftp-root">
+    <div class="cftp-controls">
+      <label>a <input id="a" type="number" min="1" max="40" value="8" /></label>
+      <label>b <input id="b" type="number" min="1" max="40" value="8" /></label>
+      <label>c <input id="csize" type="number" min="1" max="40" value="8" /></label>
+
+      <span class="cftp-sep" aria-hidden="true"></span>
+
+      <label title="How many random updates to apply per frame (higher = faster)">
+        Speed
+        <input id="speed" type="range" min="1" max="240" value="18" />
+        <span id="speedLabel" class="cftp-mono">18</span>
+      </label>
+
+      <label title="Overlay the non-intersecting path ensemble (paths and tiling evolve together during the animation)">
+        <input id="showPaths" type="checkbox" checked />
+        Show paths
+      </label>
+
+      <span class="cftp-sep" aria-hidden="true"></span>
+
+      <button id="start">Start (CFTP)</button>
+      <button id="pause" disabled>Pause</button>
+      <button id="randomSeed">New Seed</button>
+
+      <span id="status" class="cftp-status cftp-mono"></span>
+    </div>
+    <canvas class="cftp-canvas" id="canvas"></canvas>
+  </div>
+
+  <script>
+    const SQ3 = Math.sqrt(3);
+
+    // ---------- Deterministic PRNG (snapshot-able) ----------
+    class PRNG {
+      constructor(seedU32) { this.state = (seedU32 >>> 0) || 0x12345678; }
+      getState() { return this.state >>> 0; }
+      setState(s) { this.state = (s >>> 0); }
+      nextU32() {
+        // mulberry32 step
+        let a = (this.state + 0x6D2B79F5) >>> 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) >>> 0;
+        this.state = a;
+        return (t ^ (t >>> 14)) >>> 0;
+      }
+      next() { return this.nextU32() / 4294967296; }
+      int(min, max) { return Math.floor(this.next() * (max - min + 1)) + min; }
+    }
+
+    // ---------- helpers ----------
+    function cloneState(s) { return s.map(row => row.slice()); }
+    function statesEqual(A, B) {
+      if (A.length !== B.length) return false;
+      for (let i = 0; i < A.length; i++) {
+        const a = A[i], b = B[i];
+        if (a.length !== b.length) return false;
+        for (let j = 0; j < a.length; j++) if (a[j] !== b[j]) return false;
+      }
+      return true;
+    }
+
+    // ---------- Lozenge tiling chain ----------
+    class LozengeTiling {
+      constructor(size) { this.size = size; }
+
+      minMaxStates() {
+        const [a, b, c] = this.size;
+        const cols = a + b + 1;
+        const rows = c + 2;
+
+        const s0 = Array.from({ length: rows }, (_, k) =>
+          Array.from({ length: cols }, (_, j) => {
+            if (k === 0) return Math.max(j - a, 0);
+            return k + Math.min(j, b);
+          })
+        );
+
+        const s1 = Array.from({ length: rows }, (_, k) =>
+          Array.from({ length: cols }, (_, j) => {
+            if (k === c + 1) return (c + 1) + Math.min(j, b);
+            return k + Math.max(j - a, 0);
+          })
+        );
+
+        return { min: s0, max: s1 };
+      }
+
+      newRandomUpdate(rng) {
+        const [a, b, c] = this.size;
+        return { k: rng.int(1, c), j: rng.int(1, a + b - 1), dy: rng.int(0, 1) };
+      }
+
+      update(s, op) {
+        const { k, j, dy } = op;
+        if (dy === 1) {
+          if (s[k][j - 1] === s[k][j] &&
+            s[k][j] < s[k][j + 1] &&
+            s[k][j + 1] < s[k + 1][j]) {
+            s[k][j] += 1;
+          }
+        } else {
+          if (s[k - 1][j] < s[k][j - 1] &&
+            s[k][j - 1] < s[k][j] &&
+            s[k][j] === s[k][j + 1]) {
+            s[k][j] -= 1;
+          }
+        }
+      }
+
+      getTiles(s) {
+        const [a, b, c] = this.size;
+        const verts = { L: [], R: [], T: [] };
+
+        for (let k = 0; k <= c; k++) {
+          for (let j = 1; j <= a + b; j++) {
+            try {
+              if (k > 0) {
+                if (s[k][j] === s[k][j - 1]) {
+                  verts.L.push([
+                    [j, s[k][j]],
+                    [j - 1, s[k][j]],
+                    [j - 1, s[k][j] - 1],
+                    [j, s[k][j] - 1],
+                  ]);
+                } else {
+                  verts.R.push([
+                    [j, s[k][j]],
+                    [j - 1, s[k][j] - 1],
+                    [j - 1, s[k][j] - 2],
+                    [j, s[k][j] - 1],
+                  ]);
+                }
+              }
+              for (let l = s[k][j] + 1; l < s[k + 1][j]; l++) {
+                verts.T.push([
+                  [j, l],
+                  [j - 1, l - 1],
+                  [j, l - 1],
+                  [j + 1, l],
+                ]);
+              }
+            } catch { /* ignore */ }
+          }
+        }
+        return verts;
+      }
+
+      /**
+       * Path group as "height-map" lines:
+       * vertices sit on MIDPOINTS of vertical edges (x = integer),
+       * and each segment crosses a lozenge from one vertical-edge midpoint to the opposite,
+       * hence passing through that lozenge's center.
+       *
+       * For a path k, points are (j, s[k][j] - 1/2) for j=0..(a+b).
+       * This fixes the common bug "turning at centers" (center-to-center) which kinks too early.
+       */
+      getMidEdgePaths(s) {
+        const [a, b, c] = this.size;
+        const n = a + b;
+        const paths = [];
+
+        // internal varying paths (1..c)
+        for (let k = 1; k <= c; k++) {
+          const pts = [];
+          for (let j = 0; j <= n; j++) {
+            pts.push([j, s[k][j] - 0.5]);
+          }
+          paths.push(pts);
+        }
+        return paths;
+      }
+    }
+
+    // ---------- CFTP: compute update blocks then expand to per-step ops ----------
+    function computeCFTPUpdates(chain, seedU32, maxRounds = 16000) {
+      const rng = new PRNG(seedU32 >>> 0);
+      let updates = [{ rngState: rng.getState(), steps: 1 }];
+      let rounds = 0;
+
+      while (true) {
+        if (++rounds > maxRounds) {
+          throw new Error(`CFTP exceeded maxRounds=${maxRounds}. Try smaller (a,b,c).`);
+        }
+        const { min: s0, max: s1 } = chain.minMaxStates();
+        let rng_next = null;
+
+        for (const item of updates) {
+          rng.setState(item.rngState);
+          for (let t = 0; t < item.steps; t++) {
+            const u = chain.newRandomUpdate(rng);
+            chain.update(s0, u);
+            chain.update(s1, u);
+          }
+          if (rng_next === null) rng_next = rng.getState();
+        }
+
+        if (statesEqual(s0, s1)) {
+          const depth = updates.reduce((acc, it) => acc + it.steps, 0);
+          return { updates, rng_next, rounds, depth };
+        }
+
+        updates.unshift({ rngState: rng_next, steps: 2 ** updates.length });
+      }
+    }
+
+    function expandOps(chain, updates) {
+      const rng = new PRNG(0);
+      const ops = [];
+      for (const item of updates) {
+        rng.setState(item.rngState);
+        for (let t = 0; t < item.steps; t++) ops.push(chain.newRandomUpdate(rng));
+      }
+      return ops;
+    }
+
+    // ---------- geometry + drawing ----------
+    function latticeToWorld(v) {
+      const x = v[0], y = v[1];
+      return { x: (SQ3 / 2) * x, y: y - x / 2 };
+    }
+    function boundsFromTiles(tiles) {
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      for (const polys of Object.values(tiles)) {
+        for (const poly of polys) {
+          for (const v of poly) {
+            const p = latticeToWorld(v);
+            minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x);
+            minY = Math.min(minY, p.y); maxY = Math.max(maxY, p.y);
+          }
+        }
+      }
+      if (!isFinite(minX)) return { minX: 0, maxX: 1, minY: 0, maxY: 1 };
+      return { minX, maxX, minY, maxY };
+    }
+
+    function computeViewFromBounds(bounds, panel) {
+      const { minX, maxX, minY, maxY } = bounds;
+      const w = maxX - minX, h = maxY - minY;
+
+      // ~5% whitespace as requested
+      const margin = Math.max(10, Math.round(0.05 * Math.min(panel.w, panel.h)));
+
+      const sx = (panel.w - 2 * margin) / w;
+      const sy = (panel.h - 2 * margin) / h;
+
+      // slight shrink to guarantee breathing room even for extreme aspect ratios
+      const scale = 0.97 * Math.min(sx, sy);
+
+      const ox = panel.x + margin + (panel.w - 2 * margin - scale * w) / 2 - scale * minX;
+      const oy = panel.y + margin + (panel.h - 2 * margin - scale * h) / 2 + scale * maxY;
+
+      return { scale, ox, oy };
+    }
+
+    function worldToScreen(p, view) {
+      return { x: view.ox + view.scale * p.x, y: view.oy - view.scale * p.y };
+    }
+
+    function drawTiles(ctx, tiles, view) {
+      const colors = {
+        T: "rgb(173,216,255)",
+        L: "rgb(80,48,121)",
+        R: "rgb(255,145,117)"
+      };
+
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      ctx.lineWidth = 1;
+
+      for (const type of ["T", "L", "R"]) {
+        ctx.fillStyle = colors[type];
+        ctx.strokeStyle = "rgba(0,0,0,.82)";
+        for (const poly of tiles[type]) {
+          ctx.beginPath();
+          for (let i = 0; i < poly.length; i++) {
+            const p = worldToScreen(latticeToWorld(poly[i]), view);
+            if (i === 0) ctx.moveTo(p.x, p.y);
+            else ctx.lineTo(p.x, p.y);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+        }
+      }
+    }
+
+    function drawPathsThroughCenters(ctx, centerPaths, view) {
+      // small downward offset in WORLD coords so the paths look like "painted on the face"
+      // (screen-down means world y decreases)
+      const yOffset = 0.18;
+
+      ctx.save();
+      ctx.lineWidth = 2.4;
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+
+      // subtle shadow to separate from black tile edges
+      ctx.shadowColor = "rgba(0,0,0,.25)";
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 1;
+
+      ctx.strokeStyle = "rgba(255,220,0,.95)";
+
+      for (const path of centerPaths) {
+        ctx.beginPath();
+        for (let i = 0; i < path.length; i++) {
+          const w = latticeToWorld(path[i]);
+          w.y -= yOffset;
+          const p = worldToScreen(w, view);
+          if (i === 0) ctx.moveTo(p.x, p.y);
+          else ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+      }
+
+      // turn off shadow for dots
+      ctx.shadowColor = "transparent";
+      ctx.shadowBlur = 0;
+
+      // optional little dots at each lozenge center
+      ctx.fillStyle = "rgba(255,220,0,.90)";
+      for (const path of centerPaths) {
+        for (let i = 1; i < path.length - 1; i++) {
+          const w = latticeToWorld(path[i]);
+          w.y -= yOffset;
+          const p = worldToScreen(w, view);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.65, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      ctx.restore();
+    }
+
+    function drawPanelLabel(ctx, panel, title) {
+      ctx.save();
+      const dpr = (window.devicePixelRatio || 1);
+      ctx.font = `${Math.round(14 * dpr)}px system-ui`;
+      ctx.fillStyle = "rgba(255,255,255,.9)";
+      ctx.strokeStyle = "rgba(0,0,0,.55)";
+      ctx.lineWidth = 4;
+      const x = panel.x + 12, y = panel.y + 22;
+      ctx.strokeText(title, x, y);
+      ctx.fillText(title, x, y);
+      ctx.restore();
+    }
+
+    function drawSplitLine(ctx, x) {
+      ctx.save();
+      ctx.strokeStyle = "rgba(127,127,127,.45)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x + 0.5, 0);
+      ctx.lineTo(x + 0.5, ctx.canvas.height);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // ---------- UI / animation ----------
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d", { alpha: false });
+
+    const statusEl = document.getElementById("status");
+    const startBtn = document.getElementById("start");
+    const pauseBtn = document.getElementById("pause");
+    const randomSeedBtn = document.getElementById("randomSeed");
+    const speedSlider = document.getElementById("speed");
+    const speedLabel = document.getElementById("speedLabel");
+    const showPathsChk = document.getElementById("showPaths");
+
+    let currentSeed = (Date.now() >>> 0);
+
+    function resizeCanvas() {
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      canvas.width = Math.floor(canvas.clientWidth * dpr);
+      canvas.height = Math.floor(canvas.clientHeight * dpr);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
+    window.addEventListener("resize", () => { resizeCanvas(); redrawOnce(); });
+
+    speedSlider.addEventListener("input", () => { speedLabel.textContent = speedSlider.value; });
+
+    randomSeedBtn.addEventListener("click", () => {
+      currentSeed = (Date.now() >>> 0);
+      statusEl.textContent = `seed=0x${currentSeed.toString(16)}`;
+    });
+
+    function readSize() {
+      const a = Math.max(1, Math.min(40, parseInt(document.getElementById("a").value, 10) || 1));
+      const b = Math.max(1, Math.min(40, parseInt(document.getElementById("b").value, 10) || 1));
+      const c = Math.max(1, Math.min(40, parseInt(document.getElementById("csize").value, 10) || 1));
+      return [a, b, c];
+    }
+
+    let anim = null; // { chain, ops, idx, sMin, sMax, viewL, viewR, panelL, panelR, rounds, depth, coupledAt, bounds }
+    let rafId = null;
+    let paused = false;
+
+    function stopAnimation(keepFrame = true) {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+      paused = false;
+      pauseBtn.disabled = true;
+      pauseBtn.textContent = "Pause";
+      startBtn.disabled = false;
+      if (!keepFrame) anim = null;
+    }
+
+    pauseBtn.addEventListener("click", () => {
+      if (!anim) return;
+      paused = !paused;
+      pauseBtn.textContent = paused ? "Resume" : "Pause";
+      if (!paused && !rafId) tick();
+    });
+
+    startBtn.addEventListener("click", () => startAnimation());
+
+    function startAnimation() {
+      stopAnimation(false);
+      resizeCanvas();
+      const size = readSize();
+      const chain = new LozengeTiling(size);
+
+      startBtn.disabled = true;
+      pauseBtn.disabled = true;
+      statusEl.textContent = "Computing CFTP (finding the required lookback length T)…";
+
+      setTimeout(() => {
+        try {
+          const { updates, rounds, depth } = computeCFTPUpdates(chain, currentSeed, 18000);
+          const ops = expandOps(chain, updates);
+
+          const { min: sMin0, max: sMax0 } = chain.minMaxStates();
+          const sMin = cloneState(sMin0);
+          const sMax = cloneState(sMax0);
+
+          // fixed view bounds from the region (depends only on a,b,c)
+          const bounds = boundsFromTiles(chain.getTiles(sMin));
+
+          const W = canvas.width, H = canvas.height;
+          const half = Math.floor(W / 2);
+          const panelL = { x: 0, y: 0, w: half, h: H };
+          const panelR = { x: half, y: 0, w: W - half, h: H };
+
+          const viewL = computeViewFromBounds(bounds, panelL);
+          const viewR = computeViewFromBounds(bounds, panelR);
+
+          anim = { chain, ops, idx: 0, sMin, sMax, viewL, viewR, panelL, panelR, rounds, depth, coupledAt: null, bounds };
+
+          pauseBtn.disabled = false;
+          pauseBtn.textContent = "Pause";
+          statusEl.textContent = `Starting animation: lookback depth T=${depth} (rounds=${rounds}) seed=0x${currentSeed.toString(16)}`;
+          postHeight();
+
+          paused = false;
+          tick();
+        } catch (err) {
+          console.error(err);
+          statusEl.textContent = `Error: ${err.message}`;
+          stopAnimation(false);
+        }
+      }, 0);
+    }
+
+    function renderFrame() {
+      if (!anim) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawSplitLine(ctx, anim.panelR.x);
+
+      // left panel
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(anim.panelL.x, anim.panelL.y, anim.panelL.w, anim.panelL.h);
+      ctx.clip();
+
+      const tilesL = anim.chain.getTiles(anim.sMin);
+      drawTiles(ctx, tilesL, anim.viewL);
+      if (showPathsChk.checked) {
+        const pathsL = anim.chain.getMidEdgePaths(anim.sMin);
+        drawPathsThroughCenters(ctx, pathsL, anim.viewL);
+      }
+      drawPanelLabel(ctx, anim.panelL, "min_state");
+      ctx.restore();
+
+      // right panel
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(anim.panelR.x, anim.panelR.y, anim.panelR.w, anim.panelR.h);
+      ctx.clip();
+
+      const tilesR = anim.chain.getTiles(anim.sMax);
+      drawTiles(ctx, tilesR, anim.viewR);
+      if (showPathsChk.checked) {
+        const pathsR = anim.chain.getMidEdgePaths(anim.sMax);
+        drawPathsThroughCenters(ctx, pathsR, anim.viewR);
+      }
+      drawPanelLabel(ctx, anim.panelR, "max_state");
+      ctx.restore();
+    }
+
+    function tick() {
+      if (!anim) return;
+      if (paused) { rafId = null; return; }
+
+      const stepsPerFrame = parseInt(speedSlider.value, 10) || 1;
+
+      for (let s = 0; s < stepsPerFrame; s++) {
+        if (anim.idx >= anim.ops.length) break;
+
+        const op = anim.ops[anim.idx++];
+        anim.chain.update(anim.sMin, op);
+        anim.chain.update(anim.sMax, op);
+
+        if (anim.coupledAt === null && statesEqual(anim.sMin, anim.sMax)) {
+          anim.coupledAt = anim.idx;
+          break;
+        }
+      }
+
+      renderFrame();
+
+      if (anim.coupledAt !== null) {
+        statusEl.textContent = `Coupled!  Coupled at step ${anim.coupledAt} (total steps T=${anim.depth}) seed=0x${currentSeed.toString(16)}`;
+        postHeight();
+        stopAnimation(true);
+        renderFrame();
+        return;
+      }
+
+      if (anim.idx >= anim.ops.length) {
+        statusEl.textContent = `Reached the end without coupling (unexpected). idx=${anim.idx}/${anim.ops.length}`;
+        postHeight();
+        stopAnimation(true);
+        renderFrame();
+        return;
+      }
+
+      statusEl.textContent = `Animating… step ${anim.idx}/${anim.depth}  seed=0x${currentSeed.toString(16)}`;
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function redrawOnce() {
+      resizeCanvas();
+      if (anim) {
+        const W = canvas.width, H = canvas.height;
+        const half = Math.floor(W / 2);
+        anim.panelL = { x: 0, y: 0, w: half, h: H };
+        anim.panelR = { x: half, y: 0, w: W - half, h: H };
+        anim.viewL = computeViewFromBounds(anim.bounds, anim.panelL);
+        anim.viewR = computeViewFromBounds(anim.bounds, anim.panelR);
+        renderFrame();
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawSplitLine(ctx, Math.floor(canvas.width / 2));
+      }
+    }
+
+
+    // Resize with parent container (important for blog layouts/iframes)
+    const rootEl = document.getElementById("cftp-root");
+
+    // Tell the parent iframe how tall we are (so it can auto-resize).
+    function postHeight() {
+      // Use root element height (includes canvas + controls + hint)
+      const h = Math.ceil(rootEl.getBoundingClientRect().height);
+      try {
+        window.parent && window.parent.postMessage({ type: "cftp:resize", height: h }, "*");
+      } catch { }
+    }
+
+    const ro = new ResizeObserver(() => {
+      resizeCanvas();
+      redrawOnce();
+      postHeight();
+    });
+    ro.observe(rootEl);
+    // init
+    speedLabel.textContent = speedSlider.value;
+    resizeCanvas();
+    redrawOnce();
+    statusEl.textContent = `seed=0x${currentSeed.toString(16)}（Click Start to run）`;
+  </script>
+</body>
+
+</html>

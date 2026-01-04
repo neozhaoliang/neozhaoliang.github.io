@@ -1,0 +1,940 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            环视系统项目文档 | Why so serious?</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="前言
+关于车辆的全景环视系统网上已经有很多的资料，然而几乎没有可供参考的代码，这一点对入门的新人来说非常不友好。这个项目的目的就是介绍全景系统的原理，并给出一份基本要素齐全的、可以实际运行的
+Python
+实现供大家参考。环视全景系统涉及的知识并不复杂，只需要读者了解相机的标定、透视变换，并懂得如何">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="环视系统项目文档"/>
+    <meta property="og:site_name" content="Why so serious?"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>环视系统项目文档</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2025-12-31T07:30:22.256Z"><a href="/surround-view-doc/index.html">2025-12-31</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%89%8D%E8%A8%80"><span class="section table-of-contents-text">前言</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%A1%AC%E4%BB%B6%E5%92%8C%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="section table-of-contents-text">硬件和软件配置</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A1%B9%E7%9B%AE%E9%87%87%E7%94%A8%E7%9A%84%E8%8B%A5%E5%B9%B2%E7%BA%A6%E5%AE%9A"><span class="section table-of-contents-text">项目采用的若干约定</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C%E8%8E%B7%E5%BE%97%E5%8E%9F%E5%A7%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E7%9B%B8%E6%9C%BA%E5%86%85%E5%8F%82"><span class="section table-of-contents-text">准备工作：获得原始图像与相机内参</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E8%AE%BE%E7%BD%AE%E6%8A%95%E5%BD%B1%E8%8C%83%E5%9B%B4%E5%92%8C%E5%8F%82%E6%95%B0"><span class="section table-of-contents-text">设置投影范围和参数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%89%8B%E5%8A%A8%E6%A0%87%E5%AE%9A%E8%8E%B7%E5%8F%96%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5"><span class="section table-of-contents-text">手动标定获取投影矩阵</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%B8%9F%E7%9E%B0%E5%9B%BE%E7%9A%84%E6%8B%BC%E6%8E%A5%E4%B8%8E%E5%B9%B3%E6%BB%91"><span class="section table-of-contents-text">鸟瞰图的拼接与平滑</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="section table-of-contents-text">具体实现的注意事项</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AE%9E%E8%BD%A6%E8%BF%90%E8%A1%8C"><span class="section table-of-contents-text">实车运行</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%99%84%E5%BD%95%E9%A1%B9%E7%9B%AE%E5%90%84%E8%84%9A%E6%9C%AC%E4%B8%80%E8%A7%88"><span class="section table-of-contents-text">附录：项目各脚本一览</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<h1 id="前言">前言</h1>
+<p>关于车辆的全景环视系统网上已经有很多的资料，然而几乎没有可供参考的代码，这一点对入门的新人来说非常不友好。这个项目的目的就是介绍全景系统的原理，并给出一份基本要素齐全的、可以实际运行的
+Python
+实现供大家参考。环视全景系统涉及的知识并不复杂，只需要读者了解相机的标定、透视变换，并懂得如何使用
+OpenCV。</p>
+<p>这个程序最初是在一辆搭载了一台 AGX Xavier
+的无人小车上开发的，运行效果如下：</p>
+<video style="margin:0px auto;display:block" width="400" src="https://github.com/neozhaoliang/surround-view-system-introduction/raw/refs/heads/master/doc/img/smallcar.mp4" controls="">
+</video>
+<p>小车上搭载了四个 USB 环视鱼眼摄像头，相机传回的画面分辨率为
+640x480，图像首先经过畸变校正，然后在射影变换下转换为对地面的鸟瞰图，最后拼接起来经过平滑处理后得到了上面的效果。全部过程在
+CPU 中进行处理，整体运行流畅。</p>
+<p>后来我把代码重构以后移植到一辆乘用车上 (处理器是同型号的
+AGX)，得到了差不多的效果：</p>
+<video style="margin:0px auto;display:block" width="400" src="https://github.com/neozhaoliang/surround-view-system-introduction/raw/refs/heads/master/doc/img/car.mp4" controls="">
+</video>
+<p>这个版本使用的是四个 960x640 的 csi 摄像头，输出的全景图分辨率为
+1200x1600，在不进行亮度均衡处理时全景图处理线程运行速度大约为 17
+fps，加入亮度均衡处理后骤降到只有 7 fps。我认为适当缩小分辨率的话
+(比如采用 480x640 的输出可以将像素个数降低到原来的 1/6)
+应该也可以获得流畅的视觉效果。</p>
+<blockquote>
+<p><strong>注</strong>：画面中黑色的部分是相机投影后出现的盲区，这是因为前面的相机为了避开车标的部位安装在了车头左侧且角度倾斜，所以视野受到了限制。想象一个人歪着脖子还斜着眼走路的样子
+…</p>
+</blockquote>
+<p>这个项目的实现比较粗糙，仅作为演示项目展示生成环视全景图的基本要素，大家领会精神即可。我开发这个项目的目的是为了在自动泊车时实时显示车辆的轨迹，同时也用来作为我指导的实习生的实习项目。由于之前没有经验和参照，大多数算法和流程都是琢磨着写的，不见得高明，请大家多指教。代码是
+Python 写成的，效率上肯定不如 C++，所以仅适合作学习和验证想法使用。</p>
+<p>下面就来一一介绍我的实现步骤。</p>
+<h1 id="硬件和软件配置">硬件和软件配置</h1>
+<p>我想首先强调的是，硬件配置是这个项目中最不需要费心的事情，在第一个小车项目中使用的硬件如下：</p>
+<ol type="1">
+<li>四个 USB 鱼眼相机，支持的分辨率为 640x480|800x600|1920x1080
+三种。我这里因为是需要在 Python 下面实时运行，为了效率考虑设置的分辨率是
+640x480。</li>
+<li>一台 AGX Xavier。实际上在普通笔记本上跑一样溜得飞起。</li>
+</ol>
+<p>第二个乘用车项目使用的硬件如下：</p>
+<ol type="1">
+<li>四个 csi 摄像头，设置的分辨率是 960x640。型号是 Sekonix 的 <a target="_blank" rel="noopener" href="http://sekolab.com/products/camera/">SF3326-100-RCCB</a>。</li>
+<li>一台 AGX Xavier，型号同上面的小车项目一样，不过外加了一个工控机接收
+csi 摄像头画面。</li>
+</ol>
+<p>我认为你只要有四个视野足够覆盖车周围的摄像头，再加一个普通笔记本电脑就足够进行全部的离线开发了。需要注意的是，由于传输速率的限制，笔记本的一个
+USB 口可能无法同时带动四个摄像头，所以你可能需要用 hub
+将摄像头分配在两个 USB 端口上。</p>
+<p>软件配置如下：</p>
+<ol type="1">
+<li>操作系统 Ubuntu 16.04/18.04.</li>
+<li>Python&gt;=3.</li>
+<li>OpenCV&gt;=3.</li>
+<li>PyQt5.</li>
+</ol>
+<p>其中 PyQt5 主要用来实现多线程，方便将来移植到 Qt 环境。</p>
+<h1 id="项目采用的若干约定">项目采用的若干约定</h1>
+<p>为了方便起见，在本项目中四个环视相机分别用
+<code>front</code>、<code>back</code>、<code>left</code>、<code>right</code>
+来指代，并假定其对应的设备号是整数，例如 0, 1, 2,
+3。实际开发中请针对具体情况进行修改。</p>
+<p>相机的内参矩阵记作 <code>camera_matrix</code>，这是一个 3x3
+的矩阵。畸变系数记作 <code>dist_coeffs</code>，这是一个 1x4
+的向量。相机的投影矩阵记作 <code>project_matrix</code>，这是一个 3x3
+的射影矩阵。</p>
+<h1 id="准备工作获得原始图像与相机内参">准备工作：获得原始图像与相机内参</h1>
+<p>首先我们需要获取每个相机的内参矩阵与畸变系数。我在项目中附上了一个脚本
+<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/run_calibrate_camera.py">run_calibrate_camera.py</a>，你只需要运行这个脚本，通过命令行参数告诉它相机设备号，是否是鱼眼相机，以及标定板的网格大小，然后手举标定板在相机面前摆几个姿势即可。</p>
+<p>以下是视频中四个相机分别拍摄的原始画面，顺序依次为前、后、左、右，并命名为
+<code>front.png</code>、<code>back.png</code>、<code>left.png</code>、<code>right.png</code>
+保存在项目的 <code>images/</code> 目录下。</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;">front</td>
+<td style="text-align: center;">back</td>
+<td style="text-align: center;">left</td>
+<td style="text-align: center;">right</td>
+</tr>
+<tr>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="200" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/images/front.png?raw=true"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="200" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/images/back.png?raw=true"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="200" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/images/left.png?raw=true"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="200" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/images/right.png?raw=true"></td>
+</tr>
+</tbody>
+</table>
+<p>四个相机的内参文件分别为
+<code>front.yaml</code>、<code>back.yaml</code>、<code>left.yaml</code>、<code>right.yaml</code>，这些内参文件都存放在项目的
+<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/tree/master/yaml">yaml</a>
+子目录下。</p>
+<p>你可以看到图中地面上铺了一张标定布，这个布的尺寸是
+<code>6mx10m</code>，每个黑白方格的尺寸为
+<code>40cmx40cm</code>，每个圆形图案所在的方格是
+<code>80cmx80cm</code>。我们将利用这个标定物来手动选择对应点获得投影矩阵。</p>
+<h1 id="设置投影范围和参数">设置投影范围和参数</h1>
+<p>接下来我们需要获取每个相机到地面的投影矩阵，这个投影矩阵会把相机校正后的画面转换为对地面上某个矩形区域的鸟瞰图。这四个相机的投影矩阵不是独立的，它们必须保证投影后的区域能够正好拼起来。</p>
+<p>这一步是通过联合标定实现的，即在车的四周地面上摆放标定物，拍摄图像，手动选取对应点，然后获取投影矩阵。</p>
+<p>请看下图：</p>
+<p><img style="margin:0px auto;display:block" width="400" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/paramsettings.png?raw=true"></p>
+<p>首先在车身的四角摆放四个标定板，标定板的图案大小并无特殊要求，只要尺寸一致，能在图像中清晰看到即可。每个标定板应当恰好位于相邻的两个相机视野的重合区域中。</p>
+<p>在上面拍摄的相机画面中车的四周铺了一张标定布，这个具体是标定板还是标定布不重要，只要能清楚的看到特征点就可以了。</p>
+<p>然后我们需要设置几个参数：(以下所有参数均以厘米为单位)</p>
+<ul>
+<li><p><code>innerShiftWidth</code>,
+<code>innerShiftHeight</code>：标定板内侧边缘与车辆左右两侧的距离，标定板内侧边缘与车辆前后方的距离。</p></li>
+<li><p><code>shiftWidth</code>,
+<code>shiftHeight</code>：这两个参数决定了在鸟瞰图中向标定板的外侧看多远。这两个值越大，鸟瞰图看的范围就越大，相应地远处的物体被投影后的形变也越严重，所以应酌情选择。</p></li>
+<li><p><code>totalWidth</code>,
+<code>totalHeight</code>：这两个参数代表鸟瞰图的总宽高，在我们这个项目中标定布宽
+6m 高 10m，于是鸟瞰图中地面的范围为
+<code>(600 + 2 * shiftWidth, 1000 + 2 * shiftHeight)</code>。为方便计我们让每个像素对应
+1 厘米，于是鸟瞰图的总宽高为</p>
+<p></p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">totalWidth = 600 + 2 * shiftWidth<br>totalHeight = 1000 + 2 * shiftHeight<br></code></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>车辆所在矩形区域的四角
+(图中标注的红色圆点)，这四个角点的坐标分别为 <code>(xl, yt)</code>,
+<code>(xr, yt)</code>, <code>(xl, yb)</code>, <code>(xr, yb)</code>
+(<code>l</code> 表示 left, <code>r</code> 表示 right，<code>t</code>
+表示 top，<code>b</code> 表示
+bottom)。这个矩形区域相机是看不到的，我们会用一张车辆的图标来覆盖此处。</p></li>
+</ul>
+<p>注意这个车辆区域四边的延长线将整个鸟瞰图分为前左 (FL)、前中 (F)、前右
+(FR)、左 (L)、右 (R)、后左 (BL)、后中 (B)、后右 (BR) 八个部分，其中 FL
+(区域 I)、FR (区域 II)、BL (区域 III)、BR (区域 IV)
+是相邻相机视野的重合区域，也是我们重点需要进行融合处理的部分。F、R、L、R
+四个区域属于每个相机单独的视野，不需要进行融合处理。</p>
+<p>以上参数存放在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/surround_view/param_settings.py">param_settings.py</a>
+中。</p>
+<p>设置好参数以后，每个相机的投影区域也就确定了，比如前方相机对应的投影区域如下：</p>
+<p><img style="margin:0px auto;display:block" width="400" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/mask.png?raw=true"></p>
+<p>接下来我们需要通过手动选取标志点来获取到地面的投影矩阵。</p>
+<h1 id="手动标定获取投影矩阵">手动标定获取投影矩阵</h1>
+<p>首先运行项目中 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/run_get_projection_maps.py">run_get_projection_maps.py</a>
+这个脚本，这个脚本需要你输入如下的参数：</p>
+<ul>
+<li><code>-camera</code>: 指定是哪个相机。</li>
+<li><code>-scale</code>: 校正后画面的横向和纵向放缩比。</li>
+<li><code>-shift</code>: 校正后画面中心的横向和纵向平移距离。</li>
+</ul>
+<p>为什么需要 <code>scale</code> 和 <code>shift</code>
+这两个参数呢？这是因为默认的 OpenCV
+的校正方式是在鱼眼相机校正后的图像中裁剪出一个 OpenCV “认为”
+合适的区域并将其返回，这必然会丢失一部分像素，特别地可能会把我们希望选择的特征点给裁掉。幸运的是
+<a target="_blank" rel="noopener" href="https://docs.opencv.org/master/db/d58/group__calib3d__fisheye.html#ga0d37b45f780b32f63ed19c21aa9fd333">cv2.fisheye.initUndistortRectifyMap</a>
+这个函数允许我们再传入一个新的内参矩阵，对校正后但是裁剪前的画面作一次放缩和平移。你可以尝试调整并选择合适的横向、纵向压缩比和图像中心的位置使得地面上的标志点出现在画面中舒服的位置上，以方便进行标定。</p>
+<p>运行</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python run_get_projection_maps.py -camera front -scale 0.7 0.8 -<span class="hljs-built_in">shift</span> -150 -100<br></code></pre></td></tr></tbody></table></figure>
+<p>后显示前方相机校正后的画面如下：</p>
+<p><img style="margin:0px auto;display:block" width="600" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/original.png?raw=true"></p>
+<p>然后依次点击事先确定好的四个标志点
+(顺序不能错！)，得到的效果如下：</p>
+<p><img style="margin:0px auto;display:block" width="600" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/choose_front.png?raw=true"></p>
+<p>注意标志点的设置代码在<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/surround_view/param_settings.py#L40">这里</a>。</p>
+<p>这四个点是可以自由设置的，但是你需要在程序中手动修改它们在鸟瞰图中的像素坐标。当你在校正图中点击这四个点时，OpenCV
+会根据它们在校正图中的像素坐标和在鸟瞰图中的像素坐标的对应关系计算一个射影矩阵。这里用到的原理就是四点对应确定一个射影变换
+(四点对应可以给出八个方程，从而求解出射影矩阵的八个未知量。注意射影矩阵的最后一个分量总是固定为
+1)。</p>
+<p>如果你不小心点歪了的话可以按 <code>d</code>
+键删除上一个错误的点。选择好以后点回车，就会显示投影后的效果图:</p>
+<p><img style="margin:0px auto;display:block" width="600" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/front_proj.png?raw=true"></p>
+<p>觉得效果可以的话敲回车，就会将投影矩阵写入 <code>front.yaml</code>
+中，这个矩阵的名字为 <code>project_matrix</code>。失败的话就按
+<code>q</code> 退出再来一次。</p>
+<p>再比如后面相机的标定如下图所示：</p>
+<p><img style="margin:0px auto;display:block" width="600" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/choose_back.png?raw=true"></p>
+<p>对应的投影图为</p>
+<p><img style="margin:0px auto;display:block" width="600" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/back_proj.png?raw=true"></p>
+<p>对四个相机分别采用此操作，我们就得到了四个相机的鸟瞰图，以及对应的四个投影矩阵。下一步我们的任务是把这四个鸟瞰图拼起来。</p>
+<div id="------------------" class="statement sta_______ definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">重要注意事项</span>：</span><span class="statement-spah">
+</span>：有不少读者反映在按照上面的方法进行标定时，得到的拼接效果不够好。经过询问，发现原因是他们选择的四个标定点都集中在图像的中心部分。你应该让四个标定点构成的矩形区域覆盖图像尽可能大的范围。原因是鱼眼图像在矫正后也是有误差的，边缘的误差更大。所以要尽可能让
+OpenCV 在更大的范围内计算一个全局最优的射影矩阵。</p>
+</div>
+<h1 id="鸟瞰图的拼接与平滑">鸟瞰图的拼接与平滑</h1>
+<p>如果你前面操作一切正常的话，运行 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/run_get_weight_matrices.py">run_get_weight_matrices.py</a>
+后应该会显示如下的拼接图：</p>
+<p><img style="margin:0px auto;display:block" width="480" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/result.png?raw=true"></p>
+<p>我来逐步介绍它是怎么做到的：</p>
+<ol type="1">
+<li><p>由于相邻相机之间有重叠的区域，所以这部分的融合是关键。如果直接采取两幅图像加权平均
+(权重各自为 1/2) 的方式融合的话你会得到类似下面的结果：</p>
+<p><img style="margin:0px auto;display:block" width="480" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/bad.png?raw=true"></p>
+<p>你可以看到由于校正和投影的误差，相邻相机在重合区域的投影结果并不能完全吻合，导致拼接的结果出现乱码和重影。这里的关键在于权重系数应该是随像素变化而变化的，并且是随着像素连续变化。</p></li>
+<li><p>以左上角区域为例，这个区域是 <code>front</code>,
+<code>left</code>
+两个相机视野的重叠区域。我们首先将投影图中的重叠部分取出来：</p>
+<p><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/overlap.png?raw=true"></p>
+<p>灰度化并二值化：</p>
+<p><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/overlap_gray.png?raw=true"></p>
+<p>注意这里面有噪点，可以用形态学操作去掉
+(不必特别精细，大致去掉即可)：</p>
+<p><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/mask_dilate.png?raw=true"></p>
+<p>至此我们就得到了重叠区域的一个完整 mask。</p></li>
+<li><p>将 <code>front</code>, <code>left</code>
+图像各自位于重叠区域外部的边界检测出来，这一步是通过先调用
+<code>cv2.findContours</code> 求出最外围的边界，再用
+<code>cv2.approxPolyDP</code> 获得逼近的多边形轮廓：</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/polyA.png?raw=true"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/polyB.png?raw=true"></td>
+</tr>
+</tbody>
+</table>
+<p>我们把 <code>front</code> 相机减去重叠区域后的轮廓记作
+<code>polyA</code> (左上图中蓝色边界)，<code>left</code>
+相机减去重叠区域后的轮廓记作 <code>polyB</code>
+(右上图中绿色边界)。</p></li>
+<li><p>对重叠区域中的每个像素，利用 <code>cv2.pointPolygonTest</code>
+计算其到这两个多边形 <code>polyA</code> 和 <code>polyB</code> 的距离
+<span class="math inline">\(d_A,d_B\)</span>，则该像素对应的权值为 <span class="math inline">\(w=d_B^2/(d_A^2+d_B^2)\)</span>，即如果这个像素落在
+<code>front</code> 画面内，则它与 <code>polyB</code>
+的距离就更远，从而权值更大。</p></li>
+<li><p>对不在重叠区域内的像素，若其属于 <code>front</code>
+相机的范围则其权值为 1，否则权值为
+0。于是我们得到了一个连续变化的，取值范围在 0~1 之间的矩阵 <span class="math inline">\(G\)</span>，其灰度图如下：</p>
+<p><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/weight_for_FL.png?raw=true"></p>
+<p>将 <span class="math inline">\(G\)</span> 作为权值可得融合后的图像为
+<code>front * G + (1- G) * left</code>。</p></li>
+<li><p>注意由于重叠区域中的像素值是来自两幅图像的加权平均，所以出现在这个区域内的物体会不可避免出现虚影的现象，所以我们需要尽量压缩重叠区域的范围，尽可能只对拼接缝周围的像素计算权值，拼接缝上方的像素尽量使用来自
+<code>front</code> 的原像素，拼接缝下方的像素尽量使用来自
+<code>back</code> 的原像素。这一步可以通过控制 <span class="math inline">\(d_B\)</span> 的值得到。</p></li>
+<li><p>我们还漏掉了重要的一步：由于不同相机的曝光度不同，导致不同的区域会出现明暗的亮度差，影响美观。我们需要调整每个区域的亮度，使得整个拼接图像的亮度趋于一致。这一步做法不唯一，自由发挥的空间很大。我查阅了一下网上提到的方法，发现它们要么过于复杂，几乎不可能是实时的；要么过于简单，无法达到理想的效果。特别在上面第二个视频的例子中，由于前方相机的视野被车标遮挡导致感光范围不足，导致其与其它三个相机的画面亮度差异很大，调整起来很费劲。</p>
+<p>一个基本的想法是这样的：每个相机传回的画面有 <code>BGR</code>
+三个通道，四个相机传回的画面总共有 12 个通道。我们要计算 12 个系数，将这
+12 个系数分别乘到这 12
+个通道上，然后再合并起来形成调整后的画面。过亮的通道要调暗一些所以乘的系数小于
+1，过暗的通道要调亮一些所以乘的系数大于
+1。这些系数可以通过四个画面在四个重合区域内的亮度比值得出，你可以自由设计计算系数的方式，只要满足这个基本原理即可。</p>
+<p>我的实现见<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/surround_view/birdview.py#L210">这里</a>。感觉就像一段
+shader 代码。</p>
+<p>还有一种偷懒的办法是事先计算一个 tone mapping 函数
+(比如逐段线性的，或者 AES tone mapping
+function)，然后强制把所有像素进行转换，这个方法最省力，但是得到的画面色调会与真实场景有较大差距。似乎有的市面产品就是采用的这种方法。</p></li>
+<li><p>最后由于有些情况下摄像头不同通道的强度不同，还需要进行一次色彩平衡，见下图:</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;">拼接后原始画面</td>
+<td style="text-align: center;">亮度平衡画面</td>
+<td style="text-align: center;">亮度平衡+色彩平衡画面</td>
+</tr>
+<tr>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/example1.png?raw=true"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/example2.png?raw=true"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/example3.png?raw=true"></td>
+</tr>
+</tbody>
+</table>
+<p>在第二个视频的例子中，画面的颜色偏红，加入色彩平衡后画面恢复了正常。</p></li>
+</ol>
+<h1 id="具体实现的注意事项">具体实现的注意事项</h1>
+<ol type="1">
+<li><p>多线程与线程同步。本文的两个例子中四个摄像头都不是硬件触发保证同步的，而且即便是硬件同步的，四个画面的处理线程也未必同步，所以需要有一个线程同步机制。这个项目的实现采用的是比较原始的一种，其核心代码如下：
+</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MultiBufferManager</span>(<span class="hljs-title class_ inherited__">object</span>):<br><br>    ...<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sync</span>(<span class="hljs-params">self, device_id</span>):<br>        <span class="hljs-comment"># only perform sync if enabled for specified device/stream</span><br>        <span class="hljs-variable language_">self</span>.mutex.lock()<br>        <span class="hljs-keyword">if</span> device_id <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.sync_devices:<br>            <span class="hljs-comment"># increment arrived count</span><br>            <span class="hljs-variable language_">self</span>.arrived += <span class="hljs-number">1</span><br>            <span class="hljs-comment"># we are the last to arrive: wake all waiting threads</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.do_sync <span class="hljs-keyword">and</span> <span class="hljs-variable language_">self</span>.arrived == <span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.sync_devices):<br>                <span class="hljs-variable language_">self</span>.wc.wakeAll()<br>            <span class="hljs-comment"># still waiting for other streams to arrive: wait</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-variable language_">self</span>.wc.wait(<span class="hljs-variable language_">self</span>.mutex)<br>            <span class="hljs-comment"># decrement arrived count</span><br>            <span class="hljs-variable language_">self</span>.arrived -= <span class="hljs-number">1</span><br>        <span class="hljs-variable language_">self</span>.mutex.unlock()<br></code></pre></td></tr></tbody></table></figure> 这里使用了一个 <code>MultiBufferManager</code>
+对象来管理所有的线程，每个摄像头的线程在每次循环时会调用它的
+<code>sync</code> 方法，并通过将计数器加 1 的方法来通知这个对象
+“报告，我已做完上次的任务，请将我加入休眠池等待下次任务”。一旦计数器达到
+4 就会触发唤醒所有线程进入下一轮的任务循环。<p></p></li>
+<li><p>建立查找表 (lookup table)
+以加快运算速度。鱼眼镜头的画面需要经过校正、投影、翻转以后才能用于拼接，这三步涉及频繁的图像内存分配和销毁，非常费时间。在我的测试中抓取线程始终稳定在
+30fps 多一点左右，但是每个画面的处理线程只有 20 fps
+左右。这一步最好是通过预计算一个查找表来加速。你还记得
+<code>cv2.fisheye.initUndistortRectifyMap</code> 这个函数吗？它返回的
+<code>mapx, mapy</code> 就是两个查找表。比如当你指定它返回的矩阵类型为
+<code>cv2.CV_16SC2</code> 的时候，它返回的 <code>mapx</code>
+就是一个逐像素的查找表，<code>mapy</code> 是一个用于插值平滑的一维数组
+(可以扔掉不要)。同理对于 <code>project_matrix</code>
+也不难获得一个查找表，两个合起来就可以得到一个直接从原始画面到投影画面的查找表
+(当然损失了用于插值的信息)。 在这个项目中由于采用的是 Python 实现，而
+Python 的 <code>for</code>
+循环效率不高，所以没有采用这种查找表的方式。</p></li>
+<li><p>四个权重矩阵可以作为 <code>RGBA</code>
+四个通道压缩到一张图片中，这样存储和读取都很方便。四个重叠区域对应的
+mask 矩阵也是如此：</p>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;">四个 mask 矩阵</td>
+<td style="text-align: center;">四个权重矩阵</td>
+</tr>
+<tr>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/masks.png?raw=true"></td>
+<td style="text-align: center;"><img style="margin:0px auto;display:block" width="250" src="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/doc/img/weights.png?raw=true"></td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<h1 id="实车运行">实车运行</h1>
+<p>你可以在实车上运行 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/run_live_demo.py">run_live_demo.py</a>
+来验证最终的效果。</p>
+<p>你需要注意修改相机设备号，以及 OpenCV 打开摄像头的方式。usb
+相机可以直接用 <code>cv2.VideoCapture(i)</code> (<code>i</code> 是 usb
+设备号) 的方式打开，csi 相机则需要调用 <code>gstreamer</code>
+打开，对应的代码在<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/surround_view/utils.py#L5">这里</a>和<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/surround-view-system-introduction/blob/master/surround_view/capture_thread.py#L75">这里</a>。</p>
+<h1 id="附录项目各脚本一览">附录：项目各脚本一览</h1>
+<p>项目中目前的脚本根据执行顺序排列如下:</p>
+<ol type="1">
+<li><code>run_calibrate_camera.py</code>：用于相机内参标定。</li>
+<li><code>param_settings.py</code>：用于设置投影区域的各参数。</li>
+<li><code>run_get_projection_maps.py</code>：用于手动标定获取到地面的投影矩阵。</li>
+<li><code>run_get_weight_matrices.py</code>：用于计算四个重叠区域对应的权重矩阵以及
+mask 矩阵，并显示拼接效果。</li>
+<li><code>run_live_demo.py</code>：用于在实车上运行的最终版本。</li>
+</ol>
+
+
+
+                                                    
+
+    
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

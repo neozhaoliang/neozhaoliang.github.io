@@ -1,0 +1,994 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHQJ7GP8MM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SHQJ7GP8MM');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+        <title>
+            星际迷航问题 | Why so serious?</title>
+    <meta name="author" content="Zhao Liang">
+    
+    <meta name="description" content="问题：
+一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
+\(r\)，发生故障时飞船与太阳的距离为
+\(R&amp;gt;r\)。好消息是在每个时刻，飞船能够知道自身与太阳系的距离。
+求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 \(r/R\)；但是对任何 \(\epsilon&amp;gt;0\)，可以采取适当的策略，使得飞船返回太阳系的概率大于
+\((r-\epsilon)/R\)，即 \(r/R\) 是最优概率。这个最优策略是什么？
+
+
+注：
+这里返回太阳系是指飞船落入开球 \(\{|x|
+&amp;lt; r\}\) 中。
+
+这个问题是教材 (Williams 1991)
+中的一道习题。这个问题的设定很有趣，但是给出一个基于测度论的严格解答却并不轻松。下面是我的解答。">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="星际迷航问题"/>
+    <meta property="og:site_name" content="Why so serious?"/>
+
+    
+    <meta property="og:image" content=""/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
+
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+    <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
+        <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+        <nav class="indigo">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav indigo darken-1" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/favicon.png" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">Zhao Liang</p>
+                        <p class="desc">math &amp;&amp; programming</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav indigo darken-1" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/几何群论/">
+                    几何群论 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计数组合学/">
+                    计数组合学 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/pywonderland-项目/">
+                    pywonderland-项目 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Shadertoy/">
+                    Shadertoy <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">5 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/线性代数/">
+                    线性代数 <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/完美采样/">
+                    完美采样 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/代数/">
+                    代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+            <main>
+                <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Williams-概率和鞅/">Williams 概率和鞅</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+    <article>
+        <div class="card">
+            <div class="card-content">
+                
+
+                            <div class="article-title">
+                                
+    
+        <h1>星际迷航问题</h1>
+    
+
+
+                            </div>
+                            <time class="pink-link-context" datetime="2011-04-05T00:00:00.000Z"><a href="/star-trek/">2011-04-05</a></time>
+
+                                
+
+                                    <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="section table-of-contents-text">预备知识</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E5%86%BB%E7%BB%93%E5%BC%95%E7%90%86"><span class="section table-of-contents-text">“冻结”引理</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#newton-%E5%8A%BF"><span class="section table-of-contents-text">Newton 势</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F%E7%9A%84%E5%86%85%E7%A7%AF"><span class="section table-of-contents-text">随机向量的内积</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B"><span class="section table-of-contents-text">建立模型</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%AF%B9%E7%AD%96%E7%95%A5%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%88%86%E6%9E%90"><span class="section table-of-contents-text">对策略的进一步分析</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">最优策略</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-trek-3-%E6%9C%80%E7%B3%9F%E7%B3%95%E7%9A%84%E8%B7%B3%E8%B7%83%E7%AD%96%E7%95%A5"><span class="section table-of-contents-text">Star Trek 3: 最糟糕的跳跃策略</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#star-trek-2-%E5%89%A7%E6%83%85%E5%8F%8D%E8%BD%AC"><span class="section table-of-contents-text">Star Trek 2: 剧情反转</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+</div>
+                                        
+                                            <div class="entry pink-link-context">
+                                                
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>一艘太空船正在宇宙中做星际航行时，飞船的控制系统出了故障，飞船不能正常地进行空间跳跃，而是只能预先设定一个距离，然后以此距离进行一次方向完全随机的跳跃。现在飞船想要返回太阳系。假设太阳系的半径是
+<span class="math inline">\(r\)</span>，发生故障时飞船与太阳的距离为
+<span class="math inline">\(R&gt;r\)</span>。好消息是在每个时刻，飞船能够知道自身与太阳系的距离。</p>
+<p>求证：不论采用怎样的跳跃策略，飞船返回太阳系的概率都小于 <span class="math inline">\(r/R\)</span>；但是对任何 <span class="math inline">\(\epsilon&gt;0\)</span>，可以采取适当的策略，使得飞船返回太阳系的概率大于
+<span class="math inline">\((r-\epsilon)/R\)</span>，即 <span class="math inline">\(r/R\)</span> 是最优概率。这个最优策略是什么？</p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>这里返回太阳系是指飞船落入开球 <span class="math inline">\(\{|x|
+&lt; r\}\)</span> 中。</p>
+</div>
+<p>这个问题是教材 <span class="citation" data-cites="Williams1991">(<a href="#ref-Williams1991" role="doc-biblioref">Williams 1991</a>)</span>
+中的一道习题。这个问题的设定很有趣，但是给出一个基于测度论的严格解答却并不轻松。下面是我的解答。</p>
+<span id="more"></span>
+<h1 id="预备知识">预备知识</h1>
+<h2 id="冻结引理">“冻结”引理</h2>
+<p>设 <span class="math inline">\(X,Y\)</span> 是两个随机变量，<span class="math inline">\(\varphi\)</span> 是可测函数。条件期望 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X]\)</span>
+是一个关于 <span class="math inline">\(\sigma(X)\)</span>
+可测的随机变量，根据 Doob-Dynkin 引理，它可以写成 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X]=g(X)\]</span>
+的形式，其中 <span class="math inline">\(g\)</span> 是一个 Borel
+可测函数。但是这个 <span class="math inline">\(g\)</span>
+具体是什么呢？下面的 freezing lemma <span class="citation" data-cites="Williams1991">(<a href="#ref-Williams1991" role="doc-biblioref">Williams 1991, sec. 9.10</a>)</span> or <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019, sec. 4.1</a>)</span>
+告诉我们，在一定条件下，我们可以这样计算 <span class="math inline">\(g\)</span>：先将 <span class="math inline">\(X\)</span> 冻结为一个实数值 <span class="math inline">\(x\)</span>，上式的右边变成 <span class="math inline">\(g(x)\)</span>，左边变成 <span class="math inline">\(\{X=x\}\)</span> 条件下的期望 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|X=x]=\mathop{\mathrm{\mathbb{E}}}\varphi(x,Y).\]</span>
+即 <span class="math inline">\(g(x)=\mathop{\mathrm{\mathbb{E}}}\varphi(x,Y)\)</span>。</p>
+<div id="freeze" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+1.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\((\Omega,\mathcal{F},\mu)\)</span>
+是一个概率空间，<span class="math inline">\(X, Y\)</span>
+是两个取值在某可测空间 <span class="math inline">\((S,\mathcal{S})\)</span> 中的随机变量，子 <span class="math inline">\(\sigma\)</span> 域 <span class="math inline">\(\mathcal{G}\subseteq\mathcal{F}\)</span> 满足
+<span class="math inline">\(X\in\mathcal{G}\)</span> 且 <span class="math inline">\(\mathcal{G}\)</span> 与 <span class="math inline">\(Y\)</span> 独立。可测函数 <span class="math inline">\(\varphi: S\times S\to\mathbb{R}\)</span> 满足
+<span class="math inline">\(\varphi\)</span> 非负或者 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}|\varphi(X,
+Y)|&lt;\infty\)</span>。令 <span class="math inline">\(g(x)=\mathop{\mathrm{\mathbb{E}}}\varphi(x,
+Y)\)</span>，则 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(X,
+Y)|\mathcal{G}]=g(X).\]</span></p>
+</div>
+<p>在进入证明之前，我们来看个例子：</p>
+<div class="statement example definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
+</span>设 <span class="math inline">\(X, Y\)</span>
+是两个独立的随机变量，<span class="math inline">\(Y\)</span> 服从的是
+<span class="math inline">\([0, 1]\)</span> 上的均匀分布，<span class="math inline">\(X\)</span> 服从的分布我们可以不用关心。问条件期望
+<span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\sin(XY)|X]\)</span>
+是什么？</p>
+<p>这相当于在 <a href="#freeze" title="引理 1.1">引理 1.1</a> 中取 <span class="math inline">\(\varphi(X,Y)=\sin(XY)\)</span> 和 <span class="math inline">\(\mathcal{G}=\sigma(X)\)</span>。<a href="#freeze" title="引理 1.1">引理 1.1</a> 告诉我们可以把 <span class="math inline">\(\sin(XY)\)</span> 中的 <span class="math inline">\(X\)</span> 冻结为常数 <span class="math inline">\(X=x\)</span>，把 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\sin(XY)|X]\)</span>
+视作关于常数 <span class="math inline">\(x\)</span> 的积分 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\sin(xY)]=\int_0^1
+\sin(xy)\,\mathrm{d}y = \frac{1}{x}\int_0^x
+\sin(z)\,\mathrm{d}z=\frac{1-\cos x}{x}.\]</span> 然后把 <span class="math inline">\(x\)</span> 解冻为 <span class="math inline">\(X\)</span> 即得 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\sin(XY)|X] =
+\frac{1-\cos X}{X}.\]</span></p>
+</div>
+<p><a href="#freeze" title="引理 1.1">引理 1.1</a> 中的可测空间 <span class="math inline">\((S,\mathcal{S})\)</span> 可以是多维空间 <span class="math inline">\((\mathbb{R}^d,\mathcal{B}(\mathbb{R}^d))\)</span>，<span class="math inline">\(X,Y\)</span> 也可以是独立的随机向量。即如果 <span class="math inline">\(\varphi(X_1,\ldots,X_n,Y_1,\ldots,Y_m)\)</span>
+是关于随机变量的可测函数，<span class="math inline">\(\sigma(X_1,\ldots,X_n)\subset\mathcal{G}\)</span>
+并且 <span class="math inline">\(\mathcal{G}\)</span> 和 <span class="math inline">\(\sigma(Y_1,\ldots,Y_m)\)</span> 独立，那么条件期望
+<span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[\varphi(X,Y)|\mathcal{G}]\)</span>
+就是一个以 <span class="math inline">\((x_1,\ldots,x_n)\)</span>
+为参变元的多重积分 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\varphi(x_1,\ldots,x_n,Y_1,\ldots,Y_m)]=g(x_1,\ldots,x_n).\]</span></p>
+<p><strong>证明</strong>：我们要证明对任何可测集 <span class="math inline">\(C\in\mathcal{G}\)</span> 有</p>
+<p><span class="math display">\[\int_C \varphi(X, Y)\mathrm{d}\mu =
+\int_C g(X)\mathrm{d}\mu.\]</span> 当 <span class="math inline">\(\varphi(x,
+y)=\mathbb{1}_A(x)\mathbb{1}_B(y)\)</span> 时，<span class="math inline">\(g(x)=\mathbb{1}_A(x)\mathbb{P}(\{Y\in
+B\})\)</span>，从而 <span class="math display">\[\begin{align*}\int_C
+\mathbb{1}_A(X)\mathbb{1}_B(Y)\mathrm{d}\mu&amp;=\mathbb{P}(\{X\in
+A\}\cap C\cap\{Y\in B\})\\&amp;=\mathbb{P}(\{X\in A\}\cap
+C)\cdot\mathbb{P}(\{Y\in
+B\})\\&amp;=\int_C\mathbb{1}_A(X)\mathrm{d}\mu\cdot\mathbb{P}(\{Y\in
+B\})\\&amp;=\int_C g(X)\mathrm{d}\mu.\end{align*}\]</span></p>
+<p>于是结论对所有形如 <span class="math inline">\(A\times B\)</span>
+的集合的示性函数成立。这样的示性函数构成一个 <span class="math inline">\(\pi\)</span>- 系。根据可测函数的单调类定理
+(monotone class theorem)，结论对所有非负或者可积函数都成立。<span class="math inline">\(\blacksquare\)</span></p>
+<h2 id="newton-势">Newton 势</h2>
+<div id="newton-potential" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+1.2</span>.</span><span class="statement-spah"> </span><span class="math inline">\(B=B(A,R)\)</span> 是 <span class="math inline">\(\mathbb{R}^3\)</span> 中以点 <span class="math inline">\(A\)</span> 为中心，半径为 <span class="math inline">\(R\)</span> 的球，<span class="math inline">\(X\)</span> 是球面上均匀分布的随机点，则 <span class="math inline">\(X\)</span> 与原点 <span class="math inline">\(O\)</span> 之间距离倒数的期望为 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}\frac{1}{|X|}=\begin{cases}1/a
+&amp; a&gt;R,\\ 1/R &amp; a\leq R.\end{cases}\]</span> 其中 <span class="math inline">\(a=|A|\)</span> 是 <span class="math inline">\(A\)</span> 与原点之间的距离。</p>
+</div>
+<p>这个引理其实是我们都熟悉的高中物理知识：假设以 <span class="math inline">\(A\)</span> 为中心，半径为 <span class="math inline">\(R\)</span> 的球壳上有总量为 1
+的均匀分布的电荷，则球壳表面和内部的电势处处等于 <span class="math inline">\(1/R\)</span>，球壳外部任意一点 <span class="math inline">\(P\)</span> 的电势等于 <span class="math inline">\(P\)</span> 和球心距离的倒数，即 <span class="math inline">\(1/|P-A|\)</span>（不计物理常数），此即为结论。</p>
+<p>当然这不是一个严格的证明，实际上这个积分正是 Newton
+势函数的简单情形。由于这不是本文的重点，就不再展开讲了，读者可以参考
+<span class="citation" data-cites="Donoghue2014">(<a href="#ref-Donoghue2014" role="doc-biblioref">Donoghue 2014, chap.
+8</a>)</span>。</p>
+<h2 id="随机向量的内积">随机向量的内积</h2>
+<p>下面这个命题相当于说：把球面上均匀分布的向量投影到“独立的随机方向”上，跟投到
+<span class="math inline">\(x\)</span> 轴上的分布是一样的。</p>
+<div id="random-inn" class="statement proposition plain">
+<p><span class="statement-heading"><span class="statement-label">命题
+1.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(U\)</span> 是定义在某概率空间 <span class="math inline">\((\Omega,\mathcal F,\mathbb P)\)</span> 中，在
+<span class="math inline">\(\mathbb R^d\)</span>
+的单位球面上均匀分布的随机向量，<span class="math inline">\(\sigma\)</span>- 域 <span class="math inline">\(\mathcal G\subset \mathcal F\)</span> 与 <span class="math inline">\(U\)</span> 独立。<span class="math inline">\(V\)</span> 是 <span class="math inline">\(\mathcal
+G\)</span>- 可测的 <span class="math inline">\(\mathbb R^d\)</span>
+中的单位向量。记 <span class="math inline">\(Y=U\cdot V\)</span>，则</p>
+<ol type="1">
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(\mathcal G\)</span> 独立。</li>
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(U^x\)</span> 同分布。</li>
+</ol>
+<p>这里 <span class="math inline">\(U^x\)</span> 表示 <span class="math inline">\(U\)</span> 的 <span class="math inline">\(x\)</span>- 分量。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(f:\mathbb
+R\to\mathbb R\)</span> 是任一有界 Borel 可测函数。根据冻结引理，我们有
+<span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal G]
+= \mathop{\mathrm{\mathbb{E}}}[f(U\cdot V)\mid\mathcal G]=g(V),\quad
+g(v)=\mathop{\mathrm{\mathbb{E}}}[f(U\cdot v)].\]</span>
+换句话说，在计算 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(U\cdot
+V)\mid\mathcal G]\)</span> 时，我们可以先将 <span class="math inline">\(V\)</span> 视作一个常数单位向量 <span class="math inline">\(v\)</span>，计算 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(U\cdot
+v)]\)</span>，然后再将 <span class="math inline">\(v\)</span>
+替换回随机变量 <span class="math inline">\(V\)</span>。</p>
+<p>由于 <span class="math inline">\(U\)</span> 服从 <span class="math inline">\(\mathbb R^d\)</span> 中单位球面上的均匀分布，所以
+<span class="math inline">\(U\cdot v\)</span>
+的分布是旋转不变的，即任何单位向量 <span class="math inline">\(v\)</span> 给出的 <span class="math inline">\(U\cdot v\)</span> 具有相同的分布。从而 <span class="math inline">\(f(U\cdot v)\)</span>
+的分布也相同。所以我们可以不妨取 <span class="math inline">\(v=e_1\)</span> 为 <span class="math inline">\(x\)</span> 轴的方向向量，得到 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(U\cdot
+v)]=\mathop{\mathrm{\mathbb{E}}}[f(U^x)].\]</span>
+右边是一个常数，它不依赖于 <span class="math inline">\(\omega\)</span>，所以它必然还等于 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal
+G]\)</span> 的期望 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(Y)]\)</span>。于是
+<span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal
+G]=\mathop{\mathrm{\mathbb{E}}}[f(U^{x})] =
+\mathop{\mathrm{\mathbb{E}}}[f(Y)].\]</span></p>
+<ul>
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(\mathcal G\)</span> 独立是 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal
+G]=\mathop{\mathrm{\mathbb{E}}}[f(Y)]\)</span> 的直接结论：对任何 Borel
+可测集 <span class="math inline">\(A\subset\mathbb R\)</span> 和 <span class="math inline">\(B\in\mathcal{G}\)</span>，取 <span class="math inline">\(f=\mathbb{1}_A\)</span>，利用 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[f(Y)\mid\mathcal{G}]=\mathop{\mathrm{\mathbb{E}}}[f(Y)]=\mathbb{P}(Y\in
+A).\]</span> 以及条件期望的塔式性质，可得 <span class="math display">\[\mathbb P(Y\in A,\,B)=\mathbb
+E[\mathbb{1}_B\mathbb{1}_{\{Y\in A\}}]
+=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_B\mathbb E[\mathbb{1}_{\{Y\in
+A\}}\mid \mathcal G]]
+=\mathop{\mathrm{\mathbb{E}}}[\mathbb{1}_B\mathbb P(Y\in A)]=\mathbb
+P(Y\in A)\mathbb P(B).\]</span> 这正是 <span class="math inline">\(Y\)</span> 与 <span class="math inline">\(\mathcal
+G\)</span> 独立的定义。</li>
+<li><span class="math inline">\(Y\)</span> 与 <span class="math inline">\(U^x\)</span> 同分布是 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}[f(U^x)]=\mathop{\mathrm{\mathbb{E}}}[f(Y)]\)</span>
+的直接结论。这一点是显然的。</li>
+</ul>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="建立模型">建立模型</h1>
+<p>我们开始正式求解本文开头的问题。</p>
+<ol type="1">
+<li><p>初始时刻为 0，太阳系是以原点为圆心，半径为 <span class="math inline">\(r\)</span> 的球，飞船初始位置在 <span class="math inline">\((R,0,0)\)</span> 处。</p></li>
+<li><p>设 <span class="math inline">\(\{U_n\}_{n\geq 1}\)</span>
+是定义在某个概率空间 <span class="math inline">\((\Omega,\mathcal{F},\mathbb{P})\)</span>
+上的一组独立同分布的、在单位球面上均匀分布的随机向量，它们表示飞船每次空间跳跃的随机方向。并设
+<span class="math inline">\(\mathcal{F}_n=\sigma(U_1,\ldots,U_n)\)</span> 以及
+<span class="math inline">\(\mathcal{F}_0=(\Omega,\emptyset)\)</span>。</p></li>
+<li><p>设第 <span class="math inline">\(n\)</span> 次空间跳跃的距离为
+<span class="math inline">\(l_n(n\geq1)\)</span>，由于 <span class="math inline">\(l_n\)</span> 是根据 <span class="math inline">\(n\)</span> 时刻之前的信息决定的，所以 <span class="math inline">\(l_n\)</span> 关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测。</p></li>
+<li><p>设第 <span class="math inline">\(n\)</span>
+次空间跳跃后飞船的坐标为 <span class="math inline">\(X_n\)</span>，那么
+<span class="math display">\[X_n=X_{n-1} + l_n U_n.\quad
+n=1,2,\ldots.\]</span> 其中 <span class="math inline">\(X_0=(R,0,0)\)</span> 是飞船的初始位置。</p></li>
+<li><p>设 <span class="math inline">\(T\)</span>
+是飞船首次返回太阳系的时间： <span class="math display">\[T = \inf\,\{
+n\mid X_n\in B(0,r)\},\]</span>则 <span class="math inline">\(T\)</span>
+的取值范围是 <span class="math inline">\(\mathbb{N^+}\cup\{+\infty\}\)</span>。我们要估算的是事件
+<span class="math inline">\(\{T&lt;+\infty\}\)</span>
+的概率，这正是飞船能够在有限时间内回到太阳系的概率。</p></li>
+</ol>
+<p>现在我们着手研究一下飞船的运动规律。</p>
+<p>记 <span class="math inline">\(|X_n|\)</span> 为第 <span class="math inline">\(n\)</span>
+次跳跃以后飞船与太阳系的距离，我们来推导 <span class="math inline">\(|X_n|\)</span> 和 <span class="math inline">\(|X_{n+1}|\)</span> 之间的关系。</p>
+<p>对 <span class="math inline">\(\mathcal{F}=\mathcal{F}_n,\,\mathcal{G}=\mathcal{F}_{n-1},\,X=(X_{n-1},l_n),\,Y=U_n,\,\varphi(X,
+Y)=1/|X_{n-1}+l_nY|\)</span> 应用 <a href="#freeze" title="引理 1.1">引理 1.1</a> 和 <a href="#newton-potential" title="引理 1.2">引理 1.2</a> 得到</p>
+<p><span class="math display">\[
+\mathop{\mathrm{\mathbb{E}}}\left[\left.\frac{1}{|X_n|}\right|\mathcal{F}_{n-1}\right]
+=\mathop{\mathrm{\mathbb{E}}}\left.\frac{1}{\left|X_{n-1}+
+l_nU_n\right|}\right|_{X_{n-1}=A}\leq\frac{1}{|A|}=\frac{1}{|X_{n-1}|}.
+\]</span></p>
+<p>这里由于 <span class="math inline">\(X_{n-1}\)</span> 和 <span class="math inline">\(l_n\)</span> 都是关于 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 可测的，而 <span class="math inline">\(U_n\)</span> 和 <span class="math inline">\(\mathcal{F}_{n-1}\)</span> 是独立的，所以 <a href="#freeze" title="引理 1.1">引理 1.1</a> 的条件是满足的。</p>
+<p>总结一下：</p>
+<div id="supermartingale" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.1</span>.</span><span class="statement-spah">
+</span>无论采取何种策略，<span class="math inline">\(\left\{\dfrac{1}{|X_n|}\right\}_{n\geq0}\)</span>
+总是一个上鞅。如果跳跃距离 <span class="math inline">\(l_n\)</span>
+满足对任何 <span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(l_n\leq |X_{n-1}|\)</span>，则 <span class="math inline">\(\left\{\dfrac{1}{|X_n|}\right\}_{n\geq0}\)</span>
+还是一个鞅。</p>
+</div>
+<p><strong>证明</strong>：只要再说明 <span class="math inline">\(\dfrac{1}{|X_n|}\)</span> 可积即可。由于 <span class="math inline">\(\dfrac{1}{|X_n|}\)</span> 非负，因此条件期望 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\bigg|\mathcal{F}_{n-1}\right]\)</span>
+有定义，并且上面已经证明了它小于等于 <span class="math inline">\(\dfrac{1}{|X_{n-1}|}\)</span>，于是 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\right]=\mathop{\mathrm{\mathbb{E}}}\left[\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_n|}\bigg|\mathcal{F}_{n-1}\right]\right]\leq\mathop{\mathrm{\mathbb{E}}}\left[\dfrac{1}{|X_{n-1}|}\right].\]</span>
+对 <span class="math inline">\(n\)</span> 归纳即可。<span class="math inline">\(\blacksquare\)</span></p>
+<p><a href="#supermartingale" title="定理 2.1">定理 2.1</a>
+是解决整个问题最关键的一步，有了它就海阔天空，没有它就寸步难行。由它我们立刻可以导出一个有趣的观察：由于非负上鞅必然几乎处处收敛，因此
+<span class="math inline">\(\lim\limits_{n\to\infty}|X_n|\)</span>
+几乎处处存在。这有两种可能：<span class="math inline">\(\lim\limits_{n\to\infty}|X_n|=+\infty\)</span>
+或者 <span class="math inline">\(\lim\limits_{n\to\infty}|X_n|&lt;+\infty\)</span>。所以飞船要么飞向无穷远，即迷失在宇宙的深处，要么被吸引到某个有限的位置。</p>
+<p>现在我们可以证明：</p>
+<div id="lessthan" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+2.2</span>.</span><span class="statement-spah">
+</span>不论飞船采取怎样的策略，返回太阳系的概率都严格小于 <span class="math inline">\(r/R\)</span>。</p>
+</div>
+<p><strong>证明</strong>：记 <span class="math inline">\(Z_n=\dfrac{1}{|X_n|}\)</span>，根据 <a href="#supermartingale" title="定理 2.1">定理 2.1</a> <span class="math inline">\(\{Z_n\}_{n\geq0}\)</span> 是非负上鞅，所以 <span class="math inline">\(Z_\infty=\lim\limits_{n\to\infty}Z_n\)</span>
+几乎处处存在。考虑停时 <span class="math inline">\(T\)</span>
+截断的非负上鞅序列 <span class="math inline">\(\{Z_{T\wedge
+n}\}\)</span>。由非负可积函数列的 Fatou 引理有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_{T\wedge
+n}]\leq\varliminf_{n\to\infty}\mathop{\mathrm{\mathbb{E}}}[Z_{T\wedge
+n}]\leq \mathop{\mathrm{\mathbb{E}}}[Z_0]=\frac{1}{R}.\]</span>
+另一方面</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_{T\wedge
+n}]&amp;=\mathop{\mathrm{\mathbb{E}}}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]+\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_n\mathbb{1}_{\{T=\infty\}}]
+\\&amp;\geq \mathop{\mathrm{\mathbb{E}}}[Z_T
+\mathbb{1}_{\{T&lt;\infty\}}]\geq\frac{\mathbb{P}(T&lt;\infty)}{r}.
+\end{aligned}
+\]</span></p>
+<p>其中最后一个不等号是因为在 <span class="math inline">\(\{T&lt;\infty\}\)</span> 上有 <span class="math inline">\(Z_T\geq 1/r\)</span>。综合这两个不等式就得到了
+<span class="math inline">\(\mathbb{P}(T&lt;\infty)\leq
+r/R\)</span>，即任何策略下飞船最终返回太阳系的概率不大于 <span class="math inline">\(r/R\)</span>。</p>
+<p>要证明这个概率是严格小于 <span class="math inline">\(r/R\)</span>
+的，只要证明上面式子中，最后的不等号是严格成立的： <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[Z_T
+\mathbb{1}_{\{T&lt;\infty\}}]&gt;\frac{\mathbb{P}(T&lt;\infty)}{r}.\]</span></p>
+<p>然而在事件 <span class="math inline">\(\{T&lt;\infty\}\)</span>
+上，由于 <span class="math inline">\(X_T&lt;r\)</span>，所以 <span class="math inline">\(Z_T&gt;1/r\)</span>，所以上面的不等式成立。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="对策略的进一步分析">对策略的进一步分析</h1>
+<p>现在我们把注意力转移到飞船不能返回太阳系这个事件上来。前面已经说过，飞船的运动只有两种可能，迷失在无穷远处或者被禁锢在一个有限的区域内，所以如果飞船不能返回太阳系，则飞船要么飞向无穷远，要么在太阳系之外的一个有限区域内打转。我们想知道，怎么判断这两种情形哪一种会发生呢？</p>
+<p>举个例子，考虑这样一个明显不合理的策略：第 <span class="math inline">\(n\)</span> 次的跳跃距离总是设定为 <span class="math inline">\(1/2^n\)</span>，在这个策略下飞船永远飞不出一个半径为
+1 的空间，所以这种策略是应该避免的。</p>
+<p>你可以注意到这个糟糕的策略的问题出在跳跃距离之和是收敛的。如果我们强迫每次跳跃的距离都大于一个固定的值
+<span class="math inline">\(\epsilon\)</span>（<span class="math inline">\(\epsilon\)</span>
+可以是任意的正数），就可以避免这种情形出现，这就是下面的定理：</p>
+<div id="goinf" class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\epsilon\)</span> 是任一正数 <span class="math display">\[E:=\{\omega:\
+T(\omega)=\infty,\  l_n(\omega)\geq\epsilon,\ \forall n\geq1\},\]</span>
+则我们有 <span class="math display">\[\lim_{n\to\infty}
+|X_n|=+\infty,\quad \text{for a.e.}\ \omega\in E.\]</span></p>
+</div>
+<p><strong>证明</strong>：记 <span class="math inline">\(V_n=\frac{X_{n}}{|X_{n}|}\)</span> 是 <span class="math inline">\(X_n\)</span> 对应的单位方向向量，<span class="math inline">\(Y_n=U_n\cdot V_{n-1}\)</span>。由 <a href="#random-inn" title="命题 1.3">命题 1.3</a>，<span class="math inline">\(\{Y_n\}\)</span> 是 i.i.d 序列，其分布等于 <span class="math display">\[U_1^x\sim{\rm Uniform}[-1,1].\]</span>
+（三维空间中球面上均匀分布的随机向量，其每个坐标分量服从 <span class="math inline">\([-1,1]\)</span> 上的均匀分布）</p>
+<p>由 <span class="math inline">\(X_n=X_{n-1}+l_nU_n\)</span> 可得 <span class="math display">\[|X_n|^2=|X_{n-1}|^2+2l_n|X_{n-1}|Y_n+l_n^2.\tag{$\ast$}\label{eq:jump}\]</span>
+令 <span class="math inline">\(B_n=\{Y_n\geq 1/2\}\)</span>，则 <span class="math inline">\(\{B_n\}\)</span> 是独立事件序列，对每个 <span class="math inline">\(n\)</span> 有 <span class="math inline">\(\mathbb{P}(B_n)=1/4\)</span>。所以 <span class="math display">\[\sum_{n=1}^\infty\mathbb P(B_n)=\sum_{n=1}^\infty
+1/4=\infty.\]</span> 由 second Borel-Cantelli lemma 有 <span class="math inline">\(\mathbb{P}(\{B_n\ \text{i.o.}\})=1\)</span>。</p>
+<p>另一方面，在事件 <span class="math inline">\(B_n\)</span>
+上有如下不等式： <span class="math display">\[|X_n|^2\geq
+|X_{n-1}|^2+l_n|X_{n-1}|+l_n^2\geq(|X_{n-1}|+l_n/2)^2.\]</span>
+结合已知在事件 <span class="math inline">\(E\)</span> 上有 <span class="math inline">\(l_n\geq\epsilon\)</span>，所以在事件 <span class="math inline">\(B_n\cap E\)</span> 上有 <span class="math display">\[|X_n|\geq |X_{n-1}|+\epsilon/2,\quad\omega\in
+B_n\cap E.\]</span> 由于 <span class="math inline">\(\mathbb{P}(\{B_n\
+\text{i.o.}\})=1\)</span>，所以对几乎处处的 <span class="math inline">\(\omega\in E\)</span>，<span class="math inline">\(|X_n|\geq |X_{n-1}|+\epsilon/2\)</span> 对无穷多个
+<span class="math inline">\(n\)</span> 成立。对这些 <span class="math inline">\(\omega\)</span>，<span class="math inline">\(\lim\limits_{n\to\infty}|X_n|\)</span>
+不可能是一个有限点，所以必然是 <span class="math inline">\(\lim\limits_{n\to\infty}|X_n|=\infty\)</span>。即飞船在
+<span class="math inline">\(E\)</span> 上几乎处处飞向无穷远。<span class="math inline">\(\blacksquare\)</span></p>
+<h1 id="最优策略">最优策略</h1>
+<p>现在我们已经知道飞船返回太阳系的概率总是小于 <span class="math inline">\(r/R\)</span>，也知道只要策略得当，就可以避免飞船在原地打转的糟糕情况。接下来的问题是：最好的策略到底是什么？</p>
+<p>我们揭晓答案：最佳策略是在恰好穿过太阳系表面 <span class="math inline">\(\epsilon\)</span> 处时”刹车”。</p>
+<div class="statement theorem plain">
+<p><span class="statement-heading"><span class="statement-label">定理
+4.1</span>.</span><span class="statement-spah">
+</span>定义如下的跳跃策略：在准备第 <span class="math inline">\(n\)</span> 次跳跃时，如果飞船已经在太阳系内，则令
+<span class="math inline">\(l_n=0\)</span>，否则令 <span class="math inline">\(l_n=|X_{n-1}|-r+\epsilon\)</span>，这里 <span class="math inline">\(0&lt;\epsilon&lt;r\)</span>。在这个跳跃策略下，飞船返回太阳系的概率大于
+<span class="math inline">\((r-\epsilon)/R\)</span>。</p>
+</div>
+<p>注意在这个策略中总是有 <span class="math inline">\(l_n&lt;|X_{n-1}|\)</span>，根据 <a href="#supermartingale" title="定理 2.1">定理 2.1</a>，<span class="math inline">\(\{Z_n=1/|X_n|\}\)</span>
+实际上是一个鞅。此外由于总是有 <span class="math inline">\(|X_n|\geq
+r-\epsilon\)</span>，所以 <span class="math inline">\(Z_n\leq1/(r-\epsilon)\)</span>，即 <span class="math inline">\(\{Z_n\}\)</span> 被常数 <span class="math inline">\(1/(r-\epsilon)\)</span> 所控制。</p>
+<p>接下来的证明不过是 <a href="#lessthan" title="定理 2.2">定理 2.2</a>
+证明的重复：</p>
+<p>这次根据控制收敛定理有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_{T\wedge
+n}]=\lim_{n\to\infty}\mathop{\mathrm{\mathbb{E}}}[Z_{T\wedge
+n}]=\mathop{\mathrm{\mathbb{E}}}[Z_0]=\frac{1}{R}.\]</span> 另一方面
+<span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_{T\wedge
+n}]=\mathop{\mathrm{\mathbb{E}}}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]+\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_n\mathbb{1}_{\{T=\infty\}}].\]</span>
+这个时候要注意到在 <span class="math inline">\(\{T=\infty\}\)</span>
+上总是有 <span class="math inline">\(l_n\geq\epsilon\)</span>，因此根据
+<a href="#goinf" title="定理 3.1">定理 3.1</a>
+的结论，飞船几乎必然飞向无穷远，即 <span class="math display">\[\lim_{n\to\infty}Z_n=0,\quad
+\omega\in\{T=\infty\}.\]</span> 所以 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}[\lim_{n\to\infty}Z_{T\wedge
+n}]=\mathop{\mathrm{\mathbb{E}}}[Z_T\mathbb{1}_{\{T&lt;\infty\}}]\leq\frac{1}{r-\epsilon}\mathbb{P}(T&lt;\infty).\]</span>
+综合两个式子就证明了 <span class="math inline">\(\mathbb{P}(T&lt;\infty)\geq(r-\epsilon)/R\)</span>。</p>
+<h1 id="star-trek-3-最糟糕的跳跃策略">Star Trek 3: 最糟糕的跳跃策略</h1>
+<p><span class="citation" data-cites="Williams1991">(<a href="#ref-Williams1991" role="doc-biblioref">Williams 1991</a>)</span>
+的习题 E12.3 提出了一个新问题：</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>如果每次总是把飞船的跳跃距离设定为当前飞船到太阳系的距离，即对
+<span class="math inline">\(n\geq1\)</span> 有 <span class="math inline">\(l_n=|X_{n-1}|\)</span>，求证 <span class="math display">\[\sum_{n=1}^\infty\frac{1}{|X_n|^2}&lt;\infty,\quad
+\mathrm{a.e.}\]</span></p>
+</div>
+<p><strong>证明</strong>：在 <span class="math inline">\((\ref{eq:jump})\)</span> 中取 <span class="math inline">\(l_n=|X_{n-1}|\)</span> 可得 <span class="math display">\[|X_n|^2 = |X_{n-1}|^2(2+2 Y_n).\]</span>
+两边取对数，并迭代可得 <span class="math display">\[\ln |X_n|^2 = \ln
+R^2 + \sum_{k=1}^n \ln(2+2Y_k).\]</span> 根据强大数定律， <span class="math display">\[\frac{1}{n}\sum_{k=1}^n \ln(2+2Y_k)
+\xrightarrow{\rm a.e.}\mu:=\mathbb{E}[\ln(2+2Y_1)] = \frac{1}{2}
+\int_{-1}^{1}\ln(2+2x)\,\mathrm{d}x = \ln 4-1&gt;0.\]</span> 任取正数
+<span class="math inline">\(0&lt;\alpha&lt;\mu\)</span>，则对几乎处处的
+<span class="math inline">\(\omega\)</span>，存在随机变量 <span class="math inline">\(N(\omega)\)</span> 使得当 <span class="math inline">\(n\geq N(\omega)\)</span> 时， <span class="math display">\[\sum_{k=1}^n \ln(2+2Y_k)\geq \alpha n.\]</span>
+于是对几乎处处的 <span class="math inline">\(\omega\)</span>，当 <span class="math inline">\(n\geq N(\omega)\)</span> 时有 <span class="math display">\[|X_n|^2\geq R^2e^{\alpha
+n}\Longrightarrow\frac{1}{|X_n|^2}\leq \frac{1}{R^2}e^{-\alpha n},\quad
+n\geq N(\omega).\]</span> 因此几乎处处有 <span class="math inline">\(\sum_{n=1}^\infty1/|X_n|^2&lt;\infty\)</span>
+成立。<span class="math inline">\(\blacksquare\)</span></p>
+<p>从 <span class="math inline">\(|X_n|^2\geq R^2e^{\alpha n}\)</span>
+你可以看到，这个策略简直是自杀：它几乎必然会导致飞船跑到外太空去，而且是以指数的速度！</p>
+<h1 id="star-trek-2-剧情反转">Star Trek 2: 剧情反转</h1>
+<p>故事在二维平面上神奇地反转了。Star Trek 3 中同样的策略 <span class="math inline">\(l_n=|X_{n−1}|\)</span> 在 <span class="math inline">\(\mathbb R^2\)</span> 中竟让飞船必然回家！</p>
+<div class="unnumbered statement question-unnumbered definition">
+<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
+</span>假设飞船只能在一个固定的二维平面内跳跃，并且和 Star Trek 3
+中一样，每次跳跃的距离都等于当前飞船到太阳系中心的距离。求证：飞船以概率
+1 在有限时间内返回太阳系。</p>
+</div>
+<p>由于每次跳跃的长度等于当前半径，我们有和 Star Trek 3 中一样的关系：
+<span class="math display">\[|X_n|^2 =|X_{n-1}|^2(2+2Y_n).\]</span>
+<span class="math inline">\(\{Y_n\}\)</span> 仍然是 i.i.d 序列，只不过
+<span class="math inline">\(Y_n\)</span>
+不再是区间上的均匀随机变量，而是二维单位圆上的余弦分量： <span class="math display">\[Y_k=\cos\theta_k,\quad \theta_k\sim{\rm
+Uniform}[0,2\pi).\label{eq:jump2d}\tag{$\star$}\]</span>
+像上次一样，对两边取对数，我们得到 <span class="math display">\[\ln
+|X_n| = \ln R + \frac{1}{2}\sum_{k=1}^n \ln(2+2\cos\theta_k).\]</span>
+其中我们记 <span class="math display">\[W_k=\ln(2+2\cos\theta_k),\quad
+S_n=\sum_{k=1}^n W_k.\]</span> 作为微积分的两个小练习，你可以证明 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}W_k = 0,\quad
+\mathop{\mathrm{\mathbb{E}}}W_k^2 = \sigma^2 &lt; \infty.\]</span> 所以
+<span class="math inline">\(\{W_k\}\)</span> 是一个均值为 0, 方差有限的
+i.i.d 序列。</p>
+<p>这正是中心极限定理派上用场的地方： <span class="math display">\[\frac{S_n}{\sigma\sqrt{n}}\xrightarrow{\ d\ }
+N(0,1).\]</span> 接下来我们按照 <span class="citation" data-cites="Williams1991">(<a href="#ref-Williams1991" role="doc-biblioref">Williams 1991</a>)</span> 中的提示：</p>
+<p>固定一个正数 <span class="math inline">\(\alpha&gt;0\)</span>，令
+<span class="math display">\[A_n=\{S_n\le -\alpha\sigma\sqrt
+n\}.\]</span> 显然 <span class="math inline">\(\{A_n\
+\text{i.o.}\}\subset\{\varliminf S_n=-\infty\}\)</span>，这是因为 <span class="math inline">\(-\alpha\sigma\sqrt n\to-\infty\)</span>。</p>
+<p>由 Fatou 引理，有 <span class="math display">\[\mathbb P(\{A_n\
+\text{i.o.}\})=\mathbb P(\limsup A_n)\ge \limsup_{n\to\infty}\mathbb
+P(A_n).\]</span> 而中心极限定理给出 <span class="math display">\[
+\lim_{n\to\infty}\mathbb P(A_n)
+=\lim_{n\to\infty}\mathbb P\left(\frac{S_n}{\sigma\sqrt n}\le
+-\alpha\right)
+=\Phi(-\alpha)&gt;0.
+\]</span> 于是 <span class="math display">\[\mathbb P(\varliminf
+S_n=-\infty)\ge\mathbb P(\{A_n\ \text{i.o.}\})\ge
+\Phi(-\alpha)&gt;0.\]</span> 但是等等，<span class="math inline">\(\{\varliminf
+S_n=-\infty\}\subset\sigma(U_1,U_2,\ldots)\)</span>
+是一个尾事件，只依赖无限未来的 <span class="math inline">\(U_n\)</span>。Kolmogorov 0-1
+律告诉我们，它不是概率 0 就是概率 1。但是既然它有正概率，那就只能是
+1。类似地，也有 <span class="math inline">\(\mathbb{P}(\{\varlimsup
+S_n=+\infty\})=1\)</span>。即对几乎处处的 <span class="math inline">\(\omega\)</span>，<span class="math inline">\(S_n\)</span> 在 <span class="math inline">\((-\infty,+\infty)\)</span> 之间作“折返跑”。</p>
+<p>最后回到飞船。由 <span class="math inline">\((\ref{eq:jump2d})\)</span> 可得 <span class="math display">\[|X_n| = R\exp (S_n/2).\]</span> 由于 <span class="math inline">\(\mathbb{P}(\varliminf S_n = -\infty) =
+1\)</span>，所以 <span class="math inline">\(\mathbb{P}(\varliminf |X_n|
+= 0) = 1\)</span>。即以概率 1，<span class="math inline">\(|X_n|\)</span>
+可以无限多次小于任何的正值。所以飞船以概率 1 返回太阳系。</p>
+<h1 class="unnumbered" id="bibliography">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Donoghue2014" class="csl-entry" role="listitem">
+Donoghue, W. F. 2014. <em>Distributions and Fourier Transforms</em>.
+ISSN. Elsevier Science. <a target="_blank" rel="noopener" href="https://books.google.com/books?id=P30Y7daiGvQC">https://books.google.com/books?id=P30Y7daiGvQC</a>.
+</div>
+<div id="ref-Durrett2019" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. 5th ed.
+Cambridge Series in Statistical and Probabilistic Mathematics. Cambridge
+University Press.
+</div>
+<div id="ref-Williams1991" class="csl-entry" role="listitem">
+Williams, David. 1991. <em>Probability with Martingales</em>. Cambridge
+University Press.
+</div>
+</div>
+
+
+
+                                                    
+  <p class="pink-link-context">
+    <a href="/mabinogion-sheep-problem/" rel="next" title="洛奇绵羊问题">
+      上一篇：洛奇绵羊问题
+    </a>
+  </p>
+  
+
+    
+      <p class="pink-link-context">
+        <a href="/schur-polynomials-and-hook-length-formula/" rel="next" title="Schur 多项式与钩长公式">
+          下一篇：Schur 多项式与钩长公式
+        </a>
+      </p>
+      
+                                            </div>
+
+            </div>
+        </div>
+    </article>
+
+    
+
+
+    <section id="comment">
+       <script src="https://giscus.app/client.js"
+        data-repo="neozhaoliang/neozhaoliang.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOCKG3684CPDuy"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+       </script>
+    </section>
+
+
+</div>
+
+                    <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large pink">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect green" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse yellow darken-1"  data-activates="main-menu" title="菜单"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+            </main>
+            
+
+
+                <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('pink lighten-2');
+
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword pink lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+
+
+
+
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+  		tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  		tex: 'ams'
+		});
+	</script>
+
+
+	
+
+			<script type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-svg.min.js?config=TeX-AMS_HTML"></script>
+
+			
+				
+
+    </body>
+
+    </html>

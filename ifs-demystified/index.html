@@ -19,27 +19,30 @@
     
 
         <title>
-            IFS 分形揭秘 | 朝花夕拾</title>
+            IFS 分形揭秘 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
     
-    <meta name="description" content="本文整理自我 2024/06/14 在上海科技大学数学所的一个小报告，标题是「GPU
+    <meta name="description" content="几天前，我在上海科技大学数学所做了一个小报告，标题叫「GPU
 涂鸦与数学可视化」。这个报告是我和上科大数学所的陈浩老师、Abdelaziz Nait
 Merzouk
-合作的双曲反射群画展期间的一个助兴小节目（感谢陈浩老师一己之力将画展办起来，并邀请我去上海逛了一圈）。我保留了报告的技术内容，略去了关于
-demoscene 和分形文化的部分。">
+合作的双曲反射群画展期间的一个助兴小节目。画展由陈浩老师一手操办，他不仅把展览办得漂亮，还带我去外滩逛了一圈。我在画展现场拍摄了一些照片，但是由于光线和拍摄技术的原因，照片质量不是很好，就不放在这里献丑了。你可以在
+项目主页
+看到原汁原味的渲染图。
+以下是报告的技术部分内容。我略去了关于 demoscene
+和分形文化的部分。">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta property="og:title" content="IFS 分形揭秘"/>
-    <meta property="og:site_name" content="朝花夕拾"/>
+    <meta property="og:site_name" content="Why so serious?"/>
 
     
     <meta property="og:image" content=""/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="朝花夕拾" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Why so serious?" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -48,11 +51,17 @@ demoscene 和分形文化的部分。">
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+        </script>
 
+<meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
     <body>
+        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2761554655832112">
+        </amp-auto-ads>
         <img src="/favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
 
         <nav class="indigo">
@@ -61,7 +70,7 @@ demoscene 和分形文化的部分。">
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">朝花夕拾</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -93,14 +102,6 @@ demoscene 和分形文化的部分。">
                             <i class="fa fa-user "></i>
                             
                             关于
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-link "></i>
-                            
-                            Sporadic
                         </a>
                     </li>
                 
@@ -161,14 +162,6 @@ demoscene 和分形文化的部分。">
                     <i class="fa fa-user "></i>
                     
                     关于
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-link "></i>
-                    
-                    Sporadic
                 </a>
             </li>
         
@@ -237,7 +230,7 @@ demoscene 和分形文化的部分。">
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">5 篇</span></a>
+                    可视化复分析 <span class="right">4 篇</span></a>
                 </a>
             </li>
 
@@ -245,7 +238,7 @@ demoscene 和分形文化的部分。">
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">4 篇</span></a>
+                    线性代数 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -270,6 +263,14 @@ demoscene 和分形文化的部分。">
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/Williams-概率和鞅/">
                     Williams-概率和鞅 <span class="right">4 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/随机游动/">
+                    随机游动 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -341,15 +342,18 @@ demoscene 和分形文化的部分。">
     
                                             <div class="entry pink-link-context">
                                                 
-<p>本文整理自我 2024/06/14 在上海科技大学数学所的一个小报告，标题是「GPU
+<p>几天前，我在上海科技大学数学所做了一个小报告，标题叫「GPU
 涂鸦与数学可视化」。这个报告是我和上科大数学所的陈浩老师、Abdelaziz Nait
 Merzouk
-合作的双曲反射群画展期间的一个助兴小节目（感谢陈浩老师一己之力将画展办起来，并邀请我去上海逛了一圈）。我保留了报告的技术内容，略去了关于
-demoscene 和分形文化的部分。</p>
+合作的双曲反射群画展期间的一个助兴小节目。画展由陈浩老师一手操办，他不仅把展览办得漂亮，还带我去外滩逛了一圈。我在画展现场拍摄了一些照片，但是由于光线和拍摄技术的原因，照片质量不是很好，就不放在这里献丑了。你可以在
+<a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/Hyperbolic-Honeycombs">项目主页</a>
+看到原汁原味的渲染图。</p>
+<p>以下是报告的技术部分内容。我略去了关于 demoscene
+和分形文化的部分。</p>
 <span id="more"></span>
 <hr>
 <p>在 Shadertoy
-上有很多效果酷炫，但是代码非常短的分形作品。我挑选了其中三个优秀的例子展示如下：</p>
+上有很多效果酷炫，但是代码非常短的分形作品。乍看起来，你会觉得作者在施展某种黑魔法。我挑选了其中三个优秀的例子展示如下：</p>
 <table>
 <colgroup>
 <col style="width: 33%">
@@ -370,19 +374,31 @@ Xor</td>
 </tr>
 </tbody>
 </table>
-<p>然而代码短可不代表它们容易看懂。尤其是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对我来说，这种被人秀了一脸却没搞明白对面是怎么装的逼的感觉让人很不爽。当然我不是在抱怨，这种炫技的行为本身就是黑客文化的一部分，可以理解。后来分形玩的多了，我也慢慢明白了其中的奥妙，这次上科大之行是一次很好的机会，促使我把这些理解完整的写下来。</p>
-<p>在这篇文章中，我将为大家揭示这些作品背后的奥秘。这些分形作品别看场景千变万化，其实都是用同一个套路制作出来的。这个套路可以简述为三步：</p>
+<p>然而代码短可不代表它们容易看懂。尤其是很多作者还喜欢故弄玄虚，把代码作了混淆处理以增加神秘感。对我来说，这种被人秀了一脸却没搞明白对面是怎么装的逼的感觉让人很不爽。当然我不是在抱怨，这种炫技行为本身就是黑客文化的一部分，可以理解。</p>
+<p>后来分形玩的多了，我也慢慢明白了其中的奥妙，他们是在玩一种很特别的“折纸游戏”——只是这个纸是空间本身。我们将要揭秘的，就是这种空间折纸术背后的数学原理。这些分形作品别看场景千变万化，其实都是用同一个套路制作出来的。这个套路可以简述为三步：</p>
+<div class="statement simple plain unnumbered">
 <ol type="1">
-<li>首先将像素的 2D 坐标映射为空间中的某个 3D 点 <code>p</code>；</li>
-<li>然后用一个 <code>fold</code> 函数，即所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Iterated_function_system">迭代函数系统</a>（iterated
-function system，简称 IFS）反复作用在 <code>p</code>上，将
-<code>p</code>
-变换到空间中另一个位置。每次迭代结束后，生成一个颜色并将其添加到当前的颜色
+<li>将像素的 2D 坐标映射为空间中的某个 3D 点 <code>p</code>；</li>
+<li>用一个 <code>fold</code> 函数反复作用在 <code>p</code>上，将
+<code>p</code> 变换到空间中另一个位置。这个 <code>fold</code>
+的作用就是折纸。每次迭代结束后，生成一个颜色并累加到当前的颜色
 <code>color</code> 上。</li>
 <li>经过若干次迭代后，终止迭代，返回 <code>color</code>
 的值作为像素最终的颜色。</li>
 </ol>
-<p>下面是具体步骤的解释。</p>
+</div>
+<p><code>fold</code> 函数背后的原理是所谓的 IFS（Iterated Function
+System，迭代函数系统），更准确的说，它是 IFS 的逆函数。使用 IFS
+的逆函数而不是 IFS 本身的原因是，正向的 IFS
+是「一对多」的，一个点会分裂成多个点，这在 GPU
+上无法并行处理。而逆函数则是「多对一」的，正好适合在 GPU
+上并行计算。</p>
+<p>像 Menger Sponge、Koch 曲线、Sierpinski carpet
+那些耳熟能详的分形，它们都属于
+IFS。它们从原理上和上面那些酷炫的分形没有什么不同，区别只在于使用的
+<code>fold</code> 函数。</p>
+<p>总之，要理解这一切，我们既要了解怎样通过 IFS 构建分形，还要了解怎样在
+GPU 上编程实现它。我们先从 IFS 开始说起。</p>
 <h1 id="ifs-方法">IFS 方法</h1>
 <div id="------------" class="unnumbered statement sta_____ plain">
 <p><span class="statement-heading"><span class="statement-label">压缩映射</span>.</span><span class="statement-spah"> </span><br>
@@ -397,31 +413,37 @@ function system，简称 IFS）反复作用在 <code>p</code>上，将
 </div>
 <p>记 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span>
 中所有紧集组成的集合，可以证明 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 在 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hausdorff_distance">Hausdorff
-度量</a> 下构成一个完备度量空间。读者不必关心 Hausdoff
-度量的具体细节，只要知道它是一个度量，可以衡量两个紧集的接近程度。</p>
-<p>设 <span class="math inline">\(f_1,\ldots,f_N\)</span> 是 <span class="math inline">\(N\)</span> 个压缩映射，<span class="math inline">\(f_i\)</span> 的压缩比例是 <span class="math inline">\(r_i\)</span>。定义映射 <span class="math inline">\(F:K(\mathbb{R}^n)\to K(\mathbb{R}^n)\)</span>
+度量</a> 下构成一个完备度量空间。你现在不必关心 Hausdoff
+度量的具体细节！你只要知道它是一个度量，可以衡量两个紧集的接近程度即可。</p>
+<p>设 <span class="math inline">\(\{f_i\}_{i=1}^N\)</span> 是 <span class="math inline">\(N\)</span> 个不同的压缩映射，<span class="math inline">\(f_i\)</span> 的压缩比例是 <span class="math inline">\(0&lt;r_i&lt;1\)</span>。定义映射 <span class="math inline">\(F:K(\mathbb{R}^n)\to K(\mathbb{R}^n)\)</span>
 如下： <span class="math display">\[F(X) = f_1(X)\cup
-f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^n).\]</span> 即
-<span class="math inline">\(F\)</span> 把 <span class="math inline">\(X\)</span> 变成 <span class="math inline">\(N\)</span> 个更小的集合。</p>
-<p>可以证明 <span class="math inline">\(F\)</span> 是空间 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 上的压缩映射，其压缩比例
-<span class="math inline">\(r=\max\{r_1,\ldots,r_N\}\)</span>。于是根据
-<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem">Banach
+f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^n).\]</span>
+也就是说，给定集合 <span class="math inline">\(X\)</span>，我们将它变形成 <span class="math inline">\(N\)</span>
+个版本，每个版本分别应用一个压缩变换、再把所有版本合起来，得到新的集合
+<span class="math inline">\(F(X)\)</span>。</p>
+<p>把 <span class="math inline">\(X\)</span>
+想象成孙悟空，他拔出一把毫毛，变出一些小孙悟空 <span class="math inline">\(\{f_i(X)\}_{i=1}^N\)</span>，这些小孙悟空构成的集合就是
+<span class="math inline">\(F(X)\)</span>。</p>
+<p>可以证明 <span class="math inline">\(F\)</span> 是空间 <span class="math inline">\(K(\mathbb{R}^n)\)</span>
+上的压缩映射，其压缩比例不超过 <span class="math inline">\(r=\max\{r_1,\ldots,r_N\}\)</span>。于是根据 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem">Banach
 不动点定理</a>，存在唯一的紧集 <span class="math inline">\(A\subset\mathbb{R}^n\)</span> 使得 <span class="math inline">\(A\)</span> 是 <span class="math inline">\(F\)</span> 的不动点： <span class="math display">\[F(A) = A.\]</span> 紧集 <span class="math inline">\(A\)</span> 叫做 <span class="math inline">\(F\)</span> 的极限集。<span class="math inline">\(A\)</span> 是一个分形，它具有自相似的特征。</p>
-<p>不仅如此，对 <span class="math inline">\(K(\mathbb{R}^n)\)</span>
-中的任何一点 <span class="math inline">\(K\)</span>（<span class="math inline">\(K\)</span> 是紧集），都有 <span class="math display">\[\lim_{n\to\infty} F^n(K) =A.\]</span></p>
-<p>我们以著名的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpiński
-三角形</a> 为例来说明这个过程。我们选择的三个压缩映射分别是</p>
+<p>不仅如此，Banach 不动点定理还告诉我们，对 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 中的任何一点 <span class="math inline">\(K\)</span>（记住 <span class="math inline">\(K\)</span> 是紧集），都有 <span class="math display">\[\lim_{n\to\infty} F^n(K) =A.\]</span> 即初始紧集
+<span class="math inline">\(K\)</span>
+的形状根本不重要——压缩的力量会抹去一切“个性”，只留下结构，那就是 <span class="math inline">\(A\)</span>！</p>
+<p>以 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpiński
+三角形</a> 为例，只需三个压缩映射：</p>
 <p><span class="math display">\[
-\begin{align}
+\begin{aligned}
 f_1(x,y) &amp;= (x/2, y/2),\\
 f_2(x,y) &amp;= (x/2, y/2) + (0, 1/2),\\
 f_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
-\end{align}
+\end{aligned}
 \]</span></p>
 <p>这三个压缩映射的压缩比都是 1/2。初始的紧集 <span class="math inline">\(K_0\)</span> 可以随便选，比如就取为一个圆：</p>
 <p><span class="math display">\[K_0 =
 \img{/images/ifs/dot0.svg}{-1.75em}{}{4em}.\]</span></p>
-<p>在第 1 次迭代后，它变成</p>
+<p>在第 1
+次迭代后，它被压缩成三个更小的版本，分别放到三角形的三个角落上：</p>
 <p><span class="math display">\[K_1 = f_1(K_0)\cup f_2(K_0)\cup f_3(K_0)
 = \img{/images/ifs/dot1.svg}{-1.75em}{}{4em}.\]</span></p>
 <p>在第 2 次迭代后，结果是</p>
@@ -430,7 +452,8 @@ f_3(x,y) &amp;= (x/2, y/2) + (1/2, 0).\\
 <p>第 3 次迭代：</p>
 <p><span class="math display">\[K_3 = f_1(K_2)\cup f_2(K_2)\cup f_3(K_2)
 = \img{/images/ifs/dot3.svg}{-1.75em}{}{4em}.\]</span></p>
-<p>当迭代次数趋于无穷，就得到了 Sierpiński 分形：</p>
+<p>不断重复这个分裂并压缩的过程，当迭代次数趋于无穷，就得到了 Sierpiński
+分形：</p>
 <p><span class="math display">\[\lim_{n\to\infty} K_n = A = f_1(A)\cup
 f_2(A)\cup f_3(A) =
 \img{/images/ifs/dot6.svg}{-1.75em}{}{4em}.\]</span></p>
@@ -440,16 +463,20 @@ f_2(A)\cup f_3(A) =
 分形也是无穷无尽的。为了避免选择困难，我们一般只使用仿射和球反演这两种变换，通过组合它们来实现空间压缩。</p>
 <div class="statement note definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
-</span>这里的球反演变换是指将单位球的外部反演到内部，单位球内部保持不动的变换。虽然在单位球内部它并不压缩距离，但是只要和其它变换适当结合（必须有缩放），使得最终的复合变换是压缩的，就仍然可以得到分形。</p>
+</span>这里的球反演变换是指将单位球的外部反演到内部，单位球内部保持不动的变换。虽然在单位球内部它并不压缩距离，但是只要和其它变换适当组合，使得最终的复合变换是压缩的，就仍然可以得到分形。</p>
 </div>
-<p>然而，同时选择 <span class="math inline">\(N\)</span> 个不同的变换
-<span class="math inline">\(f_1,\ldots,f_N\)</span>，还要让它们互相协调合作，共同生成漂亮的图案，还是太难做到了。我们后面会介绍，在着色器中绘制
-IFS 是通过 <span class="math inline">\(F\)</span> 的逆映射 <span class="math inline">\(F^{-1}\)</span> 来实现的，<span class="math inline">\(F^{-1}\)</span> 就是本文开头提到的
-<code>fold</code>
-函数，它是一种「空间折叠」操作，可以通过复合若干“折叠”函数来实现。就像古代的炼丹师会通过反复调整原料配方来寻找效果最佳的丹药一样，设计分形也可以通过调整
+<p>然而，上面的构造方式在编程中是非常麻烦的：每次迭代时我们都需要维护当前已经生成的集合
+<span class="math inline">\(f_1(K_n),\ldots,f_N(K_n)\)</span>，随着
+<span class="math inline">\(n\)</span> 的增加这个集合是指数增长的，在
+CPU 上对不太大的 <span class="math inline">\(n\)</span>
+或许勉强可以处理，但是在 GPU
+上就不现实了。我们后面会介绍，在着色器中绘制 IFS 是通过 <span class="math inline">\(F\)</span> 的逆映射 <span class="math inline">\(F^{-1}\)</span> 来实现的，<span class="math inline">\(F^{-1}\)</span>
+就是本文开头提到的「折纸」操作，它是一种「空间折叠」操作，可以通过”串联”若干折叠函数来实现。就像古代的炼丹师会通过反复调整原料配方来寻找效果最佳的丹药一样，设计分形也可以通过调整
 <span class="math inline">\(F^{-1}\)</span>
 中的折叠函数，并观察屏幕上显示的效果来实现。所以你根本无需关心 <span class="math inline">\(f_i\)</span> 是什么！</p>
 <h1 id="轨道着色">轨道着色</h1>
+<p>虽然分形背后的原理不过是
+IFS，但是要想把分形画得惊艳，还少不了一个秘密配方，这就是轨道着色。绝大多数惊艳的分形作品都是通过轨道着色技巧来上色的。</p>
 <p>我们希望给分形染上漂亮的颜色，这个染色应该满足如下的条件：</p>
 <ol type="1">
 <li>在分形上颜色是连续变化的；</li>
@@ -457,7 +484,7 @@ IFS 是通过 <span class="math inline">\(F\)</span> 的逆映射 <span class="m
 <span class="math inline">\(A^c\)</span>
 的边界上）颜色应该是不连续的，从而产生泾渭分明的效果。</li>
 </ol>
-<p>做到这一点并不难，但是需要在每一次迭代时考虑当前点的位置信息，这就是所谓的轨道着色。绝大多数惊艳的分形作品都是通过轨道着色技巧来上色的。</p>
+<p>做到这一点并不难，但是需要在每一次迭代时考虑当前点的位置信息，这就是所谓的轨道着色。</p>
 <p>我们首先取一个底色，比如说
 <code>color=vec3(0)</code>，在每一次迭代中，根据当前位置 <code>p</code>
 生成一个颜色，并以一定的权重与 <code>color</code> 混合。理论上颜色的 rgb
@@ -487,13 +514,11 @@ rgb 值很可能会溢出，变成白色。此外，随着迭代次数 <span cla
 <figure class="highlight glsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-type">void</span> mainImage(<span class="hljs-keyword">out</span> <span class="hljs-type">vec4</span> fragColor, <span class="hljs-keyword">in</span> <span class="hljs-type">vec2</span> fragCoord);<br></code></pre></td></tr></tbody></table></figure>
 <p>其中 <code>fragCoord</code> 是像素的位置，<code>fragColor</code>
 是需要设置的像素颜色。</p>
-<p>现实生活中有一个很形象的例子可以帮你理解着色器编程：假设你是一场方阵表演的导演，所有演员排成一个
-<span class="math inline">\(W\times H\)</span>
-的方阵，每个演员可以改变自己衣服的颜色。你的任务是发出合适的指令让每个演员根据自己的位置计算出正确的颜色，使得整个方阵呈现出漂亮的图案。</p>
+<p>现实生活中有一个很形象的例子可以帮你理解着色器编程：假设你是一场方阵表演的导演，所有演员排成一个方阵，每个演员可以改变自己衣服的颜色。你的任务是发出合适的指令让每个演员根据自己的位置计算出正确的颜色，使得整个方阵呈现出漂亮的图案。</p>
 <p><img src="/images/ifs/array.png" class="fig" width="600"></p>
-<p>如果你一个一个地对每个演员下指令，张三你应该显示红色，李四你应该显示蓝色，等等
+<p>如果你挨个对每个演员下指令，张三你应该显示红色，李四你应该显示蓝色，等等
 …
-对成千上万个演员，这么挨个下指令还不得把人累死？正确的做法是，你应该同时对所有演员发出相同的指令，比如：“每个人，计算自己和方阵中心的距离，小于
+对成千上万个演员，还不得把人累死？正确的做法是，你应该同时对所有演员发出相同的指令，比如：“每个人，计算自己和方阵中心的距离，小于
 10 米的显示红色，大于等于 10 米的显示黑色”。由于每个演员都是一个单独的
 GPU
 计算单元，他们可以根据你发出的同一条指令，在极短的时间内（毫秒级）分别计算出各自的颜色。计算完毕后，观众应该会看到一个红色的圆。这种基于相同指令并行计算的工作方式就是
@@ -523,23 +548,28 @@ field)。当我们想绘制某个图案时，我们通过计算像素到这个�
 IFS
 分形时，我们同样需要计算像素到分形的距离，并根据距离值来确定像素的颜色。这一点在下节会详细介绍。</p>
 <h1 id="空间折叠">空间折叠</h1>
+<p>现在，我们已经介绍了所有必要的预备知识，可以正式介绍怎样在 GPU
+上实现折纸操作了。</p>
 <p>上面讲到，在着色器里面画 IFS
 就是给每个像素指定一个颜色，这个颜色应该由像素对应的点到分形的距离来决定。假设像素对应空间中的点
 <span class="math inline">\(p\)</span>，初始紧集是 <span class="math inline">\(K\)</span>，我们用迭代 <span class="math inline">\(n\)</span> 次的结果 <span class="math inline">\(F^n(K)\)</span> 作为分形的近似，这里 <span class="math inline">\(n\)</span> 是某个常数，在绝大多数场景下 <span class="math inline">\(n=30\)</span> 就足够了。于是我们需要计算距离 <span class="math inline">\(d(p,F^n(K))\)</span>
-并根据这个距离值对像素染色。然而，直接计算 <span class="math inline">\(d(p,F^n(K))\)</span> 是不可行的，因为如果有 <span class="math inline">\(N\)</span> 个不同的压缩映射 <span class="math inline">\(f_1,\ldots,f_N\)</span>，那么每次迭代后集合的数目会乘以
+并根据这个距离值对像素染色。然而我们已经讲过，直接计算 <span class="math inline">\(d(p,F^n(K))\)</span> 是不可行的，因为如果有 <span class="math inline">\(N\)</span> 个不同的压缩映射 <span class="math inline">\(f_1,\ldots,f_N\)</span>，那么每次迭代后集合的数目会乘以
 <span class="math inline">\(N\)</span>，这是指数增长的，10
 次迭代后就会产生多达 <span class="math inline">\(N^{10}\)</span>
-个不同的集合。维护如此数量的集合会轻易耗尽内存。这该怎么办呢？</p>
-<p>有个巧妙的做法可以绕过这个困难：我们把 <span class="math inline">\(d(p,F^n(K))\)</span> 中的 <span class="math inline">\(F^n\)</span> 挪到另一侧并取逆，转而计算 <span class="math inline">\(d(F^{-n}(p), K)\)</span>！实际上，如果 <span class="math inline">\(F\)</span>
+个不同的集合。维护如此数量的集合会轻易耗尽内存，更不用说还要计算 <span class="math inline">\(p\)</span> 到每个集合的距离了。这该怎么办呢？</p>
+<p>有个巧妙的做法可以绕过这个困难：我们把 <span class="math inline">\(d(p,F^n(K))\)</span> 中的 <span class="math inline">\(F^n\)</span> 挪到 <code>p</code>
+所在的一侧并取逆，转而计算 <span class="math inline">\(d(F^{-n}(p),
+K)\)</span>！实际上，如果 <span class="math inline">\(F\)</span>
 只包含旋转、平移、反射、缩放、球反演这些变换的话，<span class="math inline">\(d(p,F^n(K))\)</span> 和 <span class="math inline">\(d(F^{-n}(p), K)\)</span>
 之间存在非常简单的关系，我们可以通过计算后者来得到前者！这个关系的推导我放在
-<a href="#note-F" title="注释">注释</a> 中介绍。</p>
+<a href="#note-F" title="注释">注释</a>
+中介绍。现在，你暂时可以认为它俩是差不多的。</p>
 <p>于是，在着色器编程时，我们需要将压缩迭代映射的步骤倒过来，采取相反的操作：即将逆映射
 <span class="math inline">\(F^{-1}\)</span> 迭代作用在 <span class="math inline">\(p\)</span> 上，执行足够的迭代次数后，通过计算距离
 <span class="math inline">\(d(F^{-n}(p), K)\)</span> 来给 <span class="math inline">\(p\)</span> 对应的像素上色。由于 <span class="math inline">\(F\)</span> 是“一对多” 的映射，所以 <span class="math inline">\(F^{-1}\)</span> 是 “多对一”的，反复迭代应用 <span class="math inline">\(F^{-1}\)</span>
 会把空间“折叠”。我们实际上是在这个折叠后的空间上作画。</p>
 <p>总而言之，在着色器编程中我们真正需要的函数不是 <span class="math inline">\(F\)</span>，而是 <span class="math inline">\(F^{-1}\)</span>！</p>
-<p>这个先折叠后画图的操作，也可以用一个生活中的例子来形象地解释，即剪纸艺术：</p>
+<p>这个先折叠后画图的操作，和剪纸艺术是一模一样的：</p>
 <figure>
 <img src="/images/ifs/papercut.jpg" width="480" alt="在剪纸过程中，首先把纸张反复折叠，然后在折叠后的纸张上画出某个特定的图形，沿着这个图形裁剪，再将纸张展开得到的就是美丽的图案。展开纸张的操作对应迭代映射 F，它把一个初始的紧集铺开到空间中变成分形；折叠纸张的操作对应 F^{-1}，它把分形折叠回最初的紧集。">
 <figcaption aria-hidden="true">在剪纸过程中，首先把纸张反复折叠，然后在折叠后的纸张上画出某个特定的图形，沿着这个图形裁剪，再将纸张展开得到的就是美丽的图案。<strong>展开</strong>纸张的操作对应迭代映射
@@ -563,6 +593,14 @@ IFS
 }">
 
 </div>
+<p>或者还用方阵的例子作比喻，相当于你对方阵下的指令是：“每个人，首先把自己的
+y 坐标归一化到 [-1, 1] 区间，然后计算自己坐标的绝对值，再计算到以 (0.5,
+0.5)，半径为 0.3 的圆的距离，最后根据距离值显示颜色”。如果把整个方阵记作
+<span class="math inline">\(A\)</span> 的话，取绝对值操作以后，<span class="math inline">\(A\)</span> 变成了 2x2 分块矩阵： <span class="math display">\[A = \begin{pmatrix}B&amp;B\\
+B&amp;B\end{pmatrix}.\]</span> 之后的计算对这 4 个 子方阵 <span class="math inline">\(B\)</span> 都是一样的，所以你会同时看到 4
+个圆。</p>
+<p>这就体现出空间折叠操作的优势来了：你不需要在每个象限分别画一个圆，相反，你可以通过折叠象限，只画一个圆！</p>
+<hr>
 <div id="note-F" class="statement sta_d_p_f_n_k_____d_f___n__p___k_______ definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label"><span class="math inline">\(d(p,F^n(K))\)</span> 和 <span class="math inline">\(d(F^{-n}(p), K)\)</span>
 之间的关系</span>：</span><span class="statement-spah"> </span><br>
