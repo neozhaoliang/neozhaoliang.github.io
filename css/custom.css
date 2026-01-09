@@ -1,0 +1,43 @@
+/* 1) 侧边栏菜单：统一用 flex 左对齐，active 状态也别居中 */
+.side-nav li > a,
+.sidenav li > a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* 2) active/current 状态强制不要把内容居中 */
+.side-nav li.active > a,
+.side-nav a.active,
+.sidenav li.active > a,
+.sidenav a.active {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+/* 3) 图标和文字间距（FontAwesome / Material Icons 都兼容一下） */
+.side-nav li > a i,
+.side-nav li > a .fa,
+.side-nav li > a .material-icons,
+.sidenav li > a i,
+.sidenav li > a .fa,
+.sidenav li > a .material-icons {
+  margin-right: 16px;
+}
+
+/* 4) 侧边栏头部（名字下面的 tag/desc）居中，避免“看着歪” */
+.side-nav .userView,
+.side-nav .user-view,
+.sidenav .userView,
+.sidenav .user-view {
+  text-align: center;
+}
+
+.side-nav .userView * ,
+.side-nav .user-view * ,
+.sidenav .userView * ,
+.sidenav .user-view * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
