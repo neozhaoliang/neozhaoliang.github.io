@@ -11,7 +11,7 @@
 
         gtag('config', 'G-SHQJ7GP8MM');
     </script>
-
+    
     <meta charset="utf-8">
     
     
@@ -53,9 +53,8 @@
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-        </script>
+    
+    <!-- 删除了原先错误的 AMP 广告代码 -->
 
 <meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
@@ -365,8 +364,8 @@ Revisited</span></a></li><li class="section table-of-contents-item section table
 Processes</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#markov-matrix"><span class="section table-of-contents-text">✅ 39.1 Markov Matrix</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#markov-generator"><span class="section table-of-contents-text">✅ 39.2 Markov Generator</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#operator-norm-continuity"><span class="section table-of-contents-text">✅ 40.1 Operator Norm Continuity</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bounded-generators"><span class="section table-of-contents-text">✅ 40.2 Bounded Generators</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#hitting-times"><span class="section table-of-contents-text">42.2 Hitting Times</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#invariant-distributions"><span class="section table-of-contents-text">✅ 44.2 Invariant Distributions</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#stopping-times"><span class="section table-of-contents-text">✅ 45.1 Stopping Times</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#the-strong-markov-property"><span class="section table-of-contents-text">✅ 46.1 The Strong Markov
 Property</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#markov-chain-ergodic-theorem"><span class="section table-of-contents-text">46.2 Markov Chain Ergodic
 Theorem</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#walds-identity"><span class="section table-of-contents-text">✅ 46.3 Wald’s Identity</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#uniform-integrability"><span class="section table-of-contents-text">✅ 48.1 Uniform Integrability</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#optional-stopping-and-sampling"><span class="section table-of-contents-text">49.1 Optional Stopping and
-Sampling</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#h%C3%B6lders-inequality"><span class="section table-of-contents-text">✅ 49.2 Hölder’s Inequality</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#submartingale-maximal-inequalities"><span class="section table-of-contents-text">49.3 (Sub)martingale Maximal
-Inequalities</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#versions"><span class="section table-of-contents-text">51.1 Versions</span></a></li></ol>
+Sampling</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#h%C3%B6lders-inequality"><span class="section table-of-contents-text">✅ 49.2 Hölder’s Inequality</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#submartingale-maximal-inequalities"><span class="section table-of-contents-text">✅ 49.3 (Sub)martingale
+Maximal Inequalities</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#versions"><span class="section table-of-contents-text">51.1 Versions</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
@@ -3628,8 +3627,8 @@ v(x)=\frac{|g(x)|}{\|g\|_q}.\]</span> 则逐点有 <span class="math display">\[
 不等式。</p>
 <p><span class="math inline">\(p=1,q=\infty\)</span> 时 <span class="math display">\[\int |fg|\le \|g\|_{\infty}\int
 |f|=\|f\|_1\|g\|_{\infty}.\]</span> 故结论成立。</p>
-<h1 id="submartingale-maximal-inequalities">49.3 (Sub)martingale Maximal
-Inequalities</h1>
+<h1 id="submartingale-maximal-inequalities">✅ 49.3 (Sub)martingale
+Maximal Inequalities</h1>
 <p>下鞅有一个关键性质，就是它们在一个区间的最大值，可以被它们在区间终点处的值所控制。这就是极大不等式。</p>
 <div id="levy---s-maximal-inequality" class="statement sta_levy_s_maximal_inequality plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">Levy’s
