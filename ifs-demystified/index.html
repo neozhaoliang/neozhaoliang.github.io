@@ -421,10 +421,9 @@ GPU 上编程实现它。我们先从 IFS 开始说起。</p>
 中所有紧集组成的集合，可以证明 <span class="math inline">\(K(\mathbb{R}^n)\)</span> 在 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hausdorff_distance">Hausdorff
 度量</a> 下构成一个完备度量空间。你现在不必关心 Hausdoff
 度量的具体细节！你只要知道它是一个度量，可以衡量两个紧集的接近程度即可。</p>
-<p>设 <span class="math inline">\(\{f_i\}_{i=1}^N\)</span> 是 <span class="math inline">\(N\)</span> 个不同的压缩映射，<span class="math inline">\(f_i\)</span> 的压缩比例是 <span class="math inline">\(0&lt;r_i&lt;1\)</span>。定义映射 <span class="math inline">\(F:K(\mathbb{R}^n)\to K(\mathbb{R}^n)\)</span>
-如下： <span class="math display">\[F(X) = f_1(X)\cup
-f_2(X)\cup\cdots\cup f_N(X),\quad X\in K(\mathbb{R}^n).\]</span>
-也就是说，给定集合 <span class="math inline">\(X\)</span>，我们将它变形成 <span class="math inline">\(N\)</span>
+<p>设 <span class="math inline">\(\{f_i\}_{i=1}^N\)</span> 是 <span class="math inline">\(N\)</span> 个不同的压缩映射，<span class="math inline">\(f_i\)</span> 的压缩比例是 <span class="math inline">\(0&lt;r_i&lt;1\)</span>。定义映射 <span class="math display">\[F:K(\mathbb{R}^n)\to K(\mathbb{R}^n),\quad F(X) =
+f_1(X)\cup f_2(X)\cup\cdots\cup f_N(X),\quad X\in
+K(\mathbb{R}^n).\]</span> 也就是说，对给定的紧集 <span class="math inline">\(X\)</span>，我们将它变形成 <span class="math inline">\(N\)</span>
 个版本，每个版本分别应用一个压缩变换、再把所有版本合起来，得到新的集合
 <span class="math inline">\(F(X)\)</span>。</p>
 <p>把 <span class="math inline">\(X\)</span>
@@ -563,9 +562,7 @@ IFS
 <span class="math inline">\(N\)</span>，这是指数增长的，10
 次迭代后就会产生多达 <span class="math inline">\(N^{10}\)</span>
 个不同的集合。维护如此数量的集合会轻易耗尽内存，更不用说还要计算 <span class="math inline">\(p\)</span> 到每个集合的距离了。这该怎么办呢？</p>
-<p>有个巧妙的做法可以绕过这个困难：我们把 <span class="math inline">\(d(p,F^n(K))\)</span> 中的 <span class="math inline">\(F^n\)</span> 挪到 <code>p</code>
-所在的一侧并取逆，转而计算 <span class="math inline">\(d(F^{-n}(p),
-K)\)</span>！实际上，如果 <span class="math inline">\(F\)</span>
+<p>有个巧妙的做法可以绕过这个困难：我们把 <span class="math inline">\(d(p,F^n(K))\)</span> 中的 <span class="math inline">\(F^n\)</span> 挪到 <span class="math inline">\(p\)</span> 所在的一侧并取逆，转而计算 <span class="math inline">\(d(F^{-n}(p), K)\)</span>！实际上，如果 <span class="math inline">\(F\)</span>
 只包含旋转、平移、反射、缩放、球反演这些变换的话，<span class="math inline">\(d(p,F^n(K))\)</span> 和 <span class="math inline">\(d(F^{-n}(p), K)\)</span>
 之间存在非常简单的关系，我们可以通过计算后者来得到前者！这个关系的推导我放在
 <a href="#note-F" title="注释">注释</a>
