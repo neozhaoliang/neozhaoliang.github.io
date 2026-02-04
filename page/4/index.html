@@ -11,7 +11,6 @@
 
         gtag('config', 'G-SHQJ7GP8MM');
     </script>
-    
     <meta charset="utf-8">
     
     
@@ -47,10 +46,6 @@
     
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    
-    <!-- 删除了原先错误的 AMP 广告代码 -->
-
 <meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -68,22 +63,6 @@
         <div class="">
             <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
-                
-                    <li>
-                        <a class="menu-home " href="/" >
-                            <i class="fa fa-home "></i>
-                            
-                            首页
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-archive " href="/archives" >
-                            <i class="fa fa-archive "></i>
-                            
-                            归档
-                        </a>
-                    </li>
                 
                     <li>
                         <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
@@ -128,22 +107,6 @@
         </li>
         
 
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-home " href="/" >
-                    <i class="fa fa-home "></i>
-                    
-                    首页
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-archive " href="/archives" >
-                    <i class="fa fa-archive "></i>
-                    
-                    归档
-                </a>
-            </li>
         
             <li class="no-padding">
                 <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
@@ -429,258 +392,228 @@
     </div>
     
 
-<div id="article-list" class="container main-container">
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/coxeter-element/">Coxeter element</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2013-10-10T16:00:00.000Z"><a href="/coxeter-element/">2013-10-11</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>如果你对 Lie 代数有所了解的话，相信很大概率你会见过下面的图案： (
-参考维基百科的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lie_algebra">Lie
-algebra 词条</a> )</p>
-<p><img style="margin:0px auto;display: block" src="/images/coxeter-element/e8.svg" width="350"></p>
-<p>它展示的是 Lie 代数 <span class="math inline">\(E_8\)</span>
-的根系图。<span class="math inline">\(E_8\)</span> 的根系由 8 维欧式空间
-<span class="math inline">\(\mathbb{R}^8\)</span> 中的 240
-个向量组成，将这 240 个向量投影到一个特殊的 2 维平面 ( 称作 Coxeter 平面
-) 上就会呈现出上图中旋转对称的图案。图中 240 个投影点分布在 8
-个圆周上，每个圆周包含 30 个均匀分布的点，整个图案在角度为 <span class="math inline">\(2\pi/30\)</span> 的旋转下保持不变。<span class="math inline">\(h=30\)</span> 正是 <span class="math inline">\(E_8\)</span> 的 Coxeter 数。</p>
-<p>本文目的是介绍 Coxeter 元的一些基础知识，然后教大家怎样在 Python
-中编写一个程序绘制上面的投影图案。我主要参考了 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990</a>)</span> 和 <span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman
-2017</a>)</span>。虽然这里面涉及的数学并不复杂，但是真正动手编程实现的时候会有一些魔鬼藏在细节中，而这些细节是仅凭念书很难发现的。</p>
-<p>本文的代码在 <a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/blob/master/src/misc/E8.py">Github
-上</a> 。David Madore 也有一个很棒的 <a target="_blank" rel="noopener" href="http://www.madore.org/~david/math/e8w.html">交互式网页</a>
-可以绘制 <span class="math inline">\(E_8\)</span>
-的多种不同风格的图案。</p>
-                </div>
-            
-        </div>
-
+<div class="container main-container">
+  <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">全部文章（34）</span>
         
-        <div class="card-action pink-link-context">
-            <a href="/coxeter-element/">阅读全文</a>
-        </ div>
+
         
     </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/Birkhoff-ergodic-theorem/">Birkhoff 遍历定理</a></h1>
-    
+</nav>
 
 
-            </div>
+  
 
-            <time class="pink-link-context" datetime="2013-04-20T16:00:00.000Z"><a href="/Birkhoff-ergodic-theorem/">2013-04-21</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>我念研究生时的高等概率论课用的是 Durrett 的教材 “Probability: Theory
-and
-Examples”。这本书的好处我就不再介绍了，院长陈大岳老师在世图影印版的前言中已经夸了一遍。我个人的体会是，Durrett
-的书在讲解证明的时候非常简练，很少写为什么要这样证，我有时候读了半天也没搞明白思路。Birkhoff
-遍历定理算是其中一个，于是我重新整理了一下书中的证明，作此文留念。</p>
-<p>Birkhoff 遍历定理最初由 Birkhoff 本人在 1931 年发表，原文长达 50
-页。随后在 1939 年 K.Yosida （吉田耕作） 和 S.Kakutani （角谷）
-利用极大遍历定理给出了一个 10
-页的简洁证明，不过他们关于极大遍历定理的证明还是啰嗦了点，后来 Garsia
-给出了极大遍历定理的一个仅有寥寥数行的惊人证明，这也是当前大多数教材采用的途径，本文就来介绍这一证明。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/Birkhoff-ergodic-theorem/">阅读全文</a>
-        </ div>
-        
+  
+    <div class="collection mt-0">
+      
+        <a href="/ifs-demystified/" class="collection-item grey-text text-darken-1">
+          <time datetime="2024-06-16T00:00:00.000Z">2024-06-16</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          IFS 分形揭秘
+        </a>
+      
+        <a href="/envelope-and-caustics/" class="collection-item grey-text text-darken-1">
+          <time datetime="2024-02-08T16:00:00.000Z">2024-02-09</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          咖啡杯中的焦散线
+        </a>
+      
+        <a href="/mobius-ball-rigid-motion/" class="collection-item grey-text text-darken-1">
+          <time datetime="2022-05-07T16:00:00.000Z">2022-05-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Möbius 变换与球的刚体运动
+        </a>
+      
+        <a href="/Rouche-theorem-winding-number/" class="collection-item grey-text text-darken-1">
+          <time datetime="2021-08-31T16:00:00.000Z">2021-09-01</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理
+        </a>
+      
+        <a href="/Marden-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2021-05-23T16:00:00.000Z">2021-05-24</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          静电场与 Marden 定理
+        </a>
+      
+        <a href="/debruijn-rhombus-tiling/" class="collection-item grey-text text-darken-1">
+          <time datetime="2020-12-05T16:00:00.000Z">2020-12-06</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Escher 风格的非周期密铺
+        </a>
+      
+        <a href="/assassin-vs-bodyguards/" class="collection-item grey-text text-darken-1">
+          <time datetime="2019-07-18T16:00:00.000Z">2019-07-19</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          刺客 vs 保镖
+        </a>
+      
+        <a href="/Todd-Coxeter-and-uniform-polytopes/" class="collection-item grey-text text-darken-1">
+          <time datetime="2018-05-21T00:00:00.000Z">2018-05-21</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Todd-Coxeter 算法和 3D/4D 均匀多胞体
+        </a>
+      
+        <a href="/mobius-h3space/" class="collection-item grey-text text-darken-1">
+          <time datetime="2018-05-08T16:00:00.000Z">2018-05-09</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Möbius 变换的分类与上半双曲空间的等距
+        </a>
+      
+        <a href="/gifmaze-cn/" class="collection-item grey-text text-darken-1">
+          <time datetime="2017-10-01T16:00:00.000Z">2017-10-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画
+        </a>
+      
+        <a href="/reducible-mod-p/" class="collection-item grey-text text-darken-1">
+          <time datetime="2017-03-02T00:00:00.000Z">2017-03-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          模任何素数都可约的整系数不可约多项式
+        </a>
+      
+        <a href="/random-walk-potential-kernel/" class="collection-item grey-text text-darken-1">
+          <time datetime="2016-09-30T16:00:00.000Z">2016-10-01</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          二维随机游动 （一）：逃出太阳系可没有你想象的那么难！
+        </a>
+      
+        <a href="/coupling-from-the-past/" class="collection-item grey-text text-darken-1">
+          <time datetime="2016-07-01T16:00:00.000Z">2016-07-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Coupling from the past
+        </a>
+      
+        <a href="/descending-plane-partitions/" class="collection-item grey-text text-darken-1">
+          <time datetime="2015-08-29T16:00:00.000Z">2015-08-30</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          递降平面分拆的 Andrews 猜想
+        </a>
+      
+        <a href="/wilson-algorithm/" class="collection-item grey-text text-darken-1">
+          <time datetime="2014-04-03T16:00:00.000Z">2014-04-04</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Wilson 均匀生成树算法
+        </a>
+      
+        <a href="/coxeter-element/" class="collection-item grey-text text-darken-1">
+          <time datetime="2013-10-10T16:00:00.000Z">2013-10-11</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Coxeter element
+        </a>
+      
+        <a href="/Birkhoff-ergodic-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2013-04-20T16:00:00.000Z">2013-04-21</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Birkhoff 遍历定理
+        </a>
+      
+        <a href="/real-and-complex-representations/" class="collection-item grey-text text-darken-1">
+          <time datetime="2012-10-20T16:00:00.000Z">2012-10-21</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          实表示和复表示
+        </a>
+      
+        <a href="/optimal-stopping-and-backward-induction/" class="collection-item grey-text text-darken-1">
+          <time datetime="2012-07-08T16:00:00.000Z">2012-07-09</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          相亲问题与倒向归纳法
+        </a>
+      
+        <a href="/three-mass-spring-system/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-08-21T16:00:00.000Z">2011-08-22</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          三质点弹簧系统的简正模式
+        </a>
+      
+        <a href="/pattern-occurrence/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-06-02T16:00:00.000Z">2011-06-03</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          模式的等待时间与反直觉概率
+        </a>
+      
+        <a href="/mabinogion-sheep-problem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-04-08T00:00:00.000Z">2011-04-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          洛奇绵羊问题
+        </a>
+      
+        <a href="/star-trek/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-04-05T00:00:00.000Z">2011-04-05</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          星际迷航问题
+        </a>
+      
+        <a href="/schur-polynomials-and-hook-length-formula/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-04-03T16:00:00.000Z">2011-04-04</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Schur 多项式与钩长公式
+        </a>
+      
+        <a href="/wedderburn-artin-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-10-22T00:00:00.000Z">2010-10-22</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          左 Artinian 环与 Wedderburn-Artin 定理
+        </a>
+      
+        <a href="/conway-tiling-group/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-08-07T00:00:00.000Z">2010-08-07</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          不可能的密铺
+        </a>
+      
+        <a href="/central-simple-algebra/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-03-13T00:00:00.000Z">2010-03-13</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          中心单代数的三个基本结论
+        </a>
+      
+        <a href="/real-complex/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-02-09T16:00:00.000Z">2010-02-10</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          实化与复化
+        </a>
+      
+        <a href="/hurwitz-square-sum-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-12-05T00:00:00.000Z">2009-12-05</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Hurwitz 平方和定理
+        </a>
+      
+        <a href="/jordan-canonical-form/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-07-12T00:00:00.000Z">2009-07-12</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Jordan 标准形
+        </a>
+      
+        <a href="/space-of-matrices/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-06-07T16:00:00.000Z">2009-06-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          矩阵空间的子空间
+        </a>
+      
+        <a href="/Pfaffian-and-chessboard-tiling/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-05-07T16:00:00.000Z">2009-05-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          国际象棋棋盘的多米诺骨牌密铺
+        </a>
+      
+        <a href="/macmahon-formula-plane-partitions/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-03-10T00:00:00.000Z">2009-03-10</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          平面分拆的 Macmahon 公式
+        </a>
+      
+        <a href="/domino-shuffling/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-01-01T16:00:00.000Z">2009-01-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Aztec 钻石图的完美匹配与多米诺洗牌算法
+        </a>
+      
     </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/real-and-complex-representations/">实表示和复表示</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2012-10-20T16:00:00.000Z"><a href="/real-and-complex-representations/">2012-10-21</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>在数学中有许多「三分天下」的例子，比如：</p>
-<ol type="1">
-<li>常曲率空间只有 Euclidean、球面、双曲三种。</li>
-<li>三类典型的偏微分方程：热方程 （抛物）、Laplace 方程 （椭圆）、波方程
-（双曲）。</li>
-<li>复平面上全纯等价下只有三种单连通区域：单位圆 <span class="math inline">\(\mathbb{D}\)</span>、复平面 <span class="math inline">\(\mathbb{C}\)</span>、扩充复平面 <span class="math inline">\(\overline{\mathbb{C}}\)</span>。</li>
-<li>不可约代数簇 （素理想） 在扩张下的三种行为：分解、惯性、分歧。</li>
-<li>随机游动可以分为零常返、正常返、暂态。</li>
-<li>实数域 <span class="math inline">\(\mathbb{R}\)</span>
-上的有限维结合可除代数只有三种：<span class="math inline">\(\mathbb{R}\)</span>、复数域 <span class="math inline">\(\mathbb{C}\)</span>、四元数 <span class="math inline">\(\mathbb{H}\)</span>。</li>
-</ol>
-<p>本文要介绍的是另外两个三分天下的例子，它们来自群表示论，即有限群的不可约实表示在复数域上的分解，和不可约复表示在实数域上的实现。这两个例子是紧密相关的。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/real-and-complex-representations/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/optimal-stopping-and-backward-induction/">相亲问题与倒向归纳法</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2012-07-08T16:00:00.000Z"><a href="/optimal-stopping-and-backward-induction/">2012-07-09</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah">
-</span>假设你是一位大龄单身男士，年纪不小，但仍心怀浪漫。你准备参加 100
-场相亲 （别介意具体数字）。你打算依次与每个女士 <span class="math inline">\(i\)</span> 约会，然后根据印象给她打一个分数 <span class="math inline">\(X_i\)</span>，<span class="math inline">\(X_i\)</span> 的值介于 <span class="math inline">\([0,1]\)</span> 之间。如果你对女士 <span class="math inline">\(i\)</span>
-很满意，那么就和她结婚，否则就放弃她，参加下一场相亲，当然拒绝了人家可就没有回头的机会了。如果你拒绝了前
-99 位女士，那么不论第 100
-次相亲结果如何你都只能和最后这位女士结婚。在相亲之前，你对这些女士的情况一无所知，所以姑且假定她们的分数
-<span class="math inline">\(X_i\)</span> 都是 <span class="math inline">\([0,1]\)</span>
-上均匀分布的独立的随机变量。问题是：应该采取怎样的相亲策略，才能娶到你最中意的女士？</p>
-</div>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/optimal-stopping-and-backward-induction/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/three-mass-spring-system/">三质点弹簧系统的简正模式</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2011-08-21T16:00:00.000Z"><a href="/three-mass-spring-system/">2011-08-22</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>今天的问题是群表示论在物理中的一个小应用：</p>
-<div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>平面上有三个质量均为 <span class="math inline">\(m\)</span> 的质点 <span class="math inline">\(A,B,C\)</span>，它们位于正三角形的三个顶点。质点之间两两由弹簧相连，三个弹簧完全一样。弹簧质量忽略不计。</p>
-<p><img src="/images/mass-spring/abc.png" class="fig" width="250"></p>
-<p>初始时所有质点都处于静止状态，弹簧之间没有张力。假设给这三个质点分别施加一个初始速度，使这三个质点在平面内作刚体运动，不考虑任何摩擦力和空气阻力，那么这个系统的简正模式
-(normal mode) 是什么？</p>
-</div>
-<p>这里 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Normal_mode">简正模式</a>
-的含义是所有质点按照一个共同的频率和固定的相位关系相对于各自的平衡位置作简谐振动。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/three-mass-spring-system/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-
-    <ul class="pagination center-align">
-    <li class="">
-        <a href="/page/3/"><i class="fa fa-angle-left"></i></a>
-    </li>
-    
-    
-        <li class="waves-effect"><a href="/">1</a></li>
-    
-        <li class="waves-effect"><a href="/page/2">2</a></li>
-    
-        <li class="waves-effect"><a href="/page/3">3</a></li>
-    
-        <li class="active pink"><a href="/page/4">4</a></li>
-    
-        <li class="waves-effect"><a href="/page/5">5</a></li>
-    
-        <li class="waves-effect"><a href="/page/6">6</a></li>
-    
-        <li class="waves-effect"><a href="/page/7">7</a></li>
-    
-    
-    <li class="">
-        <a href="/page/5/"><i class="fa fa-angle-right"></i></a>
-    </li>
- </ul>
-
+  
 </div>
 
                    

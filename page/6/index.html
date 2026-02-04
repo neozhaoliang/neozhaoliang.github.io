@@ -11,7 +11,6 @@
 
         gtag('config', 'G-SHQJ7GP8MM');
     </script>
-    
     <meta charset="utf-8">
     
     
@@ -47,10 +46,6 @@
     
         <link rel="stylesheet" href="/css/lib/desert.css" type="text/css">
     
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    
-    <!-- 删除了原先错误的 AMP 广告代码 -->
-
 <meta name="generator" content="Hexo 5.4.2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -68,22 +63,6 @@
         <div class="">
             <a href="/" class="brand-logo hide-on-med-and-down">Why so serious?</a>
             <ul class="right hide-on-med-and-down">
-                
-                    <li>
-                        <a class="menu-home " href="/" >
-                            <i class="fa fa-home "></i>
-                            
-                            首页
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a class="menu-archive " href="/archives" >
-                            <i class="fa fa-archive "></i>
-                            
-                            归档
-                        </a>
-                    </li>
                 
                     <li>
                         <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
@@ -128,22 +107,6 @@
         </li>
         
 
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-home " href="/" >
-                    <i class="fa fa-home "></i>
-                    
-                    首页
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-archive " href="/archives" >
-                    <i class="fa fa-archive "></i>
-                    
-                    归档
-                </a>
-            </li>
         
             <li class="no-padding">
                 <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
@@ -429,237 +392,228 @@
     </div>
     
 
-<div id="article-list" class="container main-container">
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/conway-tiling-group/">不可能的密铺</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2010-08-07T00:00:00.000Z"><a href="/conway-tiling-group/">2010-08-07</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>Conway 等人在论文 <span class="citation" data-cites="Conway1990">(<a href="#ref-Conway1990" role="doc-biblioref">Conway and Lagarias
-1990</a>)</span> 中提出了下面的问题：</p>
-<div class="unnumbered statement question-unnumbered definition">
-<p><span class="statement-heading"><span class="statement-label">问题</span>：</span><span class="statement-spah"> </span>依次将 <span class="math inline">\(1,2,\ldots,n\)</span>
-个全等的正六边形摞在一起，得到的图案记作 <span class="math inline">\(T_n\)</span>，下图是 <span class="math inline">\(n=7\)</span> 的例子：</p>
-<p><img src="/images/tilinggroup/region.svg" class="fig" width="300"></p>
-<p>把三个连在一起、且对称中心在一条直线上的正六边形组成的图案叫做「骨头」，根据摆放的角度有三种不同的骨头：</p>
-<p><img src="/images/tilinggroup/bones.svg" class="fig" width="480"></p>
-<p>求证对任何 <span class="math inline">\(n\)</span>，<span class="math inline">\(T_n\)</span> 都不可能用若干骨头恰好密铺。</p>
-</div>
-<p>Conway
-等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它的基本思想是，用一个
-Abel 群（一般是有理数域 <span class="math inline">\(\mathbb{Q}\)</span>）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是整个区域所有正六边形标记之和不是整数，这样来得出矛盾。</p>
-<p>然而，Conway
-等人在论文中借助“密铺的同调群”证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色方法可以成功的必要条件是
-<span class="math inline">\(T_n\)</span>
-对应的群元素在骨头生成的同调群中不是恒等元，从而无法被密铺。而这个问题中，<span class="math inline">\(T_n\)</span>
-对应的群元素在同调群中确实是恒等元（构造适当的 signed tiling
-即可）。所以染色法对这个问题无效！</p>
-<p>Conway
-等人用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
-Abel
-群）的元素作标记，但是这次是给区域和瓷砖的<strong>边界</strong>作标记，来获得密铺的某种不变量，并说明
-<span class="math inline">\(T_n\)</span>
-的<strong>边界</strong>不满足这个不变量，从而导出矛盾。本文就来介绍这一证明。</p>
-                </div>
-            
-        </div>
-
+<div class="container main-container">
+  <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper indigo">
+        <span class="breadcrumb">全部文章（34）</span>
         
-        <div class="card-action pink-link-context">
-            <a href="/conway-tiling-group/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/central-simple-algebra/">中心单代数的三个基本结论</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2010-03-13T00:00:00.000Z"><a href="/central-simple-algebra/">2010-03-13</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>本文整理自我在讨论班上做的一次约两小时的报告，介绍中心单代数的三个基本结论：</p>
-<ol type="1">
-<li>中心单代数对张量积运算是封闭的。</li>
-<li>Noether-Skolem 定理。</li>
-<li>双重中心化子定理。</li>
-</ol>
-<p>这些内容虽然经典，但不同教材的讲解方式差异很大，找到一个完全符合自己口味的不是件容易的事情。对初学者而言，一些名气很大的教材反而不见得友好。我当初念
-<span class="citation" data-cites="Jacobson_alg">(<a href="#ref-Jacobson_alg" role="doc-biblioref">Jacobson 1980</a>)</span>
-就感觉很抓狂。后来我查阅了不少教材后经过提炼整理得到了本文。我个人认为这是最直接清楚的讲法。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/central-simple-algebra/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/real-complex/">实化与复化</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2010-02-09T16:00:00.000Z"><a href="/real-complex/">2010-02-10</a></time>
-
-            
-
-
-            
-        </div>
 
         
     </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/hurwitz-square-sum-theorem/">Hurwitz 平方和定理</a></h1>
-    
+</nav>
 
 
-            </div>
+  
 
-            <time class="pink-link-context" datetime="2009-12-05T00:00:00.000Z"><a href="/hurwitz-square-sum-theorem/">2009-12-05</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>Hurwitz
-平方和定理是有限群表示论的一个精彩应用，本文是若干年前读书时的笔记。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/hurwitz-square-sum-theorem/">阅读全文</a>
-        </ div>
-        
+  
+    <div class="collection mt-0">
+      
+        <a href="/ifs-demystified/" class="collection-item grey-text text-darken-1">
+          <time datetime="2024-06-16T00:00:00.000Z">2024-06-16</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          IFS 分形揭秘
+        </a>
+      
+        <a href="/envelope-and-caustics/" class="collection-item grey-text text-darken-1">
+          <time datetime="2024-02-08T16:00:00.000Z">2024-02-09</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          咖啡杯中的焦散线
+        </a>
+      
+        <a href="/mobius-ball-rigid-motion/" class="collection-item grey-text text-darken-1">
+          <time datetime="2022-05-07T16:00:00.000Z">2022-05-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Möbius 变换与球的刚体运动
+        </a>
+      
+        <a href="/Rouche-theorem-winding-number/" class="collection-item grey-text text-darken-1">
+          <time datetime="2021-08-31T16:00:00.000Z">2021-09-01</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          遛狗中的数学：曲线的环绕数、Rouché 定理和开映射定理
+        </a>
+      
+        <a href="/Marden-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2021-05-23T16:00:00.000Z">2021-05-24</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          静电场与 Marden 定理
+        </a>
+      
+        <a href="/debruijn-rhombus-tiling/" class="collection-item grey-text text-darken-1">
+          <time datetime="2020-12-05T16:00:00.000Z">2020-12-06</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Escher 风格的非周期密铺
+        </a>
+      
+        <a href="/assassin-vs-bodyguards/" class="collection-item grey-text text-darken-1">
+          <time datetime="2019-07-18T16:00:00.000Z">2019-07-19</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          刺客 vs 保镖
+        </a>
+      
+        <a href="/Todd-Coxeter-and-uniform-polytopes/" class="collection-item grey-text text-darken-1">
+          <time datetime="2018-05-21T00:00:00.000Z">2018-05-21</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Todd-Coxeter 算法和 3D/4D 均匀多胞体
+        </a>
+      
+        <a href="/mobius-h3space/" class="collection-item grey-text text-darken-1">
+          <time datetime="2018-05-08T16:00:00.000Z">2018-05-09</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Möbius 变换的分类与上半双曲空间的等距
+        </a>
+      
+        <a href="/gifmaze-cn/" class="collection-item grey-text text-darken-1">
+          <time datetime="2017-10-01T16:00:00.000Z">2017-10-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          碉堡的小程序：用 Python 制作演示各种算法的 GIF 动画
+        </a>
+      
+        <a href="/reducible-mod-p/" class="collection-item grey-text text-darken-1">
+          <time datetime="2017-03-02T00:00:00.000Z">2017-03-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          模任何素数都可约的整系数不可约多项式
+        </a>
+      
+        <a href="/random-walk-potential-kernel/" class="collection-item grey-text text-darken-1">
+          <time datetime="2016-09-30T16:00:00.000Z">2016-10-01</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          二维随机游动 （一）：逃出太阳系可没有你想象的那么难！
+        </a>
+      
+        <a href="/coupling-from-the-past/" class="collection-item grey-text text-darken-1">
+          <time datetime="2016-07-01T16:00:00.000Z">2016-07-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Coupling from the past
+        </a>
+      
+        <a href="/descending-plane-partitions/" class="collection-item grey-text text-darken-1">
+          <time datetime="2015-08-29T16:00:00.000Z">2015-08-30</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          递降平面分拆的 Andrews 猜想
+        </a>
+      
+        <a href="/wilson-algorithm/" class="collection-item grey-text text-darken-1">
+          <time datetime="2014-04-03T16:00:00.000Z">2014-04-04</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Wilson 均匀生成树算法
+        </a>
+      
+        <a href="/coxeter-element/" class="collection-item grey-text text-darken-1">
+          <time datetime="2013-10-10T16:00:00.000Z">2013-10-11</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Coxeter element
+        </a>
+      
+        <a href="/Birkhoff-ergodic-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2013-04-20T16:00:00.000Z">2013-04-21</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Birkhoff 遍历定理
+        </a>
+      
+        <a href="/real-and-complex-representations/" class="collection-item grey-text text-darken-1">
+          <time datetime="2012-10-20T16:00:00.000Z">2012-10-21</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          实表示和复表示
+        </a>
+      
+        <a href="/optimal-stopping-and-backward-induction/" class="collection-item grey-text text-darken-1">
+          <time datetime="2012-07-08T16:00:00.000Z">2012-07-09</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          相亲问题与倒向归纳法
+        </a>
+      
+        <a href="/three-mass-spring-system/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-08-21T16:00:00.000Z">2011-08-22</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          三质点弹簧系统的简正模式
+        </a>
+      
+        <a href="/pattern-occurrence/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-06-02T16:00:00.000Z">2011-06-03</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          模式的等待时间与反直觉概率
+        </a>
+      
+        <a href="/mabinogion-sheep-problem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-04-08T00:00:00.000Z">2011-04-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          洛奇绵羊问题
+        </a>
+      
+        <a href="/star-trek/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-04-05T00:00:00.000Z">2011-04-05</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          星际迷航问题
+        </a>
+      
+        <a href="/schur-polynomials-and-hook-length-formula/" class="collection-item grey-text text-darken-1">
+          <time datetime="2011-04-03T16:00:00.000Z">2011-04-04</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Schur 多项式与钩长公式
+        </a>
+      
+        <a href="/wedderburn-artin-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-10-22T00:00:00.000Z">2010-10-22</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          左 Artinian 环与 Wedderburn-Artin 定理
+        </a>
+      
+        <a href="/conway-tiling-group/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-08-07T00:00:00.000Z">2010-08-07</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          不可能的密铺
+        </a>
+      
+        <a href="/central-simple-algebra/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-03-13T00:00:00.000Z">2010-03-13</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          中心单代数的三个基本结论
+        </a>
+      
+        <a href="/real-complex/" class="collection-item grey-text text-darken-1">
+          <time datetime="2010-02-09T16:00:00.000Z">2010-02-10</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          实化与复化
+        </a>
+      
+        <a href="/hurwitz-square-sum-theorem/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-12-05T00:00:00.000Z">2009-12-05</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Hurwitz 平方和定理
+        </a>
+      
+        <a href="/jordan-canonical-form/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-07-12T00:00:00.000Z">2009-07-12</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Jordan 标准形
+        </a>
+      
+        <a href="/space-of-matrices/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-06-07T16:00:00.000Z">2009-06-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          矩阵空间的子空间
+        </a>
+      
+        <a href="/Pfaffian-and-chessboard-tiling/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-05-07T16:00:00.000Z">2009-05-08</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          国际象棋棋盘的多米诺骨牌密铺
+        </a>
+      
+        <a href="/macmahon-formula-plane-partitions/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-03-10T00:00:00.000Z">2009-03-10</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          平面分拆的 Macmahon 公式
+        </a>
+      
+        <a href="/domino-shuffling/" class="collection-item grey-text text-darken-1">
+          <time datetime="2009-01-01T16:00:00.000Z">2009-01-02</time>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          Aztec 钻石图的完美匹配与多米诺洗牌算法
+        </a>
+      
     </div>
-</article>
-
-    
-        <article class="simple-article">
-    <div class="card">
-        <div class="card-content">
-            <div class="article-title">
-                
-    
-        <h1 class="indigo-link-context"><a href="/jordan-canonical-form/">Jordan 标准形</a></h1>
-    
-
-
-            </div>
-
-            <time class="pink-link-context" datetime="2009-07-12T00:00:00.000Z"><a href="/jordan-canonical-form/">2009-07-12</a></time>
-
-            
-
-
-            
-                <div class="entry pink-link-context">
-                    
-<p>Jordan
-标准形定理是线性代数中的基本定理，你可能会好奇，这么一个老掉牙的，在无数教材和讲义中都可以找到的定理，还能写出什么新意来呢？</p>
-<p>理由有两个。第一个是我曾经在做助教给学生讲这个定理的时候，突然发现不知道该怎么启发他们为好。虽然我知道
-Jordan
-标准形定理的很多种证法，照念几个不在话下，但是感觉很不自然：为什么要引入
-Jordan
-块？这些块究竟代表了什么？怎么才能说清定理背后的想法，让学生觉得定理的成立是顺理成章的呢？于是我知道我对这个定理的理解还有模糊的地方。</p>
-<p>第二个原因是 Jordan
-块有一个重要的代数性质是通常教材中不讲的，而这个性质是代数学中一类重要而常见的性质的雏形，这就是不可分解性。与之对应的是可对角化的线性变换的完全可约性。从一开始就让学生接触这些现象是有好处的。</p>
-                </div>
-            
-        </div>
-
-        
-        <div class="card-action pink-link-context">
-            <a href="/jordan-canonical-form/">阅读全文</a>
-        </ div>
-        
-    </div>
-</article>
-
-    
-
-    <ul class="pagination center-align">
-    <li class="">
-        <a href="/page/5/"><i class="fa fa-angle-left"></i></a>
-    </li>
-    
-    
-        <li class="waves-effect"><a href="/">1</a></li>
-    
-        <li class="waves-effect"><a href="/page/2">2</a></li>
-    
-        <li class="waves-effect"><a href="/page/3">3</a></li>
-    
-        <li class="waves-effect"><a href="/page/4">4</a></li>
-    
-        <li class="waves-effect"><a href="/page/5">5</a></li>
-    
-        <li class="active pink"><a href="/page/6">6</a></li>
-    
-        <li class="waves-effect"><a href="/page/7">7</a></li>
-    
-    
-    <li class="">
-        <a href="/page/7/"><i class="fa fa-angle-right"></i></a>
-    </li>
- </ul>
-
+  
 </div>
 
                    
