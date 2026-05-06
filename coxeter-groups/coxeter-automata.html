@@ -319,6 +319,105 @@ U^\bot\)</span>。</p>
 <span class="math inline">\(\{a\gamma+b\alpha_s\mid a &gt; 0,
 b&lt;0\}\)</span> 中，这与此区域不包含任何根矛盾。所以 <span class="math inline">\(\alpha,\beta\)</span> 所夹的角度必须是 <span class="math inline">\(\pi\)</span> 的有理数倍，形如 <span class="math inline">\(p\pi/q\)</span>，从而 <span class="math inline">\(s_\alpha,s_\beta\)</span> 生成一个有限二面体群
 <span class="math inline">\(D\)</span>。又因为 <span class="math inline">\(D\)</span> 作用在 <span class="math inline">\(U^\bot\)</span> 上是平凡的，所以 <span class="math inline">\(D\)</span> 在全空间上的作用也是有限二面体群。<span class="math inline">\(\blacksquare\)</span></p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+0.2</span>.</span><span class="statement-spah"> </span>对任何正根 <span class="math inline">\(\alpha\in\Phi^+\)</span>，定义其深度为 <span class="math display">\[\mathrm{dp}(\alpha)=\min\{\,l(w) \mid
+w\alpha\in\Phi^-\,\}.\]</span></p>
+</div>
+<div id="partial-order-by-simple-ref" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+0.3</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha_s\)</span> 是单根，<span class="math inline">\(\alpha\ne\alpha_s\)</span> 是正根，则 <span class="math display">\[\mathrm{dp}(s\alpha)=\begin{cases}\mathrm{dp}(\alpha)-1
+&amp; \text{if } (\alpha,\alpha_s)&gt;0,\\\mathrm{dp}(\alpha) &amp;
+\text{if } (\alpha,\alpha_s)=0.\\\mathrm{dp}(\alpha)+1 &amp; \text{if }
+(\alpha,\alpha_s)&lt;0.\end{cases}\]</span></p>
+</div>
+<p><strong>证明</strong>：第二条是显然的，而第三条可以由第一条得出：只要对
+<span class="math inline">\(s\alpha\)</span>
+应用第一条的结论即可。所以我们只需要证明第一条。</p>
+<p>首先注意到总是有 <span class="math inline">\(|\mathrm{dp}(s\alpha) -
+\mathrm{dp}(\alpha)|\le1\)</span>（证明简单，略）。所以只要证明在 <span class="math inline">\((\alpha,\alpha_s)&gt;0\)</span> 时必有 <span class="math inline">\(\mathrm{dp}(s\alpha) &lt;
+\mathrm{dp}(\alpha)\)</span> 即可。</p>
+<p>取 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(l(w)=\mathrm{dp}(\alpha)\)</span> 且 <span class="math inline">\(w\alpha\in\Phi^-\)</span>。</p>
+<ol type="1">
+<li><p>如果 <span class="math inline">\(w\alpha_s\in\Phi^-\)</span>，则
+<span class="math inline">\(l(ws)=l(w)-1=\mathrm{dp}(\alpha)-1\)</span>。利用
+<span class="math inline">\((ws)(s\alpha)=w\alpha&lt;0\)</span> 可得
+<span class="math display">\[\mathrm{dp}(s\alpha)\leq
+l(ws)=\mathrm{dp}(\alpha)-1.\]</span> 这只能是 <span class="math inline">\(\mathrm{dp}(s\alpha)=\mathrm{dp}(\alpha)-1\)</span>。</p></li>
+<li><p>如果 <span class="math inline">\(w\alpha_s\in\Phi^+\)</span>，记
+<span class="math inline">\(\gamma = w(s\alpha)\)</span>，则 <span class="math display">\[\gamma=w(\alpha -
+2(\alpha,\alpha_s)\alpha_s)=w\alpha-2(\alpha,\alpha_s)w\alpha_s.\]</span>
+由于 <span class="math inline">\(\alpha\ne\alpha_s\)</span>
+是不同的正根，它们不共线，所以 <span class="math inline">\(w\alpha\)</span> 和 <span class="math inline">\(w\alpha_s\)</span> 也不共线。由假设 <span class="math inline">\((\alpha,\alpha_s)&gt;0\)</span>，所以 <span class="math inline">\(\gamma\)</span>
+是两个不共线的负根的正线性组合，所以 <span class="math inline">\(\gamma\)</span>
+是负根但不是负的单根。任何单反射都无法将 <span class="math inline">\(\gamma\)</span> 变成正根。取 <span class="math inline">\(t\in S\)</span> 使得 <span class="math inline">\(l(tw)&lt;l(w)\)</span>，则 <span class="math inline">\(t\gamma=(tw)(s\alpha)\)</span> 仍然是负根，所以
+<span class="math inline">\(\mathrm{dp}(s\alpha)\leq
+l(tw)=l(w)-1=\mathrm{dp}(\alpha)-1\)</span>，结论仍然得证。<span class="math inline">\(\blacksquare\)</span></p></li>
+</ol>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+0.4</span>.</span><span class="statement-spah"> </span>我们定义正根
+<span class="math inline">\(\Phi^+\)</span> 上的偏序 <span class="math inline">\(\preceq\)</span> 如下：设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span>，则 <span class="math inline">\(\alpha\preceq\beta\)</span> 当且仅当存在 <span class="math inline">\(s_1,\ldots,s_k\in S\)</span> 使得：</p>
+<ul>
+<li><span class="math inline">\(\beta = s_k\cdots s_1
+\alpha\)</span>。</li>
+<li><span class="math inline">\(\mathrm{dp}(s_i\cdots s_1\alpha) =
+\mathrm{dp}(\alpha) + i\)</span> 对所有 <span class="math inline">\(1\le
+i\le k\)</span> 成立。</li>
+</ul>
+</div>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+0.5</span>.</span><span class="statement-spah"> </span>对 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span>，如果对任何 <span class="math inline">\(w\in W\)</span> 都有 <span class="math display">\[w\alpha\in\Phi^-\Rightarrow
+w\beta\in\Phi^-.\]</span> 我们就称 <span class="math inline">\(\alpha\)</span> 支配 <span class="math inline">\(\beta\)</span>，记作 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>。如果 <span class="math inline">\(\alpha\)</span>
+除了自己之外，不支配其它任何正根，就称 <span class="math inline">\(\alpha\)</span>
+是一个<strong>极小根</strong>。</p>
+</div>
+<div class="statement note definition unnumbered">
+<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
+</span>对正根 <span class="math inline">\(\gamma\in\Phi^+\)</span>，位于
+<span class="math inline">\(\gamma\)</span> 背面的房间是集合 <span class="math display">\[\mathcal C_\gamma^-=\{\,w\mathcal{D}\mid
+(\gamma,w\mathcal{D})&lt;0\,\}.\]</span> 于是 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 的意思就是
+<span class="math inline">\(\mathcal C_\alpha^- \subseteq \mathcal
+C_\beta^-\)</span>。即 <span class="math inline">\(\beta\)</span>
+的背面区域比 <span class="math inline">\(\alpha\)</span>
+的背面区域更大。换句话说，假设一个人站在基本区域 <span class="math inline">\(\mathcal{D}\)</span> 里面，他是看不到镜子 <span class="math inline">\(\alpha\)</span> 的，它被 <span class="math inline">\(\beta\)</span> 完全挡住了。</p>
+</div>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+0.6</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(\alpha,\beta\in\Phi^+\)</span>，<span class="math inline">\(s\in S\)</span>，则：</p>
+<ol type="1">
+<li>若 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w\beta\)</span> 是正根，则 <span class="math inline">\(w\alpha\,\mathrm{dom}\,w\beta\)</span>。</li>
+<li><span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>
+当且仅当 <span class="math inline">\((\alpha,\beta)\geq1\)</span> 并且
+<span class="math inline">\(\mathrm{dp}(\alpha)\ge\mathrm{dp}(\beta)\)</span>。</li>
+<li>若 <span class="math inline">\(\alpha\prec\alpha'\)</span> 则
+<span class="math inline">\(\alpha'\)</span>
+不是极小根。于是若一个根是极小根，则在偏序 <span class="math inline">\(\preceq\)</span> 下小于它的根也都是极小根。</li>
+<li>若 <span class="math inline">\(\alpha\)</span> 是极小根，但 <span class="math inline">\(s\alpha\)</span> 不是极小根，则 <span class="math inline">\(s\alpha\,\mathrm{dom}\,\alpha\)</span>。</li>
+</ol>
+</div>
+<p><strong>证明</strong>：</p>
+<ol type="1">
+<li><p>显然。</p></li>
+<li><p><span class="math inline">\(\Rightarrow\)</span>：</p></li>
+<li><p>只要对 <span class="math inline">\(\alpha\prec\alpha'\)</span> 且 <span class="math inline">\(\mathrm{dp}(\alpha')=\mathrm{dp}(\alpha)+1\)</span>
+进行证明即可。由偏序 <span class="math inline">\(\preceq\)</span>
+的定义，存在单反射 <span class="math inline">\(s\)</span> 使得 <span class="math inline">\(\alpha'=s\alpha\)</span>，并且由 <a href="#partial-order-by-simple-ref" title="引理 0.3">引理 0.3</a> 有
+<span class="math inline">\((\alpha_s,\alpha)&lt;0\)</span>。由第 1 条
+<span class="math inline">\((\alpha,\beta)&gt;0\)</span> 所以 <span class="math inline">\(\beta\ne\alpha_s\)</span>，从而 <span class="math inline">\(s\beta\)</span> 是正根，从而由第 2 条 <span class="math inline">\(\alpha'=s\alpha\,\mathrm{dom}\,s\beta\)</span>
+不是极小根。</p></li>
+<li><p><span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>
+显然意味着 <span class="math inline">\(\mathrm{dp}(\alpha)\geq\mathrm{dp}(\beta)\)</span>。下面证明，如果还有等号成立则必有
+<span class="math inline">\(\alpha=\beta\)</span>。设 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(w\alpha=-\alpha_s\)</span> 是某个负的单根，则
+<span class="math inline">\(w\beta\in\Phi^-\)</span>。注意这时 <span class="math inline">\(w^{-1}\alpha_s=-\alpha&lt;0\)</span>，所以 <span class="math inline">\(l(sw)&lt;l(w)\)</span>。</p>
+<ul>
+<li>若 <span class="math inline">\(sw\beta\in\Phi^+\)</span>，则由 <span class="math inline">\(w\beta&lt;0\)</span> 可知 <span class="math inline">\(w\beta=-\alpha_s\)</span>，再结合 <span class="math inline">\(w\alpha=-\alpha_s\)</span> 可得 <span class="math inline">\(\alpha=\beta\)</span>。</li>
+<li>若 <span class="math inline">\(sw\beta\in\Phi^-\)</span>，则 <span class="math inline">\(\mathrm{dp}(\beta)\leq
+l(sw)&lt;\mathrm{dp}(\alpha)\)</span>。这种情况等号不可能成立。</li>
+</ul></li>
+</ol>
+<p><span class="math inline">\(\blacksquare\)</span></p>
 
 
 
