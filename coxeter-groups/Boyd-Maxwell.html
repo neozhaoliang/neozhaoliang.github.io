@@ -672,7 +672,7 @@ S\)</span>，定义球帽 <span class="math display">\[C_k =
 <p><strong>证明</strong>：直接计算可得：</p>
 <p><span class="math display">\[\begin{aligned}
 (u,u)&amp;=(v,v)-2at + t^2 \leq -2at+t^2 &lt; 0,\\
-(u,v)&amp;=(v,v)-at \leq at&lt;0.
+(u,v)&amp;=(v,v)-at \leq -at&lt;0.
 \end{aligned}\]</span> 即 <span class="math inline">\(u\)</span> 是
 time-like 的并且 <span class="math inline">\(u\sim v\)</span>，从而
 <span class="math inline">\(u\)</span> 的某个正倍数 <span class="math inline">\(u'\in \mathcal{H}\)</span>。又因为 <span class="math inline">\((u,k)=a-t\geq0\)</span>，所以也有 <span class="math inline">\((u',k)\geq0\)</span>，从而 <span class="math inline">\(u'\in C_k\)</span>。</p>
@@ -736,23 +736,39 @@ C_{k_2}\)</span>，恰好只有一个点。记这个点为 <span class="math inl
 <p><strong>证明</strong>：</p>
 <p>1 <span class="math inline">\(\Rightarrow\)</span> 2：根据 <a href="#disjoint-pair" title="引理 5.5">引理 5.5</a>，不妨设 <span class="math inline">\(k_1,k_2\in\mathcal{P}\)</span> 使得 <span class="math inline">\(|C_{k_1}\cap
 C_{k_2}|\leq1\)</span>，我们要证明对任何 <span class="math inline">\(k\ne k'\in\mathcal{P}\)</span> 同样有 <span class="math inline">\(|C_k\cap C_{k'}|\leq1\)</span>。如果 <span class="math inline">\(\{k,k'\}=\{k_1,k_2\}\)</span>
-结论显然成立，所以不妨设 <span class="math inline">\(k\notin\{k_1,k_2\}\)</span>。用反证法，若 <span class="math inline">\(|C_k\cap C_{k'}|&gt;1\)</span>，根据 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a>，存在 time-like
-的向量 <span class="math inline">\(v\in C_k\cap C_{k'}\)</span>。令
-<span class="math inline">\(w=k_1-(k_1,k_2)k_2\)</span>，则有 <span class="math display">\[(w,w)=1-(k_1,k_2)^2\leq0,\quad (w, k)&lt;0,\quad
-(w, k')\leq0.\]</span> 我们来证明 <span class="math inline">\(v\sim
-w\)</span>。若如此，则 <span class="math inline">\(w\)</span>
-的某个正倍数 <span class="math inline">\(w'\in\mathcal{H}\)</span>，并且 <span class="math display">\[(w',-k)&gt;0,\quad
-(w',-k')\geq0.\]</span> 从而由 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a> 有 <span class="math inline">\(|C_{-k}\cap
-C_{-k'}|&gt;1\)</span>，与 <a href="#disjoint-pair" title="引理 5.5">引理 5.5</a> 矛盾。由于 <span class="math inline">\(v\)</span> 是 time-like 的，我们只要证明有 <span class="math inline">\((v,w)\leq0\)</span> 成立即可。利用 <span class="math display">\[(v,w)=(v, k_1) - (v,k_2)(k_1,k_2) =
-(v-(v,k_2)k_2, k_1).\]</span> 并记 <span class="math inline">\(u=v-(v,
-k_2)k_2\)</span>，问题转化为证明 <span class="math inline">\((u,k_1)\leq0\)</span>。计算可得 <span class="math display">\[\begin{aligned}
-(u,k_2) &amp;= (v,k_2) - (v,k_2)(k_2,k_2)=0,\\
-(u,u)&amp;=(u,v)-(v,k_2)(u,k_2) = (u,v),\\
-(u,v)&amp;=(v,v)-(v,k_2)^2 \leq (v,v)&lt;0.
-\end{aligned}
-\]</span> 即 <span class="math inline">\(u\)</span> 是 time-like 的且
-<span class="math inline">\(u\sim v\)</span>。于是 <span class="math inline">\(u\)</span> 的某个正倍数 <span class="math inline">\(u'\)</span> 属于 <span class="math inline">\(\mathcal{H}\)</span>。如果 <span class="math inline">\((u,k_1)&gt;0\)</span> 的话则 <span class="math inline">\(u'\)</span> 是 time-like 的向量且满足 <span class="math inline">\((u',k_1)&gt;0\)</span> 和 <span class="math inline">\((u',k_2)=0\)</span>，从而 <span class="math inline">\(u'\in C_{k_1}\cap C_{k_2}\)</span>。但根据 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a> 这会导致 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|&gt;1\)</span>，矛盾。因此
-<span class="math inline">\((u,k_1)\leq0\)</span>。</p>
+结论显然成立，所以不妨设 <span class="math inline">\(k\notin\{k_1,k_2\}\)</span>。</p>
+<p>用反证法，若 <span class="math inline">\(|C_k\cap
+C_{k'}|&gt;1\)</span>，根据 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a>，存在 time-like 的向量 <span class="math inline">\(v\in C_k\cap C_{k'}\)</span>。记 <span class="math display">\[\overline{v} = v-(v,k_2)k_2\]</span> 是 <span class="math inline">\(v\)</span> 在 <span class="math inline">\(k_2\)</span> 上的投影，同时记 <span class="math display">\[\overline{k}_1 = k_1-(k_1,k_2)k_2\]</span> 是
+<span class="math inline">\(k_1\)</span> 在 <span class="math inline">\(k_2^\bot\)</span> 上的投影。直接验证有：</p>
+<p><span class="math display">\[(\overline{v} ,
+v)=(\overline{v},\overline{v}) = (v, v) - (v,k_2)^2\le (v,v) &lt; 0.
+\]</span> 即 <span class="math inline">\(\overline{v}\)</span> 是
+time-like 的，并且 <span class="math inline">\(\overline{v}\sim
+v\)</span>。于是 <span class="math inline">\(\overline{v}\in\mathcal{Q}_+\)</span>。</p>
+<p>同样计算可得 <span class="math display">\[(\overline{k}_1,\overline{k}_1)=1-(k_1,k_2)^2\leq0.\]</span>
+即 <span class="math inline">\(\overline{k}_1\)</span> 是
+time-like/light-like 的。<span class="math inline">\(\overline{k}_1\)</span> 属于 <span class="math inline">\(\mathcal{Q}_+\)</span> 或者 <span class="math inline">\(\mathcal{Q}_-\)</span>
+中的哪个还不能确定。利用投影算子是自共轭算子这一点，我们有 <span class="math display">\[(v,\overline{k}_1) = (\overline{v},
+k_1).\]</span> （你也可以直接验证这个等式成立）</p>
+<p>我们来说明 <span class="math inline">\((\overline{v},
+k_1)\le0\)</span>。一旦这一点成立，则 <span class="math inline">\(\overline{k}_1\)</span> 必然和 <span class="math inline">\(\overline{v}\)</span> 都位于同一分支 <span class="math inline">\(\mathcal{Q}_+\)</span> 中。</p>
+<p>若不然，假设 <span class="math inline">\((\overline{v},k_1)&gt;0\)</span>，取 <span class="math inline">\(\overline{v}\)</span> 的某个正倍数 <span class="math inline">\(w\in\mathcal{H}\)</span>。由于 <span class="math inline">\(\overline{v}\)</span> 是 time-like 的，从而 <span class="math inline">\(w\)</span> 也是。<span class="math inline">\((w,
+k_1)\)</span> 同样大于 0，并且 <span class="math inline">\((w,k_2)\propto(\overline{v},k_2)=0\)</span>。这就导致
+<span class="math inline">\(C_{k_1}\cap C_{k_2}\)</span> 包含了
+time-like 的向量 <span class="math inline">\(w\)</span>，由 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a> 可得 <span class="math inline">\(|C_{k_1}\cap C_{k_2}|&gt;1\)</span>，矛盾！故必有
+<span class="math inline">\((\overline{v}, k_1)\le0\)</span>，从而 <span class="math inline">\(\overline{k}_1\in\mathcal{Q}_+\)</span>。</p>
+<p>既然 <span class="math inline">\(\overline{k}_1\in\mathcal{Q}_+\)</span>，我们可以取
+<span class="math inline">\(\overline{k}_1\)</span> 的某个正倍数 <span class="math inline">\(w\in\mathcal{H}\)</span>。则 <span class="math display">\[\begin{aligned}
+(w,k)&amp;\propto (\overline{k}_1,k) = (k_1,k) - (k_1,k_2)(k_2,k) &lt;
+0,\\
+(w,k')&amp;\propto  (\overline{k}_1,k')=(k_1,k') -
+(k_1,k_2)(k_2,k')\le0.
+\end{aligned}\]</span> 其中，第一个式子由于 <span class="math inline">\(k\notin\{k_1,k_2\}\)</span> 所以严格小于
+0。第二个式子在 <span class="math inline">\(k'\notin\{k_1,k_2\}\)</span> 时也是严格小于 0
+的；在 <span class="math inline">\(k'=k_1\)</span> 时 <span class="math inline">\(\le0\)</span>，在 <span class="math inline">\(k'=k_2\)</span> 时正好等于 0。</p>
+<p>于是我们有 <span class="math inline">\((w,-k)&gt;0\)</span> 和 <span class="math inline">\((w,-k')\ge0\)</span>，从而 <span class="math inline">\(C_{-k}\cap C_{-k'}\)</span> 包含了 time-like
+的向量 <span class="math inline">\(w\)</span>，从而由 <a href="#contain-time-like" title="引理 5.4">引理 5.4</a> 有 <span class="math inline">\(|C_{-k}\cap
+C_{-k'}|&gt;1\)</span>。但是我们假设了 <span class="math inline">\(|C_k\cap C_k'|&gt;1\)</span>，根据 <a href="#disjoint-pair" title="引理 5.5">引理 5.5</a>，这不可能。</p>
 <p>2 <span class="math inline">\(\Rightarrow\)</span> 1: 不妨设 <span class="math inline">\(\mathcal{P}\)</span>
 中任何两个球帽至多只有一个交点。对 <span class="math inline">\(k_1\ne
 k_2\in\mathcal{P}\)</span>，<span class="math inline">\(U=\mathrm{span}\{k_1,k_2\}\)</span> 肯定不是
