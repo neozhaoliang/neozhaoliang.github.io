@@ -299,7 +299,7 @@
                                         
                                             <div class="entry pink-link-context">
                                                 
-<div class="statement proposition plain">
+<div id="dihedral-finite" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
 0.1</span>.</span><span class="statement-spah"> </span>若 <span class="math inline">\(\alpha,\beta\in\Phi\)</span> 满足 <span class="math inline">\(|(\alpha,\beta)|&lt;1\)</span>，则必然有 <span class="math inline">\((\alpha,\beta)=\cos(p\pi/q)\)</span>，其中 <span class="math inline">\(p,q\)</span> 是互素的正整数，而且反射 <span class="math inline">\(s_\alpha,s_\beta\)</span>
 生成的二面体群是有限群。</p>
@@ -400,7 +400,14 @@ C_\beta^-\)</span>。即 <span class="math inline">\(\beta\)</span>
 <p><strong>证明</strong>：</p>
 <ol type="1">
 <li><p>显然。</p></li>
-<li><p><span class="math inline">\(\Rightarrow\)</span>：</p></li>
+<li><p><span class="math inline">\(\Rightarrow\)</span>：设 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span>。取 <span class="math inline">\(w\in W\)</span> 满足 <span class="math inline">\(l(w)=\mathrm{dp}(\alpha)\)</span> 且 <span class="math inline">\(w\alpha\in\Phi^-\)</span>。设 <span class="math inline">\(w=sx\)</span>，其中 <span class="math inline">\(s\in S\)</span> 和 <span class="math inline">\(l(x)=l(w) -1\)</span>。则有 <span class="math inline">\(x\alpha=\alpha_s\)</span>。由于 <span class="math inline">\(\alpha\ne\beta\)</span>，所以 <span class="math inline">\(x\beta\ne\alpha_s\)</span>。但是 <span class="math inline">\(\alpha\,\mathrm{dom}\,\beta\)</span> 说明 <span class="math inline">\(sx\beta\in\Phi^-\)</span>，所以 <span class="math inline">\(x\beta\)</span> 本身就是负根。所以 <span class="math display">\[\mathrm{dp}(\beta)\le l(x) &lt;
+l(w)=\mathrm{dp}(\alpha).\]</span> 又因为关于超平面 <span class="math inline">\(\alpha\)</span> 的反射 <span class="math inline">\(s_\alpha\in W\)</span>，以及 <span class="math inline">\(s_\alpha(\alpha)=-\alpha\in\Phi^-\)</span>，所以
+<span class="math display">\[s_\alpha\beta = \beta -
+2(\alpha,\beta)\alpha \in\Phi^-.\]</span> 由此可得 <span class="math inline">\((\alpha,\beta) &gt; 0\)</span>。如果 <span class="math inline">\(0&lt;(\alpha,\beta)&lt;1\)</span>，那么根据 <a href="#dihedral-finite" title="命题 0.1">命题 0.1</a>，<span class="math inline">\(s_\alpha,s_\beta\)</span> 生成一个有限二面体群
+<span class="math inline">\(D\)</span>。但是在一个有限 Coxeter
+群里面任何两个正根之间不可能有支配关系（取一个 <span class="math inline">\(H_\alpha\cap H_\beta\)</span> 中的胞腔，使得它位于
+<span class="math inline">\(\alpha\)</span> 的负侧、<span class="math inline">\(\beta\)</span> 的正侧。这就给出了一个 <span class="math inline">\(D\)</span> 中的群元素 <span class="math inline">\(u\)</span>，使得 <span class="math inline">\(u\alpha\)</span> 是负根而 <span class="math inline">\(u\beta\)</span> 是正根），所以只能是 <span class="math inline">\((\alpha,\beta)\ge1\)</span>。</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：设 <span class="math inline">\((\alpha,\beta)\ge1\)</span> 且 <span class="math inline">\(\mathrm{dp}(\alpha)\ge\mathrm{dp}(\beta)\)</span>。</p></li>
 <li><p>只要对 <span class="math inline">\(\alpha\prec\alpha'\)</span> 且 <span class="math inline">\(\mathrm{dp}(\alpha')=\mathrm{dp}(\alpha)+1\)</span>
 进行证明即可。由偏序 <span class="math inline">\(\preceq\)</span>
 的定义，存在单反射 <span class="math inline">\(s\)</span> 使得 <span class="math inline">\(\alpha'=s\alpha\)</span>，并且由 <a href="#partial-order-by-simple-ref" title="引理 0.3">引理 0.3</a> 有
