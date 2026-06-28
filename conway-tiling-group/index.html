@@ -35,16 +35,17 @@
 求证对任何 \(n\)，\(T_n\) 都不可能用若干骨头恰好密铺。
 
 Conway
-等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它的基本思想是，用一个
-Abel 群（一般是有理数域 \(\mathbb{Q}\)）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是整个区域所有正六边形标记之和不是整数，这样来得出矛盾。
-然而，Conway
-等人在论文中借助“密铺的同调群”证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色方法可以成功的必要条件是
-\(T_n\)
-对应的群元素在骨头生成的同调群中不是恒等元，从而无法被密铺。而这个问题中，\(T_n\)
-对应的群元素在同调群中确实是恒等元（构造适当的 signed tiling
-即可）。所以染色法对这个问题无效！
-Conway
-等人用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
+等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它可以理解为一种取值于
+Abel
+群的加性不变量。例如，可以给每一个正六边形赋一个有理数权值，使得一块骨头无论如何摆放，其覆盖的三个正六边形的权值之和总是整数，而整个区域所的权值之和不是整数。等价地说，我们构造了一个取值于
+\(\mathbb{Q}/\mathbb Z\)
+的群同态，它在所有骨头上取 0，但是在待铺区域上不取
+0。这样来得出矛盾。
+然而，这种染色不变量不能解决所有的 \(T_n\)。Conway 和 Lagarias
+在论文中借助“密铺的同调群”证明了在 \(n\equiv
+0,8\pmod 9\) 这两类情形中，任何广义染色不变量都无法给出矛盾。
+Conway 和 Lagarias
+用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
 Abel
 群）的元素作标记，但是这次是给区域和瓷砖的边界作标记，来获得密铺的某种不变量，并说明
 \(T_n\)
@@ -332,16 +333,17 @@ Abel
 <p>求证对任何 <span class="math inline">\(n\)</span>，<span class="math inline">\(T_n\)</span> 都不可能用若干骨头恰好密铺。</p>
 </div>
 <p>Conway
-等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它的基本思想是，用一个
-Abel 群（一般是有理数域 <span class="math inline">\(\mathbb{Q}\)</span>）给平面上每一个正六边形作标记，使得任何骨头覆盖的三个正六边形的标记之和为整数，但是整个区域所有正六边形标记之和不是整数，这样来得出矛盾。</p>
-<p>然而，Conway
-等人在论文中借助“密铺的同调群”证明了染色方法在这个问题中是无法得出矛盾的。我简要地解释一下原因：染色方法可以成功的必要条件是
-<span class="math inline">\(T_n\)</span>
-对应的群元素在骨头生成的同调群中不是恒等元，从而无法被密铺。而这个问题中，<span class="math inline">\(T_n\)</span>
-对应的群元素在同调群中确实是恒等元（构造适当的 signed tiling
-即可）。所以染色法对这个问题无效！</p>
-<p>Conway
-等人用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
+等人的论文里面包含了好几个密铺的问题，上面这个问题只是其中一个。虽然这个问题的表述很简单，但它的解法并不“初等”。这里我称之为“”初等”的方法是染色法。染色法是最常用的论证不可能密铺的手段。它可以理解为一种取值于
+Abel
+群的加性不变量。例如，可以给每一个正六边形赋一个有理数权值，使得一块骨头无论如何摆放，其覆盖的三个正六边形的权值之和总是整数，而整个区域所的权值之和不是整数。等价地说，我们构造了一个取值于
+<span class="math inline">\(\mathbb{Q}/\mathbb Z\)</span>
+的群同态，它在所有骨头上取 0，但是在待铺区域上不取
+0。这样来得出矛盾。</p>
+<p>然而，这种染色不变量不能解决所有的 <span class="math inline">\(T_n\)</span>。Conway 和 Lagarias
+在论文中借助“密铺的同调群”证明了在 <span class="math inline">\(n\equiv
+0,8\pmod 9\)</span> 这两类情形中，任何广义染色不变量都无法给出矛盾。</p>
+<p>Conway 和 Lagarias
+用“密铺的同伦群”给出了不可能密铺的证明。同伦群方法的基本思想是，我们仍然用一个群（未必是
 Abel
 群）的元素作标记，但是这次是给区域和瓷砖的<strong>边界</strong>作标记，来获得密铺的某种不变量，并说明
 <span class="math inline">\(T_n\)</span>
@@ -369,7 +371,7 @@ a^2=b^2=c^2=1\rangle\]</span></p>
 <p><span class="math inline">\(F\)</span> 同构于 3 个 <span class="math inline">\(\mathbb{Z}_2\)</span> 的自由积：<span class="math inline">\(F\cong\mathbb{Z}_2\ast\mathbb{Z}_2\ast\mathbb{Z}_2\)</span>。</p>
 <p>设 <span class="math inline">\(D\)</span> 是 <span class="math inline">\(\mathcal{G}(A)\)</span> 中的单连通有限区域，边界为
 <span class="math inline">\(\partial D\)</span>，<span class="math inline">\(\partial D\)</span> 是一条简单闭路径。从 <span class="math inline">\(\partial D\)</span>
-上任一点出发，绕着边界逆时针一周可以得到此路径的对应的一个字 (word)
+上任一顶点出发，绕着边界逆时针一周可以得到此路径的对应的一个字 (word)
 <span class="math inline">\(\pi\in F\)</span>。</p>
 <p>例如，从下图中标注的红色点出发时，<span class="math inline">\(T_n\)</span> 的边界字为 <span class="math inline">\(\pi=(ac)^n(ba)^n(cb)^n\)</span>：</p>
 <p><img src="/images/tilinggroup/boundary.svg" class="fig" width="400"></p>
@@ -382,7 +384,7 @@ a^2=b^2=c^2=1\rangle\]</span></p>
 <p><span class="statement-heading"><span class="statement-label">定义</span>.</span><span class="statement-spah">
 </span>设 <span class="math inline">\(D\)</span> 是 <span class="math inline">\(\mathcal{G}(A)\)</span>
 中的单连通有限区域，定义其<strong>组合边界</strong> <span class="math inline">\([\partial D]\)</span> 为 <span class="math inline">\(F\)</span> 中的一个共轭类：<span class="math inline">\([\partial D]=\{ w\pi w^{-1} \mid w\in
-F\}\)</span>，其中 <span class="math inline">\(\pi\)</span> 是从 <span class="math inline">\(\partial D\)</span> 上任一点逆时针出发绕 <span class="math inline">\(D\)</span> 一圈得到的字。</p>
+F\}\)</span>，其中 <span class="math inline">\(\pi\)</span> 是从 <span class="math inline">\(\partial D\)</span> 上任一顶点逆时针出发绕 <span class="math inline">\(D\)</span> 一圈得到的字。</p>
 </div>
 <p>对于骨头，我们也可以用类似的方式定义它们的边界字，如下图所示：</p>
 <p><img src="/images/tilinggroup/label.svg" class="fig" width="600"></p>
@@ -395,7 +397,7 @@ w_1,w_2,w_3\rangle)\)</span>
 <p><span class="statement-heading"><span class="statement-label">定理</span> <span class="statement-info">(<span class="citation" data-cites="Conway1990">(<a href="#ref-Conway1990" role="doc-biblioref">Conway and Lagarias 1990</a>, thm
 2.1)</span>)</span>.</span><span class="statement-spah"> </span><br>
 设 <span class="math inline">\(D\)</span>
-是平面上正六边形网格中的一个有限的、单连通的区域，则 <span class="math inline">\(D\)</span> 可以被若干骨头密铺的必要条件是 <span class="math inline">\([\partial D]\in T\)</span>。</p>
+是平面上正六边形网格中的一个有限的、单连通的区域，则 <span class="math inline">\(D\)</span> 可以被若干骨头密铺的必要条件是 <span class="math inline">\([\partial D]\subseteq T\)</span>。</p>
 </div>
 <p>这个定理是很直观的，证明思路也很简单，对密铺使用的骨头个数归纳即可。如果只用一块骨头就能密铺，结论显然成立。否则一定可以把密铺分成两个单连通的子密铺，使得整个密铺的边界字是这两个子密铺边界字的乘积，然后对每个子密铺使用归纳假设即可。<span class="math inline">\(\blacksquare\)</span></p>
 <p>由于 <span class="math inline">\(T_n\)</span> 的边界字为 <span class="math inline">\(\pi=(ac)^n(ba)^n(cb)^n\)</span>，即 <span class="math inline">\(T_n\)</span> 的组合边界为 <span class="math inline">\([\partial
@@ -439,22 +441,30 @@ J\)</span>。同理 <span class="math inline">\(w_2,w_3\in J\)</span>，从而
 <p>所以确实有 <span class="math inline">\(T\subset J\)</span> 和 <span class="math inline">\(\pi\in J\)</span>。</p>
 <p>现在我们来构造群同态 <span class="math inline">\(\rho:\
 J\to\mathbb{Z}^3\)</span>。任何 <span class="math inline">\(w\in
-J\)</span> 都对应 Cayley 图 <span class="math inline">\(\mathcal{G}(T_0)\)</span> 中的一条闭曲线 <span class="math inline">\(\gamma\)</span>，我们规定 <span class="math inline">\(\rho(w)=(n_1,n_2,n_3)\in\mathbb{Z}^3\)</span>，其中
+J\)</span> 都对应 Cayley 图 <span class="math inline">\(\mathcal{G}(T_0)\)</span> 中的一条闭路径 <span class="math inline">\(\gamma\)</span>，我们规定 <span class="math inline">\(\rho(w)=(n_1,n_2,n_3)\in\mathbb{Z}^3\)</span>，其中
 <span class="math inline">\(n_i\)</span> 是 <span class="math inline">\(\gamma\)</span> 关于所有类型为 <span class="math inline">\(C_i\)</span> 的六边形的环绕数之和： <span class="math display">\[n_i=\sum_{h\in C_i}n(\gamma, h),\quad \text{where
 }n(\gamma,h)=\frac{1}{2\pi i}\int_{z\in
 \gamma}\frac{1}{z-h}\,\mathrm{d}z.\]</span> <span class="math inline">\(h\)</span> 在 <span class="math inline">\(C_i\)</span> 内的位置对结果没有影响，因为环绕数在
 <span class="math inline">\(\mathbb{C}\setminus\gamma\)</span>
 的每个连通分支上是常数。</p>
-<p>由于 <span class="math inline">\(\gamma\)</span>
-的内部只包含有限多个六边形，<span class="math inline">\(\gamma\)</span>
-外部的六边形对上式的贡献都是 0，所以上面的求和只有有限多项。</p>
+<p>由于充分远的六边形都位于 <span class="math inline">\(\mathbb
+C\setminus \gamma\)</span> 的无界连通分支中，它们的环绕数为
+0，所以上面的求和只有有限多项非零。</p>
 <p>我们来计算下每种骨头的环绕数。以边界字为 <span class="math inline">\(w_1\)</span> 的骨头为例：</p>
 <p><img src="/images/tilinggroup/winding.svg" class="fig" width="300"></p>
 <p>它关于两个 <span class="math inline">\(C_1\)</span>
 类型的正六边形分别逆时针和顺时针各转了一圈，合起来绕了 0
 圈；它没有环绕过 <span class="math inline">\(C_2\)</span> 和 <span class="math inline">\(C_3\)</span> 类型的正六边形，关于这俩的环绕数都是
-0，所以这块骨头对应的三元组是 <span class="math inline">\((0,0,0)\)</span>。对另外两种骨头也是如此。由于共轭的路径具有相同的环绕数，以及路径乘积（首尾相接）的环绕数等于各路径环绕数的和，所以
-<span class="math inline">\(T\)</span> 中任何元素对应的三元组都是 <span class="math inline">\((0,0,0)\)</span>。</p>
+0，所以这块骨头对应的三元组是 <span class="math inline">\((0,0,0)\)</span>。对另外两种骨头也是如此。</p>
+<p>但是仅仅知道 <span class="math inline">\(w_1,w_2,w_3\in\ker\rho\)</span> 还不够。因为 <span class="math inline">\(T\)</span> 是它们在 <span class="math inline">\(F\)</span>
+中生成的正规闭包，我们还需要说明，它们在 <span class="math inline">\(F\)</span> 中的任意共轭仍然属于 <span class="math inline">\(\ker\rho\)</span>。</p>
+<p>设 <span class="math inline">\(x\in F\)</span>，<span class="math inline">\(w\in J\)</span>。闭道路 <span class="math inline">\(\gamma_{xwx^{-1}}\)</span> 可以分为三段：沿着
+<span class="math inline">\(x\)</span> 从单位元走到顶点 <span class="math inline">\(xJ\)</span>，然后在该顶点处走一遍 <span class="math inline">\(w\)</span>
+对应的闭道路，最后原路返回单位元。第一段和第三段互为反向路径，因此它们在线积分中的贡献完全抵消。剩下的中间部分正是
+<span class="math inline">\(\gamma_w\)</span> 在 <span class="math inline">\(T_0\)</span> 的元素 <span class="math inline">\(xJ\)</span>
+所对应的欧氏等距变换下的像。这个等距变换保持六边形的类型，但它可能保持或反转平面的取向。因此
+<span class="math inline">\(\rho(xwx^{-1})=\pm \rho(w)\)</span>。对
+<span class="math inline">\(w_1,w_2,w_3\)</span> 来说它们满足 <span class="math inline">\(\rho(w_i)=0\)</span>，所以它们的所有 <span class="math inline">\(F\)</span>- 共轭元都属于 <span class="math inline">\(\ker\rho\)</span>，因此 <span class="math inline">\(T\subseteq\ker\rho\)</span>。</p>
 <p>然而我们上面已经看到 <span class="math inline">\(T_n\)</span>
 的边界字对应的路径是绕着 <span class="math inline">\(C_1,C_2,C_3\)</span> 分别顺时针转 <span class="math inline">\(n/3\)</span> 圈，其环绕数是 <span class="math inline">\((-n/3,-n/3,-n/3)\ne(0, 0, 0)\)</span>，这就说明了
 <span class="math inline">\(\pi\notin T\)</span>。</p>

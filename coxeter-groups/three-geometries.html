@@ -26,8 +26,7 @@
     
     <meta name="description" content="本文主要参考了 (Howlett, Rowley, and Taylor
 1997)。
-书接 上回，我们来研究内积
-\((\cdot,\cdot)\)
+书接 上回，我们来研究内积 \((\cdot,\cdot)\)
 分别是有限、仿射和双曲三种情形时，Tits 锥 \(\mathcal{C}\) 和对偶锥 \(\mathcal{C}^\ast\) 的结构。">
     
     
@@ -303,8 +302,7 @@
                                                 
 <p>本文主要参考了 <span class="citation" data-cites="Howlett1997">(<a href="#ref-Howlett1997" role="doc-biblioref">Howlett, Rowley, and Taylor
 1997</a>)</span>。</p>
-<p>书接 <a href="coxeter-groups-tits-cone">上回</a>，我们来研究内积
-<span class="math inline">\((\cdot,\cdot)\)</span>
+<p>书接 <a href="tits-cone">上回</a>，我们来研究内积 <span class="math inline">\((\cdot,\cdot)\)</span>
 分别是有限、仿射和双曲三种情形时，Tits 锥 <span class="math inline">\(\mathcal{C}\)</span> 和对偶锥 <span class="math inline">\(\mathcal{C}^\ast\)</span> 的结构。</p>
 <span id="more"></span>
 <h1 id="有限">有限</h1>
@@ -317,7 +315,8 @@
 <p><strong>证明</strong>：</p>
 <p><span class="math inline">\(\Rightarrow\)</span>: <span class="math inline">\(W\)</span> 是有限群说明 <span class="math inline">\(\Phi\)</span> 也是有限的，从而对任何 <span class="math inline">\(x\in V^\ast\)</span> 都有 <span class="math inline">\(|\mathrm{Neg}(x)|\leq
 |\Phi^+|&lt;\infty\)</span>，从而 <span class="math inline">\(x\in\mathcal{C}\)</span>。</p>
-<p><span class="math inline">\(\Leftarrow\)</span>: 由 <span class="math inline">\(\mathcal{C}=V^\ast\)</span> 可得 <span class="math inline">\(-\mathcal{D}\in\mathcal{C}\)</span>。对任何 <span class="math inline">\(x\in-\mathcal{D}\)</span>，我们都有 <span class="math inline">\(\Phi^+\subseteq \mathrm{Neg}(x)\)</span>，根据 <a href="/coxeter-groups/tits-cone/#tits-neg-finite">Tits
+<p><span class="math inline">\(\Leftarrow\)</span>: 由 <span class="math inline">\(\mathcal{C}=V^\ast\)</span> 可得 <span class="math inline">\(-\mathcal{D}\subseteq\mathcal{C}\)</span>。对任何
+<span class="math inline">\(x\in-\mathcal{D}\)</span>，我们都有 <span class="math inline">\(\Phi^+\subseteq \mathrm{Neg}(x)\)</span>，根据 <a href="/coxeter-groups/tits-cone/#tits-neg-finite">Tits
 锥的刻画</a>，<span class="math inline">\(|\Phi^+|=|\mathrm{Neg}(x)|&lt;\infty\)</span>，<a href="/coxeter-groups/root-system/#w-phi-both-finite-infinite">从而
 <span class="math inline">\(W\)</span> 是有限群</a>。</p>
 <p><span class="math inline">\(\blacksquare\)</span></p>
@@ -325,7 +324,7 @@
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
 </span>在下图中，<span class="math inline">\(W\)</span> 是正二十面体群
 <span class="math inline">\(H_3\)</span>，红色的锥是基本区域，它在 <span class="math inline">\(W\)</span> 的作用下铺满了整个空间，所以 <span class="math inline">\(\mathcal{C}=\mathbb{R}^3\)</span>。<span class="math inline">\(\mathcal{C}\)</span>
-与球面的交给出球面上的密铺。如果用直线而不是球面上的弧连接顶点的话，得到的是正二十面体。</p>
+与球面的交给出球面上的密铺。</p>
 <p><img src="/images/coxeter/Tits_finite.png" class="fig" width="350"></p>
 </div>
 <h1 id="无限群的-tits-锥">无限群的 Tits 锥</h1>
@@ -394,9 +393,19 @@ W}w_1\overline{\mathcal{D}}\cap w_2(-\overline{\mathcal{D}}).\]</span>
 2.3</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(W\)</span> 不可约且无限，则对偶锥 <span class="math inline">\(\mathcal{C}^\ast\ne\{0\}\)</span>。</p>
 </div>
 <p><strong>证明</strong>：用反证法，若不然，则 <span class="math inline">\(\overline{\mathcal{C}}=\mathcal{C}^{\ast\ast}=V^\ast\)</span>
-是全空间。由于一个凸集的内点和它的闭包的内点集相同（证明见这个 <a href="/papers/sCONVs.pdf">附件</a>），所以 <span class="math inline">\(\mathcal{C}=V\)</span>，这与 <a href="#tits-cone-pointed" title="推论 2.2">推论 2.2</a> 的结论 <span class="math inline">\(\mathcal{C}\)</span> 是点锥矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+是全空间。由于一个凸集的内点和它的闭包的内点集相同（证明见这个 <a href="/papers/sCONVs.pdf">附件</a>），所以 <span class="math inline">\(\mathcal{C}=V^\ast\)</span>，这与 <a href="#tits-cone-pointed" title="推论 2.2">推论 2.2</a> 的结论 <span class="math inline">\(\mathcal{C}\)</span> 是点锥矛盾。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="仿射">仿射</h1>
-<p>在本节中，我们需要用到不可约仿射 Coxeter 群的一些基本事实 <span class="citation" data-cites="Humphreys90">(见 <a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, secs. 2.6, 6.5</a>)</span>。</p>
+<div class="statement definition plain">
+<p><span class="statement-heading"><span class="statement-label">定义
+3.1</span>.</span><span class="statement-spah"> </span>如果内积 <span class="math inline">\((\cdot,\cdot)\)</span>
+是半正定的，但不是正定的，就称 <span class="math inline">\(W\)</span>
+是仿射的。</p>
+</div>
+<p>这个定义中似乎没有限制 <span class="math inline">\(\mathrm{rad}(V)\)</span>
+的维数。实际上在不可约的条件下，<span class="math inline">\(\mathrm{rad}(V)\)</span>
+一定是一维的，它可以由一个向量 <span class="math inline">\(\delta\)</span> 生成。<span class="math inline">\(\delta\)</span> 在 <span class="math inline">\(\Delta\)</span> 这组基下的所有系数都大于
+0。这些基本事实的证明可以见 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, secs. 2.6,
+6.5</a>)</span>，本文这里不再重复：</p>
 <div id="affine-facts" class="statement simple plain unnumbered">
 <p>设 <span class="math inline">\(W\)</span> 是不可约、仿射 Coxeter
 群，则：</p>
@@ -404,52 +413,117 @@ W}w_1\overline{\mathcal{D}}\cap w_2(-\overline{\mathcal{D}}).\]</span>
 <li><span class="math inline">\(\mathrm{rad}(V)\)</span> 的维数是
 1，它由一个向量 <span class="math inline">\(\delta=\sum_{s\in
 S}z_s\alpha_s\)</span> 生成，其中每个 <span class="math inline">\(z_s&gt;0\)</span>。</li>
-<li><span class="math inline">\(\delta\)</span> 的坐标 <span class="math inline">\(z=(z_1,\ldots,z_s)^T\)</span> 满足 <span class="math inline">\(Az=z^TAz=0\)</span>，其中 <span class="math inline">\(A=((\alpha_s, \alpha_t))_{s,t\in S}\)</span>
+<li><span class="math inline">\(\delta\)</span> 的坐标 <span class="math inline">\(z=(z_1,\ldots,z_s)^\mathsf{T}\)</span> 满足 <span class="math inline">\(Az=0\)</span>，<span class="math inline">\(z^\mathsf{T}Az=0\)</span>，其中 <span class="math inline">\(A=((\alpha_s, \alpha_t))_{s,t\in S}\)</span>
 是内积 <span class="math inline">\((\cdot,\cdot)\)</span> 的 Gram
 矩阵。</li>
 <li>对所有 <span class="math inline">\(w\in W\)</span> 有 <span class="math inline">\(w\delta=\delta\)</span>。</li>
-<li><span class="math inline">\(A\)</span> 的任何 <span class="math inline">\(\leq n-1\)</span> 阶主子式都是正定的。</li>
+<li><span class="math inline">\(A\)</span> 的任何 <span class="math inline">\(\leq n-1\)</span> 阶真主子矩阵都是正定的。即对任何
+<span class="math inline">\(I\subsetneqq S\)</span>，标准抛物子群 <span class="math inline">\(W_I\)</span> 都是有限群；或者等价地，从 <span class="math inline">\(W\)</span> 的 Coxeter 图 <span class="math inline">\(\Gamma\)</span>
+中删去至少一个顶点以后，剩下的子图是有限的。</li>
 </ol>
 </div>
-<p>我们花点笔墨解释下这几个性质的含义。回忆 <span class="math inline">\(W\)</span> 称作仿射是指内积 <span class="math inline">\((\cdot,\cdot)\)</span>
-是半正定但不是正定的。这个定义中似乎没有要求 <span class="math inline">\((\cdot,\cdot)\)</span> 的惯性指数中有几个
-0，但是上面的 1, 2 告诉我们，在 <span class="math inline">\(W\)</span>
-不可约的前提下，<span class="math inline">\((\cdot,\cdot)\)</span>
-的符号中有且只有一个 0，并且 <span class="math inline">\(\mathrm{rad}(V)\)</span> 可以由一个向量 <span class="math inline">\(\delta\)</span> 生成，并且 <span class="math inline">\(\delta\)</span> 的所有系数都大于 0。</p>
-<p>4 说的是对任何 <span class="math inline">\(I\subsetneqq
-S\)</span>，标准椭圆子群 <span class="math inline">\(W_I\)</span>
-都是有限群；或者等价地，从 <span class="math inline">\(W\)</span> 的
-Coxeter 图 <span class="math inline">\(\Gamma\)</span>
-中删去至少一个顶点以后，剩下的子图是有限的。</p>
 <div id="tits-cone-affine" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-3.1</span>.</span><span class="statement-spah">
-</span>在仿射的情形，<span class="math inline">\(\mathcal{C}^\ast\)</span> 是一条射线：<span class="math inline">\(\mathcal{C}^\ast=\mathbb{R}_{\geq0}\delta\)</span>。<span class="math inline">\(\mathcal{C}\)</span> 是以 <span class="math inline">\(\delta\)</span> 为法向量的半空间加上原点：<span class="math inline">\(\mathcal{C}=\{0\}\cup\{\delta &gt;
-0\}\)</span>。</p>
+3.2</span>.</span><span class="statement-spah">
+</span>在仿射的情形，<span class="math inline">\(\mathcal{C}^\ast\)</span> 是一条射线：<span class="math inline">\(\mathcal{C}^\ast=\mathbb{R}_{\geq0}\delta\)</span>。<span class="math inline">\(\mathcal{C}\)</span> 是以 <span class="math inline">\(\delta\)</span> 为法向量的半空间加上原点： <span class="math display">\[\mathcal{C}=\{0\}\cup\{\delta &gt; 0\}.\]</span>
+这里 <span class="math display">\[\{\delta&gt;0\}=\{x\in V^\ast \mid
+\langle\delta,x\rangle&gt;0\}.\]</span></p>
 </div>
-<p><strong>证明</strong>：根据 <a href="#dual-cone-non-trivial" title="推论 2.3">推论 2.3</a> 可知 <span class="math inline">\(\mathcal{C}^\ast\ne\{0\}\)</span>。结合 <a href="/coxeter-groups/tits-cone/#dual-cone-nonspace"><span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量范数 <span class="math inline">\(\leq0\)</span></a> 以及 <span class="math inline">\((\cdot,\cdot)\)</span> 半正定可得 <span class="math inline">\(\mathcal{C}^\ast\subseteq\mathbb{R}\delta\)</span>。又因为
-<a href="/coxeter-groups/tits-cone/#tits-cone-dual-pointed"><span class="math inline">\(\mathcal{C}^\ast\)</span> 是点锥</a>，所以 <span class="math inline">\(\mathcal{C}^\ast\)</span> 等于 <span class="math inline">\(\mathbb{R}_{\geq0}\delta\)</span> 或者 <span class="math inline">\(\mathbb{R}_{\leq0}\delta\)</span> 之一。由于 <a href="/coxeter-groups/tits-cone/#tits-cone-dual"><span class="math inline">\(\mathcal{C}^\ast\subset\mathrm{cone}(\Delta)\)</span></a>，以及
-<span class="math inline">\(\delta\)</span> 是 <span class="math inline">\(\Delta\)</span> 的正线性组合，所以只能是 <span class="math inline">\(\mathcal{C}^\ast=\mathbb{R}_{\geq0}\delta\)</span>。</p>
-<p>再来分析 <span class="math inline">\(\mathcal{C}\)</span>。取对偶得到
-<span class="math inline">\(\overline{\mathcal{C}}=\mathcal{C}^{\ast\ast}=\{\delta\geq0\}\)</span>。由于一个凸集的内点和它的闭包的内点集相同，所以
-<span class="math inline">\(\mathcal{C}^\circ=\{\delta&gt;0\}\)</span>，于是
-<span class="math display">\[\{\delta&gt;0\}\subset\mathcal{C}\subset\overline{
-\mathcal{C} }=\{\delta\geq0\}.\]</span></p>
-<p>对任何 <span class="math inline">\(x\in\{\delta=0\}\)</span>，若
-<span class="math inline">\(x\in\mathcal{C}\)</span>，则存在 <span class="math inline">\(w\in W\)</span> 和 <span class="math inline">\(y\in\overline{\mathcal{D}}\)</span> 使得 <span class="math inline">\(x=wy\)</span>。于是 <span class="math display">\[0
-= \langle \delta,\,x\rangle=\langle \delta,\,wy\rangle=\langle
-w^{-1}\delta,\,y\rangle=\langle \delta,\,y\rangle=\sum_{s\in
-S}z_s\langle \alpha_s,\,y\rangle.\]</span> 然而每个 <span class="math inline">\(z_s&gt;0\)</span>，并且由于 <span class="math inline">\(y\in\overline{\mathcal{D}}\)</span> 所以每个 <span class="math inline">\(\langle
-\alpha_s,\,y\rangle\geq0\)</span>，这只能是 <span class="math inline">\(\langle \alpha_s,\,y\rangle=0\)</span> 对所有
-<span class="math inline">\(\alpha_s\in\Delta\)</span> 成立，这导致
-<span class="math inline">\(y=0\)</span>，从而 <span class="math inline">\(x=0\)</span>，所以超平面 <span class="math inline">\(\{\delta=0\}\)</span> 中属于 <span class="math inline">\(\mathcal{C}\)</span> 的只有 0。这就证明了 <span class="math inline">\(\mathcal{C}=\{0\}\cup\{\delta&gt;0\}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<p><strong>证明</strong>：由于 <span class="math inline">\(W\delta=\delta\)</span>，并且 <span class="math inline">\(\delta=\sum_{s\in
+S}z_s\alpha_s,\,(z_s&gt;0)\)</span>， 对任意 <span class="math inline">\(x=wy\in\mathcal{C}\)</span>，其中 <span class="math inline">\(y\in\overline{\mathcal{D}}\)</span>，有 <span class="math display">\[\langle\delta,x\rangle=\langle
+w^{-1}\delta,w^{-1}x\rangle=\langle\delta,y\rangle=\sum_{s\in
+S}z_s\langle\alpha_s,y\rangle\geq0.\]</span> 等号成立当且仅当所有 <span class="math inline">\(\langle\alpha_s,y\rangle=0\)</span>，即 <span class="math inline">\(y=0\)</span>，从而 <span class="math inline">\(x=0\)</span>。所以 <span class="math display">\[\mathcal{C}\subseteq
+\{0\}\cup\{\delta&gt;0\}.\]</span> 并且 <span class="math inline">\(\delta\)</span> 在 <span class="math inline">\(\mathcal{C}\)</span> 上非负，故 <span class="math inline">\(\delta\in\mathcal{C}^\ast\)</span>。</p>
+<p>另一方面，<a href="/coxeter-groups/tits-cone/#dual-cone-nonspace">前文中证明了</a>
+任意 <span class="math inline">\(v\in\mathcal{C}^\ast\)</span> 都满足
+<span class="math inline">\((v,v)\le0\)</span>。而仿射情形下内积半正定，所以必有
+<span class="math inline">\((v,v)=0\)</span>。因此 <span class="math display">\[\mathcal{C}^\ast\subset\mathrm{rad}{V}=\mathbb{R}\delta.\]</span>
+结合 <span class="math inline">\(\delta\in\mathcal{C}^\ast\)</span> 和
+<a href="/coxeter-groups/tits-cone/#tits-cone-dual-pointed"><span class="math inline">\(\mathcal{C}^\ast\)</span> 是点锥</a>，<span class="math inline">\(-\delta\notin\mathcal{C}^\ast\)</span>，便得到
+<span class="math display">\[\mathcal{C}^\ast=\mathbb{R}_{\geq0}\delta.\]</span>
+于是 <span class="math display">\[\overline{ \mathcal{C}
+}=(\mathcal{C}^\ast)^\ast=\{\delta\ge0\}.\]</span>
+由于凸集与其闭包具有相同的内部，故 <span class="math display">\[\{\delta&gt;0\}=(\overline{ \mathcal{C} })^\circ
+= \mathcal{C}^\circ\subseteq\mathcal{C}.\]</span> 即得 <span class="math display">\[\mathcal{C}=\{0\}\cup{\delta&gt;0}.\]</span>
+<span class="math inline">\(\blacksquare\)</span></p>
+<p>由于内积 <span class="math inline">\((\cdot,\cdot)\)</span>
+是半正定的，且 <span class="math inline">\(\mathrm{rad}(V)=\mathbb{R}\delta\)</span>，所以
+<span class="math inline">\((\cdot,\cdot)\)</span> 在商空间 <span class="math inline">\(V/\mathbb{R}\delta\)</span>
+上诱导了一个正定的内积。又因为 <span class="math inline">\(W\)</span>
+固定 <span class="math inline">\(\delta\)</span>，所以 <span class="math inline">\(W\)</span> 也是商空间 <span class="math inline">\(V/\mathbb{R}\delta\)</span>
+上的正交变换群。于是我们有同态 <span class="math display">\[W\to
+\mathrm{GL}(V/\mathbb{R}\delta).\]</span> 记这个同态的核为 <span class="math inline">\(K\)</span>，同态的像为 <span class="math inline">\(W_0\)</span>。</p>
+<p>记 <span class="math display">\[ H_0 = \{x\in V^\ast \mid
+\langle\delta,x\rangle=0\}.\]</span> 根据同构 <span class="math display">\[V/\mathbb{R}\delta\cong H_0.\]</span> <span class="math inline">\(H_0\)</span> 是 <span class="math inline">\(V^\ast\)</span> 中一个带有 Euclidean
+度量的超平面。</p>
+<p>进一步，记 <span class="math display">\[H_1 = \{x\in V^\ast \mid
+\langle\delta,x\rangle=1\}.\]</span> 则 <span class="math inline">\(H_1\)</span> 同样是带有 Euclidean
+度量的超平面，并且 <span class="math inline">\(W\)</span> 也保持 <span class="math inline">\(H_1\)</span> 不变： <span class="math display">\[1=\langle\delta, x\rangle = \langle w\delta,
+wx\rangle=\langle\delta, wx\rangle.\quad w\in W,\, x\in H_1.\]</span>
+所以 <span class="math inline">\(W\)</span> 也是 <span class="math inline">\(H_1\)</span> 上的等距变换群。</p>
+<p>我们来分析 <span class="math inline">\(W\)</span> 是如何作用在 <span class="math inline">\(H_1\)</span> 上的。</p>
+<p>首先记 <span class="math inline">\(\mathcal{D}_1 = \mathcal{D}\cap
+H_1\)</span>，于是 <span class="math inline">\(\overline{\mathcal{D}}_1
+= \overline{\mathcal{D}}\cap H_1\)</span>。</p>
+<div class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.3</span>.</span><span class="statement-spah"> </span><span class="math display">\[H_1 = \bigcup_{w\in
+W}w\overline{\mathcal{D}}_1.\]</span></p>
+</div>
+<p><strong>证明</strong>：对任何 <span class="math inline">\(x\in
+H_1\subset\mathcal{C}\)</span>，存在 <span class="math inline">\(w\in
+W\)</span> 使得 <span class="math inline">\(y=wx\in\overline{\mathcal{D}}\)</span>。由于 <span class="math inline">\(W\)</span> 保持 <span class="math inline">\(\{\delta=1\}\)</span>，所以 <span class="math inline">\(y\in\overline{\mathcal{D}}_1\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
 </span>在下图中，<span class="math inline">\(W\)</span> 是仿射 <span class="math inline">\(\widetilde{A}_2\)</span>，红色的锥是基本区域，它在
 <span class="math inline">\(W\)</span> 的作用下铺满了整个上半空间，所以
-<span class="math inline">\(\mathcal{C}=\{z&gt;0\}\cup\{0\}\)</span>。<span class="math inline">\(\mathcal{C}\)</span> 与平面 <span class="math inline">\(z=1\)</span> 的交给出二维的 Euclidean 密铺。</p>
+<span class="math inline">\(\mathcal{C}=\{z&gt;0\}\cup\{0\}\)</span>。<span class="math inline">\(\mathcal{C}\)</span> 与 <span class="math inline">\(H_1\)</span> 的交给出二维的正三角形密铺。</p>
 <p><img src="/images/coxeter/Tits_affine.png" class="fig" width="350"></p>
 </div>
+<p>记 <span class="math inline">\(\overline{\Phi}\)</span> 是根系 <span class="math inline">\(\Phi\)</span> 在商空间 <span class="math inline">\(V/\mathbb{R}\delta\)</span> 中的像。</p>
+<div id="phi0-finite" class="statement lemma plain">
+<p><span class="statement-heading"><span class="statement-label">引理
+3.4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(|\overline{\Phi}|&lt;\infty\)</span>。</p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(\beta\in\Phi\)</span>，记 <span class="math display">\[H_\beta =\{x\in H_1\mid \langle\beta, x\rangle =
+0\}.\]</span> 这是 <span class="math inline">\(H_1\)</span> 中余维数为 1
+的超平面，你可以理解为一条仿射“直线”。</p>
+<p>设 <span class="math inline">\(\beta' = \beta +
+c\delta\,(c\in\mathbb{R})\)</span>，则 <span class="math inline">\(\beta'\)</span> 和 <span class="math inline">\(\beta\)</span> 在 <span class="math inline">\(V/\mathbb{R}\delta\)</span> 中是同一个等价类。并且
+<span class="math display">\[H_{\beta'} = \{x\in H_1\mid
+\langle\beta, x\rangle + c = 0\}.\]</span> 即在 <span class="math inline">\(H_1\)</span> 中，<span class="math inline">\(H_{\beta'}\)</span> 是一条与 <span class="math inline">\(H_\beta\)</span> 平行的仿射直线。</p>
+<p>于是要证明 <span class="math inline">\(\overline{\Phi}\)</span>
+有限，我们只要证明集合 <span class="math inline">\(\{H_\beta\mid
+\beta\in\Phi\}\)</span> 只能包含有限多个互相不平行的方向。</p>
+<p>设 <span class="math inline">\(H_{\beta_1},H_{\beta_2}\)</span> 是
+<span class="math inline">\(H_1\)</span>
+中两个不平行（从而相交）的直线。取 <span class="math inline">\(x\in
+H_{\beta_1}\cap H_{\beta_2}\)</span>，则存在 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(y
+= wx \in\overline{\mathcal{D}}_1\)</span>，从而 <span class="math display">\[y\in wH_{\beta_1}\cap wH_{\beta_2}\cap
+\overline{\mathcal{D}}_1.\]</span> 于是 <span class="math inline">\(wH_{\beta_1},wH_{\beta_2}\)</span> 都是与 <span class="math inline">\(\overline{\mathcal{D}}_1\)</span> 相交的直线。而
+<span class="math inline">\(w\)</span> 是等距变换，所以保持夹角： <span class="math display">\[\angle (H_{\beta_1},H_{\beta_2}) = \angle
+(wH_{\beta_1},wH_{\beta_2}).\]</span></p>
+<p>我们来证明只有有限多个不同的直线 <span class="math inline">\(H_\beta\)</span> 可以与 <span class="math inline">\(\overline{\mathcal{D}}_1\)</span> 相交。</p>
+<p>事实上，若 <span class="math inline">\(x\in
+H_\beta\cap\overline{\mathcal{D}}_1\)</span>，则反射 <span class="math inline">\(s_\beta\)</span> 固定 <span class="math inline">\(x\)</span>，从而 <span class="math display">\[s_\beta\in\mathrm{Stab}(x) = W_{I(x)},\quad I(x)=
+\{s\in S\mid \langle\alpha_s, x\rangle=0\}.\]</span> 因为 <span class="math inline">\(x\in H_1\)</span>，所以 <span class="math inline">\(I(x)\subsetneq
+S\)</span>。在不可约仿射的情形下，真子群 <span class="math inline">\(W_{I(x)}\)</span> 是有限标准抛物子群。这样的 <span class="math inline">\(W_{I(x)}\)</span> 只有有限多个，因此这样的 <span class="math inline">\(\beta\)</span>
+也只有有限多个。所以确实只有有限多个不同的直线 <span class="math inline">\(H_\beta\)</span> 可以与 <span class="math inline">\(\overline{\mathcal{D}}_1\)</span> 相交。</p>
+<p>既然与 <span class="math inline">\(\overline{\mathcal{D}}_1\)</span>
+相交的 <span class="math inline">\(H_\beta\)</span>
+个数有限，它们之间的非零夹角的可能的取值也有限。从而所有 <span class="math inline">\(H_\beta\)</span>
+之间的非零夹角的可能的取值也有限。于是存在正数 <span class="math inline">\(\epsilon&gt;0\)</span> 使得对任意两个不平行的
+<span class="math inline">\(H_{\beta_1},H_{\beta_2}\)</span> 都有 <span class="math display">\[\angle (H_{\beta_1},H_{\beta_2})
+\ge\epsilon.\quad \beta_1,\beta_2\in\Phi.\]</span> 这些 <span class="math inline">\(H_\beta\)</span>
+的法向量是单位球面的子集，而球面是一个紧集，如果有无穷多个不同的法向量，则它们有收敛的子序列。这与不同法向量之间的夹角至少是
+<span class="math inline">\(\epsilon\)</span> 矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="w0-finite" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+3.5</span>.</span><span class="statement-spah"> </span><span class="math inline">\(W_0\)</span> 是有限群。</p>
+</div>
+<p><strong>证明</strong>：<span class="math inline">\(W_0\)</span> 置换
+<span class="math inline">\(\overline{\Phi}\)</span>，所以有群同态 <span class="math inline">\(W_0\to S_{|\overline{\Phi}|}\)</span>。如果 <span class="math inline">\(w\in W_0\)</span> 固定所有的 <span class="math inline">\(\overline{\Phi}\)</span>，则它必然也固定 <span class="math inline">\(\{\overline{\alpha_s}\}\)</span>。集合 <span class="math inline">\(\overline\{\alpha_s\}\)</span> 张成 <span class="math inline">\(V/\mathbb{R}\delta\)</span>，于是 <span class="math inline">\(w\)</span> 作用在 <span class="math inline">\(V/\mathbb{R}\delta\)</span> 上是恒等变换。即 <span class="math inline">\(W_0\to S_{|\overline{\Phi}|}\)</span>
+这个同态是忠实的。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="双曲">双曲</h1>
 <p>双曲的情形 Tits 锥的结构较为复杂，通常难以完整刻画。</p>
 <p>我们先介绍一些关于 Lorentzian 内积的基础知识，详见 <span class="citation" data-cites="ratcliffe">(<a href="#ref-ratcliffe" role="doc-biblioref">Ratcliffe 2006, vol. 149, chap. 3</a>)</span>。</p>
@@ -520,9 +594,6 @@ z^\perp,c\in\mathbb{R})\)</span> 的形式。</p>
 <li>如果 <span class="math inline">\(u,v\)</span> 中至少有一个是
 time-like 的向量，则 <span class="math inline">\(u\sim v\)</span>
 当且仅当 <span class="math inline">\((u,v)&lt;0\)</span>。</li>
-<li>若 <span class="math inline">\(u\in\mathcal{Q}_+,\,v\in\mathcal{Q}_-\)</span>
-线性无关，则存在 <span class="math inline">\(a,b&gt;0\)</span> 使得
-<span class="math inline">\(au + bv\)</span> 是 space-like 的。</li>
 </ol>
 </div>
 <p><strong>证明</strong>：</p>
@@ -537,8 +608,6 @@ time-like 的向量，则 <span class="math inline">\(u\sim v\)</span>
 的。反方向是显然的。</li>
 <li><span class="math inline">\(\Rightarrow\)</span>：结合 1, 2
 两点即得。<span class="math inline">\(\Leftarrow\)</span>：如果 <span class="math inline">\(u\not\sim v\)</span> 则 <span class="math inline">\(u\sim -v\)</span>，由 1 有 <span class="math inline">\((u,-v)\leq0\)</span>，从而 <span class="math inline">\((u,v)\geq0\)</span>，矛盾。</li>
-<li>由已知 <span class="math inline">\(c&gt;0,\,d&lt;0\)</span>。取
-<span class="math inline">\((-d)u + cv\in z^\perp\)</span> 即可。<span class="math inline">\(\blacksquare\)</span></li>
 </ol>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
@@ -558,15 +627,11 @@ time-like 的向量，则 <span class="math inline">\(u\sim v\)</span>
 \mathcal{Q}_+,\,\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span> 中必有一个是
 <span class="math inline">\(\{0\}\)</span>。</p>
 </div>
-<p>这个结论应该是很直观的，如果 <span class="math inline">\(\mathcal{C}^\ast\)</span> 同时包含 <span class="math inline">\(\mathcal{Q}_+,\mathcal{Q}_-\)</span>
-中的非零向量的话，由于 <span class="math inline">\(\mathcal{C}^\ast\)</span>
-是点锥，这两个向量必然不共线，从而它们的非负线性组合可以给出 space-like
-的向量，这与 <span class="math inline">\(\mathcal{C}^\ast\)</span> 不含
-space-like 的向量矛盾。</p>
 <p><strong>证明</strong>：若不然，设 <span class="math inline">\(u\in\mathcal{C}^\ast\cap\mathcal{Q}_+,\,v\in
-\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span> 是非零向量，由于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 是点锥，所以 <span class="math inline">\(u,v\)</span> 线性无关。根据 <a href="#connected-component-dot" title="命题 4.6">命题 4.6</a>，<span class="math inline">\(u,v\)</span> 的正线性组合中包含 space-like
-的向量，这与 <span class="math inline">\(\mathcal{C}^\ast\subset\mathcal{Q}\)</span>
-矛盾。<span class="math inline">\(\blacksquare\)</span></p>
+\mathcal{C}^\ast\cap\mathcal{Q}_-\)</span> 是非零向量，由于 <span class="math inline">\(\mathcal{C}^\ast\)</span> 是点锥，所以 <span class="math inline">\(u,v\)</span> 不可能是共线的 light-like
+的向量。它们位于 <span class="math inline">\(\mathcal{Q}\)</span>
+的不同分支，从而 <span class="math inline">\((u,v)&gt;0\)</span>。然而
+<span class="math inline">\(u,v\in\mathcal{C}^\ast\)</span> 导致 <span class="math inline">\((u,v)\le0\)</span>，矛盾。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="dual-cone-belongs-branch" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
 4.9</span>.</span><span class="statement-spah">
