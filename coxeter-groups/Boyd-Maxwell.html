@@ -384,7 +384,7 @@ v\in\mathbb{L}^{n+1}\setminus\{0\}\}.\]</span> <span class="math inline">\(\math
 <p>我们在 <span class="math inline">\(\{e_1,\ldots,e_{n+2}\}\)</span>
 这组基下计算。</p>
 <p>设 <span class="math inline">\(\mathbf{y}=y_1e_1+\cdots+y_{n+1}e_{n+1}\in\mathbb{R}^{n+1}\)</span>，则
-<span class="math display">\[\mathbf{y}\in S_n\Leftrightarrow
+<span class="math display">\[\mathbf{y}\in S^n\Leftrightarrow
 |\mathbf{y}|=1\Leftrightarrow
 \mathbf{y}+e_{n+2}\in\mathbb{L}^{n+1}.\]</span> 即我们有一一映射： <span class="math display">\[
 \begin{aligned}
@@ -463,7 +463,7 @@ v,v)=1\}\)</span> 是所有 space-like 的单位向量组成的集合。</p>
 中的球（包括超平面）和 <span class="math inline">\(\mathcal{S}\)</span>
 之间的一一对应。</p>
 <p>设 <span class="math inline">\(B(\mathbf{a},r)=\{\mathbf{x}\in\mathbb{R}^n\mid
-|x-\mathbf{a}|=|r|\}\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中以 <span class="math inline">\(\mathbf{a}\)</span> 为中心，半径为 <span class="math inline">\(r\ne 0\)</span> 的球，它将 <span class="math inline">\(\mathbb{R}^n\)</span>
+|\mathbf{x}-\mathbf{a}|=|r|\}\)</span> 是 <span class="math inline">\(\mathbb{R}^n\)</span> 中以 <span class="math inline">\(\mathbf{a}\)</span> 为中心，半径为 <span class="math inline">\(r\ne 0\)</span> 的球，它将 <span class="math inline">\(\mathbb{R}^n\)</span>
 分成有界和无界两个连通分支。我们允许 <span class="math inline">\(r\)</span> 是负数以区分 <span class="math inline">\(B\)</span> 的内部和外部：</p>
 <ul>
 <li><span class="math inline">\(r&gt;0\)</span> 时 <span class="math inline">\(B\)</span> 的内部是满足 <span class="math inline">\(|\mathbf{x}-\mathbf{a}|&lt; r\)</span>
@@ -491,12 +491,12 @@ v,v)=1\}\)</span> 是所有 space-like 的单位向量组成的集合。</p>
 B\)</span> 等价于 <span class="math inline">\((\jmath(\mathbf{x}),k)=0\)</span>。<span class="math inline">\(V\)</span> 中所有形如 <span class="math inline">\((\jmath(\mathbf{x}),k)=0\,(\mathbf{x}\in\mathbb{R}^n)\)</span>
 的点构成 <span class="math inline">\(S^n_1\)</span> 与超平面 <span class="math inline">\(k^\bot\)</span> 的截线。</p>
 <p>设 <span class="math inline">\(H(\mathbf{n},d)=\{\mathbf{x}\in\mathbb{R}^n\mid
-(\mathbf{x},\mathbf{n})=d\}\)</span> 是超平面，<span class="math inline">\(\mathbf{n}\)</span> 是 <span class="math inline">\(B\)</span> 的单位法向量。我们将 <span class="math inline">\(H(\mathbf{n},d)\)</span> 对应到 <span class="math display">\[k=\mathbf{n}+ 2d e_\infty.\]</span>
+(\mathbf{x},\mathbf{n})=d\}\)</span> 是超平面，<span class="math inline">\(\mathbf{n}\)</span> 是 <span class="math inline">\(H\)</span> 的单位法向量。我们将 <span class="math inline">\(H(\mathbf{n},d)\)</span> 对应到 <span class="math display">\[k=\mathbf{n}+ 2d e_\infty.\]</span>
 不难验证同样有 <span class="math inline">\(k\in\mathcal{S}\)</span>，并且对 <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> 有 <span class="math display">\[(\imath(\mathbf{x}),k)=(\mathbf{x},\mathbf{n})-d.\]</span>
 于是：</p>
 <ul>
-<li><span class="math inline">\(\mathbf{x}\in B\)</span> 当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k)=0\)</span>；</li>
-<li><span class="math inline">\(\mathbf{x}\)</span> 属于 <span class="math inline">\(B\)</span> 的正半空间当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k)&gt;0\)</span>。</li>
+<li><span class="math inline">\(\mathbf{x}\in H\)</span> 当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k)=0\)</span>；</li>
+<li><span class="math inline">\(\mathbf{x}\)</span> 属于 <span class="math inline">\(H\)</span> 的正半空间当且仅当 <span class="math inline">\((\imath(\mathbf{x}),k)&gt;0\)</span>。</li>
 </ul>
 <p>反过来，任意 <span class="math inline">\(k\in\mathcal{S}\)</span>
 都唯一对应 <span class="math inline">\(\mathbb{R}^n\)</span>
@@ -523,71 +523,6 @@ Lorentzian 内积下，两个 space-like 的单位向量 <span class="math inlin
 为法向量的两个超平面之间的双曲距离。</li>
 </ol>
 </div>
-<p>根据内积 <span class="math inline">\((k_1,k_2)\)</span>
-的大小，可以判断球体之间的位置关系：</p>
-<ol type="1">
-<li>当 <span class="math inline">\(|(k_1,k_2)|\leq1\)</span>
-时两球相交或者相切，这时 <span class="math inline">\((k_1,k_2)=\cos\theta\)</span>，<span class="math inline">\(\theta\)</span>
-是两个球面交点处的内法向量夹角（用外法向量也可以，因为同时将内法向量变成外法向量，夹角的余弦不变）。特别地，<span class="math inline">\((k_1,k_2)=-1\)</span> 时两球外切，<span class="math inline">\((k_1,k_2)=1\)</span> 时两球内切。</li>
-<li>当 <span class="math inline">\(|(k_1,k_2)|&gt;1\)</span>
-时两球既不相交也不相切，这时 <span class="math inline">\(|(k_1,k_2)|=\cosh\eta\)</span>，<span class="math inline">\(\eta\)</span> 是 <span class="math inline">\(k_1,k_2\)</span>
-对应的双曲空间中测地线的距离。两球在 <span class="math inline">\((k_1,k_2)&lt;-1\)</span> 时没有公共的内部，在
-<span class="math inline">\((k_1,k_2)&gt;1\)</span>
-时一个完全包含另一个。</li>
-</ol>
-<table>
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr>
-<td style="text-align: center;"><span class="math inline">\((k_1,k_2)=\cos\theta(\ell_1,\ell_2)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\((k_1,k_2)=\cosh d(\ell_1,\ell_2)\)</span></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="/images/coxeter/image0.jpg" width="150"></td>
-<td style="text-align: center;"><img src="/images/coxeter/image1.jpg" width="150"></td>
-</tr>
-<tr>
-<td style="text-align: center;"><span class="math inline">\((k_1,k_2)=-\cosh d(\ell_1,\ell_2)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\((k_1,k_2)=-\cosh d(\ell_1,\ell_2)\)</span></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img src="/images/coxeter/image2.jpg" width="150"></td>
-<td style="text-align: center;"><img src="/images/coxeter/image3.jpg" width="150"></td>
-</tr>
-</tbody>
-</table>
-<p>上述结论同样适用于球面和超平面的情形。例如设 <span class="math inline">\(B_1\)</span> 是球面，<span class="math inline">\(B_2\)</span> 是超平面，<span class="math inline">\(k_2=\mathbf{n}+2de_\infty\)</span>，则 <span class="math display">\[(k_1,k_2)=\frac{(\mathbf{a}_1,\mathbf{n})-d}{r_1}.\]</span>
-此时： + 若 <span class="math inline">\(B_1,B_2\)</span> 相交，则 <span class="math inline">\((k_1,k_2)\)</span> 等于 <span class="math inline">\(B_1\)</span> 在交点处的内法向量和 <span class="math inline">\(B_2\)</span> 的法向量 <span class="math inline">\(\mathbf{n}\)</span> 夹角的余弦； + 若不相交，则
-<span class="math inline">\((k_1,k_2)\)</span> 是 <span class="math inline">\(B_1\)</span> 的球心到 <span class="math inline">\(B_2\)</span> 的有向距离除以 <span class="math inline">\(r_1\)</span>。</p>
-<p>类似地当 <span class="math inline">\(B_1,B_2\)</span>
-都是超平面时，<span class="math inline">\((k_1,k_2)=(\mathbf{n}_1,\mathbf{n}_2)\)</span>
-是它们法向量夹角的余弦。</p>
-<div id="suff-for-disjoint" class="statement proposition plain">
-<p><span class="statement-heading"><span class="statement-label">命题
-3.1</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(B_1,B_2\)</span> 是两个球，且 <span class="math inline">\(B_1,B_2\)</span> 的内部不相交。设 <span class="math inline">\(k_1,k_2\)</span> 分别是它们对应的 space-like
-的单位向量，则 <span class="math inline">\((k_1,k_2)\leq-1\)</span>。</p>
-</div>
-<div class="statement note definition unnumbered">
-<p><span class="statement-heading"><span class="statement-label">注</span>：</span><span class="statement-spah">
-</span>这个命题反过来是不对的。</p>
-</div>
-<p><strong>证明</strong>：<span class="math inline">\(B_1\)</span> 和
-<span class="math inline">\(B_2\)</span> 内部不相交有如下几种可能：</p>
-<ol type="1">
-<li><span class="math inline">\(B_1,B_2\)</span> 都是球，半径 <span class="math inline">\(r_1,r_2\)</span> 都大于 0，并且 <span class="math inline">\(r_1+r_2 \le
-|\mathbf{a}_1-\mathbf{a}_2|\)</span>。</li>
-<li><span class="math inline">\(B_1,B_2\)</span> 都是球，半径 <span class="math inline">\(r_1&gt;0,\, r_2&lt;0\)</span>，且 <span class="math inline">\(B_1\)</span> 位于 <span class="math inline">\(B_2\)</span> 另一侧的有界区域，即 <span class="math inline">\(-r_2-r_1\geq
-|\mathbf{a}_1-\mathbf{a}_2|\)</span>。</li>
-<li><span class="math inline">\(B_1\)</span> 是球，其半径 <span class="math inline">\(r_1&gt;0\)</span>；<span class="math inline">\(B_2\)</span> 是超平面，且 <span class="math inline">\(B_1\)</span> 位于 <span class="math inline">\(B_2\)</span> 的负半空间，从而其球心 <span class="math inline">\(\mathbf{a}_1\)</span> 到 <span class="math inline">\((\mathbf{n},\mathbf{x})=d\)</span> 的有向距离
-<span class="math inline">\(\leq-r_1\)</span>，即 <span class="math inline">\((\mathbf{a}_1,\mathbf{n})-d\leq
--r_1\)</span>。</li>
-<li><span class="math inline">\(B_1,B_2\)</span>
-是互相平行的超平面，且法向量相反的，即 <span class="math inline">\((\mathbf{n}_1,\mathbf{n}_2)=-1\)</span>。</li>
-</ol>
-<p>不难验证这些都可以推出 <span class="math inline">\((k_1,k_2)\leq-1\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="球的反演">球的反演</h1>
 <p>这一节读者可以参考 <span class="citation" data-cites="Iversen_1992">(<a href="#ref-Iversen_1992" role="doc-biblioref">Iversen 1992, sec. I.7</a>)</span>。</p>
 <div class="statement definition plain">
@@ -668,7 +603,7 @@ T(\mathcal{Q}_+^\circ)\)</span>。由于 <span class="math inline">\(T\)</span> 
 也是凸集，也在任意正数缩放下不变。</p>
 <p>引理条件告诉我们 <span class="math inline">\(K\cap
 P^+=\varnothing\)</span>。于是凸集分离定理告诉我们，这时必然存在一个仿射超平面分离
-<span class="math inline">\(K\)</span> 和 <span class="math inline">\(P\)</span>：即存在 <span class="math inline">\((\lambda,\mu)\ne(0,0)\in\mathbb{R}^2\)</span>，<span class="math inline">\(c\in\mathbb{R}\)</span> 使得 <span class="math display">\[\begin{aligned}
+<span class="math inline">\(K\)</span> 和 <span class="math inline">\(P^+\)</span>：即存在 <span class="math inline">\((\lambda,\mu)\ne(0,0)\in\mathbb{R}^2\)</span>，<span class="math inline">\(c\in\mathbb{R}\)</span> 使得 <span class="math display">\[\begin{aligned}
 &amp;\lambda x + \mu y \ge c,\quad \forall (x, y)\in P^+,\\
 &amp;\lambda x + \mu y \le c,\quad \forall (x, y)\in K.
 \end{aligned}\]</span> 由于 <span class="math inline">\(P^+\)</span> 和
@@ -700,8 +635,8 @@ k'\in\mathcal{P}\)</span> 有 <span class="math inline">\((k,k')\leq -1\)</span>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 6.2</span>.</span><span class="statement-spah"> </span>记超平面 <span class="math inline">\(\{v\in V\mid (v,e_{n+2})=1\}\)</span> 与 <span class="math inline">\(\mathcal{Q}_+\)</span> 的“截面”为 <span class="math display">\[\mathcal{H}= \{v\in \mathcal{Q}_+\mid (v,
-e_{n+2})=1\}.\]</span> 给定 <span class="math inline">\(k\in
-S\)</span>，定义球帽 <span class="math display">\[C_k =
+e_{n+2})=-1\}.\]</span> 给定 <span class="math inline">\(k\in
+\mathcal{S}\)</span>，定义球帽 <span class="math display">\[C_k =
 \{v\in\mathcal{H}\mid (v,k)\geq0\}.\]</span></p>
 </div>
 <div id="k-plus-l" class="statement lemma plain">
@@ -750,12 +685,15 @@ C_l\)</span> 中。</p>
 <ol type="1">
 <li><span class="math inline">\(\mathcal{P}\)</span>
 是一个非平凡的球堆。</li>
-<li>对 <span class="math inline">\(\mathcal{P}\)</span> 或者 <span class="math inline">\(-\mathcal{P}\)</span> 之一，其包含的任何两个球帽
-<span class="math inline">\(C_k\)</span> 和 <span class="math inline">\(C_l\)</span> 至多有一个公共点。</li>
+<li>对 <span class="math inline">\(\mathcal{P}\)</span> 或者 <span class="math inline">\(-\mathcal{P}\)</span>
+之一，其包含的任何两个不同的球帽 <span class="math inline">\(C_k\)</span> 和 <span class="math inline">\(C_l\)</span> 至多有一个公共点。</li>
 </ol>
 </div>
 <p><strong>证明</strong>：</p>
-<p>1 <span class="math inline">\(\Rightarrow\)</span> 2：设 <span class="math inline">\(k\ne l\in\mathcal{P}\)</span>，则 <span class="math inline">\(k\ne\pm l\)</span>。 <span class="math display">\[(k+l,k+l) = 2 + 2(k,l)\le0.\]</span> 因此 <span class="math inline">\(k+l\in\mathcal{Q}\)</span>。我们来证明，所有的
+<p>1 <span class="math inline">\(\Rightarrow\)</span> 2：若 <span class="math inline">\(|\mathcal{P}|=2\)</span>，只要取 <span class="math inline">\(\mathcal{P}\)</span> 或者 <span class="math inline">\(-\mathcal{P}\)</span> 使得 <span class="math inline">\(k+l\in\mathcal{Q}_+\)</span> 即可。</p>
+<p>下设 <span class="math inline">\(|\mathcal{P}|\ge3\)</span>。</p>
+<p>设 <span class="math inline">\(k\ne l\in\mathcal{P}\)</span>，则
+<span class="math inline">\(k\ne\pm l\)</span>。 <span class="math display">\[(k+l,k+l) = 2 + 2(k,l)\le0.\]</span> 因此 <span class="math inline">\(k+l\in\mathcal{Q}\)</span>。我们来证明，所有的
 <span class="math inline">\(k+l\)</span> 位于 <span class="math inline">\(\mathcal{Q}\)</span> 的同一个分支中。</p>
 <p>取三个不同的元素 <span class="math inline">\(k,l,m\in\mathcal{P}\)</span>，则 <span class="math display">\[(k+l, l+m) = 1 + (k,l) + (k,m)+(l,m)\le
 -2.\]</span> 所以 <span class="math inline">\(k+l\)</span> 和 <span class="math inline">\(l+m\)</span> 位于 <span class="math inline">\(\mathcal{Q}\)</span> 的同一个分支中。</p>
@@ -764,7 +702,7 @@ C_l\)</span> 中。</p>
 <span class="math inline">\(\mathcal{P}\)</span> 或者 <span class="math inline">\(-\mathcal{P}\)</span>，可以使得这个分支就是 <span class="math inline">\(\mathcal{Q}_+\)</span>。根据 <a href="#k-plus-l" title="引理 6.3">引理 6.3</a>，<span class="math inline">\(|C_k\cap
 C_l|\le 1\)</span>。</p>
 <p>2 <span class="math inline">\(\Rightarrow\)</span> 1: 不妨设对 <span class="math inline">\(\mathcal{P}\)</span> 有 <span class="math inline">\(|C_k\cap C_l|\le1\,(k,l\in\mathcal{P})\)</span>
-恒成立。由 <a href="#k-plus-l" title="引理 6.3">引理 6.3</a>，<span class="math inline">\(k+l\in\mathcal{Q}_+\)</span>。于是 <span class="math display">\[(k+l,k+l) = 2+2(k,l)\le 0\Rightarrow (k,l)\le
+恒成立。显然 <span class="math inline">\(k\ne\pm l\)</span>。由 <a href="#k-plus-l" title="引理 6.3">引理 6.3</a>，<span class="math inline">\(k+l\in\mathcal{Q}_+\)</span>。于是 <span class="math display">\[(k+l,k+l) = 2+2(k,l)\le 0\Rightarrow (k,l)\le
 -1.\]</span> 因此 <span class="math inline">\(\mathcal{P}\)</span>
 是球堆。显然 <span class="math inline">\(\mathcal{P}\)</span>
 不能是平凡球堆。 <span class="math inline">\(\blacksquare\)</span></p>
@@ -873,7 +811,7 @@ W_J\)</span>，<span class="math inline">\(\omega_t\)</span> 是实权，每个
 <p>任取一个实的基本权 <span class="math inline">\(\omega_i\)</span>，取一个与 <span class="math inline">\(i\)</span> 相邻的顶点 <span class="math inline">\(j\)</span>，则 <span class="math display">\[\omega_i,\quad s_i\omega_i=\omega_i -
 2\alpha_i,\quad s_js_i\omega_i = \omega_i-2\alpha_i + 4(\alpha_i,
 \alpha_j)\alpha_j.\]</span> 是三个互相不共线的实权。归一化以后它们给出
-<span class="math inline">\(\hat{\Omega_r}\)</span> 中三个不同的实权。故
+<span class="math inline">\(\hat{\Omega}_r\)</span> 中三个不同的实权。故
 <span class="math inline">\(\hat{\Omega}_r\)</span> 是非平凡的球堆。</p>
 <p>再证明极大性。</p>
 <p>如果还可以增加一个 space-like 的向量 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\((k,k)=1\)</span> 且 <span class="math inline">\((k,\hat{\omega})\leq -1\)</span> 对任何 <span class="math inline">\(\hat{\omega}\in\hat{\Omega}_r\)</span> 成立，则
@@ -882,7 +820,7 @@ W_J\)</span>，<span class="math inline">\(\omega_t\)</span> 是实权，每个
 对任何 <span class="math inline">\(y\in\overline{\mathcal{C}_r}\)</span>
 成立。根据 <a href="#real-cone-closure" title="定理 6.6">定理
 6.6</a>，<span class="math inline">\(\overline{\mathcal{C}_r}=\overline{
-\mathcal{C} }\)</span>，于是 <span class="math inline">\((k,y)\leq0\)</span> 对任何 <span class="math inline">\(y\in\mathcal{C}\)</span> 成立，即 <span class="math inline">\(-k\in\mathcal{C}^\ast\)</span>。由于 <a href="/coxeter-groups/tits-cone/#dual-cone-nonspace">对偶锥 <span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量范数 <span class="math inline">\(\leq0\)</span></a>，<span class="math inline">\((-k,-k)\leq0\)</span>，这与 <span class="math inline">\((k,k)=1\)</span> 矛盾。这就证明了 level 2 时 <span class="math inline">\(\hat{\Omega_r}\)</span> 是极大球堆。</p>
+\mathcal{C} }\)</span>，于是 <span class="math inline">\((k,y)\leq0\)</span> 对任何 <span class="math inline">\(y\in\mathcal{C}\)</span> 成立，即 <span class="math inline">\(-k\in\mathcal{C}^\ast\)</span>。由于 <a href="/coxeter-groups/tits-cone/#dual-cone-nonspace">对偶锥 <span class="math inline">\(\mathcal{C}^\ast\)</span> 中的向量范数 <span class="math inline">\(\leq0\)</span></a>，<span class="math inline">\((-k,-k)\leq0\)</span>，这与 <span class="math inline">\((k,k)=1\)</span> 矛盾。这就证明了 level 2 时 <span class="math inline">\(\hat{\Omega}_r\)</span> 是极大球堆。</p>
 <p><span class="math inline">\(\Rightarrow\)</span>：设 <span class="math inline">\(\hat{\Omega}_r\)</span> 是一个非平凡球堆。我们知道
 level 1 的时候所有基本权都不是实的，所以 <span class="math inline">\(W\)</span> 的 level <span class="math inline">\(\ge2\)</span>。如果 level &gt; 2，则存在两个顶点
 <span class="math inline">\(s,t\)</span> 使得 <span class="math inline">\(\Gamma\setminus\{s,t\}\)</span>
@@ -963,7 +901,7 @@ level 1 的时候所有基本权都不是实的，所以 <span class="math inlin
 对应的虚球用虚线绘制，<span class="math inline">\(\hat{\omega}_i\)</span>
 对应的实球用实线绘制，同样的 <span class="math inline">\(i\)</span>
 使用同样的颜色。上标 <span class="math inline">\(\ast\)</span>
-表示该球以无界区域为内部。所以我们有三个无界的球 <span class="math inline">\(\alpha_1,\alpha_2,\omega_1\)</span>。</p>
+表示该球以无界区域为内部。所以我们有三个无界的球 <span class="math inline">\(\alpha_1,\alpha_2,\hat{\omega_1}\)</span>。</p>
 <p><img src="/images/coxeter/compute_example_K4.svg" class="fig" width="500"></p>
 <p>注意到关于 <span class="math inline">\(\hat{\omega}_1\)</span>
 的反演保持虚球 <span class="math inline">\(\alpha_2,\alpha_3,\alpha_4\)</span>
