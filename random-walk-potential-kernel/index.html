@@ -301,7 +301,7 @@
                                 
 
                                     <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0"><span class="section table-of-contents-text">二维随机游动的特征函数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E5%8A%BF%E6%A0%B8"><span class="section table-of-contents-text">二维随机游动的势核</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8A%BF%E6%A0%B8%E5%9C%A8%E9%99%A4%E5%8E%BB%E5%8E%9F%E7%82%B9%E4%B9%8B%E5%A4%96%E6%98%AF%E8%B0%83%E5%92%8C%E7%9A%84"><span class="section table-of-contents-text">势核在除去原点之外是调和的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8A%BF%E6%A0%B8%E7%9A%84%E6%B8%90%E8%BF%9B%E4%BC%B0%E8%AE%A1"><span class="section table-of-contents-text">势核的渐进估计</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E5%87%BB"><span class="section table-of-contents-text">最后一击</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BB%93%E8%AF%AD"><span class="section table-of-contents-text">结语</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#bibliography"><span class="section table-of-contents-text">References</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0"><span class="section table-of-contents-text">二维随机游动的特征函数</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%B8%B8%E5%8A%A8%E7%9A%84%E5%8A%BF%E6%A0%B8"><span class="section table-of-contents-text">二维随机游动的势核</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8A%BF%E6%A0%B8%E5%9C%A8%E9%99%A4%E5%8E%BB%E5%8E%9F%E7%82%B9%E4%B9%8B%E5%A4%96%E6%98%AF%E8%B0%83%E5%92%8C%E7%9A%84"><span class="section table-of-contents-text">势核在除去原点之外是调和的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E5%8A%BF%E6%A0%B8%E7%9A%84%E6%B8%90%E8%BF%9B%E4%BC%B0%E8%AE%A1"><span class="section table-of-contents-text">势核的渐进估计</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E5%87%BB"><span class="section table-of-contents-text">最后一击</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#%E7%BB%93%E8%AF%AD"><span class="section table-of-contents-text">结语</span></a></li></ol>
 </div>
                                         
                                             <div class="entry pink-link-context">
@@ -331,17 +331,12 @@ A, B 获胜概率的“分水岭”大约在 <span class="math inline">\(R\appro
 1.0293737\right)^{-1},\]</span> 所以当 <span class="math inline">\(R\)</span> 取为太阳系半径时，B 的获胜概率大约为
 1/20，这不是个可以忽略的值。甚至当 <span class="math inline">\(R\)</span> 扩大为银河系的半径（5 万光年） 时，B
 仍然有大约 1/30 的概率获胜！是不是很反直觉呢？</p>
-<p>本文下面就来介绍怎样得出上面获胜概率的渐进公式。这里的讲述主要参考了
-<span class="citation" data-cites="spitzergtm">(<a href="#ref-spitzergtm" role="doc-biblioref">Spitzer
-1976</a>)</span>，好处是比较简单易懂，缺点是没有给出势核误差项的渐进估计。使用局部中心极限定理的话可以给出势核误差项的渐进估计
-<span class="citation" data-cites="lawler2010random">(<a href="#ref-lawler2010random" role="doc-biblioref">Lawler and Limic
-2010</a>)</span>，但是我想本文还是克制一点，尽量保持在初等的范围内比较好。</p>
 <p>我们把问题分解为以下步骤来解决：</p>
 <ol type="1">
 <li>构造一个叫做势核 (potential kernel) 的调和函数。</li>
 <li>通过估计积分获得势核的渐进阶。</li>
 <li>使用势核的调和性质构造对应的随机游动的鞅。</li>
-<li>使用鞅的可料停时定理给出逃逸概率的估计。</li>
+<li>使用鞅的停时定理给出逃逸概率的估计。</li>
 </ol>
 <h1 id="二维随机游动的特征函数">二维随机游动的特征函数</h1>
 <p>我们把醉汉在 <span class="math inline">\(n\)</span> 时刻的位置 <span class="math inline">\(S_n\)</span> 记作 <span class="math display">\[S_n=X_1+\cdots+X_n.\]</span> 其中 <span class="math inline">\(X_i\)</span>
@@ -381,7 +376,7 @@ z}\,\mathrm{d}\theta
 1，在其它位置均为 0 的简单事实。</p>
 <blockquote>
 <p>上面的讨论对任意维数都适用，<span class="math inline">\(\mathbb{Z}^d\)</span> 上的简单随机游动其特征函数为
-<span class="math inline">\(\frac{1}{2}\sum_{i=1}^d\cos\theta_i\)</span>，关于
+<span class="math inline">\(\frac{1}{d}\sum_{i=1}^d\cos\theta_i\)</span>，关于
 <span class="math inline">\(\mathbb{P}(S_n=y)\)</span>
 的类似表达式仍然成立。</p>
 </blockquote>
@@ -433,13 +428,13 @@ x}}{1-\phi(\theta)}\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span>
 |x||\theta|\)</span> 总是成立的，并且存在正数 <span class="math inline">\(\lambda&gt;0\)</span> 使得 <span class="math display">\[
 1-\phi(\theta)=1-\frac{1}{2}(\cos\theta_1+\cos\theta_2)\geq\lambda(\theta_1^2+\theta_2^2)=\lambda|\theta|^2
 \]</span> 对任何 <span class="math inline">\(\theta\in\mathbb{T}\)</span> 成立 （函数 <span class="math inline">\((1-\cos t)/t^2\)</span> 在 <span class="math inline">\([-\pi, \pi]\)</span> 上具有正的最小值 <span class="math inline">\(c\)</span>，取 <span class="math inline">\(\lambda=c/2\)</span> 即可），所以 <span class="math display">\[
-\frac{1-\mathrm{e}^{i\theta\cdot
-x}}{1-\phi(\theta)}\leq\frac{|x|}{\lambda|\theta|}.
+\left|\frac{1-\mathrm{e}^{i\theta\cdot
+x}}{1-\phi(\theta)}\right|\leq\frac{|x|}{\lambda|\theta|}.
 \]</span> 而 <span class="math inline">\(1/|\theta|\)</span>
 在二维的情形是 <span class="math inline">\(\mathbb{T}\)</span> 上
 Lebesgue 可积的：将积分区域 <span class="math inline">\(\mathbb{T}=[-\pi,\pi]\times[-\pi,\pi]\)</span>
 放大为圆形区域 <span class="math inline">\(|\theta|\leq\sqrt{2}\pi\)</span>，并用极坐标换元
-<span class="math inline">\(\theta\to(r,\alpha)\)</span> 得到 <span class="math display">\[\int_T\frac{1}{|\theta|}\,\mathrm{d}\theta  \leq
+<span class="math inline">\(\theta\to(r,\alpha)\)</span> 得到 <span class="math display">\[\int_{\mathbb{T}}\frac{1}{|\theta|}\,\mathrm{d}\theta  \leq
 \int_{|\theta|\leq\sqrt{2}\pi}\frac{1}{|\theta|}\,\mathrm{d}\theta=\int_0^{2\pi}
 \,\mathrm{d}\alpha \int_0^{\sqrt{2}\pi}\frac{1}{r}\cdot r\,\mathrm{d}r =
 2\sqrt{2}\pi^2&lt;\infty.\]</span></p>
@@ -448,7 +443,7 @@ x}}{1-\phi(\theta)}\)</span> 是 Lebesgue 可积的，这就证明了 <span clas
 <div id="potential-kernel-integ" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
 2.1</span>.</span><span class="statement-spah"> </span>势核 <span class="math inline">\(a(x)=\sum\limits_{k=0}^\infty\left[\mathbb{P}_k(0,
-0)-\mathbb{P}_k(x, 0)\right]\)</span> 几乎处处有限且等于 <span class="math display">\[a(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
+0)-\mathbb{P}_k(x, 0)\right]\)</span> 处处有限且等于 <span class="math display">\[a(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
 x}}{1-\phi(\theta)}\,\mathrm{d}\theta.\]</span></p>
 </div>
 <h1 id="势核在除去原点之外是调和的">势核在除去原点之外是调和的</h1>
@@ -460,8 +455,8 @@ x\in\mathbb{Z}^2\setminus\{0\}.
 <span class="math display">\[
 a(x)=\lim_{n\to\infty}(\mathop{\mathrm{\mathbb{E}}}{N_0^n}-\mathop{\mathrm{\mathbb{E}}}{N_x^n}).
 \]</span> 对任何从 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span>
-出发的随机游动，使用单步转移概率，我们有 <span class="math display">\[N_x^n=\frac{1}{4}\sum_{y\sim
-x}N_y^{n-1}.\]</span> 此外 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}{N_0^n}=\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}+\mathop{\mathrm{\mathbb{E}}}{\mathbb{1}_{\{S_n=0\}}}=\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}+\mathbb{P}_0(S_n=0),\]</span>
+出发的随机游动，使用单步转移概率，我们有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}{N_x^n}=\frac{1}{4}\sum_{y\sim
+x}\mathop{\mathrm{\mathbb{E}}}{N_y^{n-1}}.\]</span> 此外 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}{N_0^n}=\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}+\mathop{\mathrm{\mathbb{E}}}{\mathbb{1}_{\{S_n=0\}}}=\mathop{\mathrm{\mathbb{E}}}{N_0^{n-1}}+\mathbb{P}_0(S_n=0),\]</span>
 所以当 <span class="math inline">\(x\ne0\)</span> 时， <span class="math display">\[\begin{aligned}
 \mathop{\mathrm{\mathbb{E}}}{N_0^n}-\mathop{\mathrm{\mathbb{E}}}{N_x^n}
 &amp;=
@@ -492,10 +487,10 @@ a(x)=0+\frac{1}{4}\sum_{y\sim x}a(y)=\frac{1}{4}\sum_{y\sim x}a(y).
 时的渐进大小，为此我们有如下定理：</p>
 <div id="ax-asy" class="statement theorem plain">
 <p><span class="statement-heading"><span class="statement-label">定理
-4.1</span>.</span><span class="statement-spah"> </span><span class="math display">\[\lim_{|x|\to\infty} a(x) - \frac{2}{\pi}\ln |x| =
-\frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\approx 1.0293737.\]</span> 其中
-<span class="math inline">\(\gamma\approx 0.5772156649\)</span> 是 Euler
-常数。</p>
+4.1</span>.</span><span class="statement-spah"> </span><span class="math display">\[\lim_{|x|\to\infty}\left( a(x) - \frac{2}{\pi}\ln
+|x|\right) = \frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\approx
+1.0293737.\]</span> 其中 <span class="math inline">\(\gamma\approx
+0.5772156649\)</span> 是 Euler 常数。</p>
 </div>
 <p>当你看到这个定理的时候，是不是感觉已经快要接近证明文章开头的结论了呢？那可太抱歉了，真正麻烦的地方才刚开始。这个定理的证明非常棘手，我们需要首先论证
 <span class="math inline">\(a(x)\)</span> 的渐进行为只与 <span class="math inline">\(x\)</span> 的长度有关，与 <span class="math inline">\(x\)</span> 方向无关，然后用一个特殊的方向 <span class="math inline">\(x=(n, n)\)</span> 代入 <span class="math inline">\(a(x)\)</span> 的表达式计算积分值。</p>
@@ -514,36 +509,12 @@ x})\left[\frac{1}{1-\phi(\theta)}-\frac{1}{g(\theta)}\right]\,\mathrm{d}\theta}_
 \]</span> 根据 <a href="en.wikipedia.org/wiki/Riemann%E2%80%93Lebesgue_lemma">Riemann-Lebesgue
 引理</a>，<span class="math inline">\(\lim\limits_{|x|\to\infty}J(x)=c\)</span>，即
 <span class="math inline">\(J(x)\)</span> 与 <span class="math inline">\(x\)</span> 的方向是无关的。</p>
-<p><span class="math inline">\(g(\theta)\)</span> 可以取为 <span class="math inline">\(|\theta|^2/4\)</span>，我们来验证这一点： <span class="math display">\[\frac{1}{1-\phi(\theta)}-\frac{1}{g(\theta)}=
-\frac{1}{1-\phi(\theta)}-\frac{4}{|\theta|^2} =
-\underbrace{\frac{4|\theta|^2}{1-\phi(\theta)}}_{\chi(\theta)}\cdot\underbrace{\frac{1}{|\theta|^4}\left[\phi(\theta)-1+\frac{|\theta|^2}{4}\right]}_{\psi(\theta)}.
-\]</span> 我们要证明乘积 <span class="math inline">\(\chi(\theta)\psi(\theta)\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span>
-上可积。注意到我们之前已经证明了存在 <span class="math inline">\(\lambda&gt;0\)</span> 使得在 <span class="math inline">\(\mathbb{T}\)</span> 上有 <span class="math inline">\(1-\phi(\theta)\geq
-\lambda|\theta|^2\)</span>，所以 <span class="math inline">\(\chi(\theta)\leq 4/\lambda\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span> 上是有界的，只要再证明 <span class="math inline">\(\psi(\theta)\)</span> 在 <span class="math inline">\(\mathbb{T}\)</span> 上可积即可。而 <span class="math display">\[\begin{equation}
-\phi(\theta)-1+\frac{|\theta|^2}{4}=\mathop{\mathrm{\mathbb{E}}}{\left[\mathrm{e}^{i\theta\cdot
-X} - 1 - i\theta\cdot X - \frac{1}{2}(i\theta\cdot X)^2\right]}.
-\end{equation}
-\]</span> 这里我们利用了 <span class="math inline">\(\mathbb{T}\)</span>
-是关于原点对称的区域，以及 <span class="math inline">\(X^2\equiv(1,1)\)</span>，所以 <span class="math display">\[\begin{aligned}
-\mathop{\mathrm{\mathbb{E}}}{(\theta\cdot
-X)}&amp;=\mathop{\mathrm{\mathbb{E}}}{(x_1\theta_1 + x_2\theta)}=0,\\
-\mathop{\mathrm{\mathbb{E}}}{(\theta\cdot
-X)^2}&amp;=\mathop{\mathrm{\mathbb{E}}}{(x_1\theta_1+x_2\theta_2)^2}=\mathop{\mathrm{\mathbb{E}}}{(\theta_1^2+\theta_2^2)}=\mathop{\mathrm{\mathbb{E}}}{|\theta|^2}.
-\end{aligned}\]</span> 由于对任何实数 <span class="math inline">\(z\)</span> 都有不等式 <span class="citation" data-cites="Durrett2019">(<a href="#ref-Durrett2019" role="doc-biblioref">Durrett 2019</a>, lemma. 3.3.19)</span> <span class="math display">\[
-\left|\mathrm{e}^{iz} - 1 - iz -
-\frac{(iz)^2}{2}\right|\leq\frac{|z|^3}{6},
-\]</span> 所以 <span class="math display">\[
-\phi(\theta)-1+\frac{|\theta|^2}{4}\leq\frac{1}{6}\mathop{\mathrm{\mathbb{E}}}{|\theta\cdot
-X|^3}\leq\frac{1}{6}\mathop{\mathrm{\mathbb{E}}}{|\theta|^3|X|^3}=\frac{|\theta|^3}{6}\mathop{\mathrm{\mathbb{E}}}{|X|^3},
-\]</span> 从而 <span class="math display">\[
-\psi(\theta)=|\theta|^{-4}\left[\phi(\theta)-1+\frac{|\theta|^2}{4}\right]\leq|\theta|^{-4}\cdot\frac{|\theta|^3}{6}\mathop{\mathrm{\mathbb{E}}}{|X|^3}=\frac{M}{|\theta|}.
-\]</span> 这里 <span class="math inline">\(0&lt;
-M=\frac{\mathop{\mathrm{\mathbb{E}}}{|X|^3}}{6} &lt;\infty\)</span>
-是正数。而前面已经看到 <span class="math inline">\(1/|\theta|\)</span>
-在 <span class="math inline">\(\mathbb{T}\)</span> 上是可积的，所以
-<span class="math inline">\(\psi(\theta)\)</span> 也是可积的，这就说明了
-<span class="math inline">\(\lim\limits_{|x|\to\infty}J(x)=c\)</span>
-确实成立。</p>
+<p><span class="math inline">\(g(\theta)\)</span> 可以取为 <span class="math inline">\(|\theta|^2/4\)</span>，我们来验证这一点：由于
+<span class="math display">\[1-\phi(\theta)= \frac{|\theta|^2}{4} +
+O(|\theta|^4).\]</span> 于是当 <span class="math inline">\(\theta\to0\)</span> 时， <span class="math display">\[\frac{1}{1-\phi(\theta)}-\frac{4}{|\theta|^2} =
+\frac{|\theta|^2-4(1-\phi(\theta))}{|\theta|^2(1-\phi(\theta))}=\frac{O(|\theta|^4)}{O(|\theta|^4)}=O(1).
+\]</span> 因此这个函数在原点附近有界；在远离原点的紧集上连续有界，所以
+在 <span class="math inline">\(\mathbb{T}\)</span> 上可积。</p>
 <p>我们还需要说明 <span class="math inline">\(I(x)\)</span> 的极限也是与
 <span class="math inline">\(x\)</span> 的方向无关的。把 <span class="math inline">\(I(x)\)</span> 分解成两部分： <span class="math display">\[
 I(x)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\mathrm{e}^{i\theta\cdot
@@ -563,40 +534,33 @@ x)}{|\theta|^2}\,\mathrm{d}\theta=\frac{1}{\pi^2}\int_{\theta\in\mathbb{T},\,|\t
 有一个不依赖于 <span class="math inline">\(x\)</span> 方向的极限值。</p>
 <p>至此我们把 <span class="math inline">\(a(x)\)</span> 的积分表示为了
 <span class="math inline">\(I_1+I_2+J\)</span> 的形式，并且论证了 <span class="math inline">\(x\to\infty\)</span> 时后两者的值有限，所以 <span class="math inline">\(a(x)\)</span> 的渐进主项藏在 <span class="math inline">\(I_1(x)\)</span> 当中。</p>
-<p>而 <span class="math inline">\(I_1(x)\)</span> 从表达式明显可见它是与
-<span class="math inline">\(x\)</span> 方向无关的： <span class="math display">\[
-I_1(x)=\frac{1}{\pi^2}\int_{|\theta|\leq\pi}\frac{1-\cos(\theta\cdot
-x)}{|\theta|^2}\,\mathrm{d}\theta.
-\]</span> 事实上用一个旋转矩阵 <span class="math inline">\(A\)</span>
-乘以 <span class="math inline">\(x\)</span> 等同于对 <span class="math inline">\(\theta\)</span> 作变元代换 <span class="math inline">\(\theta'=A^{-1}\theta\)</span>，由于 <span class="math inline">\(A\)</span> 是正交矩阵所以 <span class="math inline">\(|\theta'|=|\theta|\)</span> 并且变换的
-Jacobian 值是 +1，所以积分不变。于是我们可以取 <span class="math inline">\(x=(R,0)\)</span> 为实轴正向，则 <span class="math inline">\(\theta\cdot x = R\theta_1\)</span>。进一步作代换
-<span class="math inline">\(u=R\theta\)</span> 可得 <span class="math display">\[I_1 = \frac{1}{\pi^2}\int_{|u|\le
-R\pi}\frac{1-\cos u_1}{|u|^2}\,\mathrm{d}u.\]</span> 其中 <span class="math inline">\(u_1\)</span> 是 <span class="math inline">\(u\)</span> 的 <span class="math inline">\(x\)</span> 分量。</p>
-<p>将积分拆成 <span class="math inline">\(|u|\le 1\)</span> 和 <span class="math inline">\(1&lt;|u|\le R\pi\)</span> 两部分：</p>
-<ul>
-<li>在 <span class="math inline">\(|u|\le1\)</span> 时，由于在 0 附近，
-<span class="math display">\[\frac{1-\cos
-u_1}{|u|^2}\sim\frac{u_1^2/2}{|u|^2}\le\frac{1}{2}.\]</span>
-所以被积函数在单位圆内连续有界，这部分积分是个有限的常数，可以不用管。</li>
-<li><span class="math inline">\(1&lt;|u|\le R\pi\)</span> 对应的积分等于
-<span class="math display">\[\frac{1}{\pi^2}\int_{1&lt;|u|\le
-R\pi}\frac{1}{|u|^2}\,\mathrm{d}u - \int_{1&lt;|u|\le R\pi}\frac{\cos
-u_1}{|u|^2}\,\mathrm{d}u.\]</span> 极坐标代换以后第一项等于 <span class="math display">\[\frac{2}{\pi}\int_1^R\frac{1}{r}\,\mathrm{d}r =
-\frac{2}{\pi}\ln R + O(1).\]</span> 这一项贡献了 <span class="math inline">\(I_1\)</span> 的主项。<br>
-同样使用极坐标代换，第二项等于 <span class="math display">\[\frac{1}{\pi^2}\int_{1}^{\pi R} \frac{1}{r}
-\left( \int_{0}^{2\pi} \cos(r \cos\alpha)\, \mathrm{d}\alpha \right)
-\,\mathrm{d}r.\]</span> 括号里面等于 <span class="math inline">\(J_0(r)\)</span>，是零阶第一类贝塞尔函数。而熟知
-<span class="math inline">\(J_0(r)\)</span> 在 <span class="math inline">\(r\to\infty\)</span> 时的渐进阶是 <span class="math inline">\(O(r^{-1/2})\)</span>，所以这部分的积分收敛。</li>
-</ul>
+<p>记 <span class="math inline">\(R=|x|\)</span>。由于积分区域是圆盘，可以旋转坐标，可以取
+<span class="math inline">\(x=(R, 0)\)</span>。于是 <span class="math display">\[I_1(R)=\frac{1}{\pi^2}\int_{|\theta|\le\pi}\frac{1-\cos(R\theta_1)}{|\theta|^2}\,\mathrm{d}\theta.\]</span>
+使用极坐标 <span class="math inline">\(\theta=(r\cos\alpha,r\sin\alpha)\)</span>，得到
+<span class="math display">\[\begin{aligned}
+I_1(R)&amp;=\frac{1}{\pi^2}\int_0^\pi \frac{\mathrm{d}r}{r}
+\int_{0}^{2\pi} (1-\cos(Rr \cos\alpha))\,\mathrm{d}\alpha\\
+&amp;=\frac{2}{\pi}\int_0^\pi\frac{1-J_0(Rr)}{r}\,\mathrm{d}r\\
+&amp;=\frac{2}{\pi}\int_0^{\pi R}\frac{1-J_0(t)}{t}\,\mathrm{d}t.
+\end{aligned}\]</span> 其中 <span class="math inline">\(J_0(t)\)</span>
+是零阶第一类 Bessel 函数。</p>
+<p>于是 <span class="math display">\[I_1(R)-\frac{2}{\pi}\log R =
+\frac{2}{\pi}\left[\int_0^1\frac{1-J_0(t)}{t}\,\mathrm{d}t+\log\pi
+-\int_1^{\pi R}\frac{J_0(t)}{t}\,\mathrm{d}t\right].\]</span>
+第一项有限，这是因为 <span class="math display">\[1 - J_0(t) =
+O(t^2),\quad t\to 0.\]</span> 最后一项在 <span class="math inline">\(R\to\infty\)</span> 时收敛，因为 <span class="math display">\[J_0(t) = O(t^{-1/2}).\]</span> 从而 <span class="math display">\[\frac{J_0(t)}{t} = O(t^{-3/2})\]</span> ​ 在 <span class="math inline">\([1,+\infty)\)</span> 上可积。 所以我们有 <span class="math display">\[I_1(R)=\frac{2}{\pi}\log R + C_1 +
+O(R^{-1/2}).\]</span> 其中 <span class="math inline">\(C_1\)</span>
+是某个有限常数。</p>
 <p>至此我们证明了在分解 <span class="math display">\[a(x)=I(x)+J(x)=I_1(x)+I_2(x)+J(x)\]</span> 中，当
 <span class="math inline">\(|x|\to\infty\)</span> 时，<span class="math inline">\(I_1-\frac{2}{\pi}\ln|x|\)</span>，<span class="math inline">\(I_2\)</span> 和 <span class="math inline">\(J\)</span> 都趋近于有限的极限值，于是极限 <span class="math display">\[\lim_{|x|\to\infty}\left(a(x)-\frac{2}{\pi}\ln|x|\right)\]</span>
 也存在且有限。为了计算这个极限，我们选择对角线方向 <span class="math inline">\(x=(n,n)\)</span> 代入 <span class="math inline">\(a(x)\)</span> 的表达式中： <span class="math display">\[
 a(n,n)=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\cos
 n(\theta_1+\theta_2)}{1-\frac{1}{2}(\cos\theta_1+\cos\theta_2)}\,\mathrm{d}\theta=\frac{1}{(2\pi)^2}\int_{\mathbb{T}}\frac{1-\cos
 n(\theta_1+\theta_2)}{1-\cos\frac{\theta_1+\theta_2}{2}\cos\frac{\theta_1-\theta_2}{2}}\,\mathrm{d}\theta.
-\]</span> 作变元代换 <span class="math inline">\(u=\frac{\theta_1+\theta_2}{2},v=\frac{\theta_1-\theta_2}{2}\)</span>，此变换的
+\]</span> 记 <span class="math inline">\(A_n=a(n,n)\)</span>，作变元代换
+<span class="math inline">\(u=\frac{\theta_1+\theta_2}{2},v=\frac{\theta_1-\theta_2}{2}\)</span>，此变换的
 Jacobian 为 <span class="math inline">\(1/2\)</span>，于是 <span class="math display">\[
-a(n,n)=\frac{2}{(2\pi)^2}\int_{|u|+|v|\leq\pi}\frac{1-\cos(2nu)}{1-\cos
+A_n=\frac{2}{(2\pi)^2}\int_{|u|+|v|\leq\pi}\frac{1-\cos(2nu)}{1-\cos
 u\cos v}\,\mathrm{d}u\mathrm{d}v.
 \]</span> 此积分的区域是 <span class="math inline">\(\mathbb{T}\)</span>
 中满足 <span class="math inline">\(|u|+|v|\leq \pi\)</span>
@@ -604,120 +568,87 @@ u\cos v}\,\mathrm{d}u\mathrm{d}v.
 上积分的一半，如图所示：</p>
 <p><img src="/images/random-walk/region.svg" class="fig" width="300"></p>
 <p>所以 <span class="math display">\[
-a(n,n)=\frac{1}{4\pi^2}\int_{-\pi}^\pi\mathrm{d}u\int_{-\pi}^\pi\frac{1-\cos(2nu)}{1-\cos
+A_n=\frac{1}{4\pi^2}\int_{-\pi}^\pi\mathrm{d}u\int_{-\pi}^\pi\frac{1-\cos(2nu)}{1-\cos
 u\cos v}\,\mathrm{d}v.
-\]</span> 我们用留数来计算上面的积分。首先计算内层关于 <span class="math inline">\(v\)</span> 的积分。设 <span class="math inline">\(k=\cos u\)</span>，</p>
-<p><span class="math display">\[\begin{aligned}\int_{-\pi}^{\pi}\frac{1}{1-k\cos
-v}\,\mathrm{d}v&amp;=\oint_{|z|=1}
-\frac{1}{1-\frac{k}{2}\left(z+\frac{1}{z}\right)} \frac{\mathrm{d} z}{i
-z}\quad(z=e^{iv})\\ &amp;=\oint_{|z|=1} \frac{2i}{kz^2-2z+k}
-\mathrm{d}z\\ &amp;=\oint_{|z|=1} \frac{2i}{k(z-z_1)(z-z_2)}
-\mathrm{d}z\quad\left(z_{1,2}=\frac{1\pm\sqrt{1-k^2}}{k}\right)\\
-&amp;=2\pi i\cdot\frac{2
-i}{k}\;\mathrm{Res}_{z=z_2}\left(\frac{1}{(z-z_1)(z-z_2)}\right)\\
-&amp;=-\frac{4\pi}{k}\frac{1}{z_2-z_1}\\
-&amp;=\frac{2\pi}{\sqrt{1-k^2}}. \end{aligned}
-\]</span></p>
-<p>外层同样使用围道积分：</p>
-<p><span class="math display">\[\begin{aligned}&amp;\frac{1}{4\pi^2}\int_{-\pi}^{\pi}(1-\cos(2nu))\int_{-\pi}^{\pi}\frac{1}{1-\cos
-u\cos v}\,\mathrm{d}u\,\mathrm{d}v
-\\&amp;=\frac{1}{2\pi}\int_{-\pi}^{\pi}\frac{1-\cos(2nu)}{|\sin\left(u\right)|}\,\mathrm{d}u\\
-&amp;=\frac{1}{\pi}\mathrm{Re}\int_{0}^{\pi}\frac{1-e^{2inu}}{\sin
-u}\,\mathrm{d}u\quad(z=e^{iu})\\
-&amp;=\frac{1}{\pi}\mathrm{Re}\int_{C}\frac{1-z^{2n}}{\frac{1}{2i}\left(z-z^{-1}\right)}\,
-\frac{\mathrm{d} z}{i z}\qquad \qquad C \colon= \{ |z| = 1\mid \arg
-z\in[0,\pi]\}\\
-&amp;=\frac{2}{\pi}\mathrm{Re}\int_{1}^{-1}\frac{1-z^{2n}}{z^2-1}\,
-\mathrm{d} z\\ &amp;=\frac{2}{\pi}\int_{-1}^1\sum_{k=0}^{n-1}x^{2k}\,
-\mathrm{d}x\\ &amp;=\frac{4}{\pi}\sum_{k=1}^{n}\frac{1}{2k-1}.
-\end{aligned}\]</span> 从而 <span class="math display">\[
-\begin{aligned}&amp;\lim_{n\to\infty}\left[a(n,n)-\frac{2}{\pi}\ln\sqrt{2}n\right]=\lim_{n\to\infty}\left[\frac{4}{\pi}\sum_{k=1}^n\frac{1}{2k-1}-\frac{2}{\pi}\ln\sqrt{2}n\right]\\&amp;=
-\lim_{n\to\infty}\left[\frac{4}{\pi}\sum_{k=1}^{2n}\frac{1}{k}-\frac{4}{\pi}\ln
-2n\right]+\lim_{n\to\infty}\left[\frac{2}{\pi}\sum_{k=1}^{n}\frac{1}{k}-\frac{2}{\pi}\ln
-n\right]+\frac{\ln8}{\pi}\\&amp;=
-\frac{4}{\pi}\gamma-\frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\\&amp;=
+\]</span> 首先计算内层关于 <span class="math inline">\(v\)</span>
+的积分。设 <span class="math inline">\(k=\cos u\)</span>，</p>
+<p><span class="math display">\[\int_{-\pi}^{\pi}\frac{1}{1-k\cos
+v}\,\mathrm{d}v\stackrel{t=\tan(v/2)}{=}2\int_{-\infty}^\infty\frac{\mathrm{d}t}{(1-k)
++ (1+k)t^2}=\frac{2\pi}{\sqrt{1-k^2}}=\frac{2\pi}{|\sin u|}.\]</span>
+从而 <span class="math display">\[A_n =
+\frac{1}{2\pi}\int_{-\pi}^\pi\frac{1-\cos(2nu)}{|\sin
+u|}\,\mathrm{d}u=\frac{1}{\pi}\int_0^\pi\frac{1-\cos(2nu)}{\sin
+u}\,\mathrm{d}u.\]</span></p>
+<p>并且 <span class="math display">\[\begin{aligned}
+A_n -
+A_{n-1}&amp;=\frac{1}{\pi}\int_{0}^\pi\frac{\cos(2(n-1)u)-\cos(2nu)}{\sin
+u}\,\mathrm{d}u\\
+&amp;=\frac{2}{\pi}\int_{0}^\pi\sin((2n-1)u)\,\mathrm{d}u\\
+&amp;=\frac{4}{\pi(2n-1)}.
+\end{aligned}\]</span> 又因为 <span class="math inline">\(A_0=0\)</span>，得到 <span class="math display">\[A_n =
+\frac{4}{\pi}\sum_{k=1}^{n}\frac{1}{2k-1}=\frac{4}{\pi}H_{2n}-\frac{2}{\pi}H_n.\]</span>
+其中 <span class="math display">\[H_n=1+\frac{1}{2}+\cdots+\frac{1}{n}=\log n +
+\gamma + o(1).\]</span> 是调和数。</p>
+<p>从而</p>
+<p><span class="math display">\[\begin{aligned}&amp;\lim_{n\to\infty}\left[a(n,n)-\frac{2}{\pi}\ln\sqrt{2}n\right]=\lim_{n\to\infty}\left[\frac{4}{\pi}H_{2n}-\frac{2}{\pi}H_n-\frac{2}{\pi}\ln\sqrt{2}n\right]\\&amp;=
 \frac{2}{\pi}\gamma+\frac{\ln 8}{\pi}\\&amp;\approx 1.0293737056545709.
 \end{aligned}\]</span> <a href="#ax-asy" title="定理 4.1">定理 4.1</a>
 得证。<span class="math inline">\(\blacksquare\)</span></p>
-<p>上面这些讨论基本上是我对 Spitzer
-著作中内容的重新表述，利用局部中心极限定理可以证明极限的误差项大约是
-<span class="math inline">\(O(|x|^{-2})\)</span> 量级的，即</p>
-<div class="statement theorem plain">
-<p><span class="statement-heading"><span class="statement-label">定理
-4.2</span>.</span><span class="statement-spah"> </span><span class="math display">\[a(x) = \frac{2}{\pi}\ln|x| +
-\frac{2\gamma+\ln8}{\pi} + O(|x|^{-2}).\]</span></p>
-</div>
-<p>证明见 <span class="citation" data-cites="lawler2010random">(<a href="#ref-lawler2010random" role="doc-biblioref">Lawler and Limic 2010,
-vol. 123, sec. 4.4</a>)</span>。下文要用到这个渐进估计的一个推论：</p>
-<div id="axorder" class="statement corollary plain">
-<p><span class="statement-heading"><span class="statement-label">推论
-4.3</span>.</span><span class="statement-spah"> </span>对任何 <span class="math inline">\(x\in\mathbb{Z}^2\setminus\{0\}\)</span> 和单位向量
-<span class="math inline">\(|e|=1\)</span> 有 <span class="math display">\[a(x + e) - a(x) = O(|x|^{-1}).\]</span>
-特别地存在常数 <span class="math inline">\(M&gt;0\)</span> 使得 <span class="math inline">\(|a(x+e)-a(x)|\leq M\)</span> 对任何 <span class="math inline">\(x\)</span> 恒成立。</p>
-</div>
-<p><strong>证明</strong>：</p>
-<p><span class="math display">\[\begin{aligned}a(x+e)-a(x)&amp;=\frac{1}{\pi}\ln\frac{\langle
-x+e, x+e\rangle}{|x|^2}+O(|x|^{-2})\\
-&amp;=\frac{1}{\pi}\ln\left(1+\frac{2\langle
-x,e\rangle+1}{|x|^2}\right)+O(|x|^{-2})\\
-&amp;\leq\frac{1}{\pi}\ln\left(1+\frac{2}{|x|}+\frac{1}{|x|^2}\right)+O(|x|^{-2})\\&amp;=O(|x|^{-1}).\end{aligned}\]</span></p>
 <h1 id="最后一击">最后一击</h1>
 <p>到目前为止我们已经完成了所有的准备工作，只要再用一点点离散鞅的知识
-（可料停时定理） 就可以得出 A, B
+（停时定理） 就可以得出 A, B
 获胜概率的渐进表达式。虽然剩下的部分已经没有什么难点，但这个时候要更加耐心点。</p>
 <p>先做一些记号的约定。</p>
 <ol type="1">
-<li>记 <span class="math inline">\(B(r)\)</span> 是平面上半径为 <span class="math inline">\(r\)</span> 的圆盘，<span class="math inline">\(\partial B(r)\)</span> 是圆周 <span class="math inline">\(|x|=r\)</span>。</li>
+<li>记 <span class="math inline">\(B(r)=\{z\in\mathbb{Z}^2\mid
+|z|&lt;r\}\)</span> 是平面上半径为 <span class="math inline">\(r\)</span> 的圆盘内部的格点，定义 <span class="math display">\[\partial B(r) = \{y\in\mathbb{Z}^2\mid y\notin
+B(r),\,\exists z\in B(r),\, y\sim z\}.\]</span></li>
 <li>设 <span class="math inline">\(x\)</span> 满足 <span class="math inline">\(0&lt;|x|&lt;r\)</span> 是<span class="math inline">\(B(r)\)</span> 内一点，<span class="math inline">\(S_n\)</span> 是从 <span class="math inline">\(x\)</span> 出发的随机游动在 <span class="math inline">\(n\)</span> 时刻的位置，<span class="math inline">\(S_0=x\)</span>。</li>
 <li>记 <span class="math inline">\(\tau_{0}=\min\{n\geq1:\,
-S_n=0\}\)</span>，<span class="math inline">\(\tau_{\partial
-B(r)}=\min\{n\geq1:\, |S_n|\geq r\}\)</span>。于是 <span class="math inline">\(\tau_{0}\)</span> 和 <span class="math inline">\(\tau_{\partial B(r)}\)</span> 分别是 <span class="math inline">\(S_n\)</span> 首次到达原点的时刻和首次走出 <span class="math inline">\(B(r)\)</span> 的时刻。记 <span class="math inline">\(\tau=\min\{\tau_{0},\tau_{\partial
-B(r)}\}\)</span>，则 <span class="math inline">\(\tau_{0},\,\tau_{\partial B(r)},\,\tau\)</span>
-都是停时。</li>
+S_n=0\}\)</span>，<span class="math inline">\(\tau_r=\min\{n\geq1:\,
+S_n\notin B(r)\}\)</span>。于是 <span class="math inline">\(\tau_{0}\)</span> 和 <span class="math inline">\(\tau_r\)</span> 分别是 <span class="math inline">\(S_n\)</span> 首次到达原点的时刻和首次走出 <span class="math inline">\(B(r)\)</span> 的时刻。记 <span class="math inline">\(\tau=\min\{\tau_{0},\tau_r\}\)</span>，则 <span class="math inline">\(\tau_{0},\,\tau_r,\,\tau\)</span> 都是停时。</li>
 </ol>
-<p>为了能够使用可料停时定理，我们首先需要说明 <span class="math inline">\(\{a(S_{n\wedge\tau})\}\)</span> 是一个鞅，且停时
-<span class="math inline">\(\tau\)</span> 满足可料停时定理的条件。由于
-<span class="math inline">\(a(x)\)</span> 在任何 <span class="math inline">\(x\ne 0\)</span> 处调和，所以 <span class="math inline">\(\{a(S_{n\wedge\tau})\}\)</span>
-是一个鞅是没有问题的。</p>
-<p>注意到 <span class="math inline">\(\{S_{n\wedge\tau}\}\)</span>
-是一个限制在 <span class="math inline">\(B(r)\)</span>
-内的随机游动，它访问其中任何一点的期望步数都是有限的，所以 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{\tau}&lt;\infty\)</span>。其次根据
-<a href="#axorder" title="推论 4.3">推论 4.3</a>，<span class="math inline">\(|a(x+e)-a(x)|\)</span> 是一致有界的，所以停时
-<span class="math inline">\(\tau\)</span> 满足 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Optional_stopping_theorem">可料停时定理的条件</a>，从而</p>
-<p><span class="math display">\[\begin{aligned}
-a(x)&amp;=a(S_0)=\mathbb{E}_x\,a(S_{\tau})\\&amp;=
-p\cdot\mathbb{E}_x\,\left[a(S_{\tau_{\partial B(r)}})\mid\tau_{\partial
-B(r)}&lt;\tau_{0}\right]+(1-p)\cdot\mathbb{E}_x\,\left[a(S_{\tau_{0}})\mid\tau_{0}&lt;\tau_{\partial
-B(r)}\right].
-\end{aligned}\]</span></p>
-<p>其中 <span class="math inline">\(p=\mathbb{P}(\tau_{\partial
-B(r)}&lt;\tau_{0})\)</span> 正是随机游动在回到原点之前逃出区域 <span class="math inline">\(B(r)\)</span> 的概率。但是又注意到 <span class="math inline">\(a(S_{\tau_{0}})=a(0)=0\)</span>，所以上面式子中第二项恒为
-0，即 <span class="math display">\[p=\frac{a(x)}{\mathbb{E}_x\left[a(S_{\tau_{\partial
-B(r)}})\mid\tau_{\partial B(r)}&lt;\tau_{0}\right]}.
-\]</span></p>
-<p>记上面的分母为 <span class="math inline">\(g=\mathbb{E}_x\left[a(S_{\tau_{\partial
-B(r)}})|\tau_{\partial B(r)}&lt;\tau_{0}\right]\)</span>，则 <span class="math inline">\(g\)</span> 是势核 <span class="math inline">\(a(\cdot)\)</span> 在圆周 <span class="math inline">\(\partial B(r)\)</span>
-上关于一个条件概率测度的积分，而我们已经看到势核 <span class="math inline">\(a(y)\)</span> 是近似球对称的，它只依赖于 <span class="math inline">\(|y|\)</span>。当随机游动刚好走到 <span class="math inline">\(\partial B(r)\)</span> 时，其位置 <span class="math inline">\(y\)</span> 未必正好落在圆周上，但是满足 <span class="math inline">\(r\le |y|&lt;
-r+1\)</span>。我们滥用一点记号，对任意的实数 <span class="math inline">\(r&gt;0\)</span>，记 <span class="math display">\[a(r) = \frac{2}{\pi}\ln r +
-\frac{2\gamma+\ln8}{\pi},\]</span> 与 <a href="#axorder" title="推论 4.3">推论 4.3</a> 同样的道理，当 <span class="math inline">\(r\le |y|&lt; r+1\)</span> 时有 <span class="math display">\[|a(y) - a(r)| = O(1/r).\]</span> 所以 <span class="math inline">\(g\)</span> 作为 <span class="math inline">\(a(\cdot)\)</span> 在 <span class="math inline">\(\partial B(r)\)</span> 附近的一些 <span class="math inline">\(y\)</span> 在一个条件概率下的加权组合，其值等于
-<span class="math display">\[\frac{2}{\pi}\ln r +
-\frac{2\gamma+\ln8}{\pi} + O(r^{-1}).\]</span></p>
+<p>由于 <span class="math inline">\(S_{n\wedge\tau}\)</span>
+的取值是有界区域 <span class="math inline">\(B(r)\cup\partial
+B(r)\)</span>，因此存在一个只依赖 <span class="math inline">\(r\)</span>
+的常数 <span class="math inline">\(C_r\)</span> 使得 <span class="math display">\[|a(S_{n\wedge \tau})|\le C_r.\]</span> 又由于势核
+<span class="math inline">\(a(x)\)</span> 在任何 <span class="math inline">\(x\ne 0\)</span> 处调和，过程 <span class="math inline">\(\{a(S_{n\wedge\tau})\}\)</span> 是一个鞅。所以
+<span class="math display">\[a(x) =
+\mathop{\mathrm{\mathbb{E}}}{a(S_{n\wedge\tau})}.\]</span> 注意到 <span class="math inline">\(\{S_{n\wedge\tau}\}\)</span> 是一个限制在 <span class="math inline">\(B(r)\)</span>
+内的随机游动，它访问其中任何一点的期望步数都是有限的，所以 <span class="math inline">\(\mathop{\mathrm{\mathbb{E}}}{\tau}&lt;\infty\)</span>。于是几乎处处有
+<span class="math display">\[\lim_{n\to\infty}S_{n\wedge
+\tau}=S_\tau.\]</span> 由控制收敛定理， <span class="math display">\[a(x)=\lim_{n\to\infty}
+\mathop{\mathrm{\mathbb{E}}}{a(S_{n\wedge\tau})}
+=\mathop{\mathrm{\mathbb{E}}}{a(S_\tau)}=\mathop{\mathrm{\mathbb{E}}}{[a(S_{\tau})\mathbb{1}_{\{\tau_0&lt;\tau_r\}}]}+\mathop{\mathrm{\mathbb{E}}}{[a(S_{\tau})\mathbb{1}_{\{\tau_r&lt;\tau_0\}}]}.\]</span>
+在事件 <span class="math inline">\(\tau_0&lt;\tau_r\)</span> 上，<span class="math inline">\(S_\tau=0\)</span>，而 <span class="math inline">\(a(0)=0\)</span>，所以 <span class="math display">\[a(x)=\mathop{\mathrm{\mathbb{E}}}{[a(S_{\tau_r})\mathbb{1}_{\{\tau_r&lt;\tau_0\}}]}.\]</span>
+令 <span class="math inline">\(p=\mathbb{P}(\tau_r&lt;\tau_0)\)</span>，利用条件期望的性质，对随机变量
+<span class="math inline">\(X\)</span> 和事件 <span class="math inline">\(A\)</span> 有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}{[X\mathbb{1}_A]}=\mathbb{P}(A)\mathop{\mathrm{\mathbb{E}}}{[X|A]}.\]</span>
+得 <span class="math display">\[a(x) =
+p\mathop{\mathrm{\mathbb{E}}}{[a(S_{\tau_r})|\tau_r&lt;\tau_0]}.\]</span>
+从而 <span class="math display">\[p =
+\frac{a(x)}{\mathop{\mathrm{\mathbb{E}}}{[a(S_{\tau_r})|\tau_r&lt;\tau_0]}}.\]</span>
+我们来估计分母：当随机游动首次走出 <span class="math inline">\(B(r)\)</span> 的时候，其位置 <span class="math inline">\(y\)</span> 一定满足 <span class="math display">\[y\in\partial B(r),\quad r\le |y| &lt;
+r+1.\]</span> 由势核的渐进公式， <span class="math display">\[a(y) =
+\frac{2}{\pi}\ln |y| + \frac{2\gamma+\ln 8}{\pi} + o(1).\]</span> 所以
+<span class="math display">\[0\le \ln|y|-\ln r
+&lt;\ln(1+\frac{1}{r})=o(1).\]</span> 因此对所有 <span class="math inline">\(y\in \partial B(r)\)</span> 一致地有 <span class="math display">\[a(y) = \frac{2}{\pi}\ln r + \frac{2\gamma+\ln
+8}{\pi} + o(1).\]</span> 特别地，取条件期望以后仍然有 <span class="math display">\[\mathop{\mathrm{\mathbb{E}}}{[a(S_{\tau_r})|\tau_r&lt;\tau_0]}
+= \frac{2}{\pi}\ln r + \frac{2\gamma+\ln 8}{\pi} + o(1).\]</span></p>
 <p>至此我们就证明了如下结论：</p>
 <div id="-------4" class="statement sta____4 plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">定理
-4</span>.</span><span class="statement-spah"> </span>： 设 <span class="math inline">\(x\in B(r)\)</span> 且 <span class="math inline">\(x\ne 0\)</span>，考虑从 <span class="math inline">\(x\)</span> 出发的简单随机游动，则 <span class="math display">\[\mathbb{P}_x(\tau_{\partial B(r)} &lt; \tau_0) =
+4</span>.</span><span class="statement-spah"> </span>： 设 <span class="math inline">\(x\in B(r)\)</span> 且 <span class="math inline">\(x\ne 0\)</span>，考虑从 <span class="math inline">\(x\)</span> 出发的简单随机游动，则 <span class="math display">\[\mathbb{P}_x(\tau_r &lt; \tau_0) =
 \frac{a(x)}{\dfrac{2}{\pi}\ln r + \dfrac{2\gamma+\ln8}{\pi} +
-O(r^{-1})}.\]</span></p>
+o(1)}.\]</span></p>
 </div>
 <p>本文开头的赌局的答案就蕴含在这个定理的结论中：由于从原点出发的随机游动第一步必然走到某个邻居
 <span class="math inline">\(x\in\{\pm e_1,\pm e_2\}\)</span>
 上，所以从原点出发的随机游动能够逃逸到 <span class="math inline">\(B(r)\)</span> 之外的概率是 <span class="math display">\[\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
-e_2\}}\mathbb{P}_x(\tau_{\partial
-B(r)}&lt;\tau_{0})=\frac{1}{4}\sum_{x\in\{\pm e_1,\pm
-e_2\}}\frac{a(x)}{\dfrac{2}{\pi}\ln r +
-\dfrac{2\gamma+\ln8}{\pi}+O(r^{-1})}.\]</span> 而 <span class="math inline">\(a(x)\)</span> 在这四个点上的值都是
+e_2\}}\mathbb{P}_x(\tau_r&lt;\tau_{0})=\frac{1}{4}\sum_{x\in\{\pm
+e_1,\pm e_2\}}\frac{a(x)}{\dfrac{2}{\pi}\ln r +
+\dfrac{2\gamma+\ln8}{\pi}+o(1)}.\]</span> 而 <span class="math inline">\(a(x)\)</span> 在这四个点上的值都是
 1，所以这个概率值等于 <span class="math display">\[\dfrac{1}{\dfrac{2}{\pi}\ln r +
-\dfrac{2\gamma+\ln8}{\pi} + O(r^{-1})}\approx\left(\dfrac{2}{\pi}\ln r +
+\dfrac{2\gamma+\ln8}{\pi} + o(1)}\approx\left(\dfrac{2}{\pi}\ln r +
 1.0293737\right)^{-1},\quad r\to\infty,\]</span> 这也正是我们之前介绍的
 B 的获胜概率！</p>
 <blockquote>
@@ -737,23 +668,6 @@ G(x)=\frac{\gamma_d}{|x|^{d-2}} + O(|x|^{-d}).
 4.3 节。</p>
 <p>本文选择 <span class="math inline">\(d=2\)</span>
 情形讨论是因为它更有趣，而且这里的结论在后面的文章中会用到。下篇文章见！</p>
-<h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Durrett2019" class="csl-entry" role="listitem">
-Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. 5th ed.
-Cambridge Series in Statistical and Probabilistic Mathematics. Cambridge
-University Press.
-</div>
-<div id="ref-lawler2010random" class="csl-entry" role="listitem">
-Lawler, Gregory F, and Vlada Limic. 2010. <em>Random Walk: A Modern
-Introduction</em>. Vol. 123. Cambridge University Press.
-</div>
-<div id="ref-spitzergtm" class="csl-entry" role="listitem">
-Spitzer, Frank. 1976. <em>Principles of Random Walk</em>. Second. Vol.
-Vol. 34. Graduate Texts in Mathematics. Springer-Verlag, New
-York-Heidelberg.
-</div>
-</div>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
