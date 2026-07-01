@@ -341,16 +341,16 @@ S.\]</span> 其中 <span class="math inline">\(m_{ij}\)</span>
 <span class="math inline">\(V\)</span> 的一组基，<span class="math inline">\(\Delta\)</span>
 叫做一组<strong>单根系</strong>，任何 <span class="math inline">\(\alpha_i\)</span> 叫做<strong>单根</strong>。定义
 <span class="math inline">\(V\)</span> 上的内积 <span class="math inline">\(\bullet\)</span> 如下： <span class="math display">\[\alpha_i\bullet\alpha_j=-\cos\frac{\pi}{m_{ij}}.\]</span>
-在这个内积下，每个 <span class="math inline">\(\alpha_i\in\Delta\)</span> 都是单位向量：<span class="math inline">\(\alpha_i\bullet\alpha_i=1\)</span>。</p>
+在这个内积下，每个 <span class="math inline">\(\alpha_i\in\Delta\)</span> 的长度都是 1： <span class="math display">\[\alpha_i\bullet\alpha_i=1.\]</span></p>
 <p><span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, secs.
 6.2–6.4</a>)</span> 中证明了 <span class="math inline">\(( W,S
 )\)</span> 是有限群当且仅当 <span class="math inline">\(\bullet\)</span>
 是正定的。</p>
 <p>记 <span class="math inline">\(A= ( \alpha_i\bullet\alpha_j )_{1\leq
 i,j\leq n}\)</span> 是 <span class="math inline">\(\bullet\)</span> 在
-<span class="math inline">\(\Delta\)</span> 这组基下的 Gram 矩阵，<span class="math inline">\(A\)</span> 叫做 Cartan 矩阵。</p>
-<p>规定每个生成元 <span class="math inline">\(s_i\in S\)</span> 在 <span class="math inline">\(V\)</span> 上的作用为 <span class="math display">\[s_i ( v ) = v - 2 ( v\bullet\alpha_i )
-\alpha_i,\quad v\in V.\]</span> 即 <span class="math inline">\(s_i\)</span> 是关于以 <span class="math inline">\(\alpha_i\)</span>
+<span class="math inline">\(\Delta\)</span> 这组基下的 Gram 矩阵。</p>
+<p>规定每个生成元 <span class="math inline">\(s_i\in S\)</span> 在 <span class="math inline">\(V\)</span> 上的作用为 <span class="math display">\[s_i ( v ) = v - 2 ( v\bullet\alpha_i
+)\alpha_i,\quad v\in V.\]</span> 即 <span class="math inline">\(s_i\)</span> 是关于以 <span class="math inline">\(\alpha_i\)</span>
 为法向量的超平面的反射。这个作用将 <span class="math inline">\(W\)</span> 同构地映射为 <span class="math inline">\(O ( V )\)</span> 的一个有限反射子群。</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
@@ -390,7 +390,7 @@ Coxeter 元。下面对 <span class="math inline">\(\gamma\)</span>
 <span class="math inline">\({\bf A}\)</span> 是把每个 <span class="math inline">\(\omega_i\)</span> 映射为 <span class="math inline">\(\alpha_i\)</span> 的线性变换： <span class="math display">\[{\bf A}\omega_i=\alpha_i,\quad \forall 1\leq
 i\leq n.\]</span> 则 <span class="math inline">\({\bf A}\)</span> 在
 <span class="math inline">\(\{\omega_i\}_{i=1}^n\)</span>
-这组基下的矩阵就是 Cartan 矩阵 <span class="math inline">\(A\)</span>。</p>
+这组基下的矩阵就是 Gram 矩阵 <span class="math inline">\(A\)</span>。</p>
 <p><span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
 2.6</a>)</span> 证明了矩阵 <span class="math inline">\(A\)</span>
 的极小特征值 <span class="math inline">\(c&gt;0\)</span> 的重数是
@@ -407,13 +407,14 @@ c_i\omega_i+\sum_{i\in J}c_i\omega_i=\lambda+\mu.\]</span> <span class="citation
 <p>由于 <span class="math inline">\(\gamma\)</span> 置换根系 <span class="math inline">\(\Phi\)</span>，所以如果我们把 <span class="math inline">\(\Phi\)</span> 投影到 <span class="math inline">\(P\)</span> 上，就会看到一个具有 <span class="math inline">\(h\)</span> 阶旋转对称性的图案。</p>
 <p>不过直接使用上面 <span class="math inline">\(\lambda,\mu\)</span>
 的定义来计算 <span class="math inline">\(P\)</span>
-是很不方便的，因为其中涉及了对偶基 <span class="math inline">\(\{\omega_i\}\)</span>。我们可以绕开对偶基的计算。<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, 78</a>)</span> 中提供了以下公式
+是很不方便的，因为其中涉及了对偶基 <span class="math inline">\(\{\omega_i\}\)</span>。我们可以绕开对偶基的计算。<span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, 78</a>)</span> 中提供了以下公式：
 <span class="math display">\[\begin{aligned}
 (c-1)\mu+\lambda &amp;=\sum_{i\in I}c_i\alpha_i,\\
 (c-1)\lambda+\mu &amp;=\sum_{j\in J}c_j\alpha_j.
 \end{aligned}\]</span></p>
-<p>由于 <span class="math inline">\(c\ne 1\)</span>（1 不是 Coxeter
-元的特征值），这两个等式告诉我们 <span class="math display">\[P=\mathop{\mathrm{span}}\{\lambda,\,\mu\}=\mathop{\mathrm{span}}\left\{\sum_{i\in
+<p>由于 Coxeter 图不可约且秩至少为 2，存在相邻顶点 <span class="math inline">\(i,j\)</span>。取 <span class="math inline">\(z=e_i+e_j\)</span>，则根据 Rayleigh 商，有 <span class="math display">\[c\le \frac{z^{\mathsf T}Az}{z^{\mathsf
+T}z}=1-\cos\frac{\pi}{m_{ij}}&lt;1.\]</span> 因而上述系数矩阵可逆。从而
+<span class="math display">\[P=\mathop{\mathrm{span}}\{\lambda,\,\mu\}=\mathop{\mathrm{span}}\left\{\sum_{i\in
 I}c_i\alpha_i,\,\sum_{j\in
 J}c_j\alpha_j\right\}.\tag{$\ast$}\label{eq:alpha}\]</span>
 所以我们完全可以仅通过特征向量 <span class="math inline">\({\bf
@@ -428,59 +429,60 @@ c}\)</span> 和 <span class="math inline">\(\Delta\)</span> 得出 <span class="
 <p><span class="statement-heading"><span class="statement-label">命题
 3.1</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman 2017,
 lemma. 3.3</a>)</span>)</span>.</span><span class="statement-spah">
-</span><span class="math inline">\(2I + \gamma + \gamma^{-1}= ( 2I-A
+</span><span class="math inline">\(2I + \gamma + \gamma^{-1}= 4(I-A
 )^2\)</span>。</p>
 </div>
-<p>根据这个结论，如果 <span class="math inline">\(s=e^{i\theta}\)</span>
-和 <span class="math inline">\(\bar{s}=e^{-i\theta}\)</span> 是 <span class="math inline">\(\gamma\)</span> 的一对共轭的复特征值，<span class="math inline">\(V_s,V_{\bar{s}}\)</span>
-分别是对应的特征子空间，记 <span class="math inline">\(U=V_s\oplus
-V_{\bar{s}}\)</span>，则对任何 <span class="math inline">\(u\in
-U\)</span> 有 <span class="math display">\[( 2I-A )^2 ( u ) = (
-2+e^{i\theta}+e^{-i\theta} ) u= 4\cos^2(\theta/2) u.\]</span> 即 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(( 2I-A
-)^2\)</span> 的特征值为 <span class="math inline">\(4\cos^2(\theta/2)\)</span> 的特征子空间。</p>
-<p>我们想把这个结论中的平方去掉，即证明 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征值为 <span class="math inline">\(\pm 2\cos(\theta/2)\)</span>
-的特征子空间的直和。</p>
 <div id="u-pm" class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-3.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(U_{\pm}\)</span> 是 <span class="math inline">\(2I-A\)</span> 的 <span class="math inline">\(\pm2\cos(\theta/2)\)</span> 特征子空间，则 <span class="math inline">\(\dim U_+=\dim U_-\)</span> 并且 <span class="math inline">\(U=U_+\oplus U_-\)</span>。</p>
+3.2</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(e^{\pm i\theta}\)</span> 是 <span class="math inline">\(\gamma\)</span> 的一对严格非实特征值，其中 <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>，并令 <span class="math display">\[U=V_{e^{i\theta}}\oplus
+V_{e^{-i\theta}}.\]</span> 设 <span class="math inline">\(U_{\pm}\)</span> 是 <span class="math inline">\(I-A\)</span> 的特征值 <span class="math inline">\(\pm\cos\frac{\theta}{2}\)</span>
+对应的特征子空间。则 <span class="math display">\[U=U_+\oplus
+U_-,\quad\dim U_+=\dim U_-.\]</span></p>
 </div>
-<p><strong>证明</strong>：显然 <span class="math inline">\(U\supseteq
-U_+\oplus U_-\)</span>。下面证明反向包含。</p>
-<p>显然 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的不变子空间。而 <span class="math inline">\(2I-A\)</span> 是可对角化的，所以 <span class="math inline">\(2I-A\)</span> 限制在 <span class="math inline">\(U\)</span> 上也可以对角化，即 <span class="math inline">\(U\)</span> 是 <span class="math inline">\(2I-A\)</span> 的特征子空间的直和。显然 <span class="math inline">\(2I-A\)</span> 在 <span class="math inline">\(U\)</span> 上的特征值只有可能是 <span class="math inline">\(\pm 2\cos(\theta/2)\)</span>，从而 <span class="math inline">\(U\subseteq U_+\oplus U_-\)</span>，即 <span class="math inline">\(U=U_+\oplus U_-\)</span>。</p>
-<p>为了说明 <span class="math inline">\(\dim U_+=\dim
-U_-\)</span>，我们需要下面的引理，这个引理的证明并不是简单的线性代数，它要用到
-Coxeter 图 <span class="math inline">\(\Gamma\)</span>
-的不可约条件：</p>
-<div id="same-characteristic" class="statement lemma plain">
-<p><span class="statement-heading"><span class="statement-label">引理
-3.3</span> <span class="statement-info">(<span class="citation" data-cites="CasselmanCoxeterElement">(<a href="#ref-CasselmanCoxeterElement" role="doc-biblioref">Casselman 2017,
-lemma. 3.5</a>)</span>)</span>.</span><span class="statement-spah">
-</span><span class="math inline">\(2I-A\)</span> 和 <span class="math inline">\(A-2I\)</span> 有同样的特征多项式。</p>
-</div>
-<p>这个引理告诉我们，若 <span class="math inline">\(\lambda\)</span> 是
-<span class="math inline">\(A-2I\)</span> 的特征值，则 <span class="math inline">\(-\lambda\)</span>
-也是，并且二者的特征子空间维数相等（<span class="math inline">\(A-2I\)</span>
-是可对角化的，特征值的几何重数等于代数重数）。于是 <span class="math inline">\(\dim U_+=\dim U_-\)</span>。<a href="#u-pm" title="命题 3.2">命题 3.2</a> 得证。<span class="math inline">\(\blacksquare\)</span></p>
-<p>由于 <span class="math inline">\(2I-A\)</span> 的 <span class="math inline">\(\pm2\cos(\theta/2)\)</span> 特征子空间对应的是
-<span class="math inline">\(A\)</span> 的 <span class="math inline">\(2\mp2\cos(\theta/2)\)</span>
+<p><strong>证明</strong>：记 <span class="math inline">\(B=I-A\)</span>，<span class="math inline">\(r=\cos\frac{\theta}{2}&gt;0\)</span>。</p>
+<p>我们先证明 <span class="math inline">\(U=\ker(B^2 -
+r^2I)\)</span>。</p>
+<p>由恒等式 <span class="math inline">\(2I + \gamma + \gamma^{-1}=
+4B^2\)</span> 可得对 <span class="math inline">\(u\in U\)</span> 有
+<span class="math display">\[4B^2(u) = (2 + e^{i\theta} + e^{-i\theta})
+u = \left(4\cos^2\frac{\theta}{2}\right)u = 4r^2u.\]</span> 即 <span class="math inline">\(U\subseteq \ker(B^2 - r^2I)\)</span>。</p>
+<p>另一方面，由于 <span class="math inline">\(B^2\)</span> 和 <span class="math inline">\(\gamma\)</span> 交换，<span class="math inline">\(\ker(B^2 - r^2I)\)</span> 是 <span class="math inline">\(\gamma\)</span> 的不变子空间，而 <span class="math inline">\(\gamma\)</span> 作为有限群 <span class="math inline">\(W\)</span> 的元素也是可对角化的，所以 <span class="math inline">\(\ker(B^2 - r^2I)\)</span> 可以分解为 <span class="math inline">\(\gamma\)</span> 的特征空间的直和。若 <span class="math inline">\(t\)</span> 是其中出现的 <span class="math inline">\(\gamma\)</span>-特征值，则 <span class="math display">\[2+t+t^{-1} = 4r^2 = 2 + e^{i\theta} +
+e^{-i\theta}.\]</span> 从而 <span class="math inline">\(t=e^{\pm
+i\theta}\)</span>。故 <span class="math inline">\(\ker(B^2 -
+r^2I)\subseteq U\)</span>。从而二者相等。</p>
+<p>由于 <span class="math inline">\(B\)</span>
+是对称矩阵，可以对角化，因此 <span class="math display">\[\ker(B^2
+-r^2I) = \ker(B-rI) \oplus \ker(B+rI) = U_+\oplus U_-.\]</span> 即 <span class="math display">\[U = U_+\oplus U_-.\]</span></p>
+<p>再证 <span class="math inline">\(U_{\pm}\)</span> 的维数相等。按照
+Coxeter 图的二部图划分 <span class="math inline">\(I\sqcup J\)</span>
+排列单根，则 <span class="math inline">\(B=I-A\)</span> 具有分块形式
+<span class="math display">\[B=\begin{pmatrix}
+0&amp; X\\
+X^\mathsf{T} &amp; 0
+\end{pmatrix}.\]</span> 令 <span class="math display">\[D=\begin{pmatrix}
+I_{|I|}&amp; 0\\
+0 &amp; -I_{|J|}
+\end{pmatrix}.\]</span> 则 <span class="math inline">\(D^2=I\)</span> 且
+<span class="math display">\[DB = -BD.\]</span> 因此，若 <span class="math inline">\(Bu=ru\)</span>，则 <span class="math display">\[B(Du) = -D(Bu) = -r Du.\]</span> 即 <span class="math inline">\(u\to Du\)</span> 给出了 <span class="math inline">\(U_+\to U_-\)</span> 的线性同构。故 <span class="math inline">\(\dim U_+=\dim U_-\)</span>。 <span class="math inline">\(\blacksquare\)</span></p>
+<p>由于 <span class="math inline">\(I-A\)</span> 的 <span class="math inline">\(\pm\cos(\theta/2)\)</span> 特征子空间对应的是
+<span class="math inline">\(A\)</span> 的 <span class="math inline">\(1\mp\cos(\theta/2)\)</span>
 特征子空间，所以我们得到了下面的推论：</p>
 <div id="eigenspace-pair" class="statement corollary plain">
 <p><span class="statement-heading"><span class="statement-label">推论
-3.4</span>.</span><span class="statement-spah"> </span><span class="math inline">\(A\)</span> 的不等于 2 的特征值成对出现，它们形如
-<span class="math inline">\(2\mp2\cos(\theta/2)\)</span>，并且对应的特征子空间
+3.3</span>.</span><span class="statement-spah"> </span><span class="math inline">\(A\)</span> 的不等于 1 的特征值成对出现，它们形如
+<span class="math inline">\(1\mp\cos(\theta/2)\)</span>，并且对应的特征子空间
 <span class="math inline">\(U_{\pm}\)</span> 的维数是相等的。</p>
 </div>
 <p>一般来说 <span class="math inline">\(U=U_+\oplus U_-\)</span>
 的维数未必是 2，所以 <span class="math inline">\(U\)</span>
 不一定是平面。</p>
-<p>然而对 <span class="math inline">\(A\)</span> 的极小特征值 <span class="math inline">\(c_\min=2-2\cos(\theta_0/2)\)</span>，我们知道
-<span class="math inline">\(c_\min\)</span> 的重数是 1。根据 <a href="#eigenspace-pair" title="推论 3.4">推论 3.4</a>，<span class="math inline">\(A\)</span> 的极大特征值 <span class="math inline">\(c_\max=2+2\cos(\theta_0/2)\)</span> 的重数也是
+<p>然而对 <span class="math inline">\(A\)</span> 的极小特征值 <span class="math inline">\(c_\min=1-\cos(\theta_0/2)\)</span>，我们知道 <span class="math inline">\(c_\min\)</span> 的重数是 1。根据 <a href="#eigenspace-pair" title="推论 3.3">推论 3.3</a>，<span class="math inline">\(A\)</span> 的极大特征值 <span class="math inline">\(c_\max=1+\cos(\theta_0/2)\)</span> 的重数也是
 1，这时 <span class="math inline">\(U\)</span> 就是一个二维平面，并且
 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(U\)</span>
 上的作用是一个旋转。我们来说明这个旋转的阶等于 <span class="math inline">\(\gamma\)</span> 的阶 <span class="math inline">\(h\)</span>，从而 <span class="math inline">\(U\)</span> 就是要找的 Coxeter 平面：</p>
 <div class="statement proposition plain">
 <p><span class="statement-heading"><span class="statement-label">命题
-3.5</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(u,v\)</span> 分别是 <span class="math inline">\(c_\min,c_\max\)</span> 对应的特征向量，<span class="math inline">\(U=\mathop{\mathrm{span}}\{u,v\}\)</span>，则 <span class="math inline">\(\gamma\)</span> 作为 <span class="math inline">\(U\)</span> 上的旋转的阶等于 <span class="math inline">\(\gamma\)</span> 的阶 <span class="math inline">\(h\)</span>。</p>
+3.4</span>.</span><span class="statement-spah"> </span>设 <span class="math inline">\(u,v\)</span> 分别是 <span class="math inline">\(c_\min,c_\max\)</span> 对应的特征向量，<span class="math inline">\(U=\mathop{\mathrm{span}}\{u,v\}\)</span>，则 <span class="math inline">\(\gamma\)</span> 作为 <span class="math inline">\(U\)</span> 上的旋转的阶等于 <span class="math inline">\(\gamma\)</span> 的阶 <span class="math inline">\(h\)</span>。</p>
 </div>
 <p><strong>证明</strong>：设 <span class="math inline">\(u=\sum_{i=1}^nc_i\omega_i\)</span>，<span class="math inline">\(\gamma\)</span> 限制在 <span class="math inline">\(P\)</span> 上的阶是 <span class="math inline">\(k\)</span>。由于 <span class="math inline">\(u\in
 P\)</span>，所以 <span class="math inline">\(\gamma^k u=u\)</span>。</p>
@@ -499,13 +501,13 @@ Cartan 矩阵 <span class="math inline">\(A\)</span> 和单根系 <span class="m
 <p><img src="/images/coxeter-element/e8-dynkin.svg" class="fig" width="400"></p>
 <p>我们第一步需要取 <span class="math inline">\(\mathbb{R}^8\)</span>
 的一组基 <span class="math inline">\(\Delta=\{\alpha_i\}_{1\leq i\leq
-8}\)</span> 作为单根系，并规定它们之间的内积 <span class="math inline">\(\bullet\)</span> 为 <span class="math display">\[(\alpha_i\bullet\alpha_j)_{1\leq i,j\leq
-8}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span>
-注意这里每个单根 <span class="math inline">\(\alpha_i\bullet\alpha_i=2\)</span>，并不是单位向量，这样主要是为了书写代码更方便。</p>
-<p>由于 <span class="math inline">\(\bullet\)</span>
-是正定的，所以我们可以适当选择单根系 <span class="math inline">\(\Delta\)</span> 使得在这组基下 <span class="math inline">\(\bullet\)</span> 就是标准的 Euclidean
-内积。例如，取 <span class="math inline">\(\alpha_i\)</span>
-为下面矩阵的第 <span class="math inline">\(i\)</span> 行： <span class="math display">\[\begin{bmatrix}1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\end{bmatrix}.\]</span></p>
+8}\)</span> 作为单根系。例如，取 <span class="math inline">\(\alpha_i\)</span> 为下面矩阵的第 <span class="math inline">\(i\)</span> 行： <span class="math display">\[\begin{bmatrix}1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;1&amp;0\\-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}&amp;-\frac{1}{2}\\0&amp;0&amp;0&amp;0&amp;0&amp;1&amp;-1&amp;0\end{bmatrix}.\]</span></p>
+<p>注意前文为了与 Casselman 的记号一致，使用长度为 1 的单根。但在 <span class="math inline">\(E^8\)</span>
+的标准坐标表示中，通常令每个根的长度平方为 2。</p>
+<p>取 <span class="math inline">\(\bullet\)</span> 为标准欧氏内积，则
+Gram 为 <span class="math display">\[C =
+(\alpha_i\bullet\alpha_j)_{1\leq i,j\leq
+8}=\begin{pmatrix}2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0&amp;0\\-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0&amp;0\\0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;-1&amp;0\\0&amp;0&amp;0&amp;0&amp;0&amp;-1&amp;2&amp;0\\0&amp;0&amp;0&amp;0&amp;-1&amp;0&amp;0&amp;2\end{pmatrix}.\]</span></p>
 <p>用代码来写的话，就是</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># A set of simple roots listed by rows of 'delta'</span><br>delta = np.array([<br>    [<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],<br>    [-<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>, -<span class="hljs-number">0.5</span>],<br>    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]<br>])<br><br><span class="hljs-comment"># The cartan matrix:</span><br>cartan = np.dot(delta, delta.transpose())<br></code></pre></td></tr></tbody></table></figure>
 <p>所有单反射 <span class="math inline">\(\{s_i\}_{i=1}^8\)</span>
@@ -528,22 +530,23 @@ Cartan 矩阵 <span class="math inline">\(A\)</span> 和单根系 <span class="m
 </ol>
 <p>为了编程方便，我们可以把所有根都乘以
 2，使得它们都是整数向量。于是生成根系 <span class="math inline">\(\Phi\)</span> 的代码可以这样写：</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> itertools<br><br>roots = []<br><br><span class="hljs-comment"># Roots of the form (+-1, +-1, 0, 0, 0, 0, 0, 0),</span><br><span class="hljs-comment"># signs can be chosen independently and the two non-zeros can be anywhere.</span><br><span class="hljs-keyword">for</span> i, j <span class="hljs-keyword">in</span> combinations(<span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>), <span class="hljs-number">2</span>):<br>    <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> product([-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>], repeat=<span class="hljs-number">2</span>):<br>        v = np.zeros(<span class="hljs-number">8</span>)<br>        v[i] = x<br>        v[j] = y<br>        roots.append(v)<br><br><span class="hljs-comment"># Roots of the form 1/2 * (+-1, +-1, ..., +-1), signs can be chosen</span><br><span class="hljs-comment"># indenpendently except that there must be an even numer of -1s.</span><br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> product([-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], repeat=<span class="hljs-number">8</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span>(v) % <span class="hljs-number">4</span> == <span class="hljs-number">0</span>:<br>        roots.append(v)<br>roots = np.array(roots).astype(<span class="hljs-built_in">int</span>)<br><br><span class="hljs-comment"># Connect a root to its nearest neighbors,</span><br><span class="hljs-comment"># two roots are connected if and only if they form an angle of pi/3.</span><br>edges = []<br><span class="hljs-keyword">for</span> i, r <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots):<br>    <span class="hljs-keyword">for</span> j, s <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots[i + <span class="hljs-number">1</span> :], i + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> np.<span class="hljs-built_in">sum</span>((r - s) ** <span class="hljs-number">2</span>) == <span class="hljs-number">8</span>:<br>            edges.append([i, j])<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> combinations, product<br><br>roots = []<br><br><span class="hljs-comment"># Roots of the form (+-1, +-1, 0, 0, 0, 0, 0, 0),</span><br><span class="hljs-comment"># signs can be chosen independently and the two non-zeros can be anywhere.</span><br><span class="hljs-keyword">for</span> i, j <span class="hljs-keyword">in</span> combinations(<span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>), <span class="hljs-number">2</span>):<br>    <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> product([-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>], repeat=<span class="hljs-number">2</span>):<br>        v = np.zeros(<span class="hljs-number">8</span>)<br>        v[i] = x<br>        v[j] = y<br>        roots.append(v)<br><br><span class="hljs-comment"># Roots of the form 1/2 * (+-1, +-1, ..., +-1), signs can be chosen</span><br><span class="hljs-comment"># indenpendently except that there must be an even numer of -1s.</span><br><span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> product([-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>], repeat=<span class="hljs-number">8</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span>(v) % <span class="hljs-number">4</span> == <span class="hljs-number">0</span>:<br>        roots.append(v)<br>roots = np.array(roots).astype(<span class="hljs-built_in">int</span>)<br><br><span class="hljs-comment"># Connect a root to its nearest neighbors,</span><br><span class="hljs-comment"># two roots are connected if and only if they form an angle of pi/3.</span><br>edges = []<br><span class="hljs-keyword">for</span> i, r <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots):<br>    <span class="hljs-keyword">for</span> j, s <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(roots[i + <span class="hljs-number">1</span> :], i + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> np.<span class="hljs-built_in">sum</span>((r - s) ** <span class="hljs-number">2</span>) == <span class="hljs-number">8</span>:<br>            edges.append([i, j])<br></code></pre></td></tr></tbody></table></figure>
 <p>我们来计算 Coxeter 平面 <span class="math inline">\(P\)</span>
 的一组基。</p>
-<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">eigenvals, eigenvecs = np.linalg.eigh(cartan)<br>u = eigenvecs[:, <span class="hljs-number">0</span>]<br>v = eigenvecs[:, -<span class="hljs-number">1</span>]<br><br>u = np.dot(u, delta)<br>v = np.dot(v, delta)<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">eigenvals, eigenvecs = np.linalg.eigh(cartan)<br>coeff_min = eigenvecs[:, <span class="hljs-number">0</span>]<br>coeff_max = eigenvecs[:, -<span class="hljs-number">1</span>]<br><br>u = coeff_min @ delta<br>v = coeff_max @ delta<br></code></pre></td></tr></tbody></table></figure>
 <p>其中 <code>eigenvals</code> 返回 Cartan
 矩阵的特征值，按照从小到大排列；<code>eigenvecs</code> 的列向量是 Cartan
 矩阵的特征向量，也是按照特征值递增的顺序排列，第一列
-<code>u = eigenvecs[:, 0]</code> 和最后一列
-<code>v = eigenvecs[:, -1]</code>
+<code>coeff_min = eigenvecs[:, 0]</code> 和最后一列
+<code>coeff_max = eigenvecs[:, -1]</code>
 就是最小和最大特征值对应的特征向量。</p>
 <p>把 <code>eigenvals</code> 中的特征值打印出来：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-number">0.01095621</span> <span class="hljs-number">0.51371035</span> <span class="hljs-number">1.18652671</span> <span class="hljs-number">1.58417662</span> <span class="hljs-number">2.41582338</span> <span class="hljs-number">2.81347329</span> <span class="hljs-number">3.48628965</span> <span class="hljs-number">3.98904379</span>]<br></code></pre></td></tr></tbody></table></figure>
 <p>可以看到最小的特征值 <span class="math display">\[0.01095621 \approx
 2-2\cos\frac{\theta_0}{2},\quad \theta_0\approx
 2\arccos0.994521895\approx\frac{2\pi}{30}.\]</span> 所以我们验证了 <span class="math inline">\(\gamma\)</span> 在 <span class="math inline">\(P\)</span> 上的作用是一个 30 阶的旋转，即 <span class="math inline">\(W\)</span> 的 Coxeter 数是 30。</p>
-<p>根据上一节末尾的介绍，<span class="math inline">\(\sum_{i=1}^8u_i\alpha_i\)</span> 和 <span class="math inline">\(\sum_{i=1}^8v_i\alpha_i\)</span> 构成 <span class="math inline">\(P\)</span>
+<p>根据上一节末尾的介绍，<span class="math inline">\(u,v\)</span> 构成
+<span class="math inline">\(P\)</span>
 的一组正交基。把它们归一化为单位向量，然后计算根系 <code>roots</code> 到
 <span class="math inline">\(P\)</span> 的投影：</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">u /= np.linalg.norm(u)<br>v /= np.linalg.norm(v)<br>roots_2d = [(np.dot(u, x), np.dot(v, x)) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> roots]<br></code></pre></td></tr></tbody></table></figure>

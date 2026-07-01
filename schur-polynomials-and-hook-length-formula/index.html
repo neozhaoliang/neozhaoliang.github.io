@@ -488,7 +488,7 @@ Young 表 (standard Young tableaux)，简称为 SYT。</p>
 <p>用记号 <span class="math inline">\(\mathrm{SSYT}(n,\lambda)\)</span>
 表示所有形状为 <span class="math inline">\(\lambda\)</span>，并且填入的数字不超过 <span class="math inline">\(n\)</span> 的半标准 Young
 表组成的集合。显然若要使得此集合非空必须有 <span class="math inline">\(n\geq l(\lambda)\)</span>（SSYT
-从上到下是递增的，第一列的最后一行填入的整数至少是 <span class="math inline">\(l(\lambda)\)</span>）。当 <span class="math inline">\(|\lambda|=n\)</span> 时我们也将其简写为 <span class="math inline">\(\mathrm{SSYT}(\lambda)\)</span>。类似地，<span class="math inline">\({\rm SYT}(\lambda)\)</span> 表示所有形状为 <span class="math inline">\(\lambda\)</span> 的标准 Young 表的集合。</p>
+从上到下是递增的，第一列的最后一行填入的整数至少是 <span class="math inline">\(l(\lambda)\)</span>）。此外用 <span class="math inline">\({\rm SYT}(\lambda)\)</span> 表示所有形状为 <span class="math inline">\(\lambda\)</span> 的标准 Young 表的集合。</p>
 <p>文章开头的投票序列问题本质上等价于计算集合 <span class="math inline">\({\rm SYT}(\lambda)\)</span>
 的大小。具体来说，每个符合要求的投票序列都可以唯一地转化为一个标准 Young
 表，方法如下：</p>
@@ -777,8 +777,10 @@ table {max-width: 36%}
 </table>
 <p><strong>关键观察</strong>：</p>
 <blockquote>
-<p>在任意一行中，未匹配的元素总是构成一段连续的序列。即设 <span class="math inline">\(i=x\leq y\leq i+1\)</span>
-是两个未匹配的元素，则它们中间不可能有匹配的元素。</p>
+<p>如果一行中有两个未匹配的 <span class="math inline">\(i\)</span> 或
+<span class="math inline">\(i+1\)</span>，那么位于它们之间的所有 <span class="math inline">\(i\)</span> 或 <span class="math inline">\(i+1\)</span>
+也都是未匹配的。因此，一行中的未匹配元素构成一段连续区间，并且形如若干个
+<span class="math inline">\(i\)</span> 后接若干个 <span class="math inline">\(i+1\)</span>。</p>
 </blockquote>
 <p>设某一行中的未匹配元素形如：<span class="math inline">\(r\)</span> 个
 <span class="math inline">\(i\)</span> 紧接着 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i+1\)</span>，我们将其替换为 <span class="math inline">\(s\)</span> 个 <span class="math inline">\(i\)</span> 紧接着 <span class="math inline">\(r\)</span> 个 <span class="math inline">\(i+1\)</span>，保持其他部分不变。对 Young
@@ -841,17 +843,17 @@ table {max-width: 36%}
 <h1 id="jacobi-trudi-恒等式">Jacobi-Trudi 恒等式</h1>
 <p>除了通过半标准 Young 表的生成函数定义之外，Schur
 多项式还有许多等价的表达方式。本节中，我们将 Schur
-多项式表示为齐次对称多项式行列式的形式。</p>
+多项式表示为完全齐次对称多项式行列式的形式。</p>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
 3.1</span>.</span><span class="statement-spah"> </span>记 <span class="math inline">\(h_k(x_1,\ldots,x_n)\)</span> 为所有次数为 <span class="math inline">\(k\)</span> 的单项式之和： <span class="math display">\[h_k(x_1,\ldots,x_n)=\sum_{\begin{subarray}{c}\alpha_1+\alpha_2+\cdots+\alpha_n=k\\\alpha_i\in\mathbb{Z}_{\geq0}\end{subarray}}
 x_1^{\alpha_1}x_2^{\alpha_2}\cdots x_n^{\alpha_n}.\]</span> 约定 <span class="math inline">\(h_0=1\)</span>，<span class="math inline">\(k&lt;0\)</span> 时 <span class="math inline">\(h_{k}=0\)</span>。<span class="math inline">\(h_k\)</span>
-也是对称多项式，称为<strong>齐次对称多项式</strong>。</p>
+也是对称多项式，称为<strong>完全齐次对称多项式</strong>。</p>
 </div>
 <div class="statement example definition unnumbered">
 <p><span class="statement-heading"><span class="statement-label">例</span>：</span><span class="statement-spah">
 </span><span class="math inline">\(h_2(x_1,\ldots,x_n)=\sum_{i=1}^n
-x_n^2 + \sum_{1&lt;i&lt;j&lt;n}x_ix_j\)</span>。</p>
+x_n^2 + \sum_{1\le i&lt;j\le n}x_ix_j\)</span>。</p>
 </div>
 <div id="jacobi-trudi----------" class="statement sta_jacobi_trudi____ plain unnumbered">
 <p><span class="statement-heading"><span class="statement-label">Jacobi-Trudi 恒等式</span>.</span><span class="statement-spah"> </span><br>
@@ -920,8 +922,7 @@ h_{\lambda_r}
 </table>
 <p>其中，<span class="math inline">\(T\)</span> 的每一行是一个长度为
 <span class="math inline">\(\lambda_i\)</span>
-的递增数列，该数列对应一条从 <span class="math inline">\((0,1)\)</span>
-到 <span class="math inline">\((\lambda_i,n)\)</span> 的 Gauss
+的弱递增数列，该数列对应一条从 <span class="math inline">\((0,1)\)</span> 到 <span class="math inline">\((\lambda_i,n)\)</span> 的 Gauss
 路径，即这一行的“台阶图”。</p>
 <p><img src="/images/schur/jacobi-trudi.gif" class="fig" width="600"></p>
 <p>我省略了 <span class="math inline">\(\lambda_i=0\)</span>
@@ -936,8 +937,8 @@ h_{\lambda_r}
 <p>反过来每一个这样的不相交的路径组也对应于一个半标准 Young 表。</p>
 <p>令水平线 <span class="math inline">\(y=k\)</span> 的权值为 <span class="math inline">\(x_k\)</span>，垂直边的权值一律为
 1，每条路径的权重是其所含各边的权重乘积。不难验证从 <span class="math inline">\(A_j=(-j,1)\)</span> 到 <span class="math inline">\(B_i=(-i+\lambda_i,n)\)</span> 的所有 Gauss
-路径权重之和是齐次对称多项式 <span class="math inline">\(h_{\lambda_i-i+j}\)</span>。于是由 Gessel-Viennot
-引理，行列式 <span class="math inline">\(\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq
+路径权重之和是齐次对称多项式 <span class="math inline">\(h_{\lambda_i-i+j}\)</span>。由于只有恒等置换可以给出不相交路径组，所以由
+Gessel-Viennot 引理，行列式 <span class="math inline">\(\det\left(h_{\lambda_i-i+j}\right)_{1\leq i,j\leq
 n}\)</span>
 给出了所有不相交路径组的权重之和。另一方面每个不相交路径组的权重正是它对应
 Young 表的权重 <span class="math inline">\(X^{c(T)}\)</span>，所以 <span class="math display">\[s_\lambda=\det\left(h_{\lambda_i-i+j}\right)_{1\leq
@@ -966,7 +967,7 @@ Littlewood-Richardson 定律。下面这个证明有很深刻的来源
 <p>A Concise Proof of the Littlewood-Richardson Rule, by John R.
 Stembridge.</p>
 </blockquote>
-<p><strong>证明</strong>：由于 <span class="math inline">\(s_\mu\)</span> 是对称多项式，因此对任何置换 <span class="math inline">\(\sigma\in S_n\)</span>，当 <span class="math inline">\(T\)</span> 跑遍 <span class="math inline">\(\mathrm{SSYT}(n,\mu)\)</span> 时，集合 <span class="math inline">\(\{c(T)\}\)</span> 与集合 <span class="math inline">\(\{\sigma(c(T))\}\)</span> 是相同的，所以 <span class="math display">\[
+<p><strong>证明</strong>：由于 <span class="math inline">\(s_\mu\)</span> 是对称多项式，因此对任何置换 <span class="math inline">\(\sigma\in S_n\)</span>，所以当 <span class="math inline">\(T\)</span> 跑遍 <span class="math inline">\(\mathrm{SSYT}(n,\mu)\)</span> 时， <span class="math display">\[
 s_{\mu}=\sum_{T\in\mathrm{SSYT}(n,\mu)} X^{c(T)} =
 \sum_{T\in\mathrm{SSYT}(n,\mu)} X^{\sigma(c(T))}.
 \]</span></p>
@@ -1025,7 +1026,7 @@ j})+\rho)+s_kc(T_{&lt;j})=\lambda+c(T^\ast)+\rho.\]</span></p>
 <span class="math inline">\(v\)</span> 的钩子长度，记作 <span class="math inline">\(h_v\)</span>。</p>
 </div>
 <p>例如 <span class="math inline">\(\lambda=(5, 4, 3, 2, 1)\)</span> 的
-Ferrers 图中，<span class="math inline">\(v=(1, 1)\)</span> 的钩子长度
+Ferrers 图中，<span class="math inline">\(v=(2,2)\)</span> 的钩子长度
 <span class="math inline">\(h_v=5\)</span>。</p>
 <table>
 <colgroup>
@@ -1133,14 +1134,12 @@ i\leq r\}\)</span>，这就证明了 <a href="#lemmaB" title="引理 5.3">引理
 5.3</a>。<span class="math inline">\(\blacksquare\)</span></p>
 <p>最后我们来完成钩长公式的证明：这里使用了一个小技巧：考虑关于无穷多个变元的对称多项式环
 <span class="math inline">\(\Lambda[x_1,\ldots,x_n,\ldots]\)</span>，任何
-<span class="math inline">\(k\)</span> 变元的 Schur 多项式都是 <span class="math inline">\(\Lambda\)</span> 中的元素。<span class="math inline">\(\Lambda\)</span> 到有理数域上的单变元形式幂级数环
+<span class="math inline">\(k\)</span> 变元的 Schur 多项式都是 <span class="math inline">\(\Lambda\)</span> 中的元素通过令 <span class="math inline">\(x_{k+1}=x_{k+2}=\cdots=0\)</span> 得到的。<span class="math inline">\(\Lambda\)</span> 到有理数域上的单变元多项式环
 <span class="math inline">\(\mathbb{Q}[t]\)</span> 有一个同态 <span class="math inline">\(\theta\)</span>： <span class="math display">\[\theta(f) = \sum_{k=0}^\infty f_k
 \frac{t^k}{k!}.\]</span> 其中 <span class="math inline">\(f_k\)</span>
 是 <span class="math inline">\(f\)</span> 中单项式 <span class="math inline">\(x_1x_2\cdots x_k\)</span> 的系数。不难验证 <span class="math inline">\(\theta\)</span> 是 <span class="math inline">\(\Lambda\to \mathbb{Q}[t]\)</span> 的代数同态 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
-<p>在齐次对称多项式 <span class="math inline">\(h_k\)</span> 中，其形如
-<span class="math inline">\(x_1x_2\cdots x_n\)</span> 的项只有一个，就是
-<span class="math inline">\(x_1x_2\cdots
-x_k\)</span>，并且这一项的系数是 1，所以 <span class="math inline">\(\theta(h_k)=\frac{t^k}{k!}\)</span>。</p>
+<p>在齐次对称多项式 <span class="math inline">\(h_k\)</span> 中， <span class="math display">\[[x_1x_2\cdots x_j]h_k = \begin{cases}1,&amp;
+j=k\\ 0, &amp; j\ne k.\end{cases}\]</span> 所以 <span class="math inline">\(\theta(h_k)=\frac{t^k}{k!}\)</span>。</p>
 <p>我们再来分析 <span class="math inline">\(\theta\)</span> 作用在 <span class="math inline">\(n\)</span> 变元 Schur 多项式上的结果 <span class="math inline">\(\theta(s_\lambda(x_1,\ldots,x_n))\)</span>。这里我们要求
 <span class="math inline">\(\lambda\)</span> 满足 <span class="math inline">\(|\lambda|=n\)</span>，即 <span class="math inline">\(\lambda\)</span> 的 Ferrers 图恰好包含 <span class="math inline">\(n\)</span> 个方格。单项式 <span class="math inline">\(x_1x_2\cdots x_k\)</span> 在 <span class="math inline">\(s_\lambda(x_1,\ldots,x_n)\)</span>
 中的系数等于每个数字 <span class="math inline">\(\{1,2,\ldots,k\}\)</span>
@@ -1159,7 +1158,7 @@ n!\cdot \det\begin{pmatrix}
 \cdots &amp; \cdots &amp;\cdots&amp;\cdots\\
 \frac{1}{(\lambda_r-r+1)!} &amp; \frac{1}{(\lambda_r-r+2)!} &amp; \cdots
 &amp; \frac{1}{\lambda_r!}
-\end{pmatrix}.\]</span> 它的最后一列恰好是 <span class="math inline">\(\{\mu_i!\mid 1\leq i\leq
+\end{pmatrix}.\]</span> 它的最后一列恰好是 <span class="math inline">\(\{\frac{1}{\mu_i!}\mid 1\leq i\leq
 r\}\)</span>，提出来以后得到 <span class="math display">\[f_\lambda =
 \frac{n!}{\prod\limits_{i=1}^r\mu_i!}\cdot \det\begin{pmatrix}
 \mu_1^{\underline{r-1}}&amp; \mu_1^{\underline{r-2}} &amp; \cdots &amp;
@@ -1218,7 +1217,7 @@ g(p_1,p_2,\ldots) &amp;\to g(t, 0, 0,\ldots)
 是代数同态。<span class="math inline">\({\rm ex}\)</span> 实际上就是
 <span class="math inline">\(\theta\)</span>： <span class="math display">\[{\rm ex}(f) = \sum_{n\geq
 0}f_n\frac{t^n}{n!}.\]</span> 详情可以参考 <span class="citation" data-cites="Stanley_Fomin_1999">(<a href="#ref-Stanley_Fomin_1999" role="doc-biblioref">Stanley and Fomin 1999</a>)</span>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>考虑 <span class="math inline">\(n\)</span> 个变元 <span class="math inline">\(X_1,\ldots,X_n\)</span> 的行列式 <span class="math inline">\(\det(X_i^{\underline{r-j}})\)</span>，这个多项式在
+<li id="fn2"><p>考虑 <span class="math inline">\(r\)</span> 个变元 <span class="math inline">\(X_1,\ldots,X_r\)</span> 的行列式 <span class="math inline">\(\det(X_i^{\underline{r-j}})\)</span>，这个多项式在
 <span class="math inline">\(X_i=X_j\)</span> 时是 0，所以它有因子 <span class="math inline">\(\prod_{1\leq i&lt;j\leq
 r}(X_i-X_j)\)</span>。另一方面它的行列式展开以后每一项次数都不超过 <span class="math inline">\(\sum_{i=1}^r(r-i)=\frac{r(r-1)}{2}\)</span>，所以比较次数即得它等于
 <span class="math inline">\(\prod_{1\leq i&lt;j\leq r}(X_i-X_j)\)</span>
