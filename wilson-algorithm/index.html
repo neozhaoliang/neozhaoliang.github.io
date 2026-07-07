@@ -375,10 +375,10 @@ erased random walk ) ，即每当走到一个以前访问过的顶点 <span clas
 1 在有限时间内返回一个生成树。</p>
 </div>
 <p><strong>证明</strong>：由于 <span class="math inline">\(G\)</span>
-有限且连通，所以其上的随机游动是常返的，在算法第 2
-步中，每次从一个新顶点 <span class="math inline">\(v\)</span>
+有限且连通，而有限连通图上的简单随机游动是不可约有限马尔可夫链，因此从任意顶点出发，几乎必然在有限时间内命中任意给定的非空顶点集合。所以在算法第
+2 步中，每次从一个新顶点 <span class="math inline">\(v\)</span>
 出发的随机游动以概率 1 在有限时间内撞到 <span class="math inline">\(T\)</span>。这样的循环只能执行有限多次 ( 次数以
-<span class="math inline">\(|V|\)</span> 为上界 ) ，所以算法以概率 1
+<span class="math inline">\(|V|-1\)</span> 为上界 ) ，所以算法以概率 1
 在有限时间内结束。<span class="math inline">\(\blacksquare\)</span></p>
 <p>所以真正有挑战性的地方在于论证得到的生成树服从均匀分布。</p>
 <p>证明的大致想法是这样的：我们构造概率空间 <span class="math inline">\(( \Omega,\mathbb{P} )\)</span> 和映射 <span class="math inline">\(\phi:
@@ -440,7 +440,9 @@ T, S, Z, Z, Z,\ldots\}.\]</span> 即第一个落下的方块是 <span class="mat
 <li>固定一个顶点 <span class="math inline">\(r\)</span>。对每个 <span class="math inline">\(v\ne r\)</span>，定义栈 <span class="math inline">\(S_v=\{S_{v,1},S_{v,2},\ldots\}\)</span>。<span class="math inline">\(S_v\)</span> 的长度是无穷，其元素 <span class="math inline">\(S_{v,i}\)</span> 都是来自 <span class="math inline">\(v\)</span>
 的邻居的均匀采样。所有栈元素都是独立的。顶点 <span class="math inline">\(r\)</span> 的栈是空栈：<span class="math inline">\(S_r=\emptyset\)</span>。</li>
 <li>概率空间 <span class="math inline">\(\Omega\)</span> 是所有栈 <span class="math inline">\(\{S_v\mid v\ne r\}\)</span>
-的所有可能的状态组成的集合。这是一个无穷离散的概率空间，其上的测度 <span class="math inline">\(\mathbb{P}\)</span> 为乘积测度。</li>
+的所有可能的状态组成的集合。这是一个由所有无限栈状态组成的乘积概率空间，其上的概率测度
+<span class="math inline">\(\mathbb{P}\)</span>
+是各栈元素分布的乘积测度。</li>
 </ol>
 </div>
 <p>为了方便，我们称 <span class="math inline">\(S_v\)</span> 的第 <span class="math inline">\(i\)</span> 个元素 <span class="math inline">\(S_{v,i}\)</span> 的颜色是 <span class="math inline">\(i\)</span>。</p>
@@ -528,12 +530,14 @@ r\}\)</span> 的栈顶元素都定义了一个有向图 <span class="math inline
 <span class="math inline">\(\{D_1,\ldots,D_n\}\)</span> 后有 <span class="math inline">\(D_i=C_i\)</span>。</p>
 </div>
 <p><strong>证明</strong>：对玩家 <span class="math inline">\(A\)</span>
-的操作次数 <span class="math inline">\(n\)</span> 归纳。<span class="math inline">\(n=0\)</span> 时结论显然成立 ( 双方均无任何操作 )
-，下面设 <span class="math inline">\(n\geq1\)</span> 且结论对所有小于
-<span class="math inline">\(n\)</span> 的情形成立。</p>
-<p>设 <span class="math inline">\(B\)</span> 第一次弹出的回路是 <span class="math inline">\(D_1\)</span>，如果 <span class="math inline">\(C_1=D_1\)</span> 则这一步操作后 <span class="math inline">\(A,B\)</span> 到达了相同的状态，而 <span class="math inline">\(A\)</span> 可以继续经过 <span class="math inline">\(n-1\)</span> 次操作后获胜，于是根据归纳假设 <span class="math inline">\(B\)</span> 也一定经过 <span class="math inline">\(n-1\)</span> 次操作获胜且后续操作 <span class="math inline">\(\{D_2,\ldots,D_n\}=\{C_2,\ldots,C_n\}\)</span>。</p>
-<p>如果 <span class="math inline">\(C_1\ne D_1\)</span>，我们断言 <span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(D_1\)</span> 没有公共的顶点。否则若 <span class="math inline">\(v\in C_1\cap D_1\)</span>，由于第一次操作时 <span class="math inline">\(C_1,D_1\)</span> 属于同一个栈顶图中，以及 <span class="math inline">\(v\)</span> 的出度是 1，所以 <span class="math inline">\(v\)</span> 在 <span class="math inline">\(G_S\)</span> 中的后继 <span class="math inline">\(v_1\)</span> 也同时属于 <span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(D_1\)</span>，进而 <span class="math inline">\(v_1\)</span> 的后继 <span class="math inline">\(v_2\)</span> 也是如此，这样一直下去回到 <span class="math inline">\(v\)</span> 就会有 <span class="math inline">\(C_1=D_1\)</span>，矛盾。</p>
-<p>既然 <span class="math inline">\(C_1\)</span> 和 <span class="math inline">\(D_1\)</span> 没有相同顶点，那说明不论先弹 <span class="math inline">\(C_1\)</span> 后弹<span class="math inline">\(D_1\)</span>，或是先弹 <span class="math inline">\(D_1\)</span> 后弹 <span class="math inline">\(C_1\)</span>，得到的栈顶图是一样的。</p>
+的操作次数 <span class="math inline">\(n\)</span> 归纳。<span class="math inline">\(n=0\)</span>
+时，初始栈顶图已经没有回路，结论显然成立。设 <span class="math inline">\(n\geq1\)</span>，并且结论对所有小于 <span class="math inline">\(n\)</span> 的成功弹出过程成立。</p>
+<p>设 <span class="math inline">\(A\)</span> 的弹出序列为 <span class="math inline">\(C_1,\ldots, C_n\)</span>，玩家 <span class="math inline">\(B\)</span> 第一次弹出的回路是 <span class="math inline">\(D_1\)</span>。</p>
+<p>若 <span class="math inline">\(C_1=D_1\)</span>，则弹出这个回路后，双方到达同一个栈状态。从这个新状态出发，<span class="math inline">\(A\)</span> 可以经过 <span class="math inline">\(n-1\)</span> 次操作后获胜。根据归纳假设，<span class="math inline">\(B\)</span> 无论以后怎样选择，也恰好经过 <span class="math inline">\(n-1\)</span> 次操作获胜，并且弹出的颜色回路与
+<span class="math inline">\(\{C_2,\ldots,C_n\}\)</span> 相同。</p>
+<p>下面设 <span class="math inline">\(C_1\ne D_1\)</span>。由于 <span class="math inline">\(C_1,D_1\)</span>
+同时是初始栈顶图中的有向回路，而每个顶点的出度至多为
+1，所以两个不同的有向回路必然没有公共顶点。因此弹出 <span class="math inline">\(C_1\)</span> 不会改变 <span class="math inline">\(D_1\)</span> 的任何栈顶元素；弹出 <span class="math inline">\(D_1\)</span> 也不会改变 <span class="math inline">\(C_1\)</span> 的任何栈顶元素。特别地，先弹 <span class="math inline">\(C_1\)</span> 后弹 <span class="math inline">\(D_1\)</span>，与先弹 <span class="math inline">\(D_1\)</span> 后弹 <span class="math inline">\(C_1\)</span>，得到的是同一个栈状态。</p>
 <p>接下来的论述是钻石引理 ( diamond lemma )
 的典型操作：我们引入两个新玩家 <span class="math inline">\(A'\)</span> 和 <span class="math inline">\(B'\)</span>：<span class="math inline">\(A'\)</span> 的前两步操作是先弹出 <span class="math inline">\(C_1\)</span> 后弹出 <span class="math inline">\(D_1\)</span>，<span class="math inline">\(B'\)</span> 的前两步操作是先弹出 <span class="math inline">\(D_1\)</span> 后弹出 <span class="math inline">\(C_1\)</span>。</p>
 <ol type="1">
