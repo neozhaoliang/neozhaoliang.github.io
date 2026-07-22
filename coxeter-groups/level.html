@@ -531,8 +531,9 @@ b &amp; A
 且实权都满足 <span class="math inline">\(0&lt;(\omega_s,\omega_s)\le1\)</span></strong></p>
 <p>如果 <span class="math inline">\(\omega_s\)</span>
 是实权，由于刚刚证明了 <span class="math inline">\(\Gamma\)</span>
-是双曲的，<span class="math inline">\(\Gamma_s\)</span> 的 level 必须是
-1。</p>
+是双曲的，所以 <span class="math inline">\(\Gamma_s\)</span>
+仍然是双曲的。并且 <span class="math inline">\(\Gamma\)</span> 的 level
+是 2 保证了 <span class="math inline">\(\Gamma_s\)</span> 的 level <span class="math inline">\(\le1\)</span>，从而 <span class="math inline">\(\Gamma_s\)</span> 的 level 必须是 1。</p>
 <p>反之，若 <span class="math inline">\(\Gamma_s\)</span> 的 level 是
 1，由分块求逆公式， <span class="math display">\[G^{-1}=\frac{1}{d}\begin{pmatrix}1  &amp;
 -b^\mathsf{T}A^{-1}\\
@@ -541,7 +542,8 @@ b &amp; A
 \frac{1}{d}.\]</span> 满足 <span class="math display">\[0&lt;(\omega_s,\omega_s)\le1.\]</span> 则 <span class="math inline">\(\omega_s\)</span> 是实权，并且 <span class="math inline">\(0&lt;(\omega_s,\omega_s)\le1\)</span>。</p>
 <p><strong>3. 证明所有的基本权两两分离</strong></p>
 <p>首先任何两个基本权 <span class="math inline">\(\omega_s,\omega_t\)</span>
-张成的子空间不可能是正定的，否则这与 <span class="math inline">\(\Gamma\)</span> 是双曲的并且 level 是 2
+张成的子空间不可能是正定的，否则删去 <span class="math inline">\(s,t\)</span> 后的子图 <span class="math inline">\(\Gamma\setminus\{s,t\}\)</span> 仍然是双曲的，这与
+<span class="math inline">\(\Gamma\)</span> 的 level 是 2
 矛盾。所以只要再证任何两个基本权之间的内积 <span class="math inline">\((\omega_s,\omega_t)\le0\)</span> 即可。</p>
 <ul>
 <li>当 <span class="math inline">\(\omega_s,\omega_t\)</span>
@@ -566,7 +568,7 @@ time-like 的向量，且满足 <span class="math display">\[(v,\omega_s)=\lambd
 <p><strong>证明</strong>：设 <span class="math inline">\(w=s_1\cdots
 s_m\)</span> 是一个既约表达式。记 <span class="math inline">\(w_k=s_1\cdots s_k\,(1\le k\le m)\)</span> 和 <span class="math inline">\(w_0=1\)</span>。</p>
 <p>由于 <span class="math display">\[s_k(\omega_j)=\begin{cases}\omega_j-2\alpha_j,&amp;s_k=s_j,\\\omega_j,&amp;s_k\ne
-s_j.\end{cases}\]</span> 逐项计算可得 <span class="math display">\[w(\omega_j)=\omega_j-2\sum_{\substack{1\le k\le
+s_j.\end{cases}\]</span> 直接望远镜求和可得 <span class="math display">\[w(\omega_j)=\omega_j-2\sum_{\substack{1\le k\le
 m\\ \\ s_k=s_j}}w_{k-1}(\alpha_j).\]</span> 两边与 <span class="math inline">\(\omega_i\)</span> 作内积，得到 <span class="math display">\[(\omega_i, w(\omega_j))=(\omega_i,
 \omega_j)-2\sum_{\substack{1\le k\le m\\ \\ s_k=s_j}}(\omega_i,
 w_{k-1}(\alpha_j)).\]</span> 由于表达式是既约的，所以每个 <span class="math inline">\(w_{k-1}(\alpha_j)\in\Phi^+\)</span>
@@ -587,24 +589,7 @@ w(\omega_j))\le (\omega_i, \omega_j).\]</span> 如果 <span class="math inline">
 是双曲的，且任何两个不同的权都互相分离。</li>
 </ol>
 </div>
-<p><strong>证明</strong>：先注意一个简单事实：</p>
-<div class="statement simple plain unnumbered">
-<p>设 <span class="math inline">\(x,y,z\)</span> 满足：</p>
-<ol type="1">
-<li><span class="math inline">\(x,z\)</span> 线性无关；</li>
-<li><span class="math inline">\((y,y)=(z,z)\)</span>，<span class="math inline">\((x,z)\le (x,y)\)</span>；</li>
-<li><span class="math inline">\(x,y\)</span> 分离。</li>
-</ol>
-<p>则 <span class="math inline">\(x,z\)</span> 也分离。</p>
-</div>
-<p>事实上，<span class="math inline">\(x,y\)</span> 分离首先给出 <span class="math display">\[(x,z)\le (x,y)\le0.\]</span></p>
-<ul>
-<li>若 <span class="math inline">\((x,x)\le0\)</span> 或 <span class="math inline">\((z,z)=(y,y)\le0\)</span>，则 <span class="math inline">\(\mathrm{span}\{x,z\}\)</span> 显然不是正定的，从而
-<span class="math inline">\(x,z\)</span> 分离。</li>
-<li>若 <span class="math inline">\(x,y,z\)</span> 都是实的，则 <span class="math inline">\(x,y\)</span> 分离意味着 <span class="math display">\[(x,y)^2\ge (x,x)(y,y).\]</span> 因为 <span class="math inline">\((x,z)\le(x,y)\le0\)</span>，所以 <span class="math display">\[(x,z)^2\ge(x,y)^2\ge(x,x)(y,y)=(x,x)(z,z).\]</span>
-故 <span class="math inline">\(\operatorname{span}\{x,z\}\)</span>
-仍不是正定的。从而 <span class="math inline">\(x,z\)</span> 分离。</li>
-</ul>
+<p><strong>证明</strong>：</p>
 <p><span class="math inline">\(1\Rightarrow 2\)</span>：前面已经证明了
 level 为 1 或 2
 的时候都是双曲的，并且所有基本权都是两两分离的。只要再证明任何两个不同的权都是分离的。设
@@ -614,15 +599,37 @@ u,v\in W.\]</span> 是两个权。令 <span class="math inline">\(w=u^{-1}v\)</s
 Coxeter 群的 Tits 锥是点锥，所以必须 <span class="math inline">\(c&gt;0\)</span>。这时 <span class="math inline">\(c\omega_i\)</span> 和 <span class="math inline">\(\omega_j\)</span> 都属于基本区域 <span class="math inline">\(\overline{\mathcal{D}}\)</span>，并且属于同一个
 <span class="math inline">\(W\)</span>- 轨道。由于每个 <span class="math inline">\(W\)</span>- 轨道恰好与 <span class="math inline">\(\overline{\mathcal{D}}\)</span> 交于一点，所以
 <span class="math inline">\(c\omega_i=\omega_j\)</span>，这只能是 <span class="math inline">\(i=j\)</span> 且 <span class="math inline">\(c=1\)</span>。于是任何两个不同的权线性无关。</p>
-<ul>
-<li>若 <span class="math inline">\(i\ne j\)</span>，取 <span class="math inline">\(x=\omega_i\)</span>，<span class="math inline">\(y=\omega_j\)</span>，<span class="math inline">\(z=w\omega_j\)</span>。由于基本权两两分离，所以
-<span class="math inline">\(x,y\)</span> 分离。由 <a href="#key-lemma" title="引理 4.1">引理 4.1</a> <span class="math inline">\((x,z)\le
-(x,y)\)</span>，故 <span class="math inline">\(x,z\)</span> 分离。</li>
-<li>若 <span class="math inline">\(i=j\)</span>，取 <span class="math inline">\(x=\omega_i\)</span>，<span class="math inline">\(y=s_i\omega_i\)</span>，<span class="math inline">\(z=w\omega_i\)</span>。则由 <a href="#key-lemma" title="引理 4.1">引理 4.1</a>，有 <span class="math display">\[(x,z)\le
-(x,y)=(\omega_i,\omega_i-2\alpha_i)=(\omega_i,\omega_i)-2 &lt;
-0.\]</span> 以及 <span class="math display">\[(x,x)(y,y)-(x,y)^2 =
-4(\omega_i,\omega_i) - 4\le 0.\]</span> 所以 <span class="math inline">\(x,y\)</span> 分离，从而 <span class="math inline">\(x,z\)</span> 分离。</li>
-</ul>
+<p>根据 <a href="#key-lemma" title="引理 4.1">引理 4.1</a>， <span class="math display">\[(\omega_i,w\omega_j)\le
+(\omega_i,\omega_j).\]</span></p>
+<p>下面分两种情形证明 <span class="math inline">\(\omega_i\)</span> 与
+<span class="math inline">\(w\omega_j\)</span> 分离。</p>
+<p><strong>情形一：<span class="math inline">\(i\ne
+j\)</span></strong></p>
+<p>由于基本权 <span class="math inline">\(\omega_i,\omega_j\)</span>
+两两分离，因此 <span class="math inline">\((\omega_i,\omega_j)\le
+0\)</span> 并且 <span class="math inline">\(\mathrm{span}\{\omega_i,\omega_j\}\)</span>
+不是正定的。</p>
+<p>如果 <span class="math inline">\(\omega_i\)</span> 和 <span class="math inline">\(\omega_j\)</span> 中有一个不是实的，那么 <span class="math inline">\(\omega_i,w\omega_j\)</span>
+中对应的那个也不是实的，它们张成的二维空间不可能正定。再由 <span class="math display">\[(\omega_i,w\omega_j)\le(\omega_i,\omega_j)\le0.\]</span>
+可知 <span class="math inline">\(\omega_i\)</span> 与 <span class="math inline">\(w\omega_j\)</span> 分离。</p>
+<p>所以只需考虑 <span class="math inline">\(\omega_i\)</span> 和 <span class="math inline">\(\omega_j\)</span> 都是实权的情形。由于 <span class="math inline">\(\omega_i,\omega_j\)</span>
+分离，它们张成的二维空间不是正定的，所以相应的 Gram 行列式非正： <span class="math display">\[(\omega_i,\omega_j)^2\ge(\omega_i,\omega_i)(\omega_j,\omega_j).\]</span>
+另一方面， <span class="math display">\[(\omega_i,w\omega_j)\le(\omega_i,\omega_j)\le0.\]</span>
+因此 <span class="math display">\[(\omega_i,w\omega_j)^2\ge(\omega_i,\omega_j)^2\ge(\omega_i,\omega_i)(\omega_j,\omega_j)
+= (\omega_i,\omega_i)(w\omega_j,w\omega_j) .\]</span> 所以 <span class="math inline">\(\mathrm{span}\{\omega_i,w\omega_j\}\)</span>
+也不是正定的。于是 <span class="math inline">\(\omega_i\)</span> 与
+<span class="math inline">\(w\omega_j\)</span> 分离。</p>
+<p><strong>情形二：<span class="math inline">\(i=j\)</span></strong></p>
+<p>现在考虑两个不同的权 <span class="math inline">\(w\omega_i\ne\omega_i\)</span>。根据 <a href="#key-lemma" title="引理 4.1">引理 4.1</a> 中的严格估计， <span class="math display">\[(\omega_i,w\omega_i)\le(\omega_i,\omega_i)-2.\]</span>
+如果 <span class="math inline">\(\omega_i\)</span> 不是实的，那么 <span class="math inline">\(\mathrm{span}\{\omega_i,w\omega_i\}\)</span>
+不可能正定；同时 <span class="math display">\[(\omega_i,w\omega_i)\le(\omega_i,\omega_i)-2&lt;0.\]</span>
+所以此时二者分离。</p>
+<p>下面只需考虑 <span class="math inline">\(\omega_i\)</span>
+是实权的情形。Level 2 的实权满足 <span class="math display">\[0&lt;(\omega_i,\omega_i)\le1.\]</span> 所以 <span class="math display">\[(\omega_i,w\omega_i)\le (\omega_i,\omega_i)-2\le
+-(\omega_i,\omega_i)&lt;0.\]</span> 于是 <span class="math display">\[(\omega_i,w\omega_i)^2\ge(\omega_i,\omega_i)^2.\]</span></p>
+<p>又因为 <span class="math inline">\(W\)</span> 保持范数，所以 <span class="math display">\[(\omega_i,w\omega_i)^2\ge(\omega_i,\omega_i)^2=(\omega_i,\omega_i)(w\omega_i,w\omega_i).\]</span>
+故 <span class="math inline">\(\mathrm{span}\{\omega_i,w\omega_i\}\)</span>
+不是正定的。从而 <span class="math inline">\(\omega_i\)</span> 与 <span class="math inline">\(w\omega_i\)</span> 分离。</p>
 <p><span class="math inline">\(2\Rightarrow 1\)</span>：由于内积 <span class="math inline">\((\cdot,\cdot)\)</span> 是双曲的，而子空间 <span class="math inline">\(\mathrm{span}\{\omega_i,\omega_j\}\)</span>
 不是正定的，所以其正交补是正定或者半正定的。于是 <span class="math inline">\(\Gamma\setminus\{i,j\}\)</span>
 是有限或者仿射的，从而 <span class="math inline">\(\Gamma\)</span> 的

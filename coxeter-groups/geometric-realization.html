@@ -443,7 +443,7 @@ Boyd-Maxwell 球堆时也会采用这种记号。</p>
 <li><span class="math inline">\(l(w)=0\)</span> 当且仅当 <span class="math inline">\(w=1\)</span>。</li>
 <li><span class="math inline">\(l(ws)=l(w)\pm 1\)</span>，其中 <span class="math inline">\(w\in W, s\in S\)</span>。</li>
 </ol>
-<p>前三点都是显然的，只有 4 需要证明。显然 <span class="math inline">\(|l(ws)-l(w)|\leq 1\)</span>，所以只要说明 <span class="math inline">\(l(ws)\)</span> 和 <span class="math inline">\(l(s)\)</span>
+<p>前三点都是显然的，只有 4 需要证明。显然 <span class="math inline">\(|l(ws)-l(w)|\leq 1\)</span>，所以只要说明 <span class="math inline">\(l(ws)\)</span> 和 <span class="math inline">\(l(w)\)</span>
 不相等即可。这一步需要用到自由群的泛性质：</p>
 <p>设 <span class="math inline">\(F\)</span> 是由集合 <span class="math inline">\(S\)</span> 生成的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Free_group">自由群</a>，定义群同态
 <span class="math inline">\({\rm sgn}: F\to{\pm1}\)</span> 如下：对
@@ -549,7 +549,7 @@ V_{s,t}^\perp\)</span> 成立，因为 <span class="math inline">\((\cdot,\cdot)
 }a_2\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_s\
 }a_4\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_t\ }\cdots
 \end{aligned}
-\]</span> 这两个链的周期都是 <span class="math inline">\(2m\)</span>，因为它们的第 <span class="math inline">\(2m+1\)</span> 项各自回到了初始状态： <span class="math display">\[\begin{aligned}
+\]</span> 这两个链的周期都是 <span class="math inline">\(2m\)</span>，因为它们的前 <span class="math inline">\(2m\)</span> 项互不相同，第 <span class="math inline">\(2m+1\)</span> 项等于首项： <span class="math display">\[\begin{aligned}
 a_{2m+1}\alpha_s+a_{2m}\alpha_t&amp;=\dfrac{\sin
 (2m+1)\theta}{\sin\theta}\alpha_s+\dfrac{\sin
 (2m)\theta}{\sin\theta}\alpha_t=\alpha_s,\\
