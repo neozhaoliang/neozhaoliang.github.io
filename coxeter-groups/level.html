@@ -446,25 +446,11 @@ S}v_s\alpha_s\in\mathrm{rad}(V).\]</span> 并取 <span class="math inline">\(u=\
 \omega_s) \leq 0\)</span>。</p>
 <p><strong>3. 证明 <span class="math inline">\((\omega_s,\omega_t)\leq0\)</span> 且 <span class="math inline">\(\mathrm{span}\{\omega_i,\omega_j\}\)</span>
 非正定</strong></p>
-<p>记 Gram 矩阵 <span class="math inline">\(G=((\alpha_s,\alpha_t))_{s,t\in S}\)</span>。则
-<span class="math inline">\(G\)</span> 的对角元恒为
-1、非对角元均非正。所以 <span class="math display">\[G=I-B,\quad
-B\ge0.\]</span> 又因为 <span class="math inline">\(\Gamma\)</span>
-连通，<span class="math inline">\(B\)</span>
-还是一个不可约非负矩阵。</p>
-<p>我们已经证明了 <span class="math inline">\((\cdot,\cdot)\)</span>
-是双曲的，所以 <span class="math inline">\(G\)</span>
-有一个负特征值，于是 <span class="math inline">\(B\)</span> 的谱半径满足
-<span class="math inline">\(\rho(B)&gt;1\)</span>。由 Perron-Frobenius
-定理，存在向量 <span class="math display">\[\lambda = (\lambda_s)_{s\in
-S},\quad \lambda_s&gt;0.\]</span> 满足 <span class="math display">\[B\lambda = \rho(B)\lambda.\]</span> 令 <span class="math inline">\(v = \sum_{s\in S}\lambda_s\alpha_s\)</span>，则
-<span class="math display">\[(v,v)=\lambda^\mathsf{T}
-G\lambda=\lambda^\mathsf{T}(I-B)\lambda=(1-\rho(B))\lambda^\mathsf{T}\lambda&lt;0.\]</span>
-所以 <span class="math inline">\(v\)</span> 是一个 time-like
-的向量。</p>
-<p>而对每个 <span class="math inline">\(s\in S\)</span> 都有 <span class="math display">\[(v,\omega_s) = \lambda_s &gt; 0.\]</span>
-根据第二步，所有 <span class="math inline">\(\omega_s\)</span> 都和
-<span class="math inline">\(-v\)</span> 位于 <span class="math inline">\(\mathcal{Q}\)</span> 的同一个分支中。于是 <span class="math display">\[(\omega_s,\omega_t)\le0,\quad \forall s,t\in
+<p>令 <span class="math inline">\(\eta\)</span> 是前文中 <a href="/coxeter-groups/three-geometries#tits-closure">这个关于双曲情形的结论</a>
+中所述，则 <span class="math inline">\(\eta\)</span> 是 time-like
+的，并且对任何 <span class="math inline">\(\omega_s\)</span> 都有 <span class="math display">\[(\eta,\omega_s) = z_s &gt; 0.\]</span> 根据第二步
+<span class="math inline">\((\omega_s,\omega_s)\leq0\)</span>，于是所有
+<span class="math inline">\(\omega_s\)</span> 都和 <span class="math inline">\(-\eta\)</span> 位于 <span class="math inline">\(\mathcal{Q}\)</span> 的同一个分支中。于是 <span class="math display">\[(\omega_s,\omega_t)\le0,\quad \forall s,t\in
 S.\]</span> 特别地，<span class="math inline">\(\mathrm{span}\{\omega_s,\omega_t\}\)</span>
 包含非正范数的非零向量，不可能是正定的，所以所有的基本权两两分离。<span class="math inline">\(\blacksquare\)</span></p>
 <div id="level-1-tits" class="statement corollary plain">
