@@ -145,7 +145,7 @@ Github
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">5 篇</span></a>
+                    pywonderland-项目 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -153,87 +153,7 @@ Github
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Durrett-概率论批判/">
-                    Durrett-概率论批判 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/完美采样/">
-                    完美采样 <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/几何群论/">
-                    几何群论 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Shadertoy/">
-                    Shadertoy <span class="right">2 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/有限群表示与结合代数/">
-                    有限群表示与结合代数 <span class="right">5 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/可视化复分析/">
-                    可视化复分析 <span class="right">4 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/线性代数/">
-                    线性代数 <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/随机游动/">
-                    随机游动 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/代数/">
-                    代数 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Williams-概率和鞅/">
-                    Williams-概率和鞅 <span class="right">4 篇</span></a>
+                    计数组合学 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -309,19 +229,19 @@ Github
 <span id="more"></span>
 <ul>
 <li><p>Wilson 均匀生成树算法：</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/wilson-bfs.gif"></p></li>
-<li><p>Prim 算法：</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/prim.gif"></p></li>
-<li><p>Kruskal 算法：</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/kruskal.gif"></p></li>
+<p><img src="/images/gifmaze/wilson-bfs.gif" class="fig" width="500"></p></li>
+<li><p>Prim 最小生成树算法：</p>
+<p><img src="/images/gifmaze/prim.gif" class="fig" width="500"></p></li>
+<li><p>Kruskal 最小生成树算法：</p>
+<p><img src="/images/gifmaze/kruskal.gif" class="fig" width="500"></p></li>
 <li><p>Langton 蚂蚁：</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/langton-ant.gif"></p></li>
+<p><img src="/images/gifmaze/langton-ant.gif" class="fig" width="500"></p></li>
 <li><p>Hilbert 曲线：</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/hilbert.gif"></p></li>
+<p><img src="/images/gifmaze/hilbert.gif" class="fig" width="500"></p></li>
 <li><p>Conway 的生命游戏 (gosper glider gun)：</p>
-<p><img style="margin:0px auto;display:block" src="/images/gifmaze/gosperglidergun.gif"></p></li>
+<p><img src="/images/gifmaze/gosperglidergun.gif" class="fig" width="250"></p></li>
 </ul>
-<p>以上这些动画有一个共同特点：它们都位于二维的网格图上，这也是这个程序的一个限制。</p>
+<p>这些动画虽然来自不同领域，却有一个共同的程序结构：它们都可以表示为二维离散网格上的状态演化。算法每前进一步，只会改变少量格点或边的状态；程序要做的，就是把这串局部变化依次编码成动画帧。这也是这个程序的一个限制。</p>
 <p>这个程序有如下特点：</p>
 <ol type="1">
 <li><p>所有代码全部由纯 Python
@@ -349,7 +269,9 @@ Langton ant 的动图，它包含 2300 帧，但是大小只有
 Python 制作一个 GIF
 版本动画演示的想法，但是思考了许久也不知道从何入手。这里困难的地方在于
 Wilson
-算法是一个随机算法，其运行时间是不确定的，一个动画里面可能包含数千帧，如果采用把每一帧保存为图像再合并到一起的话，最终得到的文件会非常庞大。而且这种纯暴力的做法逼格不高，我实在不屑于采用。限于能力不足，这个想法只好被暂时压在心底，但是一直念念不忘。过了几年后，一个偶然的机会我接触到了
+算法是一个随机算法，其运行时间是不确定的，一个动画里面可能包含数千帧，如果采用先把每一步渲染成一张图片，再合成为
+GIF
+的方法，最终得到的文件会非常庞大。而且这种纯暴力的做法逼格不高，我实在不屑于采用。限于能力不足，这个想法只好被暂时压在心底，但是一直念念不忘。过了几年后，一个偶然的机会我接触到了
 GIF
 图像的编码协议，豁然开朗：为什么不直接把动画过程编码为字节流呢？通过精确定位每一帧的位置，控制
 LZW
@@ -382,17 +304,11 @@ LZW
 
 
                                                     
-  <p class="pink-link-context">
-    <a href="/mobius-h3space/" rel="next" title="Möbius 变换的分类与上半双曲空间的等距">
-      上一篇：Möbius 变换的分类与上半双曲空间的等距
-    </a>
-  </p>
-  
 
     
       <p class="pink-link-context">
-        <a href="/reducible-mod-p/" rel="next" title="模任何素数都可约的整系数不可约多项式">
-          下一篇：模任何素数都可约的整系数不可约多项式
+        <a href="/MacMahon-formula-plane-partitions/" rel="next" title="平面分拆的 MacMahon 公式">
+          下一篇：平面分拆的 MacMahon 公式
         </a>
       </p>
       
