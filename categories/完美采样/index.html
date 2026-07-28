@@ -14,6 +14,8 @@
     <meta charset="utf-8">
     
     
+    <meta name="robots" content="noindex,follow">
+    
 
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -21,18 +23,13 @@
     
 
         <title>
-            Reaction-Diffusion simulation with pyglet and glsl | Why so serious?</title>
+            完美采样 | Why so serious?</title>
     <meta name="author" content="Zhao Liang">
-    
-    <meta name="description" content="This
-project is motivated by pmneila’s javascript
-project. The core part of the code are the two GLSL shaders
-reaction.frag and render.frag. The pytho">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="Reaction-Diffusion simulation with pyglet and glsl"/>
+    
     <meta property="og:site_name" content="Why so serious?"/>
 
     
@@ -197,137 +194,33 @@ reaction.frag and render.frag. The pytho">
 
             <main>
                 <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
+    
+
+<nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper indigo">
         <span class="breadcrumb">全部文章（分类目录）</span>
         
-            
 
         
-
+            <a class="breadcrumb" href="/categories/完美采样/">完美采样</a>
         
     </div>
 </nav>
 
-    <article>
-        <div class="card">
-            <div class="card-content">
-                
-
-                            <div class="article-title">
-                                
-    
-        <h1>Reaction-Diffusion simulation with pyglet and glsl</h1>
-    
 
 
-                            </div>
-                            <time class="pink-link-context" datetime="2015-03-22T16:00:00.000Z"><a href="/grayscott/index.html">2015-03-23</a></time>
-
-                                
-
-                                    <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#examples"><span class="section table-of-contents-text">Examples</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#usage"><span class="section table-of-contents-text">Usage</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#how-to-save-the-animation-to-a-video-file"><span class="section table-of-contents-text">How to save the
-animation to a video file</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#about-the-code"><span class="section table-of-contents-text">About the code</span></a></li></ol>
-</div>
-                                        
-                                            <div class="entry pink-link-context">
-                                                
-<p><a target="_blank" rel="noopener" href="https://github.com/neozhaoliang/pywonderland/tree/master/src/grayscott">This
-project</a> is motivated by <a target="_blank" rel="noopener" href="http://pmneila.github.io/jsexp/grayscott/">pmneila’s javascript
-project</a>. The core part of the code are the two GLSL shaders
-<code>reaction.frag</code> and <code>render.frag</code>. The python
-scripts are merely for setting the UI and compiling the GLSL code.</p>
-<blockquote>
-<p>Requirements: <code>pyglet</code> for the UI and OpenGL environment
-and <code>ffmpeg</code> for saving the animation to video files.</p>
-</blockquote>
-<h1 id="examples">Examples</h1>
-<ol type="1">
-<li><p>Unstable</p>
-<p><video src="/images/grayscott/unstable.mp4" controls=""></video></p></li>
-<li><p>Coral</p>
-<p><video src="/images/grayscott/coral.mp4" controls=""></video></p></li>
-<li><p>Baceria</p>
-<p><video src="/images/grayscott/bacteria.mp4" controls=""></video></p></li>
-</ol>
-<h1 id="usage">Usage</h1>
-<p>You may simply run <code>python main.py</code> and then use keyboard
-and mouse to play with the simulation (for keyboard and mouse control
-please see the printed doc).</p>
-<p>You may also initialize the window by passing more options:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">python main.py -size 800x600 -fps 400 -conf 1 -scale 2<br></code></pre></td></tr></tbody></table></figure>
-<p>Here <code>-size</code> is the size of the window, <code>-fps</code>
-is the frames per second of the animation, if not specified then max
-possible value will be used, <code>-conf</code> is the line number of
-the pattern that the program will load from the file
-<code>config.txt</code> (which contains a few precomputed patterns),
-<code>-scale</code> is the “resolution” factor of the texture.</p>
-<p>You may also use an image file to control the growth of the pattern
-by adding the <code>-mask</code> option:</p>
-<video src="/images/grayscott/mask.mp4" controls="">
-<h1 id="how-to-save-the-animation-to-a-video-file">How to save the
-animation to a video file</h1>
-<p>Make sure <code>ffmpeg</code> is installed on your computer and can
-be found on system path, windows users need to manually add the path to
-your ffmpeg.exe to environment variables, then press <code>ctrl+v</code>
-to start saving the video and press <code>ctrl+v</code> again to stop
-the saving.</p>
-<p>You can use the option <code>-videorate</code> to control the fps of
-the video (not the animation!) and the option <code>-samplerate</code>
-to control how often a frame is sampled from the animation. If the
-frames are sampled too frequently the size of the video file will grow
-very large.</p>
-<h1 id="about-the-code">About the code</h1>
-<p><code>pyglet</code> is only a thin wrapper of OpenGL so one has to
-write his own classes to manage things like <code>vao</code>,
-<code>vbo</code>, <code>framebuffer</code>, etc. There are some modules
-like <code>vispy</code> and <code>gletools</code> that does similar job,
-but that lays the burden of learning one more package.</p>
-<p>I wrote two scripts <code>shader.py</code> and
-<code>framebuffer.py</code> for compiling the shader programs and
-rendering to texture. They are not meant to be serious tools, just kept
-simple and suffice for our work.</p>
-<p>The GLSL code borrows heavily from pmneila’s work, the most genius
-part in his code is the use of a <code>brush</code> variable
-(<code>u_mouse</code> in our program) as the interface between the
-shader and the UI.</p>
-
-
-</video>
-                                                    
-
-    
-                                            </div>
-
-            </div>
-        </div>
-    </article>
-
-    
-
-
-    <section id="comment">
-       <script src="https://giscus.app/client.js"
-        data-repo="neozhaoliang/neozhaoliang.github.io"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQ4MTYxMDc="
-        data-category="Announcements"
-        data-category-id="DIC_kwDOCKG3684CPDuy"
-        data-mapping="pathname"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-       </script>
-    </section>
+    <div class="collection mt-0">
+        
+            <a href="/coupling-from-the-past/" class="collection-item grey-text text-darken-1">
+                <time datetime="2016-07-01T16:00:00.000Z">2016-07-02</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                Coupling from the past
+            </a>
+        
+    </div>
 
 
 </div>
-
                    
             </main>
             
