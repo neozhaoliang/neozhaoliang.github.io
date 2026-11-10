@@ -159,7 +159,7 @@ Coxeter 系，\(W\)
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">1 篇</span></a>
+                    pywonderland-项目 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -167,7 +167,15 @@ Coxeter 系，\(W\)
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">1 篇</span></a>
+                    计数组合学 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -182,8 +190,32 @@ Coxeter 系，\(W\)
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
                     线性代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -452,10 +484,6 @@ W\to\rho(W)\leqslant\mathrm{O}(V)\]</span> 为此，只需验证 <span class="ma
 <p><span class="statement-heading"><span class="statement-label">命题
 3.1</span>.</span><span class="statement-spah"> </span><span class="math inline">\((\rho_s\rho_t)^{m_{s,t}}=1\)</span> 对任何 <span class="math inline">\(s,t\in S\)</span> 成立。</p>
 </div>
-<p>这个结论的证明在 <span class="citation" data-cites="Humphreys90">(<a href="#ref-Humphreys90" role="doc-biblioref">Humphreys 1990, sec.
-5.3</a>)</span> 和 <span class="citation" data-cites="Howlett-note">(<a href="#ref-Howlett-note" role="doc-biblioref">Howlett 1996</a>)</span>
-中都可以找到，但我更喜欢 Howlett 的做法，把 rank 2
-情形的根系具体的算出来。这是最简单，但又非平凡的根系的例子，熟悉它的重要性怎么强调也不为过。</p>
 <p><strong>证明</strong>：当 <span class="math inline">\(s=t\)</span>
 时所证即为 <span class="math inline">\(\rho_s^2=1\)</span>，由于 <span class="math inline">\(\rho_s\)</span> 是反射这当然是成立的。</p>
 <p>下设 <span class="math inline">\(s\ne t\)</span>，记 <span class="math inline">\(V_{s,t}={\rm
@@ -465,62 +493,35 @@ V_{s,t}^\perp\)</span> 成立，因为 <span class="math inline">\((\cdot,\cdot)
 <span class="math inline">\((\cdot,\cdot)\)</span> 限制在 <span class="math inline">\(\mid_{V_{s,t}}\)</span> 是非退化的，那么就有 <span class="math inline">\(V=V_{s,t}\oplus V_{s,t}^\perp\)</span>
 就成立。这是双线性型的基本结论。</p>
 <p>我们来计算 <span class="math inline">\(\sigma=\rho_s\rho_t\)</span>
-的阶。记 <span class="math inline">\(m=m_{s,t}\)</span>，分情况讨论：</p>
-<div id="rank2-roots" class="plain">
-
-</div>
-<p><strong>1. <span class="math inline">\(m&lt;\infty\)</span></strong></p>
-<p>这时 <span class="math inline">\((\cdot,\cdot)\)</span> 限制在 <span class="math inline">\(V_{s,t}\)</span> 上的 Gram 矩阵是 <span class="math display">\[\begin{pmatrix}1&amp;-\cos\theta\\-\cos\theta&amp;1\end{pmatrix},\quad
-\theta=\frac{\pi}{m}.\]</span> 这个矩阵是正定的，从而 <span class="math inline">\((\cdot,\cdot)\mid_{V_{s,t}}\)</span> 非退化，从而
-<span class="math inline">\(V=V_{s,t}\oplus V_{s,t}^\perp\)</span>
-成立，而 <span class="math inline">\(\sigma\)</span> 限制在正交补 <span class="math inline">\(V_{s,t}^\perp\)</span> 上是恒等变换，因此 <span class="math inline">\(\sigma\)</span> 在 <span class="math inline">\(V\)</span> 上的阶就等于它在 <span class="math inline">\(V_{s,t}\)</span> 上的阶。</p>
-<p>为了简化记号，令 <span class="math inline">\(a_k=\sin
-(k\theta)/\sin\theta\)</span>，直接计算如下： <span class="math display">\[\begin{aligned}
-&amp;\alpha_s\xrightarrow{\ \rho_t\
-}a_1\alpha_s+a_2\alpha_t\xrightarrow{\ \rho_s\
-}a_3\alpha_s+a_2\alpha_t\xrightarrow{\ \rho_t\
-}a_3\alpha_s+a_4\alpha_t\xrightarrow{\ \rho_s\ }\cdots\\
-&amp;\alpha_t\xrightarrow{\ \rho_s\
-}a_2\alpha_s+a_1\alpha_t\xrightarrow{\ \rho_t\
-}a_2\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_s\
-}a_4\alpha_s+a_3\alpha_t\xrightarrow{\ \rho_t\ }\cdots
-\end{aligned}
-\]</span> 这两个链的周期都是 <span class="math inline">\(2m\)</span>，因为它们的前 <span class="math inline">\(2m\)</span> 项互不相同，第 <span class="math inline">\(2m+1\)</span> 项等于首项： <span class="math display">\[\begin{aligned}
-a_{2m+1}\alpha_s+a_{2m}\alpha_t&amp;=\dfrac{\sin
-(2m+1)\theta}{\sin\theta}\alpha_s+\dfrac{\sin
-(2m)\theta}{\sin\theta}\alpha_t=\alpha_s,\\
-a_{2m}\alpha_s+a_{2m+1}\alpha_t&amp;=\dfrac{\sin
-(2m)\theta}{\sin\theta}\alpha_s+\dfrac{\sin
-(2m+1)\theta}{\sin\theta}\alpha_t=\alpha_t.
-\end{aligned}\]</span> 因此 <span class="math inline">\(\sigma\)</span>
-的阶等于 <span class="math inline">\(m\)</span>。</p>
-<p><strong>2. <span class="math inline">\(m=\infty\)</span></strong></p>
-<p>这时未必有 <span class="math inline">\(V=V_{s,t}\oplus
-V_{s,t}^\perp\)</span>。但我们可以证明 <span class="math inline">\(\sigma\)</span> 在 <span class="math inline">\(V_{s,t}\)</span> 上的阶是无穷，那么自然它在 <span class="math inline">\(V\)</span> 上的阶也是无穷。</p>
-<p>设 <span class="math inline">\(\theta\geq0\)</span> 使得 <span class="math inline">\(a_{s,t}=\cosh\theta\)</span>。记 <span class="math inline">\(b_k=\sinh(k\theta)/\sinh\theta\)</span>，直接计算：
-<span class="math display">\[\begin{aligned}
-&amp;\alpha_s\xrightarrow{\ \rho_t\
-}b_1\alpha_s+b_2\alpha_t\xrightarrow{\ \rho_s\
-}b_3\alpha_s+b_2\alpha_t\xrightarrow{\ \rho_t\
-}b_3\alpha_s+b_4\alpha_t\xrightarrow{\ \rho_s\ }\cdots\\
-&amp;\alpha_t\xrightarrow{\ \rho_s\
-}b_2\alpha_s+b_1\alpha_t\xrightarrow{\ \rho_t\
-}b_2\alpha_s+b_3\alpha_t\xrightarrow{\ \rho_s\
-}b_4\alpha_s+b_3\alpha_t\xrightarrow{\ \rho_t\ }\cdots\end{aligned}
-\]</span> 当 <span class="math inline">\(a_{s,t}=1\)</span> 时 <span class="math inline">\(\theta=0\)</span>，<span class="math inline">\(b_k\)</span> 应当理解为 <span class="math inline">\(\lim_{\theta\to0}\sinh(k\theta)/\sinh(\theta)=k\)</span>。</p>
-<p>这两个链条永不重复，所以 <span class="math inline">\(\sigma\)</span>
-的阶是无穷。</p>
-<p>至此命题得证。<span class="math inline">\(\blacksquare\)</span></p>
+的阶。令 <span class="math inline">\(c=-(\alpha_s,\alpha_t)\)</span>，在基 <span class="math inline">\((\alpha_s,\alpha_t)\)</span> 下， <span class="math display">\[\rho_s = \begin{pmatrix}
+-1 &amp; 2c \\ 0 &amp; 1
+\end{pmatrix},\quad \rho_t = \begin{pmatrix}
+1 &amp; 0 \\ 2c &amp; -1
+\end{pmatrix}.\]</span> 于是 <span class="math display">\[\sigma=\rho_s\rho_t =  \begin{pmatrix}
+4c^2-1 &amp; -2c \\ 2c &amp; -1
+\end{pmatrix}.\]</span> 故 <span class="math display">\[\det \sigma =
+1,\quad \mathop{\mathrm{tr}}\sigma = 4c^2-2.\]</span></p>
+<ul>
+<li><p>如果 <span class="math inline">\(m =
+m_{s,t}&lt;\infty\)</span>，则 <span class="math inline">\(\sigma\)</span> 在 <span class="math inline">\(V_{s,t}\)</span> 上的两个特征值为 <span class="math inline">\(e^{\pm 2i\pi/m}\)</span>。如果 <span class="math inline">\(m&gt;2\)</span>，则 <span class="math inline">\(\sigma\)</span> 在 <span class="math inline">\(V_{s,t}\)</span>
+上有两个不同特征值，可以对角化，因此其阶恰为 <span class="math inline">\(m\)</span>；如果 <span class="math inline">\(m=2\)</span> 则 <span class="math inline">\(\sigma\)</span> 在 <span class="math inline">\(V_{s,t}\)</span> 上的矩阵是 <span class="math inline">\(-I\)</span>，阶也恰好是 <span class="math inline">\(m=2\)</span>。又因为此时 <span class="math inline">\(V_{s,t}\)</span> 正定，<span class="math inline">\(V = V_{s,t}\oplus
+V_{s,t}^\perp\)</span>，而两个反射在 <span class="math inline">\(V_{s,t}^\perp\)</span> 上都是恒等，因此 <span class="math inline">\(\sigma\)</span> 在整个 <span class="math inline">\(V\)</span> 上的阶也是 <span class="math inline">\(m\)</span>。</p></li>
+<li><p>如果 <span class="math inline">\(m=\infty\)</span>，此时 <span class="math inline">\(c=\cosh\theta\ge1\)</span>。</p>
+<ul>
+<li>若 <span class="math inline">\(\theta&gt;0\)</span>，则 <span class="math inline">\(\mathop{\mathrm{tr}}\sigma = 2\cosh2\theta &gt;
+2\)</span>，其两个特征值为 <span class="math inline">\(e^{\pm2\theta}\)</span>，所以阶为无穷。</li>
+<li>若 <span class="math inline">\(\theta=0\)</span>，则 <span class="math display">\[\sigma=\begin{pmatrix}
+3 &amp; -2 \\ 2 &amp; 1
+\end{pmatrix} = I+N,\quad N\ne0, N^2=0.\]</span> 所以 <span class="math display">\[\sigma^n = I + nN\ne I.\]</span> <span class="math inline">\(\sigma\)</span> 仍然是无限阶的。</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\blacksquare\)</span></p>
 <p>后面我们会看到，<span class="math inline">\(W\xrightarrow{\rho}\rho(W)\)</span>
 实际上是群同构，这样就把抽象的 Coxeter 群 <span class="math inline">\(W\)</span> 实现为具体的反射群 <span class="math inline">\(\rho(W)\)</span>。研究 <span class="math inline">\(\rho(W)\)</span> 并不会丢失 <span class="math inline">\(W\)</span> 的信息。</p>
 <p>最后是一个记号的简化：把 <span class="math inline">\(w\in W\)</span>
 在 <span class="math inline">\(V\)</span> 上的作用记为 <span class="math inline">\(wv\,\colon=\rho(w)(v)\)</span>。</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Howlett-note" class="csl-entry" role="listitem">
-Howlett, Robert B. 1996. <span>“Introduction to Coxeter Groups.”</span>
-<a target="_blank" rel="noopener" href="https://www.maths.usyd.edu.au/u/ResearchReports/Algebra/How/1997-6.html">https://www.maths.usyd.edu.au/u/ResearchReports/Algebra/How/1997-6.html</a>.
-</div>
 <div id="ref-Humphreys90" class="csl-entry" role="listitem">
 Humphreys, James E. 1990. <em>Reflection Groups and Coxeter Groups</em>.
 Cambridge Studies in Advanced Mathematics. Cambridge University Press.

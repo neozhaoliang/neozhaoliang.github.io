@@ -144,7 +144,7 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/pywonderland-项目/">
-                    pywonderland-项目 <span class="right">1 篇</span></a>
+                    pywonderland-项目 <span class="right">2 篇</span></a>
                 </a>
             </li>
 
@@ -152,7 +152,15 @@
 
             <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计数组合学/">
-                    计数组合学 <span class="right">1 篇</span></a>
+                    计数组合学 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Durrett-概率论批判/">
+                    Durrett-概率论批判 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -167,8 +175,32 @@
         
 
             <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/有限群表示与结合代数/">
+                    有限群表示与结合代数 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/可视化复分析/">
+                    可视化复分析 <span class="right">2 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/线性代数/">
                     线性代数 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Williams-概率和鞅/">
+                    Williams-概率和鞅 <span class="right">3 篇</span></a>
                 </a>
             </li>
 
@@ -284,6 +316,23 @@ z_s\alpha_s.\]</span> 如果 <span class="math inline">\(W\)</span>
 S}z_s(\alpha_s,\alpha_t) = (Gz)_t = (1-\rho(B))z_t \le 0.\]</span> 而且
 <span class="math inline">\(\eta\in\mathrm{cone}(\Delta)\)</span>。根据
 <a href="/coxeter-groups/tits-cone#dual-cone-dot-neg">前文证明过的结论</a>，<span class="math inline">\(\eta\in\mathcal{C}^\ast\)</span>。特别地，<span class="math inline">\(\mathcal{C}^\ast\ne\{0\}\)</span>。<span class="math inline">\(\blacksquare\)</span></p>
+<div id="tits-cone-pointed" class="statement corollary plain">
+<p><span class="statement-heading"><span class="statement-label">推论
+2.2</span>.</span><span class="statement-spah"> </span>如果 <span class="math inline">\(W\)</span> 是不可约、无限 Coxeter 群，则其 Tits
+cone 是点锥： <span class="math display">\[\mathcal{C}\cap -\mathcal{C}=
+\{0\}.\]</span></p>
+</div>
+<p><strong>证明</strong>：设 <span class="math inline">\(x\ne0\in\mathcal{C}\cap
+-\mathcal{C}\)</span>，<span class="math inline">\(\eta\)</span> 为 <a href="#dual-cone-non-trivial" title="引理 2.1">引理 2.1</a> 所设。</p>
+<p>根据 <span class="math inline">\(\mathcal{C}\)</span> 的定义，存在
+<span class="math inline">\(w\in W\)</span> 和 <span class="math inline">\(y\in\overline{\mathcal{D}}\)</span> 使得 <span class="math inline">\(x = wy\)</span>。根据 <span class="math display">\[ \langle\eta, y\rangle  = \sum_{s\in S}z_s
+\langle \alpha_s, y\rangle.\]</span> 由于 <span class="math inline">\(y\ne
+0\in\overline{\mathcal{D}}\)</span>，所以右边每一个 <span class="math inline">\(\langle\alpha_s,y\rangle\ge0\)</span>，且至少有一个
+<span class="math inline">\(s\)</span> 使得 <span class="math inline">\(\langle\alpha_s,
+y\rangle&gt;0\)</span>。再结合所有 <span class="math inline">\(z_s&gt;0\)</span>，即得 <span class="math inline">\(\langle\eta,y\rangle&gt;0\)</span>。从而 <span class="math display">\[\langle w\eta,x\rangle =  \langle\eta,
+w^{-1}x\rangle = \langle\eta, y\rangle  &gt; 0.\]</span> 另一方面 <span class="math inline">\(\mathcal{C}^\ast\)</span> 也是 <span class="math inline">\(W\)</span>-不变的，因此 <span class="math inline">\(w\eta\in\mathcal{C}^\ast\)</span>，并且根据假设
+<span class="math inline">\(-x\in\mathcal{C}\)</span>，所以 <span class="math display">\[\langle w\eta, x\rangle  = -\langle w\eta,
+-x\rangle \le 0.\]</span> 矛盾！<span class="math inline">\(\blacksquare\)</span></p>
 <h1 id="仿射">仿射</h1>
 <div class="statement definition plain">
 <p><span class="statement-heading"><span class="statement-label">定义
@@ -329,7 +378,15 @@ S}z_s\alpha_s\)</span> 生成，其中每个 <span class="math inline">\(z_s&gt;
 于是 <span class="math display">\[\overline{ \mathcal{C}
 }=(\mathcal{C}^\ast)^\ast=\{\delta\ge0\}.\]</span>
 由于凸集与其闭包具有相同的内部，故 <span class="math display">\[\{\delta&gt;0\}=(\overline{ \mathcal{C} })^\circ
-= \mathcal{C}^\circ\subseteq\mathcal{C}.\]</span> 即得 <span class="math display">\[\mathcal{C}=\{0\}\cup\{\delta&gt;0\}.\]</span>
+= \mathcal{C}^\circ\subseteq\mathcal{C}.\]</span> 若 <span class="math inline">\(x\in\{\delta=0\}\cap\mathcal{C}\)</span>，取 <span class="math inline">\(w\in W\)</span> 使得 <span class="math inline">\(y=wx\in\overline{\mathcal{D}}\)</span>。由于 <span class="math inline">\(w\delta=\delta\)</span>，所以 <span class="math inline">\(\langle\delta,x\rangle=\langle \delta,
+y\rangle\)</span>。设 <span class="math display">\[\delta = \sum_{s\in
+S} z_s\alpha_s,\quad z_s&gt;0.\]</span> 于是 <span class="math display">\[0=\langle\delta,x\rangle = \langle \delta,
+y\rangle = \sum_{s\in S}z_s\langle \alpha_s, y\rangle.\]</span>
+所以每一项 <span class="math inline">\(\langle \alpha_s,
+y\rangle=0\)</span>。而 <span class="math inline">\(\Delta\)</span> 是
+<span class="math inline">\(V\)</span> 的一组基，因此 <span class="math inline">\(y=0\)</span>，从而 <span class="math inline">\(x=0\)</span>。</p>
+<p>于是 <span class="math inline">\(\{\delta=0\}\)</span>
+中除了原点以外都不属于 <span class="math inline">\(\mathcal{C}\)</span>，因此 <span class="math display">\[\mathcal{C}=\{0\}\cup\{\delta&gt;0\}.\]</span>
 <span class="math inline">\(\blacksquare\)</span></p>
 <p>由于内积 <span class="math inline">\((\cdot,\cdot)\)</span>
 是半正定的，且 <span class="math inline">\(\mathrm{rad}(V)=\mathbb{R}\delta\)</span>，所以
